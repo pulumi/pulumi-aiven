@@ -56,6 +56,8 @@ github.com/aiven/aiven-go-client v1.2.0 h1:DPDfECyWsePZIqjNY8TFNmePZ6nXlHo9jCd8s
 github.com/aiven/aiven-go-client v1.2.0/go.mod h1:phPZQfMS04VejuQmsPzYur40GeP4IODyhbyUBiGm/9s=
 github.com/aiven/terraform-provider-aiven v1.0.16 h1:7mapzksPGjeBVh8jOd/O164iVVDWrfTVL9LS/yRu5zw=
 github.com/aiven/terraform-provider-aiven v1.0.16/go.mod h1:QMJwg1Rw3O4Jn3CQ4DUpoMYwLrK6eR10q3mFClqqzoI=
+github.com/aiven/terraform-provider-aiven v1.0.17 h1:vk15bCldAuAEOqQD24SST4qfB37fEQUSG5/7JzIrRxE=
+github.com/aiven/terraform-provider-aiven v1.0.17/go.mod h1:QMJwg1Rw3O4Jn3CQ4DUpoMYwLrK6eR10q3mFClqqzoI=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
@@ -510,8 +512,12 @@ github.com/pulumi/pulumi-terraform v0.18.3 h1:DHpETa+TWnthH9Sw3bHS+HxSgidB1cASkV
 github.com/pulumi/pulumi-terraform v0.18.3/go.mod h1:YHwPNWOBnQTnkibhfiyeShuSxwZnu7ZnKkqIvl0t2C0=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20190911210241-c73da359df9f h1:lCJgN6MZgwMD6CI3AH1D7gsYMRJiZ60MnL3c6UmAXC4=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20190911210241-c73da359df9f/go.mod h1:JJcnTsj4NDz7pIav+uKaqRWoRY8Tec2QWktWOvFBD0w=
+github.com/pulumi/pulumi-terraform v0.18.4-0.20190914112649-fc132172e90d h1:/BxZACcgvqVxh2x8eAWV+rMjk3a5ULFqKbeiVXJ1los=
+github.com/pulumi/pulumi-terraform v0.18.4-0.20190914112649-fc132172e90d/go.mod h1:JJcnTsj4NDz7pIav+uKaqRWoRY8Tec2QWktWOvFBD0w=
 github.com/pulumi/scripts v0.0.0-20190912181042-64ca2230fc9b h1:xfmgyZdMzdMDK76hFvw/Otr7wwBtZSSNTcwvVmlWFrI=
 github.com/pulumi/scripts v0.0.0-20190912181042-64ca2230fc9b/go.mod h1:ZEj/wbB9HtXA9U6xWWpe9U+7vuDpiTIIt7Gca/XpfsA=
+github.com/pulumi/scripts v0.0.0-20190914160500-e52bb56dbc41 h1:fOJRpltnITbloN6JzTU57jYJCHo40zimXDj3I+FldAM=
+github.com/pulumi/scripts v0.0.0-20190914160500-e52bb56dbc41/go.mod h1:ZEj/wbB9HtXA9U6xWWpe9U+7vuDpiTIIt7Gca/XpfsA=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/reconquest/loreley v0.0.0-20160708080500-2ab6b7470a54 h1:J2RvHxEMIzMV6XbaZIj9s5G4lG3hhqWxS7Cl1Jii44c=
 github.com/reconquest/loreley v0.0.0-20160708080500-2ab6b7470a54/go.mod h1:1NF/j951kWm+ZnRXpOkBqweImgwhlzFVwTA4A0V7TEU=

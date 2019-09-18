@@ -19,6 +19,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
+	aiven "github.com/pulumi/pulumi-aiven"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
@@ -98,30 +99,74 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-aiven",
-		Config:      map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: makeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Config: map[string]*tfbridge.SchemaInfo{
+			"api_token": {
+				Type: "string",
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AIVEN_API_TOKEN"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: makeResource(mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: makeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: makeType(mainPkg, "Tags")},
-			// 	},
-			// },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"aiven_project": {
+				Tok:     makeResource(mainMod, "AivenProject"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"project": {
+						Name: "aivenProject",
+						Type: makeResource(mainMod, "Project")
+					},
+					"card_id": {
+						Name: "aivenCardId",
+						Type: makeResource(mainMod, "CardId")
+					},
+					"copy_from_project": {
+						Name: "aivenCopyFromProject",
+						Type: makeResource(mainMod, "CopyFromProject")
+					},
+					"ca_cert": {
+						Name: "aivenCaCert",
+						Type: makeResource(mainMod, "CaCert")
+					},
+				}
+			},
+			"aiven_service": {
+				Tok:     makeResource(mainMod, "AivenService"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"project": {
+						Name: "aivenProject",
+						Type: makeResource(mainMod, "Project")
+					},
+					"cloud_name": {
+						Name: "aivenCloudName",
+						Type: makeResource(mainMod, "CloudName")
+					},
+					"copy_plan": {
+						Name: "aivenPlan",
+						Type: makeResource(mainMod, "Plan")
+					},
+					"ca_service_name": {
+						Name: "aivenServiceName",
+						Type: makeResource(mainMod, "ServiceName")
+					},
+					"service_type": {
+						Name: "aivenServiceType",
+						Type: makeResource(mainMod, "ServiceType")
+					},
+					"project_vpc_id": {
+						Name: "aivenVpcId",
+						Type: makeResource(mainMod, "ProjectVpcId")
+					},
+					"termination_protection": {
+						Name: "aivenTerminationProtection",
+						Type: makeResource(mainMod, "ProjectTerminationProtection")
+					},
+					"pg_user_config": {
+						Name: "aivenPgUserConfig",
+						Type: makeResource(mainMod, "ProjectPgUserConfig")
+					},
+				}
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
