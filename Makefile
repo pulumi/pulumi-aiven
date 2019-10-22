@@ -1,4 +1,4 @@
-PROJECT_NAME := aiven Package
+PROJECT_NAME := Aiven Package
 include build/common.mk
 
 PACK             := aiven
@@ -26,13 +26,13 @@ prepare::
 	mv "cmd/pulumi-resource-x${EMPTY_TO_AVOID_SED}yz" cmd/pulumi-resource-${NAME}
 
 	if [[ "${OS}" != "Darwin" ]]; then \
-		sed -i 's,github.com/pulumi/pulumi-aiven,${REPOSITORY},g' go.mod; \
+		sed -i 's,github.com/pulumi/pulumi-vault,${REPOSITORY},g' go.mod; \
 		find ./ ! -path './.git/*' -type f -exec sed -i 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
 	fi
 
 	# In MacOS the -i parameter needs an empty string to execute in place.
 	if [[ "${OS}" == "Darwin" ]]; then \
-		sed -i '' 's,github.com/pulumi/pulumi-aiven,${REPOSITORY},g' go.mod; \
+		sed -i '' 's,github.com/pulumi/pulumi-vault,${REPOSITORY},g' go.mod; \
 		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
 	fi
 
@@ -80,10 +80,10 @@ install::
 		yarn install --offline --production && \
 		(yarn unlink > /dev/null 2>&1 || true) && \
 		yarn link
+	cd ${PACKDIR}/python/bin && $(PIP) install --user -e .
 
 test_all::
 	PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./examples
-	PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./tests/...
 
 .PHONY: publish_tgz
 publish_tgz:
@@ -94,6 +94,7 @@ publish_tgz:
 publish_packages:
 	$(call STEP_MESSAGE)
 	$$(go env GOPATH)/src/github.com/pulumi/scripts/ci/publish-tfgen-package .
+	$$(go env GOPATH)/src/github.com/pulumi/scripts/ci/build-package-docs.sh ${PACK}
 
 .PHONY: check_clean_worktree
 check_clean_worktree:

@@ -17,13 +17,10 @@ package aiven
 import (
 	"unicode"
 
+	"github.com/aiven/terraform-provider-aiven/aiven"
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/terraform"
-	aiven "github.com/pulumi/pulumi-aiven"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
-	//"github.com/aiven/terraform-provider-aiven"
 )
 
 // all of the token components used below.
@@ -60,41 +57,13 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool {
-	return &b
-}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	return ""
-}
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
-	return nil
-}
-
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
-
-// Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	// Instantiate the Terraform provider
 	p := aiven.Provider().(*schema.Provider)
-
-	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "aiven",
-		Description: "A Pulumi package for creating and managing aiven cloud resources.",
+		GitHubOrg:   "aiven",
+		Description: "A Pulumi package for creating and managing Aiven cloud resources.",
 		Keywords:    []string{"pulumi", "aiven"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
@@ -107,90 +76,83 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"aiven_project": {
-				Tok:     makeResource(mainMod, "AivenProject"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"project": {
-						Name: "aivenProject",
-						Type: makeResource(mainMod, "Project")
-					},
-					"card_id": {
-						Name: "aivenCardId",
-						Type: makeResource(mainMod, "CardId")
-					},
-					"copy_from_project": {
-						Name: "aivenCopyFromProject",
-						Type: makeResource(mainMod, "CopyFromProject")
-					},
-					"ca_cert": {
-						Name: "aivenCaCert",
-						Type: makeResource(mainMod, "CaCert")
-					},
-				}
-			},
+			"aiven_connection_pool":        {Tok: makeResource(mainMod, "ConnectionPool")},
+			"aiven_database":               {Tok: makeResource(mainMod, "Database")},
+			"aiven_kafka_acl":              {Tok: makeResource(mainMod, "KafkaAcl")},
+			"aiven_kafka_topic":            {Tok: makeResource(mainMod, "KafkaTopic")},
+			"aiven_project":                {Tok: makeResource(mainMod, "Project")},
+			"aiven_project_user":           {Tok: makeResource(mainMod, "ProjectUser")},
+			"aiven_project_vpc":            {Tok: makeResource(mainMod, "ProjectVpc")},
+			"aiven_vpc_peering_connection": {Tok: makeResource(mainMod, "VpcPeeringConnection")},
 			"aiven_service": {
-				Tok:     makeResource(mainMod, "AivenService"),
+				Tok: makeResource(mainMod, "Service"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"project": {
-						Name: "aivenProject",
-						Type: makeResource(mainMod, "Project")
-					},
-					"cloud_name": {
-						Name: "aivenCloudName",
-						Type: makeResource(mainMod, "CloudName")
-					},
-					"copy_plan": {
-						Name: "aivenPlan",
-						Type: makeResource(mainMod, "Plan")
-					},
-					"ca_service_name": {
-						Name: "aivenServiceName",
-						Type: makeResource(mainMod, "ServiceName")
-					},
-					"service_type": {
-						Name: "aivenServiceType",
-						Type: makeResource(mainMod, "ServiceType")
-					},
-					"project_vpc_id": {
-						Name: "aivenVpcId",
-						Type: makeResource(mainMod, "ProjectVpcId")
-					},
-					"termination_protection": {
-						Name: "aivenTerminationProtection",
-						Type: makeResource(mainMod, "ProjectTerminationProtection")
-					},
 					"pg_user_config": {
-						Name: "aivenPgUserConfig",
-						Type: makeResource(mainMod, "ProjectPgUserConfig")
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"pg": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"pg_stat_statements.track": {
+												Name: "pgStatStatementsTrack",
+											},
+										},
+									},
+								},
+							},
+						},
 					},
-				}
+				},
 			},
+			"aiven_service_integration":          {Tok: makeResource(mainMod, "ServiceIntegration")},
+			"aiven_service_integration_endpoint": {Tok: makeResource(mainMod, "ServiceIntegrationEndpoint")},
+			"aiven_service_user":                 {Tok: makeResource(mainMod, "ServiceUser")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
+			"aiven_connection_pool":        {Tok: makeDataSource(mainMod, "getConnectionPool")},
+			"aiven_database":               {Tok: makeDataSource(mainMod, "getDatabase")},
+			"aiven_kafka_acl":              {Tok: makeDataSource(mainMod, "getKafkaAcl")},
+			"aiven_kafka_topic":            {Tok: makeDataSource(mainMod, "getKafkaTopic")},
+			"aiven_project":                {Tok: makeDataSource(mainMod, "getProject")},
+			"aiven_project_user":           {Tok: makeDataSource(mainMod, "getProjectUser")},
+			"aiven_project_vpc":            {Tok: makeDataSource(mainMod, "getProjectVpc")},
+			"aiven_vpc_peering_connection": {Tok: makeDataSource(mainMod, "getVpcPeeringConnection")},
+			"aiven_service": {
+				Tok: makeDataSource(mainMod, "getService"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"pg_user_config": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"pg": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"pg_stat_statements.track": {
+												Name: "pgStatStatementsTrack",
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			"aiven_service_integration_endpoint": {Tok: makeDataSource(mainMod, "getServiceIntegrationEndpoint")},
+			"aiven_service_user":                 {Tok: makeDataSource(mainMod, "getServiceUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "latest",
+				"@pulumi/pulumi": "^1.0.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
+				"@types/node": "^8.0.25",
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
-				"pulumi": ">=0.17.28",
+				"pulumi": ">=1.0.0,<2.0.0",
 			},
 		},
 	}
