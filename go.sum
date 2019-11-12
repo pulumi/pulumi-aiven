@@ -672,11 +672,8 @@ github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4/go.mod h1:6V/nMJd07pUX
 github.com/pulumi/pulumi v0.17.28-0.20190731182900-6804d640fc7c/go.mod h1:cr7Foucg04kyKJQ3eBFgeC/RbP8xtZgLfHRknHFhhAM=
 github.com/pulumi/pulumi v1.1.0 h1:+V/2KbOrgHPU3EC1uTdajEgoPNI2GbpB/erKeT0Ftrk=
 github.com/pulumi/pulumi v1.1.0/go.mod h1:eSrIzt/kTqyrir8kE4KnCPYbxJm1ChSg1DD7lkBw0mA=
-github.com/pulumi/pulumi-terraform v0.18.4-0.20190914112649-fc132172e90d h1:/BxZACcgvqVxh2x8eAWV+rMjk3a5ULFqKbeiVXJ1los=
-github.com/pulumi/pulumi-terraform v0.18.4-0.20190914112649-fc132172e90d/go.mod h1:JJcnTsj4NDz7pIav+uKaqRWoRY8Tec2QWktWOvFBD0w=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20191106002356-df2ca0d49bbf h1:jAfaB91VZrOFWCUz68evYUqc1FgFBsHfhHZg6dxesT0=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20191106002356-df2ca0d49bbf/go.mod h1:Z+/EyyTfr2fn7eDid1Vb98IHfPMK/R5krAbXYssptKM=
-github.com/pulumi/pulumi-terraform v1.1.0 h1:qc2kWtikTYXZ+DZ+KaRRautYhZtox0VOIEylEDFAHBQ=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20191112055150-1b033b27c5e8 h1:ZVr675C1Kli6DLQJa/WW91u/4k8KWBs90mNAYUvgYcc=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20191112055150-1b033b27c5e8/go.mod h1:QMJwg1Rw3O4Jn3CQ4DUpoMYwLrK6eR10q3mFClqqzoI=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
