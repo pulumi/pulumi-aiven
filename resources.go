@@ -94,7 +94,7 @@ func Provider() tfbridge.ProviderInfo {
 								"pg": {
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
-											"pg_stat_statements.track": {
+											"pg_stat_statements_dot_track": {
 												Name: "pgStatStatementsTrack",
 											},
 										},
@@ -127,7 +127,7 @@ func Provider() tfbridge.ProviderInfo {
 								"pg": {
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
-											"pg_stat_statements.track": {
+											"pg_stat_statements_dot_track": {
 												Name: "pgStatStatementsTrack",
 											},
 										},
