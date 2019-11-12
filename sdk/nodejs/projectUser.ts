@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/r/project_user.html.markdown.
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project_user.html.markdown.
  */
 export class ProjectUser extends pulumi.CustomResource {
     /**

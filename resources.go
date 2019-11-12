@@ -77,11 +77,18 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"aiven_connection_pool":        {Tok: makeResource(mainMod, "ConnectionPool")},
-			"aiven_database":               {Tok: makeResource(mainMod, "Database")},
-			"aiven_kafka_acl":              {Tok: makeResource(mainMod, "KafkaAcl")},
-			"aiven_kafka_topic":            {Tok: makeResource(mainMod, "KafkaTopic")},
-			"aiven_project":                {Tok: makeResource(mainMod, "Project")},
+			"aiven_connection_pool": {Tok: makeResource(mainMod, "ConnectionPool")},
+			"aiven_database":        {Tok: makeResource(mainMod, "Database")},
+			"aiven_kafka_acl":       {Tok: makeResource(mainMod, "KafkaAcl")},
+			"aiven_kafka_topic":     {Tok: makeResource(mainMod, "KafkaTopic")},
+			"aiven_project": {
+				Tok: makeResource(mainMod, "Project"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"project": {
+						CSharpName: "ProjectName",
+					},
+				},
+			},
 			"aiven_project_user":           {Tok: makeResource(mainMod, "ProjectUser")},
 			"aiven_project_vpc":            {Tok: makeResource(mainMod, "ProjectVpc")},
 			"aiven_vpc_peering_connection": {Tok: makeResource(mainMod, "VpcPeeringConnection")},
@@ -153,6 +160,12 @@ func Provider() tfbridge.ProviderInfo {
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
 				"pulumi": ">=1.0.0,<2.0.0",
+			},
+		},
+		CSharp: &tfbridge.CSharpInfo{
+			PackageReferences: map[string]string{
+				"Pulumi":                       "1.5.0-*",
+				"System.Collections.Immutable": "1.6.0",
 			},
 		},
 	}

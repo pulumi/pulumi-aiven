@@ -49,7 +49,7 @@ def get_project_user(accepted=None,email=None,member_type=None,project=None,opts
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/project_user.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project_user.html.markdown.
     """
     __args__ = dict()
 

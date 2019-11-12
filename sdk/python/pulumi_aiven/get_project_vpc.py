@@ -49,7 +49,7 @@ def get_project_vpc(cloud_name=None,network_cidr=None,project=None,state=None,op
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/project_vpc.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project_vpc.html.markdown.
     """
     __args__ = dict()
 

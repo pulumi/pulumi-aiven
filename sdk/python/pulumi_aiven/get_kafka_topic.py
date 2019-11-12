@@ -69,7 +69,7 @@ def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/kafka_topic.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_topic.html.markdown.
     """
     __args__ = dict()
 

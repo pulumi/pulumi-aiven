@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/r/kafka_acl.html.markdown.
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/kafka_acl.html.markdown.
  */
 export class KafkaAcl extends pulumi.CustomResource {
     /**

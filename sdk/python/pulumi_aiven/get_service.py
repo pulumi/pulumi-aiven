@@ -501,7 +501,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
       * `integration_type` (`str`)
       * `source_service_name` (`str`)
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/service.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service.html.markdown.
     """
     __args__ = dict()
 

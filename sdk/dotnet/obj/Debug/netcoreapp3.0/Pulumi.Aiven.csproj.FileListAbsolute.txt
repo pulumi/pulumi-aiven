@@ -1,0 +1,10 @@
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/obj/Debug/netcoreapp3.0/Pulumi.Aiven.csprojAssemblyReference.cache
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/obj/Debug/netcoreapp3.0/Pulumi.Aiven.AssemblyInfoInputs.cache
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/obj/Debug/netcoreapp3.0/Pulumi.Aiven.AssemblyInfo.cs
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/bin/Debug/netcoreapp3.0/Pulumi.Aiven.deps.json
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/bin/Debug/netcoreapp3.0/Pulumi.Aiven.dll
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/bin/Debug/netcoreapp3.0/Pulumi.Aiven.pdb
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/bin/Debug/netcoreapp3.0/Pulumi.Aiven.xml
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/obj/Debug/netcoreapp3.0/Pulumi.Aiven.dll
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/obj/Debug/netcoreapp3.0/Pulumi.Aiven.xml
+/Users/stack72/code/go/src/github.com/pulumi/pulumi-aiven/sdk/dotnet/obj/Debug/netcoreapp3.0/Pulumi.Aiven.pdb

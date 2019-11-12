@@ -20,7 +20,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/index.html.markdown.
+        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/index.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -58,7 +58,7 @@ class Provider(pulumi.ProviderResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/index.html.markdown.
+        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/index.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

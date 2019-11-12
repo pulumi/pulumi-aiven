@@ -53,7 +53,7 @@ def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,s
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/database.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/database.html.markdown.
     """
     __args__ = dict()
 

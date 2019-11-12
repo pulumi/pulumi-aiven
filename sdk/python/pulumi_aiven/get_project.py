@@ -65,7 +65,7 @@ def get_project(billing_address=None,billing_emails=None,ca_cert=None,card_id=No
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/project.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project.html.markdown.
     """
     __args__ = dict()
 

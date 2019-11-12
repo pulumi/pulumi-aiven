@@ -34,7 +34,7 @@ class ServiceIntegration(pulumi.CustomResource):
         
           * `mirrormakerWhitelist` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/r/service_integration.html.markdown.
+        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_integration.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,7 +90,7 @@ class ServiceIntegration(pulumi.CustomResource):
         
           * `mirrormakerWhitelist` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/r/service_integration.html.markdown.
+        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_integration.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

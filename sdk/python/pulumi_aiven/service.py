@@ -389,7 +389,7 @@ class Service(pulumi.CustomResource):
           * `integration_type` (`pulumi.Input[str]`)
           * `source_service_name` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/r/service.html.markdown.
+        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -802,7 +802,7 @@ class Service(pulumi.CustomResource):
           * `integration_type` (`pulumi.Input[str]`)
           * `source_service_name` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/r/service.html.markdown.
+        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

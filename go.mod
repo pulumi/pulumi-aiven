@@ -19,6 +19,6 @@ require (
 	github.com/hashicorp/terraform v0.12.8
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.1.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190914112649-fc132172e90d
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20191106002356-df2ca0d49bbf
 	github.com/stretchr/testify v1.4.0 // indirect
 )

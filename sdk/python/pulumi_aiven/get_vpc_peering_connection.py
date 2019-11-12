@@ -57,7 +57,7 @@ def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/vpc_peering_connection.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/vpc_peering_connection.html.markdown.
     """
     __args__ = dict()
 

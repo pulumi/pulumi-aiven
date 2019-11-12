@@ -97,7 +97,7 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
       * `server` (`str`)
       * `tls` (`bool`)
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/service_integration_endpoint.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service_integration_endpoint.html.markdown.
     """
     __args__ = dict()
 

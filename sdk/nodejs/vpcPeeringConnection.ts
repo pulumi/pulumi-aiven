@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/r/vpc_peering_connection.html.markdown.
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/vpc_peering_connection.html.markdown.
  */
 export class VpcPeeringConnection extends pulumi.CustomResource {
     /**

@@ -53,7 +53,7 @@ def get_kafka_acl(permission=None,project=None,service_name=None,topic=None,user
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/kafka_acl.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_acl.html.markdown.
     """
     __args__ = dict()
 

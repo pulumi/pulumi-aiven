@@ -61,7 +61,7 @@ def get_service_user(access_cert=None,access_key=None,password=None,project=None
     Use this data source to access information about an existing resource.
     
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-aiven/blob/master/website/docs/d/service_user.html.markdown.
+    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service_user.html.markdown.
     """
     __args__ = dict()
 
