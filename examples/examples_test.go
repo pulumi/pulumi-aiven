@@ -44,6 +44,7 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	projectName := getProjectName(t)
 	base := getBaseOptions()
 	baseJS := base.With(integration.ProgramTestOptions{
+		ExpectRefreshChanges: true,
 		Config: map[string]string{
 			"projectName": projectName,
 		},
