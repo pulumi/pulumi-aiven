@@ -21,4 +21,5 @@ require (
 	github.com/pulumi/pulumi v1.1.0
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20191106002356-df2ca0d49bbf
 	github.com/stretchr/testify v1.4.0 // indirect
+	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 )
