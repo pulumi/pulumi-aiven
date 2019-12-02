@@ -12,14 +12,10 @@ replace (
 )
 
 require (
-	github.com/Azure/go-autorest/autorest/azure/auth v0.4.0 // indirect
-	github.com/Azure/go-autorest/autorest/to v0.3.0 // indirect
-	github.com/Azure/go-autorest/autorest/validation v0.2.0 // indirect
 	github.com/aiven/terraform-provider-aiven v1.0.17
 	github.com/hashicorp/terraform v0.12.8
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.1.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20191106002356-df2ca0d49bbf
+	github.com/pulumi/pulumi v1.6.0
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20191202134852-87cfb4dc8ae1
 	github.com/stretchr/testify v1.4.0 // indirect
-	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 )

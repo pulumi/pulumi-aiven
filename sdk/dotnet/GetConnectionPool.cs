@@ -10,7 +10,7 @@ namespace Pulumi.Aiven
     public static partial class Invokes
     {
         public static Task<GetConnectionPoolResult> GetConnectionPool(GetConnectionPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetConnectionPoolArgs : Pulumi.ResourceArgs

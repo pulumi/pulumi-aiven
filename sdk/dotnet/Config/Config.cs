@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Aiven.Config
+namespace Pulumi.Aiven
 {
     public static class Config
     {

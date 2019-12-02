@@ -61,33 +61,33 @@ func GetProjectVpc(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectVpc) URN() *pulumi.URNOutput {
+func (r *ProjectVpc) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectVpc) ID() *pulumi.IDOutput {
+func (r *ProjectVpc) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Cloud the VPC is in
-func (r *ProjectVpc) CloudName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cloudName"])
+func (r *ProjectVpc) CloudName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cloudName"])
 }
 
 // Network address range used by the VPC like 192.168.0.0/24
-func (r *ProjectVpc) NetworkCidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["networkCidr"])
+func (r *ProjectVpc) NetworkCidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["networkCidr"])
 }
 
 // The project the VPC belongs to
-func (r *ProjectVpc) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectVpc) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
-func (r *ProjectVpc) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *ProjectVpc) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering ProjectVpc resources.

@@ -140,173 +140,173 @@ func GetService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Service) URN() *pulumi.URNOutput {
+func (r *Service) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Service) ID() *pulumi.IDOutput {
+func (r *Service) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Cassandra specific server provided values
-func (r *Service) Cassandra() *pulumi.Output {
+func (r *Service) Cassandra() pulumi.Output {
 	return r.s.State["cassandra"]
 }
 
 // Cassandra specific user configurable settings
-func (r *Service) CassandraUserConfig() *pulumi.Output {
+func (r *Service) CassandraUserConfig() pulumi.Output {
 	return r.s.State["cassandraUserConfig"]
 }
 
 // Cloud the service runs in
-func (r *Service) CloudName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cloudName"])
+func (r *Service) CloudName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cloudName"])
 }
 
 // Elasticsearch specific server provided values
-func (r *Service) Elasticsearch() *pulumi.Output {
+func (r *Service) Elasticsearch() pulumi.Output {
 	return r.s.State["elasticsearch"]
 }
 
 // Elasticsearch specific user configurable settings
-func (r *Service) ElasticsearchUserConfig() *pulumi.Output {
+func (r *Service) ElasticsearchUserConfig() pulumi.Output {
 	return r.s.State["elasticsearchUserConfig"]
 }
 
 // Grafana specific server provided values
-func (r *Service) Grafana() *pulumi.Output {
+func (r *Service) Grafana() pulumi.Output {
 	return r.s.State["grafana"]
 }
 
 // Grafana specific user configurable settings
-func (r *Service) GrafanaUserConfig() *pulumi.Output {
+func (r *Service) GrafanaUserConfig() pulumi.Output {
 	return r.s.State["grafanaUserConfig"]
 }
 
 // InfluxDB specific server provided values
-func (r *Service) Influxdb() *pulumi.Output {
+func (r *Service) Influxdb() pulumi.Output {
 	return r.s.State["influxdb"]
 }
 
 // InfluxDB specific user configurable settings
-func (r *Service) InfluxdbUserConfig() *pulumi.Output {
+func (r *Service) InfluxdbUserConfig() pulumi.Output {
 	return r.s.State["influxdbUserConfig"]
 }
 
 // Kafka specific server provided values
-func (r *Service) Kafka() *pulumi.Output {
+func (r *Service) Kafka() pulumi.Output {
 	return r.s.State["kafka"]
 }
 
 // Kafka specific user configurable settings
-func (r *Service) KafkaUserConfig() *pulumi.Output {
+func (r *Service) KafkaUserConfig() pulumi.Output {
 	return r.s.State["kafkaUserConfig"]
 }
 
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-func (r *Service) MaintenanceWindowDow() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["maintenanceWindowDow"])
+func (r *Service) MaintenanceWindowDow() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintenanceWindowDow"])
 }
 
 // Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-func (r *Service) MaintenanceWindowTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["maintenanceWindowTime"])
+func (r *Service) MaintenanceWindowTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintenanceWindowTime"])
 }
 
 // MySQL specific server provided values
-func (r *Service) Mysql() *pulumi.Output {
+func (r *Service) Mysql() pulumi.Output {
 	return r.s.State["mysql"]
 }
 
 // MySQL specific user configurable settings
-func (r *Service) MysqlUserConfig() *pulumi.Output {
+func (r *Service) MysqlUserConfig() pulumi.Output {
 	return r.s.State["mysqlUserConfig"]
 }
 
 // PostgreSQL specific server provided values
-func (r *Service) Pg() *pulumi.Output {
+func (r *Service) Pg() pulumi.Output {
 	return r.s.State["pg"]
 }
 
 // PostgreSQL specific user configurable settings
-func (r *Service) PgUserConfig() *pulumi.Output {
+func (r *Service) PgUserConfig() pulumi.Output {
 	return r.s.State["pgUserConfig"]
 }
 
 // Subscription plan
-func (r *Service) Plan() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["plan"])
+func (r *Service) Plan() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["plan"])
 }
 
 // Target project
-func (r *Service) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Service) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Identifier of the VPC the service should be in, if any
-func (r *Service) ProjectVpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectVpcId"])
+func (r *Service) ProjectVpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectVpcId"])
 }
 
 // Redis specific server provided values
-func (r *Service) Redis() *pulumi.Output {
+func (r *Service) Redis() pulumi.Output {
 	return r.s.State["redis"]
 }
 
 // Redis specific user configurable settings
-func (r *Service) RedisUserConfig() *pulumi.Output {
+func (r *Service) RedisUserConfig() pulumi.Output {
 	return r.s.State["redisUserConfig"]
 }
 
 // Service hostname
-func (r *Service) ServiceHost() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceHost"])
+func (r *Service) ServiceHost() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceHost"])
 }
 
 // Service integrations to specify when creating a service. Not applied after initial service creation
-func (r *Service) ServiceIntegrations() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["serviceIntegrations"])
+func (r *Service) ServiceIntegrations() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["serviceIntegrations"])
 }
 
 // Service name
-func (r *Service) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *Service) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // Password used for connecting to the service, if applicable
-func (r *Service) ServicePassword() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["servicePassword"])
+func (r *Service) ServicePassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["servicePassword"])
 }
 
 // Service port
-func (r *Service) ServicePort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["servicePort"])
+func (r *Service) ServicePort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["servicePort"])
 }
 
 // Service type code
-func (r *Service) ServiceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceType"])
+func (r *Service) ServiceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceType"])
 }
 
 // URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-func (r *Service) ServiceUri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceUri"])
+func (r *Service) ServiceUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceUri"])
 }
 
 // Username used for connecting to the service, if applicable
-func (r *Service) ServiceUsername() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceUsername"])
+func (r *Service) ServiceUsername() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceUsername"])
 }
 
 // Service state
-func (r *Service) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Service) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Prevent service from being deleted. It is recommended to have this enabled for all services.
-func (r *Service) TerminationProtection() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["terminationProtection"])
+func (r *Service) TerminationProtection() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["terminationProtection"])
 }
 
 // Input properties used for looking up and filtering Service resources.

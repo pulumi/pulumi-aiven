@@ -83,58 +83,58 @@ func GetKafkaTopic(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KafkaTopic) URN() *pulumi.URNOutput {
+func (r *KafkaTopic) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KafkaTopic) ID() *pulumi.IDOutput {
+func (r *KafkaTopic) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Topic cleanup policy. Allowed values: delete, compact
-func (r *KafkaTopic) CleanupPolicy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cleanupPolicy"])
+func (r *KafkaTopic) CleanupPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cleanupPolicy"])
 }
 
 // Minimum required nodes in-sync replicas (ISR) to produce to a partition
-func (r *KafkaTopic) MinimumInSyncReplicas() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minimumInSyncReplicas"])
+func (r *KafkaTopic) MinimumInSyncReplicas() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minimumInSyncReplicas"])
 }
 
 // Number of partitions to create in the topic
-func (r *KafkaTopic) Partitions() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["partitions"])
+func (r *KafkaTopic) Partitions() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["partitions"])
 }
 
 // Project to link the kafka topic to
-func (r *KafkaTopic) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *KafkaTopic) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Replication factor for the topic
-func (r *KafkaTopic) Replication() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["replication"])
+func (r *KafkaTopic) Replication() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["replication"])
 }
 
 // Retention bytes
-func (r *KafkaTopic) RetentionBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["retentionBytes"])
+func (r *KafkaTopic) RetentionBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["retentionBytes"])
 }
 
 // Retention period (hours)
-func (r *KafkaTopic) RetentionHours() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["retentionHours"])
+func (r *KafkaTopic) RetentionHours() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["retentionHours"])
 }
 
 // Service to link the kafka topic to
-func (r *KafkaTopic) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *KafkaTopic) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // Topic name
-func (r *KafkaTopic) TopicName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["topicName"])
+func (r *KafkaTopic) TopicName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["topicName"])
 }
 
 // Input properties used for looking up and filtering KafkaTopic resources.

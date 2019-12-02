@@ -10,7 +10,7 @@ namespace Pulumi.Aiven
     public static partial class Invokes
     {
         public static Task<GetProjectVpcResult> GetProjectVpc(GetProjectVpcArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetProjectVpcArgs : Pulumi.ResourceArgs
