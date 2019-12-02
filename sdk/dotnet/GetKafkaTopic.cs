@@ -10,7 +10,7 @@ namespace Pulumi.Aiven
     public static partial class Invokes
     {
         public static Task<GetKafkaTopicResult> GetKafkaTopic(GetKafkaTopicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKafkaTopicArgs : Pulumi.ResourceArgs

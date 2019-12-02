@@ -71,38 +71,38 @@ func GetKafkaAcl(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KafkaAcl) URN() *pulumi.URNOutput {
+func (r *KafkaAcl) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KafkaAcl) ID() *pulumi.IDOutput {
+func (r *KafkaAcl) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Kafka permission to grant (admin, read, readwrite, write)
-func (r *KafkaAcl) Permission() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["permission"])
+func (r *KafkaAcl) Permission() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["permission"])
 }
 
 // Project to link the Kafka ACL to
-func (r *KafkaAcl) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *KafkaAcl) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Service to link the Kafka ACL to
-func (r *KafkaAcl) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *KafkaAcl) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // Topic name pattern for the ACL entry
-func (r *KafkaAcl) Topic() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["topic"])
+func (r *KafkaAcl) Topic() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["topic"])
 }
 
 // Username pattern for the ACL entry
-func (r *KafkaAcl) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *KafkaAcl) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering KafkaAcl resources.

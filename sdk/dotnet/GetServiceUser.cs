@@ -10,7 +10,7 @@ namespace Pulumi.Aiven
     public static partial class Invokes
     {
         public static Task<GetServiceUserResult> GetServiceUser(GetServiceUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetServiceUserArgs : Pulumi.ResourceArgs

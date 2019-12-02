@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceIntegration(string name, ServiceIntegrationArgs args, CustomResourceOptions? options = null)
-            : base("aiven:index/serviceIntegration:ServiceIntegration", name, args, MakeResourceOptions(options, ""))
+            : base("aiven:index/serviceIntegration:ServiceIntegration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

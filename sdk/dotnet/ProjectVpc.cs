@@ -42,7 +42,7 @@ namespace Pulumi.Aiven
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectVpc(string name, ProjectVpcArgs args, CustomResourceOptions? options = null)
-            : base("aiven:index/projectVpc:ProjectVpc", name, args, MakeResourceOptions(options, ""))
+            : base("aiven:index/projectVpc:ProjectVpc", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

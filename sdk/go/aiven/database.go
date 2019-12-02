@@ -65,38 +65,38 @@ func GetDatabase(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Database) URN() *pulumi.URNOutput {
+func (r *Database) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Database) ID() *pulumi.IDOutput {
+func (r *Database) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Service database name
-func (r *Database) DatabaseName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["databaseName"])
+func (r *Database) DatabaseName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["databaseName"])
 }
 
 // Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
-func (r *Database) LcCollate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lcCollate"])
+func (r *Database) LcCollate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lcCollate"])
 }
 
 // Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
-func (r *Database) LcCtype() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lcCtype"])
+func (r *Database) LcCtype() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lcCtype"])
 }
 
 // Project to link the database to
-func (r *Database) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Database) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Service to link the database to
-func (r *Database) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *Database) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // Input properties used for looking up and filtering Database resources.

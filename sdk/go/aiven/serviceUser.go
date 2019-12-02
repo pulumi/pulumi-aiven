@@ -67,48 +67,48 @@ func GetServiceUser(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceUser) URN() *pulumi.URNOutput {
+func (r *ServiceUser) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceUser) ID() *pulumi.IDOutput {
+func (r *ServiceUser) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Access certificate for the user if applicable for the service in question
-func (r *ServiceUser) AccessCert() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessCert"])
+func (r *ServiceUser) AccessCert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessCert"])
 }
 
 // Access certificate key for the user if applicable for the service in question
-func (r *ServiceUser) AccessKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessKey"])
+func (r *ServiceUser) AccessKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessKey"])
 }
 
 // Password of the user
-func (r *ServiceUser) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *ServiceUser) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Project to link the user to
-func (r *ServiceUser) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ServiceUser) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Service to link the user to
-func (r *ServiceUser) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *ServiceUser) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // Type of the user account
-func (r *ServiceUser) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *ServiceUser) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Name of the user account
-func (r *ServiceUser) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *ServiceUser) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering ServiceUser resources.

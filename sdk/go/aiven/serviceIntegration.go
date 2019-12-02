@@ -71,53 +71,53 @@ func GetServiceIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceIntegration) URN() *pulumi.URNOutput {
+func (r *ServiceIntegration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceIntegration) ID() *pulumi.IDOutput {
+func (r *ServiceIntegration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Destination endpoint for the integration (if any)
-func (r *ServiceIntegration) DestinationEndpointId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationEndpointId"])
+func (r *ServiceIntegration) DestinationEndpointId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationEndpointId"])
 }
 
 // Destination service for the integration (if any)
-func (r *ServiceIntegration) DestinationServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationServiceName"])
+func (r *ServiceIntegration) DestinationServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationServiceName"])
 }
 
 // Type of the service integration
-func (r *ServiceIntegration) IntegrationType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["integrationType"])
+func (r *ServiceIntegration) IntegrationType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["integrationType"])
 }
 
 // Log integration specific user configurable settings
-func (r *ServiceIntegration) LogsUserConfig() *pulumi.Output {
+func (r *ServiceIntegration) LogsUserConfig() pulumi.Output {
 	return r.s.State["logsUserConfig"]
 }
 
 // Mirrormaker integration specific user configurable settings
-func (r *ServiceIntegration) MirrormakerUserConfig() *pulumi.Output {
+func (r *ServiceIntegration) MirrormakerUserConfig() pulumi.Output {
 	return r.s.State["mirrormakerUserConfig"]
 }
 
 // Project the integration belongs to
-func (r *ServiceIntegration) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ServiceIntegration) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Source endpoint for the integration (if any)
-func (r *ServiceIntegration) SourceEndpointId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceEndpointId"])
+func (r *ServiceIntegration) SourceEndpointId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceEndpointId"])
 }
 
 // Source service for the integration (if any)
-func (r *ServiceIntegration) SourceServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceServiceName"])
+func (r *ServiceIntegration) SourceServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceServiceName"])
 }
 
 // Input properties used for looking up and filtering ServiceIntegration resources.

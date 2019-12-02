@@ -73,52 +73,52 @@ func GetServiceIntegrationEndpoint(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceIntegrationEndpoint) URN() *pulumi.URNOutput {
+func (r *ServiceIntegrationEndpoint) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceIntegrationEndpoint) ID() *pulumi.IDOutput {
+func (r *ServiceIntegrationEndpoint) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Datadog specific user configurable settings
-func (r *ServiceIntegrationEndpoint) DatadogUserConfig() *pulumi.Output {
+func (r *ServiceIntegrationEndpoint) DatadogUserConfig() pulumi.Output {
 	return r.s.State["datadogUserConfig"]
 }
 
 // Integration endpoint specific backend configuration
-func (r *ServiceIntegrationEndpoint) EndpointConfig() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["endpointConfig"])
+func (r *ServiceIntegrationEndpoint) EndpointConfig() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["endpointConfig"])
 }
 
 // Name of the service integration endpoint
-func (r *ServiceIntegrationEndpoint) EndpointName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpointName"])
+func (r *ServiceIntegrationEndpoint) EndpointName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpointName"])
 }
 
 // Type of the service integration endpoint
-func (r *ServiceIntegrationEndpoint) EndpointType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpointType"])
+func (r *ServiceIntegrationEndpoint) EndpointType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpointType"])
 }
 
 // external elasticsearch specific user configurable settings
-func (r *ServiceIntegrationEndpoint) ExternalElasticsearchLogsUserConfig() *pulumi.Output {
+func (r *ServiceIntegrationEndpoint) ExternalElasticsearchLogsUserConfig() pulumi.Output {
 	return r.s.State["externalElasticsearchLogsUserConfig"]
 }
 
 // Project the service integration endpoint belongs to
-func (r *ServiceIntegrationEndpoint) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ServiceIntegrationEndpoint) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Prometheus specific user configurable settings
-func (r *ServiceIntegrationEndpoint) PrometheusUserConfig() *pulumi.Output {
+func (r *ServiceIntegrationEndpoint) PrometheusUserConfig() pulumi.Output {
 	return r.s.State["prometheusUserConfig"]
 }
 
 // rsyslog specific user configurable settings
-func (r *ServiceIntegrationEndpoint) RsyslogUserConfig() *pulumi.Output {
+func (r *ServiceIntegrationEndpoint) RsyslogUserConfig() pulumi.Output {
 	return r.s.State["rsyslogUserConfig"]
 }
 

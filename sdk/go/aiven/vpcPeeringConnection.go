@@ -66,43 +66,43 @@ func GetVpcPeeringConnection(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VpcPeeringConnection) URN() *pulumi.URNOutput {
+func (r *VpcPeeringConnection) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VpcPeeringConnection) ID() *pulumi.IDOutput {
+func (r *VpcPeeringConnection) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // AWS account ID or GCP project ID of the peered VPC
-func (r *VpcPeeringConnection) PeerCloudAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerCloudAccount"])
+func (r *VpcPeeringConnection) PeerCloudAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerCloudAccount"])
 }
 
 // AWS region of the peered VPC (if not in the same region as Aiven VPC)
-func (r *VpcPeeringConnection) PeerRegion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerRegion"])
+func (r *VpcPeeringConnection) PeerRegion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerRegion"])
 }
 
 // AWS VPC ID or GCP VPC network name of the peered VPC
-func (r *VpcPeeringConnection) PeerVpc() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerVpc"])
+func (r *VpcPeeringConnection) PeerVpc() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerVpc"])
 }
 
 // Cloud provider identifier for the peering connection if available
-func (r *VpcPeeringConnection) PeeringConnectionId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peeringConnectionId"])
+func (r *VpcPeeringConnection) PeeringConnectionId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peeringConnectionId"])
 }
 
 // State of the peering connection
-func (r *VpcPeeringConnection) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *VpcPeeringConnection) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // The VPC the peering connection belongs to
-func (r *VpcPeeringConnection) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *VpcPeeringConnection) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // Input properties used for looking up and filtering VpcPeeringConnection resources.

@@ -61,33 +61,33 @@ func GetProjectUser(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectUser) URN() *pulumi.URNOutput {
+func (r *ProjectUser) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectUser) ID() *pulumi.IDOutput {
+func (r *ProjectUser) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Whether the user has accepted project membership or not
-func (r *ProjectUser) Accepted() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["accepted"])
+func (r *ProjectUser) Accepted() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["accepted"])
 }
 
 // Email address of the user
-func (r *ProjectUser) Email() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["email"])
+func (r *ProjectUser) Email() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["email"])
 }
 
 // Project membership type. One of: admin, developer, operator
-func (r *ProjectUser) MemberType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["memberType"])
+func (r *ProjectUser) MemberType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["memberType"])
 }
 
 // The project the user belongs to
-func (r *ProjectUser) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectUser) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering ProjectUser resources.

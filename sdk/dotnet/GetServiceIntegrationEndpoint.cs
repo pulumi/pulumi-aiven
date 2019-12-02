@@ -10,7 +10,7 @@ namespace Pulumi.Aiven
     public static partial class Invokes
     {
         public static Task<GetServiceIntegrationEndpointResult> GetServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetServiceIntegrationEndpointArgs : Pulumi.ResourceArgs

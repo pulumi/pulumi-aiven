@@ -79,53 +79,53 @@ func GetConnectionPool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ConnectionPool) URN() *pulumi.URNOutput {
+func (r *ConnectionPool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ConnectionPool) ID() *pulumi.IDOutput {
+func (r *ConnectionPool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // URI for connecting to the pool
-func (r *ConnectionPool) ConnectionUri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["connectionUri"])
+func (r *ConnectionPool) ConnectionUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["connectionUri"])
 }
 
 // Name of the database the pool connects to
-func (r *ConnectionPool) DatabaseName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["databaseName"])
+func (r *ConnectionPool) DatabaseName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["databaseName"])
 }
 
 // Mode the pool operates in (session, transaction, statement)
-func (r *ConnectionPool) PoolMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["poolMode"])
+func (r *ConnectionPool) PoolMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["poolMode"])
 }
 
 // Name of the pool
-func (r *ConnectionPool) PoolName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["poolName"])
+func (r *ConnectionPool) PoolName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["poolName"])
 }
 
 // Number of connections the pool may create towards the backend server
-func (r *ConnectionPool) PoolSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["poolSize"])
+func (r *ConnectionPool) PoolSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["poolSize"])
 }
 
 // Project to link the connection pool to
-func (r *ConnectionPool) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ConnectionPool) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Service to link the connection pool to
-func (r *ConnectionPool) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *ConnectionPool) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // Name of the service user used to connect to the database
-func (r *ConnectionPool) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *ConnectionPool) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering ConnectionPool resources.

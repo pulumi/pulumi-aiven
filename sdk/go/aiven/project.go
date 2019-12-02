@@ -68,53 +68,53 @@ func GetProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() *pulumi.URNOutput {
+func (r *Project) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() *pulumi.IDOutput {
+func (r *Project) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Billing name and address of the project
-func (r *Project) BillingAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["billingAddress"])
+func (r *Project) BillingAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["billingAddress"])
 }
 
 // Billing contact emails of the project
-func (r *Project) BillingEmails() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["billingEmails"])
+func (r *Project) BillingEmails() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["billingEmails"])
 }
 
 // Project root CA. This is used by some services like Kafka to sign service certificate
-func (r *Project) CaCert() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["caCert"])
+func (r *Project) CaCert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["caCert"])
 }
 
 // Credit card ID
-func (r *Project) CardId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cardId"])
+func (r *Project) CardId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cardId"])
 }
 
 // Copy properties from another project. Only has effect when a new project is created.
-func (r *Project) CopyFromProject() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["copyFromProject"])
+func (r *Project) CopyFromProject() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["copyFromProject"])
 }
 
 // Billing country code of the project
-func (r *Project) CountryCode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["countryCode"])
+func (r *Project) CountryCode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["countryCode"])
 }
 
 // Project name
-func (r *Project) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Project) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Technical contact emails of the project
-func (r *Project) TechnicalEmails() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["technicalEmails"])
+func (r *Project) TechnicalEmails() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["technicalEmails"])
 }
 
 // Input properties used for looking up and filtering Project resources.
