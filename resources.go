@@ -57,17 +57,22 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
+func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLicense {
+	return &license
+}
+
 func Provider() tfbridge.ProviderInfo {
 	p := aiven.Provider().(*schema.Provider)
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "aiven",
-		GitHubOrg:   "aiven",
-		Description: "A Pulumi package for creating and managing Aiven cloud resources.",
-		Keywords:    []string{"pulumi", "aiven"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-aiven",
+		P:                 p,
+		Name:              "aiven",
+		GitHubOrg:         "aiven",
+		Description:       "A Pulumi package for creating and managing Aiven cloud resources.",
+		Keywords:          []string{"pulumi", "aiven"},
+		License:           "Apache-2.0",
+		Homepage:          "https://pulumi.io",
+		Repository:        "https://github.com/pulumi/pulumi-aiven",
+		TFProviderLicense: refProviderLicense(tfbridge.MITLicenseType),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_token": {
 				Type: "string",
