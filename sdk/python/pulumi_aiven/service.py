@@ -61,6 +61,8 @@ class Service(pulumi.CustomResource):
         
             * `prometheus` (`pulumi.Input[bool]`)
         
+          * `serviceToForkFrom` (`pulumi.Input[str]`)
+        
         The **elasticsearch** object supports the following:
         
           * `kibanaUri` (`pulumi.Input[str]`)
@@ -72,6 +74,7 @@ class Service(pulumi.CustomResource):
           * `elasticsearch` (`pulumi.Input[dict]`)
         
             * `actionDestructiveRequiresName` (`pulumi.Input[bool]`)
+            * `httpMaxContentLength` (`pulumi.Input[float]`)
             * `indicesFielddataCacheSize` (`pulumi.Input[float]`)
             * `indicesMemoryIndexBufferSize` (`pulumi.Input[float]`)
             * `indicesQueriesCacheSize` (`pulumi.Input[float]`)
@@ -116,6 +119,9 @@ class Service(pulumi.CustomResource):
             * `elasticsearch` (`pulumi.Input[bool]`)
             * `kibana` (`pulumi.Input[bool]`)
             * `prometheus` (`pulumi.Input[bool]`)
+        
+          * `recoveryBasebackupName` (`pulumi.Input[str]`)
+          * `serviceToForkFrom` (`pulumi.Input[str]`)
         
         The **grafana_user_config** object supports the following:
         
@@ -244,6 +250,11 @@ class Service(pulumi.CustomResource):
             * `sasl` (`pulumi.Input[bool]`)
         
           * `kafkaConnect` (`pulumi.Input[bool]`)
+          * `kafkaConnectConfig` (`pulumi.Input[dict]`)
+        
+            * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
+        
           * `kafkaRest` (`pulumi.Input[bool]`)
           * `kafkaRestConfig` (`pulumi.Input[dict]`)
         
@@ -275,6 +286,9 @@ class Service(pulumi.CustomResource):
           * `ipFilters` (`pulumi.Input[list]`)
           * `mysql` (`pulumi.Input[dict]`)
         
+            * `defaultTimeZone` (`pulumi.Input[str]`)
+            * `groupConcatMaxLen` (`pulumi.Input[float]`)
+            * `innodbFtMinTokenSize` (`pulumi.Input[float]`)
             * `sqlMode` (`pulumi.Input[str]`)
         
           * `mysqlVersion` (`pulumi.Input[str]`)
@@ -320,6 +334,7 @@ class Service(pulumi.CustomResource):
             * `autovacuumVacuumScaleFactor` (`pulumi.Input[float]`)
             * `autovacuumVacuumThreshold` (`pulumi.Input[float]`)
             * `idleInTransactionSessionTimeout` (`pulumi.Input[float]`)
+            * `jit` (`pulumi.Input[bool]`)
             * `logAutovacuumMinDuration` (`pulumi.Input[float]`)
             * `logErrorVerbosity` (`pulumi.Input[str]`)
             * `logMinDurationStatement` (`pulumi.Input[float]`)
@@ -363,6 +378,7 @@ class Service(pulumi.CustomResource):
         
           * `recoveryTargetTime` (`pulumi.Input[str]`)
           * `serviceToForkFrom` (`pulumi.Input[str]`)
+          * `variant` (`pulumi.Input[str]`)
         
         The **redis_user_config** object supports the following:
         
@@ -474,6 +490,8 @@ class Service(pulumi.CustomResource):
         
             * `prometheus` (`pulumi.Input[bool]`)
         
+          * `serviceToForkFrom` (`pulumi.Input[str]`)
+        
         The **elasticsearch** object supports the following:
         
           * `kibanaUri` (`pulumi.Input[str]`)
@@ -485,6 +503,7 @@ class Service(pulumi.CustomResource):
           * `elasticsearch` (`pulumi.Input[dict]`)
         
             * `actionDestructiveRequiresName` (`pulumi.Input[bool]`)
+            * `httpMaxContentLength` (`pulumi.Input[float]`)
             * `indicesFielddataCacheSize` (`pulumi.Input[float]`)
             * `indicesMemoryIndexBufferSize` (`pulumi.Input[float]`)
             * `indicesQueriesCacheSize` (`pulumi.Input[float]`)
@@ -529,6 +548,9 @@ class Service(pulumi.CustomResource):
             * `elasticsearch` (`pulumi.Input[bool]`)
             * `kibana` (`pulumi.Input[bool]`)
             * `prometheus` (`pulumi.Input[bool]`)
+        
+          * `recoveryBasebackupName` (`pulumi.Input[str]`)
+          * `serviceToForkFrom` (`pulumi.Input[str]`)
         
         The **grafana_user_config** object supports the following:
         
@@ -657,6 +679,11 @@ class Service(pulumi.CustomResource):
             * `sasl` (`pulumi.Input[bool]`)
         
           * `kafkaConnect` (`pulumi.Input[bool]`)
+          * `kafkaConnectConfig` (`pulumi.Input[dict]`)
+        
+            * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
+        
           * `kafkaRest` (`pulumi.Input[bool]`)
           * `kafkaRestConfig` (`pulumi.Input[dict]`)
         
@@ -688,6 +715,9 @@ class Service(pulumi.CustomResource):
           * `ipFilters` (`pulumi.Input[list]`)
           * `mysql` (`pulumi.Input[dict]`)
         
+            * `defaultTimeZone` (`pulumi.Input[str]`)
+            * `groupConcatMaxLen` (`pulumi.Input[float]`)
+            * `innodbFtMinTokenSize` (`pulumi.Input[float]`)
             * `sqlMode` (`pulumi.Input[str]`)
         
           * `mysqlVersion` (`pulumi.Input[str]`)
@@ -733,6 +763,7 @@ class Service(pulumi.CustomResource):
             * `autovacuumVacuumScaleFactor` (`pulumi.Input[float]`)
             * `autovacuumVacuumThreshold` (`pulumi.Input[float]`)
             * `idleInTransactionSessionTimeout` (`pulumi.Input[float]`)
+            * `jit` (`pulumi.Input[bool]`)
             * `logAutovacuumMinDuration` (`pulumi.Input[float]`)
             * `logErrorVerbosity` (`pulumi.Input[str]`)
             * `logMinDurationStatement` (`pulumi.Input[float]`)
@@ -776,6 +807,7 @@ class Service(pulumi.CustomResource):
         
           * `recoveryTargetTime` (`pulumi.Input[str]`)
           * `serviceToForkFrom` (`pulumi.Input[str]`)
+          * `variant` (`pulumi.Input[str]`)
         
         The **redis_user_config** object supports the following:
         

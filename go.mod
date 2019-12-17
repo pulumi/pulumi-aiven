@@ -4,10 +4,7 @@ go 1.13
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/Nvveen/Gotty => github.com/ijc25/Gotty v0.0.0-20170406111628-a8b993ba6abd
-	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.4.2-0.20190403091019-9b3cdde74fbe
-	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20191112055150-1b033b27c5e8
-	github.com/golang/glog => github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4
+	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20191217094432-bd46fd648ac4
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
 

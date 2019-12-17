@@ -13,6 +13,7 @@ export interface GetServiceCassandraUserConfig {
     migrateSstableloader?: boolean;
     privateAccess?: inputs.GetServiceCassandraUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceCassandraUserConfigPublicAccess;
+    serviceToForkFrom?: string;
 }
 
 export interface GetServiceCassandraUserConfigPrivateAccess {
@@ -38,10 +39,13 @@ export interface GetServiceElasticsearchUserConfig {
     maxIndexCount?: number;
     privateAccess?: inputs.GetServiceElasticsearchUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceElasticsearchUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigElasticsearch {
     actionDestructiveRequiresName?: boolean;
+    httpMaxContentLength?: number;
     indicesFielddataCacheSize?: number;
     indicesMemoryIndexBufferSize?: number;
     indicesQueriesCacheSize?: number;
@@ -229,6 +233,7 @@ export interface GetServiceKafkaUserConfig {
     kafka?: inputs.GetServiceKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: inputs.GetServiceKafkaUserConfigKafkaAuthenticationMethods;
     kafkaConnect?: boolean;
+    kafkaConnectConfig?: inputs.GetServiceKafkaUserConfigKafkaConnectConfig;
     kafkaRest?: boolean;
     kafkaRestConfig?: inputs.GetServiceKafkaUserConfigKafkaRestConfig;
     kafkaVersion?: string;
@@ -264,6 +269,11 @@ export interface GetServiceKafkaUserConfigKafka {
 export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
     certificate?: boolean;
     sasl?: boolean;
+}
+
+export interface GetServiceKafkaUserConfigKafkaConnectConfig {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
 }
 
 export interface GetServiceKafkaUserConfigKafkaRestConfig {
@@ -303,6 +313,9 @@ export interface GetServiceMysqlUserConfig {
 }
 
 export interface GetServiceMysqlUserConfigMysql {
+    defaultTimeZone?: string;
+    groupConcatMaxLen?: number;
+    innodbFtMinTokenSize?: number;
     sqlMode?: string;
 }
 
@@ -343,6 +356,7 @@ export interface GetServicePgUserConfig {
     publicAccess?: inputs.GetServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    variant?: string;
 }
 
 export interface GetServicePgUserConfigPg {
@@ -355,6 +369,7 @@ export interface GetServicePgUserConfigPg {
     autovacuumVacuumScaleFactor?: number;
     autovacuumVacuumThreshold?: number;
     idleInTransactionSessionTimeout?: number;
+    jit?: boolean;
     logAutovacuumMinDuration?: number;
     logErrorVerbosity?: string;
     logMinDurationStatement?: number;
@@ -434,6 +449,7 @@ export interface ServiceCassandraUserConfig {
     migrateSstableloader?: pulumi.Input<boolean>;
     privateAccess?: pulumi.Input<inputs.ServiceCassandraUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceCassandraUserConfigPublicAccess>;
+    serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface ServiceCassandraUserConfigPrivateAccess {
@@ -459,10 +475,13 @@ export interface ServiceElasticsearchUserConfig {
     maxIndexCount?: pulumi.Input<number>;
     privateAccess?: pulumi.Input<inputs.ServiceElasticsearchUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceElasticsearchUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearchUserConfigElasticsearch {
     actionDestructiveRequiresName?: pulumi.Input<boolean>;
+    httpMaxContentLength?: pulumi.Input<number>;
     indicesFielddataCacheSize?: pulumi.Input<number>;
     indicesMemoryIndexBufferSize?: pulumi.Input<number>;
     indicesQueriesCacheSize?: pulumi.Input<number>;
@@ -659,6 +678,7 @@ export interface ServiceKafkaUserConfig {
     kafka?: pulumi.Input<inputs.ServiceKafkaUserConfigKafka>;
     kafkaAuthenticationMethods?: pulumi.Input<inputs.ServiceKafkaUserConfigKafkaAuthenticationMethods>;
     kafkaConnect?: pulumi.Input<boolean>;
+    kafkaConnectConfig?: pulumi.Input<inputs.ServiceKafkaUserConfigKafkaConnectConfig>;
     kafkaRest?: pulumi.Input<boolean>;
     kafkaRestConfig?: pulumi.Input<inputs.ServiceKafkaUserConfigKafkaRestConfig>;
     kafkaVersion?: pulumi.Input<string>;
@@ -694,6 +714,11 @@ export interface ServiceKafkaUserConfigKafka {
 export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
     certificate?: pulumi.Input<boolean>;
     sasl?: pulumi.Input<boolean>;
+}
+
+export interface ServiceKafkaUserConfigKafkaConnectConfig {
+    consumerIsolationLevel?: pulumi.Input<string>;
+    consumerMaxPollRecords?: pulumi.Input<number>;
 }
 
 export interface ServiceKafkaUserConfigKafkaRestConfig {
@@ -733,6 +758,9 @@ export interface ServiceMysqlUserConfig {
 }
 
 export interface ServiceMysqlUserConfigMysql {
+    defaultTimeZone?: pulumi.Input<string>;
+    groupConcatMaxLen?: pulumi.Input<number>;
+    innodbFtMinTokenSize?: pulumi.Input<number>;
     sqlMode?: pulumi.Input<string>;
 }
 
@@ -773,6 +801,7 @@ export interface ServicePgUserConfig {
     publicAccess?: pulumi.Input<inputs.ServicePgUserConfigPublicAccess>;
     recoveryTargetTime?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    variant?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPg {
@@ -785,6 +814,7 @@ export interface ServicePgUserConfigPg {
     autovacuumVacuumScaleFactor?: pulumi.Input<number>;
     autovacuumVacuumThreshold?: pulumi.Input<number>;
     idleInTransactionSessionTimeout?: pulumi.Input<number>;
+    jit?: pulumi.Input<boolean>;
     logAutovacuumMinDuration?: pulumi.Input<number>;
     logErrorVerbosity?: pulumi.Input<string>;
     logMinDurationStatement?: pulumi.Input<number>;

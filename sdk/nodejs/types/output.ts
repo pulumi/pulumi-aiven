@@ -13,6 +13,7 @@ export interface GetServiceCassandraUserConfig {
     migrateSstableloader?: boolean;
     privateAccess?: outputs.GetServiceCassandraUserConfigPrivateAccess;
     publicAccess?: outputs.GetServiceCassandraUserConfigPublicAccess;
+    serviceToForkFrom?: string;
 }
 
 export interface GetServiceCassandraUserConfigPrivateAccess {
@@ -38,10 +39,13 @@ export interface GetServiceElasticsearchUserConfig {
     maxIndexCount?: number;
     privateAccess?: outputs.GetServiceElasticsearchUserConfigPrivateAccess;
     publicAccess?: outputs.GetServiceElasticsearchUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigElasticsearch {
     actionDestructiveRequiresName?: boolean;
+    httpMaxContentLength?: number;
     indicesFielddataCacheSize?: number;
     indicesMemoryIndexBufferSize?: number;
     indicesQueriesCacheSize?: number;
@@ -229,6 +233,7 @@ export interface GetServiceKafkaUserConfig {
     kafka?: outputs.GetServiceKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: outputs.GetServiceKafkaUserConfigKafkaAuthenticationMethods;
     kafkaConnect?: boolean;
+    kafkaConnectConfig?: outputs.GetServiceKafkaUserConfigKafkaConnectConfig;
     kafkaRest?: boolean;
     kafkaRestConfig?: outputs.GetServiceKafkaUserConfigKafkaRestConfig;
     kafkaVersion?: string;
@@ -264,6 +269,11 @@ export interface GetServiceKafkaUserConfigKafka {
 export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
     certificate?: boolean;
     sasl?: boolean;
+}
+
+export interface GetServiceKafkaUserConfigKafkaConnectConfig {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
 }
 
 export interface GetServiceKafkaUserConfigKafkaRestConfig {
@@ -303,6 +313,9 @@ export interface GetServiceMysqlUserConfig {
 }
 
 export interface GetServiceMysqlUserConfigMysql {
+    defaultTimeZone?: string;
+    groupConcatMaxLen?: number;
+    innodbFtMinTokenSize?: number;
     sqlMode?: string;
 }
 
@@ -343,6 +356,7 @@ export interface GetServicePgUserConfig {
     publicAccess?: outputs.GetServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    variant?: string;
 }
 
 export interface GetServicePgUserConfigPg {
@@ -355,6 +369,7 @@ export interface GetServicePgUserConfigPg {
     autovacuumVacuumScaleFactor?: number;
     autovacuumVacuumThreshold?: number;
     idleInTransactionSessionTimeout?: number;
+    jit?: boolean;
     logAutovacuumMinDuration?: number;
     logErrorVerbosity?: string;
     logMinDurationStatement?: number;
@@ -434,6 +449,7 @@ export interface ServiceCassandraUserConfig {
     migrateSstableloader?: boolean;
     privateAccess?: outputs.ServiceCassandraUserConfigPrivateAccess;
     publicAccess?: outputs.ServiceCassandraUserConfigPublicAccess;
+    serviceToForkFrom?: string;
 }
 
 export interface ServiceCassandraUserConfigPrivateAccess {
@@ -459,10 +475,13 @@ export interface ServiceElasticsearchUserConfig {
     maxIndexCount?: number;
     privateAccess?: outputs.ServiceElasticsearchUserConfigPrivateAccess;
     publicAccess?: outputs.ServiceElasticsearchUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface ServiceElasticsearchUserConfigElasticsearch {
     actionDestructiveRequiresName?: boolean;
+    httpMaxContentLength?: number;
     indicesFielddataCacheSize?: number;
     indicesMemoryIndexBufferSize?: number;
     indicesQueriesCacheSize?: number;
@@ -659,6 +678,7 @@ export interface ServiceKafkaUserConfig {
     kafka?: outputs.ServiceKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: outputs.ServiceKafkaUserConfigKafkaAuthenticationMethods;
     kafkaConnect?: boolean;
+    kafkaConnectConfig?: outputs.ServiceKafkaUserConfigKafkaConnectConfig;
     kafkaRest?: boolean;
     kafkaRestConfig?: outputs.ServiceKafkaUserConfigKafkaRestConfig;
     kafkaVersion?: string;
@@ -694,6 +714,11 @@ export interface ServiceKafkaUserConfigKafka {
 export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
     certificate?: boolean;
     sasl?: boolean;
+}
+
+export interface ServiceKafkaUserConfigKafkaConnectConfig {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
 }
 
 export interface ServiceKafkaUserConfigKafkaRestConfig {
@@ -733,6 +758,9 @@ export interface ServiceMysqlUserConfig {
 }
 
 export interface ServiceMysqlUserConfigMysql {
+    defaultTimeZone?: string;
+    groupConcatMaxLen?: number;
+    innodbFtMinTokenSize?: number;
     sqlMode?: string;
 }
 
@@ -773,6 +801,7 @@ export interface ServicePgUserConfig {
     publicAccess?: outputs.ServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    variant?: string;
 }
 
 export interface ServicePgUserConfigPg {
@@ -785,6 +814,7 @@ export interface ServicePgUserConfigPg {
     autovacuumVacuumScaleFactor?: number;
     autovacuumVacuumThreshold?: number;
     idleInTransactionSessionTimeout?: number;
+    jit?: boolean;
     logAutovacuumMinDuration?: number;
     logErrorVerbosity?: string;
     logMinDurationStatement?: number;

@@ -262,6 +262,9 @@ namespace Pulumi.Aiven
         [Input("publicAccess")]
         public Input<GetServiceCassandraUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
+        [Input("serviceToForkFrom")]
+        public Input<string>? ServiceToForkFrom { get; set; }
+
         public GetServiceCassandraUserConfigArgs()
         {
         }
@@ -339,6 +342,12 @@ namespace Pulumi.Aiven
         [Input("publicAccess")]
         public Input<GetServiceElasticsearchUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
+        [Input("recoveryBasebackupName")]
+        public Input<string>? RecoveryBasebackupName { get; set; }
+
+        [Input("serviceToForkFrom")]
+        public Input<string>? ServiceToForkFrom { get; set; }
+
         public GetServiceElasticsearchUserConfigArgs()
         {
         }
@@ -348,6 +357,9 @@ namespace Pulumi.Aiven
     {
         [Input("actionDestructiveRequiresName")]
         public Input<bool>? ActionDestructiveRequiresName { get; set; }
+
+        [Input("httpMaxContentLength")]
+        public Input<int>? HttpMaxContentLength { get; set; }
 
         [Input("indicesFielddataCacheSize")]
         public Input<int>? IndicesFielddataCacheSize { get; set; }
@@ -813,6 +825,9 @@ namespace Pulumi.Aiven
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
 
+        [Input("kafkaConnectConfig")]
+        public Input<GetServiceKafkaUserConfigKafkaConnectConfigArgs>? KafkaConnectConfig { get; set; }
+
         [Input("kafkaRest")]
         public Input<bool>? KafkaRest { get; set; }
 
@@ -919,6 +934,19 @@ namespace Pulumi.Aiven
         }
     }
 
+    public sealed class GetServiceKafkaUserConfigKafkaConnectConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("consumerIsolationLevel")]
+        public Input<string>? ConsumerIsolationLevel { get; set; }
+
+        [Input("consumerMaxPollRecords")]
+        public Input<int>? ConsumerMaxPollRecords { get; set; }
+
+        public GetServiceKafkaUserConfigKafkaConnectConfigArgs()
+        {
+        }
+    }
+
     public sealed class GetServiceKafkaUserConfigKafkaRestConfigArgs : Pulumi.ResourceArgs
     {
         [Input("consumerEnableAutoCommit")]
@@ -1021,6 +1049,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceMysqlUserConfigMysqlArgs : Pulumi.ResourceArgs
     {
+        [Input("defaultTimeZone")]
+        public Input<string>? DefaultTimeZone { get; set; }
+
+        [Input("groupConcatMaxLen")]
+        public Input<int>? GroupConcatMaxLen { get; set; }
+
+        [Input("innodbFtMinTokenSize")]
+        public Input<int>? InnodbFtMinTokenSize { get; set; }
+
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
 
@@ -1138,6 +1175,9 @@ namespace Pulumi.Aiven
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        [Input("variant")]
+        public Input<string>? Variant { get; set; }
+
         public GetServicePgUserConfigArgs()
         {
         }
@@ -1171,6 +1211,9 @@ namespace Pulumi.Aiven
 
         [Input("idleInTransactionSessionTimeout")]
         public Input<int>? IdleInTransactionSessionTimeout { get; set; }
+
+        [Input("jit")]
+        public Input<bool>? Jit { get; set; }
 
         [Input("logAutovacuumMinDuration")]
         public Input<int>? LogAutovacuumMinDuration { get; set; }
@@ -1409,18 +1452,21 @@ namespace Pulumi.Aiven
         public readonly bool? MigrateSstableloader;
         public readonly GetServiceCassandraUserConfigPrivateAccessResult? PrivateAccess;
         public readonly GetServiceCassandraUserConfigPublicAccessResult? PublicAccess;
+        public readonly string? ServiceToForkFrom;
 
         [OutputConstructor]
         private GetServiceCassandraUserConfigResult(
             ImmutableArray<string> ipFilters,
             bool? migrateSstableloader,
             GetServiceCassandraUserConfigPrivateAccessResult? privateAccess,
-            GetServiceCassandraUserConfigPublicAccessResult? publicAccess)
+            GetServiceCassandraUserConfigPublicAccessResult? publicAccess,
+            string? serviceToForkFrom)
         {
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
+            ServiceToForkFrom = serviceToForkFrom;
         }
     }
 
@@ -1440,6 +1486,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceElasticsearchUserConfigElasticsearchResult
     {
         public readonly bool? ActionDestructiveRequiresName;
+        public readonly int? HttpMaxContentLength;
         public readonly int? IndicesFielddataCacheSize;
         public readonly int? IndicesMemoryIndexBufferSize;
         public readonly int? IndicesQueriesCacheSize;
@@ -1462,6 +1509,7 @@ namespace Pulumi.Aiven
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigElasticsearchResult(
             bool? actionDestructiveRequiresName,
+            int? httpMaxContentLength,
             int? indicesFielddataCacheSize,
             int? indicesMemoryIndexBufferSize,
             int? indicesQueriesCacheSize,
@@ -1482,6 +1530,7 @@ namespace Pulumi.Aiven
             int? threadPoolWriteSize)
         {
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
+            HttpMaxContentLength = httpMaxContentLength;
             IndicesFielddataCacheSize = indicesFielddataCacheSize;
             IndicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
             IndicesQueriesCacheSize = indicesQueriesCacheSize;
@@ -1589,6 +1638,8 @@ namespace Pulumi.Aiven
         public readonly int? MaxIndexCount;
         public readonly GetServiceElasticsearchUserConfigPrivateAccessResult? PrivateAccess;
         public readonly GetServiceElasticsearchUserConfigPublicAccessResult? PublicAccess;
+        public readonly string? RecoveryBasebackupName;
+        public readonly string? ServiceToForkFrom;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigResult(
@@ -1601,7 +1652,9 @@ namespace Pulumi.Aiven
             GetServiceElasticsearchUserConfigKibanaResult? kibana,
             int? maxIndexCount,
             GetServiceElasticsearchUserConfigPrivateAccessResult? privateAccess,
-            GetServiceElasticsearchUserConfigPublicAccessResult? publicAccess)
+            GetServiceElasticsearchUserConfigPublicAccessResult? publicAccess,
+            string? recoveryBasebackupName,
+            string? serviceToForkFrom)
         {
             CustomDomain = customDomain;
             DisableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
@@ -1613,6 +1666,8 @@ namespace Pulumi.Aiven
             MaxIndexCount = maxIndexCount;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
+            RecoveryBasebackupName = recoveryBasebackupName;
+            ServiceToForkFrom = serviceToForkFrom;
         }
     }
 
@@ -1956,6 +2011,22 @@ namespace Pulumi.Aiven
     }
 
     [OutputType]
+    public sealed class GetServiceKafkaUserConfigKafkaConnectConfigResult
+    {
+        public readonly string? ConsumerIsolationLevel;
+        public readonly int? ConsumerMaxPollRecords;
+
+        [OutputConstructor]
+        private GetServiceKafkaUserConfigKafkaConnectConfigResult(
+            string? consumerIsolationLevel,
+            int? consumerMaxPollRecords)
+        {
+            ConsumerIsolationLevel = consumerIsolationLevel;
+            ConsumerMaxPollRecords = consumerMaxPollRecords;
+        }
+    }
+
+    [OutputType]
     public sealed class GetServiceKafkaUserConfigKafkaRestConfigResult
     {
         public readonly bool? ConsumerEnableAutoCommit;
@@ -2092,6 +2163,7 @@ namespace Pulumi.Aiven
         public readonly GetServiceKafkaUserConfigKafkaResult? Kafka;
         public readonly GetServiceKafkaUserConfigKafkaAuthenticationMethodsResult? KafkaAuthenticationMethods;
         public readonly bool? KafkaConnect;
+        public readonly GetServiceKafkaUserConfigKafkaConnectConfigResult? KafkaConnectConfig;
         public readonly bool? KafkaRest;
         public readonly GetServiceKafkaUserConfigKafkaRestConfigResult? KafkaRestConfig;
         public readonly string? KafkaVersion;
@@ -2106,6 +2178,7 @@ namespace Pulumi.Aiven
             GetServiceKafkaUserConfigKafkaResult? kafka,
             GetServiceKafkaUserConfigKafkaAuthenticationMethodsResult? kafkaAuthenticationMethods,
             bool? kafkaConnect,
+            GetServiceKafkaUserConfigKafkaConnectConfigResult? kafkaConnectConfig,
             bool? kafkaRest,
             GetServiceKafkaUserConfigKafkaRestConfigResult? kafkaRestConfig,
             string? kafkaVersion,
@@ -2118,6 +2191,7 @@ namespace Pulumi.Aiven
             Kafka = kafka;
             KafkaAuthenticationMethods = kafkaAuthenticationMethods;
             KafkaConnect = kafkaConnect;
+            KafkaConnectConfig = kafkaConnectConfig;
             KafkaRest = kafkaRest;
             KafkaRestConfig = kafkaRestConfig;
             KafkaVersion = kafkaVersion;
@@ -2139,11 +2213,21 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceMysqlUserConfigMysqlResult
     {
+        public readonly string? DefaultTimeZone;
+        public readonly int? GroupConcatMaxLen;
+        public readonly int? InnodbFtMinTokenSize;
         public readonly string? SqlMode;
 
         [OutputConstructor]
-        private GetServiceMysqlUserConfigMysqlResult(string? sqlMode)
+        private GetServiceMysqlUserConfigMysqlResult(
+            string? defaultTimeZone,
+            int? groupConcatMaxLen,
+            int? innodbFtMinTokenSize,
+            string? sqlMode)
         {
+            DefaultTimeZone = defaultTimeZone;
+            GroupConcatMaxLen = groupConcatMaxLen;
+            InnodbFtMinTokenSize = innodbFtMinTokenSize;
             SqlMode = sqlMode;
         }
     }
@@ -2269,6 +2353,7 @@ namespace Pulumi.Aiven
         public readonly double? AutovacuumVacuumScaleFactor;
         public readonly int? AutovacuumVacuumThreshold;
         public readonly int? IdleInTransactionSessionTimeout;
+        public readonly bool? Jit;
         public readonly int? LogAutovacuumMinDuration;
         public readonly string? LogErrorVerbosity;
         public readonly int? LogMinDurationStatement;
@@ -2298,6 +2383,7 @@ namespace Pulumi.Aiven
             double? autovacuumVacuumScaleFactor,
             int? autovacuumVacuumThreshold,
             int? idleInTransactionSessionTimeout,
+            bool? jit,
             int? logAutovacuumMinDuration,
             string? logErrorVerbosity,
             int? logMinDurationStatement,
@@ -2325,6 +2411,7 @@ namespace Pulumi.Aiven
             AutovacuumVacuumScaleFactor = autovacuumVacuumScaleFactor;
             AutovacuumVacuumThreshold = autovacuumVacuumThreshold;
             IdleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
+            Jit = jit;
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
             LogErrorVerbosity = logErrorVerbosity;
             LogMinDurationStatement = logMinDurationStatement;
@@ -2425,6 +2512,7 @@ namespace Pulumi.Aiven
         public readonly GetServicePgUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
+        public readonly string? Variant;
 
         [OutputConstructor]
         private GetServicePgUserConfigResult(
@@ -2442,7 +2530,8 @@ namespace Pulumi.Aiven
             GetServicePgUserConfigPrivateAccessResult? privateAccess,
             GetServicePgUserConfigPublicAccessResult? publicAccess,
             string? recoveryTargetTime,
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+            string? variant)
         {
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
@@ -2459,6 +2548,7 @@ namespace Pulumi.Aiven
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;
+            Variant = variant;
         }
     }
 
