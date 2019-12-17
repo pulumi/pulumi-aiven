@@ -173,6 +173,8 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
     
         * `prometheus` (`bool`)
     
+      * `serviceToForkFrom` (`str`)
+    
     The **elasticsearch** object supports the following:
     
       * `kibanaUri` (`str`)
@@ -184,6 +186,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
       * `elasticsearch` (`dict`)
     
         * `actionDestructiveRequiresName` (`bool`)
+        * `httpMaxContentLength` (`float`)
         * `indicesFielddataCacheSize` (`float`)
         * `indicesMemoryIndexBufferSize` (`float`)
         * `indicesQueriesCacheSize` (`float`)
@@ -228,6 +231,9 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
         * `elasticsearch` (`bool`)
         * `kibana` (`bool`)
         * `prometheus` (`bool`)
+    
+      * `recoveryBasebackupName` (`str`)
+      * `serviceToForkFrom` (`str`)
     
     The **grafana_user_config** object supports the following:
     
@@ -356,6 +362,11 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
         * `sasl` (`bool`)
     
       * `kafkaConnect` (`bool`)
+      * `kafkaConnectConfig` (`dict`)
+    
+        * `consumerIsolationLevel` (`str`)
+        * `consumerMaxPollRecords` (`float`)
+    
       * `kafkaRest` (`bool`)
       * `kafkaRestConfig` (`dict`)
     
@@ -387,6 +398,9 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
       * `ipFilters` (`list`)
       * `mysql` (`dict`)
     
+        * `defaultTimeZone` (`str`)
+        * `groupConcatMaxLen` (`float`)
+        * `innodbFtMinTokenSize` (`float`)
         * `sqlMode` (`str`)
     
       * `mysqlVersion` (`str`)
@@ -432,6 +446,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
         * `autovacuumVacuumScaleFactor` (`float`)
         * `autovacuumVacuumThreshold` (`float`)
         * `idleInTransactionSessionTimeout` (`float`)
+        * `jit` (`bool`)
         * `logAutovacuumMinDuration` (`float`)
         * `logErrorVerbosity` (`str`)
         * `logMinDurationStatement` (`float`)
@@ -475,6 +490,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
     
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
+      * `variant` (`str`)
     
     The **redis_user_config** object supports the following:
     
