@@ -10,4 +10,6 @@ sdk/nodejs/node_modules
 .idea/
 *.iml
 
+packrd
+
 yarn.lock

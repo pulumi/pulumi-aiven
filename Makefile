@@ -46,13 +46,14 @@ build:: tfgen provider
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
 	cd ${PACKDIR}/dotnet/ && \
-    echo "${VERSION:v%=%}" >version.txt && \
+		echo "${VERSION:v%=%}" >version.txt && \
 		dotnet build /p:Version=${DOTNET_VERSION}
 
 tfgen::
 	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
 
 provider::
+	packr2
 	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
 
 lint::

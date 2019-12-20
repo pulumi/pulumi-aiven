@@ -13,6 +13,10 @@ install:
     - source ${PULUMI_SCRIPTS}/ci/install-common-toolchain.sh
     - curl -L https://get.pulumi.com/ | bash
     - export PATH=$HOME/.pulumi/bin:$PATH
+    - wget -O /tmp/packr_2.7.1_linux_amd64.tar.gz https://github.com/gobuffalo/packr/releases/download/v2.7.1/packr_2.7.1_linux_amd64.tar.gz
+    - tar -xvf /tmp/packr_2.7.1_linux_amd64.tar.gz -C /tmp
+    - chmod +x /tmp/packr2
+    - sudo mv /tmp/packr2 /usr/local/bin
 before_script:
     - ${PULUMI_SCRIPTS}/ci/ensure-dependencies
 script:
