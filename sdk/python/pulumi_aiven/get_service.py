@@ -13,7 +13,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, id=None):
+    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, id=None):
         if cassandra and not isinstance(cassandra, dict):
             raise TypeError("Expected argument 'cassandra' to be a dict")
         __self__.cassandra = cassandra
@@ -44,6 +44,12 @@ class GetServiceResult:
         if kafka and not isinstance(kafka, dict):
             raise TypeError("Expected argument 'kafka' to be a dict")
         __self__.kafka = kafka
+        if kafka_connect and not isinstance(kafka_connect, dict):
+            raise TypeError("Expected argument 'kafka_connect' to be a dict")
+        __self__.kafka_connect = kafka_connect
+        if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
+            raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
+        __self__.kafka_connect_user_config = kafka_connect_user_config
         if kafka_user_config and not isinstance(kafka_user_config, dict):
             raise TypeError("Expected argument 'kafka_user_config' to be a dict")
         __self__.kafka_user_config = kafka_user_config
@@ -132,6 +138,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             influxdb=self.influxdb,
             influxdb_user_config=self.influxdb_user_config,
             kafka=self.kafka,
+            kafka_connect=self.kafka_connect,
+            kafka_connect_user_config=self.kafka_connect_user_config,
             kafka_user_config=self.kafka_user_config,
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
@@ -156,7 +164,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             termination_protection=self.termination_protection,
             id=self.id)
 
-def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasticsearch=None,elasticsearch_user_config=None,grafana=None,grafana_user_config=None,influxdb=None,influxdb_user_config=None,kafka=None,kafka_user_config=None,maintenance_window_dow=None,maintenance_window_time=None,mysql=None,mysql_user_config=None,pg=None,pg_user_config=None,plan=None,project=None,project_vpc_id=None,redis=None,redis_user_config=None,service_host=None,service_integrations=None,service_name=None,service_password=None,service_port=None,service_type=None,service_uri=None,service_username=None,state=None,termination_protection=None,opts=None):
+def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasticsearch=None,elasticsearch_user_config=None,grafana=None,grafana_user_config=None,influxdb=None,influxdb_user_config=None,kafka=None,kafka_connect=None,kafka_connect_user_config=None,kafka_user_config=None,maintenance_window_dow=None,maintenance_window_time=None,mysql=None,mysql_user_config=None,pg=None,pg_user_config=None,plan=None,project=None,project_vpc_id=None,redis=None,redis_user_config=None,service_host=None,service_integrations=None,service_name=None,service_password=None,service_port=None,service_type=None,service_uri=None,service_username=None,state=None,termination_protection=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
@@ -328,6 +336,24 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
       * `restUri` (`str`)
       * `schemaRegistryUri` (`str`)
     
+    The **kafka_connect_user_config** object supports the following:
+    
+      * `ipFilters` (`list`)
+      * `kafka_connect` (`dict`)
+    
+        * `consumerIsolationLevel` (`str`)
+        * `consumerMaxPollRecords` (`float`)
+    
+      * `privateAccess` (`dict`)
+    
+        * `kafka_connect` (`bool`)
+        * `prometheus` (`bool`)
+    
+      * `publicAccess` (`dict`)
+    
+        * `kafka_connect` (`bool`)
+        * `prometheus` (`bool`)
+    
     The **kafka_user_config** object supports the following:
     
       * `customDomain` (`str`)
@@ -361,7 +387,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
         * `certificate` (`bool`)
         * `sasl` (`bool`)
     
-      * `kafkaConnect` (`bool`)
+      * `kafka_connect` (`bool`)
       * `kafkaConnectConfig` (`dict`)
     
         * `consumerIsolationLevel` (`str`)
@@ -531,6 +557,8 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
     __args__['influxdb'] = influxdb
     __args__['influxdbUserConfig'] = influxdb_user_config
     __args__['kafka'] = kafka
+    __args__['kafkaConnect'] = kafka_connect
+    __args__['kafkaConnectUserConfig'] = kafka_connect_user_config
     __args__['kafkaUserConfig'] = kafka_user_config
     __args__['maintenanceWindowDow'] = maintenance_window_dow
     __args__['maintenanceWindowTime'] = maintenance_window_time
@@ -570,6 +598,8 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,elasti
         influxdb=__ret__.get('influxdb'),
         influxdb_user_config=__ret__.get('influxdbUserConfig'),
         kafka=__ret__.get('kafka'),
+        kafka_connect=__ret__.get('kafkaConnect'),
+        kafka_connect_user_config=__ret__.get('kafkaConnectUserConfig'),
         kafka_user_config=__ret__.get('kafkaUserConfig'),
         maintenance_window_dow=__ret__.get('maintenanceWindowDow'),
         maintenance_window_time=__ret__.get('maintenanceWindowTime'),

@@ -10,6 +10,7 @@ replace (
 
 require (
 	github.com/aiven/terraform-provider-aiven v1.0.17
+	github.com/gobuffalo/packr/v2 v2.1.0
 	github.com/hashicorp/terraform v0.12.8
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.6.0

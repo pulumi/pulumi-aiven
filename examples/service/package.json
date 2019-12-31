@@ -15,7 +15,7 @@
     "typescript": "^3.0.0"
   },
   "peerDependencies": {
-    "@pulumi/aiven": "latest"
+    "@pulumi/aiven": "dev"
   },
   "license": "MIT"
 }

@@ -20,6 +20,8 @@ class Service(pulumi.CustomResource):
     influxdb: pulumi.Output[dict]
     influxdb_user_config: pulumi.Output[dict]
     kafka: pulumi.Output[dict]
+    kafka_connect: pulumi.Output[dict]
+    kafka_connect_user_config: pulumi.Output[dict]
     kafka_user_config: pulumi.Output[dict]
     maintenance_window_dow: pulumi.Output[str]
     maintenance_window_time: pulumi.Output[str]
@@ -42,7 +44,7 @@ class Service(pulumi.CustomResource):
     service_username: pulumi.Output[str]
     state: pulumi.Output[str]
     termination_protection: pulumi.Output[bool]
-    def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Service resource with the given unique name, props, and options.
         
@@ -216,6 +218,24 @@ class Service(pulumi.CustomResource):
           * `restUri` (`pulumi.Input[str]`)
           * `schemaRegistryUri` (`pulumi.Input[str]`)
         
+        The **kafka_connect_user_config** object supports the following:
+        
+          * `ipFilters` (`pulumi.Input[list]`)
+          * `kafka_connect` (`pulumi.Input[dict]`)
+        
+            * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
+        
+          * `privateAccess` (`pulumi.Input[dict]`)
+        
+            * `kafka_connect` (`pulumi.Input[bool]`)
+            * `prometheus` (`pulumi.Input[bool]`)
+        
+          * `publicAccess` (`pulumi.Input[dict]`)
+        
+            * `kafka_connect` (`pulumi.Input[bool]`)
+            * `prometheus` (`pulumi.Input[bool]`)
+        
         The **kafka_user_config** object supports the following:
         
           * `customDomain` (`pulumi.Input[str]`)
@@ -249,7 +269,7 @@ class Service(pulumi.CustomResource):
             * `certificate` (`pulumi.Input[bool]`)
             * `sasl` (`pulumi.Input[bool]`)
         
-          * `kafkaConnect` (`pulumi.Input[bool]`)
+          * `kafka_connect` (`pulumi.Input[bool]`)
           * `kafkaConnectConfig` (`pulumi.Input[dict]`)
         
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
@@ -434,6 +454,8 @@ class Service(pulumi.CustomResource):
             __props__['influxdb'] = influxdb
             __props__['influxdb_user_config'] = influxdb_user_config
             __props__['kafka'] = kafka
+            __props__['kafka_connect'] = kafka_connect
+            __props__['kafka_connect_user_config'] = kafka_connect_user_config
             __props__['kafka_user_config'] = kafka_user_config
             __props__['maintenance_window_dow'] = maintenance_window_dow
             __props__['maintenance_window_time'] = maintenance_window_time
@@ -469,7 +491,7 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def get(resource_name, id, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -645,6 +667,24 @@ class Service(pulumi.CustomResource):
           * `restUri` (`pulumi.Input[str]`)
           * `schemaRegistryUri` (`pulumi.Input[str]`)
         
+        The **kafka_connect_user_config** object supports the following:
+        
+          * `ipFilters` (`pulumi.Input[list]`)
+          * `kafka_connect` (`pulumi.Input[dict]`)
+        
+            * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
+        
+          * `privateAccess` (`pulumi.Input[dict]`)
+        
+            * `kafka_connect` (`pulumi.Input[bool]`)
+            * `prometheus` (`pulumi.Input[bool]`)
+        
+          * `publicAccess` (`pulumi.Input[dict]`)
+        
+            * `kafka_connect` (`pulumi.Input[bool]`)
+            * `prometheus` (`pulumi.Input[bool]`)
+        
         The **kafka_user_config** object supports the following:
         
           * `customDomain` (`pulumi.Input[str]`)
@@ -678,7 +718,7 @@ class Service(pulumi.CustomResource):
             * `certificate` (`pulumi.Input[bool]`)
             * `sasl` (`pulumi.Input[bool]`)
         
-          * `kafkaConnect` (`pulumi.Input[bool]`)
+          * `kafka_connect` (`pulumi.Input[bool]`)
           * `kafkaConnectConfig` (`pulumi.Input[dict]`)
         
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
@@ -849,6 +889,8 @@ class Service(pulumi.CustomResource):
         __props__["influxdb"] = influxdb
         __props__["influxdb_user_config"] = influxdb_user_config
         __props__["kafka"] = kafka
+        __props__["kafka_connect"] = kafka_connect
+        __props__["kafka_connect_user_config"] = kafka_connect_user_config
         __props__["kafka_user_config"] = kafka_user_config
         __props__["maintenance_window_dow"] = maintenance_window_dow
         __props__["maintenance_window_time"] = maintenance_window_time

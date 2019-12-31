@@ -227,6 +227,32 @@ export interface GetServiceKafka {
     schemaRegistryUri?: string;
 }
 
+export interface GetServiceKafkaConnect {
+
+}
+
+export interface GetServiceKafkaConnectUserConfig {
+    ipFilters?: string[];
+    kafkaConnect?: inputs.GetServiceKafkaConnectUserConfigKafkaConnect;
+    privateAccess?: inputs.GetServiceKafkaConnectUserConfigPrivateAccess;
+    publicAccess?: inputs.GetServiceKafkaConnectUserConfigPublicAccess;
+}
+
+export interface GetServiceKafkaConnectUserConfigKafkaConnect {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
+}
+
+export interface GetServiceKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
+}
+
+export interface GetServiceKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
+}
+
 export interface GetServiceKafkaUserConfig {
     customDomain?: string;
     ipFilters?: string[];
@@ -670,6 +696,32 @@ export interface ServiceKafka {
     connectUri?: pulumi.Input<string>;
     restUri?: pulumi.Input<string>;
     schemaRegistryUri?: pulumi.Input<string>;
+}
+
+export interface ServiceKafkaConnect {
+
+}
+
+export interface ServiceKafkaConnectUserConfig {
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnectUserConfigKafkaConnect>;
+    privateAccess?: pulumi.Input<inputs.ServiceKafkaConnectUserConfigPrivateAccess>;
+    publicAccess?: pulumi.Input<inputs.ServiceKafkaConnectUserConfigPublicAccess>;
+}
+
+export interface ServiceKafkaConnectUserConfigKafkaConnect {
+    consumerIsolationLevel?: pulumi.Input<string>;
+    consumerMaxPollRecords?: pulumi.Input<number>;
+}
+
+export interface ServiceKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
+}
+
+export interface ServiceKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface ServiceKafkaUserConfig {

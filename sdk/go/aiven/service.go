@@ -36,6 +36,8 @@ func NewService(ctx *pulumi.Context,
 		inputs["influxdb"] = nil
 		inputs["influxdbUserConfig"] = nil
 		inputs["kafka"] = nil
+		inputs["kafkaConnect"] = nil
+		inputs["kafkaConnectUserConfig"] = nil
 		inputs["kafkaUserConfig"] = nil
 		inputs["maintenanceWindowDow"] = nil
 		inputs["maintenanceWindowTime"] = nil
@@ -63,6 +65,8 @@ func NewService(ctx *pulumi.Context,
 		inputs["influxdb"] = args.Influxdb
 		inputs["influxdbUserConfig"] = args.InfluxdbUserConfig
 		inputs["kafka"] = args.Kafka
+		inputs["kafkaConnect"] = args.KafkaConnect
+		inputs["kafkaConnectUserConfig"] = args.KafkaConnectUserConfig
 		inputs["kafkaUserConfig"] = args.KafkaUserConfig
 		inputs["maintenanceWindowDow"] = args.MaintenanceWindowDow
 		inputs["maintenanceWindowTime"] = args.MaintenanceWindowTime
@@ -109,6 +113,8 @@ func GetService(ctx *pulumi.Context,
 		inputs["influxdb"] = state.Influxdb
 		inputs["influxdbUserConfig"] = state.InfluxdbUserConfig
 		inputs["kafka"] = state.Kafka
+		inputs["kafkaConnect"] = state.KafkaConnect
+		inputs["kafkaConnectUserConfig"] = state.KafkaConnectUserConfig
 		inputs["kafkaUserConfig"] = state.KafkaUserConfig
 		inputs["maintenanceWindowDow"] = state.MaintenanceWindowDow
 		inputs["maintenanceWindowTime"] = state.MaintenanceWindowTime
@@ -197,6 +203,16 @@ func (r *Service) InfluxdbUserConfig() pulumi.Output {
 // Kafka specific server provided values
 func (r *Service) Kafka() pulumi.Output {
 	return r.s.State["kafka"]
+}
+
+// Kafka Connect specific server provided values
+func (r *Service) KafkaConnect() pulumi.Output {
+	return r.s.State["kafkaConnect"]
+}
+
+// Kafka Connect specific user configurable settings
+func (r *Service) KafkaConnectUserConfig() pulumi.Output {
+	return r.s.State["kafkaConnectUserConfig"]
 }
 
 // Kafka specific user configurable settings
@@ -331,6 +347,10 @@ type ServiceState struct {
 	InfluxdbUserConfig interface{}
 	// Kafka specific server provided values
 	Kafka interface{}
+	// Kafka Connect specific server provided values
+	KafkaConnect interface{}
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig interface{}
 	// Kafka specific user configurable settings
 	KafkaUserConfig interface{}
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -399,6 +419,10 @@ type ServiceArgs struct {
 	InfluxdbUserConfig interface{}
 	// Kafka specific server provided values
 	Kafka interface{}
+	// Kafka Connect specific server provided values
+	KafkaConnect interface{}
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig interface{}
 	// Kafka specific user configurable settings
 	KafkaUserConfig interface{}
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.

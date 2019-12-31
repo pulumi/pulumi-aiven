@@ -20,23 +20,23 @@ const config = new pulumi.Config();
 const projectName = config.require("projectName");
 
 const randomName = new random.RandomPet("my-service-name");
+const randomPassword = new random.RandomPassword("my-password", {
+    special: true,
+    length: 25,
+});
 
 const service = new aiven.Service("my-new-service", {
     project: projectName,
     cloudName: "google-europe-west1",
     plan:"business-4",
     serviceName: randomName.id,
-    serviceType: "kafka",
+    serviceType: "pg",
     maintenanceWindowDow: "monday",
     maintenanceWindowTime: "10:00:00",
-    kafkaUserConfig: {
-        kafkaConnect: true,
-        kafkaRest: true,
-        kafkaVersion: "2.3",
-        kafka: {
-            groupMaxSessionTimeoutMs: 70000,
-            logRetentionBytes: 1000000000
-        }
+    pgUserConfig: {
+        pgVersion: "10",
+        adminPassword: randomPassword.result,
+        adminUsername: "master",
     }
 });
 

@@ -227,6 +227,32 @@ export interface GetServiceKafka {
     schemaRegistryUri: string;
 }
 
+export interface GetServiceKafkaConnect {
+
+}
+
+export interface GetServiceKafkaConnectUserConfig {
+    ipFilters?: string[];
+    kafkaConnect?: outputs.GetServiceKafkaConnectUserConfigKafkaConnect;
+    privateAccess?: outputs.GetServiceKafkaConnectUserConfigPrivateAccess;
+    publicAccess?: outputs.GetServiceKafkaConnectUserConfigPublicAccess;
+}
+
+export interface GetServiceKafkaConnectUserConfigKafkaConnect {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
+}
+
+export interface GetServiceKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
+}
+
+export interface GetServiceKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
+}
+
 export interface GetServiceKafkaUserConfig {
     customDomain?: string;
     ipFilters?: string[];
@@ -670,6 +696,32 @@ export interface ServiceKafka {
     connectUri: string;
     restUri: string;
     schemaRegistryUri: string;
+}
+
+export interface ServiceKafkaConnect {
+
+}
+
+export interface ServiceKafkaConnectUserConfig {
+    ipFilters?: string[];
+    kafkaConnect?: outputs.ServiceKafkaConnectUserConfigKafkaConnect;
+    privateAccess?: outputs.ServiceKafkaConnectUserConfigPrivateAccess;
+    publicAccess?: outputs.ServiceKafkaConnectUserConfigPublicAccess;
+}
+
+export interface ServiceKafkaConnectUserConfigKafkaConnect {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
+}
+
+export interface ServiceKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
+}
+
+export interface ServiceKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface ServiceKafkaUserConfig {

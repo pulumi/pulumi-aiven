@@ -25,6 +25,8 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         "influxdb": args.influxdb,
         "influxdbUserConfig": args.influxdbUserConfig,
         "kafka": args.kafka,
+        "kafkaConnect": args.kafkaConnect,
+        "kafkaConnectUserConfig": args.kafkaConnectUserConfig,
         "kafkaUserConfig": args.kafkaUserConfig,
         "maintenanceWindowDow": args.maintenanceWindowDow,
         "maintenanceWindowTime": args.maintenanceWindowTime,
@@ -66,6 +68,8 @@ export interface GetServiceArgs {
     readonly influxdb?: inputs.GetServiceInfluxdb;
     readonly influxdbUserConfig?: inputs.GetServiceInfluxdbUserConfig;
     readonly kafka?: inputs.GetServiceKafka;
+    readonly kafkaConnect?: inputs.GetServiceKafkaConnect;
+    readonly kafkaConnectUserConfig?: inputs.GetServiceKafkaConnectUserConfig;
     readonly kafkaUserConfig?: inputs.GetServiceKafkaUserConfig;
     readonly maintenanceWindowDow?: string;
     readonly maintenanceWindowTime?: string;
@@ -104,6 +108,8 @@ export interface GetServiceResult {
     readonly influxdb: outputs.GetServiceInfluxdb;
     readonly influxdbUserConfig?: outputs.GetServiceInfluxdbUserConfig;
     readonly kafka: outputs.GetServiceKafka;
+    readonly kafkaConnect: outputs.GetServiceKafkaConnect;
+    readonly kafkaConnectUserConfig?: outputs.GetServiceKafkaConnectUserConfig;
     readonly kafkaUserConfig?: outputs.GetServiceKafkaUserConfig;
     readonly maintenanceWindowDow?: string;
     readonly maintenanceWindowTime?: string;
