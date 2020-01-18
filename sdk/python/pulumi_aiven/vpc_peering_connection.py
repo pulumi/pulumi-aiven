@@ -15,6 +15,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
     peer_vpc: pulumi.Output[str]
     peering_connection_id: pulumi.Output[str]
     state: pulumi.Output[str]
+    state_info: pulumi.Output[dict]
     vpc_id: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -54,6 +55,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
             __props__['vpc_id'] = vpc_id
             __props__['peering_connection_id'] = None
             __props__['state'] = None
+            __props__['state_info'] = None
         super(VpcPeeringConnection, __self__).__init__(
             'aiven:index/vpcPeeringConnection:VpcPeeringConnection',
             resource_name,
@@ -61,7 +63,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, vpc_id=None):
+    def get(resource_name, id, opts=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
         """
         Get an existing VpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -80,6 +82,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
         __props__["peer_vpc"] = peer_vpc
         __props__["peering_connection_id"] = peering_connection_id
         __props__["state"] = state
+        __props__["state_info"] = state_info
         __props__["vpc_id"] = vpc_id
         return VpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

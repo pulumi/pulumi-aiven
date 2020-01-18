@@ -13,6 +13,7 @@ func LookupService(ctx *pulumi.Context, args *GetServiceArgs) (*GetServiceResult
 		inputs["cassandra"] = args.Cassandra
 		inputs["cassandraUserConfig"] = args.CassandraUserConfig
 		inputs["cloudName"] = args.CloudName
+		inputs["components"] = args.Components
 		inputs["elasticsearch"] = args.Elasticsearch
 		inputs["elasticsearchUserConfig"] = args.ElasticsearchUserConfig
 		inputs["grafana"] = args.Grafana
@@ -53,6 +54,7 @@ func LookupService(ctx *pulumi.Context, args *GetServiceArgs) (*GetServiceResult
 		Cassandra: outputs["cassandra"],
 		CassandraUserConfig: outputs["cassandraUserConfig"],
 		CloudName: outputs["cloudName"],
+		Components: outputs["components"],
 		Elasticsearch: outputs["elasticsearch"],
 		ElasticsearchUserConfig: outputs["elasticsearchUserConfig"],
 		Grafana: outputs["grafana"],
@@ -93,6 +95,7 @@ type GetServiceArgs struct {
 	Cassandra interface{}
 	CassandraUserConfig interface{}
 	CloudName interface{}
+	Components interface{}
 	Elasticsearch interface{}
 	ElasticsearchUserConfig interface{}
 	Grafana interface{}
@@ -131,6 +134,7 @@ type GetServiceResult struct {
 	Cassandra interface{}
 	CassandraUserConfig interface{}
 	CloudName interface{}
+	Components interface{}
 	Elasticsearch interface{}
 	ElasticsearchUserConfig interface{}
 	Grafana interface{}

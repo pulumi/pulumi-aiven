@@ -12,7 +12,11 @@ for pkg in __all__:
 # Export this package's modules as members:
 from .connection_pool import *
 from .database import *
+from .elastic_search_acl import *
 from .kafka_acl import *
+from .kafka_connector import *
+from .kafka_schema import *
+from .kafka_schema_configuration import *
 from .kafka_topic import *
 from .project import *
 from .project_user import *
@@ -24,7 +28,11 @@ from .service_user import *
 from .vpc_peering_connection import *
 from .get_connection_pool import *
 from .get_database import *
+from .get_elastic_search_acl import *
 from .get_kafka_acl import *
+from .get_kafka_connector import *
+from .get_kafka_schema import *
+from .get_kafka_schema_configuration import *
 from .get_kafka_topic import *
 from .get_project import *
 from .get_project_user import *

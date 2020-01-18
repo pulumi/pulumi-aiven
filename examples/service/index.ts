@@ -20,23 +20,17 @@ const config = new pulumi.Config();
 const projectName = config.require("projectName");
 
 const randomName = new random.RandomPet("my-service-name");
-const randomPassword = new random.RandomPassword("my-password", {
-    special: true,
-    length: 25,
-});
 
 const service = new aiven.Service("my-new-service", {
     project: projectName,
     cloudName: "google-europe-west1",
-    plan:"business-4",
+    plan:"startup-4",
     serviceName: randomName.id,
-    serviceType: "pg",
-    maintenanceWindowDow: "monday",
-    maintenanceWindowTime: "10:00:00",
-    pgUserConfig: {
-        pgVersion: "10",
-        adminPassword: randomPassword.result,
-        adminUsername: "master",
+    serviceType: "grafana",
+    grafanaUserConfig: {
+        publicAccess: {
+            grafana: true,
+        },
     }
 });
 

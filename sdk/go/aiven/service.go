@@ -84,6 +84,7 @@ func NewService(ctx *pulumi.Context,
 		inputs["serviceType"] = args.ServiceType
 		inputs["terminationProtection"] = args.TerminationProtection
 	}
+	inputs["components"] = nil
 	inputs["serviceHost"] = nil
 	inputs["servicePassword"] = nil
 	inputs["servicePort"] = nil
@@ -106,6 +107,7 @@ func GetService(ctx *pulumi.Context,
 		inputs["cassandra"] = state.Cassandra
 		inputs["cassandraUserConfig"] = state.CassandraUserConfig
 		inputs["cloudName"] = state.CloudName
+		inputs["components"] = state.Components
 		inputs["elasticsearch"] = state.Elasticsearch
 		inputs["elasticsearchUserConfig"] = state.ElasticsearchUserConfig
 		inputs["grafana"] = state.Grafana
@@ -168,6 +170,11 @@ func (r *Service) CassandraUserConfig() pulumi.Output {
 // Cloud the service runs in
 func (r *Service) CloudName() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["cloudName"])
+}
+
+// Service component information objects
+func (r *Service) Components() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["components"])
 }
 
 // Elasticsearch specific server provided values
@@ -333,6 +340,8 @@ type ServiceState struct {
 	CassandraUserConfig interface{}
 	// Cloud the service runs in
 	CloudName interface{}
+	// Service component information objects
+	Components interface{}
 	// Elasticsearch specific server provided values
 	Elasticsearch interface{}
 	// Elasticsearch specific user configurable settings

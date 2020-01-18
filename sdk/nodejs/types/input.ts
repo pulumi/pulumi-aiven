@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
+export interface ElasticSearchAclAcl {
+    rules: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAclRule>[]>;
+    username: pulumi.Input<string>;
+}
+
+export interface ElasticSearchAclAclRule {
+    index: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface GetElasticSearchAclAcl {
+    rules: inputs.GetElasticSearchAclAclRule[];
+    username: string;
+}
+
+export interface GetElasticSearchAclAclRule {
+    index: string;
+    permission: string;
+}
+
+export interface GetKafkaConnectorTask {
+    connector?: string;
+    task?: number;
+}
+
 export interface GetServiceCassandra {
 
 }
@@ -22,6 +47,16 @@ export interface GetServiceCassandraUserConfigPrivateAccess {
 
 export interface GetServiceCassandraUserConfigPublicAccess {
     prometheus?: boolean;
+}
+
+export interface GetServiceComponent {
+    component?: string;
+    host?: string;
+    kafkaAuthenticationMethod?: string;
+    port?: number;
+    route?: string;
+    ssl?: boolean;
+    usage?: string;
 }
 
 export interface GetServiceElasticsearch {
@@ -466,6 +501,11 @@ export interface GetServiceServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface KafkaConnectorTask {
+    connector?: pulumi.Input<string>;
+    task?: pulumi.Input<number>;
+}
+
 export interface ServiceCassandra {
 
 }
@@ -484,6 +524,16 @@ export interface ServiceCassandraUserConfigPrivateAccess {
 
 export interface ServiceCassandraUserConfigPublicAccess {
     prometheus?: pulumi.Input<boolean>;
+}
+
+export interface ServiceComponent {
+    component?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    route?: pulumi.Input<string>;
+    ssl?: pulumi.Input<boolean>;
+    usage?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearch {

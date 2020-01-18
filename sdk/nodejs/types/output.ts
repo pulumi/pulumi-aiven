@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
+export interface ElasticSearchAclAcl {
+    rules: outputs.ElasticSearchAclAclRule[];
+    username: string;
+}
+
+export interface ElasticSearchAclAclRule {
+    index: string;
+    permission: string;
+}
+
+export interface GetElasticSearchAclAcl {
+    rules: outputs.GetElasticSearchAclAclRule[];
+    username: string;
+}
+
+export interface GetElasticSearchAclAclRule {
+    index: string;
+    permission: string;
+}
+
+export interface GetKafkaConnectorTask {
+    connector: string;
+    task: number;
+}
+
 export interface GetServiceCassandra {
 
 }
@@ -22,6 +47,16 @@ export interface GetServiceCassandraUserConfigPrivateAccess {
 
 export interface GetServiceCassandraUserConfigPublicAccess {
     prometheus?: boolean;
+}
+
+export interface GetServiceComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
 }
 
 export interface GetServiceElasticsearch {
@@ -466,6 +501,11 @@ export interface GetServiceServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface KafkaConnectorTask {
+    connector: string;
+    task: number;
+}
+
 export interface ServiceCassandra {
 
 }
@@ -484,6 +524,16 @@ export interface ServiceCassandraUserConfigPrivateAccess {
 
 export interface ServiceCassandraUserConfigPublicAccess {
     prometheus?: boolean;
+}
+
+export interface ServiceComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
 }
 
 export interface ServiceElasticsearch {

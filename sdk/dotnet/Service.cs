@@ -28,6 +28,12 @@ namespace Pulumi.Aiven
         public Output<string?> CloudName { get; private set; } = null!;
 
         /// <summary>
+        /// Service component information objects
+        /// </summary>
+        [Output("components")]
+        public Output<ImmutableArray<Outputs.ServiceComponents>> Components { get; private set; } = null!;
+
+        /// <summary>
         /// Elasticsearch specific server provided values
         /// </summary>
         [Output("elasticsearch")]
@@ -458,6 +464,18 @@ namespace Pulumi.Aiven
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
+        [Input("components")]
+        private InputList<Inputs.ServiceComponentsGetArgs>? _components;
+
+        /// <summary>
+        /// Service component information objects
+        /// </summary>
+        public InputList<Inputs.ServiceComponentsGetArgs> Components
+        {
+            get => _components ?? (_components = new InputList<Inputs.ServiceComponentsGetArgs>());
+            set => _components = value;
+        }
+
         /// <summary>
         /// Elasticsearch specific server provided values
         /// </summary>
@@ -762,6 +780,34 @@ namespace Pulumi.Aiven
         public Input<bool>? Prometheus { get; set; }
 
         public ServiceCassandraUserConfigPublicAccessGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceComponentsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("component")]
+        public Input<string>? Component { get; set; }
+
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        [Input("kafkaAuthenticationMethod")]
+        public Input<string>? KafkaAuthenticationMethod { get; set; }
+
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        [Input("route")]
+        public Input<string>? Route { get; set; }
+
+        [Input("ssl")]
+        public Input<bool>? Ssl { get; set; }
+
+        [Input("usage")]
+        public Input<string>? Usage { get; set; }
+
+        public ServiceComponentsGetArgs()
         {
         }
     }
@@ -3201,6 +3247,37 @@ namespace Pulumi.Aiven
         private ServiceCassandraUserConfigPublicAccess(bool? prometheus)
         {
             Prometheus = prometheus;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceComponents
+    {
+        public readonly string Component;
+        public readonly string Host;
+        public readonly string KafkaAuthenticationMethod;
+        public readonly int Port;
+        public readonly string Route;
+        public readonly bool Ssl;
+        public readonly string Usage;
+
+        [OutputConstructor]
+        private ServiceComponents(
+            string component,
+            string host,
+            string kafkaAuthenticationMethod,
+            int port,
+            string route,
+            bool ssl,
+            string usage)
+        {
+            Component = component;
+            Host = host;
+            KafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            Port = port;
+            Route = route;
+            Ssl = ssl;
+            Usage = usage;
         }
     }
 

@@ -70,6 +70,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
     /**
+     * Service component information objects
+     */
+    public /*out*/ readonly components!: pulumi.Output<outputs.ServiceComponent[]>;
+    /**
      * Elasticsearch specific server provided values
      */
     public readonly elasticsearch!: pulumi.Output<outputs.ServiceElasticsearch>;
@@ -209,6 +213,7 @@ export class Service extends pulumi.CustomResource {
             inputs["cassandra"] = state ? state.cassandra : undefined;
             inputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
             inputs["cloudName"] = state ? state.cloudName : undefined;
+            inputs["components"] = state ? state.components : undefined;
             inputs["elasticsearch"] = state ? state.elasticsearch : undefined;
             inputs["elasticsearchUserConfig"] = state ? state.elasticsearchUserConfig : undefined;
             inputs["grafana"] = state ? state.grafana : undefined;
@@ -279,6 +284,7 @@ export class Service extends pulumi.CustomResource {
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["serviceType"] = args ? args.serviceType : undefined;
             inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            inputs["components"] = undefined /*out*/;
             inputs["serviceHost"] = undefined /*out*/;
             inputs["servicePassword"] = undefined /*out*/;
             inputs["servicePort"] = undefined /*out*/;
@@ -313,6 +319,10 @@ export interface ServiceState {
      * Cloud the service runs in
      */
     readonly cloudName?: pulumi.Input<string>;
+    /**
+     * Service component information objects
+     */
+    readonly components?: pulumi.Input<pulumi.Input<inputs.ServiceComponent>[]>;
     /**
      * Elasticsearch specific server provided values
      */
