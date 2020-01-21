@@ -70,6 +70,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
     /**
+     * Service component information objects
+     */
+    public /*out*/ readonly components!: pulumi.Output<outputs.ServiceComponent[]>;
+    /**
      * Elasticsearch specific server provided values
      */
     public readonly elasticsearch!: pulumi.Output<outputs.ServiceElasticsearch>;
@@ -97,6 +101,14 @@ export class Service extends pulumi.CustomResource {
      * Kafka specific server provided values
      */
     public readonly kafka!: pulumi.Output<outputs.ServiceKafka>;
+    /**
+     * Kafka Connect specific server provided values
+     */
+    public readonly kafkaConnect!: pulumi.Output<outputs.ServiceKafkaConnect>;
+    /**
+     * Kafka Connect specific user configurable settings
+     */
+    public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.ServiceKafkaConnectUserConfig | undefined>;
     /**
      * Kafka specific user configurable settings
      */
@@ -201,6 +213,7 @@ export class Service extends pulumi.CustomResource {
             inputs["cassandra"] = state ? state.cassandra : undefined;
             inputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
             inputs["cloudName"] = state ? state.cloudName : undefined;
+            inputs["components"] = state ? state.components : undefined;
             inputs["elasticsearch"] = state ? state.elasticsearch : undefined;
             inputs["elasticsearchUserConfig"] = state ? state.elasticsearchUserConfig : undefined;
             inputs["grafana"] = state ? state.grafana : undefined;
@@ -208,6 +221,8 @@ export class Service extends pulumi.CustomResource {
             inputs["influxdb"] = state ? state.influxdb : undefined;
             inputs["influxdbUserConfig"] = state ? state.influxdbUserConfig : undefined;
             inputs["kafka"] = state ? state.kafka : undefined;
+            inputs["kafkaConnect"] = state ? state.kafkaConnect : undefined;
+            inputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
             inputs["kafkaUserConfig"] = state ? state.kafkaUserConfig : undefined;
             inputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             inputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
@@ -251,6 +266,8 @@ export class Service extends pulumi.CustomResource {
             inputs["influxdb"] = args ? args.influxdb : undefined;
             inputs["influxdbUserConfig"] = args ? args.influxdbUserConfig : undefined;
             inputs["kafka"] = args ? args.kafka : undefined;
+            inputs["kafkaConnect"] = args ? args.kafkaConnect : undefined;
+            inputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
             inputs["kafkaUserConfig"] = args ? args.kafkaUserConfig : undefined;
             inputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             inputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -267,6 +284,7 @@ export class Service extends pulumi.CustomResource {
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["serviceType"] = args ? args.serviceType : undefined;
             inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            inputs["components"] = undefined /*out*/;
             inputs["serviceHost"] = undefined /*out*/;
             inputs["servicePassword"] = undefined /*out*/;
             inputs["servicePort"] = undefined /*out*/;
@@ -302,6 +320,10 @@ export interface ServiceState {
      */
     readonly cloudName?: pulumi.Input<string>;
     /**
+     * Service component information objects
+     */
+    readonly components?: pulumi.Input<pulumi.Input<inputs.ServiceComponent>[]>;
+    /**
      * Elasticsearch specific server provided values
      */
     readonly elasticsearch?: pulumi.Input<inputs.ServiceElasticsearch>;
@@ -329,6 +351,14 @@ export interface ServiceState {
      * Kafka specific server provided values
      */
     readonly kafka?: pulumi.Input<inputs.ServiceKafka>;
+    /**
+     * Kafka Connect specific server provided values
+     */
+    readonly kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
+    /**
+     * Kafka Connect specific user configurable settings
+     */
+    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
     /**
      * Kafka specific user configurable settings
      */
@@ -463,6 +493,14 @@ export interface ServiceArgs {
      * Kafka specific server provided values
      */
     readonly kafka?: pulumi.Input<inputs.ServiceKafka>;
+    /**
+     * Kafka Connect specific server provided values
+     */
+    readonly kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
+    /**
+     * Kafka Connect specific user configurable settings
+     */
+    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
     /**
      * Kafka specific user configurable settings
      */

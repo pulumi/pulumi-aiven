@@ -18,6 +18,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         "cassandra": args.cassandra,
         "cassandraUserConfig": args.cassandraUserConfig,
         "cloudName": args.cloudName,
+        "components": args.components,
         "elasticsearch": args.elasticsearch,
         "elasticsearchUserConfig": args.elasticsearchUserConfig,
         "grafana": args.grafana,
@@ -25,6 +26,8 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         "influxdb": args.influxdb,
         "influxdbUserConfig": args.influxdbUserConfig,
         "kafka": args.kafka,
+        "kafkaConnect": args.kafkaConnect,
+        "kafkaConnectUserConfig": args.kafkaConnectUserConfig,
         "kafkaUserConfig": args.kafkaUserConfig,
         "maintenanceWindowDow": args.maintenanceWindowDow,
         "maintenanceWindowTime": args.maintenanceWindowTime,
@@ -59,6 +62,7 @@ export interface GetServiceArgs {
     readonly cassandra?: inputs.GetServiceCassandra;
     readonly cassandraUserConfig?: inputs.GetServiceCassandraUserConfig;
     readonly cloudName?: string;
+    readonly components?: inputs.GetServiceComponent[];
     readonly elasticsearch?: inputs.GetServiceElasticsearch;
     readonly elasticsearchUserConfig?: inputs.GetServiceElasticsearchUserConfig;
     readonly grafana?: inputs.GetServiceGrafana;
@@ -66,6 +70,8 @@ export interface GetServiceArgs {
     readonly influxdb?: inputs.GetServiceInfluxdb;
     readonly influxdbUserConfig?: inputs.GetServiceInfluxdbUserConfig;
     readonly kafka?: inputs.GetServiceKafka;
+    readonly kafkaConnect?: inputs.GetServiceKafkaConnect;
+    readonly kafkaConnectUserConfig?: inputs.GetServiceKafkaConnectUserConfig;
     readonly kafkaUserConfig?: inputs.GetServiceKafkaUserConfig;
     readonly maintenanceWindowDow?: string;
     readonly maintenanceWindowTime?: string;
@@ -97,6 +103,7 @@ export interface GetServiceResult {
     readonly cassandra: outputs.GetServiceCassandra;
     readonly cassandraUserConfig?: outputs.GetServiceCassandraUserConfig;
     readonly cloudName?: string;
+    readonly components: outputs.GetServiceComponent[];
     readonly elasticsearch: outputs.GetServiceElasticsearch;
     readonly elasticsearchUserConfig?: outputs.GetServiceElasticsearchUserConfig;
     readonly grafana: outputs.GetServiceGrafana;
@@ -104,6 +111,8 @@ export interface GetServiceResult {
     readonly influxdb: outputs.GetServiceInfluxdb;
     readonly influxdbUserConfig?: outputs.GetServiceInfluxdbUserConfig;
     readonly kafka: outputs.GetServiceKafka;
+    readonly kafkaConnect: outputs.GetServiceKafkaConnect;
+    readonly kafkaConnectUserConfig?: outputs.GetServiceKafkaConnectUserConfig;
     readonly kafkaUserConfig?: outputs.GetServiceKafkaUserConfig;
     readonly maintenanceWindowDow?: string;
     readonly maintenanceWindowTime?: string;

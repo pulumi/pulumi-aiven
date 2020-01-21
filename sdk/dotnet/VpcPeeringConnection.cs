@@ -40,6 +40,12 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// State-specific help or error information
+        /// </summary>
+        [Output("stateInfo")]
+        public Output<ImmutableDictionary<string, object>> StateInfo { get; private set; } = null!;
+
+        /// <summary>
         /// The VPC the peering connection belongs to
         /// </summary>
         [Output("vpcId")]
@@ -151,6 +157,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("stateInfo")]
+        private InputMap<object>? _stateInfo;
+
+        /// <summary>
+        /// State-specific help or error information
+        /// </summary>
+        public InputMap<object> StateInfo
+        {
+            get => _stateInfo ?? (_stateInfo = new InputMap<object>());
+            set => _stateInfo = value;
+        }
 
         /// <summary>
         /// The VPC the peering connection belongs to

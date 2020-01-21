@@ -38,6 +38,7 @@ func NewVpcPeeringConnection(ctx *pulumi.Context,
 	}
 	inputs["peeringConnectionId"] = nil
 	inputs["state"] = nil
+	inputs["stateInfo"] = nil
 	s, err := ctx.RegisterResource("aiven:index/vpcPeeringConnection:VpcPeeringConnection", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -56,6 +57,7 @@ func GetVpcPeeringConnection(ctx *pulumi.Context,
 		inputs["peerVpc"] = state.PeerVpc
 		inputs["peeringConnectionId"] = state.PeeringConnectionId
 		inputs["state"] = state.State
+		inputs["stateInfo"] = state.StateInfo
 		inputs["vpcId"] = state.VpcId
 	}
 	s, err := ctx.ReadResource("aiven:index/vpcPeeringConnection:VpcPeeringConnection", name, id, inputs, opts...)
@@ -100,6 +102,11 @@ func (r *VpcPeeringConnection) State() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
+// State-specific help or error information
+func (r *VpcPeeringConnection) StateInfo() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["stateInfo"])
+}
+
 // The VPC the peering connection belongs to
 func (r *VpcPeeringConnection) VpcId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["vpcId"])
@@ -117,6 +124,8 @@ type VpcPeeringConnectionState struct {
 	PeeringConnectionId interface{}
 	// State of the peering connection
 	State interface{}
+	// State-specific help or error information
+	StateInfo interface{}
 	// The VPC the peering connection belongs to
 	VpcId interface{}
 }

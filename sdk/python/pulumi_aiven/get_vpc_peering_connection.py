@@ -13,7 +13,7 @@ class GetVpcPeeringConnectionResult:
     """
     A collection of values returned by getVpcPeeringConnection.
     """
-    def __init__(__self__, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, vpc_id=None, id=None):
+    def __init__(__self__, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None, id=None):
         if peer_cloud_account and not isinstance(peer_cloud_account, str):
             raise TypeError("Expected argument 'peer_cloud_account' to be a str")
         __self__.peer_cloud_account = peer_cloud_account
@@ -29,6 +29,9 @@ class GetVpcPeeringConnectionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         __self__.state = state
+        if state_info and not isinstance(state_info, dict):
+            raise TypeError("Expected argument 'state_info' to be a dict")
+        __self__.state_info = state_info
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
@@ -49,10 +52,11 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
             peer_vpc=self.peer_vpc,
             peering_connection_id=self.peering_connection_id,
             state=self.state,
+            state_info=self.state_info,
             vpc_id=self.vpc_id,
             id=self.id)
 
-def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc=None,peering_connection_id=None,state=None,vpc_id=None,opts=None):
+def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc=None,peering_connection_id=None,state=None,state_info=None,vpc_id=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
@@ -66,6 +70,7 @@ def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc
     __args__['peerVpc'] = peer_vpc
     __args__['peeringConnectionId'] = peering_connection_id
     __args__['state'] = state
+    __args__['stateInfo'] = state_info
     __args__['vpcId'] = vpc_id
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -79,5 +84,6 @@ def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc
         peer_vpc=__ret__.get('peerVpc'),
         peering_connection_id=__ret__.get('peeringConnectionId'),
         state=__ret__.get('state'),
+        state_info=__ret__.get('stateInfo'),
         vpc_id=__ret__.get('vpcId'),
         id=__ret__.get('id'))

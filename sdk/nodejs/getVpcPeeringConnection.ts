@@ -20,6 +20,7 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
         "peerVpc": args.peerVpc,
         "peeringConnectionId": args.peeringConnectionId,
         "state": args.state,
+        "stateInfo": args.stateInfo,
         "vpcId": args.vpcId,
     }, opts);
 
@@ -35,6 +36,7 @@ export interface GetVpcPeeringConnectionArgs {
     readonly peerVpc: string;
     readonly peeringConnectionId?: string;
     readonly state?: string;
+    readonly stateInfo?: {[key: string]: any};
     readonly vpcId: string;
 }
 
@@ -47,6 +49,7 @@ export interface GetVpcPeeringConnectionResult {
     readonly peerVpc: string;
     readonly peeringConnectionId: string;
     readonly state: string;
+    readonly stateInfo: {[key: string]: any};
     readonly vpcId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

@@ -71,6 +71,10 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * State-specific help or error information
+     */
+    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: any}>;
+    /**
      * The VPC the peering connection belongs to
      */
     public readonly vpcId!: pulumi.Output<string>;
@@ -92,6 +96,7 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             inputs["peerVpc"] = state ? state.peerVpc : undefined;
             inputs["peeringConnectionId"] = state ? state.peeringConnectionId : undefined;
             inputs["state"] = state ? state.state : undefined;
+            inputs["stateInfo"] = state ? state.stateInfo : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as VpcPeeringConnectionArgs | undefined;
@@ -110,6 +115,7 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["peeringConnectionId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
+            inputs["stateInfo"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -146,6 +152,10 @@ export interface VpcPeeringConnectionState {
      * State of the peering connection
      */
     readonly state?: pulumi.Input<string>;
+    /**
+     * State-specific help or error information
+     */
+    readonly stateInfo?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPC the peering connection belongs to
      */

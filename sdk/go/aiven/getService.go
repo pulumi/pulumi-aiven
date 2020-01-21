@@ -13,6 +13,7 @@ func LookupService(ctx *pulumi.Context, args *GetServiceArgs) (*GetServiceResult
 		inputs["cassandra"] = args.Cassandra
 		inputs["cassandraUserConfig"] = args.CassandraUserConfig
 		inputs["cloudName"] = args.CloudName
+		inputs["components"] = args.Components
 		inputs["elasticsearch"] = args.Elasticsearch
 		inputs["elasticsearchUserConfig"] = args.ElasticsearchUserConfig
 		inputs["grafana"] = args.Grafana
@@ -20,6 +21,8 @@ func LookupService(ctx *pulumi.Context, args *GetServiceArgs) (*GetServiceResult
 		inputs["influxdb"] = args.Influxdb
 		inputs["influxdbUserConfig"] = args.InfluxdbUserConfig
 		inputs["kafka"] = args.Kafka
+		inputs["kafkaConnect"] = args.KafkaConnect
+		inputs["kafkaConnectUserConfig"] = args.KafkaConnectUserConfig
 		inputs["kafkaUserConfig"] = args.KafkaUserConfig
 		inputs["maintenanceWindowDow"] = args.MaintenanceWindowDow
 		inputs["maintenanceWindowTime"] = args.MaintenanceWindowTime
@@ -51,6 +54,7 @@ func LookupService(ctx *pulumi.Context, args *GetServiceArgs) (*GetServiceResult
 		Cassandra: outputs["cassandra"],
 		CassandraUserConfig: outputs["cassandraUserConfig"],
 		CloudName: outputs["cloudName"],
+		Components: outputs["components"],
 		Elasticsearch: outputs["elasticsearch"],
 		ElasticsearchUserConfig: outputs["elasticsearchUserConfig"],
 		Grafana: outputs["grafana"],
@@ -58,6 +62,8 @@ func LookupService(ctx *pulumi.Context, args *GetServiceArgs) (*GetServiceResult
 		Influxdb: outputs["influxdb"],
 		InfluxdbUserConfig: outputs["influxdbUserConfig"],
 		Kafka: outputs["kafka"],
+		KafkaConnect: outputs["kafkaConnect"],
+		KafkaConnectUserConfig: outputs["kafkaConnectUserConfig"],
 		KafkaUserConfig: outputs["kafkaUserConfig"],
 		MaintenanceWindowDow: outputs["maintenanceWindowDow"],
 		MaintenanceWindowTime: outputs["maintenanceWindowTime"],
@@ -89,6 +95,7 @@ type GetServiceArgs struct {
 	Cassandra interface{}
 	CassandraUserConfig interface{}
 	CloudName interface{}
+	Components interface{}
 	Elasticsearch interface{}
 	ElasticsearchUserConfig interface{}
 	Grafana interface{}
@@ -96,6 +103,8 @@ type GetServiceArgs struct {
 	Influxdb interface{}
 	InfluxdbUserConfig interface{}
 	Kafka interface{}
+	KafkaConnect interface{}
+	KafkaConnectUserConfig interface{}
 	KafkaUserConfig interface{}
 	MaintenanceWindowDow interface{}
 	MaintenanceWindowTime interface{}
@@ -125,6 +134,7 @@ type GetServiceResult struct {
 	Cassandra interface{}
 	CassandraUserConfig interface{}
 	CloudName interface{}
+	Components interface{}
 	Elasticsearch interface{}
 	ElasticsearchUserConfig interface{}
 	Grafana interface{}
@@ -132,6 +142,8 @@ type GetServiceResult struct {
 	Influxdb interface{}
 	InfluxdbUserConfig interface{}
 	Kafka interface{}
+	KafkaConnect interface{}
+	KafkaConnectUserConfig interface{}
 	KafkaUserConfig interface{}
 	MaintenanceWindowDow interface{}
 	MaintenanceWindowTime interface{}

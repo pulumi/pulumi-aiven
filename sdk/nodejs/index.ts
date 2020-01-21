@@ -4,9 +4,14 @@
 // Export members:
 export * from "./connectionPool";
 export * from "./database";
+export * from "./elasticSearchAcl";
 export * from "./getConnectionPool";
 export * from "./getDatabase";
+export * from "./getElasticSearchAcl";
 export * from "./getKafkaAcl";
+export * from "./getKafkaConnector";
+export * from "./getKafkaSchema";
+export * from "./getKafkaSchemaConfiguration";
 export * from "./getKafkaTopic";
 export * from "./getProject";
 export * from "./getProjectUser";
@@ -16,6 +21,9 @@ export * from "./getServiceIntegrationEndpoint";
 export * from "./getServiceUser";
 export * from "./getVpcPeeringConnection";
 export * from "./kafkaAcl";
+export * from "./kafkaConnector";
+export * from "./kafkaSchema";
+export * from "./kafkaSchemaConfiguration";
 export * from "./kafkaTopic";
 export * from "./project";
 export * from "./projectUser";

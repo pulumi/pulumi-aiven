@@ -28,6 +28,12 @@ namespace Pulumi.Aiven
         public Output<string?> CloudName { get; private set; } = null!;
 
         /// <summary>
+        /// Service component information objects
+        /// </summary>
+        [Output("components")]
+        public Output<ImmutableArray<Outputs.ServiceComponents>> Components { get; private set; } = null!;
+
+        /// <summary>
         /// Elasticsearch specific server provided values
         /// </summary>
         [Output("elasticsearch")]
@@ -68,6 +74,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("kafka")]
         public Output<Outputs.ServiceKafka> Kafka { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka Connect specific server provided values
+        /// </summary>
+        [Output("kafkaConnect")]
+        public Output<Outputs.ServiceKafkaConnect> KafkaConnect { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka Connect specific user configurable settings
+        /// </summary>
+        [Output("kafkaConnectUserConfig")]
+        public Output<Outputs.ServiceKafkaConnectUserConfig?> KafkaConnectUserConfig { get; private set; } = null!;
 
         /// <summary>
         /// Kafka specific user configurable settings
@@ -308,6 +326,18 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceKafkaArgs>? Kafka { get; set; }
 
         /// <summary>
+        /// Kafka Connect specific server provided values
+        /// </summary>
+        [Input("kafkaConnect")]
+        public Input<Inputs.ServiceKafkaConnectArgs>? KafkaConnect { get; set; }
+
+        /// <summary>
+        /// Kafka Connect specific user configurable settings
+        /// </summary>
+        [Input("kafkaConnectUserConfig")]
+        public Input<Inputs.ServiceKafkaConnectUserConfigArgs>? KafkaConnectUserConfig { get; set; }
+
+        /// <summary>
         /// Kafka specific user configurable settings
         /// </summary>
         [Input("kafkaUserConfig")]
@@ -434,6 +464,18 @@ namespace Pulumi.Aiven
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
+        [Input("components")]
+        private InputList<Inputs.ServiceComponentsGetArgs>? _components;
+
+        /// <summary>
+        /// Service component information objects
+        /// </summary>
+        public InputList<Inputs.ServiceComponentsGetArgs> Components
+        {
+            get => _components ?? (_components = new InputList<Inputs.ServiceComponentsGetArgs>());
+            set => _components = value;
+        }
+
         /// <summary>
         /// Elasticsearch specific server provided values
         /// </summary>
@@ -475,6 +517,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.ServiceKafkaGetArgs>? Kafka { get; set; }
+
+        /// <summary>
+        /// Kafka Connect specific server provided values
+        /// </summary>
+        [Input("kafkaConnect")]
+        public Input<Inputs.ServiceKafkaConnectGetArgs>? KafkaConnect { get; set; }
+
+        /// <summary>
+        /// Kafka Connect specific user configurable settings
+        /// </summary>
+        [Input("kafkaConnectUserConfig")]
+        public Input<Inputs.ServiceKafkaConnectUserConfigGetArgs>? KafkaConnectUserConfig { get; set; }
 
         /// <summary>
         /// Kafka specific user configurable settings
@@ -726,6 +780,34 @@ namespace Pulumi.Aiven
         public Input<bool>? Prometheus { get; set; }
 
         public ServiceCassandraUserConfigPublicAccessGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceComponentsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("component")]
+        public Input<string>? Component { get; set; }
+
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        [Input("kafkaAuthenticationMethod")]
+        public Input<string>? KafkaAuthenticationMethod { get; set; }
+
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        [Input("route")]
+        public Input<string>? Route { get; set; }
+
+        [Input("ssl")]
+        public Input<bool>? Ssl { get; set; }
+
+        [Input("usage")]
+        public Input<string>? Usage { get; set; }
+
+        public ServiceComponentsGetArgs()
         {
         }
     }
@@ -1730,6 +1812,146 @@ namespace Pulumi.Aiven
         public Input<string>? SchemaRegistryUri { get; set; }
 
         public ServiceKafkaArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectArgs : Pulumi.ResourceArgs
+    {
+        public ServiceKafkaConnectArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectGetArgs : Pulumi.ResourceArgs
+    {
+        public ServiceKafkaConnectGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("ipFilters")]
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
+        {
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
+            set => _ipFilters = value;
+        }
+
+        [Input("kafkaConnect")]
+        public Input<ServiceKafkaConnectUserConfigKafkaConnectArgs>? KafkaConnect { get; set; }
+
+        [Input("privateAccess")]
+        public Input<ServiceKafkaConnectUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
+
+        [Input("publicAccess")]
+        public Input<ServiceKafkaConnectUserConfigPublicAccessArgs>? PublicAccess { get; set; }
+
+        public ServiceKafkaConnectUserConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("ipFilters")]
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
+        {
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
+            set => _ipFilters = value;
+        }
+
+        [Input("kafkaConnect")]
+        public Input<ServiceKafkaConnectUserConfigKafkaConnectGetArgs>? KafkaConnect { get; set; }
+
+        [Input("privateAccess")]
+        public Input<ServiceKafkaConnectUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
+
+        [Input("publicAccess")]
+        public Input<ServiceKafkaConnectUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
+
+        public ServiceKafkaConnectUserConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigKafkaConnectArgs : Pulumi.ResourceArgs
+    {
+        [Input("consumerIsolationLevel")]
+        public Input<string>? ConsumerIsolationLevel { get; set; }
+
+        [Input("consumerMaxPollRecords")]
+        public Input<int>? ConsumerMaxPollRecords { get; set; }
+
+        public ServiceKafkaConnectUserConfigKafkaConnectArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigKafkaConnectGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("consumerIsolationLevel")]
+        public Input<string>? ConsumerIsolationLevel { get; set; }
+
+        [Input("consumerMaxPollRecords")]
+        public Input<int>? ConsumerMaxPollRecords { get; set; }
+
+        public ServiceKafkaConnectUserConfigKafkaConnectGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
+    {
+        [Input("kafkaConnect")]
+        public Input<bool>? KafkaConnect { get; set; }
+
+        [Input("prometheus")]
+        public Input<bool>? Prometheus { get; set; }
+
+        public ServiceKafkaConnectUserConfigPrivateAccessArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigPrivateAccessGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("kafkaConnect")]
+        public Input<bool>? KafkaConnect { get; set; }
+
+        [Input("prometheus")]
+        public Input<bool>? Prometheus { get; set; }
+
+        public ServiceKafkaConnectUserConfigPrivateAccessGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigPublicAccessArgs : Pulumi.ResourceArgs
+    {
+        [Input("kafkaConnect")]
+        public Input<bool>? KafkaConnect { get; set; }
+
+        [Input("prometheus")]
+        public Input<bool>? Prometheus { get; set; }
+
+        public ServiceKafkaConnectUserConfigPublicAccessArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceKafkaConnectUserConfigPublicAccessGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("kafkaConnect")]
+        public Input<bool>? KafkaConnect { get; set; }
+
+        [Input("prometheus")]
+        public Input<bool>? Prometheus { get; set; }
+
+        public ServiceKafkaConnectUserConfigPublicAccessGetArgs()
         {
         }
     }
@@ -3029,6 +3251,37 @@ namespace Pulumi.Aiven
     }
 
     [OutputType]
+    public sealed class ServiceComponents
+    {
+        public readonly string Component;
+        public readonly string Host;
+        public readonly string KafkaAuthenticationMethod;
+        public readonly int Port;
+        public readonly string Route;
+        public readonly bool Ssl;
+        public readonly string Usage;
+
+        [OutputConstructor]
+        private ServiceComponents(
+            string component,
+            string host,
+            string kafkaAuthenticationMethod,
+            int port,
+            string route,
+            bool ssl,
+            string usage)
+        {
+            Component = component;
+            Host = host;
+            KafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            Port = port;
+            Route = route;
+            Ssl = ssl;
+            Usage = usage;
+        }
+    }
+
+    [OutputType]
     public sealed class ServiceElasticsearch
     {
         public readonly string KibanaUri;
@@ -3549,6 +3802,85 @@ namespace Pulumi.Aiven
             ConnectUri = connectUri;
             RestUri = restUri;
             SchemaRegistryUri = schemaRegistryUri;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceKafkaConnect
+    {
+        [OutputConstructor]
+        private ServiceKafkaConnect()
+        {
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceKafkaConnectUserConfig
+    {
+        public readonly ImmutableArray<string> IpFilters;
+        public readonly ServiceKafkaConnectUserConfigKafkaConnect? KafkaConnect;
+        public readonly ServiceKafkaConnectUserConfigPrivateAccess? PrivateAccess;
+        public readonly ServiceKafkaConnectUserConfigPublicAccess? PublicAccess;
+
+        [OutputConstructor]
+        private ServiceKafkaConnectUserConfig(
+            ImmutableArray<string> ipFilters,
+            ServiceKafkaConnectUserConfigKafkaConnect? kafkaConnect,
+            ServiceKafkaConnectUserConfigPrivateAccess? privateAccess,
+            ServiceKafkaConnectUserConfigPublicAccess? publicAccess)
+        {
+            IpFilters = ipFilters;
+            KafkaConnect = kafkaConnect;
+            PrivateAccess = privateAccess;
+            PublicAccess = publicAccess;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceKafkaConnectUserConfigKafkaConnect
+    {
+        public readonly string? ConsumerIsolationLevel;
+        public readonly int? ConsumerMaxPollRecords;
+
+        [OutputConstructor]
+        private ServiceKafkaConnectUserConfigKafkaConnect(
+            string? consumerIsolationLevel,
+            int? consumerMaxPollRecords)
+        {
+            ConsumerIsolationLevel = consumerIsolationLevel;
+            ConsumerMaxPollRecords = consumerMaxPollRecords;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceKafkaConnectUserConfigPrivateAccess
+    {
+        public readonly bool? KafkaConnect;
+        public readonly bool? Prometheus;
+
+        [OutputConstructor]
+        private ServiceKafkaConnectUserConfigPrivateAccess(
+            bool? kafkaConnect,
+            bool? prometheus)
+        {
+            KafkaConnect = kafkaConnect;
+            Prometheus = prometheus;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceKafkaConnectUserConfigPublicAccess
+    {
+        public readonly bool? KafkaConnect;
+        public readonly bool? Prometheus;
+
+        [OutputConstructor]
+        private ServiceKafkaConnectUserConfigPublicAccess(
+            bool? kafkaConnect,
+            bool? prometheus)
+        {
+            KafkaConnect = kafkaConnect;
+            Prometheus = prometheus;
         }
     }
 

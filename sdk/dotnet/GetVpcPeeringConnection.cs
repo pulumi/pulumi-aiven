@@ -30,6 +30,14 @@ namespace Pulumi.Aiven
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("stateInfo")]
+        private InputMap<object>? _stateInfo;
+        public InputMap<object> StateInfo
+        {
+            get => _stateInfo ?? (_stateInfo = new InputMap<object>());
+            set => _stateInfo = value;
+        }
+
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -46,6 +54,7 @@ namespace Pulumi.Aiven
         public readonly string PeerVpc;
         public readonly string PeeringConnectionId;
         public readonly string State;
+        public readonly ImmutableDictionary<string, object> StateInfo;
         public readonly string VpcId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -59,6 +68,7 @@ namespace Pulumi.Aiven
             string peerVpc,
             string peeringConnectionId,
             string state,
+            ImmutableDictionary<string, object> stateInfo,
             string vpcId,
             string id)
         {
@@ -67,6 +77,7 @@ namespace Pulumi.Aiven
             PeerVpc = peerVpc;
             PeeringConnectionId = peeringConnectionId;
             State = state;
+            StateInfo = stateInfo;
             VpcId = vpcId;
             Id = id;
         }

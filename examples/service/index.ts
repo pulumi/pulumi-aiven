@@ -24,19 +24,13 @@ const randomName = new random.RandomPet("my-service-name");
 const service = new aiven.Service("my-new-service", {
     project: projectName,
     cloudName: "google-europe-west1",
-    plan:"business-4",
+    plan:"startup-4",
     serviceName: randomName.id,
-    serviceType: "kafka",
-    maintenanceWindowDow: "monday",
-    maintenanceWindowTime: "10:00:00",
-    kafkaUserConfig: {
-        kafkaConnect: true,
-        kafkaRest: true,
-        kafkaVersion: "2.3",
-        kafka: {
-            groupMaxSessionTimeoutMs: 70000,
-            logRetentionBytes: 1000000000
-        }
+    serviceType: "grafana",
+    grafanaUserConfig: {
+        publicAccess: {
+            grafana: true,
+        },
     }
 });
 

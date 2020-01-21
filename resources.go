@@ -120,6 +120,10 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_service_integration":          {Tok: makeResource(mainMod, "ServiceIntegration")},
 			"aiven_service_integration_endpoint": {Tok: makeResource(mainMod, "ServiceIntegrationEndpoint")},
 			"aiven_service_user":                 {Tok: makeResource(mainMod, "ServiceUser")},
+			"aiven_elasticsearch_acl":            {Tok: makeResource(mainMod, "ElasticSearchAcl")},
+			"aiven_kafka_connector":              {Tok: makeResource(mainMod, "KafkaConnector")},
+			"aiven_kafka_schema":                 {Tok: makeResource(mainMod, "KafkaSchema")},
+			"aiven_kafka_schema_configuration":   {Tok: makeResource(mainMod, "KafkaSchemaConfiguration")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_connection_pool":        {Tok: makeDataSource(mainMod, "getConnectionPool")},
@@ -152,6 +156,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"aiven_service_integration_endpoint": {Tok: makeDataSource(mainMod, "getServiceIntegrationEndpoint")},
 			"aiven_service_user":                 {Tok: makeDataSource(mainMod, "getServiceUser")},
+			"aiven_elasticsearch_acl":            {Tok: makeDataSource(mainMod, "getElasticSearchAcl")},
+			"aiven_kafka_connector":              {Tok: makeDataSource(mainMod, "getKafkaConnector")},
+			"aiven_kafka_schema":                 {Tok: makeDataSource(mainMod, "getKafkaSchema")},
+			"aiven_kafka_schema_configuration":   {Tok: makeDataSource(mainMod, "getKafkaSchemaConfiguration")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

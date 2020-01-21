@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
+export interface ElasticSearchAclAcl {
+    rules: outputs.ElasticSearchAclAclRule[];
+    username: string;
+}
+
+export interface ElasticSearchAclAclRule {
+    index: string;
+    permission: string;
+}
+
+export interface GetElasticSearchAclAcl {
+    rules: outputs.GetElasticSearchAclAclRule[];
+    username: string;
+}
+
+export interface GetElasticSearchAclAclRule {
+    index: string;
+    permission: string;
+}
+
+export interface GetKafkaConnectorTask {
+    connector: string;
+    task: number;
+}
+
 export interface GetServiceCassandra {
 
 }
@@ -22,6 +47,16 @@ export interface GetServiceCassandraUserConfigPrivateAccess {
 
 export interface GetServiceCassandraUserConfigPublicAccess {
     prometheus?: boolean;
+}
+
+export interface GetServiceComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
 }
 
 export interface GetServiceElasticsearch {
@@ -225,6 +260,32 @@ export interface GetServiceKafka {
     connectUri: string;
     restUri: string;
     schemaRegistryUri: string;
+}
+
+export interface GetServiceKafkaConnect {
+
+}
+
+export interface GetServiceKafkaConnectUserConfig {
+    ipFilters?: string[];
+    kafkaConnect?: outputs.GetServiceKafkaConnectUserConfigKafkaConnect;
+    privateAccess?: outputs.GetServiceKafkaConnectUserConfigPrivateAccess;
+    publicAccess?: outputs.GetServiceKafkaConnectUserConfigPublicAccess;
+}
+
+export interface GetServiceKafkaConnectUserConfigKafkaConnect {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
+}
+
+export interface GetServiceKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
+}
+
+export interface GetServiceKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetServiceKafkaUserConfig {
@@ -440,6 +501,11 @@ export interface GetServiceServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface KafkaConnectorTask {
+    connector: string;
+    task: number;
+}
+
 export interface ServiceCassandra {
 
 }
@@ -458,6 +524,16 @@ export interface ServiceCassandraUserConfigPrivateAccess {
 
 export interface ServiceCassandraUserConfigPublicAccess {
     prometheus?: boolean;
+}
+
+export interface ServiceComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
 }
 
 export interface ServiceElasticsearch {
@@ -670,6 +746,32 @@ export interface ServiceKafka {
     connectUri: string;
     restUri: string;
     schemaRegistryUri: string;
+}
+
+export interface ServiceKafkaConnect {
+
+}
+
+export interface ServiceKafkaConnectUserConfig {
+    ipFilters?: string[];
+    kafkaConnect?: outputs.ServiceKafkaConnectUserConfigKafkaConnect;
+    privateAccess?: outputs.ServiceKafkaConnectUserConfigPrivateAccess;
+    publicAccess?: outputs.ServiceKafkaConnectUserConfigPublicAccess;
+}
+
+export interface ServiceKafkaConnectUserConfigKafkaConnect {
+    consumerIsolationLevel?: string;
+    consumerMaxPollRecords?: number;
+}
+
+export interface ServiceKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
+}
+
+export interface ServiceKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface ServiceKafkaUserConfig {

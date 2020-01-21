@@ -15,6 +15,7 @@ func LookupVpcPeeringConnection(ctx *pulumi.Context, args *GetVpcPeeringConnecti
 		inputs["peerVpc"] = args.PeerVpc
 		inputs["peeringConnectionId"] = args.PeeringConnectionId
 		inputs["state"] = args.State
+		inputs["stateInfo"] = args.StateInfo
 		inputs["vpcId"] = args.VpcId
 	}
 	outputs, err := ctx.Invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", inputs)
@@ -27,6 +28,7 @@ func LookupVpcPeeringConnection(ctx *pulumi.Context, args *GetVpcPeeringConnecti
 		PeerVpc: outputs["peerVpc"],
 		PeeringConnectionId: outputs["peeringConnectionId"],
 		State: outputs["state"],
+		StateInfo: outputs["stateInfo"],
 		VpcId: outputs["vpcId"],
 		Id: outputs["id"],
 	}, nil
@@ -39,6 +41,7 @@ type GetVpcPeeringConnectionArgs struct {
 	PeerVpc interface{}
 	PeeringConnectionId interface{}
 	State interface{}
+	StateInfo interface{}
 	VpcId interface{}
 }
 
@@ -49,6 +52,7 @@ type GetVpcPeeringConnectionResult struct {
 	PeerVpc interface{}
 	PeeringConnectionId interface{}
 	State interface{}
+	StateInfo interface{}
 	VpcId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

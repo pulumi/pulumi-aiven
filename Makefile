@@ -46,7 +46,7 @@ build:: tfgen provider
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
 	cd ${PACKDIR}/dotnet/ && \
-    echo "${VERSION:v%=%}" >version.txt && \
+		echo "${VERSION:v%=%}" >version.txt && \
 		dotnet build /p:Version=${DOTNET_VERSION}
 
 tfgen::
