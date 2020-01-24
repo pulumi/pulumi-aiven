@@ -220,7 +220,7 @@ namespace Pulumi.Aiven
         public Input<string>? DatadogApiKey { get; set; }
 
         [Input("disableConsumerStats")]
-        public Input<bool>? DisableConsumerStats { get; set; }
+        public Input<string>? DisableConsumerStats { get; set; }
 
         [Input("maxPartitionContexts")]
         public Input<int>? MaxPartitionContexts { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.Aiven
         public Input<string>? DatadogApiKey { get; set; }
 
         [Input("disableConsumerStats")]
-        public Input<bool>? DisableConsumerStats { get; set; }
+        public Input<string>? DisableConsumerStats { get; set; }
 
         [Input("maxPartitionContexts")]
         public Input<int>? MaxPartitionContexts { get; set; }
@@ -398,14 +398,14 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationEndpointDatadogUserConfig
     {
         public readonly string? DatadogApiKey;
-        public readonly bool? DisableConsumerStats;
+        public readonly string? DisableConsumerStats;
         public readonly int? MaxPartitionContexts;
         public readonly string? Site;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointDatadogUserConfig(
             string? datadogApiKey,
-            bool? disableConsumerStats,
+            string? disableConsumerStats,
             int? maxPartitionContexts,
             string? site)
         {

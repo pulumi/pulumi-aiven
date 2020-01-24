@@ -68,7 +68,7 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
     The **datadog_user_config** object supports the following:
     
       * `datadogApiKey` (`str`)
-      * `disableConsumerStats` (`bool`)
+      * `disableConsumerStats` (`str`)
       * `maxPartitionContexts` (`float`)
       * `site` (`str`)
     

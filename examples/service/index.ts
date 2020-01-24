@@ -29,8 +29,8 @@ const service = new aiven.Service("my-new-service", {
     serviceType: "grafana",
     grafanaUserConfig: {
         publicAccess: {
-            grafana: true,
-        },
+            grafana: "true",
+        }
     }
 });
 

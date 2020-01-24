@@ -176,14 +176,14 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     The **cassandra_user_config** object supports the following:
     
       * `ipFilters` (`list`)
-      * `migrateSstableloader` (`bool`)
+      * `migrateSstableloader` (`str`)
       * `privateAccess` (`dict`)
     
-        * `prometheus` (`bool`)
+        * `prometheus` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `prometheus` (`bool`)
+        * `prometheus` (`str`)
     
       * `serviceToForkFrom` (`str`)
     
@@ -204,10 +204,11 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     The **elasticsearch_user_config** object supports the following:
     
       * `customDomain` (`str`)
-      * `disableReplicationFactorAdjustment` (`bool`)
+      * `disableReplicationFactorAdjustment` (`str`)
       * `elasticsearch` (`dict`)
     
-        * `actionDestructiveRequiresName` (`bool`)
+        * `actionAutoCreateIndexEnabled` (`str`)
+        * `actionDestructiveRequiresName` (`str`)
         * `httpMaxContentLength` (`float`)
         * `indicesFielddataCacheSize` (`float`)
         * `indicesMemoryIndexBufferSize` (`float`)
@@ -244,28 +245,28 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `maxIndexCount` (`float`)
       * `privateAccess` (`dict`)
     
-        * `elasticsearch` (`bool`)
-        * `kibana` (`bool`)
-        * `prometheus` (`bool`)
+        * `elasticsearch` (`str`)
+        * `kibana` (`str`)
+        * `prometheus` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `elasticsearch` (`bool`)
-        * `kibana` (`bool`)
-        * `prometheus` (`bool`)
+        * `elasticsearch` (`str`)
+        * `kibana` (`str`)
+        * `prometheus` (`str`)
     
       * `recoveryBasebackupName` (`str`)
       * `serviceToForkFrom` (`str`)
     
     The **grafana_user_config** object supports the following:
     
-      * `alertingEnabled` (`bool`)
+      * `alertingEnabled` (`str`)
       * `alertingErrorOrTimeout` (`str`)
       * `alertingNodataOrNullvalues` (`str`)
-      * `allowEmbedding` (`bool`)
+      * `allowEmbedding` (`str`)
       * `authGithub` (`dict`)
     
-        * `allowSignUp` (`bool`)
+        * `allowSignUp` (`str`)
         * `allowedOrganizations` (`list`)
         * `clientId` (`str`)
         * `clientSecret` (`str`)
@@ -273,14 +274,17 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     
       * `authGitlab` (`dict`)
     
-        * `allowSignUp` (`bool`)
+        * `allowSignUp` (`str`)
         * `allowedGroups` (`list`)
+        * `apiUrl` (`str`)
+        * `authUrl` (`str`)
         * `clientId` (`str`)
         * `clientSecret` (`str`)
+        * `tokenUrl` (`str`)
     
       * `authGoogle` (`dict`)
     
-        * `allowSignUp` (`bool`)
+        * `allowSignUp` (`str`)
         * `allowedDomains` (`list`)
         * `clientId` (`str`)
         * `clientSecret` (`str`)
@@ -288,10 +292,10 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `cookieSamesite` (`str`)
       * `customDomain` (`str`)
       * `dashboardsVersionsToKeep` (`float`)
-      * `dataproxySendUserHeader` (`bool`)
+      * `dataproxySendUserHeader` (`str`)
       * `dataproxyTimeout` (`float`)
-      * `disableGravatar` (`bool`)
-      * `editorsCanAdmin` (`bool`)
+      * `disableGravatar` (`str`)
+      * `editorsCanAdmin` (`str`)
       * `externalImageStorage` (`dict`)
     
         * `access_key` (`str`)
@@ -301,14 +305,14 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     
       * `googleAnalyticsUaId` (`str`)
       * `ipFilters` (`list`)
-      * `metricsEnabled` (`bool`)
+      * `metricsEnabled` (`str`)
       * `privateAccess` (`dict`)
     
-        * `grafana` (`bool`)
+        * `grafana` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `grafana` (`bool`)
+        * `grafana` (`str`)
     
       * `smtpServer` (`dict`)
     
@@ -317,12 +321,12 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `host` (`str`)
         * `password` (`str`)
         * `port` (`float`)
-        * `skipVerify` (`bool`)
+        * `skipVerify` (`str`)
         * `username` (`str`)
     
-      * `userAutoAssignOrg` (`bool`)
+      * `userAutoAssignOrg` (`str`)
       * `userAutoAssignOrgRole` (`str`)
-      * `viewersCanEdit` (`bool`)
+      * `viewersCanEdit` (`str`)
     
     The **influxdb** object supports the following:
     
@@ -334,11 +338,11 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `ipFilters` (`list`)
       * `privateAccess` (`dict`)
     
-        * `influxdb` (`bool`)
+        * `influxdb` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `influxdb` (`bool`)
+        * `influxdb` (`str`)
     
       * `serviceToForkFrom` (`str`)
     
@@ -357,16 +361,17 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     
         * `consumerIsolationLevel` (`str`)
         * `consumerMaxPollRecords` (`float`)
+        * `offsetFlushIntervalMs` (`float`)
     
       * `privateAccess` (`dict`)
     
-        * `kafka_connect` (`bool`)
-        * `prometheus` (`bool`)
+        * `kafka_connect` (`str`)
+        * `prometheus` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `kafka_connect` (`bool`)
-        * `prometheus` (`bool`)
+        * `kafka_connect` (`str`)
+        * `prometheus` (`str`)
     
     The **kafka_user_config** object supports the following:
     
@@ -374,8 +379,9 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `ipFilters` (`list`)
       * `kafka` (`dict`)
     
-        * `autoCreateTopicsEnable` (`bool`)
+        * `autoCreateTopicsEnable` (`str`)
         * `compressionType` (`str`)
+        * `connectionsMaxIdleMs` (`float`)
         * `defaultReplicationFactor` (`float`)
         * `groupMaxSessionTimeoutMs` (`float`)
         * `groupMinSessionTimeoutMs` (`float`)
@@ -406,6 +412,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     
         * `consumerIsolationLevel` (`str`)
         * `consumerMaxPollRecords` (`float`)
+        * `offsetFlushIntervalMs` (`float`)
     
       * `kafkaRest` (`bool`)
       * `kafkaRestConfig` (`dict`)
@@ -420,12 +427,15 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `kafkaVersion` (`str`)
       * `privateAccess` (`dict`)
     
-        * `prometheus` (`bool`)
+        * `prometheus` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `kafka` (`bool`)
-        * `prometheus` (`bool`)
+        * `kafka` (`str`)
+        * `kafka_connect` (`str`)
+        * `kafkaRest` (`str`)
+        * `prometheus` (`str`)
+        * `schemaRegistry` (`str`)
     
       * `schemaRegistry` (`bool`)
     
@@ -441,18 +451,19 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `defaultTimeZone` (`str`)
         * `groupConcatMaxLen` (`float`)
         * `innodbFtMinTokenSize` (`float`)
+        * `innodbFtServerStopwordTable` (`str`)
         * `sqlMode` (`str`)
     
       * `mysqlVersion` (`str`)
       * `privateAccess` (`dict`)
     
-        * `mysql` (`bool`)
-        * `prometheus` (`bool`)
+        * `mysql` (`str`)
+        * `prometheus` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `mysql` (`bool`)
-        * `prometheus` (`bool`)
+        * `mysql` (`str`)
+        * `prometheus` (`str`)
     
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
@@ -486,7 +497,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `autovacuumVacuumScaleFactor` (`float`)
         * `autovacuumVacuumThreshold` (`float`)
         * `idleInTransactionSessionTimeout` (`float`)
-        * `jit` (`bool`)
+        * `jit` (`str`)
         * `logAutovacuumMinDuration` (`float`)
         * `logErrorVerbosity` (`str`)
         * `logMinDurationStatement` (`float`)
@@ -505,7 +516,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `trackActivityQuerySize` (`float`)
         * `trackFunctions` (`str`)
     
-      * `pgReadReplica` (`bool`)
+      * `pgReadReplica` (`str`)
       * `pgServiceToForkFrom` (`str`)
       * `pgVersion` (`str`)
       * `pgbouncer` (`dict`)
@@ -518,32 +529,44 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     
       * `privateAccess` (`dict`)
     
-        * `pg` (`bool`)
-        * `pgbouncer` (`bool`)
-        * `prometheus` (`bool`)
+        * `pg` (`str`)
+        * `pgbouncer` (`str`)
+        * `prometheus` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `pg` (`bool`)
-        * `pgbouncer` (`bool`)
-        * `prometheus` (`bool`)
+        * `pg` (`str`)
+        * `pgbouncer` (`str`)
+        * `prometheus` (`str`)
     
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
+      * `timescaledb` (`dict`)
+    
+        * `maxBackgroundWorkers` (`float`)
+    
       * `variant` (`str`)
     
     The **redis_user_config** object supports the following:
     
       * `ipFilters` (`list`)
+      * `migration` (`dict`)
+    
+        * `host` (`str`)
+        * `password` (`str`)
+        * `port` (`float`)
+        * `ssl` (`bool`)
+        * `username` (`str`)
+    
       * `privateAccess` (`dict`)
     
-        * `prometheus` (`bool`)
-        * `redis` (`bool`)
+        * `prometheus` (`str`)
+        * `redis` (`str`)
     
       * `publicAccess` (`dict`)
     
-        * `prometheus` (`bool`)
-        * `redis` (`bool`)
+        * `prometheus` (`str`)
+        * `redis` (`str`)
     
       * `redisLfuDecayTime` (`float`)
       * `redisLfuLogFactor` (`float`)

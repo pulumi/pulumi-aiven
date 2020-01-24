@@ -28,7 +28,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         The **datadog_user_config** object supports the following:
         
           * `datadogApiKey` (`pulumi.Input[str]`)
-          * `disableConsumerStats` (`pulumi.Input[bool]`)
+          * `disableConsumerStats` (`pulumi.Input[str]`)
           * `maxPartitionContexts` (`pulumi.Input[float]`)
           * `site` (`pulumi.Input[str]`)
         
@@ -109,7 +109,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         The **datadog_user_config** object supports the following:
         
           * `datadogApiKey` (`pulumi.Input[str]`)
-          * `disableConsumerStats` (`pulumi.Input[bool]`)
+          * `disableConsumerStats` (`pulumi.Input[str]`)
           * `maxPartitionContexts` (`pulumi.Input[float]`)
           * `site` (`pulumi.Input[str]`)
         
