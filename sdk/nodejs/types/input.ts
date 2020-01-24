@@ -35,18 +35,18 @@ export interface GetServiceCassandra {
 
 export interface GetServiceCassandraUserConfig {
     ipFilters?: string[];
-    migrateSstableloader?: boolean;
+    migrateSstableloader?: string;
     privateAccess?: inputs.GetServiceCassandraUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
 }
 
 export interface GetServiceCassandraUserConfigPrivateAccess {
-    prometheus?: boolean;
+    prometheus?: string;
 }
 
 export interface GetServiceCassandraUserConfigPublicAccess {
-    prometheus?: boolean;
+    prometheus?: string;
 }
 
 export interface GetServiceComponent {
@@ -65,7 +65,7 @@ export interface GetServiceElasticsearch {
 
 export interface GetServiceElasticsearchUserConfig {
     customDomain?: string;
-    disableReplicationFactorAdjustment?: boolean;
+    disableReplicationFactorAdjustment?: string;
     elasticsearch?: inputs.GetServiceElasticsearchUserConfigElasticsearch;
     elasticsearchVersion?: string;
     indexPatterns?: inputs.GetServiceElasticsearchUserConfigIndexPattern[];
@@ -79,7 +79,8 @@ export interface GetServiceElasticsearchUserConfig {
 }
 
 export interface GetServiceElasticsearchUserConfigElasticsearch {
-    actionDestructiveRequiresName?: boolean;
+    actionAutoCreateIndexEnabled?: string;
+    actionDestructiveRequiresName?: string;
     httpMaxContentLength?: number;
     indicesFielddataCacheSize?: number;
     indicesMemoryIndexBufferSize?: number;
@@ -113,15 +114,15 @@ export interface GetServiceElasticsearchUserConfigKibana {
 }
 
 export interface GetServiceElasticsearchUserConfigPrivateAccess {
-    elasticsearch?: boolean;
-    kibana?: boolean;
-    prometheus?: boolean;
+    elasticsearch?: string;
+    kibana?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigPublicAccess {
-    elasticsearch?: boolean;
-    kibana?: boolean;
-    prometheus?: boolean;
+    elasticsearch?: string;
+    kibana?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceGrafana {
@@ -129,34 +130,34 @@ export interface GetServiceGrafana {
 }
 
 export interface GetServiceGrafanaUserConfig {
-    alertingEnabled?: boolean;
+    alertingEnabled?: string;
     alertingErrorOrTimeout?: string;
     alertingNodataOrNullvalues?: string;
-    allowEmbedding?: boolean;
+    allowEmbedding?: string;
     authGithub?: inputs.GetServiceGrafanaUserConfigAuthGithub;
     authGitlab?: inputs.GetServiceGrafanaUserConfigAuthGitlab;
     authGoogle?: inputs.GetServiceGrafanaUserConfigAuthGoogle;
     cookieSamesite?: string;
     customDomain?: string;
     dashboardsVersionsToKeep?: number;
-    dataproxySendUserHeader?: boolean;
+    dataproxySendUserHeader?: string;
     dataproxyTimeout?: number;
-    disableGravatar?: boolean;
-    editorsCanAdmin?: boolean;
+    disableGravatar?: string;
+    editorsCanAdmin?: string;
     externalImageStorage?: inputs.GetServiceGrafanaUserConfigExternalImageStorage;
     googleAnalyticsUaId?: string;
     ipFilters?: string[];
-    metricsEnabled?: boolean;
+    metricsEnabled?: string;
     privateAccess?: inputs.GetServiceGrafanaUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceGrafanaUserConfigPublicAccess;
     smtpServer?: inputs.GetServiceGrafanaUserConfigSmtpServer;
-    userAutoAssignOrg?: boolean;
+    userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
-    viewersCanEdit?: boolean;
+    viewersCanEdit?: string;
 }
 
 export interface GetServiceGrafanaUserConfigAuthGithub {
-    allowSignUp?: boolean;
+    allowSignUp?: string;
     allowedOrganizations?: string[];
     clientId?: string;
     clientSecret?: string;
@@ -164,14 +165,17 @@ export interface GetServiceGrafanaUserConfigAuthGithub {
 }
 
 export interface GetServiceGrafanaUserConfigAuthGitlab {
-    allowSignUp?: boolean;
+    allowSignUp?: string;
     allowedGroups?: string[];
+    apiUrl?: string;
+    authUrl?: string;
     clientId?: string;
     clientSecret?: string;
+    tokenUrl?: string;
 }
 
 export interface GetServiceGrafanaUserConfigAuthGoogle {
-    allowSignUp?: boolean;
+    allowSignUp?: string;
     allowedDomains?: string[];
     clientId?: string;
     clientSecret?: string;
@@ -185,11 +189,11 @@ export interface GetServiceGrafanaUserConfigExternalImageStorage {
 }
 
 export interface GetServiceGrafanaUserConfigPrivateAccess {
-    grafana?: boolean;
+    grafana?: string;
 }
 
 export interface GetServiceGrafanaUserConfigPublicAccess {
-    grafana?: boolean;
+    grafana?: string;
 }
 
 export interface GetServiceGrafanaUserConfigSmtpServer {
@@ -198,7 +202,7 @@ export interface GetServiceGrafanaUserConfigSmtpServer {
     host?: string;
     password?: string;
     port?: number;
-    skipVerify?: boolean;
+    skipVerify?: string;
     username?: string;
 }
 
@@ -215,16 +219,16 @@ export interface GetServiceInfluxdbUserConfig {
 }
 
 export interface GetServiceInfluxdbUserConfigPrivateAccess {
-    influxdb?: boolean;
+    influxdb?: string;
 }
 
 export interface GetServiceInfluxdbUserConfigPublicAccess {
-    influxdb?: boolean;
+    influxdb?: string;
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: string;
-    disableConsumerStats?: boolean;
+    disableConsumerStats?: string;
     maxPartitionContexts?: number;
     site?: string;
 }
@@ -276,16 +280,17 @@ export interface GetServiceKafkaConnectUserConfig {
 export interface GetServiceKafkaConnectUserConfigKafkaConnect {
     consumerIsolationLevel?: string;
     consumerMaxPollRecords?: number;
+    offsetFlushIntervalMs?: number;
 }
 
 export interface GetServiceKafkaConnectUserConfigPrivateAccess {
-    kafkaConnect?: boolean;
-    prometheus?: boolean;
+    kafkaConnect?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigPublicAccess {
-    kafkaConnect?: boolean;
-    prometheus?: boolean;
+    kafkaConnect?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceKafkaUserConfig {
@@ -304,8 +309,9 @@ export interface GetServiceKafkaUserConfig {
 }
 
 export interface GetServiceKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: boolean;
+    autoCreateTopicsEnable?: string;
     compressionType?: string;
+    connectionsMaxIdleMs?: number;
     defaultReplicationFactor?: number;
     groupMaxSessionTimeoutMs?: number;
     groupMinSessionTimeoutMs?: number;
@@ -335,6 +341,7 @@ export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
 export interface GetServiceKafkaUserConfigKafkaConnectConfig {
     consumerIsolationLevel?: string;
     consumerMaxPollRecords?: number;
+    offsetFlushIntervalMs?: number;
 }
 
 export interface GetServiceKafkaUserConfigKafkaRestConfig {
@@ -347,12 +354,15 @@ export interface GetServiceKafkaUserConfigKafkaRestConfig {
 }
 
 export interface GetServiceKafkaUserConfigPrivateAccess {
-    prometheus?: boolean;
+    prometheus?: string;
 }
 
 export interface GetServiceKafkaUserConfigPublicAccess {
-    kafka?: boolean;
-    prometheus?: boolean;
+    kafka?: string;
+    kafkaConnect?: string;
+    kafkaRest?: string;
+    prometheus?: string;
+    schemaRegistry?: string;
 }
 
 export interface GetServiceMysql {
@@ -377,17 +387,18 @@ export interface GetServiceMysqlUserConfigMysql {
     defaultTimeZone?: string;
     groupConcatMaxLen?: number;
     innodbFtMinTokenSize?: number;
+    innodbFtServerStopwordTable?: string;
     sqlMode?: string;
 }
 
 export interface GetServiceMysqlUserConfigPrivateAccess {
-    mysql?: boolean;
-    prometheus?: boolean;
+    mysql?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceMysqlUserConfigPublicAccess {
-    mysql?: boolean;
-    prometheus?: boolean;
+    mysql?: string;
+    prometheus?: string;
 }
 
 export interface GetServicePg {
@@ -408,7 +419,7 @@ export interface GetServicePgUserConfig {
     backupMinute?: number;
     ipFilters?: string[];
     pg?: inputs.GetServicePgUserConfigPg;
-    pgReadReplica?: boolean;
+    pgReadReplica?: string;
     pgServiceToForkFrom?: string;
     pgVersion?: string;
     pgbouncer?: inputs.GetServicePgUserConfigPgbouncer;
@@ -417,6 +428,7 @@ export interface GetServicePgUserConfig {
     publicAccess?: inputs.GetServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    timescaledb?: inputs.GetServicePgUserConfigTimescaledb;
     variant?: string;
 }
 
@@ -430,7 +442,7 @@ export interface GetServicePgUserConfigPg {
     autovacuumVacuumScaleFactor?: number;
     autovacuumVacuumThreshold?: number;
     idleInTransactionSessionTimeout?: number;
-    jit?: boolean;
+    jit?: string;
     logAutovacuumMinDuration?: number;
     logErrorVerbosity?: string;
     logMinDurationStatement?: number;
@@ -459,15 +471,19 @@ export interface GetServicePgUserConfigPglookout {
 }
 
 export interface GetServicePgUserConfigPrivateAccess {
-    pg?: boolean;
-    pgbouncer?: boolean;
-    prometheus?: boolean;
+    pg?: string;
+    pgbouncer?: string;
+    prometheus?: string;
 }
 
 export interface GetServicePgUserConfigPublicAccess {
-    pg?: boolean;
-    pgbouncer?: boolean;
-    prometheus?: boolean;
+    pg?: string;
+    pgbouncer?: string;
+    prometheus?: string;
+}
+
+export interface GetServicePgUserConfigTimescaledb {
+    maxBackgroundWorkers?: number;
 }
 
 export interface GetServiceRedis {
@@ -476,6 +492,7 @@ export interface GetServiceRedis {
 
 export interface GetServiceRedisUserConfig {
     ipFilters?: string[];
+    migration?: inputs.GetServiceRedisUserConfigMigration;
     privateAccess?: inputs.GetServiceRedisUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceRedisUserConfigPublicAccess;
     redisLfuDecayTime?: number;
@@ -486,14 +503,22 @@ export interface GetServiceRedisUserConfig {
     redisTimeout?: number;
 }
 
+export interface GetServiceRedisUserConfigMigration {
+    host?: string;
+    password?: string;
+    port?: number;
+    ssl?: boolean;
+    username?: string;
+}
+
 export interface GetServiceRedisUserConfigPrivateAccess {
-    prometheus?: boolean;
-    redis?: boolean;
+    prometheus?: string;
+    redis?: string;
 }
 
 export interface GetServiceRedisUserConfigPublicAccess {
-    prometheus?: boolean;
-    redis?: boolean;
+    prometheus?: string;
+    redis?: string;
 }
 
 export interface GetServiceServiceIntegration {
@@ -512,18 +537,18 @@ export interface ServiceCassandra {
 
 export interface ServiceCassandraUserConfig {
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    migrateSstableloader?: pulumi.Input<boolean>;
+    migrateSstableloader?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.ServiceCassandraUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceCassandraUserConfigPublicAccess>;
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface ServiceCassandraUserConfigPrivateAccess {
-    prometheus?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceCassandraUserConfigPublicAccess {
-    prometheus?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceComponent {
@@ -542,7 +567,7 @@ export interface ServiceElasticsearch {
 
 export interface ServiceElasticsearchUserConfig {
     customDomain?: pulumi.Input<string>;
-    disableReplicationFactorAdjustment?: pulumi.Input<boolean>;
+    disableReplicationFactorAdjustment?: pulumi.Input<string>;
     elasticsearch?: pulumi.Input<inputs.ServiceElasticsearchUserConfigElasticsearch>;
     elasticsearchVersion?: pulumi.Input<string>;
     indexPatterns?: pulumi.Input<pulumi.Input<inputs.ServiceElasticsearchUserConfigIndexPattern>[]>;
@@ -556,7 +581,8 @@ export interface ServiceElasticsearchUserConfig {
 }
 
 export interface ServiceElasticsearchUserConfigElasticsearch {
-    actionDestructiveRequiresName?: pulumi.Input<boolean>;
+    actionAutoCreateIndexEnabled?: pulumi.Input<string>;
+    actionDestructiveRequiresName?: pulumi.Input<string>;
     httpMaxContentLength?: pulumi.Input<number>;
     indicesFielddataCacheSize?: pulumi.Input<number>;
     indicesMemoryIndexBufferSize?: pulumi.Input<number>;
@@ -590,15 +616,15 @@ export interface ServiceElasticsearchUserConfigKibana {
 }
 
 export interface ServiceElasticsearchUserConfigPrivateAccess {
-    elasticsearch?: pulumi.Input<boolean>;
-    kibana?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    elasticsearch?: pulumi.Input<string>;
+    kibana?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearchUserConfigPublicAccess {
-    elasticsearch?: pulumi.Input<boolean>;
-    kibana?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    elasticsearch?: pulumi.Input<string>;
+    kibana?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafana {
@@ -606,34 +632,34 @@ export interface ServiceGrafana {
 }
 
 export interface ServiceGrafanaUserConfig {
-    alertingEnabled?: pulumi.Input<boolean>;
+    alertingEnabled?: pulumi.Input<string>;
     alertingErrorOrTimeout?: pulumi.Input<string>;
     alertingNodataOrNullvalues?: pulumi.Input<string>;
-    allowEmbedding?: pulumi.Input<boolean>;
+    allowEmbedding?: pulumi.Input<string>;
     authGithub?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGithub>;
     authGitlab?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGitlab>;
     authGoogle?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGoogle>;
     cookieSamesite?: pulumi.Input<string>;
     customDomain?: pulumi.Input<string>;
     dashboardsVersionsToKeep?: pulumi.Input<number>;
-    dataproxySendUserHeader?: pulumi.Input<boolean>;
+    dataproxySendUserHeader?: pulumi.Input<string>;
     dataproxyTimeout?: pulumi.Input<number>;
-    disableGravatar?: pulumi.Input<boolean>;
-    editorsCanAdmin?: pulumi.Input<boolean>;
+    disableGravatar?: pulumi.Input<string>;
+    editorsCanAdmin?: pulumi.Input<string>;
     externalImageStorage?: pulumi.Input<inputs.ServiceGrafanaUserConfigExternalImageStorage>;
     googleAnalyticsUaId?: pulumi.Input<string>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    metricsEnabled?: pulumi.Input<boolean>;
+    metricsEnabled?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.ServiceGrafanaUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceGrafanaUserConfigPublicAccess>;
     smtpServer?: pulumi.Input<inputs.ServiceGrafanaUserConfigSmtpServer>;
-    userAutoAssignOrg?: pulumi.Input<boolean>;
+    userAutoAssignOrg?: pulumi.Input<string>;
     userAutoAssignOrgRole?: pulumi.Input<string>;
-    viewersCanEdit?: pulumi.Input<boolean>;
+    viewersCanEdit?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafanaUserConfigAuthGithub {
-    allowSignUp?: pulumi.Input<boolean>;
+    allowSignUp?: pulumi.Input<string>;
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
@@ -641,14 +667,17 @@ export interface ServiceGrafanaUserConfigAuthGithub {
 }
 
 export interface ServiceGrafanaUserConfigAuthGitlab {
-    allowSignUp?: pulumi.Input<boolean>;
+    allowSignUp?: pulumi.Input<string>;
     allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    apiUrl?: pulumi.Input<string>;
+    authUrl?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
+    tokenUrl?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafanaUserConfigAuthGoogle {
-    allowSignUp?: pulumi.Input<boolean>;
+    allowSignUp?: pulumi.Input<string>;
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
@@ -662,11 +691,11 @@ export interface ServiceGrafanaUserConfigExternalImageStorage {
 }
 
 export interface ServiceGrafanaUserConfigPrivateAccess {
-    grafana?: pulumi.Input<boolean>;
+    grafana?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafanaUserConfigPublicAccess {
-    grafana?: pulumi.Input<boolean>;
+    grafana?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafanaUserConfigSmtpServer {
@@ -675,7 +704,7 @@ export interface ServiceGrafanaUserConfigSmtpServer {
     host?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
-    skipVerify?: pulumi.Input<boolean>;
+    skipVerify?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
 
@@ -692,16 +721,16 @@ export interface ServiceInfluxdbUserConfig {
 }
 
 export interface ServiceInfluxdbUserConfigPrivateAccess {
-    influxdb?: pulumi.Input<boolean>;
+    influxdb?: pulumi.Input<string>;
 }
 
 export interface ServiceInfluxdbUserConfigPublicAccess {
-    influxdb?: pulumi.Input<boolean>;
+    influxdb?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: pulumi.Input<string>;
-    disableConsumerStats?: pulumi.Input<boolean>;
+    disableConsumerStats?: pulumi.Input<string>;
     maxPartitionContexts?: pulumi.Input<number>;
     site?: pulumi.Input<string>;
 }
@@ -762,16 +791,17 @@ export interface ServiceKafkaConnectUserConfig {
 export interface ServiceKafkaConnectUserConfigKafkaConnect {
     consumerIsolationLevel?: pulumi.Input<string>;
     consumerMaxPollRecords?: pulumi.Input<number>;
+    offsetFlushIntervalMs?: pulumi.Input<number>;
 }
 
 export interface ServiceKafkaConnectUserConfigPrivateAccess {
-    kafkaConnect?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    kafkaConnect?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaConnectUserConfigPublicAccess {
-    kafkaConnect?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    kafkaConnect?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfig {
@@ -790,8 +820,9 @@ export interface ServiceKafkaUserConfig {
 }
 
 export interface ServiceKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: pulumi.Input<boolean>;
+    autoCreateTopicsEnable?: pulumi.Input<string>;
     compressionType?: pulumi.Input<string>;
+    connectionsMaxIdleMs?: pulumi.Input<number>;
     defaultReplicationFactor?: pulumi.Input<number>;
     groupMaxSessionTimeoutMs?: pulumi.Input<number>;
     groupMinSessionTimeoutMs?: pulumi.Input<number>;
@@ -821,6 +852,7 @@ export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
 export interface ServiceKafkaUserConfigKafkaConnectConfig {
     consumerIsolationLevel?: pulumi.Input<string>;
     consumerMaxPollRecords?: pulumi.Input<number>;
+    offsetFlushIntervalMs?: pulumi.Input<number>;
 }
 
 export interface ServiceKafkaUserConfigKafkaRestConfig {
@@ -833,12 +865,15 @@ export interface ServiceKafkaUserConfigKafkaRestConfig {
 }
 
 export interface ServiceKafkaUserConfigPrivateAccess {
-    prometheus?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigPublicAccess {
-    kafka?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    kafka?: pulumi.Input<string>;
+    kafkaConnect?: pulumi.Input<string>;
+    kafkaRest?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
+    schemaRegistry?: pulumi.Input<string>;
 }
 
 export interface ServiceMysql {
@@ -863,17 +898,18 @@ export interface ServiceMysqlUserConfigMysql {
     defaultTimeZone?: pulumi.Input<string>;
     groupConcatMaxLen?: pulumi.Input<number>;
     innodbFtMinTokenSize?: pulumi.Input<number>;
+    innodbFtServerStopwordTable?: pulumi.Input<string>;
     sqlMode?: pulumi.Input<string>;
 }
 
 export interface ServiceMysqlUserConfigPrivateAccess {
-    mysql?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    mysql?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceMysqlUserConfigPublicAccess {
-    mysql?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    mysql?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServicePg {
@@ -894,7 +930,7 @@ export interface ServicePgUserConfig {
     backupMinute?: pulumi.Input<number>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     pg?: pulumi.Input<inputs.ServicePgUserConfigPg>;
-    pgReadReplica?: pulumi.Input<boolean>;
+    pgReadReplica?: pulumi.Input<string>;
     pgServiceToForkFrom?: pulumi.Input<string>;
     pgVersion?: pulumi.Input<string>;
     pgbouncer?: pulumi.Input<inputs.ServicePgUserConfigPgbouncer>;
@@ -903,6 +939,7 @@ export interface ServicePgUserConfig {
     publicAccess?: pulumi.Input<inputs.ServicePgUserConfigPublicAccess>;
     recoveryTargetTime?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    timescaledb?: pulumi.Input<inputs.ServicePgUserConfigTimescaledb>;
     variant?: pulumi.Input<string>;
 }
 
@@ -916,7 +953,7 @@ export interface ServicePgUserConfigPg {
     autovacuumVacuumScaleFactor?: pulumi.Input<number>;
     autovacuumVacuumThreshold?: pulumi.Input<number>;
     idleInTransactionSessionTimeout?: pulumi.Input<number>;
-    jit?: pulumi.Input<boolean>;
+    jit?: pulumi.Input<string>;
     logAutovacuumMinDuration?: pulumi.Input<number>;
     logErrorVerbosity?: pulumi.Input<string>;
     logMinDurationStatement?: pulumi.Input<number>;
@@ -945,15 +982,19 @@ export interface ServicePgUserConfigPglookout {
 }
 
 export interface ServicePgUserConfigPrivateAccess {
-    pg?: pulumi.Input<boolean>;
-    pgbouncer?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    pg?: pulumi.Input<string>;
+    pgbouncer?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPublicAccess {
-    pg?: pulumi.Input<boolean>;
-    pgbouncer?: pulumi.Input<boolean>;
-    prometheus?: pulumi.Input<boolean>;
+    pg?: pulumi.Input<string>;
+    pgbouncer?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
+}
+
+export interface ServicePgUserConfigTimescaledb {
+    maxBackgroundWorkers?: pulumi.Input<number>;
 }
 
 export interface ServiceRedis {
@@ -962,6 +1003,7 @@ export interface ServiceRedis {
 
 export interface ServiceRedisUserConfig {
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    migration?: pulumi.Input<inputs.ServiceRedisUserConfigMigration>;
     privateAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPublicAccess>;
     redisLfuDecayTime?: pulumi.Input<number>;
@@ -972,14 +1014,22 @@ export interface ServiceRedisUserConfig {
     redisTimeout?: pulumi.Input<number>;
 }
 
+export interface ServiceRedisUserConfigMigration {
+    host?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    ssl?: pulumi.Input<boolean>;
+    username?: pulumi.Input<string>;
+}
+
 export interface ServiceRedisUserConfigPrivateAccess {
-    prometheus?: pulumi.Input<boolean>;
-    redis?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<string>;
+    redis?: pulumi.Input<string>;
 }
 
 export interface ServiceRedisUserConfigPublicAccess {
-    prometheus?: pulumi.Input<boolean>;
-    redis?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<string>;
+    redis?: pulumi.Input<string>;
 }
 
 export interface ServiceServiceIntegration {

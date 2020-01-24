@@ -277,7 +277,7 @@ namespace Pulumi.Aiven
         }
 
         [Input("migrateSstableloader")]
-        public Input<bool>? MigrateSstableloader { get; set; }
+        public Input<string>? MigrateSstableloader { get; set; }
 
         [Input("privateAccess")]
         public Input<GetServiceCassandraUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceCassandraUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceCassandraUserConfigPrivateAccessArgs()
         {
@@ -306,7 +306,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceCassandraUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceCassandraUserConfigPublicAccessArgs()
         {
@@ -357,7 +357,7 @@ namespace Pulumi.Aiven
         public Input<string>? CustomDomain { get; set; }
 
         [Input("disableReplicationFactorAdjustment")]
-        public Input<bool>? DisableReplicationFactorAdjustment { get; set; }
+        public Input<string>? DisableReplicationFactorAdjustment { get; set; }
 
         [Input("elasticsearch")]
         public Input<GetServiceElasticsearchUserConfigElasticsearchArgs>? Elasticsearch { get; set; }
@@ -406,8 +406,11 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceElasticsearchUserConfigElasticsearchArgs : Pulumi.ResourceArgs
     {
+        [Input("actionAutoCreateIndexEnabled")]
+        public Input<string>? ActionAutoCreateIndexEnabled { get; set; }
+
         [Input("actionDestructiveRequiresName")]
-        public Input<bool>? ActionDestructiveRequiresName { get; set; }
+        public Input<string>? ActionDestructiveRequiresName { get; set; }
 
         [Input("httpMaxContentLength")]
         public Input<int>? HttpMaxContentLength { get; set; }
@@ -508,13 +511,13 @@ namespace Pulumi.Aiven
     public sealed class GetServiceElasticsearchUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("elasticsearch")]
-        public Input<bool>? Elasticsearch { get; set; }
+        public Input<string>? Elasticsearch { get; set; }
 
         [Input("kibana")]
-        public Input<bool>? Kibana { get; set; }
+        public Input<string>? Kibana { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceElasticsearchUserConfigPrivateAccessArgs()
         {
@@ -524,13 +527,13 @@ namespace Pulumi.Aiven
     public sealed class GetServiceElasticsearchUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("elasticsearch")]
-        public Input<bool>? Elasticsearch { get; set; }
+        public Input<string>? Elasticsearch { get; set; }
 
         [Input("kibana")]
-        public Input<bool>? Kibana { get; set; }
+        public Input<string>? Kibana { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceElasticsearchUserConfigPublicAccessArgs()
         {
@@ -547,7 +550,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceGrafanaUserConfigArgs : Pulumi.ResourceArgs
     {
         [Input("alertingEnabled")]
-        public Input<bool>? AlertingEnabled { get; set; }
+        public Input<string>? AlertingEnabled { get; set; }
 
         [Input("alertingErrorOrTimeout")]
         public Input<string>? AlertingErrorOrTimeout { get; set; }
@@ -556,7 +559,7 @@ namespace Pulumi.Aiven
         public Input<string>? AlertingNodataOrNullvalues { get; set; }
 
         [Input("allowEmbedding")]
-        public Input<bool>? AllowEmbedding { get; set; }
+        public Input<string>? AllowEmbedding { get; set; }
 
         [Input("authGithub")]
         public Input<GetServiceGrafanaUserConfigAuthGithubArgs>? AuthGithub { get; set; }
@@ -577,16 +580,16 @@ namespace Pulumi.Aiven
         public Input<int>? DashboardsVersionsToKeep { get; set; }
 
         [Input("dataproxySendUserHeader")]
-        public Input<bool>? DataproxySendUserHeader { get; set; }
+        public Input<string>? DataproxySendUserHeader { get; set; }
 
         [Input("dataproxyTimeout")]
         public Input<int>? DataproxyTimeout { get; set; }
 
         [Input("disableGravatar")]
-        public Input<bool>? DisableGravatar { get; set; }
+        public Input<string>? DisableGravatar { get; set; }
 
         [Input("editorsCanAdmin")]
-        public Input<bool>? EditorsCanAdmin { get; set; }
+        public Input<string>? EditorsCanAdmin { get; set; }
 
         [Input("externalImageStorage")]
         public Input<GetServiceGrafanaUserConfigExternalImageStorageArgs>? ExternalImageStorage { get; set; }
@@ -603,7 +606,7 @@ namespace Pulumi.Aiven
         }
 
         [Input("metricsEnabled")]
-        public Input<bool>? MetricsEnabled { get; set; }
+        public Input<string>? MetricsEnabled { get; set; }
 
         [Input("privateAccess")]
         public Input<GetServiceGrafanaUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
@@ -615,13 +618,13 @@ namespace Pulumi.Aiven
         public Input<GetServiceGrafanaUserConfigSmtpServerArgs>? SmtpServer { get; set; }
 
         [Input("userAutoAssignOrg")]
-        public Input<bool>? UserAutoAssignOrg { get; set; }
+        public Input<string>? UserAutoAssignOrg { get; set; }
 
         [Input("userAutoAssignOrgRole")]
         public Input<string>? UserAutoAssignOrgRole { get; set; }
 
         [Input("viewersCanEdit")]
-        public Input<bool>? ViewersCanEdit { get; set; }
+        public Input<string>? ViewersCanEdit { get; set; }
 
         public GetServiceGrafanaUserConfigArgs()
         {
@@ -631,7 +634,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceGrafanaUserConfigAuthGithubArgs : Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public Input<bool>? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedOrganizations")]
         private InputList<string>? _allowedOrganizations;
@@ -663,7 +666,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceGrafanaUserConfigAuthGitlabArgs : Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public Input<bool>? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedGroups")]
         private InputList<string>? _allowedGroups;
@@ -673,11 +676,20 @@ namespace Pulumi.Aiven
             set => _allowedGroups = value;
         }
 
+        [Input("apiUrl")]
+        public Input<string>? ApiUrl { get; set; }
+
+        [Input("authUrl")]
+        public Input<string>? AuthUrl { get; set; }
+
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
+
+        [Input("tokenUrl")]
+        public Input<string>? TokenUrl { get; set; }
 
         public GetServiceGrafanaUserConfigAuthGitlabArgs()
         {
@@ -687,7 +699,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceGrafanaUserConfigAuthGoogleArgs : Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public Input<bool>? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private InputList<string>? _allowedDomains;
@@ -730,7 +742,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceGrafanaUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("grafana")]
-        public Input<bool>? Grafana { get; set; }
+        public Input<string>? Grafana { get; set; }
 
         public GetServiceGrafanaUserConfigPrivateAccessArgs()
         {
@@ -740,7 +752,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceGrafanaUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("grafana")]
-        public Input<bool>? Grafana { get; set; }
+        public Input<string>? Grafana { get; set; }
 
         public GetServiceGrafanaUserConfigPublicAccessArgs()
         {
@@ -765,7 +777,7 @@ namespace Pulumi.Aiven
         public Input<int>? Port { get; set; }
 
         [Input("skipVerify")]
-        public Input<bool>? SkipVerify { get; set; }
+        public Input<string>? SkipVerify { get; set; }
 
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -815,7 +827,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceInfluxdbUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("influxdb")]
-        public Input<bool>? Influxdb { get; set; }
+        public Input<string>? Influxdb { get; set; }
 
         public GetServiceInfluxdbUserConfigPrivateAccessArgs()
         {
@@ -825,7 +837,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceInfluxdbUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("influxdb")]
-        public Input<bool>? Influxdb { get; set; }
+        public Input<string>? Influxdb { get; set; }
 
         public GetServiceInfluxdbUserConfigPublicAccessArgs()
         {
@@ -893,6 +905,9 @@ namespace Pulumi.Aiven
         [Input("consumerMaxPollRecords")]
         public Input<int>? ConsumerMaxPollRecords { get; set; }
 
+        [Input("offsetFlushIntervalMs")]
+        public Input<int>? OffsetFlushIntervalMs { get; set; }
+
         public GetServiceKafkaConnectUserConfigKafkaConnectArgs()
         {
         }
@@ -901,10 +916,10 @@ namespace Pulumi.Aiven
     public sealed class GetServiceKafkaConnectUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("kafkaConnect")]
-        public Input<bool>? KafkaConnect { get; set; }
+        public Input<string>? KafkaConnect { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceKafkaConnectUserConfigPrivateAccessArgs()
         {
@@ -914,10 +929,10 @@ namespace Pulumi.Aiven
     public sealed class GetServiceKafkaConnectUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("kafkaConnect")]
-        public Input<bool>? KafkaConnect { get; set; }
+        public Input<string>? KafkaConnect { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceKafkaConnectUserConfigPublicAccessArgs()
         {
@@ -975,10 +990,13 @@ namespace Pulumi.Aiven
     public sealed class GetServiceKafkaUserConfigKafkaArgs : Pulumi.ResourceArgs
     {
         [Input("autoCreateTopicsEnable")]
-        public Input<bool>? AutoCreateTopicsEnable { get; set; }
+        public Input<string>? AutoCreateTopicsEnable { get; set; }
 
         [Input("compressionType")]
         public Input<string>? CompressionType { get; set; }
+
+        [Input("connectionsMaxIdleMs")]
+        public Input<int>? ConnectionsMaxIdleMs { get; set; }
 
         [Input("defaultReplicationFactor")]
         public Input<int>? DefaultReplicationFactor { get; set; }
@@ -1063,6 +1081,9 @@ namespace Pulumi.Aiven
         [Input("consumerMaxPollRecords")]
         public Input<int>? ConsumerMaxPollRecords { get; set; }
 
+        [Input("offsetFlushIntervalMs")]
+        public Input<int>? OffsetFlushIntervalMs { get; set; }
+
         public GetServiceKafkaUserConfigKafkaConnectConfigArgs()
         {
         }
@@ -1096,7 +1117,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceKafkaUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceKafkaUserConfigPrivateAccessArgs()
         {
@@ -1106,10 +1127,19 @@ namespace Pulumi.Aiven
     public sealed class GetServiceKafkaUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("kafka")]
-        public Input<bool>? Kafka { get; set; }
+        public Input<string>? Kafka { get; set; }
+
+        [Input("kafkaConnect")]
+        public Input<string>? KafkaConnect { get; set; }
+
+        [Input("kafkaRest")]
+        public Input<string>? KafkaRest { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
+
+        [Input("schemaRegistry")]
+        public Input<string>? SchemaRegistry { get; set; }
 
         public GetServiceKafkaUserConfigPublicAccessArgs()
         {
@@ -1179,6 +1209,9 @@ namespace Pulumi.Aiven
         [Input("innodbFtMinTokenSize")]
         public Input<int>? InnodbFtMinTokenSize { get; set; }
 
+        [Input("innodbFtServerStopwordTable")]
+        public Input<string>? InnodbFtServerStopwordTable { get; set; }
+
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
 
@@ -1190,10 +1223,10 @@ namespace Pulumi.Aiven
     public sealed class GetServiceMysqlUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("mysql")]
-        public Input<bool>? Mysql { get; set; }
+        public Input<string>? Mysql { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceMysqlUserConfigPrivateAccessArgs()
         {
@@ -1203,10 +1236,10 @@ namespace Pulumi.Aiven
     public sealed class GetServiceMysqlUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("mysql")]
-        public Input<bool>? Mysql { get; set; }
+        public Input<string>? Mysql { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServiceMysqlUserConfigPublicAccessArgs()
         {
@@ -1270,7 +1303,7 @@ namespace Pulumi.Aiven
         public Input<GetServicePgUserConfigPgArgs>? Pg { get; set; }
 
         [Input("pgReadReplica")]
-        public Input<bool>? PgReadReplica { get; set; }
+        public Input<string>? PgReadReplica { get; set; }
 
         [Input("pgServiceToForkFrom")]
         public Input<string>? PgServiceToForkFrom { get; set; }
@@ -1295,6 +1328,9 @@ namespace Pulumi.Aiven
 
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
+
+        [Input("timescaledb")]
+        public Input<GetServicePgUserConfigTimescaledbArgs>? Timescaledb { get; set; }
 
         [Input("variant")]
         public Input<string>? Variant { get; set; }
@@ -1334,7 +1370,7 @@ namespace Pulumi.Aiven
         public Input<int>? IdleInTransactionSessionTimeout { get; set; }
 
         [Input("jit")]
-        public Input<bool>? Jit { get; set; }
+        public Input<string>? Jit { get; set; }
 
         [Input("logAutovacuumMinDuration")]
         public Input<int>? LogAutovacuumMinDuration { get; set; }
@@ -1415,13 +1451,13 @@ namespace Pulumi.Aiven
     public sealed class GetServicePgUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("pg")]
-        public Input<bool>? Pg { get; set; }
+        public Input<string>? Pg { get; set; }
 
         [Input("pgbouncer")]
-        public Input<bool>? Pgbouncer { get; set; }
+        public Input<string>? Pgbouncer { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServicePgUserConfigPrivateAccessArgs()
         {
@@ -1431,15 +1467,25 @@ namespace Pulumi.Aiven
     public sealed class GetServicePgUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("pg")]
-        public Input<bool>? Pg { get; set; }
+        public Input<string>? Pg { get; set; }
 
         [Input("pgbouncer")]
-        public Input<bool>? Pgbouncer { get; set; }
+        public Input<string>? Pgbouncer { get; set; }
 
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         public GetServicePgUserConfigPublicAccessArgs()
+        {
+        }
+    }
+
+    public sealed class GetServicePgUserConfigTimescaledbArgs : Pulumi.ResourceArgs
+    {
+        [Input("maxBackgroundWorkers")]
+        public Input<int>? MaxBackgroundWorkers { get; set; }
+
+        public GetServicePgUserConfigTimescaledbArgs()
         {
         }
     }
@@ -1460,6 +1506,9 @@ namespace Pulumi.Aiven
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
+
+        [Input("migration")]
+        public Input<GetServiceRedisUserConfigMigrationArgs>? Migration { get; set; }
 
         [Input("privateAccess")]
         public Input<GetServiceRedisUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
@@ -1490,13 +1539,35 @@ namespace Pulumi.Aiven
         }
     }
 
+    public sealed class GetServiceRedisUserConfigMigrationArgs : Pulumi.ResourceArgs
+    {
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        [Input("ssl")]
+        public Input<bool>? Ssl { get; set; }
+
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        public GetServiceRedisUserConfigMigrationArgs()
+        {
+        }
+    }
+
     public sealed class GetServiceRedisUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         [Input("redis")]
-        public Input<bool>? Redis { get; set; }
+        public Input<string>? Redis { get; set; }
 
         public GetServiceRedisUserConfigPrivateAccessArgs()
         {
@@ -1506,10 +1577,10 @@ namespace Pulumi.Aiven
     public sealed class GetServiceRedisUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public Input<bool>? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         [Input("redis")]
-        public Input<bool>? Redis { get; set; }
+        public Input<string>? Redis { get; set; }
 
         public GetServiceRedisUserConfigPublicAccessArgs()
         {
@@ -1545,10 +1616,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceCassandraUserConfigPrivateAccessResult
     {
-        public readonly bool? Prometheus;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
-        private GetServiceCassandraUserConfigPrivateAccessResult(bool? prometheus)
+        private GetServiceCassandraUserConfigPrivateAccessResult(string? prometheus)
         {
             Prometheus = prometheus;
         }
@@ -1557,10 +1628,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceCassandraUserConfigPublicAccessResult
     {
-        public readonly bool? Prometheus;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
-        private GetServiceCassandraUserConfigPublicAccessResult(bool? prometheus)
+        private GetServiceCassandraUserConfigPublicAccessResult(string? prometheus)
         {
             Prometheus = prometheus;
         }
@@ -1570,7 +1641,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceCassandraUserConfigResult
     {
         public readonly ImmutableArray<string> IpFilters;
-        public readonly bool? MigrateSstableloader;
+        public readonly string? MigrateSstableloader;
         public readonly GetServiceCassandraUserConfigPrivateAccessResult? PrivateAccess;
         public readonly GetServiceCassandraUserConfigPublicAccessResult? PublicAccess;
         public readonly string? ServiceToForkFrom;
@@ -1578,7 +1649,7 @@ namespace Pulumi.Aiven
         [OutputConstructor]
         private GetServiceCassandraUserConfigResult(
             ImmutableArray<string> ipFilters,
-            bool? migrateSstableloader,
+            string? migrateSstableloader,
             GetServiceCassandraUserConfigPrivateAccessResult? privateAccess,
             GetServiceCassandraUserConfigPublicAccessResult? publicAccess,
             string? serviceToForkFrom)
@@ -1637,7 +1708,8 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceElasticsearchUserConfigElasticsearchResult
     {
-        public readonly bool? ActionDestructiveRequiresName;
+        public readonly string? ActionAutoCreateIndexEnabled;
+        public readonly string? ActionDestructiveRequiresName;
         public readonly int? HttpMaxContentLength;
         public readonly int? IndicesFielddataCacheSize;
         public readonly int? IndicesMemoryIndexBufferSize;
@@ -1660,7 +1732,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigElasticsearchResult(
-            bool? actionDestructiveRequiresName,
+            string? actionAutoCreateIndexEnabled,
+            string? actionDestructiveRequiresName,
             int? httpMaxContentLength,
             int? indicesFielddataCacheSize,
             int? indicesMemoryIndexBufferSize,
@@ -1681,6 +1754,7 @@ namespace Pulumi.Aiven
             int? threadPoolWriteQueueSize,
             int? threadPoolWriteSize)
         {
+            ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
             HttpMaxContentLength = httpMaxContentLength;
             IndicesFielddataCacheSize = indicesFielddataCacheSize;
@@ -1742,15 +1816,15 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceElasticsearchUserConfigPrivateAccessResult
     {
-        public readonly bool? Elasticsearch;
-        public readonly bool? Kibana;
-        public readonly bool? Prometheus;
+        public readonly string? Elasticsearch;
+        public readonly string? Kibana;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigPrivateAccessResult(
-            bool? elasticsearch,
-            bool? kibana,
-            bool? prometheus)
+            string? elasticsearch,
+            string? kibana,
+            string? prometheus)
         {
             Elasticsearch = elasticsearch;
             Kibana = kibana;
@@ -1761,15 +1835,15 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceElasticsearchUserConfigPublicAccessResult
     {
-        public readonly bool? Elasticsearch;
-        public readonly bool? Kibana;
-        public readonly bool? Prometheus;
+        public readonly string? Elasticsearch;
+        public readonly string? Kibana;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigPublicAccessResult(
-            bool? elasticsearch,
-            bool? kibana,
-            bool? prometheus)
+            string? elasticsearch,
+            string? kibana,
+            string? prometheus)
         {
             Elasticsearch = elasticsearch;
             Kibana = kibana;
@@ -1781,7 +1855,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceElasticsearchUserConfigResult
     {
         public readonly string? CustomDomain;
-        public readonly bool? DisableReplicationFactorAdjustment;
+        public readonly string? DisableReplicationFactorAdjustment;
         public readonly GetServiceElasticsearchUserConfigElasticsearchResult? Elasticsearch;
         public readonly string? ElasticsearchVersion;
         public readonly ImmutableArray<GetServiceElasticsearchUserConfigIndexPatternsResult> IndexPatterns;
@@ -1796,7 +1870,7 @@ namespace Pulumi.Aiven
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigResult(
             string? customDomain,
-            bool? disableReplicationFactorAdjustment,
+            string? disableReplicationFactorAdjustment,
             GetServiceElasticsearchUserConfigElasticsearchResult? elasticsearch,
             string? elasticsearchVersion,
             ImmutableArray<GetServiceElasticsearchUserConfigIndexPatternsResult> indexPatterns,
@@ -1835,7 +1909,7 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceGrafanaUserConfigAuthGithubResult
     {
-        public readonly bool? AllowSignUp;
+        public readonly string? AllowSignUp;
         public readonly ImmutableArray<string> AllowedOrganizations;
         public readonly string? ClientId;
         public readonly string? ClientSecret;
@@ -1843,7 +1917,7 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetServiceGrafanaUserConfigAuthGithubResult(
-            bool? allowSignUp,
+            string? allowSignUp,
             ImmutableArray<string> allowedOrganizations,
             string? clientId,
             string? clientSecret,
@@ -1860,36 +1934,45 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceGrafanaUserConfigAuthGitlabResult
     {
-        public readonly bool? AllowSignUp;
+        public readonly string? AllowSignUp;
         public readonly ImmutableArray<string> AllowedGroups;
+        public readonly string? ApiUrl;
+        public readonly string? AuthUrl;
         public readonly string? ClientId;
         public readonly string? ClientSecret;
+        public readonly string? TokenUrl;
 
         [OutputConstructor]
         private GetServiceGrafanaUserConfigAuthGitlabResult(
-            bool? allowSignUp,
+            string? allowSignUp,
             ImmutableArray<string> allowedGroups,
+            string? apiUrl,
+            string? authUrl,
             string? clientId,
-            string? clientSecret)
+            string? clientSecret,
+            string? tokenUrl)
         {
             AllowSignUp = allowSignUp;
             AllowedGroups = allowedGroups;
+            ApiUrl = apiUrl;
+            AuthUrl = authUrl;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            TokenUrl = tokenUrl;
         }
     }
 
     [OutputType]
     public sealed class GetServiceGrafanaUserConfigAuthGoogleResult
     {
-        public readonly bool? AllowSignUp;
+        public readonly string? AllowSignUp;
         public readonly ImmutableArray<string> AllowedDomains;
         public readonly string? ClientId;
         public readonly string? ClientSecret;
 
         [OutputConstructor]
         private GetServiceGrafanaUserConfigAuthGoogleResult(
-            bool? allowSignUp,
+            string? allowSignUp,
             ImmutableArray<string> allowedDomains,
             string? clientId,
             string? clientSecret)
@@ -1926,10 +2009,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceGrafanaUserConfigPrivateAccessResult
     {
-        public readonly bool? Grafana;
+        public readonly string? Grafana;
 
         [OutputConstructor]
-        private GetServiceGrafanaUserConfigPrivateAccessResult(bool? grafana)
+        private GetServiceGrafanaUserConfigPrivateAccessResult(string? grafana)
         {
             Grafana = grafana;
         }
@@ -1938,10 +2021,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceGrafanaUserConfigPublicAccessResult
     {
-        public readonly bool? Grafana;
+        public readonly string? Grafana;
 
         [OutputConstructor]
-        private GetServiceGrafanaUserConfigPublicAccessResult(bool? grafana)
+        private GetServiceGrafanaUserConfigPublicAccessResult(string? grafana)
         {
             Grafana = grafana;
         }
@@ -1950,57 +2033,57 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceGrafanaUserConfigResult
     {
-        public readonly bool? AlertingEnabled;
+        public readonly string? AlertingEnabled;
         public readonly string? AlertingErrorOrTimeout;
         public readonly string? AlertingNodataOrNullvalues;
-        public readonly bool? AllowEmbedding;
+        public readonly string? AllowEmbedding;
         public readonly GetServiceGrafanaUserConfigAuthGithubResult? AuthGithub;
         public readonly GetServiceGrafanaUserConfigAuthGitlabResult? AuthGitlab;
         public readonly GetServiceGrafanaUserConfigAuthGoogleResult? AuthGoogle;
         public readonly string? CookieSamesite;
         public readonly string? CustomDomain;
         public readonly int? DashboardsVersionsToKeep;
-        public readonly bool? DataproxySendUserHeader;
+        public readonly string? DataproxySendUserHeader;
         public readonly int? DataproxyTimeout;
-        public readonly bool? DisableGravatar;
-        public readonly bool? EditorsCanAdmin;
+        public readonly string? DisableGravatar;
+        public readonly string? EditorsCanAdmin;
         public readonly GetServiceGrafanaUserConfigExternalImageStorageResult? ExternalImageStorage;
         public readonly string? GoogleAnalyticsUaId;
         public readonly ImmutableArray<string> IpFilters;
-        public readonly bool? MetricsEnabled;
+        public readonly string? MetricsEnabled;
         public readonly GetServiceGrafanaUserConfigPrivateAccessResult? PrivateAccess;
         public readonly GetServiceGrafanaUserConfigPublicAccessResult? PublicAccess;
         public readonly GetServiceGrafanaUserConfigSmtpServerResult? SmtpServer;
-        public readonly bool? UserAutoAssignOrg;
+        public readonly string? UserAutoAssignOrg;
         public readonly string? UserAutoAssignOrgRole;
-        public readonly bool? ViewersCanEdit;
+        public readonly string? ViewersCanEdit;
 
         [OutputConstructor]
         private GetServiceGrafanaUserConfigResult(
-            bool? alertingEnabled,
+            string? alertingEnabled,
             string? alertingErrorOrTimeout,
             string? alertingNodataOrNullvalues,
-            bool? allowEmbedding,
+            string? allowEmbedding,
             GetServiceGrafanaUserConfigAuthGithubResult? authGithub,
             GetServiceGrafanaUserConfigAuthGitlabResult? authGitlab,
             GetServiceGrafanaUserConfigAuthGoogleResult? authGoogle,
             string? cookieSamesite,
             string? customDomain,
             int? dashboardsVersionsToKeep,
-            bool? dataproxySendUserHeader,
+            string? dataproxySendUserHeader,
             int? dataproxyTimeout,
-            bool? disableGravatar,
-            bool? editorsCanAdmin,
+            string? disableGravatar,
+            string? editorsCanAdmin,
             GetServiceGrafanaUserConfigExternalImageStorageResult? externalImageStorage,
             string? googleAnalyticsUaId,
             ImmutableArray<string> ipFilters,
-            bool? metricsEnabled,
+            string? metricsEnabled,
             GetServiceGrafanaUserConfigPrivateAccessResult? privateAccess,
             GetServiceGrafanaUserConfigPublicAccessResult? publicAccess,
             GetServiceGrafanaUserConfigSmtpServerResult? smtpServer,
-            bool? userAutoAssignOrg,
+            string? userAutoAssignOrg,
             string? userAutoAssignOrgRole,
-            bool? viewersCanEdit)
+            string? viewersCanEdit)
         {
             AlertingEnabled = alertingEnabled;
             AlertingErrorOrTimeout = alertingErrorOrTimeout;
@@ -2037,7 +2120,7 @@ namespace Pulumi.Aiven
         public readonly string? Host;
         public readonly string? Password;
         public readonly int? Port;
-        public readonly bool? SkipVerify;
+        public readonly string? SkipVerify;
         public readonly string? Username;
 
         [OutputConstructor]
@@ -2047,7 +2130,7 @@ namespace Pulumi.Aiven
             string? host,
             string? password,
             int? port,
-            bool? skipVerify,
+            string? skipVerify,
             string? username)
         {
             FromAddress = fromAddress;
@@ -2075,10 +2158,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceInfluxdbUserConfigPrivateAccessResult
     {
-        public readonly bool? Influxdb;
+        public readonly string? Influxdb;
 
         [OutputConstructor]
-        private GetServiceInfluxdbUserConfigPrivateAccessResult(bool? influxdb)
+        private GetServiceInfluxdbUserConfigPrivateAccessResult(string? influxdb)
         {
             Influxdb = influxdb;
         }
@@ -2087,10 +2170,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceInfluxdbUserConfigPublicAccessResult
     {
-        public readonly bool? Influxdb;
+        public readonly string? Influxdb;
 
         [OutputConstructor]
-        private GetServiceInfluxdbUserConfigPublicAccessResult(bool? influxdb)
+        private GetServiceInfluxdbUserConfigPublicAccessResult(string? influxdb)
         {
             Influxdb = influxdb;
         }
@@ -2135,27 +2218,30 @@ namespace Pulumi.Aiven
     {
         public readonly string? ConsumerIsolationLevel;
         public readonly int? ConsumerMaxPollRecords;
+        public readonly int? OffsetFlushIntervalMs;
 
         [OutputConstructor]
         private GetServiceKafkaConnectUserConfigKafkaConnectResult(
             string? consumerIsolationLevel,
-            int? consumerMaxPollRecords)
+            int? consumerMaxPollRecords,
+            int? offsetFlushIntervalMs)
         {
             ConsumerIsolationLevel = consumerIsolationLevel;
             ConsumerMaxPollRecords = consumerMaxPollRecords;
+            OffsetFlushIntervalMs = offsetFlushIntervalMs;
         }
     }
 
     [OutputType]
     public sealed class GetServiceKafkaConnectUserConfigPrivateAccessResult
     {
-        public readonly bool? KafkaConnect;
-        public readonly bool? Prometheus;
+        public readonly string? KafkaConnect;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServiceKafkaConnectUserConfigPrivateAccessResult(
-            bool? kafkaConnect,
-            bool? prometheus)
+            string? kafkaConnect,
+            string? prometheus)
         {
             KafkaConnect = kafkaConnect;
             Prometheus = prometheus;
@@ -2165,13 +2251,13 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceKafkaConnectUserConfigPublicAccessResult
     {
-        public readonly bool? KafkaConnect;
-        public readonly bool? Prometheus;
+        public readonly string? KafkaConnect;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServiceKafkaConnectUserConfigPublicAccessResult(
-            bool? kafkaConnect,
-            bool? prometheus)
+            string? kafkaConnect,
+            string? prometheus)
         {
             KafkaConnect = kafkaConnect;
             Prometheus = prometheus;
@@ -2246,14 +2332,17 @@ namespace Pulumi.Aiven
     {
         public readonly string? ConsumerIsolationLevel;
         public readonly int? ConsumerMaxPollRecords;
+        public readonly int? OffsetFlushIntervalMs;
 
         [OutputConstructor]
         private GetServiceKafkaUserConfigKafkaConnectConfigResult(
             string? consumerIsolationLevel,
-            int? consumerMaxPollRecords)
+            int? consumerMaxPollRecords,
+            int? offsetFlushIntervalMs)
         {
             ConsumerIsolationLevel = consumerIsolationLevel;
             ConsumerMaxPollRecords = consumerMaxPollRecords;
+            OffsetFlushIntervalMs = offsetFlushIntervalMs;
         }
     }
 
@@ -2288,8 +2377,9 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceKafkaUserConfigKafkaResult
     {
-        public readonly bool? AutoCreateTopicsEnable;
+        public readonly string? AutoCreateTopicsEnable;
         public readonly string? CompressionType;
+        public readonly int? ConnectionsMaxIdleMs;
         public readonly int? DefaultReplicationFactor;
         public readonly int? GroupMaxSessionTimeoutMs;
         public readonly int? GroupMinSessionTimeoutMs;
@@ -2312,8 +2402,9 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetServiceKafkaUserConfigKafkaResult(
-            bool? autoCreateTopicsEnable,
+            string? autoCreateTopicsEnable,
             string? compressionType,
+            int? connectionsMaxIdleMs,
             int? defaultReplicationFactor,
             int? groupMaxSessionTimeoutMs,
             int? groupMinSessionTimeoutMs,
@@ -2336,6 +2427,7 @@ namespace Pulumi.Aiven
         {
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;
+            ConnectionsMaxIdleMs = connectionsMaxIdleMs;
             DefaultReplicationFactor = defaultReplicationFactor;
             GroupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             GroupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
@@ -2361,10 +2453,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceKafkaUserConfigPrivateAccessResult
     {
-        public readonly bool? Prometheus;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
-        private GetServiceKafkaUserConfigPrivateAccessResult(bool? prometheus)
+        private GetServiceKafkaUserConfigPrivateAccessResult(string? prometheus)
         {
             Prometheus = prometheus;
         }
@@ -2373,16 +2465,25 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceKafkaUserConfigPublicAccessResult
     {
-        public readonly bool? Kafka;
-        public readonly bool? Prometheus;
+        public readonly string? Kafka;
+        public readonly string? KafkaConnect;
+        public readonly string? KafkaRest;
+        public readonly string? Prometheus;
+        public readonly string? SchemaRegistry;
 
         [OutputConstructor]
         private GetServiceKafkaUserConfigPublicAccessResult(
-            bool? kafka,
-            bool? prometheus)
+            string? kafka,
+            string? kafkaConnect,
+            string? kafkaRest,
+            string? prometheus,
+            string? schemaRegistry)
         {
             Kafka = kafka;
+            KafkaConnect = kafkaConnect;
+            KafkaRest = kafkaRest;
             Prometheus = prometheus;
+            SchemaRegistry = schemaRegistry;
         }
     }
 
@@ -2447,6 +2548,7 @@ namespace Pulumi.Aiven
         public readonly string? DefaultTimeZone;
         public readonly int? GroupConcatMaxLen;
         public readonly int? InnodbFtMinTokenSize;
+        public readonly string? InnodbFtServerStopwordTable;
         public readonly string? SqlMode;
 
         [OutputConstructor]
@@ -2454,11 +2556,13 @@ namespace Pulumi.Aiven
             string? defaultTimeZone,
             int? groupConcatMaxLen,
             int? innodbFtMinTokenSize,
+            string? innodbFtServerStopwordTable,
             string? sqlMode)
         {
             DefaultTimeZone = defaultTimeZone;
             GroupConcatMaxLen = groupConcatMaxLen;
             InnodbFtMinTokenSize = innodbFtMinTokenSize;
+            InnodbFtServerStopwordTable = innodbFtServerStopwordTable;
             SqlMode = sqlMode;
         }
     }
@@ -2466,13 +2570,13 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceMysqlUserConfigPrivateAccessResult
     {
-        public readonly bool? Mysql;
-        public readonly bool? Prometheus;
+        public readonly string? Mysql;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServiceMysqlUserConfigPrivateAccessResult(
-            bool? mysql,
-            bool? prometheus)
+            string? mysql,
+            string? prometheus)
         {
             Mysql = mysql;
             Prometheus = prometheus;
@@ -2482,13 +2586,13 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceMysqlUserConfigPublicAccessResult
     {
-        public readonly bool? Mysql;
-        public readonly bool? Prometheus;
+        public readonly string? Mysql;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServiceMysqlUserConfigPublicAccessResult(
-            bool? mysql,
-            bool? prometheus)
+            string? mysql,
+            string? prometheus)
         {
             Mysql = mysql;
             Prometheus = prometheus;
@@ -2584,7 +2688,7 @@ namespace Pulumi.Aiven
         public readonly double? AutovacuumVacuumScaleFactor;
         public readonly int? AutovacuumVacuumThreshold;
         public readonly int? IdleInTransactionSessionTimeout;
-        public readonly bool? Jit;
+        public readonly string? Jit;
         public readonly int? LogAutovacuumMinDuration;
         public readonly string? LogErrorVerbosity;
         public readonly int? LogMinDurationStatement;
@@ -2614,7 +2718,7 @@ namespace Pulumi.Aiven
             double? autovacuumVacuumScaleFactor,
             int? autovacuumVacuumThreshold,
             int? idleInTransactionSessionTimeout,
-            bool? jit,
+            string? jit,
             int? logAutovacuumMinDuration,
             string? logErrorVerbosity,
             int? logMinDurationStatement,
@@ -2690,15 +2794,15 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServicePgUserConfigPrivateAccessResult
     {
-        public readonly bool? Pg;
-        public readonly bool? Pgbouncer;
-        public readonly bool? Prometheus;
+        public readonly string? Pg;
+        public readonly string? Pgbouncer;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServicePgUserConfigPrivateAccessResult(
-            bool? pg,
-            bool? pgbouncer,
-            bool? prometheus)
+            string? pg,
+            string? pgbouncer,
+            string? prometheus)
         {
             Pg = pg;
             Pgbouncer = pgbouncer;
@@ -2709,15 +2813,15 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServicePgUserConfigPublicAccessResult
     {
-        public readonly bool? Pg;
-        public readonly bool? Pgbouncer;
-        public readonly bool? Prometheus;
+        public readonly string? Pg;
+        public readonly string? Pgbouncer;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServicePgUserConfigPublicAccessResult(
-            bool? pg,
-            bool? pgbouncer,
-            bool? prometheus)
+            string? pg,
+            string? pgbouncer,
+            string? prometheus)
         {
             Pg = pg;
             Pgbouncer = pgbouncer;
@@ -2734,7 +2838,7 @@ namespace Pulumi.Aiven
         public readonly int? BackupMinute;
         public readonly ImmutableArray<string> IpFilters;
         public readonly GetServicePgUserConfigPgResult? Pg;
-        public readonly bool? PgReadReplica;
+        public readonly string? PgReadReplica;
         public readonly string? PgServiceToForkFrom;
         public readonly string? PgVersion;
         public readonly GetServicePgUserConfigPgbouncerResult? Pgbouncer;
@@ -2743,6 +2847,7 @@ namespace Pulumi.Aiven
         public readonly GetServicePgUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
+        public readonly GetServicePgUserConfigTimescaledbResult? Timescaledb;
         public readonly string? Variant;
 
         [OutputConstructor]
@@ -2753,7 +2858,7 @@ namespace Pulumi.Aiven
             int? backupMinute,
             ImmutableArray<string> ipFilters,
             GetServicePgUserConfigPgResult? pg,
-            bool? pgReadReplica,
+            string? pgReadReplica,
             string? pgServiceToForkFrom,
             string? pgVersion,
             GetServicePgUserConfigPgbouncerResult? pgbouncer,
@@ -2762,6 +2867,7 @@ namespace Pulumi.Aiven
             GetServicePgUserConfigPublicAccessResult? publicAccess,
             string? recoveryTargetTime,
             string? serviceToForkFrom,
+            GetServicePgUserConfigTimescaledbResult? timescaledb,
             string? variant)
         {
             AdminPassword = adminPassword;
@@ -2779,7 +2885,20 @@ namespace Pulumi.Aiven
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;
+            Timescaledb = timescaledb;
             Variant = variant;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetServicePgUserConfigTimescaledbResult
+    {
+        public readonly int? MaxBackgroundWorkers;
+
+        [OutputConstructor]
+        private GetServicePgUserConfigTimescaledbResult(int? maxBackgroundWorkers)
+        {
+            MaxBackgroundWorkers = maxBackgroundWorkers;
         }
     }
 
@@ -2793,15 +2912,40 @@ namespace Pulumi.Aiven
     }
 
     [OutputType]
+    public sealed class GetServiceRedisUserConfigMigrationResult
+    {
+        public readonly string? Host;
+        public readonly string? Password;
+        public readonly int? Port;
+        public readonly bool? Ssl;
+        public readonly string? Username;
+
+        [OutputConstructor]
+        private GetServiceRedisUserConfigMigrationResult(
+            string? host,
+            string? password,
+            int? port,
+            bool? ssl,
+            string? username)
+        {
+            Host = host;
+            Password = password;
+            Port = port;
+            Ssl = ssl;
+            Username = username;
+        }
+    }
+
+    [OutputType]
     public sealed class GetServiceRedisUserConfigPrivateAccessResult
     {
-        public readonly bool? Prometheus;
-        public readonly bool? Redis;
+        public readonly string? Prometheus;
+        public readonly string? Redis;
 
         [OutputConstructor]
         private GetServiceRedisUserConfigPrivateAccessResult(
-            bool? prometheus,
-            bool? redis)
+            string? prometheus,
+            string? redis)
         {
             Prometheus = prometheus;
             Redis = redis;
@@ -2811,13 +2955,13 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceRedisUserConfigPublicAccessResult
     {
-        public readonly bool? Prometheus;
-        public readonly bool? Redis;
+        public readonly string? Prometheus;
+        public readonly string? Redis;
 
         [OutputConstructor]
         private GetServiceRedisUserConfigPublicAccessResult(
-            bool? prometheus,
-            bool? redis)
+            string? prometheus,
+            string? redis)
         {
             Prometheus = prometheus;
             Redis = redis;
@@ -2828,6 +2972,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceRedisUserConfigResult
     {
         public readonly ImmutableArray<string> IpFilters;
+        public readonly GetServiceRedisUserConfigMigrationResult? Migration;
         public readonly GetServiceRedisUserConfigPrivateAccessResult? PrivateAccess;
         public readonly GetServiceRedisUserConfigPublicAccessResult? PublicAccess;
         public readonly int? RedisLfuDecayTime;
@@ -2840,6 +2985,7 @@ namespace Pulumi.Aiven
         [OutputConstructor]
         private GetServiceRedisUserConfigResult(
             ImmutableArray<string> ipFilters,
+            GetServiceRedisUserConfigMigrationResult? migration,
             GetServiceRedisUserConfigPrivateAccessResult? privateAccess,
             GetServiceRedisUserConfigPublicAccessResult? publicAccess,
             int? redisLfuDecayTime,
@@ -2850,6 +2996,7 @@ namespace Pulumi.Aiven
             int? redisTimeout)
         {
             IpFilters = ipFilters;
+            Migration = migration;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
             RedisLfuDecayTime = redisLfuDecayTime;
