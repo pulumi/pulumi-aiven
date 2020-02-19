@@ -13,7 +13,10 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, id=None):
+    def __init__(__self__, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, id=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        __self__.account_id = account_id
         if billing_address and not isinstance(billing_address, str):
             raise TypeError("Expected argument 'billing_address' to be a str")
         __self__.billing_address = billing_address
@@ -50,6 +53,7 @@ class AwaitableGetProjectResult(GetProjectResult):
         if False:
             yield self
         return GetProjectResult(
+            account_id=self.account_id,
             billing_address=self.billing_address,
             billing_emails=self.billing_emails,
             ca_cert=self.ca_cert,
@@ -60,7 +64,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             technical_emails=self.technical_emails,
             id=self.id)
 
-def get_project(billing_address=None,billing_emails=None,ca_cert=None,card_id=None,copy_from_project=None,country_code=None,project=None,technical_emails=None,opts=None):
+def get_project(account_id=None,billing_address=None,billing_emails=None,ca_cert=None,card_id=None,copy_from_project=None,country_code=None,project=None,technical_emails=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
@@ -69,6 +73,7 @@ def get_project(billing_address=None,billing_emails=None,ca_cert=None,card_id=No
     """
     __args__ = dict()
 
+    __args__['accountId'] = account_id
     __args__['billingAddress'] = billing_address
     __args__['billingEmails'] = billing_emails
     __args__['caCert'] = ca_cert
@@ -84,6 +89,7 @@ def get_project(billing_address=None,billing_emails=None,ca_cert=None,card_id=No
     __ret__ = pulumi.runtime.invoke('aiven:index/getProject:getProject', __args__, opts=opts).value
 
     return AwaitableGetProjectResult(
+        account_id=__ret__.get('accountId'),
         billing_address=__ret__.get('billingAddress'),
         billing_emails=__ret__.get('billingEmails'),
         ca_cert=__ret__.get('caCert'),

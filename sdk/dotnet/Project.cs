@@ -10,6 +10,12 @@ namespace Pulumi.Aiven
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
+        /// Account ID
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
         /// Billing name and address of the project
         /// </summary>
         [Output("billingAddress")]
@@ -104,6 +110,12 @@ namespace Pulumi.Aiven
     public sealed class ProjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Account ID
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
         /// Billing name and address of the project
         /// </summary>
         [Input("billingAddress")]
@@ -170,6 +182,12 @@ namespace Pulumi.Aiven
 
     public sealed class ProjectState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Account ID
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// Billing name and address of the project
         /// </summary>

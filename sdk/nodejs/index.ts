@@ -2,9 +2,17 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./account";
+export * from "./accountTeam";
+export * from "./accountTeamMember";
+export * from "./accountTeamProject";
 export * from "./connectionPool";
 export * from "./database";
 export * from "./elasticSearchAcl";
+export * from "./getAccount";
+export * from "./getAccountTeam";
+export * from "./getAccountTeamMember";
+export * from "./getAccountTeamProject";
 export * from "./getConnectionPool";
 export * from "./getDatabase";
 export * from "./getElasticSearchAcl";

@@ -20,6 +20,7 @@ func NewProject(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["accountId"] = nil
 		inputs["billingAddress"] = nil
 		inputs["billingEmails"] = nil
 		inputs["caCert"] = nil
@@ -29,6 +30,7 @@ func NewProject(ctx *pulumi.Context,
 		inputs["project"] = nil
 		inputs["technicalEmails"] = nil
 	} else {
+		inputs["accountId"] = args.AccountId
 		inputs["billingAddress"] = args.BillingAddress
 		inputs["billingEmails"] = args.BillingEmails
 		inputs["caCert"] = args.CaCert
@@ -51,6 +53,7 @@ func GetProject(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ProjectState, opts ...pulumi.ResourceOpt) (*Project, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["accountId"] = state.AccountId
 		inputs["billingAddress"] = state.BillingAddress
 		inputs["billingEmails"] = state.BillingEmails
 		inputs["caCert"] = state.CaCert
@@ -75,6 +78,11 @@ func (r *Project) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Project) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Account ID
+func (r *Project) AccountId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accountId"])
 }
 
 // Billing name and address of the project
@@ -119,6 +127,8 @@ func (r *Project) TechnicalEmails() pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Project resources.
 type ProjectState struct {
+	// Account ID
+	AccountId interface{}
 	// Billing name and address of the project
 	BillingAddress interface{}
 	// Billing contact emails of the project
@@ -139,6 +149,8 @@ type ProjectState struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// Account ID
+	AccountId interface{}
 	// Billing name and address of the project
 	BillingAddress interface{}
 	// Billing contact emails of the project
