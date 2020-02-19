@@ -10,6 +10,7 @@ import (
 func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["accountId"] = args.AccountId
 		inputs["billingAddress"] = args.BillingAddress
 		inputs["billingEmails"] = args.BillingEmails
 		inputs["caCert"] = args.CaCert
@@ -24,6 +25,7 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		return nil, err
 	}
 	return &GetProjectResult{
+		AccountId: outputs["accountId"],
 		BillingAddress: outputs["billingAddress"],
 		BillingEmails: outputs["billingEmails"],
 		CaCert: outputs["caCert"],
@@ -38,6 +40,7 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 
 // A collection of arguments for invoking getProject.
 type GetProjectArgs struct {
+	AccountId interface{}
 	BillingAddress interface{}
 	BillingEmails interface{}
 	CaCert interface{}
@@ -50,6 +53,7 @@ type GetProjectArgs struct {
 
 // A collection of values returned by getProject.
 type GetProjectResult struct {
+	AccountId interface{}
 	BillingAddress interface{}
 	BillingEmails interface{}
 	CaCert interface{}

@@ -10,6 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Project(pulumi.CustomResource):
+    account_id: pulumi.Output[str]
     billing_address: pulumi.Output[str]
     billing_emails: pulumi.Output[list]
     ca_cert: pulumi.Output[str]
@@ -18,7 +19,7 @@ class Project(pulumi.CustomResource):
     country_code: pulumi.Output[str]
     project: pulumi.Output[str]
     technical_emails: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Project resource with the given unique name, props, and options.
         
@@ -44,6 +45,7 @@ class Project(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['account_id'] = account_id
             __props__['billing_address'] = billing_address
             __props__['billing_emails'] = billing_emails
             __props__['ca_cert'] = ca_cert
@@ -61,7 +63,7 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None):
+    def get(resource_name, id, opts=None, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -75,6 +77,7 @@ class Project(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["account_id"] = account_id
         __props__["billing_address"] = billing_address
         __props__["billing_emails"] = billing_emails
         __props__["ca_cert"] = ca_cert

@@ -29,6 +29,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetProjectResult> = pulumi.runtime.invoke("aiven:index/getProject:getProject", {
+        "accountId": args.accountId,
         "billingAddress": args.billingAddress,
         "billingEmails": args.billingEmails,
         "caCert": args.caCert,
@@ -46,6 +47,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
+    readonly accountId?: string;
     readonly billingAddress?: string;
     readonly billingEmails?: string[];
     readonly caCert?: string;
@@ -60,6 +62,7 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
+    readonly accountId?: string;
     readonly billingAddress?: string;
     readonly billingEmails?: string[];
     readonly caCert: string;

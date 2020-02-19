@@ -15,6 +15,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetProjectArgs : Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         [Input("billingAddress")]
         public Input<string>? BillingAddress { get; set; }
 
@@ -57,6 +60,7 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetProjectResult
     {
+        public readonly string? AccountId;
         public readonly string? BillingAddress;
         public readonly ImmutableArray<string> BillingEmails;
         public readonly string CaCert;
@@ -72,6 +76,7 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetProjectResult(
+            string? accountId,
             string? billingAddress,
             ImmutableArray<string> billingEmails,
             string caCert,
@@ -82,6 +87,7 @@ namespace Pulumi.Aiven
             ImmutableArray<string> technicalEmails,
             string id)
         {
+            AccountId = accountId;
             BillingAddress = billingAddress;
             BillingEmails = billingEmails;
             CaCert = caCert;

@@ -49,6 +49,10 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
+     * Account ID
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
      * Billing name and address of the project
      */
     public readonly billingAddress!: pulumi.Output<string | undefined>;
@@ -93,6 +97,7 @@ export class Project extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ProjectState | undefined;
+            inputs["accountId"] = state ? state.accountId : undefined;
             inputs["billingAddress"] = state ? state.billingAddress : undefined;
             inputs["billingEmails"] = state ? state.billingEmails : undefined;
             inputs["caCert"] = state ? state.caCert : undefined;
@@ -106,6 +111,7 @@ export class Project extends pulumi.CustomResource {
             if (!args || args.project === undefined) {
                 throw new Error("Missing required property 'project'");
             }
+            inputs["accountId"] = args ? args.accountId : undefined;
             inputs["billingAddress"] = args ? args.billingAddress : undefined;
             inputs["billingEmails"] = args ? args.billingEmails : undefined;
             inputs["caCert"] = args ? args.caCert : undefined;
@@ -130,6 +136,10 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
+    /**
+     * Account ID
+     */
+    readonly accountId?: pulumi.Input<string>;
     /**
      * Billing name and address of the project
      */
@@ -168,6 +178,10 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
+    /**
+     * Account ID
+     */
+    readonly accountId?: pulumi.Input<string>;
     /**
      * Billing name and address of the project
      */

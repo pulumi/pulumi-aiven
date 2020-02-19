@@ -124,6 +124,10 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_kafka_connector":              {Tok: makeResource(mainMod, "KafkaConnector")},
 			"aiven_kafka_schema":                 {Tok: makeResource(mainMod, "KafkaSchema")},
 			"aiven_kafka_schema_configuration":   {Tok: makeResource(mainMod, "KafkaSchemaConfiguration")},
+			"aiven_account":                      {Tok: makeResource(mainMod, "Account")},
+			"aiven_account_team":                 {Tok: makeResource(mainMod, "AccountTeam")},
+			"aiven_account_team_member":          {Tok: makeResource(mainMod, "AccountTeamMember")},
+			"aiven_account_team_project":         {Tok: makeResource(mainMod, "AccountTeamProject")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_connection_pool":        {Tok: makeDataSource(mainMod, "getConnectionPool")},
@@ -160,6 +164,10 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_kafka_connector":              {Tok: makeDataSource(mainMod, "getKafkaConnector")},
 			"aiven_kafka_schema":                 {Tok: makeDataSource(mainMod, "getKafkaSchema")},
 			"aiven_kafka_schema_configuration":   {Tok: makeDataSource(mainMod, "getKafkaSchemaConfiguration")},
+			"aiven_account":                      {Tok: makeDataSource(mainMod, "getAccount")},
+			"aiven_account_team":                 {Tok: makeDataSource(mainMod, "getAccountTeam")},
+			"aiven_account_team_member":          {Tok: makeDataSource(mainMod, "getAccountTeamMember")},
+			"aiven_account_team_project":         {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
