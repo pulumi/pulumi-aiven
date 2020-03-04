@@ -134,6 +134,7 @@ export interface GetServiceGrafanaUserConfig {
     alertingErrorOrTimeout?: string;
     alertingNodataOrNullvalues?: string;
     allowEmbedding?: string;
+    authGenericOauth?: outputs.GetServiceGrafanaUserConfigAuthGenericOauth;
     authGithub?: outputs.GetServiceGrafanaUserConfigAuthGithub;
     authGitlab?: outputs.GetServiceGrafanaUserConfigAuthGitlab;
     authGoogle?: outputs.GetServiceGrafanaUserConfigAuthGoogle;
@@ -154,6 +155,19 @@ export interface GetServiceGrafanaUserConfig {
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
     viewersCanEdit?: string;
+}
+
+export interface GetServiceGrafanaUserConfigAuthGenericOauth {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    allowedOrganizations?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    name?: string;
+    scopes?: string[];
+    tokenUrl?: string;
 }
 
 export interface GetServiceGrafanaUserConfigAuthGithub {
@@ -318,6 +332,7 @@ export interface GetServiceKafkaUserConfigKafka {
     logCleanerMaxCompactionLagMs?: number;
     logCleanerMinCleanableRatio?: number;
     logCleanerMinCompactionLagMs?: number;
+    logCleanupPolicy?: string;
     logMessageTimestampDifferenceMaxMs?: number;
     logMessageTimestampType?: string;
     logRetentionBytes?: number;
@@ -384,11 +399,21 @@ export interface GetServiceMysqlUserConfig {
 }
 
 export interface GetServiceMysqlUserConfigMysql {
+    connectTimeout?: number;
     defaultTimeZone?: string;
     groupConcatMaxLen?: number;
+    informationSchemaStatsExpiry?: number;
     innodbFtMinTokenSize?: number;
     innodbFtServerStopwordTable?: string;
+    innodbLockWaitTimeout?: number;
+    innodbOnlineAlterLogMaxSize?: number;
+    innodbRollbackOnTimeout?: string;
+    maxAllowedPacket?: number;
+    netReadTimeout?: number;
+    netWriteTimeout?: number;
     sqlMode?: string;
+    sqlRequirePrimaryKey?: string;
+    waitTimeout?: number;
 }
 
 export interface GetServiceMysqlUserConfigPrivateAccess {
@@ -441,6 +466,7 @@ export interface GetServicePgUserConfigPg {
     autovacuumVacuumCostLimit?: number;
     autovacuumVacuumScaleFactor?: number;
     autovacuumVacuumThreshold?: number;
+    deadlockTimeout?: number;
     idleInTransactionSessionTimeout?: number;
     jit?: string;
     logAutovacuumMinDuration?: number;
@@ -460,6 +486,7 @@ export interface GetServicePgUserConfigPg {
     timezone?: string;
     trackActivityQuerySize?: number;
     trackFunctions?: string;
+    walWriterDelay?: number;
 }
 
 export interface GetServicePgUserConfigPgbouncer {
@@ -636,6 +663,7 @@ export interface ServiceGrafanaUserConfig {
     alertingErrorOrTimeout?: string;
     alertingNodataOrNullvalues?: string;
     allowEmbedding?: string;
+    authGenericOauth?: outputs.ServiceGrafanaUserConfigAuthGenericOauth;
     authGithub?: outputs.ServiceGrafanaUserConfigAuthGithub;
     authGitlab?: outputs.ServiceGrafanaUserConfigAuthGitlab;
     authGoogle?: outputs.ServiceGrafanaUserConfigAuthGoogle;
@@ -656,6 +684,19 @@ export interface ServiceGrafanaUserConfig {
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
     viewersCanEdit?: string;
+}
+
+export interface ServiceGrafanaUserConfigAuthGenericOauth {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    allowedOrganizations?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    name?: string;
+    scopes?: string[];
+    tokenUrl?: string;
 }
 
 export interface ServiceGrafanaUserConfigAuthGithub {
@@ -829,6 +870,7 @@ export interface ServiceKafkaUserConfigKafka {
     logCleanerMaxCompactionLagMs?: number;
     logCleanerMinCleanableRatio?: number;
     logCleanerMinCompactionLagMs?: number;
+    logCleanupPolicy?: string;
     logMessageTimestampDifferenceMaxMs?: number;
     logMessageTimestampType?: string;
     logRetentionBytes?: number;
@@ -895,11 +937,21 @@ export interface ServiceMysqlUserConfig {
 }
 
 export interface ServiceMysqlUserConfigMysql {
+    connectTimeout?: number;
     defaultTimeZone?: string;
     groupConcatMaxLen?: number;
+    informationSchemaStatsExpiry?: number;
     innodbFtMinTokenSize?: number;
     innodbFtServerStopwordTable?: string;
+    innodbLockWaitTimeout?: number;
+    innodbOnlineAlterLogMaxSize?: number;
+    innodbRollbackOnTimeout?: string;
+    maxAllowedPacket?: number;
+    netReadTimeout?: number;
+    netWriteTimeout?: number;
     sqlMode?: string;
+    sqlRequirePrimaryKey?: string;
+    waitTimeout?: number;
 }
 
 export interface ServiceMysqlUserConfigPrivateAccess {
@@ -952,6 +1004,7 @@ export interface ServicePgUserConfigPg {
     autovacuumVacuumCostLimit?: number;
     autovacuumVacuumScaleFactor?: number;
     autovacuumVacuumThreshold?: number;
+    deadlockTimeout?: number;
     idleInTransactionSessionTimeout?: number;
     jit?: string;
     logAutovacuumMinDuration?: number;
@@ -971,6 +1024,7 @@ export interface ServicePgUserConfigPg {
     timezone?: string;
     trackActivityQuerySize?: number;
     trackFunctions?: string;
+    walWriterDelay?: number;
 }
 
 export interface ServicePgUserConfigPgbouncer {

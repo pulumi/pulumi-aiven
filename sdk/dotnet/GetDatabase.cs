@@ -30,6 +30,9 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
         public GetDatabaseArgs()
         {
         }
@@ -43,6 +46,7 @@ namespace Pulumi.Aiven
         public readonly string? LcCtype;
         public readonly string Project;
         public readonly string ServiceName;
+        public readonly bool? TerminationProtection;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -55,6 +59,7 @@ namespace Pulumi.Aiven
             string? lcCtype,
             string project,
             string serviceName,
+            bool? terminationProtection,
             string id)
         {
             DatabaseName = databaseName;
@@ -62,6 +67,7 @@ namespace Pulumi.Aiven
             LcCtype = lcCtype;
             Project = project;
             ServiceName = serviceName;
+            TerminationProtection = terminationProtection;
             Id = id;
         }
     }

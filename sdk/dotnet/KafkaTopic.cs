@@ -58,6 +58,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
+        /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is
+        /// recommended to enable this for any production Kafka topic containing critical data.
+        /// </summary>
+        [Output("terminationProtection")]
+        public Output<bool?> TerminationProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Topic name
         /// </summary>
         [Output("topicName")]
@@ -158,6 +165,13 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
+        /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is
+        /// recommended to enable this for any production Kafka topic containing critical data.
+        /// </summary>
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
+        /// <summary>
         /// Topic name
         /// </summary>
         [Input("topicName", required: true)]
@@ -217,6 +231,13 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is
+        /// recommended to enable this for any production Kafka topic containing critical data.
+        /// </summary>
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
 
         /// <summary>
         /// Topic name

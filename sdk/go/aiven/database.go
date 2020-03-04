@@ -31,12 +31,14 @@ func NewDatabase(ctx *pulumi.Context,
 		inputs["lcCtype"] = nil
 		inputs["project"] = nil
 		inputs["serviceName"] = nil
+		inputs["terminationProtection"] = nil
 	} else {
 		inputs["databaseName"] = args.DatabaseName
 		inputs["lcCollate"] = args.LcCollate
 		inputs["lcCtype"] = args.LcCtype
 		inputs["project"] = args.Project
 		inputs["serviceName"] = args.ServiceName
+		inputs["terminationProtection"] = args.TerminationProtection
 	}
 	s, err := ctx.RegisterResource("aiven:index/database:Database", name, true, inputs, opts...)
 	if err != nil {
@@ -56,6 +58,7 @@ func GetDatabase(ctx *pulumi.Context,
 		inputs["lcCtype"] = state.LcCtype
 		inputs["project"] = state.Project
 		inputs["serviceName"] = state.ServiceName
+		inputs["terminationProtection"] = state.TerminationProtection
 	}
 	s, err := ctx.ReadResource("aiven:index/database:Database", name, id, inputs, opts...)
 	if err != nil {
@@ -99,6 +102,12 @@ func (r *Database) ServiceName() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
+// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+// recommended to enable this for any production databases containing critical data.
+func (r *Database) TerminationProtection() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["terminationProtection"])
+}
+
 // Input properties used for looking up and filtering Database resources.
 type DatabaseState struct {
 	// Service database name
@@ -111,6 +120,9 @@ type DatabaseState struct {
 	Project interface{}
 	// Service to link the database to
 	ServiceName interface{}
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+	// recommended to enable this for any production databases containing critical data.
+	TerminationProtection interface{}
 }
 
 // The set of arguments for constructing a Database resource.
@@ -125,4 +137,7 @@ type DatabaseArgs struct {
 	Project interface{}
 	// Service to link the database to
 	ServiceName interface{}
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+	// recommended to enable this for any production databases containing critical data.
+	TerminationProtection interface{}
 }

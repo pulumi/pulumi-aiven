@@ -67,6 +67,11 @@ export class Database extends pulumi.CustomResource {
      * Service to link the database to
      */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It
+     * is recommended to enable this for any production databases containing critical data.
+     */
+    public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -85,6 +90,7 @@ export class Database extends pulumi.CustomResource {
             inputs["lcCtype"] = state ? state.lcCtype : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
+            inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
             if (!args || args.databaseName === undefined) {
@@ -101,6 +107,7 @@ export class Database extends pulumi.CustomResource {
             inputs["lcCtype"] = args ? args.lcCtype : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
+            inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
         }
         if (!opts) {
             opts = {}
@@ -137,6 +144,11 @@ export interface DatabaseState {
      * Service to link the database to
      */
     readonly serviceName?: pulumi.Input<string>;
+    /**
+     * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It
+     * is recommended to enable this for any production databases containing critical data.
+     */
+    readonly terminationProtection?: pulumi.Input<boolean>;
 }
 
 /**
@@ -163,4 +175,9 @@ export interface DatabaseArgs {
      * Service to link the database to
      */
     readonly serviceName: pulumi.Input<string>;
+    /**
+     * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It
+     * is recommended to enable this for any production databases containing critical data.
+     */
+    readonly terminationProtection?: pulumi.Input<boolean>;
 }

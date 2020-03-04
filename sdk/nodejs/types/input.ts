@@ -134,6 +134,7 @@ export interface GetServiceGrafanaUserConfig {
     alertingErrorOrTimeout?: string;
     alertingNodataOrNullvalues?: string;
     allowEmbedding?: string;
+    authGenericOauth?: inputs.GetServiceGrafanaUserConfigAuthGenericOauth;
     authGithub?: inputs.GetServiceGrafanaUserConfigAuthGithub;
     authGitlab?: inputs.GetServiceGrafanaUserConfigAuthGitlab;
     authGoogle?: inputs.GetServiceGrafanaUserConfigAuthGoogle;
@@ -154,6 +155,19 @@ export interface GetServiceGrafanaUserConfig {
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
     viewersCanEdit?: string;
+}
+
+export interface GetServiceGrafanaUserConfigAuthGenericOauth {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    allowedOrganizations?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    name?: string;
+    scopes?: string[];
+    tokenUrl?: string;
 }
 
 export interface GetServiceGrafanaUserConfigAuthGithub {
@@ -318,6 +332,7 @@ export interface GetServiceKafkaUserConfigKafka {
     logCleanerMaxCompactionLagMs?: number;
     logCleanerMinCleanableRatio?: number;
     logCleanerMinCompactionLagMs?: number;
+    logCleanupPolicy?: string;
     logMessageTimestampDifferenceMaxMs?: number;
     logMessageTimestampType?: string;
     logRetentionBytes?: number;
@@ -384,11 +399,21 @@ export interface GetServiceMysqlUserConfig {
 }
 
 export interface GetServiceMysqlUserConfigMysql {
+    connectTimeout?: number;
     defaultTimeZone?: string;
     groupConcatMaxLen?: number;
+    informationSchemaStatsExpiry?: number;
     innodbFtMinTokenSize?: number;
     innodbFtServerStopwordTable?: string;
+    innodbLockWaitTimeout?: number;
+    innodbOnlineAlterLogMaxSize?: number;
+    innodbRollbackOnTimeout?: string;
+    maxAllowedPacket?: number;
+    netReadTimeout?: number;
+    netWriteTimeout?: number;
     sqlMode?: string;
+    sqlRequirePrimaryKey?: string;
+    waitTimeout?: number;
 }
 
 export interface GetServiceMysqlUserConfigPrivateAccess {
@@ -441,6 +466,7 @@ export interface GetServicePgUserConfigPg {
     autovacuumVacuumCostLimit?: number;
     autovacuumVacuumScaleFactor?: number;
     autovacuumVacuumThreshold?: number;
+    deadlockTimeout?: number;
     idleInTransactionSessionTimeout?: number;
     jit?: string;
     logAutovacuumMinDuration?: number;
@@ -460,6 +486,7 @@ export interface GetServicePgUserConfigPg {
     timezone?: string;
     trackActivityQuerySize?: number;
     trackFunctions?: string;
+    walWriterDelay?: number;
 }
 
 export interface GetServicePgUserConfigPgbouncer {
@@ -636,6 +663,7 @@ export interface ServiceGrafanaUserConfig {
     alertingErrorOrTimeout?: pulumi.Input<string>;
     alertingNodataOrNullvalues?: pulumi.Input<string>;
     allowEmbedding?: pulumi.Input<string>;
+    authGenericOauth?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGenericOauth>;
     authGithub?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGithub>;
     authGitlab?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGitlab>;
     authGoogle?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGoogle>;
@@ -656,6 +684,19 @@ export interface ServiceGrafanaUserConfig {
     userAutoAssignOrg?: pulumi.Input<string>;
     userAutoAssignOrgRole?: pulumi.Input<string>;
     viewersCanEdit?: pulumi.Input<string>;
+}
+
+export interface ServiceGrafanaUserConfigAuthGenericOauth {
+    allowSignUp?: pulumi.Input<string>;
+    allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
+    apiUrl?: pulumi.Input<string>;
+    authUrl?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    tokenUrl?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafanaUserConfigAuthGithub {
@@ -829,6 +870,7 @@ export interface ServiceKafkaUserConfigKafka {
     logCleanerMaxCompactionLagMs?: pulumi.Input<number>;
     logCleanerMinCleanableRatio?: pulumi.Input<number>;
     logCleanerMinCompactionLagMs?: pulumi.Input<number>;
+    logCleanupPolicy?: pulumi.Input<string>;
     logMessageTimestampDifferenceMaxMs?: pulumi.Input<number>;
     logMessageTimestampType?: pulumi.Input<string>;
     logRetentionBytes?: pulumi.Input<number>;
@@ -895,11 +937,21 @@ export interface ServiceMysqlUserConfig {
 }
 
 export interface ServiceMysqlUserConfigMysql {
+    connectTimeout?: pulumi.Input<number>;
     defaultTimeZone?: pulumi.Input<string>;
     groupConcatMaxLen?: pulumi.Input<number>;
+    informationSchemaStatsExpiry?: pulumi.Input<number>;
     innodbFtMinTokenSize?: pulumi.Input<number>;
     innodbFtServerStopwordTable?: pulumi.Input<string>;
+    innodbLockWaitTimeout?: pulumi.Input<number>;
+    innodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
+    innodbRollbackOnTimeout?: pulumi.Input<string>;
+    maxAllowedPacket?: pulumi.Input<number>;
+    netReadTimeout?: pulumi.Input<number>;
+    netWriteTimeout?: pulumi.Input<number>;
     sqlMode?: pulumi.Input<string>;
+    sqlRequirePrimaryKey?: pulumi.Input<string>;
+    waitTimeout?: pulumi.Input<number>;
 }
 
 export interface ServiceMysqlUserConfigPrivateAccess {
@@ -952,6 +1004,7 @@ export interface ServicePgUserConfigPg {
     autovacuumVacuumCostLimit?: pulumi.Input<number>;
     autovacuumVacuumScaleFactor?: pulumi.Input<number>;
     autovacuumVacuumThreshold?: pulumi.Input<number>;
+    deadlockTimeout?: pulumi.Input<number>;
     idleInTransactionSessionTimeout?: pulumi.Input<number>;
     jit?: pulumi.Input<string>;
     logAutovacuumMinDuration?: pulumi.Input<number>;
@@ -971,6 +1024,7 @@ export interface ServicePgUserConfigPg {
     timezone?: pulumi.Input<string>;
     trackActivityQuerySize?: pulumi.Input<number>;
     trackFunctions?: pulumi.Input<string>;
+    walWriterDelay?: pulumi.Input<number>;
 }
 
 export interface ServicePgUserConfigPgbouncer {

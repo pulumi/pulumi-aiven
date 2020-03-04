@@ -561,6 +561,9 @@ namespace Pulumi.Aiven
         [Input("allowEmbedding")]
         public Input<string>? AllowEmbedding { get; set; }
 
+        [Input("authGenericOauth")]
+        public Input<GetServiceGrafanaUserConfigAuthGenericOauthArgs>? AuthGenericOauth { get; set; }
+
         [Input("authGithub")]
         public Input<GetServiceGrafanaUserConfigAuthGithubArgs>? AuthGithub { get; set; }
 
@@ -627,6 +630,58 @@ namespace Pulumi.Aiven
         public Input<string>? ViewersCanEdit { get; set; }
 
         public GetServiceGrafanaUserConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceGrafanaUserConfigAuthGenericOauthArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowSignUp")]
+        public Input<string>? AllowSignUp { get; set; }
+
+        [Input("allowedDomains")]
+        private InputList<string>? _allowedDomains;
+        public InputList<string> AllowedDomains
+        {
+            get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
+            set => _allowedDomains = value;
+        }
+
+        [Input("allowedOrganizations")]
+        private InputList<string>? _allowedOrganizations;
+        public InputList<string> AllowedOrganizations
+        {
+            get => _allowedOrganizations ?? (_allowedOrganizations = new InputList<string>());
+            set => _allowedOrganizations = value;
+        }
+
+        [Input("apiUrl")]
+        public Input<string>? ApiUrl { get; set; }
+
+        [Input("authUrl")]
+        public Input<string>? AuthUrl { get; set; }
+
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
+
+        [Input("tokenUrl")]
+        public Input<string>? TokenUrl { get; set; }
+
+        public GetServiceGrafanaUserConfigAuthGenericOauthArgs()
         {
         }
     }
@@ -1016,6 +1071,9 @@ namespace Pulumi.Aiven
         [Input("logCleanerMinCompactionLagMs")]
         public Input<int>? LogCleanerMinCompactionLagMs { get; set; }
 
+        [Input("logCleanupPolicy")]
+        public Input<string>? LogCleanupPolicy { get; set; }
+
         [Input("logMessageTimestampDifferenceMaxMs")]
         public Input<int>? LogMessageTimestampDifferenceMaxMs { get; set; }
 
@@ -1200,11 +1258,17 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceMysqlUserConfigMysqlArgs : Pulumi.ResourceArgs
     {
+        [Input("connectTimeout")]
+        public Input<int>? ConnectTimeout { get; set; }
+
         [Input("defaultTimeZone")]
         public Input<string>? DefaultTimeZone { get; set; }
 
         [Input("groupConcatMaxLen")]
         public Input<int>? GroupConcatMaxLen { get; set; }
+
+        [Input("informationSchemaStatsExpiry")]
+        public Input<int>? InformationSchemaStatsExpiry { get; set; }
 
         [Input("innodbFtMinTokenSize")]
         public Input<int>? InnodbFtMinTokenSize { get; set; }
@@ -1212,8 +1276,32 @@ namespace Pulumi.Aiven
         [Input("innodbFtServerStopwordTable")]
         public Input<string>? InnodbFtServerStopwordTable { get; set; }
 
+        [Input("innodbLockWaitTimeout")]
+        public Input<int>? InnodbLockWaitTimeout { get; set; }
+
+        [Input("innodbOnlineAlterLogMaxSize")]
+        public Input<int>? InnodbOnlineAlterLogMaxSize { get; set; }
+
+        [Input("innodbRollbackOnTimeout")]
+        public Input<string>? InnodbRollbackOnTimeout { get; set; }
+
+        [Input("maxAllowedPacket")]
+        public Input<int>? MaxAllowedPacket { get; set; }
+
+        [Input("netReadTimeout")]
+        public Input<int>? NetReadTimeout { get; set; }
+
+        [Input("netWriteTimeout")]
+        public Input<int>? NetWriteTimeout { get; set; }
+
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
+
+        [Input("sqlRequirePrimaryKey")]
+        public Input<string>? SqlRequirePrimaryKey { get; set; }
+
+        [Input("waitTimeout")]
+        public Input<int>? WaitTimeout { get; set; }
 
         public GetServiceMysqlUserConfigMysqlArgs()
         {
@@ -1366,6 +1454,9 @@ namespace Pulumi.Aiven
         [Input("autovacuumVacuumThreshold")]
         public Input<int>? AutovacuumVacuumThreshold { get; set; }
 
+        [Input("deadlockTimeout")]
+        public Input<int>? DeadlockTimeout { get; set; }
+
         [Input("idleInTransactionSessionTimeout")]
         public Input<int>? IdleInTransactionSessionTimeout { get; set; }
 
@@ -1422,6 +1513,9 @@ namespace Pulumi.Aiven
 
         [Input("trackFunctions")]
         public Input<string>? TrackFunctions { get; set; }
+
+        [Input("walWriterDelay")]
+        public Input<int>? WalWriterDelay { get; set; }
 
         public GetServicePgUserConfigPgArgs()
         {
@@ -1907,6 +2001,46 @@ namespace Pulumi.Aiven
     }
 
     [OutputType]
+    public sealed class GetServiceGrafanaUserConfigAuthGenericOauthResult
+    {
+        public readonly string? AllowSignUp;
+        public readonly ImmutableArray<string> AllowedDomains;
+        public readonly ImmutableArray<string> AllowedOrganizations;
+        public readonly string? ApiUrl;
+        public readonly string? AuthUrl;
+        public readonly string? ClientId;
+        public readonly string? ClientSecret;
+        public readonly string? Name;
+        public readonly ImmutableArray<string> Scopes;
+        public readonly string? TokenUrl;
+
+        [OutputConstructor]
+        private GetServiceGrafanaUserConfigAuthGenericOauthResult(
+            string? allowSignUp,
+            ImmutableArray<string> allowedDomains,
+            ImmutableArray<string> allowedOrganizations,
+            string? apiUrl,
+            string? authUrl,
+            string? clientId,
+            string? clientSecret,
+            string? name,
+            ImmutableArray<string> scopes,
+            string? tokenUrl)
+        {
+            AllowSignUp = allowSignUp;
+            AllowedDomains = allowedDomains;
+            AllowedOrganizations = allowedOrganizations;
+            ApiUrl = apiUrl;
+            AuthUrl = authUrl;
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            Name = name;
+            Scopes = scopes;
+            TokenUrl = tokenUrl;
+        }
+    }
+
+    [OutputType]
     public sealed class GetServiceGrafanaUserConfigAuthGithubResult
     {
         public readonly string? AllowSignUp;
@@ -2037,6 +2171,7 @@ namespace Pulumi.Aiven
         public readonly string? AlertingErrorOrTimeout;
         public readonly string? AlertingNodataOrNullvalues;
         public readonly string? AllowEmbedding;
+        public readonly GetServiceGrafanaUserConfigAuthGenericOauthResult? AuthGenericOauth;
         public readonly GetServiceGrafanaUserConfigAuthGithubResult? AuthGithub;
         public readonly GetServiceGrafanaUserConfigAuthGitlabResult? AuthGitlab;
         public readonly GetServiceGrafanaUserConfigAuthGoogleResult? AuthGoogle;
@@ -2064,6 +2199,7 @@ namespace Pulumi.Aiven
             string? alertingErrorOrTimeout,
             string? alertingNodataOrNullvalues,
             string? allowEmbedding,
+            GetServiceGrafanaUserConfigAuthGenericOauthResult? authGenericOauth,
             GetServiceGrafanaUserConfigAuthGithubResult? authGithub,
             GetServiceGrafanaUserConfigAuthGitlabResult? authGitlab,
             GetServiceGrafanaUserConfigAuthGoogleResult? authGoogle,
@@ -2089,6 +2225,7 @@ namespace Pulumi.Aiven
             AlertingErrorOrTimeout = alertingErrorOrTimeout;
             AlertingNodataOrNullvalues = alertingNodataOrNullvalues;
             AllowEmbedding = allowEmbedding;
+            AuthGenericOauth = authGenericOauth;
             AuthGithub = authGithub;
             AuthGitlab = authGitlab;
             AuthGoogle = authGoogle;
@@ -2386,6 +2523,7 @@ namespace Pulumi.Aiven
         public readonly int? LogCleanerMaxCompactionLagMs;
         public readonly double? LogCleanerMinCleanableRatio;
         public readonly int? LogCleanerMinCompactionLagMs;
+        public readonly string? LogCleanupPolicy;
         public readonly int? LogMessageTimestampDifferenceMaxMs;
         public readonly string? LogMessageTimestampType;
         public readonly int? LogRetentionBytes;
@@ -2411,6 +2549,7 @@ namespace Pulumi.Aiven
             int? logCleanerMaxCompactionLagMs,
             double? logCleanerMinCleanableRatio,
             int? logCleanerMinCompactionLagMs,
+            string? logCleanupPolicy,
             int? logMessageTimestampDifferenceMaxMs,
             string? logMessageTimestampType,
             int? logRetentionBytes,
@@ -2434,6 +2573,7 @@ namespace Pulumi.Aiven
             LogCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             LogCleanerMinCleanableRatio = logCleanerMinCleanableRatio;
             LogCleanerMinCompactionLagMs = logCleanerMinCompactionLagMs;
+            LogCleanupPolicy = logCleanupPolicy;
             LogMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             LogMessageTimestampType = logMessageTimestampType;
             LogRetentionBytes = logRetentionBytes;
@@ -2545,25 +2685,55 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceMysqlUserConfigMysqlResult
     {
+        public readonly int? ConnectTimeout;
         public readonly string? DefaultTimeZone;
         public readonly int? GroupConcatMaxLen;
+        public readonly int? InformationSchemaStatsExpiry;
         public readonly int? InnodbFtMinTokenSize;
         public readonly string? InnodbFtServerStopwordTable;
+        public readonly int? InnodbLockWaitTimeout;
+        public readonly int? InnodbOnlineAlterLogMaxSize;
+        public readonly string? InnodbRollbackOnTimeout;
+        public readonly int? MaxAllowedPacket;
+        public readonly int? NetReadTimeout;
+        public readonly int? NetWriteTimeout;
         public readonly string? SqlMode;
+        public readonly string? SqlRequirePrimaryKey;
+        public readonly int? WaitTimeout;
 
         [OutputConstructor]
         private GetServiceMysqlUserConfigMysqlResult(
+            int? connectTimeout,
             string? defaultTimeZone,
             int? groupConcatMaxLen,
+            int? informationSchemaStatsExpiry,
             int? innodbFtMinTokenSize,
             string? innodbFtServerStopwordTable,
-            string? sqlMode)
+            int? innodbLockWaitTimeout,
+            int? innodbOnlineAlterLogMaxSize,
+            string? innodbRollbackOnTimeout,
+            int? maxAllowedPacket,
+            int? netReadTimeout,
+            int? netWriteTimeout,
+            string? sqlMode,
+            string? sqlRequirePrimaryKey,
+            int? waitTimeout)
         {
+            ConnectTimeout = connectTimeout;
             DefaultTimeZone = defaultTimeZone;
             GroupConcatMaxLen = groupConcatMaxLen;
+            InformationSchemaStatsExpiry = informationSchemaStatsExpiry;
             InnodbFtMinTokenSize = innodbFtMinTokenSize;
             InnodbFtServerStopwordTable = innodbFtServerStopwordTable;
+            InnodbLockWaitTimeout = innodbLockWaitTimeout;
+            InnodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
+            InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
+            MaxAllowedPacket = maxAllowedPacket;
+            NetReadTimeout = netReadTimeout;
+            NetWriteTimeout = netWriteTimeout;
             SqlMode = sqlMode;
+            SqlRequirePrimaryKey = sqlRequirePrimaryKey;
+            WaitTimeout = waitTimeout;
         }
     }
 
@@ -2687,6 +2857,7 @@ namespace Pulumi.Aiven
         public readonly int? AutovacuumVacuumCostLimit;
         public readonly double? AutovacuumVacuumScaleFactor;
         public readonly int? AutovacuumVacuumThreshold;
+        public readonly int? DeadlockTimeout;
         public readonly int? IdleInTransactionSessionTimeout;
         public readonly string? Jit;
         public readonly int? LogAutovacuumMinDuration;
@@ -2706,6 +2877,7 @@ namespace Pulumi.Aiven
         public readonly string? Timezone;
         public readonly int? TrackActivityQuerySize;
         public readonly string? TrackFunctions;
+        public readonly int? WalWriterDelay;
 
         [OutputConstructor]
         private GetServicePgUserConfigPgResult(
@@ -2717,6 +2889,7 @@ namespace Pulumi.Aiven
             int? autovacuumVacuumCostLimit,
             double? autovacuumVacuumScaleFactor,
             int? autovacuumVacuumThreshold,
+            int? deadlockTimeout,
             int? idleInTransactionSessionTimeout,
             string? jit,
             int? logAutovacuumMinDuration,
@@ -2735,7 +2908,8 @@ namespace Pulumi.Aiven
             int? tempFileLimit,
             string? timezone,
             int? trackActivityQuerySize,
-            string? trackFunctions)
+            string? trackFunctions,
+            int? walWriterDelay)
         {
             AutovacuumAnalyzeScaleFactor = autovacuumAnalyzeScaleFactor;
             AutovacuumAnalyzeThreshold = autovacuumAnalyzeThreshold;
@@ -2745,6 +2919,7 @@ namespace Pulumi.Aiven
             AutovacuumVacuumCostLimit = autovacuumVacuumCostLimit;
             AutovacuumVacuumScaleFactor = autovacuumVacuumScaleFactor;
             AutovacuumVacuumThreshold = autovacuumVacuumThreshold;
+            DeadlockTimeout = deadlockTimeout;
             IdleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
             Jit = jit;
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
@@ -2764,6 +2939,7 @@ namespace Pulumi.Aiven
             Timezone = timezone;
             TrackActivityQuerySize = trackActivityQuerySize;
             TrackFunctions = trackFunctions;
+            WalWriterDelay = walWriterDelay;
         }
     }
 

@@ -13,7 +13,7 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, topic_name=None, id=None):
+    def __init__(__self__, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, id=None):
         if cleanup_policy and not isinstance(cleanup_policy, str):
             raise TypeError("Expected argument 'cleanup_policy' to be a str")
         __self__.cleanup_policy = cleanup_policy
@@ -38,6 +38,9 @@ class GetKafkaTopicResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         __self__.service_name = service_name
+        if termination_protection and not isinstance(termination_protection, bool):
+            raise TypeError("Expected argument 'termination_protection' to be a bool")
+        __self__.termination_protection = termination_protection
         if topic_name and not isinstance(topic_name, str):
             raise TypeError("Expected argument 'topic_name' to be a str")
         __self__.topic_name = topic_name
@@ -61,10 +64,11 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             retention_bytes=self.retention_bytes,
             retention_hours=self.retention_hours,
             service_name=self.service_name,
+            termination_protection=self.termination_protection,
             topic_name=self.topic_name,
             id=self.id)
 
-def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions=None,project=None,replication=None,retention_bytes=None,retention_hours=None,service_name=None,topic_name=None,opts=None):
+def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions=None,project=None,replication=None,retention_bytes=None,retention_hours=None,service_name=None,termination_protection=None,topic_name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
@@ -81,6 +85,7 @@ def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions
     __args__['retentionBytes'] = retention_bytes
     __args__['retentionHours'] = retention_hours
     __args__['serviceName'] = service_name
+    __args__['terminationProtection'] = termination_protection
     __args__['topicName'] = topic_name
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -97,5 +102,6 @@ def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions
         retention_bytes=__ret__.get('retentionBytes'),
         retention_hours=__ret__.get('retentionHours'),
         service_name=__ret__.get('serviceName'),
+        termination_protection=__ret__.get('terminationProtection'),
         topic_name=__ret__.get('topicName'),
         id=__ret__.get('id'))

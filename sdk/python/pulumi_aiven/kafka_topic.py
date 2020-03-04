@@ -18,8 +18,9 @@ class KafkaTopic(pulumi.CustomResource):
     retention_bytes: pulumi.Output[float]
     retention_hours: pulumi.Output[float]
     service_name: pulumi.Output[str]
+    termination_protection: pulumi.Output[bool]
     topic_name: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a KafkaTopic resource with the given unique name, props, and options.
         
@@ -61,6 +62,7 @@ class KafkaTopic(pulumi.CustomResource):
             if service_name is None:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
+            __props__['termination_protection'] = termination_protection
             if topic_name is None:
                 raise TypeError("Missing required property 'topic_name'")
             __props__['topic_name'] = topic_name
@@ -71,7 +73,7 @@ class KafkaTopic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, topic_name=None):
+    def get(resource_name, id, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
         """
         Get an existing KafkaTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -93,6 +95,7 @@ class KafkaTopic(pulumi.CustomResource):
         __props__["retention_bytes"] = retention_bytes
         __props__["retention_hours"] = retention_hours
         __props__["service_name"] = service_name
+        __props__["termination_protection"] = termination_protection
         __props__["topic_name"] = topic_name
         return KafkaTopic(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

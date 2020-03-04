@@ -40,6 +40,7 @@ func NewKafkaTopic(ctx *pulumi.Context,
 		inputs["retentionBytes"] = nil
 		inputs["retentionHours"] = nil
 		inputs["serviceName"] = nil
+		inputs["terminationProtection"] = nil
 		inputs["topicName"] = nil
 	} else {
 		inputs["cleanupPolicy"] = args.CleanupPolicy
@@ -50,6 +51,7 @@ func NewKafkaTopic(ctx *pulumi.Context,
 		inputs["retentionBytes"] = args.RetentionBytes
 		inputs["retentionHours"] = args.RetentionHours
 		inputs["serviceName"] = args.ServiceName
+		inputs["terminationProtection"] = args.TerminationProtection
 		inputs["topicName"] = args.TopicName
 	}
 	s, err := ctx.RegisterResource("aiven:index/kafkaTopic:KafkaTopic", name, true, inputs, opts...)
@@ -73,6 +75,7 @@ func GetKafkaTopic(ctx *pulumi.Context,
 		inputs["retentionBytes"] = state.RetentionBytes
 		inputs["retentionHours"] = state.RetentionHours
 		inputs["serviceName"] = state.ServiceName
+		inputs["terminationProtection"] = state.TerminationProtection
 		inputs["topicName"] = state.TopicName
 	}
 	s, err := ctx.ReadResource("aiven:index/kafkaTopic:KafkaTopic", name, id, inputs, opts...)
@@ -132,6 +135,12 @@ func (r *KafkaTopic) ServiceName() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
+// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+// enable this for any production Kafka topic containing critical data.
+func (r *KafkaTopic) TerminationProtection() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["terminationProtection"])
+}
+
 // Topic name
 func (r *KafkaTopic) TopicName() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["topicName"])
@@ -155,6 +164,9 @@ type KafkaTopicState struct {
 	RetentionHours interface{}
 	// Service to link the kafka topic to
 	ServiceName interface{}
+	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended
+	// to enable this for any production Kafka topic containing critical data.
+	TerminationProtection interface{}
 	// Topic name
 	TopicName interface{}
 }
@@ -177,6 +189,9 @@ type KafkaTopicArgs struct {
 	RetentionHours interface{}
 	// Service to link the kafka topic to
 	ServiceName interface{}
+	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended
+	// to enable this for any production Kafka topic containing critical data.
+	TerminationProtection interface{}
 	// Topic name
 	TopicName interface{}
 }

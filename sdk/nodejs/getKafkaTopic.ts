@@ -23,6 +23,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
         "retentionBytes": args.retentionBytes,
         "retentionHours": args.retentionHours,
         "serviceName": args.serviceName,
+        "terminationProtection": args.terminationProtection,
         "topicName": args.topicName,
     }, opts);
 
@@ -41,6 +42,7 @@ export interface GetKafkaTopicArgs {
     readonly retentionBytes?: number;
     readonly retentionHours?: number;
     readonly serviceName: string;
+    readonly terminationProtection?: boolean;
     readonly topicName: string;
 }
 
@@ -56,6 +58,7 @@ export interface GetKafkaTopicResult {
     readonly retentionBytes?: number;
     readonly retentionHours?: number;
     readonly serviceName: string;
+    readonly terminationProtection?: boolean;
     readonly topicName: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

@@ -20,6 +20,7 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
         "lcCtype": args.lcCtype,
         "project": args.project,
         "serviceName": args.serviceName,
+        "terminationProtection": args.terminationProtection,
     }, opts);
 
     return pulumi.utils.liftProperties(promise, opts);
@@ -34,6 +35,7 @@ export interface GetDatabaseArgs {
     readonly lcCtype?: string;
     readonly project: string;
     readonly serviceName: string;
+    readonly terminationProtection?: boolean;
 }
 
 /**
@@ -45,6 +47,7 @@ export interface GetDatabaseResult {
     readonly lcCtype?: string;
     readonly project: string;
     readonly serviceName: string;
+    readonly terminationProtection?: boolean;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

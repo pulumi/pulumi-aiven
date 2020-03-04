@@ -18,6 +18,7 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *GetKafkaTopicArgs) (*GetKafkaTo
 		inputs["retentionBytes"] = args.RetentionBytes
 		inputs["retentionHours"] = args.RetentionHours
 		inputs["serviceName"] = args.ServiceName
+		inputs["terminationProtection"] = args.TerminationProtection
 		inputs["topicName"] = args.TopicName
 	}
 	outputs, err := ctx.Invoke("aiven:index/getKafkaTopic:getKafkaTopic", inputs)
@@ -33,6 +34,7 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *GetKafkaTopicArgs) (*GetKafkaTo
 		RetentionBytes: outputs["retentionBytes"],
 		RetentionHours: outputs["retentionHours"],
 		ServiceName: outputs["serviceName"],
+		TerminationProtection: outputs["terminationProtection"],
 		TopicName: outputs["topicName"],
 		Id: outputs["id"],
 	}, nil
@@ -48,6 +50,7 @@ type GetKafkaTopicArgs struct {
 	RetentionBytes interface{}
 	RetentionHours interface{}
 	ServiceName interface{}
+	TerminationProtection interface{}
 	TopicName interface{}
 }
 
@@ -61,6 +64,7 @@ type GetKafkaTopicResult struct {
 	RetentionBytes interface{}
 	RetentionHours interface{}
 	ServiceName interface{}
+	TerminationProtection interface{}
 	TopicName interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
