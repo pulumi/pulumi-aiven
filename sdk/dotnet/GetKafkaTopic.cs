@@ -39,6 +39,9 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
 
@@ -58,6 +61,7 @@ namespace Pulumi.Aiven
         public readonly int? RetentionBytes;
         public readonly int? RetentionHours;
         public readonly string ServiceName;
+        public readonly bool? TerminationProtection;
         public readonly string TopicName;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -74,6 +78,7 @@ namespace Pulumi.Aiven
             int? retentionBytes,
             int? retentionHours,
             string serviceName,
+            bool? terminationProtection,
             string topicName,
             string id)
         {
@@ -85,6 +90,7 @@ namespace Pulumi.Aiven
             RetentionBytes = retentionBytes;
             RetentionHours = retentionHours;
             ServiceName = serviceName;
+            TerminationProtection = terminationProtection;
             TopicName = topicName;
             Id = id;
         }

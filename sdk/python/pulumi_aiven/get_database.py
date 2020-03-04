@@ -13,7 +13,7 @@ class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, id=None):
+    def __init__(__self__, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, id=None):
         if database_name and not isinstance(database_name, str):
             raise TypeError("Expected argument 'database_name' to be a str")
         __self__.database_name = database_name
@@ -29,6 +29,9 @@ class GetDatabaseResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         __self__.service_name = service_name
+        if termination_protection and not isinstance(termination_protection, bool):
+            raise TypeError("Expected argument 'termination_protection' to be a bool")
+        __self__.termination_protection = termination_protection
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -46,9 +49,10 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             lc_ctype=self.lc_ctype,
             project=self.project,
             service_name=self.service_name,
+            termination_protection=self.termination_protection,
             id=self.id)
 
-def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,service_name=None,opts=None):
+def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,service_name=None,termination_protection=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
@@ -62,6 +66,7 @@ def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,s
     __args__['lcCtype'] = lc_ctype
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['terminationProtection'] = termination_protection
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -74,4 +79,5 @@ def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,s
         lc_ctype=__ret__.get('lcCtype'),
         project=__ret__.get('project'),
         service_name=__ret__.get('serviceName'),
+        termination_protection=__ret__.get('terminationProtection'),
         id=__ret__.get('id'))

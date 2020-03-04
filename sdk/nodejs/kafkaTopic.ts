@@ -88,6 +88,11 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
+     * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is
+     * recommended to enable this for any production Kafka topic containing critical data.
+     */
+    public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * Topic name
      */
     public readonly topicName!: pulumi.Output<string>;
@@ -112,6 +117,7 @@ export class KafkaTopic extends pulumi.CustomResource {
             inputs["retentionBytes"] = state ? state.retentionBytes : undefined;
             inputs["retentionHours"] = state ? state.retentionHours : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
+            inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as KafkaTopicArgs | undefined;
@@ -138,6 +144,7 @@ export class KafkaTopic extends pulumi.CustomResource {
             inputs["retentionBytes"] = args ? args.retentionBytes : undefined;
             inputs["retentionHours"] = args ? args.retentionHours : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
+            inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
             inputs["topicName"] = args ? args.topicName : undefined;
         }
         if (!opts) {
@@ -188,6 +195,11 @@ export interface KafkaTopicState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
+     * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is
+     * recommended to enable this for any production Kafka topic containing critical data.
+     */
+    readonly terminationProtection?: pulumi.Input<boolean>;
+    /**
      * Topic name
      */
     readonly topicName?: pulumi.Input<string>;
@@ -229,6 +241,11 @@ export interface KafkaTopicArgs {
      * Service to link the kafka topic to
      */
     readonly serviceName: pulumi.Input<string>;
+    /**
+     * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is
+     * recommended to enable this for any production Kafka topic containing critical data.
+     */
+    readonly terminationProtection?: pulumi.Input<boolean>;
     /**
      * Topic name
      */

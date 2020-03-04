@@ -15,7 +15,8 @@ class Database(pulumi.CustomResource):
     lc_ctype: pulumi.Output[str]
     project: pulumi.Output[str]
     service_name: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, __props__=None, __name__=None, __opts__=None):
+    termination_protection: pulumi.Output[bool]
+    def __init__(__self__, resource_name, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Database resource with the given unique name, props, and options.
         
@@ -52,6 +53,7 @@ class Database(pulumi.CustomResource):
             if service_name is None:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
+            __props__['termination_protection'] = termination_protection
         super(Database, __self__).__init__(
             'aiven:index/database:Database',
             resource_name,
@@ -59,7 +61,7 @@ class Database(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None):
+    def get(resource_name, id, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None):
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -78,6 +80,7 @@ class Database(pulumi.CustomResource):
         __props__["lc_ctype"] = lc_ctype
         __props__["project"] = project
         __props__["service_name"] = service_name
+        __props__["termination_protection"] = termination_protection
         return Database(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -15,6 +15,7 @@ func LookupDatabase(ctx *pulumi.Context, args *GetDatabaseArgs) (*GetDatabaseRes
 		inputs["lcCtype"] = args.LcCtype
 		inputs["project"] = args.Project
 		inputs["serviceName"] = args.ServiceName
+		inputs["terminationProtection"] = args.TerminationProtection
 	}
 	outputs, err := ctx.Invoke("aiven:index/getDatabase:getDatabase", inputs)
 	if err != nil {
@@ -26,6 +27,7 @@ func LookupDatabase(ctx *pulumi.Context, args *GetDatabaseArgs) (*GetDatabaseRes
 		LcCtype: outputs["lcCtype"],
 		Project: outputs["project"],
 		ServiceName: outputs["serviceName"],
+		TerminationProtection: outputs["terminationProtection"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -37,6 +39,7 @@ type GetDatabaseArgs struct {
 	LcCtype interface{}
 	Project interface{}
 	ServiceName interface{}
+	TerminationProtection interface{}
 }
 
 // A collection of values returned by getDatabase.
@@ -46,6 +49,7 @@ type GetDatabaseResult struct {
 	LcCtype interface{}
 	Project interface{}
 	ServiceName interface{}
+	TerminationProtection interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }
