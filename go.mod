@@ -4,7 +4,7 @@ go 1.13
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200304134829-816d98b51683
+	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200331122118-68b75e94f1b3
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
 
