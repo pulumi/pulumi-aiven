@@ -11,14 +11,25 @@ from . import utilities, tables
 
 class KafkaSchemaConfiguration(pulumi.CustomResource):
     compatibility_level: pulumi.Output[str]
+    """
+    Kafka Schemas compatibility level
+    """
     project: pulumi.Output[str]
+    """
+    Project to link the Kafka Schemas Configuration to
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the Kafka Schemas Configuration to
+    """
     def __init__(__self__, resource_name, opts=None, compatibility_level=None, project=None, service_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a KafkaSchemaConfiguration resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
+        :param pulumi.Input[str] project: Project to link the Kafka Schemas Configuration to
+        :param pulumi.Input[str] service_name: Service to link the Kafka Schemas Configuration to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -57,14 +68,18 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         """
         Get an existing KafkaSchemaConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
+        :param pulumi.Input[str] project: Project to link the Kafka Schemas Configuration to
+        :param pulumi.Input[str] service_name: Service to link the Kafka Schemas Configuration to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["compatibility_level"] = compatibility_level
         __props__["project"] = project
         __props__["service_name"] = service_name

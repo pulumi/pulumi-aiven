@@ -4,56 +4,38 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupServiceUser(ctx *pulumi.Context, args *GetServiceUserArgs) (*GetServiceUserResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["accessCert"] = args.AccessCert
-		inputs["accessKey"] = args.AccessKey
-		inputs["password"] = args.Password
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["type"] = args.Type
-		inputs["username"] = args.Username
-	}
-	outputs, err := ctx.Invoke("aiven:index/getServiceUser:getServiceUser", inputs)
+func LookupServiceUser(ctx *pulumi.Context, args *LookupServiceUserArgs, opts ...pulumi.InvokeOption) (*LookupServiceUserResult, error) {
+	var rv LookupServiceUserResult
+	err := ctx.Invoke("aiven:index/getServiceUser:getServiceUser", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetServiceUserResult{
-		AccessCert: outputs["accessCert"],
-		AccessKey: outputs["accessKey"],
-		Password: outputs["password"],
-		Project: outputs["project"],
-		ServiceName: outputs["serviceName"],
-		Type: outputs["type"],
-		Username: outputs["username"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getServiceUser.
-type GetServiceUserArgs struct {
-	AccessCert interface{}
-	AccessKey interface{}
-	Password interface{}
-	Project interface{}
-	ServiceName interface{}
-	Type interface{}
-	Username interface{}
+type LookupServiceUserArgs struct {
+	AccessCert  *string `pulumi:"accessCert"`
+	AccessKey   *string `pulumi:"accessKey"`
+	Password    *string `pulumi:"password"`
+	Project     string  `pulumi:"project"`
+	ServiceName string  `pulumi:"serviceName"`
+	Type        *string `pulumi:"type"`
+	Username    string  `pulumi:"username"`
 }
 
 // A collection of values returned by getServiceUser.
-type GetServiceUserResult struct {
-	AccessCert interface{}
-	AccessKey interface{}
-	Password interface{}
-	Project interface{}
-	ServiceName interface{}
-	Type interface{}
-	Username interface{}
+type LookupServiceUserResult struct {
+	AccessCert string `pulumi:"accessCert"`
+	AccessKey  string `pulumi:"accessKey"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string `pulumi:"id"`
+	Password    string `pulumi:"password"`
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
+	Type        string `pulumi:"type"`
+	Username    string `pulumi:"username"`
 }

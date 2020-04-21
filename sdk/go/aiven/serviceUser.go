@@ -4,17 +4,34 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type ServiceUser struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Access certificate for the user if applicable for the service in question
+	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
+	// Access certificate key for the user if applicable for the service in question
+	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
+	// Password of the user
+	Password pulumi.StringOutput `pulumi:"password"`
+	// Project to link the user to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Service to link the user to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Type of the user account
+	Type pulumi.StringOutput `pulumi:"type"`
+	// Name of the user account
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewServiceUser registers a new resource with the given unique name, arguments, and options.
 func NewServiceUser(ctx *pulumi.Context,
-	name string, args *ServiceUserArgs, opts ...pulumi.ResourceOpt) (*ServiceUser, error) {
+	name string, args *ServiceUserArgs, opts ...pulumi.ResourceOption) (*ServiceUser, error) {
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
@@ -24,117 +41,87 @@ func NewServiceUser(ctx *pulumi.Context,
 	if args == nil || args.Username == nil {
 		return nil, errors.New("missing required argument 'Username'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["project"] = nil
-		inputs["serviceName"] = nil
-		inputs["username"] = nil
-	} else {
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["username"] = args.Username
+		args = &ServiceUserArgs{}
 	}
-	inputs["accessCert"] = nil
-	inputs["accessKey"] = nil
-	inputs["password"] = nil
-	inputs["type"] = nil
-	s, err := ctx.RegisterResource("aiven:index/serviceUser:ServiceUser", name, true, inputs, opts...)
+	var resource ServiceUser
+	err := ctx.RegisterResource("aiven:index/serviceUser:ServiceUser", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ServiceUser{s: s}, nil
+	return &resource, nil
 }
 
 // GetServiceUser gets an existing ServiceUser resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetServiceUser(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ServiceUserState, opts ...pulumi.ResourceOpt) (*ServiceUser, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["accessCert"] = state.AccessCert
-		inputs["accessKey"] = state.AccessKey
-		inputs["password"] = state.Password
-		inputs["project"] = state.Project
-		inputs["serviceName"] = state.ServiceName
-		inputs["type"] = state.Type
-		inputs["username"] = state.Username
-	}
-	s, err := ctx.ReadResource("aiven:index/serviceUser:ServiceUser", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ServiceUserState, opts ...pulumi.ResourceOption) (*ServiceUser, error) {
+	var resource ServiceUser
+	err := ctx.ReadResource("aiven:index/serviceUser:ServiceUser", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ServiceUser{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceUser) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceUser) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Access certificate for the user if applicable for the service in question
-func (r *ServiceUser) AccessCert() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["accessCert"])
-}
-
-// Access certificate key for the user if applicable for the service in question
-func (r *ServiceUser) AccessKey() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["accessKey"])
-}
-
-// Password of the user
-func (r *ServiceUser) Password() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["password"])
-}
-
-// Project to link the user to
-func (r *ServiceUser) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Service to link the user to
-func (r *ServiceUser) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// Type of the user account
-func (r *ServiceUser) Type() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["type"])
-}
-
-// Name of the user account
-func (r *ServiceUser) Username() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["username"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering ServiceUser resources.
+type serviceUserState struct {
+	// Access certificate for the user if applicable for the service in question
+	AccessCert *string `pulumi:"accessCert"`
+	// Access certificate key for the user if applicable for the service in question
+	AccessKey *string `pulumi:"accessKey"`
+	// Password of the user
+	Password *string `pulumi:"password"`
+	// Project to link the user to
+	Project *string `pulumi:"project"`
+	// Service to link the user to
+	ServiceName *string `pulumi:"serviceName"`
+	// Type of the user account
+	Type *string `pulumi:"type"`
+	// Name of the user account
+	Username *string `pulumi:"username"`
+}
+
 type ServiceUserState struct {
 	// Access certificate for the user if applicable for the service in question
-	AccessCert interface{}
+	AccessCert pulumi.StringPtrInput
 	// Access certificate key for the user if applicable for the service in question
-	AccessKey interface{}
+	AccessKey pulumi.StringPtrInput
 	// Password of the user
-	Password interface{}
+	Password pulumi.StringPtrInput
 	// Project to link the user to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Service to link the user to
-	ServiceName interface{}
+	ServiceName pulumi.StringPtrInput
 	// Type of the user account
-	Type interface{}
+	Type pulumi.StringPtrInput
 	// Name of the user account
-	Username interface{}
+	Username pulumi.StringPtrInput
+}
+
+func (ServiceUserState) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceUserState)(nil)).Elem()
+}
+
+type serviceUserArgs struct {
+	// Project to link the user to
+	Project string `pulumi:"project"`
+	// Service to link the user to
+	ServiceName string `pulumi:"serviceName"`
+	// Name of the user account
+	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ServiceUser resource.
 type ServiceUserArgs struct {
 	// Project to link the user to
-	Project interface{}
+	Project pulumi.StringInput
 	// Service to link the user to
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
 	// Name of the user account
-	Username interface{}
+	Username pulumi.StringInput
+}
+
+func (ServiceUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceUserArgs)(nil)).Elem()
 }

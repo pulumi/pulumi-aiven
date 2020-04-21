@@ -4,52 +4,36 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupAccountTeamMember(ctx *pulumi.Context, args *GetAccountTeamMemberArgs) (*GetAccountTeamMemberResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["accepted"] = args.Accepted
-		inputs["accountId"] = args.AccountId
-		inputs["createTime"] = args.CreateTime
-		inputs["invitedByUserEmail"] = args.InvitedByUserEmail
-		inputs["teamId"] = args.TeamId
-		inputs["userEmail"] = args.UserEmail
-	}
-	outputs, err := ctx.Invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", inputs)
+func LookupAccountTeamMember(ctx *pulumi.Context, args *LookupAccountTeamMemberArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamMemberResult, error) {
+	var rv LookupAccountTeamMemberResult
+	err := ctx.Invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetAccountTeamMemberResult{
-		Accepted: outputs["accepted"],
-		AccountId: outputs["accountId"],
-		CreateTime: outputs["createTime"],
-		InvitedByUserEmail: outputs["invitedByUserEmail"],
-		TeamId: outputs["teamId"],
-		UserEmail: outputs["userEmail"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getAccountTeamMember.
-type GetAccountTeamMemberArgs struct {
-	Accepted interface{}
-	AccountId interface{}
-	CreateTime interface{}
-	InvitedByUserEmail interface{}
-	TeamId interface{}
-	UserEmail interface{}
+type LookupAccountTeamMemberArgs struct {
+	Accepted           *bool   `pulumi:"accepted"`
+	AccountId          string  `pulumi:"accountId"`
+	CreateTime         *string `pulumi:"createTime"`
+	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
+	TeamId             string  `pulumi:"teamId"`
+	UserEmail          string  `pulumi:"userEmail"`
 }
 
 // A collection of values returned by getAccountTeamMember.
-type GetAccountTeamMemberResult struct {
-	Accepted interface{}
-	AccountId interface{}
-	CreateTime interface{}
-	InvitedByUserEmail interface{}
-	TeamId interface{}
-	UserEmail interface{}
+type LookupAccountTeamMemberResult struct {
+	Accepted   bool   `pulumi:"accepted"`
+	AccountId  string `pulumi:"accountId"`
+	CreateTime string `pulumi:"createTime"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id                 string `pulumi:"id"`
+	InvitedByUserEmail string `pulumi:"invitedByUserEmail"`
+	TeamId             string `pulumi:"teamId"`
+	UserEmail          string `pulumi:"userEmail"`
 }

@@ -4,167 +4,154 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type Project struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Account ID
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Billing name and address of the project
+	BillingAddress pulumi.StringPtrOutput `pulumi:"billingAddress"`
+	// Billing contact emails of the project
+	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
+	// Project root CA. This is used by some services like Kafka to sign service certificate
+	CaCert pulumi.StringOutput `pulumi:"caCert"`
+	// Credit card ID
+	CardId pulumi.StringPtrOutput `pulumi:"cardId"`
+	// Copy properties from another project. Only has effect when a new project is created.
+	CopyFromProject pulumi.StringPtrOutput `pulumi:"copyFromProject"`
+	// Billing country code of the project
+	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
+	// Project name
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Technical contact emails of the project
+	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
 func NewProject(ctx *pulumi.Context,
-	name string, args *ProjectArgs, opts ...pulumi.ResourceOpt) (*Project, error) {
+	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["accountId"] = nil
-		inputs["billingAddress"] = nil
-		inputs["billingEmails"] = nil
-		inputs["caCert"] = nil
-		inputs["cardId"] = nil
-		inputs["copyFromProject"] = nil
-		inputs["countryCode"] = nil
-		inputs["project"] = nil
-		inputs["technicalEmails"] = nil
-	} else {
-		inputs["accountId"] = args.AccountId
-		inputs["billingAddress"] = args.BillingAddress
-		inputs["billingEmails"] = args.BillingEmails
-		inputs["caCert"] = args.CaCert
-		inputs["cardId"] = args.CardId
-		inputs["copyFromProject"] = args.CopyFromProject
-		inputs["countryCode"] = args.CountryCode
-		inputs["project"] = args.Project
-		inputs["technicalEmails"] = args.TechnicalEmails
+		args = &ProjectArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/project:Project", name, true, inputs, opts...)
+	var resource Project
+	err := ctx.RegisterResource("aiven:index/project:Project", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Project{s: s}, nil
+	return &resource, nil
 }
 
 // GetProject gets an existing Project resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetProject(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ProjectState, opts ...pulumi.ResourceOpt) (*Project, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["accountId"] = state.AccountId
-		inputs["billingAddress"] = state.BillingAddress
-		inputs["billingEmails"] = state.BillingEmails
-		inputs["caCert"] = state.CaCert
-		inputs["cardId"] = state.CardId
-		inputs["copyFromProject"] = state.CopyFromProject
-		inputs["countryCode"] = state.CountryCode
-		inputs["project"] = state.Project
-		inputs["technicalEmails"] = state.TechnicalEmails
-	}
-	s, err := ctx.ReadResource("aiven:index/project:Project", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ProjectState, opts ...pulumi.ResourceOption) (*Project, error) {
+	var resource Project
+	err := ctx.ReadResource("aiven:index/project:Project", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Project{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Account ID
-func (r *Project) AccountId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["accountId"])
-}
-
-// Billing name and address of the project
-func (r *Project) BillingAddress() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["billingAddress"])
-}
-
-// Billing contact emails of the project
-func (r *Project) BillingEmails() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["billingEmails"])
-}
-
-// Project root CA. This is used by some services like Kafka to sign service certificate
-func (r *Project) CaCert() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["caCert"])
-}
-
-// Credit card ID
-func (r *Project) CardId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["cardId"])
-}
-
-// Copy properties from another project. Only has effect when a new project is created.
-func (r *Project) CopyFromProject() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["copyFromProject"])
-}
-
-// Billing country code of the project
-func (r *Project) CountryCode() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["countryCode"])
-}
-
-// Project name
-func (r *Project) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Technical contact emails of the project
-func (r *Project) TechnicalEmails() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["technicalEmails"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering Project resources.
+type projectState struct {
+	// Account ID
+	AccountId *string `pulumi:"accountId"`
+	// Billing name and address of the project
+	BillingAddress *string `pulumi:"billingAddress"`
+	// Billing contact emails of the project
+	BillingEmails []string `pulumi:"billingEmails"`
+	// Project root CA. This is used by some services like Kafka to sign service certificate
+	CaCert *string `pulumi:"caCert"`
+	// Credit card ID
+	CardId *string `pulumi:"cardId"`
+	// Copy properties from another project. Only has effect when a new project is created.
+	CopyFromProject *string `pulumi:"copyFromProject"`
+	// Billing country code of the project
+	CountryCode *string `pulumi:"countryCode"`
+	// Project name
+	Project *string `pulumi:"project"`
+	// Technical contact emails of the project
+	TechnicalEmails []string `pulumi:"technicalEmails"`
+}
+
 type ProjectState struct {
 	// Account ID
-	AccountId interface{}
+	AccountId pulumi.StringPtrInput
 	// Billing name and address of the project
-	BillingAddress interface{}
+	BillingAddress pulumi.StringPtrInput
 	// Billing contact emails of the project
-	BillingEmails interface{}
+	BillingEmails pulumi.StringArrayInput
 	// Project root CA. This is used by some services like Kafka to sign service certificate
-	CaCert interface{}
+	CaCert pulumi.StringPtrInput
 	// Credit card ID
-	CardId interface{}
+	CardId pulumi.StringPtrInput
 	// Copy properties from another project. Only has effect when a new project is created.
-	CopyFromProject interface{}
+	CopyFromProject pulumi.StringPtrInput
 	// Billing country code of the project
-	CountryCode interface{}
+	CountryCode pulumi.StringPtrInput
 	// Project name
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Technical contact emails of the project
-	TechnicalEmails interface{}
+	TechnicalEmails pulumi.StringArrayInput
+}
+
+func (ProjectState) ElementType() reflect.Type {
+	return reflect.TypeOf((*projectState)(nil)).Elem()
+}
+
+type projectArgs struct {
+	// Account ID
+	AccountId *string `pulumi:"accountId"`
+	// Billing name and address of the project
+	BillingAddress *string `pulumi:"billingAddress"`
+	// Billing contact emails of the project
+	BillingEmails []string `pulumi:"billingEmails"`
+	// Project root CA. This is used by some services like Kafka to sign service certificate
+	CaCert *string `pulumi:"caCert"`
+	// Credit card ID
+	CardId *string `pulumi:"cardId"`
+	// Copy properties from another project. Only has effect when a new project is created.
+	CopyFromProject *string `pulumi:"copyFromProject"`
+	// Billing country code of the project
+	CountryCode *string `pulumi:"countryCode"`
+	// Project name
+	Project string `pulumi:"project"`
+	// Technical contact emails of the project
+	TechnicalEmails []string `pulumi:"technicalEmails"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
 	// Account ID
-	AccountId interface{}
+	AccountId pulumi.StringPtrInput
 	// Billing name and address of the project
-	BillingAddress interface{}
+	BillingAddress pulumi.StringPtrInput
 	// Billing contact emails of the project
-	BillingEmails interface{}
+	BillingEmails pulumi.StringArrayInput
 	// Project root CA. This is used by some services like Kafka to sign service certificate
-	CaCert interface{}
+	CaCert pulumi.StringPtrInput
 	// Credit card ID
-	CardId interface{}
+	CardId pulumi.StringPtrInput
 	// Copy properties from another project. Only has effect when a new project is created.
-	CopyFromProject interface{}
+	CopyFromProject pulumi.StringPtrInput
 	// Billing country code of the project
-	CountryCode interface{}
+	CountryCode pulumi.StringPtrInput
 	// Project name
-	Project interface{}
+	Project pulumi.StringInput
 	// Technical contact emails of the project
-	TechnicalEmails interface{}
+	TechnicalEmails pulumi.StringArrayInput
+}
+
+func (ProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*projectArgs)(nil)).Elem()
 }

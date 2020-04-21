@@ -11,42 +11,97 @@ from . import utilities, tables
 
 class ServiceIntegrationEndpoint(pulumi.CustomResource):
     datadog_user_config: pulumi.Output[dict]
+    """
+    Datadog specific user configurable settings
+
+      * `datadogApiKey` (`str`)
+      * `disableConsumerStats` (`str`)
+      * `maxPartitionContexts` (`float`)
+      * `site` (`str`)
+    """
     endpoint_config: pulumi.Output[dict]
+    """
+    Integration endpoint specific backend configuration
+    """
     endpoint_name: pulumi.Output[str]
+    """
+    Name of the service integration endpoint
+    """
     endpoint_type: pulumi.Output[str]
+    """
+    Type of the service integration endpoint
+    """
     external_elasticsearch_logs_user_config: pulumi.Output[dict]
+    """
+    external elasticsearch specific user configurable settings
+
+      * `ca` (`str`)
+      * `indexDaysMax` (`float`)
+      * `indexPrefix` (`str`)
+      * `timeout` (`float`)
+      * `url` (`str`)
+    """
     project: pulumi.Output[str]
+    """
+    Project the service integration endpoint belongs to
+    """
     prometheus_user_config: pulumi.Output[dict]
+    """
+    Prometheus specific user configurable settings
+
+      * `basicAuthPassword` (`str`)
+      * `basicAuthUsername` (`str`)
+    """
     rsyslog_user_config: pulumi.Output[dict]
+    """
+    rsyslog specific user configurable settings
+
+      * `ca` (`str`)
+      * `cert` (`str`)
+      * `format` (`str`)
+      * `key` (`str`)
+      * `logline` (`str`)
+      * `port` (`float`)
+      * `sd` (`str`)
+      * `server` (`str`)
+      * `tls` (`bool`)
+    """
     def __init__(__self__, resource_name, opts=None, datadog_user_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ServiceIntegrationEndpoint resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] datadog_user_config: Datadog specific user configurable settings
+        :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
+        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint
+        :param pulumi.Input[dict] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
+        :param pulumi.Input[str] project: Project the service integration endpoint belongs to
+        :param pulumi.Input[dict] prometheus_user_config: Prometheus specific user configurable settings
+        :param pulumi.Input[dict] rsyslog_user_config: rsyslog specific user configurable settings
+
         The **datadog_user_config** object supports the following:
-        
+
           * `datadogApiKey` (`pulumi.Input[str]`)
           * `disableConsumerStats` (`pulumi.Input[str]`)
           * `maxPartitionContexts` (`pulumi.Input[float]`)
           * `site` (`pulumi.Input[str]`)
-        
+
         The **external_elasticsearch_logs_user_config** object supports the following:
-        
+
           * `ca` (`pulumi.Input[str]`)
           * `indexDaysMax` (`pulumi.Input[float]`)
           * `indexPrefix` (`pulumi.Input[str]`)
           * `timeout` (`pulumi.Input[float]`)
           * `url` (`pulumi.Input[str]`)
-        
+
         The **prometheus_user_config** object supports the following:
-        
+
           * `basicAuthPassword` (`pulumi.Input[str]`)
           * `basicAuthUsername` (`pulumi.Input[str]`)
-        
+
         The **rsyslog_user_config** object supports the following:
-        
+
           * `ca` (`pulumi.Input[str]`)
           * `cert` (`pulumi.Input[str]`)
           * `format` (`pulumi.Input[str]`)
@@ -56,8 +111,6 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
           * `sd` (`pulumi.Input[str]`)
           * `server` (`pulumi.Input[str]`)
           * `tls` (`pulumi.Input[bool]`)
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_integration_endpoint.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,33 +154,41 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         """
         Get an existing ServiceIntegrationEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] datadog_user_config: Datadog specific user configurable settings
+        :param pulumi.Input[dict] endpoint_config: Integration endpoint specific backend configuration
+        :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
+        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint
+        :param pulumi.Input[dict] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
+        :param pulumi.Input[str] project: Project the service integration endpoint belongs to
+        :param pulumi.Input[dict] prometheus_user_config: Prometheus specific user configurable settings
+        :param pulumi.Input[dict] rsyslog_user_config: rsyslog specific user configurable settings
+
         The **datadog_user_config** object supports the following:
-        
+
           * `datadogApiKey` (`pulumi.Input[str]`)
           * `disableConsumerStats` (`pulumi.Input[str]`)
           * `maxPartitionContexts` (`pulumi.Input[float]`)
           * `site` (`pulumi.Input[str]`)
-        
+
         The **external_elasticsearch_logs_user_config** object supports the following:
-        
+
           * `ca` (`pulumi.Input[str]`)
           * `indexDaysMax` (`pulumi.Input[float]`)
           * `indexPrefix` (`pulumi.Input[str]`)
           * `timeout` (`pulumi.Input[float]`)
           * `url` (`pulumi.Input[str]`)
-        
+
         The **prometheus_user_config** object supports the following:
-        
+
           * `basicAuthPassword` (`pulumi.Input[str]`)
           * `basicAuthUsername` (`pulumi.Input[str]`)
-        
+
         The **rsyslog_user_config** object supports the following:
-        
+
           * `ca` (`pulumi.Input[str]`)
           * `cert` (`pulumi.Input[str]`)
           * `format` (`pulumi.Input[str]`)
@@ -137,12 +198,11 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
           * `sd` (`pulumi.Input[str]`)
           * `server` (`pulumi.Input[str]`)
           * `tls` (`pulumi.Input[bool]`)
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_integration_endpoint.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["datadog_user_config"] = datadog_user_config
         __props__["endpoint_config"] = endpoint_config
         __props__["endpoint_name"] = endpoint_name

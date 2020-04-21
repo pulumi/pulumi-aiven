@@ -13,7 +13,13 @@ class GetKafkaSchemaConfigurationResult:
     """
     A collection of values returned by getKafkaSchemaConfiguration.
     """
-    def __init__(__self__, project=None, schema=None, service_name=None, subject_name=None, version=None, id=None):
+    def __init__(__self__, id=None, project=None, schema=None, service_name=None, subject_name=None, version=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
@@ -29,31 +35,25 @@ class GetKafkaSchemaConfigurationResult:
         if version and not isinstance(version, float):
             raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKafkaSchemaConfigurationResult(GetKafkaSchemaConfigurationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetKafkaSchemaConfigurationResult(
+            id=self.id,
             project=self.project,
             schema=self.schema,
             service_name=self.service_name,
             subject_name=self.subject_name,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_kafka_schema_configuration(project=None,schema=None,service_name=None,subject_name=None,version=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     __args__['schema'] = schema
@@ -67,9 +67,9 @@ def get_kafka_schema_configuration(project=None,schema=None,service_name=None,su
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration', __args__, opts=opts).value
 
     return AwaitableGetKafkaSchemaConfigurationResult(
+        id=__ret__.get('id'),
         project=__ret__.get('project'),
         schema=__ret__.get('schema'),
         service_name=__ret__.get('serviceName'),
         subject_name=__ret__.get('subjectName'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

@@ -4,64 +4,42 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["accountId"] = args.AccountId
-		inputs["billingAddress"] = args.BillingAddress
-		inputs["billingEmails"] = args.BillingEmails
-		inputs["caCert"] = args.CaCert
-		inputs["cardId"] = args.CardId
-		inputs["copyFromProject"] = args.CopyFromProject
-		inputs["countryCode"] = args.CountryCode
-		inputs["project"] = args.Project
-		inputs["technicalEmails"] = args.TechnicalEmails
-	}
-	outputs, err := ctx.Invoke("aiven:index/getProject:getProject", inputs)
+func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
+	var rv LookupProjectResult
+	err := ctx.Invoke("aiven:index/getProject:getProject", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetProjectResult{
-		AccountId: outputs["accountId"],
-		BillingAddress: outputs["billingAddress"],
-		BillingEmails: outputs["billingEmails"],
-		CaCert: outputs["caCert"],
-		CardId: outputs["cardId"],
-		CopyFromProject: outputs["copyFromProject"],
-		CountryCode: outputs["countryCode"],
-		Project: outputs["project"],
-		TechnicalEmails: outputs["technicalEmails"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getProject.
-type GetProjectArgs struct {
-	AccountId interface{}
-	BillingAddress interface{}
-	BillingEmails interface{}
-	CaCert interface{}
-	CardId interface{}
-	CopyFromProject interface{}
-	CountryCode interface{}
-	Project interface{}
-	TechnicalEmails interface{}
+type LookupProjectArgs struct {
+	AccountId       *string  `pulumi:"accountId"`
+	BillingAddress  *string  `pulumi:"billingAddress"`
+	BillingEmails   []string `pulumi:"billingEmails"`
+	CaCert          *string  `pulumi:"caCert"`
+	CardId          *string  `pulumi:"cardId"`
+	CopyFromProject *string  `pulumi:"copyFromProject"`
+	CountryCode     *string  `pulumi:"countryCode"`
+	Project         string   `pulumi:"project"`
+	TechnicalEmails []string `pulumi:"technicalEmails"`
 }
 
 // A collection of values returned by getProject.
-type GetProjectResult struct {
-	AccountId interface{}
-	BillingAddress interface{}
-	BillingEmails interface{}
-	CaCert interface{}
-	CardId interface{}
-	CopyFromProject interface{}
-	CountryCode interface{}
-	Project interface{}
-	TechnicalEmails interface{}
+type LookupProjectResult struct {
+	AccountId       *string  `pulumi:"accountId"`
+	BillingAddress  *string  `pulumi:"billingAddress"`
+	BillingEmails   []string `pulumi:"billingEmails"`
+	CaCert          string   `pulumi:"caCert"`
+	CardId          *string  `pulumi:"cardId"`
+	CopyFromProject *string  `pulumi:"copyFromProject"`
+	CountryCode     *string  `pulumi:"countryCode"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id              string   `pulumi:"id"`
+	Project         string   `pulumi:"project"`
+	TechnicalEmails []string `pulumi:"technicalEmails"`
 }

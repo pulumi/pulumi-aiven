@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcPeeringConnectionResult> & GetVpcPeeringConnectionResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/vpc_peering_connection.html.markdown.
+ */
+export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcPeeringConnectionResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +18,7 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetVpcPeeringConnectionResult> = pulumi.runtime.invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", {
+    return pulumi.runtime.invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", {
         "peerCloudAccount": args.peerCloudAccount,
         "peerRegion": args.peerRegion,
         "peerVpc": args.peerVpc,
@@ -23,8 +27,6 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
         "stateInfo": args.stateInfo,
         "vpcId": args.vpcId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

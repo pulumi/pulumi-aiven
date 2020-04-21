@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account_team.html.markdown.
  */
-export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamResult> & GetAccountTeamResult {
+export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamResult> {
     if (!opts) {
         opts = {}
     }
@@ -29,15 +31,13 @@ export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountTeamResult> = pulumi.runtime.invoke("aiven:index/getAccountTeam:getAccountTeam", {
+    return pulumi.runtime.invoke("aiven:index/getAccountTeam:getAccountTeam", {
         "accountId": args.accountId,
         "createTime": args.createTime,
         "name": args.name,
         "teamId": args.teamId,
         "updateTime": args.updateTime,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

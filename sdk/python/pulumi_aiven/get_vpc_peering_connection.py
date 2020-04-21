@@ -13,7 +13,13 @@ class GetVpcPeeringConnectionResult:
     """
     A collection of values returned by getVpcPeeringConnection.
     """
-    def __init__(__self__, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None, id=None):
+    def __init__(__self__, id=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if peer_cloud_account and not isinstance(peer_cloud_account, str):
             raise TypeError("Expected argument 'peer_cloud_account' to be a str")
         __self__.peer_cloud_account = peer_cloud_account
@@ -35,35 +41,24 @@ class GetVpcPeeringConnectionResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetVpcPeeringConnectionResult(
+            id=self.id,
             peer_cloud_account=self.peer_cloud_account,
             peer_region=self.peer_region,
             peer_vpc=self.peer_vpc,
             peering_connection_id=self.peering_connection_id,
             state=self.state,
             state_info=self.state_info,
-            vpc_id=self.vpc_id,
-            id=self.id)
+            vpc_id=self.vpc_id)
 
 def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc=None,peering_connection_id=None,state=None,state_info=None,vpc_id=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/vpc_peering_connection.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['peerCloudAccount'] = peer_cloud_account
     __args__['peerRegion'] = peer_region
@@ -79,11 +74,11 @@ def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc
     __ret__ = pulumi.runtime.invoke('aiven:index/getVpcPeeringConnection:getVpcPeeringConnection', __args__, opts=opts).value
 
     return AwaitableGetVpcPeeringConnectionResult(
+        id=__ret__.get('id'),
         peer_cloud_account=__ret__.get('peerCloudAccount'),
         peer_region=__ret__.get('peerRegion'),
         peer_vpc=__ret__.get('peerVpc'),
         peering_connection_id=__ret__.get('peeringConnectionId'),
         state=__ret__.get('state'),
         state_info=__ret__.get('stateInfo'),
-        vpc_id=__ret__.get('vpcId'),
-        id=__ret__.get('id'))
+        vpc_id=__ret__.get('vpcId'))

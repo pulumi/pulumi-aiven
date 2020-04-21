@@ -11,18 +11,36 @@ from . import utilities, tables
 
 class KafkaAcl(pulumi.CustomResource):
     permission: pulumi.Output[str]
+    """
+    Kafka permission to grant (admin, read, readwrite, write)
+    """
     project: pulumi.Output[str]
+    """
+    Project to link the Kafka ACL to
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the Kafka ACL to
+    """
     topic: pulumi.Output[str]
+    """
+    Topic name pattern for the ACL entry
+    """
     username: pulumi.Output[str]
+    """
+    Username pattern for the ACL entry
+    """
     def __init__(__self__, resource_name, opts=None, permission=None, project=None, service_name=None, topic=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a KafkaAcl resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/kafka_acl.html.markdown.
+        :param pulumi.Input[str] permission: Kafka permission to grant (admin, read, readwrite, write)
+        :param pulumi.Input[str] project: Project to link the Kafka ACL to
+        :param pulumi.Input[str] service_name: Service to link the Kafka ACL to
+        :param pulumi.Input[str] topic: Topic name pattern for the ACL entry
+        :param pulumi.Input[str] username: Username pattern for the ACL entry
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,16 +85,20 @@ class KafkaAcl(pulumi.CustomResource):
         """
         Get an existing KafkaAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/kafka_acl.html.markdown.
+        :param pulumi.Input[str] permission: Kafka permission to grant (admin, read, readwrite, write)
+        :param pulumi.Input[str] project: Project to link the Kafka ACL to
+        :param pulumi.Input[str] service_name: Service to link the Kafka ACL to
+        :param pulumi.Input[str] topic: Topic name pattern for the ACL entry
+        :param pulumi.Input[str] username: Username pattern for the ACL entry
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["permission"] = permission
         __props__["project"] = project
         __props__["service_name"] = service_name

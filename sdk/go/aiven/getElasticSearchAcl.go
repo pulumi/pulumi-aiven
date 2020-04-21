@@ -4,48 +4,34 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupElasticSearchAcl(ctx *pulumi.Context, args *GetElasticSearchAclArgs) (*GetElasticSearchAclResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["acls"] = args.Acls
-		inputs["enabled"] = args.Enabled
-		inputs["extendedAcl"] = args.ExtendedAcl
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-	}
-	outputs, err := ctx.Invoke("aiven:index/getElasticSearchAcl:getElasticSearchAcl", inputs)
+func LookupElasticSearchAcl(ctx *pulumi.Context, args *LookupElasticSearchAclArgs, opts ...pulumi.InvokeOption) (*LookupElasticSearchAclResult, error) {
+	var rv LookupElasticSearchAclResult
+	err := ctx.Invoke("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetElasticSearchAclResult{
-		Acls: outputs["acls"],
-		Enabled: outputs["enabled"],
-		ExtendedAcl: outputs["extendedAcl"],
-		Project: outputs["project"],
-		ServiceName: outputs["serviceName"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getElasticSearchAcl.
-type GetElasticSearchAclArgs struct {
-	Acls interface{}
-	Enabled interface{}
-	ExtendedAcl interface{}
-	Project interface{}
-	ServiceName interface{}
+type LookupElasticSearchAclArgs struct {
+	Acls        []GetElasticSearchAclAcl `pulumi:"acls"`
+	Enabled     *bool                    `pulumi:"enabled"`
+	ExtendedAcl *bool                    `pulumi:"extendedAcl"`
+	Project     string                   `pulumi:"project"`
+	ServiceName string                   `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getElasticSearchAcl.
-type GetElasticSearchAclResult struct {
-	Acls interface{}
-	Enabled interface{}
-	ExtendedAcl interface{}
-	Project interface{}
-	ServiceName interface{}
+type LookupElasticSearchAclResult struct {
+	Acls        []GetElasticSearchAclAcl `pulumi:"acls"`
+	Enabled     *bool                    `pulumi:"enabled"`
+	ExtendedAcl *bool                    `pulumi:"extendedAcl"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string `pulumi:"id"`
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
 }

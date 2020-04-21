@@ -13,7 +13,7 @@ class GetElasticSearchAclResult:
     """
     A collection of values returned by getElasticSearchAcl.
     """
-    def __init__(__self__, acls=None, enabled=None, extended_acl=None, project=None, service_name=None, id=None):
+    def __init__(__self__, acls=None, enabled=None, extended_acl=None, id=None, project=None, service_name=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         __self__.acls = acls
@@ -23,18 +23,18 @@ class GetElasticSearchAclResult:
         if extended_acl and not isinstance(extended_acl, bool):
             raise TypeError("Expected argument 'extended_acl' to be a bool")
         __self__.extended_acl = extended_acl
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        __self__.project = project
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        __self__.service_name = service_name
 class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -44,25 +44,25 @@ class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
             acls=self.acls,
             enabled=self.enabled,
             extended_acl=self.extended_acl,
+            id=self.id,
             project=self.project,
-            service_name=self.service_name,
-            id=self.id)
+            service_name=self.service_name)
 
 def get_elastic_search_acl(acls=None,enabled=None,extended_acl=None,project=None,service_name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    
+
+
     The **acls** object supports the following:
-    
+
       * `rules` (`list`)
-    
         * `index` (`str`)
         * `permission` (`str`)
-    
+
       * `username` (`str`)
     """
     __args__ = dict()
+
 
     __args__['acls'] = acls
     __args__['enabled'] = enabled
@@ -79,6 +79,6 @@ def get_elastic_search_acl(acls=None,enabled=None,extended_acl=None,project=None
         acls=__ret__.get('acls'),
         enabled=__ret__.get('enabled'),
         extended_acl=__ret__.get('extendedAcl'),
+        id=__ret__.get('id'),
         project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'),
-        id=__ret__.get('id'))
+        service_name=__ret__.get('serviceName'))

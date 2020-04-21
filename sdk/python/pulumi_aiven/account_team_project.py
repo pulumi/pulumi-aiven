@@ -11,18 +11,34 @@ from . import utilities, tables
 
 class AccountTeamProject(pulumi.CustomResource):
     account_id: pulumi.Output[str]
+    """
+    Account id
+    """
     project_name: pulumi.Output[str]
+    """
+    Account team project name
+    """
     team_id: pulumi.Output[str]
+    """
+    Account team id
+    """
     team_type: pulumi.Output[str]
+    """
+    Account team project type, can one of the following values: admin, developer, operator and read_only
+    """
     def __init__(__self__, resource_name, opts=None, account_id=None, project_name=None, team_id=None, team_type=None, __props__=None, __name__=None, __opts__=None):
         """
         The account team project is intended to link and existing project to the existing account team. It is important to note 
         that the project should have an `account_id` property set and equal to account team you are trying to link this project.
-        
+
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_project.html.markdown.
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[str] project_name: Account team project name
+        :param pulumi.Input[str] team_id: Account team id
+        :param pulumi.Input[str] team_type: Account team project type, can one of the following values: admin, developer, operator and read_only
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -60,16 +76,19 @@ class AccountTeamProject(pulumi.CustomResource):
         """
         Get an existing AccountTeamProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_project.html.markdown.
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[str] project_name: Account team project name
+        :param pulumi.Input[str] team_id: Account team id
+        :param pulumi.Input[str] team_type: Account team project type, can one of the following values: admin, developer, operator and read_only
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["project_name"] = project_name
         __props__["team_id"] = team_id

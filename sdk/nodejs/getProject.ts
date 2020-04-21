@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project.html.markdown.
  */
-export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> & GetProjectResult {
+export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     if (!opts) {
         opts = {}
     }
@@ -28,7 +30,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectResult> = pulumi.runtime.invoke("aiven:index/getProject:getProject", {
+    return pulumi.runtime.invoke("aiven:index/getProject:getProject", {
         "accountId": args.accountId,
         "billingAddress": args.billingAddress,
         "billingEmails": args.billingEmails,
@@ -39,8 +41,6 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         "project": args.project,
         "technicalEmails": args.technicalEmails,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -4,44 +4,32 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupAccountTeamProject(ctx *pulumi.Context, args *GetAccountTeamProjectArgs) (*GetAccountTeamProjectResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["accountId"] = args.AccountId
-		inputs["projectName"] = args.ProjectName
-		inputs["teamId"] = args.TeamId
-		inputs["teamType"] = args.TeamType
-	}
-	outputs, err := ctx.Invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", inputs)
+func LookupAccountTeamProject(ctx *pulumi.Context, args *LookupAccountTeamProjectArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamProjectResult, error) {
+	var rv LookupAccountTeamProjectResult
+	err := ctx.Invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetAccountTeamProjectResult{
-		AccountId: outputs["accountId"],
-		ProjectName: outputs["projectName"],
-		TeamId: outputs["teamId"],
-		TeamType: outputs["teamType"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getAccountTeamProject.
-type GetAccountTeamProjectArgs struct {
-	AccountId interface{}
-	ProjectName interface{}
-	TeamId interface{}
-	TeamType interface{}
+type LookupAccountTeamProjectArgs struct {
+	AccountId   string  `pulumi:"accountId"`
+	ProjectName string  `pulumi:"projectName"`
+	TeamId      string  `pulumi:"teamId"`
+	TeamType    *string `pulumi:"teamType"`
 }
 
 // A collection of values returned by getAccountTeamProject.
-type GetAccountTeamProjectResult struct {
-	AccountId interface{}
-	ProjectName interface{}
-	TeamId interface{}
-	TeamType interface{}
+type LookupAccountTeamProjectResult struct {
+	AccountId string `pulumi:"accountId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string  `pulumi:"id"`
+	ProjectName string  `pulumi:"projectName"`
+	TeamId      string  `pulumi:"teamId"`
+	TeamType    *string `pulumi:"teamType"`
 }

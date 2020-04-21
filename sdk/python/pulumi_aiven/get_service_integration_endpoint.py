@@ -13,7 +13,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, id=None):
+    def __init__(__self__, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, id=None, project=None, prometheus_user_config=None, rsyslog_user_config=None):
         if datadog_user_config and not isinstance(datadog_user_config, dict):
             raise TypeError("Expected argument 'datadog_user_config' to be a dict")
         __self__.datadog_user_config = datadog_user_config
@@ -29,6 +29,12 @@ class GetServiceIntegrationEndpointResult:
         if external_elasticsearch_logs_user_config and not isinstance(external_elasticsearch_logs_user_config, dict):
             raise TypeError("Expected argument 'external_elasticsearch_logs_user_config' to be a dict")
         __self__.external_elasticsearch_logs_user_config = external_elasticsearch_logs_user_config
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
@@ -38,12 +44,6 @@ class GetServiceIntegrationEndpointResult:
         if rsyslog_user_config and not isinstance(rsyslog_user_config, dict):
             raise TypeError("Expected argument 'rsyslog_user_config' to be a dict")
         __self__.rsyslog_user_config = rsyslog_user_config
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,38 +55,39 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             endpoint_name=self.endpoint_name,
             endpoint_type=self.endpoint_type,
             external_elasticsearch_logs_user_config=self.external_elasticsearch_logs_user_config,
+            id=self.id,
             project=self.project,
             prometheus_user_config=self.prometheus_user_config,
-            rsyslog_user_config=self.rsyslog_user_config,
-            id=self.id)
+            rsyslog_user_config=self.rsyslog_user_config)
 
 def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=None,endpoint_name=None,endpoint_type=None,external_elasticsearch_logs_user_config=None,project=None,prometheus_user_config=None,rsyslog_user_config=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
-    
-    
+
+
+
+
     The **datadog_user_config** object supports the following:
-    
+
       * `datadogApiKey` (`str`)
       * `disableConsumerStats` (`str`)
       * `maxPartitionContexts` (`float`)
       * `site` (`str`)
-    
+
     The **external_elasticsearch_logs_user_config** object supports the following:
-    
+
       * `ca` (`str`)
       * `indexDaysMax` (`float`)
       * `indexPrefix` (`str`)
       * `timeout` (`float`)
       * `url` (`str`)
-    
+
     The **prometheus_user_config** object supports the following:
-    
+
       * `basicAuthPassword` (`str`)
       * `basicAuthUsername` (`str`)
-    
+
     The **rsyslog_user_config** object supports the following:
-    
+
       * `ca` (`str`)
       * `cert` (`str`)
       * `format` (`str`)
@@ -96,10 +97,9 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
       * `sd` (`str`)
       * `server` (`str`)
       * `tls` (`bool`)
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service_integration_endpoint.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datadogUserConfig'] = datadog_user_config
     __args__['endpointConfig'] = endpoint_config
@@ -121,7 +121,7 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
         endpoint_name=__ret__.get('endpointName'),
         endpoint_type=__ret__.get('endpointType'),
         external_elasticsearch_logs_user_config=__ret__.get('externalElasticsearchLogsUserConfig'),
+        id=__ret__.get('id'),
         project=__ret__.get('project'),
         prometheus_user_config=__ret__.get('prometheusUserConfig'),
-        rsyslog_user_config=__ret__.get('rsyslogUserConfig'),
-        id=__ret__.get('id'))
+        rsyslog_user_config=__ret__.get('rsyslogUserConfig'))

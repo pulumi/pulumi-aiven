@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceUserResult> & GetServiceUserResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service_user.html.markdown.
+ */
+export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceUserResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +18,7 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServiceUserResult> = pulumi.runtime.invoke("aiven:index/getServiceUser:getServiceUser", {
+    return pulumi.runtime.invoke("aiven:index/getServiceUser:getServiceUser", {
         "accessCert": args.accessCert,
         "accessKey": args.accessKey,
         "password": args.password,
@@ -23,8 +27,6 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
         "type": args.type,
         "username": args.username,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -11,22 +11,46 @@ from . import utilities, tables
 
 class AccountTeamMember(pulumi.CustomResource):
     accepted: pulumi.Output[bool]
+    """
+    Team member invitation status
+    """
     account_id: pulumi.Output[str]
+    """
+    Account id
+    """
     create_time: pulumi.Output[str]
+    """
+    Time of creation
+    """
     invited_by_user_email: pulumi.Output[str]
+    """
+    Team invited by user email
+    """
     team_id: pulumi.Output[str]
+    """
+    Account team id
+    """
     user_email: pulumi.Output[str]
+    """
+    Team invite user email
+    """
     def __init__(__self__, resource_name, opts=None, accepted=None, account_id=None, create_time=None, invited_by_user_email=None, team_id=None, user_email=None, __props__=None, __name__=None, __opts__=None):
         """
         During the creation of `.AccountTeamMember` resource, an email invitation will be sent
         to a user using `user_email` address. If the user accepts an invitation, he or she will become a member of the account team. 
         The deletion of `.AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the 
         user, and it will also eliminate an account team member if one has accepted an invitation previously.
-        
+
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_member.html.markdown.
+        :param pulumi.Input[bool] accepted: Team member invitation status
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[str] invited_by_user_email: Team invited by user email
+        :param pulumi.Input[str] team_id: Account team id
+        :param pulumi.Input[str] user_email: Team invite user email
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,16 +92,21 @@ class AccountTeamMember(pulumi.CustomResource):
         """
         Get an existing AccountTeamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_member.html.markdown.
+        :param pulumi.Input[bool] accepted: Team member invitation status
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[str] invited_by_user_email: Team invited by user email
+        :param pulumi.Input[str] team_id: Account team id
+        :param pulumi.Input[str] user_email: Team invite user email
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["accepted"] = accepted
         __props__["account_id"] = account_id
         __props__["create_time"] = create_time

@@ -3,7 +3,7 @@
 package examples
 
 import (
-	"github.com/pulumi/pulumi/pkg/testing/integration"
+	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 	"os"
 	"path"
 	"testing"

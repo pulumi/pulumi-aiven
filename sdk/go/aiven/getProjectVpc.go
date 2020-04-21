@@ -4,44 +4,32 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupProjectVpc(ctx *pulumi.Context, args *GetProjectVpcArgs) (*GetProjectVpcResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["cloudName"] = args.CloudName
-		inputs["networkCidr"] = args.NetworkCidr
-		inputs["project"] = args.Project
-		inputs["state"] = args.State
-	}
-	outputs, err := ctx.Invoke("aiven:index/getProjectVpc:getProjectVpc", inputs)
+func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...pulumi.InvokeOption) (*LookupProjectVpcResult, error) {
+	var rv LookupProjectVpcResult
+	err := ctx.Invoke("aiven:index/getProjectVpc:getProjectVpc", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetProjectVpcResult{
-		CloudName: outputs["cloudName"],
-		NetworkCidr: outputs["networkCidr"],
-		Project: outputs["project"],
-		State: outputs["state"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getProjectVpc.
-type GetProjectVpcArgs struct {
-	CloudName interface{}
-	NetworkCidr interface{}
-	Project interface{}
-	State interface{}
+type LookupProjectVpcArgs struct {
+	CloudName   string  `pulumi:"cloudName"`
+	NetworkCidr *string `pulumi:"networkCidr"`
+	Project     string  `pulumi:"project"`
+	State       *string `pulumi:"state"`
 }
 
 // A collection of values returned by getProjectVpc.
-type GetProjectVpcResult struct {
-	CloudName interface{}
-	NetworkCidr interface{}
-	Project interface{}
-	State interface{}
+type LookupProjectVpcResult struct {
+	CloudName string `pulumi:"cloudName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string  `pulumi:"id"`
+	NetworkCidr *string `pulumi:"networkCidr"`
+	Project     string  `pulumi:"project"`
+	State       string  `pulumi:"state"`
 }

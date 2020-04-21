@@ -4,56 +4,38 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupVpcPeeringConnection(ctx *pulumi.Context, args *GetVpcPeeringConnectionArgs) (*GetVpcPeeringConnectionResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["peerCloudAccount"] = args.PeerCloudAccount
-		inputs["peerRegion"] = args.PeerRegion
-		inputs["peerVpc"] = args.PeerVpc
-		inputs["peeringConnectionId"] = args.PeeringConnectionId
-		inputs["state"] = args.State
-		inputs["stateInfo"] = args.StateInfo
-		inputs["vpcId"] = args.VpcId
-	}
-	outputs, err := ctx.Invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", inputs)
+func LookupVpcPeeringConnection(ctx *pulumi.Context, args *LookupVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVpcPeeringConnectionResult, error) {
+	var rv LookupVpcPeeringConnectionResult
+	err := ctx.Invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetVpcPeeringConnectionResult{
-		PeerCloudAccount: outputs["peerCloudAccount"],
-		PeerRegion: outputs["peerRegion"],
-		PeerVpc: outputs["peerVpc"],
-		PeeringConnectionId: outputs["peeringConnectionId"],
-		State: outputs["state"],
-		StateInfo: outputs["stateInfo"],
-		VpcId: outputs["vpcId"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getVpcPeeringConnection.
-type GetVpcPeeringConnectionArgs struct {
-	PeerCloudAccount interface{}
-	PeerRegion interface{}
-	PeerVpc interface{}
-	PeeringConnectionId interface{}
-	State interface{}
-	StateInfo interface{}
-	VpcId interface{}
+type LookupVpcPeeringConnectionArgs struct {
+	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`
+	PeerRegion          *string                `pulumi:"peerRegion"`
+	PeerVpc             string                 `pulumi:"peerVpc"`
+	PeeringConnectionId *string                `pulumi:"peeringConnectionId"`
+	State               *string                `pulumi:"state"`
+	StateInfo           map[string]interface{} `pulumi:"stateInfo"`
+	VpcId               string                 `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getVpcPeeringConnection.
-type GetVpcPeeringConnectionResult struct {
-	PeerCloudAccount interface{}
-	PeerRegion interface{}
-	PeerVpc interface{}
-	PeeringConnectionId interface{}
-	State interface{}
-	StateInfo interface{}
-	VpcId interface{}
+type LookupVpcPeeringConnectionResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id                  string                 `pulumi:"id"`
+	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`
+	PeerRegion          *string                `pulumi:"peerRegion"`
+	PeerVpc             string                 `pulumi:"peerVpc"`
+	PeeringConnectionId string                 `pulumi:"peeringConnectionId"`
+	State               string                 `pulumi:"state"`
+	StateInfo           map[string]interface{} `pulumi:"stateInfo"`
+	VpcId               string                 `pulumi:"vpcId"`
 }

@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> & GetKafkaTopicResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_topic.html.markdown.
+ */
+export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +18,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKafkaTopicResult> = pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
+    return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
         "cleanupPolicy": args.cleanupPolicy,
         "minimumInSyncReplicas": args.minimumInSyncReplicas,
         "partitions": args.partitions,
@@ -26,8 +30,6 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
         "terminationProtection": args.terminationProtection,
         "topicName": args.topicName,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

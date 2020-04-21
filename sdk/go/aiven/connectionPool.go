@@ -4,17 +4,36 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type ConnectionPool struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// URI for connecting to the pool
+	ConnectionUri pulumi.StringOutput `pulumi:"connectionUri"`
+	// Name of the database the pool connects to
+	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
+	// Mode the pool operates in (session, transaction, statement)
+	PoolMode pulumi.StringPtrOutput `pulumi:"poolMode"`
+	// Name of the pool
+	PoolName pulumi.StringOutput `pulumi:"poolName"`
+	// Number of connections the pool may create towards the backend server
+	PoolSize pulumi.IntPtrOutput `pulumi:"poolSize"`
+	// Project to link the connection pool to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Service to link the connection pool to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Name of the service user used to connect to the database
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewConnectionPool registers a new resource with the given unique name, arguments, and options.
 func NewConnectionPool(ctx *pulumi.Context,
-	name string, args *ConnectionPoolArgs, opts ...pulumi.ResourceOpt) (*ConnectionPool, error) {
+	name string, args *ConnectionPoolArgs, opts ...pulumi.ResourceOption) (*ConnectionPool, error) {
 	if args == nil || args.DatabaseName == nil {
 		return nil, errors.New("missing required argument 'DatabaseName'")
 	}
@@ -30,138 +49,107 @@ func NewConnectionPool(ctx *pulumi.Context,
 	if args == nil || args.Username == nil {
 		return nil, errors.New("missing required argument 'Username'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["databaseName"] = nil
-		inputs["poolMode"] = nil
-		inputs["poolName"] = nil
-		inputs["poolSize"] = nil
-		inputs["project"] = nil
-		inputs["serviceName"] = nil
-		inputs["username"] = nil
-	} else {
-		inputs["databaseName"] = args.DatabaseName
-		inputs["poolMode"] = args.PoolMode
-		inputs["poolName"] = args.PoolName
-		inputs["poolSize"] = args.PoolSize
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["username"] = args.Username
+		args = &ConnectionPoolArgs{}
 	}
-	inputs["connectionUri"] = nil
-	s, err := ctx.RegisterResource("aiven:index/connectionPool:ConnectionPool", name, true, inputs, opts...)
+	var resource ConnectionPool
+	err := ctx.RegisterResource("aiven:index/connectionPool:ConnectionPool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ConnectionPool{s: s}, nil
+	return &resource, nil
 }
 
 // GetConnectionPool gets an existing ConnectionPool resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetConnectionPool(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ConnectionPoolState, opts ...pulumi.ResourceOpt) (*ConnectionPool, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["connectionUri"] = state.ConnectionUri
-		inputs["databaseName"] = state.DatabaseName
-		inputs["poolMode"] = state.PoolMode
-		inputs["poolName"] = state.PoolName
-		inputs["poolSize"] = state.PoolSize
-		inputs["project"] = state.Project
-		inputs["serviceName"] = state.ServiceName
-		inputs["username"] = state.Username
-	}
-	s, err := ctx.ReadResource("aiven:index/connectionPool:ConnectionPool", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ConnectionPoolState, opts ...pulumi.ResourceOption) (*ConnectionPool, error) {
+	var resource ConnectionPool
+	err := ctx.ReadResource("aiven:index/connectionPool:ConnectionPool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ConnectionPool{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *ConnectionPool) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *ConnectionPool) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// URI for connecting to the pool
-func (r *ConnectionPool) ConnectionUri() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["connectionUri"])
-}
-
-// Name of the database the pool connects to
-func (r *ConnectionPool) DatabaseName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["databaseName"])
-}
-
-// Mode the pool operates in (session, transaction, statement)
-func (r *ConnectionPool) PoolMode() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["poolMode"])
-}
-
-// Name of the pool
-func (r *ConnectionPool) PoolName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["poolName"])
-}
-
-// Number of connections the pool may create towards the backend server
-func (r *ConnectionPool) PoolSize() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["poolSize"])
-}
-
-// Project to link the connection pool to
-func (r *ConnectionPool) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Service to link the connection pool to
-func (r *ConnectionPool) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// Name of the service user used to connect to the database
-func (r *ConnectionPool) Username() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["username"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering ConnectionPool resources.
+type connectionPoolState struct {
+	// URI for connecting to the pool
+	ConnectionUri *string `pulumi:"connectionUri"`
+	// Name of the database the pool connects to
+	DatabaseName *string `pulumi:"databaseName"`
+	// Mode the pool operates in (session, transaction, statement)
+	PoolMode *string `pulumi:"poolMode"`
+	// Name of the pool
+	PoolName *string `pulumi:"poolName"`
+	// Number of connections the pool may create towards the backend server
+	PoolSize *int `pulumi:"poolSize"`
+	// Project to link the connection pool to
+	Project *string `pulumi:"project"`
+	// Service to link the connection pool to
+	ServiceName *string `pulumi:"serviceName"`
+	// Name of the service user used to connect to the database
+	Username *string `pulumi:"username"`
+}
+
 type ConnectionPoolState struct {
 	// URI for connecting to the pool
-	ConnectionUri interface{}
+	ConnectionUri pulumi.StringPtrInput
 	// Name of the database the pool connects to
-	DatabaseName interface{}
+	DatabaseName pulumi.StringPtrInput
 	// Mode the pool operates in (session, transaction, statement)
-	PoolMode interface{}
+	PoolMode pulumi.StringPtrInput
 	// Name of the pool
-	PoolName interface{}
+	PoolName pulumi.StringPtrInput
 	// Number of connections the pool may create towards the backend server
-	PoolSize interface{}
+	PoolSize pulumi.IntPtrInput
 	// Project to link the connection pool to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Service to link the connection pool to
-	ServiceName interface{}
+	ServiceName pulumi.StringPtrInput
 	// Name of the service user used to connect to the database
-	Username interface{}
+	Username pulumi.StringPtrInput
+}
+
+func (ConnectionPoolState) ElementType() reflect.Type {
+	return reflect.TypeOf((*connectionPoolState)(nil)).Elem()
+}
+
+type connectionPoolArgs struct {
+	// Name of the database the pool connects to
+	DatabaseName string `pulumi:"databaseName"`
+	// Mode the pool operates in (session, transaction, statement)
+	PoolMode *string `pulumi:"poolMode"`
+	// Name of the pool
+	PoolName string `pulumi:"poolName"`
+	// Number of connections the pool may create towards the backend server
+	PoolSize *int `pulumi:"poolSize"`
+	// Project to link the connection pool to
+	Project string `pulumi:"project"`
+	// Service to link the connection pool to
+	ServiceName string `pulumi:"serviceName"`
+	// Name of the service user used to connect to the database
+	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ConnectionPool resource.
 type ConnectionPoolArgs struct {
 	// Name of the database the pool connects to
-	DatabaseName interface{}
+	DatabaseName pulumi.StringInput
 	// Mode the pool operates in (session, transaction, statement)
-	PoolMode interface{}
+	PoolMode pulumi.StringPtrInput
 	// Name of the pool
-	PoolName interface{}
+	PoolName pulumi.StringInput
 	// Number of connections the pool may create towards the backend server
-	PoolSize interface{}
+	PoolSize pulumi.IntPtrInput
 	// Project to link the connection pool to
-	Project interface{}
+	Project pulumi.StringInput
 	// Service to link the connection pool to
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
 	// Name of the service user used to connect to the database
-	Username interface{}
+	Username pulumi.StringInput
+}
+
+func (ConnectionPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*connectionPoolArgs)(nil)).Elem()
 }

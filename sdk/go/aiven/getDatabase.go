@@ -4,52 +4,36 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupDatabase(ctx *pulumi.Context, args *GetDatabaseArgs) (*GetDatabaseResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["databaseName"] = args.DatabaseName
-		inputs["lcCollate"] = args.LcCollate
-		inputs["lcCtype"] = args.LcCtype
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["terminationProtection"] = args.TerminationProtection
-	}
-	outputs, err := ctx.Invoke("aiven:index/getDatabase:getDatabase", inputs)
+func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
+	var rv LookupDatabaseResult
+	err := ctx.Invoke("aiven:index/getDatabase:getDatabase", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetDatabaseResult{
-		DatabaseName: outputs["databaseName"],
-		LcCollate: outputs["lcCollate"],
-		LcCtype: outputs["lcCtype"],
-		Project: outputs["project"],
-		ServiceName: outputs["serviceName"],
-		TerminationProtection: outputs["terminationProtection"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getDatabase.
-type GetDatabaseArgs struct {
-	DatabaseName interface{}
-	LcCollate interface{}
-	LcCtype interface{}
-	Project interface{}
-	ServiceName interface{}
-	TerminationProtection interface{}
+type LookupDatabaseArgs struct {
+	DatabaseName          string  `pulumi:"databaseName"`
+	LcCollate             *string `pulumi:"lcCollate"`
+	LcCtype               *string `pulumi:"lcCtype"`
+	Project               string  `pulumi:"project"`
+	ServiceName           string  `pulumi:"serviceName"`
+	TerminationProtection *bool   `pulumi:"terminationProtection"`
 }
 
 // A collection of values returned by getDatabase.
-type GetDatabaseResult struct {
-	DatabaseName interface{}
-	LcCollate interface{}
-	LcCtype interface{}
-	Project interface{}
-	ServiceName interface{}
-	TerminationProtection interface{}
+type LookupDatabaseResult struct {
+	DatabaseName string `pulumi:"databaseName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id                    string  `pulumi:"id"`
+	LcCollate             *string `pulumi:"lcCollate"`
+	LcCtype               *string `pulumi:"lcCtype"`
+	Project               string  `pulumi:"project"`
+	ServiceName           string  `pulumi:"serviceName"`
+	TerminationProtection *bool   `pulumi:"terminationProtection"`
 }

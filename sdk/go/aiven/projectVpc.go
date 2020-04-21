@@ -4,17 +4,28 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type ProjectVpc struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Cloud the VPC is in
+	CloudName pulumi.StringOutput `pulumi:"cloudName"`
+	// Network address range used by the VPC like 192.168.0.0/24
+	NetworkCidr pulumi.StringOutput `pulumi:"networkCidr"`
+	// The project the VPC belongs to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewProjectVpc registers a new resource with the given unique name, arguments, and options.
 func NewProjectVpc(ctx *pulumi.Context,
-	name string, args *ProjectVpcArgs, opts ...pulumi.ResourceOpt) (*ProjectVpc, error) {
+	name string, args *ProjectVpcArgs, opts ...pulumi.ResourceOption) (*ProjectVpc, error) {
 	if args == nil || args.CloudName == nil {
 		return nil, errors.New("missing required argument 'CloudName'")
 	}
@@ -24,90 +35,75 @@ func NewProjectVpc(ctx *pulumi.Context,
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["cloudName"] = nil
-		inputs["networkCidr"] = nil
-		inputs["project"] = nil
-	} else {
-		inputs["cloudName"] = args.CloudName
-		inputs["networkCidr"] = args.NetworkCidr
-		inputs["project"] = args.Project
+		args = &ProjectVpcArgs{}
 	}
-	inputs["state"] = nil
-	s, err := ctx.RegisterResource("aiven:index/projectVpc:ProjectVpc", name, true, inputs, opts...)
+	var resource ProjectVpc
+	err := ctx.RegisterResource("aiven:index/projectVpc:ProjectVpc", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ProjectVpc{s: s}, nil
+	return &resource, nil
 }
 
 // GetProjectVpc gets an existing ProjectVpc resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetProjectVpc(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ProjectVpcState, opts ...pulumi.ResourceOpt) (*ProjectVpc, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["cloudName"] = state.CloudName
-		inputs["networkCidr"] = state.NetworkCidr
-		inputs["project"] = state.Project
-		inputs["state"] = state.State
-	}
-	s, err := ctx.ReadResource("aiven:index/projectVpc:ProjectVpc", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ProjectVpcState, opts ...pulumi.ResourceOption) (*ProjectVpc, error) {
+	var resource ProjectVpc
+	err := ctx.ReadResource("aiven:index/projectVpc:ProjectVpc", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ProjectVpc{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectVpc) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectVpc) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Cloud the VPC is in
-func (r *ProjectVpc) CloudName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["cloudName"])
-}
-
-// Network address range used by the VPC like 192.168.0.0/24
-func (r *ProjectVpc) NetworkCidr() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["networkCidr"])
-}
-
-// The project the VPC belongs to
-func (r *ProjectVpc) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
-func (r *ProjectVpc) State() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["state"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering ProjectVpc resources.
+type projectVpcState struct {
+	// Cloud the VPC is in
+	CloudName *string `pulumi:"cloudName"`
+	// Network address range used by the VPC like 192.168.0.0/24
+	NetworkCidr *string `pulumi:"networkCidr"`
+	// The project the VPC belongs to
+	Project *string `pulumi:"project"`
+	// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+	State *string `pulumi:"state"`
+}
+
 type ProjectVpcState struct {
 	// Cloud the VPC is in
-	CloudName interface{}
+	CloudName pulumi.StringPtrInput
 	// Network address range used by the VPC like 192.168.0.0/24
-	NetworkCidr interface{}
+	NetworkCidr pulumi.StringPtrInput
 	// The project the VPC belongs to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
-	State interface{}
+	State pulumi.StringPtrInput
+}
+
+func (ProjectVpcState) ElementType() reflect.Type {
+	return reflect.TypeOf((*projectVpcState)(nil)).Elem()
+}
+
+type projectVpcArgs struct {
+	// Cloud the VPC is in
+	CloudName string `pulumi:"cloudName"`
+	// Network address range used by the VPC like 192.168.0.0/24
+	NetworkCidr string `pulumi:"networkCidr"`
+	// The project the VPC belongs to
+	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectVpc resource.
 type ProjectVpcArgs struct {
 	// Cloud the VPC is in
-	CloudName interface{}
+	CloudName pulumi.StringInput
 	// Network address range used by the VPC like 192.168.0.0/24
-	NetworkCidr interface{}
+	NetworkCidr pulumi.StringInput
 	// The project the VPC belongs to
-	Project interface{}
+	Project pulumi.StringInput
+}
+
+func (ProjectVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*projectVpcArgs)(nil)).Elem()
 }

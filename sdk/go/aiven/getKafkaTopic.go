@@ -4,68 +4,44 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupKafkaTopic(ctx *pulumi.Context, args *GetKafkaTopicArgs) (*GetKafkaTopicResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["cleanupPolicy"] = args.CleanupPolicy
-		inputs["minimumInSyncReplicas"] = args.MinimumInSyncReplicas
-		inputs["partitions"] = args.Partitions
-		inputs["project"] = args.Project
-		inputs["replication"] = args.Replication
-		inputs["retentionBytes"] = args.RetentionBytes
-		inputs["retentionHours"] = args.RetentionHours
-		inputs["serviceName"] = args.ServiceName
-		inputs["terminationProtection"] = args.TerminationProtection
-		inputs["topicName"] = args.TopicName
-	}
-	outputs, err := ctx.Invoke("aiven:index/getKafkaTopic:getKafkaTopic", inputs)
+func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...pulumi.InvokeOption) (*LookupKafkaTopicResult, error) {
+	var rv LookupKafkaTopicResult
+	err := ctx.Invoke("aiven:index/getKafkaTopic:getKafkaTopic", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetKafkaTopicResult{
-		CleanupPolicy: outputs["cleanupPolicy"],
-		MinimumInSyncReplicas: outputs["minimumInSyncReplicas"],
-		Partitions: outputs["partitions"],
-		Project: outputs["project"],
-		Replication: outputs["replication"],
-		RetentionBytes: outputs["retentionBytes"],
-		RetentionHours: outputs["retentionHours"],
-		ServiceName: outputs["serviceName"],
-		TerminationProtection: outputs["terminationProtection"],
-		TopicName: outputs["topicName"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getKafkaTopic.
-type GetKafkaTopicArgs struct {
-	CleanupPolicy interface{}
-	MinimumInSyncReplicas interface{}
-	Partitions interface{}
-	Project interface{}
-	Replication interface{}
-	RetentionBytes interface{}
-	RetentionHours interface{}
-	ServiceName interface{}
-	TerminationProtection interface{}
-	TopicName interface{}
+type LookupKafkaTopicArgs struct {
+	CleanupPolicy         *string `pulumi:"cleanupPolicy"`
+	MinimumInSyncReplicas *int    `pulumi:"minimumInSyncReplicas"`
+	Partitions            *int    `pulumi:"partitions"`
+	Project               string  `pulumi:"project"`
+	Replication           *int    `pulumi:"replication"`
+	RetentionBytes        *int    `pulumi:"retentionBytes"`
+	RetentionHours        *int    `pulumi:"retentionHours"`
+	ServiceName           string  `pulumi:"serviceName"`
+	TerminationProtection *bool   `pulumi:"terminationProtection"`
+	TopicName             string  `pulumi:"topicName"`
 }
 
 // A collection of values returned by getKafkaTopic.
-type GetKafkaTopicResult struct {
-	CleanupPolicy interface{}
-	MinimumInSyncReplicas interface{}
-	Partitions interface{}
-	Project interface{}
-	Replication interface{}
-	RetentionBytes interface{}
-	RetentionHours interface{}
-	ServiceName interface{}
-	TerminationProtection interface{}
-	TopicName interface{}
+type LookupKafkaTopicResult struct {
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id                    string `pulumi:"id"`
+	MinimumInSyncReplicas *int   `pulumi:"minimumInSyncReplicas"`
+	Partitions            *int   `pulumi:"partitions"`
+	Project               string `pulumi:"project"`
+	Replication           *int   `pulumi:"replication"`
+	RetentionBytes        *int   `pulumi:"retentionBytes"`
+	RetentionHours        *int   `pulumi:"retentionHours"`
+	ServiceName           string `pulumi:"serviceName"`
+	TerminationProtection *bool  `pulumi:"terminationProtection"`
+	TopicName             string `pulumi:"topicName"`
 }

@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticSearchAclResult> & GetElasticSearchAclResult {
+export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticSearchAclResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,15 +14,13 @@ export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetElasticSearchAclResult> = pulumi.runtime.invoke("aiven:index/getElasticSearchAcl:getElasticSearchAcl", {
+    return pulumi.runtime.invoke("aiven:index/getElasticSearchAcl:getElasticSearchAcl", {
         "acls": args.acls,
         "enabled": args.enabled,
         "extendedAcl": args.extendedAcl,
         "project": args.project,
         "serviceName": args.serviceName,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

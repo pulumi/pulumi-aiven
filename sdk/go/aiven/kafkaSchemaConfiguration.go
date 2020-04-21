@@ -4,17 +4,26 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type KafkaSchemaConfiguration struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Kafka Schemas compatibility level
+	CompatibilityLevel pulumi.StringOutput `pulumi:"compatibilityLevel"`
+	// Project to link the Kafka Schemas Configuration to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Service to link the Kafka Schemas Configuration to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
 // NewKafkaSchemaConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewKafkaSchemaConfiguration(ctx *pulumi.Context,
-	name string, args *KafkaSchemaConfigurationArgs, opts ...pulumi.ResourceOpt) (*KafkaSchemaConfiguration, error) {
+	name string, args *KafkaSchemaConfigurationArgs, opts ...pulumi.ResourceOption) (*KafkaSchemaConfiguration, error) {
 	if args == nil || args.CompatibilityLevel == nil {
 		return nil, errors.New("missing required argument 'CompatibilityLevel'")
 	}
@@ -24,81 +33,71 @@ func NewKafkaSchemaConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ServiceName == nil {
 		return nil, errors.New("missing required argument 'ServiceName'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["compatibilityLevel"] = nil
-		inputs["project"] = nil
-		inputs["serviceName"] = nil
-	} else {
-		inputs["compatibilityLevel"] = args.CompatibilityLevel
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
+		args = &KafkaSchemaConfigurationArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, true, inputs, opts...)
+	var resource KafkaSchemaConfiguration
+	err := ctx.RegisterResource("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaSchemaConfiguration{s: s}, nil
+	return &resource, nil
 }
 
 // GetKafkaSchemaConfiguration gets an existing KafkaSchemaConfiguration resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetKafkaSchemaConfiguration(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *KafkaSchemaConfigurationState, opts ...pulumi.ResourceOpt) (*KafkaSchemaConfiguration, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["compatibilityLevel"] = state.CompatibilityLevel
-		inputs["project"] = state.Project
-		inputs["serviceName"] = state.ServiceName
-	}
-	s, err := ctx.ReadResource("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *KafkaSchemaConfigurationState, opts ...pulumi.ResourceOption) (*KafkaSchemaConfiguration, error) {
+	var resource KafkaSchemaConfiguration
+	err := ctx.ReadResource("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaSchemaConfiguration{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *KafkaSchemaConfiguration) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *KafkaSchemaConfiguration) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Kafka Schemas compatibility level
-func (r *KafkaSchemaConfiguration) CompatibilityLevel() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["compatibilityLevel"])
-}
-
-// Project to link the Kafka Schemas Configuration to
-func (r *KafkaSchemaConfiguration) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Service to link the Kafka Schemas Configuration to
-func (r *KafkaSchemaConfiguration) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering KafkaSchemaConfiguration resources.
+type kafkaSchemaConfigurationState struct {
+	// Kafka Schemas compatibility level
+	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
+	// Project to link the Kafka Schemas Configuration to
+	Project *string `pulumi:"project"`
+	// Service to link the Kafka Schemas Configuration to
+	ServiceName *string `pulumi:"serviceName"`
+}
+
 type KafkaSchemaConfigurationState struct {
 	// Kafka Schemas compatibility level
-	CompatibilityLevel interface{}
+	CompatibilityLevel pulumi.StringPtrInput
 	// Project to link the Kafka Schemas Configuration to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Service to link the Kafka Schemas Configuration to
-	ServiceName interface{}
+	ServiceName pulumi.StringPtrInput
+}
+
+func (KafkaSchemaConfigurationState) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaSchemaConfigurationState)(nil)).Elem()
+}
+
+type kafkaSchemaConfigurationArgs struct {
+	// Kafka Schemas compatibility level
+	CompatibilityLevel string `pulumi:"compatibilityLevel"`
+	// Project to link the Kafka Schemas Configuration to
+	Project string `pulumi:"project"`
+	// Service to link the Kafka Schemas Configuration to
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a KafkaSchemaConfiguration resource.
 type KafkaSchemaConfigurationArgs struct {
 	// Kafka Schemas compatibility level
-	CompatibilityLevel interface{}
+	CompatibilityLevel pulumi.StringInput
 	// Project to link the Kafka Schemas Configuration to
-	Project interface{}
+	Project pulumi.StringInput
 	// Service to link the Kafka Schemas Configuration to
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
+}
+
+func (KafkaSchemaConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaSchemaConfigurationArgs)(nil)).Elem()
 }

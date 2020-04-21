@@ -11,21 +11,50 @@ from . import utilities, tables
 
 class ConnectionPool(pulumi.CustomResource):
     connection_uri: pulumi.Output[str]
+    """
+    URI for connecting to the pool
+    """
     database_name: pulumi.Output[str]
+    """
+    Name of the database the pool connects to
+    """
     pool_mode: pulumi.Output[str]
+    """
+    Mode the pool operates in (session, transaction, statement)
+    """
     pool_name: pulumi.Output[str]
+    """
+    Name of the pool
+    """
     pool_size: pulumi.Output[float]
+    """
+    Number of connections the pool may create towards the backend server
+    """
     project: pulumi.Output[str]
+    """
+    Project to link the connection pool to
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the connection pool to
+    """
     username: pulumi.Output[str]
+    """
+    Name of the service user used to connect to the database
+    """
     def __init__(__self__, resource_name, opts=None, database_name=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ConnectionPool resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/connection_pool.html.markdown.
+        :param pulumi.Input[str] database_name: Name of the database the pool connects to
+        :param pulumi.Input[str] pool_mode: Mode the pool operates in (session, transaction, statement)
+        :param pulumi.Input[str] pool_name: Name of the pool
+        :param pulumi.Input[float] pool_size: Number of connections the pool may create towards the backend server
+        :param pulumi.Input[str] project: Project to link the connection pool to
+        :param pulumi.Input[str] service_name: Service to link the connection pool to
+        :param pulumi.Input[str] username: Name of the service user used to connect to the database
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,16 +102,23 @@ class ConnectionPool(pulumi.CustomResource):
         """
         Get an existing ConnectionPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/connection_pool.html.markdown.
+        :param pulumi.Input[str] connection_uri: URI for connecting to the pool
+        :param pulumi.Input[str] database_name: Name of the database the pool connects to
+        :param pulumi.Input[str] pool_mode: Mode the pool operates in (session, transaction, statement)
+        :param pulumi.Input[str] pool_name: Name of the pool
+        :param pulumi.Input[float] pool_size: Number of connections the pool may create towards the backend server
+        :param pulumi.Input[str] project: Project to link the connection pool to
+        :param pulumi.Input[str] service_name: Service to link the connection pool to
+        :param pulumi.Input[str] username: Name of the service user used to connect to the database
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["connection_uri"] = connection_uri
         __props__["database_name"] = database_name
         __props__["pool_mode"] = pool_mode

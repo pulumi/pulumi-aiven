@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> & GetConnectionPoolResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/connection_pool.html.markdown.
+ */
+export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +18,7 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetConnectionPoolResult> = pulumi.runtime.invoke("aiven:index/getConnectionPool:getConnectionPool", {
+    return pulumi.runtime.invoke("aiven:index/getConnectionPool:getConnectionPool", {
         "connectionUri": args.connectionUri,
         "databaseName": args.databaseName,
         "poolMode": args.poolMode,
@@ -24,8 +28,6 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
         "serviceName": args.serviceName,
         "username": args.username,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -4,72 +4,46 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupKafkaConnector(ctx *pulumi.Context, args *GetKafkaConnectorArgs) (*GetKafkaConnectorResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["config"] = args.Config
-		inputs["connectorName"] = args.ConnectorName
-		inputs["pluginAuthor"] = args.PluginAuthor
-		inputs["pluginClass"] = args.PluginClass
-		inputs["pluginDocUrl"] = args.PluginDocUrl
-		inputs["pluginTitle"] = args.PluginTitle
-		inputs["pluginType"] = args.PluginType
-		inputs["pluginVersion"] = args.PluginVersion
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["tasks"] = args.Tasks
-	}
-	outputs, err := ctx.Invoke("aiven:index/getKafkaConnector:getKafkaConnector", inputs)
+func LookupKafkaConnector(ctx *pulumi.Context, args *LookupKafkaConnectorArgs, opts ...pulumi.InvokeOption) (*LookupKafkaConnectorResult, error) {
+	var rv LookupKafkaConnectorResult
+	err := ctx.Invoke("aiven:index/getKafkaConnector:getKafkaConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetKafkaConnectorResult{
-		Config: outputs["config"],
-		ConnectorName: outputs["connectorName"],
-		PluginAuthor: outputs["pluginAuthor"],
-		PluginClass: outputs["pluginClass"],
-		PluginDocUrl: outputs["pluginDocUrl"],
-		PluginTitle: outputs["pluginTitle"],
-		PluginType: outputs["pluginType"],
-		PluginVersion: outputs["pluginVersion"],
-		Project: outputs["project"],
-		ServiceName: outputs["serviceName"],
-		Tasks: outputs["tasks"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getKafkaConnector.
-type GetKafkaConnectorArgs struct {
-	Config interface{}
-	ConnectorName interface{}
-	PluginAuthor interface{}
-	PluginClass interface{}
-	PluginDocUrl interface{}
-	PluginTitle interface{}
-	PluginType interface{}
-	PluginVersion interface{}
-	Project interface{}
-	ServiceName interface{}
-	Tasks interface{}
+type LookupKafkaConnectorArgs struct {
+	Config        map[string]string       `pulumi:"config"`
+	ConnectorName string                  `pulumi:"connectorName"`
+	PluginAuthor  *string                 `pulumi:"pluginAuthor"`
+	PluginClass   *string                 `pulumi:"pluginClass"`
+	PluginDocUrl  *string                 `pulumi:"pluginDocUrl"`
+	PluginTitle   *string                 `pulumi:"pluginTitle"`
+	PluginType    *string                 `pulumi:"pluginType"`
+	PluginVersion *string                 `pulumi:"pluginVersion"`
+	Project       string                  `pulumi:"project"`
+	ServiceName   string                  `pulumi:"serviceName"`
+	Tasks         []GetKafkaConnectorTask `pulumi:"tasks"`
 }
 
 // A collection of values returned by getKafkaConnector.
-type GetKafkaConnectorResult struct {
-	Config interface{}
-	ConnectorName interface{}
-	PluginAuthor interface{}
-	PluginClass interface{}
-	PluginDocUrl interface{}
-	PluginTitle interface{}
-	PluginType interface{}
-	PluginVersion interface{}
-	Project interface{}
-	ServiceName interface{}
-	Tasks interface{}
+type LookupKafkaConnectorResult struct {
+	Config        map[string]string `pulumi:"config"`
+	ConnectorName string            `pulumi:"connectorName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id            string                  `pulumi:"id"`
+	PluginAuthor  string                  `pulumi:"pluginAuthor"`
+	PluginClass   string                  `pulumi:"pluginClass"`
+	PluginDocUrl  string                  `pulumi:"pluginDocUrl"`
+	PluginTitle   string                  `pulumi:"pluginTitle"`
+	PluginType    string                  `pulumi:"pluginType"`
+	PluginVersion string                  `pulumi:"pluginVersion"`
+	Project       string                  `pulumi:"project"`
+	ServiceName   string                  `pulumi:"serviceName"`
+	Tasks         []GetKafkaConnectorTask `pulumi:"tasks"`
 }

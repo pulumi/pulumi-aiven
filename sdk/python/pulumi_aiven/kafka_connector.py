@@ -11,22 +11,61 @@ from . import utilities, tables
 
 class KafkaConnector(pulumi.CustomResource):
     config: pulumi.Output[dict]
+    """
+    Kafka Connector configuration parameters
+    """
     connector_name: pulumi.Output[str]
+    """
+    Kafka connector name
+    """
     plugin_author: pulumi.Output[str]
+    """
+    Kafka connector author
+    """
     plugin_class: pulumi.Output[str]
+    """
+    Kafka connector Java class
+    """
     plugin_doc_url: pulumi.Output[str]
+    """
+    Kafka connector documentation URL
+    """
     plugin_title: pulumi.Output[str]
+    """
+    Kafka connector title
+    """
     plugin_type: pulumi.Output[str]
+    """
+    Kafka connector type
+    """
     plugin_version: pulumi.Output[str]
+    """
+    Kafka connector version
+    """
     project: pulumi.Output[str]
+    """
+    Project to link the kafka connector to
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the kafka connector to
+    """
     tasks: pulumi.Output[list]
+    """
+    List of tasks of a connector
+
+      * `connector` (`str`)
+      * `task` (`float`)
+    """
     def __init__(__self__, resource_name, opts=None, config=None, connector_name=None, project=None, service_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a KafkaConnector resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] config: Kafka Connector configuration parameters
+        :param pulumi.Input[str] connector_name: Kafka connector name
+        :param pulumi.Input[str] project: Project to link the kafka connector to
+        :param pulumi.Input[str] service_name: Service to link the kafka connector to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,19 +114,31 @@ class KafkaConnector(pulumi.CustomResource):
         """
         Get an existing KafkaConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] config: Kafka Connector configuration parameters
+        :param pulumi.Input[str] connector_name: Kafka connector name
+        :param pulumi.Input[str] plugin_author: Kafka connector author
+        :param pulumi.Input[str] plugin_class: Kafka connector Java class
+        :param pulumi.Input[str] plugin_doc_url: Kafka connector documentation URL
+        :param pulumi.Input[str] plugin_title: Kafka connector title
+        :param pulumi.Input[str] plugin_type: Kafka connector type
+        :param pulumi.Input[str] plugin_version: Kafka connector version
+        :param pulumi.Input[str] project: Project to link the kafka connector to
+        :param pulumi.Input[str] service_name: Service to link the kafka connector to
+        :param pulumi.Input[list] tasks: List of tasks of a connector
+
         The **tasks** object supports the following:
-        
+
           * `connector` (`pulumi.Input[str]`)
           * `task` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["config"] = config
         __props__["connector_name"] = connector_name
         __props__["plugin_author"] = plugin_author

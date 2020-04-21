@@ -11,20 +11,43 @@ from . import utilities, tables
 
 class VpcPeeringConnection(pulumi.CustomResource):
     peer_cloud_account: pulumi.Output[str]
+    """
+    AWS account ID or GCP project ID of the peered VPC
+    """
     peer_region: pulumi.Output[str]
+    """
+    AWS region of the peered VPC (if not in the same region as Aiven VPC)
+    """
     peer_vpc: pulumi.Output[str]
+    """
+    AWS VPC ID or GCP VPC network name of the peered VPC
+    """
     peering_connection_id: pulumi.Output[str]
+    """
+    Cloud provider identifier for the peering connection if available
+    """
     state: pulumi.Output[str]
+    """
+    State of the peering connection
+    """
     state_info: pulumi.Output[dict]
+    """
+    State-specific help or error information
+    """
     vpc_id: pulumi.Output[str]
+    """
+    The VPC the peering connection belongs to
+    """
     def __init__(__self__, resource_name, opts=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a VpcPeeringConnection resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/vpc_peering_connection.html.markdown.
+        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC
+        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,16 +90,22 @@ class VpcPeeringConnection(pulumi.CustomResource):
         """
         Get an existing VpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/vpc_peering_connection.html.markdown.
+        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC
+        :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
+        :param pulumi.Input[str] state: State of the peering connection
+        :param pulumi.Input[dict] state_info: State-specific help or error information
+        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["peer_cloud_account"] = peer_cloud_account
         __props__["peer_region"] = peer_region
         __props__["peer_vpc"] = peer_vpc

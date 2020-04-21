@@ -13,10 +13,16 @@ class GetProjectVpcResult:
     """
     A collection of values returned by getProjectVpc.
     """
-    def __init__(__self__, cloud_name=None, network_cidr=None, project=None, state=None, id=None):
+    def __init__(__self__, cloud_name=None, id=None, network_cidr=None, project=None, state=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         __self__.cloud_name = cloud_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if network_cidr and not isinstance(network_cidr, str):
             raise TypeError("Expected argument 'network_cidr' to be a str")
         __self__.network_cidr = network_cidr
@@ -26,12 +32,6 @@ class GetProjectVpcResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         __self__.state = state
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProjectVpcResult(GetProjectVpcResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,19 +39,14 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
             yield self
         return GetProjectVpcResult(
             cloud_name=self.cloud_name,
+            id=self.id,
             network_cidr=self.network_cidr,
             project=self.project,
-            state=self.state,
-            id=self.id)
+            state=self.state)
 
 def get_project_vpc(cloud_name=None,network_cidr=None,project=None,state=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project_vpc.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['cloudName'] = cloud_name
     __args__['networkCidr'] = network_cidr
@@ -65,7 +60,7 @@ def get_project_vpc(cloud_name=None,network_cidr=None,project=None,state=None,op
 
     return AwaitableGetProjectVpcResult(
         cloud_name=__ret__.get('cloudName'),
+        id=__ret__.get('id'),
         network_cidr=__ret__.get('networkCidr'),
         project=__ret__.get('project'),
-        state=__ret__.get('state'),
-        id=__ret__.get('id'))
+        state=__ret__.get('state'))

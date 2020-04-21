@@ -4,52 +4,36 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupAccount(ctx *pulumi.Context, args *GetAccountArgs) (*GetAccountResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["accountId"] = args.AccountId
-		inputs["createTime"] = args.CreateTime
-		inputs["name"] = args.Name
-		inputs["ownerTeamId"] = args.OwnerTeamId
-		inputs["tenantId"] = args.TenantId
-		inputs["updateTime"] = args.UpdateTime
-	}
-	outputs, err := ctx.Invoke("aiven:index/getAccount:getAccount", inputs)
+func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
+	var rv LookupAccountResult
+	err := ctx.Invoke("aiven:index/getAccount:getAccount", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetAccountResult{
-		AccountId: outputs["accountId"],
-		CreateTime: outputs["createTime"],
-		Name: outputs["name"],
-		OwnerTeamId: outputs["ownerTeamId"],
-		TenantId: outputs["tenantId"],
-		UpdateTime: outputs["updateTime"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getAccount.
-type GetAccountArgs struct {
-	AccountId interface{}
-	CreateTime interface{}
-	Name interface{}
-	OwnerTeamId interface{}
-	TenantId interface{}
-	UpdateTime interface{}
+type LookupAccountArgs struct {
+	AccountId   *string `pulumi:"accountId"`
+	CreateTime  *string `pulumi:"createTime"`
+	Name        string  `pulumi:"name"`
+	OwnerTeamId *string `pulumi:"ownerTeamId"`
+	TenantId    *string `pulumi:"tenantId"`
+	UpdateTime  *string `pulumi:"updateTime"`
 }
 
 // A collection of values returned by getAccount.
-type GetAccountResult struct {
-	AccountId interface{}
-	CreateTime interface{}
-	Name interface{}
-	OwnerTeamId interface{}
-	TenantId interface{}
-	UpdateTime interface{}
+type LookupAccountResult struct {
+	AccountId  string `pulumi:"accountId"`
+	CreateTime string `pulumi:"createTime"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string `pulumi:"id"`
+	Name        string `pulumi:"name"`
+	OwnerTeamId string `pulumi:"ownerTeamId"`
+	TenantId    string `pulumi:"tenantId"`
+	UpdateTime  string `pulumi:"updateTime"`
 }

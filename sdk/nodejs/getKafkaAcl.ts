@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> & GetKafkaAclResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_acl.html.markdown.
+ */
+export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,15 +18,13 @@ export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKafkaAclResult> = pulumi.runtime.invoke("aiven:index/getKafkaAcl:getKafkaAcl", {
+    return pulumi.runtime.invoke("aiven:index/getKafkaAcl:getKafkaAcl", {
         "permission": args.permission,
         "project": args.project,
         "serviceName": args.serviceName,
         "topic": args.topic,
         "username": args.username,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

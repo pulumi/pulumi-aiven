@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaResult> & GetKafkaSchemaResult {
+export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,15 +14,13 @@ export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKafkaSchemaResult> = pulumi.runtime.invoke("aiven:index/getKafkaSchema:getKafkaSchema", {
+    return pulumi.runtime.invoke("aiven:index/getKafkaSchema:getKafkaSchema", {
         "project": args.project,
         "schema": args.schema,
         "serviceName": args.serviceName,
         "subjectName": args.subjectName,
         "version": args.version,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

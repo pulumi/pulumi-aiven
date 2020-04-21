@@ -11,16 +11,34 @@ from . import utilities, tables
 
 class KafkaSchema(pulumi.CustomResource):
     project: pulumi.Output[str]
+    """
+    Project to link the Kafka Schema to
+    """
     schema: pulumi.Output[str]
+    """
+    Kafka Schema configuration should be a valid Avro Schema JSON format
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the Kafka Schema to
+    """
     subject_name: pulumi.Output[str]
+    """
+    Kafka Schema Subject name
+    """
     version: pulumi.Output[float]
+    """
+    Kafka Schema configuration version
+    """
     def __init__(__self__, resource_name, opts=None, project=None, schema=None, service_name=None, subject_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a KafkaSchema resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: Project to link the Kafka Schema to
+        :param pulumi.Input[str] schema: Kafka Schema configuration should be a valid Avro Schema JSON format
+        :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
+        :param pulumi.Input[str] subject_name: Kafka Schema Subject name
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,14 +81,20 @@ class KafkaSchema(pulumi.CustomResource):
         """
         Get an existing KafkaSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: Project to link the Kafka Schema to
+        :param pulumi.Input[str] schema: Kafka Schema configuration should be a valid Avro Schema JSON format
+        :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
+        :param pulumi.Input[str] subject_name: Kafka Schema Subject name
+        :param pulumi.Input[float] version: Kafka Schema configuration version
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["project"] = project
         __props__["schema"] = schema
         __props__["service_name"] = service_name

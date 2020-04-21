@@ -4,158 +4,147 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type ServiceIntegration struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Destination endpoint for the integration (if any)
+	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
+	// Destination service for the integration (if any)
+	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
+	// Type of the service integration
+	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
+	// Log integration specific user configurable settings
+	LogsUserConfig ServiceIntegrationLogsUserConfigPtrOutput `pulumi:"logsUserConfig"`
+	// Mirrormaker integration specific user configurable settings
+	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrOutput `pulumi:"mirrormakerUserConfig"`
+	// Project the integration belongs to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Source endpoint for the integration (if any)
+	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
+	// Source service for the integration (if any)
+	SourceServiceName pulumi.StringPtrOutput `pulumi:"sourceServiceName"`
 }
 
 // NewServiceIntegration registers a new resource with the given unique name, arguments, and options.
 func NewServiceIntegration(ctx *pulumi.Context,
-	name string, args *ServiceIntegrationArgs, opts ...pulumi.ResourceOpt) (*ServiceIntegration, error) {
+	name string, args *ServiceIntegrationArgs, opts ...pulumi.ResourceOption) (*ServiceIntegration, error) {
 	if args == nil || args.IntegrationType == nil {
 		return nil, errors.New("missing required argument 'IntegrationType'")
 	}
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["destinationEndpointId"] = nil
-		inputs["destinationServiceName"] = nil
-		inputs["integrationType"] = nil
-		inputs["logsUserConfig"] = nil
-		inputs["mirrormakerUserConfig"] = nil
-		inputs["project"] = nil
-		inputs["sourceEndpointId"] = nil
-		inputs["sourceServiceName"] = nil
-	} else {
-		inputs["destinationEndpointId"] = args.DestinationEndpointId
-		inputs["destinationServiceName"] = args.DestinationServiceName
-		inputs["integrationType"] = args.IntegrationType
-		inputs["logsUserConfig"] = args.LogsUserConfig
-		inputs["mirrormakerUserConfig"] = args.MirrormakerUserConfig
-		inputs["project"] = args.Project
-		inputs["sourceEndpointId"] = args.SourceEndpointId
-		inputs["sourceServiceName"] = args.SourceServiceName
+		args = &ServiceIntegrationArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/serviceIntegration:ServiceIntegration", name, true, inputs, opts...)
+	var resource ServiceIntegration
+	err := ctx.RegisterResource("aiven:index/serviceIntegration:ServiceIntegration", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ServiceIntegration{s: s}, nil
+	return &resource, nil
 }
 
 // GetServiceIntegration gets an existing ServiceIntegration resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetServiceIntegration(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ServiceIntegrationState, opts ...pulumi.ResourceOpt) (*ServiceIntegration, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["destinationEndpointId"] = state.DestinationEndpointId
-		inputs["destinationServiceName"] = state.DestinationServiceName
-		inputs["integrationType"] = state.IntegrationType
-		inputs["logsUserConfig"] = state.LogsUserConfig
-		inputs["mirrormakerUserConfig"] = state.MirrormakerUserConfig
-		inputs["project"] = state.Project
-		inputs["sourceEndpointId"] = state.SourceEndpointId
-		inputs["sourceServiceName"] = state.SourceServiceName
-	}
-	s, err := ctx.ReadResource("aiven:index/serviceIntegration:ServiceIntegration", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ServiceIntegrationState, opts ...pulumi.ResourceOption) (*ServiceIntegration, error) {
+	var resource ServiceIntegration
+	err := ctx.ReadResource("aiven:index/serviceIntegration:ServiceIntegration", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ServiceIntegration{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceIntegration) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceIntegration) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Destination endpoint for the integration (if any)
-func (r *ServiceIntegration) DestinationEndpointId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["destinationEndpointId"])
-}
-
-// Destination service for the integration (if any)
-func (r *ServiceIntegration) DestinationServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["destinationServiceName"])
-}
-
-// Type of the service integration
-func (r *ServiceIntegration) IntegrationType() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["integrationType"])
-}
-
-// Log integration specific user configurable settings
-func (r *ServiceIntegration) LogsUserConfig() pulumi.Output {
-	return r.s.State["logsUserConfig"]
-}
-
-// Mirrormaker integration specific user configurable settings
-func (r *ServiceIntegration) MirrormakerUserConfig() pulumi.Output {
-	return r.s.State["mirrormakerUserConfig"]
-}
-
-// Project the integration belongs to
-func (r *ServiceIntegration) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Source endpoint for the integration (if any)
-func (r *ServiceIntegration) SourceEndpointId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["sourceEndpointId"])
-}
-
-// Source service for the integration (if any)
-func (r *ServiceIntegration) SourceServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["sourceServiceName"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering ServiceIntegration resources.
+type serviceIntegrationState struct {
+	// Destination endpoint for the integration (if any)
+	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
+	// Destination service for the integration (if any)
+	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// Type of the service integration
+	IntegrationType *string `pulumi:"integrationType"`
+	// Log integration specific user configurable settings
+	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
+	// Mirrormaker integration specific user configurable settings
+	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
+	// Project the integration belongs to
+	Project *string `pulumi:"project"`
+	// Source endpoint for the integration (if any)
+	SourceEndpointId *string `pulumi:"sourceEndpointId"`
+	// Source service for the integration (if any)
+	SourceServiceName *string `pulumi:"sourceServiceName"`
+}
+
 type ServiceIntegrationState struct {
 	// Destination endpoint for the integration (if any)
-	DestinationEndpointId interface{}
+	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
-	DestinationServiceName interface{}
+	DestinationServiceName pulumi.StringPtrInput
 	// Type of the service integration
-	IntegrationType interface{}
+	IntegrationType pulumi.StringPtrInput
 	// Log integration specific user configurable settings
-	LogsUserConfig interface{}
+	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
 	// Mirrormaker integration specific user configurable settings
-	MirrormakerUserConfig interface{}
+	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Source endpoint for the integration (if any)
-	SourceEndpointId interface{}
+	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
-	SourceServiceName interface{}
+	SourceServiceName pulumi.StringPtrInput
+}
+
+func (ServiceIntegrationState) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceIntegrationState)(nil)).Elem()
+}
+
+type serviceIntegrationArgs struct {
+	// Destination endpoint for the integration (if any)
+	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
+	// Destination service for the integration (if any)
+	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// Type of the service integration
+	IntegrationType string `pulumi:"integrationType"`
+	// Log integration specific user configurable settings
+	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
+	// Mirrormaker integration specific user configurable settings
+	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
+	// Project the integration belongs to
+	Project string `pulumi:"project"`
+	// Source endpoint for the integration (if any)
+	SourceEndpointId *string `pulumi:"sourceEndpointId"`
+	// Source service for the integration (if any)
+	SourceServiceName *string `pulumi:"sourceServiceName"`
 }
 
 // The set of arguments for constructing a ServiceIntegration resource.
 type ServiceIntegrationArgs struct {
 	// Destination endpoint for the integration (if any)
-	DestinationEndpointId interface{}
+	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
-	DestinationServiceName interface{}
+	DestinationServiceName pulumi.StringPtrInput
 	// Type of the service integration
-	IntegrationType interface{}
+	IntegrationType pulumi.StringInput
 	// Log integration specific user configurable settings
-	LogsUserConfig interface{}
+	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
 	// Mirrormaker integration specific user configurable settings
-	MirrormakerUserConfig interface{}
+	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
-	Project interface{}
+	Project pulumi.StringInput
 	// Source endpoint for the integration (if any)
-	SourceEndpointId interface{}
+	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
-	SourceServiceName interface{}
+	SourceServiceName pulumi.StringPtrInput
+}
+
+func (ServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceIntegrationArgs)(nil)).Elem()
 }

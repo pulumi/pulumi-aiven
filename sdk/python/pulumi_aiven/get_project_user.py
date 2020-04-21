@@ -13,25 +13,25 @@ class GetProjectUserResult:
     """
     A collection of values returned by getProjectUser.
     """
-    def __init__(__self__, accepted=None, email=None, member_type=None, project=None, id=None):
+    def __init__(__self__, accepted=None, email=None, id=None, member_type=None, project=None):
         if accepted and not isinstance(accepted, bool):
             raise TypeError("Expected argument 'accepted' to be a bool")
         __self__.accepted = accepted
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         __self__.email = email
-        if member_type and not isinstance(member_type, str):
-            raise TypeError("Expected argument 'member_type' to be a str")
-        __self__.member_type = member_type
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if member_type and not isinstance(member_type, str):
+            raise TypeError("Expected argument 'member_type' to be a str")
+        __self__.member_type = member_type
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        __self__.project = project
 class AwaitableGetProjectUserResult(GetProjectUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -40,18 +40,13 @@ class AwaitableGetProjectUserResult(GetProjectUserResult):
         return GetProjectUserResult(
             accepted=self.accepted,
             email=self.email,
+            id=self.id,
             member_type=self.member_type,
-            project=self.project,
-            id=self.id)
+            project=self.project)
 
 def get_project_user(accepted=None,email=None,member_type=None,project=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project_user.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['accepted'] = accepted
     __args__['email'] = email
@@ -66,6 +61,6 @@ def get_project_user(accepted=None,email=None,member_type=None,project=None,opts
     return AwaitableGetProjectUserResult(
         accepted=__ret__.get('accepted'),
         email=__ret__.get('email'),
+        id=__ret__.get('id'),
         member_type=__ret__.get('memberType'),
-        project=__ret__.get('project'),
-        id=__ret__.get('id'))
+        project=__ret__.get('project'))

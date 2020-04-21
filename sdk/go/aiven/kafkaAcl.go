@@ -4,17 +4,30 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type KafkaAcl struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Kafka permission to grant (admin, read, readwrite, write)
+	Permission pulumi.StringOutput `pulumi:"permission"`
+	// Project to link the Kafka ACL to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Service to link the Kafka ACL to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Topic name pattern for the ACL entry
+	Topic pulumi.StringOutput `pulumi:"topic"`
+	// Username pattern for the ACL entry
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewKafkaAcl registers a new resource with the given unique name, arguments, and options.
 func NewKafkaAcl(ctx *pulumi.Context,
-	name string, args *KafkaAclArgs, opts ...pulumi.ResourceOpt) (*KafkaAcl, error) {
+	name string, args *KafkaAclArgs, opts ...pulumi.ResourceOption) (*KafkaAcl, error) {
 	if args == nil || args.Permission == nil {
 		return nil, errors.New("missing required argument 'Permission'")
 	}
@@ -30,105 +43,87 @@ func NewKafkaAcl(ctx *pulumi.Context,
 	if args == nil || args.Username == nil {
 		return nil, errors.New("missing required argument 'Username'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["permission"] = nil
-		inputs["project"] = nil
-		inputs["serviceName"] = nil
-		inputs["topic"] = nil
-		inputs["username"] = nil
-	} else {
-		inputs["permission"] = args.Permission
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["topic"] = args.Topic
-		inputs["username"] = args.Username
+		args = &KafkaAclArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/kafkaAcl:KafkaAcl", name, true, inputs, opts...)
+	var resource KafkaAcl
+	err := ctx.RegisterResource("aiven:index/kafkaAcl:KafkaAcl", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaAcl{s: s}, nil
+	return &resource, nil
 }
 
 // GetKafkaAcl gets an existing KafkaAcl resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetKafkaAcl(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *KafkaAclState, opts ...pulumi.ResourceOpt) (*KafkaAcl, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["permission"] = state.Permission
-		inputs["project"] = state.Project
-		inputs["serviceName"] = state.ServiceName
-		inputs["topic"] = state.Topic
-		inputs["username"] = state.Username
-	}
-	s, err := ctx.ReadResource("aiven:index/kafkaAcl:KafkaAcl", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *KafkaAclState, opts ...pulumi.ResourceOption) (*KafkaAcl, error) {
+	var resource KafkaAcl
+	err := ctx.ReadResource("aiven:index/kafkaAcl:KafkaAcl", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaAcl{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *KafkaAcl) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *KafkaAcl) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Kafka permission to grant (admin, read, readwrite, write)
-func (r *KafkaAcl) Permission() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["permission"])
-}
-
-// Project to link the Kafka ACL to
-func (r *KafkaAcl) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Service to link the Kafka ACL to
-func (r *KafkaAcl) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// Topic name pattern for the ACL entry
-func (r *KafkaAcl) Topic() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["topic"])
-}
-
-// Username pattern for the ACL entry
-func (r *KafkaAcl) Username() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["username"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering KafkaAcl resources.
+type kafkaAclState struct {
+	// Kafka permission to grant (admin, read, readwrite, write)
+	Permission *string `pulumi:"permission"`
+	// Project to link the Kafka ACL to
+	Project *string `pulumi:"project"`
+	// Service to link the Kafka ACL to
+	ServiceName *string `pulumi:"serviceName"`
+	// Topic name pattern for the ACL entry
+	Topic *string `pulumi:"topic"`
+	// Username pattern for the ACL entry
+	Username *string `pulumi:"username"`
+}
+
 type KafkaAclState struct {
 	// Kafka permission to grant (admin, read, readwrite, write)
-	Permission interface{}
+	Permission pulumi.StringPtrInput
 	// Project to link the Kafka ACL to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Service to link the Kafka ACL to
-	ServiceName interface{}
+	ServiceName pulumi.StringPtrInput
 	// Topic name pattern for the ACL entry
-	Topic interface{}
+	Topic pulumi.StringPtrInput
 	// Username pattern for the ACL entry
-	Username interface{}
+	Username pulumi.StringPtrInput
+}
+
+func (KafkaAclState) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaAclState)(nil)).Elem()
+}
+
+type kafkaAclArgs struct {
+	// Kafka permission to grant (admin, read, readwrite, write)
+	Permission string `pulumi:"permission"`
+	// Project to link the Kafka ACL to
+	Project string `pulumi:"project"`
+	// Service to link the Kafka ACL to
+	ServiceName string `pulumi:"serviceName"`
+	// Topic name pattern for the ACL entry
+	Topic string `pulumi:"topic"`
+	// Username pattern for the ACL entry
+	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaAcl resource.
 type KafkaAclArgs struct {
 	// Kafka permission to grant (admin, read, readwrite, write)
-	Permission interface{}
+	Permission pulumi.StringInput
 	// Project to link the Kafka ACL to
-	Project interface{}
+	Project pulumi.StringInput
 	// Service to link the Kafka ACL to
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
 	// Topic name pattern for the ACL entry
-	Topic interface{}
+	Topic pulumi.StringInput
 	// Username pattern for the ACL entry
-	Username interface{}
+	Username pulumi.StringInput
+}
+
+func (KafkaAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaAclArgs)(nil)).Elem()
 }

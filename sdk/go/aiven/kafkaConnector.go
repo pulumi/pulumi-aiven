@@ -4,17 +4,42 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type KafkaConnector struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Kafka Connector configuration parameters
+	Config pulumi.StringMapOutput `pulumi:"config"`
+	// Kafka connector name
+	ConnectorName pulumi.StringOutput `pulumi:"connectorName"`
+	// Kafka connector author
+	PluginAuthor pulumi.StringOutput `pulumi:"pluginAuthor"`
+	// Kafka connector Java class
+	PluginClass pulumi.StringOutput `pulumi:"pluginClass"`
+	// Kafka connector documentation URL
+	PluginDocUrl pulumi.StringOutput `pulumi:"pluginDocUrl"`
+	// Kafka connector title
+	PluginTitle pulumi.StringOutput `pulumi:"pluginTitle"`
+	// Kafka connector type
+	PluginType pulumi.StringOutput `pulumi:"pluginType"`
+	// Kafka connector version
+	PluginVersion pulumi.StringOutput `pulumi:"pluginVersion"`
+	// Project to link the kafka connector to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Service to link the kafka connector to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// List of tasks of a connector
+	Tasks KafkaConnectorTaskArrayOutput `pulumi:"tasks"`
 }
 
 // NewKafkaConnector registers a new resource with the given unique name, arguments, and options.
 func NewKafkaConnector(ctx *pulumi.Context,
-	name string, args *KafkaConnectorArgs, opts ...pulumi.ResourceOpt) (*KafkaConnector, error) {
+	name string, args *KafkaConnectorArgs, opts ...pulumi.ResourceOption) (*KafkaConnector, error) {
 	if args == nil || args.Config == nil {
 		return nil, errors.New("missing required argument 'Config'")
 	}
@@ -27,156 +52,107 @@ func NewKafkaConnector(ctx *pulumi.Context,
 	if args == nil || args.ServiceName == nil {
 		return nil, errors.New("missing required argument 'ServiceName'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["config"] = nil
-		inputs["connectorName"] = nil
-		inputs["project"] = nil
-		inputs["serviceName"] = nil
-	} else {
-		inputs["config"] = args.Config
-		inputs["connectorName"] = args.ConnectorName
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
+		args = &KafkaConnectorArgs{}
 	}
-	inputs["pluginAuthor"] = nil
-	inputs["pluginClass"] = nil
-	inputs["pluginDocUrl"] = nil
-	inputs["pluginTitle"] = nil
-	inputs["pluginType"] = nil
-	inputs["pluginVersion"] = nil
-	inputs["tasks"] = nil
-	s, err := ctx.RegisterResource("aiven:index/kafkaConnector:KafkaConnector", name, true, inputs, opts...)
+	var resource KafkaConnector
+	err := ctx.RegisterResource("aiven:index/kafkaConnector:KafkaConnector", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaConnector{s: s}, nil
+	return &resource, nil
 }
 
 // GetKafkaConnector gets an existing KafkaConnector resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetKafkaConnector(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *KafkaConnectorState, opts ...pulumi.ResourceOpt) (*KafkaConnector, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["config"] = state.Config
-		inputs["connectorName"] = state.ConnectorName
-		inputs["pluginAuthor"] = state.PluginAuthor
-		inputs["pluginClass"] = state.PluginClass
-		inputs["pluginDocUrl"] = state.PluginDocUrl
-		inputs["pluginTitle"] = state.PluginTitle
-		inputs["pluginType"] = state.PluginType
-		inputs["pluginVersion"] = state.PluginVersion
-		inputs["project"] = state.Project
-		inputs["serviceName"] = state.ServiceName
-		inputs["tasks"] = state.Tasks
-	}
-	s, err := ctx.ReadResource("aiven:index/kafkaConnector:KafkaConnector", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *KafkaConnectorState, opts ...pulumi.ResourceOption) (*KafkaConnector, error) {
+	var resource KafkaConnector
+	err := ctx.ReadResource("aiven:index/kafkaConnector:KafkaConnector", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaConnector{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *KafkaConnector) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *KafkaConnector) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Kafka Connector configuration parameters
-func (r *KafkaConnector) Config() pulumi.MapOutput {
-	return (pulumi.MapOutput)(r.s.State["config"])
-}
-
-// Kafka connector name
-func (r *KafkaConnector) ConnectorName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["connectorName"])
-}
-
-// Kafka connector author
-func (r *KafkaConnector) PluginAuthor() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["pluginAuthor"])
-}
-
-// Kafka connector Java class
-func (r *KafkaConnector) PluginClass() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["pluginClass"])
-}
-
-// Kafka connector documentation URL
-func (r *KafkaConnector) PluginDocUrl() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["pluginDocUrl"])
-}
-
-// Kafka connector title
-func (r *KafkaConnector) PluginTitle() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["pluginTitle"])
-}
-
-// Kafka connector type
-func (r *KafkaConnector) PluginType() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["pluginType"])
-}
-
-// Kafka connector version
-func (r *KafkaConnector) PluginVersion() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["pluginVersion"])
-}
-
-// Project to link the kafka connector to
-func (r *KafkaConnector) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Service to link the kafka connector to
-func (r *KafkaConnector) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// List of tasks of a connector
-func (r *KafkaConnector) Tasks() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["tasks"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering KafkaConnector resources.
+type kafkaConnectorState struct {
+	// Kafka Connector configuration parameters
+	Config map[string]string `pulumi:"config"`
+	// Kafka connector name
+	ConnectorName *string `pulumi:"connectorName"`
+	// Kafka connector author
+	PluginAuthor *string `pulumi:"pluginAuthor"`
+	// Kafka connector Java class
+	PluginClass *string `pulumi:"pluginClass"`
+	// Kafka connector documentation URL
+	PluginDocUrl *string `pulumi:"pluginDocUrl"`
+	// Kafka connector title
+	PluginTitle *string `pulumi:"pluginTitle"`
+	// Kafka connector type
+	PluginType *string `pulumi:"pluginType"`
+	// Kafka connector version
+	PluginVersion *string `pulumi:"pluginVersion"`
+	// Project to link the kafka connector to
+	Project *string `pulumi:"project"`
+	// Service to link the kafka connector to
+	ServiceName *string `pulumi:"serviceName"`
+	// List of tasks of a connector
+	Tasks []KafkaConnectorTask `pulumi:"tasks"`
+}
+
 type KafkaConnectorState struct {
 	// Kafka Connector configuration parameters
-	Config interface{}
+	Config pulumi.StringMapInput
 	// Kafka connector name
-	ConnectorName interface{}
+	ConnectorName pulumi.StringPtrInput
 	// Kafka connector author
-	PluginAuthor interface{}
+	PluginAuthor pulumi.StringPtrInput
 	// Kafka connector Java class
-	PluginClass interface{}
+	PluginClass pulumi.StringPtrInput
 	// Kafka connector documentation URL
-	PluginDocUrl interface{}
+	PluginDocUrl pulumi.StringPtrInput
 	// Kafka connector title
-	PluginTitle interface{}
+	PluginTitle pulumi.StringPtrInput
 	// Kafka connector type
-	PluginType interface{}
+	PluginType pulumi.StringPtrInput
 	// Kafka connector version
-	PluginVersion interface{}
+	PluginVersion pulumi.StringPtrInput
 	// Project to link the kafka connector to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Service to link the kafka connector to
-	ServiceName interface{}
+	ServiceName pulumi.StringPtrInput
 	// List of tasks of a connector
-	Tasks interface{}
+	Tasks KafkaConnectorTaskArrayInput
+}
+
+func (KafkaConnectorState) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaConnectorState)(nil)).Elem()
+}
+
+type kafkaConnectorArgs struct {
+	// Kafka Connector configuration parameters
+	Config map[string]string `pulumi:"config"`
+	// Kafka connector name
+	ConnectorName string `pulumi:"connectorName"`
+	// Project to link the kafka connector to
+	Project string `pulumi:"project"`
+	// Service to link the kafka connector to
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a KafkaConnector resource.
 type KafkaConnectorArgs struct {
 	// Kafka Connector configuration parameters
-	Config interface{}
+	Config pulumi.StringMapInput
 	// Kafka connector name
-	ConnectorName interface{}
+	ConnectorName pulumi.StringInput
 	// Project to link the kafka connector to
-	Project interface{}
+	Project pulumi.StringInput
 	// Service to link the kafka connector to
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
+}
+
+func (KafkaConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaConnectorArgs)(nil)).Elem()
 }

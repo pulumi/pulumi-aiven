@@ -11,30 +11,65 @@ from . import utilities, tables
 
 class ServiceIntegration(pulumi.CustomResource):
     destination_endpoint_id: pulumi.Output[str]
+    """
+    Destination endpoint for the integration (if any)
+    """
     destination_service_name: pulumi.Output[str]
+    """
+    Destination service for the integration (if any)
+    """
     integration_type: pulumi.Output[str]
+    """
+    Type of the service integration
+    """
     logs_user_config: pulumi.Output[dict]
+    """
+    Log integration specific user configurable settings
+
+      * `elasticsearchIndexDaysMax` (`float`)
+      * `elasticsearchIndexPrefix` (`str`)
+    """
     mirrormaker_user_config: pulumi.Output[dict]
+    """
+    Mirrormaker integration specific user configurable settings
+
+      * `mirrormakerWhitelist` (`str`)
+    """
     project: pulumi.Output[str]
+    """
+    Project the integration belongs to
+    """
     source_endpoint_id: pulumi.Output[str]
+    """
+    Source endpoint for the integration (if any)
+    """
     source_service_name: pulumi.Output[str]
+    """
+    Source service for the integration (if any)
+    """
     def __init__(__self__, resource_name, opts=None, destination_endpoint_id=None, destination_service_name=None, integration_type=None, logs_user_config=None, mirrormaker_user_config=None, project=None, source_endpoint_id=None, source_service_name=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ServiceIntegration resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
+        :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[dict] logs_user_config: Log integration specific user configurable settings
+        :param pulumi.Input[dict] mirrormaker_user_config: Mirrormaker integration specific user configurable settings
+        :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
+
         The **logs_user_config** object supports the following:
-        
+
           * `elasticsearchIndexDaysMax` (`pulumi.Input[float]`)
           * `elasticsearchIndexPrefix` (`pulumi.Input[str]`)
-        
-        The **mirrormaker_user_config** object supports the following:
-        
-          * `mirrormakerWhitelist` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_integration.html.markdown.
+        The **mirrormaker_user_config** object supports the following:
+
+          * `mirrormakerWhitelist` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,25 +111,32 @@ class ServiceIntegration(pulumi.CustomResource):
         """
         Get an existing ServiceIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
+        :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[dict] logs_user_config: Log integration specific user configurable settings
+        :param pulumi.Input[dict] mirrormaker_user_config: Mirrormaker integration specific user configurable settings
+        :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
+
         The **logs_user_config** object supports the following:
-        
+
           * `elasticsearchIndexDaysMax` (`pulumi.Input[float]`)
           * `elasticsearchIndexPrefix` (`pulumi.Input[str]`)
-        
-        The **mirrormaker_user_config** object supports the following:
-        
-          * `mirrormakerWhitelist` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_integration.html.markdown.
+        The **mirrormaker_user_config** object supports the following:
+
+          * `mirrormakerWhitelist` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["destination_endpoint_id"] = destination_endpoint_id
         __props__["destination_service_name"] = destination_service_name
         __props__["integration_type"] = integration_type

@@ -4,17 +4,36 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type ServiceIntegrationEndpoint struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Datadog specific user configurable settings
+	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrOutput `pulumi:"datadogUserConfig"`
+	// Integration endpoint specific backend configuration
+	EndpointConfig pulumi.StringMapOutput `pulumi:"endpointConfig"`
+	// Name of the service integration endpoint
+	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
+	// Type of the service integration endpoint
+	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
+	// external elasticsearch specific user configurable settings
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
+	// Project the service integration endpoint belongs to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Prometheus specific user configurable settings
+	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
+	// rsyslog specific user configurable settings
+	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrOutput `pulumi:"rsyslogUserConfig"`
 }
 
 // NewServiceIntegrationEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewServiceIntegrationEndpoint(ctx *pulumi.Context,
-	name string, args *ServiceIntegrationEndpointArgs, opts ...pulumi.ResourceOpt) (*ServiceIntegrationEndpoint, error) {
+	name string, args *ServiceIntegrationEndpointArgs, opts ...pulumi.ResourceOption) (*ServiceIntegrationEndpoint, error) {
 	if args == nil || args.EndpointName == nil {
 		return nil, errors.New("missing required argument 'EndpointName'")
 	}
@@ -24,138 +43,107 @@ func NewServiceIntegrationEndpoint(ctx *pulumi.Context,
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["datadogUserConfig"] = nil
-		inputs["endpointName"] = nil
-		inputs["endpointType"] = nil
-		inputs["externalElasticsearchLogsUserConfig"] = nil
-		inputs["project"] = nil
-		inputs["prometheusUserConfig"] = nil
-		inputs["rsyslogUserConfig"] = nil
-	} else {
-		inputs["datadogUserConfig"] = args.DatadogUserConfig
-		inputs["endpointName"] = args.EndpointName
-		inputs["endpointType"] = args.EndpointType
-		inputs["externalElasticsearchLogsUserConfig"] = args.ExternalElasticsearchLogsUserConfig
-		inputs["project"] = args.Project
-		inputs["prometheusUserConfig"] = args.PrometheusUserConfig
-		inputs["rsyslogUserConfig"] = args.RsyslogUserConfig
+		args = &ServiceIntegrationEndpointArgs{}
 	}
-	inputs["endpointConfig"] = nil
-	s, err := ctx.RegisterResource("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, true, inputs, opts...)
+	var resource ServiceIntegrationEndpoint
+	err := ctx.RegisterResource("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ServiceIntegrationEndpoint{s: s}, nil
+	return &resource, nil
 }
 
 // GetServiceIntegrationEndpoint gets an existing ServiceIntegrationEndpoint resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetServiceIntegrationEndpoint(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ServiceIntegrationEndpointState, opts ...pulumi.ResourceOpt) (*ServiceIntegrationEndpoint, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["datadogUserConfig"] = state.DatadogUserConfig
-		inputs["endpointConfig"] = state.EndpointConfig
-		inputs["endpointName"] = state.EndpointName
-		inputs["endpointType"] = state.EndpointType
-		inputs["externalElasticsearchLogsUserConfig"] = state.ExternalElasticsearchLogsUserConfig
-		inputs["project"] = state.Project
-		inputs["prometheusUserConfig"] = state.PrometheusUserConfig
-		inputs["rsyslogUserConfig"] = state.RsyslogUserConfig
-	}
-	s, err := ctx.ReadResource("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ServiceIntegrationEndpointState, opts ...pulumi.ResourceOption) (*ServiceIntegrationEndpoint, error) {
+	var resource ServiceIntegrationEndpoint
+	err := ctx.ReadResource("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ServiceIntegrationEndpoint{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceIntegrationEndpoint) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceIntegrationEndpoint) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Datadog specific user configurable settings
-func (r *ServiceIntegrationEndpoint) DatadogUserConfig() pulumi.Output {
-	return r.s.State["datadogUserConfig"]
-}
-
-// Integration endpoint specific backend configuration
-func (r *ServiceIntegrationEndpoint) EndpointConfig() pulumi.MapOutput {
-	return (pulumi.MapOutput)(r.s.State["endpointConfig"])
-}
-
-// Name of the service integration endpoint
-func (r *ServiceIntegrationEndpoint) EndpointName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["endpointName"])
-}
-
-// Type of the service integration endpoint
-func (r *ServiceIntegrationEndpoint) EndpointType() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["endpointType"])
-}
-
-// external elasticsearch specific user configurable settings
-func (r *ServiceIntegrationEndpoint) ExternalElasticsearchLogsUserConfig() pulumi.Output {
-	return r.s.State["externalElasticsearchLogsUserConfig"]
-}
-
-// Project the service integration endpoint belongs to
-func (r *ServiceIntegrationEndpoint) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Prometheus specific user configurable settings
-func (r *ServiceIntegrationEndpoint) PrometheusUserConfig() pulumi.Output {
-	return r.s.State["prometheusUserConfig"]
-}
-
-// rsyslog specific user configurable settings
-func (r *ServiceIntegrationEndpoint) RsyslogUserConfig() pulumi.Output {
-	return r.s.State["rsyslogUserConfig"]
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering ServiceIntegrationEndpoint resources.
+type serviceIntegrationEndpointState struct {
+	// Datadog specific user configurable settings
+	DatadogUserConfig *ServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
+	// Integration endpoint specific backend configuration
+	EndpointConfig map[string]string `pulumi:"endpointConfig"`
+	// Name of the service integration endpoint
+	EndpointName *string `pulumi:"endpointName"`
+	// Type of the service integration endpoint
+	EndpointType *string `pulumi:"endpointType"`
+	// external elasticsearch specific user configurable settings
+	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// Project the service integration endpoint belongs to
+	Project *string `pulumi:"project"`
+	// Prometheus specific user configurable settings
+	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	// rsyslog specific user configurable settings
+	RsyslogUserConfig *ServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
+}
+
 type ServiceIntegrationEndpointState struct {
 	// Datadog specific user configurable settings
-	DatadogUserConfig interface{}
+	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrInput
 	// Integration endpoint specific backend configuration
-	EndpointConfig interface{}
+	EndpointConfig pulumi.StringMapInput
 	// Name of the service integration endpoint
-	EndpointName interface{}
+	EndpointName pulumi.StringPtrInput
 	// Type of the service integration endpoint
-	EndpointType interface{}
+	EndpointType pulumi.StringPtrInput
 	// external elasticsearch specific user configurable settings
-	ExternalElasticsearchLogsUserConfig interface{}
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
 	// Project the service integration endpoint belongs to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Prometheus specific user configurable settings
-	PrometheusUserConfig interface{}
+	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput
 	// rsyslog specific user configurable settings
-	RsyslogUserConfig interface{}
+	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrInput
+}
+
+func (ServiceIntegrationEndpointState) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceIntegrationEndpointState)(nil)).Elem()
+}
+
+type serviceIntegrationEndpointArgs struct {
+	// Datadog specific user configurable settings
+	DatadogUserConfig *ServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
+	// Name of the service integration endpoint
+	EndpointName string `pulumi:"endpointName"`
+	// Type of the service integration endpoint
+	EndpointType string `pulumi:"endpointType"`
+	// external elasticsearch specific user configurable settings
+	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// Project the service integration endpoint belongs to
+	Project string `pulumi:"project"`
+	// Prometheus specific user configurable settings
+	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	// rsyslog specific user configurable settings
+	RsyslogUserConfig *ServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
 }
 
 // The set of arguments for constructing a ServiceIntegrationEndpoint resource.
 type ServiceIntegrationEndpointArgs struct {
 	// Datadog specific user configurable settings
-	DatadogUserConfig interface{}
+	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrInput
 	// Name of the service integration endpoint
-	EndpointName interface{}
+	EndpointName pulumi.StringInput
 	// Type of the service integration endpoint
-	EndpointType interface{}
+	EndpointType pulumi.StringInput
 	// external elasticsearch specific user configurable settings
-	ExternalElasticsearchLogsUserConfig interface{}
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
 	// Project the service integration endpoint belongs to
-	Project interface{}
+	Project pulumi.StringInput
 	// Prometheus specific user configurable settings
-	PrometheusUserConfig interface{}
+	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput
 	// rsyslog specific user configurable settings
-	RsyslogUserConfig interface{}
+	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrInput
+}
+
+func (ServiceIntegrationEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceIntegrationEndpointArgs)(nil)).Elem()
 }
