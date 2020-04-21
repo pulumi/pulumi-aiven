@@ -4,48 +4,34 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupAccountTeam(ctx *pulumi.Context, args *GetAccountTeamArgs) (*GetAccountTeamResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["accountId"] = args.AccountId
-		inputs["createTime"] = args.CreateTime
-		inputs["name"] = args.Name
-		inputs["teamId"] = args.TeamId
-		inputs["updateTime"] = args.UpdateTime
-	}
-	outputs, err := ctx.Invoke("aiven:index/getAccountTeam:getAccountTeam", inputs)
+func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamResult, error) {
+	var rv LookupAccountTeamResult
+	err := ctx.Invoke("aiven:index/getAccountTeam:getAccountTeam", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetAccountTeamResult{
-		AccountId: outputs["accountId"],
-		CreateTime: outputs["createTime"],
-		Name: outputs["name"],
-		TeamId: outputs["teamId"],
-		UpdateTime: outputs["updateTime"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getAccountTeam.
-type GetAccountTeamArgs struct {
-	AccountId interface{}
-	CreateTime interface{}
-	Name interface{}
-	TeamId interface{}
-	UpdateTime interface{}
+type LookupAccountTeamArgs struct {
+	AccountId  string  `pulumi:"accountId"`
+	CreateTime *string `pulumi:"createTime"`
+	Name       string  `pulumi:"name"`
+	TeamId     *string `pulumi:"teamId"`
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // A collection of values returned by getAccountTeam.
-type GetAccountTeamResult struct {
-	AccountId interface{}
-	CreateTime interface{}
-	Name interface{}
-	TeamId interface{}
-	UpdateTime interface{}
+type LookupAccountTeamResult struct {
+	AccountId  string `pulumi:"accountId"`
+	CreateTime string `pulumi:"createTime"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id         string `pulumi:"id"`
+	Name       string `pulumi:"name"`
+	TeamId     string `pulumi:"teamId"`
+	UpdateTime string `pulumi:"updateTime"`
 }

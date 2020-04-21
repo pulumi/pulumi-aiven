@@ -13,7 +13,13 @@ class GetKafkaAclResult:
     """
     A collection of values returned by getKafkaAcl.
     """
-    def __init__(__self__, permission=None, project=None, service_name=None, topic=None, username=None, id=None):
+    def __init__(__self__, id=None, permission=None, project=None, service_name=None, topic=None, username=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if permission and not isinstance(permission, str):
             raise TypeError("Expected argument 'permission' to be a str")
         __self__.permission = permission
@@ -29,33 +35,22 @@ class GetKafkaAclResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         __self__.username = username
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKafkaAclResult(GetKafkaAclResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetKafkaAclResult(
+            id=self.id,
             permission=self.permission,
             project=self.project,
             service_name=self.service_name,
             topic=self.topic,
-            username=self.username,
-            id=self.id)
+            username=self.username)
 
 def get_kafka_acl(permission=None,project=None,service_name=None,topic=None,username=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_acl.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['permission'] = permission
     __args__['project'] = project
@@ -69,9 +64,9 @@ def get_kafka_acl(permission=None,project=None,service_name=None,topic=None,user
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaAcl:getKafkaAcl', __args__, opts=opts).value
 
     return AwaitableGetKafkaAclResult(
+        id=__ret__.get('id'),
         permission=__ret__.get('permission'),
         project=__ret__.get('project'),
         service_name=__ret__.get('serviceName'),
         topic=__ret__.get('topic'),
-        username=__ret__.get('username'),
-        id=__ret__.get('id'))
+        username=__ret__.get('username'))

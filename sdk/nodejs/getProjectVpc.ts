@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> & GetProjectVpcResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project_vpc.html.markdown.
+ */
+export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,14 +18,12 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectVpcResult> = pulumi.runtime.invoke("aiven:index/getProjectVpc:getProjectVpc", {
+    return pulumi.runtime.invoke("aiven:index/getProjectVpc:getProjectVpc", {
         "cloudName": args.cloudName,
         "networkCidr": args.networkCidr,
         "project": args.project,
         "state": args.state,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -11,20 +11,42 @@ from . import utilities, tables
 
 class ServiceUser(pulumi.CustomResource):
     access_cert: pulumi.Output[str]
+    """
+    Access certificate for the user if applicable for the service in question
+    """
     access_key: pulumi.Output[str]
+    """
+    Access certificate key for the user if applicable for the service in question
+    """
     password: pulumi.Output[str]
+    """
+    Password of the user
+    """
     project: pulumi.Output[str]
+    """
+    Project to link the user to
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the user to
+    """
     type: pulumi.Output[str]
+    """
+    Type of the user account
+    """
     username: pulumi.Output[str]
+    """
+    Name of the user account
+    """
     def __init__(__self__, resource_name, opts=None, project=None, service_name=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ServiceUser resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_user.html.markdown.
+        :param pulumi.Input[str] project: Project to link the user to
+        :param pulumi.Input[str] service_name: Service to link the user to
+        :param pulumi.Input[str] username: Name of the user account
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,16 +89,22 @@ class ServiceUser(pulumi.CustomResource):
         """
         Get an existing ServiceUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_user.html.markdown.
+        :param pulumi.Input[str] access_cert: Access certificate for the user if applicable for the service in question
+        :param pulumi.Input[str] access_key: Access certificate key for the user if applicable for the service in question
+        :param pulumi.Input[str] password: Password of the user
+        :param pulumi.Input[str] project: Project to link the user to
+        :param pulumi.Input[str] service_name: Service to link the user to
+        :param pulumi.Input[str] type: Type of the user account
+        :param pulumi.Input[str] username: Name of the user account
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_cert"] = access_cert
         __props__["access_key"] = access_key
         __props__["password"] = password

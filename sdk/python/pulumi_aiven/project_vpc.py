@@ -11,17 +11,30 @@ from . import utilities, tables
 
 class ProjectVpc(pulumi.CustomResource):
     cloud_name: pulumi.Output[str]
+    """
+    Cloud the VPC is in
+    """
     network_cidr: pulumi.Output[str]
+    """
+    Network address range used by the VPC like 192.168.0.0/24
+    """
     project: pulumi.Output[str]
+    """
+    The project the VPC belongs to
+    """
     state: pulumi.Output[str]
+    """
+    State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+    """
     def __init__(__self__, resource_name, opts=None, cloud_name=None, network_cidr=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ProjectVpc resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project_vpc.html.markdown.
+        :param pulumi.Input[str] cloud_name: Cloud the VPC is in
+        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
+        :param pulumi.Input[str] project: The project the VPC belongs to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,16 +74,19 @@ class ProjectVpc(pulumi.CustomResource):
         """
         Get an existing ProjectVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project_vpc.html.markdown.
+        :param pulumi.Input[str] cloud_name: Cloud the VPC is in
+        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
+        :param pulumi.Input[str] project: The project the VPC belongs to
+        :param pulumi.Input[str] state: State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cloud_name"] = cloud_name
         __props__["network_cidr"] = network_cidr
         __props__["project"] = project

@@ -4,17 +4,30 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type KafkaSchema struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Project to link the Kafka Schema to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	Schema pulumi.StringOutput `pulumi:"schema"`
+	// Service to link the Kafka Schema to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Kafka Schema Subject name
+	SubjectName pulumi.StringOutput `pulumi:"subjectName"`
+	// Kafka Schema configuration version
+	Version pulumi.IntOutput `pulumi:"version"`
 }
 
 // NewKafkaSchema registers a new resource with the given unique name, arguments, and options.
 func NewKafkaSchema(ctx *pulumi.Context,
-	name string, args *KafkaSchemaArgs, opts ...pulumi.ResourceOpt) (*KafkaSchema, error) {
+	name string, args *KafkaSchemaArgs, opts ...pulumi.ResourceOption) (*KafkaSchema, error) {
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
@@ -27,102 +40,83 @@ func NewKafkaSchema(ctx *pulumi.Context,
 	if args == nil || args.SubjectName == nil {
 		return nil, errors.New("missing required argument 'SubjectName'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["project"] = nil
-		inputs["schema"] = nil
-		inputs["serviceName"] = nil
-		inputs["subjectName"] = nil
-	} else {
-		inputs["project"] = args.Project
-		inputs["schema"] = args.Schema
-		inputs["serviceName"] = args.ServiceName
-		inputs["subjectName"] = args.SubjectName
+		args = &KafkaSchemaArgs{}
 	}
-	inputs["version"] = nil
-	s, err := ctx.RegisterResource("aiven:index/kafkaSchema:KafkaSchema", name, true, inputs, opts...)
+	var resource KafkaSchema
+	err := ctx.RegisterResource("aiven:index/kafkaSchema:KafkaSchema", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaSchema{s: s}, nil
+	return &resource, nil
 }
 
 // GetKafkaSchema gets an existing KafkaSchema resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetKafkaSchema(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *KafkaSchemaState, opts ...pulumi.ResourceOpt) (*KafkaSchema, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["project"] = state.Project
-		inputs["schema"] = state.Schema
-		inputs["serviceName"] = state.ServiceName
-		inputs["subjectName"] = state.SubjectName
-		inputs["version"] = state.Version
-	}
-	s, err := ctx.ReadResource("aiven:index/kafkaSchema:KafkaSchema", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *KafkaSchemaState, opts ...pulumi.ResourceOption) (*KafkaSchema, error) {
+	var resource KafkaSchema
+	err := ctx.ReadResource("aiven:index/kafkaSchema:KafkaSchema", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaSchema{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *KafkaSchema) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *KafkaSchema) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Project to link the Kafka Schema to
-func (r *KafkaSchema) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Kafka Schema configuration should be a valid Avro Schema JSON format
-func (r *KafkaSchema) Schema() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["schema"])
-}
-
-// Service to link the Kafka Schema to
-func (r *KafkaSchema) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// Kafka Schema Subject name
-func (r *KafkaSchema) SubjectName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["subjectName"])
-}
-
-// Kafka Schema configuration version
-func (r *KafkaSchema) Version() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["version"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering KafkaSchema resources.
+type kafkaSchemaState struct {
+	// Project to link the Kafka Schema to
+	Project *string `pulumi:"project"`
+	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	Schema *string `pulumi:"schema"`
+	// Service to link the Kafka Schema to
+	ServiceName *string `pulumi:"serviceName"`
+	// Kafka Schema Subject name
+	SubjectName *string `pulumi:"subjectName"`
+	// Kafka Schema configuration version
+	Version *int `pulumi:"version"`
+}
+
 type KafkaSchemaState struct {
 	// Project to link the Kafka Schema to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Kafka Schema configuration should be a valid Avro Schema JSON format
-	Schema interface{}
+	Schema pulumi.StringPtrInput
 	// Service to link the Kafka Schema to
-	ServiceName interface{}
+	ServiceName pulumi.StringPtrInput
 	// Kafka Schema Subject name
-	SubjectName interface{}
+	SubjectName pulumi.StringPtrInput
 	// Kafka Schema configuration version
-	Version interface{}
+	Version pulumi.IntPtrInput
+}
+
+func (KafkaSchemaState) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaSchemaState)(nil)).Elem()
+}
+
+type kafkaSchemaArgs struct {
+	// Project to link the Kafka Schema to
+	Project string `pulumi:"project"`
+	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	Schema string `pulumi:"schema"`
+	// Service to link the Kafka Schema to
+	ServiceName string `pulumi:"serviceName"`
+	// Kafka Schema Subject name
+	SubjectName string `pulumi:"subjectName"`
 }
 
 // The set of arguments for constructing a KafkaSchema resource.
 type KafkaSchemaArgs struct {
 	// Project to link the Kafka Schema to
-	Project interface{}
+	Project pulumi.StringInput
 	// Kafka Schema configuration should be a valid Avro Schema JSON format
-	Schema interface{}
+	Schema pulumi.StringInput
 	// Service to link the Kafka Schema to
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
 	// Kafka Schema Subject name
-	SubjectName interface{}
+	SubjectName pulumi.StringInput
+}
+
+func (KafkaSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaSchemaArgs)(nil)).Elem()
 }

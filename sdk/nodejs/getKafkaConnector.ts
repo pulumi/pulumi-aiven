@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectorResult> & GetKafkaConnectorResult {
+export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectorResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +14,7 @@ export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKafkaConnectorResult> = pulumi.runtime.invoke("aiven:index/getKafkaConnector:getKafkaConnector", {
+    return pulumi.runtime.invoke("aiven:index/getKafkaConnector:getKafkaConnector", {
         "config": args.config,
         "connectorName": args.connectorName,
         "pluginAuthor": args.pluginAuthor,
@@ -27,8 +27,6 @@ export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.Inv
         "serviceName": args.serviceName,
         "tasks": args.tasks,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

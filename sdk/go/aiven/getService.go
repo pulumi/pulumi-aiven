@@ -4,168 +4,94 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupService(ctx *pulumi.Context, args *GetServiceArgs) (*GetServiceResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["cassandra"] = args.Cassandra
-		inputs["cassandraUserConfig"] = args.CassandraUserConfig
-		inputs["cloudName"] = args.CloudName
-		inputs["components"] = args.Components
-		inputs["elasticsearch"] = args.Elasticsearch
-		inputs["elasticsearchUserConfig"] = args.ElasticsearchUserConfig
-		inputs["grafana"] = args.Grafana
-		inputs["grafanaUserConfig"] = args.GrafanaUserConfig
-		inputs["influxdb"] = args.Influxdb
-		inputs["influxdbUserConfig"] = args.InfluxdbUserConfig
-		inputs["kafka"] = args.Kafka
-		inputs["kafkaConnect"] = args.KafkaConnect
-		inputs["kafkaConnectUserConfig"] = args.KafkaConnectUserConfig
-		inputs["kafkaUserConfig"] = args.KafkaUserConfig
-		inputs["maintenanceWindowDow"] = args.MaintenanceWindowDow
-		inputs["maintenanceWindowTime"] = args.MaintenanceWindowTime
-		inputs["mysql"] = args.Mysql
-		inputs["mysqlUserConfig"] = args.MysqlUserConfig
-		inputs["pg"] = args.Pg
-		inputs["pgUserConfig"] = args.PgUserConfig
-		inputs["plan"] = args.Plan
-		inputs["project"] = args.Project
-		inputs["projectVpcId"] = args.ProjectVpcId
-		inputs["redis"] = args.Redis
-		inputs["redisUserConfig"] = args.RedisUserConfig
-		inputs["serviceHost"] = args.ServiceHost
-		inputs["serviceIntegrations"] = args.ServiceIntegrations
-		inputs["serviceName"] = args.ServiceName
-		inputs["servicePassword"] = args.ServicePassword
-		inputs["servicePort"] = args.ServicePort
-		inputs["serviceType"] = args.ServiceType
-		inputs["serviceUri"] = args.ServiceUri
-		inputs["serviceUsername"] = args.ServiceUsername
-		inputs["state"] = args.State
-		inputs["terminationProtection"] = args.TerminationProtection
-	}
-	outputs, err := ctx.Invoke("aiven:index/getService:getService", inputs)
+func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
+	var rv LookupServiceResult
+	err := ctx.Invoke("aiven:index/getService:getService", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetServiceResult{
-		Cassandra: outputs["cassandra"],
-		CassandraUserConfig: outputs["cassandraUserConfig"],
-		CloudName: outputs["cloudName"],
-		Components: outputs["components"],
-		Elasticsearch: outputs["elasticsearch"],
-		ElasticsearchUserConfig: outputs["elasticsearchUserConfig"],
-		Grafana: outputs["grafana"],
-		GrafanaUserConfig: outputs["grafanaUserConfig"],
-		Influxdb: outputs["influxdb"],
-		InfluxdbUserConfig: outputs["influxdbUserConfig"],
-		Kafka: outputs["kafka"],
-		KafkaConnect: outputs["kafkaConnect"],
-		KafkaConnectUserConfig: outputs["kafkaConnectUserConfig"],
-		KafkaUserConfig: outputs["kafkaUserConfig"],
-		MaintenanceWindowDow: outputs["maintenanceWindowDow"],
-		MaintenanceWindowTime: outputs["maintenanceWindowTime"],
-		Mysql: outputs["mysql"],
-		MysqlUserConfig: outputs["mysqlUserConfig"],
-		Pg: outputs["pg"],
-		PgUserConfig: outputs["pgUserConfig"],
-		Plan: outputs["plan"],
-		Project: outputs["project"],
-		ProjectVpcId: outputs["projectVpcId"],
-		Redis: outputs["redis"],
-		RedisUserConfig: outputs["redisUserConfig"],
-		ServiceHost: outputs["serviceHost"],
-		ServiceIntegrations: outputs["serviceIntegrations"],
-		ServiceName: outputs["serviceName"],
-		ServicePassword: outputs["servicePassword"],
-		ServicePort: outputs["servicePort"],
-		ServiceType: outputs["serviceType"],
-		ServiceUri: outputs["serviceUri"],
-		ServiceUsername: outputs["serviceUsername"],
-		State: outputs["state"],
-		TerminationProtection: outputs["terminationProtection"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getService.
-type GetServiceArgs struct {
-	Cassandra interface{}
-	CassandraUserConfig interface{}
-	CloudName interface{}
-	Components interface{}
-	Elasticsearch interface{}
-	ElasticsearchUserConfig interface{}
-	Grafana interface{}
-	GrafanaUserConfig interface{}
-	Influxdb interface{}
-	InfluxdbUserConfig interface{}
-	Kafka interface{}
-	KafkaConnect interface{}
-	KafkaConnectUserConfig interface{}
-	KafkaUserConfig interface{}
-	MaintenanceWindowDow interface{}
-	MaintenanceWindowTime interface{}
-	Mysql interface{}
-	MysqlUserConfig interface{}
-	Pg interface{}
-	PgUserConfig interface{}
-	Plan interface{}
-	Project interface{}
-	ProjectVpcId interface{}
-	Redis interface{}
-	RedisUserConfig interface{}
-	ServiceHost interface{}
-	ServiceIntegrations interface{}
-	ServiceName interface{}
-	ServicePassword interface{}
-	ServicePort interface{}
-	ServiceType interface{}
-	ServiceUri interface{}
-	ServiceUsername interface{}
-	State interface{}
-	TerminationProtection interface{}
+type LookupServiceArgs struct {
+	Cassandra               *GetServiceCassandra               `pulumi:"cassandra"`
+	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
+	CloudName               *string                            `pulumi:"cloudName"`
+	Components              []GetServiceComponent              `pulumi:"components"`
+	Elasticsearch           *GetServiceElasticsearch           `pulumi:"elasticsearch"`
+	ElasticsearchUserConfig *GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
+	Grafana                 *GetServiceGrafana                 `pulumi:"grafana"`
+	GrafanaUserConfig       *GetServiceGrafanaUserConfig       `pulumi:"grafanaUserConfig"`
+	Influxdb                *GetServiceInfluxdb                `pulumi:"influxdb"`
+	InfluxdbUserConfig      *GetServiceInfluxdbUserConfig      `pulumi:"influxdbUserConfig"`
+	Kafka                   *GetServiceKafka                   `pulumi:"kafka"`
+	KafkaConnect            *GetServiceKafkaConnect            `pulumi:"kafkaConnect"`
+	KafkaConnectUserConfig  *GetServiceKafkaConnectUserConfig  `pulumi:"kafkaConnectUserConfig"`
+	KafkaUserConfig         *GetServiceKafkaUserConfig         `pulumi:"kafkaUserConfig"`
+	MaintenanceWindowDow    *string                            `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime   *string                            `pulumi:"maintenanceWindowTime"`
+	Mysql                   *GetServiceMysql                   `pulumi:"mysql"`
+	MysqlUserConfig         *GetServiceMysqlUserConfig         `pulumi:"mysqlUserConfig"`
+	Pg                      *GetServicePg                      `pulumi:"pg"`
+	PgUserConfig            *GetServicePgUserConfig            `pulumi:"pgUserConfig"`
+	Plan                    *string                            `pulumi:"plan"`
+	Project                 string                             `pulumi:"project"`
+	ProjectVpcId            *string                            `pulumi:"projectVpcId"`
+	Redis                   *GetServiceRedis                   `pulumi:"redis"`
+	RedisUserConfig         *GetServiceRedisUserConfig         `pulumi:"redisUserConfig"`
+	ServiceHost             *string                            `pulumi:"serviceHost"`
+	ServiceIntegrations     []GetServiceServiceIntegration     `pulumi:"serviceIntegrations"`
+	ServiceName             string                             `pulumi:"serviceName"`
+	ServicePassword         *string                            `pulumi:"servicePassword"`
+	ServicePort             *int                               `pulumi:"servicePort"`
+	ServiceType             *string                            `pulumi:"serviceType"`
+	ServiceUri              *string                            `pulumi:"serviceUri"`
+	ServiceUsername         *string                            `pulumi:"serviceUsername"`
+	State                   *string                            `pulumi:"state"`
+	TerminationProtection   *bool                              `pulumi:"terminationProtection"`
 }
 
 // A collection of values returned by getService.
-type GetServiceResult struct {
-	Cassandra interface{}
-	CassandraUserConfig interface{}
-	CloudName interface{}
-	Components interface{}
-	Elasticsearch interface{}
-	ElasticsearchUserConfig interface{}
-	Grafana interface{}
-	GrafanaUserConfig interface{}
-	Influxdb interface{}
-	InfluxdbUserConfig interface{}
-	Kafka interface{}
-	KafkaConnect interface{}
-	KafkaConnectUserConfig interface{}
-	KafkaUserConfig interface{}
-	MaintenanceWindowDow interface{}
-	MaintenanceWindowTime interface{}
-	Mysql interface{}
-	MysqlUserConfig interface{}
-	Pg interface{}
-	PgUserConfig interface{}
-	Plan interface{}
-	Project interface{}
-	ProjectVpcId interface{}
-	Redis interface{}
-	RedisUserConfig interface{}
-	ServiceHost interface{}
-	ServiceIntegrations interface{}
-	ServiceName interface{}
-	ServicePassword interface{}
-	ServicePort interface{}
-	ServiceType interface{}
-	ServiceUri interface{}
-	ServiceUsername interface{}
-	State interface{}
-	TerminationProtection interface{}
+type LookupServiceResult struct {
+	Cassandra               GetServiceCassandra                `pulumi:"cassandra"`
+	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
+	CloudName               *string                            `pulumi:"cloudName"`
+	Components              []GetServiceComponent              `pulumi:"components"`
+	Elasticsearch           GetServiceElasticsearch            `pulumi:"elasticsearch"`
+	ElasticsearchUserConfig *GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
+	Grafana                 GetServiceGrafana                  `pulumi:"grafana"`
+	GrafanaUserConfig       *GetServiceGrafanaUserConfig       `pulumi:"grafanaUserConfig"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id                     string                            `pulumi:"id"`
+	Influxdb               GetServiceInfluxdb                `pulumi:"influxdb"`
+	InfluxdbUserConfig     *GetServiceInfluxdbUserConfig     `pulumi:"influxdbUserConfig"`
+	Kafka                  GetServiceKafka                   `pulumi:"kafka"`
+	KafkaConnect           GetServiceKafkaConnect            `pulumi:"kafkaConnect"`
+	KafkaConnectUserConfig *GetServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	KafkaUserConfig        *GetServiceKafkaUserConfig        `pulumi:"kafkaUserConfig"`
+	MaintenanceWindowDow   *string                           `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime  *string                           `pulumi:"maintenanceWindowTime"`
+	Mysql                  GetServiceMysql                   `pulumi:"mysql"`
+	MysqlUserConfig        *GetServiceMysqlUserConfig        `pulumi:"mysqlUserConfig"`
+	Pg                     GetServicePg                      `pulumi:"pg"`
+	PgUserConfig           *GetServicePgUserConfig           `pulumi:"pgUserConfig"`
+	Plan                   *string                           `pulumi:"plan"`
+	Project                string                            `pulumi:"project"`
+	ProjectVpcId           *string                           `pulumi:"projectVpcId"`
+	Redis                  GetServiceRedis                   `pulumi:"redis"`
+	RedisUserConfig        *GetServiceRedisUserConfig        `pulumi:"redisUserConfig"`
+	ServiceHost            string                            `pulumi:"serviceHost"`
+	ServiceIntegrations    []GetServiceServiceIntegration    `pulumi:"serviceIntegrations"`
+	ServiceName            string                            `pulumi:"serviceName"`
+	ServicePassword        string                            `pulumi:"servicePassword"`
+	ServicePort            int                               `pulumi:"servicePort"`
+	ServiceType            *string                           `pulumi:"serviceType"`
+	ServiceUri             string                            `pulumi:"serviceUri"`
+	ServiceUsername        string                            `pulumi:"serviceUsername"`
+	State                  string                            `pulumi:"state"`
+	TerminationProtection  *bool                             `pulumi:"terminationProtection"`
 }

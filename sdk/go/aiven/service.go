@@ -4,17 +4,90 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type Service struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Cassandra specific server provided values
+	Cassandra ServiceCassandraOutput `pulumi:"cassandra"`
+	// Cassandra specific user configurable settings
+	CassandraUserConfig ServiceCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
+	// Cloud the service runs in
+	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
+	// Service component information objects
+	Components ServiceComponentArrayOutput `pulumi:"components"`
+	// Elasticsearch specific server provided values
+	Elasticsearch ServiceElasticsearchOutput `pulumi:"elasticsearch"`
+	// Elasticsearch specific user configurable settings
+	ElasticsearchUserConfig ServiceElasticsearchUserConfigPtrOutput `pulumi:"elasticsearchUserConfig"`
+	// Grafana specific server provided values
+	Grafana ServiceGrafanaOutput `pulumi:"grafana"`
+	// Grafana specific user configurable settings
+	GrafanaUserConfig ServiceGrafanaUserConfigPtrOutput `pulumi:"grafanaUserConfig"`
+	// InfluxDB specific server provided values
+	Influxdb ServiceInfluxdbOutput `pulumi:"influxdb"`
+	// InfluxDB specific user configurable settings
+	InfluxdbUserConfig ServiceInfluxdbUserConfigPtrOutput `pulumi:"influxdbUserConfig"`
+	// Kafka specific server provided values
+	Kafka ServiceKafkaOutput `pulumi:"kafka"`
+	// Kafka Connect specific server provided values
+	KafkaConnect ServiceKafkaConnectOutput `pulumi:"kafkaConnect"`
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
+	// Kafka specific user configurable settings
+	KafkaUserConfig ServiceKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
+	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
+	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
+	// MySQL specific server provided values
+	Mysql ServiceMysqlOutput `pulumi:"mysql"`
+	// MySQL specific user configurable settings
+	MysqlUserConfig ServiceMysqlUserConfigPtrOutput `pulumi:"mysqlUserConfig"`
+	// PostgreSQL specific server provided values
+	Pg ServicePgOutput `pulumi:"pg"`
+	// PostgreSQL specific user configurable settings
+	PgUserConfig ServicePgUserConfigPtrOutput `pulumi:"pgUserConfig"`
+	// Subscription plan
+	Plan pulumi.StringPtrOutput `pulumi:"plan"`
+	// Target project
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Identifier of the VPC the service should be in, if any
+	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
+	// Redis specific server provided values
+	Redis ServiceRedisOutput `pulumi:"redis"`
+	// Redis specific user configurable settings
+	RedisUserConfig ServiceRedisUserConfigPtrOutput `pulumi:"redisUserConfig"`
+	// Service hostname
+	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
+	// Service integrations to specify when creating a service. Not applied after initial service creation
+	ServiceIntegrations ServiceServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
+	// Service name
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Password used for connecting to the service, if applicable
+	ServicePassword pulumi.StringOutput `pulumi:"servicePassword"`
+	// Service port
+	ServicePort pulumi.IntOutput `pulumi:"servicePort"`
+	// Service type code
+	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
+	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	ServiceUri pulumi.StringOutput `pulumi:"serviceUri"`
+	// Username used for connecting to the service, if applicable
+	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
+	// Service state
+	State pulumi.StringOutput `pulumi:"state"`
+	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
 func NewService(ctx *pulumi.Context,
-	name string, args *ServiceArgs, opts ...pulumi.ResourceOpt) (*Service, error) {
+	name string, args *ServiceArgs, opts ...pulumi.ResourceOption) (*Service, error) {
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
@@ -24,444 +97,299 @@ func NewService(ctx *pulumi.Context,
 	if args == nil || args.ServiceType == nil {
 		return nil, errors.New("missing required argument 'ServiceType'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["cassandra"] = nil
-		inputs["cassandraUserConfig"] = nil
-		inputs["cloudName"] = nil
-		inputs["elasticsearch"] = nil
-		inputs["elasticsearchUserConfig"] = nil
-		inputs["grafana"] = nil
-		inputs["grafanaUserConfig"] = nil
-		inputs["influxdb"] = nil
-		inputs["influxdbUserConfig"] = nil
-		inputs["kafka"] = nil
-		inputs["kafkaConnect"] = nil
-		inputs["kafkaConnectUserConfig"] = nil
-		inputs["kafkaUserConfig"] = nil
-		inputs["maintenanceWindowDow"] = nil
-		inputs["maintenanceWindowTime"] = nil
-		inputs["mysql"] = nil
-		inputs["mysqlUserConfig"] = nil
-		inputs["pg"] = nil
-		inputs["pgUserConfig"] = nil
-		inputs["plan"] = nil
-		inputs["project"] = nil
-		inputs["projectVpcId"] = nil
-		inputs["redis"] = nil
-		inputs["redisUserConfig"] = nil
-		inputs["serviceIntegrations"] = nil
-		inputs["serviceName"] = nil
-		inputs["serviceType"] = nil
-		inputs["terminationProtection"] = nil
-	} else {
-		inputs["cassandra"] = args.Cassandra
-		inputs["cassandraUserConfig"] = args.CassandraUserConfig
-		inputs["cloudName"] = args.CloudName
-		inputs["elasticsearch"] = args.Elasticsearch
-		inputs["elasticsearchUserConfig"] = args.ElasticsearchUserConfig
-		inputs["grafana"] = args.Grafana
-		inputs["grafanaUserConfig"] = args.GrafanaUserConfig
-		inputs["influxdb"] = args.Influxdb
-		inputs["influxdbUserConfig"] = args.InfluxdbUserConfig
-		inputs["kafka"] = args.Kafka
-		inputs["kafkaConnect"] = args.KafkaConnect
-		inputs["kafkaConnectUserConfig"] = args.KafkaConnectUserConfig
-		inputs["kafkaUserConfig"] = args.KafkaUserConfig
-		inputs["maintenanceWindowDow"] = args.MaintenanceWindowDow
-		inputs["maintenanceWindowTime"] = args.MaintenanceWindowTime
-		inputs["mysql"] = args.Mysql
-		inputs["mysqlUserConfig"] = args.MysqlUserConfig
-		inputs["pg"] = args.Pg
-		inputs["pgUserConfig"] = args.PgUserConfig
-		inputs["plan"] = args.Plan
-		inputs["project"] = args.Project
-		inputs["projectVpcId"] = args.ProjectVpcId
-		inputs["redis"] = args.Redis
-		inputs["redisUserConfig"] = args.RedisUserConfig
-		inputs["serviceIntegrations"] = args.ServiceIntegrations
-		inputs["serviceName"] = args.ServiceName
-		inputs["serviceType"] = args.ServiceType
-		inputs["terminationProtection"] = args.TerminationProtection
+		args = &ServiceArgs{}
 	}
-	inputs["components"] = nil
-	inputs["serviceHost"] = nil
-	inputs["servicePassword"] = nil
-	inputs["servicePort"] = nil
-	inputs["serviceUri"] = nil
-	inputs["serviceUsername"] = nil
-	inputs["state"] = nil
-	s, err := ctx.RegisterResource("aiven:index/service:Service", name, true, inputs, opts...)
+	var resource Service
+	err := ctx.RegisterResource("aiven:index/service:Service", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Service{s: s}, nil
+	return &resource, nil
 }
 
 // GetService gets an existing Service resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetService(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ServiceState, opts ...pulumi.ResourceOpt) (*Service, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["cassandra"] = state.Cassandra
-		inputs["cassandraUserConfig"] = state.CassandraUserConfig
-		inputs["cloudName"] = state.CloudName
-		inputs["components"] = state.Components
-		inputs["elasticsearch"] = state.Elasticsearch
-		inputs["elasticsearchUserConfig"] = state.ElasticsearchUserConfig
-		inputs["grafana"] = state.Grafana
-		inputs["grafanaUserConfig"] = state.GrafanaUserConfig
-		inputs["influxdb"] = state.Influxdb
-		inputs["influxdbUserConfig"] = state.InfluxdbUserConfig
-		inputs["kafka"] = state.Kafka
-		inputs["kafkaConnect"] = state.KafkaConnect
-		inputs["kafkaConnectUserConfig"] = state.KafkaConnectUserConfig
-		inputs["kafkaUserConfig"] = state.KafkaUserConfig
-		inputs["maintenanceWindowDow"] = state.MaintenanceWindowDow
-		inputs["maintenanceWindowTime"] = state.MaintenanceWindowTime
-		inputs["mysql"] = state.Mysql
-		inputs["mysqlUserConfig"] = state.MysqlUserConfig
-		inputs["pg"] = state.Pg
-		inputs["pgUserConfig"] = state.PgUserConfig
-		inputs["plan"] = state.Plan
-		inputs["project"] = state.Project
-		inputs["projectVpcId"] = state.ProjectVpcId
-		inputs["redis"] = state.Redis
-		inputs["redisUserConfig"] = state.RedisUserConfig
-		inputs["serviceHost"] = state.ServiceHost
-		inputs["serviceIntegrations"] = state.ServiceIntegrations
-		inputs["serviceName"] = state.ServiceName
-		inputs["servicePassword"] = state.ServicePassword
-		inputs["servicePort"] = state.ServicePort
-		inputs["serviceType"] = state.ServiceType
-		inputs["serviceUri"] = state.ServiceUri
-		inputs["serviceUsername"] = state.ServiceUsername
-		inputs["state"] = state.State
-		inputs["terminationProtection"] = state.TerminationProtection
-	}
-	s, err := ctx.ReadResource("aiven:index/service:Service", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ServiceState, opts ...pulumi.ResourceOption) (*Service, error) {
+	var resource Service
+	err := ctx.ReadResource("aiven:index/service:Service", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Service{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *Service) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *Service) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Cassandra specific server provided values
-func (r *Service) Cassandra() pulumi.Output {
-	return r.s.State["cassandra"]
-}
-
-// Cassandra specific user configurable settings
-func (r *Service) CassandraUserConfig() pulumi.Output {
-	return r.s.State["cassandraUserConfig"]
-}
-
-// Cloud the service runs in
-func (r *Service) CloudName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["cloudName"])
-}
-
-// Service component information objects
-func (r *Service) Components() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["components"])
-}
-
-// Elasticsearch specific server provided values
-func (r *Service) Elasticsearch() pulumi.Output {
-	return r.s.State["elasticsearch"]
-}
-
-// Elasticsearch specific user configurable settings
-func (r *Service) ElasticsearchUserConfig() pulumi.Output {
-	return r.s.State["elasticsearchUserConfig"]
-}
-
-// Grafana specific server provided values
-func (r *Service) Grafana() pulumi.Output {
-	return r.s.State["grafana"]
-}
-
-// Grafana specific user configurable settings
-func (r *Service) GrafanaUserConfig() pulumi.Output {
-	return r.s.State["grafanaUserConfig"]
-}
-
-// InfluxDB specific server provided values
-func (r *Service) Influxdb() pulumi.Output {
-	return r.s.State["influxdb"]
-}
-
-// InfluxDB specific user configurable settings
-func (r *Service) InfluxdbUserConfig() pulumi.Output {
-	return r.s.State["influxdbUserConfig"]
-}
-
-// Kafka specific server provided values
-func (r *Service) Kafka() pulumi.Output {
-	return r.s.State["kafka"]
-}
-
-// Kafka Connect specific server provided values
-func (r *Service) KafkaConnect() pulumi.Output {
-	return r.s.State["kafkaConnect"]
-}
-
-// Kafka Connect specific user configurable settings
-func (r *Service) KafkaConnectUserConfig() pulumi.Output {
-	return r.s.State["kafkaConnectUserConfig"]
-}
-
-// Kafka specific user configurable settings
-func (r *Service) KafkaUserConfig() pulumi.Output {
-	return r.s.State["kafkaUserConfig"]
-}
-
-// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-func (r *Service) MaintenanceWindowDow() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["maintenanceWindowDow"])
-}
-
-// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-func (r *Service) MaintenanceWindowTime() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["maintenanceWindowTime"])
-}
-
-// MySQL specific server provided values
-func (r *Service) Mysql() pulumi.Output {
-	return r.s.State["mysql"]
-}
-
-// MySQL specific user configurable settings
-func (r *Service) MysqlUserConfig() pulumi.Output {
-	return r.s.State["mysqlUserConfig"]
-}
-
-// PostgreSQL specific server provided values
-func (r *Service) Pg() pulumi.Output {
-	return r.s.State["pg"]
-}
-
-// PostgreSQL specific user configurable settings
-func (r *Service) PgUserConfig() pulumi.Output {
-	return r.s.State["pgUserConfig"]
-}
-
-// Subscription plan
-func (r *Service) Plan() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["plan"])
-}
-
-// Target project
-func (r *Service) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Identifier of the VPC the service should be in, if any
-func (r *Service) ProjectVpcId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["projectVpcId"])
-}
-
-// Redis specific server provided values
-func (r *Service) Redis() pulumi.Output {
-	return r.s.State["redis"]
-}
-
-// Redis specific user configurable settings
-func (r *Service) RedisUserConfig() pulumi.Output {
-	return r.s.State["redisUserConfig"]
-}
-
-// Service hostname
-func (r *Service) ServiceHost() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceHost"])
-}
-
-// Service integrations to specify when creating a service. Not applied after initial service creation
-func (r *Service) ServiceIntegrations() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["serviceIntegrations"])
-}
-
-// Service name
-func (r *Service) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// Password used for connecting to the service, if applicable
-func (r *Service) ServicePassword() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["servicePassword"])
-}
-
-// Service port
-func (r *Service) ServicePort() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["servicePort"])
-}
-
-// Service type code
-func (r *Service) ServiceType() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceType"])
-}
-
-// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-func (r *Service) ServiceUri() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceUri"])
-}
-
-// Username used for connecting to the service, if applicable
-func (r *Service) ServiceUsername() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceUsername"])
-}
-
-// Service state
-func (r *Service) State() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["state"])
-}
-
-// Prevent service from being deleted. It is recommended to have this enabled for all services.
-func (r *Service) TerminationProtection() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["terminationProtection"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering Service resources.
+type serviceState struct {
+	// Cassandra specific server provided values
+	Cassandra *ServiceCassandra `pulumi:"cassandra"`
+	// Cassandra specific user configurable settings
+	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
+	// Cloud the service runs in
+	CloudName *string `pulumi:"cloudName"`
+	// Service component information objects
+	Components []ServiceComponent `pulumi:"components"`
+	// Elasticsearch specific server provided values
+	Elasticsearch *ServiceElasticsearch `pulumi:"elasticsearch"`
+	// Elasticsearch specific user configurable settings
+	ElasticsearchUserConfig *ServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
+	// Grafana specific server provided values
+	Grafana *ServiceGrafana `pulumi:"grafana"`
+	// Grafana specific user configurable settings
+	GrafanaUserConfig *ServiceGrafanaUserConfig `pulumi:"grafanaUserConfig"`
+	// InfluxDB specific server provided values
+	Influxdb *ServiceInfluxdb `pulumi:"influxdb"`
+	// InfluxDB specific user configurable settings
+	InfluxdbUserConfig *ServiceInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
+	// Kafka specific server provided values
+	Kafka *ServiceKafka `pulumi:"kafka"`
+	// Kafka Connect specific server provided values
+	KafkaConnect *ServiceKafkaConnect `pulumi:"kafkaConnect"`
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig *ServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Kafka specific user configurable settings
+	KafkaUserConfig *ServiceKafkaUserConfig `pulumi:"kafkaUserConfig"`
+	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
+	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
+	// MySQL specific server provided values
+	Mysql *ServiceMysql `pulumi:"mysql"`
+	// MySQL specific user configurable settings
+	MysqlUserConfig *ServiceMysqlUserConfig `pulumi:"mysqlUserConfig"`
+	// PostgreSQL specific server provided values
+	Pg *ServicePg `pulumi:"pg"`
+	// PostgreSQL specific user configurable settings
+	PgUserConfig *ServicePgUserConfig `pulumi:"pgUserConfig"`
+	// Subscription plan
+	Plan *string `pulumi:"plan"`
+	// Target project
+	Project *string `pulumi:"project"`
+	// Identifier of the VPC the service should be in, if any
+	ProjectVpcId *string `pulumi:"projectVpcId"`
+	// Redis specific server provided values
+	Redis *ServiceRedis `pulumi:"redis"`
+	// Redis specific user configurable settings
+	RedisUserConfig *ServiceRedisUserConfig `pulumi:"redisUserConfig"`
+	// Service hostname
+	ServiceHost *string `pulumi:"serviceHost"`
+	// Service integrations to specify when creating a service. Not applied after initial service creation
+	ServiceIntegrations []ServiceServiceIntegration `pulumi:"serviceIntegrations"`
+	// Service name
+	ServiceName *string `pulumi:"serviceName"`
+	// Password used for connecting to the service, if applicable
+	ServicePassword *string `pulumi:"servicePassword"`
+	// Service port
+	ServicePort *int `pulumi:"servicePort"`
+	// Service type code
+	ServiceType *string `pulumi:"serviceType"`
+	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	ServiceUri *string `pulumi:"serviceUri"`
+	// Username used for connecting to the service, if applicable
+	ServiceUsername *string `pulumi:"serviceUsername"`
+	// Service state
+	State *string `pulumi:"state"`
+	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
+}
+
 type ServiceState struct {
 	// Cassandra specific server provided values
-	Cassandra interface{}
+	Cassandra ServiceCassandraPtrInput
 	// Cassandra specific user configurable settings
-	CassandraUserConfig interface{}
+	CassandraUserConfig ServiceCassandraUserConfigPtrInput
 	// Cloud the service runs in
-	CloudName interface{}
+	CloudName pulumi.StringPtrInput
 	// Service component information objects
-	Components interface{}
+	Components ServiceComponentArrayInput
 	// Elasticsearch specific server provided values
-	Elasticsearch interface{}
+	Elasticsearch ServiceElasticsearchPtrInput
 	// Elasticsearch specific user configurable settings
-	ElasticsearchUserConfig interface{}
+	ElasticsearchUserConfig ServiceElasticsearchUserConfigPtrInput
 	// Grafana specific server provided values
-	Grafana interface{}
+	Grafana ServiceGrafanaPtrInput
 	// Grafana specific user configurable settings
-	GrafanaUserConfig interface{}
+	GrafanaUserConfig ServiceGrafanaUserConfigPtrInput
 	// InfluxDB specific server provided values
-	Influxdb interface{}
+	Influxdb ServiceInfluxdbPtrInput
 	// InfluxDB specific user configurable settings
-	InfluxdbUserConfig interface{}
+	InfluxdbUserConfig ServiceInfluxdbUserConfigPtrInput
 	// Kafka specific server provided values
-	Kafka interface{}
+	Kafka ServiceKafkaPtrInput
 	// Kafka Connect specific server provided values
-	KafkaConnect interface{}
+	KafkaConnect ServiceKafkaConnectPtrInput
 	// Kafka Connect specific user configurable settings
-	KafkaConnectUserConfig interface{}
+	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrInput
 	// Kafka specific user configurable settings
-	KafkaUserConfig interface{}
+	KafkaUserConfig ServiceKafkaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow interface{}
+	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-	MaintenanceWindowTime interface{}
+	MaintenanceWindowTime pulumi.StringPtrInput
 	// MySQL specific server provided values
-	Mysql interface{}
+	Mysql ServiceMysqlPtrInput
 	// MySQL specific user configurable settings
-	MysqlUserConfig interface{}
+	MysqlUserConfig ServiceMysqlUserConfigPtrInput
 	// PostgreSQL specific server provided values
-	Pg interface{}
+	Pg ServicePgPtrInput
 	// PostgreSQL specific user configurable settings
-	PgUserConfig interface{}
+	PgUserConfig ServicePgUserConfigPtrInput
 	// Subscription plan
-	Plan interface{}
+	Plan pulumi.StringPtrInput
 	// Target project
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Identifier of the VPC the service should be in, if any
-	ProjectVpcId interface{}
+	ProjectVpcId pulumi.StringPtrInput
 	// Redis specific server provided values
-	Redis interface{}
+	Redis ServiceRedisPtrInput
 	// Redis specific user configurable settings
-	RedisUserConfig interface{}
+	RedisUserConfig ServiceRedisUserConfigPtrInput
 	// Service hostname
-	ServiceHost interface{}
+	ServiceHost pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
-	ServiceIntegrations interface{}
+	ServiceIntegrations ServiceServiceIntegrationArrayInput
 	// Service name
-	ServiceName interface{}
+	ServiceName pulumi.StringPtrInput
 	// Password used for connecting to the service, if applicable
-	ServicePassword interface{}
+	ServicePassword pulumi.StringPtrInput
 	// Service port
-	ServicePort interface{}
+	ServicePort pulumi.IntPtrInput
 	// Service type code
-	ServiceType interface{}
+	ServiceType pulumi.StringPtrInput
 	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-	ServiceUri interface{}
+	ServiceUri pulumi.StringPtrInput
 	// Username used for connecting to the service, if applicable
-	ServiceUsername interface{}
+	ServiceUsername pulumi.StringPtrInput
 	// Service state
-	State interface{}
+	State pulumi.StringPtrInput
 	// Prevent service from being deleted. It is recommended to have this enabled for all services.
-	TerminationProtection interface{}
+	TerminationProtection pulumi.BoolPtrInput
+}
+
+func (ServiceState) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceState)(nil)).Elem()
+}
+
+type serviceArgs struct {
+	// Cassandra specific server provided values
+	Cassandra *ServiceCassandra `pulumi:"cassandra"`
+	// Cassandra specific user configurable settings
+	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
+	// Cloud the service runs in
+	CloudName *string `pulumi:"cloudName"`
+	// Elasticsearch specific server provided values
+	Elasticsearch *ServiceElasticsearch `pulumi:"elasticsearch"`
+	// Elasticsearch specific user configurable settings
+	ElasticsearchUserConfig *ServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
+	// Grafana specific server provided values
+	Grafana *ServiceGrafana `pulumi:"grafana"`
+	// Grafana specific user configurable settings
+	GrafanaUserConfig *ServiceGrafanaUserConfig `pulumi:"grafanaUserConfig"`
+	// InfluxDB specific server provided values
+	Influxdb *ServiceInfluxdb `pulumi:"influxdb"`
+	// InfluxDB specific user configurable settings
+	InfluxdbUserConfig *ServiceInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
+	// Kafka specific server provided values
+	Kafka *ServiceKafka `pulumi:"kafka"`
+	// Kafka Connect specific server provided values
+	KafkaConnect *ServiceKafkaConnect `pulumi:"kafkaConnect"`
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig *ServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Kafka specific user configurable settings
+	KafkaUserConfig *ServiceKafkaUserConfig `pulumi:"kafkaUserConfig"`
+	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
+	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
+	// MySQL specific server provided values
+	Mysql *ServiceMysql `pulumi:"mysql"`
+	// MySQL specific user configurable settings
+	MysqlUserConfig *ServiceMysqlUserConfig `pulumi:"mysqlUserConfig"`
+	// PostgreSQL specific server provided values
+	Pg *ServicePg `pulumi:"pg"`
+	// PostgreSQL specific user configurable settings
+	PgUserConfig *ServicePgUserConfig `pulumi:"pgUserConfig"`
+	// Subscription plan
+	Plan *string `pulumi:"plan"`
+	// Target project
+	Project string `pulumi:"project"`
+	// Identifier of the VPC the service should be in, if any
+	ProjectVpcId *string `pulumi:"projectVpcId"`
+	// Redis specific server provided values
+	Redis *ServiceRedis `pulumi:"redis"`
+	// Redis specific user configurable settings
+	RedisUserConfig *ServiceRedisUserConfig `pulumi:"redisUserConfig"`
+	// Service integrations to specify when creating a service. Not applied after initial service creation
+	ServiceIntegrations []ServiceServiceIntegration `pulumi:"serviceIntegrations"`
+	// Service name
+	ServiceName string `pulumi:"serviceName"`
+	// Service type code
+	ServiceType string `pulumi:"serviceType"`
+	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
 	// Cassandra specific server provided values
-	Cassandra interface{}
+	Cassandra ServiceCassandraPtrInput
 	// Cassandra specific user configurable settings
-	CassandraUserConfig interface{}
+	CassandraUserConfig ServiceCassandraUserConfigPtrInput
 	// Cloud the service runs in
-	CloudName interface{}
+	CloudName pulumi.StringPtrInput
 	// Elasticsearch specific server provided values
-	Elasticsearch interface{}
+	Elasticsearch ServiceElasticsearchPtrInput
 	// Elasticsearch specific user configurable settings
-	ElasticsearchUserConfig interface{}
+	ElasticsearchUserConfig ServiceElasticsearchUserConfigPtrInput
 	// Grafana specific server provided values
-	Grafana interface{}
+	Grafana ServiceGrafanaPtrInput
 	// Grafana specific user configurable settings
-	GrafanaUserConfig interface{}
+	GrafanaUserConfig ServiceGrafanaUserConfigPtrInput
 	// InfluxDB specific server provided values
-	Influxdb interface{}
+	Influxdb ServiceInfluxdbPtrInput
 	// InfluxDB specific user configurable settings
-	InfluxdbUserConfig interface{}
+	InfluxdbUserConfig ServiceInfluxdbUserConfigPtrInput
 	// Kafka specific server provided values
-	Kafka interface{}
+	Kafka ServiceKafkaPtrInput
 	// Kafka Connect specific server provided values
-	KafkaConnect interface{}
+	KafkaConnect ServiceKafkaConnectPtrInput
 	// Kafka Connect specific user configurable settings
-	KafkaConnectUserConfig interface{}
+	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrInput
 	// Kafka specific user configurable settings
-	KafkaUserConfig interface{}
+	KafkaUserConfig ServiceKafkaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow interface{}
+	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-	MaintenanceWindowTime interface{}
+	MaintenanceWindowTime pulumi.StringPtrInput
 	// MySQL specific server provided values
-	Mysql interface{}
+	Mysql ServiceMysqlPtrInput
 	// MySQL specific user configurable settings
-	MysqlUserConfig interface{}
+	MysqlUserConfig ServiceMysqlUserConfigPtrInput
 	// PostgreSQL specific server provided values
-	Pg interface{}
+	Pg ServicePgPtrInput
 	// PostgreSQL specific user configurable settings
-	PgUserConfig interface{}
+	PgUserConfig ServicePgUserConfigPtrInput
 	// Subscription plan
-	Plan interface{}
+	Plan pulumi.StringPtrInput
 	// Target project
-	Project interface{}
+	Project pulumi.StringInput
 	// Identifier of the VPC the service should be in, if any
-	ProjectVpcId interface{}
+	ProjectVpcId pulumi.StringPtrInput
 	// Redis specific server provided values
-	Redis interface{}
+	Redis ServiceRedisPtrInput
 	// Redis specific user configurable settings
-	RedisUserConfig interface{}
+	RedisUserConfig ServiceRedisUserConfigPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
-	ServiceIntegrations interface{}
+	ServiceIntegrations ServiceServiceIntegrationArrayInput
 	// Service name
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
 	// Service type code
-	ServiceType interface{}
+	ServiceType pulumi.StringInput
 	// Prevent service from being deleted. It is recommended to have this enabled for all services.
-	TerminationProtection interface{}
+	TerminationProtection pulumi.BoolPtrInput
+}
+
+func (ServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*serviceArgs)(nil)).Elem()
 }

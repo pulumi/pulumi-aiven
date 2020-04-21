@@ -4,17 +4,41 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type KafkaTopic struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Topic cleanup policy. Allowed values: delete, compact
+	CleanupPolicy pulumi.StringPtrOutput `pulumi:"cleanupPolicy"`
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	MinimumInSyncReplicas pulumi.IntPtrOutput `pulumi:"minimumInSyncReplicas"`
+	// Number of partitions to create in the topic
+	Partitions pulumi.IntOutput `pulumi:"partitions"`
+	// Project to link the kafka topic to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Replication factor for the topic
+	Replication pulumi.IntOutput `pulumi:"replication"`
+	// Retention bytes
+	RetentionBytes pulumi.IntPtrOutput `pulumi:"retentionBytes"`
+	// Retention period (hours)
+	RetentionHours pulumi.IntPtrOutput `pulumi:"retentionHours"`
+	// Service to link the kafka topic to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+	// enable this for any production Kafka topic containing critical data.
+	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
+	// Topic name
+	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
 
 // NewKafkaTopic registers a new resource with the given unique name, arguments, and options.
 func NewKafkaTopic(ctx *pulumi.Context,
-	name string, args *KafkaTopicArgs, opts ...pulumi.ResourceOpt) (*KafkaTopic, error) {
+	name string, args *KafkaTopicArgs, opts ...pulumi.ResourceOption) (*KafkaTopic, error) {
 	if args == nil || args.Partitions == nil {
 		return nil, errors.New("missing required argument 'Partitions'")
 	}
@@ -30,168 +54,131 @@ func NewKafkaTopic(ctx *pulumi.Context,
 	if args == nil || args.TopicName == nil {
 		return nil, errors.New("missing required argument 'TopicName'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["cleanupPolicy"] = nil
-		inputs["minimumInSyncReplicas"] = nil
-		inputs["partitions"] = nil
-		inputs["project"] = nil
-		inputs["replication"] = nil
-		inputs["retentionBytes"] = nil
-		inputs["retentionHours"] = nil
-		inputs["serviceName"] = nil
-		inputs["terminationProtection"] = nil
-		inputs["topicName"] = nil
-	} else {
-		inputs["cleanupPolicy"] = args.CleanupPolicy
-		inputs["minimumInSyncReplicas"] = args.MinimumInSyncReplicas
-		inputs["partitions"] = args.Partitions
-		inputs["project"] = args.Project
-		inputs["replication"] = args.Replication
-		inputs["retentionBytes"] = args.RetentionBytes
-		inputs["retentionHours"] = args.RetentionHours
-		inputs["serviceName"] = args.ServiceName
-		inputs["terminationProtection"] = args.TerminationProtection
-		inputs["topicName"] = args.TopicName
+		args = &KafkaTopicArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/kafkaTopic:KafkaTopic", name, true, inputs, opts...)
+	var resource KafkaTopic
+	err := ctx.RegisterResource("aiven:index/kafkaTopic:KafkaTopic", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaTopic{s: s}, nil
+	return &resource, nil
 }
 
 // GetKafkaTopic gets an existing KafkaTopic resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetKafkaTopic(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *KafkaTopicState, opts ...pulumi.ResourceOpt) (*KafkaTopic, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["cleanupPolicy"] = state.CleanupPolicy
-		inputs["minimumInSyncReplicas"] = state.MinimumInSyncReplicas
-		inputs["partitions"] = state.Partitions
-		inputs["project"] = state.Project
-		inputs["replication"] = state.Replication
-		inputs["retentionBytes"] = state.RetentionBytes
-		inputs["retentionHours"] = state.RetentionHours
-		inputs["serviceName"] = state.ServiceName
-		inputs["terminationProtection"] = state.TerminationProtection
-		inputs["topicName"] = state.TopicName
-	}
-	s, err := ctx.ReadResource("aiven:index/kafkaTopic:KafkaTopic", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *KafkaTopicState, opts ...pulumi.ResourceOption) (*KafkaTopic, error) {
+	var resource KafkaTopic
+	err := ctx.ReadResource("aiven:index/kafkaTopic:KafkaTopic", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &KafkaTopic{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *KafkaTopic) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *KafkaTopic) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Topic cleanup policy. Allowed values: delete, compact
-func (r *KafkaTopic) CleanupPolicy() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["cleanupPolicy"])
-}
-
-// Minimum required nodes in-sync replicas (ISR) to produce to a partition
-func (r *KafkaTopic) MinimumInSyncReplicas() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["minimumInSyncReplicas"])
-}
-
-// Number of partitions to create in the topic
-func (r *KafkaTopic) Partitions() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["partitions"])
-}
-
-// Project to link the kafka topic to
-func (r *KafkaTopic) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Replication factor for the topic
-func (r *KafkaTopic) Replication() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["replication"])
-}
-
-// Retention bytes
-func (r *KafkaTopic) RetentionBytes() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["retentionBytes"])
-}
-
-// Retention period (hours)
-func (r *KafkaTopic) RetentionHours() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["retentionHours"])
-}
-
-// Service to link the kafka topic to
-func (r *KafkaTopic) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-// enable this for any production Kafka topic containing critical data.
-func (r *KafkaTopic) TerminationProtection() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["terminationProtection"])
-}
-
-// Topic name
-func (r *KafkaTopic) TopicName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["topicName"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering KafkaTopic resources.
+type kafkaTopicState struct {
+	// Topic cleanup policy. Allowed values: delete, compact
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
+	// Number of partitions to create in the topic
+	Partitions *int `pulumi:"partitions"`
+	// Project to link the kafka topic to
+	Project *string `pulumi:"project"`
+	// Replication factor for the topic
+	Replication *int `pulumi:"replication"`
+	// Retention bytes
+	RetentionBytes *int `pulumi:"retentionBytes"`
+	// Retention period (hours)
+	RetentionHours *int `pulumi:"retentionHours"`
+	// Service to link the kafka topic to
+	ServiceName *string `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+	// enable this for any production Kafka topic containing critical data.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
+	// Topic name
+	TopicName *string `pulumi:"topicName"`
+}
+
 type KafkaTopicState struct {
 	// Topic cleanup policy. Allowed values: delete, compact
-	CleanupPolicy interface{}
+	CleanupPolicy pulumi.StringPtrInput
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
-	MinimumInSyncReplicas interface{}
+	MinimumInSyncReplicas pulumi.IntPtrInput
 	// Number of partitions to create in the topic
-	Partitions interface{}
+	Partitions pulumi.IntPtrInput
 	// Project to link the kafka topic to
-	Project interface{}
+	Project pulumi.StringPtrInput
 	// Replication factor for the topic
-	Replication interface{}
+	Replication pulumi.IntPtrInput
 	// Retention bytes
-	RetentionBytes interface{}
+	RetentionBytes pulumi.IntPtrInput
 	// Retention period (hours)
-	RetentionHours interface{}
+	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
-	ServiceName interface{}
-	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended
-	// to enable this for any production Kafka topic containing critical data.
-	TerminationProtection interface{}
+	ServiceName pulumi.StringPtrInput
+	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+	// enable this for any production Kafka topic containing critical data.
+	TerminationProtection pulumi.BoolPtrInput
 	// Topic name
-	TopicName interface{}
+	TopicName pulumi.StringPtrInput
+}
+
+func (KafkaTopicState) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaTopicState)(nil)).Elem()
+}
+
+type kafkaTopicArgs struct {
+	// Topic cleanup policy. Allowed values: delete, compact
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
+	// Number of partitions to create in the topic
+	Partitions int `pulumi:"partitions"`
+	// Project to link the kafka topic to
+	Project string `pulumi:"project"`
+	// Replication factor for the topic
+	Replication int `pulumi:"replication"`
+	// Retention bytes
+	RetentionBytes *int `pulumi:"retentionBytes"`
+	// Retention period (hours)
+	RetentionHours *int `pulumi:"retentionHours"`
+	// Service to link the kafka topic to
+	ServiceName string `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+	// enable this for any production Kafka topic containing critical data.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
+	// Topic name
+	TopicName string `pulumi:"topicName"`
 }
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
 	// Topic cleanup policy. Allowed values: delete, compact
-	CleanupPolicy interface{}
+	CleanupPolicy pulumi.StringPtrInput
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
-	MinimumInSyncReplicas interface{}
+	MinimumInSyncReplicas pulumi.IntPtrInput
 	// Number of partitions to create in the topic
-	Partitions interface{}
+	Partitions pulumi.IntInput
 	// Project to link the kafka topic to
-	Project interface{}
+	Project pulumi.StringInput
 	// Replication factor for the topic
-	Replication interface{}
+	Replication pulumi.IntInput
 	// Retention bytes
-	RetentionBytes interface{}
+	RetentionBytes pulumi.IntPtrInput
 	// Retention period (hours)
-	RetentionHours interface{}
+	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
-	ServiceName interface{}
-	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended
-	// to enable this for any production Kafka topic containing critical data.
-	TerminationProtection interface{}
+	ServiceName pulumi.StringInput
+	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+	// enable this for any production Kafka topic containing critical data.
+	TerminationProtection pulumi.BoolPtrInput
 	// Topic name
-	TopicName interface{}
+	TopicName pulumi.StringInput
+}
+
+func (KafkaTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*kafkaTopicArgs)(nil)).Elem()
 }

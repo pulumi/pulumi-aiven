@@ -4,116 +4,110 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type AccountTeam struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Account id
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Time of creation
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Account team name
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Account team id
+	TeamId pulumi.StringOutput `pulumi:"teamId"`
+	// Time of last update
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewAccountTeam registers a new resource with the given unique name, arguments, and options.
 func NewAccountTeam(ctx *pulumi.Context,
-	name string, args *AccountTeamArgs, opts ...pulumi.ResourceOpt) (*AccountTeam, error) {
+	name string, args *AccountTeamArgs, opts ...pulumi.ResourceOption) (*AccountTeam, error) {
 	if args == nil || args.AccountId == nil {
 		return nil, errors.New("missing required argument 'AccountId'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["accountId"] = nil
-		inputs["createTime"] = nil
-		inputs["name"] = nil
-		inputs["updateTime"] = nil
-	} else {
-		inputs["accountId"] = args.AccountId
-		inputs["createTime"] = args.CreateTime
-		inputs["name"] = args.Name
-		inputs["updateTime"] = args.UpdateTime
+		args = &AccountTeamArgs{}
 	}
-	inputs["teamId"] = nil
-	s, err := ctx.RegisterResource("aiven:index/accountTeam:AccountTeam", name, true, inputs, opts...)
+	var resource AccountTeam
+	err := ctx.RegisterResource("aiven:index/accountTeam:AccountTeam", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &AccountTeam{s: s}, nil
+	return &resource, nil
 }
 
 // GetAccountTeam gets an existing AccountTeam resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetAccountTeam(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *AccountTeamState, opts ...pulumi.ResourceOpt) (*AccountTeam, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["accountId"] = state.AccountId
-		inputs["createTime"] = state.CreateTime
-		inputs["name"] = state.Name
-		inputs["teamId"] = state.TeamId
-		inputs["updateTime"] = state.UpdateTime
-	}
-	s, err := ctx.ReadResource("aiven:index/accountTeam:AccountTeam", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *AccountTeamState, opts ...pulumi.ResourceOption) (*AccountTeam, error) {
+	var resource AccountTeam
+	err := ctx.ReadResource("aiven:index/accountTeam:AccountTeam", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &AccountTeam{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *AccountTeam) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *AccountTeam) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Account id
-func (r *AccountTeam) AccountId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["accountId"])
-}
-
-// Time of creation
-func (r *AccountTeam) CreateTime() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["createTime"])
-}
-
-// Account team name
-func (r *AccountTeam) Name() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["name"])
-}
-
-// Account team id
-func (r *AccountTeam) TeamId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["teamId"])
-}
-
-// Time of last update
-func (r *AccountTeam) UpdateTime() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["updateTime"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering AccountTeam resources.
+type accountTeamState struct {
+	// Account id
+	AccountId *string `pulumi:"accountId"`
+	// Time of creation
+	CreateTime *string `pulumi:"createTime"`
+	// Account team name
+	Name *string `pulumi:"name"`
+	// Account team id
+	TeamId *string `pulumi:"teamId"`
+	// Time of last update
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
 type AccountTeamState struct {
 	// Account id
-	AccountId interface{}
+	AccountId pulumi.StringPtrInput
 	// Time of creation
-	CreateTime interface{}
+	CreateTime pulumi.StringPtrInput
 	// Account team name
-	Name interface{}
+	Name pulumi.StringPtrInput
 	// Account team id
-	TeamId interface{}
+	TeamId pulumi.StringPtrInput
 	// Time of last update
-	UpdateTime interface{}
+	UpdateTime pulumi.StringPtrInput
+}
+
+func (AccountTeamState) ElementType() reflect.Type {
+	return reflect.TypeOf((*accountTeamState)(nil)).Elem()
+}
+
+type accountTeamArgs struct {
+	// Account id
+	AccountId string `pulumi:"accountId"`
+	// Time of creation
+	CreateTime *string `pulumi:"createTime"`
+	// Account team name
+	Name *string `pulumi:"name"`
+	// Time of last update
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a AccountTeam resource.
 type AccountTeamArgs struct {
 	// Account id
-	AccountId interface{}
+	AccountId pulumi.StringInput
 	// Time of creation
-	CreateTime interface{}
+	CreateTime pulumi.StringPtrInput
 	// Account team name
-	Name interface{}
+	Name pulumi.StringPtrInput
 	// Time of last update
-	UpdateTime interface{}
+	UpdateTime pulumi.StringPtrInput
+}
+
+func (AccountTeamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*accountTeamArgs)(nil)).Elem()
 }

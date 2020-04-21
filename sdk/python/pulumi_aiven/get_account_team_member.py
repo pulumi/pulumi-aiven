@@ -13,7 +13,7 @@ class GetAccountTeamMemberResult:
     """
     A collection of values returned by getAccountTeamMember.
     """
-    def __init__(__self__, accepted=None, account_id=None, create_time=None, invited_by_user_email=None, team_id=None, user_email=None, id=None):
+    def __init__(__self__, accepted=None, account_id=None, create_time=None, id=None, invited_by_user_email=None, team_id=None, user_email=None):
         if accepted and not isinstance(accepted, bool):
             raise TypeError("Expected argument 'accepted' to be a bool")
         __self__.accepted = accepted
@@ -23,6 +23,12 @@ class GetAccountTeamMemberResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         __self__.create_time = create_time
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if invited_by_user_email and not isinstance(invited_by_user_email, str):
             raise TypeError("Expected argument 'invited_by_user_email' to be a str")
         __self__.invited_by_user_email = invited_by_user_email
@@ -32,12 +38,6 @@ class GetAccountTeamMemberResult:
         if user_email and not isinstance(user_email, str):
             raise TypeError("Expected argument 'user_email' to be a str")
         __self__.user_email = user_email
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,19 +47,14 @@ class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
             accepted=self.accepted,
             account_id=self.account_id,
             create_time=self.create_time,
+            id=self.id,
             invited_by_user_email=self.invited_by_user_email,
             team_id=self.team_id,
-            user_email=self.user_email,
-            id=self.id)
+            user_email=self.user_email)
 
 def get_account_team_member(accepted=None,account_id=None,create_time=None,invited_by_user_email=None,team_id=None,user_email=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account_team_member.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['accepted'] = accepted
     __args__['accountId'] = account_id
@@ -77,7 +72,7 @@ def get_account_team_member(accepted=None,account_id=None,create_time=None,invit
         accepted=__ret__.get('accepted'),
         account_id=__ret__.get('accountId'),
         create_time=__ret__.get('createTime'),
+        id=__ret__.get('id'),
         invited_by_user_email=__ret__.get('invitedByUserEmail'),
         team_id=__ret__.get('teamId'),
-        user_email=__ret__.get('userEmail'),
-        id=__ret__.get('id'))
+        user_email=__ret__.get('userEmail'))

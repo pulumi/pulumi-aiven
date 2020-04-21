@@ -4,8 +4,8 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
 // Aiven Authentication Token
@@ -14,8 +14,5 @@ func GetApiToken(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "AIVEN_API_TOKEN").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "AIVEN_API_TOKEN").(string)
 }

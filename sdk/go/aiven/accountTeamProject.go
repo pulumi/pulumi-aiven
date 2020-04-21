@@ -4,114 +4,109 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The account team project is intended to link and existing project to the existing account team. It is important to note 
+// The account team project is intended to link and existing project to the existing account team. It is important to note
 // that the project should have an `accountId` property set and equal to account team you are trying to link this project.
-//
-// > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_project.html.markdown.
 type AccountTeamProject struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Account id
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Account team project name
+	ProjectName pulumi.StringPtrOutput `pulumi:"projectName"`
+	// Account team id
+	TeamId pulumi.StringOutput `pulumi:"teamId"`
+	// Account team project type, can one of the following values: admin, developer, operator and read_only
+	TeamType pulumi.StringPtrOutput `pulumi:"teamType"`
 }
 
 // NewAccountTeamProject registers a new resource with the given unique name, arguments, and options.
 func NewAccountTeamProject(ctx *pulumi.Context,
-	name string, args *AccountTeamProjectArgs, opts ...pulumi.ResourceOpt) (*AccountTeamProject, error) {
+	name string, args *AccountTeamProjectArgs, opts ...pulumi.ResourceOption) (*AccountTeamProject, error) {
 	if args == nil || args.AccountId == nil {
 		return nil, errors.New("missing required argument 'AccountId'")
 	}
 	if args == nil || args.TeamId == nil {
 		return nil, errors.New("missing required argument 'TeamId'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["accountId"] = nil
-		inputs["projectName"] = nil
-		inputs["teamId"] = nil
-		inputs["teamType"] = nil
-	} else {
-		inputs["accountId"] = args.AccountId
-		inputs["projectName"] = args.ProjectName
-		inputs["teamId"] = args.TeamId
-		inputs["teamType"] = args.TeamType
+		args = &AccountTeamProjectArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/accountTeamProject:AccountTeamProject", name, true, inputs, opts...)
+	var resource AccountTeamProject
+	err := ctx.RegisterResource("aiven:index/accountTeamProject:AccountTeamProject", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &AccountTeamProject{s: s}, nil
+	return &resource, nil
 }
 
 // GetAccountTeamProject gets an existing AccountTeamProject resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetAccountTeamProject(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *AccountTeamProjectState, opts ...pulumi.ResourceOpt) (*AccountTeamProject, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["accountId"] = state.AccountId
-		inputs["projectName"] = state.ProjectName
-		inputs["teamId"] = state.TeamId
-		inputs["teamType"] = state.TeamType
-	}
-	s, err := ctx.ReadResource("aiven:index/accountTeamProject:AccountTeamProject", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *AccountTeamProjectState, opts ...pulumi.ResourceOption) (*AccountTeamProject, error) {
+	var resource AccountTeamProject
+	err := ctx.ReadResource("aiven:index/accountTeamProject:AccountTeamProject", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &AccountTeamProject{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *AccountTeamProject) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *AccountTeamProject) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Account id
-func (r *AccountTeamProject) AccountId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["accountId"])
-}
-
-// Account team project name
-func (r *AccountTeamProject) ProjectName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["projectName"])
-}
-
-// Account team id
-func (r *AccountTeamProject) TeamId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["teamId"])
-}
-
-// Account team project type, can one of the following values: admin, developer, operator and read_only
-func (r *AccountTeamProject) TeamType() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["teamType"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering AccountTeamProject resources.
+type accountTeamProjectState struct {
+	// Account id
+	AccountId *string `pulumi:"accountId"`
+	// Account team project name
+	ProjectName *string `pulumi:"projectName"`
+	// Account team id
+	TeamId *string `pulumi:"teamId"`
+	// Account team project type, can one of the following values: admin, developer, operator and read_only
+	TeamType *string `pulumi:"teamType"`
+}
+
 type AccountTeamProjectState struct {
 	// Account id
-	AccountId interface{}
+	AccountId pulumi.StringPtrInput
 	// Account team project name
-	ProjectName interface{}
+	ProjectName pulumi.StringPtrInput
 	// Account team id
-	TeamId interface{}
+	TeamId pulumi.StringPtrInput
 	// Account team project type, can one of the following values: admin, developer, operator and read_only
-	TeamType interface{}
+	TeamType pulumi.StringPtrInput
+}
+
+func (AccountTeamProjectState) ElementType() reflect.Type {
+	return reflect.TypeOf((*accountTeamProjectState)(nil)).Elem()
+}
+
+type accountTeamProjectArgs struct {
+	// Account id
+	AccountId string `pulumi:"accountId"`
+	// Account team project name
+	ProjectName *string `pulumi:"projectName"`
+	// Account team id
+	TeamId string `pulumi:"teamId"`
+	// Account team project type, can one of the following values: admin, developer, operator and read_only
+	TeamType *string `pulumi:"teamType"`
 }
 
 // The set of arguments for constructing a AccountTeamProject resource.
 type AccountTeamProjectArgs struct {
 	// Account id
-	AccountId interface{}
+	AccountId pulumi.StringInput
 	// Account team project name
-	ProjectName interface{}
+	ProjectName pulumi.StringPtrInput
 	// Account team id
-	TeamId interface{}
+	TeamId pulumi.StringInput
 	// Account team project type, can one of the following values: admin, developer, operator and read_only
-	TeamType interface{}
+	TeamType pulumi.StringPtrInput
+}
+
+func (AccountTeamProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*accountTeamProjectArgs)(nil)).Elem()
 }

@@ -4,60 +4,40 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupConnectionPool(ctx *pulumi.Context, args *GetConnectionPoolArgs) (*GetConnectionPoolResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["connectionUri"] = args.ConnectionUri
-		inputs["databaseName"] = args.DatabaseName
-		inputs["poolMode"] = args.PoolMode
-		inputs["poolName"] = args.PoolName
-		inputs["poolSize"] = args.PoolSize
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["username"] = args.Username
-	}
-	outputs, err := ctx.Invoke("aiven:index/getConnectionPool:getConnectionPool", inputs)
+func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, opts ...pulumi.InvokeOption) (*LookupConnectionPoolResult, error) {
+	var rv LookupConnectionPoolResult
+	err := ctx.Invoke("aiven:index/getConnectionPool:getConnectionPool", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetConnectionPoolResult{
-		ConnectionUri: outputs["connectionUri"],
-		DatabaseName: outputs["databaseName"],
-		PoolMode: outputs["poolMode"],
-		PoolName: outputs["poolName"],
-		PoolSize: outputs["poolSize"],
-		Project: outputs["project"],
-		ServiceName: outputs["serviceName"],
-		Username: outputs["username"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getConnectionPool.
-type GetConnectionPoolArgs struct {
-	ConnectionUri interface{}
-	DatabaseName interface{}
-	PoolMode interface{}
-	PoolName interface{}
-	PoolSize interface{}
-	Project interface{}
-	ServiceName interface{}
-	Username interface{}
+type LookupConnectionPoolArgs struct {
+	ConnectionUri *string `pulumi:"connectionUri"`
+	DatabaseName  *string `pulumi:"databaseName"`
+	PoolMode      *string `pulumi:"poolMode"`
+	PoolName      string  `pulumi:"poolName"`
+	PoolSize      *int    `pulumi:"poolSize"`
+	Project       string  `pulumi:"project"`
+	ServiceName   string  `pulumi:"serviceName"`
+	Username      *string `pulumi:"username"`
 }
 
 // A collection of values returned by getConnectionPool.
-type GetConnectionPoolResult struct {
-	ConnectionUri interface{}
-	DatabaseName interface{}
-	PoolMode interface{}
-	PoolName interface{}
-	PoolSize interface{}
-	Project interface{}
-	ServiceName interface{}
-	Username interface{}
+type LookupConnectionPoolResult struct {
+	ConnectionUri string  `pulumi:"connectionUri"`
+	DatabaseName  *string `pulumi:"databaseName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string  `pulumi:"id"`
+	PoolMode    *string `pulumi:"poolMode"`
+	PoolName    string  `pulumi:"poolName"`
+	PoolSize    *int    `pulumi:"poolSize"`
+	Project     string  `pulumi:"project"`
+	ServiceName string  `pulumi:"serviceName"`
+	Username    *string `pulumi:"username"`
 }

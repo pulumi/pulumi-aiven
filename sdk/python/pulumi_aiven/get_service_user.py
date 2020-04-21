@@ -13,13 +13,19 @@ class GetServiceUserResult:
     """
     A collection of values returned by getServiceUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, password=None, project=None, service_name=None, type=None, username=None, id=None):
+    def __init__(__self__, access_cert=None, access_key=None, id=None, password=None, project=None, service_name=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         __self__.access_cert = access_cert
         if access_key and not isinstance(access_key, str):
             raise TypeError("Expected argument 'access_key' to be a str")
         __self__.access_key = access_key
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         __self__.password = password
@@ -35,12 +41,6 @@ class GetServiceUserResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         __self__.username = username
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServiceUserResult(GetServiceUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,21 +49,16 @@ class AwaitableGetServiceUserResult(GetServiceUserResult):
         return GetServiceUserResult(
             access_cert=self.access_cert,
             access_key=self.access_key,
+            id=self.id,
             password=self.password,
             project=self.project,
             service_name=self.service_name,
             type=self.type,
-            username=self.username,
-            id=self.id)
+            username=self.username)
 
 def get_service_user(access_cert=None,access_key=None,password=None,project=None,service_name=None,type=None,username=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service_user.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['accessCert'] = access_cert
     __args__['accessKey'] = access_key
@@ -81,9 +76,9 @@ def get_service_user(access_cert=None,access_key=None,password=None,project=None
     return AwaitableGetServiceUserResult(
         access_cert=__ret__.get('accessCert'),
         access_key=__ret__.get('accessKey'),
+        id=__ret__.get('id'),
         password=__ret__.get('password'),
         project=__ret__.get('project'),
         service_name=__ret__.get('serviceName'),
         type=__ret__.get('type'),
-        username=__ret__.get('username'),
-        id=__ret__.get('id'))
+        username=__ret__.get('username'))

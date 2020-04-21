@@ -11,19 +11,43 @@ from . import utilities, tables
 
 class Database(pulumi.CustomResource):
     database_name: pulumi.Output[str]
+    """
+    Service database name
+    """
     lc_collate: pulumi.Output[str]
+    """
+    Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+    """
     lc_ctype: pulumi.Output[str]
+    """
+    Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+    """
     project: pulumi.Output[str]
+    """
+    Project to link the database to
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the database to
+    """
     termination_protection: pulumi.Output[bool]
+    """
+    It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+    recommended to enable this for any production databases containing critical data.
+    """
     def __init__(__self__, resource_name, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Database resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/database.html.markdown.
+        :param pulumi.Input[str] database_name: Service database name
+        :param pulumi.Input[str] lc_collate: Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+        :param pulumi.Input[str] lc_ctype: Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+        :param pulumi.Input[str] project: Project to link the database to
+        :param pulumi.Input[str] service_name: Service to link the database to
+        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+               recommended to enable this for any production databases containing critical data.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,16 +89,22 @@ class Database(pulumi.CustomResource):
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/database.html.markdown.
+        :param pulumi.Input[str] database_name: Service database name
+        :param pulumi.Input[str] lc_collate: Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+        :param pulumi.Input[str] lc_ctype: Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+        :param pulumi.Input[str] project: Project to link the database to
+        :param pulumi.Input[str] service_name: Service to link the database to
+        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+               recommended to enable this for any production databases containing critical data.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["database_name"] = database_name
         __props__["lc_collate"] = lc_collate
         __props__["lc_ctype"] = lc_ctype

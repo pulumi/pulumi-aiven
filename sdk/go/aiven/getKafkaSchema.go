@@ -4,48 +4,34 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupKafkaSchema(ctx *pulumi.Context, args *GetKafkaSchemaArgs) (*GetKafkaSchemaResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["project"] = args.Project
-		inputs["schema"] = args.Schema
-		inputs["serviceName"] = args.ServiceName
-		inputs["subjectName"] = args.SubjectName
-		inputs["version"] = args.Version
-	}
-	outputs, err := ctx.Invoke("aiven:index/getKafkaSchema:getKafkaSchema", inputs)
+func LookupKafkaSchema(ctx *pulumi.Context, args *LookupKafkaSchemaArgs, opts ...pulumi.InvokeOption) (*LookupKafkaSchemaResult, error) {
+	var rv LookupKafkaSchemaResult
+	err := ctx.Invoke("aiven:index/getKafkaSchema:getKafkaSchema", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetKafkaSchemaResult{
-		Project: outputs["project"],
-		Schema: outputs["schema"],
-		ServiceName: outputs["serviceName"],
-		SubjectName: outputs["subjectName"],
-		Version: outputs["version"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getKafkaSchema.
-type GetKafkaSchemaArgs struct {
-	Project interface{}
-	Schema interface{}
-	ServiceName interface{}
-	SubjectName interface{}
-	Version interface{}
+type LookupKafkaSchemaArgs struct {
+	Project     string  `pulumi:"project"`
+	Schema      *string `pulumi:"schema"`
+	ServiceName string  `pulumi:"serviceName"`
+	SubjectName string  `pulumi:"subjectName"`
+	Version     *int    `pulumi:"version"`
 }
 
 // A collection of values returned by getKafkaSchema.
-type GetKafkaSchemaResult struct {
-	Project interface{}
-	Schema interface{}
-	ServiceName interface{}
-	SubjectName interface{}
-	Version interface{}
+type LookupKafkaSchemaResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string  `pulumi:"id"`
+	Project     string  `pulumi:"project"`
+	Schema      *string `pulumi:"schema"`
+	ServiceName string  `pulumi:"serviceName"`
+	SubjectName string  `pulumi:"subjectName"`
+	Version     int     `pulumi:"version"`
 }

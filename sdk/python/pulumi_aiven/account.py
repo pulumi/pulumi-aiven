@@ -11,19 +11,40 @@ from . import utilities, tables
 
 class Account(pulumi.CustomResource):
     account_id: pulumi.Output[str]
+    """
+    Account id
+    """
     create_time: pulumi.Output[str]
+    """
+    Time of creation
+    """
     name: pulumi.Output[str]
+    """
+    Account name
+    """
     owner_team_id: pulumi.Output[str]
+    """
+    Owner team id
+    """
     tenant_id: pulumi.Output[str]
+    """
+    Tenant id
+    """
     update_time: pulumi.Output[str]
+    """
+    Time of last update
+    """
     def __init__(__self__, resource_name, opts=None, create_time=None, name=None, owner_team_id=None, tenant_id=None, update_time=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Account resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account.html.markdown.
+        :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[str] owner_team_id: Owner team id
+        :param pulumi.Input[str] tenant_id: Tenant id
+        :param pulumi.Input[str] update_time: Time of last update
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,16 +80,21 @@ class Account(pulumi.CustomResource):
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account.html.markdown.
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[str] owner_team_id: Owner team id
+        :param pulumi.Input[str] tenant_id: Tenant id
+        :param pulumi.Input[str] update_time: Time of last update
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["create_time"] = create_time
         __props__["name"] = name

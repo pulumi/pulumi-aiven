@@ -13,10 +13,16 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, id=None):
+    def __init__(__self__, cleanup_policy=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
         if cleanup_policy and not isinstance(cleanup_policy, str):
             raise TypeError("Expected argument 'cleanup_policy' to be a str")
         __self__.cleanup_policy = cleanup_policy
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if minimum_in_sync_replicas and not isinstance(minimum_in_sync_replicas, float):
             raise TypeError("Expected argument 'minimum_in_sync_replicas' to be a float")
         __self__.minimum_in_sync_replicas = minimum_in_sync_replicas
@@ -44,12 +50,6 @@ class GetKafkaTopicResult:
         if topic_name and not isinstance(topic_name, str):
             raise TypeError("Expected argument 'topic_name' to be a str")
         __self__.topic_name = topic_name
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,6 +57,7 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             yield self
         return GetKafkaTopicResult(
             cleanup_policy=self.cleanup_policy,
+            id=self.id,
             minimum_in_sync_replicas=self.minimum_in_sync_replicas,
             partitions=self.partitions,
             project=self.project,
@@ -65,17 +66,11 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             retention_hours=self.retention_hours,
             service_name=self.service_name,
             termination_protection=self.termination_protection,
-            topic_name=self.topic_name,
-            id=self.id)
+            topic_name=self.topic_name)
 
 def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions=None,project=None,replication=None,retention_bytes=None,retention_hours=None,service_name=None,termination_protection=None,topic_name=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_topic.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['cleanupPolicy'] = cleanup_policy
     __args__['minimumInSyncReplicas'] = minimum_in_sync_replicas
@@ -95,6 +90,7 @@ def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions
 
     return AwaitableGetKafkaTopicResult(
         cleanup_policy=__ret__.get('cleanupPolicy'),
+        id=__ret__.get('id'),
         minimum_in_sync_replicas=__ret__.get('minimumInSyncReplicas'),
         partitions=__ret__.get('partitions'),
         project=__ret__.get('project'),
@@ -103,5 +99,4 @@ def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions
         retention_hours=__ret__.get('retentionHours'),
         service_name=__ret__.get('serviceName'),
         termination_protection=__ret__.get('terminationProtection'),
-        topic_name=__ret__.get('topicName'),
-        id=__ret__.get('id'))
+        topic_name=__ret__.get('topicName'))

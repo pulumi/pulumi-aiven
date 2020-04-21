@@ -11,17 +11,30 @@ from . import utilities, tables
 
 class ProjectUser(pulumi.CustomResource):
     accepted: pulumi.Output[bool]
+    """
+    Whether the user has accepted project membership or not
+    """
     email: pulumi.Output[str]
+    """
+    Email address of the user
+    """
     member_type: pulumi.Output[str]
+    """
+    Project membership type. One of: admin, developer, operator
+    """
     project: pulumi.Output[str]
+    """
+    The project the user belongs to
+    """
     def __init__(__self__, resource_name, opts=None, email=None, member_type=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ProjectUser resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project_user.html.markdown.
+        :param pulumi.Input[str] email: Email address of the user
+        :param pulumi.Input[str] member_type: Project membership type. One of: admin, developer, operator
+        :param pulumi.Input[str] project: The project the user belongs to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,16 +74,19 @@ class ProjectUser(pulumi.CustomResource):
         """
         Get an existing ProjectUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project_user.html.markdown.
+        :param pulumi.Input[bool] accepted: Whether the user has accepted project membership or not
+        :param pulumi.Input[str] email: Email address of the user
+        :param pulumi.Input[str] member_type: Project membership type. One of: admin, developer, operator
+        :param pulumi.Input[str] project: The project the user belongs to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["accepted"] = accepted
         __props__["email"] = email
         __props__["member_type"] = member_type

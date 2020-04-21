@@ -13,13 +13,19 @@ class GetKafkaConnectorResult:
     """
     A collection of values returned by getKafkaConnector.
     """
-    def __init__(__self__, config=None, connector_name=None, plugin_author=None, plugin_class=None, plugin_doc_url=None, plugin_title=None, plugin_type=None, plugin_version=None, project=None, service_name=None, tasks=None, id=None):
+    def __init__(__self__, config=None, connector_name=None, id=None, plugin_author=None, plugin_class=None, plugin_doc_url=None, plugin_title=None, plugin_type=None, plugin_version=None, project=None, service_name=None, tasks=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         __self__.config = config
         if connector_name and not isinstance(connector_name, str):
             raise TypeError("Expected argument 'connector_name' to be a str")
         __self__.connector_name = connector_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if plugin_author and not isinstance(plugin_author, str):
             raise TypeError("Expected argument 'plugin_author' to be a str")
         __self__.plugin_author = plugin_author
@@ -47,12 +53,6 @@ class GetKafkaConnectorResult:
         if tasks and not isinstance(tasks, list):
             raise TypeError("Expected argument 'tasks' to be a list")
         __self__.tasks = tasks
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKafkaConnectorResult(GetKafkaConnectorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -61,6 +61,7 @@ class AwaitableGetKafkaConnectorResult(GetKafkaConnectorResult):
         return GetKafkaConnectorResult(
             config=self.config,
             connector_name=self.connector_name,
+            id=self.id,
             plugin_author=self.plugin_author,
             plugin_class=self.plugin_class,
             plugin_doc_url=self.plugin_doc_url,
@@ -69,20 +70,20 @@ class AwaitableGetKafkaConnectorResult(GetKafkaConnectorResult):
             plugin_version=self.plugin_version,
             project=self.project,
             service_name=self.service_name,
-            tasks=self.tasks,
-            id=self.id)
+            tasks=self.tasks)
 
 def get_kafka_connector(config=None,connector_name=None,plugin_author=None,plugin_class=None,plugin_doc_url=None,plugin_title=None,plugin_type=None,plugin_version=None,project=None,service_name=None,tasks=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    
+
+
     The **tasks** object supports the following:
-    
+
       * `connector` (`str`)
       * `task` (`float`)
     """
     __args__ = dict()
+
 
     __args__['config'] = config
     __args__['connectorName'] = connector_name
@@ -104,6 +105,7 @@ def get_kafka_connector(config=None,connector_name=None,plugin_author=None,plugi
     return AwaitableGetKafkaConnectorResult(
         config=__ret__.get('config'),
         connector_name=__ret__.get('connectorName'),
+        id=__ret__.get('id'),
         plugin_author=__ret__.get('pluginAuthor'),
         plugin_class=__ret__.get('pluginClass'),
         plugin_doc_url=__ret__.get('pluginDocUrl'),
@@ -112,5 +114,4 @@ def get_kafka_connector(config=None,connector_name=None,plugin_author=None,plugi
         plugin_version=__ret__.get('pluginVersion'),
         project=__ret__.get('project'),
         service_name=__ret__.get('serviceName'),
-        tasks=__ret__.get('tasks'),
-        id=__ret__.get('id'))
+        tasks=__ret__.get('tasks'))

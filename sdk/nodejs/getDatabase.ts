@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> & GetDatabaseResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/database.html.markdown.
+ */
+export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +18,7 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDatabaseResult> = pulumi.runtime.invoke("aiven:index/getDatabase:getDatabase", {
+    return pulumi.runtime.invoke("aiven:index/getDatabase:getDatabase", {
         "databaseName": args.databaseName,
         "lcCollate": args.lcCollate,
         "lcCtype": args.lcCtype,
@@ -22,8 +26,6 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
         "serviceName": args.serviceName,
         "terminationProtection": args.terminationProtection,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

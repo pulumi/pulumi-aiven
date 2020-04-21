@@ -4,17 +4,33 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type Database struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Service database name
+	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
+	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	LcCollate pulumi.StringPtrOutput `pulumi:"lcCollate"`
+	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	LcCtype pulumi.StringPtrOutput `pulumi:"lcCtype"`
+	// Project to link the database to
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Service to link the database to
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+	// recommended to enable this for any production databases containing critical data.
+	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
 func NewDatabase(ctx *pulumi.Context,
-	name string, args *DatabaseArgs, opts ...pulumi.ResourceOpt) (*Database, error) {
+	name string, args *DatabaseArgs, opts ...pulumi.ResourceOption) (*Database, error) {
 	if args == nil || args.DatabaseName == nil {
 		return nil, errors.New("missing required argument 'DatabaseName'")
 	}
@@ -24,120 +40,99 @@ func NewDatabase(ctx *pulumi.Context,
 	if args == nil || args.ServiceName == nil {
 		return nil, errors.New("missing required argument 'ServiceName'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["databaseName"] = nil
-		inputs["lcCollate"] = nil
-		inputs["lcCtype"] = nil
-		inputs["project"] = nil
-		inputs["serviceName"] = nil
-		inputs["terminationProtection"] = nil
-	} else {
-		inputs["databaseName"] = args.DatabaseName
-		inputs["lcCollate"] = args.LcCollate
-		inputs["lcCtype"] = args.LcCtype
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["terminationProtection"] = args.TerminationProtection
+		args = &DatabaseArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/database:Database", name, true, inputs, opts...)
+	var resource Database
+	err := ctx.RegisterResource("aiven:index/database:Database", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Database{s: s}, nil
+	return &resource, nil
 }
 
 // GetDatabase gets an existing Database resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetDatabase(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *DatabaseState, opts ...pulumi.ResourceOpt) (*Database, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["databaseName"] = state.DatabaseName
-		inputs["lcCollate"] = state.LcCollate
-		inputs["lcCtype"] = state.LcCtype
-		inputs["project"] = state.Project
-		inputs["serviceName"] = state.ServiceName
-		inputs["terminationProtection"] = state.TerminationProtection
-	}
-	s, err := ctx.ReadResource("aiven:index/database:Database", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *DatabaseState, opts ...pulumi.ResourceOption) (*Database, error) {
+	var resource Database
+	err := ctx.ReadResource("aiven:index/database:Database", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Database{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *Database) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *Database) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Service database name
-func (r *Database) DatabaseName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["databaseName"])
-}
-
-// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
-func (r *Database) LcCollate() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["lcCollate"])
-}
-
-// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
-func (r *Database) LcCtype() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["lcCtype"])
-}
-
-// Project to link the database to
-func (r *Database) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-// Service to link the database to
-func (r *Database) ServiceName() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["serviceName"])
-}
-
-// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-// recommended to enable this for any production databases containing critical data.
-func (r *Database) TerminationProtection() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["terminationProtection"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering Database resources.
-type DatabaseState struct {
+type databaseState struct {
 	// Service database name
-	DatabaseName interface{}
+	DatabaseName *string `pulumi:"databaseName"`
 	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
-	LcCollate interface{}
+	LcCollate *string `pulumi:"lcCollate"`
 	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
-	LcCtype interface{}
+	LcCtype *string `pulumi:"lcCtype"`
 	// Project to link the database to
-	Project interface{}
+	Project *string `pulumi:"project"`
 	// Service to link the database to
-	ServiceName interface{}
+	ServiceName *string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data.
-	TerminationProtection interface{}
+	TerminationProtection *bool `pulumi:"terminationProtection"`
+}
+
+type DatabaseState struct {
+	// Service database name
+	DatabaseName pulumi.StringPtrInput
+	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	LcCollate pulumi.StringPtrInput
+	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	LcCtype pulumi.StringPtrInput
+	// Project to link the database to
+	Project pulumi.StringPtrInput
+	// Service to link the database to
+	ServiceName pulumi.StringPtrInput
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+	// recommended to enable this for any production databases containing critical data.
+	TerminationProtection pulumi.BoolPtrInput
+}
+
+func (DatabaseState) ElementType() reflect.Type {
+	return reflect.TypeOf((*databaseState)(nil)).Elem()
+}
+
+type databaseArgs struct {
+	// Service database name
+	DatabaseName string `pulumi:"databaseName"`
+	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	LcCollate *string `pulumi:"lcCollate"`
+	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	LcCtype *string `pulumi:"lcCtype"`
+	// Project to link the database to
+	Project string `pulumi:"project"`
+	// Service to link the database to
+	ServiceName string `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+	// recommended to enable this for any production databases containing critical data.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
 	// Service database name
-	DatabaseName interface{}
+	DatabaseName pulumi.StringInput
 	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
-	LcCollate interface{}
+	LcCollate pulumi.StringPtrInput
 	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
-	LcCtype interface{}
+	LcCtype pulumi.StringPtrInput
 	// Project to link the database to
-	Project interface{}
+	Project pulumi.StringInput
 	// Service to link the database to
-	ServiceName interface{}
+	ServiceName pulumi.StringInput
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data.
-	TerminationProtection interface{}
+	TerminationProtection pulumi.BoolPtrInput
+}
+
+func (DatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*databaseArgs)(nil)).Elem()
 }

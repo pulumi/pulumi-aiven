@@ -4,48 +4,34 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupKafkaSchemaConfiguration(ctx *pulumi.Context, args *GetKafkaSchemaConfigurationArgs) (*GetKafkaSchemaConfigurationResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["project"] = args.Project
-		inputs["schema"] = args.Schema
-		inputs["serviceName"] = args.ServiceName
-		inputs["subjectName"] = args.SubjectName
-		inputs["version"] = args.Version
-	}
-	outputs, err := ctx.Invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", inputs)
+func LookupKafkaSchemaConfiguration(ctx *pulumi.Context, args *LookupKafkaSchemaConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupKafkaSchemaConfigurationResult, error) {
+	var rv LookupKafkaSchemaConfigurationResult
+	err := ctx.Invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetKafkaSchemaConfigurationResult{
-		Project: outputs["project"],
-		Schema: outputs["schema"],
-		ServiceName: outputs["serviceName"],
-		SubjectName: outputs["subjectName"],
-		Version: outputs["version"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getKafkaSchemaConfiguration.
-type GetKafkaSchemaConfigurationArgs struct {
-	Project interface{}
-	Schema interface{}
-	ServiceName interface{}
-	SubjectName interface{}
-	Version interface{}
+type LookupKafkaSchemaConfigurationArgs struct {
+	Project     string  `pulumi:"project"`
+	Schema      *string `pulumi:"schema"`
+	ServiceName string  `pulumi:"serviceName"`
+	SubjectName *string `pulumi:"subjectName"`
+	Version     *int    `pulumi:"version"`
 }
 
 // A collection of values returned by getKafkaSchemaConfiguration.
-type GetKafkaSchemaConfigurationResult struct {
-	Project interface{}
-	Schema interface{}
-	ServiceName interface{}
-	SubjectName interface{}
-	Version interface{}
+type LookupKafkaSchemaConfigurationResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string  `pulumi:"id"`
+	Project     string  `pulumi:"project"`
+	Schema      *string `pulumi:"schema"`
+	ServiceName string  `pulumi:"serviceName"`
+	SubjectName *string `pulumi:"subjectName"`
+	Version     int     `pulumi:"version"`
 }

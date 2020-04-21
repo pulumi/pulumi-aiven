@@ -4,48 +4,34 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupKafkaAcl(ctx *pulumi.Context, args *GetKafkaAclArgs) (*GetKafkaAclResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["permission"] = args.Permission
-		inputs["project"] = args.Project
-		inputs["serviceName"] = args.ServiceName
-		inputs["topic"] = args.Topic
-		inputs["username"] = args.Username
-	}
-	outputs, err := ctx.Invoke("aiven:index/getKafkaAcl:getKafkaAcl", inputs)
+func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulumi.InvokeOption) (*LookupKafkaAclResult, error) {
+	var rv LookupKafkaAclResult
+	err := ctx.Invoke("aiven:index/getKafkaAcl:getKafkaAcl", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetKafkaAclResult{
-		Permission: outputs["permission"],
-		Project: outputs["project"],
-		ServiceName: outputs["serviceName"],
-		Topic: outputs["topic"],
-		Username: outputs["username"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getKafkaAcl.
-type GetKafkaAclArgs struct {
-	Permission interface{}
-	Project interface{}
-	ServiceName interface{}
-	Topic interface{}
-	Username interface{}
+type LookupKafkaAclArgs struct {
+	Permission  *string `pulumi:"permission"`
+	Project     string  `pulumi:"project"`
+	ServiceName string  `pulumi:"serviceName"`
+	Topic       string  `pulumi:"topic"`
+	Username    string  `pulumi:"username"`
 }
 
 // A collection of values returned by getKafkaAcl.
-type GetKafkaAclResult struct {
-	Permission interface{}
-	Project interface{}
-	ServiceName interface{}
-	Topic interface{}
-	Username interface{}
+type LookupKafkaAclResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id          string  `pulumi:"id"`
+	Permission  *string `pulumi:"permission"`
+	Project     string  `pulumi:"project"`
+	ServiceName string  `pulumi:"serviceName"`
+	Topic       string  `pulumi:"topic"`
+	Username    string  `pulumi:"username"`
 }

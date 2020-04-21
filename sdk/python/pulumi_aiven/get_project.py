@@ -13,7 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, id=None):
+    def __init__(__self__, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, id=None, project=None, technical_emails=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         __self__.account_id = account_id
@@ -35,18 +35,18 @@ class GetProjectResult:
         if country_code and not isinstance(country_code, str):
             raise TypeError("Expected argument 'country_code' to be a str")
         __self__.country_code = country_code
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if technical_emails and not isinstance(technical_emails, list):
-            raise TypeError("Expected argument 'technical_emails' to be a list")
-        __self__.technical_emails = technical_emails
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        __self__.project = project
+        if technical_emails and not isinstance(technical_emails, list):
+            raise TypeError("Expected argument 'technical_emails' to be a list")
+        __self__.technical_emails = technical_emails
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,18 +60,13 @@ class AwaitableGetProjectResult(GetProjectResult):
             card_id=self.card_id,
             copy_from_project=self.copy_from_project,
             country_code=self.country_code,
+            id=self.id,
             project=self.project,
-            technical_emails=self.technical_emails,
-            id=self.id)
+            technical_emails=self.technical_emails)
 
 def get_project(account_id=None,billing_address=None,billing_emails=None,ca_cert=None,card_id=None,copy_from_project=None,country_code=None,project=None,technical_emails=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['accountId'] = account_id
     __args__['billingAddress'] = billing_address
@@ -96,6 +91,6 @@ def get_project(account_id=None,billing_address=None,billing_emails=None,ca_cert
         card_id=__ret__.get('cardId'),
         copy_from_project=__ret__.get('copyFromProject'),
         country_code=__ret__.get('countryCode'),
+        id=__ret__.get('id'),
         project=__ret__.get('project'),
-        technical_emails=__ret__.get('technicalEmails'),
-        id=__ret__.get('id'))
+        technical_emails=__ret__.get('technicalEmails'))

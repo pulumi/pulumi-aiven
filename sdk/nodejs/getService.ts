@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> & GetServiceResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service.html.markdown.
+ */
+export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +18,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServiceResult> = pulumi.runtime.invoke("aiven:index/getService:getService", {
+    return pulumi.runtime.invoke("aiven:index/getService:getService", {
         "cassandra": args.cassandra,
         "cassandraUserConfig": args.cassandraUserConfig,
         "cloudName": args.cloudName,
@@ -51,8 +55,6 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         "state": args.state,
         "terminationProtection": args.terminationProtection,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

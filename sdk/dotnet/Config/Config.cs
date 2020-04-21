@@ -8,14 +8,10 @@ namespace Pulumi.Aiven
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("aiven");
-
         /// <summary>
         /// Aiven Authentication Token
         /// </summary>
         public static string? ApiToken { get; set; } = __config.Get("apiToken") ?? Utilities.GetEnv("AIVEN_API_TOKEN");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

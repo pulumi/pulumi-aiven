@@ -11,23 +11,63 @@ from . import utilities, tables
 
 class KafkaTopic(pulumi.CustomResource):
     cleanup_policy: pulumi.Output[str]
+    """
+    Topic cleanup policy. Allowed values: delete, compact
+    """
     minimum_in_sync_replicas: pulumi.Output[float]
+    """
+    Minimum required nodes in-sync replicas (ISR) to produce to a partition
+    """
     partitions: pulumi.Output[float]
+    """
+    Number of partitions to create in the topic
+    """
     project: pulumi.Output[str]
+    """
+    Project to link the kafka topic to
+    """
     replication: pulumi.Output[float]
+    """
+    Replication factor for the topic
+    """
     retention_bytes: pulumi.Output[float]
+    """
+    Retention bytes
+    """
     retention_hours: pulumi.Output[float]
+    """
+    Retention period (hours)
+    """
     service_name: pulumi.Output[str]
+    """
+    Service to link the kafka topic to
+    """
     termination_protection: pulumi.Output[bool]
+    """
+    It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+    enable this for any production Kafka topic containing critical data.
+    """
     topic_name: pulumi.Output[str]
+    """
+    Topic name
+    """
     def __init__(__self__, resource_name, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a KafkaTopic resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/kafka_topic.html.markdown.
+        :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact
+        :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition
+        :param pulumi.Input[float] partitions: Number of partitions to create in the topic
+        :param pulumi.Input[str] project: Project to link the kafka topic to
+        :param pulumi.Input[float] replication: Replication factor for the topic
+        :param pulumi.Input[float] retention_bytes: Retention bytes
+        :param pulumi.Input[float] retention_hours: Retention period (hours)
+        :param pulumi.Input[str] service_name: Service to link the kafka topic to
+        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+               enable this for any production Kafka topic containing critical data.
+        :param pulumi.Input[str] topic_name: Topic name
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,16 +117,26 @@ class KafkaTopic(pulumi.CustomResource):
         """
         Get an existing KafkaTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/kafka_topic.html.markdown.
+        :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact
+        :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition
+        :param pulumi.Input[float] partitions: Number of partitions to create in the topic
+        :param pulumi.Input[str] project: Project to link the kafka topic to
+        :param pulumi.Input[float] replication: Replication factor for the topic
+        :param pulumi.Input[float] retention_bytes: Retention bytes
+        :param pulumi.Input[float] retention_hours: Retention period (hours)
+        :param pulumi.Input[str] service_name: Service to link the kafka topic to
+        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+               enable this for any production Kafka topic containing critical data.
+        :param pulumi.Input[str] topic_name: Topic name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cleanup_policy"] = cleanup_policy
         __props__["minimum_in_sync_replicas"] = minimum_in_sync_replicas
         __props__["partitions"] = partitions

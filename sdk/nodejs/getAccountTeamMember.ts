@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account_team_member.html.markdown.
  */
-export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamMemberResult> & GetAccountTeamMemberResult {
+export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamMemberResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,7 +32,7 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountTeamMemberResult> = pulumi.runtime.invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", {
+    return pulumi.runtime.invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", {
         "accepted": args.accepted,
         "accountId": args.accountId,
         "createTime": args.createTime,
@@ -38,8 +40,6 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
         "teamId": args.teamId,
         "userEmail": args.userEmail,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

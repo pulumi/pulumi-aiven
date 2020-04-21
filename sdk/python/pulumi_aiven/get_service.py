@@ -13,7 +13,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, id=None):
+    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         if cassandra and not isinstance(cassandra, dict):
             raise TypeError("Expected argument 'cassandra' to be a dict")
         __self__.cassandra = cassandra
@@ -38,6 +38,12 @@ class GetServiceResult:
         if grafana_user_config and not isinstance(grafana_user_config, dict):
             raise TypeError("Expected argument 'grafana_user_config' to be a dict")
         __self__.grafana_user_config = grafana_user_config
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if influxdb and not isinstance(influxdb, dict):
             raise TypeError("Expected argument 'influxdb' to be a dict")
         __self__.influxdb = influxdb
@@ -119,12 +125,6 @@ class GetServiceResult:
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         __self__.termination_protection = termination_protection
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -139,6 +139,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             elasticsearch_user_config=self.elasticsearch_user_config,
             grafana=self.grafana,
             grafana_user_config=self.grafana_user_config,
+            id=self.id,
             influxdb=self.influxdb,
             influxdb_user_config=self.influxdb_user_config,
             kafka=self.kafka,
@@ -165,30 +166,28 @@ class AwaitableGetServiceResult(GetServiceResult):
             service_uri=self.service_uri,
             service_username=self.service_username,
             state=self.state,
-            termination_protection=self.termination_protection,
-            id=self.id)
+            termination_protection=self.termination_protection)
 
 def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,components=None,elasticsearch=None,elasticsearch_user_config=None,grafana=None,grafana_user_config=None,influxdb=None,influxdb_user_config=None,kafka=None,kafka_connect=None,kafka_connect_user_config=None,kafka_user_config=None,maintenance_window_dow=None,maintenance_window_time=None,mysql=None,mysql_user_config=None,pg=None,pg_user_config=None,plan=None,project=None,project_vpc_id=None,redis=None,redis_user_config=None,service_host=None,service_integrations=None,service_name=None,service_password=None,service_port=None,service_type=None,service_uri=None,service_username=None,state=None,termination_protection=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
-    
-    
+
+
+
+
     The **cassandra_user_config** object supports the following:
-    
+
       * `ipFilters` (`list`)
       * `migrateSstableloader` (`str`)
       * `privateAccess` (`dict`)
-    
         * `prometheus` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `prometheus` (`str`)
-    
+
       * `serviceToForkFrom` (`str`)
-    
+
     The **components** object supports the following:
-    
+
       * `component` (`str`)
       * `host` (`str`)
       * `kafkaAuthenticationMethod` (`str`)
@@ -196,17 +195,16 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `route` (`str`)
       * `ssl` (`bool`)
       * `usage` (`str`)
-    
+
     The **elasticsearch** object supports the following:
-    
+
       * `kibanaUri` (`str`)
-    
+
     The **elasticsearch_user_config** object supports the following:
-    
+
       * `customDomain` (`str`)
       * `disableReplicationFactorAdjustment` (`str`)
       * `elasticsearch` (`dict`)
-    
         * `actionAutoCreateIndexEnabled` (`str`)
         * `actionDestructiveRequiresName` (`str`)
         * `httpMaxContentLength` (`float`)
@@ -228,44 +226,39 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `threadPoolSearchThrottledSize` (`float`)
         * `threadPoolWriteQueueSize` (`float`)
         * `threadPoolWriteSize` (`float`)
-    
+
       * `elasticsearchVersion` (`str`)
       * `indexPatterns` (`list`)
-    
         * `maxIndexCount` (`float`)
         * `pattern` (`str`)
-    
+
       * `ipFilters` (`list`)
       * `kibana` (`dict`)
-    
         * `elasticsearchRequestTimeout` (`float`)
         * `enabled` (`bool`)
         * `maxOldSpaceSize` (`float`)
-    
+
       * `maxIndexCount` (`float`)
       * `privateAccess` (`dict`)
-    
         * `elasticsearch` (`str`)
         * `kibana` (`str`)
         * `prometheus` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `elasticsearch` (`str`)
         * `kibana` (`str`)
         * `prometheus` (`str`)
-    
+
       * `recoveryBasebackupName` (`str`)
       * `serviceToForkFrom` (`str`)
-    
+
     The **grafana_user_config** object supports the following:
-    
+
       * `alertingEnabled` (`str`)
       * `alertingErrorOrTimeout` (`str`)
       * `alertingNodataOrNullvalues` (`str`)
       * `allowEmbedding` (`str`)
       * `authGenericOauth` (`dict`)
-    
         * `allowSignUp` (`str`)
         * `allowedDomains` (`list`)
         * `allowedOrganizations` (`list`)
@@ -276,17 +269,15 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `name` (`str`)
         * `scopes` (`list`)
         * `tokenUrl` (`str`)
-    
+
       * `authGithub` (`dict`)
-    
         * `allowSignUp` (`str`)
         * `allowedOrganizations` (`list`)
         * `clientId` (`str`)
         * `clientSecret` (`str`)
         * `teamIds` (`list`)
-    
+
       * `authGitlab` (`dict`)
-    
         * `allowSignUp` (`str`)
         * `allowedGroups` (`list`)
         * `apiUrl` (`str`)
@@ -294,14 +285,13 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `clientId` (`str`)
         * `clientSecret` (`str`)
         * `tokenUrl` (`str`)
-    
+
       * `authGoogle` (`dict`)
-    
         * `allowSignUp` (`str`)
         * `allowedDomains` (`list`)
         * `clientId` (`str`)
         * `clientSecret` (`str`)
-    
+
       * `cookieSamesite` (`str`)
       * `customDomain` (`str`)
       * `dashboardsVersionsToKeep` (`float`)
@@ -310,25 +300,21 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `disableGravatar` (`str`)
       * `editorsCanAdmin` (`str`)
       * `externalImageStorage` (`dict`)
-    
         * `access_key` (`str`)
         * `bucketUrl` (`str`)
         * `provider` (`str`)
         * `secretKey` (`str`)
-    
+
       * `googleAnalyticsUaId` (`str`)
       * `ipFilters` (`list`)
       * `metricsEnabled` (`str`)
       * `privateAccess` (`dict`)
-    
         * `grafana` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `grafana` (`str`)
-    
+
       * `smtpServer` (`dict`)
-    
         * `fromAddress` (`str`)
         * `fromName` (`str`)
         * `host` (`str`)
@@ -336,62 +322,56 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `port` (`float`)
         * `skipVerify` (`str`)
         * `username` (`str`)
-    
+
       * `userAutoAssignOrg` (`str`)
       * `userAutoAssignOrgRole` (`str`)
       * `viewersCanEdit` (`str`)
-    
+
     The **influxdb** object supports the following:
-    
+
       * `database_name` (`str`)
-    
+
     The **influxdb_user_config** object supports the following:
-    
+
       * `customDomain` (`str`)
       * `ipFilters` (`list`)
       * `privateAccess` (`dict`)
-    
         * `influxdb` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `influxdb` (`str`)
-    
+
       * `serviceToForkFrom` (`str`)
-    
+
     The **kafka** object supports the following:
-    
+
       * `access_cert` (`str`)
       * `access_key` (`str`)
       * `connectUri` (`str`)
       * `restUri` (`str`)
       * `schemaRegistryUri` (`str`)
-    
+
     The **kafka_connect_user_config** object supports the following:
-    
+
       * `ipFilters` (`list`)
       * `kafka_connect` (`dict`)
-    
         * `consumerIsolationLevel` (`str`)
         * `consumerMaxPollRecords` (`float`)
         * `offsetFlushIntervalMs` (`float`)
-    
+
       * `privateAccess` (`dict`)
-    
         * `kafka_connect` (`str`)
         * `prometheus` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `kafka_connect` (`str`)
         * `prometheus` (`str`)
-    
+
     The **kafka_user_config** object supports the following:
-    
+
       * `customDomain` (`str`)
       * `ipFilters` (`list`)
       * `kafka` (`dict`)
-    
         * `autoCreateTopicsEnable` (`str`)
         * `compressionType` (`str`)
         * `connectionsMaxIdleMs` (`float`)
@@ -415,53 +395,47 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `replicaFetchMaxBytes` (`float`)
         * `replicaFetchResponseMaxBytes` (`float`)
         * `socketRequestMaxBytes` (`float`)
-    
+
       * `kafkaAuthenticationMethods` (`dict`)
-    
         * `certificate` (`bool`)
         * `sasl` (`bool`)
-    
+
       * `kafka_connect` (`bool`)
       * `kafkaConnectConfig` (`dict`)
-    
         * `consumerIsolationLevel` (`str`)
         * `consumerMaxPollRecords` (`float`)
         * `offsetFlushIntervalMs` (`float`)
-    
+
       * `kafkaRest` (`bool`)
       * `kafkaRestConfig` (`dict`)
-    
         * `consumerEnableAutoCommit` (`bool`)
         * `consumerRequestMaxBytes` (`float`)
         * `consumerRequestTimeoutMs` (`float`)
         * `producerAcks` (`str`)
         * `producerLingerMs` (`float`)
         * `simpleconsumerPoolSizeMax` (`float`)
-    
+
       * `kafkaVersion` (`str`)
       * `privateAccess` (`dict`)
-    
         * `prometheus` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `kafka` (`str`)
         * `kafka_connect` (`str`)
         * `kafkaRest` (`str`)
         * `prometheus` (`str`)
         * `schemaRegistry` (`str`)
-    
+
       * `schemaRegistry` (`bool`)
-    
+
     The **mysql_user_config** object supports the following:
-    
+
       * `adminPassword` (`str`)
       * `adminUsername` (`str`)
       * `backupHour` (`float`)
       * `backupMinute` (`float`)
       * `ipFilters` (`list`)
       * `mysql` (`dict`)
-    
         * `connectTimeout` (`float`)
         * `defaultTimeZone` (`str`)
         * `groupConcatMaxLen` (`float`)
@@ -477,23 +451,21 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `sqlMode` (`str`)
         * `sqlRequirePrimaryKey` (`str`)
         * `waitTimeout` (`float`)
-    
+
       * `mysqlVersion` (`str`)
       * `privateAccess` (`dict`)
-    
         * `mysql` (`str`)
         * `prometheus` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `mysql` (`str`)
         * `prometheus` (`str`)
-    
+
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
-    
+
     The **pg** object supports the following:
-    
+
       * `dbname` (`str`)
       * `host` (`str`)
       * `password` (`str`)
@@ -502,16 +474,15 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `sslmode` (`str`)
       * `uri` (`str`)
       * `user` (`str`)
-    
+
     The **pg_user_config** object supports the following:
-    
+
       * `adminPassword` (`str`)
       * `adminUsername` (`str`)
       * `backupHour` (`float`)
       * `backupMinute` (`float`)
       * `ipFilters` (`list`)
       * `pg` (`dict`)
-    
         * `autovacuumAnalyzeScaleFactor` (`float`)
         * `autovacuumAnalyzeThreshold` (`float`)
         * `autovacuumMaxWorkers` (`float`)
@@ -541,74 +512,65 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `trackActivityQuerySize` (`float`)
         * `trackFunctions` (`str`)
         * `walWriterDelay` (`float`)
-    
+
       * `pgReadReplica` (`str`)
       * `pgServiceToForkFrom` (`str`)
       * `pgVersion` (`str`)
       * `pgbouncer` (`dict`)
-    
         * `serverResetQueryAlways` (`bool`)
-    
+
       * `pglookout` (`dict`)
-    
         * `maxFailoverReplicationTimeLag` (`float`)
-    
+
       * `privateAccess` (`dict`)
-    
         * `pg` (`str`)
         * `pgbouncer` (`str`)
         * `prometheus` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `pg` (`str`)
         * `pgbouncer` (`str`)
         * `prometheus` (`str`)
-    
+
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
       * `timescaledb` (`dict`)
-    
         * `maxBackgroundWorkers` (`float`)
-    
+
       * `variant` (`str`)
-    
+
     The **redis_user_config** object supports the following:
-    
+
       * `ipFilters` (`list`)
       * `migration` (`dict`)
-    
         * `host` (`str`)
         * `password` (`str`)
         * `port` (`float`)
         * `ssl` (`bool`)
         * `username` (`str`)
-    
+
       * `privateAccess` (`dict`)
-    
         * `prometheus` (`str`)
         * `redis` (`str`)
-    
+
       * `publicAccess` (`dict`)
-    
         * `prometheus` (`str`)
         * `redis` (`str`)
-    
+
       * `redisLfuDecayTime` (`float`)
       * `redisLfuLogFactor` (`float`)
       * `redisMaxmemoryPolicy` (`str`)
       * `redisNotifyKeyspaceEvents` (`str`)
       * `redisSsl` (`bool`)
       * `redisTimeout` (`float`)
-    
+
     The **service_integrations** object supports the following:
-    
+
       * `integration_type` (`str`)
       * `source_service_name` (`str`)
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['cassandra'] = cassandra
     __args__['cassandraUserConfig'] = cassandra_user_config
@@ -660,6 +622,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         elasticsearch_user_config=__ret__.get('elasticsearchUserConfig'),
         grafana=__ret__.get('grafana'),
         grafana_user_config=__ret__.get('grafanaUserConfig'),
+        id=__ret__.get('id'),
         influxdb=__ret__.get('influxdb'),
         influxdb_user_config=__ret__.get('influxdbUserConfig'),
         kafka=__ret__.get('kafka'),
@@ -686,5 +649,4 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         service_uri=__ret__.get('serviceUri'),
         service_username=__ret__.get('serviceUsername'),
         state=__ret__.get('state'),
-        termination_protection=__ret__.get('terminationProtection'),
-        id=__ret__.get('id'))
+        termination_protection=__ret__.get('terminationProtection'))

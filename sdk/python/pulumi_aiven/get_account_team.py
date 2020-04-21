@@ -13,13 +13,19 @@ class GetAccountTeamResult:
     """
     A collection of values returned by getAccountTeam.
     """
-    def __init__(__self__, account_id=None, create_time=None, name=None, team_id=None, update_time=None, id=None):
+    def __init__(__self__, account_id=None, create_time=None, id=None, name=None, team_id=None, update_time=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         __self__.account_id = account_id
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         __self__.create_time = create_time
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -29,12 +35,6 @@ class GetAccountTeamResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         __self__.update_time = update_time
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccountTeamResult(GetAccountTeamResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,19 +43,14 @@ class AwaitableGetAccountTeamResult(GetAccountTeamResult):
         return GetAccountTeamResult(
             account_id=self.account_id,
             create_time=self.create_time,
+            id=self.id,
             name=self.name,
             team_id=self.team_id,
-            update_time=self.update_time,
-            id=self.id)
+            update_time=self.update_time)
 
 def get_account_team(account_id=None,create_time=None,name=None,team_id=None,update_time=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account_team.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['accountId'] = account_id
     __args__['createTime'] = create_time
@@ -71,7 +66,7 @@ def get_account_team(account_id=None,create_time=None,name=None,team_id=None,upd
     return AwaitableGetAccountTeamResult(
         account_id=__ret__.get('accountId'),
         create_time=__ret__.get('createTime'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         team_id=__ret__.get('teamId'),
-        update_time=__ret__.get('updateTime'),
-        id=__ret__.get('id'))
+        update_time=__ret__.get('updateTime'))

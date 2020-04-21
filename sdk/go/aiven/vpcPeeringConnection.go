@@ -4,17 +4,34 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type VpcPeeringConnection struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// AWS account ID or GCP project ID of the peered VPC
+	PeerCloudAccount pulumi.StringOutput `pulumi:"peerCloudAccount"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	PeerRegion pulumi.StringPtrOutput `pulumi:"peerRegion"`
+	// AWS VPC ID or GCP VPC network name of the peered VPC
+	PeerVpc pulumi.StringOutput `pulumi:"peerVpc"`
+	// Cloud provider identifier for the peering connection if available
+	PeeringConnectionId pulumi.StringOutput `pulumi:"peeringConnectionId"`
+	// State of the peering connection
+	State pulumi.StringOutput `pulumi:"state"`
+	// State-specific help or error information
+	StateInfo pulumi.MapOutput `pulumi:"stateInfo"`
+	// The VPC the peering connection belongs to
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
 // NewVpcPeeringConnection registers a new resource with the given unique name, arguments, and options.
 func NewVpcPeeringConnection(ctx *pulumi.Context,
-	name string, args *VpcPeeringConnectionArgs, opts ...pulumi.ResourceOpt) (*VpcPeeringConnection, error) {
+	name string, args *VpcPeeringConnectionArgs, opts ...pulumi.ResourceOption) (*VpcPeeringConnection, error) {
 	if args == nil || args.PeerCloudAccount == nil {
 		return nil, errors.New("missing required argument 'PeerCloudAccount'")
 	}
@@ -24,120 +41,91 @@ func NewVpcPeeringConnection(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["peerCloudAccount"] = nil
-		inputs["peerRegion"] = nil
-		inputs["peerVpc"] = nil
-		inputs["vpcId"] = nil
-	} else {
-		inputs["peerCloudAccount"] = args.PeerCloudAccount
-		inputs["peerRegion"] = args.PeerRegion
-		inputs["peerVpc"] = args.PeerVpc
-		inputs["vpcId"] = args.VpcId
+		args = &VpcPeeringConnectionArgs{}
 	}
-	inputs["peeringConnectionId"] = nil
-	inputs["state"] = nil
-	inputs["stateInfo"] = nil
-	s, err := ctx.RegisterResource("aiven:index/vpcPeeringConnection:VpcPeeringConnection", name, true, inputs, opts...)
+	var resource VpcPeeringConnection
+	err := ctx.RegisterResource("aiven:index/vpcPeeringConnection:VpcPeeringConnection", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &VpcPeeringConnection{s: s}, nil
+	return &resource, nil
 }
 
 // GetVpcPeeringConnection gets an existing VpcPeeringConnection resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetVpcPeeringConnection(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *VpcPeeringConnectionState, opts ...pulumi.ResourceOpt) (*VpcPeeringConnection, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["peerCloudAccount"] = state.PeerCloudAccount
-		inputs["peerRegion"] = state.PeerRegion
-		inputs["peerVpc"] = state.PeerVpc
-		inputs["peeringConnectionId"] = state.PeeringConnectionId
-		inputs["state"] = state.State
-		inputs["stateInfo"] = state.StateInfo
-		inputs["vpcId"] = state.VpcId
-	}
-	s, err := ctx.ReadResource("aiven:index/vpcPeeringConnection:VpcPeeringConnection", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *VpcPeeringConnectionState, opts ...pulumi.ResourceOption) (*VpcPeeringConnection, error) {
+	var resource VpcPeeringConnection
+	err := ctx.ReadResource("aiven:index/vpcPeeringConnection:VpcPeeringConnection", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &VpcPeeringConnection{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *VpcPeeringConnection) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *VpcPeeringConnection) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// AWS account ID or GCP project ID of the peered VPC
-func (r *VpcPeeringConnection) PeerCloudAccount() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["peerCloudAccount"])
-}
-
-// AWS region of the peered VPC (if not in the same region as Aiven VPC)
-func (r *VpcPeeringConnection) PeerRegion() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["peerRegion"])
-}
-
-// AWS VPC ID or GCP VPC network name of the peered VPC
-func (r *VpcPeeringConnection) PeerVpc() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["peerVpc"])
-}
-
-// Cloud provider identifier for the peering connection if available
-func (r *VpcPeeringConnection) PeeringConnectionId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["peeringConnectionId"])
-}
-
-// State of the peering connection
-func (r *VpcPeeringConnection) State() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["state"])
-}
-
-// State-specific help or error information
-func (r *VpcPeeringConnection) StateInfo() pulumi.MapOutput {
-	return (pulumi.MapOutput)(r.s.State["stateInfo"])
-}
-
-// The VPC the peering connection belongs to
-func (r *VpcPeeringConnection) VpcId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["vpcId"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering VpcPeeringConnection resources.
+type vpcPeeringConnectionState struct {
+	// AWS account ID or GCP project ID of the peered VPC
+	PeerCloudAccount *string `pulumi:"peerCloudAccount"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	PeerRegion *string `pulumi:"peerRegion"`
+	// AWS VPC ID or GCP VPC network name of the peered VPC
+	PeerVpc *string `pulumi:"peerVpc"`
+	// Cloud provider identifier for the peering connection if available
+	PeeringConnectionId *string `pulumi:"peeringConnectionId"`
+	// State of the peering connection
+	State *string `pulumi:"state"`
+	// State-specific help or error information
+	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	// The VPC the peering connection belongs to
+	VpcId *string `pulumi:"vpcId"`
+}
+
 type VpcPeeringConnectionState struct {
 	// AWS account ID or GCP project ID of the peered VPC
-	PeerCloudAccount interface{}
+	PeerCloudAccount pulumi.StringPtrInput
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
-	PeerRegion interface{}
+	PeerRegion pulumi.StringPtrInput
 	// AWS VPC ID or GCP VPC network name of the peered VPC
-	PeerVpc interface{}
+	PeerVpc pulumi.StringPtrInput
 	// Cloud provider identifier for the peering connection if available
-	PeeringConnectionId interface{}
+	PeeringConnectionId pulumi.StringPtrInput
 	// State of the peering connection
-	State interface{}
+	State pulumi.StringPtrInput
 	// State-specific help or error information
-	StateInfo interface{}
+	StateInfo pulumi.MapInput
 	// The VPC the peering connection belongs to
-	VpcId interface{}
+	VpcId pulumi.StringPtrInput
+}
+
+func (VpcPeeringConnectionState) ElementType() reflect.Type {
+	return reflect.TypeOf((*vpcPeeringConnectionState)(nil)).Elem()
+}
+
+type vpcPeeringConnectionArgs struct {
+	// AWS account ID or GCP project ID of the peered VPC
+	PeerCloudAccount string `pulumi:"peerCloudAccount"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	PeerRegion *string `pulumi:"peerRegion"`
+	// AWS VPC ID or GCP VPC network name of the peered VPC
+	PeerVpc string `pulumi:"peerVpc"`
+	// The VPC the peering connection belongs to
+	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a VpcPeeringConnection resource.
 type VpcPeeringConnectionArgs struct {
 	// AWS account ID or GCP project ID of the peered VPC
-	PeerCloudAccount interface{}
+	PeerCloudAccount pulumi.StringInput
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
-	PeerRegion interface{}
+	PeerRegion pulumi.StringPtrInput
 	// AWS VPC ID or GCP VPC network name of the peered VPC
-	PeerVpc interface{}
+	PeerVpc pulumi.StringInput
 	// The VPC the peering connection belongs to
-	VpcId interface{}
+	VpcId pulumi.StringInput
+}
+
+func (VpcPeeringConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*vpcPeeringConnectionArgs)(nil)).Elem()
 }

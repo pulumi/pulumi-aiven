@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> & GetServiceIntegrationEndpointResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service_integration_endpoint.html.markdown.
+ */
+export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,7 +18,7 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServiceIntegrationEndpointResult> = pulumi.runtime.invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", {
+    return pulumi.runtime.invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", {
         "datadogUserConfig": args.datadogUserConfig,
         "endpointConfig": args.endpointConfig,
         "endpointName": args.endpointName,
@@ -24,8 +28,6 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
         "prometheusUserConfig": args.prometheusUserConfig,
         "rsyslogUserConfig": args.rsyslogUserConfig,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

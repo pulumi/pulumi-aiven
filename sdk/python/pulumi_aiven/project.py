@@ -11,22 +11,56 @@ from . import utilities, tables
 
 class Project(pulumi.CustomResource):
     account_id: pulumi.Output[str]
+    """
+    Account ID
+    """
     billing_address: pulumi.Output[str]
+    """
+    Billing name and address of the project
+    """
     billing_emails: pulumi.Output[list]
+    """
+    Billing contact emails of the project
+    """
     ca_cert: pulumi.Output[str]
+    """
+    Project root CA. This is used by some services like Kafka to sign service certificate
+    """
     card_id: pulumi.Output[str]
+    """
+    Credit card ID
+    """
     copy_from_project: pulumi.Output[str]
+    """
+    Copy properties from another project. Only has effect when a new project is created.
+    """
     country_code: pulumi.Output[str]
+    """
+    Billing country code of the project
+    """
     project: pulumi.Output[str]
+    """
+    Project name
+    """
     technical_emails: pulumi.Output[list]
+    """
+    Technical contact emails of the project
+    """
     def __init__(__self__, resource_name, opts=None, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Project resource with the given unique name, props, and options.
-        
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project.html.markdown.
+        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] billing_address: Billing name and address of the project
+        :param pulumi.Input[list] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[str] ca_cert: Project root CA. This is used by some services like Kafka to sign service certificate
+        :param pulumi.Input[str] card_id: Credit card ID
+        :param pulumi.Input[str] copy_from_project: Copy properties from another project. Only has effect when a new project is created.
+        :param pulumi.Input[str] country_code: Billing country code of the project
+        :param pulumi.Input[str] project: Project name
+        :param pulumi.Input[list] technical_emails: Technical contact emails of the project
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,16 +101,24 @@ class Project(pulumi.CustomResource):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project.html.markdown.
+        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] billing_address: Billing name and address of the project
+        :param pulumi.Input[list] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[str] ca_cert: Project root CA. This is used by some services like Kafka to sign service certificate
+        :param pulumi.Input[str] card_id: Credit card ID
+        :param pulumi.Input[str] copy_from_project: Copy properties from another project. Only has effect when a new project is created.
+        :param pulumi.Input[str] country_code: Billing country code of the project
+        :param pulumi.Input[str] project: Project name
+        :param pulumi.Input[list] technical_emails: Technical contact emails of the project
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["billing_address"] = billing_address
         __props__["billing_emails"] = billing_emails

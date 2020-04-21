@@ -4,44 +4,32 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupProjectUser(ctx *pulumi.Context, args *GetProjectUserArgs) (*GetProjectUserResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["accepted"] = args.Accepted
-		inputs["email"] = args.Email
-		inputs["memberType"] = args.MemberType
-		inputs["project"] = args.Project
-	}
-	outputs, err := ctx.Invoke("aiven:index/getProjectUser:getProjectUser", inputs)
+func LookupProjectUser(ctx *pulumi.Context, args *LookupProjectUserArgs, opts ...pulumi.InvokeOption) (*LookupProjectUserResult, error) {
+	var rv LookupProjectUserResult
+	err := ctx.Invoke("aiven:index/getProjectUser:getProjectUser", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetProjectUserResult{
-		Accepted: outputs["accepted"],
-		Email: outputs["email"],
-		MemberType: outputs["memberType"],
-		Project: outputs["project"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getProjectUser.
-type GetProjectUserArgs struct {
-	Accepted interface{}
-	Email interface{}
-	MemberType interface{}
-	Project interface{}
+type LookupProjectUserArgs struct {
+	Accepted   *bool   `pulumi:"accepted"`
+	Email      string  `pulumi:"email"`
+	MemberType *string `pulumi:"memberType"`
+	Project    string  `pulumi:"project"`
 }
 
 // A collection of values returned by getProjectUser.
-type GetProjectUserResult struct {
-	Accepted interface{}
-	Email interface{}
-	MemberType interface{}
-	Project interface{}
+type LookupProjectUserResult struct {
+	Accepted bool   `pulumi:"accepted"`
+	Email    string `pulumi:"email"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id         string  `pulumi:"id"`
+	MemberType *string `pulumi:"memberType"`
+	Project    string  `pulumi:"project"`
 }

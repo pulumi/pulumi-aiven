@@ -6,7 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> & GetProjectUserResult {
+/**
+ *
+ * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project_user.html.markdown.
+ */
+export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,14 +18,12 @@ export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectUserResult> = pulumi.runtime.invoke("aiven:index/getProjectUser:getProjectUser", {
+    return pulumi.runtime.invoke("aiven:index/getProjectUser:getProjectUser", {
         "accepted": args.accepted,
         "email": args.email,
         "memberType": args.memberType,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

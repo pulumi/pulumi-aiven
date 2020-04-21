@@ -4,60 +4,40 @@
 package aiven
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *GetServiceIntegrationEndpointArgs) (*GetServiceIntegrationEndpointResult, error) {
-	inputs := make(map[string]interface{})
-	if args != nil {
-		inputs["datadogUserConfig"] = args.DatadogUserConfig
-		inputs["endpointConfig"] = args.EndpointConfig
-		inputs["endpointName"] = args.EndpointName
-		inputs["endpointType"] = args.EndpointType
-		inputs["externalElasticsearchLogsUserConfig"] = args.ExternalElasticsearchLogsUserConfig
-		inputs["project"] = args.Project
-		inputs["prometheusUserConfig"] = args.PrometheusUserConfig
-		inputs["rsyslogUserConfig"] = args.RsyslogUserConfig
-	}
-	outputs, err := ctx.Invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", inputs)
+func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *LookupServiceIntegrationEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceIntegrationEndpointResult, error) {
+	var rv LookupServiceIntegrationEndpointResult
+	err := ctx.Invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &GetServiceIntegrationEndpointResult{
-		DatadogUserConfig: outputs["datadogUserConfig"],
-		EndpointConfig: outputs["endpointConfig"],
-		EndpointName: outputs["endpointName"],
-		EndpointType: outputs["endpointType"],
-		ExternalElasticsearchLogsUserConfig: outputs["externalElasticsearchLogsUserConfig"],
-		Project: outputs["project"],
-		PrometheusUserConfig: outputs["prometheusUserConfig"],
-		RsyslogUserConfig: outputs["rsyslogUserConfig"],
-		Id: outputs["id"],
-	}, nil
+	return &rv, nil
 }
 
 // A collection of arguments for invoking getServiceIntegrationEndpoint.
-type GetServiceIntegrationEndpointArgs struct {
-	DatadogUserConfig interface{}
-	EndpointConfig interface{}
-	EndpointName interface{}
-	EndpointType interface{}
-	ExternalElasticsearchLogsUserConfig interface{}
-	Project interface{}
-	PrometheusUserConfig interface{}
-	RsyslogUserConfig interface{}
+type LookupServiceIntegrationEndpointArgs struct {
+	DatadogUserConfig                   *GetServiceIntegrationEndpointDatadogUserConfig                   `pulumi:"datadogUserConfig"`
+	EndpointConfig                      map[string]string                                                 `pulumi:"endpointConfig"`
+	EndpointName                        string                                                            `pulumi:"endpointName"`
+	EndpointType                        *string                                                           `pulumi:"endpointType"`
+	ExternalElasticsearchLogsUserConfig *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	Project                             string                                                            `pulumi:"project"`
+	PrometheusUserConfig                *GetServiceIntegrationEndpointPrometheusUserConfig                `pulumi:"prometheusUserConfig"`
+	RsyslogUserConfig                   *GetServiceIntegrationEndpointRsyslogUserConfig                   `pulumi:"rsyslogUserConfig"`
 }
 
 // A collection of values returned by getServiceIntegrationEndpoint.
-type GetServiceIntegrationEndpointResult struct {
-	DatadogUserConfig interface{}
-	EndpointConfig interface{}
-	EndpointName interface{}
-	EndpointType interface{}
-	ExternalElasticsearchLogsUserConfig interface{}
-	Project interface{}
-	PrometheusUserConfig interface{}
-	RsyslogUserConfig interface{}
+type LookupServiceIntegrationEndpointResult struct {
+	DatadogUserConfig                   *GetServiceIntegrationEndpointDatadogUserConfig                   `pulumi:"datadogUserConfig"`
+	EndpointConfig                      map[string]string                                                 `pulumi:"endpointConfig"`
+	EndpointName                        string                                                            `pulumi:"endpointName"`
+	EndpointType                        *string                                                           `pulumi:"endpointType"`
+	ExternalElasticsearchLogsUserConfig *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id interface{}
+	Id                   string                                             `pulumi:"id"`
+	Project              string                                             `pulumi:"project"`
+	PrometheusUserConfig *GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	RsyslogUserConfig    *GetServiceIntegrationEndpointRsyslogUserConfig    `pulumi:"rsyslogUserConfig"`
 }

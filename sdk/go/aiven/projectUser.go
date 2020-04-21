@@ -4,17 +4,28 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 type ProjectUser struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Whether the user has accepted project membership or not
+	Accepted pulumi.BoolOutput `pulumi:"accepted"`
+	// Email address of the user
+	Email pulumi.StringOutput `pulumi:"email"`
+	// Project membership type. One of: admin, developer, operator
+	MemberType pulumi.StringOutput `pulumi:"memberType"`
+	// The project the user belongs to
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewProjectUser registers a new resource with the given unique name, arguments, and options.
 func NewProjectUser(ctx *pulumi.Context,
-	name string, args *ProjectUserArgs, opts ...pulumi.ResourceOpt) (*ProjectUser, error) {
+	name string, args *ProjectUserArgs, opts ...pulumi.ResourceOption) (*ProjectUser, error) {
 	if args == nil || args.Email == nil {
 		return nil, errors.New("missing required argument 'Email'")
 	}
@@ -24,90 +35,75 @@ func NewProjectUser(ctx *pulumi.Context,
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["email"] = nil
-		inputs["memberType"] = nil
-		inputs["project"] = nil
-	} else {
-		inputs["email"] = args.Email
-		inputs["memberType"] = args.MemberType
-		inputs["project"] = args.Project
+		args = &ProjectUserArgs{}
 	}
-	inputs["accepted"] = nil
-	s, err := ctx.RegisterResource("aiven:index/projectUser:ProjectUser", name, true, inputs, opts...)
+	var resource ProjectUser
+	err := ctx.RegisterResource("aiven:index/projectUser:ProjectUser", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ProjectUser{s: s}, nil
+	return &resource, nil
 }
 
 // GetProjectUser gets an existing ProjectUser resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetProjectUser(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ProjectUserState, opts ...pulumi.ResourceOpt) (*ProjectUser, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["accepted"] = state.Accepted
-		inputs["email"] = state.Email
-		inputs["memberType"] = state.MemberType
-		inputs["project"] = state.Project
-	}
-	s, err := ctx.ReadResource("aiven:index/projectUser:ProjectUser", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *ProjectUserState, opts ...pulumi.ResourceOption) (*ProjectUser, error) {
+	var resource ProjectUser
+	err := ctx.ReadResource("aiven:index/projectUser:ProjectUser", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ProjectUser{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectUser) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectUser) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Whether the user has accepted project membership or not
-func (r *ProjectUser) Accepted() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["accepted"])
-}
-
-// Email address of the user
-func (r *ProjectUser) Email() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["email"])
-}
-
-// Project membership type. One of: admin, developer, operator
-func (r *ProjectUser) MemberType() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["memberType"])
-}
-
-// The project the user belongs to
-func (r *ProjectUser) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering ProjectUser resources.
+type projectUserState struct {
+	// Whether the user has accepted project membership or not
+	Accepted *bool `pulumi:"accepted"`
+	// Email address of the user
+	Email *string `pulumi:"email"`
+	// Project membership type. One of: admin, developer, operator
+	MemberType *string `pulumi:"memberType"`
+	// The project the user belongs to
+	Project *string `pulumi:"project"`
+}
+
 type ProjectUserState struct {
 	// Whether the user has accepted project membership or not
-	Accepted interface{}
+	Accepted pulumi.BoolPtrInput
 	// Email address of the user
-	Email interface{}
+	Email pulumi.StringPtrInput
 	// Project membership type. One of: admin, developer, operator
-	MemberType interface{}
+	MemberType pulumi.StringPtrInput
 	// The project the user belongs to
-	Project interface{}
+	Project pulumi.StringPtrInput
+}
+
+func (ProjectUserState) ElementType() reflect.Type {
+	return reflect.TypeOf((*projectUserState)(nil)).Elem()
+}
+
+type projectUserArgs struct {
+	// Email address of the user
+	Email string `pulumi:"email"`
+	// Project membership type. One of: admin, developer, operator
+	MemberType string `pulumi:"memberType"`
+	// The project the user belongs to
+	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectUser resource.
 type ProjectUserArgs struct {
 	// Email address of the user
-	Email interface{}
+	Email pulumi.StringInput
 	// Project membership type. One of: admin, developer, operator
-	MemberType interface{}
+	MemberType pulumi.StringInput
 	// The project the user belongs to
-	Project interface{}
+	Project pulumi.StringInput
+}
+
+func (ProjectUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*projectUserArgs)(nil)).Elem()
 }

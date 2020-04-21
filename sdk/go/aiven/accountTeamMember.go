@@ -4,23 +4,36 @@
 package aiven
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // During the creation of `.AccountTeamMember` resource, an email invitation will be sent
-// to a user using `userEmail` address. If the user accepts an invitation, he or she will become a member of the account team. 
-// The deletion of `.AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the 
+// to a user using `userEmail` address. If the user accepts an invitation, he or she will become a member of the account team.
+// The deletion of `.AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the
 // user, and it will also eliminate an account team member if one has accepted an invitation previously.
-//
-// > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_member.html.markdown.
 type AccountTeamMember struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// Team member invitation status
+	Accepted pulumi.BoolOutput `pulumi:"accepted"`
+	// Account id
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Time of creation
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Team invited by user email
+	InvitedByUserEmail pulumi.StringOutput `pulumi:"invitedByUserEmail"`
+	// Account team id
+	TeamId pulumi.StringOutput `pulumi:"teamId"`
+	// Team invite user email
+	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
 
 // NewAccountTeamMember registers a new resource with the given unique name, arguments, and options.
 func NewAccountTeamMember(ctx *pulumi.Context,
-	name string, args *AccountTeamMemberArgs, opts ...pulumi.ResourceOpt) (*AccountTeamMember, error) {
+	name string, args *AccountTeamMemberArgs, opts ...pulumi.ResourceOption) (*AccountTeamMember, error) {
 	if args == nil || args.AccountId == nil {
 		return nil, errors.New("missing required argument 'AccountId'")
 	}
@@ -30,117 +43,95 @@ func NewAccountTeamMember(ctx *pulumi.Context,
 	if args == nil || args.UserEmail == nil {
 		return nil, errors.New("missing required argument 'UserEmail'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["accepted"] = nil
-		inputs["accountId"] = nil
-		inputs["createTime"] = nil
-		inputs["invitedByUserEmail"] = nil
-		inputs["teamId"] = nil
-		inputs["userEmail"] = nil
-	} else {
-		inputs["accepted"] = args.Accepted
-		inputs["accountId"] = args.AccountId
-		inputs["createTime"] = args.CreateTime
-		inputs["invitedByUserEmail"] = args.InvitedByUserEmail
-		inputs["teamId"] = args.TeamId
-		inputs["userEmail"] = args.UserEmail
+		args = &AccountTeamMemberArgs{}
 	}
-	s, err := ctx.RegisterResource("aiven:index/accountTeamMember:AccountTeamMember", name, true, inputs, opts...)
+	var resource AccountTeamMember
+	err := ctx.RegisterResource("aiven:index/accountTeamMember:AccountTeamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &AccountTeamMember{s: s}, nil
+	return &resource, nil
 }
 
 // GetAccountTeamMember gets an existing AccountTeamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetAccountTeamMember(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *AccountTeamMemberState, opts ...pulumi.ResourceOpt) (*AccountTeamMember, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["accepted"] = state.Accepted
-		inputs["accountId"] = state.AccountId
-		inputs["createTime"] = state.CreateTime
-		inputs["invitedByUserEmail"] = state.InvitedByUserEmail
-		inputs["teamId"] = state.TeamId
-		inputs["userEmail"] = state.UserEmail
-	}
-	s, err := ctx.ReadResource("aiven:index/accountTeamMember:AccountTeamMember", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *AccountTeamMemberState, opts ...pulumi.ResourceOption) (*AccountTeamMember, error) {
+	var resource AccountTeamMember
+	err := ctx.ReadResource("aiven:index/accountTeamMember:AccountTeamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &AccountTeamMember{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *AccountTeamMember) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *AccountTeamMember) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// Team member invitation status
-func (r *AccountTeamMember) Accepted() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["accepted"])
-}
-
-// Account id
-func (r *AccountTeamMember) AccountId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["accountId"])
-}
-
-// Time of creation
-func (r *AccountTeamMember) CreateTime() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["createTime"])
-}
-
-// Team invited by user email
-func (r *AccountTeamMember) InvitedByUserEmail() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["invitedByUserEmail"])
-}
-
-// Account team id
-func (r *AccountTeamMember) TeamId() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["teamId"])
-}
-
-// Team invite user email
-func (r *AccountTeamMember) UserEmail() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["userEmail"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering AccountTeamMember resources.
+type accountTeamMemberState struct {
+	// Team member invitation status
+	Accepted *bool `pulumi:"accepted"`
+	// Account id
+	AccountId *string `pulumi:"accountId"`
+	// Time of creation
+	CreateTime *string `pulumi:"createTime"`
+	// Team invited by user email
+	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
+	// Account team id
+	TeamId *string `pulumi:"teamId"`
+	// Team invite user email
+	UserEmail *string `pulumi:"userEmail"`
+}
+
 type AccountTeamMemberState struct {
 	// Team member invitation status
-	Accepted interface{}
+	Accepted pulumi.BoolPtrInput
 	// Account id
-	AccountId interface{}
+	AccountId pulumi.StringPtrInput
 	// Time of creation
-	CreateTime interface{}
+	CreateTime pulumi.StringPtrInput
 	// Team invited by user email
-	InvitedByUserEmail interface{}
+	InvitedByUserEmail pulumi.StringPtrInput
 	// Account team id
-	TeamId interface{}
+	TeamId pulumi.StringPtrInput
 	// Team invite user email
-	UserEmail interface{}
+	UserEmail pulumi.StringPtrInput
+}
+
+func (AccountTeamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*accountTeamMemberState)(nil)).Elem()
+}
+
+type accountTeamMemberArgs struct {
+	// Team member invitation status
+	Accepted *bool `pulumi:"accepted"`
+	// Account id
+	AccountId string `pulumi:"accountId"`
+	// Time of creation
+	CreateTime *string `pulumi:"createTime"`
+	// Team invited by user email
+	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
+	// Account team id
+	TeamId string `pulumi:"teamId"`
+	// Team invite user email
+	UserEmail string `pulumi:"userEmail"`
 }
 
 // The set of arguments for constructing a AccountTeamMember resource.
 type AccountTeamMemberArgs struct {
 	// Team member invitation status
-	Accepted interface{}
+	Accepted pulumi.BoolPtrInput
 	// Account id
-	AccountId interface{}
+	AccountId pulumi.StringInput
 	// Time of creation
-	CreateTime interface{}
+	CreateTime pulumi.StringPtrInput
 	// Team invited by user email
-	InvitedByUserEmail interface{}
+	InvitedByUserEmail pulumi.StringPtrInput
 	// Account team id
-	TeamId interface{}
+	TeamId pulumi.StringInput
 	// Team invite user email
-	UserEmail interface{}
+	UserEmail pulumi.StringInput
+}
+
+func (AccountTeamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*accountTeamMemberArgs)(nil)).Elem()
 }

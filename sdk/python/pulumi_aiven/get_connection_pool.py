@@ -13,13 +13,19 @@ class GetConnectionPoolResult:
     """
     A collection of values returned by getConnectionPool.
     """
-    def __init__(__self__, connection_uri=None, database_name=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None, id=None):
+    def __init__(__self__, connection_uri=None, database_name=None, id=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None):
         if connection_uri and not isinstance(connection_uri, str):
             raise TypeError("Expected argument 'connection_uri' to be a str")
         __self__.connection_uri = connection_uri
         if database_name and not isinstance(database_name, str):
             raise TypeError("Expected argument 'database_name' to be a str")
         __self__.database_name = database_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if pool_mode and not isinstance(pool_mode, str):
             raise TypeError("Expected argument 'pool_mode' to be a str")
         __self__.pool_mode = pool_mode
@@ -38,12 +44,6 @@ class GetConnectionPoolResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         __self__.username = username
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,22 +52,17 @@ class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
         return GetConnectionPoolResult(
             connection_uri=self.connection_uri,
             database_name=self.database_name,
+            id=self.id,
             pool_mode=self.pool_mode,
             pool_name=self.pool_name,
             pool_size=self.pool_size,
             project=self.project,
             service_name=self.service_name,
-            username=self.username,
-            id=self.id)
+            username=self.username)
 
 def get_connection_pool(connection_uri=None,database_name=None,pool_mode=None,pool_name=None,pool_size=None,project=None,service_name=None,username=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/connection_pool.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['connectionUri'] = connection_uri
     __args__['databaseName'] = database_name
@@ -86,10 +81,10 @@ def get_connection_pool(connection_uri=None,database_name=None,pool_mode=None,po
     return AwaitableGetConnectionPoolResult(
         connection_uri=__ret__.get('connectionUri'),
         database_name=__ret__.get('databaseName'),
+        id=__ret__.get('id'),
         pool_mode=__ret__.get('poolMode'),
         pool_name=__ret__.get('poolName'),
         pool_size=__ret__.get('poolSize'),
         project=__ret__.get('project'),
         service_name=__ret__.get('serviceName'),
-        username=__ret__.get('username'),
-        id=__ret__.get('id'))
+        username=__ret__.get('username'))

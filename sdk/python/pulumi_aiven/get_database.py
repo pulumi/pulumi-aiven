@@ -13,10 +13,16 @@ class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, id=None):
+    def __init__(__self__, database_name=None, id=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None):
         if database_name and not isinstance(database_name, str):
             raise TypeError("Expected argument 'database_name' to be a str")
         __self__.database_name = database_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if lc_collate and not isinstance(lc_collate, str):
             raise TypeError("Expected argument 'lc_collate' to be a str")
         __self__.lc_collate = lc_collate
@@ -32,12 +38,6 @@ class GetDatabaseResult:
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         __self__.termination_protection = termination_protection
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,21 +45,16 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             yield self
         return GetDatabaseResult(
             database_name=self.database_name,
+            id=self.id,
             lc_collate=self.lc_collate,
             lc_ctype=self.lc_ctype,
             project=self.project,
             service_name=self.service_name,
-            termination_protection=self.termination_protection,
-            id=self.id)
+            termination_protection=self.termination_protection)
 
 def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,service_name=None,termination_protection=None,opts=None):
-    """
-    Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/database.html.markdown.
-    """
     __args__ = dict()
+
 
     __args__['databaseName'] = database_name
     __args__['lcCollate'] = lc_collate
@@ -75,9 +70,9 @@ def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,s
 
     return AwaitableGetDatabaseResult(
         database_name=__ret__.get('databaseName'),
+        id=__ret__.get('id'),
         lc_collate=__ret__.get('lcCollate'),
         lc_ctype=__ret__.get('lcCtype'),
         project=__ret__.get('project'),
         service_name=__ret__.get('serviceName'),
-        termination_protection=__ret__.get('terminationProtection'),
-        id=__ret__.get('id'))
+        termination_protection=__ret__.get('terminationProtection'))
