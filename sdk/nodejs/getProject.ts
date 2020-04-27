@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  * 
- * const myproject = aiven.getProject({
+ * const myproject = pulumi.output(aiven.getProject({
  *     project: "<PROJECT_NAME>",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project.html.markdown.

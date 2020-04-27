@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * const accountTeam1 = aiven_account_team.accountId.apply(accountId => aiven.getAccountTeam({
  *     accountId: accountId,
  *     name: "accountTeam1",
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account_team.html.markdown.

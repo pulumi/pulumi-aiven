@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     accountId: aiven_account_developersAccountId,
  *     teamId: aiven_account_developersAccountId1,
  *     userEmail: "user+1@example.com",
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account_team_member.html.markdown.

@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  * 
- * const account1 = aiven.getAccount({
+ * const account1 = pulumi.output(aiven.getAccount({
  *     name: "<ACCOUNT_NAME>",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account.html.markdown.
