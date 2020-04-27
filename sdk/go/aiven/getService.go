@@ -65,7 +65,7 @@ type LookupServiceResult struct {
 	ElasticsearchUserConfig *GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
 	Grafana                 GetServiceGrafana                  `pulumi:"grafana"`
 	GrafanaUserConfig       *GetServiceGrafanaUserConfig       `pulumi:"grafanaUserConfig"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                     string                            `pulumi:"id"`
 	Influxdb               GetServiceInfluxdb                `pulumi:"influxdb"`
 	InfluxdbUserConfig     *GetServiceInfluxdbUserConfig     `pulumi:"influxdbUserConfig"`

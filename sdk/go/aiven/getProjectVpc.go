@@ -27,7 +27,7 @@ type LookupProjectVpcArgs struct {
 // A collection of values returned by getProjectVpc.
 type LookupProjectVpcResult struct {
 	CloudName string `pulumi:"cloudName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`
 	NetworkCidr *string `pulumi:"networkCidr"`
 	Project     string  `pulumi:"project"`

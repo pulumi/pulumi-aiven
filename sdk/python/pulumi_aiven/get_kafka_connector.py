@@ -24,7 +24,7 @@ class GetKafkaConnectorResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if plugin_author and not isinstance(plugin_author, str):
             raise TypeError("Expected argument 'plugin_author' to be a str")

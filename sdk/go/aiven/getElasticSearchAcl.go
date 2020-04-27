@@ -30,7 +30,7 @@ type LookupElasticSearchAclResult struct {
 	Acls        []GetElasticSearchAclAcl `pulumi:"acls"`
 	Enabled     *bool                    `pulumi:"enabled"`
 	ExtendedAcl *bool                    `pulumi:"extendedAcl"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`

@@ -45,7 +45,7 @@ export interface GetProjectVpcResult {
     readonly project: string;
     readonly state: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

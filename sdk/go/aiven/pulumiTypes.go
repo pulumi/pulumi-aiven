@@ -574,23 +574,48 @@ func (o ServiceCassandraUserConfigPtrOutput) Elem() ServiceCassandraUserConfigOu
 }
 
 func (o ServiceCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceCassandraUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceCassandraUserConfigPtrOutput) MigrateSstableloader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceCassandraUserConfig) *string { return v.MigrateSstableloader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceCassandraUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrateSstableloader
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceCassandraUserConfigPtrOutput) PrivateAccess() ServiceCassandraUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceCassandraUserConfig) *ServiceCassandraUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceCassandraUserConfigPrivateAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceCassandraUserConfig) *ServiceCassandraUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ServiceCassandraUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceCassandraUserConfigPtrOutput) PublicAccess() ServiceCassandraUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceCassandraUserConfig) *ServiceCassandraUserConfigPublicAccess { return v.PublicAccess }).(ServiceCassandraUserConfigPublicAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceCassandraUserConfig) *ServiceCassandraUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ServiceCassandraUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServiceCassandraUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceCassandraUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceCassandraUserConfigPrivateAccess struct {
@@ -713,7 +738,12 @@ func (o ServiceCassandraUserConfigPrivateAccessPtrOutput) Elem() ServiceCassandr
 }
 
 func (o ServiceCassandraUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceCassandraUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceCassandraUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceCassandraUserConfigPublicAccess struct {
@@ -836,7 +866,12 @@ func (o ServiceCassandraUserConfigPublicAccessPtrOutput) Elem() ServiceCassandra
 }
 
 func (o ServiceCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceCassandraUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceCassandraUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceComponent struct {
@@ -1091,7 +1126,12 @@ func (o ServiceElasticsearchPtrOutput) Elem() ServiceElasticsearchOutput {
 }
 
 func (o ServiceElasticsearchPtrOutput) KibanaUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearch) *string { return v.KibanaUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KibanaUri
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfig struct {
@@ -1288,59 +1328,111 @@ func (o ServiceElasticsearchUserConfigPtrOutput) Elem() ServiceElasticsearchUser
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *string { return v.DisableReplicationFactorAdjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisableReplicationFactorAdjustment
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) Elasticsearch() ServiceElasticsearchUserConfigElasticsearchPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigElasticsearch {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigElasticsearch {
+		if v == nil {
+			return nil
+		}
 		return v.Elasticsearch
 	}).(ServiceElasticsearchUserConfigElasticsearchPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) ElasticsearchVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *string { return v.ElasticsearchVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticsearchVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) IndexPatterns() ServiceElasticsearchUserConfigIndexPatternArrayOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) []ServiceElasticsearchUserConfigIndexPattern {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) []ServiceElasticsearchUserConfigIndexPattern {
+		if v == nil {
+			return nil
+		}
 		return v.IndexPatterns
 	}).(ServiceElasticsearchUserConfigIndexPatternArrayOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) Kibana() ServiceElasticsearchUserConfigKibanaPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigKibana { return v.Kibana }).(ServiceElasticsearchUserConfigKibanaPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigKibana {
+		if v == nil {
+			return nil
+		}
+		return v.Kibana
+	}).(ServiceElasticsearchUserConfigKibanaPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIndexCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) PrivateAccess() ServiceElasticsearchUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigPrivateAccess {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
 		return v.PrivateAccess
 	}).(ServiceElasticsearchUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) PublicAccess() ServiceElasticsearchUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigPublicAccess {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
 		return v.PublicAccess
 	}).(ServiceElasticsearchUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigElasticsearch struct {
@@ -1585,87 +1677,192 @@ func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) Elem() ServiceElas
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionAutoCreateIndexEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionAutoCreateIndexEnabled }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionAutoCreateIndexEnabled
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionDestructiveRequiresName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionDestructiveRequiresName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.HttpMaxContentLength }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMaxContentLength
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesFielddataCacheSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesFielddataCacheSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesMemoryIndexBufferSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesMemoryIndexBufferSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueriesCacheSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesQueriesCacheSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueryBoolMaxClauseCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesQueryBoolMaxClauseCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReindexRemoteWhitelists
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolAnalyzeQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolAnalyzeSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolForceMergeSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolForceMergeSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolGetQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolGetSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolIndexQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolIndexSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolSearchQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolSearchSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchThrottledQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolSearchThrottledQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchThrottledSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolSearchThrottledSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolWriteQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolWriteSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigIndexPattern struct {
@@ -1902,15 +2099,30 @@ func (o ServiceElasticsearchUserConfigKibanaPtrOutput) Elem() ServiceElasticsear
 }
 
 func (o ServiceElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *int { return v.ElasticsearchRequestTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticsearchRequestTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *int { return v.MaxOldSpaceSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxOldSpaceSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigPrivateAccess struct {
@@ -2047,15 +2259,30 @@ func (o ServiceElasticsearchUserConfigPrivateAccessPtrOutput) Elem() ServiceElas
 }
 
 func (o ServiceElasticsearchUserConfigPrivateAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigPrivateAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Elasticsearch
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPrivateAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigPrivateAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kibana
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigPublicAccess struct {
@@ -2192,15 +2419,30 @@ func (o ServiceElasticsearchUserConfigPublicAccessPtrOutput) Elem() ServiceElast
 }
 
 func (o ServiceElasticsearchUserConfigPublicAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigPublicAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Elasticsearch
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPublicAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigPublicAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kibana
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafana struct {
@@ -2583,105 +2825,228 @@ func (o ServiceGrafanaUserConfigPtrOutput) Elem() ServiceGrafanaUserConfigOutput
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AlertingEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.AlertingEnabled }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertingEnabled
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.AlertingErrorOrTimeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertingErrorOrTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.AlertingNodataOrNullvalues }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertingNodataOrNullvalues
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.AllowEmbedding }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowEmbedding
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AuthGenericOauth() ServiceGrafanaUserConfigAuthGenericOauthPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGenericOauth { return v.AuthGenericOauth }).(ServiceGrafanaUserConfigAuthGenericOauthPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGenericOauth {
+		if v == nil {
+			return nil
+		}
+		return v.AuthGenericOauth
+	}).(ServiceGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AuthGithub() ServiceGrafanaUserConfigAuthGithubPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGithub { return v.AuthGithub }).(ServiceGrafanaUserConfigAuthGithubPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGithub {
+		if v == nil {
+			return nil
+		}
+		return v.AuthGithub
+	}).(ServiceGrafanaUserConfigAuthGithubPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AuthGitlab() ServiceGrafanaUserConfigAuthGitlabPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGitlab { return v.AuthGitlab }).(ServiceGrafanaUserConfigAuthGitlabPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGitlab {
+		if v == nil {
+			return nil
+		}
+		return v.AuthGitlab
+	}).(ServiceGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) AuthGoogle() ServiceGrafanaUserConfigAuthGooglePtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGoogle { return v.AuthGoogle }).(ServiceGrafanaUserConfigAuthGooglePtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGoogle {
+		if v == nil {
+			return nil
+		}
+		return v.AuthGoogle
+	}).(ServiceGrafanaUserConfigAuthGooglePtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) CookieSamesite() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.CookieSamesite }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CookieSamesite
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *int { return v.DashboardsVersionsToKeep }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DashboardsVersionsToKeep
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.DataproxySendUserHeader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataproxySendUserHeader
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *int { return v.DataproxyTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataproxyTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.DisableGravatar }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisableGravatar
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.EditorsCanAdmin }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EditorsCanAdmin
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) ExternalImageStorage() ServiceGrafanaUserConfigExternalImageStoragePtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigExternalImageStorage {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigExternalImageStorage {
+		if v == nil {
+			return nil
+		}
 		return v.ExternalImageStorage
 	}).(ServiceGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.GoogleAnalyticsUaId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleAnalyticsUaId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) MetricsEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.MetricsEnabled }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsEnabled
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) PrivateAccess() ServiceGrafanaUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceGrafanaUserConfigPrivateAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ServiceGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) PublicAccess() ServiceGrafanaUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigPublicAccess { return v.PublicAccess }).(ServiceGrafanaUserConfigPublicAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ServiceGrafanaUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) SmtpServer() ServiceGrafanaUserConfigSmtpServerPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigSmtpServer { return v.SmtpServer }).(ServiceGrafanaUserConfigSmtpServerPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigSmtpServer {
+		if v == nil {
+			return nil
+		}
+		return v.SmtpServer
+	}).(ServiceGrafanaUserConfigSmtpServerPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.UserAutoAssignOrg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAutoAssignOrg
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.UserAutoAssignOrgRole }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAutoAssignOrgRole
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) ViewersCanEdit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.ViewersCanEdit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ViewersCanEdit
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafanaUserConfigAuthGenericOauth struct {
@@ -2858,43 +3223,93 @@ func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) Elem() ServiceGrafana
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDomains
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOrganizations
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) ApiUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGenericOauth) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafanaUserConfigAuthGithub struct {
@@ -3041,23 +3456,48 @@ func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) Elem() ServiceGrafanaUserCo
 }
 
 func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGithub) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOrganizations
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) []int { return v.TeamIds }).(pulumi.IntArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGithub) []int {
+		if v == nil {
+			return nil
+		}
+		return v.TeamIds
+	}).(pulumi.IntArrayOutput)
 }
 
 type ServiceGrafanaUserConfigAuthGitlab struct {
@@ -3216,31 +3656,66 @@ func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) Elem() ServiceGrafanaUserCo
 }
 
 func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGitlab) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) AllowedGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGitlab) []string { return v.AllowedGroups }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGitlab) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedGroups
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) ApiUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGitlab) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGitlab) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGitlab) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGitlab) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGitlabPtrOutput) TokenUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGitlab) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafanaUserConfigAuthGoogle struct {
@@ -3381,19 +3856,39 @@ func (o ServiceGrafanaUserConfigAuthGooglePtrOutput) Elem() ServiceGrafanaUserCo
 }
 
 func (o ServiceGrafanaUserConfigAuthGooglePtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGoogle) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGoogle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGooglePtrOutput) AllowedDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGoogle) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGoogle) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDomains
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGoogle) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGoogle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGoogle) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGoogle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafanaUserConfigExternalImageStorage struct {
@@ -3536,19 +4031,39 @@ func (o ServiceGrafanaUserConfigExternalImageStoragePtrOutput) Elem() ServiceGra
 }
 
 func (o ServiceGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigExternalImageStorage) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigExternalImageStorage) *string { return v.BucketUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigExternalImageStorage) *string { return v.Provider }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Provider
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigExternalImageStorage) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafanaUserConfigPrivateAccess struct {
@@ -3671,7 +4186,12 @@ func (o ServiceGrafanaUserConfigPrivateAccessPtrOutput) Elem() ServiceGrafanaUse
 }
 
 func (o ServiceGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grafana
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafanaUserConfigPublicAccess struct {
@@ -3794,7 +4314,12 @@ func (o ServiceGrafanaUserConfigPublicAccessPtrOutput) Elem() ServiceGrafanaUser
 }
 
 func (o ServiceGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grafana
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceGrafanaUserConfigSmtpServer struct {
@@ -3953,31 +4478,66 @@ func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Elem() ServiceGrafanaUserCo
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) FromAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.FromAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromAddress
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) FromName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.FromName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkipVerify
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceInfluxdb struct {
@@ -4100,7 +4660,12 @@ func (o ServiceInfluxdbPtrOutput) Elem() ServiceInfluxdbOutput {
 }
 
 func (o ServiceInfluxdbPtrOutput) DatabaseName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceInfluxdb) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceInfluxdbUserConfig struct {
@@ -4247,23 +4812,48 @@ func (o ServiceInfluxdbUserConfigPtrOutput) Elem() ServiceInfluxdbUserConfigOutp
 }
 
 func (o ServiceInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceInfluxdbUserConfigPtrOutput) PrivateAccess() ServiceInfluxdbUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceInfluxdbUserConfigPrivateAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ServiceInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceInfluxdbUserConfigPtrOutput) PublicAccess() ServiceInfluxdbUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(ServiceInfluxdbUserConfigPublicAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ServiceInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServiceInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceInfluxdbUserConfigPrivateAccess struct {
@@ -4386,7 +4976,12 @@ func (o ServiceInfluxdbUserConfigPrivateAccessPtrOutput) Elem() ServiceInfluxdbU
 }
 
 func (o ServiceInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Influxdb
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceInfluxdbUserConfigPublicAccess struct {
@@ -4509,7 +5104,12 @@ func (o ServiceInfluxdbUserConfigPublicAccessPtrOutput) Elem() ServiceInfluxdbUs
 }
 
 func (o ServiceInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Influxdb
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationEndpointDatadogUserConfig struct {
@@ -4652,19 +5252,39 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Elem() ServiceInte
 }
 
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogApiKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DisableConsumerStats() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DisableConsumerStats }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisableConsumerStats
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) MaxPartitionContexts() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *int { return v.MaxPartitionContexts }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPartitionContexts
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Site() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.Site }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Site
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
@@ -4813,23 +5433,48 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Ca() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ca
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexDaysMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *int { return v.IndexDaysMax }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndexDaysMax
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexPrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationEndpointPrometheusUserConfig struct {
@@ -4960,11 +5605,21 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) Elem() ServiceI
 }
 
 func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointPrometheusUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuthPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointPrometheusUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuthUsername
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationEndpointRsyslogUserConfig struct {
@@ -5137,39 +5792,84 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Elem() ServiceInte
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Ca() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ca
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Cert }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cert
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Format }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logline
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Sd() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Sd }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sd
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Server() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Server }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Tls
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServiceIntegrationLogsUserConfig struct {
@@ -5298,11 +5998,21 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) Elem() ServiceIntegrationLogs
 }
 
 func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexDaysMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *int { return v.ElasticsearchIndexDaysMax }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticsearchIndexDaysMax
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticsearchIndexPrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationMirrormakerUserConfig struct {
@@ -5425,7 +6135,12 @@ func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) Elem() ServiceIntegrat
 }
 
 func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) MirrormakerWhitelist() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationMirrormakerUserConfig) *string { return v.MirrormakerWhitelist }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIntegrationMirrormakerUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrormakerWhitelist
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafka struct {
@@ -5572,23 +6287,48 @@ func (o ServiceKafkaPtrOutput) Elem() ServiceKafkaOutput {
 }
 
 func (o ServiceKafkaPtrOutput) AccessCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafka) *string { return v.AccessCert }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessCert
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaPtrOutput) AccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafka) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaPtrOutput) ConnectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafka) *string { return v.ConnectUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectUri
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaPtrOutput) RestUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafka) *string { return v.RestUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RestUri
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaPtrOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafka) *string { return v.SchemaRegistryUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistryUri
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaConnect struct {
@@ -5849,23 +6589,37 @@ func (o ServiceKafkaConnectUserConfigPtrOutput) Elem() ServiceKafkaConnectUserCo
 }
 
 func (o ServiceKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigPtrOutput) KafkaConnect() ServiceKafkaConnectUserConfigKafkaConnectPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfig) *ServiceKafkaConnectUserConfigKafkaConnect {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfig) *ServiceKafkaConnectUserConfigKafkaConnect {
+		if v == nil {
+			return nil
+		}
 		return v.KafkaConnect
 	}).(ServiceKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigPtrOutput) PrivateAccess() ServiceKafkaConnectUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfig) *ServiceKafkaConnectUserConfigPrivateAccess {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfig) *ServiceKafkaConnectUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
 		return v.PrivateAccess
 	}).(ServiceKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigPtrOutput) PublicAccess() ServiceKafkaConnectUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfig) *ServiceKafkaConnectUserConfigPublicAccess {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfig) *ServiceKafkaConnectUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
 		return v.PublicAccess
 	}).(ServiceKafkaConnectUserConfigPublicAccessPtrOutput)
 }
@@ -6004,15 +6758,30 @@ func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) Elem() ServiceKafkaC
 }
 
 func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPollRecords
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetFlushIntervalMs
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceKafkaConnectUserConfigPrivateAccess struct {
@@ -6143,11 +6912,21 @@ func (o ServiceKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() ServiceKafka
 }
 
 func (o ServiceKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaConnectUserConfigPublicAccess struct {
@@ -6278,11 +7057,21 @@ func (o ServiceKafkaConnectUserConfigPublicAccessPtrOutput) Elem() ServiceKafkaC
 }
 
 func (o ServiceKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfig struct {
@@ -6473,53 +7262,111 @@ func (o ServiceKafkaUserConfigPtrOutput) Elem() ServiceKafkaUserConfigOutput {
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) Kafka() ServiceKafkaUserConfigKafkaPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafka { return v.Kafka }).(ServiceKafkaUserConfigKafkaPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafka {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(ServiceKafkaUserConfigKafkaPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafkaAuthenticationMethods {
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafkaAuthenticationMethods {
+		if v == nil {
+			return nil
+		}
 		return v.KafkaAuthenticationMethods
 	}).(ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaConnect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *bool { return v.KafkaConnect }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaConnectConfig() ServiceKafkaUserConfigKafkaConnectConfigPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafkaConnectConfig { return v.KafkaConnectConfig }).(ServiceKafkaUserConfigKafkaConnectConfigPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafkaConnectConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnectConfig
+	}).(ServiceKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaRest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *bool { return v.KafkaRest }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaRestConfig() ServiceKafkaUserConfigKafkaRestConfigPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafkaRestConfig { return v.KafkaRestConfig }).(ServiceKafkaUserConfigKafkaRestConfigPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafkaRestConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRestConfig
+	}).(ServiceKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) PrivateAccess() ServiceKafkaUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceKafkaUserConfigPrivateAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ServiceKafkaUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) PublicAccess() ServiceKafkaUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigPublicAccess { return v.PublicAccess }).(ServiceKafkaUserConfigPublicAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ServiceKafkaUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *bool { return v.SchemaRegistry }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafka struct {
@@ -6774,95 +7621,210 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) Elem() ServiceKafkaUserConfigKafka
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) AutoCreateTopicsEnable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.AutoCreateTopicsEnable }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoCreateTopicsEnable
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ConnectionsMaxIdleMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionsMaxIdleMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultReplicationFactor
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.GroupMaxSessionTimeoutMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupMaxSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.GroupMinSessionTimeoutMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupMinSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogCleanerMaxCompactionLagMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerMaxCompactionLagMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *float64 { return v.LogCleanerMinCleanableRatio }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerMinCleanableRatio
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogCleanerMinCompactionLagMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerMinCompactionLagMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanupPolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageTimestampDifferenceMaxMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageTimestampType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogRetentionBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogRetentionHours }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionHours
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogSegmentBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.MaxConnectionsPerIp }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnectionsPerIp
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.MessageMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MessageMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumPartitions
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.OffsetsRetentionMinutes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetsRetentionMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerPurgatoryPurgeIntervalRequests
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaFetchMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchResponseMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaFetchResponseMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.SocketRequestMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SocketRequestMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaAuthenticationMethods struct {
@@ -6993,11 +7955,21 @@ func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Elem() Servic
 }
 
 func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Sasl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Sasl
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaConnectConfig struct {
@@ -7132,15 +8104,30 @@ func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) Elem() ServiceKafkaUs
 }
 
 func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPollRecords
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetFlushIntervalMs
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaRestConfig struct {
@@ -7293,27 +8280,57 @@ func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) Elem() ServiceKafkaUserC
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *bool { return v.ConsumerEnableAutoCommit }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerEnableAutoCommit
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerRequestMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerRequestTimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerAcks
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerLingerMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.SimpleconsumerPoolSizeMax }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SimpleconsumerPoolSizeMax
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceKafkaUserConfigPrivateAccess struct {
@@ -7436,7 +8453,12 @@ func (o ServiceKafkaUserConfigPrivateAccessPtrOutput) Elem() ServiceKafkaUserCon
 }
 
 func (o ServiceKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigPublicAccess struct {
@@ -7583,23 +8605,48 @@ func (o ServiceKafkaUserConfigPublicAccessPtrOutput) Elem() ServiceKafkaUserConf
 }
 
 func (o ServiceKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigPublicAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigPublicAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceMysql struct {
@@ -7896,47 +8943,102 @@ func (o ServiceMysqlUserConfigPtrOutput) Elem() ServiceMysqlUserConfigOutput {
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupHour
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupMinute
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) Mysql() ServiceMysqlUserConfigMysqlPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *ServiceMysqlUserConfigMysql { return v.Mysql }).(ServiceMysqlUserConfigMysqlPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *ServiceMysqlUserConfigMysql {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(ServiceMysqlUserConfigMysqlPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) MysqlVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.MysqlVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MysqlVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) PrivateAccess() ServiceMysqlUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *ServiceMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceMysqlUserConfigPrivateAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *ServiceMysqlUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ServiceMysqlUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) PublicAccess() ServiceMysqlUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *ServiceMysqlUserConfigPublicAccess { return v.PublicAccess }).(ServiceMysqlUserConfigPublicAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *ServiceMysqlUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ServiceMysqlUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryTargetTime
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceMysqlUserConfigMysql struct {
@@ -8143,63 +9245,138 @@ func (o ServiceMysqlUserConfigMysqlPtrOutput) Elem() ServiceMysqlUserConfigMysql
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.ConnectTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTimeZone
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.GroupConcatMaxLen }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConcatMaxLen
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InformationSchemaStatsExpiry }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InformationSchemaStatsExpiry
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InnodbFtMinTokenSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFtMinTokenSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbFtServerStopwordTable }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFtServerStopwordTable
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbLockWaitTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbOnlineAlterLogMaxSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbRollbackOnTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAllowedPacket
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.NetReadTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetReadTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.NetWriteTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetWriteTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.SqlMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.SqlRequirePrimaryKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlRequirePrimaryKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.WaitTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceMysqlUserConfigPrivateAccess struct {
@@ -8328,11 +9505,21 @@ func (o ServiceMysqlUserConfigPrivateAccessPtrOutput) Elem() ServiceMysqlUserCon
 }
 
 func (o ServiceMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceMysqlUserConfigPublicAccess struct {
@@ -8461,11 +9648,21 @@ func (o ServiceMysqlUserConfigPublicAccessPtrOutput) Elem() ServiceMysqlUserConf
 }
 
 func (o ServiceMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePg struct {
@@ -8630,35 +9827,75 @@ func (o ServicePgPtrOutput) Elem() ServicePgOutput {
 }
 
 func (o ServicePgPtrOutput) Dbname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePg) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePg) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePg) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePg) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgPtrOutput) ReplicaUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePg) *string { return v.ReplicaUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaUri
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgPtrOutput) Sslmode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePg) *string { return v.Sslmode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sslmode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgPtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePg) *string { return v.Uri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgPtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePg) *string { return v.User }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfig struct {
@@ -8877,71 +10114,156 @@ func (o ServicePgUserConfigPtrOutput) Elem() ServicePgUserConfigOutput {
 }
 
 func (o ServicePgUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupHour
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupMinute
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) Pg() ServicePgUserConfigPgPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPg { return v.Pg }).(ServicePgUserConfigPgPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigPg {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(ServicePgUserConfigPgPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) PgReadReplica() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.PgReadReplica }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgReadReplica
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.PgServiceToForkFrom }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) Pgbouncer() ServicePgUserConfigPgbouncerPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPgbouncer { return v.Pgbouncer }).(ServicePgUserConfigPgbouncerPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigPgbouncer {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(ServicePgUserConfigPgbouncerPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) Pglookout() ServicePgUserConfigPglookoutPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPglookout { return v.Pglookout }).(ServicePgUserConfigPglookoutPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigPglookout {
+		if v == nil {
+			return nil
+		}
+		return v.Pglookout
+	}).(ServicePgUserConfigPglookoutPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) PrivateAccess() ServicePgUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPrivateAccess { return v.PrivateAccess }).(ServicePgUserConfigPrivateAccessPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ServicePgUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) PublicAccess() ServicePgUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPublicAccess { return v.PublicAccess }).(ServicePgUserConfigPublicAccessPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ServicePgUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryTargetTime
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) Timescaledb() ServicePgUserConfigTimescaledbPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigTimescaledb { return v.Timescaledb }).(ServicePgUserConfigTimescaledbPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigTimescaledb {
+		if v == nil {
+			return nil
+		}
+		return v.Timescaledb
+	}).(ServicePgUserConfigTimescaledbPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Variant
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPg struct {
@@ -9232,119 +10554,264 @@ func (o ServicePgUserConfigPgPtrOutput) Elem() ServicePgUserConfigPgOutput {
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *float64 { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumAnalyzeScaleFactor
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumAnalyzeThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumAnalyzeThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumMaxWorkers }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumMaxWorkers
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumNaptime }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumNaptime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumCostDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumCostLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *float64 { return v.AutovacuumVacuumScaleFactor }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumScaleFactor
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumVacuumThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.DeadlockTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeadlockTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.IdleInTransactionSessionTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleInTransactionSessionTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.Jit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Jit
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.LogAutovacuumMinDuration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogAutovacuumMinDuration
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogErrorVerbosity
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.LogMinDurationStatement }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogMinDurationStatement
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxLocksPerTransaction }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLocksPerTransaction
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxParallelWorkers }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelWorkers
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxParallelWorkersPerGather }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelWorkersPerGather
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxPredLocksPerTransaction }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPredLocksPerTransaction
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxPreparedTransactions }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPreparedTransactions
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxStackDepth }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStackDepth
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxStandbyArchiveDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStandbyArchiveDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxStandbyStreamingDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStandbyStreamingDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxWorkerProcesses }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWorkerProcesses
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgStatStatementsTrack }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgStatStatementsTrack
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) TempFileLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.TempFileLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TempFileLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timezone
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.TrackActivityQuerySize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TrackActivityQuerySize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackFunctions
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.WalWriterDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WalWriterDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServicePgUserConfigPgbouncer struct {
@@ -9467,7 +10934,12 @@ func (o ServicePgUserConfigPgbouncerPtrOutput) Elem() ServicePgUserConfigPgbounc
 }
 
 func (o ServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *bool { return v.ServerResetQueryAlways }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerResetQueryAlways
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServicePgUserConfigPglookout struct {
@@ -9590,7 +11062,12 @@ func (o ServicePgUserConfigPglookoutPtrOutput) Elem() ServicePgUserConfigPglooko
 }
 
 func (o ServicePgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPglookout) *int { return v.MaxFailoverReplicationTimeLag }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPglookout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFailoverReplicationTimeLag
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServicePgUserConfigPrivateAccess struct {
@@ -9725,15 +11202,30 @@ func (o ServicePgUserConfigPrivateAccessPtrOutput) Elem() ServicePgUserConfigPri
 }
 
 func (o ServicePgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPrivateAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPublicAccess struct {
@@ -9868,15 +11360,30 @@ func (o ServicePgUserConfigPublicAccessPtrOutput) Elem() ServicePgUserConfigPubl
 }
 
 func (o ServicePgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPublicAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigTimescaledb struct {
@@ -9999,7 +11506,12 @@ func (o ServicePgUserConfigTimescaledbPtrOutput) Elem() ServicePgUserConfigTimes
 }
 
 func (o ServicePgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServicePgUserConfigTimescaledb) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBackgroundWorkers
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceRedis struct {
@@ -10290,43 +11802,93 @@ func (o ServiceRedisUserConfigPtrOutput) Elem() ServiceRedisUserConfigOutput {
 }
 
 func (o ServiceRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) Migration() ServiceRedisUserConfigMigrationPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *ServiceRedisUserConfigMigration { return v.Migration }).(ServiceRedisUserConfigMigrationPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *ServiceRedisUserConfigMigration {
+		if v == nil {
+			return nil
+		}
+		return v.Migration
+	}).(ServiceRedisUserConfigMigrationPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) PrivateAccess() ServiceRedisUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *ServiceRedisUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceRedisUserConfigPrivateAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *ServiceRedisUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ServiceRedisUserConfigPrivateAccessPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) PublicAccess() ServiceRedisUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *ServiceRedisUserConfigPublicAccess { return v.PublicAccess }).(ServiceRedisUserConfigPublicAccessPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *ServiceRedisUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ServiceRedisUserConfigPublicAccessPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *int { return v.RedisLfuDecayTime }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RedisLfuDecayTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *int { return v.RedisLfuLogFactor }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RedisLfuLogFactor
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisMaxmemoryPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisMaxmemoryPolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisNotifyKeyspaceEvents
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *bool { return v.RedisSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RedisSsl
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RedisTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceRedisUserConfigMigration struct {
@@ -10473,23 +12035,48 @@ func (o ServiceRedisUserConfigMigrationPtrOutput) Elem() ServiceRedisUserConfigM
 }
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Ssl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceRedisUserConfigPrivateAccess struct {
@@ -10618,11 +12205,21 @@ func (o ServiceRedisUserConfigPrivateAccessPtrOutput) Elem() ServiceRedisUserCon
 }
 
 func (o ServiceRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceRedisUserConfigPublicAccess struct {
@@ -10751,11 +12348,21 @@ func (o ServiceRedisUserConfigPublicAccessPtrOutput) Elem() ServiceRedisUserConf
 }
 
 func (o ServiceRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceRedisUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceServiceIntegration struct {
@@ -11410,7 +13017,12 @@ func (o GetServiceCassandraUserConfigPrivateAccessPtrOutput) Elem() GetServiceCa
 }
 
 func (o GetServiceCassandraUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceCassandraUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceCassandraUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceCassandraUserConfigPublicAccess struct {
@@ -11535,7 +13147,12 @@ func (o GetServiceCassandraUserConfigPublicAccessPtrOutput) Elem() GetServiceCas
 }
 
 func (o GetServiceCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceCassandraUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceCassandraUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceComponent struct {
@@ -12090,91 +13707,192 @@ func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) Elem() GetServi
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionAutoCreateIndexEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionAutoCreateIndexEnabled }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionAutoCreateIndexEnabled
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
 		return v.ActionDestructiveRequiresName
 	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.HttpMaxContentLength }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMaxContentLength
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesFielddataCacheSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesFielddataCacheSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesMemoryIndexBufferSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesMemoryIndexBufferSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueriesCacheSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesQueriesCacheSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueryBoolMaxClauseCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesQueryBoolMaxClauseCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReindexRemoteWhitelists
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolAnalyzeQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolAnalyzeSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolForceMergeSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolForceMergeSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolGetQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolGetSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolIndexQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolIndexSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolSearchQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolSearchSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
 		return v.ThreadPoolSearchThrottledQueueSize
 	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchThrottledSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolSearchThrottledSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteQueueSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolWriteQueueSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadPoolWriteSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigIndexPattern struct {
@@ -12411,15 +14129,30 @@ func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) Elem() GetServiceElast
 }
 
 func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *int { return v.ElasticsearchRequestTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticsearchRequestTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *int { return v.MaxOldSpaceSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxOldSpaceSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigPrivateAccess struct {
@@ -12556,15 +14289,30 @@ func (o GetServiceElasticsearchUserConfigPrivateAccessPtrOutput) Elem() GetServi
 }
 
 func (o GetServiceElasticsearchUserConfigPrivateAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigPrivateAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Elasticsearch
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigPrivateAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigPrivateAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kibana
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigPublicAccess struct {
@@ -12701,15 +14449,30 @@ func (o GetServiceElasticsearchUserConfigPublicAccessPtrOutput) Elem() GetServic
 }
 
 func (o GetServiceElasticsearchUserConfigPublicAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigPublicAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Elasticsearch
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigPublicAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigPublicAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kibana
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceGrafana struct {
@@ -13130,43 +14893,93 @@ func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) Elem() GetServiceG
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDomains
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOrganizations
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) ApiUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGenericOauth) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGenericOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceGrafanaUserConfigAuthGithub struct {
@@ -13313,23 +15126,48 @@ func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) Elem() GetServiceGrafana
 }
 
 func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGithub) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOrganizations
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) []int { return v.TeamIds }).(pulumi.IntArrayOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGithub) []int {
+		if v == nil {
+			return nil
+		}
+		return v.TeamIds
+	}).(pulumi.IntArrayOutput)
 }
 
 type GetServiceGrafanaUserConfigAuthGitlab struct {
@@ -13488,31 +15326,66 @@ func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) Elem() GetServiceGrafana
 }
 
 func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGitlab) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) AllowedGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGitlab) []string { return v.AllowedGroups }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGitlab) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedGroups
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) ApiUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGitlab) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGitlab) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGitlab) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGitlab) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGitlabPtrOutput) TokenUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGitlab) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceGrafanaUserConfigAuthGoogle struct {
@@ -13653,19 +15526,39 @@ func (o GetServiceGrafanaUserConfigAuthGooglePtrOutput) Elem() GetServiceGrafana
 }
 
 func (o GetServiceGrafanaUserConfigAuthGooglePtrOutput) AllowSignUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGoogle) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGoogle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSignUp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGooglePtrOutput) AllowedDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGoogle) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGoogle) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDomains
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGoogle) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGoogle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGoogle) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGoogle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceGrafanaUserConfigExternalImageStorage struct {
@@ -13808,19 +15701,39 @@ func (o GetServiceGrafanaUserConfigExternalImageStoragePtrOutput) Elem() GetServ
 }
 
 func (o GetServiceGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigExternalImageStorage) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigExternalImageStorage) *string { return v.BucketUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigExternalImageStorage) *string { return v.Provider }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Provider
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigExternalImageStorage) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigExternalImageStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceGrafanaUserConfigPrivateAccess struct {
@@ -13943,7 +15856,12 @@ func (o GetServiceGrafanaUserConfigPrivateAccessPtrOutput) Elem() GetServiceGraf
 }
 
 func (o GetServiceGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grafana
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceGrafanaUserConfigPublicAccess struct {
@@ -14066,7 +15984,12 @@ func (o GetServiceGrafanaUserConfigPublicAccessPtrOutput) Elem() GetServiceGrafa
 }
 
 func (o GetServiceGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grafana
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceGrafanaUserConfigSmtpServer struct {
@@ -14225,31 +16148,66 @@ func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Elem() GetServiceGrafana
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) FromAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.FromAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromAddress
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) FromName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.FromName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkipVerify
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceInfluxdb struct {
@@ -14500,7 +16458,12 @@ func (o GetServiceInfluxdbUserConfigPrivateAccessPtrOutput) Elem() GetServiceInf
 }
 
 func (o GetServiceInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Influxdb
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceInfluxdbUserConfigPublicAccess struct {
@@ -14623,7 +16586,12 @@ func (o GetServiceInfluxdbUserConfigPublicAccessPtrOutput) Elem() GetServiceInfl
 }
 
 func (o GetServiceInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Influxdb
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceIntegrationEndpointDatadogUserConfig struct {
@@ -15250,15 +17218,30 @@ func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) Elem() GetService
 }
 
 func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPollRecords
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetFlushIntervalMs
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceKafkaConnectUserConfigPrivateAccess struct {
@@ -15389,11 +17372,21 @@ func (o GetServiceKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() GetServic
 }
 
 func (o GetServiceKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaConnectUserConfigPublicAccess struct {
@@ -15524,11 +17517,21 @@ func (o GetServiceKafkaConnectUserConfigPublicAccessPtrOutput) Elem() GetService
 }
 
 func (o GetServiceKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaConnectUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfig struct {
@@ -15903,95 +17906,210 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) Elem() GetServiceKafkaUserConfi
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) AutoCreateTopicsEnable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.AutoCreateTopicsEnable }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoCreateTopicsEnable
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ConnectionsMaxIdleMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionsMaxIdleMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultReplicationFactor
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.GroupMaxSessionTimeoutMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupMaxSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.GroupMinSessionTimeoutMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupMinSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogCleanerMaxCompactionLagMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerMaxCompactionLagMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *float64 { return v.LogCleanerMinCleanableRatio }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerMinCleanableRatio
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogCleanerMinCompactionLagMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerMinCompactionLagMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanupPolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageTimestampDifferenceMaxMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageTimestampType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogRetentionBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogRetentionHours }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionHours
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogSegmentBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.MaxConnectionsPerIp }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnectionsPerIp
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.MessageMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MessageMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumPartitions
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.OffsetsRetentionMinutes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetsRetentionMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerPurgatoryPurgeIntervalRequests
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaFetchMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchResponseMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaFetchResponseMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.SocketRequestMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SocketRequestMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaAuthenticationMethods struct {
@@ -16122,11 +18240,21 @@ func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Elem() Get
 }
 
 func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Sasl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Sasl
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaConnectConfig struct {
@@ -16263,15 +18391,30 @@ func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) Elem() GetServiceK
 }
 
 func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPollRecords
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetFlushIntervalMs
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaRestConfig struct {
@@ -16424,27 +18567,57 @@ func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) Elem() GetServiceKafk
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *bool { return v.ConsumerEnableAutoCommit }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerEnableAutoCommit
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestMaxBytes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerRequestMaxBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerRequestTimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerAcks
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerLingerMs
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.SimpleconsumerPoolSizeMax }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SimpleconsumerPoolSizeMax
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceKafkaUserConfigPrivateAccess struct {
@@ -16567,7 +18740,12 @@ func (o GetServiceKafkaUserConfigPrivateAccessPtrOutput) Elem() GetServiceKafkaU
 }
 
 func (o GetServiceKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigPublicAccess struct {
@@ -16714,23 +18892,48 @@ func (o GetServiceKafkaUserConfigPublicAccessPtrOutput) Elem() GetServiceKafkaUs
 }
 
 func (o GetServiceKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigPublicAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigPublicAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceMysql struct {
@@ -17091,63 +19294,138 @@ func (o GetServiceMysqlUserConfigMysqlPtrOutput) Elem() GetServiceMysqlUserConfi
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.ConnectTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTimeZone
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.GroupConcatMaxLen }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConcatMaxLen
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InformationSchemaStatsExpiry }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InformationSchemaStatsExpiry
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InnodbFtMinTokenSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFtMinTokenSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbFtServerStopwordTable }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFtServerStopwordTable
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbLockWaitTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbOnlineAlterLogMaxSize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbRollbackOnTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAllowedPacket
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.NetReadTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetReadTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.NetWriteTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetWriteTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.SqlMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.SqlRequirePrimaryKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlRequirePrimaryKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.WaitTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceMysqlUserConfigPrivateAccess struct {
@@ -17276,11 +19554,21 @@ func (o GetServiceMysqlUserConfigPrivateAccessPtrOutput) Elem() GetServiceMysqlU
 }
 
 func (o GetServiceMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceMysqlUserConfigPublicAccess struct {
@@ -17409,11 +19697,21 @@ func (o GetServiceMysqlUserConfigPublicAccessPtrOutput) Elem() GetServiceMysqlUs
 }
 
 func (o GetServiceMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServicePg struct {
@@ -17942,119 +20240,264 @@ func (o GetServicePgUserConfigPgPtrOutput) Elem() GetServicePgUserConfigPgOutput
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *float64 { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumAnalyzeScaleFactor
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumAnalyzeThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumAnalyzeThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumMaxWorkers }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumMaxWorkers
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumNaptime }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumNaptime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumCostDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumCostLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *float64 { return v.AutovacuumVacuumScaleFactor }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumScaleFactor
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumVacuumThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.DeadlockTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeadlockTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.IdleInTransactionSessionTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleInTransactionSessionTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.Jit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Jit
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.LogAutovacuumMinDuration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogAutovacuumMinDuration
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogErrorVerbosity
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.LogMinDurationStatement }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogMinDurationStatement
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxLocksPerTransaction }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLocksPerTransaction
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxParallelWorkers }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelWorkers
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxParallelWorkersPerGather }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelWorkersPerGather
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxPredLocksPerTransaction }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPredLocksPerTransaction
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxPreparedTransactions }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPreparedTransactions
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxStackDepth }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStackDepth
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxStandbyArchiveDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStandbyArchiveDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxStandbyStreamingDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStandbyStreamingDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxWorkerProcesses }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWorkerProcesses
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgStatStatementsTrack }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgStatStatementsTrack
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) TempFileLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.TempFileLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TempFileLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timezone
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.TrackActivityQuerySize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TrackActivityQuerySize
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackFunctions
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.WalWriterDelay }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WalWriterDelay
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServicePgUserConfigPgbouncer struct {
@@ -18177,7 +20620,12 @@ func (o GetServicePgUserConfigPgbouncerPtrOutput) Elem() GetServicePgUserConfigP
 }
 
 func (o GetServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *bool { return v.ServerResetQueryAlways }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerResetQueryAlways
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetServicePgUserConfigPglookout struct {
@@ -18300,7 +20748,12 @@ func (o GetServicePgUserConfigPglookoutPtrOutput) Elem() GetServicePgUserConfigP
 }
 
 func (o GetServicePgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPglookout) *int { return v.MaxFailoverReplicationTimeLag }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPglookout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFailoverReplicationTimeLag
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServicePgUserConfigPrivateAccess struct {
@@ -18435,15 +20888,30 @@ func (o GetServicePgUserConfigPrivateAccessPtrOutput) Elem() GetServicePgUserCon
 }
 
 func (o GetServicePgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPrivateAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigPublicAccess struct {
@@ -18578,15 +21046,30 @@ func (o GetServicePgUserConfigPublicAccessPtrOutput) Elem() GetServicePgUserConf
 }
 
 func (o GetServicePgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPublicAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigTimescaledb struct {
@@ -18709,7 +21192,12 @@ func (o GetServicePgUserConfigTimescaledbPtrOutput) Elem() GetServicePgUserConfi
 }
 
 func (o GetServicePgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServicePgUserConfigTimescaledb) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBackgroundWorkers
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetServiceRedis struct {
@@ -19004,23 +21492,48 @@ func (o GetServiceRedisUserConfigMigrationPtrOutput) Elem() GetServiceRedisUserC
 }
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Ssl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceRedisUserConfigPrivateAccess struct {
@@ -19149,11 +21662,21 @@ func (o GetServiceRedisUserConfigPrivateAccessPtrOutput) Elem() GetServiceRedisU
 }
 
 func (o GetServiceRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceRedisUserConfigPublicAccess struct {
@@ -19282,11 +21805,21 @@ func (o GetServiceRedisUserConfigPublicAccessPtrOutput) Elem() GetServiceRedisUs
 }
 
 func (o GetServiceRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetServiceRedisUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceServiceIntegration struct {

@@ -35,7 +35,7 @@ type LookupKafkaConnectorArgs struct {
 type LookupKafkaConnectorResult struct {
 	Config        map[string]string `pulumi:"config"`
 	ConnectorName string            `pulumi:"connectorName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id            string                  `pulumi:"id"`
 	PluginAuthor  string                  `pulumi:"pluginAuthor"`
 	PluginClass   string                  `pulumi:"pluginClass"`

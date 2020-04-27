@@ -27,7 +27,7 @@ type LookupKafkaAclArgs struct {
 
 // A collection of values returned by getKafkaAcl.
 type LookupKafkaAclResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`
 	Permission  *string `pulumi:"permission"`
 	Project     string  `pulumi:"project"`

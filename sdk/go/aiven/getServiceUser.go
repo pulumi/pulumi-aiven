@@ -31,7 +31,7 @@ type LookupServiceUserArgs struct {
 type LookupServiceUserResult struct {
 	AccessCert string `pulumi:"accessCert"`
 	AccessKey  string `pulumi:"accessKey"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
 	Password    string `pulumi:"password"`
 	Project     string `pulumi:"project"`

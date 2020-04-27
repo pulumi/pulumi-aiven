@@ -21,7 +21,7 @@ class GetDatabaseResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if lc_collate and not isinstance(lc_collate, str):
             raise TypeError("Expected argument 'lc_collate' to be a str")

@@ -58,7 +58,7 @@ namespace Pulumi.Aiven
         public readonly string ConnectionUri;
         public readonly string? DatabaseName;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? PoolMode;
