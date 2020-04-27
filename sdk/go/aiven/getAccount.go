@@ -30,7 +30,7 @@ type LookupAccountArgs struct {
 type LookupAccountResult struct {
 	AccountId  string `pulumi:"accountId"`
 	CreateTime string `pulumi:"createTime"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
 	Name        string `pulumi:"name"`
 	OwnerTeamId string `pulumi:"ownerTeamId"`

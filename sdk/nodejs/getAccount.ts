@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  * 
- * const account1 = aiven.getAccount({
+ * const account1 = pulumi.output(aiven.getAccount({
  *     name: "<ACCOUNT_NAME>",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account.html.markdown.
@@ -63,7 +63,7 @@ export interface GetAccountResult {
     readonly tenantId: string;
     readonly updateTime: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

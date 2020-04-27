@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
         public readonly string? EndpointType;
         public readonly Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Project;

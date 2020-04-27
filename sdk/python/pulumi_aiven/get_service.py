@@ -42,7 +42,7 @@ class GetServiceResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if influxdb and not isinstance(influxdb, dict):
             raise TypeError("Expected argument 'influxdb' to be a dict")

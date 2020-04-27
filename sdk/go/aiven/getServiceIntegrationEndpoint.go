@@ -35,7 +35,7 @@ type LookupServiceIntegrationEndpointResult struct {
 	EndpointName                        string                                                            `pulumi:"endpointName"`
 	EndpointType                        *string                                                           `pulumi:"endpointType"`
 	ExternalElasticsearchLogsUserConfig *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                   string                                             `pulumi:"id"`
 	Project              string                                             `pulumi:"project"`
 	PrometheusUserConfig *GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`

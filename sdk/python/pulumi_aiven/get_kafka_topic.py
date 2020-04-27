@@ -21,7 +21,7 @@ class GetKafkaTopicResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if minimum_in_sync_replicas and not isinstance(minimum_in_sync_replicas, float):
             raise TypeError("Expected argument 'minimum_in_sync_replicas' to be a float")

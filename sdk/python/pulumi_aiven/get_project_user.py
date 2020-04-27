@@ -24,7 +24,7 @@ class GetProjectUserResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if member_type and not isinstance(member_type, str):
             raise TypeError("Expected argument 'member_type' to be a str")

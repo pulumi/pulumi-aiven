@@ -29,7 +29,7 @@ type LookupDatabaseArgs struct {
 // A collection of values returned by getDatabase.
 type LookupDatabaseResult struct {
 	DatabaseName string `pulumi:"databaseName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                    string  `pulumi:"id"`
 	LcCollate             *string `pulumi:"lcCollate"`
 	LcCtype               *string `pulumi:"lcCtype"`

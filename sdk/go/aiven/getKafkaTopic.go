@@ -33,7 +33,7 @@ type LookupKafkaTopicArgs struct {
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                    string `pulumi:"id"`
 	MinimumInSyncReplicas *int   `pulumi:"minimumInSyncReplicas"`
 	Partitions            *int   `pulumi:"partitions"`

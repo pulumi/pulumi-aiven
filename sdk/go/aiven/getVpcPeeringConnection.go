@@ -29,7 +29,7 @@ type LookupVpcPeeringConnectionArgs struct {
 
 // A collection of values returned by getVpcPeeringConnection.
 type LookupVpcPeeringConnectionResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                  string                 `pulumi:"id"`
 	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`
 	PeerRegion          *string                `pulumi:"peerRegion"`

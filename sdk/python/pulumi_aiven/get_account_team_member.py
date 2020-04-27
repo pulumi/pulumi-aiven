@@ -27,7 +27,7 @@ class GetAccountTeamMemberResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if invited_by_user_email and not isinstance(invited_by_user_email, str):
             raise TypeError("Expected argument 'invited_by_user_email' to be a str")

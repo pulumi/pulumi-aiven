@@ -32,7 +32,7 @@ type LookupConnectionPoolArgs struct {
 type LookupConnectionPoolResult struct {
 	ConnectionUri string  `pulumi:"connectionUri"`
 	DatabaseName  *string `pulumi:"databaseName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`
 	PoolMode    *string `pulumi:"poolMode"`
 	PoolName    string  `pulumi:"poolName"`

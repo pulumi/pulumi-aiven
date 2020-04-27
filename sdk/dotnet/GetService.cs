@@ -155,7 +155,7 @@ namespace Pulumi.Aiven
         public readonly Outputs.GetServiceGrafanaResult Grafana;
         public readonly Outputs.GetServiceGrafanaUserConfigResult? GrafanaUserConfig;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly Outputs.GetServiceInfluxdbResult Influxdb;

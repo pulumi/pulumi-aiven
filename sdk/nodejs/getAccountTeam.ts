@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * const accountTeam1 = aiven_account_team.accountId.apply(accountId => aiven.getAccountTeam({
  *     accountId: accountId,
  *     name: "accountTeam1",
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/account_team.html.markdown.
@@ -61,7 +61,7 @@ export interface GetAccountTeamResult {
     readonly teamId: string;
     readonly updateTime: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

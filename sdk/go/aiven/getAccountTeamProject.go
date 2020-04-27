@@ -27,7 +27,7 @@ type LookupAccountTeamProjectArgs struct {
 // A collection of values returned by getAccountTeamProject.
 type LookupAccountTeamProjectResult struct {
 	AccountId string `pulumi:"accountId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`
 	ProjectName string  `pulumi:"projectName"`
 	TeamId      string  `pulumi:"teamId"`

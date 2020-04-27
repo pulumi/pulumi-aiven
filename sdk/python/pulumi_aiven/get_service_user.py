@@ -24,7 +24,7 @@ class GetServiceUserResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
