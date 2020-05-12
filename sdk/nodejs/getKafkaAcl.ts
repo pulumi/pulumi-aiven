@@ -7,6 +7,21 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ * 
+ * const mytestacl = aiven.getKafkaAcl({
+ *     project: data.aiven_service.myservice.project,
+ *     serviceName: data.aiven_service.myservice.service_name,
+ *     topic: "<TOPIC_NAME_PATTERN>",
+ *     username: "<USERNAME_PATTERN>",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_acl.html.markdown.
  */

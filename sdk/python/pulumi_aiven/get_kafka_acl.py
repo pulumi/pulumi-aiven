@@ -49,6 +49,21 @@ class AwaitableGetKafkaAclResult(GetKafkaAclResult):
             username=self.username)
 
 def get_kafka_acl(permission=None,project=None,service_name=None,topic=None,username=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestacl = aiven.get_kafka_acl(project=data[".Service"]["myservice"]["project"],
+        service_name=data[".Service"]["myservice"]["service_name"],
+        topic="<TOPIC_NAME_PATTERN>",
+        username="<USERNAME_PATTERN>")
+    ```
+    """
     __args__ = dict()
 
 

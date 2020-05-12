@@ -32,6 +32,16 @@ class AccountTeam(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, account_id=None, create_time=None, name=None, update_time=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        account_team1 = aiven.AccountTeam("accountTeam1", account_id=aiven_account["team"]["account_id"])
+        ```
 
 
         :param str resource_name: The name of the resource.

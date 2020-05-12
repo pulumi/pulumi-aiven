@@ -57,6 +57,20 @@ class AwaitableGetServiceUserResult(GetServiceUserResult):
             username=self.username)
 
 def get_service_user(access_cert=None,access_key=None,password=None,project=None,service_name=None,type=None,username=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myserviceuser = aiven.get_service_user(project=data[".Service"]["myservice"]["project"],
+        service_name=data[".Service"]["myservice"]["service_name"],
+        username="<USERNAME>")
+    ```
+    """
     __args__ = dict()
 
 

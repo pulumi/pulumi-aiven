@@ -7,6 +7,20 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ * 
+ * const mypeeringconnection = aiven.getVpcPeeringConnection({
+ *     vpcId: data.aiven_project_vpc.vpc_id,
+ *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
+ *     peerVpc: "<PEER_VPC_ID/NAME>",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/vpc_peering_connection.html.markdown.
  */

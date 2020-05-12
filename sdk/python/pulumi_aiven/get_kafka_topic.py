@@ -69,6 +69,20 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             topic_name=self.topic_name)
 
 def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions=None,project=None,replication=None,retention_bytes=None,retention_hours=None,service_name=None,termination_protection=None,topic_name=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytesttopic = aiven.get_kafka_topic(project=data[".Service"]["myservice"]["project"],
+        service_name=data[".Service"]["myservice"]["service_name"],
+        topic_name="<TOPIC_NAME>")
+    ```
+    """
     __args__ = dict()
 
 

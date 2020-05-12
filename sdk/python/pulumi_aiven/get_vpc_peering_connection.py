@@ -57,6 +57,20 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
             vpc_id=self.vpc_id)
 
 def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc=None,peering_connection_id=None,state=None,state_info=None,vpc_id=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mypeeringconnection = aiven.get_vpc_peering_connection(vpc_id=data[".ProjectVpc"]["vpc_id"],
+        peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="<PEER_VPC_ID/NAME>")
+    ```
+    """
     __args__ = dict()
 
 

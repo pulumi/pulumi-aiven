@@ -61,6 +61,20 @@ class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
             username=self.username)
 
 def get_connection_pool(connection_uri=None,database_name=None,pool_mode=None,pool_name=None,pool_size=None,project=None,service_name=None,username=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestpool = aiven.get_connection_pool(project=data[".Service"]["myservice"]["project"],
+        service_name=data[".Service"]["myservice"]["service_name"],
+        pool_name="<POOLNAME>")
+    ```
+    """
     __args__ = dict()
 
 

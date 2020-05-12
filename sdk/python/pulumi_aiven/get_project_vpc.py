@@ -45,6 +45,19 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
             state=self.state)
 
 def get_project_vpc(cloud_name=None,network_cidr=None,project=None,state=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myvpc = aiven.get_project_vpc(project=data[".Project"]["myproject"]["project"],
+        cloud_name="google-europe-west1")
+    ```
+    """
     __args__ = dict()
 
 

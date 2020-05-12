@@ -65,6 +65,18 @@ class AwaitableGetProjectResult(GetProjectResult):
             technical_emails=self.technical_emails)
 
 def get_project(account_id=None,billing_address=None,billing_emails=None,ca_cert=None,card_id=None,copy_from_project=None,country_code=None,project=None,technical_emails=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myproject = aiven.get_project(project="<PROJECT_NAME>")
+    ```
+    """
     __args__ = dict()
 
 

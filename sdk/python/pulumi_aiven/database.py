@@ -37,6 +37,19 @@ class Database(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mydatabase = aiven.Database("mydatabase",
+            database_name="<DATABASE_NAME>",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"])
+        ```
 
 
         :param str resource_name: The name of the resource.

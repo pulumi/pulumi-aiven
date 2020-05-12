@@ -49,6 +49,19 @@ class AwaitableGetAccountTeamResult(GetAccountTeamResult):
             update_time=self.update_time)
 
 def get_account_team(account_id=None,create_time=None,name=None,team_id=None,update_time=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    account_team1 = aiven.get_account_team(account_id=aiven_account["team"]["account_id"],
+        name="account_team1")
+    ```
+    """
     __args__ = dict()
 
 

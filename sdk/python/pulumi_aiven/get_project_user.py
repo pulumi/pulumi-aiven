@@ -45,6 +45,19 @@ class AwaitableGetProjectUserResult(GetProjectUserResult):
             project=self.project)
 
 def get_project_user(accepted=None,email=None,member_type=None,project=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestuser = aiven.get_project_user(project=data[".Project"]["myproject"]["project"],
+        email="john.doe@example.com")
+    ```
+    """
     __args__ = dict()
 
 
