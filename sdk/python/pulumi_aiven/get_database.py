@@ -53,6 +53,20 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             termination_protection=self.termination_protection)
 
 def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,service_name=None,termination_protection=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mydatabase = aiven.get_database(project=data[".Service"]["myservice"]["project"],
+        service_name=data[".Service"]["myservice"]["service_name"],
+        database_name="<DATABASE_NAME>")
+    ```
+    """
     __args__ = dict()
 
 

@@ -517,6 +517,27 @@ class Service(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myservice = aiven.Service("myservice",
+            cloud_name="google-europe-west1",
+            pg_user_config={
+                "ipFilter": ["0.0.0.0/0"],
+                "pgVersion": "10",
+            },
+            plan="business-8",
+            project=aiven_project["myproject"]["project"],
+            project_vpc_id=aiven_project_vpc["vpc_gcp_europe_west1"]["id"],
+            service_name="<SERVICE_NAME>",
+            service_type="pg",
+            termination_protection=True)
+        ```
 
 
         :param str resource_name: The name of the resource.

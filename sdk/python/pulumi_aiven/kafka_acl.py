@@ -32,6 +32,21 @@ class KafkaAcl(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, permission=None, project=None, service_name=None, topic=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestacl = aiven.KafkaAcl("mytestacl",
+            permission="admin",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
+            topic="<TOPIC_NAME_PATTERN>",
+            username="<USERNAME_PATTERN>")
+        ```
 
 
         :param str resource_name: The name of the resource.

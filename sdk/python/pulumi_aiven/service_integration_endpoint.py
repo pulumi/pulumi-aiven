@@ -68,6 +68,22 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, datadog_user_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myendpoint = aiven.ServiceIntegrationEndpoint("myendpoint",
+            datadog_user_config={
+                "datadogApiKey": "<DATADOG_API_KEY>",
+            },
+            endpoint_name="<ENDPOINT_NAME>",
+            endpoint_type="datadog",
+            project=aiven_project["myproject"]["project"])
+        ```
 
 
         :param str resource_name: The name of the resource.

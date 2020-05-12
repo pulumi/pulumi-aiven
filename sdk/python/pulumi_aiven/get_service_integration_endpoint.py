@@ -62,6 +62,17 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
 
 def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=None,endpoint_name=None,endpoint_type=None,external_elasticsearch_logs_user_config=None,project=None,prometheus_user_config=None,rsyslog_user_config=None,opts=None):
     """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myendpoint = aiven.get_service_integration_endpoint(project=data[".Project"]["myproject"]["project"],
+        endpoint_name="<ENDPOINT_NAME>")
+    ```
 
 
 

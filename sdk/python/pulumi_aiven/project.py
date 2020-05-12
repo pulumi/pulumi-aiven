@@ -48,6 +48,18 @@ class Project(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myproject = aiven.Project("myproject",
+            card_id="<FULL_CARD_ID/LAST4_DIGITS>",
+            project="<PROJECT_NAME>")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -40,6 +40,20 @@ class VpcPeeringConnection(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mypeeringconnection = aiven.VpcPeeringConnection("mypeeringconnection",
+            peer_cloud_account="<PEER_ACCOUNT_ID>",
+            peer_region="<PEER_REGION>",
+            peer_vpc="<PEER_VPC_ID/NAME>",
+            vpc_id=aiven_project_vpc["myvpc"]["id"])
+        ```
 
 
         :param str resource_name: The name of the resource.

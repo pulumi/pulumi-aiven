@@ -49,6 +49,22 @@ class ServiceIntegration(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, destination_endpoint_id=None, destination_service_name=None, integration_type=None, logs_user_config=None, mirrormaker_user_config=None, project=None, source_endpoint_id=None, source_service_name=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myintegration = aiven.ServiceIntegration("myintegration",
+            destination_endpoint_id=aiven_service_integration_endpoint["myendpoint"]["id"],
+            destination_service_name="",
+            integration_type="datadog",
+            project=aiven_project["myproject"]["project"],
+            source_endpoint_id="",
+            source_service_name=aiven_service["testkafka"]["service_name"])
+        ```
 
 
         :param str resource_name: The name of the resource.

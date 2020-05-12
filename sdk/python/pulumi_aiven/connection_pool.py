@@ -44,6 +44,23 @@ class ConnectionPool(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, database_name=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestpool = aiven.ConnectionPool("mytestpool",
+            database_name=aiven_database["mydatabase"]["database_name"],
+            pool_mode="transaction",
+            pool_name="mypool",
+            pool_size=10,
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
+            username=aiven_service_user["myserviceuser"]["username"])
+        ```
 
 
         :param str resource_name: The name of the resource.

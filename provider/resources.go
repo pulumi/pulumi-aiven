@@ -171,7 +171,6 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_account_team_project":         {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",
 			},

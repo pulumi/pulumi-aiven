@@ -53,6 +53,18 @@ class AwaitableGetAccountResult(GetAccountResult):
             update_time=self.update_time)
 
 def get_account(account_id=None,create_time=None,name=None,owner_team_id=None,tenant_id=None,update_time=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    account1 = aiven.get_account(name="<ACCOUNT_NAME>")
+    ```
+    """
     __args__ = dict()
 
 

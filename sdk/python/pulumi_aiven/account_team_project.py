@@ -31,6 +31,23 @@ class AccountTeamProject(pulumi.CustomResource):
         The account team project is intended to link and existing project to the existing account team. It is important to note 
         that the project should have an `account_id` property set and equal to account team you are trying to link this project.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        project1 = aiven.Project("project1",
+            account_id=aiven_account_team["developers"]["account_id"],
+            project="project-1")
+        account_team_project1 = aiven.AccountTeamProject("accountTeamProject1",
+            account_id=aiven_account_team["developers"]["account_id"],
+            project_name=project1.project,
+            team_id=aiven_account_team["developers"]["team_id"],
+            team_type="admin")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -41,6 +41,19 @@ class AccountTeamMember(pulumi.CustomResource):
         The deletion of `.AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the 
         user, and it will also eliminate an account team member if one has accepted an invitation previously.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AccountTeamMember("foo",
+            account_id=aiven_account["developers"]["account_id"],
+            team_id=aiven_account["developers"]["account_id"],
+            user_email="user+1@example.com")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -53,6 +53,20 @@ class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
             user_email=self.user_email)
 
 def get_account_team_member(accepted=None,account_id=None,create_time=None,invited_by_user_email=None,team_id=None,user_email=None,opts=None):
+    """
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    foo = aiven.get_account_team_member(account_id=aiven_account["developers"]["account_id"],
+        team_id=aiven_account["developers"]["account_id"],
+        user_email="user+1@example.com")
+    ```
+    """
     __args__ = dict()
 
 

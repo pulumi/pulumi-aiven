@@ -40,6 +40,19 @@ class ServiceUser(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, project=None, service_name=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myserviceuser = aiven.ServiceUser("myserviceuser",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
+            username="<USERNAME>")
+        ```
 
 
         :param str resource_name: The name of the resource.

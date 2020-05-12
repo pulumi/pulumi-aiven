@@ -28,6 +28,19 @@ class ProjectUser(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, email=None, member_type=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestuser = aiven.ProjectUser("mytestuser",
+            email="john.doe@example.com",
+            member_type="admin",
+            project=aiven_project["myproject"]["project"])
+        ```
 
 
         :param str resource_name: The name of the resource.

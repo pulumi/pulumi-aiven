@@ -7,6 +7,19 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ * 
+ * const myservice = aiven.getService({
+ *     project: data.aiven_project.myproject.project,
+ *     serviceName: "<SERVICE_NAME>",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/service.html.markdown.
  */

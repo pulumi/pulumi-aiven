@@ -53,6 +53,25 @@ class KafkaTopic(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
         """
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytesttopic = aiven.KafkaTopic("mytesttopic",
+            cleanup_policy="delete",
+            minimum_in_sync_replicas=2,
+            partitions=5,
+            project=aiven_project["myproject"]["project"],
+            replication=3,
+            retention_bytes=-1,
+            retention_hours=72,
+            service_name=aiven_service["myservice"]["service_name"],
+            topic_name="<TOPIC_NAME>")
+        ```
 
 
         :param str resource_name: The name of the resource.
