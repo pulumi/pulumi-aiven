@@ -8,19 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const myproject = pulumi.output(aiven.getProject({
  *     project: "<PROJECT_NAME>",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/project.html.markdown.
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     if (!opts) {

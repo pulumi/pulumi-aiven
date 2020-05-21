@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mytestpool = aiven.getConnectionPool({
  *     project: data.aiven_service.myservice.project,
  *     serviceName: data.aiven_service.myservice.service_name,
  *     poolName: "<POOLNAME>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/connection_pool.html.markdown.
  */
 export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> {
     if (!opts) {

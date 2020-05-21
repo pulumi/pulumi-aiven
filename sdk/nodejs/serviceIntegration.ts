@@ -8,13 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const myintegration = new aiven.ServiceIntegration("myintegration", {
  *     destinationEndpointId: aiven_service_integration_endpoint_myendpoint.id,
  *     destinationServiceName: "",
@@ -24,8 +24,6 @@ import * as utilities from "./utilities";
  *     sourceServiceName: aiven_service_testkafka.serviceName,
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_integration.html.markdown.
  */
 export class ServiceIntegration extends pulumi.CustomResource {
     /**

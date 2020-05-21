@@ -7,15 +7,15 @@ import * as utilities from "./utilities";
 /**
  * The account team project is intended to link and existing project to the existing account team. It is important to note 
  * that the project should have an `accountId` property set and equal to account team you are trying to link this project.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const project1 = new aiven.Project("project1", {
  *     accountId: aiven_account_team_developers.accountId,
  *     project: "project-1",
@@ -27,8 +27,6 @@ import * as utilities from "./utilities";
  *     teamType: "admin",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_project.html.markdown.
  */
 export class AccountTeamProject extends pulumi.CustomResource {
     /**

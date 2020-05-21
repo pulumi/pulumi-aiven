@@ -6,13 +6,13 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mytestpool = new aiven.ConnectionPool("mytestpool", {
  *     databaseName: aiven_database_mydatabase.databaseName,
  *     poolMode: "transaction",
@@ -23,8 +23,6 @@ import * as utilities from "./utilities";
  *     username: aiven_service_user_myserviceuser.username,
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/connection_pool.html.markdown.
  */
 export class ConnectionPool extends pulumi.CustomResource {
     /**

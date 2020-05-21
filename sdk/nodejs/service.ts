@@ -8,13 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const myservice = new aiven.Service("myservice", {
  *     cloudName: "google-europe-west1",
  *     pgUserConfig: {
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     terminationProtection: true,
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service.html.markdown.
  */
 export class Service extends pulumi.CustomResource {
     /**

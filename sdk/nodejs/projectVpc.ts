@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const myvpc = new aiven.ProjectVpc("myvpc", {
  *     cloudName: "google-europe-west1",
  *     networkCidr: "192.168.0.1/24",
  *     project: aiven_project_myproject.project,
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project_vpc.html.markdown.
  */
 export class ProjectVpc extends pulumi.CustomResource {
     /**

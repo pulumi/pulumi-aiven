@@ -8,13 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mytestacl = new aiven.KafkaAcl("mytestacl", {
  *     permission: "admin",
  *     project: aiven_project_myproject.project,
@@ -23,8 +23,6 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME_PATTERN>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/kafka_acl.html.markdown.
  */
 export class KafkaAcl extends pulumi.CustomResource {
     /**
