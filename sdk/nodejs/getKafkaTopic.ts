@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mytesttopic = aiven.getKafkaTopic({
  *     project: data.aiven_service.myservice.project,
  *     serviceName: data.aiven_service.myservice.service_name,
  *     topicName: "<TOPIC_NAME>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_topic.html.markdown.
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
     if (!opts) {

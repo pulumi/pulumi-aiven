@@ -8,13 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mytestacl = aiven.getKafkaAcl({
  *     project: data.aiven_service.myservice.project,
  *     serviceName: data.aiven_service.myservice.service_name,
@@ -22,8 +22,6 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME_PATTERN>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/d/kafka_acl.html.markdown.
  */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
     if (!opts) {

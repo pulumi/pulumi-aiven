@@ -8,20 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const myproject = new aiven.Project("myproject", {
  *     cardId: "<FULL_CARD_ID/LAST4_DIGITS>",
  *     project: "<PROJECT_NAME>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**

@@ -6,21 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mydatabase = new aiven.Database("mydatabase", {
  *     databaseName: "<DATABASE_NAME>",
  *     project: aiven_project_myproject.project,
  *     serviceName: aiven_service_myservice.serviceName,
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/database.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**

@@ -9,23 +9,21 @@ import * as utilities from "./utilities";
  * to a user using `userEmail` address. If the user accepts an invitation, he or she will become a member of the account team. 
  * The deletion of `aiven..AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the 
  * user, and it will also eliminate an account team member if one has accepted an invitation previously.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const foo = new aiven.AccountTeamMember("foo", {
  *     accountId: aiven_account_developers.accountId,
  *     teamId: aiven_account_developers.accountId,
  *     userEmail: "user+1@example.com",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/account_team_member.html.markdown.
  */
 export class AccountTeamMember extends pulumi.CustomResource {
     /**

@@ -8,13 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mytesttopic = new aiven.KafkaTopic("mytesttopic", {
  *     cleanupPolicy: "delete",
  *     minimumInSyncReplicas: 2,
@@ -27,8 +27,6 @@ import * as utilities from "./utilities";
  *     topicName: "<TOPIC_NAME>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/kafka_topic.html.markdown.
  */
 export class KafkaTopic extends pulumi.CustomResource {
     /**

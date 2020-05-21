@@ -8,13 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const mypeeringconnection = new aiven.VpcPeeringConnection("mypeeringconnection", {
  *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
  *     peerRegion: "<PEER_REGION>",
@@ -22,8 +22,6 @@ import * as utilities from "./utilities";
  *     vpcId: aiven_project_vpc_myvpc.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/vpc_peering_connection.html.markdown.
  */
 export class VpcPeeringConnection extends pulumi.CustomResource {
     /**

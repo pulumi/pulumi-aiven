@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
- * 
+ *
  * const myserviceuser = new aiven.ServiceUser("myserviceuser", {
  *     project: aiven_project_myproject.project,
  *     serviceName: aiven_service_myservice.serviceName,
  *     username: "<USERNAME>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/aiven/terraform-provider-aiven/blob/master/website/docs/r/service_user.html.markdown.
  */
 export class ServiceUser extends pulumi.CustomResource {
     /**
