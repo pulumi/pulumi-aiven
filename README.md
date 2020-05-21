@@ -31,6 +31,12 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-aiven/sdk/go/...
 
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+    $ dotnet add package Pulumi.Aiven
+
 ## Configuration
 
 The following configuration points are available:
@@ -39,4 +45,4 @@ The following configuration points are available:
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs](https://pulumi.io/reference/pkg/nodejs/@pulumi/aiven/index.html).
+For further information, please visit [the Aiven provider docs](https://www.pulumi.com/docs/intro/cloud-providers/aiven) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/aiven).
