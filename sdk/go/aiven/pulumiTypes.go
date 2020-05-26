@@ -13603,9 +13603,7 @@ func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ActionAutoCreateIn
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string {
-		return v.ActionDestructiveRequiresName
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionDestructiveRequiresName }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
@@ -16725,9 +16723,7 @@ func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) 
 }
 
 func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
-		return v.IndexPrefix
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexPrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.Float64PtrOutput {
