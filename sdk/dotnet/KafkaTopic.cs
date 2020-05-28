@@ -9,6 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mytesttopic = new Aiven.KafkaTopic("mytesttopic", new Aiven.KafkaTopicArgs
+    ///         {
+    ///             CleanupPolicy = "delete",
+    ///             MinimumInSyncReplicas = 2,
+    ///             Partitions = 5,
+    ///             Project = aiven_project.Myproject.Project,
+    ///             Replication = 3,
+    ///             RetentionBytes = -1,
+    ///             RetentionHours = 72,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             TopicName = "&lt;TOPIC_NAME&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class KafkaTopic : Pulumi.CustomResource
     {
         /// <summary>

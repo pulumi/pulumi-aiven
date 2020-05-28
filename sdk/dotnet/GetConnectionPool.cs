@@ -13,6 +13,29 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytestpool = Output.Create(Aiven.GetConnectionPool.InvokeAsync(new Aiven.GetConnectionPoolArgs
+        ///         {
+        ///             Project = data.Aiven_service.Myservice.Project,
+        ///             ServiceName = data.Aiven_service.Myservice.Service_name,
+        ///             PoolName = "&lt;POOLNAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetConnectionPoolResult> InvokeAsync(GetConnectionPoolArgs args, InvokeOptions? options = null)

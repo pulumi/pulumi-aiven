@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mytestpool = new Aiven.ConnectionPool("mytestpool", new Aiven.ConnectionPoolArgs
+    ///         {
+    ///             DatabaseName = aiven_database.Mydatabase.Database_name,
+    ///             PoolMode = "transaction",
+    ///             PoolName = "mypool",
+    ///             PoolSize = 10,
+    ///             Project = aiven_project.Myproject.Project,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             Username = aiven_service_user.Myserviceuser.Username,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ConnectionPool : Pulumi.CustomResource
     {
         /// <summary>

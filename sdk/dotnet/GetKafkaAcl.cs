@@ -13,6 +13,30 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytestacl = Output.Create(Aiven.GetKafkaAcl.InvokeAsync(new Aiven.GetKafkaAclArgs
+        ///         {
+        ///             Project = data.Aiven_service.Myservice.Project,
+        ///             ServiceName = data.Aiven_service.Myservice.Service_name,
+        ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///             Username = "&lt;USERNAME_PATTERN&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaAclResult> InvokeAsync(GetKafkaAclArgs args, InvokeOptions? options = null)

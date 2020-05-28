@@ -9,6 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myproject = new Aiven.Project("myproject", new Aiven.ProjectArgs
+    ///         {
+    ///             CardId = "&lt;FULL_CARD_ID/LAST4_DIGITS&gt;",
+    ///             Project = "&lt;PROJECT_NAME&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

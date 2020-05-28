@@ -12,6 +12,35 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The account team project is intended to link and existing project to the existing account team. It is important to note 
     /// that the project should have an `account_id` property set and equal to account team you are trying to link this project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project1 = new Aiven.Project("project1", new Aiven.ProjectArgs
+    ///         {
+    ///             AccountId = aiven_account_team.Developers.Account_id,
+    ///             Project = "project-1",
+    ///         });
+    ///         var accountTeamProject1 = new Aiven.AccountTeamProject("accountTeamProject1", new Aiven.AccountTeamProjectArgs
+    ///         {
+    ///             AccountId = aiven_account_team.Developers.Account_id,
+    ///             ProjectName = project1.ProjectName,
+    ///             TeamId = aiven_account_team.Developers.Team_id,
+    ///             TeamType = "admin",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccountTeamProject : Pulumi.CustomResource
     {

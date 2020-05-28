@@ -13,6 +13,28 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myendpoint = Output.Create(Aiven.GetServiceIntegrationEndpoint.InvokeAsync(new Aiven.GetServiceIntegrationEndpointArgs
+        ///         {
+        ///             Project = data.Aiven_project.Myproject.Project,
+        ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceIntegrationEndpointResult> InvokeAsync(GetServiceIntegrationEndpointArgs args, InvokeOptions? options = null)

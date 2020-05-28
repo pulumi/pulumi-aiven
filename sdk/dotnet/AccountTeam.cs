@@ -9,6 +9,28 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var accountTeam1 = new Aiven.AccountTeam("accountTeam1", new Aiven.AccountTeamArgs
+    ///         {
+    ///             AccountId = aiven_account.Team.Account_id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class AccountTeam : Pulumi.CustomResource
     {
         /// <summary>

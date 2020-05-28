@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myendpoint = new Aiven.ServiceIntegrationEndpoint("myendpoint", new Aiven.ServiceIntegrationEndpointArgs
+    ///         {
+    ///             DatadogUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointDatadogUserConfigArgs
+    ///             {
+    ///                 DatadogApiKey = "&lt;DATADOG_API_KEY&gt;",
+    ///             },
+    ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
+    ///             EndpointType = "datadog",
+    ///             Project = aiven_project.Myproject.Project,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ServiceIntegrationEndpoint : Pulumi.CustomResource
     {
         /// <summary>
