@@ -9,6 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mytestacl = new Aiven.KafkaAcl("mytestacl", new Aiven.KafkaAclArgs
+    ///         {
+    ///             Permission = "admin",
+    ///             Project = aiven_project.Myproject.Project,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+    ///             Username = "&lt;USERNAME_PATTERN&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class KafkaAcl : Pulumi.CustomResource
     {
         /// <summary>

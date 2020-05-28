@@ -9,6 +9,33 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myintegration = new Aiven.ServiceIntegration("myintegration", new Aiven.ServiceIntegrationArgs
+    ///         {
+    ///             DestinationEndpointId = aiven_service_integration_endpoint.Myendpoint.Id,
+    ///             DestinationServiceName = "",
+    ///             IntegrationType = "datadog",
+    ///             Project = aiven_project.Myproject.Project,
+    ///             SourceEndpointId = "",
+    ///             SourceServiceName = aiven_service.Testkafka.Service_name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ServiceIntegration : Pulumi.CustomResource
     {
         /// <summary>

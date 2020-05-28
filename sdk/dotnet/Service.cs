@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myservice = new Aiven.Service("myservice", new Aiven.ServiceArgs
+    ///         {
+    ///             CloudName = "google-europe-west1",
+    ///             PgUserConfig = new Aiven.Inputs.ServicePgUserConfigArgs
+    ///             {
+    ///                 IpFilter = 
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///                 PgVersion = "10",
+    ///             },
+    ///             Plan = "business-8",
+    ///             Project = aiven_project.Myproject.Project,
+    ///             ProjectVpcId = aiven_project_vpc.Vpc_gcp_europe_west1.Id,
+    ///             ServiceName = "&lt;SERVICE_NAME&gt;",
+    ///             ServiceType = "pg",
+    ///             TerminationProtection = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

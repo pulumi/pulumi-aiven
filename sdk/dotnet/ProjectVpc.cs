@@ -9,6 +9,30 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myvpc = new Aiven.ProjectVpc("myvpc", new Aiven.ProjectVpcArgs
+    ///         {
+    ///             CloudName = "google-europe-west1",
+    ///             NetworkCidr = "192.168.0.1/24",
+    ///             Project = aiven_project.Myproject.Project,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ProjectVpc : Pulumi.CustomResource
     {
         /// <summary>

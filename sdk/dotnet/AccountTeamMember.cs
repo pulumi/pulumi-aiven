@@ -14,6 +14,29 @@ namespace Pulumi.Aiven
     /// to a user using `user_email` address. If the user accepts an invitation, he or she will become a member of the account team. 
     /// The deletion of `aiven..AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the 
     /// user, and it will also eliminate an account team member if one has accepted an invitation previously.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new Aiven.AccountTeamMember("foo", new Aiven.AccountTeamMemberArgs
+    ///         {
+    ///             AccountId = aiven_account.Developers.Account_id,
+    ///             TeamId = aiven_account.Developers.Account_id,
+    ///             UserEmail = "user+1@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccountTeamMember : Pulumi.CustomResource
     {

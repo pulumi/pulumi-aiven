@@ -13,6 +13,29 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Aiven.GetAccountTeamMember.InvokeAsync(new Aiven.GetAccountTeamMemberArgs
+        ///         {
+        ///             AccountId = aiven_account.Developers.Account_id,
+        ///             TeamId = aiven_account.Developers.Account_id,
+        ///             UserEmail = "user+1@example.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountTeamMemberResult> InvokeAsync(GetAccountTeamMemberArgs args, InvokeOptions? options = null)
