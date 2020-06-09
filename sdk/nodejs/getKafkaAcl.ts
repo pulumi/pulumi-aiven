@@ -55,13 +55,13 @@ export interface GetKafkaAclArgs {
  * A collection of values returned by getKafkaAcl.
  */
 export interface GetKafkaAclResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly permission?: string;
     readonly project: string;
     readonly serviceName: string;
     readonly topic: string;
     readonly username: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -41,10 +41,10 @@ export interface GetElasticSearchAclResult {
     readonly acls?: outputs.GetElasticSearchAclAcl[];
     readonly enabled?: boolean;
     readonly extendedAcl?: boolean;
-    readonly project: string;
-    readonly serviceName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly project: string;
+    readonly serviceName: string;
 }

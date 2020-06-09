@@ -121,6 +121,10 @@ export interface GetServiceResult {
     readonly elasticsearchUserConfig?: outputs.GetServiceElasticsearchUserConfig;
     readonly grafana: outputs.GetServiceGrafana;
     readonly grafanaUserConfig?: outputs.GetServiceGrafanaUserConfig;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly influxdb: outputs.GetServiceInfluxdb;
     readonly influxdbUserConfig?: outputs.GetServiceInfluxdbUserConfig;
     readonly kafka: outputs.GetServiceKafka;
@@ -148,8 +152,4 @@ export interface GetServiceResult {
     readonly serviceUsername: string;
     readonly state: string;
     readonly terminationProtection?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

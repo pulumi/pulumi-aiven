@@ -62,14 +62,14 @@ export interface GetConnectionPoolArgs {
 export interface GetConnectionPoolResult {
     readonly connectionUri: string;
     readonly databaseName?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly poolMode?: string;
     readonly poolName: string;
     readonly poolSize?: number;
     readonly project: string;
     readonly serviceName: string;
     readonly username?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

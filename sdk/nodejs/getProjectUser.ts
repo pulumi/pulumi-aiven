@@ -53,10 +53,10 @@ export interface GetProjectUserArgs {
 export interface GetProjectUserResult {
     readonly accepted: boolean;
     readonly email: string;
-    readonly memberType?: string;
-    readonly project: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly memberType?: string;
+    readonly project: string;
 }

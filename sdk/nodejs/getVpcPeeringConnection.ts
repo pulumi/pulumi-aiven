@@ -58,6 +58,10 @@ export interface GetVpcPeeringConnectionArgs {
  * A collection of values returned by getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly peerCloudAccount: string;
     readonly peerRegion?: string;
     readonly peerVpc: string;
@@ -65,8 +69,4 @@ export interface GetVpcPeeringConnectionResult {
     readonly state: string;
     readonly stateInfo: {[key: string]: any};
     readonly vpcId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

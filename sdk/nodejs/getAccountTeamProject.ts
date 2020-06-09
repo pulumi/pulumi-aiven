@@ -53,11 +53,11 @@ export interface GetAccountTeamProjectArgs {
  */
 export interface GetAccountTeamProjectResult {
     readonly accountId: string;
-    readonly projectName: string;
-    readonly teamId: string;
-    readonly teamType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly projectName: string;
+    readonly teamId: string;
+    readonly teamType?: string;
 }

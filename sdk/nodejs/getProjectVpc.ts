@@ -52,11 +52,11 @@ export interface GetProjectVpcArgs {
  */
 export interface GetProjectVpcResult {
     readonly cloudName: string;
-    readonly networkCidr?: string;
-    readonly project: string;
-    readonly state: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly networkCidr?: string;
+    readonly project: string;
+    readonly state: string;
 }

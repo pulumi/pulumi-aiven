@@ -67,10 +67,10 @@ export interface GetProjectResult {
     readonly cardId?: string;
     readonly copyFromProject?: string;
     readonly countryCode?: string;
-    readonly project: string;
-    readonly technicalEmails?: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly project: string;
+    readonly technicalEmails?: string[];
 }

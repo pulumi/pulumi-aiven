@@ -101,7 +101,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connector",
+                        "task"
+                    ]
+                }
+            }
         },
         "aiven:/ServiceCassandra:ServiceCassandra": {
             "type": "object"
@@ -239,7 +247,20 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "component",
+                        "host",
+                        "kafkaAuthenticationMethod",
+                        "port",
+                        "route",
+                        "ssl",
+                        "usage"
+                    ]
+                }
+            }
         },
         "aiven:/ServiceElasticsearch:ServiceElasticsearch": {
             "properties": {
@@ -252,7 +273,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "kibanaUri"
+                    ]
+                }
+            }
         },
         "aiven:/ServiceElasticsearchUserConfig:ServiceElasticsearchUserConfig": {
             "properties": {
@@ -1240,7 +1268,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "databaseName"
+                    ]
+                }
+            }
         },
         "aiven:/ServiceInfluxdbUserConfig:ServiceInfluxdbUserConfig": {
             "properties": {
@@ -1573,7 +1608,18 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessCert",
+                        "accessKey",
+                        "connectUri",
+                        "restUri",
+                        "schemaRegistryUri"
+                    ]
+                }
+            }
         },
         "aiven:/ServiceKafkaConnect:ServiceKafkaConnect": {
             "type": "object"
@@ -2476,7 +2522,21 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "dbname",
+                        "host",
+                        "password",
+                        "port",
+                        "replicaUri",
+                        "sslmode",
+                        "uri",
+                        "user"
+                    ]
+                }
+            }
         },
         "aiven:/ServicePgUserConfig:ServicePgUserConfig": {
             "properties": {
@@ -3235,7 +3295,12 @@
             "required": [
                 "connector",
                 "task"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:/getServiceCassandra:getServiceCassandra": {
             "type": "object"
@@ -3382,7 +3447,12 @@
                 "route",
                 "ssl",
                 "usage"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:/getServiceElasticsearch:getServiceElasticsearch": {
             "properties": {
@@ -3398,7 +3468,12 @@
             "type": "object",
             "required": [
                 "kibanaUri"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:/getServiceElasticsearchUserConfig:getServiceElasticsearchUserConfig": {
             "properties": {
@@ -4389,7 +4464,12 @@
             "type": "object",
             "required": [
                 "databaseName"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:/getServiceInfluxdbUserConfig:getServiceInfluxdbUserConfig": {
             "properties": {
@@ -4695,7 +4775,12 @@
                 "connectUri",
                 "restUri",
                 "schemaRegistryUri"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:/getServiceKafkaConnect:getServiceKafkaConnect": {
             "type": "object"
@@ -5608,7 +5693,12 @@
                 "sslmode",
                 "uri",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:/getServicePgUserConfig:getServicePgUserConfig": {
             "properties": {
@@ -10219,8 +10309,10 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Aiven cloud resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`aiven/terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
             "typescriptVersion": ""
         },
         "python": {
