@@ -59,11 +59,11 @@ export interface GetAccountTeamMemberResult {
     readonly accepted: boolean;
     readonly accountId: string;
     readonly createTime: string;
-    readonly invitedByUserEmail: string;
-    readonly teamId: string;
-    readonly userEmail: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly invitedByUserEmail: string;
+    readonly teamId: string;
+    readonly userEmail: string;
 }

@@ -60,13 +60,13 @@ export interface GetServiceUserArgs {
 export interface GetServiceUserResult {
     readonly accessCert: string;
     readonly accessKey: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly password: string;
     readonly project: string;
     readonly serviceName: string;
     readonly type: string;
     readonly username: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

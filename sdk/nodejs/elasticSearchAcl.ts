@@ -14,6 +14,7 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ElasticSearchAclState, opts?: pulumi.CustomResourceOptions): ElasticSearchAcl {
         return new ElasticSearchAcl(name, <any>state, { ...opts, id: id });
@@ -42,9 +43,9 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling
-     * the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only
-     * target indexes they have been granted access to
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+     * indexes they have been granted access to
      */
     public readonly extendedAcl!: pulumi.Output<boolean | undefined>;
     /**
@@ -111,9 +112,9 @@ export interface ElasticSearchAclState {
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling
-     * the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only
-     * target indexes they have been granted access to
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+     * indexes they have been granted access to
      */
     readonly extendedAcl?: pulumi.Input<boolean>;
     /**
@@ -139,9 +140,9 @@ export interface ElasticSearchAclArgs {
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling
-     * the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only
-     * target indexes they have been granted access to
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+     * indexes they have been granted access to
      */
     readonly extendedAcl?: pulumi.Input<boolean>;
     /**

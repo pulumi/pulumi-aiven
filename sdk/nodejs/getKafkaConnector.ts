@@ -52,6 +52,10 @@ export interface GetKafkaConnectorArgs {
 export interface GetKafkaConnectorResult {
     readonly config?: {[key: string]: string};
     readonly connectorName: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly pluginAuthor: string;
     readonly pluginClass: string;
     readonly pluginDocUrl: string;
@@ -61,8 +65,4 @@ export interface GetKafkaConnectorResult {
     readonly project: string;
     readonly serviceName: string;
     readonly tasks: outputs.GetKafkaConnectorTask[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

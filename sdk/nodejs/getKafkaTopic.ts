@@ -65,6 +65,10 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     readonly cleanupPolicy?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly minimumInSyncReplicas?: number;
     readonly partitions?: number;
     readonly project: string;
@@ -74,8 +78,4 @@ export interface GetKafkaTopicResult {
     readonly serviceName: string;
     readonly terminationProtection?: boolean;
     readonly topicName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

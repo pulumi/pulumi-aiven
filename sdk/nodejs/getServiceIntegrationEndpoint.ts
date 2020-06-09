@@ -64,11 +64,11 @@ export interface GetServiceIntegrationEndpointResult {
     readonly endpointName: string;
     readonly endpointType?: string;
     readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
-    readonly project: string;
-    readonly prometheusUserConfig?: outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
-    readonly rsyslogUserConfig?: outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly project: string;
+    readonly prometheusUserConfig?: outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
+    readonly rsyslogUserConfig?: outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
 }

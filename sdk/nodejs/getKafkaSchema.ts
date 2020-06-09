@@ -38,13 +38,13 @@ export interface GetKafkaSchemaArgs {
  * A collection of values returned by getKafkaSchema.
  */
 export interface GetKafkaSchemaResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly project: string;
     readonly schema?: string;
     readonly serviceName: string;
     readonly subjectName: string;
     readonly version: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

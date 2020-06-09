@@ -56,12 +56,12 @@ export interface GetAccountArgs {
 export interface GetAccountResult {
     readonly accountId: string;
     readonly createTime: string;
-    readonly name: string;
-    readonly ownerTeamId: string;
-    readonly tenantId: string;
-    readonly updateTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
+    readonly ownerTeamId: string;
+    readonly tenantId: string;
+    readonly updateTime: string;
 }

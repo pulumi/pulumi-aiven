@@ -57,13 +57,13 @@ export interface GetDatabaseArgs {
  */
 export interface GetDatabaseResult {
     readonly databaseName: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly lcCollate?: string;
     readonly lcCtype?: string;
     readonly project: string;
     readonly serviceName: string;
     readonly terminationProtection?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

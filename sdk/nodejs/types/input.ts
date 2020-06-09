@@ -3,6 +3,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface ElasticSearchAclAcl {
     rules: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAclRule>[]>;
@@ -30,7 +31,6 @@ export interface GetKafkaConnectorTask {
 }
 
 export interface GetServiceCassandra {
-
 }
 
 export interface GetServiceCassandraUserConfig {
@@ -126,7 +126,6 @@ export interface GetServiceElasticsearchUserConfigPublicAccess {
 }
 
 export interface GetServiceGrafana {
-
 }
 
 export interface GetServiceGrafanaUserConfig {
@@ -281,7 +280,6 @@ export interface GetServiceKafka {
 }
 
 export interface GetServiceKafkaConnect {
-
 }
 
 export interface GetServiceKafkaConnectUserConfig {
@@ -381,7 +379,6 @@ export interface GetServiceKafkaUserConfigPublicAccess {
 }
 
 export interface GetServiceMysql {
-
 }
 
 export interface GetServiceMysqlUserConfig {
@@ -514,7 +511,6 @@ export interface GetServicePgUserConfigTimescaledb {
 }
 
 export interface GetServiceRedis {
-
 }
 
 export interface GetServiceRedisUserConfig {
@@ -559,7 +555,6 @@ export interface KafkaConnectorTask {
 }
 
 export interface ServiceCassandra {
-
 }
 
 export interface ServiceCassandraUserConfig {
@@ -655,7 +650,6 @@ export interface ServiceElasticsearchUserConfigPublicAccess {
 }
 
 export interface ServiceGrafana {
-
 }
 
 export interface ServiceGrafanaUserConfig {
@@ -819,7 +813,6 @@ export interface ServiceKafka {
 }
 
 export interface ServiceKafkaConnect {
-
 }
 
 export interface ServiceKafkaConnectUserConfig {
@@ -919,7 +912,6 @@ export interface ServiceKafkaUserConfigPublicAccess {
 }
 
 export interface ServiceMysql {
-
 }
 
 export interface ServiceMysqlUserConfig {
@@ -1052,7 +1044,6 @@ export interface ServicePgUserConfigTimescaledb {
 }
 
 export interface ServiceRedis {
-
 }
 
 export interface ServiceRedisUserConfig {
