@@ -3,20 +3,11 @@
 package examples
 
 import (
-	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 	"os"
-	"path"
 	"testing"
+
+	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
-
-func TestAccService(t *testing.T) {
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "service"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
 
 func getProjectName(t *testing.T) string {
 	name := os.Getenv("AIVEN_PROJECT_NAME")
@@ -38,20 +29,4 @@ func getCwd(t *testing.T) string {
 
 func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{}
-}
-
-func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	projectName := getProjectName(t)
-	base := getBaseOptions()
-	baseJS := base.With(integration.ProgramTestOptions{
-		ExpectRefreshChanges: true,
-		Config: map[string]string{
-			"projectName": projectName,
-		},
-		Dependencies: []string{
-			"@pulumi/aiven",
-		},
-	})
-
-	return baseJS
 }
