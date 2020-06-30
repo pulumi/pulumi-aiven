@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServicePgUserConfigTimescaledbResult
     {
-        public readonly int? MaxBackgroundWorkers;
+        public readonly string? MaxBackgroundWorkers;
 
         [OutputConstructor]
-        private GetServicePgUserConfigTimescaledbResult(int? maxBackgroundWorkers)
+        private GetServicePgUserConfigTimescaledbResult(string? maxBackgroundWorkers)
         {
             MaxBackgroundWorkers = maxBackgroundWorkers;
         }

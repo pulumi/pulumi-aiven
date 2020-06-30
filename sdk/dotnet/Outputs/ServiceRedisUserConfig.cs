@@ -17,12 +17,12 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceRedisUserConfigMigration? Migration;
         public readonly Outputs.ServiceRedisUserConfigPrivateAccess? PrivateAccess;
         public readonly Outputs.ServiceRedisUserConfigPublicAccess? PublicAccess;
-        public readonly int? RedisLfuDecayTime;
-        public readonly int? RedisLfuLogFactor;
+        public readonly string? RedisLfuDecayTime;
+        public readonly string? RedisLfuLogFactor;
         public readonly string? RedisMaxmemoryPolicy;
         public readonly string? RedisNotifyKeyspaceEvents;
-        public readonly bool? RedisSsl;
-        public readonly int? RedisTimeout;
+        public readonly string? RedisSsl;
+        public readonly string? RedisTimeout;
 
         [OutputConstructor]
         private ServiceRedisUserConfig(
@@ -34,17 +34,17 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceRedisUserConfigPublicAccess? publicAccess,
 
-            int? redisLfuDecayTime,
+            string? redisLfuDecayTime,
 
-            int? redisLfuLogFactor,
+            string? redisLfuLogFactor,
 
             string? redisMaxmemoryPolicy,
 
             string? redisNotifyKeyspaceEvents,
 
-            bool? redisSsl,
+            string? redisSsl,
 
-            int? redisTimeout)
+            string? redisTimeout)
         {
             IpFilters = ipFilters;
             Migration = migration;

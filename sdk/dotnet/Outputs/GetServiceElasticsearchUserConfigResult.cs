@@ -20,7 +20,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<Outputs.GetServiceElasticsearchUserConfigIndexPatternResult> IndexPatterns;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetServiceElasticsearchUserConfigKibanaResult? Kibana;
-        public readonly int? MaxIndexCount;
+        public readonly string? MaxIndexCount;
         public readonly Outputs.GetServiceElasticsearchUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetServiceElasticsearchUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetServiceElasticsearchUserConfigKibanaResult? kibana,
 
-            int? maxIndexCount,
+            string? maxIndexCount,
 
             Outputs.GetServiceElasticsearchUserConfigPrivateAccessResult? privateAccess,
 

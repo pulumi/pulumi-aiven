@@ -17,7 +17,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? FromName;
         public readonly string? Host;
         public readonly string? Password;
-        public readonly int? Port;
+        public readonly string? Port;
         public readonly string? SkipVerify;
         public readonly string? Username;
 
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? password,
 
-            int? port,
+            string? port,
 
             string? skipVerify,
 

@@ -18,20 +18,20 @@ func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulum
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclArgs struct {
-	Permission  *string `pulumi:"permission"`
-	Project     string  `pulumi:"project"`
-	ServiceName string  `pulumi:"serviceName"`
-	Topic       string  `pulumi:"topic"`
-	Username    string  `pulumi:"username"`
+	Permission  string `pulumi:"permission"`
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
+	Topic       string `pulumi:"topic"`
+	Username    string `pulumi:"username"`
 }
 
 // A collection of values returned by getKafkaAcl.
 type LookupKafkaAclResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
-	Permission  *string `pulumi:"permission"`
-	Project     string  `pulumi:"project"`
-	ServiceName string  `pulumi:"serviceName"`
-	Topic       string  `pulumi:"topic"`
-	Username    string  `pulumi:"username"`
+	Id          string `pulumi:"id"`
+	Permission  string `pulumi:"permission"`
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
+	Topic       string `pulumi:"topic"`
+	Username    string `pulumi:"username"`
 }

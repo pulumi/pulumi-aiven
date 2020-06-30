@@ -19,10 +19,10 @@ namespace Pulumi.Aiven.Inputs
         public string? Password { get; set; }
 
         [Input("port")]
-        public int? Port { get; set; }
+        public string? Port { get; set; }
 
         [Input("ssl")]
-        public bool? Ssl { get; set; }
+        public string? Ssl { get; set; }
 
         [Input("username")]
         public string? Username { get; set; }

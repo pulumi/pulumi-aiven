@@ -13,6 +13,10 @@ import (
 type ProjectVpc struct {
 	pulumi.CustomResourceState
 
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout ProjectVpcClientTimeoutPtrOutput `pulumi:"clientTimeout"`
 	// Cloud the VPC is in
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
 	// Network address range used by the VPC like 192.168.0.0/24
@@ -60,6 +64,10 @@ func GetProjectVpc(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectVpc resources.
 type projectVpcState struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *ProjectVpcClientTimeout `pulumi:"clientTimeout"`
 	// Cloud the VPC is in
 	CloudName *string `pulumi:"cloudName"`
 	// Network address range used by the VPC like 192.168.0.0/24
@@ -71,6 +79,10 @@ type projectVpcState struct {
 }
 
 type ProjectVpcState struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout ProjectVpcClientTimeoutPtrInput
 	// Cloud the VPC is in
 	CloudName pulumi.StringPtrInput
 	// Network address range used by the VPC like 192.168.0.0/24
@@ -86,6 +98,10 @@ func (ProjectVpcState) ElementType() reflect.Type {
 }
 
 type projectVpcArgs struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *ProjectVpcClientTimeout `pulumi:"clientTimeout"`
 	// Cloud the VPC is in
 	CloudName string `pulumi:"cloudName"`
 	// Network address range used by the VPC like 192.168.0.0/24
@@ -96,6 +112,10 @@ type projectVpcArgs struct {
 
 // The set of arguments for constructing a ProjectVpc resource.
 type ProjectVpcArgs struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout ProjectVpcClientTimeoutPtrInput
 	// Cloud the VPC is in
 	CloudName pulumi.StringInput
 	// Network address range used by the VPC like 192.168.0.0/24

@@ -19,67 +19,67 @@ namespace Pulumi.Aiven.Inputs
         public string? CompressionType { get; set; }
 
         [Input("connectionsMaxIdleMs")]
-        public int? ConnectionsMaxIdleMs { get; set; }
+        public string? ConnectionsMaxIdleMs { get; set; }
 
         [Input("defaultReplicationFactor")]
-        public int? DefaultReplicationFactor { get; set; }
+        public string? DefaultReplicationFactor { get; set; }
 
         [Input("groupMaxSessionTimeoutMs")]
-        public int? GroupMaxSessionTimeoutMs { get; set; }
+        public string? GroupMaxSessionTimeoutMs { get; set; }
 
         [Input("groupMinSessionTimeoutMs")]
-        public int? GroupMinSessionTimeoutMs { get; set; }
+        public string? GroupMinSessionTimeoutMs { get; set; }
 
         [Input("logCleanerMaxCompactionLagMs")]
-        public int? LogCleanerMaxCompactionLagMs { get; set; }
+        public string? LogCleanerMaxCompactionLagMs { get; set; }
 
         [Input("logCleanerMinCleanableRatio")]
-        public double? LogCleanerMinCleanableRatio { get; set; }
+        public string? LogCleanerMinCleanableRatio { get; set; }
 
         [Input("logCleanerMinCompactionLagMs")]
-        public int? LogCleanerMinCompactionLagMs { get; set; }
+        public string? LogCleanerMinCompactionLagMs { get; set; }
 
         [Input("logCleanupPolicy")]
         public string? LogCleanupPolicy { get; set; }
 
         [Input("logMessageTimestampDifferenceMaxMs")]
-        public int? LogMessageTimestampDifferenceMaxMs { get; set; }
+        public string? LogMessageTimestampDifferenceMaxMs { get; set; }
 
         [Input("logMessageTimestampType")]
         public string? LogMessageTimestampType { get; set; }
 
         [Input("logRetentionBytes")]
-        public int? LogRetentionBytes { get; set; }
+        public string? LogRetentionBytes { get; set; }
 
         [Input("logRetentionHours")]
-        public int? LogRetentionHours { get; set; }
+        public string? LogRetentionHours { get; set; }
 
         [Input("logSegmentBytes")]
-        public int? LogSegmentBytes { get; set; }
+        public string? LogSegmentBytes { get; set; }
 
         [Input("maxConnectionsPerIp")]
-        public int? MaxConnectionsPerIp { get; set; }
+        public string? MaxConnectionsPerIp { get; set; }
 
         [Input("messageMaxBytes")]
-        public int? MessageMaxBytes { get; set; }
+        public string? MessageMaxBytes { get; set; }
 
         [Input("numPartitions")]
-        public int? NumPartitions { get; set; }
+        public string? NumPartitions { get; set; }
 
         [Input("offsetsRetentionMinutes")]
-        public int? OffsetsRetentionMinutes { get; set; }
+        public string? OffsetsRetentionMinutes { get; set; }
 
         [Input("producerPurgatoryPurgeIntervalRequests")]
-        public int? ProducerPurgatoryPurgeIntervalRequests { get; set; }
+        public string? ProducerPurgatoryPurgeIntervalRequests { get; set; }
 
         [Input("replicaFetchMaxBytes")]
-        public int? ReplicaFetchMaxBytes { get; set; }
+        public string? ReplicaFetchMaxBytes { get; set; }
 
         [Input("replicaFetchResponseMaxBytes")]
-        public int? ReplicaFetchResponseMaxBytes { get; set; }
+        public string? ReplicaFetchResponseMaxBytes { get; set; }
 
         [Input("socketRequestMaxBytes")]
-        public int? SocketRequestMaxBytes { get; set; }
+        public string? SocketRequestMaxBytes { get; set; }
 
         public GetServiceKafkaUserConfigKafkaArgs()
         {

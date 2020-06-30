@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? DisableConsumerStats { get; set; }
 
         [Input("maxPartitionContexts")]
-        public Input<int>? MaxPartitionContexts { get; set; }
+        public Input<string>? MaxPartitionContexts { get; set; }
 
         [Input("site")]
         public Input<string>? Site { get; set; }

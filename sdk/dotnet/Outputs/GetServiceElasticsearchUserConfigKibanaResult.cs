@@ -13,17 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceElasticsearchUserConfigKibanaResult
     {
-        public readonly int? ElasticsearchRequestTimeout;
-        public readonly bool? Enabled;
-        public readonly int? MaxOldSpaceSize;
+        public readonly string? ElasticsearchRequestTimeout;
+        public readonly string? Enabled;
+        public readonly string? MaxOldSpaceSize;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigKibanaResult(
-            int? elasticsearchRequestTimeout,
+            string? elasticsearchRequestTimeout,
 
-            bool? enabled,
+            string? enabled,
 
-            int? maxOldSpaceSize)
+            string? maxOldSpaceSize)
         {
             ElasticsearchRequestTimeout = elasticsearchRequestTimeout;
             Enabled = enabled;

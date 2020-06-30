@@ -13,7 +13,10 @@ class GetVpcPeeringConnectionResult:
     """
     A collection of values returned by getVpcPeeringConnection.
     """
-    def __init__(__self__, id=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
+    def __init__(__self__, client_timeout=None, id=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
+        if client_timeout and not isinstance(client_timeout, dict):
+            raise TypeError("Expected argument 'client_timeout' to be a dict")
+        __self__.client_timeout = client_timeout
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -47,6 +50,7 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
         if False:
             yield self
         return GetVpcPeeringConnectionResult(
+            client_timeout=self.client_timeout,
             id=self.id,
             peer_cloud_account=self.peer_cloud_account,
             peer_region=self.peer_region,
@@ -56,7 +60,7 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
             state_info=self.state_info,
             vpc_id=self.vpc_id)
 
-def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc=None,peering_connection_id=None,state=None,state_info=None,vpc_id=None,opts=None):
+def get_vpc_peering_connection(client_timeout=None,peer_cloud_account=None,peer_region=None,peer_vpc=None,peering_connection_id=None,state=None,state_info=None,vpc_id=None,opts=None):
     """
     ## Example Usage
 
@@ -70,10 +74,18 @@ def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc
         peer_cloud_account="<PEER_ACCOUNT_ID>",
         peer_vpc="<PEER_VPC_ID/NAME>")
     ```
+
+
+
+
+    The **client_timeout** object supports the following:
+
+      * `create` (`str`)
     """
     __args__ = dict()
 
 
+    __args__['clientTimeout'] = client_timeout
     __args__['peerCloudAccount'] = peer_cloud_account
     __args__['peerRegion'] = peer_region
     __args__['peerVpc'] = peer_vpc
@@ -88,6 +100,7 @@ def get_vpc_peering_connection(peer_cloud_account=None,peer_region=None,peer_vpc
     __ret__ = pulumi.runtime.invoke('aiven:index/getVpcPeeringConnection:getVpcPeeringConnection', __args__, opts=opts).value
 
     return AwaitableGetVpcPeeringConnectionResult(
+        client_timeout=__ret__.get('clientTimeout'),
         id=__ret__.get('id'),
         peer_cloud_account=__ret__.get('peerCloudAccount'),
         peer_region=__ret__.get('peerRegion'),

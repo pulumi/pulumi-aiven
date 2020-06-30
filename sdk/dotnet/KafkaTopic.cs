@@ -48,6 +48,12 @@ namespace Pulumi.Aiven
         public Output<string?> CleanupPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Output("clientTimeout")]
+        public Output<Outputs.KafkaTopicClientTimeout?> ClientTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Minimum required nodes in-sync replicas (ISR) to produce to a partition
         /// </summary>
         [Output("minimumInSyncReplicas")]
@@ -155,6 +161,12 @@ namespace Pulumi.Aiven
         public Input<string>? CleanupPolicy { get; set; }
 
         /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Input("clientTimeout")]
+        public Input<Inputs.KafkaTopicClientTimeoutArgs>? ClientTimeout { get; set; }
+
+        /// <summary>
         /// Minimum required nodes in-sync replicas (ISR) to produce to a partition
         /// </summary>
         [Input("minimumInSyncReplicas")]
@@ -221,6 +233,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
+
+        /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Input("clientTimeout")]
+        public Input<Inputs.KafkaTopicClientTimeoutGetArgs>? ClientTimeout { get; set; }
 
         /// <summary>
         /// Minimum required nodes in-sync replicas (ISR) to produce to a partition

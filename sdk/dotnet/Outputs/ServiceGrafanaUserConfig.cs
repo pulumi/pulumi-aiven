@@ -17,15 +17,16 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? AlertingErrorOrTimeout;
         public readonly string? AlertingNodataOrNullvalues;
         public readonly string? AllowEmbedding;
+        public readonly string? AuthBasicEnabled;
         public readonly Outputs.ServiceGrafanaUserConfigAuthGenericOauth? AuthGenericOauth;
         public readonly Outputs.ServiceGrafanaUserConfigAuthGithub? AuthGithub;
         public readonly Outputs.ServiceGrafanaUserConfigAuthGitlab? AuthGitlab;
         public readonly Outputs.ServiceGrafanaUserConfigAuthGoogle? AuthGoogle;
         public readonly string? CookieSamesite;
         public readonly string? CustomDomain;
-        public readonly int? DashboardsVersionsToKeep;
+        public readonly string? DashboardsVersionsToKeep;
         public readonly string? DataproxySendUserHeader;
-        public readonly int? DataproxyTimeout;
+        public readonly string? DataproxyTimeout;
         public readonly string? DisableGravatar;
         public readonly string? EditorsCanAdmin;
         public readonly Outputs.ServiceGrafanaUserConfigExternalImageStorage? ExternalImageStorage;
@@ -49,6 +50,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? allowEmbedding,
 
+            string? authBasicEnabled,
+
             Outputs.ServiceGrafanaUserConfigAuthGenericOauth? authGenericOauth,
 
             Outputs.ServiceGrafanaUserConfigAuthGithub? authGithub,
@@ -61,11 +64,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
-            int? dashboardsVersionsToKeep,
+            string? dashboardsVersionsToKeep,
 
             string? dataproxySendUserHeader,
 
-            int? dataproxyTimeout,
+            string? dataproxyTimeout,
 
             string? disableGravatar,
 
@@ -95,6 +98,7 @@ namespace Pulumi.Aiven.Outputs
             AlertingErrorOrTimeout = alertingErrorOrTimeout;
             AlertingNodataOrNullvalues = alertingNodataOrNullvalues;
             AllowEmbedding = allowEmbedding;
+            AuthBasicEnabled = authBasicEnabled;
             AuthGenericOauth = authGenericOauth;
             AuthGithub = authGithub;
             AuthGitlab = authGitlab;

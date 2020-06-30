@@ -30,6 +30,7 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("aiven:index/getProjectVpc:getProjectVpc", {
+        "clientTimeout": args.clientTimeout,
         "cloudName": args.cloudName,
         "networkCidr": args.networkCidr,
         "project": args.project,
@@ -41,6 +42,7 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getProjectVpc.
  */
 export interface GetProjectVpcArgs {
+    readonly clientTimeout?: inputs.GetProjectVpcClientTimeout;
     readonly cloudName: string;
     readonly networkCidr?: string;
     readonly project: string;
@@ -51,6 +53,7 @@ export interface GetProjectVpcArgs {
  * A collection of values returned by getProjectVpc.
  */
 export interface GetProjectVpcResult {
+    readonly clientTimeout?: outputs.GetProjectVpcClientTimeout;
     readonly cloudName: string;
     /**
      * The provider-assigned unique ID for this managed resource.

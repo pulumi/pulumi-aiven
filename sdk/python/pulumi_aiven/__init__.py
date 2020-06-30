@@ -11,6 +11,7 @@ for pkg in __all__:
 
 # Export this package's modules as members:
 from .account import *
+from .account_authentication import *
 from .account_team import *
 from .account_team_member import *
 from .account_team_project import *
@@ -18,6 +19,7 @@ from .connection_pool import *
 from .database import *
 from .elastic_search_acl import *
 from .get_account import *
+from .get_account_authentication import *
 from .get_account_team import *
 from .get_account_team_member import *
 from .get_account_team_project import *
@@ -29,10 +31,12 @@ from .get_kafka_connector import *
 from .get_kafka_schema import *
 from .get_kafka_schema_configuration import *
 from .get_kafka_topic import *
+from .get_mirror_maker_replication_flow import *
 from .get_project import *
 from .get_project_user import *
 from .get_project_vpc import *
 from .get_service import *
+from .get_service_integration import *
 from .get_service_integration_endpoint import *
 from .get_service_user import *
 from .get_vpc_peering_connection import *
@@ -41,6 +45,7 @@ from .kafka_connector import *
 from .kafka_schema import *
 from .kafka_schema_configuration import *
 from .kafka_topic import *
+from .mirror_maker_replication_flow import *
 from .project import *
 from .project_user import *
 from .project_vpc import *

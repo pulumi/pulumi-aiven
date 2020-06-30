@@ -30,10 +30,10 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetServiceRedisUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
         [Input("redisLfuDecayTime")]
-        public int? RedisLfuDecayTime { get; set; }
+        public string? RedisLfuDecayTime { get; set; }
 
         [Input("redisLfuLogFactor")]
-        public int? RedisLfuLogFactor { get; set; }
+        public string? RedisLfuLogFactor { get; set; }
 
         [Input("redisMaxmemoryPolicy")]
         public string? RedisMaxmemoryPolicy { get; set; }
@@ -42,10 +42,10 @@ namespace Pulumi.Aiven.Inputs
         public string? RedisNotifyKeyspaceEvents { get; set; }
 
         [Input("redisSsl")]
-        public bool? RedisSsl { get; set; }
+        public string? RedisSsl { get; set; }
 
         [Input("redisTimeout")]
-        public int? RedisTimeout { get; set; }
+        public string? RedisTimeout { get; set; }
 
         public GetServiceRedisUserConfigArgs()
         {

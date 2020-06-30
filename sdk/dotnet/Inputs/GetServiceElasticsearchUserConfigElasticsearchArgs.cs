@@ -19,19 +19,25 @@ namespace Pulumi.Aiven.Inputs
         public string? ActionDestructiveRequiresName { get; set; }
 
         [Input("httpMaxContentLength")]
-        public int? HttpMaxContentLength { get; set; }
+        public string? HttpMaxContentLength { get; set; }
+
+        [Input("httpMaxHeaderSize")]
+        public string? HttpMaxHeaderSize { get; set; }
+
+        [Input("httpMaxInitialLineLength")]
+        public string? HttpMaxInitialLineLength { get; set; }
 
         [Input("indicesFielddataCacheSize")]
-        public int? IndicesFielddataCacheSize { get; set; }
+        public string? IndicesFielddataCacheSize { get; set; }
 
         [Input("indicesMemoryIndexBufferSize")]
-        public int? IndicesMemoryIndexBufferSize { get; set; }
+        public string? IndicesMemoryIndexBufferSize { get; set; }
 
         [Input("indicesQueriesCacheSize")]
-        public int? IndicesQueriesCacheSize { get; set; }
+        public string? IndicesQueriesCacheSize { get; set; }
 
         [Input("indicesQueryBoolMaxClauseCount")]
-        public int? IndicesQueryBoolMaxClauseCount { get; set; }
+        public string? IndicesQueryBoolMaxClauseCount { get; set; }
 
         [Input("reindexRemoteWhitelists")]
         private List<string>? _reindexRemoteWhitelists;
@@ -42,43 +48,43 @@ namespace Pulumi.Aiven.Inputs
         }
 
         [Input("threadPoolAnalyzeQueueSize")]
-        public int? ThreadPoolAnalyzeQueueSize { get; set; }
+        public string? ThreadPoolAnalyzeQueueSize { get; set; }
 
         [Input("threadPoolAnalyzeSize")]
-        public int? ThreadPoolAnalyzeSize { get; set; }
+        public string? ThreadPoolAnalyzeSize { get; set; }
 
         [Input("threadPoolForceMergeSize")]
-        public int? ThreadPoolForceMergeSize { get; set; }
+        public string? ThreadPoolForceMergeSize { get; set; }
 
         [Input("threadPoolGetQueueSize")]
-        public int? ThreadPoolGetQueueSize { get; set; }
+        public string? ThreadPoolGetQueueSize { get; set; }
 
         [Input("threadPoolGetSize")]
-        public int? ThreadPoolGetSize { get; set; }
+        public string? ThreadPoolGetSize { get; set; }
 
         [Input("threadPoolIndexQueueSize")]
-        public int? ThreadPoolIndexQueueSize { get; set; }
+        public string? ThreadPoolIndexQueueSize { get; set; }
 
         [Input("threadPoolIndexSize")]
-        public int? ThreadPoolIndexSize { get; set; }
+        public string? ThreadPoolIndexSize { get; set; }
 
         [Input("threadPoolSearchQueueSize")]
-        public int? ThreadPoolSearchQueueSize { get; set; }
+        public string? ThreadPoolSearchQueueSize { get; set; }
 
         [Input("threadPoolSearchSize")]
-        public int? ThreadPoolSearchSize { get; set; }
+        public string? ThreadPoolSearchSize { get; set; }
 
         [Input("threadPoolSearchThrottledQueueSize")]
-        public int? ThreadPoolSearchThrottledQueueSize { get; set; }
+        public string? ThreadPoolSearchThrottledQueueSize { get; set; }
 
         [Input("threadPoolSearchThrottledSize")]
-        public int? ThreadPoolSearchThrottledSize { get; set; }
+        public string? ThreadPoolSearchThrottledSize { get; set; }
 
         [Input("threadPoolWriteQueueSize")]
-        public int? ThreadPoolWriteQueueSize { get; set; }
+        public string? ThreadPoolWriteQueueSize { get; set; }
 
         [Input("threadPoolWriteSize")]
-        public int? ThreadPoolWriteSize { get; set; }
+        public string? ThreadPoolWriteSize { get; set; }
 
         public GetServiceElasticsearchUserConfigElasticsearchArgs()
         {

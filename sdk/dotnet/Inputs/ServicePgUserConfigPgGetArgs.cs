@@ -13,91 +13,100 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServicePgUserConfigPgGetArgs : Pulumi.ResourceArgs
     {
         [Input("autovacuumAnalyzeScaleFactor")]
-        public Input<double>? AutovacuumAnalyzeScaleFactor { get; set; }
+        public Input<string>? AutovacuumAnalyzeScaleFactor { get; set; }
 
         [Input("autovacuumAnalyzeThreshold")]
-        public Input<int>? AutovacuumAnalyzeThreshold { get; set; }
+        public Input<string>? AutovacuumAnalyzeThreshold { get; set; }
+
+        [Input("autovacuumFreezeMaxAge")]
+        public Input<string>? AutovacuumFreezeMaxAge { get; set; }
 
         [Input("autovacuumMaxWorkers")]
-        public Input<int>? AutovacuumMaxWorkers { get; set; }
+        public Input<string>? AutovacuumMaxWorkers { get; set; }
 
         [Input("autovacuumNaptime")]
-        public Input<int>? AutovacuumNaptime { get; set; }
+        public Input<string>? AutovacuumNaptime { get; set; }
 
         [Input("autovacuumVacuumCostDelay")]
-        public Input<int>? AutovacuumVacuumCostDelay { get; set; }
+        public Input<string>? AutovacuumVacuumCostDelay { get; set; }
 
         [Input("autovacuumVacuumCostLimit")]
-        public Input<int>? AutovacuumVacuumCostLimit { get; set; }
+        public Input<string>? AutovacuumVacuumCostLimit { get; set; }
 
         [Input("autovacuumVacuumScaleFactor")]
-        public Input<double>? AutovacuumVacuumScaleFactor { get; set; }
+        public Input<string>? AutovacuumVacuumScaleFactor { get; set; }
 
         [Input("autovacuumVacuumThreshold")]
-        public Input<int>? AutovacuumVacuumThreshold { get; set; }
+        public Input<string>? AutovacuumVacuumThreshold { get; set; }
 
         [Input("deadlockTimeout")]
-        public Input<int>? DeadlockTimeout { get; set; }
+        public Input<string>? DeadlockTimeout { get; set; }
 
         [Input("idleInTransactionSessionTimeout")]
-        public Input<int>? IdleInTransactionSessionTimeout { get; set; }
+        public Input<string>? IdleInTransactionSessionTimeout { get; set; }
 
         [Input("jit")]
         public Input<string>? Jit { get; set; }
 
         [Input("logAutovacuumMinDuration")]
-        public Input<int>? LogAutovacuumMinDuration { get; set; }
+        public Input<string>? LogAutovacuumMinDuration { get; set; }
 
         [Input("logErrorVerbosity")]
         public Input<string>? LogErrorVerbosity { get; set; }
 
         [Input("logMinDurationStatement")]
-        public Input<int>? LogMinDurationStatement { get; set; }
+        public Input<string>? LogMinDurationStatement { get; set; }
 
         [Input("maxLocksPerTransaction")]
-        public Input<int>? MaxLocksPerTransaction { get; set; }
+        public Input<string>? MaxLocksPerTransaction { get; set; }
 
         [Input("maxParallelWorkers")]
-        public Input<int>? MaxParallelWorkers { get; set; }
+        public Input<string>? MaxParallelWorkers { get; set; }
 
         [Input("maxParallelWorkersPerGather")]
-        public Input<int>? MaxParallelWorkersPerGather { get; set; }
+        public Input<string>? MaxParallelWorkersPerGather { get; set; }
 
         [Input("maxPredLocksPerTransaction")]
-        public Input<int>? MaxPredLocksPerTransaction { get; set; }
+        public Input<string>? MaxPredLocksPerTransaction { get; set; }
 
         [Input("maxPreparedTransactions")]
-        public Input<int>? MaxPreparedTransactions { get; set; }
+        public Input<string>? MaxPreparedTransactions { get; set; }
 
         [Input("maxStackDepth")]
-        public Input<int>? MaxStackDepth { get; set; }
+        public Input<string>? MaxStackDepth { get; set; }
 
         [Input("maxStandbyArchiveDelay")]
-        public Input<int>? MaxStandbyArchiveDelay { get; set; }
+        public Input<string>? MaxStandbyArchiveDelay { get; set; }
 
         [Input("maxStandbyStreamingDelay")]
-        public Input<int>? MaxStandbyStreamingDelay { get; set; }
+        public Input<string>? MaxStandbyStreamingDelay { get; set; }
 
         [Input("maxWorkerProcesses")]
-        public Input<int>? MaxWorkerProcesses { get; set; }
+        public Input<string>? MaxWorkerProcesses { get; set; }
 
         [Input("pgStatStatementsTrack")]
         public Input<string>? PgStatStatementsTrack { get; set; }
 
         [Input("tempFileLimit")]
-        public Input<int>? TempFileLimit { get; set; }
+        public Input<string>? TempFileLimit { get; set; }
 
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
         [Input("trackActivityQuerySize")]
-        public Input<int>? TrackActivityQuerySize { get; set; }
+        public Input<string>? TrackActivityQuerySize { get; set; }
+
+        [Input("trackCommitTimestamp")]
+        public Input<string>? TrackCommitTimestamp { get; set; }
 
         [Input("trackFunctions")]
         public Input<string>? TrackFunctions { get; set; }
 
+        [Input("walSenderTimeout")]
+        public Input<string>? WalSenderTimeout { get; set; }
+
         [Input("walWriterDelay")]
-        public Input<int>? WalWriterDelay { get; set; }
+        public Input<string>? WalWriterDelay { get; set; }
 
         public ServicePgUserConfigPgGetArgs()
         {

@@ -14,16 +14,16 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceKafkaUserConfigKafkaConnectConfig
     {
         public readonly string? ConsumerIsolationLevel;
-        public readonly int? ConsumerMaxPollRecords;
-        public readonly int? OffsetFlushIntervalMs;
+        public readonly string? ConsumerMaxPollRecords;
+        public readonly string? OffsetFlushIntervalMs;
 
         [OutputConstructor]
         private ServiceKafkaUserConfigKafkaConnectConfig(
             string? consumerIsolationLevel,
 
-            int? consumerMaxPollRecords,
+            string? consumerMaxPollRecords,
 
-            int? offsetFlushIntervalMs)
+            string? offsetFlushIntervalMs)
         {
             ConsumerIsolationLevel = consumerIsolationLevel;
             ConsumerMaxPollRecords = consumerMaxPollRecords;

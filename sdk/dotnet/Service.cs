@@ -60,6 +60,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceCassandraUserConfig?> CassandraUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Output("clientTimeout")]
+        public Output<Outputs.ServiceClientTimeout?> ClientTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Cloud the service runs in
         /// </summary>
         [Output("cloudName")]
@@ -124,6 +130,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("kafkaConnectUserConfig")]
         public Output<Outputs.ServiceKafkaConnectUserConfig?> KafkaConnectUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka MirrorMaker 2 specific server provided values
+        /// </summary>
+        [Output("kafkaMirrormaker")]
+        public Output<Outputs.ServiceKafkaMirrormaker> KafkaMirrormaker { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka MirrorMaker 2 specific user configurable settings
+        /// </summary>
+        [Output("kafkaMirrormakerUserConfig")]
+        public Output<Outputs.ServiceKafkaMirrormakerUserConfig?> KafkaMirrormakerUserConfig { get; private set; } = null!;
 
         /// <summary>
         /// Kafka specific user configurable settings
@@ -316,6 +334,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceCassandraUserConfigArgs>? CassandraUserConfig { get; set; }
 
         /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Input("clientTimeout")]
+        public Input<Inputs.ServiceClientTimeoutArgs>? ClientTimeout { get; set; }
+
+        /// <summary>
         /// Cloud the service runs in
         /// </summary>
         [Input("cloudName")]
@@ -374,6 +398,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceKafkaConnectUserConfigArgs>? KafkaConnectUserConfig { get; set; }
+
+        /// <summary>
+        /// Kafka MirrorMaker 2 specific server provided values
+        /// </summary>
+        [Input("kafkaMirrormaker")]
+        public Input<Inputs.ServiceKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
+
+        /// <summary>
+        /// Kafka MirrorMaker 2 specific user configurable settings
+        /// </summary>
+        [Input("kafkaMirrormakerUserConfig")]
+        public Input<Inputs.ServiceKafkaMirrormakerUserConfigArgs>? KafkaMirrormakerUserConfig { get; set; }
 
         /// <summary>
         /// Kafka specific user configurable settings
@@ -497,6 +533,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceCassandraUserConfigGetArgs>? CassandraUserConfig { get; set; }
 
         /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Input("clientTimeout")]
+        public Input<Inputs.ServiceClientTimeoutGetArgs>? ClientTimeout { get; set; }
+
+        /// <summary>
         /// Cloud the service runs in
         /// </summary>
         [Input("cloudName")]
@@ -567,6 +609,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceKafkaConnectUserConfigGetArgs>? KafkaConnectUserConfig { get; set; }
+
+        /// <summary>
+        /// Kafka MirrorMaker 2 specific server provided values
+        /// </summary>
+        [Input("kafkaMirrormaker")]
+        public Input<Inputs.ServiceKafkaMirrormakerGetArgs>? KafkaMirrormaker { get; set; }
+
+        /// <summary>
+        /// Kafka MirrorMaker 2 specific user configurable settings
+        /// </summary>
+        [Input("kafkaMirrormakerUserConfig")]
+        public Input<Inputs.ServiceKafkaMirrormakerUserConfigGetArgs>? KafkaMirrormakerUserConfig { get; set; }
 
         /// <summary>
         /// Kafka specific user configurable settings

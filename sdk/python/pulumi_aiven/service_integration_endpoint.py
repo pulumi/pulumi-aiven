@@ -16,7 +16,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
       * `datadogApiKey` (`str`)
       * `disableConsumerStats` (`str`)
-      * `maxPartitionContexts` (`float`)
+      * `maxPartitionContexts` (`str`)
       * `site` (`str`)
     """
     endpoint_config: pulumi.Output[dict]
@@ -36,9 +36,9 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     external elasticsearch specific user configurable settings
 
       * `ca` (`str`)
-      * `indexDaysMax` (`float`)
+      * `indexDaysMax` (`str`)
       * `indexPrefix` (`str`)
-      * `timeout` (`float`)
+      * `timeout` (`str`)
       * `url` (`str`)
     """
     project: pulumi.Output[str]
@@ -61,10 +61,10 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
       * `format` (`str`)
       * `key` (`str`)
       * `logline` (`str`)
-      * `port` (`float`)
+      * `port` (`str`)
       * `sd` (`str`)
       * `server` (`str`)
-      * `tls` (`bool`)
+      * `tls` (`str`)
     """
     def __init__(__self__, resource_name, opts=None, datadog_user_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -100,15 +100,15 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
           * `datadogApiKey` (`pulumi.Input[str]`)
           * `disableConsumerStats` (`pulumi.Input[str]`)
-          * `maxPartitionContexts` (`pulumi.Input[float]`)
+          * `maxPartitionContexts` (`pulumi.Input[str]`)
           * `site` (`pulumi.Input[str]`)
 
         The **external_elasticsearch_logs_user_config** object supports the following:
 
           * `ca` (`pulumi.Input[str]`)
-          * `indexDaysMax` (`pulumi.Input[float]`)
+          * `indexDaysMax` (`pulumi.Input[str]`)
           * `indexPrefix` (`pulumi.Input[str]`)
-          * `timeout` (`pulumi.Input[float]`)
+          * `timeout` (`pulumi.Input[str]`)
           * `url` (`pulumi.Input[str]`)
 
         The **prometheus_user_config** object supports the following:
@@ -123,10 +123,10 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
           * `format` (`pulumi.Input[str]`)
           * `key` (`pulumi.Input[str]`)
           * `logline` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
+          * `port` (`pulumi.Input[str]`)
           * `sd` (`pulumi.Input[str]`)
           * `server` (`pulumi.Input[str]`)
-          * `tls` (`pulumi.Input[bool]`)
+          * `tls` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -187,15 +187,15 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
           * `datadogApiKey` (`pulumi.Input[str]`)
           * `disableConsumerStats` (`pulumi.Input[str]`)
-          * `maxPartitionContexts` (`pulumi.Input[float]`)
+          * `maxPartitionContexts` (`pulumi.Input[str]`)
           * `site` (`pulumi.Input[str]`)
 
         The **external_elasticsearch_logs_user_config** object supports the following:
 
           * `ca` (`pulumi.Input[str]`)
-          * `indexDaysMax` (`pulumi.Input[float]`)
+          * `indexDaysMax` (`pulumi.Input[str]`)
           * `indexPrefix` (`pulumi.Input[str]`)
-          * `timeout` (`pulumi.Input[float]`)
+          * `timeout` (`pulumi.Input[str]`)
           * `url` (`pulumi.Input[str]`)
 
         The **prometheus_user_config** object supports the following:
@@ -210,10 +210,10 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
           * `format` (`pulumi.Input[str]`)
           * `key` (`pulumi.Input[str]`)
           * `logline` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
+          * `port` (`pulumi.Input[str]`)
           * `sd` (`pulumi.Input[str]`)
           * `server` (`pulumi.Input[str]`)
-          * `tls` (`pulumi.Input[bool]`)
+          * `tls` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

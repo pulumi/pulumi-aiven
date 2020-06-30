@@ -37,6 +37,12 @@ namespace Pulumi.Aiven
     public partial class VpcPeeringConnection : Pulumi.CustomResource
     {
         /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Output("clientTimeout")]
+        public Output<Outputs.VpcPeeringConnectionClientTimeout?> ClientTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
         /// </summary>
         [Output("peerCloudAccount")]
@@ -125,6 +131,12 @@ namespace Pulumi.Aiven
     public sealed class VpcPeeringConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Input("clientTimeout")]
+        public Input<Inputs.VpcPeeringConnectionClientTimeoutArgs>? ClientTimeout { get; set; }
+
+        /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
         /// </summary>
         [Input("peerCloudAccount", required: true)]
@@ -155,6 +167,12 @@ namespace Pulumi.Aiven
 
     public sealed class VpcPeeringConnectionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom Terraform Client timeouts
+        /// </summary>
+        [Input("clientTimeout")]
+        public Input<Inputs.VpcPeeringConnectionClientTimeoutGetArgs>? ClientTimeout { get; set; }
+
         /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
         /// </summary>

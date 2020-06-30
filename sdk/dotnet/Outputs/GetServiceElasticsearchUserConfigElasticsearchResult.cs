@@ -15,25 +15,27 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? ActionAutoCreateIndexEnabled;
         public readonly string? ActionDestructiveRequiresName;
-        public readonly int? HttpMaxContentLength;
-        public readonly int? IndicesFielddataCacheSize;
-        public readonly int? IndicesMemoryIndexBufferSize;
-        public readonly int? IndicesQueriesCacheSize;
-        public readonly int? IndicesQueryBoolMaxClauseCount;
+        public readonly string? HttpMaxContentLength;
+        public readonly string? HttpMaxHeaderSize;
+        public readonly string? HttpMaxInitialLineLength;
+        public readonly string? IndicesFielddataCacheSize;
+        public readonly string? IndicesMemoryIndexBufferSize;
+        public readonly string? IndicesQueriesCacheSize;
+        public readonly string? IndicesQueryBoolMaxClauseCount;
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
-        public readonly int? ThreadPoolAnalyzeQueueSize;
-        public readonly int? ThreadPoolAnalyzeSize;
-        public readonly int? ThreadPoolForceMergeSize;
-        public readonly int? ThreadPoolGetQueueSize;
-        public readonly int? ThreadPoolGetSize;
-        public readonly int? ThreadPoolIndexQueueSize;
-        public readonly int? ThreadPoolIndexSize;
-        public readonly int? ThreadPoolSearchQueueSize;
-        public readonly int? ThreadPoolSearchSize;
-        public readonly int? ThreadPoolSearchThrottledQueueSize;
-        public readonly int? ThreadPoolSearchThrottledSize;
-        public readonly int? ThreadPoolWriteQueueSize;
-        public readonly int? ThreadPoolWriteSize;
+        public readonly string? ThreadPoolAnalyzeQueueSize;
+        public readonly string? ThreadPoolAnalyzeSize;
+        public readonly string? ThreadPoolForceMergeSize;
+        public readonly string? ThreadPoolGetQueueSize;
+        public readonly string? ThreadPoolGetSize;
+        public readonly string? ThreadPoolIndexQueueSize;
+        public readonly string? ThreadPoolIndexSize;
+        public readonly string? ThreadPoolSearchQueueSize;
+        public readonly string? ThreadPoolSearchSize;
+        public readonly string? ThreadPoolSearchThrottledQueueSize;
+        public readonly string? ThreadPoolSearchThrottledSize;
+        public readonly string? ThreadPoolWriteQueueSize;
+        public readonly string? ThreadPoolWriteSize;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigElasticsearchResult(
@@ -41,47 +43,53 @@ namespace Pulumi.Aiven.Outputs
 
             string? actionDestructiveRequiresName,
 
-            int? httpMaxContentLength,
+            string? httpMaxContentLength,
 
-            int? indicesFielddataCacheSize,
+            string? httpMaxHeaderSize,
 
-            int? indicesMemoryIndexBufferSize,
+            string? httpMaxInitialLineLength,
 
-            int? indicesQueriesCacheSize,
+            string? indicesFielddataCacheSize,
 
-            int? indicesQueryBoolMaxClauseCount,
+            string? indicesMemoryIndexBufferSize,
+
+            string? indicesQueriesCacheSize,
+
+            string? indicesQueryBoolMaxClauseCount,
 
             ImmutableArray<string> reindexRemoteWhitelists,
 
-            int? threadPoolAnalyzeQueueSize,
+            string? threadPoolAnalyzeQueueSize,
 
-            int? threadPoolAnalyzeSize,
+            string? threadPoolAnalyzeSize,
 
-            int? threadPoolForceMergeSize,
+            string? threadPoolForceMergeSize,
 
-            int? threadPoolGetQueueSize,
+            string? threadPoolGetQueueSize,
 
-            int? threadPoolGetSize,
+            string? threadPoolGetSize,
 
-            int? threadPoolIndexQueueSize,
+            string? threadPoolIndexQueueSize,
 
-            int? threadPoolIndexSize,
+            string? threadPoolIndexSize,
 
-            int? threadPoolSearchQueueSize,
+            string? threadPoolSearchQueueSize,
 
-            int? threadPoolSearchSize,
+            string? threadPoolSearchSize,
 
-            int? threadPoolSearchThrottledQueueSize,
+            string? threadPoolSearchThrottledQueueSize,
 
-            int? threadPoolSearchThrottledSize,
+            string? threadPoolSearchThrottledSize,
 
-            int? threadPoolWriteQueueSize,
+            string? threadPoolWriteQueueSize,
 
-            int? threadPoolWriteSize)
+            string? threadPoolWriteSize)
         {
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
             HttpMaxContentLength = httpMaxContentLength;
+            HttpMaxHeaderSize = httpMaxHeaderSize;
+            HttpMaxInitialLineLength = httpMaxInitialLineLength;
             IndicesFielddataCacheSize = indicesFielddataCacheSize;
             IndicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
             IndicesQueriesCacheSize = indicesQueriesCacheSize;

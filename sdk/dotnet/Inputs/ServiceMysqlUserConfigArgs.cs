@@ -19,10 +19,10 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdminUsername { get; set; }
 
         [Input("backupHour")]
-        public Input<int>? BackupHour { get; set; }
+        public Input<string>? BackupHour { get; set; }
 
         [Input("backupMinute")]
-        public Input<int>? BackupMinute { get; set; }
+        public Input<string>? BackupMinute { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;

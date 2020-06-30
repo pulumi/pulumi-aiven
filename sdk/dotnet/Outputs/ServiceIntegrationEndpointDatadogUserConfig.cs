@@ -15,7 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? DatadogApiKey;
         public readonly string? DisableConsumerStats;
-        public readonly int? MaxPartitionContexts;
+        public readonly string? MaxPartitionContexts;
         public readonly string? Site;
 
         [OutputConstructor]
@@ -24,7 +24,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? disableConsumerStats,
 
-            int? maxPartitionContexts,
+            string? maxPartitionContexts,
 
             string? site)
         {

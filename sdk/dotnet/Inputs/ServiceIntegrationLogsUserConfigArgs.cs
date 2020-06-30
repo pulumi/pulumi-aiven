@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationLogsUserConfigArgs : Pulumi.ResourceArgs
     {
         [Input("elasticsearchIndexDaysMax")]
-        public Input<int>? ElasticsearchIndexDaysMax { get; set; }
+        public Input<string>? ElasticsearchIndexDaysMax { get; set; }
 
         [Input("elasticsearchIndexPrefix")]
         public Input<string>? ElasticsearchIndexPrefix { get; set; }

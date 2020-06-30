@@ -46,8 +46,8 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaAclArgs : Pulumi.InvokeArgs
     {
-        [Input("permission")]
-        public string? Permission { get; set; }
+        [Input("permission", required: true)]
+        public string Permission { get; set; } = null!;
 
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? Permission;
+        public readonly string Permission;
         public readonly string Project;
         public readonly string ServiceName;
         public readonly string Topic;
@@ -84,7 +84,7 @@ namespace Pulumi.Aiven
         private GetKafkaAclResult(
             string id,
 
-            string? permission,
+            string permission,
 
             string project,
 

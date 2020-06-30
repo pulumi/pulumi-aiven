@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? AdminPassword;
         public readonly string? AdminUsername;
-        public readonly int? BackupHour;
-        public readonly int? BackupMinute;
+        public readonly string? BackupHour;
+        public readonly string? BackupMinute;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetServiceMysqlUserConfigMysqlResult? Mysql;
         public readonly string? MysqlVersion;
@@ -31,9 +31,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? adminUsername,
 
-            int? backupHour,
+            string? backupHour,
 
-            int? backupMinute,
+            string? backupMinute,
 
             ImmutableArray<string> ipFilters,
 

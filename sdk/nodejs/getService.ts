@@ -32,6 +32,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("aiven:index/getService:getService", {
         "cassandra": args.cassandra,
         "cassandraUserConfig": args.cassandraUserConfig,
+        "clientTimeout": args.clientTimeout,
         "cloudName": args.cloudName,
         "components": args.components,
         "elasticsearch": args.elasticsearch,
@@ -43,6 +44,8 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         "kafka": args.kafka,
         "kafkaConnect": args.kafkaConnect,
         "kafkaConnectUserConfig": args.kafkaConnectUserConfig,
+        "kafkaMirrormaker": args.kafkaMirrormaker,
+        "kafkaMirrormakerUserConfig": args.kafkaMirrormakerUserConfig,
         "kafkaUserConfig": args.kafkaUserConfig,
         "maintenanceWindowDow": args.maintenanceWindowDow,
         "maintenanceWindowTime": args.maintenanceWindowTime,
@@ -74,6 +77,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
 export interface GetServiceArgs {
     readonly cassandra?: inputs.GetServiceCassandra;
     readonly cassandraUserConfig?: inputs.GetServiceCassandraUserConfig;
+    readonly clientTimeout?: inputs.GetServiceClientTimeout;
     readonly cloudName?: string;
     readonly components?: inputs.GetServiceComponent[];
     readonly elasticsearch?: inputs.GetServiceElasticsearch;
@@ -85,6 +89,8 @@ export interface GetServiceArgs {
     readonly kafka?: inputs.GetServiceKafka;
     readonly kafkaConnect?: inputs.GetServiceKafkaConnect;
     readonly kafkaConnectUserConfig?: inputs.GetServiceKafkaConnectUserConfig;
+    readonly kafkaMirrormaker?: inputs.GetServiceKafkaMirrormaker;
+    readonly kafkaMirrormakerUserConfig?: inputs.GetServiceKafkaMirrormakerUserConfig;
     readonly kafkaUserConfig?: inputs.GetServiceKafkaUserConfig;
     readonly maintenanceWindowDow?: string;
     readonly maintenanceWindowTime?: string;
@@ -115,6 +121,7 @@ export interface GetServiceArgs {
 export interface GetServiceResult {
     readonly cassandra: outputs.GetServiceCassandra;
     readonly cassandraUserConfig?: outputs.GetServiceCassandraUserConfig;
+    readonly clientTimeout?: outputs.GetServiceClientTimeout;
     readonly cloudName?: string;
     readonly components: outputs.GetServiceComponent[];
     readonly elasticsearch: outputs.GetServiceElasticsearch;
@@ -130,6 +137,8 @@ export interface GetServiceResult {
     readonly kafka: outputs.GetServiceKafka;
     readonly kafkaConnect: outputs.GetServiceKafkaConnect;
     readonly kafkaConnectUserConfig?: outputs.GetServiceKafkaConnectUserConfig;
+    readonly kafkaMirrormaker: outputs.GetServiceKafkaMirrormaker;
+    readonly kafkaMirrormakerUserConfig?: outputs.GetServiceKafkaMirrormakerUserConfig;
     readonly kafkaUserConfig?: outputs.GetServiceKafkaUserConfig;
     readonly maintenanceWindowDow?: string;
     readonly maintenanceWindowTime?: string;

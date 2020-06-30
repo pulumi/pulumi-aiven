@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceElasticsearchUserConfigKibanaGetArgs : Pulumi.ResourceArgs
     {
         [Input("elasticsearchRequestTimeout")]
-        public Input<int>? ElasticsearchRequestTimeout { get; set; }
+        public Input<string>? ElasticsearchRequestTimeout { get; set; }
 
         [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        public Input<string>? Enabled { get; set; }
 
         [Input("maxOldSpaceSize")]
-        public Input<int>? MaxOldSpaceSize { get; set; }
+        public Input<string>? MaxOldSpaceSize { get; set; }
 
         public ServiceElasticsearchUserConfigKibanaGetArgs()
         {

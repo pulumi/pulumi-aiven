@@ -13,40 +13,52 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetServiceMysqlUserConfigMysqlArgs : Pulumi.InvokeArgs
     {
         [Input("connectTimeout")]
-        public int? ConnectTimeout { get; set; }
+        public string? ConnectTimeout { get; set; }
 
         [Input("defaultTimeZone")]
         public string? DefaultTimeZone { get; set; }
 
         [Input("groupConcatMaxLen")]
-        public int? GroupConcatMaxLen { get; set; }
+        public string? GroupConcatMaxLen { get; set; }
 
         [Input("informationSchemaStatsExpiry")]
-        public int? InformationSchemaStatsExpiry { get; set; }
+        public string? InformationSchemaStatsExpiry { get; set; }
 
         [Input("innodbFtMinTokenSize")]
-        public int? InnodbFtMinTokenSize { get; set; }
+        public string? InnodbFtMinTokenSize { get; set; }
 
         [Input("innodbFtServerStopwordTable")]
         public string? InnodbFtServerStopwordTable { get; set; }
 
         [Input("innodbLockWaitTimeout")]
-        public int? InnodbLockWaitTimeout { get; set; }
+        public string? InnodbLockWaitTimeout { get; set; }
+
+        [Input("innodbLogBufferSize")]
+        public string? InnodbLogBufferSize { get; set; }
 
         [Input("innodbOnlineAlterLogMaxSize")]
-        public int? InnodbOnlineAlterLogMaxSize { get; set; }
+        public string? InnodbOnlineAlterLogMaxSize { get; set; }
 
         [Input("innodbRollbackOnTimeout")]
         public string? InnodbRollbackOnTimeout { get; set; }
 
+        [Input("interactiveTimeout")]
+        public string? InteractiveTimeout { get; set; }
+
         [Input("maxAllowedPacket")]
-        public int? MaxAllowedPacket { get; set; }
+        public string? MaxAllowedPacket { get; set; }
+
+        [Input("maxHeapTableSize")]
+        public string? MaxHeapTableSize { get; set; }
 
         [Input("netReadTimeout")]
-        public int? NetReadTimeout { get; set; }
+        public string? NetReadTimeout { get; set; }
 
         [Input("netWriteTimeout")]
-        public int? NetWriteTimeout { get; set; }
+        public string? NetWriteTimeout { get; set; }
+
+        [Input("sortBufferSize")]
+        public string? SortBufferSize { get; set; }
 
         [Input("sqlMode")]
         public string? SqlMode { get; set; }
@@ -54,8 +66,11 @@ namespace Pulumi.Aiven.Inputs
         [Input("sqlRequirePrimaryKey")]
         public string? SqlRequirePrimaryKey { get; set; }
 
+        [Input("tmpTableSize")]
+        public string? TmpTableSize { get; set; }
+
         [Input("waitTimeout")]
-        public int? WaitTimeout { get; set; }
+        public string? WaitTimeout { get; set; }
 
         public GetServiceMysqlUserConfigMysqlArgs()
         {

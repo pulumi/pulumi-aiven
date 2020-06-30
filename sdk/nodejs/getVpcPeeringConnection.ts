@@ -31,6 +31,7 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", {
+        "clientTimeout": args.clientTimeout,
         "peerCloudAccount": args.peerCloudAccount,
         "peerRegion": args.peerRegion,
         "peerVpc": args.peerVpc,
@@ -45,6 +46,7 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
  * A collection of arguments for invoking getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionArgs {
+    readonly clientTimeout?: inputs.GetVpcPeeringConnectionClientTimeout;
     readonly peerCloudAccount: string;
     readonly peerRegion?: string;
     readonly peerVpc: string;
@@ -58,6 +60,7 @@ export interface GetVpcPeeringConnectionArgs {
  * A collection of values returned by getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionResult {
+    readonly clientTimeout?: outputs.GetVpcPeeringConnectionClientTimeout;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
