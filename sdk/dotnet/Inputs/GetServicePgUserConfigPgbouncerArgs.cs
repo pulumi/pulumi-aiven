@@ -12,8 +12,16 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetServicePgUserConfigPgbouncerArgs : Pulumi.InvokeArgs
     {
+        [Input("ignoreStartupParameters")]
+        private List<string>? _ignoreStartupParameters;
+        public List<string> IgnoreStartupParameters
+        {
+            get => _ignoreStartupParameters ?? (_ignoreStartupParameters = new List<string>());
+            set => _ignoreStartupParameters = value;
+        }
+
         [Input("serverResetQueryAlways")]
-        public bool? ServerResetQueryAlways { get; set; }
+        public string? ServerResetQueryAlways { get; set; }
 
         public GetServicePgUserConfigPgbouncerArgs()
         {

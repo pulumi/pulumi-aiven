@@ -13,10 +13,13 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, cleanup_policy=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
+    def __init__(__self__, cleanup_policy=None, client_timeout=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
         if cleanup_policy and not isinstance(cleanup_policy, str):
             raise TypeError("Expected argument 'cleanup_policy' to be a str")
         __self__.cleanup_policy = cleanup_policy
+        if client_timeout and not isinstance(client_timeout, dict):
+            raise TypeError("Expected argument 'client_timeout' to be a dict")
+        __self__.client_timeout = client_timeout
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -57,6 +60,7 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             yield self
         return GetKafkaTopicResult(
             cleanup_policy=self.cleanup_policy,
+            client_timeout=self.client_timeout,
             id=self.id,
             minimum_in_sync_replicas=self.minimum_in_sync_replicas,
             partitions=self.partitions,
@@ -68,7 +72,7 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             termination_protection=self.termination_protection,
             topic_name=self.topic_name)
 
-def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions=None,project=None,replication=None,retention_bytes=None,retention_hours=None,service_name=None,termination_protection=None,topic_name=None,opts=None):
+def get_kafka_topic(cleanup_policy=None,client_timeout=None,minimum_in_sync_replicas=None,partitions=None,project=None,replication=None,retention_bytes=None,retention_hours=None,service_name=None,termination_protection=None,topic_name=None,opts=None):
     """
     ## Example Usage
 
@@ -82,11 +86,20 @@ def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions
         service_name=data[".Service"]["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
+
+
+
+
+    The **client_timeout** object supports the following:
+
+      * `create` (`str`)
+      * `read` (`str`)
     """
     __args__ = dict()
 
 
     __args__['cleanupPolicy'] = cleanup_policy
+    __args__['clientTimeout'] = client_timeout
     __args__['minimumInSyncReplicas'] = minimum_in_sync_replicas
     __args__['partitions'] = partitions
     __args__['project'] = project
@@ -104,6 +117,7 @@ def get_kafka_topic(cleanup_policy=None,minimum_in_sync_replicas=None,partitions
 
     return AwaitableGetKafkaTopicResult(
         cleanup_policy=__ret__.get('cleanupPolicy'),
+        client_timeout=__ret__.get('clientTimeout'),
         id=__ret__.get('id'),
         minimum_in_sync_replicas=__ret__.get('minimumInSyncReplicas'),
         partitions=__ret__.get('partitions'),

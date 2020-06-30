@@ -13,11 +13,16 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServicePgUserConfigPgbouncer
     {
-        public readonly bool? ServerResetQueryAlways;
+        public readonly ImmutableArray<string> IgnoreStartupParameters;
+        public readonly string? ServerResetQueryAlways;
 
         [OutputConstructor]
-        private ServicePgUserConfigPgbouncer(bool? serverResetQueryAlways)
+        private ServicePgUserConfigPgbouncer(
+            ImmutableArray<string> ignoreStartupParameters,
+
+            string? serverResetQueryAlways)
         {
+            IgnoreStartupParameters = ignoreStartupParameters;
             ServerResetQueryAlways = serverResetQueryAlways;
         }
     }

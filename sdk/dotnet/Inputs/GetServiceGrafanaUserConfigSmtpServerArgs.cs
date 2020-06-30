@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public string? Password { get; set; }
 
         [Input("port")]
-        public int? Port { get; set; }
+        public string? Port { get; set; }
 
         [Input("skipVerify")]
         public string? SkipVerify { get; set; }

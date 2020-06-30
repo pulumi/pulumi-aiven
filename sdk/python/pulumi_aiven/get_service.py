@@ -13,13 +13,16 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def __init__(__self__, cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         if cassandra and not isinstance(cassandra, dict):
             raise TypeError("Expected argument 'cassandra' to be a dict")
         __self__.cassandra = cassandra
         if cassandra_user_config and not isinstance(cassandra_user_config, dict):
             raise TypeError("Expected argument 'cassandra_user_config' to be a dict")
         __self__.cassandra_user_config = cassandra_user_config
+        if client_timeout and not isinstance(client_timeout, dict):
+            raise TypeError("Expected argument 'client_timeout' to be a dict")
+        __self__.client_timeout = client_timeout
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         __self__.cloud_name = cloud_name
@@ -59,6 +62,12 @@ class GetServiceResult:
         if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
             raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
         __self__.kafka_connect_user_config = kafka_connect_user_config
+        if kafka_mirrormaker and not isinstance(kafka_mirrormaker, dict):
+            raise TypeError("Expected argument 'kafka_mirrormaker' to be a dict")
+        __self__.kafka_mirrormaker = kafka_mirrormaker
+        if kafka_mirrormaker_user_config and not isinstance(kafka_mirrormaker_user_config, dict):
+            raise TypeError("Expected argument 'kafka_mirrormaker_user_config' to be a dict")
+        __self__.kafka_mirrormaker_user_config = kafka_mirrormaker_user_config
         if kafka_user_config and not isinstance(kafka_user_config, dict):
             raise TypeError("Expected argument 'kafka_user_config' to be a dict")
         __self__.kafka_user_config = kafka_user_config
@@ -133,6 +142,7 @@ class AwaitableGetServiceResult(GetServiceResult):
         return GetServiceResult(
             cassandra=self.cassandra,
             cassandra_user_config=self.cassandra_user_config,
+            client_timeout=self.client_timeout,
             cloud_name=self.cloud_name,
             components=self.components,
             elasticsearch=self.elasticsearch,
@@ -145,6 +155,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             kafka=self.kafka,
             kafka_connect=self.kafka_connect,
             kafka_connect_user_config=self.kafka_connect_user_config,
+            kafka_mirrormaker=self.kafka_mirrormaker,
+            kafka_mirrormaker_user_config=self.kafka_mirrormaker_user_config,
             kafka_user_config=self.kafka_user_config,
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
@@ -168,7 +180,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             state=self.state,
             termination_protection=self.termination_protection)
 
-def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,components=None,elasticsearch=None,elasticsearch_user_config=None,grafana=None,grafana_user_config=None,influxdb=None,influxdb_user_config=None,kafka=None,kafka_connect=None,kafka_connect_user_config=None,kafka_user_config=None,maintenance_window_dow=None,maintenance_window_time=None,mysql=None,mysql_user_config=None,pg=None,pg_user_config=None,plan=None,project=None,project_vpc_id=None,redis=None,redis_user_config=None,service_host=None,service_integrations=None,service_name=None,service_password=None,service_port=None,service_type=None,service_uri=None,service_username=None,state=None,termination_protection=None,opts=None):
+def get_service(cassandra=None,cassandra_user_config=None,client_timeout=None,cloud_name=None,components=None,elasticsearch=None,elasticsearch_user_config=None,grafana=None,grafana_user_config=None,influxdb=None,influxdb_user_config=None,kafka=None,kafka_connect=None,kafka_connect_user_config=None,kafka_mirrormaker=None,kafka_mirrormaker_user_config=None,kafka_user_config=None,maintenance_window_dow=None,maintenance_window_time=None,mysql=None,mysql_user_config=None,pg=None,pg_user_config=None,plan=None,project=None,project_vpc_id=None,redis=None,redis_user_config=None,service_host=None,service_integrations=None,service_name=None,service_password=None,service_port=None,service_type=None,service_uri=None,service_username=None,state=None,termination_protection=None,opts=None):
     """
     ## Example Usage
 
@@ -197,6 +209,11 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
 
       * `serviceToForkFrom` (`str`)
 
+    The **client_timeout** object supports the following:
+
+      * `create` (`str`)
+      * `update` (`str`)
+
     The **components** object supports the following:
 
       * `component` (`str`)
@@ -218,38 +235,40 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `elasticsearch` (`dict`)
         * `actionAutoCreateIndexEnabled` (`str`)
         * `actionDestructiveRequiresName` (`str`)
-        * `httpMaxContentLength` (`float`)
-        * `indicesFielddataCacheSize` (`float`)
-        * `indicesMemoryIndexBufferSize` (`float`)
-        * `indicesQueriesCacheSize` (`float`)
-        * `indicesQueryBoolMaxClauseCount` (`float`)
+        * `httpMaxContentLength` (`str`)
+        * `httpMaxHeaderSize` (`str`)
+        * `httpMaxInitialLineLength` (`str`)
+        * `indicesFielddataCacheSize` (`str`)
+        * `indicesMemoryIndexBufferSize` (`str`)
+        * `indicesQueriesCacheSize` (`str`)
+        * `indicesQueryBoolMaxClauseCount` (`str`)
         * `reindexRemoteWhitelists` (`list`)
-        * `threadPoolAnalyzeQueueSize` (`float`)
-        * `threadPoolAnalyzeSize` (`float`)
-        * `threadPoolForceMergeSize` (`float`)
-        * `threadPoolGetQueueSize` (`float`)
-        * `threadPoolGetSize` (`float`)
-        * `threadPoolIndexQueueSize` (`float`)
-        * `threadPoolIndexSize` (`float`)
-        * `threadPoolSearchQueueSize` (`float`)
-        * `threadPoolSearchSize` (`float`)
-        * `threadPoolSearchThrottledQueueSize` (`float`)
-        * `threadPoolSearchThrottledSize` (`float`)
-        * `threadPoolWriteQueueSize` (`float`)
-        * `threadPoolWriteSize` (`float`)
+        * `threadPoolAnalyzeQueueSize` (`str`)
+        * `threadPoolAnalyzeSize` (`str`)
+        * `threadPoolForceMergeSize` (`str`)
+        * `threadPoolGetQueueSize` (`str`)
+        * `threadPoolGetSize` (`str`)
+        * `threadPoolIndexQueueSize` (`str`)
+        * `threadPoolIndexSize` (`str`)
+        * `threadPoolSearchQueueSize` (`str`)
+        * `threadPoolSearchSize` (`str`)
+        * `threadPoolSearchThrottledQueueSize` (`str`)
+        * `threadPoolSearchThrottledSize` (`str`)
+        * `threadPoolWriteQueueSize` (`str`)
+        * `threadPoolWriteSize` (`str`)
 
       * `elasticsearchVersion` (`str`)
       * `indexPatterns` (`list`)
-        * `maxIndexCount` (`float`)
+        * `maxIndexCount` (`str`)
         * `pattern` (`str`)
 
       * `ipFilters` (`list`)
       * `kibana` (`dict`)
-        * `elasticsearchRequestTimeout` (`float`)
-        * `enabled` (`bool`)
-        * `maxOldSpaceSize` (`float`)
+        * `elasticsearchRequestTimeout` (`str`)
+        * `enabled` (`str`)
+        * `maxOldSpaceSize` (`str`)
 
-      * `maxIndexCount` (`float`)
+      * `maxIndexCount` (`str`)
       * `privateAccess` (`dict`)
         * `elasticsearch` (`str`)
         * `kibana` (`str`)
@@ -269,6 +288,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `alertingErrorOrTimeout` (`str`)
       * `alertingNodataOrNullvalues` (`str`)
       * `allowEmbedding` (`str`)
+      * `authBasicEnabled` (`str`)
       * `authGenericOauth` (`dict`)
         * `allowSignUp` (`str`)
         * `allowedDomains` (`list`)
@@ -305,9 +325,9 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
 
       * `cookieSamesite` (`str`)
       * `customDomain` (`str`)
-      * `dashboardsVersionsToKeep` (`float`)
+      * `dashboardsVersionsToKeep` (`str`)
       * `dataproxySendUserHeader` (`str`)
-      * `dataproxyTimeout` (`float`)
+      * `dataproxyTimeout` (`str`)
       * `disableGravatar` (`str`)
       * `editorsCanAdmin` (`str`)
       * `externalImageStorage` (`dict`)
@@ -330,7 +350,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `fromName` (`str`)
         * `host` (`str`)
         * `password` (`str`)
-        * `port` (`float`)
+        * `port` (`str`)
         * `skipVerify` (`str`)
         * `username` (`str`)
 
@@ -367,8 +387,8 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `ipFilters` (`list`)
       * `kafka_connect` (`dict`)
         * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollRecords` (`float`)
-        * `offsetFlushIntervalMs` (`float`)
+        * `consumerMaxPollRecords` (`str`)
+        * `offsetFlushIntervalMs` (`str`)
 
       * `privateAccess` (`dict`)
         * `kafka_connect` (`str`)
@@ -378,6 +398,15 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `kafka_connect` (`str`)
         * `prometheus` (`str`)
 
+    The **kafka_mirrormaker_user_config** object supports the following:
+
+      * `ipFilters` (`list`)
+      * `kafka_mirrormaker` (`dict`)
+        * `refreshGroupsEnabled` (`str`)
+        * `refreshGroupsIntervalSeconds` (`str`)
+        * `refreshTopicsEnabled` (`str`)
+        * `refreshTopicsIntervalSeconds` (`str`)
+
     The **kafka_user_config** object supports the following:
 
       * `customDomain` (`str`)
@@ -385,46 +414,46 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `kafka` (`dict`)
         * `autoCreateTopicsEnable` (`str`)
         * `compressionType` (`str`)
-        * `connectionsMaxIdleMs` (`float`)
-        * `defaultReplicationFactor` (`float`)
-        * `groupMaxSessionTimeoutMs` (`float`)
-        * `groupMinSessionTimeoutMs` (`float`)
-        * `logCleanerMaxCompactionLagMs` (`float`)
-        * `logCleanerMinCleanableRatio` (`float`)
-        * `logCleanerMinCompactionLagMs` (`float`)
+        * `connectionsMaxIdleMs` (`str`)
+        * `defaultReplicationFactor` (`str`)
+        * `groupMaxSessionTimeoutMs` (`str`)
+        * `groupMinSessionTimeoutMs` (`str`)
+        * `logCleanerMaxCompactionLagMs` (`str`)
+        * `logCleanerMinCleanableRatio` (`str`)
+        * `logCleanerMinCompactionLagMs` (`str`)
         * `logCleanupPolicy` (`str`)
-        * `logMessageTimestampDifferenceMaxMs` (`float`)
+        * `logMessageTimestampDifferenceMaxMs` (`str`)
         * `logMessageTimestampType` (`str`)
-        * `logRetentionBytes` (`float`)
-        * `logRetentionHours` (`float`)
-        * `logSegmentBytes` (`float`)
-        * `maxConnectionsPerIp` (`float`)
-        * `messageMaxBytes` (`float`)
-        * `numPartitions` (`float`)
-        * `offsetsRetentionMinutes` (`float`)
-        * `producerPurgatoryPurgeIntervalRequests` (`float`)
-        * `replicaFetchMaxBytes` (`float`)
-        * `replicaFetchResponseMaxBytes` (`float`)
-        * `socketRequestMaxBytes` (`float`)
+        * `logRetentionBytes` (`str`)
+        * `logRetentionHours` (`str`)
+        * `logSegmentBytes` (`str`)
+        * `maxConnectionsPerIp` (`str`)
+        * `messageMaxBytes` (`str`)
+        * `numPartitions` (`str`)
+        * `offsetsRetentionMinutes` (`str`)
+        * `producerPurgatoryPurgeIntervalRequests` (`str`)
+        * `replicaFetchMaxBytes` (`str`)
+        * `replicaFetchResponseMaxBytes` (`str`)
+        * `socketRequestMaxBytes` (`str`)
 
       * `kafkaAuthenticationMethods` (`dict`)
-        * `certificate` (`bool`)
-        * `sasl` (`bool`)
+        * `certificate` (`str`)
+        * `sasl` (`str`)
 
-      * `kafka_connect` (`bool`)
+      * `kafka_connect` (`str`)
       * `kafkaConnectConfig` (`dict`)
         * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollRecords` (`float`)
-        * `offsetFlushIntervalMs` (`float`)
+        * `consumerMaxPollRecords` (`str`)
+        * `offsetFlushIntervalMs` (`str`)
 
-      * `kafkaRest` (`bool`)
+      * `kafkaRest` (`str`)
       * `kafkaRestConfig` (`dict`)
-        * `consumerEnableAutoCommit` (`bool`)
-        * `consumerRequestMaxBytes` (`float`)
-        * `consumerRequestTimeoutMs` (`float`)
+        * `consumerEnableAutoCommit` (`str`)
+        * `consumerRequestMaxBytes` (`str`)
+        * `consumerRequestTimeoutMs` (`str`)
         * `producerAcks` (`str`)
-        * `producerLingerMs` (`float`)
-        * `simpleconsumerPoolSizeMax` (`float`)
+        * `producerLingerMs` (`str`)
+        * `simpleconsumerPoolSizeMax` (`str`)
 
       * `kafkaVersion` (`str`)
       * `privateAccess` (`dict`)
@@ -437,31 +466,36 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `prometheus` (`str`)
         * `schemaRegistry` (`str`)
 
-      * `schemaRegistry` (`bool`)
+      * `schemaRegistry` (`str`)
 
     The **mysql_user_config** object supports the following:
 
       * `adminPassword` (`str`)
       * `adminUsername` (`str`)
-      * `backupHour` (`float`)
-      * `backupMinute` (`float`)
+      * `backupHour` (`str`)
+      * `backupMinute` (`str`)
       * `ipFilters` (`list`)
       * `mysql` (`dict`)
-        * `connectTimeout` (`float`)
+        * `connectTimeout` (`str`)
         * `defaultTimeZone` (`str`)
-        * `groupConcatMaxLen` (`float`)
-        * `informationSchemaStatsExpiry` (`float`)
-        * `innodbFtMinTokenSize` (`float`)
+        * `groupConcatMaxLen` (`str`)
+        * `informationSchemaStatsExpiry` (`str`)
+        * `innodbFtMinTokenSize` (`str`)
         * `innodbFtServerStopwordTable` (`str`)
-        * `innodbLockWaitTimeout` (`float`)
-        * `innodbOnlineAlterLogMaxSize` (`float`)
+        * `innodbLockWaitTimeout` (`str`)
+        * `innodbLogBufferSize` (`str`)
+        * `innodbOnlineAlterLogMaxSize` (`str`)
         * `innodbRollbackOnTimeout` (`str`)
-        * `maxAllowedPacket` (`float`)
-        * `netReadTimeout` (`float`)
-        * `netWriteTimeout` (`float`)
+        * `interactiveTimeout` (`str`)
+        * `maxAllowedPacket` (`str`)
+        * `maxHeapTableSize` (`str`)
+        * `netReadTimeout` (`str`)
+        * `netWriteTimeout` (`str`)
+        * `sortBufferSize` (`str`)
         * `sqlMode` (`str`)
         * `sqlRequirePrimaryKey` (`str`)
-        * `waitTimeout` (`float`)
+        * `tmpTableSize` (`str`)
+        * `waitTimeout` (`str`)
 
       * `mysqlVersion` (`str`)
       * `privateAccess` (`dict`)
@@ -490,48 +524,52 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
 
       * `adminPassword` (`str`)
       * `adminUsername` (`str`)
-      * `backupHour` (`float`)
-      * `backupMinute` (`float`)
+      * `backupHour` (`str`)
+      * `backupMinute` (`str`)
       * `ipFilters` (`list`)
       * `pg` (`dict`)
-        * `autovacuumAnalyzeScaleFactor` (`float`)
-        * `autovacuumAnalyzeThreshold` (`float`)
-        * `autovacuumMaxWorkers` (`float`)
-        * `autovacuumNaptime` (`float`)
-        * `autovacuumVacuumCostDelay` (`float`)
-        * `autovacuumVacuumCostLimit` (`float`)
-        * `autovacuumVacuumScaleFactor` (`float`)
-        * `autovacuumVacuumThreshold` (`float`)
-        * `deadlockTimeout` (`float`)
-        * `idleInTransactionSessionTimeout` (`float`)
+        * `autovacuumAnalyzeScaleFactor` (`str`)
+        * `autovacuumAnalyzeThreshold` (`str`)
+        * `autovacuumFreezeMaxAge` (`str`)
+        * `autovacuumMaxWorkers` (`str`)
+        * `autovacuumNaptime` (`str`)
+        * `autovacuumVacuumCostDelay` (`str`)
+        * `autovacuumVacuumCostLimit` (`str`)
+        * `autovacuumVacuumScaleFactor` (`str`)
+        * `autovacuumVacuumThreshold` (`str`)
+        * `deadlockTimeout` (`str`)
+        * `idleInTransactionSessionTimeout` (`str`)
         * `jit` (`str`)
-        * `logAutovacuumMinDuration` (`float`)
+        * `logAutovacuumMinDuration` (`str`)
         * `logErrorVerbosity` (`str`)
-        * `logMinDurationStatement` (`float`)
-        * `maxLocksPerTransaction` (`float`)
-        * `maxParallelWorkers` (`float`)
-        * `maxParallelWorkersPerGather` (`float`)
-        * `maxPredLocksPerTransaction` (`float`)
-        * `maxPreparedTransactions` (`float`)
-        * `maxStackDepth` (`float`)
-        * `maxStandbyArchiveDelay` (`float`)
-        * `maxStandbyStreamingDelay` (`float`)
-        * `maxWorkerProcesses` (`float`)
+        * `logMinDurationStatement` (`str`)
+        * `maxLocksPerTransaction` (`str`)
+        * `maxParallelWorkers` (`str`)
+        * `maxParallelWorkersPerGather` (`str`)
+        * `maxPredLocksPerTransaction` (`str`)
+        * `maxPreparedTransactions` (`str`)
+        * `maxStackDepth` (`str`)
+        * `maxStandbyArchiveDelay` (`str`)
+        * `maxStandbyStreamingDelay` (`str`)
+        * `maxWorkerProcesses` (`str`)
         * `pgStatStatementsTrack` (`str`)
-        * `tempFileLimit` (`float`)
+        * `tempFileLimit` (`str`)
         * `timezone` (`str`)
-        * `trackActivityQuerySize` (`float`)
+        * `trackActivityQuerySize` (`str`)
+        * `trackCommitTimestamp` (`str`)
         * `trackFunctions` (`str`)
-        * `walWriterDelay` (`float`)
+        * `walSenderTimeout` (`str`)
+        * `walWriterDelay` (`str`)
 
       * `pgReadReplica` (`str`)
       * `pgServiceToForkFrom` (`str`)
       * `pgVersion` (`str`)
       * `pgbouncer` (`dict`)
-        * `serverResetQueryAlways` (`bool`)
+        * `ignoreStartupParameters` (`list`)
+        * `serverResetQueryAlways` (`str`)
 
       * `pglookout` (`dict`)
-        * `maxFailoverReplicationTimeLag` (`float`)
+        * `maxFailoverReplicationTimeLag` (`str`)
 
       * `privateAccess` (`dict`)
         * `pg` (`str`)
@@ -545,8 +583,9 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
 
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
+      * `synchronousReplication` (`str`)
       * `timescaledb` (`dict`)
-        * `maxBackgroundWorkers` (`float`)
+        * `maxBackgroundWorkers` (`str`)
 
       * `variant` (`str`)
 
@@ -556,8 +595,8 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
       * `migration` (`dict`)
         * `host` (`str`)
         * `password` (`str`)
-        * `port` (`float`)
-        * `ssl` (`bool`)
+        * `port` (`str`)
+        * `ssl` (`str`)
         * `username` (`str`)
 
       * `privateAccess` (`dict`)
@@ -568,12 +607,12 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         * `prometheus` (`str`)
         * `redis` (`str`)
 
-      * `redisLfuDecayTime` (`float`)
-      * `redisLfuLogFactor` (`float`)
+      * `redisLfuDecayTime` (`str`)
+      * `redisLfuLogFactor` (`str`)
       * `redisMaxmemoryPolicy` (`str`)
       * `redisNotifyKeyspaceEvents` (`str`)
-      * `redisSsl` (`bool`)
-      * `redisTimeout` (`float`)
+      * `redisSsl` (`str`)
+      * `redisTimeout` (`str`)
 
     The **service_integrations** object supports the following:
 
@@ -585,6 +624,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
 
     __args__['cassandra'] = cassandra
     __args__['cassandraUserConfig'] = cassandra_user_config
+    __args__['clientTimeout'] = client_timeout
     __args__['cloudName'] = cloud_name
     __args__['components'] = components
     __args__['elasticsearch'] = elasticsearch
@@ -596,6 +636,8 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     __args__['kafka'] = kafka
     __args__['kafkaConnect'] = kafka_connect
     __args__['kafkaConnectUserConfig'] = kafka_connect_user_config
+    __args__['kafkaMirrormaker'] = kafka_mirrormaker
+    __args__['kafkaMirrormakerUserConfig'] = kafka_mirrormaker_user_config
     __args__['kafkaUserConfig'] = kafka_user_config
     __args__['maintenanceWindowDow'] = maintenance_window_dow
     __args__['maintenanceWindowTime'] = maintenance_window_time
@@ -627,6 +669,7 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
     return AwaitableGetServiceResult(
         cassandra=__ret__.get('cassandra'),
         cassandra_user_config=__ret__.get('cassandraUserConfig'),
+        client_timeout=__ret__.get('clientTimeout'),
         cloud_name=__ret__.get('cloudName'),
         components=__ret__.get('components'),
         elasticsearch=__ret__.get('elasticsearch'),
@@ -639,6 +682,8 @@ def get_service(cassandra=None,cassandra_user_config=None,cloud_name=None,compon
         kafka=__ret__.get('kafka'),
         kafka_connect=__ret__.get('kafkaConnect'),
         kafka_connect_user_config=__ret__.get('kafkaConnectUserConfig'),
+        kafka_mirrormaker=__ret__.get('kafkaMirrormaker'),
+        kafka_mirrormaker_user_config=__ret__.get('kafkaMirrormakerUserConfig'),
         kafka_user_config=__ret__.get('kafkaUserConfig'),
         maintenance_window_dow=__ret__.get('maintenanceWindowDow'),
         maintenance_window_time=__ret__.get('maintenanceWindowTime'),

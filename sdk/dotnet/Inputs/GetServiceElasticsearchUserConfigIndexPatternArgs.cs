@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetServiceElasticsearchUserConfigIndexPatternArgs : Pulumi.InvokeArgs
     {
         [Input("maxIndexCount")]
-        public int? MaxIndexCount { get; set; }
+        public string? MaxIndexCount { get; set; }
 
         [Input("pattern")]
         public string? Pattern { get; set; }

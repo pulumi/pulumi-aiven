@@ -129,6 +129,8 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_account_team":                 {Tok: makeResource(mainMod, "AccountTeam")},
 			"aiven_account_team_member":          {Tok: makeResource(mainMod, "AccountTeamMember")},
 			"aiven_account_team_project":         {Tok: makeResource(mainMod, "AccountTeamProject")},
+			"aiven_account_authentication":       {Tok: makeResource(mainMod, "AccountAuthentication")},
+			"aiven_mirrormaker_replication_flow": {Tok: makeResource(mainMod, "MirrorMakerReplicationFlow")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_connection_pool":        {Tok: makeDataSource(mainMod, "getConnectionPool")},
@@ -169,6 +171,9 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_account_team":                 {Tok: makeDataSource(mainMod, "getAccountTeam")},
 			"aiven_account_team_member":          {Tok: makeDataSource(mainMod, "getAccountTeamMember")},
 			"aiven_account_team_project":         {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
+			"aiven_account_authentication":       {Tok: makeDataSource(mainMod, "getAccountAuthentication")},
+			"aiven_mirrormaker_replication_flow": {Tok: makeDataSource(mainMod, "getMirrorMakerReplicationFlow")},
+			"aiven_service_integration":          {Tok: makeDataSource(mainMod, "getServiceIntegration")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

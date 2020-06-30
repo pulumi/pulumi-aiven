@@ -13,98 +13,108 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServicePgUserConfigPgResult
     {
-        public readonly double? AutovacuumAnalyzeScaleFactor;
-        public readonly int? AutovacuumAnalyzeThreshold;
-        public readonly int? AutovacuumMaxWorkers;
-        public readonly int? AutovacuumNaptime;
-        public readonly int? AutovacuumVacuumCostDelay;
-        public readonly int? AutovacuumVacuumCostLimit;
-        public readonly double? AutovacuumVacuumScaleFactor;
-        public readonly int? AutovacuumVacuumThreshold;
-        public readonly int? DeadlockTimeout;
-        public readonly int? IdleInTransactionSessionTimeout;
+        public readonly string? AutovacuumAnalyzeScaleFactor;
+        public readonly string? AutovacuumAnalyzeThreshold;
+        public readonly string? AutovacuumFreezeMaxAge;
+        public readonly string? AutovacuumMaxWorkers;
+        public readonly string? AutovacuumNaptime;
+        public readonly string? AutovacuumVacuumCostDelay;
+        public readonly string? AutovacuumVacuumCostLimit;
+        public readonly string? AutovacuumVacuumScaleFactor;
+        public readonly string? AutovacuumVacuumThreshold;
+        public readonly string? DeadlockTimeout;
+        public readonly string? IdleInTransactionSessionTimeout;
         public readonly string? Jit;
-        public readonly int? LogAutovacuumMinDuration;
+        public readonly string? LogAutovacuumMinDuration;
         public readonly string? LogErrorVerbosity;
-        public readonly int? LogMinDurationStatement;
-        public readonly int? MaxLocksPerTransaction;
-        public readonly int? MaxParallelWorkers;
-        public readonly int? MaxParallelWorkersPerGather;
-        public readonly int? MaxPredLocksPerTransaction;
-        public readonly int? MaxPreparedTransactions;
-        public readonly int? MaxStackDepth;
-        public readonly int? MaxStandbyArchiveDelay;
-        public readonly int? MaxStandbyStreamingDelay;
-        public readonly int? MaxWorkerProcesses;
+        public readonly string? LogMinDurationStatement;
+        public readonly string? MaxLocksPerTransaction;
+        public readonly string? MaxParallelWorkers;
+        public readonly string? MaxParallelWorkersPerGather;
+        public readonly string? MaxPredLocksPerTransaction;
+        public readonly string? MaxPreparedTransactions;
+        public readonly string? MaxStackDepth;
+        public readonly string? MaxStandbyArchiveDelay;
+        public readonly string? MaxStandbyStreamingDelay;
+        public readonly string? MaxWorkerProcesses;
         public readonly string? PgStatStatementsTrack;
-        public readonly int? TempFileLimit;
+        public readonly string? TempFileLimit;
         public readonly string? Timezone;
-        public readonly int? TrackActivityQuerySize;
+        public readonly string? TrackActivityQuerySize;
+        public readonly string? TrackCommitTimestamp;
         public readonly string? TrackFunctions;
-        public readonly int? WalWriterDelay;
+        public readonly string? WalSenderTimeout;
+        public readonly string? WalWriterDelay;
 
         [OutputConstructor]
         private GetServicePgUserConfigPgResult(
-            double? autovacuumAnalyzeScaleFactor,
+            string? autovacuumAnalyzeScaleFactor,
 
-            int? autovacuumAnalyzeThreshold,
+            string? autovacuumAnalyzeThreshold,
 
-            int? autovacuumMaxWorkers,
+            string? autovacuumFreezeMaxAge,
 
-            int? autovacuumNaptime,
+            string? autovacuumMaxWorkers,
 
-            int? autovacuumVacuumCostDelay,
+            string? autovacuumNaptime,
 
-            int? autovacuumVacuumCostLimit,
+            string? autovacuumVacuumCostDelay,
 
-            double? autovacuumVacuumScaleFactor,
+            string? autovacuumVacuumCostLimit,
 
-            int? autovacuumVacuumThreshold,
+            string? autovacuumVacuumScaleFactor,
 
-            int? deadlockTimeout,
+            string? autovacuumVacuumThreshold,
 
-            int? idleInTransactionSessionTimeout,
+            string? deadlockTimeout,
+
+            string? idleInTransactionSessionTimeout,
 
             string? jit,
 
-            int? logAutovacuumMinDuration,
+            string? logAutovacuumMinDuration,
 
             string? logErrorVerbosity,
 
-            int? logMinDurationStatement,
+            string? logMinDurationStatement,
 
-            int? maxLocksPerTransaction,
+            string? maxLocksPerTransaction,
 
-            int? maxParallelWorkers,
+            string? maxParallelWorkers,
 
-            int? maxParallelWorkersPerGather,
+            string? maxParallelWorkersPerGather,
 
-            int? maxPredLocksPerTransaction,
+            string? maxPredLocksPerTransaction,
 
-            int? maxPreparedTransactions,
+            string? maxPreparedTransactions,
 
-            int? maxStackDepth,
+            string? maxStackDepth,
 
-            int? maxStandbyArchiveDelay,
+            string? maxStandbyArchiveDelay,
 
-            int? maxStandbyStreamingDelay,
+            string? maxStandbyStreamingDelay,
 
-            int? maxWorkerProcesses,
+            string? maxWorkerProcesses,
 
             string? pgStatStatementsTrack,
 
-            int? tempFileLimit,
+            string? tempFileLimit,
 
             string? timezone,
 
-            int? trackActivityQuerySize,
+            string? trackActivityQuerySize,
+
+            string? trackCommitTimestamp,
 
             string? trackFunctions,
 
-            int? walWriterDelay)
+            string? walSenderTimeout,
+
+            string? walWriterDelay)
         {
             AutovacuumAnalyzeScaleFactor = autovacuumAnalyzeScaleFactor;
             AutovacuumAnalyzeThreshold = autovacuumAnalyzeThreshold;
+            AutovacuumFreezeMaxAge = autovacuumFreezeMaxAge;
             AutovacuumMaxWorkers = autovacuumMaxWorkers;
             AutovacuumNaptime = autovacuumNaptime;
             AutovacuumVacuumCostDelay = autovacuumVacuumCostDelay;
@@ -130,7 +140,9 @@ namespace Pulumi.Aiven.Outputs
             TempFileLimit = tempFileLimit;
             Timezone = timezone;
             TrackActivityQuerySize = trackActivityQuerySize;
+            TrackCommitTimestamp = trackCommitTimestamp;
             TrackFunctions = trackFunctions;
+            WalSenderTimeout = walSenderTimeout;
             WalWriterDelay = walWriterDelay;
         }
     }

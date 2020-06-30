@@ -30,13 +30,13 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs? KafkaAuthenticationMethods { get; set; }
 
         [Input("kafkaConnect")]
-        public bool? KafkaConnect { get; set; }
+        public string? KafkaConnect { get; set; }
 
         [Input("kafkaConnectConfig")]
         public Inputs.GetServiceKafkaUserConfigKafkaConnectConfigArgs? KafkaConnectConfig { get; set; }
 
         [Input("kafkaRest")]
-        public bool? KafkaRest { get; set; }
+        public string? KafkaRest { get; set; }
 
         [Input("kafkaRestConfig")]
         public Inputs.GetServiceKafkaUserConfigKafkaRestConfigArgs? KafkaRestConfig { get; set; }
@@ -51,7 +51,7 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetServiceKafkaUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
         [Input("schemaRegistry")]
-        public bool? SchemaRegistry { get; set; }
+        public string? SchemaRegistry { get; set; }
 
         public GetServiceKafkaUserConfigArgs()
         {

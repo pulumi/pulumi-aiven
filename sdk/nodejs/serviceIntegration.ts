@@ -66,11 +66,19 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly integrationType!: pulumi.Output<string>;
     /**
+     * Kafka Connect specific user configurable settings
+     */
+    public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaConnectUserConfig | undefined>;
+    /**
+     * Mirrormaker 2 integration specific user configurable settings
+     */
+    public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaMirrormakerUserConfig | undefined>;
+    /**
      * Log integration specific user configurable settings
      */
     public readonly logsUserConfig!: pulumi.Output<outputs.ServiceIntegrationLogsUserConfig | undefined>;
     /**
-     * Mirrormaker integration specific user configurable settings
+     * Mirrormaker 1 integration specific user configurable settings
      */
     public readonly mirrormakerUserConfig!: pulumi.Output<outputs.ServiceIntegrationMirrormakerUserConfig | undefined>;
     /**
@@ -101,6 +109,8 @@ export class ServiceIntegration extends pulumi.CustomResource {
             inputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
             inputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
             inputs["integrationType"] = state ? state.integrationType : undefined;
+            inputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
+            inputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
             inputs["logsUserConfig"] = state ? state.logsUserConfig : undefined;
             inputs["mirrormakerUserConfig"] = state ? state.mirrormakerUserConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -117,6 +127,8 @@ export class ServiceIntegration extends pulumi.CustomResource {
             inputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
             inputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
             inputs["integrationType"] = args ? args.integrationType : undefined;
+            inputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
+            inputs["kafkaMirrormakerUserConfig"] = args ? args.kafkaMirrormakerUserConfig : undefined;
             inputs["logsUserConfig"] = args ? args.logsUserConfig : undefined;
             inputs["mirrormakerUserConfig"] = args ? args.mirrormakerUserConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -151,11 +163,19 @@ export interface ServiceIntegrationState {
      */
     readonly integrationType?: pulumi.Input<string>;
     /**
+     * Kafka Connect specific user configurable settings
+     */
+    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
+    /**
+     * Mirrormaker 2 integration specific user configurable settings
+     */
+    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
+    /**
      * Log integration specific user configurable settings
      */
     readonly logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
     /**
-     * Mirrormaker integration specific user configurable settings
+     * Mirrormaker 1 integration specific user configurable settings
      */
     readonly mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**
@@ -189,11 +209,19 @@ export interface ServiceIntegrationArgs {
      */
     readonly integrationType: pulumi.Input<string>;
     /**
+     * Kafka Connect specific user configurable settings
+     */
+    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
+    /**
+     * Mirrormaker 2 integration specific user configurable settings
+     */
+    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
+    /**
      * Log integration specific user configurable settings
      */
     readonly logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
     /**
-     * Mirrormaker integration specific user configurable settings
+     * Mirrormaker 1 integration specific user configurable settings
      */
     readonly mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**

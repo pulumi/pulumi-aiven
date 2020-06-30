@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? AdminPassword;
         public readonly string? AdminUsername;
-        public readonly int? BackupHour;
-        public readonly int? BackupMinute;
+        public readonly string? BackupHour;
+        public readonly string? BackupMinute;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.ServicePgUserConfigPg? Pg;
         public readonly string? PgReadReplica;
@@ -28,6 +28,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServicePgUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
+        public readonly string? SynchronousReplication;
         public readonly Outputs.ServicePgUserConfigTimescaledb? Timescaledb;
         public readonly string? Variant;
 
@@ -37,9 +38,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? adminUsername,
 
-            int? backupHour,
+            string? backupHour,
 
-            int? backupMinute,
+            string? backupMinute,
 
             ImmutableArray<string> ipFilters,
 
@@ -63,6 +64,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
+            string? synchronousReplication,
+
             Outputs.ServicePgUserConfigTimescaledb? timescaledb,
 
             string? variant)
@@ -82,6 +85,7 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;
+            SynchronousReplication = synchronousReplication;
             Timescaledb = timescaledb;
             Variant = variant;
         }

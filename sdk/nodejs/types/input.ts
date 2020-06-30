@@ -30,6 +30,16 @@ export interface GetKafkaConnectorTask {
     task?: number;
 }
 
+export interface GetKafkaTopicClientTimeout {
+    create?: string;
+    read?: string;
+}
+
+export interface GetProjectVpcClientTimeout {
+    create?: string;
+    delete?: string;
+}
+
 export interface GetServiceCassandra {
 }
 
@@ -47,6 +57,11 @@ export interface GetServiceCassandraUserConfigPrivateAccess {
 
 export interface GetServiceCassandraUserConfigPublicAccess {
     prometheus?: string;
+}
+
+export interface GetServiceClientTimeout {
+    create?: string;
+    update?: string;
 }
 
 export interface GetServiceComponent {
@@ -71,7 +86,7 @@ export interface GetServiceElasticsearchUserConfig {
     indexPatterns?: inputs.GetServiceElasticsearchUserConfigIndexPattern[];
     ipFilters?: string[];
     kibana?: inputs.GetServiceElasticsearchUserConfigKibana;
-    maxIndexCount?: number;
+    maxIndexCount?: string;
     privateAccess?: inputs.GetServiceElasticsearchUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceElasticsearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -81,36 +96,38 @@ export interface GetServiceElasticsearchUserConfig {
 export interface GetServiceElasticsearchUserConfigElasticsearch {
     actionAutoCreateIndexEnabled?: string;
     actionDestructiveRequiresName?: string;
-    httpMaxContentLength?: number;
-    indicesFielddataCacheSize?: number;
-    indicesMemoryIndexBufferSize?: number;
-    indicesQueriesCacheSize?: number;
-    indicesQueryBoolMaxClauseCount?: number;
+    httpMaxContentLength?: string;
+    httpMaxHeaderSize?: string;
+    httpMaxInitialLineLength?: string;
+    indicesFielddataCacheSize?: string;
+    indicesMemoryIndexBufferSize?: string;
+    indicesQueriesCacheSize?: string;
+    indicesQueryBoolMaxClauseCount?: string;
     reindexRemoteWhitelists?: string[];
-    threadPoolAnalyzeQueueSize?: number;
-    threadPoolAnalyzeSize?: number;
-    threadPoolForceMergeSize?: number;
-    threadPoolGetQueueSize?: number;
-    threadPoolGetSize?: number;
-    threadPoolIndexQueueSize?: number;
-    threadPoolIndexSize?: number;
-    threadPoolSearchQueueSize?: number;
-    threadPoolSearchSize?: number;
-    threadPoolSearchThrottledQueueSize?: number;
-    threadPoolSearchThrottledSize?: number;
-    threadPoolWriteQueueSize?: number;
-    threadPoolWriteSize?: number;
+    threadPoolAnalyzeQueueSize?: string;
+    threadPoolAnalyzeSize?: string;
+    threadPoolForceMergeSize?: string;
+    threadPoolGetQueueSize?: string;
+    threadPoolGetSize?: string;
+    threadPoolIndexQueueSize?: string;
+    threadPoolIndexSize?: string;
+    threadPoolSearchQueueSize?: string;
+    threadPoolSearchSize?: string;
+    threadPoolSearchThrottledQueueSize?: string;
+    threadPoolSearchThrottledSize?: string;
+    threadPoolWriteQueueSize?: string;
+    threadPoolWriteSize?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigIndexPattern {
-    maxIndexCount?: number;
+    maxIndexCount?: string;
     pattern?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigKibana {
-    elasticsearchRequestTimeout?: number;
-    enabled?: boolean;
-    maxOldSpaceSize?: number;
+    elasticsearchRequestTimeout?: string;
+    enabled?: string;
+    maxOldSpaceSize?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigPrivateAccess {
@@ -133,15 +150,16 @@ export interface GetServiceGrafanaUserConfig {
     alertingErrorOrTimeout?: string;
     alertingNodataOrNullvalues?: string;
     allowEmbedding?: string;
+    authBasicEnabled?: string;
     authGenericOauth?: inputs.GetServiceGrafanaUserConfigAuthGenericOauth;
     authGithub?: inputs.GetServiceGrafanaUserConfigAuthGithub;
     authGitlab?: inputs.GetServiceGrafanaUserConfigAuthGitlab;
     authGoogle?: inputs.GetServiceGrafanaUserConfigAuthGoogle;
     cookieSamesite?: string;
     customDomain?: string;
-    dashboardsVersionsToKeep?: number;
+    dashboardsVersionsToKeep?: string;
     dataproxySendUserHeader?: string;
-    dataproxyTimeout?: number;
+    dataproxyTimeout?: string;
     disableGravatar?: string;
     editorsCanAdmin?: string;
     externalImageStorage?: inputs.GetServiceGrafanaUserConfigExternalImageStorage;
@@ -214,7 +232,7 @@ export interface GetServiceGrafanaUserConfigSmtpServer {
     fromName?: string;
     host?: string;
     password?: string;
-    port?: number;
+    port?: string;
     skipVerify?: string;
     username?: string;
 }
@@ -242,15 +260,15 @@ export interface GetServiceInfluxdbUserConfigPublicAccess {
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: string;
     disableConsumerStats?: string;
-    maxPartitionContexts?: number;
+    maxPartitionContexts?: string;
     site?: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: string;
-    indexDaysMax?: number;
+    indexDaysMax?: string;
     indexPrefix?: string;
-    timeout?: number;
+    timeout?: string;
     url?: string;
 }
 
@@ -265,10 +283,34 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     format?: string;
     key?: string;
     logline?: string;
-    port?: number;
+    port?: string;
     sd?: string;
     server?: string;
-    tls?: boolean;
+    tls?: string;
+}
+
+export interface GetServiceIntegrationKafkaConnectUserConfig {
+    kafkaConnect?: inputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnect;
+}
+
+export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+    configStorageTopic?: string;
+    groupId?: string;
+    offsetStorageTopic?: string;
+    statusStorageTopic?: string;
+}
+
+export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
+    clusterAlias?: string;
+}
+
+export interface GetServiceIntegrationLogsUserConfig {
+    elasticsearchIndexDaysMax?: string;
+    elasticsearchIndexPrefix?: string;
+}
+
+export interface GetServiceIntegrationMirrormakerUserConfig {
+    mirrormakerWhitelist?: string;
 }
 
 export interface GetServiceKafka {
@@ -291,8 +333,8 @@ export interface GetServiceKafkaConnectUserConfig {
 
 export interface GetServiceKafkaConnectUserConfigKafkaConnect {
     consumerIsolationLevel?: string;
-    consumerMaxPollRecords?: number;
-    offsetFlushIntervalMs?: number;
+    consumerMaxPollRecords?: string;
+    offsetFlushIntervalMs?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigPrivateAccess {
@@ -305,65 +347,80 @@ export interface GetServiceKafkaConnectUserConfigPublicAccess {
     prometheus?: string;
 }
 
+export interface GetServiceKafkaMirrormaker {
+}
+
+export interface GetServiceKafkaMirrormakerUserConfig {
+    ipFilters?: string[];
+    kafkaMirrormaker?: inputs.GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
+}
+
+export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+    refreshGroupsEnabled?: string;
+    refreshGroupsIntervalSeconds?: string;
+    refreshTopicsEnabled?: string;
+    refreshTopicsIntervalSeconds?: string;
+}
+
 export interface GetServiceKafkaUserConfig {
     customDomain?: string;
     ipFilters?: string[];
     kafka?: inputs.GetServiceKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: inputs.GetServiceKafkaUserConfigKafkaAuthenticationMethods;
-    kafkaConnect?: boolean;
+    kafkaConnect?: string;
     kafkaConnectConfig?: inputs.GetServiceKafkaUserConfigKafkaConnectConfig;
-    kafkaRest?: boolean;
+    kafkaRest?: string;
     kafkaRestConfig?: inputs.GetServiceKafkaUserConfigKafkaRestConfig;
     kafkaVersion?: string;
     privateAccess?: inputs.GetServiceKafkaUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceKafkaUserConfigPublicAccess;
-    schemaRegistry?: boolean;
+    schemaRegistry?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafka {
     autoCreateTopicsEnable?: string;
     compressionType?: string;
-    connectionsMaxIdleMs?: number;
-    defaultReplicationFactor?: number;
-    groupMaxSessionTimeoutMs?: number;
-    groupMinSessionTimeoutMs?: number;
-    logCleanerMaxCompactionLagMs?: number;
-    logCleanerMinCleanableRatio?: number;
-    logCleanerMinCompactionLagMs?: number;
+    connectionsMaxIdleMs?: string;
+    defaultReplicationFactor?: string;
+    groupMaxSessionTimeoutMs?: string;
+    groupMinSessionTimeoutMs?: string;
+    logCleanerMaxCompactionLagMs?: string;
+    logCleanerMinCleanableRatio?: string;
+    logCleanerMinCompactionLagMs?: string;
     logCleanupPolicy?: string;
-    logMessageTimestampDifferenceMaxMs?: number;
+    logMessageTimestampDifferenceMaxMs?: string;
     logMessageTimestampType?: string;
-    logRetentionBytes?: number;
-    logRetentionHours?: number;
-    logSegmentBytes?: number;
-    maxConnectionsPerIp?: number;
-    messageMaxBytes?: number;
-    numPartitions?: number;
-    offsetsRetentionMinutes?: number;
-    producerPurgatoryPurgeIntervalRequests?: number;
-    replicaFetchMaxBytes?: number;
-    replicaFetchResponseMaxBytes?: number;
-    socketRequestMaxBytes?: number;
+    logRetentionBytes?: string;
+    logRetentionHours?: string;
+    logSegmentBytes?: string;
+    maxConnectionsPerIp?: string;
+    messageMaxBytes?: string;
+    numPartitions?: string;
+    offsetsRetentionMinutes?: string;
+    producerPurgatoryPurgeIntervalRequests?: string;
+    replicaFetchMaxBytes?: string;
+    replicaFetchResponseMaxBytes?: string;
+    socketRequestMaxBytes?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: boolean;
-    sasl?: boolean;
+    certificate?: string;
+    sasl?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaConnectConfig {
     consumerIsolationLevel?: string;
-    consumerMaxPollRecords?: number;
-    offsetFlushIntervalMs?: number;
+    consumerMaxPollRecords?: string;
+    offsetFlushIntervalMs?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: boolean;
-    consumerRequestMaxBytes?: number;
-    consumerRequestTimeoutMs?: number;
+    consumerEnableAutoCommit?: string;
+    consumerRequestMaxBytes?: string;
+    consumerRequestTimeoutMs?: string;
     producerAcks?: string;
-    producerLingerMs?: number;
-    simpleconsumerPoolSizeMax?: number;
+    producerLingerMs?: string;
+    simpleconsumerPoolSizeMax?: string;
 }
 
 export interface GetServiceKafkaUserConfigPrivateAccess {
@@ -384,8 +441,8 @@ export interface GetServiceMysql {
 export interface GetServiceMysqlUserConfig {
     adminPassword?: string;
     adminUsername?: string;
-    backupHour?: number;
-    backupMinute?: number;
+    backupHour?: string;
+    backupMinute?: string;
     ipFilters?: string[];
     mysql?: inputs.GetServiceMysqlUserConfigMysql;
     mysqlVersion?: string;
@@ -396,21 +453,26 @@ export interface GetServiceMysqlUserConfig {
 }
 
 export interface GetServiceMysqlUserConfigMysql {
-    connectTimeout?: number;
+    connectTimeout?: string;
     defaultTimeZone?: string;
-    groupConcatMaxLen?: number;
-    informationSchemaStatsExpiry?: number;
-    innodbFtMinTokenSize?: number;
+    groupConcatMaxLen?: string;
+    informationSchemaStatsExpiry?: string;
+    innodbFtMinTokenSize?: string;
     innodbFtServerStopwordTable?: string;
-    innodbLockWaitTimeout?: number;
-    innodbOnlineAlterLogMaxSize?: number;
+    innodbLockWaitTimeout?: string;
+    innodbLogBufferSize?: string;
+    innodbOnlineAlterLogMaxSize?: string;
     innodbRollbackOnTimeout?: string;
-    maxAllowedPacket?: number;
-    netReadTimeout?: number;
-    netWriteTimeout?: number;
+    interactiveTimeout?: string;
+    maxAllowedPacket?: string;
+    maxHeapTableSize?: string;
+    netReadTimeout?: string;
+    netWriteTimeout?: string;
+    sortBufferSize?: string;
     sqlMode?: string;
     sqlRequirePrimaryKey?: string;
-    waitTimeout?: number;
+    tmpTableSize?: string;
+    waitTimeout?: string;
 }
 
 export interface GetServiceMysqlUserConfigPrivateAccess {
@@ -437,8 +499,8 @@ export interface GetServicePg {
 export interface GetServicePgUserConfig {
     adminPassword?: string;
     adminUsername?: string;
-    backupHour?: number;
-    backupMinute?: number;
+    backupHour?: string;
+    backupMinute?: string;
     ipFilters?: string[];
     pg?: inputs.GetServicePgUserConfigPg;
     pgReadReplica?: string;
@@ -450,48 +512,53 @@ export interface GetServicePgUserConfig {
     publicAccess?: inputs.GetServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    synchronousReplication?: string;
     timescaledb?: inputs.GetServicePgUserConfigTimescaledb;
     variant?: string;
 }
 
 export interface GetServicePgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: number;
-    autovacuumAnalyzeThreshold?: number;
-    autovacuumMaxWorkers?: number;
-    autovacuumNaptime?: number;
-    autovacuumVacuumCostDelay?: number;
-    autovacuumVacuumCostLimit?: number;
-    autovacuumVacuumScaleFactor?: number;
-    autovacuumVacuumThreshold?: number;
-    deadlockTimeout?: number;
-    idleInTransactionSessionTimeout?: number;
+    autovacuumAnalyzeScaleFactor?: string;
+    autovacuumAnalyzeThreshold?: string;
+    autovacuumFreezeMaxAge?: string;
+    autovacuumMaxWorkers?: string;
+    autovacuumNaptime?: string;
+    autovacuumVacuumCostDelay?: string;
+    autovacuumVacuumCostLimit?: string;
+    autovacuumVacuumScaleFactor?: string;
+    autovacuumVacuumThreshold?: string;
+    deadlockTimeout?: string;
+    idleInTransactionSessionTimeout?: string;
     jit?: string;
-    logAutovacuumMinDuration?: number;
+    logAutovacuumMinDuration?: string;
     logErrorVerbosity?: string;
-    logMinDurationStatement?: number;
-    maxLocksPerTransaction?: number;
-    maxParallelWorkers?: number;
-    maxParallelWorkersPerGather?: number;
-    maxPredLocksPerTransaction?: number;
-    maxPreparedTransactions?: number;
-    maxStackDepth?: number;
-    maxStandbyArchiveDelay?: number;
-    maxStandbyStreamingDelay?: number;
-    maxWorkerProcesses?: number;
+    logMinDurationStatement?: string;
+    maxLocksPerTransaction?: string;
+    maxParallelWorkers?: string;
+    maxParallelWorkersPerGather?: string;
+    maxPredLocksPerTransaction?: string;
+    maxPreparedTransactions?: string;
+    maxStackDepth?: string;
+    maxStandbyArchiveDelay?: string;
+    maxStandbyStreamingDelay?: string;
+    maxWorkerProcesses?: string;
     pgStatStatementsTrack?: string;
-    tempFileLimit?: number;
+    tempFileLimit?: string;
     timezone?: string;
-    trackActivityQuerySize?: number;
+    trackActivityQuerySize?: string;
+    trackCommitTimestamp?: string;
     trackFunctions?: string;
-    walWriterDelay?: number;
+    walSenderTimeout?: string;
+    walWriterDelay?: string;
 }
 
 export interface GetServicePgUserConfigPgbouncer {
-    serverResetQueryAlways?: boolean;
+    ignoreStartupParameters?: string[];
+    serverResetQueryAlways?: string;
 }
 
 export interface GetServicePgUserConfigPglookout {
-    maxFailoverReplicationTimeLag?: number;
+    maxFailoverReplicationTimeLag?: string;
 }
 
 export interface GetServicePgUserConfigPrivateAccess {
@@ -507,7 +574,7 @@ export interface GetServicePgUserConfigPublicAccess {
 }
 
 export interface GetServicePgUserConfigTimescaledb {
-    maxBackgroundWorkers?: number;
+    maxBackgroundWorkers?: string;
 }
 
 export interface GetServiceRedis {
@@ -518,19 +585,19 @@ export interface GetServiceRedisUserConfig {
     migration?: inputs.GetServiceRedisUserConfigMigration;
     privateAccess?: inputs.GetServiceRedisUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceRedisUserConfigPublicAccess;
-    redisLfuDecayTime?: number;
-    redisLfuLogFactor?: number;
+    redisLfuDecayTime?: string;
+    redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
     redisNotifyKeyspaceEvents?: string;
-    redisSsl?: boolean;
-    redisTimeout?: number;
+    redisSsl?: string;
+    redisTimeout?: string;
 }
 
 export interface GetServiceRedisUserConfigMigration {
     host?: string;
     password?: string;
-    port?: number;
-    ssl?: boolean;
+    port?: string;
+    ssl?: string;
     username?: string;
 }
 
@@ -549,9 +616,23 @@ export interface GetServiceServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetVpcPeeringConnectionClientTimeout {
+    create?: string;
+}
+
 export interface KafkaConnectorTask {
     connector?: pulumi.Input<string>;
     task?: pulumi.Input<number>;
+}
+
+export interface KafkaTopicClientTimeout {
+    create?: pulumi.Input<string>;
+    read?: pulumi.Input<string>;
+}
+
+export interface ProjectVpcClientTimeout {
+    create?: pulumi.Input<string>;
+    delete?: pulumi.Input<string>;
 }
 
 export interface ServiceCassandra {
@@ -571,6 +652,11 @@ export interface ServiceCassandraUserConfigPrivateAccess {
 
 export interface ServiceCassandraUserConfigPublicAccess {
     prometheus?: pulumi.Input<string>;
+}
+
+export interface ServiceClientTimeout {
+    create?: pulumi.Input<string>;
+    update?: pulumi.Input<string>;
 }
 
 export interface ServiceComponent {
@@ -595,7 +681,7 @@ export interface ServiceElasticsearchUserConfig {
     indexPatterns?: pulumi.Input<pulumi.Input<inputs.ServiceElasticsearchUserConfigIndexPattern>[]>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kibana?: pulumi.Input<inputs.ServiceElasticsearchUserConfigKibana>;
-    maxIndexCount?: pulumi.Input<number>;
+    maxIndexCount?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.ServiceElasticsearchUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceElasticsearchUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
@@ -605,36 +691,38 @@ export interface ServiceElasticsearchUserConfig {
 export interface ServiceElasticsearchUserConfigElasticsearch {
     actionAutoCreateIndexEnabled?: pulumi.Input<string>;
     actionDestructiveRequiresName?: pulumi.Input<string>;
-    httpMaxContentLength?: pulumi.Input<number>;
-    indicesFielddataCacheSize?: pulumi.Input<number>;
-    indicesMemoryIndexBufferSize?: pulumi.Input<number>;
-    indicesQueriesCacheSize?: pulumi.Input<number>;
-    indicesQueryBoolMaxClauseCount?: pulumi.Input<number>;
+    httpMaxContentLength?: pulumi.Input<string>;
+    httpMaxHeaderSize?: pulumi.Input<string>;
+    httpMaxInitialLineLength?: pulumi.Input<string>;
+    indicesFielddataCacheSize?: pulumi.Input<string>;
+    indicesMemoryIndexBufferSize?: pulumi.Input<string>;
+    indicesQueriesCacheSize?: pulumi.Input<string>;
+    indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
-    threadPoolAnalyzeQueueSize?: pulumi.Input<number>;
-    threadPoolAnalyzeSize?: pulumi.Input<number>;
-    threadPoolForceMergeSize?: pulumi.Input<number>;
-    threadPoolGetQueueSize?: pulumi.Input<number>;
-    threadPoolGetSize?: pulumi.Input<number>;
-    threadPoolIndexQueueSize?: pulumi.Input<number>;
-    threadPoolIndexSize?: pulumi.Input<number>;
-    threadPoolSearchQueueSize?: pulumi.Input<number>;
-    threadPoolSearchSize?: pulumi.Input<number>;
-    threadPoolSearchThrottledQueueSize?: pulumi.Input<number>;
-    threadPoolSearchThrottledSize?: pulumi.Input<number>;
-    threadPoolWriteQueueSize?: pulumi.Input<number>;
-    threadPoolWriteSize?: pulumi.Input<number>;
+    threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
+    threadPoolAnalyzeSize?: pulumi.Input<string>;
+    threadPoolForceMergeSize?: pulumi.Input<string>;
+    threadPoolGetQueueSize?: pulumi.Input<string>;
+    threadPoolGetSize?: pulumi.Input<string>;
+    threadPoolIndexQueueSize?: pulumi.Input<string>;
+    threadPoolIndexSize?: pulumi.Input<string>;
+    threadPoolSearchQueueSize?: pulumi.Input<string>;
+    threadPoolSearchSize?: pulumi.Input<string>;
+    threadPoolSearchThrottledQueueSize?: pulumi.Input<string>;
+    threadPoolSearchThrottledSize?: pulumi.Input<string>;
+    threadPoolWriteQueueSize?: pulumi.Input<string>;
+    threadPoolWriteSize?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearchUserConfigIndexPattern {
-    maxIndexCount?: pulumi.Input<number>;
+    maxIndexCount?: pulumi.Input<string>;
     pattern?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearchUserConfigKibana {
-    elasticsearchRequestTimeout?: pulumi.Input<number>;
-    enabled?: pulumi.Input<boolean>;
-    maxOldSpaceSize?: pulumi.Input<number>;
+    elasticsearchRequestTimeout?: pulumi.Input<string>;
+    enabled?: pulumi.Input<string>;
+    maxOldSpaceSize?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearchUserConfigPrivateAccess {
@@ -657,15 +745,16 @@ export interface ServiceGrafanaUserConfig {
     alertingErrorOrTimeout?: pulumi.Input<string>;
     alertingNodataOrNullvalues?: pulumi.Input<string>;
     allowEmbedding?: pulumi.Input<string>;
+    authBasicEnabled?: pulumi.Input<string>;
     authGenericOauth?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGenericOauth>;
     authGithub?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGithub>;
     authGitlab?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGitlab>;
     authGoogle?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGoogle>;
     cookieSamesite?: pulumi.Input<string>;
     customDomain?: pulumi.Input<string>;
-    dashboardsVersionsToKeep?: pulumi.Input<number>;
+    dashboardsVersionsToKeep?: pulumi.Input<string>;
     dataproxySendUserHeader?: pulumi.Input<string>;
-    dataproxyTimeout?: pulumi.Input<number>;
+    dataproxyTimeout?: pulumi.Input<string>;
     disableGravatar?: pulumi.Input<string>;
     editorsCanAdmin?: pulumi.Input<string>;
     externalImageStorage?: pulumi.Input<inputs.ServiceGrafanaUserConfigExternalImageStorage>;
@@ -738,7 +827,7 @@ export interface ServiceGrafanaUserConfigSmtpServer {
     fromName?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<string>;
     skipVerify?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
@@ -766,15 +855,15 @@ export interface ServiceInfluxdbUserConfigPublicAccess {
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: pulumi.Input<string>;
     disableConsumerStats?: pulumi.Input<string>;
-    maxPartitionContexts?: pulumi.Input<number>;
+    maxPartitionContexts?: pulumi.Input<string>;
     site?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: pulumi.Input<string>;
-    indexDaysMax?: pulumi.Input<number>;
+    indexDaysMax?: pulumi.Input<string>;
     indexPrefix?: pulumi.Input<string>;
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
 }
 
@@ -789,14 +878,29 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     format?: pulumi.Input<string>;
     key?: pulumi.Input<string>;
     logline?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<string>;
     sd?: pulumi.Input<string>;
     server?: pulumi.Input<string>;
-    tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationKafkaConnectUserConfig {
+    kafkaConnect?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect>;
+}
+
+export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+    configStorageTopic?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
+    offsetStorageTopic?: pulumi.Input<string>;
+    statusStorageTopic?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationKafkaMirrormakerUserConfig {
+    clusterAlias?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationLogsUserConfig {
-    elasticsearchIndexDaysMax?: pulumi.Input<number>;
+    elasticsearchIndexDaysMax?: pulumi.Input<string>;
     elasticsearchIndexPrefix?: pulumi.Input<string>;
 }
 
@@ -824,8 +928,8 @@ export interface ServiceKafkaConnectUserConfig {
 
 export interface ServiceKafkaConnectUserConfigKafkaConnect {
     consumerIsolationLevel?: pulumi.Input<string>;
-    consumerMaxPollRecords?: pulumi.Input<number>;
-    offsetFlushIntervalMs?: pulumi.Input<number>;
+    consumerMaxPollRecords?: pulumi.Input<string>;
+    offsetFlushIntervalMs?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaConnectUserConfigPrivateAccess {
@@ -838,65 +942,80 @@ export interface ServiceKafkaConnectUserConfigPublicAccess {
     prometheus?: pulumi.Input<string>;
 }
 
+export interface ServiceKafkaMirrormaker {
+}
+
+export interface ServiceKafkaMirrormakerUserConfig {
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker>;
+}
+
+export interface ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+    refreshGroupsEnabled?: pulumi.Input<string>;
+    refreshGroupsIntervalSeconds?: pulumi.Input<string>;
+    refreshTopicsEnabled?: pulumi.Input<string>;
+    refreshTopicsIntervalSeconds?: pulumi.Input<string>;
+}
+
 export interface ServiceKafkaUserConfig {
     customDomain?: pulumi.Input<string>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kafka?: pulumi.Input<inputs.ServiceKafkaUserConfigKafka>;
     kafkaAuthenticationMethods?: pulumi.Input<inputs.ServiceKafkaUserConfigKafkaAuthenticationMethods>;
-    kafkaConnect?: pulumi.Input<boolean>;
+    kafkaConnect?: pulumi.Input<string>;
     kafkaConnectConfig?: pulumi.Input<inputs.ServiceKafkaUserConfigKafkaConnectConfig>;
-    kafkaRest?: pulumi.Input<boolean>;
+    kafkaRest?: pulumi.Input<string>;
     kafkaRestConfig?: pulumi.Input<inputs.ServiceKafkaUserConfigKafkaRestConfig>;
     kafkaVersion?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.ServiceKafkaUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceKafkaUserConfigPublicAccess>;
-    schemaRegistry?: pulumi.Input<boolean>;
+    schemaRegistry?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigKafka {
     autoCreateTopicsEnable?: pulumi.Input<string>;
     compressionType?: pulumi.Input<string>;
-    connectionsMaxIdleMs?: pulumi.Input<number>;
-    defaultReplicationFactor?: pulumi.Input<number>;
-    groupMaxSessionTimeoutMs?: pulumi.Input<number>;
-    groupMinSessionTimeoutMs?: pulumi.Input<number>;
-    logCleanerMaxCompactionLagMs?: pulumi.Input<number>;
-    logCleanerMinCleanableRatio?: pulumi.Input<number>;
-    logCleanerMinCompactionLagMs?: pulumi.Input<number>;
+    connectionsMaxIdleMs?: pulumi.Input<string>;
+    defaultReplicationFactor?: pulumi.Input<string>;
+    groupMaxSessionTimeoutMs?: pulumi.Input<string>;
+    groupMinSessionTimeoutMs?: pulumi.Input<string>;
+    logCleanerMaxCompactionLagMs?: pulumi.Input<string>;
+    logCleanerMinCleanableRatio?: pulumi.Input<string>;
+    logCleanerMinCompactionLagMs?: pulumi.Input<string>;
     logCleanupPolicy?: pulumi.Input<string>;
-    logMessageTimestampDifferenceMaxMs?: pulumi.Input<number>;
+    logMessageTimestampDifferenceMaxMs?: pulumi.Input<string>;
     logMessageTimestampType?: pulumi.Input<string>;
-    logRetentionBytes?: pulumi.Input<number>;
-    logRetentionHours?: pulumi.Input<number>;
-    logSegmentBytes?: pulumi.Input<number>;
-    maxConnectionsPerIp?: pulumi.Input<number>;
-    messageMaxBytes?: pulumi.Input<number>;
-    numPartitions?: pulumi.Input<number>;
-    offsetsRetentionMinutes?: pulumi.Input<number>;
-    producerPurgatoryPurgeIntervalRequests?: pulumi.Input<number>;
-    replicaFetchMaxBytes?: pulumi.Input<number>;
-    replicaFetchResponseMaxBytes?: pulumi.Input<number>;
-    socketRequestMaxBytes?: pulumi.Input<number>;
+    logRetentionBytes?: pulumi.Input<string>;
+    logRetentionHours?: pulumi.Input<string>;
+    logSegmentBytes?: pulumi.Input<string>;
+    maxConnectionsPerIp?: pulumi.Input<string>;
+    messageMaxBytes?: pulumi.Input<string>;
+    numPartitions?: pulumi.Input<string>;
+    offsetsRetentionMinutes?: pulumi.Input<string>;
+    producerPurgatoryPurgeIntervalRequests?: pulumi.Input<string>;
+    replicaFetchMaxBytes?: pulumi.Input<string>;
+    replicaFetchResponseMaxBytes?: pulumi.Input<string>;
+    socketRequestMaxBytes?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: pulumi.Input<boolean>;
-    sasl?: pulumi.Input<boolean>;
+    certificate?: pulumi.Input<string>;
+    sasl?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigKafkaConnectConfig {
     consumerIsolationLevel?: pulumi.Input<string>;
-    consumerMaxPollRecords?: pulumi.Input<number>;
-    offsetFlushIntervalMs?: pulumi.Input<number>;
+    consumerMaxPollRecords?: pulumi.Input<string>;
+    offsetFlushIntervalMs?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: pulumi.Input<boolean>;
-    consumerRequestMaxBytes?: pulumi.Input<number>;
-    consumerRequestTimeoutMs?: pulumi.Input<number>;
+    consumerEnableAutoCommit?: pulumi.Input<string>;
+    consumerRequestMaxBytes?: pulumi.Input<string>;
+    consumerRequestTimeoutMs?: pulumi.Input<string>;
     producerAcks?: pulumi.Input<string>;
-    producerLingerMs?: pulumi.Input<number>;
-    simpleconsumerPoolSizeMax?: pulumi.Input<number>;
+    producerLingerMs?: pulumi.Input<string>;
+    simpleconsumerPoolSizeMax?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigPrivateAccess {
@@ -917,8 +1036,8 @@ export interface ServiceMysql {
 export interface ServiceMysqlUserConfig {
     adminPassword?: pulumi.Input<string>;
     adminUsername?: pulumi.Input<string>;
-    backupHour?: pulumi.Input<number>;
-    backupMinute?: pulumi.Input<number>;
+    backupHour?: pulumi.Input<string>;
+    backupMinute?: pulumi.Input<string>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     mysql?: pulumi.Input<inputs.ServiceMysqlUserConfigMysql>;
     mysqlVersion?: pulumi.Input<string>;
@@ -929,21 +1048,26 @@ export interface ServiceMysqlUserConfig {
 }
 
 export interface ServiceMysqlUserConfigMysql {
-    connectTimeout?: pulumi.Input<number>;
+    connectTimeout?: pulumi.Input<string>;
     defaultTimeZone?: pulumi.Input<string>;
-    groupConcatMaxLen?: pulumi.Input<number>;
-    informationSchemaStatsExpiry?: pulumi.Input<number>;
-    innodbFtMinTokenSize?: pulumi.Input<number>;
+    groupConcatMaxLen?: pulumi.Input<string>;
+    informationSchemaStatsExpiry?: pulumi.Input<string>;
+    innodbFtMinTokenSize?: pulumi.Input<string>;
     innodbFtServerStopwordTable?: pulumi.Input<string>;
-    innodbLockWaitTimeout?: pulumi.Input<number>;
-    innodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
+    innodbLockWaitTimeout?: pulumi.Input<string>;
+    innodbLogBufferSize?: pulumi.Input<string>;
+    innodbOnlineAlterLogMaxSize?: pulumi.Input<string>;
     innodbRollbackOnTimeout?: pulumi.Input<string>;
-    maxAllowedPacket?: pulumi.Input<number>;
-    netReadTimeout?: pulumi.Input<number>;
-    netWriteTimeout?: pulumi.Input<number>;
+    interactiveTimeout?: pulumi.Input<string>;
+    maxAllowedPacket?: pulumi.Input<string>;
+    maxHeapTableSize?: pulumi.Input<string>;
+    netReadTimeout?: pulumi.Input<string>;
+    netWriteTimeout?: pulumi.Input<string>;
+    sortBufferSize?: pulumi.Input<string>;
     sqlMode?: pulumi.Input<string>;
     sqlRequirePrimaryKey?: pulumi.Input<string>;
-    waitTimeout?: pulumi.Input<number>;
+    tmpTableSize?: pulumi.Input<string>;
+    waitTimeout?: pulumi.Input<string>;
 }
 
 export interface ServiceMysqlUserConfigPrivateAccess {
@@ -970,8 +1094,8 @@ export interface ServicePg {
 export interface ServicePgUserConfig {
     adminPassword?: pulumi.Input<string>;
     adminUsername?: pulumi.Input<string>;
-    backupHour?: pulumi.Input<number>;
-    backupMinute?: pulumi.Input<number>;
+    backupHour?: pulumi.Input<string>;
+    backupMinute?: pulumi.Input<string>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     pg?: pulumi.Input<inputs.ServicePgUserConfigPg>;
     pgReadReplica?: pulumi.Input<string>;
@@ -983,48 +1107,53 @@ export interface ServicePgUserConfig {
     publicAccess?: pulumi.Input<inputs.ServicePgUserConfigPublicAccess>;
     recoveryTargetTime?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    synchronousReplication?: pulumi.Input<string>;
     timescaledb?: pulumi.Input<inputs.ServicePgUserConfigTimescaledb>;
     variant?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: pulumi.Input<number>;
-    autovacuumAnalyzeThreshold?: pulumi.Input<number>;
-    autovacuumMaxWorkers?: pulumi.Input<number>;
-    autovacuumNaptime?: pulumi.Input<number>;
-    autovacuumVacuumCostDelay?: pulumi.Input<number>;
-    autovacuumVacuumCostLimit?: pulumi.Input<number>;
-    autovacuumVacuumScaleFactor?: pulumi.Input<number>;
-    autovacuumVacuumThreshold?: pulumi.Input<number>;
-    deadlockTimeout?: pulumi.Input<number>;
-    idleInTransactionSessionTimeout?: pulumi.Input<number>;
+    autovacuumAnalyzeScaleFactor?: pulumi.Input<string>;
+    autovacuumAnalyzeThreshold?: pulumi.Input<string>;
+    autovacuumFreezeMaxAge?: pulumi.Input<string>;
+    autovacuumMaxWorkers?: pulumi.Input<string>;
+    autovacuumNaptime?: pulumi.Input<string>;
+    autovacuumVacuumCostDelay?: pulumi.Input<string>;
+    autovacuumVacuumCostLimit?: pulumi.Input<string>;
+    autovacuumVacuumScaleFactor?: pulumi.Input<string>;
+    autovacuumVacuumThreshold?: pulumi.Input<string>;
+    deadlockTimeout?: pulumi.Input<string>;
+    idleInTransactionSessionTimeout?: pulumi.Input<string>;
     jit?: pulumi.Input<string>;
-    logAutovacuumMinDuration?: pulumi.Input<number>;
+    logAutovacuumMinDuration?: pulumi.Input<string>;
     logErrorVerbosity?: pulumi.Input<string>;
-    logMinDurationStatement?: pulumi.Input<number>;
-    maxLocksPerTransaction?: pulumi.Input<number>;
-    maxParallelWorkers?: pulumi.Input<number>;
-    maxParallelWorkersPerGather?: pulumi.Input<number>;
-    maxPredLocksPerTransaction?: pulumi.Input<number>;
-    maxPreparedTransactions?: pulumi.Input<number>;
-    maxStackDepth?: pulumi.Input<number>;
-    maxStandbyArchiveDelay?: pulumi.Input<number>;
-    maxStandbyStreamingDelay?: pulumi.Input<number>;
-    maxWorkerProcesses?: pulumi.Input<number>;
+    logMinDurationStatement?: pulumi.Input<string>;
+    maxLocksPerTransaction?: pulumi.Input<string>;
+    maxParallelWorkers?: pulumi.Input<string>;
+    maxParallelWorkersPerGather?: pulumi.Input<string>;
+    maxPredLocksPerTransaction?: pulumi.Input<string>;
+    maxPreparedTransactions?: pulumi.Input<string>;
+    maxStackDepth?: pulumi.Input<string>;
+    maxStandbyArchiveDelay?: pulumi.Input<string>;
+    maxStandbyStreamingDelay?: pulumi.Input<string>;
+    maxWorkerProcesses?: pulumi.Input<string>;
     pgStatStatementsTrack?: pulumi.Input<string>;
-    tempFileLimit?: pulumi.Input<number>;
+    tempFileLimit?: pulumi.Input<string>;
     timezone?: pulumi.Input<string>;
-    trackActivityQuerySize?: pulumi.Input<number>;
+    trackActivityQuerySize?: pulumi.Input<string>;
+    trackCommitTimestamp?: pulumi.Input<string>;
     trackFunctions?: pulumi.Input<string>;
-    walWriterDelay?: pulumi.Input<number>;
+    walSenderTimeout?: pulumi.Input<string>;
+    walWriterDelay?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPgbouncer {
-    serverResetQueryAlways?: pulumi.Input<boolean>;
+    ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
+    serverResetQueryAlways?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPglookout {
-    maxFailoverReplicationTimeLag?: pulumi.Input<number>;
+    maxFailoverReplicationTimeLag?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPrivateAccess {
@@ -1040,7 +1169,7 @@ export interface ServicePgUserConfigPublicAccess {
 }
 
 export interface ServicePgUserConfigTimescaledb {
-    maxBackgroundWorkers?: pulumi.Input<number>;
+    maxBackgroundWorkers?: pulumi.Input<string>;
 }
 
 export interface ServiceRedis {
@@ -1051,19 +1180,19 @@ export interface ServiceRedisUserConfig {
     migration?: pulumi.Input<inputs.ServiceRedisUserConfigMigration>;
     privateAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPublicAccess>;
-    redisLfuDecayTime?: pulumi.Input<number>;
-    redisLfuLogFactor?: pulumi.Input<number>;
+    redisLfuDecayTime?: pulumi.Input<string>;
+    redisLfuLogFactor?: pulumi.Input<string>;
     redisMaxmemoryPolicy?: pulumi.Input<string>;
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
-    redisSsl?: pulumi.Input<boolean>;
-    redisTimeout?: pulumi.Input<number>;
+    redisSsl?: pulumi.Input<string>;
+    redisTimeout?: pulumi.Input<string>;
 }
 
 export interface ServiceRedisUserConfigMigration {
     host?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
-    ssl?: pulumi.Input<boolean>;
+    port?: pulumi.Input<string>;
+    ssl?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
 
@@ -1080,4 +1209,8 @@ export interface ServiceRedisUserConfigPublicAccess {
 export interface ServiceServiceIntegration {
     integrationType: pulumi.Input<string>;
     sourceServiceName: pulumi.Input<string>;
+}
+
+export interface VpcPeeringConnectionClientTimeout {
+    create?: pulumi.Input<string>;
 }

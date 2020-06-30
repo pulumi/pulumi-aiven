@@ -18,47 +18,51 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
-	Cassandra               *GetServiceCassandra               `pulumi:"cassandra"`
-	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
-	CloudName               *string                            `pulumi:"cloudName"`
-	Components              []GetServiceComponent              `pulumi:"components"`
-	Elasticsearch           *GetServiceElasticsearch           `pulumi:"elasticsearch"`
-	ElasticsearchUserConfig *GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
-	Grafana                 *GetServiceGrafana                 `pulumi:"grafana"`
-	GrafanaUserConfig       *GetServiceGrafanaUserConfig       `pulumi:"grafanaUserConfig"`
-	Influxdb                *GetServiceInfluxdb                `pulumi:"influxdb"`
-	InfluxdbUserConfig      *GetServiceInfluxdbUserConfig      `pulumi:"influxdbUserConfig"`
-	Kafka                   *GetServiceKafka                   `pulumi:"kafka"`
-	KafkaConnect            *GetServiceKafkaConnect            `pulumi:"kafkaConnect"`
-	KafkaConnectUserConfig  *GetServiceKafkaConnectUserConfig  `pulumi:"kafkaConnectUserConfig"`
-	KafkaUserConfig         *GetServiceKafkaUserConfig         `pulumi:"kafkaUserConfig"`
-	MaintenanceWindowDow    *string                            `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime   *string                            `pulumi:"maintenanceWindowTime"`
-	Mysql                   *GetServiceMysql                   `pulumi:"mysql"`
-	MysqlUserConfig         *GetServiceMysqlUserConfig         `pulumi:"mysqlUserConfig"`
-	Pg                      *GetServicePg                      `pulumi:"pg"`
-	PgUserConfig            *GetServicePgUserConfig            `pulumi:"pgUserConfig"`
-	Plan                    *string                            `pulumi:"plan"`
-	Project                 string                             `pulumi:"project"`
-	ProjectVpcId            *string                            `pulumi:"projectVpcId"`
-	Redis                   *GetServiceRedis                   `pulumi:"redis"`
-	RedisUserConfig         *GetServiceRedisUserConfig         `pulumi:"redisUserConfig"`
-	ServiceHost             *string                            `pulumi:"serviceHost"`
-	ServiceIntegrations     []GetServiceServiceIntegration     `pulumi:"serviceIntegrations"`
-	ServiceName             string                             `pulumi:"serviceName"`
-	ServicePassword         *string                            `pulumi:"servicePassword"`
-	ServicePort             *int                               `pulumi:"servicePort"`
-	ServiceType             *string                            `pulumi:"serviceType"`
-	ServiceUri              *string                            `pulumi:"serviceUri"`
-	ServiceUsername         *string                            `pulumi:"serviceUsername"`
-	State                   *string                            `pulumi:"state"`
-	TerminationProtection   *bool                              `pulumi:"terminationProtection"`
+	Cassandra                  *GetServiceCassandra                  `pulumi:"cassandra"`
+	CassandraUserConfig        *GetServiceCassandraUserConfig        `pulumi:"cassandraUserConfig"`
+	ClientTimeout              *GetServiceClientTimeout              `pulumi:"clientTimeout"`
+	CloudName                  *string                               `pulumi:"cloudName"`
+	Components                 []GetServiceComponent                 `pulumi:"components"`
+	Elasticsearch              *GetServiceElasticsearch              `pulumi:"elasticsearch"`
+	ElasticsearchUserConfig    *GetServiceElasticsearchUserConfig    `pulumi:"elasticsearchUserConfig"`
+	Grafana                    *GetServiceGrafana                    `pulumi:"grafana"`
+	GrafanaUserConfig          *GetServiceGrafanaUserConfig          `pulumi:"grafanaUserConfig"`
+	Influxdb                   *GetServiceInfluxdb                   `pulumi:"influxdb"`
+	InfluxdbUserConfig         *GetServiceInfluxdbUserConfig         `pulumi:"influxdbUserConfig"`
+	Kafka                      *GetServiceKafka                      `pulumi:"kafka"`
+	KafkaConnect               *GetServiceKafkaConnect               `pulumi:"kafkaConnect"`
+	KafkaConnectUserConfig     *GetServiceKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfig"`
+	KafkaMirrormaker           *GetServiceKafkaMirrormaker           `pulumi:"kafkaMirrormaker"`
+	KafkaMirrormakerUserConfig *GetServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
+	KafkaUserConfig            *GetServiceKafkaUserConfig            `pulumi:"kafkaUserConfig"`
+	MaintenanceWindowDow       *string                               `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime      *string                               `pulumi:"maintenanceWindowTime"`
+	Mysql                      *GetServiceMysql                      `pulumi:"mysql"`
+	MysqlUserConfig            *GetServiceMysqlUserConfig            `pulumi:"mysqlUserConfig"`
+	Pg                         *GetServicePg                         `pulumi:"pg"`
+	PgUserConfig               *GetServicePgUserConfig               `pulumi:"pgUserConfig"`
+	Plan                       *string                               `pulumi:"plan"`
+	Project                    string                                `pulumi:"project"`
+	ProjectVpcId               *string                               `pulumi:"projectVpcId"`
+	Redis                      *GetServiceRedis                      `pulumi:"redis"`
+	RedisUserConfig            *GetServiceRedisUserConfig            `pulumi:"redisUserConfig"`
+	ServiceHost                *string                               `pulumi:"serviceHost"`
+	ServiceIntegrations        []GetServiceServiceIntegration        `pulumi:"serviceIntegrations"`
+	ServiceName                string                                `pulumi:"serviceName"`
+	ServicePassword            *string                               `pulumi:"servicePassword"`
+	ServicePort                *int                                  `pulumi:"servicePort"`
+	ServiceType                *string                               `pulumi:"serviceType"`
+	ServiceUri                 *string                               `pulumi:"serviceUri"`
+	ServiceUsername            *string                               `pulumi:"serviceUsername"`
+	State                      *string                               `pulumi:"state"`
+	TerminationProtection      *bool                                 `pulumi:"terminationProtection"`
 }
 
 // A collection of values returned by getService.
 type LookupServiceResult struct {
 	Cassandra               GetServiceCassandra                `pulumi:"cassandra"`
 	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
+	ClientTimeout           *GetServiceClientTimeout           `pulumi:"clientTimeout"`
 	CloudName               *string                            `pulumi:"cloudName"`
 	Components              []GetServiceComponent              `pulumi:"components"`
 	Elasticsearch           GetServiceElasticsearch            `pulumi:"elasticsearch"`
@@ -66,32 +70,34 @@ type LookupServiceResult struct {
 	Grafana                 GetServiceGrafana                  `pulumi:"grafana"`
 	GrafanaUserConfig       *GetServiceGrafanaUserConfig       `pulumi:"grafanaUserConfig"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string                            `pulumi:"id"`
-	Influxdb               GetServiceInfluxdb                `pulumi:"influxdb"`
-	InfluxdbUserConfig     *GetServiceInfluxdbUserConfig     `pulumi:"influxdbUserConfig"`
-	Kafka                  GetServiceKafka                   `pulumi:"kafka"`
-	KafkaConnect           GetServiceKafkaConnect            `pulumi:"kafkaConnect"`
-	KafkaConnectUserConfig *GetServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
-	KafkaUserConfig        *GetServiceKafkaUserConfig        `pulumi:"kafkaUserConfig"`
-	MaintenanceWindowDow   *string                           `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime  *string                           `pulumi:"maintenanceWindowTime"`
-	Mysql                  GetServiceMysql                   `pulumi:"mysql"`
-	MysqlUserConfig        *GetServiceMysqlUserConfig        `pulumi:"mysqlUserConfig"`
-	Pg                     GetServicePg                      `pulumi:"pg"`
-	PgUserConfig           *GetServicePgUserConfig           `pulumi:"pgUserConfig"`
-	Plan                   *string                           `pulumi:"plan"`
-	Project                string                            `pulumi:"project"`
-	ProjectVpcId           *string                           `pulumi:"projectVpcId"`
-	Redis                  GetServiceRedis                   `pulumi:"redis"`
-	RedisUserConfig        *GetServiceRedisUserConfig        `pulumi:"redisUserConfig"`
-	ServiceHost            string                            `pulumi:"serviceHost"`
-	ServiceIntegrations    []GetServiceServiceIntegration    `pulumi:"serviceIntegrations"`
-	ServiceName            string                            `pulumi:"serviceName"`
-	ServicePassword        string                            `pulumi:"servicePassword"`
-	ServicePort            int                               `pulumi:"servicePort"`
-	ServiceType            *string                           `pulumi:"serviceType"`
-	ServiceUri             string                            `pulumi:"serviceUri"`
-	ServiceUsername        string                            `pulumi:"serviceUsername"`
-	State                  string                            `pulumi:"state"`
-	TerminationProtection  *bool                             `pulumi:"terminationProtection"`
+	Id                         string                                `pulumi:"id"`
+	Influxdb                   GetServiceInfluxdb                    `pulumi:"influxdb"`
+	InfluxdbUserConfig         *GetServiceInfluxdbUserConfig         `pulumi:"influxdbUserConfig"`
+	Kafka                      GetServiceKafka                       `pulumi:"kafka"`
+	KafkaConnect               GetServiceKafkaConnect                `pulumi:"kafkaConnect"`
+	KafkaConnectUserConfig     *GetServiceKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfig"`
+	KafkaMirrormaker           GetServiceKafkaMirrormaker            `pulumi:"kafkaMirrormaker"`
+	KafkaMirrormakerUserConfig *GetServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
+	KafkaUserConfig            *GetServiceKafkaUserConfig            `pulumi:"kafkaUserConfig"`
+	MaintenanceWindowDow       *string                               `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime      *string                               `pulumi:"maintenanceWindowTime"`
+	Mysql                      GetServiceMysql                       `pulumi:"mysql"`
+	MysqlUserConfig            *GetServiceMysqlUserConfig            `pulumi:"mysqlUserConfig"`
+	Pg                         GetServicePg                          `pulumi:"pg"`
+	PgUserConfig               *GetServicePgUserConfig               `pulumi:"pgUserConfig"`
+	Plan                       *string                               `pulumi:"plan"`
+	Project                    string                                `pulumi:"project"`
+	ProjectVpcId               *string                               `pulumi:"projectVpcId"`
+	Redis                      GetServiceRedis                       `pulumi:"redis"`
+	RedisUserConfig            *GetServiceRedisUserConfig            `pulumi:"redisUserConfig"`
+	ServiceHost                string                                `pulumi:"serviceHost"`
+	ServiceIntegrations        []GetServiceServiceIntegration        `pulumi:"serviceIntegrations"`
+	ServiceName                string                                `pulumi:"serviceName"`
+	ServicePassword            string                                `pulumi:"servicePassword"`
+	ServicePort                int                                   `pulumi:"servicePort"`
+	ServiceType                *string                               `pulumi:"serviceType"`
+	ServiceUri                 string                                `pulumi:"serviceUri"`
+	ServiceUsername            string                                `pulumi:"serviceUsername"`
+	State                      string                                `pulumi:"state"`
+	TerminationProtection      *bool                                 `pulumi:"terminationProtection"`
 }

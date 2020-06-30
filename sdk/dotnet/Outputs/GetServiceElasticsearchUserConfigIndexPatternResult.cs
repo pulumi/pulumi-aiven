@@ -13,12 +13,12 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceElasticsearchUserConfigIndexPatternResult
     {
-        public readonly int? MaxIndexCount;
+        public readonly string? MaxIndexCount;
         public readonly string? Pattern;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigIndexPatternResult(
-            int? maxIndexCount,
+            string? maxIndexCount,
 
             string? pattern)
         {

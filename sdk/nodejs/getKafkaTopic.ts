@@ -32,6 +32,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
     }
     return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
         "cleanupPolicy": args.cleanupPolicy,
+        "clientTimeout": args.clientTimeout,
         "minimumInSyncReplicas": args.minimumInSyncReplicas,
         "partitions": args.partitions,
         "project": args.project,
@@ -49,6 +50,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetKafkaTopicArgs {
     readonly cleanupPolicy?: string;
+    readonly clientTimeout?: inputs.GetKafkaTopicClientTimeout;
     readonly minimumInSyncReplicas?: number;
     readonly partitions?: number;
     readonly project: string;
@@ -65,6 +67,7 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     readonly cleanupPolicy?: string;
+    readonly clientTimeout?: outputs.GetKafkaTopicClientTimeout;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

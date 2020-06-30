@@ -16,13 +16,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Ca { get; set; }
 
         [Input("indexDaysMax")]
-        public Input<int>? IndexDaysMax { get; set; }
+        public Input<string>? IndexDaysMax { get; set; }
 
         [Input("indexPrefix")]
         public Input<string>? IndexPrefix { get; set; }
 
         [Input("timeout")]
-        public Input<double>? Timeout { get; set; }
+        public Input<string>? Timeout { get; set; }
 
         [Input("url")]
         public Input<string>? Url { get; set; }

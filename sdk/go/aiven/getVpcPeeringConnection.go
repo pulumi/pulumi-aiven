@@ -18,17 +18,19 @@ func LookupVpcPeeringConnection(ctx *pulumi.Context, args *LookupVpcPeeringConne
 
 // A collection of arguments for invoking getVpcPeeringConnection.
 type LookupVpcPeeringConnectionArgs struct {
-	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`
-	PeerRegion          *string                `pulumi:"peerRegion"`
-	PeerVpc             string                 `pulumi:"peerVpc"`
-	PeeringConnectionId *string                `pulumi:"peeringConnectionId"`
-	State               *string                `pulumi:"state"`
-	StateInfo           map[string]interface{} `pulumi:"stateInfo"`
-	VpcId               string                 `pulumi:"vpcId"`
+	ClientTimeout       *GetVpcPeeringConnectionClientTimeout `pulumi:"clientTimeout"`
+	PeerCloudAccount    string                                `pulumi:"peerCloudAccount"`
+	PeerRegion          *string                               `pulumi:"peerRegion"`
+	PeerVpc             string                                `pulumi:"peerVpc"`
+	PeeringConnectionId *string                               `pulumi:"peeringConnectionId"`
+	State               *string                               `pulumi:"state"`
+	StateInfo           map[string]interface{}                `pulumi:"stateInfo"`
+	VpcId               string                                `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getVpcPeeringConnection.
 type LookupVpcPeeringConnectionResult struct {
+	ClientTimeout *GetVpcPeeringConnectionClientTimeout `pulumi:"clientTimeout"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                 `pulumi:"id"`
 	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`

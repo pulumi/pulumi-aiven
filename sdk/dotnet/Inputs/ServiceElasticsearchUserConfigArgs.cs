@@ -44,7 +44,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.ServiceElasticsearchUserConfigKibanaArgs>? Kibana { get; set; }
 
         [Input("maxIndexCount")]
-        public Input<int>? MaxIndexCount { get; set; }
+        public Input<string>? MaxIndexCount { get; set; }
 
         [Input("privateAccess")]
         public Input<Inputs.ServiceElasticsearchUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }

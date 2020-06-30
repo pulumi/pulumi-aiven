@@ -44,7 +44,7 @@ export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getKafkaAcl.
  */
 export interface GetKafkaAclArgs {
-    readonly permission?: string;
+    readonly permission: string;
     readonly project: string;
     readonly serviceName: string;
     readonly topic: string;
@@ -59,7 +59,7 @@ export interface GetKafkaAclResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly permission?: string;
+    readonly permission: string;
     readonly project: string;
     readonly serviceName: string;
     readonly topic: string;

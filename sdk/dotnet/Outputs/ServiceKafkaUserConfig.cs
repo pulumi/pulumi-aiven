@@ -17,14 +17,14 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.ServiceKafkaUserConfigKafka? Kafka;
         public readonly Outputs.ServiceKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
-        public readonly bool? KafkaConnect;
+        public readonly string? KafkaConnect;
         public readonly Outputs.ServiceKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
-        public readonly bool? KafkaRest;
+        public readonly string? KafkaRest;
         public readonly Outputs.ServiceKafkaUserConfigKafkaRestConfig? KafkaRestConfig;
         public readonly string? KafkaVersion;
         public readonly Outputs.ServiceKafkaUserConfigPrivateAccess? PrivateAccess;
         public readonly Outputs.ServiceKafkaUserConfigPublicAccess? PublicAccess;
-        public readonly bool? SchemaRegistry;
+        public readonly string? SchemaRegistry;
 
         [OutputConstructor]
         private ServiceKafkaUserConfig(
@@ -36,11 +36,11 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceKafkaUserConfigKafkaAuthenticationMethods? kafkaAuthenticationMethods,
 
-            bool? kafkaConnect,
+            string? kafkaConnect,
 
             Outputs.ServiceKafkaUserConfigKafkaConnectConfig? kafkaConnectConfig,
 
-            bool? kafkaRest,
+            string? kafkaRest,
 
             Outputs.ServiceKafkaUserConfigKafkaRestConfig? kafkaRestConfig,
 
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceKafkaUserConfigPublicAccess? publicAccess,
 
-            bool? schemaRegistry)
+            string? schemaRegistry)
         {
             CustomDomain = customDomain;
             IpFilters = ipFilters;

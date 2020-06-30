@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetServicePgUserConfigPglookoutArgs : Pulumi.InvokeArgs
     {
         [Input("maxFailoverReplicationTimeLag")]
-        public int? MaxFailoverReplicationTimeLag { get; set; }
+        public string? MaxFailoverReplicationTimeLag { get; set; }
 
         public GetServicePgUserConfigPglookoutArgs()
         {

@@ -13,6 +13,10 @@ import (
 type VpcPeeringConnection struct {
 	pulumi.CustomResourceState
 
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout VpcPeeringConnectionClientTimeoutPtrOutput `pulumi:"clientTimeout"`
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount pulumi.StringOutput `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
@@ -66,6 +70,10 @@ func GetVpcPeeringConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcPeeringConnection resources.
 type vpcPeeringConnectionState struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *VpcPeeringConnectionClientTimeout `pulumi:"clientTimeout"`
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount *string `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
@@ -83,6 +91,10 @@ type vpcPeeringConnectionState struct {
 }
 
 type VpcPeeringConnectionState struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout VpcPeeringConnectionClientTimeoutPtrInput
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount pulumi.StringPtrInput
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
@@ -104,6 +116,10 @@ func (VpcPeeringConnectionState) ElementType() reflect.Type {
 }
 
 type vpcPeeringConnectionArgs struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *VpcPeeringConnectionClientTimeout `pulumi:"clientTimeout"`
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount string `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
@@ -116,6 +132,10 @@ type vpcPeeringConnectionArgs struct {
 
 // The set of arguments for constructing a VpcPeeringConnection resource.
 type VpcPeeringConnectionArgs struct {
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout VpcPeeringConnectionClientTimeoutPtrInput
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount pulumi.StringInput
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)

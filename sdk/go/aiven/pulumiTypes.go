@@ -316,6 +316,292 @@ func (o KafkaConnectorTaskArrayOutput) Index(i pulumi.IntInput) KafkaConnectorTa
 	}).(KafkaConnectorTaskOutput)
 }
 
+type KafkaTopicClientTimeout struct {
+	Create *string `pulumi:"create"`
+	Read   *string `pulumi:"read"`
+}
+
+// KafkaTopicClientTimeoutInput is an input type that accepts KafkaTopicClientTimeoutArgs and KafkaTopicClientTimeoutOutput values.
+// You can construct a concrete instance of `KafkaTopicClientTimeoutInput` via:
+//
+// 		 KafkaTopicClientTimeoutArgs{...}
+//
+type KafkaTopicClientTimeoutInput interface {
+	pulumi.Input
+
+	ToKafkaTopicClientTimeoutOutput() KafkaTopicClientTimeoutOutput
+	ToKafkaTopicClientTimeoutOutputWithContext(context.Context) KafkaTopicClientTimeoutOutput
+}
+
+type KafkaTopicClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	Read   pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (KafkaTopicClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTopicClientTimeout)(nil)).Elem()
+}
+
+func (i KafkaTopicClientTimeoutArgs) ToKafkaTopicClientTimeoutOutput() KafkaTopicClientTimeoutOutput {
+	return i.ToKafkaTopicClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i KafkaTopicClientTimeoutArgs) ToKafkaTopicClientTimeoutOutputWithContext(ctx context.Context) KafkaTopicClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicClientTimeoutOutput)
+}
+
+func (i KafkaTopicClientTimeoutArgs) ToKafkaTopicClientTimeoutPtrOutput() KafkaTopicClientTimeoutPtrOutput {
+	return i.ToKafkaTopicClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaTopicClientTimeoutArgs) ToKafkaTopicClientTimeoutPtrOutputWithContext(ctx context.Context) KafkaTopicClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicClientTimeoutOutput).ToKafkaTopicClientTimeoutPtrOutputWithContext(ctx)
+}
+
+// KafkaTopicClientTimeoutPtrInput is an input type that accepts KafkaTopicClientTimeoutArgs, KafkaTopicClientTimeoutPtr and KafkaTopicClientTimeoutPtrOutput values.
+// You can construct a concrete instance of `KafkaTopicClientTimeoutPtrInput` via:
+//
+// 		 KafkaTopicClientTimeoutArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type KafkaTopicClientTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToKafkaTopicClientTimeoutPtrOutput() KafkaTopicClientTimeoutPtrOutput
+	ToKafkaTopicClientTimeoutPtrOutputWithContext(context.Context) KafkaTopicClientTimeoutPtrOutput
+}
+
+type kafkaTopicClientTimeoutPtrType KafkaTopicClientTimeoutArgs
+
+func KafkaTopicClientTimeoutPtr(v *KafkaTopicClientTimeoutArgs) KafkaTopicClientTimeoutPtrInput {
+	return (*kafkaTopicClientTimeoutPtrType)(v)
+}
+
+func (*kafkaTopicClientTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaTopicClientTimeout)(nil)).Elem()
+}
+
+func (i *kafkaTopicClientTimeoutPtrType) ToKafkaTopicClientTimeoutPtrOutput() KafkaTopicClientTimeoutPtrOutput {
+	return i.ToKafkaTopicClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaTopicClientTimeoutPtrType) ToKafkaTopicClientTimeoutPtrOutputWithContext(ctx context.Context) KafkaTopicClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicClientTimeoutPtrOutput)
+}
+
+type KafkaTopicClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (KafkaTopicClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTopicClientTimeout)(nil)).Elem()
+}
+
+func (o KafkaTopicClientTimeoutOutput) ToKafkaTopicClientTimeoutOutput() KafkaTopicClientTimeoutOutput {
+	return o
+}
+
+func (o KafkaTopicClientTimeoutOutput) ToKafkaTopicClientTimeoutOutputWithContext(ctx context.Context) KafkaTopicClientTimeoutOutput {
+	return o
+}
+
+func (o KafkaTopicClientTimeoutOutput) ToKafkaTopicClientTimeoutPtrOutput() KafkaTopicClientTimeoutPtrOutput {
+	return o.ToKafkaTopicClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaTopicClientTimeoutOutput) ToKafkaTopicClientTimeoutPtrOutputWithContext(ctx context.Context) KafkaTopicClientTimeoutPtrOutput {
+	return o.ApplyT(func(v KafkaTopicClientTimeout) *KafkaTopicClientTimeout {
+		return &v
+	}).(KafkaTopicClientTimeoutPtrOutput)
+}
+func (o KafkaTopicClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaTopicClientTimeoutOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicClientTimeout) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type KafkaTopicClientTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaTopicClientTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaTopicClientTimeout)(nil)).Elem()
+}
+
+func (o KafkaTopicClientTimeoutPtrOutput) ToKafkaTopicClientTimeoutPtrOutput() KafkaTopicClientTimeoutPtrOutput {
+	return o
+}
+
+func (o KafkaTopicClientTimeoutPtrOutput) ToKafkaTopicClientTimeoutPtrOutputWithContext(ctx context.Context) KafkaTopicClientTimeoutPtrOutput {
+	return o
+}
+
+func (o KafkaTopicClientTimeoutPtrOutput) Elem() KafkaTopicClientTimeoutOutput {
+	return o.ApplyT(func(v *KafkaTopicClientTimeout) KafkaTopicClientTimeout { return *v }).(KafkaTopicClientTimeoutOutput)
+}
+
+func (o KafkaTopicClientTimeoutPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicClientTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaTopicClientTimeoutPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicClientTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProjectVpcClientTimeout struct {
+	Create *string `pulumi:"create"`
+	Delete *string `pulumi:"delete"`
+}
+
+// ProjectVpcClientTimeoutInput is an input type that accepts ProjectVpcClientTimeoutArgs and ProjectVpcClientTimeoutOutput values.
+// You can construct a concrete instance of `ProjectVpcClientTimeoutInput` via:
+//
+// 		 ProjectVpcClientTimeoutArgs{...}
+//
+type ProjectVpcClientTimeoutInput interface {
+	pulumi.Input
+
+	ToProjectVpcClientTimeoutOutput() ProjectVpcClientTimeoutOutput
+	ToProjectVpcClientTimeoutOutputWithContext(context.Context) ProjectVpcClientTimeoutOutput
+}
+
+type ProjectVpcClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+}
+
+func (ProjectVpcClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectVpcClientTimeout)(nil)).Elem()
+}
+
+func (i ProjectVpcClientTimeoutArgs) ToProjectVpcClientTimeoutOutput() ProjectVpcClientTimeoutOutput {
+	return i.ToProjectVpcClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i ProjectVpcClientTimeoutArgs) ToProjectVpcClientTimeoutOutputWithContext(ctx context.Context) ProjectVpcClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcClientTimeoutOutput)
+}
+
+func (i ProjectVpcClientTimeoutArgs) ToProjectVpcClientTimeoutPtrOutput() ProjectVpcClientTimeoutPtrOutput {
+	return i.ToProjectVpcClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectVpcClientTimeoutArgs) ToProjectVpcClientTimeoutPtrOutputWithContext(ctx context.Context) ProjectVpcClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcClientTimeoutOutput).ToProjectVpcClientTimeoutPtrOutputWithContext(ctx)
+}
+
+// ProjectVpcClientTimeoutPtrInput is an input type that accepts ProjectVpcClientTimeoutArgs, ProjectVpcClientTimeoutPtr and ProjectVpcClientTimeoutPtrOutput values.
+// You can construct a concrete instance of `ProjectVpcClientTimeoutPtrInput` via:
+//
+// 		 ProjectVpcClientTimeoutArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ProjectVpcClientTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToProjectVpcClientTimeoutPtrOutput() ProjectVpcClientTimeoutPtrOutput
+	ToProjectVpcClientTimeoutPtrOutputWithContext(context.Context) ProjectVpcClientTimeoutPtrOutput
+}
+
+type projectVpcClientTimeoutPtrType ProjectVpcClientTimeoutArgs
+
+func ProjectVpcClientTimeoutPtr(v *ProjectVpcClientTimeoutArgs) ProjectVpcClientTimeoutPtrInput {
+	return (*projectVpcClientTimeoutPtrType)(v)
+}
+
+func (*projectVpcClientTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectVpcClientTimeout)(nil)).Elem()
+}
+
+func (i *projectVpcClientTimeoutPtrType) ToProjectVpcClientTimeoutPtrOutput() ProjectVpcClientTimeoutPtrOutput {
+	return i.ToProjectVpcClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *projectVpcClientTimeoutPtrType) ToProjectVpcClientTimeoutPtrOutputWithContext(ctx context.Context) ProjectVpcClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcClientTimeoutPtrOutput)
+}
+
+type ProjectVpcClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (ProjectVpcClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectVpcClientTimeout)(nil)).Elem()
+}
+
+func (o ProjectVpcClientTimeoutOutput) ToProjectVpcClientTimeoutOutput() ProjectVpcClientTimeoutOutput {
+	return o
+}
+
+func (o ProjectVpcClientTimeoutOutput) ToProjectVpcClientTimeoutOutputWithContext(ctx context.Context) ProjectVpcClientTimeoutOutput {
+	return o
+}
+
+func (o ProjectVpcClientTimeoutOutput) ToProjectVpcClientTimeoutPtrOutput() ProjectVpcClientTimeoutPtrOutput {
+	return o.ToProjectVpcClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectVpcClientTimeoutOutput) ToProjectVpcClientTimeoutPtrOutputWithContext(ctx context.Context) ProjectVpcClientTimeoutPtrOutput {
+	return o.ApplyT(func(v ProjectVpcClientTimeout) *ProjectVpcClientTimeout {
+		return &v
+	}).(ProjectVpcClientTimeoutPtrOutput)
+}
+func (o ProjectVpcClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectVpcClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectVpcClientTimeoutOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectVpcClientTimeout) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+type ProjectVpcClientTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectVpcClientTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectVpcClientTimeout)(nil)).Elem()
+}
+
+func (o ProjectVpcClientTimeoutPtrOutput) ToProjectVpcClientTimeoutPtrOutput() ProjectVpcClientTimeoutPtrOutput {
+	return o
+}
+
+func (o ProjectVpcClientTimeoutPtrOutput) ToProjectVpcClientTimeoutPtrOutputWithContext(ctx context.Context) ProjectVpcClientTimeoutPtrOutput {
+	return o
+}
+
+func (o ProjectVpcClientTimeoutPtrOutput) Elem() ProjectVpcClientTimeoutOutput {
+	return o.ApplyT(func(v *ProjectVpcClientTimeout) ProjectVpcClientTimeout { return *v }).(ProjectVpcClientTimeoutOutput)
+}
+
+func (o ProjectVpcClientTimeoutPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVpcClientTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectVpcClientTimeoutPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVpcClientTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceCassandra struct {
 }
 
@@ -874,6 +1160,149 @@ func (o ServiceCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceClientTimeout struct {
+	Create *string `pulumi:"create"`
+	Update *string `pulumi:"update"`
+}
+
+// ServiceClientTimeoutInput is an input type that accepts ServiceClientTimeoutArgs and ServiceClientTimeoutOutput values.
+// You can construct a concrete instance of `ServiceClientTimeoutInput` via:
+//
+// 		 ServiceClientTimeoutArgs{...}
+//
+type ServiceClientTimeoutInput interface {
+	pulumi.Input
+
+	ToServiceClientTimeoutOutput() ServiceClientTimeoutOutput
+	ToServiceClientTimeoutOutputWithContext(context.Context) ServiceClientTimeoutOutput
+}
+
+type ServiceClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (ServiceClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceClientTimeout)(nil)).Elem()
+}
+
+func (i ServiceClientTimeoutArgs) ToServiceClientTimeoutOutput() ServiceClientTimeoutOutput {
+	return i.ToServiceClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i ServiceClientTimeoutArgs) ToServiceClientTimeoutOutputWithContext(ctx context.Context) ServiceClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceClientTimeoutOutput)
+}
+
+func (i ServiceClientTimeoutArgs) ToServiceClientTimeoutPtrOutput() ServiceClientTimeoutPtrOutput {
+	return i.ToServiceClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceClientTimeoutArgs) ToServiceClientTimeoutPtrOutputWithContext(ctx context.Context) ServiceClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceClientTimeoutOutput).ToServiceClientTimeoutPtrOutputWithContext(ctx)
+}
+
+// ServiceClientTimeoutPtrInput is an input type that accepts ServiceClientTimeoutArgs, ServiceClientTimeoutPtr and ServiceClientTimeoutPtrOutput values.
+// You can construct a concrete instance of `ServiceClientTimeoutPtrInput` via:
+//
+// 		 ServiceClientTimeoutArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServiceClientTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToServiceClientTimeoutPtrOutput() ServiceClientTimeoutPtrOutput
+	ToServiceClientTimeoutPtrOutputWithContext(context.Context) ServiceClientTimeoutPtrOutput
+}
+
+type serviceClientTimeoutPtrType ServiceClientTimeoutArgs
+
+func ServiceClientTimeoutPtr(v *ServiceClientTimeoutArgs) ServiceClientTimeoutPtrInput {
+	return (*serviceClientTimeoutPtrType)(v)
+}
+
+func (*serviceClientTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceClientTimeout)(nil)).Elem()
+}
+
+func (i *serviceClientTimeoutPtrType) ToServiceClientTimeoutPtrOutput() ServiceClientTimeoutPtrOutput {
+	return i.ToServiceClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceClientTimeoutPtrType) ToServiceClientTimeoutPtrOutputWithContext(ctx context.Context) ServiceClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceClientTimeoutPtrOutput)
+}
+
+type ServiceClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (ServiceClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceClientTimeout)(nil)).Elem()
+}
+
+func (o ServiceClientTimeoutOutput) ToServiceClientTimeoutOutput() ServiceClientTimeoutOutput {
+	return o
+}
+
+func (o ServiceClientTimeoutOutput) ToServiceClientTimeoutOutputWithContext(ctx context.Context) ServiceClientTimeoutOutput {
+	return o
+}
+
+func (o ServiceClientTimeoutOutput) ToServiceClientTimeoutPtrOutput() ServiceClientTimeoutPtrOutput {
+	return o.ToServiceClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceClientTimeoutOutput) ToServiceClientTimeoutPtrOutputWithContext(ctx context.Context) ServiceClientTimeoutPtrOutput {
+	return o.ApplyT(func(v ServiceClientTimeout) *ServiceClientTimeout {
+		return &v
+	}).(ServiceClientTimeoutPtrOutput)
+}
+func (o ServiceClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceClientTimeoutOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceClientTimeout) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type ServiceClientTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceClientTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceClientTimeout)(nil)).Elem()
+}
+
+func (o ServiceClientTimeoutPtrOutput) ToServiceClientTimeoutPtrOutput() ServiceClientTimeoutPtrOutput {
+	return o
+}
+
+func (o ServiceClientTimeoutPtrOutput) ToServiceClientTimeoutPtrOutputWithContext(ctx context.Context) ServiceClientTimeoutPtrOutput {
+	return o
+}
+
+func (o ServiceClientTimeoutPtrOutput) Elem() ServiceClientTimeoutOutput {
+	return o.ApplyT(func(v *ServiceClientTimeout) ServiceClientTimeout { return *v }).(ServiceClientTimeoutOutput)
+}
+
+func (o ServiceClientTimeoutPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceClientTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceClientTimeoutPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceClientTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceComponent struct {
 	Component                 *string `pulumi:"component"`
 	Host                      *string `pulumi:"host"`
@@ -1142,7 +1571,7 @@ type ServiceElasticsearchUserConfig struct {
 	IndexPatterns                      []ServiceElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
 	IpFilters                          []string                                     `pulumi:"ipFilters"`
 	Kibana                             *ServiceElasticsearchUserConfigKibana        `pulumi:"kibana"`
-	MaxIndexCount                      *int                                         `pulumi:"maxIndexCount"`
+	MaxIndexCount                      *string                                      `pulumi:"maxIndexCount"`
 	PrivateAccess                      *ServiceElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess                       *ServiceElasticsearchUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName             *string                                      `pulumi:"recoveryBasebackupName"`
@@ -1169,7 +1598,7 @@ type ServiceElasticsearchUserConfigArgs struct {
 	IndexPatterns                      ServiceElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
 	IpFilters                          pulumi.StringArrayInput                              `pulumi:"ipFilters"`
 	Kibana                             ServiceElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
-	MaxIndexCount                      pulumi.IntPtrInput                                   `pulumi:"maxIndexCount"`
+	MaxIndexCount                      pulumi.StringPtrInput                                `pulumi:"maxIndexCount"`
 	PrivateAccess                      ServiceElasticsearchUserConfigPrivateAccessPtrInput  `pulumi:"privateAccess"`
 	PublicAccess                       ServiceElasticsearchUserConfigPublicAccessPtrInput   `pulumi:"publicAccess"`
 	RecoveryBasebackupName             pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
@@ -1285,8 +1714,8 @@ func (o ServiceElasticsearchUserConfigOutput) Kibana() ServiceElasticsearchUserC
 	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigKibana { return v.Kibana }).(ServiceElasticsearchUserConfigKibanaPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigOutput) MaxIndexCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigOutput) MaxIndexCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigOutput) PrivateAccess() ServiceElasticsearchUserConfigPrivateAccessPtrOutput {
@@ -1390,13 +1819,13 @@ func (o ServiceElasticsearchUserConfigPtrOutput) Kibana() ServiceElasticsearchUs
 	}).(ServiceElasticsearchUserConfigKibanaPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *int {
+func (o ServiceElasticsearchUserConfigPtrOutput) MaxIndexCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxIndexCount
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) PrivateAccess() ServiceElasticsearchUserConfigPrivateAccessPtrOutput {
@@ -1438,25 +1867,27 @@ func (o ServiceElasticsearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.Stri
 type ServiceElasticsearchUserConfigElasticsearch struct {
 	ActionAutoCreateIndexEnabled       *string  `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      *string  `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               *int     `pulumi:"httpMaxContentLength"`
-	IndicesFielddataCacheSize          *int     `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       *int     `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            *int     `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     *int     `pulumi:"indicesQueryBoolMaxClauseCount"`
+	HttpMaxContentLength               *string  `pulumi:"httpMaxContentLength"`
+	HttpMaxHeaderSize                  *string  `pulumi:"httpMaxHeaderSize"`
+	HttpMaxInitialLineLength           *string  `pulumi:"httpMaxInitialLineLength"`
+	IndicesFielddataCacheSize          *string  `pulumi:"indicesFielddataCacheSize"`
+	IndicesMemoryIndexBufferSize       *string  `pulumi:"indicesMemoryIndexBufferSize"`
+	IndicesQueriesCacheSize            *string  `pulumi:"indicesQueriesCacheSize"`
+	IndicesQueryBoolMaxClauseCount     *string  `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            []string `pulumi:"reindexRemoteWhitelists"`
-	ThreadPoolAnalyzeQueueSize         *int     `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              *int     `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           *int     `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             *int     `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  *int     `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           *int     `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                *int     `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          *int     `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               *int     `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize *int     `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      *int     `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           *int     `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                *int     `pulumi:"threadPoolWriteSize"`
+	ThreadPoolAnalyzeQueueSize         *string  `pulumi:"threadPoolAnalyzeQueueSize"`
+	ThreadPoolAnalyzeSize              *string  `pulumi:"threadPoolAnalyzeSize"`
+	ThreadPoolForceMergeSize           *string  `pulumi:"threadPoolForceMergeSize"`
+	ThreadPoolGetQueueSize             *string  `pulumi:"threadPoolGetQueueSize"`
+	ThreadPoolGetSize                  *string  `pulumi:"threadPoolGetSize"`
+	ThreadPoolIndexQueueSize           *string  `pulumi:"threadPoolIndexQueueSize"`
+	ThreadPoolIndexSize                *string  `pulumi:"threadPoolIndexSize"`
+	ThreadPoolSearchQueueSize          *string  `pulumi:"threadPoolSearchQueueSize"`
+	ThreadPoolSearchSize               *string  `pulumi:"threadPoolSearchSize"`
+	ThreadPoolSearchThrottledQueueSize *string  `pulumi:"threadPoolSearchThrottledQueueSize"`
+	ThreadPoolSearchThrottledSize      *string  `pulumi:"threadPoolSearchThrottledSize"`
+	ThreadPoolWriteQueueSize           *string  `pulumi:"threadPoolWriteQueueSize"`
+	ThreadPoolWriteSize                *string  `pulumi:"threadPoolWriteSize"`
 }
 
 // ServiceElasticsearchUserConfigElasticsearchInput is an input type that accepts ServiceElasticsearchUserConfigElasticsearchArgs and ServiceElasticsearchUserConfigElasticsearchOutput values.
@@ -1474,25 +1905,27 @@ type ServiceElasticsearchUserConfigElasticsearchInput interface {
 type ServiceElasticsearchUserConfigElasticsearchArgs struct {
 	ActionAutoCreateIndexEnabled       pulumi.StringPtrInput   `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               pulumi.IntPtrInput      `pulumi:"httpMaxContentLength"`
-	IndicesFielddataCacheSize          pulumi.IntPtrInput      `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       pulumi.IntPtrInput      `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            pulumi.IntPtrInput      `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     pulumi.IntPtrInput      `pulumi:"indicesQueryBoolMaxClauseCount"`
+	HttpMaxContentLength               pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
+	HttpMaxHeaderSize                  pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
+	HttpMaxInitialLineLength           pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
+	IndicesFielddataCacheSize          pulumi.StringPtrInput   `pulumi:"indicesFielddataCacheSize"`
+	IndicesMemoryIndexBufferSize       pulumi.StringPtrInput   `pulumi:"indicesMemoryIndexBufferSize"`
+	IndicesQueriesCacheSize            pulumi.StringPtrInput   `pulumi:"indicesQueriesCacheSize"`
+	IndicesQueryBoolMaxClauseCount     pulumi.StringPtrInput   `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
-	ThreadPoolAnalyzeQueueSize         pulumi.IntPtrInput      `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              pulumi.IntPtrInput      `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           pulumi.IntPtrInput      `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             pulumi.IntPtrInput      `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  pulumi.IntPtrInput      `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           pulumi.IntPtrInput      `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                pulumi.IntPtrInput      `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          pulumi.IntPtrInput      `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               pulumi.IntPtrInput      `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize pulumi.IntPtrInput      `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      pulumi.IntPtrInput      `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           pulumi.IntPtrInput      `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                pulumi.IntPtrInput      `pulumi:"threadPoolWriteSize"`
+	ThreadPoolAnalyzeQueueSize         pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeQueueSize"`
+	ThreadPoolAnalyzeSize              pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeSize"`
+	ThreadPoolForceMergeSize           pulumi.StringPtrInput   `pulumi:"threadPoolForceMergeSize"`
+	ThreadPoolGetQueueSize             pulumi.StringPtrInput   `pulumi:"threadPoolGetQueueSize"`
+	ThreadPoolGetSize                  pulumi.StringPtrInput   `pulumi:"threadPoolGetSize"`
+	ThreadPoolIndexQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolIndexQueueSize"`
+	ThreadPoolIndexSize                pulumi.StringPtrInput   `pulumi:"threadPoolIndexSize"`
+	ThreadPoolSearchQueueSize          pulumi.StringPtrInput   `pulumi:"threadPoolSearchQueueSize"`
+	ThreadPoolSearchSize               pulumi.StringPtrInput   `pulumi:"threadPoolSearchSize"`
+	ThreadPoolSearchThrottledQueueSize pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledQueueSize"`
+	ThreadPoolSearchThrottledSize      pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledSize"`
+	ThreadPoolWriteQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolWriteQueueSize"`
+	ThreadPoolWriteSize                pulumi.StringPtrInput   `pulumi:"threadPoolWriteSize"`
 }
 
 func (ServiceElasticsearchUserConfigElasticsearchArgs) ElementType() reflect.Type {
@@ -1580,80 +2013,90 @@ func (o ServiceElasticsearchUserConfigElasticsearchOutput) ActionDestructiveRequ
 	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionDestructiveRequiresName }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.HttpMaxContentLength }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxContentLength }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesFielddataCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesFielddataCacheSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxHeaderSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesMemoryIndexBufferSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesMemoryIndexBufferSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxInitialLineLength }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueriesCacheSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.IndicesFielddataCacheSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMaxClauseCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueryBoolMaxClauseCount }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.IndicesMemoryIndexBufferSize }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.IndicesQueriesCacheSize }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.IndicesQueryBoolMaxClauseCount }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeQueueSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolAnalyzeQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolAnalyzeSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolForceMergeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolForceMergeSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolForceMergeSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetQueueSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexQueueSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolIndexQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolIndexSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchQueueSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchThrottledQueueSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string {
+		return v.ThreadPoolSearchThrottledQueueSize
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchThrottledSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchThrottledSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteQueueSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolWriteQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolWriteSize }).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigElasticsearchPtrOutput struct{ *pulumi.OutputState }
@@ -1694,49 +2137,67 @@ func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructiveR
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.HttpMaxContentLength
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMaxHeaderSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMaxInitialLineLength
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesFielddataCacheSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesMemoryIndexBufferSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesQueriesCacheSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesQueryBoolMaxClauseCount
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
@@ -1748,125 +2209,125 @@ func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhite
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolAnalyzeQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolAnalyzeSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolForceMergeSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolGetQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolGetSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolIndexQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolIndexSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchThrottledQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchThrottledSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolWriteQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *int {
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolWriteSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigIndexPattern struct {
-	MaxIndexCount *int    `pulumi:"maxIndexCount"`
+	MaxIndexCount *string `pulumi:"maxIndexCount"`
 	Pattern       *string `pulumi:"pattern"`
 }
 
@@ -1883,7 +2344,7 @@ type ServiceElasticsearchUserConfigIndexPatternInput interface {
 }
 
 type ServiceElasticsearchUserConfigIndexPatternArgs struct {
-	MaxIndexCount pulumi.IntPtrInput    `pulumi:"maxIndexCount"`
+	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
 	Pattern       pulumi.StringPtrInput `pulumi:"pattern"`
 }
 
@@ -1939,8 +2400,8 @@ func (o ServiceElasticsearchUserConfigIndexPatternOutput) ToServiceElasticsearch
 	return o
 }
 
-func (o ServiceElasticsearchUserConfigIndexPatternOutput) MaxIndexCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigIndexPattern) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigIndexPatternOutput) MaxIndexCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigIndexPattern) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigIndexPatternOutput) Pattern() pulumi.StringPtrOutput {
@@ -1968,9 +2429,9 @@ func (o ServiceElasticsearchUserConfigIndexPatternArrayOutput) Index(i pulumi.In
 }
 
 type ServiceElasticsearchUserConfigKibana struct {
-	ElasticsearchRequestTimeout *int  `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     *bool `pulumi:"enabled"`
-	MaxOldSpaceSize             *int  `pulumi:"maxOldSpaceSize"`
+	ElasticsearchRequestTimeout *string `pulumi:"elasticsearchRequestTimeout"`
+	Enabled                     *string `pulumi:"enabled"`
+	MaxOldSpaceSize             *string `pulumi:"maxOldSpaceSize"`
 }
 
 // ServiceElasticsearchUserConfigKibanaInput is an input type that accepts ServiceElasticsearchUserConfigKibanaArgs and ServiceElasticsearchUserConfigKibanaOutput values.
@@ -1986,9 +2447,9 @@ type ServiceElasticsearchUserConfigKibanaInput interface {
 }
 
 type ServiceElasticsearchUserConfigKibanaArgs struct {
-	ElasticsearchRequestTimeout pulumi.IntPtrInput  `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     pulumi.BoolPtrInput `pulumi:"enabled"`
-	MaxOldSpaceSize             pulumi.IntPtrInput  `pulumi:"maxOldSpaceSize"`
+	ElasticsearchRequestTimeout pulumi.StringPtrInput `pulumi:"elasticsearchRequestTimeout"`
+	Enabled                     pulumi.StringPtrInput `pulumi:"enabled"`
+	MaxOldSpaceSize             pulumi.StringPtrInput `pulumi:"maxOldSpaceSize"`
 }
 
 func (ServiceElasticsearchUserConfigKibanaArgs) ElementType() reflect.Type {
@@ -2068,16 +2529,16 @@ func (o ServiceElasticsearchUserConfigKibanaOutput) ToServiceElasticsearchUserCo
 		return &v
 	}).(ServiceElasticsearchUserConfigKibanaPtrOutput)
 }
-func (o ServiceElasticsearchUserConfigKibanaOutput) ElasticsearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *int { return v.ElasticsearchRequestTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigKibanaOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *string { return v.ElasticsearchRequestTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigKibanaOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o ServiceElasticsearchUserConfigKibanaOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigKibanaOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *int { return v.MaxOldSpaceSize }).(pulumi.IntPtrOutput)
+func (o ServiceElasticsearchUserConfigKibanaOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigKibana) *string { return v.MaxOldSpaceSize }).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigKibanaPtrOutput struct{ *pulumi.OutputState }
@@ -2098,31 +2559,31 @@ func (o ServiceElasticsearchUserConfigKibanaPtrOutput) Elem() ServiceElasticsear
 	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) ServiceElasticsearchUserConfigKibana { return *v }).(ServiceElasticsearchUserConfigKibanaOutput)
 }
 
-func (o ServiceElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *int {
+func (o ServiceElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ElasticsearchRequestTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *bool {
+func (o ServiceElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *int {
+func (o ServiceElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigKibana) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxOldSpaceSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigPrivateAccess struct {
@@ -2564,15 +3025,16 @@ type ServiceGrafanaUserConfig struct {
 	AlertingErrorOrTimeout     *string                                       `pulumi:"alertingErrorOrTimeout"`
 	AlertingNodataOrNullvalues *string                                       `pulumi:"alertingNodataOrNullvalues"`
 	AllowEmbedding             *string                                       `pulumi:"allowEmbedding"`
+	AuthBasicEnabled           *string                                       `pulumi:"authBasicEnabled"`
 	AuthGenericOauth           *ServiceGrafanaUserConfigAuthGenericOauth     `pulumi:"authGenericOauth"`
 	AuthGithub                 *ServiceGrafanaUserConfigAuthGithub           `pulumi:"authGithub"`
 	AuthGitlab                 *ServiceGrafanaUserConfigAuthGitlab           `pulumi:"authGitlab"`
 	AuthGoogle                 *ServiceGrafanaUserConfigAuthGoogle           `pulumi:"authGoogle"`
 	CookieSamesite             *string                                       `pulumi:"cookieSamesite"`
 	CustomDomain               *string                                       `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   *int                                          `pulumi:"dashboardsVersionsToKeep"`
+	DashboardsVersionsToKeep   *string                                       `pulumi:"dashboardsVersionsToKeep"`
 	DataproxySendUserHeader    *string                                       `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           *int                                          `pulumi:"dataproxyTimeout"`
+	DataproxyTimeout           *string                                       `pulumi:"dataproxyTimeout"`
 	DisableGravatar            *string                                       `pulumi:"disableGravatar"`
 	EditorsCanAdmin            *string                                       `pulumi:"editorsCanAdmin"`
 	ExternalImageStorage       *ServiceGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
@@ -2604,15 +3066,16 @@ type ServiceGrafanaUserConfigArgs struct {
 	AlertingErrorOrTimeout     pulumi.StringPtrInput                                `pulumi:"alertingErrorOrTimeout"`
 	AlertingNodataOrNullvalues pulumi.StringPtrInput                                `pulumi:"alertingNodataOrNullvalues"`
 	AllowEmbedding             pulumi.StringPtrInput                                `pulumi:"allowEmbedding"`
+	AuthBasicEnabled           pulumi.StringPtrInput                                `pulumi:"authBasicEnabled"`
 	AuthGenericOauth           ServiceGrafanaUserConfigAuthGenericOauthPtrInput     `pulumi:"authGenericOauth"`
 	AuthGithub                 ServiceGrafanaUserConfigAuthGithubPtrInput           `pulumi:"authGithub"`
 	AuthGitlab                 ServiceGrafanaUserConfigAuthGitlabPtrInput           `pulumi:"authGitlab"`
 	AuthGoogle                 ServiceGrafanaUserConfigAuthGooglePtrInput           `pulumi:"authGoogle"`
 	CookieSamesite             pulumi.StringPtrInput                                `pulumi:"cookieSamesite"`
 	CustomDomain               pulumi.StringPtrInput                                `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   pulumi.IntPtrInput                                   `pulumi:"dashboardsVersionsToKeep"`
+	DashboardsVersionsToKeep   pulumi.StringPtrInput                                `pulumi:"dashboardsVersionsToKeep"`
 	DataproxySendUserHeader    pulumi.StringPtrInput                                `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           pulumi.IntPtrInput                                   `pulumi:"dataproxyTimeout"`
+	DataproxyTimeout           pulumi.StringPtrInput                                `pulumi:"dataproxyTimeout"`
 	DisableGravatar            pulumi.StringPtrInput                                `pulumi:"disableGravatar"`
 	EditorsCanAdmin            pulumi.StringPtrInput                                `pulumi:"editorsCanAdmin"`
 	ExternalImageStorage       ServiceGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
@@ -2720,6 +3183,10 @@ func (o ServiceGrafanaUserConfigOutput) AllowEmbedding() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.AllowEmbedding }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceGrafanaUserConfigOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.AuthBasicEnabled }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceGrafanaUserConfigOutput) AuthGenericOauth() ServiceGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGenericOauth { return v.AuthGenericOauth }).(ServiceGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
@@ -2744,16 +3211,16 @@ func (o ServiceGrafanaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *int { return v.DashboardsVersionsToKeep }).(pulumi.IntPtrOutput)
+func (o ServiceGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.DashboardsVersionsToKeep }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.DataproxySendUserHeader }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigOutput) DataproxyTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfig) *int { return v.DataproxyTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceGrafanaUserConfigOutput) DataproxyTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.DataproxyTimeout }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigOutput) DisableGravatar() pulumi.StringPtrOutput {
@@ -2860,6 +3327,15 @@ func (o ServiceGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceGrafanaUserConfigPtrOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthBasicEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceGrafanaUserConfigPtrOutput) AuthGenericOauth() ServiceGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigAuthGenericOauth {
 		if v == nil {
@@ -2914,13 +3390,13 @@ func (o ServiceGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *int {
+func (o ServiceGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DashboardsVersionsToKeep
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
@@ -2932,13 +3408,13 @@ func (o ServiceGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *int {
+func (o ServiceGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DataproxyTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOutput {
@@ -4327,7 +4803,7 @@ type ServiceGrafanaUserConfigSmtpServer struct {
 	FromName    *string `pulumi:"fromName"`
 	Host        *string `pulumi:"host"`
 	Password    *string `pulumi:"password"`
-	Port        *int    `pulumi:"port"`
+	Port        *string `pulumi:"port"`
 	SkipVerify  *string `pulumi:"skipVerify"`
 	Username    *string `pulumi:"username"`
 }
@@ -4349,7 +4825,7 @@ type ServiceGrafanaUserConfigSmtpServerArgs struct {
 	FromName    pulumi.StringPtrInput `pulumi:"fromName"`
 	Host        pulumi.StringPtrInput `pulumi:"host"`
 	Password    pulumi.StringPtrInput `pulumi:"password"`
-	Port        pulumi.IntPtrInput    `pulumi:"port"`
+	Port        pulumi.StringPtrInput `pulumi:"port"`
 	SkipVerify  pulumi.StringPtrInput `pulumi:"skipVerify"`
 	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -4447,8 +4923,8 @@ func (o ServiceGrafanaUserConfigSmtpServerOutput) Password() pulumi.StringPtrOut
 	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigSmtpServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o ServiceGrafanaUserConfigSmtpServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringPtrOutput {
@@ -4513,13 +4989,13 @@ func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *int {
+func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Port
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringPtrOutput {
@@ -5115,7 +5591,7 @@ func (o ServiceInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.String
 type ServiceIntegrationEndpointDatadogUserConfig struct {
 	DatadogApiKey        *string `pulumi:"datadogApiKey"`
 	DisableConsumerStats *string `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts *int    `pulumi:"maxPartitionContexts"`
+	MaxPartitionContexts *string `pulumi:"maxPartitionContexts"`
 	Site                 *string `pulumi:"site"`
 }
 
@@ -5134,7 +5610,7 @@ type ServiceIntegrationEndpointDatadogUserConfigInput interface {
 type ServiceIntegrationEndpointDatadogUserConfigArgs struct {
 	DatadogApiKey        pulumi.StringPtrInput `pulumi:"datadogApiKey"`
 	DisableConsumerStats pulumi.StringPtrInput `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts pulumi.IntPtrInput    `pulumi:"maxPartitionContexts"`
+	MaxPartitionContexts pulumi.StringPtrInput `pulumi:"maxPartitionContexts"`
 	Site                 pulumi.StringPtrInput `pulumi:"site"`
 }
 
@@ -5223,8 +5699,8 @@ func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerStats(
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DisableConsumerStats }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContexts() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *int { return v.MaxPartitionContexts }).(pulumi.IntPtrOutput)
+func (o ServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContexts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.MaxPartitionContexts }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.StringPtrOutput {
@@ -5269,13 +5745,13 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DisableConsumerSta
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) MaxPartitionContexts() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *int {
+func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) MaxPartitionContexts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxPartitionContexts
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Site() pulumi.StringPtrOutput {
@@ -5288,11 +5764,11 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Site() pulumi.Stri
 }
 
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
-	Ca           *string  `pulumi:"ca"`
-	IndexDaysMax *int     `pulumi:"indexDaysMax"`
-	IndexPrefix  *string  `pulumi:"indexPrefix"`
-	Timeout      *float64 `pulumi:"timeout"`
-	Url          *string  `pulumi:"url"`
+	Ca           *string `pulumi:"ca"`
+	IndexDaysMax *string `pulumi:"indexDaysMax"`
+	IndexPrefix  *string `pulumi:"indexPrefix"`
+	Timeout      *string `pulumi:"timeout"`
+	Url          *string `pulumi:"url"`
 }
 
 // ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
@@ -5308,11 +5784,11 @@ type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interfac
 }
 
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs struct {
-	Ca           pulumi.StringPtrInput  `pulumi:"ca"`
-	IndexDaysMax pulumi.IntPtrInput     `pulumi:"indexDaysMax"`
-	IndexPrefix  pulumi.StringPtrInput  `pulumi:"indexPrefix"`
-	Timeout      pulumi.Float64PtrInput `pulumi:"timeout"`
-	Url          pulumi.StringPtrInput  `pulumi:"url"`
+	Ca           pulumi.StringPtrInput `pulumi:"ca"`
+	IndexDaysMax pulumi.StringPtrInput `pulumi:"indexDaysMax"`
+	IndexPrefix  pulumi.StringPtrInput `pulumi:"indexPrefix"`
+	Timeout      pulumi.StringPtrInput `pulumi:"timeout"`
+	Url          pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
@@ -5396,16 +5872,16 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Ca(
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexDaysMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *int { return v.IndexDaysMax }).(pulumi.IntPtrOutput)
+func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexDaysMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexDaysMax }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexPrefix }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
+func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Url() pulumi.StringPtrOutput {
@@ -5441,13 +5917,13 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexDaysMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *int {
+func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexDaysMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndexDaysMax
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexPrefix() pulumi.StringPtrOutput {
@@ -5459,13 +5935,13 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *float64 {
+func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Timeout
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Url() pulumi.StringPtrOutput {
@@ -5628,10 +6104,10 @@ type ServiceIntegrationEndpointRsyslogUserConfig struct {
 	Format  *string `pulumi:"format"`
 	Key     *string `pulumi:"key"`
 	Logline *string `pulumi:"logline"`
-	Port    *int    `pulumi:"port"`
+	Port    *string `pulumi:"port"`
 	Sd      *string `pulumi:"sd"`
 	Server  *string `pulumi:"server"`
-	Tls     *bool   `pulumi:"tls"`
+	Tls     *string `pulumi:"tls"`
 }
 
 // ServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts ServiceIntegrationEndpointRsyslogUserConfigArgs and ServiceIntegrationEndpointRsyslogUserConfigOutput values.
@@ -5652,10 +6128,10 @@ type ServiceIntegrationEndpointRsyslogUserConfigArgs struct {
 	Format  pulumi.StringPtrInput `pulumi:"format"`
 	Key     pulumi.StringPtrInput `pulumi:"key"`
 	Logline pulumi.StringPtrInput `pulumi:"logline"`
-	Port    pulumi.IntPtrInput    `pulumi:"port"`
+	Port    pulumi.StringPtrInput `pulumi:"port"`
 	Sd      pulumi.StringPtrInput `pulumi:"sd"`
 	Server  pulumi.StringPtrInput `pulumi:"server"`
-	Tls     pulumi.BoolPtrInput   `pulumi:"tls"`
+	Tls     pulumi.StringPtrInput `pulumi:"tls"`
 }
 
 func (ServiceIntegrationEndpointRsyslogUserConfigArgs) ElementType() reflect.Type {
@@ -5755,8 +6231,8 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Logline() pulumi.Stri
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Sd() pulumi.StringPtrOutput {
@@ -5767,8 +6243,8 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Server() pulumi.Strin
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
+func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Tls }).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationEndpointRsyslogUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -5836,13 +6312,13 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *int {
+func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Port
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Sd() pulumi.StringPtrOutput {
@@ -5863,17 +6339,452 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Server() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *bool {
+func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Tls
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationKafkaConnectUserConfig struct {
+	KafkaConnect *ServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
+}
+
+// ServiceIntegrationKafkaConnectUserConfigInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigArgs and ServiceIntegrationKafkaConnectUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigInput` via:
+//
+// 		 ServiceIntegrationKafkaConnectUserConfigArgs{...}
+//
+type ServiceIntegrationKafkaConnectUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaConnectUserConfigOutput() ServiceIntegrationKafkaConnectUserConfigOutput
+	ToServiceIntegrationKafkaConnectUserConfigOutputWithContext(context.Context) ServiceIntegrationKafkaConnectUserConfigOutput
+}
+
+type ServiceIntegrationKafkaConnectUserConfigArgs struct {
+	KafkaConnect ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
+}
+
+func (ServiceIntegrationKafkaConnectUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigArgs) ToServiceIntegrationKafkaConnectUserConfigOutput() ServiceIntegrationKafkaConnectUserConfigOutput {
+	return i.ToServiceIntegrationKafkaConnectUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigArgs) ToServiceIntegrationKafkaConnectUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaConnectUserConfigOutput)
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigArgs) ToServiceIntegrationKafkaConnectUserConfigPtrOutput() ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return i.ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigArgs) ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaConnectUserConfigOutput).ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationKafkaConnectUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigArgs, ServiceIntegrationKafkaConnectUserConfigPtr and ServiceIntegrationKafkaConnectUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigPtrInput` via:
+//
+// 		 ServiceIntegrationKafkaConnectUserConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServiceIntegrationKafkaConnectUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaConnectUserConfigPtrOutput() ServiceIntegrationKafkaConnectUserConfigPtrOutput
+	ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationKafkaConnectUserConfigPtrOutput
+}
+
+type serviceIntegrationKafkaConnectUserConfigPtrType ServiceIntegrationKafkaConnectUserConfigArgs
+
+func ServiceIntegrationKafkaConnectUserConfigPtr(v *ServiceIntegrationKafkaConnectUserConfigArgs) ServiceIntegrationKafkaConnectUserConfigPtrInput {
+	return (*serviceIntegrationKafkaConnectUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationKafkaConnectUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationKafkaConnectUserConfigPtrType) ToServiceIntegrationKafkaConnectUserConfigPtrOutput() ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return i.ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationKafkaConnectUserConfigPtrType) ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaConnectUserConfigPtrOutput)
+}
+
+type ServiceIntegrationKafkaConnectUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaConnectUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigOutput) ToServiceIntegrationKafkaConnectUserConfigOutput() ServiceIntegrationKafkaConnectUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigOutput) ToServiceIntegrationKafkaConnectUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigOutput) ToServiceIntegrationKafkaConnectUserConfigPtrOutput() ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return o.ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigOutput) ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfig) *ServiceIntegrationKafkaConnectUserConfig {
+		return &v
+	}).(ServiceIntegrationKafkaConnectUserConfigPtrOutput)
+}
+func (o ServiceIntegrationKafkaConnectUserConfigOutput) KafkaConnect() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfig) *ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return v.KafkaConnect
+	}).(ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+type ServiceIntegrationKafkaConnectUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaConnectUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) ToServiceIntegrationKafkaConnectUserConfigPtrOutput() ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) ToServiceIntegrationKafkaConnectUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) Elem() ServiceIntegrationKafkaConnectUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfig) ServiceIntegrationKafkaConnectUserConfig { return *v }).(ServiceIntegrationKafkaConnectUserConfigOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) KafkaConnect() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfig) *ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+type ServiceIntegrationKafkaConnectUserConfigKafkaConnect struct {
+	ConfigStorageTopic *string `pulumi:"configStorageTopic"`
+	GroupId            *string `pulumi:"groupId"`
+	OffsetStorageTopic *string `pulumi:"offsetStorageTopic"`
+	StatusStorageTopic *string `pulumi:"statusStorageTopic"`
+}
+
+// ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs and ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput` via:
+//
+// 		 ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//
+type ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput
+	ToServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput
+}
+
+type ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs struct {
+	ConfigStorageTopic pulumi.StringPtrInput `pulumi:"configStorageTopic"`
+	GroupId            pulumi.StringPtrInput `pulumi:"groupId"`
+	OffsetStorageTopic pulumi.StringPtrInput `pulumi:"offsetStorageTopic"`
+	StatusStorageTopic pulumi.StringPtrInput `pulumi:"statusStorageTopic"`
+}
+
+func (ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return i.ToServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput)
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return i.ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput).ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs, ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr and ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput` via:
+//
+// 		 ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput
+	ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput
+}
+
+type serviceIntegrationKafkaConnectUserConfigKafkaConnectPtrType ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs
+
+func ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr(v *ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput {
+	return (*serviceIntegrationKafkaConnectUserConfigKafkaConnectPtrType)(v)
+}
+
+func (*serviceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (i *serviceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return i.ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+type ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return &v
+	}).(ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ConfigStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.ConfigStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) OffsetStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) StatusStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.StatusStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ToServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) Elem() ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfigKafkaConnect) ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return *v
+	}).(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ConfigStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) StatusStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatusStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationKafkaMirrormakerUserConfig struct {
+	ClusterAlias *string `pulumi:"clusterAlias"`
+}
+
+// ServiceIntegrationKafkaMirrormakerUserConfigInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigArgs and ServiceIntegrationKafkaMirrormakerUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigInput` via:
+//
+// 		 ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+//
+type ServiceIntegrationKafkaMirrormakerUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaMirrormakerUserConfigOutput() ServiceIntegrationKafkaMirrormakerUserConfigOutput
+	ToServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(context.Context) ServiceIntegrationKafkaMirrormakerUserConfigOutput
+}
+
+type ServiceIntegrationKafkaMirrormakerUserConfigArgs struct {
+	ClusterAlias pulumi.StringPtrInput `pulumi:"clusterAlias"`
+}
+
+func (ServiceIntegrationKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationKafkaMirrormakerUserConfigArgs) ToServiceIntegrationKafkaMirrormakerUserConfigOutput() ServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return i.ToServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaMirrormakerUserConfigArgs) ToServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaMirrormakerUserConfigOutput)
+}
+
+func (i ServiceIntegrationKafkaMirrormakerUserConfigArgs) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutput() ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return i.ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaMirrormakerUserConfigArgs) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaMirrormakerUserConfigOutput).ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationKafkaMirrormakerUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigArgs, ServiceIntegrationKafkaMirrormakerUserConfigPtr and ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigPtrInput` via:
+//
+// 		 ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServiceIntegrationKafkaMirrormakerUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutput() ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput
+	ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput
+}
+
+type serviceIntegrationKafkaMirrormakerUserConfigPtrType ServiceIntegrationKafkaMirrormakerUserConfigArgs
+
+func ServiceIntegrationKafkaMirrormakerUserConfigPtr(v *ServiceIntegrationKafkaMirrormakerUserConfigArgs) ServiceIntegrationKafkaMirrormakerUserConfigPtrInput {
+	return (*serviceIntegrationKafkaMirrormakerUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationKafkaMirrormakerUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationKafkaMirrormakerUserConfigPtrType) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutput() ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return i.ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationKafkaMirrormakerUserConfigPtrType) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput)
+}
+
+type ServiceIntegrationKafkaMirrormakerUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaMirrormakerUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ToServiceIntegrationKafkaMirrormakerUserConfigOutput() ServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ToServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutput() ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return o.ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfig) *ServiceIntegrationKafkaMirrormakerUserConfig {
+		return &v
+	}).(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput)
+}
+func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ClusterAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfig) *string { return v.ClusterAlias }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutput() ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ToServiceIntegrationKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) Elem() ServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaMirrormakerUserConfig) ServiceIntegrationKafkaMirrormakerUserConfig {
+		return *v
+	}).(ServiceIntegrationKafkaMirrormakerUserConfigOutput)
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ClusterAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaMirrormakerUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterAlias
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationLogsUserConfig struct {
-	ElasticsearchIndexDaysMax *int    `pulumi:"elasticsearchIndexDaysMax"`
+	ElasticsearchIndexDaysMax *string `pulumi:"elasticsearchIndexDaysMax"`
 	ElasticsearchIndexPrefix  *string `pulumi:"elasticsearchIndexPrefix"`
 }
 
@@ -5890,7 +6801,7 @@ type ServiceIntegrationLogsUserConfigInput interface {
 }
 
 type ServiceIntegrationLogsUserConfigArgs struct {
-	ElasticsearchIndexDaysMax pulumi.IntPtrInput    `pulumi:"elasticsearchIndexDaysMax"`
+	ElasticsearchIndexDaysMax pulumi.StringPtrInput `pulumi:"elasticsearchIndexDaysMax"`
 	ElasticsearchIndexPrefix  pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
 }
 
@@ -5971,8 +6882,8 @@ func (o ServiceIntegrationLogsUserConfigOutput) ToServiceIntegrationLogsUserConf
 		return &v
 	}).(ServiceIntegrationLogsUserConfigPtrOutput)
 }
-func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexDaysMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *int { return v.ElasticsearchIndexDaysMax }).(pulumi.IntPtrOutput)
+func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexDaysMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexDaysMax }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
@@ -5997,13 +6908,13 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) Elem() ServiceIntegrationLogs
 	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) ServiceIntegrationLogsUserConfig { return *v }).(ServiceIntegrationLogsUserConfigOutput)
 }
 
-func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexDaysMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *int {
+func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexDaysMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ElasticsearchIndexDaysMax
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
@@ -6626,8 +7537,8 @@ func (o ServiceKafkaConnectUserConfigPtrOutput) PublicAccess() ServiceKafkaConne
 
 type ServiceKafkaConnectUserConfigKafkaConnect struct {
 	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords *int    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  *int    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords *string `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  *string `pulumi:"offsetFlushIntervalMs"`
 }
 
 // ServiceKafkaConnectUserConfigKafkaConnectInput is an input type that accepts ServiceKafkaConnectUserConfigKafkaConnectArgs and ServiceKafkaConnectUserConfigKafkaConnectOutput values.
@@ -6644,8 +7555,8 @@ type ServiceKafkaConnectUserConfigKafkaConnectInput interface {
 
 type ServiceKafkaConnectUserConfigKafkaConnectArgs struct {
 	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords pulumi.IntPtrInput    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  pulumi.IntPtrInput    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 }
 
 func (ServiceKafkaConnectUserConfigKafkaConnectArgs) ElementType() reflect.Type {
@@ -6729,12 +7640,12 @@ func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLevel(
 	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaConnectUserConfigKafkaConnectPtrOutput struct{ *pulumi.OutputState }
@@ -6766,22 +7677,22 @@ func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLev
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *int {
+func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerMaxPollRecords
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *int {
+func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OffsetFlushIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaConnectUserConfigPrivateAccess struct {
@@ -7074,19 +7985,457 @@ func (o ServiceKafkaConnectUserConfigPublicAccessPtrOutput) Prometheus() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceKafkaMirrormaker struct {
+}
+
+// ServiceKafkaMirrormakerInput is an input type that accepts ServiceKafkaMirrormakerArgs and ServiceKafkaMirrormakerOutput values.
+// You can construct a concrete instance of `ServiceKafkaMirrormakerInput` via:
+//
+// 		 ServiceKafkaMirrormakerArgs{...}
+//
+type ServiceKafkaMirrormakerInput interface {
+	pulumi.Input
+
+	ToServiceKafkaMirrormakerOutput() ServiceKafkaMirrormakerOutput
+	ToServiceKafkaMirrormakerOutputWithContext(context.Context) ServiceKafkaMirrormakerOutput
+}
+
+type ServiceKafkaMirrormakerArgs struct {
+}
+
+func (ServiceKafkaMirrormakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i ServiceKafkaMirrormakerArgs) ToServiceKafkaMirrormakerOutput() ServiceKafkaMirrormakerOutput {
+	return i.ToServiceKafkaMirrormakerOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaMirrormakerArgs) ToServiceKafkaMirrormakerOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerOutput)
+}
+
+func (i ServiceKafkaMirrormakerArgs) ToServiceKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerPtrOutput {
+	return i.ToServiceKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaMirrormakerArgs) ToServiceKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerOutput).ToServiceKafkaMirrormakerPtrOutputWithContext(ctx)
+}
+
+// ServiceKafkaMirrormakerPtrInput is an input type that accepts ServiceKafkaMirrormakerArgs, ServiceKafkaMirrormakerPtr and ServiceKafkaMirrormakerPtrOutput values.
+// You can construct a concrete instance of `ServiceKafkaMirrormakerPtrInput` via:
+//
+// 		 ServiceKafkaMirrormakerArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServiceKafkaMirrormakerPtrInput interface {
+	pulumi.Input
+
+	ToServiceKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerPtrOutput
+	ToServiceKafkaMirrormakerPtrOutputWithContext(context.Context) ServiceKafkaMirrormakerPtrOutput
+}
+
+type serviceKafkaMirrormakerPtrType ServiceKafkaMirrormakerArgs
+
+func ServiceKafkaMirrormakerPtr(v *ServiceKafkaMirrormakerArgs) ServiceKafkaMirrormakerPtrInput {
+	return (*serviceKafkaMirrormakerPtrType)(v)
+}
+
+func (*serviceKafkaMirrormakerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i *serviceKafkaMirrormakerPtrType) ToServiceKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerPtrOutput {
+	return i.ToServiceKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceKafkaMirrormakerPtrType) ToServiceKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerPtrOutput)
+}
+
+type ServiceKafkaMirrormakerOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaMirrormakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o ServiceKafkaMirrormakerOutput) ToServiceKafkaMirrormakerOutput() ServiceKafkaMirrormakerOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerOutput) ToServiceKafkaMirrormakerOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerOutput) ToServiceKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerPtrOutput {
+	return o.ToServiceKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceKafkaMirrormakerOutput) ToServiceKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormaker) *ServiceKafkaMirrormaker {
+		return &v
+	}).(ServiceKafkaMirrormakerPtrOutput)
+}
+
+type ServiceKafkaMirrormakerPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaMirrormakerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o ServiceKafkaMirrormakerPtrOutput) ToServiceKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerPtrOutput) ToServiceKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerPtrOutput) Elem() ServiceKafkaMirrormakerOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormaker) ServiceKafkaMirrormaker { return *v }).(ServiceKafkaMirrormakerOutput)
+}
+
+type ServiceKafkaMirrormakerUserConfig struct {
+	IpFilters        []string                                           `pulumi:"ipFilters"`
+	KafkaMirrormaker *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+}
+
+// ServiceKafkaMirrormakerUserConfigInput is an input type that accepts ServiceKafkaMirrormakerUserConfigArgs and ServiceKafkaMirrormakerUserConfigOutput values.
+// You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigInput` via:
+//
+// 		 ServiceKafkaMirrormakerUserConfigArgs{...}
+//
+type ServiceKafkaMirrormakerUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceKafkaMirrormakerUserConfigOutput() ServiceKafkaMirrormakerUserConfigOutput
+	ToServiceKafkaMirrormakerUserConfigOutputWithContext(context.Context) ServiceKafkaMirrormakerUserConfigOutput
+}
+
+type ServiceKafkaMirrormakerUserConfigArgs struct {
+	IpFilters        pulumi.StringArrayInput                                   `pulumi:"ipFilters"`
+	KafkaMirrormaker ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
+}
+
+func (ServiceKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i ServiceKafkaMirrormakerUserConfigArgs) ToServiceKafkaMirrormakerUserConfigOutput() ServiceKafkaMirrormakerUserConfigOutput {
+	return i.ToServiceKafkaMirrormakerUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaMirrormakerUserConfigArgs) ToServiceKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerUserConfigOutput)
+}
+
+func (i ServiceKafkaMirrormakerUserConfigArgs) ToServiceKafkaMirrormakerUserConfigPtrOutput() ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return i.ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaMirrormakerUserConfigArgs) ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerUserConfigOutput).ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceKafkaMirrormakerUserConfigPtrInput is an input type that accepts ServiceKafkaMirrormakerUserConfigArgs, ServiceKafkaMirrormakerUserConfigPtr and ServiceKafkaMirrormakerUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigPtrInput` via:
+//
+// 		 ServiceKafkaMirrormakerUserConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServiceKafkaMirrormakerUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceKafkaMirrormakerUserConfigPtrOutput() ServiceKafkaMirrormakerUserConfigPtrOutput
+	ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(context.Context) ServiceKafkaMirrormakerUserConfigPtrOutput
+}
+
+type serviceKafkaMirrormakerUserConfigPtrType ServiceKafkaMirrormakerUserConfigArgs
+
+func ServiceKafkaMirrormakerUserConfigPtr(v *ServiceKafkaMirrormakerUserConfigArgs) ServiceKafkaMirrormakerUserConfigPtrInput {
+	return (*serviceKafkaMirrormakerUserConfigPtrType)(v)
+}
+
+func (*serviceKafkaMirrormakerUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i *serviceKafkaMirrormakerUserConfigPtrType) ToServiceKafkaMirrormakerUserConfigPtrOutput() ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return i.ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceKafkaMirrormakerUserConfigPtrType) ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerUserConfigPtrOutput)
+}
+
+type ServiceKafkaMirrormakerUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaMirrormakerUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o ServiceKafkaMirrormakerUserConfigOutput) ToServiceKafkaMirrormakerUserConfigOutput() ServiceKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigOutput) ToServiceKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigOutput) ToServiceKafkaMirrormakerUserConfigPtrOutput() ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return o.ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceKafkaMirrormakerUserConfigOutput) ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfig) *ServiceKafkaMirrormakerUserConfig {
+		return &v
+	}).(ServiceKafkaMirrormakerUserConfigPtrOutput)
+}
+func (o ServiceKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfig) *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return v.KafkaMirrormaker
+	}).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type ServiceKafkaMirrormakerUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaMirrormakerUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o ServiceKafkaMirrormakerUserConfigPtrOutput) ToServiceKafkaMirrormakerUserConfigPtrOutput() ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigPtrOutput) ToServiceKafkaMirrormakerUserConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigPtrOutput) Elem() ServiceKafkaMirrormakerUserConfigOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfig) ServiceKafkaMirrormakerUserConfig { return *v }).(ServiceKafkaMirrormakerUserConfigOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfig) *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaMirrormaker
+	}).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type ServiceKafkaMirrormakerUserConfigKafkaMirrormaker struct {
+	RefreshGroupsEnabled         *string `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled         *string `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
+}
+
+// ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs and ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
+// You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
+//
+// 		 ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//
+type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
+	pulumi.Input
+
+	ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+	ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+}
+
+type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
+	RefreshGroupsEnabled         pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled         pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+}
+
+func (ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return i.ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (i ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput).ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx)
+}
+
+// ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs, ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtr and ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
+// You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
+//
+// 		 ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
+	pulumi.Input
+
+	ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+	ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+}
+
+type serviceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs
+
+func ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtr(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput {
+	return (*serviceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType)(v)
+}
+
+func (*serviceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i *serviceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return &v
+	}).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.RefreshGroupsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.RefreshGroupsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.RefreshTopicsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Elem() ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return *v
+	}).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshGroupsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshGroupsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTopicsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceKafkaUserConfig struct {
 	CustomDomain               *string                                           `pulumi:"customDomain"`
 	IpFilters                  []string                                          `pulumi:"ipFilters"`
 	Kafka                      *ServiceKafkaUserConfigKafka                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods *ServiceKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               *bool                                             `pulumi:"kafkaConnect"`
+	KafkaConnect               *string                                           `pulumi:"kafkaConnect"`
 	KafkaConnectConfig         *ServiceKafkaUserConfigKafkaConnectConfig         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  *bool                                             `pulumi:"kafkaRest"`
+	KafkaRest                  *string                                           `pulumi:"kafkaRest"`
 	KafkaRestConfig            *ServiceKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               *string                                           `pulumi:"kafkaVersion"`
 	PrivateAccess              *ServiceKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
 	PublicAccess               *ServiceKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
-	SchemaRegistry             *bool                                             `pulumi:"schemaRegistry"`
+	SchemaRegistry             *string                                           `pulumi:"schemaRegistry"`
 }
 
 // ServiceKafkaUserConfigInput is an input type that accepts ServiceKafkaUserConfigArgs and ServiceKafkaUserConfigOutput values.
@@ -7106,14 +8455,14 @@ type ServiceKafkaUserConfigArgs struct {
 	IpFilters                  pulumi.StringArrayInput                                  `pulumi:"ipFilters"`
 	Kafka                      ServiceKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               pulumi.BoolPtrInput                                      `pulumi:"kafkaConnect"`
+	KafkaConnect               pulumi.StringPtrInput                                    `pulumi:"kafkaConnect"`
 	KafkaConnectConfig         ServiceKafkaUserConfigKafkaConnectConfigPtrInput         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  pulumi.BoolPtrInput                                      `pulumi:"kafkaRest"`
+	KafkaRest                  pulumi.StringPtrInput                                    `pulumi:"kafkaRest"`
 	KafkaRestConfig            ServiceKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               pulumi.StringPtrInput                                    `pulumi:"kafkaVersion"`
 	PrivateAccess              ServiceKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
 	PublicAccess               ServiceKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
-	SchemaRegistry             pulumi.BoolPtrInput                                      `pulumi:"schemaRegistry"`
+	SchemaRegistry             pulumi.StringPtrInput                                    `pulumi:"schemaRegistry"`
 }
 
 func (ServiceKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -7211,16 +8560,16 @@ func (o ServiceKafkaUserConfigOutput) KafkaAuthenticationMethods() ServiceKafkaU
 	}).(ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigOutput) KafkaConnect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *bool { return v.KafkaConnect }).(pulumi.BoolPtrOutput)
+func (o ServiceKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigOutput) KafkaConnectConfig() ServiceKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigKafkaConnectConfig { return v.KafkaConnectConfig }).(ServiceKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigOutput) KafkaRest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *bool { return v.KafkaRest }).(pulumi.BoolPtrOutput)
+func (o ServiceKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigOutput) KafkaRestConfig() ServiceKafkaUserConfigKafkaRestConfigPtrOutput {
@@ -7239,8 +8588,8 @@ func (o ServiceKafkaUserConfigOutput) PublicAccess() ServiceKafkaUserConfigPubli
 	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigPublicAccess { return v.PublicAccess }).(ServiceKafkaUserConfigPublicAccessPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigOutput) SchemaRegistry() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfig) *bool { return v.SchemaRegistry }).(pulumi.BoolPtrOutput)
+func (o ServiceKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -7297,13 +8646,13 @@ func (o ServiceKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() ServiceKaf
 	}).(ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigPtrOutput) KafkaConnect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfig) *bool {
+func (o ServiceKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.KafkaConnect
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaConnectConfig() ServiceKafkaUserConfigKafkaConnectConfigPtrOutput {
@@ -7315,13 +8664,13 @@ func (o ServiceKafkaUserConfigPtrOutput) KafkaConnectConfig() ServiceKafkaUserCo
 	}).(ServiceKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigPtrOutput) KafkaRest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfig) *bool {
+func (o ServiceKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.KafkaRest
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) KafkaRestConfig() ServiceKafkaUserConfigKafkaRestConfigPtrOutput {
@@ -7360,39 +8709,39 @@ func (o ServiceKafkaUserConfigPtrOutput) PublicAccess() ServiceKafkaUserConfigPu
 	}).(ServiceKafkaUserConfigPublicAccessPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfig) *bool {
+func (o ServiceKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SchemaRegistry
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafka struct {
-	AutoCreateTopicsEnable                 *string  `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        *string  `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   *int     `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               *int     `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               *int     `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               *int     `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           *int     `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            *float64 `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           *int     `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       *string  `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     *int     `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                *string  `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      *int     `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      *int     `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        *int     `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    *int     `pulumi:"maxConnectionsPerIp"`
-	MessageMaxBytes                        *int     `pulumi:"messageMaxBytes"`
-	NumPartitions                          *int     `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                *int     `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests *int     `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   *int     `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           *int     `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  *int     `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                        *string `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                   *string `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
+	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
+	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
+	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
+	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
+	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
+	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
+	NumPartitions                          *string `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                   *string `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes           *string `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                  *string `pulumi:"socketRequestMaxBytes"`
 }
 
 // ServiceKafkaUserConfigKafkaInput is an input type that accepts ServiceKafkaUserConfigKafkaArgs and ServiceKafkaUserConfigKafkaOutput values.
@@ -7408,29 +8757,29 @@ type ServiceKafkaUserConfigKafkaInput interface {
 }
 
 type ServiceKafkaUserConfigKafkaArgs struct {
-	AutoCreateTopicsEnable                 pulumi.StringPtrInput  `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        pulumi.StringPtrInput  `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   pulumi.IntPtrInput     `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               pulumi.IntPtrInput     `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               pulumi.IntPtrInput     `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               pulumi.IntPtrInput     `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           pulumi.IntPtrInput     `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            pulumi.Float64PtrInput `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           pulumi.IntPtrInput     `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       pulumi.StringPtrInput  `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     pulumi.IntPtrInput     `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                pulumi.StringPtrInput  `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      pulumi.IntPtrInput     `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      pulumi.IntPtrInput     `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        pulumi.IntPtrInput     `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    pulumi.IntPtrInput     `pulumi:"maxConnectionsPerIp"`
-	MessageMaxBytes                        pulumi.IntPtrInput     `pulumi:"messageMaxBytes"`
-	NumPartitions                          pulumi.IntPtrInput     `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                pulumi.IntPtrInput     `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests pulumi.IntPtrInput     `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   pulumi.IntPtrInput     `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           pulumi.IntPtrInput     `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  pulumi.IntPtrInput     `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                 pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                        pulumi.StringPtrInput `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                   pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                   pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes           pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                  pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
 }
 
 func (ServiceKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -7518,88 +8867,88 @@ func (o ServiceKafkaUserConfigKafkaOutput) CompressionType() pulumi.StringPtrOut
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ConnectionsMaxIdleMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.ConnectionsMaxIdleMs }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) GroupMaxSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.GroupMaxSessionTimeoutMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.GroupMaxSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.GroupMinSessionTimeoutMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogCleanerMaxCompactionLagMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *float64 { return v.LogCleanerMinCleanableRatio }).(pulumi.Float64PtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanerMinCleanableRatio }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogCleanerMinCompactionLagMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanerMinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogRetentionBytes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogRetentionHours }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.MaxConnectionsPerIp }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.MessageMaxBytes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.OffsetsRetentionMinutes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.OffsetsRetentionMinutes }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) ReplicaFetchMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchMaxBytes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.ReplicaFetchMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchResponseMaxBytes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.ReplicaFetchResponseMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *int { return v.SocketRequestMaxBytes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaPtrOutput struct{ *pulumi.OutputState }
@@ -7638,67 +8987,67 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConnectionsMaxIdleMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultReplicationFactor
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.GroupMaxSessionTimeoutMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.GroupMinSessionTimeoutMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanerMaxCompactionLagMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *float64 {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanerMinCleanableRatio
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanerMinCompactionLagMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
@@ -7710,13 +9059,13 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogMessageTimestampDifferenceMaxMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
@@ -7728,108 +9077,108 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionHours
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogSegmentBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxConnectionsPerIp
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MessageMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NumPartitions
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OffsetsRetentionMinutes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ProducerPurgatoryPurgeIntervalRequests
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ReplicaFetchMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ReplicaFetchResponseMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *int {
+func (o ServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SocketRequestMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaAuthenticationMethods struct {
-	Certificate *bool `pulumi:"certificate"`
-	Sasl        *bool `pulumi:"sasl"`
+	Certificate *string `pulumi:"certificate"`
+	Sasl        *string `pulumi:"sasl"`
 }
 
 // ServiceKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs and ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput values.
@@ -7845,8 +9194,8 @@ type ServiceKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 }
 
 type ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs struct {
-	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
-	Sasl        pulumi.BoolPtrInput `pulumi:"sasl"`
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	Sasl        pulumi.StringPtrInput `pulumi:"sasl"`
 }
 
 func (ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs) ElementType() reflect.Type {
@@ -7926,12 +9275,12 @@ func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) ToServiceKafkaUs
 		return &v
 	}).(ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
-func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Certificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Sasl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Sasl }).(pulumi.BoolPtrOutput)
+func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Sasl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Sasl }).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput struct{ *pulumi.OutputState }
@@ -7954,28 +9303,28 @@ func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Elem() Servic
 	}).(ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Certificate
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Sasl
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaConnectConfig struct {
 	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords *int    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  *int    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords *string `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  *string `pulumi:"offsetFlushIntervalMs"`
 }
 
 // ServiceKafkaUserConfigKafkaConnectConfigInput is an input type that accepts ServiceKafkaUserConfigKafkaConnectConfigArgs and ServiceKafkaUserConfigKafkaConnectConfigOutput values.
@@ -7992,8 +9341,8 @@ type ServiceKafkaUserConfigKafkaConnectConfigInput interface {
 
 type ServiceKafkaUserConfigKafkaConnectConfigArgs struct {
 	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords pulumi.IntPtrInput    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  pulumi.IntPtrInput    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 }
 
 func (ServiceKafkaUserConfigKafkaConnectConfigArgs) ElementType() reflect.Type {
@@ -8077,12 +9426,12 @@ func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLevel()
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaConnectConfigPtrOutput struct{ *pulumi.OutputState }
@@ -8112,31 +9461,31 @@ func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLeve
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *int {
+func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerMaxPollRecords
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *int {
+func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OffsetFlushIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaRestConfig struct {
-	ConsumerEnableAutoCommit  *bool   `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   *int    `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  *int    `pulumi:"consumerRequestTimeoutMs"`
+	ConsumerEnableAutoCommit  *string `pulumi:"consumerEnableAutoCommit"`
+	ConsumerRequestMaxBytes   *string `pulumi:"consumerRequestMaxBytes"`
+	ConsumerRequestTimeoutMs  *string `pulumi:"consumerRequestTimeoutMs"`
 	ProducerAcks              *string `pulumi:"producerAcks"`
-	ProducerLingerMs          *int    `pulumi:"producerLingerMs"`
-	SimpleconsumerPoolSizeMax *int    `pulumi:"simpleconsumerPoolSizeMax"`
+	ProducerLingerMs          *string `pulumi:"producerLingerMs"`
+	SimpleconsumerPoolSizeMax *string `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
 // ServiceKafkaUserConfigKafkaRestConfigInput is an input type that accepts ServiceKafkaUserConfigKafkaRestConfigArgs and ServiceKafkaUserConfigKafkaRestConfigOutput values.
@@ -8152,12 +9501,12 @@ type ServiceKafkaUserConfigKafkaRestConfigInput interface {
 }
 
 type ServiceKafkaUserConfigKafkaRestConfigArgs struct {
-	ConsumerEnableAutoCommit  pulumi.BoolPtrInput   `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   pulumi.IntPtrInput    `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  pulumi.IntPtrInput    `pulumi:"consumerRequestTimeoutMs"`
+	ConsumerEnableAutoCommit  pulumi.StringPtrInput `pulumi:"consumerEnableAutoCommit"`
+	ConsumerRequestMaxBytes   pulumi.StringPtrInput `pulumi:"consumerRequestMaxBytes"`
+	ConsumerRequestTimeoutMs  pulumi.StringPtrInput `pulumi:"consumerRequestTimeoutMs"`
 	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
-	ProducerLingerMs          pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
-	SimpleconsumerPoolSizeMax pulumi.IntPtrInput    `pulumi:"simpleconsumerPoolSizeMax"`
+	ProducerLingerMs          pulumi.StringPtrInput `pulumi:"producerLingerMs"`
+	SimpleconsumerPoolSizeMax pulumi.StringPtrInput `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
 func (ServiceKafkaUserConfigKafkaRestConfigArgs) ElementType() reflect.Type {
@@ -8237,28 +9586,28 @@ func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ToServiceKafkaUserConfigKaf
 		return &v
 	}).(ServiceKafkaUserConfigKafkaRestConfigPtrOutput)
 }
-func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerEnableAutoCommit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *bool { return v.ConsumerEnableAutoCommit }).(pulumi.BoolPtrOutput)
+func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerEnableAutoCommit }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestMaxBytes }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *string { return v.ProducerLingerMs }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *int { return v.SimpleconsumerPoolSizeMax }).(pulumi.IntPtrOutput)
+func (o ServiceKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaRestConfig) *string { return v.SimpleconsumerPoolSizeMax }).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaRestConfigPtrOutput struct{ *pulumi.OutputState }
@@ -8279,31 +9628,31 @@ func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) Elem() ServiceKafkaUserC
 	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) ServiceKafkaUserConfigKafkaRestConfig { return *v }).(ServiceKafkaUserConfigKafkaRestConfigOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *bool {
+func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerEnableAutoCommit
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerRequestMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerRequestTimeoutMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.StringPtrOutput {
@@ -8315,22 +9664,22 @@ func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ProducerLingerMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o ServiceKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SimpleconsumerPoolSizeMax
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigPrivateAccess struct {
@@ -8766,8 +10115,8 @@ func (o ServiceMysqlPtrOutput) Elem() ServiceMysqlOutput {
 type ServiceMysqlUserConfig struct {
 	AdminPassword      *string                              `pulumi:"adminPassword"`
 	AdminUsername      *string                              `pulumi:"adminUsername"`
-	BackupHour         *int                                 `pulumi:"backupHour"`
-	BackupMinute       *int                                 `pulumi:"backupMinute"`
+	BackupHour         *string                              `pulumi:"backupHour"`
+	BackupMinute       *string                              `pulumi:"backupMinute"`
 	IpFilters          []string                             `pulumi:"ipFilters"`
 	Mysql              *ServiceMysqlUserConfigMysql         `pulumi:"mysql"`
 	MysqlVersion       *string                              `pulumi:"mysqlVersion"`
@@ -8792,8 +10141,8 @@ type ServiceMysqlUserConfigInput interface {
 type ServiceMysqlUserConfigArgs struct {
 	AdminPassword      pulumi.StringPtrInput                       `pulumi:"adminPassword"`
 	AdminUsername      pulumi.StringPtrInput                       `pulumi:"adminUsername"`
-	BackupHour         pulumi.IntPtrInput                          `pulumi:"backupHour"`
-	BackupMinute       pulumi.IntPtrInput                          `pulumi:"backupMinute"`
+	BackupHour         pulumi.StringPtrInput                       `pulumi:"backupHour"`
+	BackupMinute       pulumi.StringPtrInput                       `pulumi:"backupMinute"`
 	IpFilters          pulumi.StringArrayInput                     `pulumi:"ipFilters"`
 	Mysql              ServiceMysqlUserConfigMysqlPtrInput         `pulumi:"mysql"`
 	MysqlVersion       pulumi.StringPtrInput                       `pulumi:"mysqlVersion"`
@@ -8888,12 +10237,12 @@ func (o ServiceMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
@@ -8960,22 +10309,22 @@ func (o ServiceMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigPtrOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfig) *int {
+func (o ServiceMysqlUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.BackupHour
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigPtrOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfig) *int {
+func (o ServiceMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.BackupMinute
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
@@ -9042,21 +10391,26 @@ func (o ServiceMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOut
 }
 
 type ServiceMysqlUserConfigMysql struct {
-	ConnectTimeout               *int    `pulumi:"connectTimeout"`
+	ConnectTimeout               *string `pulumi:"connectTimeout"`
 	DefaultTimeZone              *string `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            *int    `pulumi:"groupConcatMaxLen"`
-	InformationSchemaStatsExpiry *int    `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         *int    `pulumi:"innodbFtMinTokenSize"`
+	GroupConcatMaxLen            *string `pulumi:"groupConcatMaxLen"`
+	InformationSchemaStatsExpiry *string `pulumi:"informationSchemaStatsExpiry"`
+	InnodbFtMinTokenSize         *string `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  *string `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        *int    `pulumi:"innodbLockWaitTimeout"`
-	InnodbOnlineAlterLogMaxSize  *int    `pulumi:"innodbOnlineAlterLogMaxSize"`
+	InnodbLockWaitTimeout        *string `pulumi:"innodbLockWaitTimeout"`
+	InnodbLogBufferSize          *string `pulumi:"innodbLogBufferSize"`
+	InnodbOnlineAlterLogMaxSize  *string `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbRollbackOnTimeout      *string `pulumi:"innodbRollbackOnTimeout"`
-	MaxAllowedPacket             *int    `pulumi:"maxAllowedPacket"`
-	NetReadTimeout               *int    `pulumi:"netReadTimeout"`
-	NetWriteTimeout              *int    `pulumi:"netWriteTimeout"`
+	InteractiveTimeout           *string `pulumi:"interactiveTimeout"`
+	MaxAllowedPacket             *string `pulumi:"maxAllowedPacket"`
+	MaxHeapTableSize             *string `pulumi:"maxHeapTableSize"`
+	NetReadTimeout               *string `pulumi:"netReadTimeout"`
+	NetWriteTimeout              *string `pulumi:"netWriteTimeout"`
+	SortBufferSize               *string `pulumi:"sortBufferSize"`
 	SqlMode                      *string `pulumi:"sqlMode"`
 	SqlRequirePrimaryKey         *string `pulumi:"sqlRequirePrimaryKey"`
-	WaitTimeout                  *int    `pulumi:"waitTimeout"`
+	TmpTableSize                 *string `pulumi:"tmpTableSize"`
+	WaitTimeout                  *string `pulumi:"waitTimeout"`
 }
 
 // ServiceMysqlUserConfigMysqlInput is an input type that accepts ServiceMysqlUserConfigMysqlArgs and ServiceMysqlUserConfigMysqlOutput values.
@@ -9072,21 +10426,26 @@ type ServiceMysqlUserConfigMysqlInput interface {
 }
 
 type ServiceMysqlUserConfigMysqlArgs struct {
-	ConnectTimeout               pulumi.IntPtrInput    `pulumi:"connectTimeout"`
+	ConnectTimeout               pulumi.StringPtrInput `pulumi:"connectTimeout"`
 	DefaultTimeZone              pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            pulumi.IntPtrInput    `pulumi:"groupConcatMaxLen"`
-	InformationSchemaStatsExpiry pulumi.IntPtrInput    `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         pulumi.IntPtrInput    `pulumi:"innodbFtMinTokenSize"`
+	GroupConcatMaxLen            pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
+	InformationSchemaStatsExpiry pulumi.StringPtrInput `pulumi:"informationSchemaStatsExpiry"`
+	InnodbFtMinTokenSize         pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        pulumi.IntPtrInput    `pulumi:"innodbLockWaitTimeout"`
-	InnodbOnlineAlterLogMaxSize  pulumi.IntPtrInput    `pulumi:"innodbOnlineAlterLogMaxSize"`
+	InnodbLockWaitTimeout        pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
+	InnodbLogBufferSize          pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
+	InnodbOnlineAlterLogMaxSize  pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbRollbackOnTimeout      pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
-	MaxAllowedPacket             pulumi.IntPtrInput    `pulumi:"maxAllowedPacket"`
-	NetReadTimeout               pulumi.IntPtrInput    `pulumi:"netReadTimeout"`
-	NetWriteTimeout              pulumi.IntPtrInput    `pulumi:"netWriteTimeout"`
+	InteractiveTimeout           pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
+	MaxAllowedPacket             pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
+	MaxHeapTableSize             pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
+	NetReadTimeout               pulumi.StringPtrInput `pulumi:"netReadTimeout"`
+	NetWriteTimeout              pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
+	SortBufferSize               pulumi.StringPtrInput `pulumi:"sortBufferSize"`
 	SqlMode                      pulumi.StringPtrInput `pulumi:"sqlMode"`
 	SqlRequirePrimaryKey         pulumi.StringPtrInput `pulumi:"sqlRequirePrimaryKey"`
-	WaitTimeout                  pulumi.IntPtrInput    `pulumi:"waitTimeout"`
+	TmpTableSize                 pulumi.StringPtrInput `pulumi:"tmpTableSize"`
+	WaitTimeout                  pulumi.StringPtrInput `pulumi:"waitTimeout"`
 }
 
 func (ServiceMysqlUserConfigMysqlArgs) ElementType() reflect.Type {
@@ -9166,52 +10525,68 @@ func (o ServiceMysqlUserConfigMysqlOutput) ToServiceMysqlUserConfigMysqlPtrOutpu
 		return &v
 	}).(ServiceMysqlUserConfigMysqlPtrOutput)
 }
-func (o ServiceMysqlUserConfigMysqlOutput) ConnectTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.ConnectTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.ConnectTimeout }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.GroupConcatMaxLen }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.GroupConcatMaxLen }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InformationSchemaStatsExpiry }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InformationSchemaStatsExpiry }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InnodbFtMinTokenSize }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbFtMinTokenSize }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbFtServerStopwordTable }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbLockWaitTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbLogBufferSize }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) InteractiveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.InteractiveTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.NetReadTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.MaxAllowedPacket }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) NetWriteTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.NetWriteTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.MaxHeapTableSize }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.NetReadTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlOutput) NetWriteTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.NetWriteTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlOutput) SortBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.SortBufferSize }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlOutput) SqlMode() pulumi.StringPtrOutput {
@@ -9222,8 +10597,12 @@ func (o ServiceMysqlUserConfigMysqlOutput) SqlRequirePrimaryKey() pulumi.StringP
 	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.SqlRequirePrimaryKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *int { return v.WaitTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.TmpTableSize }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigMysql) *string { return v.WaitTimeout }).(pulumi.StringPtrOutput)
 }
 
 type ServiceMysqlUserConfigMysqlPtrOutput struct{ *pulumi.OutputState }
@@ -9244,13 +10623,13 @@ func (o ServiceMysqlUserConfigMysqlPtrOutput) Elem() ServiceMysqlUserConfigMysql
 	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) ServiceMysqlUserConfigMysql { return *v }).(ServiceMysqlUserConfigMysqlOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConnectTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOutput {
@@ -9262,31 +10641,31 @@ func (o ServiceMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.GroupConcatMaxLen
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InformationSchemaStatsExpiry
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbFtMinTokenSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
@@ -9298,22 +10677,31 @@ func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbLockWaitTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbLogBufferSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbOnlineAlterLogMaxSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
@@ -9325,31 +10713,58 @@ func (o ServiceMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) InteractiveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InteractiveTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxAllowedPacket
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxHeapTableSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NetReadTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NetWriteTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SortBufferSize
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
@@ -9370,13 +10785,22 @@ func (o ServiceMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *int {
+func (o ServiceMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TmpTableSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.WaitTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceMysqlUserConfigPrivateAccess struct {
@@ -9899,23 +11323,24 @@ func (o ServicePgPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 type ServicePgUserConfig struct {
-	AdminPassword       *string                           `pulumi:"adminPassword"`
-	AdminUsername       *string                           `pulumi:"adminUsername"`
-	BackupHour          *int                              `pulumi:"backupHour"`
-	BackupMinute        *int                              `pulumi:"backupMinute"`
-	IpFilters           []string                          `pulumi:"ipFilters"`
-	Pg                  *ServicePgUserConfigPg            `pulumi:"pg"`
-	PgReadReplica       *string                           `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom *string                           `pulumi:"pgServiceToForkFrom"`
-	PgVersion           *string                           `pulumi:"pgVersion"`
-	Pgbouncer           *ServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
-	Pglookout           *ServicePgUserConfigPglookout     `pulumi:"pglookout"`
-	PrivateAccess       *ServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess        *ServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime  *string                           `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom   *string                           `pulumi:"serviceToForkFrom"`
-	Timescaledb         *ServicePgUserConfigTimescaledb   `pulumi:"timescaledb"`
-	Variant             *string                           `pulumi:"variant"`
+	AdminPassword          *string                           `pulumi:"adminPassword"`
+	AdminUsername          *string                           `pulumi:"adminUsername"`
+	BackupHour             *string                           `pulumi:"backupHour"`
+	BackupMinute           *string                           `pulumi:"backupMinute"`
+	IpFilters              []string                          `pulumi:"ipFilters"`
+	Pg                     *ServicePgUserConfigPg            `pulumi:"pg"`
+	PgReadReplica          *string                           `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom    *string                           `pulumi:"pgServiceToForkFrom"`
+	PgVersion              *string                           `pulumi:"pgVersion"`
+	Pgbouncer              *ServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
+	Pglookout              *ServicePgUserConfigPglookout     `pulumi:"pglookout"`
+	PrivateAccess          *ServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PublicAccess           *ServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryTargetTime     *string                           `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom      *string                           `pulumi:"serviceToForkFrom"`
+	SynchronousReplication *string                           `pulumi:"synchronousReplication"`
+	Timescaledb            *ServicePgUserConfigTimescaledb   `pulumi:"timescaledb"`
+	Variant                *string                           `pulumi:"variant"`
 }
 
 // ServicePgUserConfigInput is an input type that accepts ServicePgUserConfigArgs and ServicePgUserConfigOutput values.
@@ -9931,23 +11356,24 @@ type ServicePgUserConfigInput interface {
 }
 
 type ServicePgUserConfigArgs struct {
-	AdminPassword       pulumi.StringPtrInput                    `pulumi:"adminPassword"`
-	AdminUsername       pulumi.StringPtrInput                    `pulumi:"adminUsername"`
-	BackupHour          pulumi.IntPtrInput                       `pulumi:"backupHour"`
-	BackupMinute        pulumi.IntPtrInput                       `pulumi:"backupMinute"`
-	IpFilters           pulumi.StringArrayInput                  `pulumi:"ipFilters"`
-	Pg                  ServicePgUserConfigPgPtrInput            `pulumi:"pg"`
-	PgReadReplica       pulumi.StringPtrInput                    `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom pulumi.StringPtrInput                    `pulumi:"pgServiceToForkFrom"`
-	PgVersion           pulumi.StringPtrInput                    `pulumi:"pgVersion"`
-	Pgbouncer           ServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
-	Pglookout           ServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
-	PrivateAccess       ServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess        ServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime  pulumi.StringPtrInput                    `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom   pulumi.StringPtrInput                    `pulumi:"serviceToForkFrom"`
-	Timescaledb         ServicePgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
-	Variant             pulumi.StringPtrInput                    `pulumi:"variant"`
+	AdminPassword          pulumi.StringPtrInput                    `pulumi:"adminPassword"`
+	AdminUsername          pulumi.StringPtrInput                    `pulumi:"adminUsername"`
+	BackupHour             pulumi.StringPtrInput                    `pulumi:"backupHour"`
+	BackupMinute           pulumi.StringPtrInput                    `pulumi:"backupMinute"`
+	IpFilters              pulumi.StringArrayInput                  `pulumi:"ipFilters"`
+	Pg                     ServicePgUserConfigPgPtrInput            `pulumi:"pg"`
+	PgReadReplica          pulumi.StringPtrInput                    `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom    pulumi.StringPtrInput                    `pulumi:"pgServiceToForkFrom"`
+	PgVersion              pulumi.StringPtrInput                    `pulumi:"pgVersion"`
+	Pgbouncer              ServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
+	Pglookout              ServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
+	PrivateAccess          ServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PublicAccess           ServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryTargetTime     pulumi.StringPtrInput                    `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom      pulumi.StringPtrInput                    `pulumi:"serviceToForkFrom"`
+	SynchronousReplication pulumi.StringPtrInput                    `pulumi:"synchronousReplication"`
+	Timescaledb            ServicePgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
+	Variant                pulumi.StringPtrInput                    `pulumi:"variant"`
 }
 
 func (ServicePgUserConfigArgs) ElementType() reflect.Type {
@@ -10035,12 +11461,12 @@ func (o ServicePgUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
@@ -10087,6 +11513,10 @@ func (o ServicePgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigOutput) SynchronousReplication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.SynchronousReplication }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigOutput) Timescaledb() ServicePgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigTimescaledb { return v.Timescaledb }).(ServicePgUserConfigTimescaledbPtrOutput)
 }
@@ -10131,22 +11561,22 @@ func (o ServicePgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPtrOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfig) *int {
+func (o ServicePgUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.BackupHour
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPtrOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfig) *int {
+func (o ServicePgUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.BackupMinute
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
@@ -10248,6 +11678,15 @@ func (o ServicePgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynchronousReplication
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPtrOutput) Timescaledb() ServicePgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigTimescaledb {
 		if v == nil {
@@ -10267,35 +11706,38 @@ func (o ServicePgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 }
 
 type ServicePgUserConfigPg struct {
-	AutovacuumAnalyzeScaleFactor    *float64 `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      *int     `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumMaxWorkers            *int     `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               *int     `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       *int     `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       *int     `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     *float64 `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       *int     `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 *int     `pulumi:"deadlockTimeout"`
-	IdleInTransactionSessionTimeout *int     `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             *string  `pulumi:"jit"`
-	LogAutovacuumMinDuration        *int     `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               *string  `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         *int     `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          *int     `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              *int     `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     *int     `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      *int     `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         *int     `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   *int     `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          *int     `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        *int     `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              *int     `pulumi:"maxWorkerProcesses"`
-	PgStatStatementsTrack           *string  `pulumi:"pgStatStatementsTrack"`
-	TempFileLimit                   *int     `pulumi:"tempFileLimit"`
-	Timezone                        *string  `pulumi:"timezone"`
-	TrackActivityQuerySize          *int     `pulumi:"trackActivityQuerySize"`
-	TrackFunctions                  *string  `pulumi:"trackFunctions"`
-	WalWriterDelay                  *int     `pulumi:"walWriterDelay"`
+	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
+	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
+	AutovacuumFreezeMaxAge          *string `pulumi:"autovacuumFreezeMaxAge"`
+	AutovacuumMaxWorkers            *string `pulumi:"autovacuumMaxWorkers"`
+	AutovacuumNaptime               *string `pulumi:"autovacuumNaptime"`
+	AutovacuumVacuumCostDelay       *string `pulumi:"autovacuumVacuumCostDelay"`
+	AutovacuumVacuumCostLimit       *string `pulumi:"autovacuumVacuumCostLimit"`
+	AutovacuumVacuumScaleFactor     *string `pulumi:"autovacuumVacuumScaleFactor"`
+	AutovacuumVacuumThreshold       *string `pulumi:"autovacuumVacuumThreshold"`
+	DeadlockTimeout                 *string `pulumi:"deadlockTimeout"`
+	IdleInTransactionSessionTimeout *string `pulumi:"idleInTransactionSessionTimeout"`
+	Jit                             *string `pulumi:"jit"`
+	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
+	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
+	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
+	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
+	MaxParallelWorkers              *string `pulumi:"maxParallelWorkers"`
+	MaxParallelWorkersPerGather     *string `pulumi:"maxParallelWorkersPerGather"`
+	MaxPredLocksPerTransaction      *string `pulumi:"maxPredLocksPerTransaction"`
+	MaxPreparedTransactions         *string `pulumi:"maxPreparedTransactions"`
+	MaxStackDepth                   *string `pulumi:"maxStackDepth"`
+	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
+	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
+	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
+	PgStatStatementsTrack           *string `pulumi:"pgStatStatementsTrack"`
+	TempFileLimit                   *string `pulumi:"tempFileLimit"`
+	Timezone                        *string `pulumi:"timezone"`
+	TrackActivityQuerySize          *string `pulumi:"trackActivityQuerySize"`
+	TrackCommitTimestamp            *string `pulumi:"trackCommitTimestamp"`
+	TrackFunctions                  *string `pulumi:"trackFunctions"`
+	WalSenderTimeout                *string `pulumi:"walSenderTimeout"`
+	WalWriterDelay                  *string `pulumi:"walWriterDelay"`
 }
 
 // ServicePgUserConfigPgInput is an input type that accepts ServicePgUserConfigPgArgs and ServicePgUserConfigPgOutput values.
@@ -10311,35 +11753,38 @@ type ServicePgUserConfigPgInput interface {
 }
 
 type ServicePgUserConfigPgArgs struct {
-	AutovacuumAnalyzeScaleFactor    pulumi.Float64PtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      pulumi.IntPtrInput     `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumMaxWorkers            pulumi.IntPtrInput     `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               pulumi.IntPtrInput     `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       pulumi.IntPtrInput     `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       pulumi.IntPtrInput     `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     pulumi.Float64PtrInput `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       pulumi.IntPtrInput     `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 pulumi.IntPtrInput     `pulumi:"deadlockTimeout"`
-	IdleInTransactionSessionTimeout pulumi.IntPtrInput     `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             pulumi.StringPtrInput  `pulumi:"jit"`
-	LogAutovacuumMinDuration        pulumi.IntPtrInput     `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               pulumi.StringPtrInput  `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         pulumi.IntPtrInput     `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          pulumi.IntPtrInput     `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              pulumi.IntPtrInput     `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     pulumi.IntPtrInput     `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      pulumi.IntPtrInput     `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         pulumi.IntPtrInput     `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   pulumi.IntPtrInput     `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          pulumi.IntPtrInput     `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        pulumi.IntPtrInput     `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              pulumi.IntPtrInput     `pulumi:"maxWorkerProcesses"`
-	PgStatStatementsTrack           pulumi.StringPtrInput  `pulumi:"pgStatStatementsTrack"`
-	TempFileLimit                   pulumi.IntPtrInput     `pulumi:"tempFileLimit"`
-	Timezone                        pulumi.StringPtrInput  `pulumi:"timezone"`
-	TrackActivityQuerySize          pulumi.IntPtrInput     `pulumi:"trackActivityQuerySize"`
-	TrackFunctions                  pulumi.StringPtrInput  `pulumi:"trackFunctions"`
-	WalWriterDelay                  pulumi.IntPtrInput     `pulumi:"walWriterDelay"`
+	AutovacuumAnalyzeScaleFactor    pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
+	AutovacuumAnalyzeThreshold      pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
+	AutovacuumFreezeMaxAge          pulumi.StringPtrInput `pulumi:"autovacuumFreezeMaxAge"`
+	AutovacuumMaxWorkers            pulumi.StringPtrInput `pulumi:"autovacuumMaxWorkers"`
+	AutovacuumNaptime               pulumi.StringPtrInput `pulumi:"autovacuumNaptime"`
+	AutovacuumVacuumCostDelay       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostDelay"`
+	AutovacuumVacuumCostLimit       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostLimit"`
+	AutovacuumVacuumScaleFactor     pulumi.StringPtrInput `pulumi:"autovacuumVacuumScaleFactor"`
+	AutovacuumVacuumThreshold       pulumi.StringPtrInput `pulumi:"autovacuumVacuumThreshold"`
+	DeadlockTimeout                 pulumi.StringPtrInput `pulumi:"deadlockTimeout"`
+	IdleInTransactionSessionTimeout pulumi.StringPtrInput `pulumi:"idleInTransactionSessionTimeout"`
+	Jit                             pulumi.StringPtrInput `pulumi:"jit"`
+	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
+	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	MaxParallelWorkers              pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
+	MaxParallelWorkersPerGather     pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
+	MaxPredLocksPerTransaction      pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
+	MaxPreparedTransactions         pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	MaxStackDepth                   pulumi.StringPtrInput `pulumi:"maxStackDepth"`
+	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
+	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgStatStatementsTrack           pulumi.StringPtrInput `pulumi:"pgStatStatementsTrack"`
+	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
+	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
+	TrackActivityQuerySize          pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
+	TrackCommitTimestamp            pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
+	TrackFunctions                  pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	WalSenderTimeout                pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
+	WalWriterDelay                  pulumi.StringPtrInput `pulumi:"walWriterDelay"`
 }
 
 func (ServicePgUserConfigPgArgs) ElementType() reflect.Type {
@@ -10419,120 +11864,132 @@ func (o ServicePgUserConfigPgOutput) ToServicePgUserConfigPgPtrOutputWithContext
 		return &v
 	}).(ServicePgUserConfigPgPtrOutput)
 }
-func (o ServicePgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *float64 { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.Float64PtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumAnalyzeThreshold }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumAnalyzeThreshold }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumMaxWorkers }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumFreezeMaxAge }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumNaptime }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumMaxWorkers }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostDelay }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumNaptime }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostLimit }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumVacuumCostDelay }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *float64 { return v.AutovacuumVacuumScaleFactor }).(pulumi.Float64PtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumVacuumCostLimit }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.AutovacuumVacuumThreshold }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumVacuumScaleFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) DeadlockTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.DeadlockTimeout }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.AutovacuumVacuumThreshold }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.IdleInTransactionSessionTimeout }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) DeadlockTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.DeadlockTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.IdleInTransactionSessionTimeout }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) Jit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.Jit }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.LogAutovacuumMinDuration }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogAutovacuumMinDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.LogMinDurationStatement }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxLocksPerTransaction }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxParallelWorkers }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxParallelWorkers }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxParallelWorkersPerGather }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxParallelWorkersPerGather }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxPredLocksPerTransaction }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxPredLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxPreparedTransactions }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxStackDepth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxStackDepth }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxStandbyArchiveDelay }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxStandbyArchiveDelay }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxStandbyStreamingDelay }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.MaxWorkerProcesses }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgStatStatementsTrack }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) TempFileLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.TempFileLimit }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) TempFileLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.TempFileLimit }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.TrackActivityQuerySize }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.TrackActivityQuerySize }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.TrackCommitTimestamp }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) WalWriterDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *int { return v.WalWriterDelay }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPgOutput) WalSenderTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.WalSenderTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) WalWriterDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.WalWriterDelay }).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPgPtrOutput struct{ *pulumi.OutputState }
@@ -10553,94 +12010,103 @@ func (o ServicePgUserConfigPgPtrOutput) Elem() ServicePgUserConfigPgOutput {
 	return o.ApplyT(func(v *ServicePgUserConfigPg) ServicePgUserConfigPg { return *v }).(ServicePgUserConfigPgOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *float64 {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumAnalyzeScaleFactor
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumAnalyzeThreshold
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumFreezeMaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumMaxWorkers
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumNaptime
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumCostDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumCostLimit
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *float64 {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumScaleFactor
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumThreshold
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DeadlockTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IdleInTransactionSessionTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
@@ -10652,13 +12118,13 @@ func (o ServicePgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogAutovacuumMinDuration
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
@@ -10670,94 +12136,94 @@ func (o ServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogMinDurationStatement
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxLocksPerTransaction
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxParallelWorkers
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxParallelWorkersPerGather
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxPredLocksPerTransaction
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxPreparedTransactions
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxStackDepth
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxStandbyArchiveDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxStandbyStreamingDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxWorkerProcesses
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
@@ -10769,13 +12235,13 @@ func (o ServicePgUserConfigPgPtrOutput) PgStatStatementsTrack() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) TempFileLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) TempFileLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.TempFileLimit
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
@@ -10787,13 +12253,22 @@ func (o ServicePgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.TrackActivityQuerySize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackCommitTimestamp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
@@ -10805,17 +12280,27 @@ func (o ServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPg) *int {
+func (o ServicePgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WalSenderTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.WalWriterDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPgbouncer struct {
-	ServerResetQueryAlways *bool `pulumi:"serverResetQueryAlways"`
+	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	ServerResetQueryAlways  *string  `pulumi:"serverResetQueryAlways"`
 }
 
 // ServicePgUserConfigPgbouncerInput is an input type that accepts ServicePgUserConfigPgbouncerArgs and ServicePgUserConfigPgbouncerOutput values.
@@ -10831,7 +12316,8 @@ type ServicePgUserConfigPgbouncerInput interface {
 }
 
 type ServicePgUserConfigPgbouncerArgs struct {
-	ServerResetQueryAlways pulumi.BoolPtrInput `pulumi:"serverResetQueryAlways"`
+	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	ServerResetQueryAlways  pulumi.StringPtrInput   `pulumi:"serverResetQueryAlways"`
 }
 
 func (ServicePgUserConfigPgbouncerArgs) ElementType() reflect.Type {
@@ -10911,8 +12397,12 @@ func (o ServicePgUserConfigPgbouncerOutput) ToServicePgUserConfigPgbouncerPtrOut
 		return &v
 	}).(ServicePgUserConfigPgbouncerPtrOutput)
 }
-func (o ServicePgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *bool { return v.ServerResetQueryAlways }).(pulumi.BoolPtrOutput)
+func (o ServicePgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.ServerResetQueryAlways }).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPgbouncerPtrOutput struct{ *pulumi.OutputState }
@@ -10933,17 +12423,26 @@ func (o ServicePgUserConfigPgbouncerPtrOutput) Elem() ServicePgUserConfigPgbounc
 	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) ServicePgUserConfigPgbouncer { return *v }).(ServicePgUserConfigPgbouncerOutput)
 }
 
-func (o ServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *bool {
+func (o ServicePgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreStartupParameters
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ServerResetQueryAlways
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPglookout struct {
-	MaxFailoverReplicationTimeLag *int `pulumi:"maxFailoverReplicationTimeLag"`
+	MaxFailoverReplicationTimeLag *string `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
 // ServicePgUserConfigPglookoutInput is an input type that accepts ServicePgUserConfigPglookoutArgs and ServicePgUserConfigPglookoutOutput values.
@@ -10959,7 +12458,7 @@ type ServicePgUserConfigPglookoutInput interface {
 }
 
 type ServicePgUserConfigPglookoutArgs struct {
-	MaxFailoverReplicationTimeLag pulumi.IntPtrInput `pulumi:"maxFailoverReplicationTimeLag"`
+	MaxFailoverReplicationTimeLag pulumi.StringPtrInput `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
 func (ServicePgUserConfigPglookoutArgs) ElementType() reflect.Type {
@@ -11039,8 +12538,8 @@ func (o ServicePgUserConfigPglookoutOutput) ToServicePgUserConfigPglookoutPtrOut
 		return &v
 	}).(ServicePgUserConfigPglookoutPtrOutput)
 }
-func (o ServicePgUserConfigPglookoutOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPglookout) *int { return v.MaxFailoverReplicationTimeLag }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigPglookoutOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPglookout) *string { return v.MaxFailoverReplicationTimeLag }).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPglookoutPtrOutput struct{ *pulumi.OutputState }
@@ -11061,13 +12560,13 @@ func (o ServicePgUserConfigPglookoutPtrOutput) Elem() ServicePgUserConfigPglooko
 	return o.ApplyT(func(v *ServicePgUserConfigPglookout) ServicePgUserConfigPglookout { return *v }).(ServicePgUserConfigPglookoutOutput)
 }
 
-func (o ServicePgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigPglookout) *int {
+func (o ServicePgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPglookout) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxFailoverReplicationTimeLag
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigPrivateAccess struct {
@@ -11387,7 +12886,7 @@ func (o ServicePgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrO
 }
 
 type ServicePgUserConfigTimescaledb struct {
-	MaxBackgroundWorkers *int `pulumi:"maxBackgroundWorkers"`
+	MaxBackgroundWorkers *string `pulumi:"maxBackgroundWorkers"`
 }
 
 // ServicePgUserConfigTimescaledbInput is an input type that accepts ServicePgUserConfigTimescaledbArgs and ServicePgUserConfigTimescaledbOutput values.
@@ -11403,7 +12902,7 @@ type ServicePgUserConfigTimescaledbInput interface {
 }
 
 type ServicePgUserConfigTimescaledbArgs struct {
-	MaxBackgroundWorkers pulumi.IntPtrInput `pulumi:"maxBackgroundWorkers"`
+	MaxBackgroundWorkers pulumi.StringPtrInput `pulumi:"maxBackgroundWorkers"`
 }
 
 func (ServicePgUserConfigTimescaledbArgs) ElementType() reflect.Type {
@@ -11483,8 +12982,8 @@ func (o ServicePgUserConfigTimescaledbOutput) ToServicePgUserConfigTimescaledbPt
 		return &v
 	}).(ServicePgUserConfigTimescaledbPtrOutput)
 }
-func (o ServicePgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
+func (o ServicePgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigTimescaledb) *string { return v.MaxBackgroundWorkers }).(pulumi.StringPtrOutput)
 }
 
 type ServicePgUserConfigTimescaledbPtrOutput struct{ *pulumi.OutputState }
@@ -11505,13 +13004,13 @@ func (o ServicePgUserConfigTimescaledbPtrOutput) Elem() ServicePgUserConfigTimes
 	return o.ApplyT(func(v *ServicePgUserConfigTimescaledb) ServicePgUserConfigTimescaledb { return *v }).(ServicePgUserConfigTimescaledbOutput)
 }
 
-func (o ServicePgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServicePgUserConfigTimescaledb) *int {
+func (o ServicePgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigTimescaledb) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxBackgroundWorkers
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceRedis struct {
@@ -11633,12 +13132,12 @@ type ServiceRedisUserConfig struct {
 	Migration                 *ServiceRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *ServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *ServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RedisLfuDecayTime         *int                                 `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         *int                                 `pulumi:"redisLfuLogFactor"`
+	RedisLfuDecayTime         *string                              `pulumi:"redisLfuDecayTime"`
+	RedisLfuLogFactor         *string                              `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                              `pulumi:"redisMaxmemoryPolicy"`
 	RedisNotifyKeyspaceEvents *string                              `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  *bool                                `pulumi:"redisSsl"`
-	RedisTimeout              *int                                 `pulumi:"redisTimeout"`
+	RedisSsl                  *string                              `pulumi:"redisSsl"`
+	RedisTimeout              *string                              `pulumi:"redisTimeout"`
 }
 
 // ServiceRedisUserConfigInput is an input type that accepts ServiceRedisUserConfigArgs and ServiceRedisUserConfigOutput values.
@@ -11658,12 +13157,12 @@ type ServiceRedisUserConfigArgs struct {
 	Migration                 ServiceRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             ServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              ServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RedisLfuDecayTime         pulumi.IntPtrInput                          `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         pulumi.IntPtrInput                          `pulumi:"redisLfuLogFactor"`
+	RedisLfuDecayTime         pulumi.StringPtrInput                       `pulumi:"redisLfuDecayTime"`
+	RedisLfuLogFactor         pulumi.StringPtrInput                       `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                       `pulumi:"redisMaxmemoryPolicy"`
 	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                       `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  pulumi.BoolPtrInput                         `pulumi:"redisSsl"`
-	RedisTimeout              pulumi.IntPtrInput                          `pulumi:"redisTimeout"`
+	RedisSsl                  pulumi.StringPtrInput                       `pulumi:"redisSsl"`
+	RedisTimeout              pulumi.StringPtrInput                       `pulumi:"redisTimeout"`
 }
 
 func (ServiceRedisUserConfigArgs) ElementType() reflect.Type {
@@ -11759,12 +13258,12 @@ func (o ServiceRedisUserConfigOutput) PublicAccess() ServiceRedisUserConfigPubli
 	return o.ApplyT(func(v ServiceRedisUserConfig) *ServiceRedisUserConfigPublicAccess { return v.PublicAccess }).(ServiceRedisUserConfigPublicAccessPtrOutput)
 }
 
-func (o ServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *int { return v.RedisLfuDecayTime }).(pulumi.IntPtrOutput)
+func (o ServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigOutput) RedisLfuLogFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *int { return v.RedisLfuLogFactor }).(pulumi.IntPtrOutput)
+func (o ServiceRedisUserConfigOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisLfuLogFactor }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
@@ -11775,12 +13274,12 @@ func (o ServiceRedisUserConfigOutput) RedisNotifyKeyspaceEvents() pulumi.StringP
 	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigOutput) RedisSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *bool { return v.RedisSsl }).(pulumi.BoolPtrOutput)
+func (o ServiceRedisUserConfigOutput) RedisSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisSsl }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigOutput) RedisTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+func (o ServiceRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
 type ServiceRedisUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -11837,22 +13336,22 @@ func (o ServiceRedisUserConfigPtrOutput) PublicAccess() ServiceRedisUserConfigPu
 	}).(ServiceRedisUserConfigPublicAccessPtrOutput)
 }
 
-func (o ServiceRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceRedisUserConfig) *int {
+func (o ServiceRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RedisLfuDecayTime
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceRedisUserConfig) *int {
+func (o ServiceRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RedisLfuLogFactor
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
@@ -11873,29 +13372,29 @@ func (o ServiceRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigPtrOutput) RedisSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceRedisUserConfig) *bool {
+func (o ServiceRedisUserConfigPtrOutput) RedisSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RedisSsl
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigPtrOutput) RedisTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceRedisUserConfig) *int {
+func (o ServiceRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RedisTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceRedisUserConfigMigration struct {
 	Host     *string `pulumi:"host"`
 	Password *string `pulumi:"password"`
-	Port     *int    `pulumi:"port"`
-	Ssl      *bool   `pulumi:"ssl"`
+	Port     *string `pulumi:"port"`
+	Ssl      *string `pulumi:"ssl"`
 	Username *string `pulumi:"username"`
 }
 
@@ -11914,8 +13413,8 @@ type ServiceRedisUserConfigMigrationInput interface {
 type ServiceRedisUserConfigMigrationArgs struct {
 	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.IntPtrInput    `pulumi:"port"`
-	Ssl      pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
+	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -12004,12 +13503,12 @@ func (o ServiceRedisUserConfigMigrationOutput) Password() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigMigrationOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o ServiceRedisUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigMigrationOutput) Ssl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+func (o ServiceRedisUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
@@ -12052,22 +13551,22 @@ func (o ServiceRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigMigrationPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *int {
+func (o ServiceRedisUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Port
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceRedisUserConfigMigrationPtrOutput) Ssl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *bool {
+func (o ServiceRedisUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Ssl
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
@@ -12467,6 +13966,134 @@ func (o ServiceServiceIntegrationArrayOutput) Index(i pulumi.IntInput) ServiceSe
 	}).(ServiceServiceIntegrationOutput)
 }
 
+type VpcPeeringConnectionClientTimeout struct {
+	Create *string `pulumi:"create"`
+}
+
+// VpcPeeringConnectionClientTimeoutInput is an input type that accepts VpcPeeringConnectionClientTimeoutArgs and VpcPeeringConnectionClientTimeoutOutput values.
+// You can construct a concrete instance of `VpcPeeringConnectionClientTimeoutInput` via:
+//
+// 		 VpcPeeringConnectionClientTimeoutArgs{...}
+//
+type VpcPeeringConnectionClientTimeoutInput interface {
+	pulumi.Input
+
+	ToVpcPeeringConnectionClientTimeoutOutput() VpcPeeringConnectionClientTimeoutOutput
+	ToVpcPeeringConnectionClientTimeoutOutputWithContext(context.Context) VpcPeeringConnectionClientTimeoutOutput
+}
+
+type VpcPeeringConnectionClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+}
+
+func (VpcPeeringConnectionClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConnectionClientTimeout)(nil)).Elem()
+}
+
+func (i VpcPeeringConnectionClientTimeoutArgs) ToVpcPeeringConnectionClientTimeoutOutput() VpcPeeringConnectionClientTimeoutOutput {
+	return i.ToVpcPeeringConnectionClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i VpcPeeringConnectionClientTimeoutArgs) ToVpcPeeringConnectionClientTimeoutOutputWithContext(ctx context.Context) VpcPeeringConnectionClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionClientTimeoutOutput)
+}
+
+func (i VpcPeeringConnectionClientTimeoutArgs) ToVpcPeeringConnectionClientTimeoutPtrOutput() VpcPeeringConnectionClientTimeoutPtrOutput {
+	return i.ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i VpcPeeringConnectionClientTimeoutArgs) ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionClientTimeoutOutput).ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(ctx)
+}
+
+// VpcPeeringConnectionClientTimeoutPtrInput is an input type that accepts VpcPeeringConnectionClientTimeoutArgs, VpcPeeringConnectionClientTimeoutPtr and VpcPeeringConnectionClientTimeoutPtrOutput values.
+// You can construct a concrete instance of `VpcPeeringConnectionClientTimeoutPtrInput` via:
+//
+// 		 VpcPeeringConnectionClientTimeoutArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type VpcPeeringConnectionClientTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToVpcPeeringConnectionClientTimeoutPtrOutput() VpcPeeringConnectionClientTimeoutPtrOutput
+	ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(context.Context) VpcPeeringConnectionClientTimeoutPtrOutput
+}
+
+type vpcPeeringConnectionClientTimeoutPtrType VpcPeeringConnectionClientTimeoutArgs
+
+func VpcPeeringConnectionClientTimeoutPtr(v *VpcPeeringConnectionClientTimeoutArgs) VpcPeeringConnectionClientTimeoutPtrInput {
+	return (*vpcPeeringConnectionClientTimeoutPtrType)(v)
+}
+
+func (*vpcPeeringConnectionClientTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcPeeringConnectionClientTimeout)(nil)).Elem()
+}
+
+func (i *vpcPeeringConnectionClientTimeoutPtrType) ToVpcPeeringConnectionClientTimeoutPtrOutput() VpcPeeringConnectionClientTimeoutPtrOutput {
+	return i.ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcPeeringConnectionClientTimeoutPtrType) ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionClientTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionClientTimeoutPtrOutput)
+}
+
+type VpcPeeringConnectionClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (VpcPeeringConnectionClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConnectionClientTimeout)(nil)).Elem()
+}
+
+func (o VpcPeeringConnectionClientTimeoutOutput) ToVpcPeeringConnectionClientTimeoutOutput() VpcPeeringConnectionClientTimeoutOutput {
+	return o
+}
+
+func (o VpcPeeringConnectionClientTimeoutOutput) ToVpcPeeringConnectionClientTimeoutOutputWithContext(ctx context.Context) VpcPeeringConnectionClientTimeoutOutput {
+	return o
+}
+
+func (o VpcPeeringConnectionClientTimeoutOutput) ToVpcPeeringConnectionClientTimeoutPtrOutput() VpcPeeringConnectionClientTimeoutPtrOutput {
+	return o.ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o VpcPeeringConnectionClientTimeoutOutput) ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionClientTimeoutPtrOutput {
+	return o.ApplyT(func(v VpcPeeringConnectionClientTimeout) *VpcPeeringConnectionClientTimeout {
+		return &v
+	}).(VpcPeeringConnectionClientTimeoutPtrOutput)
+}
+func (o VpcPeeringConnectionClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcPeeringConnectionClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+type VpcPeeringConnectionClientTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcPeeringConnectionClientTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcPeeringConnectionClientTimeout)(nil)).Elem()
+}
+
+func (o VpcPeeringConnectionClientTimeoutPtrOutput) ToVpcPeeringConnectionClientTimeoutPtrOutput() VpcPeeringConnectionClientTimeoutPtrOutput {
+	return o
+}
+
+func (o VpcPeeringConnectionClientTimeoutPtrOutput) ToVpcPeeringConnectionClientTimeoutPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionClientTimeoutPtrOutput {
+	return o
+}
+
+func (o VpcPeeringConnectionClientTimeoutPtrOutput) Elem() VpcPeeringConnectionClientTimeoutOutput {
+	return o.ApplyT(func(v *VpcPeeringConnectionClientTimeout) VpcPeeringConnectionClientTimeout { return *v }).(VpcPeeringConnectionClientTimeoutOutput)
+}
+
+func (o VpcPeeringConnectionClientTimeoutPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcPeeringConnectionClientTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetElasticSearchAclAcl struct {
 	Rules    []GetElasticSearchAclAclRule `pulumi:"rules"`
 	Username string                       `pulumi:"username"`
@@ -12771,6 +14398,118 @@ func (o GetKafkaConnectorTaskArrayOutput) Index(i pulumi.IntInput) GetKafkaConne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaConnectorTask {
 		return vs[0].([]GetKafkaConnectorTask)[vs[1].(int)]
 	}).(GetKafkaConnectorTaskOutput)
+}
+
+type GetKafkaTopicClientTimeout struct {
+	Create *string `pulumi:"create"`
+	Read   *string `pulumi:"read"`
+}
+
+// GetKafkaTopicClientTimeoutInput is an input type that accepts GetKafkaTopicClientTimeoutArgs and GetKafkaTopicClientTimeoutOutput values.
+// You can construct a concrete instance of `GetKafkaTopicClientTimeoutInput` via:
+//
+// 		 GetKafkaTopicClientTimeoutArgs{...}
+//
+type GetKafkaTopicClientTimeoutInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicClientTimeoutOutput() GetKafkaTopicClientTimeoutOutput
+	ToGetKafkaTopicClientTimeoutOutputWithContext(context.Context) GetKafkaTopicClientTimeoutOutput
+}
+
+type GetKafkaTopicClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	Read   pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetKafkaTopicClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicClientTimeout)(nil)).Elem()
+}
+
+func (i GetKafkaTopicClientTimeoutArgs) ToGetKafkaTopicClientTimeoutOutput() GetKafkaTopicClientTimeoutOutput {
+	return i.ToGetKafkaTopicClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicClientTimeoutArgs) ToGetKafkaTopicClientTimeoutOutputWithContext(ctx context.Context) GetKafkaTopicClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicClientTimeoutOutput)
+}
+
+type GetKafkaTopicClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicClientTimeout)(nil)).Elem()
+}
+
+func (o GetKafkaTopicClientTimeoutOutput) ToGetKafkaTopicClientTimeoutOutput() GetKafkaTopicClientTimeoutOutput {
+	return o
+}
+
+func (o GetKafkaTopicClientTimeoutOutput) ToGetKafkaTopicClientTimeoutOutputWithContext(ctx context.Context) GetKafkaTopicClientTimeoutOutput {
+	return o
+}
+
+func (o GetKafkaTopicClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaTopicClientTimeoutOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicClientTimeout) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetProjectVpcClientTimeout struct {
+	Create *string `pulumi:"create"`
+	Delete *string `pulumi:"delete"`
+}
+
+// GetProjectVpcClientTimeoutInput is an input type that accepts GetProjectVpcClientTimeoutArgs and GetProjectVpcClientTimeoutOutput values.
+// You can construct a concrete instance of `GetProjectVpcClientTimeoutInput` via:
+//
+// 		 GetProjectVpcClientTimeoutArgs{...}
+//
+type GetProjectVpcClientTimeoutInput interface {
+	pulumi.Input
+
+	ToGetProjectVpcClientTimeoutOutput() GetProjectVpcClientTimeoutOutput
+	ToGetProjectVpcClientTimeoutOutputWithContext(context.Context) GetProjectVpcClientTimeoutOutput
+}
+
+type GetProjectVpcClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+}
+
+func (GetProjectVpcClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectVpcClientTimeout)(nil)).Elem()
+}
+
+func (i GetProjectVpcClientTimeoutArgs) ToGetProjectVpcClientTimeoutOutput() GetProjectVpcClientTimeoutOutput {
+	return i.ToGetProjectVpcClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetProjectVpcClientTimeoutArgs) ToGetProjectVpcClientTimeoutOutputWithContext(ctx context.Context) GetProjectVpcClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectVpcClientTimeoutOutput)
+}
+
+type GetProjectVpcClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetProjectVpcClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectVpcClientTimeout)(nil)).Elem()
+}
+
+func (o GetProjectVpcClientTimeoutOutput) ToGetProjectVpcClientTimeoutOutput() GetProjectVpcClientTimeoutOutput {
+	return o
+}
+
+func (o GetProjectVpcClientTimeoutOutput) ToGetProjectVpcClientTimeoutOutputWithContext(ctx context.Context) GetProjectVpcClientTimeoutOutput {
+	return o
+}
+
+func (o GetProjectVpcClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectVpcClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectVpcClientTimeoutOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectVpcClientTimeout) *string { return v.Delete }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceCassandra struct {
@@ -13155,6 +14894,62 @@ func (o GetServiceCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetServiceClientTimeout struct {
+	Create *string `pulumi:"create"`
+	Update *string `pulumi:"update"`
+}
+
+// GetServiceClientTimeoutInput is an input type that accepts GetServiceClientTimeoutArgs and GetServiceClientTimeoutOutput values.
+// You can construct a concrete instance of `GetServiceClientTimeoutInput` via:
+//
+// 		 GetServiceClientTimeoutArgs{...}
+//
+type GetServiceClientTimeoutInput interface {
+	pulumi.Input
+
+	ToGetServiceClientTimeoutOutput() GetServiceClientTimeoutOutput
+	ToGetServiceClientTimeoutOutputWithContext(context.Context) GetServiceClientTimeoutOutput
+}
+
+type GetServiceClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (GetServiceClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceClientTimeout)(nil)).Elem()
+}
+
+func (i GetServiceClientTimeoutArgs) ToGetServiceClientTimeoutOutput() GetServiceClientTimeoutOutput {
+	return i.ToGetServiceClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetServiceClientTimeoutArgs) ToGetServiceClientTimeoutOutputWithContext(ctx context.Context) GetServiceClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceClientTimeoutOutput)
+}
+
+type GetServiceClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetServiceClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceClientTimeout)(nil)).Elem()
+}
+
+func (o GetServiceClientTimeoutOutput) ToGetServiceClientTimeoutOutput() GetServiceClientTimeoutOutput {
+	return o
+}
+
+func (o GetServiceClientTimeoutOutput) ToGetServiceClientTimeoutOutputWithContext(ctx context.Context) GetServiceClientTimeoutOutput {
+	return o
+}
+
+func (o GetServiceClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceClientTimeoutOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceClientTimeout) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
 type GetServiceComponent struct {
 	Component                 string `pulumi:"component"`
 	Host                      string `pulumi:"host"`
@@ -13345,7 +15140,7 @@ type GetServiceElasticsearchUserConfig struct {
 	IndexPatterns                      []GetServiceElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
 	IpFilters                          []string                                        `pulumi:"ipFilters"`
 	Kibana                             *GetServiceElasticsearchUserConfigKibana        `pulumi:"kibana"`
-	MaxIndexCount                      *int                                            `pulumi:"maxIndexCount"`
+	MaxIndexCount                      *string                                         `pulumi:"maxIndexCount"`
 	PrivateAccess                      *GetServiceElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess                       *GetServiceElasticsearchUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName             *string                                         `pulumi:"recoveryBasebackupName"`
@@ -13372,7 +15167,7 @@ type GetServiceElasticsearchUserConfigArgs struct {
 	IndexPatterns                      GetServiceElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
 	IpFilters                          pulumi.StringArrayInput                                 `pulumi:"ipFilters"`
 	Kibana                             GetServiceElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
-	MaxIndexCount                      pulumi.IntPtrInput                                      `pulumi:"maxIndexCount"`
+	MaxIndexCount                      pulumi.StringPtrInput                                   `pulumi:"maxIndexCount"`
 	PrivateAccess                      GetServiceElasticsearchUserConfigPrivateAccessPtrInput  `pulumi:"privateAccess"`
 	PublicAccess                       GetServiceElasticsearchUserConfigPublicAccessPtrInput   `pulumi:"publicAccess"`
 	RecoveryBasebackupName             pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
@@ -13437,8 +15232,8 @@ func (o GetServiceElasticsearchUserConfigOutput) Kibana() GetServiceElasticsearc
 	return o.ApplyT(func(v GetServiceElasticsearchUserConfig) *GetServiceElasticsearchUserConfigKibana { return v.Kibana }).(GetServiceElasticsearchUserConfigKibanaPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigOutput) MaxIndexCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfig) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigOutput) MaxIndexCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigOutput) PrivateAccess() GetServiceElasticsearchUserConfigPrivateAccessPtrOutput {
@@ -13464,25 +15259,27 @@ func (o GetServiceElasticsearchUserConfigOutput) ServiceToForkFrom() pulumi.Stri
 type GetServiceElasticsearchUserConfigElasticsearch struct {
 	ActionAutoCreateIndexEnabled       *string  `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      *string  `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               *int     `pulumi:"httpMaxContentLength"`
-	IndicesFielddataCacheSize          *int     `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       *int     `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            *int     `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     *int     `pulumi:"indicesQueryBoolMaxClauseCount"`
+	HttpMaxContentLength               *string  `pulumi:"httpMaxContentLength"`
+	HttpMaxHeaderSize                  *string  `pulumi:"httpMaxHeaderSize"`
+	HttpMaxInitialLineLength           *string  `pulumi:"httpMaxInitialLineLength"`
+	IndicesFielddataCacheSize          *string  `pulumi:"indicesFielddataCacheSize"`
+	IndicesMemoryIndexBufferSize       *string  `pulumi:"indicesMemoryIndexBufferSize"`
+	IndicesQueriesCacheSize            *string  `pulumi:"indicesQueriesCacheSize"`
+	IndicesQueryBoolMaxClauseCount     *string  `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            []string `pulumi:"reindexRemoteWhitelists"`
-	ThreadPoolAnalyzeQueueSize         *int     `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              *int     `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           *int     `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             *int     `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  *int     `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           *int     `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                *int     `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          *int     `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               *int     `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize *int     `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      *int     `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           *int     `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                *int     `pulumi:"threadPoolWriteSize"`
+	ThreadPoolAnalyzeQueueSize         *string  `pulumi:"threadPoolAnalyzeQueueSize"`
+	ThreadPoolAnalyzeSize              *string  `pulumi:"threadPoolAnalyzeSize"`
+	ThreadPoolForceMergeSize           *string  `pulumi:"threadPoolForceMergeSize"`
+	ThreadPoolGetQueueSize             *string  `pulumi:"threadPoolGetQueueSize"`
+	ThreadPoolGetSize                  *string  `pulumi:"threadPoolGetSize"`
+	ThreadPoolIndexQueueSize           *string  `pulumi:"threadPoolIndexQueueSize"`
+	ThreadPoolIndexSize                *string  `pulumi:"threadPoolIndexSize"`
+	ThreadPoolSearchQueueSize          *string  `pulumi:"threadPoolSearchQueueSize"`
+	ThreadPoolSearchSize               *string  `pulumi:"threadPoolSearchSize"`
+	ThreadPoolSearchThrottledQueueSize *string  `pulumi:"threadPoolSearchThrottledQueueSize"`
+	ThreadPoolSearchThrottledSize      *string  `pulumi:"threadPoolSearchThrottledSize"`
+	ThreadPoolWriteQueueSize           *string  `pulumi:"threadPoolWriteQueueSize"`
+	ThreadPoolWriteSize                *string  `pulumi:"threadPoolWriteSize"`
 }
 
 // GetServiceElasticsearchUserConfigElasticsearchInput is an input type that accepts GetServiceElasticsearchUserConfigElasticsearchArgs and GetServiceElasticsearchUserConfigElasticsearchOutput values.
@@ -13500,25 +15297,27 @@ type GetServiceElasticsearchUserConfigElasticsearchInput interface {
 type GetServiceElasticsearchUserConfigElasticsearchArgs struct {
 	ActionAutoCreateIndexEnabled       pulumi.StringPtrInput   `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               pulumi.IntPtrInput      `pulumi:"httpMaxContentLength"`
-	IndicesFielddataCacheSize          pulumi.IntPtrInput      `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       pulumi.IntPtrInput      `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            pulumi.IntPtrInput      `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     pulumi.IntPtrInput      `pulumi:"indicesQueryBoolMaxClauseCount"`
+	HttpMaxContentLength               pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
+	HttpMaxHeaderSize                  pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
+	HttpMaxInitialLineLength           pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
+	IndicesFielddataCacheSize          pulumi.StringPtrInput   `pulumi:"indicesFielddataCacheSize"`
+	IndicesMemoryIndexBufferSize       pulumi.StringPtrInput   `pulumi:"indicesMemoryIndexBufferSize"`
+	IndicesQueriesCacheSize            pulumi.StringPtrInput   `pulumi:"indicesQueriesCacheSize"`
+	IndicesQueryBoolMaxClauseCount     pulumi.StringPtrInput   `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
-	ThreadPoolAnalyzeQueueSize         pulumi.IntPtrInput      `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              pulumi.IntPtrInput      `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           pulumi.IntPtrInput      `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             pulumi.IntPtrInput      `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  pulumi.IntPtrInput      `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           pulumi.IntPtrInput      `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                pulumi.IntPtrInput      `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          pulumi.IntPtrInput      `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               pulumi.IntPtrInput      `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize pulumi.IntPtrInput      `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      pulumi.IntPtrInput      `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           pulumi.IntPtrInput      `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                pulumi.IntPtrInput      `pulumi:"threadPoolWriteSize"`
+	ThreadPoolAnalyzeQueueSize         pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeQueueSize"`
+	ThreadPoolAnalyzeSize              pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeSize"`
+	ThreadPoolForceMergeSize           pulumi.StringPtrInput   `pulumi:"threadPoolForceMergeSize"`
+	ThreadPoolGetQueueSize             pulumi.StringPtrInput   `pulumi:"threadPoolGetQueueSize"`
+	ThreadPoolGetSize                  pulumi.StringPtrInput   `pulumi:"threadPoolGetSize"`
+	ThreadPoolIndexQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolIndexQueueSize"`
+	ThreadPoolIndexSize                pulumi.StringPtrInput   `pulumi:"threadPoolIndexSize"`
+	ThreadPoolSearchQueueSize          pulumi.StringPtrInput   `pulumi:"threadPoolSearchQueueSize"`
+	ThreadPoolSearchSize               pulumi.StringPtrInput   `pulumi:"threadPoolSearchSize"`
+	ThreadPoolSearchThrottledQueueSize pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledQueueSize"`
+	ThreadPoolSearchThrottledSize      pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledSize"`
+	ThreadPoolWriteQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolWriteQueueSize"`
+	ThreadPoolWriteSize                pulumi.StringPtrInput   `pulumi:"threadPoolWriteSize"`
 }
 
 func (GetServiceElasticsearchUserConfigElasticsearchArgs) ElementType() reflect.Type {
@@ -13606,82 +15405,92 @@ func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ActionDestructiveR
 	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionDestructiveRequiresName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.HttpMaxContentLength }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxContentLength }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesFielddataCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesFielddataCacheSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxHeaderSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesMemoryIndexBufferSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesMemoryIndexBufferSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxInitialLineLength }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueriesCacheSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.IndicesFielddataCacheSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMaxClauseCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.IndicesQueryBoolMaxClauseCount }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.IndicesMemoryIndexBufferSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.IndicesQueriesCacheSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string {
+		return v.IndicesQueryBoolMaxClauseCount
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeQueueSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolAnalyzeQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolAnalyzeSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolAnalyzeSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolForceMergeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolForceMergeSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolForceMergeSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetQueueSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolGetSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexQueueSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolIndexQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolIndexSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolIndexSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchQueueSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolSearchThrottledQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolSearchThrottledSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchThrottledSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteQueueSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolWriteQueueSize }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *int { return v.ThreadPoolWriteSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolWriteSize }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigElasticsearchPtrOutput struct{ *pulumi.OutputState }
@@ -13722,49 +15531,67 @@ func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructi
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.HttpMaxContentLength
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMaxHeaderSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMaxInitialLineLength
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesFielddataCacheSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesMemoryIndexBufferSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesQueriesCacheSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IndicesQueryBoolMaxClauseCount
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
@@ -13776,125 +15603,125 @@ func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWh
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolAnalyzeQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolAnalyzeSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolForceMergeSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolGetQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolGetSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolIndexQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolIndexSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchThrottledQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolSearchThrottledSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolWriteQueueSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *int {
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ThreadPoolWriteSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigIndexPattern struct {
-	MaxIndexCount *int    `pulumi:"maxIndexCount"`
+	MaxIndexCount *string `pulumi:"maxIndexCount"`
 	Pattern       *string `pulumi:"pattern"`
 }
 
@@ -13911,7 +15738,7 @@ type GetServiceElasticsearchUserConfigIndexPatternInput interface {
 }
 
 type GetServiceElasticsearchUserConfigIndexPatternArgs struct {
-	MaxIndexCount pulumi.IntPtrInput    `pulumi:"maxIndexCount"`
+	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
 	Pattern       pulumi.StringPtrInput `pulumi:"pattern"`
 }
 
@@ -13967,8 +15794,8 @@ func (o GetServiceElasticsearchUserConfigIndexPatternOutput) ToGetServiceElastic
 	return o
 }
 
-func (o GetServiceElasticsearchUserConfigIndexPatternOutput) MaxIndexCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigIndexPattern) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigIndexPatternOutput) MaxIndexCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigIndexPattern) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigIndexPatternOutput) Pattern() pulumi.StringPtrOutput {
@@ -13996,9 +15823,9 @@ func (o GetServiceElasticsearchUserConfigIndexPatternArrayOutput) Index(i pulumi
 }
 
 type GetServiceElasticsearchUserConfigKibana struct {
-	ElasticsearchRequestTimeout *int  `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     *bool `pulumi:"enabled"`
-	MaxOldSpaceSize             *int  `pulumi:"maxOldSpaceSize"`
+	ElasticsearchRequestTimeout *string `pulumi:"elasticsearchRequestTimeout"`
+	Enabled                     *string `pulumi:"enabled"`
+	MaxOldSpaceSize             *string `pulumi:"maxOldSpaceSize"`
 }
 
 // GetServiceElasticsearchUserConfigKibanaInput is an input type that accepts GetServiceElasticsearchUserConfigKibanaArgs and GetServiceElasticsearchUserConfigKibanaOutput values.
@@ -14014,9 +15841,9 @@ type GetServiceElasticsearchUserConfigKibanaInput interface {
 }
 
 type GetServiceElasticsearchUserConfigKibanaArgs struct {
-	ElasticsearchRequestTimeout pulumi.IntPtrInput  `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     pulumi.BoolPtrInput `pulumi:"enabled"`
-	MaxOldSpaceSize             pulumi.IntPtrInput  `pulumi:"maxOldSpaceSize"`
+	ElasticsearchRequestTimeout pulumi.StringPtrInput `pulumi:"elasticsearchRequestTimeout"`
+	Enabled                     pulumi.StringPtrInput `pulumi:"enabled"`
+	MaxOldSpaceSize             pulumi.StringPtrInput `pulumi:"maxOldSpaceSize"`
 }
 
 func (GetServiceElasticsearchUserConfigKibanaArgs) ElementType() reflect.Type {
@@ -14096,16 +15923,16 @@ func (o GetServiceElasticsearchUserConfigKibanaOutput) ToGetServiceElasticsearch
 		return &v
 	}).(GetServiceElasticsearchUserConfigKibanaPtrOutput)
 }
-func (o GetServiceElasticsearchUserConfigKibanaOutput) ElasticsearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *int { return v.ElasticsearchRequestTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigKibanaOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *string { return v.ElasticsearchRequestTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigKibanaOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o GetServiceElasticsearchUserConfigKibanaOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigKibanaOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *int { return v.MaxOldSpaceSize }).(pulumi.IntPtrOutput)
+func (o GetServiceElasticsearchUserConfigKibanaOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigKibana) *string { return v.MaxOldSpaceSize }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigKibanaPtrOutput struct{ *pulumi.OutputState }
@@ -14126,31 +15953,31 @@ func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) Elem() GetServiceElast
 	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) GetServiceElasticsearchUserConfigKibana { return *v }).(GetServiceElasticsearchUserConfigKibanaOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *int {
+func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ElasticsearchRequestTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *bool {
+func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *int {
+func (o GetServiceElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigKibana) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxOldSpaceSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigPrivateAccess struct {
@@ -14522,15 +16349,16 @@ type GetServiceGrafanaUserConfig struct {
 	AlertingErrorOrTimeout     *string                                          `pulumi:"alertingErrorOrTimeout"`
 	AlertingNodataOrNullvalues *string                                          `pulumi:"alertingNodataOrNullvalues"`
 	AllowEmbedding             *string                                          `pulumi:"allowEmbedding"`
+	AuthBasicEnabled           *string                                          `pulumi:"authBasicEnabled"`
 	AuthGenericOauth           *GetServiceGrafanaUserConfigAuthGenericOauth     `pulumi:"authGenericOauth"`
 	AuthGithub                 *GetServiceGrafanaUserConfigAuthGithub           `pulumi:"authGithub"`
 	AuthGitlab                 *GetServiceGrafanaUserConfigAuthGitlab           `pulumi:"authGitlab"`
 	AuthGoogle                 *GetServiceGrafanaUserConfigAuthGoogle           `pulumi:"authGoogle"`
 	CookieSamesite             *string                                          `pulumi:"cookieSamesite"`
 	CustomDomain               *string                                          `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   *int                                             `pulumi:"dashboardsVersionsToKeep"`
+	DashboardsVersionsToKeep   *string                                          `pulumi:"dashboardsVersionsToKeep"`
 	DataproxySendUserHeader    *string                                          `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           *int                                             `pulumi:"dataproxyTimeout"`
+	DataproxyTimeout           *string                                          `pulumi:"dataproxyTimeout"`
 	DisableGravatar            *string                                          `pulumi:"disableGravatar"`
 	EditorsCanAdmin            *string                                          `pulumi:"editorsCanAdmin"`
 	ExternalImageStorage       *GetServiceGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
@@ -14562,15 +16390,16 @@ type GetServiceGrafanaUserConfigArgs struct {
 	AlertingErrorOrTimeout     pulumi.StringPtrInput                                   `pulumi:"alertingErrorOrTimeout"`
 	AlertingNodataOrNullvalues pulumi.StringPtrInput                                   `pulumi:"alertingNodataOrNullvalues"`
 	AllowEmbedding             pulumi.StringPtrInput                                   `pulumi:"allowEmbedding"`
+	AuthBasicEnabled           pulumi.StringPtrInput                                   `pulumi:"authBasicEnabled"`
 	AuthGenericOauth           GetServiceGrafanaUserConfigAuthGenericOauthPtrInput     `pulumi:"authGenericOauth"`
 	AuthGithub                 GetServiceGrafanaUserConfigAuthGithubPtrInput           `pulumi:"authGithub"`
 	AuthGitlab                 GetServiceGrafanaUserConfigAuthGitlabPtrInput           `pulumi:"authGitlab"`
 	AuthGoogle                 GetServiceGrafanaUserConfigAuthGooglePtrInput           `pulumi:"authGoogle"`
 	CookieSamesite             pulumi.StringPtrInput                                   `pulumi:"cookieSamesite"`
 	CustomDomain               pulumi.StringPtrInput                                   `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   pulumi.IntPtrInput                                      `pulumi:"dashboardsVersionsToKeep"`
+	DashboardsVersionsToKeep   pulumi.StringPtrInput                                   `pulumi:"dashboardsVersionsToKeep"`
 	DataproxySendUserHeader    pulumi.StringPtrInput                                   `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           pulumi.IntPtrInput                                      `pulumi:"dataproxyTimeout"`
+	DataproxyTimeout           pulumi.StringPtrInput                                   `pulumi:"dataproxyTimeout"`
 	DisableGravatar            pulumi.StringPtrInput                                   `pulumi:"disableGravatar"`
 	EditorsCanAdmin            pulumi.StringPtrInput                                   `pulumi:"editorsCanAdmin"`
 	ExternalImageStorage       GetServiceGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
@@ -14627,6 +16456,10 @@ func (o GetServiceGrafanaUserConfigOutput) AllowEmbedding() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.AllowEmbedding }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceGrafanaUserConfigOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.AuthBasicEnabled }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceGrafanaUserConfigOutput) AuthGenericOauth() GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *GetServiceGrafanaUserConfigAuthGenericOauth {
 		return v.AuthGenericOauth
@@ -14653,16 +16486,16 @@ func (o GetServiceGrafanaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *int { return v.DashboardsVersionsToKeep }).(pulumi.IntPtrOutput)
+func (o GetServiceGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.DashboardsVersionsToKeep }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.DataproxySendUserHeader }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceGrafanaUserConfigOutput) DataproxyTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *int { return v.DataproxyTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceGrafanaUserConfigOutput) DataproxyTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.DataproxyTimeout }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigOutput) DisableGravatar() pulumi.StringPtrOutput {
@@ -15995,7 +17828,7 @@ type GetServiceGrafanaUserConfigSmtpServer struct {
 	FromName    *string `pulumi:"fromName"`
 	Host        *string `pulumi:"host"`
 	Password    *string `pulumi:"password"`
-	Port        *int    `pulumi:"port"`
+	Port        *string `pulumi:"port"`
 	SkipVerify  *string `pulumi:"skipVerify"`
 	Username    *string `pulumi:"username"`
 }
@@ -16017,7 +17850,7 @@ type GetServiceGrafanaUserConfigSmtpServerArgs struct {
 	FromName    pulumi.StringPtrInput `pulumi:"fromName"`
 	Host        pulumi.StringPtrInput `pulumi:"host"`
 	Password    pulumi.StringPtrInput `pulumi:"password"`
-	Port        pulumi.IntPtrInput    `pulumi:"port"`
+	Port        pulumi.StringPtrInput `pulumi:"port"`
 	SkipVerify  pulumi.StringPtrInput `pulumi:"skipVerify"`
 	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -16115,8 +17948,8 @@ func (o GetServiceGrafanaUserConfigSmtpServerOutput) Password() pulumi.StringPtr
 	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceGrafanaUserConfigSmtpServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o GetServiceGrafanaUserConfigSmtpServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringPtrOutput {
@@ -16181,13 +18014,13 @@ func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *int {
+func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Port
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringPtrOutput {
@@ -16595,7 +18428,7 @@ func (o GetServiceInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.Str
 type GetServiceIntegrationEndpointDatadogUserConfig struct {
 	DatadogApiKey        *string `pulumi:"datadogApiKey"`
 	DisableConsumerStats *string `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts *int    `pulumi:"maxPartitionContexts"`
+	MaxPartitionContexts *string `pulumi:"maxPartitionContexts"`
 	Site                 *string `pulumi:"site"`
 }
 
@@ -16614,7 +18447,7 @@ type GetServiceIntegrationEndpointDatadogUserConfigInput interface {
 type GetServiceIntegrationEndpointDatadogUserConfigArgs struct {
 	DatadogApiKey        pulumi.StringPtrInput `pulumi:"datadogApiKey"`
 	DisableConsumerStats pulumi.StringPtrInput `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts pulumi.IntPtrInput    `pulumi:"maxPartitionContexts"`
+	MaxPartitionContexts pulumi.StringPtrInput `pulumi:"maxPartitionContexts"`
 	Site                 pulumi.StringPtrInput `pulumi:"site"`
 }
 
@@ -16652,8 +18485,8 @@ func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerSta
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.DisableConsumerStats }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContexts() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *int { return v.MaxPartitionContexts }).(pulumi.IntPtrOutput)
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContexts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.MaxPartitionContexts }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.StringPtrOutput {
@@ -16661,11 +18494,11 @@ func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.Stri
 }
 
 type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
-	Ca           *string  `pulumi:"ca"`
-	IndexDaysMax *int     `pulumi:"indexDaysMax"`
-	IndexPrefix  *string  `pulumi:"indexPrefix"`
-	Timeout      *float64 `pulumi:"timeout"`
-	Url          *string  `pulumi:"url"`
+	Ca           *string `pulumi:"ca"`
+	IndexDaysMax *string `pulumi:"indexDaysMax"`
+	IndexPrefix  *string `pulumi:"indexPrefix"`
+	Timeout      *string `pulumi:"timeout"`
+	Url          *string `pulumi:"url"`
 }
 
 // GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
@@ -16681,11 +18514,11 @@ type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput inter
 }
 
 type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs struct {
-	Ca           pulumi.StringPtrInput  `pulumi:"ca"`
-	IndexDaysMax pulumi.IntPtrInput     `pulumi:"indexDaysMax"`
-	IndexPrefix  pulumi.StringPtrInput  `pulumi:"indexPrefix"`
-	Timeout      pulumi.Float64PtrInput `pulumi:"timeout"`
-	Url          pulumi.StringPtrInput  `pulumi:"url"`
+	Ca           pulumi.StringPtrInput `pulumi:"ca"`
+	IndexDaysMax pulumi.StringPtrInput `pulumi:"indexDaysMax"`
+	IndexPrefix  pulumi.StringPtrInput `pulumi:"indexPrefix"`
+	Timeout      pulumi.StringPtrInput `pulumi:"timeout"`
+	Url          pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
@@ -16718,16 +18551,18 @@ func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) 
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexDaysMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *int { return v.IndexDaysMax }).(pulumi.IntPtrOutput)
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexDaysMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
+		return v.IndexDaysMax
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexPrefix }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Url() pulumi.StringPtrOutput {
@@ -16796,10 +18631,10 @@ type GetServiceIntegrationEndpointRsyslogUserConfig struct {
 	Format  *string `pulumi:"format"`
 	Key     *string `pulumi:"key"`
 	Logline *string `pulumi:"logline"`
-	Port    *int    `pulumi:"port"`
+	Port    *string `pulumi:"port"`
 	Sd      *string `pulumi:"sd"`
 	Server  *string `pulumi:"server"`
-	Tls     *bool   `pulumi:"tls"`
+	Tls     *string `pulumi:"tls"`
 }
 
 // GetServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointRsyslogUserConfigArgs and GetServiceIntegrationEndpointRsyslogUserConfigOutput values.
@@ -16820,10 +18655,10 @@ type GetServiceIntegrationEndpointRsyslogUserConfigArgs struct {
 	Format  pulumi.StringPtrInput `pulumi:"format"`
 	Key     pulumi.StringPtrInput `pulumi:"key"`
 	Logline pulumi.StringPtrInput `pulumi:"logline"`
-	Port    pulumi.IntPtrInput    `pulumi:"port"`
+	Port    pulumi.StringPtrInput `pulumi:"port"`
 	Sd      pulumi.StringPtrInput `pulumi:"sd"`
 	Server  pulumi.StringPtrInput `pulumi:"server"`
-	Tls     pulumi.BoolPtrInput   `pulumi:"tls"`
+	Tls     pulumi.StringPtrInput `pulumi:"tls"`
 }
 
 func (GetServiceIntegrationEndpointRsyslogUserConfigArgs) ElementType() reflect.Type {
@@ -16872,8 +18707,8 @@ func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Logline() pulumi.S
 	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Sd() pulumi.StringPtrOutput {
@@ -16884,8 +18719,391 @@ func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Server() pulumi.St
 	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Tls }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfig struct {
+	KafkaConnect *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
+}
+
+// GetServiceIntegrationKafkaConnectUserConfigInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigArgs and GetServiceIntegrationKafkaConnectUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigInput` via:
+//
+// 		 GetServiceIntegrationKafkaConnectUserConfigArgs{...}
+//
+type GetServiceIntegrationKafkaConnectUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaConnectUserConfigOutput() GetServiceIntegrationKafkaConnectUserConfigOutput
+	ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(context.Context) GetServiceIntegrationKafkaConnectUserConfigOutput
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigArgs struct {
+	KafkaConnect GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
+}
+
+func (GetServiceIntegrationKafkaConnectUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigArgs) ToGetServiceIntegrationKafkaConnectUserConfigOutput() GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigArgs) ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaConnectUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigOutput) ToGetServiceIntegrationKafkaConnectUserConfigOutput() GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigOutput) ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigOutput) KafkaConnect() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfig) *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return v.KafkaConnect
+	}).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnect struct {
+	ConfigStorageTopic *string `pulumi:"configStorageTopic"`
+	GroupId            *string `pulumi:"groupId"`
+	OffsetStorageTopic *string `pulumi:"offsetStorageTopic"`
+	StatusStorageTopic *string `pulumi:"statusStorageTopic"`
+}
+
+// GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput` via:
+//
+// 		 GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs struct {
+	ConfigStorageTopic pulumi.StringPtrInput `pulumi:"configStorageTopic"`
+	GroupId            pulumi.StringPtrInput `pulumi:"groupId"`
+	OffsetStorageTopic pulumi.StringPtrInput `pulumi:"offsetStorageTopic"`
+	StatusStorageTopic pulumi.StringPtrInput `pulumi:"statusStorageTopic"`
+}
+
+func (GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput)
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput).ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs, GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput` via:
+//
+// 		 GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput
+}
+
+type getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs
+
+func GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput {
+	return (*getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType)(v)
+}
+
+func (*getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return &v
+	}).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ConfigStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.ConfigStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) OffsetStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) StatusStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.StatusStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) Elem() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return *v
+	}).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput)
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ConfigStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) StatusStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatusStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfig struct {
+	ClusterAlias *string `pulumi:"clusterAlias"`
+}
+
+// GetServiceIntegrationKafkaMirrormakerUserConfigInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigArgs and GetServiceIntegrationKafkaMirrormakerUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigInput` via:
+//
+// 		 GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+//
+type GetServiceIntegrationKafkaMirrormakerUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigOutput() GetServiceIntegrationKafkaMirrormakerUserConfigOutput
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigOutput
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigArgs struct {
+	ClusterAlias pulumi.StringPtrInput `pulumi:"clusterAlias"`
+}
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutput() GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return i.ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaMirrormakerUserConfigOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutput() GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ClusterAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfig) *string { return v.ClusterAlias }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationLogsUserConfig struct {
+	ElasticsearchIndexDaysMax *string `pulumi:"elasticsearchIndexDaysMax"`
+	ElasticsearchIndexPrefix  *string `pulumi:"elasticsearchIndexPrefix"`
+}
+
+// GetServiceIntegrationLogsUserConfigInput is an input type that accepts GetServiceIntegrationLogsUserConfigArgs and GetServiceIntegrationLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationLogsUserConfigInput` via:
+//
+// 		 GetServiceIntegrationLogsUserConfigArgs{...}
+//
+type GetServiceIntegrationLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationLogsUserConfigOutput() GetServiceIntegrationLogsUserConfigOutput
+	ToGetServiceIntegrationLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationLogsUserConfigOutput
+}
+
+type GetServiceIntegrationLogsUserConfigArgs struct {
+	ElasticsearchIndexDaysMax pulumi.StringPtrInput `pulumi:"elasticsearchIndexDaysMax"`
+	ElasticsearchIndexPrefix  pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
+}
+
+func (GetServiceIntegrationLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationLogsUserConfigArgs) ToGetServiceIntegrationLogsUserConfigOutput() GetServiceIntegrationLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationLogsUserConfigArgs) ToGetServiceIntegrationLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationLogsUserConfigOutput) ToGetServiceIntegrationLogsUserConfigOutput() GetServiceIntegrationLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationLogsUserConfigOutput) ToGetServiceIntegrationLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexDaysMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexDaysMax }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationMirrormakerUserConfig struct {
+	MirrormakerWhitelist *string `pulumi:"mirrormakerWhitelist"`
+}
+
+// GetServiceIntegrationMirrormakerUserConfigInput is an input type that accepts GetServiceIntegrationMirrormakerUserConfigArgs and GetServiceIntegrationMirrormakerUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMirrormakerUserConfigInput` via:
+//
+// 		 GetServiceIntegrationMirrormakerUserConfigArgs{...}
+//
+type GetServiceIntegrationMirrormakerUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMirrormakerUserConfigOutput() GetServiceIntegrationMirrormakerUserConfigOutput
+	ToGetServiceIntegrationMirrormakerUserConfigOutputWithContext(context.Context) GetServiceIntegrationMirrormakerUserConfigOutput
+}
+
+type GetServiceIntegrationMirrormakerUserConfigArgs struct {
+	MirrormakerWhitelist pulumi.StringPtrInput `pulumi:"mirrormakerWhitelist"`
+}
+
+func (GetServiceIntegrationMirrormakerUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMirrormakerUserConfigArgs) ToGetServiceIntegrationMirrormakerUserConfigOutput() GetServiceIntegrationMirrormakerUserConfigOutput {
+	return i.ToGetServiceIntegrationMirrormakerUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMirrormakerUserConfigArgs) ToGetServiceIntegrationMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationMirrormakerUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMirrormakerUserConfigOutput)
+}
+
+type GetServiceIntegrationMirrormakerUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMirrormakerUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMirrormakerUserConfigOutput) ToGetServiceIntegrationMirrormakerUserConfigOutput() GetServiceIntegrationMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMirrormakerUserConfigOutput) ToGetServiceIntegrationMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMirrormakerUserConfigOutput) MirrormakerWhitelist() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMirrormakerUserConfig) *string { return v.MirrormakerWhitelist }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafka struct {
@@ -17082,8 +19300,8 @@ func (o GetServiceKafkaConnectUserConfigOutput) PublicAccess() GetServiceKafkaCo
 
 type GetServiceKafkaConnectUserConfigKafkaConnect struct {
 	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords *int    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  *int    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords *string `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  *string `pulumi:"offsetFlushIntervalMs"`
 }
 
 // GetServiceKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetServiceKafkaConnectUserConfigKafkaConnectArgs and GetServiceKafkaConnectUserConfigKafkaConnectOutput values.
@@ -17100,8 +19318,8 @@ type GetServiceKafkaConnectUserConfigKafkaConnectInput interface {
 
 type GetServiceKafkaConnectUserConfigKafkaConnectArgs struct {
 	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords pulumi.IntPtrInput    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  pulumi.IntPtrInput    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 }
 
 func (GetServiceKafkaConnectUserConfigKafkaConnectArgs) ElementType() reflect.Type {
@@ -17185,12 +19403,12 @@ func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLev
 	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput struct{ *pulumi.OutputState }
@@ -17222,22 +19440,22 @@ func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolation
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *int {
+func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerMaxPollRecords
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *int {
+func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OffsetFlushIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaConnectUserConfigPrivateAccess struct {
@@ -17530,19 +19748,300 @@ func (o GetServiceKafkaConnectUserConfigPublicAccessPtrOutput) Prometheus() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetServiceKafkaMirrormaker struct {
+}
+
+// GetServiceKafkaMirrormakerInput is an input type that accepts GetServiceKafkaMirrormakerArgs and GetServiceKafkaMirrormakerOutput values.
+// You can construct a concrete instance of `GetServiceKafkaMirrormakerInput` via:
+//
+// 		 GetServiceKafkaMirrormakerArgs{...}
+//
+type GetServiceKafkaMirrormakerInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaMirrormakerOutput() GetServiceKafkaMirrormakerOutput
+	ToGetServiceKafkaMirrormakerOutputWithContext(context.Context) GetServiceKafkaMirrormakerOutput
+}
+
+type GetServiceKafkaMirrormakerArgs struct {
+}
+
+func (GetServiceKafkaMirrormakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i GetServiceKafkaMirrormakerArgs) ToGetServiceKafkaMirrormakerOutput() GetServiceKafkaMirrormakerOutput {
+	return i.ToGetServiceKafkaMirrormakerOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaMirrormakerArgs) ToGetServiceKafkaMirrormakerOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaMirrormakerOutput)
+}
+
+type GetServiceKafkaMirrormakerOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaMirrormakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o GetServiceKafkaMirrormakerOutput) ToGetServiceKafkaMirrormakerOutput() GetServiceKafkaMirrormakerOutput {
+	return o
+}
+
+func (o GetServiceKafkaMirrormakerOutput) ToGetServiceKafkaMirrormakerOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerOutput {
+	return o
+}
+
+type GetServiceKafkaMirrormakerUserConfig struct {
+	IpFilters        []string                                              `pulumi:"ipFilters"`
+	KafkaMirrormaker *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+}
+
+// GetServiceKafkaMirrormakerUserConfigInput is an input type that accepts GetServiceKafkaMirrormakerUserConfigArgs and GetServiceKafkaMirrormakerUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceKafkaMirrormakerUserConfigInput` via:
+//
+// 		 GetServiceKafkaMirrormakerUserConfigArgs{...}
+//
+type GetServiceKafkaMirrormakerUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaMirrormakerUserConfigOutput() GetServiceKafkaMirrormakerUserConfigOutput
+	ToGetServiceKafkaMirrormakerUserConfigOutputWithContext(context.Context) GetServiceKafkaMirrormakerUserConfigOutput
+}
+
+type GetServiceKafkaMirrormakerUserConfigArgs struct {
+	IpFilters        pulumi.StringArrayInput                                      `pulumi:"ipFilters"`
+	KafkaMirrormaker GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
+}
+
+func (GetServiceKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceKafkaMirrormakerUserConfigArgs) ToGetServiceKafkaMirrormakerUserConfigOutput() GetServiceKafkaMirrormakerUserConfigOutput {
+	return i.ToGetServiceKafkaMirrormakerUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaMirrormakerUserConfigArgs) ToGetServiceKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaMirrormakerUserConfigOutput)
+}
+
+type GetServiceKafkaMirrormakerUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaMirrormakerUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigOutput) ToGetServiceKafkaMirrormakerUserConfigOutput() GetServiceKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigOutput) ToGetServiceKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfig) *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return v.KafkaMirrormaker
+	}).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker struct {
+	RefreshGroupsEnabled         *string `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled         *string `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
+}
+
+// GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
+// You can construct a concrete instance of `GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
+//
+// 		 GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//
+type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+	ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+}
+
+type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
+	RefreshGroupsEnabled         pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled         pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+}
+
+func (GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return i.ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (i GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput).ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx)
+}
+
+// GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs, GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtr and GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
+// You can construct a concrete instance of `GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
+//
+// 		 GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+	ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+}
+
+type getServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs
+
+func GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtr(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput {
+	return (*getServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType)(v)
+}
+
+func (*getServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i *getServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return &v
+	}).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.RefreshGroupsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.RefreshGroupsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.RefreshTopicsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToGetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Elem() GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return *v
+	}).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshGroupsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshGroupsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTopicsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServiceKafkaUserConfig struct {
 	CustomDomain               *string                                              `pulumi:"customDomain"`
 	IpFilters                  []string                                             `pulumi:"ipFilters"`
 	Kafka                      *GetServiceKafkaUserConfigKafka                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods *GetServiceKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               *bool                                                `pulumi:"kafkaConnect"`
+	KafkaConnect               *string                                              `pulumi:"kafkaConnect"`
 	KafkaConnectConfig         *GetServiceKafkaUserConfigKafkaConnectConfig         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  *bool                                                `pulumi:"kafkaRest"`
+	KafkaRest                  *string                                              `pulumi:"kafkaRest"`
 	KafkaRestConfig            *GetServiceKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               *string                                              `pulumi:"kafkaVersion"`
 	PrivateAccess              *GetServiceKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
 	PublicAccess               *GetServiceKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
-	SchemaRegistry             *bool                                                `pulumi:"schemaRegistry"`
+	SchemaRegistry             *string                                              `pulumi:"schemaRegistry"`
 }
 
 // GetServiceKafkaUserConfigInput is an input type that accepts GetServiceKafkaUserConfigArgs and GetServiceKafkaUserConfigOutput values.
@@ -17562,14 +20061,14 @@ type GetServiceKafkaUserConfigArgs struct {
 	IpFilters                  pulumi.StringArrayInput                                     `pulumi:"ipFilters"`
 	Kafka                      GetServiceKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               pulumi.BoolPtrInput                                         `pulumi:"kafkaConnect"`
+	KafkaConnect               pulumi.StringPtrInput                                       `pulumi:"kafkaConnect"`
 	KafkaConnectConfig         GetServiceKafkaUserConfigKafkaConnectConfigPtrInput         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  pulumi.BoolPtrInput                                         `pulumi:"kafkaRest"`
+	KafkaRest                  pulumi.StringPtrInput                                       `pulumi:"kafkaRest"`
 	KafkaRestConfig            GetServiceKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               pulumi.StringPtrInput                                       `pulumi:"kafkaVersion"`
 	PrivateAccess              GetServiceKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
 	PublicAccess               GetServiceKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
-	SchemaRegistry             pulumi.BoolPtrInput                                         `pulumi:"schemaRegistry"`
+	SchemaRegistry             pulumi.StringPtrInput                                       `pulumi:"schemaRegistry"`
 }
 
 func (GetServiceKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -17616,8 +20115,8 @@ func (o GetServiceKafkaUserConfigOutput) KafkaAuthenticationMethods() GetService
 	}).(GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigOutput) KafkaConnect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfig) *bool { return v.KafkaConnect }).(pulumi.BoolPtrOutput)
+func (o GetServiceKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigOutput) KafkaConnectConfig() GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput {
@@ -17626,8 +20125,8 @@ func (o GetServiceKafkaUserConfigOutput) KafkaConnectConfig() GetServiceKafkaUse
 	}).(GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigOutput) KafkaRest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfig) *bool { return v.KafkaRest }).(pulumi.BoolPtrOutput)
+func (o GetServiceKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigOutput) KafkaRestConfig() GetServiceKafkaUserConfigKafkaRestConfigPtrOutput {
@@ -17646,34 +20145,34 @@ func (o GetServiceKafkaUserConfigOutput) PublicAccess() GetServiceKafkaUserConfi
 	return o.ApplyT(func(v GetServiceKafkaUserConfig) *GetServiceKafkaUserConfigPublicAccess { return v.PublicAccess }).(GetServiceKafkaUserConfigPublicAccessPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigOutput) SchemaRegistry() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfig) *bool { return v.SchemaRegistry }).(pulumi.BoolPtrOutput)
+func (o GetServiceKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafka struct {
-	AutoCreateTopicsEnable                 *string  `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        *string  `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   *int     `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               *int     `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               *int     `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               *int     `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           *int     `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            *float64 `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           *int     `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       *string  `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     *int     `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                *string  `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      *int     `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      *int     `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        *int     `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    *int     `pulumi:"maxConnectionsPerIp"`
-	MessageMaxBytes                        *int     `pulumi:"messageMaxBytes"`
-	NumPartitions                          *int     `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                *int     `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests *int     `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   *int     `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           *int     `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  *int     `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                        *string `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                   *string `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
+	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
+	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
+	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
+	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
+	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
+	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
+	NumPartitions                          *string `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                   *string `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes           *string `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                  *string `pulumi:"socketRequestMaxBytes"`
 }
 
 // GetServiceKafkaUserConfigKafkaInput is an input type that accepts GetServiceKafkaUserConfigKafkaArgs and GetServiceKafkaUserConfigKafkaOutput values.
@@ -17689,29 +20188,29 @@ type GetServiceKafkaUserConfigKafkaInput interface {
 }
 
 type GetServiceKafkaUserConfigKafkaArgs struct {
-	AutoCreateTopicsEnable                 pulumi.StringPtrInput  `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        pulumi.StringPtrInput  `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   pulumi.IntPtrInput     `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               pulumi.IntPtrInput     `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               pulumi.IntPtrInput     `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               pulumi.IntPtrInput     `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           pulumi.IntPtrInput     `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            pulumi.Float64PtrInput `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           pulumi.IntPtrInput     `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       pulumi.StringPtrInput  `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     pulumi.IntPtrInput     `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                pulumi.StringPtrInput  `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      pulumi.IntPtrInput     `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      pulumi.IntPtrInput     `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        pulumi.IntPtrInput     `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    pulumi.IntPtrInput     `pulumi:"maxConnectionsPerIp"`
-	MessageMaxBytes                        pulumi.IntPtrInput     `pulumi:"messageMaxBytes"`
-	NumPartitions                          pulumi.IntPtrInput     `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                pulumi.IntPtrInput     `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests pulumi.IntPtrInput     `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   pulumi.IntPtrInput     `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           pulumi.IntPtrInput     `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  pulumi.IntPtrInput     `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                 pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                        pulumi.StringPtrInput `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                   pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                   pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes           pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                  pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
 }
 
 func (GetServiceKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -17799,88 +20298,88 @@ func (o GetServiceKafkaUserConfigKafkaOutput) CompressionType() pulumi.StringPtr
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ConnectionsMaxIdleMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.ConnectionsMaxIdleMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) GroupMaxSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.GroupMaxSessionTimeoutMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.GroupMaxSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.GroupMinSessionTimeoutMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogCleanerMaxCompactionLagMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *float64 { return v.LogCleanerMinCleanableRatio }).(pulumi.Float64PtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanerMinCleanableRatio }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogCleanerMinCompactionLagMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanerMinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogRetentionBytes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogRetentionHours }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.MaxConnectionsPerIp }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.MessageMaxBytes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.OffsetsRetentionMinutes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.OffsetsRetentionMinutes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) ReplicaFetchMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchMaxBytes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.ReplicaFetchMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.ReplicaFetchResponseMaxBytes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.ReplicaFetchResponseMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *int { return v.SocketRequestMaxBytes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaPtrOutput struct{ *pulumi.OutputState }
@@ -17919,67 +20418,67 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConnectionsMaxIdleMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultReplicationFactor
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.GroupMaxSessionTimeoutMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.GroupMinSessionTimeoutMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanerMaxCompactionLagMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *float64 {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanerMinCleanableRatio
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanerMinCompactionLagMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
@@ -17991,13 +20490,13 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogMessageTimestampDifferenceMaxMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
@@ -18009,108 +20508,108 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionHours
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogSegmentBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxConnectionsPerIp
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MessageMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NumPartitions
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OffsetsRetentionMinutes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ProducerPurgatoryPurgeIntervalRequests
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ReplicaFetchMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ReplicaFetchResponseMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *int {
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SocketRequestMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaAuthenticationMethods struct {
-	Certificate *bool `pulumi:"certificate"`
-	Sasl        *bool `pulumi:"sasl"`
+	Certificate *string `pulumi:"certificate"`
+	Sasl        *string `pulumi:"sasl"`
 }
 
 // GetServiceKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs and GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput values.
@@ -18126,8 +20625,8 @@ type GetServiceKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 }
 
 type GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs struct {
-	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
-	Sasl        pulumi.BoolPtrInput `pulumi:"sasl"`
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	Sasl        pulumi.StringPtrInput `pulumi:"sasl"`
 }
 
 func (GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs) ElementType() reflect.Type {
@@ -18207,12 +20706,12 @@ func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) ToGetServiceK
 		return &v
 	}).(GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
-func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Certificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Sasl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool { return v.Sasl }).(pulumi.BoolPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput) Sasl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Sasl }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput struct{ *pulumi.OutputState }
@@ -18235,28 +20734,28 @@ func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Elem() Get
 	}).(GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Certificate
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaAuthenticationMethods) *bool {
+func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Sasl
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaConnectConfig struct {
 	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords *int    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  *int    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords *string `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  *string `pulumi:"offsetFlushIntervalMs"`
 }
 
 // GetServiceKafkaUserConfigKafkaConnectConfigInput is an input type that accepts GetServiceKafkaUserConfigKafkaConnectConfigArgs and GetServiceKafkaUserConfigKafkaConnectConfigOutput values.
@@ -18273,8 +20772,8 @@ type GetServiceKafkaUserConfigKafkaConnectConfigInput interface {
 
 type GetServiceKafkaUserConfigKafkaConnectConfigArgs struct {
 	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollRecords pulumi.IntPtrInput    `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs  pulumi.IntPtrInput    `pulumi:"offsetFlushIntervalMs"`
+	ConsumerMaxPollRecords pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs  pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 }
 
 func (GetServiceKafkaUserConfigKafkaConnectConfigArgs) ElementType() reflect.Type {
@@ -18358,12 +20857,12 @@ func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLeve
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *int { return v.ConsumerMaxPollRecords }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *int { return v.OffsetFlushIntervalMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput struct{ *pulumi.OutputState }
@@ -18395,31 +20894,31 @@ func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationL
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *int {
+func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerMaxPollRecords
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *int {
+func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OffsetFlushIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaRestConfig struct {
-	ConsumerEnableAutoCommit  *bool   `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   *int    `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  *int    `pulumi:"consumerRequestTimeoutMs"`
+	ConsumerEnableAutoCommit  *string `pulumi:"consumerEnableAutoCommit"`
+	ConsumerRequestMaxBytes   *string `pulumi:"consumerRequestMaxBytes"`
+	ConsumerRequestTimeoutMs  *string `pulumi:"consumerRequestTimeoutMs"`
 	ProducerAcks              *string `pulumi:"producerAcks"`
-	ProducerLingerMs          *int    `pulumi:"producerLingerMs"`
-	SimpleconsumerPoolSizeMax *int    `pulumi:"simpleconsumerPoolSizeMax"`
+	ProducerLingerMs          *string `pulumi:"producerLingerMs"`
+	SimpleconsumerPoolSizeMax *string `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
 // GetServiceKafkaUserConfigKafkaRestConfigInput is an input type that accepts GetServiceKafkaUserConfigKafkaRestConfigArgs and GetServiceKafkaUserConfigKafkaRestConfigOutput values.
@@ -18435,12 +20934,12 @@ type GetServiceKafkaUserConfigKafkaRestConfigInput interface {
 }
 
 type GetServiceKafkaUserConfigKafkaRestConfigArgs struct {
-	ConsumerEnableAutoCommit  pulumi.BoolPtrInput   `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   pulumi.IntPtrInput    `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  pulumi.IntPtrInput    `pulumi:"consumerRequestTimeoutMs"`
+	ConsumerEnableAutoCommit  pulumi.StringPtrInput `pulumi:"consumerEnableAutoCommit"`
+	ConsumerRequestMaxBytes   pulumi.StringPtrInput `pulumi:"consumerRequestMaxBytes"`
+	ConsumerRequestTimeoutMs  pulumi.StringPtrInput `pulumi:"consumerRequestTimeoutMs"`
 	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
-	ProducerLingerMs          pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
-	SimpleconsumerPoolSizeMax pulumi.IntPtrInput    `pulumi:"simpleconsumerPoolSizeMax"`
+	ProducerLingerMs          pulumi.StringPtrInput `pulumi:"producerLingerMs"`
+	SimpleconsumerPoolSizeMax pulumi.StringPtrInput `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
 func (GetServiceKafkaUserConfigKafkaRestConfigArgs) ElementType() reflect.Type {
@@ -18520,28 +21019,28 @@ func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ToGetServiceKafkaUserCon
 		return &v
 	}).(GetServiceKafkaUserConfigKafkaRestConfigPtrOutput)
 }
-func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerEnableAutoCommit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *bool { return v.ConsumerEnableAutoCommit }).(pulumi.BoolPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerEnableAutoCommit }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestMaxBytes }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *string { return v.ProducerLingerMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *int { return v.SimpleconsumerPoolSizeMax }).(pulumi.IntPtrOutput)
+func (o GetServiceKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaRestConfig) *string { return v.SimpleconsumerPoolSizeMax }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaRestConfigPtrOutput struct{ *pulumi.OutputState }
@@ -18562,31 +21061,31 @@ func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) Elem() GetServiceKafk
 	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) GetServiceKafkaUserConfigKafkaRestConfig { return *v }).(GetServiceKafkaUserConfigKafkaRestConfigOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *bool {
+func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerEnableAutoCommit
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerRequestMaxBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerRequestTimeoutMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.StringPtrOutput {
@@ -18598,22 +21097,22 @@ func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ProducerLingerMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *int {
+func (o GetServiceKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SimpleconsumerPoolSizeMax
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigPrivateAccess struct {
@@ -18979,8 +21478,8 @@ func (o GetServiceMysqlOutput) ToGetServiceMysqlOutputWithContext(ctx context.Co
 type GetServiceMysqlUserConfig struct {
 	AdminPassword      *string                                 `pulumi:"adminPassword"`
 	AdminUsername      *string                                 `pulumi:"adminUsername"`
-	BackupHour         *int                                    `pulumi:"backupHour"`
-	BackupMinute       *int                                    `pulumi:"backupMinute"`
+	BackupHour         *string                                 `pulumi:"backupHour"`
+	BackupMinute       *string                                 `pulumi:"backupMinute"`
 	IpFilters          []string                                `pulumi:"ipFilters"`
 	Mysql              *GetServiceMysqlUserConfigMysql         `pulumi:"mysql"`
 	MysqlVersion       *string                                 `pulumi:"mysqlVersion"`
@@ -19005,8 +21504,8 @@ type GetServiceMysqlUserConfigInput interface {
 type GetServiceMysqlUserConfigArgs struct {
 	AdminPassword      pulumi.StringPtrInput                          `pulumi:"adminPassword"`
 	AdminUsername      pulumi.StringPtrInput                          `pulumi:"adminUsername"`
-	BackupHour         pulumi.IntPtrInput                             `pulumi:"backupHour"`
-	BackupMinute       pulumi.IntPtrInput                             `pulumi:"backupMinute"`
+	BackupHour         pulumi.StringPtrInput                          `pulumi:"backupHour"`
+	BackupMinute       pulumi.StringPtrInput                          `pulumi:"backupMinute"`
 	IpFilters          pulumi.StringArrayInput                        `pulumi:"ipFilters"`
 	Mysql              GetServiceMysqlUserConfigMysqlPtrInput         `pulumi:"mysql"`
 	MysqlVersion       pulumi.StringPtrInput                          `pulumi:"mysqlVersion"`
@@ -19050,12 +21549,12 @@ func (o GetServiceMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetServiceMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
@@ -19087,21 +21586,26 @@ func (o GetServiceMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOut
 }
 
 type GetServiceMysqlUserConfigMysql struct {
-	ConnectTimeout               *int    `pulumi:"connectTimeout"`
+	ConnectTimeout               *string `pulumi:"connectTimeout"`
 	DefaultTimeZone              *string `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            *int    `pulumi:"groupConcatMaxLen"`
-	InformationSchemaStatsExpiry *int    `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         *int    `pulumi:"innodbFtMinTokenSize"`
+	GroupConcatMaxLen            *string `pulumi:"groupConcatMaxLen"`
+	InformationSchemaStatsExpiry *string `pulumi:"informationSchemaStatsExpiry"`
+	InnodbFtMinTokenSize         *string `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  *string `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        *int    `pulumi:"innodbLockWaitTimeout"`
-	InnodbOnlineAlterLogMaxSize  *int    `pulumi:"innodbOnlineAlterLogMaxSize"`
+	InnodbLockWaitTimeout        *string `pulumi:"innodbLockWaitTimeout"`
+	InnodbLogBufferSize          *string `pulumi:"innodbLogBufferSize"`
+	InnodbOnlineAlterLogMaxSize  *string `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbRollbackOnTimeout      *string `pulumi:"innodbRollbackOnTimeout"`
-	MaxAllowedPacket             *int    `pulumi:"maxAllowedPacket"`
-	NetReadTimeout               *int    `pulumi:"netReadTimeout"`
-	NetWriteTimeout              *int    `pulumi:"netWriteTimeout"`
+	InteractiveTimeout           *string `pulumi:"interactiveTimeout"`
+	MaxAllowedPacket             *string `pulumi:"maxAllowedPacket"`
+	MaxHeapTableSize             *string `pulumi:"maxHeapTableSize"`
+	NetReadTimeout               *string `pulumi:"netReadTimeout"`
+	NetWriteTimeout              *string `pulumi:"netWriteTimeout"`
+	SortBufferSize               *string `pulumi:"sortBufferSize"`
 	SqlMode                      *string `pulumi:"sqlMode"`
 	SqlRequirePrimaryKey         *string `pulumi:"sqlRequirePrimaryKey"`
-	WaitTimeout                  *int    `pulumi:"waitTimeout"`
+	TmpTableSize                 *string `pulumi:"tmpTableSize"`
+	WaitTimeout                  *string `pulumi:"waitTimeout"`
 }
 
 // GetServiceMysqlUserConfigMysqlInput is an input type that accepts GetServiceMysqlUserConfigMysqlArgs and GetServiceMysqlUserConfigMysqlOutput values.
@@ -19117,21 +21621,26 @@ type GetServiceMysqlUserConfigMysqlInput interface {
 }
 
 type GetServiceMysqlUserConfigMysqlArgs struct {
-	ConnectTimeout               pulumi.IntPtrInput    `pulumi:"connectTimeout"`
+	ConnectTimeout               pulumi.StringPtrInput `pulumi:"connectTimeout"`
 	DefaultTimeZone              pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            pulumi.IntPtrInput    `pulumi:"groupConcatMaxLen"`
-	InformationSchemaStatsExpiry pulumi.IntPtrInput    `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         pulumi.IntPtrInput    `pulumi:"innodbFtMinTokenSize"`
+	GroupConcatMaxLen            pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
+	InformationSchemaStatsExpiry pulumi.StringPtrInput `pulumi:"informationSchemaStatsExpiry"`
+	InnodbFtMinTokenSize         pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        pulumi.IntPtrInput    `pulumi:"innodbLockWaitTimeout"`
-	InnodbOnlineAlterLogMaxSize  pulumi.IntPtrInput    `pulumi:"innodbOnlineAlterLogMaxSize"`
+	InnodbLockWaitTimeout        pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
+	InnodbLogBufferSize          pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
+	InnodbOnlineAlterLogMaxSize  pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbRollbackOnTimeout      pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
-	MaxAllowedPacket             pulumi.IntPtrInput    `pulumi:"maxAllowedPacket"`
-	NetReadTimeout               pulumi.IntPtrInput    `pulumi:"netReadTimeout"`
-	NetWriteTimeout              pulumi.IntPtrInput    `pulumi:"netWriteTimeout"`
+	InteractiveTimeout           pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
+	MaxAllowedPacket             pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
+	MaxHeapTableSize             pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
+	NetReadTimeout               pulumi.StringPtrInput `pulumi:"netReadTimeout"`
+	NetWriteTimeout              pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
+	SortBufferSize               pulumi.StringPtrInput `pulumi:"sortBufferSize"`
 	SqlMode                      pulumi.StringPtrInput `pulumi:"sqlMode"`
 	SqlRequirePrimaryKey         pulumi.StringPtrInput `pulumi:"sqlRequirePrimaryKey"`
-	WaitTimeout                  pulumi.IntPtrInput    `pulumi:"waitTimeout"`
+	TmpTableSize                 pulumi.StringPtrInput `pulumi:"tmpTableSize"`
+	WaitTimeout                  pulumi.StringPtrInput `pulumi:"waitTimeout"`
 }
 
 func (GetServiceMysqlUserConfigMysqlArgs) ElementType() reflect.Type {
@@ -19211,52 +21720,68 @@ func (o GetServiceMysqlUserConfigMysqlOutput) ToGetServiceMysqlUserConfigMysqlPt
 		return &v
 	}).(GetServiceMysqlUserConfigMysqlPtrOutput)
 }
-func (o GetServiceMysqlUserConfigMysqlOutput) ConnectTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.ConnectTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.ConnectTimeout }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.GroupConcatMaxLen }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.GroupConcatMaxLen }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InformationSchemaStatsExpiry }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InformationSchemaStatsExpiry }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InnodbFtMinTokenSize }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbFtMinTokenSize }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbFtServerStopwordTable }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbLockWaitTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbLogBufferSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) InteractiveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.InteractiveTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.NetReadTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.MaxAllowedPacket }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) NetWriteTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.NetWriteTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.MaxHeapTableSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.NetReadTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlOutput) NetWriteTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.NetWriteTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlOutput) SortBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.SortBufferSize }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlOutput) SqlMode() pulumi.StringPtrOutput {
@@ -19267,8 +21792,12 @@ func (o GetServiceMysqlUserConfigMysqlOutput) SqlRequirePrimaryKey() pulumi.Stri
 	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.SqlRequirePrimaryKey }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *int { return v.WaitTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.TmpTableSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigMysql) *string { return v.WaitTimeout }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceMysqlUserConfigMysqlPtrOutput struct{ *pulumi.OutputState }
@@ -19289,13 +21818,13 @@ func (o GetServiceMysqlUserConfigMysqlPtrOutput) Elem() GetServiceMysqlUserConfi
 	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) GetServiceMysqlUserConfigMysql { return *v }).(GetServiceMysqlUserConfigMysqlOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConnectTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOutput {
@@ -19307,31 +21836,31 @@ func (o GetServiceMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.GroupConcatMaxLen
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InformationSchemaStatsExpiry
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbFtMinTokenSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
@@ -19343,22 +21872,31 @@ func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() p
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbLockWaitTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbLogBufferSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbOnlineAlterLogMaxSize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
@@ -19370,31 +21908,58 @@ func (o GetServiceMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) InteractiveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InteractiveTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxAllowedPacket
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxHeapTableSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NetReadTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NetWriteTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SortBufferSize
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
@@ -19415,13 +21980,22 @@ func (o GetServiceMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *int {
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TmpTableSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.WaitTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceMysqlUserConfigPrivateAccess struct {
@@ -19803,23 +22377,24 @@ func (o GetServicePgOutput) User() pulumi.StringOutput {
 }
 
 type GetServicePgUserConfig struct {
-	AdminPassword       *string                              `pulumi:"adminPassword"`
-	AdminUsername       *string                              `pulumi:"adminUsername"`
-	BackupHour          *int                                 `pulumi:"backupHour"`
-	BackupMinute        *int                                 `pulumi:"backupMinute"`
-	IpFilters           []string                             `pulumi:"ipFilters"`
-	Pg                  *GetServicePgUserConfigPg            `pulumi:"pg"`
-	PgReadReplica       *string                              `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom *string                              `pulumi:"pgServiceToForkFrom"`
-	PgVersion           *string                              `pulumi:"pgVersion"`
-	Pgbouncer           *GetServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
-	Pglookout           *GetServicePgUserConfigPglookout     `pulumi:"pglookout"`
-	PrivateAccess       *GetServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess        *GetServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime  *string                              `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom   *string                              `pulumi:"serviceToForkFrom"`
-	Timescaledb         *GetServicePgUserConfigTimescaledb   `pulumi:"timescaledb"`
-	Variant             *string                              `pulumi:"variant"`
+	AdminPassword          *string                              `pulumi:"adminPassword"`
+	AdminUsername          *string                              `pulumi:"adminUsername"`
+	BackupHour             *string                              `pulumi:"backupHour"`
+	BackupMinute           *string                              `pulumi:"backupMinute"`
+	IpFilters              []string                             `pulumi:"ipFilters"`
+	Pg                     *GetServicePgUserConfigPg            `pulumi:"pg"`
+	PgReadReplica          *string                              `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom    *string                              `pulumi:"pgServiceToForkFrom"`
+	PgVersion              *string                              `pulumi:"pgVersion"`
+	Pgbouncer              *GetServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
+	Pglookout              *GetServicePgUserConfigPglookout     `pulumi:"pglookout"`
+	PrivateAccess          *GetServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PublicAccess           *GetServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryTargetTime     *string                              `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom      *string                              `pulumi:"serviceToForkFrom"`
+	SynchronousReplication *string                              `pulumi:"synchronousReplication"`
+	Timescaledb            *GetServicePgUserConfigTimescaledb   `pulumi:"timescaledb"`
+	Variant                *string                              `pulumi:"variant"`
 }
 
 // GetServicePgUserConfigInput is an input type that accepts GetServicePgUserConfigArgs and GetServicePgUserConfigOutput values.
@@ -19835,23 +22410,24 @@ type GetServicePgUserConfigInput interface {
 }
 
 type GetServicePgUserConfigArgs struct {
-	AdminPassword       pulumi.StringPtrInput                       `pulumi:"adminPassword"`
-	AdminUsername       pulumi.StringPtrInput                       `pulumi:"adminUsername"`
-	BackupHour          pulumi.IntPtrInput                          `pulumi:"backupHour"`
-	BackupMinute        pulumi.IntPtrInput                          `pulumi:"backupMinute"`
-	IpFilters           pulumi.StringArrayInput                     `pulumi:"ipFilters"`
-	Pg                  GetServicePgUserConfigPgPtrInput            `pulumi:"pg"`
-	PgReadReplica       pulumi.StringPtrInput                       `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom pulumi.StringPtrInput                       `pulumi:"pgServiceToForkFrom"`
-	PgVersion           pulumi.StringPtrInput                       `pulumi:"pgVersion"`
-	Pgbouncer           GetServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
-	Pglookout           GetServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
-	PrivateAccess       GetServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess        GetServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime  pulumi.StringPtrInput                       `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom   pulumi.StringPtrInput                       `pulumi:"serviceToForkFrom"`
-	Timescaledb         GetServicePgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
-	Variant             pulumi.StringPtrInput                       `pulumi:"variant"`
+	AdminPassword          pulumi.StringPtrInput                       `pulumi:"adminPassword"`
+	AdminUsername          pulumi.StringPtrInput                       `pulumi:"adminUsername"`
+	BackupHour             pulumi.StringPtrInput                       `pulumi:"backupHour"`
+	BackupMinute           pulumi.StringPtrInput                       `pulumi:"backupMinute"`
+	IpFilters              pulumi.StringArrayInput                     `pulumi:"ipFilters"`
+	Pg                     GetServicePgUserConfigPgPtrInput            `pulumi:"pg"`
+	PgReadReplica          pulumi.StringPtrInput                       `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom    pulumi.StringPtrInput                       `pulumi:"pgServiceToForkFrom"`
+	PgVersion              pulumi.StringPtrInput                       `pulumi:"pgVersion"`
+	Pgbouncer              GetServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
+	Pglookout              GetServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
+	PrivateAccess          GetServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PublicAccess           GetServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryTargetTime     pulumi.StringPtrInput                       `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom      pulumi.StringPtrInput                       `pulumi:"serviceToForkFrom"`
+	SynchronousReplication pulumi.StringPtrInput                       `pulumi:"synchronousReplication"`
+	Timescaledb            GetServicePgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
+	Variant                pulumi.StringPtrInput                       `pulumi:"variant"`
 }
 
 func (GetServicePgUserConfigArgs) ElementType() reflect.Type {
@@ -19888,12 +22464,12 @@ func (o GetServicePgUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
@@ -19940,6 +22516,10 @@ func (o GetServicePgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetServicePgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicePgUserConfigOutput) SynchronousReplication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfig) *string { return v.SynchronousReplication }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigOutput) Timescaledb() GetServicePgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfig) *GetServicePgUserConfigTimescaledb { return v.Timescaledb }).(GetServicePgUserConfigTimescaledbPtrOutput)
 }
@@ -19949,35 +22529,38 @@ func (o GetServicePgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 }
 
 type GetServicePgUserConfigPg struct {
-	AutovacuumAnalyzeScaleFactor    *float64 `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      *int     `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumMaxWorkers            *int     `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               *int     `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       *int     `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       *int     `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     *float64 `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       *int     `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 *int     `pulumi:"deadlockTimeout"`
-	IdleInTransactionSessionTimeout *int     `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             *string  `pulumi:"jit"`
-	LogAutovacuumMinDuration        *int     `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               *string  `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         *int     `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          *int     `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              *int     `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     *int     `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      *int     `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         *int     `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   *int     `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          *int     `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        *int     `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              *int     `pulumi:"maxWorkerProcesses"`
-	PgStatStatementsTrack           *string  `pulumi:"pgStatStatementsTrack"`
-	TempFileLimit                   *int     `pulumi:"tempFileLimit"`
-	Timezone                        *string  `pulumi:"timezone"`
-	TrackActivityQuerySize          *int     `pulumi:"trackActivityQuerySize"`
-	TrackFunctions                  *string  `pulumi:"trackFunctions"`
-	WalWriterDelay                  *int     `pulumi:"walWriterDelay"`
+	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
+	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
+	AutovacuumFreezeMaxAge          *string `pulumi:"autovacuumFreezeMaxAge"`
+	AutovacuumMaxWorkers            *string `pulumi:"autovacuumMaxWorkers"`
+	AutovacuumNaptime               *string `pulumi:"autovacuumNaptime"`
+	AutovacuumVacuumCostDelay       *string `pulumi:"autovacuumVacuumCostDelay"`
+	AutovacuumVacuumCostLimit       *string `pulumi:"autovacuumVacuumCostLimit"`
+	AutovacuumVacuumScaleFactor     *string `pulumi:"autovacuumVacuumScaleFactor"`
+	AutovacuumVacuumThreshold       *string `pulumi:"autovacuumVacuumThreshold"`
+	DeadlockTimeout                 *string `pulumi:"deadlockTimeout"`
+	IdleInTransactionSessionTimeout *string `pulumi:"idleInTransactionSessionTimeout"`
+	Jit                             *string `pulumi:"jit"`
+	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
+	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
+	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
+	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
+	MaxParallelWorkers              *string `pulumi:"maxParallelWorkers"`
+	MaxParallelWorkersPerGather     *string `pulumi:"maxParallelWorkersPerGather"`
+	MaxPredLocksPerTransaction      *string `pulumi:"maxPredLocksPerTransaction"`
+	MaxPreparedTransactions         *string `pulumi:"maxPreparedTransactions"`
+	MaxStackDepth                   *string `pulumi:"maxStackDepth"`
+	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
+	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
+	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
+	PgStatStatementsTrack           *string `pulumi:"pgStatStatementsTrack"`
+	TempFileLimit                   *string `pulumi:"tempFileLimit"`
+	Timezone                        *string `pulumi:"timezone"`
+	TrackActivityQuerySize          *string `pulumi:"trackActivityQuerySize"`
+	TrackCommitTimestamp            *string `pulumi:"trackCommitTimestamp"`
+	TrackFunctions                  *string `pulumi:"trackFunctions"`
+	WalSenderTimeout                *string `pulumi:"walSenderTimeout"`
+	WalWriterDelay                  *string `pulumi:"walWriterDelay"`
 }
 
 // GetServicePgUserConfigPgInput is an input type that accepts GetServicePgUserConfigPgArgs and GetServicePgUserConfigPgOutput values.
@@ -19993,35 +22576,38 @@ type GetServicePgUserConfigPgInput interface {
 }
 
 type GetServicePgUserConfigPgArgs struct {
-	AutovacuumAnalyzeScaleFactor    pulumi.Float64PtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      pulumi.IntPtrInput     `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumMaxWorkers            pulumi.IntPtrInput     `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               pulumi.IntPtrInput     `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       pulumi.IntPtrInput     `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       pulumi.IntPtrInput     `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     pulumi.Float64PtrInput `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       pulumi.IntPtrInput     `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 pulumi.IntPtrInput     `pulumi:"deadlockTimeout"`
-	IdleInTransactionSessionTimeout pulumi.IntPtrInput     `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             pulumi.StringPtrInput  `pulumi:"jit"`
-	LogAutovacuumMinDuration        pulumi.IntPtrInput     `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               pulumi.StringPtrInput  `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         pulumi.IntPtrInput     `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          pulumi.IntPtrInput     `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              pulumi.IntPtrInput     `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     pulumi.IntPtrInput     `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      pulumi.IntPtrInput     `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         pulumi.IntPtrInput     `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   pulumi.IntPtrInput     `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          pulumi.IntPtrInput     `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        pulumi.IntPtrInput     `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              pulumi.IntPtrInput     `pulumi:"maxWorkerProcesses"`
-	PgStatStatementsTrack           pulumi.StringPtrInput  `pulumi:"pgStatStatementsTrack"`
-	TempFileLimit                   pulumi.IntPtrInput     `pulumi:"tempFileLimit"`
-	Timezone                        pulumi.StringPtrInput  `pulumi:"timezone"`
-	TrackActivityQuerySize          pulumi.IntPtrInput     `pulumi:"trackActivityQuerySize"`
-	TrackFunctions                  pulumi.StringPtrInput  `pulumi:"trackFunctions"`
-	WalWriterDelay                  pulumi.IntPtrInput     `pulumi:"walWriterDelay"`
+	AutovacuumAnalyzeScaleFactor    pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
+	AutovacuumAnalyzeThreshold      pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
+	AutovacuumFreezeMaxAge          pulumi.StringPtrInput `pulumi:"autovacuumFreezeMaxAge"`
+	AutovacuumMaxWorkers            pulumi.StringPtrInput `pulumi:"autovacuumMaxWorkers"`
+	AutovacuumNaptime               pulumi.StringPtrInput `pulumi:"autovacuumNaptime"`
+	AutovacuumVacuumCostDelay       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostDelay"`
+	AutovacuumVacuumCostLimit       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostLimit"`
+	AutovacuumVacuumScaleFactor     pulumi.StringPtrInput `pulumi:"autovacuumVacuumScaleFactor"`
+	AutovacuumVacuumThreshold       pulumi.StringPtrInput `pulumi:"autovacuumVacuumThreshold"`
+	DeadlockTimeout                 pulumi.StringPtrInput `pulumi:"deadlockTimeout"`
+	IdleInTransactionSessionTimeout pulumi.StringPtrInput `pulumi:"idleInTransactionSessionTimeout"`
+	Jit                             pulumi.StringPtrInput `pulumi:"jit"`
+	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
+	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	MaxParallelWorkers              pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
+	MaxParallelWorkersPerGather     pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
+	MaxPredLocksPerTransaction      pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
+	MaxPreparedTransactions         pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	MaxStackDepth                   pulumi.StringPtrInput `pulumi:"maxStackDepth"`
+	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
+	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgStatStatementsTrack           pulumi.StringPtrInput `pulumi:"pgStatStatementsTrack"`
+	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
+	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
+	TrackActivityQuerySize          pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
+	TrackCommitTimestamp            pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
+	TrackFunctions                  pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	WalSenderTimeout                pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
+	WalWriterDelay                  pulumi.StringPtrInput `pulumi:"walWriterDelay"`
 }
 
 func (GetServicePgUserConfigPgArgs) ElementType() reflect.Type {
@@ -20101,120 +22687,132 @@ func (o GetServicePgUserConfigPgOutput) ToGetServicePgUserConfigPgPtrOutputWithC
 		return &v
 	}).(GetServicePgUserConfigPgPtrOutput)
 }
-func (o GetServicePgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *float64 { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.Float64PtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumAnalyzeThreshold }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumAnalyzeThreshold }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumMaxWorkers }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumFreezeMaxAge }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumNaptime }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumMaxWorkers }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostDelay }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumNaptime }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumVacuumCostLimit }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumVacuumCostDelay }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *float64 { return v.AutovacuumVacuumScaleFactor }).(pulumi.Float64PtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumVacuumCostLimit }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.AutovacuumVacuumThreshold }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumVacuumScaleFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) DeadlockTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.DeadlockTimeout }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.AutovacuumVacuumThreshold }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.IdleInTransactionSessionTimeout }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) DeadlockTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.DeadlockTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.IdleInTransactionSessionTimeout }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) Jit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.Jit }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.LogAutovacuumMinDuration }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogAutovacuumMinDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.LogMinDurationStatement }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxLocksPerTransaction }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxParallelWorkers }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxParallelWorkers }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxParallelWorkersPerGather }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxParallelWorkersPerGather }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxPredLocksPerTransaction }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxPredLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxPreparedTransactions }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxStackDepth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxStackDepth }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxStandbyArchiveDelay }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxStandbyArchiveDelay }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxStandbyStreamingDelay }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.MaxWorkerProcesses }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgStatStatementsTrack }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) TempFileLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.TempFileLimit }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) TempFileLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.TempFileLimit }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.TrackActivityQuerySize }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.TrackActivityQuerySize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.TrackCommitTimestamp }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) WalWriterDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *int { return v.WalWriterDelay }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPgOutput) WalSenderTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.WalSenderTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) WalWriterDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.WalWriterDelay }).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigPgPtrOutput struct{ *pulumi.OutputState }
@@ -20235,94 +22833,103 @@ func (o GetServicePgUserConfigPgPtrOutput) Elem() GetServicePgUserConfigPgOutput
 	return o.ApplyT(func(v *GetServicePgUserConfigPg) GetServicePgUserConfigPg { return *v }).(GetServicePgUserConfigPgOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *float64 {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumAnalyzeScaleFactor
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumAnalyzeThreshold
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumFreezeMaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumMaxWorkers
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumNaptime
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumCostDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumCostLimit
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *float64 {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumScaleFactor
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutovacuumVacuumThreshold
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DeadlockTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IdleInTransactionSessionTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
@@ -20334,13 +22941,13 @@ func (o GetServicePgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogAutovacuumMinDuration
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
@@ -20352,94 +22959,94 @@ func (o GetServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogMinDurationStatement
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxLocksPerTransaction
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxParallelWorkers
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxParallelWorkersPerGather
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxPredLocksPerTransaction
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxPreparedTransactions
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxStackDepth
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxStandbyArchiveDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxStandbyStreamingDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxWorkerProcesses
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
@@ -20451,13 +23058,13 @@ func (o GetServicePgUserConfigPgPtrOutput) PgStatStatementsTrack() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) TempFileLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) TempFileLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.TempFileLimit
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
@@ -20469,13 +23076,22 @@ func (o GetServicePgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.TrackActivityQuerySize
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackCommitTimestamp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
@@ -20487,17 +23103,27 @@ func (o GetServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPg) *int {
+func (o GetServicePgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WalSenderTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.WalWriterDelay
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigPgbouncer struct {
-	ServerResetQueryAlways *bool `pulumi:"serverResetQueryAlways"`
+	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	ServerResetQueryAlways  *string  `pulumi:"serverResetQueryAlways"`
 }
 
 // GetServicePgUserConfigPgbouncerInput is an input type that accepts GetServicePgUserConfigPgbouncerArgs and GetServicePgUserConfigPgbouncerOutput values.
@@ -20513,7 +23139,8 @@ type GetServicePgUserConfigPgbouncerInput interface {
 }
 
 type GetServicePgUserConfigPgbouncerArgs struct {
-	ServerResetQueryAlways pulumi.BoolPtrInput `pulumi:"serverResetQueryAlways"`
+	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	ServerResetQueryAlways  pulumi.StringPtrInput   `pulumi:"serverResetQueryAlways"`
 }
 
 func (GetServicePgUserConfigPgbouncerArgs) ElementType() reflect.Type {
@@ -20593,8 +23220,12 @@ func (o GetServicePgUserConfigPgbouncerOutput) ToGetServicePgUserConfigPgbouncer
 		return &v
 	}).(GetServicePgUserConfigPgbouncerPtrOutput)
 }
-func (o GetServicePgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *bool { return v.ServerResetQueryAlways }).(pulumi.BoolPtrOutput)
+func (o GetServicePgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.ServerResetQueryAlways }).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigPgbouncerPtrOutput struct{ *pulumi.OutputState }
@@ -20615,17 +23246,26 @@ func (o GetServicePgUserConfigPgbouncerPtrOutput) Elem() GetServicePgUserConfigP
 	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) GetServicePgUserConfigPgbouncer { return *v }).(GetServicePgUserConfigPgbouncerOutput)
 }
 
-func (o GetServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *bool {
+func (o GetServicePgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreStartupParameters
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ServerResetQueryAlways
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigPglookout struct {
-	MaxFailoverReplicationTimeLag *int `pulumi:"maxFailoverReplicationTimeLag"`
+	MaxFailoverReplicationTimeLag *string `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
 // GetServicePgUserConfigPglookoutInput is an input type that accepts GetServicePgUserConfigPglookoutArgs and GetServicePgUserConfigPglookoutOutput values.
@@ -20641,7 +23281,7 @@ type GetServicePgUserConfigPglookoutInput interface {
 }
 
 type GetServicePgUserConfigPglookoutArgs struct {
-	MaxFailoverReplicationTimeLag pulumi.IntPtrInput `pulumi:"maxFailoverReplicationTimeLag"`
+	MaxFailoverReplicationTimeLag pulumi.StringPtrInput `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
 func (GetServicePgUserConfigPglookoutArgs) ElementType() reflect.Type {
@@ -20721,8 +23361,8 @@ func (o GetServicePgUserConfigPglookoutOutput) ToGetServicePgUserConfigPglookout
 		return &v
 	}).(GetServicePgUserConfigPglookoutPtrOutput)
 }
-func (o GetServicePgUserConfigPglookoutOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPglookout) *int { return v.MaxFailoverReplicationTimeLag }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigPglookoutOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPglookout) *string { return v.MaxFailoverReplicationTimeLag }).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigPglookoutPtrOutput struct{ *pulumi.OutputState }
@@ -20743,13 +23383,13 @@ func (o GetServicePgUserConfigPglookoutPtrOutput) Elem() GetServicePgUserConfigP
 	return o.ApplyT(func(v *GetServicePgUserConfigPglookout) GetServicePgUserConfigPglookout { return *v }).(GetServicePgUserConfigPglookoutOutput)
 }
 
-func (o GetServicePgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigPglookout) *int {
+func (o GetServicePgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPglookout) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxFailoverReplicationTimeLag
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigPrivateAccess struct {
@@ -21069,7 +23709,7 @@ func (o GetServicePgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringP
 }
 
 type GetServicePgUserConfigTimescaledb struct {
-	MaxBackgroundWorkers *int `pulumi:"maxBackgroundWorkers"`
+	MaxBackgroundWorkers *string `pulumi:"maxBackgroundWorkers"`
 }
 
 // GetServicePgUserConfigTimescaledbInput is an input type that accepts GetServicePgUserConfigTimescaledbArgs and GetServicePgUserConfigTimescaledbOutput values.
@@ -21085,7 +23725,7 @@ type GetServicePgUserConfigTimescaledbInput interface {
 }
 
 type GetServicePgUserConfigTimescaledbArgs struct {
-	MaxBackgroundWorkers pulumi.IntPtrInput `pulumi:"maxBackgroundWorkers"`
+	MaxBackgroundWorkers pulumi.StringPtrInput `pulumi:"maxBackgroundWorkers"`
 }
 
 func (GetServicePgUserConfigTimescaledbArgs) ElementType() reflect.Type {
@@ -21165,8 +23805,8 @@ func (o GetServicePgUserConfigTimescaledbOutput) ToGetServicePgUserConfigTimesca
 		return &v
 	}).(GetServicePgUserConfigTimescaledbPtrOutput)
 }
-func (o GetServicePgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
+func (o GetServicePgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigTimescaledb) *string { return v.MaxBackgroundWorkers }).(pulumi.StringPtrOutput)
 }
 
 type GetServicePgUserConfigTimescaledbPtrOutput struct{ *pulumi.OutputState }
@@ -21187,13 +23827,13 @@ func (o GetServicePgUserConfigTimescaledbPtrOutput) Elem() GetServicePgUserConfi
 	return o.ApplyT(func(v *GetServicePgUserConfigTimescaledb) GetServicePgUserConfigTimescaledb { return *v }).(GetServicePgUserConfigTimescaledbOutput)
 }
 
-func (o GetServicePgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServicePgUserConfigTimescaledb) *int {
+func (o GetServicePgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigTimescaledb) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxBackgroundWorkers
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceRedis struct {
@@ -21245,12 +23885,12 @@ type GetServiceRedisUserConfig struct {
 	Migration                 *GetServiceRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *GetServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *GetServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RedisLfuDecayTime         *int                                    `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         *int                                    `pulumi:"redisLfuLogFactor"`
+	RedisLfuDecayTime         *string                                 `pulumi:"redisLfuDecayTime"`
+	RedisLfuLogFactor         *string                                 `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                                 `pulumi:"redisMaxmemoryPolicy"`
 	RedisNotifyKeyspaceEvents *string                                 `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  *bool                                   `pulumi:"redisSsl"`
-	RedisTimeout              *int                                    `pulumi:"redisTimeout"`
+	RedisSsl                  *string                                 `pulumi:"redisSsl"`
+	RedisTimeout              *string                                 `pulumi:"redisTimeout"`
 }
 
 // GetServiceRedisUserConfigInput is an input type that accepts GetServiceRedisUserConfigArgs and GetServiceRedisUserConfigOutput values.
@@ -21270,12 +23910,12 @@ type GetServiceRedisUserConfigArgs struct {
 	Migration                 GetServiceRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             GetServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              GetServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RedisLfuDecayTime         pulumi.IntPtrInput                             `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         pulumi.IntPtrInput                             `pulumi:"redisLfuLogFactor"`
+	RedisLfuDecayTime         pulumi.StringPtrInput                          `pulumi:"redisLfuDecayTime"`
+	RedisLfuLogFactor         pulumi.StringPtrInput                          `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                          `pulumi:"redisMaxmemoryPolicy"`
 	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                          `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  pulumi.BoolPtrInput                            `pulumi:"redisSsl"`
-	RedisTimeout              pulumi.IntPtrInput                             `pulumi:"redisTimeout"`
+	RedisSsl                  pulumi.StringPtrInput                          `pulumi:"redisSsl"`
+	RedisTimeout              pulumi.StringPtrInput                          `pulumi:"redisTimeout"`
 }
 
 func (GetServiceRedisUserConfigArgs) ElementType() reflect.Type {
@@ -21320,12 +23960,12 @@ func (o GetServiceRedisUserConfigOutput) PublicAccess() GetServiceRedisUserConfi
 	return o.ApplyT(func(v GetServiceRedisUserConfig) *GetServiceRedisUserConfigPublicAccess { return v.PublicAccess }).(GetServiceRedisUserConfigPublicAccessPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfig) *int { return v.RedisLfuDecayTime }).(pulumi.IntPtrOutput)
+func (o GetServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigOutput) RedisLfuLogFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfig) *int { return v.RedisLfuLogFactor }).(pulumi.IntPtrOutput)
+func (o GetServiceRedisUserConfigOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RedisLfuLogFactor }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
@@ -21336,19 +23976,19 @@ func (o GetServiceRedisUserConfigOutput) RedisNotifyKeyspaceEvents() pulumi.Stri
 	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigOutput) RedisSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfig) *bool { return v.RedisSsl }).(pulumi.BoolPtrOutput)
+func (o GetServiceRedisUserConfigOutput) RedisSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RedisSsl }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigOutput) RedisTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+func (o GetServiceRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceRedisUserConfigMigration struct {
 	Host     *string `pulumi:"host"`
 	Password *string `pulumi:"password"`
-	Port     *int    `pulumi:"port"`
-	Ssl      *bool   `pulumi:"ssl"`
+	Port     *string `pulumi:"port"`
+	Ssl      *string `pulumi:"ssl"`
 	Username *string `pulumi:"username"`
 }
 
@@ -21367,8 +24007,8 @@ type GetServiceRedisUserConfigMigrationInput interface {
 type GetServiceRedisUserConfigMigrationArgs struct {
 	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.IntPtrInput    `pulumi:"port"`
-	Ssl      pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
+	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -21457,12 +24097,12 @@ func (o GetServiceRedisUserConfigMigrationOutput) Password() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigMigrationOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o GetServiceRedisUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigMigrationOutput) Ssl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+func (o GetServiceRedisUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
@@ -21505,22 +24145,22 @@ func (o GetServiceRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigMigrationPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *int {
+func (o GetServiceRedisUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Port
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceRedisUserConfigMigrationPtrOutput) Ssl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *bool {
+func (o GetServiceRedisUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Ssl
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
@@ -21920,6 +24560,56 @@ func (o GetServiceServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetSer
 	}).(GetServiceServiceIntegrationOutput)
 }
 
+type GetVpcPeeringConnectionClientTimeout struct {
+	Create *string `pulumi:"create"`
+}
+
+// GetVpcPeeringConnectionClientTimeoutInput is an input type that accepts GetVpcPeeringConnectionClientTimeoutArgs and GetVpcPeeringConnectionClientTimeoutOutput values.
+// You can construct a concrete instance of `GetVpcPeeringConnectionClientTimeoutInput` via:
+//
+// 		 GetVpcPeeringConnectionClientTimeoutArgs{...}
+//
+type GetVpcPeeringConnectionClientTimeoutInput interface {
+	pulumi.Input
+
+	ToGetVpcPeeringConnectionClientTimeoutOutput() GetVpcPeeringConnectionClientTimeoutOutput
+	ToGetVpcPeeringConnectionClientTimeoutOutputWithContext(context.Context) GetVpcPeeringConnectionClientTimeoutOutput
+}
+
+type GetVpcPeeringConnectionClientTimeoutArgs struct {
+	Create pulumi.StringPtrInput `pulumi:"create"`
+}
+
+func (GetVpcPeeringConnectionClientTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcPeeringConnectionClientTimeout)(nil)).Elem()
+}
+
+func (i GetVpcPeeringConnectionClientTimeoutArgs) ToGetVpcPeeringConnectionClientTimeoutOutput() GetVpcPeeringConnectionClientTimeoutOutput {
+	return i.ToGetVpcPeeringConnectionClientTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetVpcPeeringConnectionClientTimeoutArgs) ToGetVpcPeeringConnectionClientTimeoutOutputWithContext(ctx context.Context) GetVpcPeeringConnectionClientTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcPeeringConnectionClientTimeoutOutput)
+}
+
+type GetVpcPeeringConnectionClientTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetVpcPeeringConnectionClientTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcPeeringConnectionClientTimeout)(nil)).Elem()
+}
+
+func (o GetVpcPeeringConnectionClientTimeoutOutput) ToGetVpcPeeringConnectionClientTimeoutOutput() GetVpcPeeringConnectionClientTimeoutOutput {
+	return o
+}
+
+func (o GetVpcPeeringConnectionClientTimeoutOutput) ToGetVpcPeeringConnectionClientTimeoutOutputWithContext(ctx context.Context) GetVpcPeeringConnectionClientTimeoutOutput {
+	return o
+}
+
+func (o GetVpcPeeringConnectionClientTimeoutOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcPeeringConnectionClientTimeout) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElasticSearchAclAclOutput{})
 	pulumi.RegisterOutputType(ElasticSearchAclAclArrayOutput{})
@@ -21927,6 +24617,10 @@ func init() {
 	pulumi.RegisterOutputType(ElasticSearchAclAclRuleArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorTaskOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorTaskArrayOutput{})
+	pulumi.RegisterOutputType(KafkaTopicClientTimeoutOutput{})
+	pulumi.RegisterOutputType(KafkaTopicClientTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(ProjectVpcClientTimeoutOutput{})
+	pulumi.RegisterOutputType(ProjectVpcClientTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(ServiceCassandraOutput{})
 	pulumi.RegisterOutputType(ServiceCassandraPtrOutput{})
 	pulumi.RegisterOutputType(ServiceCassandraUserConfigOutput{})
@@ -21935,6 +24629,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceCassandraUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceCassandraUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(ServiceCassandraUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(ServiceClientTimeoutOutput{})
+	pulumi.RegisterOutputType(ServiceClientTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(ServiceComponentOutput{})
 	pulumi.RegisterOutputType(ServiceComponentArrayOutput{})
 	pulumi.RegisterOutputType(ServiceElasticsearchOutput{})
@@ -21987,6 +24683,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointPrometheusUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointRsyslogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaMirrormakerUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationLogsUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMirrormakerUserConfigOutput{})
@@ -22003,6 +24705,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceKafkaConnectUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaConnectUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaConnectUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaMirrormakerOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaMirrormakerPtrOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaMirrormakerUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaMirrormakerUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigKafkaOutput{})
@@ -22055,18 +24763,23 @@ func init() {
 	pulumi.RegisterOutputType(ServiceRedisUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(ServiceServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(VpcPeeringConnectionClientTimeoutOutput{})
+	pulumi.RegisterOutputType(VpcPeeringConnectionClientTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchAclAclOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchAclAclArrayOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchAclAclRuleOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchAclAclRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectorTaskOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectorTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicClientTimeoutOutput{})
+	pulumi.RegisterOutputType(GetProjectVpcClientTimeoutOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceClientTimeoutOutput{})
 	pulumi.RegisterOutputType(GetServiceComponentOutput{})
 	pulumi.RegisterOutputType(GetServiceComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchOutput{})
@@ -22109,6 +24822,12 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaMirrormakerUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMirrormakerUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaConnectOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaConnectUserConfigOutput{})
@@ -22118,6 +24837,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceKafkaConnectUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaConnectUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaConnectUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaMirrormakerOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaMirrormakerUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigKafkaOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigKafkaPtrOutput{})
@@ -22163,4 +24886,5 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceRedisUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetServiceServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcPeeringConnectionClientTimeoutOutput{})
 }

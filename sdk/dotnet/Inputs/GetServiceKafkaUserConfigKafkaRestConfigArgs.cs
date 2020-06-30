@@ -13,22 +13,22 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetServiceKafkaUserConfigKafkaRestConfigArgs : Pulumi.InvokeArgs
     {
         [Input("consumerEnableAutoCommit")]
-        public bool? ConsumerEnableAutoCommit { get; set; }
+        public string? ConsumerEnableAutoCommit { get; set; }
 
         [Input("consumerRequestMaxBytes")]
-        public int? ConsumerRequestMaxBytes { get; set; }
+        public string? ConsumerRequestMaxBytes { get; set; }
 
         [Input("consumerRequestTimeoutMs")]
-        public int? ConsumerRequestTimeoutMs { get; set; }
+        public string? ConsumerRequestTimeoutMs { get; set; }
 
         [Input("producerAcks")]
         public string? ProducerAcks { get; set; }
 
         [Input("producerLingerMs")]
-        public int? ProducerLingerMs { get; set; }
+        public string? ProducerLingerMs { get; set; }
 
         [Input("simpleconsumerPoolSizeMax")]
-        public int? SimpleconsumerPoolSizeMax { get; set; }
+        public string? SimpleconsumerPoolSizeMax { get; set; }
 
         public GetServiceKafkaUserConfigKafkaRestConfigArgs()
         {

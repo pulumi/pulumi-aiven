@@ -24,6 +24,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("allowEmbedding")]
         public Input<string>? AllowEmbedding { get; set; }
 
+        [Input("authBasicEnabled")]
+        public Input<string>? AuthBasicEnabled { get; set; }
+
         [Input("authGenericOauth")]
         public Input<Inputs.ServiceGrafanaUserConfigAuthGenericOauthArgs>? AuthGenericOauth { get; set; }
 
@@ -43,13 +46,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? CustomDomain { get; set; }
 
         [Input("dashboardsVersionsToKeep")]
-        public Input<int>? DashboardsVersionsToKeep { get; set; }
+        public Input<string>? DashboardsVersionsToKeep { get; set; }
 
         [Input("dataproxySendUserHeader")]
         public Input<string>? DataproxySendUserHeader { get; set; }
 
         [Input("dataproxyTimeout")]
-        public Input<int>? DataproxyTimeout { get; set; }
+        public Input<string>? DataproxyTimeout { get; set; }
 
         [Input("disableGravatar")]
         public Input<string>? DisableGravatar { get; set; }

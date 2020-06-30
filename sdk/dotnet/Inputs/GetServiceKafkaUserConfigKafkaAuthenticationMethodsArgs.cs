@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs : Pulumi.InvokeArgs
     {
         [Input("certificate")]
-        public bool? Certificate { get; set; }
+        public string? Certificate { get; set; }
 
         [Input("sasl")]
-        public bool? Sasl { get; set; }
+        public string? Sasl { get; set; }
 
         public GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs()
         {

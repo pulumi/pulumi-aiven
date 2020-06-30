@@ -67,6 +67,12 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.ServiceCassandraUserConfig | undefined>;
     /**
+     * Custom Terraform Client timeouts
+     *
+     * @deprecated use timeouts instead
+     */
+    public readonly clientTimeout!: pulumi.Output<outputs.ServiceClientTimeout | undefined>;
+    /**
      * Cloud the service runs in
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
@@ -110,6 +116,14 @@ export class Service extends pulumi.CustomResource {
      * Kafka Connect specific user configurable settings
      */
     public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.ServiceKafkaConnectUserConfig | undefined>;
+    /**
+     * Kafka MirrorMaker 2 specific server provided values
+     */
+    public readonly kafkaMirrormaker!: pulumi.Output<outputs.ServiceKafkaMirrormaker>;
+    /**
+     * Kafka MirrorMaker 2 specific user configurable settings
+     */
+    public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.ServiceKafkaMirrormakerUserConfig | undefined>;
     /**
      * Kafka specific user configurable settings
      */
@@ -213,6 +227,7 @@ export class Service extends pulumi.CustomResource {
             const state = argsOrState as ServiceState | undefined;
             inputs["cassandra"] = state ? state.cassandra : undefined;
             inputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
+            inputs["clientTimeout"] = state ? state.clientTimeout : undefined;
             inputs["cloudName"] = state ? state.cloudName : undefined;
             inputs["components"] = state ? state.components : undefined;
             inputs["elasticsearch"] = state ? state.elasticsearch : undefined;
@@ -224,6 +239,8 @@ export class Service extends pulumi.CustomResource {
             inputs["kafka"] = state ? state.kafka : undefined;
             inputs["kafkaConnect"] = state ? state.kafkaConnect : undefined;
             inputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
+            inputs["kafkaMirrormaker"] = state ? state.kafkaMirrormaker : undefined;
+            inputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
             inputs["kafkaUserConfig"] = state ? state.kafkaUserConfig : undefined;
             inputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             inputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
@@ -259,6 +276,7 @@ export class Service extends pulumi.CustomResource {
             }
             inputs["cassandra"] = args ? args.cassandra : undefined;
             inputs["cassandraUserConfig"] = args ? args.cassandraUserConfig : undefined;
+            inputs["clientTimeout"] = args ? args.clientTimeout : undefined;
             inputs["cloudName"] = args ? args.cloudName : undefined;
             inputs["elasticsearch"] = args ? args.elasticsearch : undefined;
             inputs["elasticsearchUserConfig"] = args ? args.elasticsearchUserConfig : undefined;
@@ -269,6 +287,8 @@ export class Service extends pulumi.CustomResource {
             inputs["kafka"] = args ? args.kafka : undefined;
             inputs["kafkaConnect"] = args ? args.kafkaConnect : undefined;
             inputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
+            inputs["kafkaMirrormaker"] = args ? args.kafkaMirrormaker : undefined;
+            inputs["kafkaMirrormakerUserConfig"] = args ? args.kafkaMirrormakerUserConfig : undefined;
             inputs["kafkaUserConfig"] = args ? args.kafkaUserConfig : undefined;
             inputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             inputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -317,6 +337,12 @@ export interface ServiceState {
      */
     readonly cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
     /**
+     * Custom Terraform Client timeouts
+     *
+     * @deprecated use timeouts instead
+     */
+    readonly clientTimeout?: pulumi.Input<inputs.ServiceClientTimeout>;
+    /**
      * Cloud the service runs in
      */
     readonly cloudName?: pulumi.Input<string>;
@@ -360,6 +386,14 @@ export interface ServiceState {
      * Kafka Connect specific user configurable settings
      */
     readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
+    /**
+     * Kafka MirrorMaker 2 specific server provided values
+     */
+    readonly kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
+    /**
+     * Kafka MirrorMaker 2 specific user configurable settings
+     */
+    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
     /**
      * Kafka specific user configurable settings
      */
@@ -463,6 +497,12 @@ export interface ServiceArgs {
      */
     readonly cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
     /**
+     * Custom Terraform Client timeouts
+     *
+     * @deprecated use timeouts instead
+     */
+    readonly clientTimeout?: pulumi.Input<inputs.ServiceClientTimeout>;
+    /**
      * Cloud the service runs in
      */
     readonly cloudName?: pulumi.Input<string>;
@@ -502,6 +542,14 @@ export interface ServiceArgs {
      * Kafka Connect specific user configurable settings
      */
     readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
+    /**
+     * Kafka MirrorMaker 2 specific server provided values
+     */
+    readonly kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
+    /**
+     * Kafka MirrorMaker 2 specific user configurable settings
+     */
+    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
     /**
      * Kafka specific user configurable settings
      */

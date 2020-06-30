@@ -15,6 +15,10 @@ type KafkaTopic struct {
 
 	// Topic cleanup policy. Allowed values: delete, compact
 	CleanupPolicy pulumi.StringPtrOutput `pulumi:"cleanupPolicy"`
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout KafkaTopicClientTimeoutPtrOutput `pulumi:"clientTimeout"`
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
 	MinimumInSyncReplicas pulumi.IntPtrOutput `pulumi:"minimumInSyncReplicas"`
 	// Number of partitions to create in the topic
@@ -81,6 +85,10 @@ func GetKafkaTopic(ctx *pulumi.Context,
 type kafkaTopicState struct {
 	// Topic cleanup policy. Allowed values: delete, compact
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *KafkaTopicClientTimeout `pulumi:"clientTimeout"`
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
 	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
 	// Number of partitions to create in the topic
@@ -105,6 +113,10 @@ type kafkaTopicState struct {
 type KafkaTopicState struct {
 	// Topic cleanup policy. Allowed values: delete, compact
 	CleanupPolicy pulumi.StringPtrInput
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout KafkaTopicClientTimeoutPtrInput
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
 	MinimumInSyncReplicas pulumi.IntPtrInput
 	// Number of partitions to create in the topic
@@ -133,6 +145,10 @@ func (KafkaTopicState) ElementType() reflect.Type {
 type kafkaTopicArgs struct {
 	// Topic cleanup policy. Allowed values: delete, compact
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *KafkaTopicClientTimeout `pulumi:"clientTimeout"`
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
 	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
 	// Number of partitions to create in the topic
@@ -158,6 +174,10 @@ type kafkaTopicArgs struct {
 type KafkaTopicArgs struct {
 	// Topic cleanup policy. Allowed values: delete, compact
 	CleanupPolicy pulumi.StringPtrInput
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout KafkaTopicClientTimeoutPtrInput
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
 	MinimumInSyncReplicas pulumi.IntPtrInput
 	// Number of partitions to create in the topic

@@ -19,9 +19,13 @@ type ServiceIntegration struct {
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
 	// Type of the service integration
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
+	// Mirrormaker 2 integration specific user configurable settings
+	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput `pulumi:"kafkaMirrormakerUserConfig"`
 	// Log integration specific user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrOutput `pulumi:"logsUserConfig"`
-	// Mirrormaker integration specific user configurable settings
+	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrOutput `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -71,9 +75,13 @@ type serviceIntegrationState struct {
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
 	// Type of the service integration
 	IntegrationType *string `pulumi:"integrationType"`
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Mirrormaker 2 integration specific user configurable settings
+	KafkaMirrormakerUserConfig *ServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Log integration specific user configurable settings
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
-	// Mirrormaker integration specific user configurable settings
+	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project *string `pulumi:"project"`
@@ -90,9 +98,13 @@ type ServiceIntegrationState struct {
 	DestinationServiceName pulumi.StringPtrInput
 	// Type of the service integration
 	IntegrationType pulumi.StringPtrInput
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
+	// Mirrormaker 2 integration specific user configurable settings
+	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrInput
 	// Log integration specific user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
-	// Mirrormaker integration specific user configurable settings
+	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringPtrInput
@@ -113,9 +125,13 @@ type serviceIntegrationArgs struct {
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
 	// Type of the service integration
 	IntegrationType string `pulumi:"integrationType"`
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Mirrormaker 2 integration specific user configurable settings
+	KafkaMirrormakerUserConfig *ServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Log integration specific user configurable settings
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
-	// Mirrormaker integration specific user configurable settings
+	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
@@ -133,9 +149,13 @@ type ServiceIntegrationArgs struct {
 	DestinationServiceName pulumi.StringPtrInput
 	// Type of the service integration
 	IntegrationType pulumi.StringInput
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
+	// Mirrormaker 2 integration specific user configurable settings
+	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrInput
 	// Log integration specific user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
-	// Mirrormaker integration specific user configurable settings
+	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringInput

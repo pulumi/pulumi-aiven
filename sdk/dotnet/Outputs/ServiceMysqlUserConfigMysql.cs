@@ -13,53 +13,68 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceMysqlUserConfigMysql
     {
-        public readonly int? ConnectTimeout;
+        public readonly string? ConnectTimeout;
         public readonly string? DefaultTimeZone;
-        public readonly int? GroupConcatMaxLen;
-        public readonly int? InformationSchemaStatsExpiry;
-        public readonly int? InnodbFtMinTokenSize;
+        public readonly string? GroupConcatMaxLen;
+        public readonly string? InformationSchemaStatsExpiry;
+        public readonly string? InnodbFtMinTokenSize;
         public readonly string? InnodbFtServerStopwordTable;
-        public readonly int? InnodbLockWaitTimeout;
-        public readonly int? InnodbOnlineAlterLogMaxSize;
+        public readonly string? InnodbLockWaitTimeout;
+        public readonly string? InnodbLogBufferSize;
+        public readonly string? InnodbOnlineAlterLogMaxSize;
         public readonly string? InnodbRollbackOnTimeout;
-        public readonly int? MaxAllowedPacket;
-        public readonly int? NetReadTimeout;
-        public readonly int? NetWriteTimeout;
+        public readonly string? InteractiveTimeout;
+        public readonly string? MaxAllowedPacket;
+        public readonly string? MaxHeapTableSize;
+        public readonly string? NetReadTimeout;
+        public readonly string? NetWriteTimeout;
+        public readonly string? SortBufferSize;
         public readonly string? SqlMode;
         public readonly string? SqlRequirePrimaryKey;
-        public readonly int? WaitTimeout;
+        public readonly string? TmpTableSize;
+        public readonly string? WaitTimeout;
 
         [OutputConstructor]
         private ServiceMysqlUserConfigMysql(
-            int? connectTimeout,
+            string? connectTimeout,
 
             string? defaultTimeZone,
 
-            int? groupConcatMaxLen,
+            string? groupConcatMaxLen,
 
-            int? informationSchemaStatsExpiry,
+            string? informationSchemaStatsExpiry,
 
-            int? innodbFtMinTokenSize,
+            string? innodbFtMinTokenSize,
 
             string? innodbFtServerStopwordTable,
 
-            int? innodbLockWaitTimeout,
+            string? innodbLockWaitTimeout,
 
-            int? innodbOnlineAlterLogMaxSize,
+            string? innodbLogBufferSize,
+
+            string? innodbOnlineAlterLogMaxSize,
 
             string? innodbRollbackOnTimeout,
 
-            int? maxAllowedPacket,
+            string? interactiveTimeout,
 
-            int? netReadTimeout,
+            string? maxAllowedPacket,
 
-            int? netWriteTimeout,
+            string? maxHeapTableSize,
+
+            string? netReadTimeout,
+
+            string? netWriteTimeout,
+
+            string? sortBufferSize,
 
             string? sqlMode,
 
             string? sqlRequirePrimaryKey,
 
-            int? waitTimeout)
+            string? tmpTableSize,
+
+            string? waitTimeout)
         {
             ConnectTimeout = connectTimeout;
             DefaultTimeZone = defaultTimeZone;
@@ -68,13 +83,18 @@ namespace Pulumi.Aiven.Outputs
             InnodbFtMinTokenSize = innodbFtMinTokenSize;
             InnodbFtServerStopwordTable = innodbFtServerStopwordTable;
             InnodbLockWaitTimeout = innodbLockWaitTimeout;
+            InnodbLogBufferSize = innodbLogBufferSize;
             InnodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
+            InteractiveTimeout = interactiveTimeout;
             MaxAllowedPacket = maxAllowedPacket;
+            MaxHeapTableSize = maxHeapTableSize;
             NetReadTimeout = netReadTimeout;
             NetWriteTimeout = netWriteTimeout;
+            SortBufferSize = sortBufferSize;
             SqlMode = sqlMode;
             SqlRequirePrimaryKey = sqlRequirePrimaryKey;
+            TmpTableSize = tmpTableSize;
             WaitTimeout = waitTimeout;
         }
     }

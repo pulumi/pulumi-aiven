@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetServicePgUserConfigTimescaledbArgs : Pulumi.InvokeArgs
     {
         [Input("maxBackgroundWorkers")]
-        public int? MaxBackgroundWorkers { get; set; }
+        public string? MaxBackgroundWorkers { get; set; }
 
         public GetServicePgUserConfigTimescaledbArgs()
         {

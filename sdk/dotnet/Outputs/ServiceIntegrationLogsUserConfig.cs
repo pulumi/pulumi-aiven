@@ -13,12 +13,12 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationLogsUserConfig
     {
-        public readonly int? ElasticsearchIndexDaysMax;
+        public readonly string? ElasticsearchIndexDaysMax;
         public readonly string? ElasticsearchIndexPrefix;
 
         [OutputConstructor]
         private ServiceIntegrationLogsUserConfig(
-            int? elasticsearchIndexDaysMax,
+            string? elasticsearchIndexDaysMax,
 
             string? elasticsearchIndexPrefix)
         {

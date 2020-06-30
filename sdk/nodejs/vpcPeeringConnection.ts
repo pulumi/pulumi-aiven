@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -50,6 +52,12 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
     }
 
     /**
+     * Custom Terraform Client timeouts
+     *
+     * @deprecated use timeouts instead
+     */
+    public readonly clientTimeout!: pulumi.Output<outputs.VpcPeeringConnectionClientTimeout | undefined>;
+    /**
      * AWS account ID or GCP project ID of the peered VPC
      */
     public readonly peerCloudAccount!: pulumi.Output<string>;
@@ -90,6 +98,7 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as VpcPeeringConnectionState | undefined;
+            inputs["clientTimeout"] = state ? state.clientTimeout : undefined;
             inputs["peerCloudAccount"] = state ? state.peerCloudAccount : undefined;
             inputs["peerRegion"] = state ? state.peerRegion : undefined;
             inputs["peerVpc"] = state ? state.peerVpc : undefined;
@@ -108,6 +117,7 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             if (!args || args.vpcId === undefined) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            inputs["clientTimeout"] = args ? args.clientTimeout : undefined;
             inputs["peerCloudAccount"] = args ? args.peerCloudAccount : undefined;
             inputs["peerRegion"] = args ? args.peerRegion : undefined;
             inputs["peerVpc"] = args ? args.peerVpc : undefined;
@@ -131,6 +141,12 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcPeeringConnection resources.
  */
 export interface VpcPeeringConnectionState {
+    /**
+     * Custom Terraform Client timeouts
+     *
+     * @deprecated use timeouts instead
+     */
+    readonly clientTimeout?: pulumi.Input<inputs.VpcPeeringConnectionClientTimeout>;
     /**
      * AWS account ID or GCP project ID of the peered VPC
      */
@@ -165,6 +181,12 @@ export interface VpcPeeringConnectionState {
  * The set of arguments for constructing a VpcPeeringConnection resource.
  */
 export interface VpcPeeringConnectionArgs {
+    /**
+     * Custom Terraform Client timeouts
+     *
+     * @deprecated use timeouts instead
+     */
+    readonly clientTimeout?: pulumi.Input<inputs.VpcPeeringConnectionClientTimeout>;
     /**
      * AWS account ID or GCP project ID of the peered VPC
      */

@@ -17,6 +17,10 @@ type Service struct {
 	Cassandra ServiceCassandraOutput `pulumi:"cassandra"`
 	// Cassandra specific user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout ServiceClientTimeoutPtrOutput `pulumi:"clientTimeout"`
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -39,6 +43,10 @@ type Service struct {
 	KafkaConnect ServiceKafkaConnectOutput `pulumi:"kafkaConnect"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormaker ServiceKafkaMirrormakerOutput `pulumi:"kafkaMirrormaker"`
+	// Kafka MirrorMaker 2 specific user configurable settings
+	KafkaMirrormakerUserConfig ServiceKafkaMirrormakerUserConfigPtrOutput `pulumi:"kafkaMirrormakerUserConfig"`
 	// Kafka specific user configurable settings
 	KafkaUserConfig ServiceKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -126,6 +134,10 @@ type serviceState struct {
 	Cassandra *ServiceCassandra `pulumi:"cassandra"`
 	// Cassandra specific user configurable settings
 	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *ServiceClientTimeout `pulumi:"clientTimeout"`
 	// Cloud the service runs in
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
@@ -148,6 +160,10 @@ type serviceState struct {
 	KafkaConnect *ServiceKafkaConnect `pulumi:"kafkaConnect"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormaker *ServiceKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+	// Kafka MirrorMaker 2 specific user configurable settings
+	KafkaMirrormakerUserConfig *ServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Kafka specific user configurable settings
 	KafkaUserConfig *ServiceKafkaUserConfig `pulumi:"kafkaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -199,6 +215,10 @@ type ServiceState struct {
 	Cassandra ServiceCassandraPtrInput
 	// Cassandra specific user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrInput
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout ServiceClientTimeoutPtrInput
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
@@ -221,6 +241,10 @@ type ServiceState struct {
 	KafkaConnect ServiceKafkaConnectPtrInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrInput
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormaker ServiceKafkaMirrormakerPtrInput
+	// Kafka MirrorMaker 2 specific user configurable settings
+	KafkaMirrormakerUserConfig ServiceKafkaMirrormakerUserConfigPtrInput
 	// Kafka specific user configurable settings
 	KafkaUserConfig ServiceKafkaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -276,6 +300,10 @@ type serviceArgs struct {
 	Cassandra *ServiceCassandra `pulumi:"cassandra"`
 	// Cassandra specific user configurable settings
 	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout *ServiceClientTimeout `pulumi:"clientTimeout"`
 	// Cloud the service runs in
 	CloudName *string `pulumi:"cloudName"`
 	// Elasticsearch specific server provided values
@@ -296,6 +324,10 @@ type serviceArgs struct {
 	KafkaConnect *ServiceKafkaConnect `pulumi:"kafkaConnect"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormaker *ServiceKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+	// Kafka MirrorMaker 2 specific user configurable settings
+	KafkaMirrormakerUserConfig *ServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Kafka specific user configurable settings
 	KafkaUserConfig *ServiceKafkaUserConfig `pulumi:"kafkaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -336,6 +368,10 @@ type ServiceArgs struct {
 	Cassandra ServiceCassandraPtrInput
 	// Cassandra specific user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrInput
+	// Custom Terraform Client timeouts
+	//
+	// Deprecated: use timeouts instead
+	ClientTimeout ServiceClientTimeoutPtrInput
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrInput
 	// Elasticsearch specific server provided values
@@ -356,6 +392,10 @@ type ServiceArgs struct {
 	KafkaConnect ServiceKafkaConnectPtrInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrInput
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormaker ServiceKafkaMirrormakerPtrInput
+	// Kafka MirrorMaker 2 specific user configurable settings
+	KafkaMirrormakerUserConfig ServiceKafkaMirrormakerUserConfigPtrInput
 	// Kafka specific user configurable settings
 	KafkaUserConfig ServiceKafkaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.

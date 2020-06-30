@@ -50,6 +50,9 @@ namespace Pulumi.Aiven
         [Input("cassandraUserConfig")]
         public Inputs.GetServiceCassandraUserConfigArgs? CassandraUserConfig { get; set; }
 
+        [Input("clientTimeout")]
+        public Inputs.GetServiceClientTimeoutArgs? ClientTimeout { get; set; }
+
         [Input("cloudName")]
         public string? CloudName { get; set; }
 
@@ -87,6 +90,12 @@ namespace Pulumi.Aiven
 
         [Input("kafkaConnectUserConfig")]
         public Inputs.GetServiceKafkaConnectUserConfigArgs? KafkaConnectUserConfig { get; set; }
+
+        [Input("kafkaMirrormaker")]
+        public Inputs.GetServiceKafkaMirrormakerArgs? KafkaMirrormaker { get; set; }
+
+        [Input("kafkaMirrormakerUserConfig")]
+        public Inputs.GetServiceKafkaMirrormakerUserConfigArgs? KafkaMirrormakerUserConfig { get; set; }
 
         [Input("kafkaUserConfig")]
         public Inputs.GetServiceKafkaUserConfigArgs? KafkaUserConfig { get; set; }
@@ -170,6 +179,7 @@ namespace Pulumi.Aiven
     {
         public readonly Outputs.GetServiceCassandraResult Cassandra;
         public readonly Outputs.GetServiceCassandraUserConfigResult? CassandraUserConfig;
+        public readonly Outputs.GetServiceClientTimeoutResult? ClientTimeout;
         public readonly string? CloudName;
         public readonly ImmutableArray<Outputs.GetServiceComponentResult> Components;
         public readonly Outputs.GetServiceElasticsearchResult Elasticsearch;
@@ -185,6 +195,8 @@ namespace Pulumi.Aiven
         public readonly Outputs.GetServiceKafkaResult Kafka;
         public readonly Outputs.GetServiceKafkaConnectResult KafkaConnect;
         public readonly Outputs.GetServiceKafkaConnectUserConfigResult? KafkaConnectUserConfig;
+        public readonly Outputs.GetServiceKafkaMirrormakerResult KafkaMirrormaker;
+        public readonly Outputs.GetServiceKafkaMirrormakerUserConfigResult? KafkaMirrormakerUserConfig;
         public readonly Outputs.GetServiceKafkaUserConfigResult? KafkaUserConfig;
         public readonly string? MaintenanceWindowDow;
         public readonly string? MaintenanceWindowTime;
@@ -214,6 +226,8 @@ namespace Pulumi.Aiven
 
             Outputs.GetServiceCassandraUserConfigResult? cassandraUserConfig,
 
+            Outputs.GetServiceClientTimeoutResult? clientTimeout,
+
             string? cloudName,
 
             ImmutableArray<Outputs.GetServiceComponentResult> components,
@@ -237,6 +251,10 @@ namespace Pulumi.Aiven
             Outputs.GetServiceKafkaConnectResult kafkaConnect,
 
             Outputs.GetServiceKafkaConnectUserConfigResult? kafkaConnectUserConfig,
+
+            Outputs.GetServiceKafkaMirrormakerResult kafkaMirrormaker,
+
+            Outputs.GetServiceKafkaMirrormakerUserConfigResult? kafkaMirrormakerUserConfig,
 
             Outputs.GetServiceKafkaUserConfigResult? kafkaUserConfig,
 
@@ -284,6 +302,7 @@ namespace Pulumi.Aiven
         {
             Cassandra = cassandra;
             CassandraUserConfig = cassandraUserConfig;
+            ClientTimeout = clientTimeout;
             CloudName = cloudName;
             Components = components;
             Elasticsearch = elasticsearch;
@@ -296,6 +315,8 @@ namespace Pulumi.Aiven
             Kafka = kafka;
             KafkaConnect = kafkaConnect;
             KafkaConnectUserConfig = kafkaConnectUserConfig;
+            KafkaMirrormaker = kafkaMirrormaker;
+            KafkaMirrormakerUserConfig = kafkaMirrormakerUserConfig;
             KafkaUserConfig = kafkaUserConfig;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;

@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         public string? Logline { get; set; }
 
         [Input("port")]
-        public int? Port { get; set; }
+        public string? Port { get; set; }
 
         [Input("sd")]
         public string? Sd { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public string? Server { get; set; }
 
         [Input("tls")]
-        public bool? Tls { get; set; }
+        public string? Tls { get; set; }
 
         public GetServiceIntegrationEndpointRsyslogUserConfigArgs()
         {

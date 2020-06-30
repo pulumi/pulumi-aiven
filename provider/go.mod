@@ -4,12 +4,12 @@ go 1.14
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200421114658-f1c6eda6f135
+	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200630130820-b51c625448a2
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
 
 require (
-	github.com/aiven/terraform-provider-aiven v1.0.17
+	github.com/aiven/terraform-provider-aiven v1.3.1
 	github.com/gobuffalo/packr/v2 v2.1.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.4.1-0.20200608011815-6feeb51f2d39

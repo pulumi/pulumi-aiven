@@ -19,10 +19,10 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdminUsername { get; set; }
 
         [Input("backupHour")]
-        public Input<int>? BackupHour { get; set; }
+        public Input<string>? BackupHour { get; set; }
 
         [Input("backupMinute")]
-        public Input<int>? BackupMinute { get; set; }
+        public Input<string>? BackupMinute { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
@@ -61,6 +61,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
+
+        [Input("synchronousReplication")]
+        public Input<string>? SynchronousReplication { get; set; }
 
         [Input("timescaledb")]
         public Input<Inputs.ServicePgUserConfigTimescaledbGetArgs>? Timescaledb { get; set; }

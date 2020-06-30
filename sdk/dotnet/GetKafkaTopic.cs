@@ -48,6 +48,9 @@ namespace Pulumi.Aiven
         [Input("cleanupPolicy")]
         public string? CleanupPolicy { get; set; }
 
+        [Input("clientTimeout")]
+        public Inputs.GetKafkaTopicClientTimeoutArgs? ClientTimeout { get; set; }
+
         [Input("minimumInSyncReplicas")]
         public int? MinimumInSyncReplicas { get; set; }
 
@@ -85,6 +88,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         public readonly string? CleanupPolicy;
+        public readonly Outputs.GetKafkaTopicClientTimeoutResult? ClientTimeout;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -102,6 +106,8 @@ namespace Pulumi.Aiven
         [OutputConstructor]
         private GetKafkaTopicResult(
             string? cleanupPolicy,
+
+            Outputs.GetKafkaTopicClientTimeoutResult? clientTimeout,
 
             string id,
 
@@ -124,6 +130,7 @@ namespace Pulumi.Aiven
             string topicName)
         {
             CleanupPolicy = cleanupPolicy;
+            ClientTimeout = clientTimeout;
             Id = id;
             MinimumInSyncReplicas = minimumInSyncReplicas;
             Partitions = partitions;

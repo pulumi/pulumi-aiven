@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? Host;
         public readonly string? Password;
-        public readonly int? Port;
-        public readonly bool? Ssl;
+        public readonly string? Port;
+        public readonly string? Ssl;
         public readonly string? Username;
 
         [OutputConstructor]
@@ -25,9 +25,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? password,
 
-            int? port,
+            string? port,
 
-            bool? ssl,
+            string? ssl,
 
             string? username)
         {

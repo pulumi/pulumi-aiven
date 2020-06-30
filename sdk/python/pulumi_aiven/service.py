@@ -28,6 +28,13 @@ class Service(pulumi.CustomResource):
 
       * `serviceToForkFrom` (`str`)
     """
+    client_timeout: pulumi.Output[dict]
+    """
+    Custom Terraform Client timeouts
+
+      * `create` (`str`)
+      * `update` (`str`)
+    """
     cloud_name: pulumi.Output[str]
     """
     Cloud the service runs in
@@ -59,38 +66,40 @@ class Service(pulumi.CustomResource):
       * `elasticsearch` (`dict`)
         * `actionAutoCreateIndexEnabled` (`str`)
         * `actionDestructiveRequiresName` (`str`)
-        * `httpMaxContentLength` (`float`)
-        * `indicesFielddataCacheSize` (`float`)
-        * `indicesMemoryIndexBufferSize` (`float`)
-        * `indicesQueriesCacheSize` (`float`)
-        * `indicesQueryBoolMaxClauseCount` (`float`)
+        * `httpMaxContentLength` (`str`)
+        * `httpMaxHeaderSize` (`str`)
+        * `httpMaxInitialLineLength` (`str`)
+        * `indicesFielddataCacheSize` (`str`)
+        * `indicesMemoryIndexBufferSize` (`str`)
+        * `indicesQueriesCacheSize` (`str`)
+        * `indicesQueryBoolMaxClauseCount` (`str`)
         * `reindexRemoteWhitelists` (`list`)
-        * `threadPoolAnalyzeQueueSize` (`float`)
-        * `threadPoolAnalyzeSize` (`float`)
-        * `threadPoolForceMergeSize` (`float`)
-        * `threadPoolGetQueueSize` (`float`)
-        * `threadPoolGetSize` (`float`)
-        * `threadPoolIndexQueueSize` (`float`)
-        * `threadPoolIndexSize` (`float`)
-        * `threadPoolSearchQueueSize` (`float`)
-        * `threadPoolSearchSize` (`float`)
-        * `threadPoolSearchThrottledQueueSize` (`float`)
-        * `threadPoolSearchThrottledSize` (`float`)
-        * `threadPoolWriteQueueSize` (`float`)
-        * `threadPoolWriteSize` (`float`)
+        * `threadPoolAnalyzeQueueSize` (`str`)
+        * `threadPoolAnalyzeSize` (`str`)
+        * `threadPoolForceMergeSize` (`str`)
+        * `threadPoolGetQueueSize` (`str`)
+        * `threadPoolGetSize` (`str`)
+        * `threadPoolIndexQueueSize` (`str`)
+        * `threadPoolIndexSize` (`str`)
+        * `threadPoolSearchQueueSize` (`str`)
+        * `threadPoolSearchSize` (`str`)
+        * `threadPoolSearchThrottledQueueSize` (`str`)
+        * `threadPoolSearchThrottledSize` (`str`)
+        * `threadPoolWriteQueueSize` (`str`)
+        * `threadPoolWriteSize` (`str`)
 
       * `elasticsearchVersion` (`str`)
       * `indexPatterns` (`list`)
-        * `maxIndexCount` (`float`)
+        * `maxIndexCount` (`str`)
         * `pattern` (`str`)
 
       * `ipFilters` (`list`)
       * `kibana` (`dict`)
-        * `elasticsearchRequestTimeout` (`float`)
-        * `enabled` (`bool`)
-        * `maxOldSpaceSize` (`float`)
+        * `elasticsearchRequestTimeout` (`str`)
+        * `enabled` (`str`)
+        * `maxOldSpaceSize` (`str`)
 
-      * `maxIndexCount` (`float`)
+      * `maxIndexCount` (`str`)
       * `privateAccess` (`dict`)
         * `elasticsearch` (`str`)
         * `kibana` (`str`)
@@ -116,6 +125,7 @@ class Service(pulumi.CustomResource):
       * `alertingErrorOrTimeout` (`str`)
       * `alertingNodataOrNullvalues` (`str`)
       * `allowEmbedding` (`str`)
+      * `authBasicEnabled` (`str`)
       * `authGenericOauth` (`dict`)
         * `allowSignUp` (`str`)
         * `allowedDomains` (`list`)
@@ -152,9 +162,9 @@ class Service(pulumi.CustomResource):
 
       * `cookieSamesite` (`str`)
       * `customDomain` (`str`)
-      * `dashboardsVersionsToKeep` (`float`)
+      * `dashboardsVersionsToKeep` (`str`)
       * `dataproxySendUserHeader` (`str`)
-      * `dataproxyTimeout` (`float`)
+      * `dataproxyTimeout` (`str`)
       * `disableGravatar` (`str`)
       * `editorsCanAdmin` (`str`)
       * `externalImageStorage` (`dict`)
@@ -177,7 +187,7 @@ class Service(pulumi.CustomResource):
         * `fromName` (`str`)
         * `host` (`str`)
         * `password` (`str`)
-        * `port` (`float`)
+        * `port` (`str`)
         * `skipVerify` (`str`)
         * `username` (`str`)
 
@@ -226,8 +236,8 @@ class Service(pulumi.CustomResource):
       * `ipFilters` (`list`)
       * `kafka_connect` (`dict`)
         * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollRecords` (`float`)
-        * `offsetFlushIntervalMs` (`float`)
+        * `consumerMaxPollRecords` (`str`)
+        * `offsetFlushIntervalMs` (`str`)
 
       * `privateAccess` (`dict`)
         * `kafka_connect` (`str`)
@@ -236,6 +246,21 @@ class Service(pulumi.CustomResource):
       * `publicAccess` (`dict`)
         * `kafka_connect` (`str`)
         * `prometheus` (`str`)
+    """
+    kafka_mirrormaker: pulumi.Output[dict]
+    """
+    Kafka MirrorMaker 2 specific server provided values
+    """
+    kafka_mirrormaker_user_config: pulumi.Output[dict]
+    """
+    Kafka MirrorMaker 2 specific user configurable settings
+
+      * `ipFilters` (`list`)
+      * `kafka_mirrormaker` (`dict`)
+        * `refreshGroupsEnabled` (`str`)
+        * `refreshGroupsIntervalSeconds` (`str`)
+        * `refreshTopicsEnabled` (`str`)
+        * `refreshTopicsIntervalSeconds` (`str`)
     """
     kafka_user_config: pulumi.Output[dict]
     """
@@ -246,46 +271,46 @@ class Service(pulumi.CustomResource):
       * `kafka` (`dict`)
         * `autoCreateTopicsEnable` (`str`)
         * `compressionType` (`str`)
-        * `connectionsMaxIdleMs` (`float`)
-        * `defaultReplicationFactor` (`float`)
-        * `groupMaxSessionTimeoutMs` (`float`)
-        * `groupMinSessionTimeoutMs` (`float`)
-        * `logCleanerMaxCompactionLagMs` (`float`)
-        * `logCleanerMinCleanableRatio` (`float`)
-        * `logCleanerMinCompactionLagMs` (`float`)
+        * `connectionsMaxIdleMs` (`str`)
+        * `defaultReplicationFactor` (`str`)
+        * `groupMaxSessionTimeoutMs` (`str`)
+        * `groupMinSessionTimeoutMs` (`str`)
+        * `logCleanerMaxCompactionLagMs` (`str`)
+        * `logCleanerMinCleanableRatio` (`str`)
+        * `logCleanerMinCompactionLagMs` (`str`)
         * `logCleanupPolicy` (`str`)
-        * `logMessageTimestampDifferenceMaxMs` (`float`)
+        * `logMessageTimestampDifferenceMaxMs` (`str`)
         * `logMessageTimestampType` (`str`)
-        * `logRetentionBytes` (`float`)
-        * `logRetentionHours` (`float`)
-        * `logSegmentBytes` (`float`)
-        * `maxConnectionsPerIp` (`float`)
-        * `messageMaxBytes` (`float`)
-        * `numPartitions` (`float`)
-        * `offsetsRetentionMinutes` (`float`)
-        * `producerPurgatoryPurgeIntervalRequests` (`float`)
-        * `replicaFetchMaxBytes` (`float`)
-        * `replicaFetchResponseMaxBytes` (`float`)
-        * `socketRequestMaxBytes` (`float`)
+        * `logRetentionBytes` (`str`)
+        * `logRetentionHours` (`str`)
+        * `logSegmentBytes` (`str`)
+        * `maxConnectionsPerIp` (`str`)
+        * `messageMaxBytes` (`str`)
+        * `numPartitions` (`str`)
+        * `offsetsRetentionMinutes` (`str`)
+        * `producerPurgatoryPurgeIntervalRequests` (`str`)
+        * `replicaFetchMaxBytes` (`str`)
+        * `replicaFetchResponseMaxBytes` (`str`)
+        * `socketRequestMaxBytes` (`str`)
 
       * `kafkaAuthenticationMethods` (`dict`)
-        * `certificate` (`bool`)
-        * `sasl` (`bool`)
+        * `certificate` (`str`)
+        * `sasl` (`str`)
 
-      * `kafka_connect` (`bool`)
+      * `kafka_connect` (`str`)
       * `kafkaConnectConfig` (`dict`)
         * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollRecords` (`float`)
-        * `offsetFlushIntervalMs` (`float`)
+        * `consumerMaxPollRecords` (`str`)
+        * `offsetFlushIntervalMs` (`str`)
 
-      * `kafkaRest` (`bool`)
+      * `kafkaRest` (`str`)
       * `kafkaRestConfig` (`dict`)
-        * `consumerEnableAutoCommit` (`bool`)
-        * `consumerRequestMaxBytes` (`float`)
-        * `consumerRequestTimeoutMs` (`float`)
+        * `consumerEnableAutoCommit` (`str`)
+        * `consumerRequestMaxBytes` (`str`)
+        * `consumerRequestTimeoutMs` (`str`)
         * `producerAcks` (`str`)
-        * `producerLingerMs` (`float`)
-        * `simpleconsumerPoolSizeMax` (`float`)
+        * `producerLingerMs` (`str`)
+        * `simpleconsumerPoolSizeMax` (`str`)
 
       * `kafkaVersion` (`str`)
       * `privateAccess` (`dict`)
@@ -298,7 +323,7 @@ class Service(pulumi.CustomResource):
         * `prometheus` (`str`)
         * `schemaRegistry` (`str`)
 
-      * `schemaRegistry` (`bool`)
+      * `schemaRegistry` (`str`)
     """
     maintenance_window_dow: pulumi.Output[str]
     """
@@ -318,25 +343,30 @@ class Service(pulumi.CustomResource):
 
       * `adminPassword` (`str`)
       * `adminUsername` (`str`)
-      * `backupHour` (`float`)
-      * `backupMinute` (`float`)
+      * `backupHour` (`str`)
+      * `backupMinute` (`str`)
       * `ipFilters` (`list`)
       * `mysql` (`dict`)
-        * `connectTimeout` (`float`)
+        * `connectTimeout` (`str`)
         * `defaultTimeZone` (`str`)
-        * `groupConcatMaxLen` (`float`)
-        * `informationSchemaStatsExpiry` (`float`)
-        * `innodbFtMinTokenSize` (`float`)
+        * `groupConcatMaxLen` (`str`)
+        * `informationSchemaStatsExpiry` (`str`)
+        * `innodbFtMinTokenSize` (`str`)
         * `innodbFtServerStopwordTable` (`str`)
-        * `innodbLockWaitTimeout` (`float`)
-        * `innodbOnlineAlterLogMaxSize` (`float`)
+        * `innodbLockWaitTimeout` (`str`)
+        * `innodbLogBufferSize` (`str`)
+        * `innodbOnlineAlterLogMaxSize` (`str`)
         * `innodbRollbackOnTimeout` (`str`)
-        * `maxAllowedPacket` (`float`)
-        * `netReadTimeout` (`float`)
-        * `netWriteTimeout` (`float`)
+        * `interactiveTimeout` (`str`)
+        * `maxAllowedPacket` (`str`)
+        * `maxHeapTableSize` (`str`)
+        * `netReadTimeout` (`str`)
+        * `netWriteTimeout` (`str`)
+        * `sortBufferSize` (`str`)
         * `sqlMode` (`str`)
         * `sqlRequirePrimaryKey` (`str`)
-        * `waitTimeout` (`float`)
+        * `tmpTableSize` (`str`)
+        * `waitTimeout` (`str`)
 
       * `mysqlVersion` (`str`)
       * `privateAccess` (`dict`)
@@ -369,48 +399,52 @@ class Service(pulumi.CustomResource):
 
       * `adminPassword` (`str`)
       * `adminUsername` (`str`)
-      * `backupHour` (`float`)
-      * `backupMinute` (`float`)
+      * `backupHour` (`str`)
+      * `backupMinute` (`str`)
       * `ipFilters` (`list`)
       * `pg` (`dict`)
-        * `autovacuumAnalyzeScaleFactor` (`float`)
-        * `autovacuumAnalyzeThreshold` (`float`)
-        * `autovacuumMaxWorkers` (`float`)
-        * `autovacuumNaptime` (`float`)
-        * `autovacuumVacuumCostDelay` (`float`)
-        * `autovacuumVacuumCostLimit` (`float`)
-        * `autovacuumVacuumScaleFactor` (`float`)
-        * `autovacuumVacuumThreshold` (`float`)
-        * `deadlockTimeout` (`float`)
-        * `idleInTransactionSessionTimeout` (`float`)
+        * `autovacuumAnalyzeScaleFactor` (`str`)
+        * `autovacuumAnalyzeThreshold` (`str`)
+        * `autovacuumFreezeMaxAge` (`str`)
+        * `autovacuumMaxWorkers` (`str`)
+        * `autovacuumNaptime` (`str`)
+        * `autovacuumVacuumCostDelay` (`str`)
+        * `autovacuumVacuumCostLimit` (`str`)
+        * `autovacuumVacuumScaleFactor` (`str`)
+        * `autovacuumVacuumThreshold` (`str`)
+        * `deadlockTimeout` (`str`)
+        * `idleInTransactionSessionTimeout` (`str`)
         * `jit` (`str`)
-        * `logAutovacuumMinDuration` (`float`)
+        * `logAutovacuumMinDuration` (`str`)
         * `logErrorVerbosity` (`str`)
-        * `logMinDurationStatement` (`float`)
-        * `maxLocksPerTransaction` (`float`)
-        * `maxParallelWorkers` (`float`)
-        * `maxParallelWorkersPerGather` (`float`)
-        * `maxPredLocksPerTransaction` (`float`)
-        * `maxPreparedTransactions` (`float`)
-        * `maxStackDepth` (`float`)
-        * `maxStandbyArchiveDelay` (`float`)
-        * `maxStandbyStreamingDelay` (`float`)
-        * `maxWorkerProcesses` (`float`)
+        * `logMinDurationStatement` (`str`)
+        * `maxLocksPerTransaction` (`str`)
+        * `maxParallelWorkers` (`str`)
+        * `maxParallelWorkersPerGather` (`str`)
+        * `maxPredLocksPerTransaction` (`str`)
+        * `maxPreparedTransactions` (`str`)
+        * `maxStackDepth` (`str`)
+        * `maxStandbyArchiveDelay` (`str`)
+        * `maxStandbyStreamingDelay` (`str`)
+        * `maxWorkerProcesses` (`str`)
         * `pgStatStatementsTrack` (`str`)
-        * `tempFileLimit` (`float`)
+        * `tempFileLimit` (`str`)
         * `timezone` (`str`)
-        * `trackActivityQuerySize` (`float`)
+        * `trackActivityQuerySize` (`str`)
+        * `trackCommitTimestamp` (`str`)
         * `trackFunctions` (`str`)
-        * `walWriterDelay` (`float`)
+        * `walSenderTimeout` (`str`)
+        * `walWriterDelay` (`str`)
 
       * `pgReadReplica` (`str`)
       * `pgServiceToForkFrom` (`str`)
       * `pgVersion` (`str`)
       * `pgbouncer` (`dict`)
-        * `serverResetQueryAlways` (`bool`)
+        * `ignoreStartupParameters` (`list`)
+        * `serverResetQueryAlways` (`str`)
 
       * `pglookout` (`dict`)
-        * `maxFailoverReplicationTimeLag` (`float`)
+        * `maxFailoverReplicationTimeLag` (`str`)
 
       * `privateAccess` (`dict`)
         * `pg` (`str`)
@@ -424,8 +458,9 @@ class Service(pulumi.CustomResource):
 
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
+      * `synchronousReplication` (`str`)
       * `timescaledb` (`dict`)
-        * `maxBackgroundWorkers` (`float`)
+        * `maxBackgroundWorkers` (`str`)
 
       * `variant` (`str`)
     """
@@ -453,8 +488,8 @@ class Service(pulumi.CustomResource):
       * `migration` (`dict`)
         * `host` (`str`)
         * `password` (`str`)
-        * `port` (`float`)
-        * `ssl` (`bool`)
+        * `port` (`str`)
+        * `ssl` (`str`)
         * `username` (`str`)
 
       * `privateAccess` (`dict`)
@@ -465,12 +500,12 @@ class Service(pulumi.CustomResource):
         * `prometheus` (`str`)
         * `redis` (`str`)
 
-      * `redisLfuDecayTime` (`float`)
-      * `redisLfuLogFactor` (`float`)
+      * `redisLfuDecayTime` (`str`)
+      * `redisLfuLogFactor` (`str`)
       * `redisMaxmemoryPolicy` (`str`)
       * `redisNotifyKeyspaceEvents` (`str`)
-      * `redisSsl` (`bool`)
-      * `redisTimeout` (`float`)
+      * `redisSsl` (`str`)
+      * `redisTimeout` (`str`)
     """
     service_host: pulumi.Output[str]
     """
@@ -515,7 +550,7 @@ class Service(pulumi.CustomResource):
     """
     Prevent service from being deleted. It is recommended to have this enabled for all services.
     """
-    def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
         """
         ## Example Usage
 
@@ -544,6 +579,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] cassandra: Cassandra specific server provided values
         :param pulumi.Input[dict] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
         :param pulumi.Input[dict] elasticsearch: Elasticsearch specific server provided values
         :param pulumi.Input[dict] elasticsearch_user_config: Elasticsearch specific user configurable settings
@@ -554,6 +590,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[dict] kafka: Kafka specific server provided values
         :param pulumi.Input[dict] kafka_connect: Kafka Connect specific server provided values
         :param pulumi.Input[dict] kafka_connect_user_config: Kafka Connect specific user configurable settings
+        :param pulumi.Input[dict] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
+        :param pulumi.Input[dict] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
         :param pulumi.Input[dict] kafka_user_config: Kafka specific user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -583,6 +621,11 @@ class Service(pulumi.CustomResource):
 
           * `serviceToForkFrom` (`pulumi.Input[str]`)
 
+        The **client_timeout** object supports the following:
+
+          * `create` (`pulumi.Input[str]`)
+          * `update` (`pulumi.Input[str]`)
+
         The **elasticsearch** object supports the following:
 
           * `kibanaUri` (`pulumi.Input[str]`)
@@ -594,38 +637,40 @@ class Service(pulumi.CustomResource):
           * `elasticsearch` (`pulumi.Input[dict]`)
             * `actionAutoCreateIndexEnabled` (`pulumi.Input[str]`)
             * `actionDestructiveRequiresName` (`pulumi.Input[str]`)
-            * `httpMaxContentLength` (`pulumi.Input[float]`)
-            * `indicesFielddataCacheSize` (`pulumi.Input[float]`)
-            * `indicesMemoryIndexBufferSize` (`pulumi.Input[float]`)
-            * `indicesQueriesCacheSize` (`pulumi.Input[float]`)
-            * `indicesQueryBoolMaxClauseCount` (`pulumi.Input[float]`)
+            * `httpMaxContentLength` (`pulumi.Input[str]`)
+            * `httpMaxHeaderSize` (`pulumi.Input[str]`)
+            * `httpMaxInitialLineLength` (`pulumi.Input[str]`)
+            * `indicesFielddataCacheSize` (`pulumi.Input[str]`)
+            * `indicesMemoryIndexBufferSize` (`pulumi.Input[str]`)
+            * `indicesQueriesCacheSize` (`pulumi.Input[str]`)
+            * `indicesQueryBoolMaxClauseCount` (`pulumi.Input[str]`)
             * `reindexRemoteWhitelists` (`pulumi.Input[list]`)
-            * `threadPoolAnalyzeQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolAnalyzeSize` (`pulumi.Input[float]`)
-            * `threadPoolForceMergeSize` (`pulumi.Input[float]`)
-            * `threadPoolGetQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolGetSize` (`pulumi.Input[float]`)
-            * `threadPoolIndexQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolIndexSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchThrottledQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchThrottledSize` (`pulumi.Input[float]`)
-            * `threadPoolWriteQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolWriteSize` (`pulumi.Input[float]`)
+            * `threadPoolAnalyzeQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolAnalyzeSize` (`pulumi.Input[str]`)
+            * `threadPoolForceMergeSize` (`pulumi.Input[str]`)
+            * `threadPoolGetQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolGetSize` (`pulumi.Input[str]`)
+            * `threadPoolIndexQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolIndexSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchThrottledQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchThrottledSize` (`pulumi.Input[str]`)
+            * `threadPoolWriteQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolWriteSize` (`pulumi.Input[str]`)
 
           * `elasticsearchVersion` (`pulumi.Input[str]`)
           * `indexPatterns` (`pulumi.Input[list]`)
-            * `maxIndexCount` (`pulumi.Input[float]`)
+            * `maxIndexCount` (`pulumi.Input[str]`)
             * `pattern` (`pulumi.Input[str]`)
 
           * `ipFilters` (`pulumi.Input[list]`)
           * `kibana` (`pulumi.Input[dict]`)
-            * `elasticsearchRequestTimeout` (`pulumi.Input[float]`)
-            * `enabled` (`pulumi.Input[bool]`)
-            * `maxOldSpaceSize` (`pulumi.Input[float]`)
+            * `elasticsearchRequestTimeout` (`pulumi.Input[str]`)
+            * `enabled` (`pulumi.Input[str]`)
+            * `maxOldSpaceSize` (`pulumi.Input[str]`)
 
-          * `maxIndexCount` (`pulumi.Input[float]`)
+          * `maxIndexCount` (`pulumi.Input[str]`)
           * `privateAccess` (`pulumi.Input[dict]`)
             * `elasticsearch` (`pulumi.Input[str]`)
             * `kibana` (`pulumi.Input[str]`)
@@ -645,6 +690,7 @@ class Service(pulumi.CustomResource):
           * `alertingErrorOrTimeout` (`pulumi.Input[str]`)
           * `alertingNodataOrNullvalues` (`pulumi.Input[str]`)
           * `allowEmbedding` (`pulumi.Input[str]`)
+          * `authBasicEnabled` (`pulumi.Input[str]`)
           * `authGenericOauth` (`pulumi.Input[dict]`)
             * `allowSignUp` (`pulumi.Input[str]`)
             * `allowedDomains` (`pulumi.Input[list]`)
@@ -681,9 +727,9 @@ class Service(pulumi.CustomResource):
 
           * `cookieSamesite` (`pulumi.Input[str]`)
           * `customDomain` (`pulumi.Input[str]`)
-          * `dashboardsVersionsToKeep` (`pulumi.Input[float]`)
+          * `dashboardsVersionsToKeep` (`pulumi.Input[str]`)
           * `dataproxySendUserHeader` (`pulumi.Input[str]`)
-          * `dataproxyTimeout` (`pulumi.Input[float]`)
+          * `dataproxyTimeout` (`pulumi.Input[str]`)
           * `disableGravatar` (`pulumi.Input[str]`)
           * `editorsCanAdmin` (`pulumi.Input[str]`)
           * `externalImageStorage` (`pulumi.Input[dict]`)
@@ -706,7 +752,7 @@ class Service(pulumi.CustomResource):
             * `fromName` (`pulumi.Input[str]`)
             * `host` (`pulumi.Input[str]`)
             * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[float]`)
+            * `port` (`pulumi.Input[str]`)
             * `skipVerify` (`pulumi.Input[str]`)
             * `username` (`pulumi.Input[str]`)
 
@@ -743,8 +789,8 @@ class Service(pulumi.CustomResource):
           * `ipFilters` (`pulumi.Input[list]`)
           * `kafka_connect` (`pulumi.Input[dict]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[float]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
+            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
             * `kafka_connect` (`pulumi.Input[str]`)
@@ -754,6 +800,15 @@ class Service(pulumi.CustomResource):
             * `kafka_connect` (`pulumi.Input[str]`)
             * `prometheus` (`pulumi.Input[str]`)
 
+        The **kafka_mirrormaker_user_config** object supports the following:
+
+          * `ipFilters` (`pulumi.Input[list]`)
+          * `kafka_mirrormaker` (`pulumi.Input[dict]`)
+            * `refreshGroupsEnabled` (`pulumi.Input[str]`)
+            * `refreshGroupsIntervalSeconds` (`pulumi.Input[str]`)
+            * `refreshTopicsEnabled` (`pulumi.Input[str]`)
+            * `refreshTopicsIntervalSeconds` (`pulumi.Input[str]`)
+
         The **kafka_user_config** object supports the following:
 
           * `customDomain` (`pulumi.Input[str]`)
@@ -761,46 +816,46 @@ class Service(pulumi.CustomResource):
           * `kafka` (`pulumi.Input[dict]`)
             * `autoCreateTopicsEnable` (`pulumi.Input[str]`)
             * `compressionType` (`pulumi.Input[str]`)
-            * `connectionsMaxIdleMs` (`pulumi.Input[float]`)
-            * `defaultReplicationFactor` (`pulumi.Input[float]`)
-            * `groupMaxSessionTimeoutMs` (`pulumi.Input[float]`)
-            * `groupMinSessionTimeoutMs` (`pulumi.Input[float]`)
-            * `logCleanerMaxCompactionLagMs` (`pulumi.Input[float]`)
-            * `logCleanerMinCleanableRatio` (`pulumi.Input[float]`)
-            * `logCleanerMinCompactionLagMs` (`pulumi.Input[float]`)
+            * `connectionsMaxIdleMs` (`pulumi.Input[str]`)
+            * `defaultReplicationFactor` (`pulumi.Input[str]`)
+            * `groupMaxSessionTimeoutMs` (`pulumi.Input[str]`)
+            * `groupMinSessionTimeoutMs` (`pulumi.Input[str]`)
+            * `logCleanerMaxCompactionLagMs` (`pulumi.Input[str]`)
+            * `logCleanerMinCleanableRatio` (`pulumi.Input[str]`)
+            * `logCleanerMinCompactionLagMs` (`pulumi.Input[str]`)
             * `logCleanupPolicy` (`pulumi.Input[str]`)
-            * `logMessageTimestampDifferenceMaxMs` (`pulumi.Input[float]`)
+            * `logMessageTimestampDifferenceMaxMs` (`pulumi.Input[str]`)
             * `logMessageTimestampType` (`pulumi.Input[str]`)
-            * `logRetentionBytes` (`pulumi.Input[float]`)
-            * `logRetentionHours` (`pulumi.Input[float]`)
-            * `logSegmentBytes` (`pulumi.Input[float]`)
-            * `maxConnectionsPerIp` (`pulumi.Input[float]`)
-            * `messageMaxBytes` (`pulumi.Input[float]`)
-            * `numPartitions` (`pulumi.Input[float]`)
-            * `offsetsRetentionMinutes` (`pulumi.Input[float]`)
-            * `producerPurgatoryPurgeIntervalRequests` (`pulumi.Input[float]`)
-            * `replicaFetchMaxBytes` (`pulumi.Input[float]`)
-            * `replicaFetchResponseMaxBytes` (`pulumi.Input[float]`)
-            * `socketRequestMaxBytes` (`pulumi.Input[float]`)
+            * `logRetentionBytes` (`pulumi.Input[str]`)
+            * `logRetentionHours` (`pulumi.Input[str]`)
+            * `logSegmentBytes` (`pulumi.Input[str]`)
+            * `maxConnectionsPerIp` (`pulumi.Input[str]`)
+            * `messageMaxBytes` (`pulumi.Input[str]`)
+            * `numPartitions` (`pulumi.Input[str]`)
+            * `offsetsRetentionMinutes` (`pulumi.Input[str]`)
+            * `producerPurgatoryPurgeIntervalRequests` (`pulumi.Input[str]`)
+            * `replicaFetchMaxBytes` (`pulumi.Input[str]`)
+            * `replicaFetchResponseMaxBytes` (`pulumi.Input[str]`)
+            * `socketRequestMaxBytes` (`pulumi.Input[str]`)
 
           * `kafkaAuthenticationMethods` (`pulumi.Input[dict]`)
-            * `certificate` (`pulumi.Input[bool]`)
-            * `sasl` (`pulumi.Input[bool]`)
+            * `certificate` (`pulumi.Input[str]`)
+            * `sasl` (`pulumi.Input[str]`)
 
-          * `kafka_connect` (`pulumi.Input[bool]`)
+          * `kafka_connect` (`pulumi.Input[str]`)
           * `kafkaConnectConfig` (`pulumi.Input[dict]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[float]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
+            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
 
-          * `kafkaRest` (`pulumi.Input[bool]`)
+          * `kafkaRest` (`pulumi.Input[str]`)
           * `kafkaRestConfig` (`pulumi.Input[dict]`)
-            * `consumerEnableAutoCommit` (`pulumi.Input[bool]`)
-            * `consumerRequestMaxBytes` (`pulumi.Input[float]`)
-            * `consumerRequestTimeoutMs` (`pulumi.Input[float]`)
+            * `consumerEnableAutoCommit` (`pulumi.Input[str]`)
+            * `consumerRequestMaxBytes` (`pulumi.Input[str]`)
+            * `consumerRequestTimeoutMs` (`pulumi.Input[str]`)
             * `producerAcks` (`pulumi.Input[str]`)
-            * `producerLingerMs` (`pulumi.Input[float]`)
-            * `simpleconsumerPoolSizeMax` (`pulumi.Input[float]`)
+            * `producerLingerMs` (`pulumi.Input[str]`)
+            * `simpleconsumerPoolSizeMax` (`pulumi.Input[str]`)
 
           * `kafkaVersion` (`pulumi.Input[str]`)
           * `privateAccess` (`pulumi.Input[dict]`)
@@ -813,31 +868,36 @@ class Service(pulumi.CustomResource):
             * `prometheus` (`pulumi.Input[str]`)
             * `schemaRegistry` (`pulumi.Input[str]`)
 
-          * `schemaRegistry` (`pulumi.Input[bool]`)
+          * `schemaRegistry` (`pulumi.Input[str]`)
 
         The **mysql_user_config** object supports the following:
 
           * `adminPassword` (`pulumi.Input[str]`)
           * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[float]`)
-          * `backupMinute` (`pulumi.Input[float]`)
+          * `backupHour` (`pulumi.Input[str]`)
+          * `backupMinute` (`pulumi.Input[str]`)
           * `ipFilters` (`pulumi.Input[list]`)
           * `mysql` (`pulumi.Input[dict]`)
-            * `connectTimeout` (`pulumi.Input[float]`)
+            * `connectTimeout` (`pulumi.Input[str]`)
             * `defaultTimeZone` (`pulumi.Input[str]`)
-            * `groupConcatMaxLen` (`pulumi.Input[float]`)
-            * `informationSchemaStatsExpiry` (`pulumi.Input[float]`)
-            * `innodbFtMinTokenSize` (`pulumi.Input[float]`)
+            * `groupConcatMaxLen` (`pulumi.Input[str]`)
+            * `informationSchemaStatsExpiry` (`pulumi.Input[str]`)
+            * `innodbFtMinTokenSize` (`pulumi.Input[str]`)
             * `innodbFtServerStopwordTable` (`pulumi.Input[str]`)
-            * `innodbLockWaitTimeout` (`pulumi.Input[float]`)
-            * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[float]`)
+            * `innodbLockWaitTimeout` (`pulumi.Input[str]`)
+            * `innodbLogBufferSize` (`pulumi.Input[str]`)
+            * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[str]`)
             * `innodbRollbackOnTimeout` (`pulumi.Input[str]`)
-            * `maxAllowedPacket` (`pulumi.Input[float]`)
-            * `netReadTimeout` (`pulumi.Input[float]`)
-            * `netWriteTimeout` (`pulumi.Input[float]`)
+            * `interactiveTimeout` (`pulumi.Input[str]`)
+            * `maxAllowedPacket` (`pulumi.Input[str]`)
+            * `maxHeapTableSize` (`pulumi.Input[str]`)
+            * `netReadTimeout` (`pulumi.Input[str]`)
+            * `netWriteTimeout` (`pulumi.Input[str]`)
+            * `sortBufferSize` (`pulumi.Input[str]`)
             * `sqlMode` (`pulumi.Input[str]`)
             * `sqlRequirePrimaryKey` (`pulumi.Input[str]`)
-            * `waitTimeout` (`pulumi.Input[float]`)
+            * `tmpTableSize` (`pulumi.Input[str]`)
+            * `waitTimeout` (`pulumi.Input[str]`)
 
           * `mysqlVersion` (`pulumi.Input[str]`)
           * `privateAccess` (`pulumi.Input[dict]`)
@@ -866,48 +926,52 @@ class Service(pulumi.CustomResource):
 
           * `adminPassword` (`pulumi.Input[str]`)
           * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[float]`)
-          * `backupMinute` (`pulumi.Input[float]`)
+          * `backupHour` (`pulumi.Input[str]`)
+          * `backupMinute` (`pulumi.Input[str]`)
           * `ipFilters` (`pulumi.Input[list]`)
           * `pg` (`pulumi.Input[dict]`)
-            * `autovacuumAnalyzeScaleFactor` (`pulumi.Input[float]`)
-            * `autovacuumAnalyzeThreshold` (`pulumi.Input[float]`)
-            * `autovacuumMaxWorkers` (`pulumi.Input[float]`)
-            * `autovacuumNaptime` (`pulumi.Input[float]`)
-            * `autovacuumVacuumCostDelay` (`pulumi.Input[float]`)
-            * `autovacuumVacuumCostLimit` (`pulumi.Input[float]`)
-            * `autovacuumVacuumScaleFactor` (`pulumi.Input[float]`)
-            * `autovacuumVacuumThreshold` (`pulumi.Input[float]`)
-            * `deadlockTimeout` (`pulumi.Input[float]`)
-            * `idleInTransactionSessionTimeout` (`pulumi.Input[float]`)
+            * `autovacuumAnalyzeScaleFactor` (`pulumi.Input[str]`)
+            * `autovacuumAnalyzeThreshold` (`pulumi.Input[str]`)
+            * `autovacuumFreezeMaxAge` (`pulumi.Input[str]`)
+            * `autovacuumMaxWorkers` (`pulumi.Input[str]`)
+            * `autovacuumNaptime` (`pulumi.Input[str]`)
+            * `autovacuumVacuumCostDelay` (`pulumi.Input[str]`)
+            * `autovacuumVacuumCostLimit` (`pulumi.Input[str]`)
+            * `autovacuumVacuumScaleFactor` (`pulumi.Input[str]`)
+            * `autovacuumVacuumThreshold` (`pulumi.Input[str]`)
+            * `deadlockTimeout` (`pulumi.Input[str]`)
+            * `idleInTransactionSessionTimeout` (`pulumi.Input[str]`)
             * `jit` (`pulumi.Input[str]`)
-            * `logAutovacuumMinDuration` (`pulumi.Input[float]`)
+            * `logAutovacuumMinDuration` (`pulumi.Input[str]`)
             * `logErrorVerbosity` (`pulumi.Input[str]`)
-            * `logMinDurationStatement` (`pulumi.Input[float]`)
-            * `maxLocksPerTransaction` (`pulumi.Input[float]`)
-            * `maxParallelWorkers` (`pulumi.Input[float]`)
-            * `maxParallelWorkersPerGather` (`pulumi.Input[float]`)
-            * `maxPredLocksPerTransaction` (`pulumi.Input[float]`)
-            * `maxPreparedTransactions` (`pulumi.Input[float]`)
-            * `maxStackDepth` (`pulumi.Input[float]`)
-            * `maxStandbyArchiveDelay` (`pulumi.Input[float]`)
-            * `maxStandbyStreamingDelay` (`pulumi.Input[float]`)
-            * `maxWorkerProcesses` (`pulumi.Input[float]`)
+            * `logMinDurationStatement` (`pulumi.Input[str]`)
+            * `maxLocksPerTransaction` (`pulumi.Input[str]`)
+            * `maxParallelWorkers` (`pulumi.Input[str]`)
+            * `maxParallelWorkersPerGather` (`pulumi.Input[str]`)
+            * `maxPredLocksPerTransaction` (`pulumi.Input[str]`)
+            * `maxPreparedTransactions` (`pulumi.Input[str]`)
+            * `maxStackDepth` (`pulumi.Input[str]`)
+            * `maxStandbyArchiveDelay` (`pulumi.Input[str]`)
+            * `maxStandbyStreamingDelay` (`pulumi.Input[str]`)
+            * `maxWorkerProcesses` (`pulumi.Input[str]`)
             * `pgStatStatementsTrack` (`pulumi.Input[str]`)
-            * `tempFileLimit` (`pulumi.Input[float]`)
+            * `tempFileLimit` (`pulumi.Input[str]`)
             * `timezone` (`pulumi.Input[str]`)
-            * `trackActivityQuerySize` (`pulumi.Input[float]`)
+            * `trackActivityQuerySize` (`pulumi.Input[str]`)
+            * `trackCommitTimestamp` (`pulumi.Input[str]`)
             * `trackFunctions` (`pulumi.Input[str]`)
-            * `walWriterDelay` (`pulumi.Input[float]`)
+            * `walSenderTimeout` (`pulumi.Input[str]`)
+            * `walWriterDelay` (`pulumi.Input[str]`)
 
           * `pgReadReplica` (`pulumi.Input[str]`)
           * `pgServiceToForkFrom` (`pulumi.Input[str]`)
           * `pgVersion` (`pulumi.Input[str]`)
           * `pgbouncer` (`pulumi.Input[dict]`)
-            * `serverResetQueryAlways` (`pulumi.Input[bool]`)
+            * `ignoreStartupParameters` (`pulumi.Input[list]`)
+            * `serverResetQueryAlways` (`pulumi.Input[str]`)
 
           * `pglookout` (`pulumi.Input[dict]`)
-            * `maxFailoverReplicationTimeLag` (`pulumi.Input[float]`)
+            * `maxFailoverReplicationTimeLag` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
             * `pg` (`pulumi.Input[str]`)
@@ -921,8 +985,9 @@ class Service(pulumi.CustomResource):
 
           * `recoveryTargetTime` (`pulumi.Input[str]`)
           * `serviceToForkFrom` (`pulumi.Input[str]`)
+          * `synchronousReplication` (`pulumi.Input[str]`)
           * `timescaledb` (`pulumi.Input[dict]`)
-            * `maxBackgroundWorkers` (`pulumi.Input[float]`)
+            * `maxBackgroundWorkers` (`pulumi.Input[str]`)
 
           * `variant` (`pulumi.Input[str]`)
 
@@ -932,8 +997,8 @@ class Service(pulumi.CustomResource):
           * `migration` (`pulumi.Input[dict]`)
             * `host` (`pulumi.Input[str]`)
             * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[float]`)
-            * `ssl` (`pulumi.Input[bool]`)
+            * `port` (`pulumi.Input[str]`)
+            * `ssl` (`pulumi.Input[str]`)
             * `username` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
@@ -944,12 +1009,12 @@ class Service(pulumi.CustomResource):
             * `prometheus` (`pulumi.Input[str]`)
             * `redis` (`pulumi.Input[str]`)
 
-          * `redisLfuDecayTime` (`pulumi.Input[float]`)
-          * `redisLfuLogFactor` (`pulumi.Input[float]`)
+          * `redisLfuDecayTime` (`pulumi.Input[str]`)
+          * `redisLfuLogFactor` (`pulumi.Input[str]`)
           * `redisMaxmemoryPolicy` (`pulumi.Input[str]`)
           * `redisNotifyKeyspaceEvents` (`pulumi.Input[str]`)
-          * `redisSsl` (`pulumi.Input[bool]`)
-          * `redisTimeout` (`pulumi.Input[float]`)
+          * `redisSsl` (`pulumi.Input[str]`)
+          * `redisTimeout` (`pulumi.Input[str]`)
 
         The **service_integrations** object supports the following:
 
@@ -975,6 +1040,10 @@ class Service(pulumi.CustomResource):
 
             __props__['cassandra'] = cassandra
             __props__['cassandra_user_config'] = cassandra_user_config
+            if client_timeout is not None:
+                warnings.warn("use timeouts instead", DeprecationWarning)
+                pulumi.log.warn("client_timeout is deprecated: use timeouts instead")
+            __props__['client_timeout'] = client_timeout
             __props__['cloud_name'] = cloud_name
             __props__['elasticsearch'] = elasticsearch
             __props__['elasticsearch_user_config'] = elasticsearch_user_config
@@ -985,6 +1054,8 @@ class Service(pulumi.CustomResource):
             __props__['kafka'] = kafka
             __props__['kafka_connect'] = kafka_connect
             __props__['kafka_connect_user_config'] = kafka_connect_user_config
+            __props__['kafka_mirrormaker'] = kafka_mirrormaker
+            __props__['kafka_mirrormaker_user_config'] = kafka_mirrormaker_user_config
             __props__['kafka_user_config'] = kafka_user_config
             __props__['maintenance_window_dow'] = maintenance_window_dow
             __props__['maintenance_window_time'] = maintenance_window_time
@@ -1021,7 +1092,7 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def get(resource_name, id, opts=None, cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1031,6 +1102,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] cassandra: Cassandra specific server provided values
         :param pulumi.Input[dict] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
         :param pulumi.Input[list] components: Service component information objects
         :param pulumi.Input[dict] elasticsearch: Elasticsearch specific server provided values
@@ -1042,6 +1114,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[dict] kafka: Kafka specific server provided values
         :param pulumi.Input[dict] kafka_connect: Kafka Connect specific server provided values
         :param pulumi.Input[dict] kafka_connect_user_config: Kafka Connect specific user configurable settings
+        :param pulumi.Input[dict] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
+        :param pulumi.Input[dict] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
         :param pulumi.Input[dict] kafka_user_config: Kafka specific user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1077,6 +1151,11 @@ class Service(pulumi.CustomResource):
 
           * `serviceToForkFrom` (`pulumi.Input[str]`)
 
+        The **client_timeout** object supports the following:
+
+          * `create` (`pulumi.Input[str]`)
+          * `update` (`pulumi.Input[str]`)
+
         The **components** object supports the following:
 
           * `component` (`pulumi.Input[str]`)
@@ -1098,38 +1177,40 @@ class Service(pulumi.CustomResource):
           * `elasticsearch` (`pulumi.Input[dict]`)
             * `actionAutoCreateIndexEnabled` (`pulumi.Input[str]`)
             * `actionDestructiveRequiresName` (`pulumi.Input[str]`)
-            * `httpMaxContentLength` (`pulumi.Input[float]`)
-            * `indicesFielddataCacheSize` (`pulumi.Input[float]`)
-            * `indicesMemoryIndexBufferSize` (`pulumi.Input[float]`)
-            * `indicesQueriesCacheSize` (`pulumi.Input[float]`)
-            * `indicesQueryBoolMaxClauseCount` (`pulumi.Input[float]`)
+            * `httpMaxContentLength` (`pulumi.Input[str]`)
+            * `httpMaxHeaderSize` (`pulumi.Input[str]`)
+            * `httpMaxInitialLineLength` (`pulumi.Input[str]`)
+            * `indicesFielddataCacheSize` (`pulumi.Input[str]`)
+            * `indicesMemoryIndexBufferSize` (`pulumi.Input[str]`)
+            * `indicesQueriesCacheSize` (`pulumi.Input[str]`)
+            * `indicesQueryBoolMaxClauseCount` (`pulumi.Input[str]`)
             * `reindexRemoteWhitelists` (`pulumi.Input[list]`)
-            * `threadPoolAnalyzeQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolAnalyzeSize` (`pulumi.Input[float]`)
-            * `threadPoolForceMergeSize` (`pulumi.Input[float]`)
-            * `threadPoolGetQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolGetSize` (`pulumi.Input[float]`)
-            * `threadPoolIndexQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolIndexSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchThrottledQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolSearchThrottledSize` (`pulumi.Input[float]`)
-            * `threadPoolWriteQueueSize` (`pulumi.Input[float]`)
-            * `threadPoolWriteSize` (`pulumi.Input[float]`)
+            * `threadPoolAnalyzeQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolAnalyzeSize` (`pulumi.Input[str]`)
+            * `threadPoolForceMergeSize` (`pulumi.Input[str]`)
+            * `threadPoolGetQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolGetSize` (`pulumi.Input[str]`)
+            * `threadPoolIndexQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolIndexSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchThrottledQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolSearchThrottledSize` (`pulumi.Input[str]`)
+            * `threadPoolWriteQueueSize` (`pulumi.Input[str]`)
+            * `threadPoolWriteSize` (`pulumi.Input[str]`)
 
           * `elasticsearchVersion` (`pulumi.Input[str]`)
           * `indexPatterns` (`pulumi.Input[list]`)
-            * `maxIndexCount` (`pulumi.Input[float]`)
+            * `maxIndexCount` (`pulumi.Input[str]`)
             * `pattern` (`pulumi.Input[str]`)
 
           * `ipFilters` (`pulumi.Input[list]`)
           * `kibana` (`pulumi.Input[dict]`)
-            * `elasticsearchRequestTimeout` (`pulumi.Input[float]`)
-            * `enabled` (`pulumi.Input[bool]`)
-            * `maxOldSpaceSize` (`pulumi.Input[float]`)
+            * `elasticsearchRequestTimeout` (`pulumi.Input[str]`)
+            * `enabled` (`pulumi.Input[str]`)
+            * `maxOldSpaceSize` (`pulumi.Input[str]`)
 
-          * `maxIndexCount` (`pulumi.Input[float]`)
+          * `maxIndexCount` (`pulumi.Input[str]`)
           * `privateAccess` (`pulumi.Input[dict]`)
             * `elasticsearch` (`pulumi.Input[str]`)
             * `kibana` (`pulumi.Input[str]`)
@@ -1149,6 +1230,7 @@ class Service(pulumi.CustomResource):
           * `alertingErrorOrTimeout` (`pulumi.Input[str]`)
           * `alertingNodataOrNullvalues` (`pulumi.Input[str]`)
           * `allowEmbedding` (`pulumi.Input[str]`)
+          * `authBasicEnabled` (`pulumi.Input[str]`)
           * `authGenericOauth` (`pulumi.Input[dict]`)
             * `allowSignUp` (`pulumi.Input[str]`)
             * `allowedDomains` (`pulumi.Input[list]`)
@@ -1185,9 +1267,9 @@ class Service(pulumi.CustomResource):
 
           * `cookieSamesite` (`pulumi.Input[str]`)
           * `customDomain` (`pulumi.Input[str]`)
-          * `dashboardsVersionsToKeep` (`pulumi.Input[float]`)
+          * `dashboardsVersionsToKeep` (`pulumi.Input[str]`)
           * `dataproxySendUserHeader` (`pulumi.Input[str]`)
-          * `dataproxyTimeout` (`pulumi.Input[float]`)
+          * `dataproxyTimeout` (`pulumi.Input[str]`)
           * `disableGravatar` (`pulumi.Input[str]`)
           * `editorsCanAdmin` (`pulumi.Input[str]`)
           * `externalImageStorage` (`pulumi.Input[dict]`)
@@ -1210,7 +1292,7 @@ class Service(pulumi.CustomResource):
             * `fromName` (`pulumi.Input[str]`)
             * `host` (`pulumi.Input[str]`)
             * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[float]`)
+            * `port` (`pulumi.Input[str]`)
             * `skipVerify` (`pulumi.Input[str]`)
             * `username` (`pulumi.Input[str]`)
 
@@ -1247,8 +1329,8 @@ class Service(pulumi.CustomResource):
           * `ipFilters` (`pulumi.Input[list]`)
           * `kafka_connect` (`pulumi.Input[dict]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[float]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
+            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
             * `kafka_connect` (`pulumi.Input[str]`)
@@ -1258,6 +1340,15 @@ class Service(pulumi.CustomResource):
             * `kafka_connect` (`pulumi.Input[str]`)
             * `prometheus` (`pulumi.Input[str]`)
 
+        The **kafka_mirrormaker_user_config** object supports the following:
+
+          * `ipFilters` (`pulumi.Input[list]`)
+          * `kafka_mirrormaker` (`pulumi.Input[dict]`)
+            * `refreshGroupsEnabled` (`pulumi.Input[str]`)
+            * `refreshGroupsIntervalSeconds` (`pulumi.Input[str]`)
+            * `refreshTopicsEnabled` (`pulumi.Input[str]`)
+            * `refreshTopicsIntervalSeconds` (`pulumi.Input[str]`)
+
         The **kafka_user_config** object supports the following:
 
           * `customDomain` (`pulumi.Input[str]`)
@@ -1265,46 +1356,46 @@ class Service(pulumi.CustomResource):
           * `kafka` (`pulumi.Input[dict]`)
             * `autoCreateTopicsEnable` (`pulumi.Input[str]`)
             * `compressionType` (`pulumi.Input[str]`)
-            * `connectionsMaxIdleMs` (`pulumi.Input[float]`)
-            * `defaultReplicationFactor` (`pulumi.Input[float]`)
-            * `groupMaxSessionTimeoutMs` (`pulumi.Input[float]`)
-            * `groupMinSessionTimeoutMs` (`pulumi.Input[float]`)
-            * `logCleanerMaxCompactionLagMs` (`pulumi.Input[float]`)
-            * `logCleanerMinCleanableRatio` (`pulumi.Input[float]`)
-            * `logCleanerMinCompactionLagMs` (`pulumi.Input[float]`)
+            * `connectionsMaxIdleMs` (`pulumi.Input[str]`)
+            * `defaultReplicationFactor` (`pulumi.Input[str]`)
+            * `groupMaxSessionTimeoutMs` (`pulumi.Input[str]`)
+            * `groupMinSessionTimeoutMs` (`pulumi.Input[str]`)
+            * `logCleanerMaxCompactionLagMs` (`pulumi.Input[str]`)
+            * `logCleanerMinCleanableRatio` (`pulumi.Input[str]`)
+            * `logCleanerMinCompactionLagMs` (`pulumi.Input[str]`)
             * `logCleanupPolicy` (`pulumi.Input[str]`)
-            * `logMessageTimestampDifferenceMaxMs` (`pulumi.Input[float]`)
+            * `logMessageTimestampDifferenceMaxMs` (`pulumi.Input[str]`)
             * `logMessageTimestampType` (`pulumi.Input[str]`)
-            * `logRetentionBytes` (`pulumi.Input[float]`)
-            * `logRetentionHours` (`pulumi.Input[float]`)
-            * `logSegmentBytes` (`pulumi.Input[float]`)
-            * `maxConnectionsPerIp` (`pulumi.Input[float]`)
-            * `messageMaxBytes` (`pulumi.Input[float]`)
-            * `numPartitions` (`pulumi.Input[float]`)
-            * `offsetsRetentionMinutes` (`pulumi.Input[float]`)
-            * `producerPurgatoryPurgeIntervalRequests` (`pulumi.Input[float]`)
-            * `replicaFetchMaxBytes` (`pulumi.Input[float]`)
-            * `replicaFetchResponseMaxBytes` (`pulumi.Input[float]`)
-            * `socketRequestMaxBytes` (`pulumi.Input[float]`)
+            * `logRetentionBytes` (`pulumi.Input[str]`)
+            * `logRetentionHours` (`pulumi.Input[str]`)
+            * `logSegmentBytes` (`pulumi.Input[str]`)
+            * `maxConnectionsPerIp` (`pulumi.Input[str]`)
+            * `messageMaxBytes` (`pulumi.Input[str]`)
+            * `numPartitions` (`pulumi.Input[str]`)
+            * `offsetsRetentionMinutes` (`pulumi.Input[str]`)
+            * `producerPurgatoryPurgeIntervalRequests` (`pulumi.Input[str]`)
+            * `replicaFetchMaxBytes` (`pulumi.Input[str]`)
+            * `replicaFetchResponseMaxBytes` (`pulumi.Input[str]`)
+            * `socketRequestMaxBytes` (`pulumi.Input[str]`)
 
           * `kafkaAuthenticationMethods` (`pulumi.Input[dict]`)
-            * `certificate` (`pulumi.Input[bool]`)
-            * `sasl` (`pulumi.Input[bool]`)
+            * `certificate` (`pulumi.Input[str]`)
+            * `sasl` (`pulumi.Input[str]`)
 
-          * `kafka_connect` (`pulumi.Input[bool]`)
+          * `kafka_connect` (`pulumi.Input[str]`)
           * `kafkaConnectConfig` (`pulumi.Input[dict]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[float]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[float]`)
+            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
+            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
 
-          * `kafkaRest` (`pulumi.Input[bool]`)
+          * `kafkaRest` (`pulumi.Input[str]`)
           * `kafkaRestConfig` (`pulumi.Input[dict]`)
-            * `consumerEnableAutoCommit` (`pulumi.Input[bool]`)
-            * `consumerRequestMaxBytes` (`pulumi.Input[float]`)
-            * `consumerRequestTimeoutMs` (`pulumi.Input[float]`)
+            * `consumerEnableAutoCommit` (`pulumi.Input[str]`)
+            * `consumerRequestMaxBytes` (`pulumi.Input[str]`)
+            * `consumerRequestTimeoutMs` (`pulumi.Input[str]`)
             * `producerAcks` (`pulumi.Input[str]`)
-            * `producerLingerMs` (`pulumi.Input[float]`)
-            * `simpleconsumerPoolSizeMax` (`pulumi.Input[float]`)
+            * `producerLingerMs` (`pulumi.Input[str]`)
+            * `simpleconsumerPoolSizeMax` (`pulumi.Input[str]`)
 
           * `kafkaVersion` (`pulumi.Input[str]`)
           * `privateAccess` (`pulumi.Input[dict]`)
@@ -1317,31 +1408,36 @@ class Service(pulumi.CustomResource):
             * `prometheus` (`pulumi.Input[str]`)
             * `schemaRegistry` (`pulumi.Input[str]`)
 
-          * `schemaRegistry` (`pulumi.Input[bool]`)
+          * `schemaRegistry` (`pulumi.Input[str]`)
 
         The **mysql_user_config** object supports the following:
 
           * `adminPassword` (`pulumi.Input[str]`)
           * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[float]`)
-          * `backupMinute` (`pulumi.Input[float]`)
+          * `backupHour` (`pulumi.Input[str]`)
+          * `backupMinute` (`pulumi.Input[str]`)
           * `ipFilters` (`pulumi.Input[list]`)
           * `mysql` (`pulumi.Input[dict]`)
-            * `connectTimeout` (`pulumi.Input[float]`)
+            * `connectTimeout` (`pulumi.Input[str]`)
             * `defaultTimeZone` (`pulumi.Input[str]`)
-            * `groupConcatMaxLen` (`pulumi.Input[float]`)
-            * `informationSchemaStatsExpiry` (`pulumi.Input[float]`)
-            * `innodbFtMinTokenSize` (`pulumi.Input[float]`)
+            * `groupConcatMaxLen` (`pulumi.Input[str]`)
+            * `informationSchemaStatsExpiry` (`pulumi.Input[str]`)
+            * `innodbFtMinTokenSize` (`pulumi.Input[str]`)
             * `innodbFtServerStopwordTable` (`pulumi.Input[str]`)
-            * `innodbLockWaitTimeout` (`pulumi.Input[float]`)
-            * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[float]`)
+            * `innodbLockWaitTimeout` (`pulumi.Input[str]`)
+            * `innodbLogBufferSize` (`pulumi.Input[str]`)
+            * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[str]`)
             * `innodbRollbackOnTimeout` (`pulumi.Input[str]`)
-            * `maxAllowedPacket` (`pulumi.Input[float]`)
-            * `netReadTimeout` (`pulumi.Input[float]`)
-            * `netWriteTimeout` (`pulumi.Input[float]`)
+            * `interactiveTimeout` (`pulumi.Input[str]`)
+            * `maxAllowedPacket` (`pulumi.Input[str]`)
+            * `maxHeapTableSize` (`pulumi.Input[str]`)
+            * `netReadTimeout` (`pulumi.Input[str]`)
+            * `netWriteTimeout` (`pulumi.Input[str]`)
+            * `sortBufferSize` (`pulumi.Input[str]`)
             * `sqlMode` (`pulumi.Input[str]`)
             * `sqlRequirePrimaryKey` (`pulumi.Input[str]`)
-            * `waitTimeout` (`pulumi.Input[float]`)
+            * `tmpTableSize` (`pulumi.Input[str]`)
+            * `waitTimeout` (`pulumi.Input[str]`)
 
           * `mysqlVersion` (`pulumi.Input[str]`)
           * `privateAccess` (`pulumi.Input[dict]`)
@@ -1370,48 +1466,52 @@ class Service(pulumi.CustomResource):
 
           * `adminPassword` (`pulumi.Input[str]`)
           * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[float]`)
-          * `backupMinute` (`pulumi.Input[float]`)
+          * `backupHour` (`pulumi.Input[str]`)
+          * `backupMinute` (`pulumi.Input[str]`)
           * `ipFilters` (`pulumi.Input[list]`)
           * `pg` (`pulumi.Input[dict]`)
-            * `autovacuumAnalyzeScaleFactor` (`pulumi.Input[float]`)
-            * `autovacuumAnalyzeThreshold` (`pulumi.Input[float]`)
-            * `autovacuumMaxWorkers` (`pulumi.Input[float]`)
-            * `autovacuumNaptime` (`pulumi.Input[float]`)
-            * `autovacuumVacuumCostDelay` (`pulumi.Input[float]`)
-            * `autovacuumVacuumCostLimit` (`pulumi.Input[float]`)
-            * `autovacuumVacuumScaleFactor` (`pulumi.Input[float]`)
-            * `autovacuumVacuumThreshold` (`pulumi.Input[float]`)
-            * `deadlockTimeout` (`pulumi.Input[float]`)
-            * `idleInTransactionSessionTimeout` (`pulumi.Input[float]`)
+            * `autovacuumAnalyzeScaleFactor` (`pulumi.Input[str]`)
+            * `autovacuumAnalyzeThreshold` (`pulumi.Input[str]`)
+            * `autovacuumFreezeMaxAge` (`pulumi.Input[str]`)
+            * `autovacuumMaxWorkers` (`pulumi.Input[str]`)
+            * `autovacuumNaptime` (`pulumi.Input[str]`)
+            * `autovacuumVacuumCostDelay` (`pulumi.Input[str]`)
+            * `autovacuumVacuumCostLimit` (`pulumi.Input[str]`)
+            * `autovacuumVacuumScaleFactor` (`pulumi.Input[str]`)
+            * `autovacuumVacuumThreshold` (`pulumi.Input[str]`)
+            * `deadlockTimeout` (`pulumi.Input[str]`)
+            * `idleInTransactionSessionTimeout` (`pulumi.Input[str]`)
             * `jit` (`pulumi.Input[str]`)
-            * `logAutovacuumMinDuration` (`pulumi.Input[float]`)
+            * `logAutovacuumMinDuration` (`pulumi.Input[str]`)
             * `logErrorVerbosity` (`pulumi.Input[str]`)
-            * `logMinDurationStatement` (`pulumi.Input[float]`)
-            * `maxLocksPerTransaction` (`pulumi.Input[float]`)
-            * `maxParallelWorkers` (`pulumi.Input[float]`)
-            * `maxParallelWorkersPerGather` (`pulumi.Input[float]`)
-            * `maxPredLocksPerTransaction` (`pulumi.Input[float]`)
-            * `maxPreparedTransactions` (`pulumi.Input[float]`)
-            * `maxStackDepth` (`pulumi.Input[float]`)
-            * `maxStandbyArchiveDelay` (`pulumi.Input[float]`)
-            * `maxStandbyStreamingDelay` (`pulumi.Input[float]`)
-            * `maxWorkerProcesses` (`pulumi.Input[float]`)
+            * `logMinDurationStatement` (`pulumi.Input[str]`)
+            * `maxLocksPerTransaction` (`pulumi.Input[str]`)
+            * `maxParallelWorkers` (`pulumi.Input[str]`)
+            * `maxParallelWorkersPerGather` (`pulumi.Input[str]`)
+            * `maxPredLocksPerTransaction` (`pulumi.Input[str]`)
+            * `maxPreparedTransactions` (`pulumi.Input[str]`)
+            * `maxStackDepth` (`pulumi.Input[str]`)
+            * `maxStandbyArchiveDelay` (`pulumi.Input[str]`)
+            * `maxStandbyStreamingDelay` (`pulumi.Input[str]`)
+            * `maxWorkerProcesses` (`pulumi.Input[str]`)
             * `pgStatStatementsTrack` (`pulumi.Input[str]`)
-            * `tempFileLimit` (`pulumi.Input[float]`)
+            * `tempFileLimit` (`pulumi.Input[str]`)
             * `timezone` (`pulumi.Input[str]`)
-            * `trackActivityQuerySize` (`pulumi.Input[float]`)
+            * `trackActivityQuerySize` (`pulumi.Input[str]`)
+            * `trackCommitTimestamp` (`pulumi.Input[str]`)
             * `trackFunctions` (`pulumi.Input[str]`)
-            * `walWriterDelay` (`pulumi.Input[float]`)
+            * `walSenderTimeout` (`pulumi.Input[str]`)
+            * `walWriterDelay` (`pulumi.Input[str]`)
 
           * `pgReadReplica` (`pulumi.Input[str]`)
           * `pgServiceToForkFrom` (`pulumi.Input[str]`)
           * `pgVersion` (`pulumi.Input[str]`)
           * `pgbouncer` (`pulumi.Input[dict]`)
-            * `serverResetQueryAlways` (`pulumi.Input[bool]`)
+            * `ignoreStartupParameters` (`pulumi.Input[list]`)
+            * `serverResetQueryAlways` (`pulumi.Input[str]`)
 
           * `pglookout` (`pulumi.Input[dict]`)
-            * `maxFailoverReplicationTimeLag` (`pulumi.Input[float]`)
+            * `maxFailoverReplicationTimeLag` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
             * `pg` (`pulumi.Input[str]`)
@@ -1425,8 +1525,9 @@ class Service(pulumi.CustomResource):
 
           * `recoveryTargetTime` (`pulumi.Input[str]`)
           * `serviceToForkFrom` (`pulumi.Input[str]`)
+          * `synchronousReplication` (`pulumi.Input[str]`)
           * `timescaledb` (`pulumi.Input[dict]`)
-            * `maxBackgroundWorkers` (`pulumi.Input[float]`)
+            * `maxBackgroundWorkers` (`pulumi.Input[str]`)
 
           * `variant` (`pulumi.Input[str]`)
 
@@ -1436,8 +1537,8 @@ class Service(pulumi.CustomResource):
           * `migration` (`pulumi.Input[dict]`)
             * `host` (`pulumi.Input[str]`)
             * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[float]`)
-            * `ssl` (`pulumi.Input[bool]`)
+            * `port` (`pulumi.Input[str]`)
+            * `ssl` (`pulumi.Input[str]`)
             * `username` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
@@ -1448,12 +1549,12 @@ class Service(pulumi.CustomResource):
             * `prometheus` (`pulumi.Input[str]`)
             * `redis` (`pulumi.Input[str]`)
 
-          * `redisLfuDecayTime` (`pulumi.Input[float]`)
-          * `redisLfuLogFactor` (`pulumi.Input[float]`)
+          * `redisLfuDecayTime` (`pulumi.Input[str]`)
+          * `redisLfuLogFactor` (`pulumi.Input[str]`)
           * `redisMaxmemoryPolicy` (`pulumi.Input[str]`)
           * `redisNotifyKeyspaceEvents` (`pulumi.Input[str]`)
-          * `redisSsl` (`pulumi.Input[bool]`)
-          * `redisTimeout` (`pulumi.Input[float]`)
+          * `redisSsl` (`pulumi.Input[str]`)
+          * `redisTimeout` (`pulumi.Input[str]`)
 
         The **service_integrations** object supports the following:
 
@@ -1466,6 +1567,7 @@ class Service(pulumi.CustomResource):
 
         __props__["cassandra"] = cassandra
         __props__["cassandra_user_config"] = cassandra_user_config
+        __props__["client_timeout"] = client_timeout
         __props__["cloud_name"] = cloud_name
         __props__["components"] = components
         __props__["elasticsearch"] = elasticsearch
@@ -1477,6 +1579,8 @@ class Service(pulumi.CustomResource):
         __props__["kafka"] = kafka
         __props__["kafka_connect"] = kafka_connect
         __props__["kafka_connect_user_config"] = kafka_connect_user_config
+        __props__["kafka_mirrormaker"] = kafka_mirrormaker
+        __props__["kafka_mirrormaker_user_config"] = kafka_mirrormaker_user_config
         __props__["kafka_user_config"] = kafka_user_config
         __props__["maintenance_window_dow"] = maintenance_window_dow
         __props__["maintenance_window_time"] = maintenance_window_time

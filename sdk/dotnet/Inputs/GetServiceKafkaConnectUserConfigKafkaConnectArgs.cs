@@ -16,10 +16,10 @@ namespace Pulumi.Aiven.Inputs
         public string? ConsumerIsolationLevel { get; set; }
 
         [Input("consumerMaxPollRecords")]
-        public int? ConsumerMaxPollRecords { get; set; }
+        public string? ConsumerMaxPollRecords { get; set; }
 
         [Input("offsetFlushIntervalMs")]
-        public int? OffsetFlushIntervalMs { get; set; }
+        public string? OffsetFlushIntervalMs { get; set; }
 
         public GetServiceKafkaConnectUserConfigKafkaConnectArgs()
         {

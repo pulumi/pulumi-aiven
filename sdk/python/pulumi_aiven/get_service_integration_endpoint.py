@@ -81,15 +81,15 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
 
       * `datadogApiKey` (`str`)
       * `disableConsumerStats` (`str`)
-      * `maxPartitionContexts` (`float`)
+      * `maxPartitionContexts` (`str`)
       * `site` (`str`)
 
     The **external_elasticsearch_logs_user_config** object supports the following:
 
       * `ca` (`str`)
-      * `indexDaysMax` (`float`)
+      * `indexDaysMax` (`str`)
       * `indexPrefix` (`str`)
-      * `timeout` (`float`)
+      * `timeout` (`str`)
       * `url` (`str`)
 
     The **prometheus_user_config** object supports the following:
@@ -104,10 +104,10 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
       * `format` (`str`)
       * `key` (`str`)
       * `logline` (`str`)
-      * `port` (`float`)
+      * `port` (`str`)
       * `sd` (`str`)
       * `server` (`str`)
-      * `tls` (`bool`)
+      * `tls` (`str`)
     """
     __args__ = dict()
 

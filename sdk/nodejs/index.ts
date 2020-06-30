@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./account";
+export * from "./accountAuthentication";
 export * from "./accountTeam";
 export * from "./accountTeamMember";
 export * from "./accountTeamProject";
@@ -10,6 +11,7 @@ export * from "./connectionPool";
 export * from "./database";
 export * from "./elasticSearchAcl";
 export * from "./getAccount";
+export * from "./getAccountAuthentication";
 export * from "./getAccountTeam";
 export * from "./getAccountTeamMember";
 export * from "./getAccountTeamProject";
@@ -21,10 +23,12 @@ export * from "./getKafkaConnector";
 export * from "./getKafkaSchema";
 export * from "./getKafkaSchemaConfiguration";
 export * from "./getKafkaTopic";
+export * from "./getMirrorMakerReplicationFlow";
 export * from "./getProject";
 export * from "./getProjectUser";
 export * from "./getProjectVpc";
 export * from "./getService";
+export * from "./getServiceIntegration";
 export * from "./getServiceIntegrationEndpoint";
 export * from "./getServiceUser";
 export * from "./getVpcPeeringConnection";
@@ -33,6 +37,7 @@ export * from "./kafkaConnector";
 export * from "./kafkaSchema";
 export * from "./kafkaSchemaConfiguration";
 export * from "./kafkaTopic";
+export * from "./mirrorMakerReplicationFlow";
 export * from "./project";
 export * from "./projectUser";
 export * from "./projectVpc";

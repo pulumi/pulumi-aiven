@@ -15,27 +15,27 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? AutoCreateTopicsEnable;
         public readonly string? CompressionType;
-        public readonly int? ConnectionsMaxIdleMs;
-        public readonly int? DefaultReplicationFactor;
-        public readonly int? GroupMaxSessionTimeoutMs;
-        public readonly int? GroupMinSessionTimeoutMs;
-        public readonly int? LogCleanerMaxCompactionLagMs;
-        public readonly double? LogCleanerMinCleanableRatio;
-        public readonly int? LogCleanerMinCompactionLagMs;
+        public readonly string? ConnectionsMaxIdleMs;
+        public readonly string? DefaultReplicationFactor;
+        public readonly string? GroupMaxSessionTimeoutMs;
+        public readonly string? GroupMinSessionTimeoutMs;
+        public readonly string? LogCleanerMaxCompactionLagMs;
+        public readonly string? LogCleanerMinCleanableRatio;
+        public readonly string? LogCleanerMinCompactionLagMs;
         public readonly string? LogCleanupPolicy;
-        public readonly int? LogMessageTimestampDifferenceMaxMs;
+        public readonly string? LogMessageTimestampDifferenceMaxMs;
         public readonly string? LogMessageTimestampType;
-        public readonly int? LogRetentionBytes;
-        public readonly int? LogRetentionHours;
-        public readonly int? LogSegmentBytes;
-        public readonly int? MaxConnectionsPerIp;
-        public readonly int? MessageMaxBytes;
-        public readonly int? NumPartitions;
-        public readonly int? OffsetsRetentionMinutes;
-        public readonly int? ProducerPurgatoryPurgeIntervalRequests;
-        public readonly int? ReplicaFetchMaxBytes;
-        public readonly int? ReplicaFetchResponseMaxBytes;
-        public readonly int? SocketRequestMaxBytes;
+        public readonly string? LogRetentionBytes;
+        public readonly string? LogRetentionHours;
+        public readonly string? LogSegmentBytes;
+        public readonly string? MaxConnectionsPerIp;
+        public readonly string? MessageMaxBytes;
+        public readonly string? NumPartitions;
+        public readonly string? OffsetsRetentionMinutes;
+        public readonly string? ProducerPurgatoryPurgeIntervalRequests;
+        public readonly string? ReplicaFetchMaxBytes;
+        public readonly string? ReplicaFetchResponseMaxBytes;
+        public readonly string? SocketRequestMaxBytes;
 
         [OutputConstructor]
         private GetServiceKafkaUserConfigKafkaResult(
@@ -43,47 +43,47 @@ namespace Pulumi.Aiven.Outputs
 
             string? compressionType,
 
-            int? connectionsMaxIdleMs,
+            string? connectionsMaxIdleMs,
 
-            int? defaultReplicationFactor,
+            string? defaultReplicationFactor,
 
-            int? groupMaxSessionTimeoutMs,
+            string? groupMaxSessionTimeoutMs,
 
-            int? groupMinSessionTimeoutMs,
+            string? groupMinSessionTimeoutMs,
 
-            int? logCleanerMaxCompactionLagMs,
+            string? logCleanerMaxCompactionLagMs,
 
-            double? logCleanerMinCleanableRatio,
+            string? logCleanerMinCleanableRatio,
 
-            int? logCleanerMinCompactionLagMs,
+            string? logCleanerMinCompactionLagMs,
 
             string? logCleanupPolicy,
 
-            int? logMessageTimestampDifferenceMaxMs,
+            string? logMessageTimestampDifferenceMaxMs,
 
             string? logMessageTimestampType,
 
-            int? logRetentionBytes,
+            string? logRetentionBytes,
 
-            int? logRetentionHours,
+            string? logRetentionHours,
 
-            int? logSegmentBytes,
+            string? logSegmentBytes,
 
-            int? maxConnectionsPerIp,
+            string? maxConnectionsPerIp,
 
-            int? messageMaxBytes,
+            string? messageMaxBytes,
 
-            int? numPartitions,
+            string? numPartitions,
 
-            int? offsetsRetentionMinutes,
+            string? offsetsRetentionMinutes,
 
-            int? producerPurgatoryPurgeIntervalRequests,
+            string? producerPurgatoryPurgeIntervalRequests,
 
-            int? replicaFetchMaxBytes,
+            string? replicaFetchMaxBytes,
 
-            int? replicaFetchResponseMaxBytes,
+            string? replicaFetchResponseMaxBytes,
 
-            int? socketRequestMaxBytes)
+            string? socketRequestMaxBytes)
         {
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;
