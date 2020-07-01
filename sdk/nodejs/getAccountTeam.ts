@@ -9,15 +9,13 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
  * const accountTeam1 = aiven_account_team.accountId.apply(accountId => aiven.getAccountTeam({
  *     accountId: accountId,
- *     name: "accountTeam1",
+ *     name: "account_team1",
  * }, { async: true }));
  * ```
  */

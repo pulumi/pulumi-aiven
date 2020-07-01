@@ -10,6 +10,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v2/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewDatabase(ctx, "mydatabase", &aiven.DatabaseArgs{
+// 			DatabaseName: pulumi.String("<DATABASE_NAME>"),
+// 			Project:      pulumi.String(aiven_project.Myproject.Project),
+// 			ServiceName:  pulumi.String(aiven_service.Myservice.Service_name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Database struct {
 	pulumi.CustomResourceState
 

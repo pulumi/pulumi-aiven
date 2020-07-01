@@ -10,6 +10,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v2/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewService(ctx, "myservice", &aiven.ServiceArgs{
+// 			CloudName: pulumi.String("google-europe-west1"),
+// 			PgUserConfig: &aiven.ServicePgUserConfigArgs{
+// 				IpFilters: pulumi.StringArray{
+// 					pulumi.String("0.0.0.0/0"),
+// 				},
+// 				PgVersion: pulumi.String("10"),
+// 			},
+// 			Plan:                  pulumi.String("business-8"),
+// 			Project:               pulumi.String(aiven_project.Myproject.Project),
+// 			ProjectVpcId:          pulumi.String(aiven_project_vpc.Vpc_gcp_europe_west1.Id),
+// 			ServiceName:           pulumi.String("<SERVICE_NAME>"),
+// 			ServiceType:           pulumi.String("pg"),
+// 			TerminationProtection: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Service struct {
 	pulumi.CustomResourceState
 

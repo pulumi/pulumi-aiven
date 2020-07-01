@@ -10,12 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The account team project is intended to link and existing project to the existing account team. It is important to note 
+    /// The account team project is intended to link and existing project to the existing account team. It is important to note
     /// that the project should have an `account_id` property set and equal to account team you are trying to link this project.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

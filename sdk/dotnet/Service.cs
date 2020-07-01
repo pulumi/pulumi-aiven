@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
@@ -27,7 +25,7 @@ namespace Pulumi.Aiven
     ///             CloudName = "google-europe-west1",
     ///             PgUserConfig = new Aiven.Inputs.ServicePgUserConfigArgs
     ///             {
-    ///                 IpFilter = 
+    ///                 IpFilters = 
     ///                 {
     ///                     "0.0.0.0/0",
     ///                 },

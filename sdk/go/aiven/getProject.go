@@ -7,6 +7,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v2/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
+// 			Project: "<PROJECT_NAME>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("aiven:index/getProject:getProject", args, &rv, opts...)

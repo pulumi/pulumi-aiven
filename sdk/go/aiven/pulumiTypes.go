@@ -18,8 +18,7 @@ type ElasticSearchAclAcl struct {
 // ElasticSearchAclAclInput is an input type that accepts ElasticSearchAclAclArgs and ElasticSearchAclAclOutput values.
 // You can construct a concrete instance of `ElasticSearchAclAclInput` via:
 //
-// 		 ElasticSearchAclAclArgs{...}
-//
+//          ElasticSearchAclAclArgs{...}
 type ElasticSearchAclAclInput interface {
 	pulumi.Input
 
@@ -47,8 +46,7 @@ func (i ElasticSearchAclAclArgs) ToElasticSearchAclAclOutputWithContext(ctx cont
 // ElasticSearchAclAclArrayInput is an input type that accepts ElasticSearchAclAclArray and ElasticSearchAclAclArrayOutput values.
 // You can construct a concrete instance of `ElasticSearchAclAclArrayInput` via:
 //
-// 		 ElasticSearchAclAclArray{ ElasticSearchAclAclArgs{...} }
-//
+//          ElasticSearchAclAclArray{ ElasticSearchAclAclArgs{...} }
 type ElasticSearchAclAclArrayInput interface {
 	pulumi.Input
 
@@ -120,8 +118,7 @@ type ElasticSearchAclAclRule struct {
 // ElasticSearchAclAclRuleInput is an input type that accepts ElasticSearchAclAclRuleArgs and ElasticSearchAclAclRuleOutput values.
 // You can construct a concrete instance of `ElasticSearchAclAclRuleInput` via:
 //
-// 		 ElasticSearchAclAclRuleArgs{...}
-//
+//          ElasticSearchAclAclRuleArgs{...}
 type ElasticSearchAclAclRuleInput interface {
 	pulumi.Input
 
@@ -149,8 +146,7 @@ func (i ElasticSearchAclAclRuleArgs) ToElasticSearchAclAclRuleOutputWithContext(
 // ElasticSearchAclAclRuleArrayInput is an input type that accepts ElasticSearchAclAclRuleArray and ElasticSearchAclAclRuleArrayOutput values.
 // You can construct a concrete instance of `ElasticSearchAclAclRuleArrayInput` via:
 //
-// 		 ElasticSearchAclAclRuleArray{ ElasticSearchAclAclRuleArgs{...} }
-//
+//          ElasticSearchAclAclRuleArray{ ElasticSearchAclAclRuleArgs{...} }
 type ElasticSearchAclAclRuleArrayInput interface {
 	pulumi.Input
 
@@ -222,8 +218,7 @@ type KafkaConnectorTask struct {
 // KafkaConnectorTaskInput is an input type that accepts KafkaConnectorTaskArgs and KafkaConnectorTaskOutput values.
 // You can construct a concrete instance of `KafkaConnectorTaskInput` via:
 //
-// 		 KafkaConnectorTaskArgs{...}
-//
+//          KafkaConnectorTaskArgs{...}
 type KafkaConnectorTaskInput interface {
 	pulumi.Input
 
@@ -251,8 +246,7 @@ func (i KafkaConnectorTaskArgs) ToKafkaConnectorTaskOutputWithContext(ctx contex
 // KafkaConnectorTaskArrayInput is an input type that accepts KafkaConnectorTaskArray and KafkaConnectorTaskArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectorTaskArrayInput` via:
 //
-// 		 KafkaConnectorTaskArray{ KafkaConnectorTaskArgs{...} }
-//
+//          KafkaConnectorTaskArray{ KafkaConnectorTaskArgs{...} }
 type KafkaConnectorTaskArrayInput interface {
 	pulumi.Input
 
@@ -324,8 +318,7 @@ type KafkaTopicClientTimeout struct {
 // KafkaTopicClientTimeoutInput is an input type that accepts KafkaTopicClientTimeoutArgs and KafkaTopicClientTimeoutOutput values.
 // You can construct a concrete instance of `KafkaTopicClientTimeoutInput` via:
 //
-// 		 KafkaTopicClientTimeoutArgs{...}
-//
+//          KafkaTopicClientTimeoutArgs{...}
 type KafkaTopicClientTimeoutInput interface {
 	pulumi.Input
 
@@ -361,12 +354,11 @@ func (i KafkaTopicClientTimeoutArgs) ToKafkaTopicClientTimeoutPtrOutputWithConte
 // KafkaTopicClientTimeoutPtrInput is an input type that accepts KafkaTopicClientTimeoutArgs, KafkaTopicClientTimeoutPtr and KafkaTopicClientTimeoutPtrOutput values.
 // You can construct a concrete instance of `KafkaTopicClientTimeoutPtrInput` via:
 //
-// 		 KafkaTopicClientTimeoutArgs{...}
+//          KafkaTopicClientTimeoutArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type KafkaTopicClientTimeoutPtrInput interface {
 	pulumi.Input
 
@@ -467,8 +459,7 @@ type ProjectVpcClientTimeout struct {
 // ProjectVpcClientTimeoutInput is an input type that accepts ProjectVpcClientTimeoutArgs and ProjectVpcClientTimeoutOutput values.
 // You can construct a concrete instance of `ProjectVpcClientTimeoutInput` via:
 //
-// 		 ProjectVpcClientTimeoutArgs{...}
-//
+//          ProjectVpcClientTimeoutArgs{...}
 type ProjectVpcClientTimeoutInput interface {
 	pulumi.Input
 
@@ -504,12 +495,11 @@ func (i ProjectVpcClientTimeoutArgs) ToProjectVpcClientTimeoutPtrOutputWithConte
 // ProjectVpcClientTimeoutPtrInput is an input type that accepts ProjectVpcClientTimeoutArgs, ProjectVpcClientTimeoutPtr and ProjectVpcClientTimeoutPtrOutput values.
 // You can construct a concrete instance of `ProjectVpcClientTimeoutPtrInput` via:
 //
-// 		 ProjectVpcClientTimeoutArgs{...}
+//          ProjectVpcClientTimeoutArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectVpcClientTimeoutPtrInput interface {
 	pulumi.Input
 
@@ -608,8 +598,7 @@ type ServiceCassandra struct {
 // ServiceCassandraInput is an input type that accepts ServiceCassandraArgs and ServiceCassandraOutput values.
 // You can construct a concrete instance of `ServiceCassandraInput` via:
 //
-// 		 ServiceCassandraArgs{...}
-//
+//          ServiceCassandraArgs{...}
 type ServiceCassandraInput interface {
 	pulumi.Input
 
@@ -643,12 +632,11 @@ func (i ServiceCassandraArgs) ToServiceCassandraPtrOutputWithContext(ctx context
 // ServiceCassandraPtrInput is an input type that accepts ServiceCassandraArgs, ServiceCassandraPtr and ServiceCassandraPtrOutput values.
 // You can construct a concrete instance of `ServiceCassandraPtrInput` via:
 //
-// 		 ServiceCassandraArgs{...}
+//          ServiceCassandraArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceCassandraPtrInput interface {
 	pulumi.Input
 
@@ -727,8 +715,7 @@ type ServiceCassandraUserConfig struct {
 // ServiceCassandraUserConfigInput is an input type that accepts ServiceCassandraUserConfigArgs and ServiceCassandraUserConfigOutput values.
 // You can construct a concrete instance of `ServiceCassandraUserConfigInput` via:
 //
-// 		 ServiceCassandraUserConfigArgs{...}
-//
+//          ServiceCassandraUserConfigArgs{...}
 type ServiceCassandraUserConfigInput interface {
 	pulumi.Input
 
@@ -767,12 +754,11 @@ func (i ServiceCassandraUserConfigArgs) ToServiceCassandraUserConfigPtrOutputWit
 // ServiceCassandraUserConfigPtrInput is an input type that accepts ServiceCassandraUserConfigArgs, ServiceCassandraUserConfigPtr and ServiceCassandraUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceCassandraUserConfigPtrInput` via:
 //
-// 		 ServiceCassandraUserConfigArgs{...}
+//          ServiceCassandraUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceCassandraUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -911,8 +897,7 @@ type ServiceCassandraUserConfigPrivateAccess struct {
 // ServiceCassandraUserConfigPrivateAccessInput is an input type that accepts ServiceCassandraUserConfigPrivateAccessArgs and ServiceCassandraUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceCassandraUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceCassandraUserConfigPrivateAccessArgs{...}
-//
+//          ServiceCassandraUserConfigPrivateAccessArgs{...}
 type ServiceCassandraUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -947,12 +932,11 @@ func (i ServiceCassandraUserConfigPrivateAccessArgs) ToServiceCassandraUserConfi
 // ServiceCassandraUserConfigPrivateAccessPtrInput is an input type that accepts ServiceCassandraUserConfigPrivateAccessArgs, ServiceCassandraUserConfigPrivateAccessPtr and ServiceCassandraUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceCassandraUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceCassandraUserConfigPrivateAccessArgs{...}
+//          ServiceCassandraUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceCassandraUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -1039,8 +1023,7 @@ type ServiceCassandraUserConfigPublicAccess struct {
 // ServiceCassandraUserConfigPublicAccessInput is an input type that accepts ServiceCassandraUserConfigPublicAccessArgs and ServiceCassandraUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceCassandraUserConfigPublicAccessInput` via:
 //
-// 		 ServiceCassandraUserConfigPublicAccessArgs{...}
-//
+//          ServiceCassandraUserConfigPublicAccessArgs{...}
 type ServiceCassandraUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -1075,12 +1058,11 @@ func (i ServiceCassandraUserConfigPublicAccessArgs) ToServiceCassandraUserConfig
 // ServiceCassandraUserConfigPublicAccessPtrInput is an input type that accepts ServiceCassandraUserConfigPublicAccessArgs, ServiceCassandraUserConfigPublicAccessPtr and ServiceCassandraUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceCassandraUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceCassandraUserConfigPublicAccessArgs{...}
+//          ServiceCassandraUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceCassandraUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -1168,8 +1150,7 @@ type ServiceClientTimeout struct {
 // ServiceClientTimeoutInput is an input type that accepts ServiceClientTimeoutArgs and ServiceClientTimeoutOutput values.
 // You can construct a concrete instance of `ServiceClientTimeoutInput` via:
 //
-// 		 ServiceClientTimeoutArgs{...}
-//
+//          ServiceClientTimeoutArgs{...}
 type ServiceClientTimeoutInput interface {
 	pulumi.Input
 
@@ -1205,12 +1186,11 @@ func (i ServiceClientTimeoutArgs) ToServiceClientTimeoutPtrOutputWithContext(ctx
 // ServiceClientTimeoutPtrInput is an input type that accepts ServiceClientTimeoutArgs, ServiceClientTimeoutPtr and ServiceClientTimeoutPtrOutput values.
 // You can construct a concrete instance of `ServiceClientTimeoutPtrInput` via:
 //
-// 		 ServiceClientTimeoutArgs{...}
+//          ServiceClientTimeoutArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceClientTimeoutPtrInput interface {
 	pulumi.Input
 
@@ -1316,8 +1296,7 @@ type ServiceComponent struct {
 // ServiceComponentInput is an input type that accepts ServiceComponentArgs and ServiceComponentOutput values.
 // You can construct a concrete instance of `ServiceComponentInput` via:
 //
-// 		 ServiceComponentArgs{...}
-//
+//          ServiceComponentArgs{...}
 type ServiceComponentInput interface {
 	pulumi.Input
 
@@ -1350,8 +1329,7 @@ func (i ServiceComponentArgs) ToServiceComponentOutputWithContext(ctx context.Co
 // ServiceComponentArrayInput is an input type that accepts ServiceComponentArray and ServiceComponentArrayOutput values.
 // You can construct a concrete instance of `ServiceComponentArrayInput` via:
 //
-// 		 ServiceComponentArray{ ServiceComponentArgs{...} }
-//
+//          ServiceComponentArray{ ServiceComponentArgs{...} }
 type ServiceComponentArrayInput interface {
 	pulumi.Input
 
@@ -1442,8 +1420,7 @@ type ServiceElasticsearch struct {
 // ServiceElasticsearchInput is an input type that accepts ServiceElasticsearchArgs and ServiceElasticsearchOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchInput` via:
 //
-// 		 ServiceElasticsearchArgs{...}
-//
+//          ServiceElasticsearchArgs{...}
 type ServiceElasticsearchInput interface {
 	pulumi.Input
 
@@ -1478,12 +1455,11 @@ func (i ServiceElasticsearchArgs) ToServiceElasticsearchPtrOutputWithContext(ctx
 // ServiceElasticsearchPtrInput is an input type that accepts ServiceElasticsearchArgs, ServiceElasticsearchPtr and ServiceElasticsearchPtrOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchPtrInput` via:
 //
-// 		 ServiceElasticsearchArgs{...}
+//          ServiceElasticsearchArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceElasticsearchPtrInput interface {
 	pulumi.Input
 
@@ -1581,8 +1557,7 @@ type ServiceElasticsearchUserConfig struct {
 // ServiceElasticsearchUserConfigInput is an input type that accepts ServiceElasticsearchUserConfigArgs and ServiceElasticsearchUserConfigOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigInput` via:
 //
-// 		 ServiceElasticsearchUserConfigArgs{...}
-//
+//          ServiceElasticsearchUserConfigArgs{...}
 type ServiceElasticsearchUserConfigInput interface {
 	pulumi.Input
 
@@ -1628,12 +1603,11 @@ func (i ServiceElasticsearchUserConfigArgs) ToServiceElasticsearchUserConfigPtrO
 // ServiceElasticsearchUserConfigPtrInput is an input type that accepts ServiceElasticsearchUserConfigArgs, ServiceElasticsearchUserConfigPtr and ServiceElasticsearchUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigPtrInput` via:
 //
-// 		 ServiceElasticsearchUserConfigArgs{...}
+//          ServiceElasticsearchUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceElasticsearchUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -1893,8 +1867,7 @@ type ServiceElasticsearchUserConfigElasticsearch struct {
 // ServiceElasticsearchUserConfigElasticsearchInput is an input type that accepts ServiceElasticsearchUserConfigElasticsearchArgs and ServiceElasticsearchUserConfigElasticsearchOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigElasticsearchInput` via:
 //
-// 		 ServiceElasticsearchUserConfigElasticsearchArgs{...}
-//
+//          ServiceElasticsearchUserConfigElasticsearchArgs{...}
 type ServiceElasticsearchUserConfigElasticsearchInput interface {
 	pulumi.Input
 
@@ -1951,12 +1924,11 @@ func (i ServiceElasticsearchUserConfigElasticsearchArgs) ToServiceElasticsearchU
 // ServiceElasticsearchUserConfigElasticsearchPtrInput is an input type that accepts ServiceElasticsearchUserConfigElasticsearchArgs, ServiceElasticsearchUserConfigElasticsearchPtr and ServiceElasticsearchUserConfigElasticsearchPtrOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigElasticsearchPtrInput` via:
 //
-// 		 ServiceElasticsearchUserConfigElasticsearchArgs{...}
+//          ServiceElasticsearchUserConfigElasticsearchArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceElasticsearchUserConfigElasticsearchPtrInput interface {
 	pulumi.Input
 
@@ -2334,8 +2306,7 @@ type ServiceElasticsearchUserConfigIndexPattern struct {
 // ServiceElasticsearchUserConfigIndexPatternInput is an input type that accepts ServiceElasticsearchUserConfigIndexPatternArgs and ServiceElasticsearchUserConfigIndexPatternOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigIndexPatternInput` via:
 //
-// 		 ServiceElasticsearchUserConfigIndexPatternArgs{...}
-//
+//          ServiceElasticsearchUserConfigIndexPatternArgs{...}
 type ServiceElasticsearchUserConfigIndexPatternInput interface {
 	pulumi.Input
 
@@ -2363,8 +2334,7 @@ func (i ServiceElasticsearchUserConfigIndexPatternArgs) ToServiceElasticsearchUs
 // ServiceElasticsearchUserConfigIndexPatternArrayInput is an input type that accepts ServiceElasticsearchUserConfigIndexPatternArray and ServiceElasticsearchUserConfigIndexPatternArrayOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigIndexPatternArrayInput` via:
 //
-// 		 ServiceElasticsearchUserConfigIndexPatternArray{ ServiceElasticsearchUserConfigIndexPatternArgs{...} }
-//
+//          ServiceElasticsearchUserConfigIndexPatternArray{ ServiceElasticsearchUserConfigIndexPatternArgs{...} }
 type ServiceElasticsearchUserConfigIndexPatternArrayInput interface {
 	pulumi.Input
 
@@ -2437,8 +2407,7 @@ type ServiceElasticsearchUserConfigKibana struct {
 // ServiceElasticsearchUserConfigKibanaInput is an input type that accepts ServiceElasticsearchUserConfigKibanaArgs and ServiceElasticsearchUserConfigKibanaOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigKibanaInput` via:
 //
-// 		 ServiceElasticsearchUserConfigKibanaArgs{...}
-//
+//          ServiceElasticsearchUserConfigKibanaArgs{...}
 type ServiceElasticsearchUserConfigKibanaInput interface {
 	pulumi.Input
 
@@ -2475,12 +2444,11 @@ func (i ServiceElasticsearchUserConfigKibanaArgs) ToServiceElasticsearchUserConf
 // ServiceElasticsearchUserConfigKibanaPtrInput is an input type that accepts ServiceElasticsearchUserConfigKibanaArgs, ServiceElasticsearchUserConfigKibanaPtr and ServiceElasticsearchUserConfigKibanaPtrOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigKibanaPtrInput` via:
 //
-// 		 ServiceElasticsearchUserConfigKibanaArgs{...}
+//          ServiceElasticsearchUserConfigKibanaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceElasticsearchUserConfigKibanaPtrInput interface {
 	pulumi.Input
 
@@ -2595,8 +2563,7 @@ type ServiceElasticsearchUserConfigPrivateAccess struct {
 // ServiceElasticsearchUserConfigPrivateAccessInput is an input type that accepts ServiceElasticsearchUserConfigPrivateAccessArgs and ServiceElasticsearchUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceElasticsearchUserConfigPrivateAccessArgs{...}
-//
+//          ServiceElasticsearchUserConfigPrivateAccessArgs{...}
 type ServiceElasticsearchUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -2633,12 +2600,11 @@ func (i ServiceElasticsearchUserConfigPrivateAccessArgs) ToServiceElasticsearchU
 // ServiceElasticsearchUserConfigPrivateAccessPtrInput is an input type that accepts ServiceElasticsearchUserConfigPrivateAccessArgs, ServiceElasticsearchUserConfigPrivateAccessPtr and ServiceElasticsearchUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceElasticsearchUserConfigPrivateAccessArgs{...}
+//          ServiceElasticsearchUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceElasticsearchUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -2755,8 +2721,7 @@ type ServiceElasticsearchUserConfigPublicAccess struct {
 // ServiceElasticsearchUserConfigPublicAccessInput is an input type that accepts ServiceElasticsearchUserConfigPublicAccessArgs and ServiceElasticsearchUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigPublicAccessInput` via:
 //
-// 		 ServiceElasticsearchUserConfigPublicAccessArgs{...}
-//
+//          ServiceElasticsearchUserConfigPublicAccessArgs{...}
 type ServiceElasticsearchUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -2793,12 +2758,11 @@ func (i ServiceElasticsearchUserConfigPublicAccessArgs) ToServiceElasticsearchUs
 // ServiceElasticsearchUserConfigPublicAccessPtrInput is an input type that accepts ServiceElasticsearchUserConfigPublicAccessArgs, ServiceElasticsearchUserConfigPublicAccessPtr and ServiceElasticsearchUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceElasticsearchUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceElasticsearchUserConfigPublicAccessArgs{...}
+//          ServiceElasticsearchUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceElasticsearchUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -2912,8 +2876,7 @@ type ServiceGrafana struct {
 // ServiceGrafanaInput is an input type that accepts ServiceGrafanaArgs and ServiceGrafanaOutput values.
 // You can construct a concrete instance of `ServiceGrafanaInput` via:
 //
-// 		 ServiceGrafanaArgs{...}
-//
+//          ServiceGrafanaArgs{...}
 type ServiceGrafanaInput interface {
 	pulumi.Input
 
@@ -2947,12 +2910,11 @@ func (i ServiceGrafanaArgs) ToServiceGrafanaPtrOutputWithContext(ctx context.Con
 // ServiceGrafanaPtrInput is an input type that accepts ServiceGrafanaArgs, ServiceGrafanaPtr and ServiceGrafanaPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaPtrInput` via:
 //
-// 		 ServiceGrafanaArgs{...}
+//          ServiceGrafanaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaPtrInput interface {
 	pulumi.Input
 
@@ -3052,8 +3014,7 @@ type ServiceGrafanaUserConfig struct {
 // ServiceGrafanaUserConfigInput is an input type that accepts ServiceGrafanaUserConfigArgs and ServiceGrafanaUserConfigOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigInput` via:
 //
-// 		 ServiceGrafanaUserConfigArgs{...}
-//
+//          ServiceGrafanaUserConfigArgs{...}
 type ServiceGrafanaUserConfigInput interface {
 	pulumi.Input
 
@@ -3113,12 +3074,11 @@ func (i ServiceGrafanaUserConfigArgs) ToServiceGrafanaUserConfigPtrOutputWithCon
 // ServiceGrafanaUserConfigPtrInput is an input type that accepts ServiceGrafanaUserConfigArgs, ServiceGrafanaUserConfigPtr and ServiceGrafanaUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigPtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigArgs{...}
+//          ServiceGrafanaUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -3541,8 +3501,7 @@ type ServiceGrafanaUserConfigAuthGenericOauth struct {
 // ServiceGrafanaUserConfigAuthGenericOauthInput is an input type that accepts ServiceGrafanaUserConfigAuthGenericOauthArgs and ServiceGrafanaUserConfigAuthGenericOauthOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGenericOauthInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGenericOauthArgs{...}
-//
+//          ServiceGrafanaUserConfigAuthGenericOauthArgs{...}
 type ServiceGrafanaUserConfigAuthGenericOauthInput interface {
 	pulumi.Input
 
@@ -3586,12 +3545,11 @@ func (i ServiceGrafanaUserConfigAuthGenericOauthArgs) ToServiceGrafanaUserConfig
 // ServiceGrafanaUserConfigAuthGenericOauthPtrInput is an input type that accepts ServiceGrafanaUserConfigAuthGenericOauthArgs, ServiceGrafanaUserConfigAuthGenericOauthPtr and ServiceGrafanaUserConfigAuthGenericOauthPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGenericOauthPtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGenericOauthArgs{...}
+//          ServiceGrafanaUserConfigAuthGenericOauthArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigAuthGenericOauthPtrInput interface {
 	pulumi.Input
 
@@ -3799,8 +3757,7 @@ type ServiceGrafanaUserConfigAuthGithub struct {
 // ServiceGrafanaUserConfigAuthGithubInput is an input type that accepts ServiceGrafanaUserConfigAuthGithubArgs and ServiceGrafanaUserConfigAuthGithubOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGithubInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGithubArgs{...}
-//
+//          ServiceGrafanaUserConfigAuthGithubArgs{...}
 type ServiceGrafanaUserConfigAuthGithubInput interface {
 	pulumi.Input
 
@@ -3839,12 +3796,11 @@ func (i ServiceGrafanaUserConfigAuthGithubArgs) ToServiceGrafanaUserConfigAuthGi
 // ServiceGrafanaUserConfigAuthGithubPtrInput is an input type that accepts ServiceGrafanaUserConfigAuthGithubArgs, ServiceGrafanaUserConfigAuthGithubPtr and ServiceGrafanaUserConfigAuthGithubPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGithubPtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGithubArgs{...}
+//          ServiceGrafanaUserConfigAuthGithubArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigAuthGithubPtrInput interface {
 	pulumi.Input
 
@@ -3989,8 +3945,7 @@ type ServiceGrafanaUserConfigAuthGitlab struct {
 // ServiceGrafanaUserConfigAuthGitlabInput is an input type that accepts ServiceGrafanaUserConfigAuthGitlabArgs and ServiceGrafanaUserConfigAuthGitlabOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGitlabInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGitlabArgs{...}
-//
+//          ServiceGrafanaUserConfigAuthGitlabArgs{...}
 type ServiceGrafanaUserConfigAuthGitlabInput interface {
 	pulumi.Input
 
@@ -4031,12 +3986,11 @@ func (i ServiceGrafanaUserConfigAuthGitlabArgs) ToServiceGrafanaUserConfigAuthGi
 // ServiceGrafanaUserConfigAuthGitlabPtrInput is an input type that accepts ServiceGrafanaUserConfigAuthGitlabArgs, ServiceGrafanaUserConfigAuthGitlabPtr and ServiceGrafanaUserConfigAuthGitlabPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGitlabPtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGitlabArgs{...}
+//          ServiceGrafanaUserConfigAuthGitlabArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigAuthGitlabPtrInput interface {
 	pulumi.Input
 
@@ -4204,8 +4158,7 @@ type ServiceGrafanaUserConfigAuthGoogle struct {
 // ServiceGrafanaUserConfigAuthGoogleInput is an input type that accepts ServiceGrafanaUserConfigAuthGoogleArgs and ServiceGrafanaUserConfigAuthGoogleOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGoogleInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGoogleArgs{...}
-//
+//          ServiceGrafanaUserConfigAuthGoogleArgs{...}
 type ServiceGrafanaUserConfigAuthGoogleInput interface {
 	pulumi.Input
 
@@ -4243,12 +4196,11 @@ func (i ServiceGrafanaUserConfigAuthGoogleArgs) ToServiceGrafanaUserConfigAuthGo
 // ServiceGrafanaUserConfigAuthGooglePtrInput is an input type that accepts ServiceGrafanaUserConfigAuthGoogleArgs, ServiceGrafanaUserConfigAuthGooglePtr and ServiceGrafanaUserConfigAuthGooglePtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigAuthGooglePtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigAuthGoogleArgs{...}
+//          ServiceGrafanaUserConfigAuthGoogleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigAuthGooglePtrInput interface {
 	pulumi.Input
 
@@ -4377,8 +4329,7 @@ type ServiceGrafanaUserConfigExternalImageStorage struct {
 // ServiceGrafanaUserConfigExternalImageStorageInput is an input type that accepts ServiceGrafanaUserConfigExternalImageStorageArgs and ServiceGrafanaUserConfigExternalImageStorageOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigExternalImageStorageInput` via:
 //
-// 		 ServiceGrafanaUserConfigExternalImageStorageArgs{...}
-//
+//          ServiceGrafanaUserConfigExternalImageStorageArgs{...}
 type ServiceGrafanaUserConfigExternalImageStorageInput interface {
 	pulumi.Input
 
@@ -4416,12 +4367,11 @@ func (i ServiceGrafanaUserConfigExternalImageStorageArgs) ToServiceGrafanaUserCo
 // ServiceGrafanaUserConfigExternalImageStoragePtrInput is an input type that accepts ServiceGrafanaUserConfigExternalImageStorageArgs, ServiceGrafanaUserConfigExternalImageStoragePtr and ServiceGrafanaUserConfigExternalImageStoragePtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigExternalImageStoragePtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigExternalImageStorageArgs{...}
+//          ServiceGrafanaUserConfigExternalImageStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigExternalImageStoragePtrInput interface {
 	pulumi.Input
 
@@ -4549,8 +4499,7 @@ type ServiceGrafanaUserConfigPrivateAccess struct {
 // ServiceGrafanaUserConfigPrivateAccessInput is an input type that accepts ServiceGrafanaUserConfigPrivateAccessArgs and ServiceGrafanaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceGrafanaUserConfigPrivateAccessArgs{...}
-//
+//          ServiceGrafanaUserConfigPrivateAccessArgs{...}
 type ServiceGrafanaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -4585,12 +4534,11 @@ func (i ServiceGrafanaUserConfigPrivateAccessArgs) ToServiceGrafanaUserConfigPri
 // ServiceGrafanaUserConfigPrivateAccessPtrInput is an input type that accepts ServiceGrafanaUserConfigPrivateAccessArgs, ServiceGrafanaUserConfigPrivateAccessPtr and ServiceGrafanaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigPrivateAccessArgs{...}
+//          ServiceGrafanaUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -4677,8 +4625,7 @@ type ServiceGrafanaUserConfigPublicAccess struct {
 // ServiceGrafanaUserConfigPublicAccessInput is an input type that accepts ServiceGrafanaUserConfigPublicAccessArgs and ServiceGrafanaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigPublicAccessInput` via:
 //
-// 		 ServiceGrafanaUserConfigPublicAccessArgs{...}
-//
+//          ServiceGrafanaUserConfigPublicAccessArgs{...}
 type ServiceGrafanaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -4713,12 +4660,11 @@ func (i ServiceGrafanaUserConfigPublicAccessArgs) ToServiceGrafanaUserConfigPubl
 // ServiceGrafanaUserConfigPublicAccessPtrInput is an input type that accepts ServiceGrafanaUserConfigPublicAccessArgs, ServiceGrafanaUserConfigPublicAccessPtr and ServiceGrafanaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigPublicAccessArgs{...}
+//          ServiceGrafanaUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -4811,8 +4757,7 @@ type ServiceGrafanaUserConfigSmtpServer struct {
 // ServiceGrafanaUserConfigSmtpServerInput is an input type that accepts ServiceGrafanaUserConfigSmtpServerArgs and ServiceGrafanaUserConfigSmtpServerOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigSmtpServerInput` via:
 //
-// 		 ServiceGrafanaUserConfigSmtpServerArgs{...}
-//
+//          ServiceGrafanaUserConfigSmtpServerArgs{...}
 type ServiceGrafanaUserConfigSmtpServerInput interface {
 	pulumi.Input
 
@@ -4853,12 +4798,11 @@ func (i ServiceGrafanaUserConfigSmtpServerArgs) ToServiceGrafanaUserConfigSmtpSe
 // ServiceGrafanaUserConfigSmtpServerPtrInput is an input type that accepts ServiceGrafanaUserConfigSmtpServerArgs, ServiceGrafanaUserConfigSmtpServerPtr and ServiceGrafanaUserConfigSmtpServerPtrOutput values.
 // You can construct a concrete instance of `ServiceGrafanaUserConfigSmtpServerPtrInput` via:
 //
-// 		 ServiceGrafanaUserConfigSmtpServerArgs{...}
+//          ServiceGrafanaUserConfigSmtpServerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceGrafanaUserConfigSmtpServerPtrInput interface {
 	pulumi.Input
 
@@ -5023,8 +4967,7 @@ type ServiceInfluxdb struct {
 // ServiceInfluxdbInput is an input type that accepts ServiceInfluxdbArgs and ServiceInfluxdbOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbInput` via:
 //
-// 		 ServiceInfluxdbArgs{...}
-//
+//          ServiceInfluxdbArgs{...}
 type ServiceInfluxdbInput interface {
 	pulumi.Input
 
@@ -5059,12 +5002,11 @@ func (i ServiceInfluxdbArgs) ToServiceInfluxdbPtrOutputWithContext(ctx context.C
 // ServiceInfluxdbPtrInput is an input type that accepts ServiceInfluxdbArgs, ServiceInfluxdbPtr and ServiceInfluxdbPtrOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbPtrInput` via:
 //
-// 		 ServiceInfluxdbArgs{...}
+//          ServiceInfluxdbArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceInfluxdbPtrInput interface {
 	pulumi.Input
 
@@ -5155,8 +5097,7 @@ type ServiceInfluxdbUserConfig struct {
 // ServiceInfluxdbUserConfigInput is an input type that accepts ServiceInfluxdbUserConfigArgs and ServiceInfluxdbUserConfigOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbUserConfigInput` via:
 //
-// 		 ServiceInfluxdbUserConfigArgs{...}
-//
+//          ServiceInfluxdbUserConfigArgs{...}
 type ServiceInfluxdbUserConfigInput interface {
 	pulumi.Input
 
@@ -5195,12 +5136,11 @@ func (i ServiceInfluxdbUserConfigArgs) ToServiceInfluxdbUserConfigPtrOutputWithC
 // ServiceInfluxdbUserConfigPtrInput is an input type that accepts ServiceInfluxdbUserConfigArgs, ServiceInfluxdbUserConfigPtr and ServiceInfluxdbUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbUserConfigPtrInput` via:
 //
-// 		 ServiceInfluxdbUserConfigArgs{...}
+//          ServiceInfluxdbUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceInfluxdbUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -5339,8 +5279,7 @@ type ServiceInfluxdbUserConfigPrivateAccess struct {
 // ServiceInfluxdbUserConfigPrivateAccessInput is an input type that accepts ServiceInfluxdbUserConfigPrivateAccessArgs and ServiceInfluxdbUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceInfluxdbUserConfigPrivateAccessArgs{...}
-//
+//          ServiceInfluxdbUserConfigPrivateAccessArgs{...}
 type ServiceInfluxdbUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -5375,12 +5314,11 @@ func (i ServiceInfluxdbUserConfigPrivateAccessArgs) ToServiceInfluxdbUserConfigP
 // ServiceInfluxdbUserConfigPrivateAccessPtrInput is an input type that accepts ServiceInfluxdbUserConfigPrivateAccessArgs, ServiceInfluxdbUserConfigPrivateAccessPtr and ServiceInfluxdbUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceInfluxdbUserConfigPrivateAccessArgs{...}
+//          ServiceInfluxdbUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceInfluxdbUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -5467,8 +5405,7 @@ type ServiceInfluxdbUserConfigPublicAccess struct {
 // ServiceInfluxdbUserConfigPublicAccessInput is an input type that accepts ServiceInfluxdbUserConfigPublicAccessArgs and ServiceInfluxdbUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbUserConfigPublicAccessInput` via:
 //
-// 		 ServiceInfluxdbUserConfigPublicAccessArgs{...}
-//
+//          ServiceInfluxdbUserConfigPublicAccessArgs{...}
 type ServiceInfluxdbUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -5503,12 +5440,11 @@ func (i ServiceInfluxdbUserConfigPublicAccessArgs) ToServiceInfluxdbUserConfigPu
 // ServiceInfluxdbUserConfigPublicAccessPtrInput is an input type that accepts ServiceInfluxdbUserConfigPublicAccessArgs, ServiceInfluxdbUserConfigPublicAccessPtr and ServiceInfluxdbUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceInfluxdbUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceInfluxdbUserConfigPublicAccessArgs{...}
+//          ServiceInfluxdbUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceInfluxdbUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -5598,8 +5534,7 @@ type ServiceIntegrationEndpointDatadogUserConfig struct {
 // ServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigArgs and ServiceIntegrationEndpointDatadogUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigInput` via:
 //
-// 		 ServiceIntegrationEndpointDatadogUserConfigArgs{...}
-//
+//          ServiceIntegrationEndpointDatadogUserConfigArgs{...}
 type ServiceIntegrationEndpointDatadogUserConfigInput interface {
 	pulumi.Input
 
@@ -5637,12 +5572,11 @@ func (i ServiceIntegrationEndpointDatadogUserConfigArgs) ToServiceIntegrationEnd
 // ServiceIntegrationEndpointDatadogUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigArgs, ServiceIntegrationEndpointDatadogUserConfigPtr and ServiceIntegrationEndpointDatadogUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationEndpointDatadogUserConfigArgs{...}
+//          ServiceIntegrationEndpointDatadogUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationEndpointDatadogUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -5774,8 +5708,7 @@ type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
 // ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput` via:
 //
-// 		 ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
-//
+//          ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -5814,12 +5747,11 @@ func (i ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ToSer
 // ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs, ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtr and ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
+//          ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -5961,8 +5893,7 @@ type ServiceIntegrationEndpointPrometheusUserConfig struct {
 // ServiceIntegrationEndpointPrometheusUserConfigInput is an input type that accepts ServiceIntegrationEndpointPrometheusUserConfigArgs and ServiceIntegrationEndpointPrometheusUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointPrometheusUserConfigInput` via:
 //
-// 		 ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
-//
+//          ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
 type ServiceIntegrationEndpointPrometheusUserConfigInput interface {
 	pulumi.Input
 
@@ -5998,12 +5929,11 @@ func (i ServiceIntegrationEndpointPrometheusUserConfigArgs) ToServiceIntegration
 // ServiceIntegrationEndpointPrometheusUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointPrometheusUserConfigArgs, ServiceIntegrationEndpointPrometheusUserConfigPtr and ServiceIntegrationEndpointPrometheusUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointPrometheusUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
+//          ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationEndpointPrometheusUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -6113,8 +6043,7 @@ type ServiceIntegrationEndpointRsyslogUserConfig struct {
 // ServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts ServiceIntegrationEndpointRsyslogUserConfigArgs and ServiceIntegrationEndpointRsyslogUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointRsyslogUserConfigInput` via:
 //
-// 		 ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
-//
+//          ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
 type ServiceIntegrationEndpointRsyslogUserConfigInput interface {
 	pulumi.Input
 
@@ -6157,12 +6086,11 @@ func (i ServiceIntegrationEndpointRsyslogUserConfigArgs) ToServiceIntegrationEnd
 // ServiceIntegrationEndpointRsyslogUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointRsyslogUserConfigArgs, ServiceIntegrationEndpointRsyslogUserConfigPtr and ServiceIntegrationEndpointRsyslogUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointRsyslogUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
+//          ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationEndpointRsyslogUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -6355,8 +6283,7 @@ type ServiceIntegrationKafkaConnectUserConfig struct {
 // ServiceIntegrationKafkaConnectUserConfigInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigArgs and ServiceIntegrationKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigInput` via:
 //
-// 		 ServiceIntegrationKafkaConnectUserConfigArgs{...}
-//
+//          ServiceIntegrationKafkaConnectUserConfigArgs{...}
 type ServiceIntegrationKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -6391,12 +6318,11 @@ func (i ServiceIntegrationKafkaConnectUserConfigArgs) ToServiceIntegrationKafkaC
 // ServiceIntegrationKafkaConnectUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigArgs, ServiceIntegrationKafkaConnectUserConfigPtr and ServiceIntegrationKafkaConnectUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationKafkaConnectUserConfigArgs{...}
+//          ServiceIntegrationKafkaConnectUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationKafkaConnectUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -6488,8 +6414,7 @@ type ServiceIntegrationKafkaConnectUserConfigKafkaConnect struct {
 // ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs and ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput` via:
 //
-// 		 ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
-//
+//          ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 type ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -6527,12 +6452,11 @@ func (i ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToServiceInteg
 // ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs, ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr and ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-// 		 ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//          ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -6660,8 +6584,7 @@ type ServiceIntegrationKafkaMirrormakerUserConfig struct {
 // ServiceIntegrationKafkaMirrormakerUserConfigInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigArgs and ServiceIntegrationKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigInput` via:
 //
-// 		 ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
-//
+//          ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
 type ServiceIntegrationKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -6696,12 +6619,11 @@ func (i ServiceIntegrationKafkaMirrormakerUserConfigArgs) ToServiceIntegrationKa
 // ServiceIntegrationKafkaMirrormakerUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigArgs, ServiceIntegrationKafkaMirrormakerUserConfigPtr and ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+//          ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationKafkaMirrormakerUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -6791,8 +6713,7 @@ type ServiceIntegrationLogsUserConfig struct {
 // ServiceIntegrationLogsUserConfigInput is an input type that accepts ServiceIntegrationLogsUserConfigArgs and ServiceIntegrationLogsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationLogsUserConfigInput` via:
 //
-// 		 ServiceIntegrationLogsUserConfigArgs{...}
-//
+//          ServiceIntegrationLogsUserConfigArgs{...}
 type ServiceIntegrationLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -6828,12 +6749,11 @@ func (i ServiceIntegrationLogsUserConfigArgs) ToServiceIntegrationLogsUserConfig
 // ServiceIntegrationLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationLogsUserConfigArgs, ServiceIntegrationLogsUserConfigPtr and ServiceIntegrationLogsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationLogsUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationLogsUserConfigArgs{...}
+//          ServiceIntegrationLogsUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationLogsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -6933,8 +6853,7 @@ type ServiceIntegrationMirrormakerUserConfig struct {
 // ServiceIntegrationMirrormakerUserConfigInput is an input type that accepts ServiceIntegrationMirrormakerUserConfigArgs and ServiceIntegrationMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMirrormakerUserConfigInput` via:
 //
-// 		 ServiceIntegrationMirrormakerUserConfigArgs{...}
-//
+//          ServiceIntegrationMirrormakerUserConfigArgs{...}
 type ServiceIntegrationMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -6969,12 +6888,11 @@ func (i ServiceIntegrationMirrormakerUserConfigArgs) ToServiceIntegrationMirrorm
 // ServiceIntegrationMirrormakerUserConfigPtrInput is an input type that accepts ServiceIntegrationMirrormakerUserConfigArgs, ServiceIntegrationMirrormakerUserConfigPtr and ServiceIntegrationMirrormakerUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMirrormakerUserConfigPtrInput` via:
 //
-// 		 ServiceIntegrationMirrormakerUserConfigArgs{...}
+//          ServiceIntegrationMirrormakerUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceIntegrationMirrormakerUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -7065,8 +6983,7 @@ type ServiceKafka struct {
 // ServiceKafkaInput is an input type that accepts ServiceKafkaArgs and ServiceKafkaOutput values.
 // You can construct a concrete instance of `ServiceKafkaInput` via:
 //
-// 		 ServiceKafkaArgs{...}
-//
+//          ServiceKafkaArgs{...}
 type ServiceKafkaInput interface {
 	pulumi.Input
 
@@ -7105,12 +7022,11 @@ func (i ServiceKafkaArgs) ToServiceKafkaPtrOutputWithContext(ctx context.Context
 // ServiceKafkaPtrInput is an input type that accepts ServiceKafkaArgs, ServiceKafkaPtr and ServiceKafkaPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaPtrInput` via:
 //
-// 		 ServiceKafkaArgs{...}
+//          ServiceKafkaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaPtrInput interface {
 	pulumi.Input
 
@@ -7248,8 +7164,7 @@ type ServiceKafkaConnect struct {
 // ServiceKafkaConnectInput is an input type that accepts ServiceKafkaConnectArgs and ServiceKafkaConnectOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectInput` via:
 //
-// 		 ServiceKafkaConnectArgs{...}
-//
+//          ServiceKafkaConnectArgs{...}
 type ServiceKafkaConnectInput interface {
 	pulumi.Input
 
@@ -7283,12 +7198,11 @@ func (i ServiceKafkaConnectArgs) ToServiceKafkaConnectPtrOutputWithContext(ctx c
 // ServiceKafkaConnectPtrInput is an input type that accepts ServiceKafkaConnectArgs, ServiceKafkaConnectPtr and ServiceKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectPtrInput` via:
 //
-// 		 ServiceKafkaConnectArgs{...}
+//          ServiceKafkaConnectArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -7366,8 +7280,7 @@ type ServiceKafkaConnectUserConfig struct {
 // ServiceKafkaConnectUserConfigInput is an input type that accepts ServiceKafkaConnectUserConfigArgs and ServiceKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigArgs{...}
-//
+//          ServiceKafkaConnectUserConfigArgs{...}
 type ServiceKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -7405,12 +7318,11 @@ func (i ServiceKafkaConnectUserConfigArgs) ToServiceKafkaConnectUserConfigPtrOut
 // ServiceKafkaConnectUserConfigPtrInput is an input type that accepts ServiceKafkaConnectUserConfigArgs, ServiceKafkaConnectUserConfigPtr and ServiceKafkaConnectUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigPtrInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigArgs{...}
+//          ServiceKafkaConnectUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaConnectUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -7544,8 +7456,7 @@ type ServiceKafkaConnectUserConfigKafkaConnect struct {
 // ServiceKafkaConnectUserConfigKafkaConnectInput is an input type that accepts ServiceKafkaConnectUserConfigKafkaConnectArgs and ServiceKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigKafkaConnectInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigKafkaConnectArgs{...}
-//
+//          ServiceKafkaConnectUserConfigKafkaConnectArgs{...}
 type ServiceKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -7582,12 +7493,11 @@ func (i ServiceKafkaConnectUserConfigKafkaConnectArgs) ToServiceKafkaConnectUser
 // ServiceKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts ServiceKafkaConnectUserConfigKafkaConnectArgs, ServiceKafkaConnectUserConfigKafkaConnectPtr and ServiceKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigKafkaConnectArgs{...}
+//          ServiceKafkaConnectUserConfigKafkaConnectArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -7703,8 +7613,7 @@ type ServiceKafkaConnectUserConfigPrivateAccess struct {
 // ServiceKafkaConnectUserConfigPrivateAccessInput is an input type that accepts ServiceKafkaConnectUserConfigPrivateAccessArgs and ServiceKafkaConnectUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigPrivateAccessArgs{...}
-//
+//          ServiceKafkaConnectUserConfigPrivateAccessArgs{...}
 type ServiceKafkaConnectUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -7740,12 +7649,11 @@ func (i ServiceKafkaConnectUserConfigPrivateAccessArgs) ToServiceKafkaConnectUse
 // ServiceKafkaConnectUserConfigPrivateAccessPtrInput is an input type that accepts ServiceKafkaConnectUserConfigPrivateAccessArgs, ServiceKafkaConnectUserConfigPrivateAccessPtr and ServiceKafkaConnectUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigPrivateAccessArgs{...}
+//          ServiceKafkaConnectUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaConnectUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -7848,8 +7756,7 @@ type ServiceKafkaConnectUserConfigPublicAccess struct {
 // ServiceKafkaConnectUserConfigPublicAccessInput is an input type that accepts ServiceKafkaConnectUserConfigPublicAccessArgs and ServiceKafkaConnectUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigPublicAccessInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigPublicAccessArgs{...}
-//
+//          ServiceKafkaConnectUserConfigPublicAccessArgs{...}
 type ServiceKafkaConnectUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -7885,12 +7792,11 @@ func (i ServiceKafkaConnectUserConfigPublicAccessArgs) ToServiceKafkaConnectUser
 // ServiceKafkaConnectUserConfigPublicAccessPtrInput is an input type that accepts ServiceKafkaConnectUserConfigPublicAccessArgs, ServiceKafkaConnectUserConfigPublicAccessPtr and ServiceKafkaConnectUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaConnectUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceKafkaConnectUserConfigPublicAccessArgs{...}
+//          ServiceKafkaConnectUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaConnectUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -7991,8 +7897,7 @@ type ServiceKafkaMirrormaker struct {
 // ServiceKafkaMirrormakerInput is an input type that accepts ServiceKafkaMirrormakerArgs and ServiceKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `ServiceKafkaMirrormakerInput` via:
 //
-// 		 ServiceKafkaMirrormakerArgs{...}
-//
+//          ServiceKafkaMirrormakerArgs{...}
 type ServiceKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -8026,12 +7931,11 @@ func (i ServiceKafkaMirrormakerArgs) ToServiceKafkaMirrormakerPtrOutputWithConte
 // ServiceKafkaMirrormakerPtrInput is an input type that accepts ServiceKafkaMirrormakerArgs, ServiceKafkaMirrormakerPtr and ServiceKafkaMirrormakerPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaMirrormakerPtrInput` via:
 //
-// 		 ServiceKafkaMirrormakerArgs{...}
+//          ServiceKafkaMirrormakerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaMirrormakerPtrInput interface {
 	pulumi.Input
 
@@ -8107,8 +8011,7 @@ type ServiceKafkaMirrormakerUserConfig struct {
 // ServiceKafkaMirrormakerUserConfigInput is an input type that accepts ServiceKafkaMirrormakerUserConfigArgs and ServiceKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigInput` via:
 //
-// 		 ServiceKafkaMirrormakerUserConfigArgs{...}
-//
+//          ServiceKafkaMirrormakerUserConfigArgs{...}
 type ServiceKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -8144,12 +8047,11 @@ func (i ServiceKafkaMirrormakerUserConfigArgs) ToServiceKafkaMirrormakerUserConf
 // ServiceKafkaMirrormakerUserConfigPtrInput is an input type that accepts ServiceKafkaMirrormakerUserConfigArgs, ServiceKafkaMirrormakerUserConfigPtr and ServiceKafkaMirrormakerUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigPtrInput` via:
 //
-// 		 ServiceKafkaMirrormakerUserConfigArgs{...}
+//          ServiceKafkaMirrormakerUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaMirrormakerUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -8254,8 +8156,7 @@ type ServiceKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 // ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs and ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
 //
-// 		 ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
-//
+//          ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -8293,12 +8194,11 @@ func (i ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToServiceKafkaMir
 // ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs, ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtr and ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
 //
-// 		 ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//          ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
 	pulumi.Input
 
@@ -8441,8 +8341,7 @@ type ServiceKafkaUserConfig struct {
 // ServiceKafkaUserConfigInput is an input type that accepts ServiceKafkaUserConfigArgs and ServiceKafkaUserConfigOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigInput` via:
 //
-// 		 ServiceKafkaUserConfigArgs{...}
-//
+//          ServiceKafkaUserConfigArgs{...}
 type ServiceKafkaUserConfigInput interface {
 	pulumi.Input
 
@@ -8488,12 +8387,11 @@ func (i ServiceKafkaUserConfigArgs) ToServiceKafkaUserConfigPtrOutputWithContext
 // ServiceKafkaUserConfigPtrInput is an input type that accepts ServiceKafkaUserConfigArgs, ServiceKafkaUserConfigPtr and ServiceKafkaUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigPtrInput` via:
 //
-// 		 ServiceKafkaUserConfigArgs{...}
+//          ServiceKafkaUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -8747,8 +8645,7 @@ type ServiceKafkaUserConfigKafka struct {
 // ServiceKafkaUserConfigKafkaInput is an input type that accepts ServiceKafkaUserConfigKafkaArgs and ServiceKafkaUserConfigKafkaOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaArgs{...}
-//
+//          ServiceKafkaUserConfigKafkaArgs{...}
 type ServiceKafkaUserConfigKafkaInput interface {
 	pulumi.Input
 
@@ -8805,12 +8702,11 @@ func (i ServiceKafkaUserConfigKafkaArgs) ToServiceKafkaUserConfigKafkaPtrOutputW
 // ServiceKafkaUserConfigKafkaPtrInput is an input type that accepts ServiceKafkaUserConfigKafkaArgs, ServiceKafkaUserConfigKafkaPtr and ServiceKafkaUserConfigKafkaPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaPtrInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaArgs{...}
+//          ServiceKafkaUserConfigKafkaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaUserConfigKafkaPtrInput interface {
 	pulumi.Input
 
@@ -9184,8 +9080,7 @@ type ServiceKafkaUserConfigKafkaAuthenticationMethods struct {
 // ServiceKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs and ServiceKafkaUserConfigKafkaAuthenticationMethodsOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaAuthenticationMethodsInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
-//
+//          ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 type ServiceKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 	pulumi.Input
 
@@ -9221,12 +9116,11 @@ func (i ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs) ToServiceKafkaUser
 // ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput is an input type that accepts ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs, ServiceKafkaUserConfigKafkaAuthenticationMethodsPtr and ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
+//          ServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput interface {
 	pulumi.Input
 
@@ -9330,8 +9224,7 @@ type ServiceKafkaUserConfigKafkaConnectConfig struct {
 // ServiceKafkaUserConfigKafkaConnectConfigInput is an input type that accepts ServiceKafkaUserConfigKafkaConnectConfigArgs and ServiceKafkaUserConfigKafkaConnectConfigOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaConnectConfigInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaConnectConfigArgs{...}
-//
+//          ServiceKafkaUserConfigKafkaConnectConfigArgs{...}
 type ServiceKafkaUserConfigKafkaConnectConfigInput interface {
 	pulumi.Input
 
@@ -9368,12 +9261,11 @@ func (i ServiceKafkaUserConfigKafkaConnectConfigArgs) ToServiceKafkaUserConfigKa
 // ServiceKafkaUserConfigKafkaConnectConfigPtrInput is an input type that accepts ServiceKafkaUserConfigKafkaConnectConfigArgs, ServiceKafkaUserConfigKafkaConnectConfigPtr and ServiceKafkaUserConfigKafkaConnectConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaConnectConfigPtrInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaConnectConfigArgs{...}
+//          ServiceKafkaUserConfigKafkaConnectConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaUserConfigKafkaConnectConfigPtrInput interface {
 	pulumi.Input
 
@@ -9491,8 +9383,7 @@ type ServiceKafkaUserConfigKafkaRestConfig struct {
 // ServiceKafkaUserConfigKafkaRestConfigInput is an input type that accepts ServiceKafkaUserConfigKafkaRestConfigArgs and ServiceKafkaUserConfigKafkaRestConfigOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaRestConfigInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaRestConfigArgs{...}
-//
+//          ServiceKafkaUserConfigKafkaRestConfigArgs{...}
 type ServiceKafkaUserConfigKafkaRestConfigInput interface {
 	pulumi.Input
 
@@ -9532,12 +9423,11 @@ func (i ServiceKafkaUserConfigKafkaRestConfigArgs) ToServiceKafkaUserConfigKafka
 // ServiceKafkaUserConfigKafkaRestConfigPtrInput is an input type that accepts ServiceKafkaUserConfigKafkaRestConfigArgs, ServiceKafkaUserConfigKafkaRestConfigPtr and ServiceKafkaUserConfigKafkaRestConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigKafkaRestConfigPtrInput` via:
 //
-// 		 ServiceKafkaUserConfigKafkaRestConfigArgs{...}
+//          ServiceKafkaUserConfigKafkaRestConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaUserConfigKafkaRestConfigPtrInput interface {
 	pulumi.Input
 
@@ -9689,8 +9579,7 @@ type ServiceKafkaUserConfigPrivateAccess struct {
 // ServiceKafkaUserConfigPrivateAccessInput is an input type that accepts ServiceKafkaUserConfigPrivateAccessArgs and ServiceKafkaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceKafkaUserConfigPrivateAccessArgs{...}
-//
+//          ServiceKafkaUserConfigPrivateAccessArgs{...}
 type ServiceKafkaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -9725,12 +9614,11 @@ func (i ServiceKafkaUserConfigPrivateAccessArgs) ToServiceKafkaUserConfigPrivate
 // ServiceKafkaUserConfigPrivateAccessPtrInput is an input type that accepts ServiceKafkaUserConfigPrivateAccessArgs, ServiceKafkaUserConfigPrivateAccessPtr and ServiceKafkaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceKafkaUserConfigPrivateAccessArgs{...}
+//          ServiceKafkaUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -9821,8 +9709,7 @@ type ServiceKafkaUserConfigPublicAccess struct {
 // ServiceKafkaUserConfigPublicAccessInput is an input type that accepts ServiceKafkaUserConfigPublicAccessArgs and ServiceKafkaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigPublicAccessInput` via:
 //
-// 		 ServiceKafkaUserConfigPublicAccessArgs{...}
-//
+//          ServiceKafkaUserConfigPublicAccessArgs{...}
 type ServiceKafkaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -9861,12 +9748,11 @@ func (i ServiceKafkaUserConfigPublicAccessArgs) ToServiceKafkaUserConfigPublicAc
 // ServiceKafkaUserConfigPublicAccessPtrInput is an input type that accepts ServiceKafkaUserConfigPublicAccessArgs, ServiceKafkaUserConfigPublicAccessPtr and ServiceKafkaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceKafkaUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceKafkaUserConfigPublicAccessArgs{...}
+//          ServiceKafkaUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceKafkaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -10004,8 +9890,7 @@ type ServiceMysql struct {
 // ServiceMysqlInput is an input type that accepts ServiceMysqlArgs and ServiceMysqlOutput values.
 // You can construct a concrete instance of `ServiceMysqlInput` via:
 //
-// 		 ServiceMysqlArgs{...}
-//
+//          ServiceMysqlArgs{...}
 type ServiceMysqlInput interface {
 	pulumi.Input
 
@@ -10039,12 +9924,11 @@ func (i ServiceMysqlArgs) ToServiceMysqlPtrOutputWithContext(ctx context.Context
 // ServiceMysqlPtrInput is an input type that accepts ServiceMysqlArgs, ServiceMysqlPtr and ServiceMysqlPtrOutput values.
 // You can construct a concrete instance of `ServiceMysqlPtrInput` via:
 //
-// 		 ServiceMysqlArgs{...}
+//          ServiceMysqlArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceMysqlPtrInput interface {
 	pulumi.Input
 
@@ -10129,8 +10013,7 @@ type ServiceMysqlUserConfig struct {
 // ServiceMysqlUserConfigInput is an input type that accepts ServiceMysqlUserConfigArgs and ServiceMysqlUserConfigOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigInput` via:
 //
-// 		 ServiceMysqlUserConfigArgs{...}
-//
+//          ServiceMysqlUserConfigArgs{...}
 type ServiceMysqlUserConfigInput interface {
 	pulumi.Input
 
@@ -10175,12 +10058,11 @@ func (i ServiceMysqlUserConfigArgs) ToServiceMysqlUserConfigPtrOutputWithContext
 // ServiceMysqlUserConfigPtrInput is an input type that accepts ServiceMysqlUserConfigArgs, ServiceMysqlUserConfigPtr and ServiceMysqlUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigPtrInput` via:
 //
-// 		 ServiceMysqlUserConfigArgs{...}
+//          ServiceMysqlUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceMysqlUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -10416,8 +10298,7 @@ type ServiceMysqlUserConfigMysql struct {
 // ServiceMysqlUserConfigMysqlInput is an input type that accepts ServiceMysqlUserConfigMysqlArgs and ServiceMysqlUserConfigMysqlOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigMysqlInput` via:
 //
-// 		 ServiceMysqlUserConfigMysqlArgs{...}
-//
+//          ServiceMysqlUserConfigMysqlArgs{...}
 type ServiceMysqlUserConfigMysqlInput interface {
 	pulumi.Input
 
@@ -10471,12 +10352,11 @@ func (i ServiceMysqlUserConfigMysqlArgs) ToServiceMysqlUserConfigMysqlPtrOutputW
 // ServiceMysqlUserConfigMysqlPtrInput is an input type that accepts ServiceMysqlUserConfigMysqlArgs, ServiceMysqlUserConfigMysqlPtr and ServiceMysqlUserConfigMysqlPtrOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigMysqlPtrInput` via:
 //
-// 		 ServiceMysqlUserConfigMysqlArgs{...}
+//          ServiceMysqlUserConfigMysqlArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceMysqlUserConfigMysqlPtrInput interface {
 	pulumi.Input
 
@@ -10811,8 +10691,7 @@ type ServiceMysqlUserConfigPrivateAccess struct {
 // ServiceMysqlUserConfigPrivateAccessInput is an input type that accepts ServiceMysqlUserConfigPrivateAccessArgs and ServiceMysqlUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceMysqlUserConfigPrivateAccessArgs{...}
-//
+//          ServiceMysqlUserConfigPrivateAccessArgs{...}
 type ServiceMysqlUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -10848,12 +10727,11 @@ func (i ServiceMysqlUserConfigPrivateAccessArgs) ToServiceMysqlUserConfigPrivate
 // ServiceMysqlUserConfigPrivateAccessPtrInput is an input type that accepts ServiceMysqlUserConfigPrivateAccessArgs, ServiceMysqlUserConfigPrivateAccessPtr and ServiceMysqlUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceMysqlUserConfigPrivateAccessArgs{...}
+//          ServiceMysqlUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceMysqlUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -10954,8 +10832,7 @@ type ServiceMysqlUserConfigPublicAccess struct {
 // ServiceMysqlUserConfigPublicAccessInput is an input type that accepts ServiceMysqlUserConfigPublicAccessArgs and ServiceMysqlUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigPublicAccessInput` via:
 //
-// 		 ServiceMysqlUserConfigPublicAccessArgs{...}
-//
+//          ServiceMysqlUserConfigPublicAccessArgs{...}
 type ServiceMysqlUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -10991,12 +10868,11 @@ func (i ServiceMysqlUserConfigPublicAccessArgs) ToServiceMysqlUserConfigPublicAc
 // ServiceMysqlUserConfigPublicAccessPtrInput is an input type that accepts ServiceMysqlUserConfigPublicAccessArgs, ServiceMysqlUserConfigPublicAccessPtr and ServiceMysqlUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceMysqlUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceMysqlUserConfigPublicAccessArgs{...}
+//          ServiceMysqlUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceMysqlUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -11103,8 +10979,7 @@ type ServicePg struct {
 // ServicePgInput is an input type that accepts ServicePgArgs and ServicePgOutput values.
 // You can construct a concrete instance of `ServicePgInput` via:
 //
-// 		 ServicePgArgs{...}
-//
+//          ServicePgArgs{...}
 type ServicePgInput interface {
 	pulumi.Input
 
@@ -11146,12 +11021,11 @@ func (i ServicePgArgs) ToServicePgPtrOutputWithContext(ctx context.Context) Serv
 // ServicePgPtrInput is an input type that accepts ServicePgArgs, ServicePgPtr and ServicePgPtrOutput values.
 // You can construct a concrete instance of `ServicePgPtrInput` via:
 //
-// 		 ServicePgArgs{...}
+//          ServicePgArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgPtrInput interface {
 	pulumi.Input
 
@@ -11346,8 +11220,7 @@ type ServicePgUserConfig struct {
 // ServicePgUserConfigInput is an input type that accepts ServicePgUserConfigArgs and ServicePgUserConfigOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigInput` via:
 //
-// 		 ServicePgUserConfigArgs{...}
-//
+//          ServicePgUserConfigArgs{...}
 type ServicePgUserConfigInput interface {
 	pulumi.Input
 
@@ -11399,12 +11272,11 @@ func (i ServicePgUserConfigArgs) ToServicePgUserConfigPtrOutputWithContext(ctx c
 // ServicePgUserConfigPtrInput is an input type that accepts ServicePgUserConfigArgs, ServicePgUserConfigPtr and ServicePgUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPtrInput` via:
 //
-// 		 ServicePgUserConfigArgs{...}
+//          ServicePgUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -11743,8 +11615,7 @@ type ServicePgUserConfigPg struct {
 // ServicePgUserConfigPgInput is an input type that accepts ServicePgUserConfigPgArgs and ServicePgUserConfigPgOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPgInput` via:
 //
-// 		 ServicePgUserConfigPgArgs{...}
-//
+//          ServicePgUserConfigPgArgs{...}
 type ServicePgUserConfigPgInput interface {
 	pulumi.Input
 
@@ -11810,12 +11681,11 @@ func (i ServicePgUserConfigPgArgs) ToServicePgUserConfigPgPtrOutputWithContext(c
 // ServicePgUserConfigPgPtrInput is an input type that accepts ServicePgUserConfigPgArgs, ServicePgUserConfigPgPtr and ServicePgUserConfigPgPtrOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPgPtrInput` via:
 //
-// 		 ServicePgUserConfigPgArgs{...}
+//          ServicePgUserConfigPgArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgUserConfigPgPtrInput interface {
 	pulumi.Input
 
@@ -12306,8 +12176,7 @@ type ServicePgUserConfigPgbouncer struct {
 // ServicePgUserConfigPgbouncerInput is an input type that accepts ServicePgUserConfigPgbouncerArgs and ServicePgUserConfigPgbouncerOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPgbouncerInput` via:
 //
-// 		 ServicePgUserConfigPgbouncerArgs{...}
-//
+//          ServicePgUserConfigPgbouncerArgs{...}
 type ServicePgUserConfigPgbouncerInput interface {
 	pulumi.Input
 
@@ -12343,12 +12212,11 @@ func (i ServicePgUserConfigPgbouncerArgs) ToServicePgUserConfigPgbouncerPtrOutpu
 // ServicePgUserConfigPgbouncerPtrInput is an input type that accepts ServicePgUserConfigPgbouncerArgs, ServicePgUserConfigPgbouncerPtr and ServicePgUserConfigPgbouncerPtrOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPgbouncerPtrInput` via:
 //
-// 		 ServicePgUserConfigPgbouncerArgs{...}
+//          ServicePgUserConfigPgbouncerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgUserConfigPgbouncerPtrInput interface {
 	pulumi.Input
 
@@ -12448,8 +12316,7 @@ type ServicePgUserConfigPglookout struct {
 // ServicePgUserConfigPglookoutInput is an input type that accepts ServicePgUserConfigPglookoutArgs and ServicePgUserConfigPglookoutOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPglookoutInput` via:
 //
-// 		 ServicePgUserConfigPglookoutArgs{...}
-//
+//          ServicePgUserConfigPglookoutArgs{...}
 type ServicePgUserConfigPglookoutInput interface {
 	pulumi.Input
 
@@ -12484,12 +12351,11 @@ func (i ServicePgUserConfigPglookoutArgs) ToServicePgUserConfigPglookoutPtrOutpu
 // ServicePgUserConfigPglookoutPtrInput is an input type that accepts ServicePgUserConfigPglookoutArgs, ServicePgUserConfigPglookoutPtr and ServicePgUserConfigPglookoutPtrOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPglookoutPtrInput` via:
 //
-// 		 ServicePgUserConfigPglookoutArgs{...}
+//          ServicePgUserConfigPglookoutArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgUserConfigPglookoutPtrInput interface {
 	pulumi.Input
 
@@ -12578,8 +12444,7 @@ type ServicePgUserConfigPrivateAccess struct {
 // ServicePgUserConfigPrivateAccessInput is an input type that accepts ServicePgUserConfigPrivateAccessArgs and ServicePgUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPrivateAccessInput` via:
 //
-// 		 ServicePgUserConfigPrivateAccessArgs{...}
-//
+//          ServicePgUserConfigPrivateAccessArgs{...}
 type ServicePgUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -12616,12 +12481,11 @@ func (i ServicePgUserConfigPrivateAccessArgs) ToServicePgUserConfigPrivateAccess
 // ServicePgUserConfigPrivateAccessPtrInput is an input type that accepts ServicePgUserConfigPrivateAccessArgs, ServicePgUserConfigPrivateAccessPtr and ServicePgUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServicePgUserConfigPrivateAccessArgs{...}
+//          ServicePgUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -12736,8 +12600,7 @@ type ServicePgUserConfigPublicAccess struct {
 // ServicePgUserConfigPublicAccessInput is an input type that accepts ServicePgUserConfigPublicAccessArgs and ServicePgUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPublicAccessInput` via:
 //
-// 		 ServicePgUserConfigPublicAccessArgs{...}
-//
+//          ServicePgUserConfigPublicAccessArgs{...}
 type ServicePgUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -12774,12 +12637,11 @@ func (i ServicePgUserConfigPublicAccessArgs) ToServicePgUserConfigPublicAccessPt
 // ServicePgUserConfigPublicAccessPtrInput is an input type that accepts ServicePgUserConfigPublicAccessArgs, ServicePgUserConfigPublicAccessPtr and ServicePgUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServicePgUserConfigPublicAccessArgs{...}
+//          ServicePgUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -12892,8 +12754,7 @@ type ServicePgUserConfigTimescaledb struct {
 // ServicePgUserConfigTimescaledbInput is an input type that accepts ServicePgUserConfigTimescaledbArgs and ServicePgUserConfigTimescaledbOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigTimescaledbInput` via:
 //
-// 		 ServicePgUserConfigTimescaledbArgs{...}
-//
+//          ServicePgUserConfigTimescaledbArgs{...}
 type ServicePgUserConfigTimescaledbInput interface {
 	pulumi.Input
 
@@ -12928,12 +12789,11 @@ func (i ServicePgUserConfigTimescaledbArgs) ToServicePgUserConfigTimescaledbPtrO
 // ServicePgUserConfigTimescaledbPtrInput is an input type that accepts ServicePgUserConfigTimescaledbArgs, ServicePgUserConfigTimescaledbPtr and ServicePgUserConfigTimescaledbPtrOutput values.
 // You can construct a concrete instance of `ServicePgUserConfigTimescaledbPtrInput` via:
 //
-// 		 ServicePgUserConfigTimescaledbArgs{...}
+//          ServicePgUserConfigTimescaledbArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePgUserConfigTimescaledbPtrInput interface {
 	pulumi.Input
 
@@ -13019,8 +12879,7 @@ type ServiceRedis struct {
 // ServiceRedisInput is an input type that accepts ServiceRedisArgs and ServiceRedisOutput values.
 // You can construct a concrete instance of `ServiceRedisInput` via:
 //
-// 		 ServiceRedisArgs{...}
-//
+//          ServiceRedisArgs{...}
 type ServiceRedisInput interface {
 	pulumi.Input
 
@@ -13054,12 +12913,11 @@ func (i ServiceRedisArgs) ToServiceRedisPtrOutputWithContext(ctx context.Context
 // ServiceRedisPtrInput is an input type that accepts ServiceRedisArgs, ServiceRedisPtr and ServiceRedisPtrOutput values.
 // You can construct a concrete instance of `ServiceRedisPtrInput` via:
 //
-// 		 ServiceRedisArgs{...}
+//          ServiceRedisArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceRedisPtrInput interface {
 	pulumi.Input
 
@@ -13143,8 +13001,7 @@ type ServiceRedisUserConfig struct {
 // ServiceRedisUserConfigInput is an input type that accepts ServiceRedisUserConfigArgs and ServiceRedisUserConfigOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigInput` via:
 //
-// 		 ServiceRedisUserConfigArgs{...}
-//
+//          ServiceRedisUserConfigArgs{...}
 type ServiceRedisUserConfigInput interface {
 	pulumi.Input
 
@@ -13188,12 +13045,11 @@ func (i ServiceRedisUserConfigArgs) ToServiceRedisUserConfigPtrOutputWithContext
 // ServiceRedisUserConfigPtrInput is an input type that accepts ServiceRedisUserConfigArgs, ServiceRedisUserConfigPtr and ServiceRedisUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigPtrInput` via:
 //
-// 		 ServiceRedisUserConfigArgs{...}
+//          ServiceRedisUserConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceRedisUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -13401,8 +13257,7 @@ type ServiceRedisUserConfigMigration struct {
 // ServiceRedisUserConfigMigrationInput is an input type that accepts ServiceRedisUserConfigMigrationArgs and ServiceRedisUserConfigMigrationOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigMigrationInput` via:
 //
-// 		 ServiceRedisUserConfigMigrationArgs{...}
-//
+//          ServiceRedisUserConfigMigrationArgs{...}
 type ServiceRedisUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -13441,12 +13296,11 @@ func (i ServiceRedisUserConfigMigrationArgs) ToServiceRedisUserConfigMigrationPt
 // ServiceRedisUserConfigMigrationPtrInput is an input type that accepts ServiceRedisUserConfigMigrationArgs, ServiceRedisUserConfigMigrationPtr and ServiceRedisUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigMigrationPtrInput` via:
 //
-// 		 ServiceRedisUserConfigMigrationArgs{...}
+//          ServiceRedisUserConfigMigrationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceRedisUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -13586,8 +13440,7 @@ type ServiceRedisUserConfigPrivateAccess struct {
 // ServiceRedisUserConfigPrivateAccessInput is an input type that accepts ServiceRedisUserConfigPrivateAccessArgs and ServiceRedisUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigPrivateAccessInput` via:
 //
-// 		 ServiceRedisUserConfigPrivateAccessArgs{...}
-//
+//          ServiceRedisUserConfigPrivateAccessArgs{...}
 type ServiceRedisUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -13623,12 +13476,11 @@ func (i ServiceRedisUserConfigPrivateAccessArgs) ToServiceRedisUserConfigPrivate
 // ServiceRedisUserConfigPrivateAccessPtrInput is an input type that accepts ServiceRedisUserConfigPrivateAccessArgs, ServiceRedisUserConfigPrivateAccessPtr and ServiceRedisUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigPrivateAccessPtrInput` via:
 //
-// 		 ServiceRedisUserConfigPrivateAccessArgs{...}
+//          ServiceRedisUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceRedisUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -13729,8 +13581,7 @@ type ServiceRedisUserConfigPublicAccess struct {
 // ServiceRedisUserConfigPublicAccessInput is an input type that accepts ServiceRedisUserConfigPublicAccessArgs and ServiceRedisUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigPublicAccessInput` via:
 //
-// 		 ServiceRedisUserConfigPublicAccessArgs{...}
-//
+//          ServiceRedisUserConfigPublicAccessArgs{...}
 type ServiceRedisUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -13766,12 +13617,11 @@ func (i ServiceRedisUserConfigPublicAccessArgs) ToServiceRedisUserConfigPublicAc
 // ServiceRedisUserConfigPublicAccessPtrInput is an input type that accepts ServiceRedisUserConfigPublicAccessArgs, ServiceRedisUserConfigPublicAccessPtr and ServiceRedisUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `ServiceRedisUserConfigPublicAccessPtrInput` via:
 //
-// 		 ServiceRedisUserConfigPublicAccessArgs{...}
+//          ServiceRedisUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceRedisUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -13872,8 +13722,7 @@ type ServiceServiceIntegration struct {
 // ServiceServiceIntegrationInput is an input type that accepts ServiceServiceIntegrationArgs and ServiceServiceIntegrationOutput values.
 // You can construct a concrete instance of `ServiceServiceIntegrationInput` via:
 //
-// 		 ServiceServiceIntegrationArgs{...}
-//
+//          ServiceServiceIntegrationArgs{...}
 type ServiceServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -13901,8 +13750,7 @@ func (i ServiceServiceIntegrationArgs) ToServiceServiceIntegrationOutputWithCont
 // ServiceServiceIntegrationArrayInput is an input type that accepts ServiceServiceIntegrationArray and ServiceServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `ServiceServiceIntegrationArrayInput` via:
 //
-// 		 ServiceServiceIntegrationArray{ ServiceServiceIntegrationArgs{...} }
-//
+//          ServiceServiceIntegrationArray{ ServiceServiceIntegrationArgs{...} }
 type ServiceServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -13973,8 +13821,7 @@ type VpcPeeringConnectionClientTimeout struct {
 // VpcPeeringConnectionClientTimeoutInput is an input type that accepts VpcPeeringConnectionClientTimeoutArgs and VpcPeeringConnectionClientTimeoutOutput values.
 // You can construct a concrete instance of `VpcPeeringConnectionClientTimeoutInput` via:
 //
-// 		 VpcPeeringConnectionClientTimeoutArgs{...}
-//
+//          VpcPeeringConnectionClientTimeoutArgs{...}
 type VpcPeeringConnectionClientTimeoutInput interface {
 	pulumi.Input
 
@@ -14009,12 +13856,11 @@ func (i VpcPeeringConnectionClientTimeoutArgs) ToVpcPeeringConnectionClientTimeo
 // VpcPeeringConnectionClientTimeoutPtrInput is an input type that accepts VpcPeeringConnectionClientTimeoutArgs, VpcPeeringConnectionClientTimeoutPtr and VpcPeeringConnectionClientTimeoutPtrOutput values.
 // You can construct a concrete instance of `VpcPeeringConnectionClientTimeoutPtrInput` via:
 //
-// 		 VpcPeeringConnectionClientTimeoutArgs{...}
+//          VpcPeeringConnectionClientTimeoutArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VpcPeeringConnectionClientTimeoutPtrInput interface {
 	pulumi.Input
 
@@ -14102,8 +13948,7 @@ type GetElasticSearchAclAcl struct {
 // GetElasticSearchAclAclInput is an input type that accepts GetElasticSearchAclAclArgs and GetElasticSearchAclAclOutput values.
 // You can construct a concrete instance of `GetElasticSearchAclAclInput` via:
 //
-// 		 GetElasticSearchAclAclArgs{...}
-//
+//          GetElasticSearchAclAclArgs{...}
 type GetElasticSearchAclAclInput interface {
 	pulumi.Input
 
@@ -14131,8 +13976,7 @@ func (i GetElasticSearchAclAclArgs) ToGetElasticSearchAclAclOutputWithContext(ct
 // GetElasticSearchAclAclArrayInput is an input type that accepts GetElasticSearchAclAclArray and GetElasticSearchAclAclArrayOutput values.
 // You can construct a concrete instance of `GetElasticSearchAclAclArrayInput` via:
 //
-// 		 GetElasticSearchAclAclArray{ GetElasticSearchAclAclArgs{...} }
-//
+//          GetElasticSearchAclAclArray{ GetElasticSearchAclAclArgs{...} }
 type GetElasticSearchAclAclArrayInput interface {
 	pulumi.Input
 
@@ -14204,8 +14048,7 @@ type GetElasticSearchAclAclRule struct {
 // GetElasticSearchAclAclRuleInput is an input type that accepts GetElasticSearchAclAclRuleArgs and GetElasticSearchAclAclRuleOutput values.
 // You can construct a concrete instance of `GetElasticSearchAclAclRuleInput` via:
 //
-// 		 GetElasticSearchAclAclRuleArgs{...}
-//
+//          GetElasticSearchAclAclRuleArgs{...}
 type GetElasticSearchAclAclRuleInput interface {
 	pulumi.Input
 
@@ -14233,8 +14076,7 @@ func (i GetElasticSearchAclAclRuleArgs) ToGetElasticSearchAclAclRuleOutputWithCo
 // GetElasticSearchAclAclRuleArrayInput is an input type that accepts GetElasticSearchAclAclRuleArray and GetElasticSearchAclAclRuleArrayOutput values.
 // You can construct a concrete instance of `GetElasticSearchAclAclRuleArrayInput` via:
 //
-// 		 GetElasticSearchAclAclRuleArray{ GetElasticSearchAclAclRuleArgs{...} }
-//
+//          GetElasticSearchAclAclRuleArray{ GetElasticSearchAclAclRuleArgs{...} }
 type GetElasticSearchAclAclRuleArrayInput interface {
 	pulumi.Input
 
@@ -14306,8 +14148,7 @@ type GetKafkaConnectorTask struct {
 // GetKafkaConnectorTaskInput is an input type that accepts GetKafkaConnectorTaskArgs and GetKafkaConnectorTaskOutput values.
 // You can construct a concrete instance of `GetKafkaConnectorTaskInput` via:
 //
-// 		 GetKafkaConnectorTaskArgs{...}
-//
+//          GetKafkaConnectorTaskArgs{...}
 type GetKafkaConnectorTaskInput interface {
 	pulumi.Input
 
@@ -14335,8 +14176,7 @@ func (i GetKafkaConnectorTaskArgs) ToGetKafkaConnectorTaskOutputWithContext(ctx 
 // GetKafkaConnectorTaskArrayInput is an input type that accepts GetKafkaConnectorTaskArray and GetKafkaConnectorTaskArrayOutput values.
 // You can construct a concrete instance of `GetKafkaConnectorTaskArrayInput` via:
 //
-// 		 GetKafkaConnectorTaskArray{ GetKafkaConnectorTaskArgs{...} }
-//
+//          GetKafkaConnectorTaskArray{ GetKafkaConnectorTaskArgs{...} }
 type GetKafkaConnectorTaskArrayInput interface {
 	pulumi.Input
 
@@ -14408,8 +14248,7 @@ type GetKafkaTopicClientTimeout struct {
 // GetKafkaTopicClientTimeoutInput is an input type that accepts GetKafkaTopicClientTimeoutArgs and GetKafkaTopicClientTimeoutOutput values.
 // You can construct a concrete instance of `GetKafkaTopicClientTimeoutInput` via:
 //
-// 		 GetKafkaTopicClientTimeoutArgs{...}
-//
+//          GetKafkaTopicClientTimeoutArgs{...}
 type GetKafkaTopicClientTimeoutInput interface {
 	pulumi.Input
 
@@ -14464,8 +14303,7 @@ type GetProjectVpcClientTimeout struct {
 // GetProjectVpcClientTimeoutInput is an input type that accepts GetProjectVpcClientTimeoutArgs and GetProjectVpcClientTimeoutOutput values.
 // You can construct a concrete instance of `GetProjectVpcClientTimeoutInput` via:
 //
-// 		 GetProjectVpcClientTimeoutArgs{...}
-//
+//          GetProjectVpcClientTimeoutArgs{...}
 type GetProjectVpcClientTimeoutInput interface {
 	pulumi.Input
 
@@ -14518,8 +14356,7 @@ type GetServiceCassandra struct {
 // GetServiceCassandraInput is an input type that accepts GetServiceCassandraArgs and GetServiceCassandraOutput values.
 // You can construct a concrete instance of `GetServiceCassandraInput` via:
 //
-// 		 GetServiceCassandraArgs{...}
-//
+//          GetServiceCassandraArgs{...}
 type GetServiceCassandraInput interface {
 	pulumi.Input
 
@@ -14567,8 +14404,7 @@ type GetServiceCassandraUserConfig struct {
 // GetServiceCassandraUserConfigInput is an input type that accepts GetServiceCassandraUserConfigArgs and GetServiceCassandraUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceCassandraUserConfigInput` via:
 //
-// 		 GetServiceCassandraUserConfigArgs{...}
-//
+//          GetServiceCassandraUserConfigArgs{...}
 type GetServiceCassandraUserConfigInput interface {
 	pulumi.Input
 
@@ -14641,8 +14477,7 @@ type GetServiceCassandraUserConfigPrivateAccess struct {
 // GetServiceCassandraUserConfigPrivateAccessInput is an input type that accepts GetServiceCassandraUserConfigPrivateAccessArgs and GetServiceCassandraUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceCassandraUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceCassandraUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceCassandraUserConfigPrivateAccessArgs{...}
 type GetServiceCassandraUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -14677,12 +14512,11 @@ func (i GetServiceCassandraUserConfigPrivateAccessArgs) ToGetServiceCassandraUse
 // GetServiceCassandraUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceCassandraUserConfigPrivateAccessArgs, GetServiceCassandraUserConfigPrivateAccessPtr and GetServiceCassandraUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceCassandraUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceCassandraUserConfigPrivateAccessArgs{...}
+//          GetServiceCassandraUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceCassandraUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -14771,8 +14605,7 @@ type GetServiceCassandraUserConfigPublicAccess struct {
 // GetServiceCassandraUserConfigPublicAccessInput is an input type that accepts GetServiceCassandraUserConfigPublicAccessArgs and GetServiceCassandraUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceCassandraUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceCassandraUserConfigPublicAccessArgs{...}
-//
+//          GetServiceCassandraUserConfigPublicAccessArgs{...}
 type GetServiceCassandraUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -14807,12 +14640,11 @@ func (i GetServiceCassandraUserConfigPublicAccessArgs) ToGetServiceCassandraUser
 // GetServiceCassandraUserConfigPublicAccessPtrInput is an input type that accepts GetServiceCassandraUserConfigPublicAccessArgs, GetServiceCassandraUserConfigPublicAccessPtr and GetServiceCassandraUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceCassandraUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceCassandraUserConfigPublicAccessArgs{...}
+//          GetServiceCassandraUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceCassandraUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -14902,8 +14734,7 @@ type GetServiceClientTimeout struct {
 // GetServiceClientTimeoutInput is an input type that accepts GetServiceClientTimeoutArgs and GetServiceClientTimeoutOutput values.
 // You can construct a concrete instance of `GetServiceClientTimeoutInput` via:
 //
-// 		 GetServiceClientTimeoutArgs{...}
-//
+//          GetServiceClientTimeoutArgs{...}
 type GetServiceClientTimeoutInput interface {
 	pulumi.Input
 
@@ -14963,8 +14794,7 @@ type GetServiceComponent struct {
 // GetServiceComponentInput is an input type that accepts GetServiceComponentArgs and GetServiceComponentOutput values.
 // You can construct a concrete instance of `GetServiceComponentInput` via:
 //
-// 		 GetServiceComponentArgs{...}
-//
+//          GetServiceComponentArgs{...}
 type GetServiceComponentInput interface {
 	pulumi.Input
 
@@ -14997,8 +14827,7 @@ func (i GetServiceComponentArgs) ToGetServiceComponentOutputWithContext(ctx cont
 // GetServiceComponentArrayInput is an input type that accepts GetServiceComponentArray and GetServiceComponentArrayOutput values.
 // You can construct a concrete instance of `GetServiceComponentArrayInput` via:
 //
-// 		 GetServiceComponentArray{ GetServiceComponentArgs{...} }
-//
+//          GetServiceComponentArray{ GetServiceComponentArgs{...} }
 type GetServiceComponentArrayInput interface {
 	pulumi.Input
 
@@ -15089,8 +14918,7 @@ type GetServiceElasticsearch struct {
 // GetServiceElasticsearchInput is an input type that accepts GetServiceElasticsearchArgs and GetServiceElasticsearchOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchInput` via:
 //
-// 		 GetServiceElasticsearchArgs{...}
-//
+//          GetServiceElasticsearchArgs{...}
 type GetServiceElasticsearchInput interface {
 	pulumi.Input
 
@@ -15150,8 +14978,7 @@ type GetServiceElasticsearchUserConfig struct {
 // GetServiceElasticsearchUserConfigInput is an input type that accepts GetServiceElasticsearchUserConfigArgs and GetServiceElasticsearchUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigArgs{...}
-//
+//          GetServiceElasticsearchUserConfigArgs{...}
 type GetServiceElasticsearchUserConfigInput interface {
 	pulumi.Input
 
@@ -15285,8 +15112,7 @@ type GetServiceElasticsearchUserConfigElasticsearch struct {
 // GetServiceElasticsearchUserConfigElasticsearchInput is an input type that accepts GetServiceElasticsearchUserConfigElasticsearchArgs and GetServiceElasticsearchUserConfigElasticsearchOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigElasticsearchInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigElasticsearchArgs{...}
-//
+//          GetServiceElasticsearchUserConfigElasticsearchArgs{...}
 type GetServiceElasticsearchUserConfigElasticsearchInput interface {
 	pulumi.Input
 
@@ -15343,12 +15169,11 @@ func (i GetServiceElasticsearchUserConfigElasticsearchArgs) ToGetServiceElastics
 // GetServiceElasticsearchUserConfigElasticsearchPtrInput is an input type that accepts GetServiceElasticsearchUserConfigElasticsearchArgs, GetServiceElasticsearchUserConfigElasticsearchPtr and GetServiceElasticsearchUserConfigElasticsearchPtrOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigElasticsearchPtrInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigElasticsearchArgs{...}
+//          GetServiceElasticsearchUserConfigElasticsearchArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceElasticsearchUserConfigElasticsearchPtrInput interface {
 	pulumi.Input
 
@@ -15728,8 +15553,7 @@ type GetServiceElasticsearchUserConfigIndexPattern struct {
 // GetServiceElasticsearchUserConfigIndexPatternInput is an input type that accepts GetServiceElasticsearchUserConfigIndexPatternArgs and GetServiceElasticsearchUserConfigIndexPatternOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigIndexPatternInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigIndexPatternArgs{...}
-//
+//          GetServiceElasticsearchUserConfigIndexPatternArgs{...}
 type GetServiceElasticsearchUserConfigIndexPatternInput interface {
 	pulumi.Input
 
@@ -15757,8 +15581,7 @@ func (i GetServiceElasticsearchUserConfigIndexPatternArgs) ToGetServiceElasticse
 // GetServiceElasticsearchUserConfigIndexPatternArrayInput is an input type that accepts GetServiceElasticsearchUserConfigIndexPatternArray and GetServiceElasticsearchUserConfigIndexPatternArrayOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigIndexPatternArrayInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigIndexPatternArray{ GetServiceElasticsearchUserConfigIndexPatternArgs{...} }
-//
+//          GetServiceElasticsearchUserConfigIndexPatternArray{ GetServiceElasticsearchUserConfigIndexPatternArgs{...} }
 type GetServiceElasticsearchUserConfigIndexPatternArrayInput interface {
 	pulumi.Input
 
@@ -15831,8 +15654,7 @@ type GetServiceElasticsearchUserConfigKibana struct {
 // GetServiceElasticsearchUserConfigKibanaInput is an input type that accepts GetServiceElasticsearchUserConfigKibanaArgs and GetServiceElasticsearchUserConfigKibanaOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigKibanaInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigKibanaArgs{...}
-//
+//          GetServiceElasticsearchUserConfigKibanaArgs{...}
 type GetServiceElasticsearchUserConfigKibanaInput interface {
 	pulumi.Input
 
@@ -15869,12 +15691,11 @@ func (i GetServiceElasticsearchUserConfigKibanaArgs) ToGetServiceElasticsearchUs
 // GetServiceElasticsearchUserConfigKibanaPtrInput is an input type that accepts GetServiceElasticsearchUserConfigKibanaArgs, GetServiceElasticsearchUserConfigKibanaPtr and GetServiceElasticsearchUserConfigKibanaPtrOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigKibanaPtrInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigKibanaArgs{...}
+//          GetServiceElasticsearchUserConfigKibanaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceElasticsearchUserConfigKibanaPtrInput interface {
 	pulumi.Input
 
@@ -15989,8 +15810,7 @@ type GetServiceElasticsearchUserConfigPrivateAccess struct {
 // GetServiceElasticsearchUserConfigPrivateAccessInput is an input type that accepts GetServiceElasticsearchUserConfigPrivateAccessArgs and GetServiceElasticsearchUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceElasticsearchUserConfigPrivateAccessArgs{...}
 type GetServiceElasticsearchUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -16027,12 +15847,11 @@ func (i GetServiceElasticsearchUserConfigPrivateAccessArgs) ToGetServiceElastics
 // GetServiceElasticsearchUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceElasticsearchUserConfigPrivateAccessArgs, GetServiceElasticsearchUserConfigPrivateAccessPtr and GetServiceElasticsearchUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigPrivateAccessArgs{...}
+//          GetServiceElasticsearchUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceElasticsearchUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -16149,8 +15968,7 @@ type GetServiceElasticsearchUserConfigPublicAccess struct {
 // GetServiceElasticsearchUserConfigPublicAccessInput is an input type that accepts GetServiceElasticsearchUserConfigPublicAccessArgs and GetServiceElasticsearchUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigPublicAccessArgs{...}
-//
+//          GetServiceElasticsearchUserConfigPublicAccessArgs{...}
 type GetServiceElasticsearchUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -16187,12 +16005,11 @@ func (i GetServiceElasticsearchUserConfigPublicAccessArgs) ToGetServiceElasticse
 // GetServiceElasticsearchUserConfigPublicAccessPtrInput is an input type that accepts GetServiceElasticsearchUserConfigPublicAccessArgs, GetServiceElasticsearchUserConfigPublicAccessPtr and GetServiceElasticsearchUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceElasticsearchUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceElasticsearchUserConfigPublicAccessArgs{...}
+//          GetServiceElasticsearchUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceElasticsearchUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -16306,8 +16123,7 @@ type GetServiceGrafana struct {
 // GetServiceGrafanaInput is an input type that accepts GetServiceGrafanaArgs and GetServiceGrafanaOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaInput` via:
 //
-// 		 GetServiceGrafanaArgs{...}
-//
+//          GetServiceGrafanaArgs{...}
 type GetServiceGrafanaInput interface {
 	pulumi.Input
 
@@ -16376,8 +16192,7 @@ type GetServiceGrafanaUserConfig struct {
 // GetServiceGrafanaUserConfigInput is an input type that accepts GetServiceGrafanaUserConfigArgs and GetServiceGrafanaUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigInput` via:
 //
-// 		 GetServiceGrafanaUserConfigArgs{...}
-//
+//          GetServiceGrafanaUserConfigArgs{...}
 type GetServiceGrafanaUserConfigInput interface {
 	pulumi.Input
 
@@ -16564,8 +16379,7 @@ type GetServiceGrafanaUserConfigAuthGenericOauth struct {
 // GetServiceGrafanaUserConfigAuthGenericOauthInput is an input type that accepts GetServiceGrafanaUserConfigAuthGenericOauthArgs and GetServiceGrafanaUserConfigAuthGenericOauthOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGenericOauthInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGenericOauthArgs{...}
-//
+//          GetServiceGrafanaUserConfigAuthGenericOauthArgs{...}
 type GetServiceGrafanaUserConfigAuthGenericOauthInput interface {
 	pulumi.Input
 
@@ -16609,12 +16423,11 @@ func (i GetServiceGrafanaUserConfigAuthGenericOauthArgs) ToGetServiceGrafanaUser
 // GetServiceGrafanaUserConfigAuthGenericOauthPtrInput is an input type that accepts GetServiceGrafanaUserConfigAuthGenericOauthArgs, GetServiceGrafanaUserConfigAuthGenericOauthPtr and GetServiceGrafanaUserConfigAuthGenericOauthPtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGenericOauthPtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGenericOauthArgs{...}
+//          GetServiceGrafanaUserConfigAuthGenericOauthArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigAuthGenericOauthPtrInput interface {
 	pulumi.Input
 
@@ -16824,8 +16637,7 @@ type GetServiceGrafanaUserConfigAuthGithub struct {
 // GetServiceGrafanaUserConfigAuthGithubInput is an input type that accepts GetServiceGrafanaUserConfigAuthGithubArgs and GetServiceGrafanaUserConfigAuthGithubOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGithubInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGithubArgs{...}
-//
+//          GetServiceGrafanaUserConfigAuthGithubArgs{...}
 type GetServiceGrafanaUserConfigAuthGithubInput interface {
 	pulumi.Input
 
@@ -16864,12 +16676,11 @@ func (i GetServiceGrafanaUserConfigAuthGithubArgs) ToGetServiceGrafanaUserConfig
 // GetServiceGrafanaUserConfigAuthGithubPtrInput is an input type that accepts GetServiceGrafanaUserConfigAuthGithubArgs, GetServiceGrafanaUserConfigAuthGithubPtr and GetServiceGrafanaUserConfigAuthGithubPtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGithubPtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGithubArgs{...}
+//          GetServiceGrafanaUserConfigAuthGithubArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigAuthGithubPtrInput interface {
 	pulumi.Input
 
@@ -17014,8 +16825,7 @@ type GetServiceGrafanaUserConfigAuthGitlab struct {
 // GetServiceGrafanaUserConfigAuthGitlabInput is an input type that accepts GetServiceGrafanaUserConfigAuthGitlabArgs and GetServiceGrafanaUserConfigAuthGitlabOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGitlabInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGitlabArgs{...}
-//
+//          GetServiceGrafanaUserConfigAuthGitlabArgs{...}
 type GetServiceGrafanaUserConfigAuthGitlabInput interface {
 	pulumi.Input
 
@@ -17056,12 +16866,11 @@ func (i GetServiceGrafanaUserConfigAuthGitlabArgs) ToGetServiceGrafanaUserConfig
 // GetServiceGrafanaUserConfigAuthGitlabPtrInput is an input type that accepts GetServiceGrafanaUserConfigAuthGitlabArgs, GetServiceGrafanaUserConfigAuthGitlabPtr and GetServiceGrafanaUserConfigAuthGitlabPtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGitlabPtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGitlabArgs{...}
+//          GetServiceGrafanaUserConfigAuthGitlabArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigAuthGitlabPtrInput interface {
 	pulumi.Input
 
@@ -17229,8 +17038,7 @@ type GetServiceGrafanaUserConfigAuthGoogle struct {
 // GetServiceGrafanaUserConfigAuthGoogleInput is an input type that accepts GetServiceGrafanaUserConfigAuthGoogleArgs and GetServiceGrafanaUserConfigAuthGoogleOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGoogleInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGoogleArgs{...}
-//
+//          GetServiceGrafanaUserConfigAuthGoogleArgs{...}
 type GetServiceGrafanaUserConfigAuthGoogleInput interface {
 	pulumi.Input
 
@@ -17268,12 +17076,11 @@ func (i GetServiceGrafanaUserConfigAuthGoogleArgs) ToGetServiceGrafanaUserConfig
 // GetServiceGrafanaUserConfigAuthGooglePtrInput is an input type that accepts GetServiceGrafanaUserConfigAuthGoogleArgs, GetServiceGrafanaUserConfigAuthGooglePtr and GetServiceGrafanaUserConfigAuthGooglePtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigAuthGooglePtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigAuthGoogleArgs{...}
+//          GetServiceGrafanaUserConfigAuthGoogleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigAuthGooglePtrInput interface {
 	pulumi.Input
 
@@ -17402,8 +17209,7 @@ type GetServiceGrafanaUserConfigExternalImageStorage struct {
 // GetServiceGrafanaUserConfigExternalImageStorageInput is an input type that accepts GetServiceGrafanaUserConfigExternalImageStorageArgs and GetServiceGrafanaUserConfigExternalImageStorageOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigExternalImageStorageInput` via:
 //
-// 		 GetServiceGrafanaUserConfigExternalImageStorageArgs{...}
-//
+//          GetServiceGrafanaUserConfigExternalImageStorageArgs{...}
 type GetServiceGrafanaUserConfigExternalImageStorageInput interface {
 	pulumi.Input
 
@@ -17441,12 +17247,11 @@ func (i GetServiceGrafanaUserConfigExternalImageStorageArgs) ToGetServiceGrafana
 // GetServiceGrafanaUserConfigExternalImageStoragePtrInput is an input type that accepts GetServiceGrafanaUserConfigExternalImageStorageArgs, GetServiceGrafanaUserConfigExternalImageStoragePtr and GetServiceGrafanaUserConfigExternalImageStoragePtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigExternalImageStoragePtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigExternalImageStorageArgs{...}
+//          GetServiceGrafanaUserConfigExternalImageStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigExternalImageStoragePtrInput interface {
 	pulumi.Input
 
@@ -17574,8 +17379,7 @@ type GetServiceGrafanaUserConfigPrivateAccess struct {
 // GetServiceGrafanaUserConfigPrivateAccessInput is an input type that accepts GetServiceGrafanaUserConfigPrivateAccessArgs and GetServiceGrafanaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceGrafanaUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceGrafanaUserConfigPrivateAccessArgs{...}
 type GetServiceGrafanaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -17610,12 +17414,11 @@ func (i GetServiceGrafanaUserConfigPrivateAccessArgs) ToGetServiceGrafanaUserCon
 // GetServiceGrafanaUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceGrafanaUserConfigPrivateAccessArgs, GetServiceGrafanaUserConfigPrivateAccessPtr and GetServiceGrafanaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigPrivateAccessArgs{...}
+//          GetServiceGrafanaUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -17702,8 +17505,7 @@ type GetServiceGrafanaUserConfigPublicAccess struct {
 // GetServiceGrafanaUserConfigPublicAccessInput is an input type that accepts GetServiceGrafanaUserConfigPublicAccessArgs and GetServiceGrafanaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceGrafanaUserConfigPublicAccessArgs{...}
-//
+//          GetServiceGrafanaUserConfigPublicAccessArgs{...}
 type GetServiceGrafanaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -17738,12 +17540,11 @@ func (i GetServiceGrafanaUserConfigPublicAccessArgs) ToGetServiceGrafanaUserConf
 // GetServiceGrafanaUserConfigPublicAccessPtrInput is an input type that accepts GetServiceGrafanaUserConfigPublicAccessArgs, GetServiceGrafanaUserConfigPublicAccessPtr and GetServiceGrafanaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigPublicAccessArgs{...}
+//          GetServiceGrafanaUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -17836,8 +17637,7 @@ type GetServiceGrafanaUserConfigSmtpServer struct {
 // GetServiceGrafanaUserConfigSmtpServerInput is an input type that accepts GetServiceGrafanaUserConfigSmtpServerArgs and GetServiceGrafanaUserConfigSmtpServerOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigSmtpServerInput` via:
 //
-// 		 GetServiceGrafanaUserConfigSmtpServerArgs{...}
-//
+//          GetServiceGrafanaUserConfigSmtpServerArgs{...}
 type GetServiceGrafanaUserConfigSmtpServerInput interface {
 	pulumi.Input
 
@@ -17878,12 +17678,11 @@ func (i GetServiceGrafanaUserConfigSmtpServerArgs) ToGetServiceGrafanaUserConfig
 // GetServiceGrafanaUserConfigSmtpServerPtrInput is an input type that accepts GetServiceGrafanaUserConfigSmtpServerArgs, GetServiceGrafanaUserConfigSmtpServerPtr and GetServiceGrafanaUserConfigSmtpServerPtrOutput values.
 // You can construct a concrete instance of `GetServiceGrafanaUserConfigSmtpServerPtrInput` via:
 //
-// 		 GetServiceGrafanaUserConfigSmtpServerArgs{...}
+//          GetServiceGrafanaUserConfigSmtpServerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceGrafanaUserConfigSmtpServerPtrInput interface {
 	pulumi.Input
 
@@ -18048,8 +17847,7 @@ type GetServiceInfluxdb struct {
 // GetServiceInfluxdbInput is an input type that accepts GetServiceInfluxdbArgs and GetServiceInfluxdbOutput values.
 // You can construct a concrete instance of `GetServiceInfluxdbInput` via:
 //
-// 		 GetServiceInfluxdbArgs{...}
-//
+//          GetServiceInfluxdbArgs{...}
 type GetServiceInfluxdbInput interface {
 	pulumi.Input
 
@@ -18102,8 +17900,7 @@ type GetServiceInfluxdbUserConfig struct {
 // GetServiceInfluxdbUserConfigInput is an input type that accepts GetServiceInfluxdbUserConfigArgs and GetServiceInfluxdbUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceInfluxdbUserConfigInput` via:
 //
-// 		 GetServiceInfluxdbUserConfigArgs{...}
-//
+//          GetServiceInfluxdbUserConfigArgs{...}
 type GetServiceInfluxdbUserConfigInput interface {
 	pulumi.Input
 
@@ -18174,8 +17971,7 @@ type GetServiceInfluxdbUserConfigPrivateAccess struct {
 // GetServiceInfluxdbUserConfigPrivateAccessInput is an input type that accepts GetServiceInfluxdbUserConfigPrivateAccessArgs and GetServiceInfluxdbUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceInfluxdbUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceInfluxdbUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceInfluxdbUserConfigPrivateAccessArgs{...}
 type GetServiceInfluxdbUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -18210,12 +18006,11 @@ func (i GetServiceInfluxdbUserConfigPrivateAccessArgs) ToGetServiceInfluxdbUserC
 // GetServiceInfluxdbUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceInfluxdbUserConfigPrivateAccessArgs, GetServiceInfluxdbUserConfigPrivateAccessPtr and GetServiceInfluxdbUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceInfluxdbUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceInfluxdbUserConfigPrivateAccessArgs{...}
+//          GetServiceInfluxdbUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceInfluxdbUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -18304,8 +18099,7 @@ type GetServiceInfluxdbUserConfigPublicAccess struct {
 // GetServiceInfluxdbUserConfigPublicAccessInput is an input type that accepts GetServiceInfluxdbUserConfigPublicAccessArgs and GetServiceInfluxdbUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceInfluxdbUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceInfluxdbUserConfigPublicAccessArgs{...}
-//
+//          GetServiceInfluxdbUserConfigPublicAccessArgs{...}
 type GetServiceInfluxdbUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -18340,12 +18134,11 @@ func (i GetServiceInfluxdbUserConfigPublicAccessArgs) ToGetServiceInfluxdbUserCo
 // GetServiceInfluxdbUserConfigPublicAccessPtrInput is an input type that accepts GetServiceInfluxdbUserConfigPublicAccessArgs, GetServiceInfluxdbUserConfigPublicAccessPtr and GetServiceInfluxdbUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceInfluxdbUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceInfluxdbUserConfigPublicAccessArgs{...}
+//          GetServiceInfluxdbUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceInfluxdbUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -18435,8 +18228,7 @@ type GetServiceIntegrationEndpointDatadogUserConfig struct {
 // GetServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigArgs and GetServiceIntegrationEndpointDatadogUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigInput` via:
 //
-// 		 GetServiceIntegrationEndpointDatadogUserConfigArgs{...}
-//
+//          GetServiceIntegrationEndpointDatadogUserConfigArgs{...}
 type GetServiceIntegrationEndpointDatadogUserConfigInput interface {
 	pulumi.Input
 
@@ -18504,8 +18296,7 @@ type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
 // GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput` via:
 //
-// 		 GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
-//
+//          GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
 type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -18577,8 +18368,7 @@ type GetServiceIntegrationEndpointPrometheusUserConfig struct {
 // GetServiceIntegrationEndpointPrometheusUserConfigInput is an input type that accepts GetServiceIntegrationEndpointPrometheusUserConfigArgs and GetServiceIntegrationEndpointPrometheusUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointPrometheusUserConfigInput` via:
 //
-// 		 GetServiceIntegrationEndpointPrometheusUserConfigArgs{...}
-//
+//          GetServiceIntegrationEndpointPrometheusUserConfigArgs{...}
 type GetServiceIntegrationEndpointPrometheusUserConfigInput interface {
 	pulumi.Input
 
@@ -18640,8 +18430,7 @@ type GetServiceIntegrationEndpointRsyslogUserConfig struct {
 // GetServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointRsyslogUserConfigArgs and GetServiceIntegrationEndpointRsyslogUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointRsyslogUserConfigInput` via:
 //
-// 		 GetServiceIntegrationEndpointRsyslogUserConfigArgs{...}
-//
+//          GetServiceIntegrationEndpointRsyslogUserConfigArgs{...}
 type GetServiceIntegrationEndpointRsyslogUserConfigInput interface {
 	pulumi.Input
 
@@ -18730,8 +18519,7 @@ type GetServiceIntegrationKafkaConnectUserConfig struct {
 // GetServiceIntegrationKafkaConnectUserConfigInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigArgs and GetServiceIntegrationKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigInput` via:
 //
-// 		 GetServiceIntegrationKafkaConnectUserConfigArgs{...}
-//
+//          GetServiceIntegrationKafkaConnectUserConfigArgs{...}
 type GetServiceIntegrationKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -18785,8 +18573,7 @@ type GetServiceIntegrationKafkaConnectUserConfigKafkaConnect struct {
 // GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput` via:
 //
-// 		 GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
-//
+//          GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -18824,12 +18611,11 @@ func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServic
 // GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs, GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-// 		 GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//          GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -18957,8 +18743,7 @@ type GetServiceIntegrationKafkaMirrormakerUserConfig struct {
 // GetServiceIntegrationKafkaMirrormakerUserConfigInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigArgs and GetServiceIntegrationKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigInput` via:
 //
-// 		 GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
-//
+//          GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
 type GetServiceIntegrationKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -19008,8 +18793,7 @@ type GetServiceIntegrationLogsUserConfig struct {
 // GetServiceIntegrationLogsUserConfigInput is an input type that accepts GetServiceIntegrationLogsUserConfigArgs and GetServiceIntegrationLogsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationLogsUserConfigInput` via:
 //
-// 		 GetServiceIntegrationLogsUserConfigArgs{...}
-//
+//          GetServiceIntegrationLogsUserConfigArgs{...}
 type GetServiceIntegrationLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -19063,8 +18847,7 @@ type GetServiceIntegrationMirrormakerUserConfig struct {
 // GetServiceIntegrationMirrormakerUserConfigInput is an input type that accepts GetServiceIntegrationMirrormakerUserConfigArgs and GetServiceIntegrationMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMirrormakerUserConfigInput` via:
 //
-// 		 GetServiceIntegrationMirrormakerUserConfigArgs{...}
-//
+//          GetServiceIntegrationMirrormakerUserConfigArgs{...}
 type GetServiceIntegrationMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -19117,8 +18900,7 @@ type GetServiceKafka struct {
 // GetServiceKafkaInput is an input type that accepts GetServiceKafkaArgs and GetServiceKafkaOutput values.
 // You can construct a concrete instance of `GetServiceKafkaInput` via:
 //
-// 		 GetServiceKafkaArgs{...}
-//
+//          GetServiceKafkaArgs{...}
 type GetServiceKafkaInput interface {
 	pulumi.Input
 
@@ -19186,8 +18968,7 @@ type GetServiceKafkaConnect struct {
 // GetServiceKafkaConnectInput is an input type that accepts GetServiceKafkaConnectArgs and GetServiceKafkaConnectOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectInput` via:
 //
-// 		 GetServiceKafkaConnectArgs{...}
-//
+//          GetServiceKafkaConnectArgs{...}
 type GetServiceKafkaConnectInput interface {
 	pulumi.Input
 
@@ -19234,8 +19015,7 @@ type GetServiceKafkaConnectUserConfig struct {
 // GetServiceKafkaConnectUserConfigInput is an input type that accepts GetServiceKafkaConnectUserConfigArgs and GetServiceKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectUserConfigInput` via:
 //
-// 		 GetServiceKafkaConnectUserConfigArgs{...}
-//
+//          GetServiceKafkaConnectUserConfigArgs{...}
 type GetServiceKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -19307,8 +19087,7 @@ type GetServiceKafkaConnectUserConfigKafkaConnect struct {
 // GetServiceKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetServiceKafkaConnectUserConfigKafkaConnectArgs and GetServiceKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectUserConfigKafkaConnectInput` via:
 //
-// 		 GetServiceKafkaConnectUserConfigKafkaConnectArgs{...}
-//
+//          GetServiceKafkaConnectUserConfigKafkaConnectArgs{...}
 type GetServiceKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -19345,12 +19124,11 @@ func (i GetServiceKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceKafkaConne
 // GetServiceKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts GetServiceKafkaConnectUserConfigKafkaConnectArgs, GetServiceKafkaConnectUserConfigKafkaConnectPtr and GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-// 		 GetServiceKafkaConnectUserConfigKafkaConnectArgs{...}
+//          GetServiceKafkaConnectUserConfigKafkaConnectArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -19466,8 +19244,7 @@ type GetServiceKafkaConnectUserConfigPrivateAccess struct {
 // GetServiceKafkaConnectUserConfigPrivateAccessInput is an input type that accepts GetServiceKafkaConnectUserConfigPrivateAccessArgs and GetServiceKafkaConnectUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceKafkaConnectUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceKafkaConnectUserConfigPrivateAccessArgs{...}
 type GetServiceKafkaConnectUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -19503,12 +19280,11 @@ func (i GetServiceKafkaConnectUserConfigPrivateAccessArgs) ToGetServiceKafkaConn
 // GetServiceKafkaConnectUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceKafkaConnectUserConfigPrivateAccessArgs, GetServiceKafkaConnectUserConfigPrivateAccessPtr and GetServiceKafkaConnectUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceKafkaConnectUserConfigPrivateAccessArgs{...}
+//          GetServiceKafkaConnectUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaConnectUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -19611,8 +19387,7 @@ type GetServiceKafkaConnectUserConfigPublicAccess struct {
 // GetServiceKafkaConnectUserConfigPublicAccessInput is an input type that accepts GetServiceKafkaConnectUserConfigPublicAccessArgs and GetServiceKafkaConnectUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceKafkaConnectUserConfigPublicAccessArgs{...}
-//
+//          GetServiceKafkaConnectUserConfigPublicAccessArgs{...}
 type GetServiceKafkaConnectUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -19648,12 +19423,11 @@ func (i GetServiceKafkaConnectUserConfigPublicAccessArgs) ToGetServiceKafkaConne
 // GetServiceKafkaConnectUserConfigPublicAccessPtrInput is an input type that accepts GetServiceKafkaConnectUserConfigPublicAccessArgs, GetServiceKafkaConnectUserConfigPublicAccessPtr and GetServiceKafkaConnectUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaConnectUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceKafkaConnectUserConfigPublicAccessArgs{...}
+//          GetServiceKafkaConnectUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaConnectUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -19754,8 +19528,7 @@ type GetServiceKafkaMirrormaker struct {
 // GetServiceKafkaMirrormakerInput is an input type that accepts GetServiceKafkaMirrormakerArgs and GetServiceKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `GetServiceKafkaMirrormakerInput` via:
 //
-// 		 GetServiceKafkaMirrormakerArgs{...}
-//
+//          GetServiceKafkaMirrormakerArgs{...}
 type GetServiceKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -19800,8 +19573,7 @@ type GetServiceKafkaMirrormakerUserConfig struct {
 // GetServiceKafkaMirrormakerUserConfigInput is an input type that accepts GetServiceKafkaMirrormakerUserConfigArgs and GetServiceKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceKafkaMirrormakerUserConfigInput` via:
 //
-// 		 GetServiceKafkaMirrormakerUserConfigArgs{...}
-//
+//          GetServiceKafkaMirrormakerUserConfigArgs{...}
 type GetServiceKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -19860,8 +19632,7 @@ type GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 // GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
 //
-// 		 GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
-//
+//          GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -19899,12 +19670,11 @@ func (i GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceKa
 // GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs, GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtr and GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
 //
-// 		 GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//          GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
 	pulumi.Input
 
@@ -20047,8 +19817,7 @@ type GetServiceKafkaUserConfig struct {
 // GetServiceKafkaUserConfigInput is an input type that accepts GetServiceKafkaUserConfigArgs and GetServiceKafkaUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigInput` via:
 //
-// 		 GetServiceKafkaUserConfigArgs{...}
-//
+//          GetServiceKafkaUserConfigArgs{...}
 type GetServiceKafkaUserConfigInput interface {
 	pulumi.Input
 
@@ -20178,8 +19947,7 @@ type GetServiceKafkaUserConfigKafka struct {
 // GetServiceKafkaUserConfigKafkaInput is an input type that accepts GetServiceKafkaUserConfigKafkaArgs and GetServiceKafkaUserConfigKafkaOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaArgs{...}
-//
+//          GetServiceKafkaUserConfigKafkaArgs{...}
 type GetServiceKafkaUserConfigKafkaInput interface {
 	pulumi.Input
 
@@ -20236,12 +20004,11 @@ func (i GetServiceKafkaUserConfigKafkaArgs) ToGetServiceKafkaUserConfigKafkaPtrO
 // GetServiceKafkaUserConfigKafkaPtrInput is an input type that accepts GetServiceKafkaUserConfigKafkaArgs, GetServiceKafkaUserConfigKafkaPtr and GetServiceKafkaUserConfigKafkaPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaPtrInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaArgs{...}
+//          GetServiceKafkaUserConfigKafkaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaUserConfigKafkaPtrInput interface {
 	pulumi.Input
 
@@ -20615,8 +20382,7 @@ type GetServiceKafkaUserConfigKafkaAuthenticationMethods struct {
 // GetServiceKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs and GetServiceKafkaUserConfigKafkaAuthenticationMethodsOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaAuthenticationMethodsInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
-//
+//          GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 type GetServiceKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 	pulumi.Input
 
@@ -20652,12 +20418,11 @@ func (i GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs) ToGetServiceKaf
 // GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput is an input type that accepts GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs, GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtr and GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
+//          GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrInput interface {
 	pulumi.Input
 
@@ -20761,8 +20526,7 @@ type GetServiceKafkaUserConfigKafkaConnectConfig struct {
 // GetServiceKafkaUserConfigKafkaConnectConfigInput is an input type that accepts GetServiceKafkaUserConfigKafkaConnectConfigArgs and GetServiceKafkaUserConfigKafkaConnectConfigOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaConnectConfigInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaConnectConfigArgs{...}
-//
+//          GetServiceKafkaUserConfigKafkaConnectConfigArgs{...}
 type GetServiceKafkaUserConfigKafkaConnectConfigInput interface {
 	pulumi.Input
 
@@ -20799,12 +20563,11 @@ func (i GetServiceKafkaUserConfigKafkaConnectConfigArgs) ToGetServiceKafkaUserCo
 // GetServiceKafkaUserConfigKafkaConnectConfigPtrInput is an input type that accepts GetServiceKafkaUserConfigKafkaConnectConfigArgs, GetServiceKafkaUserConfigKafkaConnectConfigPtr and GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaConnectConfigPtrInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaConnectConfigArgs{...}
+//          GetServiceKafkaUserConfigKafkaConnectConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaUserConfigKafkaConnectConfigPtrInput interface {
 	pulumi.Input
 
@@ -20924,8 +20687,7 @@ type GetServiceKafkaUserConfigKafkaRestConfig struct {
 // GetServiceKafkaUserConfigKafkaRestConfigInput is an input type that accepts GetServiceKafkaUserConfigKafkaRestConfigArgs and GetServiceKafkaUserConfigKafkaRestConfigOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaRestConfigInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaRestConfigArgs{...}
-//
+//          GetServiceKafkaUserConfigKafkaRestConfigArgs{...}
 type GetServiceKafkaUserConfigKafkaRestConfigInput interface {
 	pulumi.Input
 
@@ -20965,12 +20727,11 @@ func (i GetServiceKafkaUserConfigKafkaRestConfigArgs) ToGetServiceKafkaUserConfi
 // GetServiceKafkaUserConfigKafkaRestConfigPtrInput is an input type that accepts GetServiceKafkaUserConfigKafkaRestConfigArgs, GetServiceKafkaUserConfigKafkaRestConfigPtr and GetServiceKafkaUserConfigKafkaRestConfigPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigKafkaRestConfigPtrInput` via:
 //
-// 		 GetServiceKafkaUserConfigKafkaRestConfigArgs{...}
+//          GetServiceKafkaUserConfigKafkaRestConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaUserConfigKafkaRestConfigPtrInput interface {
 	pulumi.Input
 
@@ -21122,8 +20883,7 @@ type GetServiceKafkaUserConfigPrivateAccess struct {
 // GetServiceKafkaUserConfigPrivateAccessInput is an input type that accepts GetServiceKafkaUserConfigPrivateAccessArgs and GetServiceKafkaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceKafkaUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceKafkaUserConfigPrivateAccessArgs{...}
 type GetServiceKafkaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -21158,12 +20918,11 @@ func (i GetServiceKafkaUserConfigPrivateAccessArgs) ToGetServiceKafkaUserConfigP
 // GetServiceKafkaUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceKafkaUserConfigPrivateAccessArgs, GetServiceKafkaUserConfigPrivateAccessPtr and GetServiceKafkaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceKafkaUserConfigPrivateAccessArgs{...}
+//          GetServiceKafkaUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -21254,8 +21013,7 @@ type GetServiceKafkaUserConfigPublicAccess struct {
 // GetServiceKafkaUserConfigPublicAccessInput is an input type that accepts GetServiceKafkaUserConfigPublicAccessArgs and GetServiceKafkaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceKafkaUserConfigPublicAccessArgs{...}
-//
+//          GetServiceKafkaUserConfigPublicAccessArgs{...}
 type GetServiceKafkaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -21294,12 +21052,11 @@ func (i GetServiceKafkaUserConfigPublicAccessArgs) ToGetServiceKafkaUserConfigPu
 // GetServiceKafkaUserConfigPublicAccessPtrInput is an input type that accepts GetServiceKafkaUserConfigPublicAccessArgs, GetServiceKafkaUserConfigPublicAccessPtr and GetServiceKafkaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceKafkaUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceKafkaUserConfigPublicAccessArgs{...}
+//          GetServiceKafkaUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceKafkaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -21437,8 +21194,7 @@ type GetServiceMysql struct {
 // GetServiceMysqlInput is an input type that accepts GetServiceMysqlArgs and GetServiceMysqlOutput values.
 // You can construct a concrete instance of `GetServiceMysqlInput` via:
 //
-// 		 GetServiceMysqlArgs{...}
-//
+//          GetServiceMysqlArgs{...}
 type GetServiceMysqlInput interface {
 	pulumi.Input
 
@@ -21492,8 +21248,7 @@ type GetServiceMysqlUserConfig struct {
 // GetServiceMysqlUserConfigInput is an input type that accepts GetServiceMysqlUserConfigArgs and GetServiceMysqlUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceMysqlUserConfigInput` via:
 //
-// 		 GetServiceMysqlUserConfigArgs{...}
-//
+//          GetServiceMysqlUserConfigArgs{...}
 type GetServiceMysqlUserConfigInput interface {
 	pulumi.Input
 
@@ -21611,8 +21366,7 @@ type GetServiceMysqlUserConfigMysql struct {
 // GetServiceMysqlUserConfigMysqlInput is an input type that accepts GetServiceMysqlUserConfigMysqlArgs and GetServiceMysqlUserConfigMysqlOutput values.
 // You can construct a concrete instance of `GetServiceMysqlUserConfigMysqlInput` via:
 //
-// 		 GetServiceMysqlUserConfigMysqlArgs{...}
-//
+//          GetServiceMysqlUserConfigMysqlArgs{...}
 type GetServiceMysqlUserConfigMysqlInput interface {
 	pulumi.Input
 
@@ -21666,12 +21420,11 @@ func (i GetServiceMysqlUserConfigMysqlArgs) ToGetServiceMysqlUserConfigMysqlPtrO
 // GetServiceMysqlUserConfigMysqlPtrInput is an input type that accepts GetServiceMysqlUserConfigMysqlArgs, GetServiceMysqlUserConfigMysqlPtr and GetServiceMysqlUserConfigMysqlPtrOutput values.
 // You can construct a concrete instance of `GetServiceMysqlUserConfigMysqlPtrInput` via:
 //
-// 		 GetServiceMysqlUserConfigMysqlArgs{...}
+//          GetServiceMysqlUserConfigMysqlArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceMysqlUserConfigMysqlPtrInput interface {
 	pulumi.Input
 
@@ -22006,8 +21759,7 @@ type GetServiceMysqlUserConfigPrivateAccess struct {
 // GetServiceMysqlUserConfigPrivateAccessInput is an input type that accepts GetServiceMysqlUserConfigPrivateAccessArgs and GetServiceMysqlUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceMysqlUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceMysqlUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceMysqlUserConfigPrivateAccessArgs{...}
 type GetServiceMysqlUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -22043,12 +21795,11 @@ func (i GetServiceMysqlUserConfigPrivateAccessArgs) ToGetServiceMysqlUserConfigP
 // GetServiceMysqlUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceMysqlUserConfigPrivateAccessArgs, GetServiceMysqlUserConfigPrivateAccessPtr and GetServiceMysqlUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceMysqlUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceMysqlUserConfigPrivateAccessArgs{...}
+//          GetServiceMysqlUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceMysqlUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -22149,8 +21900,7 @@ type GetServiceMysqlUserConfigPublicAccess struct {
 // GetServiceMysqlUserConfigPublicAccessInput is an input type that accepts GetServiceMysqlUserConfigPublicAccessArgs and GetServiceMysqlUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceMysqlUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceMysqlUserConfigPublicAccessArgs{...}
-//
+//          GetServiceMysqlUserConfigPublicAccessArgs{...}
 type GetServiceMysqlUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -22186,12 +21936,11 @@ func (i GetServiceMysqlUserConfigPublicAccessArgs) ToGetServiceMysqlUserConfigPu
 // GetServiceMysqlUserConfigPublicAccessPtrInput is an input type that accepts GetServiceMysqlUserConfigPublicAccessArgs, GetServiceMysqlUserConfigPublicAccessPtr and GetServiceMysqlUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceMysqlUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceMysqlUserConfigPublicAccessArgs{...}
+//          GetServiceMysqlUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceMysqlUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -22298,8 +22047,7 @@ type GetServicePg struct {
 // GetServicePgInput is an input type that accepts GetServicePgArgs and GetServicePgOutput values.
 // You can construct a concrete instance of `GetServicePgInput` via:
 //
-// 		 GetServicePgArgs{...}
-//
+//          GetServicePgArgs{...}
 type GetServicePgInput interface {
 	pulumi.Input
 
@@ -22400,8 +22148,7 @@ type GetServicePgUserConfig struct {
 // GetServicePgUserConfigInput is an input type that accepts GetServicePgUserConfigArgs and GetServicePgUserConfigOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigInput` via:
 //
-// 		 GetServicePgUserConfigArgs{...}
-//
+//          GetServicePgUserConfigArgs{...}
 type GetServicePgUserConfigInput interface {
 	pulumi.Input
 
@@ -22566,8 +22313,7 @@ type GetServicePgUserConfigPg struct {
 // GetServicePgUserConfigPgInput is an input type that accepts GetServicePgUserConfigPgArgs and GetServicePgUserConfigPgOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPgInput` via:
 //
-// 		 GetServicePgUserConfigPgArgs{...}
-//
+//          GetServicePgUserConfigPgArgs{...}
 type GetServicePgUserConfigPgInput interface {
 	pulumi.Input
 
@@ -22633,12 +22379,11 @@ func (i GetServicePgUserConfigPgArgs) ToGetServicePgUserConfigPgPtrOutputWithCon
 // GetServicePgUserConfigPgPtrInput is an input type that accepts GetServicePgUserConfigPgArgs, GetServicePgUserConfigPgPtr and GetServicePgUserConfigPgPtrOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPgPtrInput` via:
 //
-// 		 GetServicePgUserConfigPgArgs{...}
+//          GetServicePgUserConfigPgArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServicePgUserConfigPgPtrInput interface {
 	pulumi.Input
 
@@ -23129,8 +22874,7 @@ type GetServicePgUserConfigPgbouncer struct {
 // GetServicePgUserConfigPgbouncerInput is an input type that accepts GetServicePgUserConfigPgbouncerArgs and GetServicePgUserConfigPgbouncerOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPgbouncerInput` via:
 //
-// 		 GetServicePgUserConfigPgbouncerArgs{...}
-//
+//          GetServicePgUserConfigPgbouncerArgs{...}
 type GetServicePgUserConfigPgbouncerInput interface {
 	pulumi.Input
 
@@ -23166,12 +22910,11 @@ func (i GetServicePgUserConfigPgbouncerArgs) ToGetServicePgUserConfigPgbouncerPt
 // GetServicePgUserConfigPgbouncerPtrInput is an input type that accepts GetServicePgUserConfigPgbouncerArgs, GetServicePgUserConfigPgbouncerPtr and GetServicePgUserConfigPgbouncerPtrOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPgbouncerPtrInput` via:
 //
-// 		 GetServicePgUserConfigPgbouncerArgs{...}
+//          GetServicePgUserConfigPgbouncerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServicePgUserConfigPgbouncerPtrInput interface {
 	pulumi.Input
 
@@ -23271,8 +23014,7 @@ type GetServicePgUserConfigPglookout struct {
 // GetServicePgUserConfigPglookoutInput is an input type that accepts GetServicePgUserConfigPglookoutArgs and GetServicePgUserConfigPglookoutOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPglookoutInput` via:
 //
-// 		 GetServicePgUserConfigPglookoutArgs{...}
-//
+//          GetServicePgUserConfigPglookoutArgs{...}
 type GetServicePgUserConfigPglookoutInput interface {
 	pulumi.Input
 
@@ -23307,12 +23049,11 @@ func (i GetServicePgUserConfigPglookoutArgs) ToGetServicePgUserConfigPglookoutPt
 // GetServicePgUserConfigPglookoutPtrInput is an input type that accepts GetServicePgUserConfigPglookoutArgs, GetServicePgUserConfigPglookoutPtr and GetServicePgUserConfigPglookoutPtrOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPglookoutPtrInput` via:
 //
-// 		 GetServicePgUserConfigPglookoutArgs{...}
+//          GetServicePgUserConfigPglookoutArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServicePgUserConfigPglookoutPtrInput interface {
 	pulumi.Input
 
@@ -23401,8 +23142,7 @@ type GetServicePgUserConfigPrivateAccess struct {
 // GetServicePgUserConfigPrivateAccessInput is an input type that accepts GetServicePgUserConfigPrivateAccessArgs and GetServicePgUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPrivateAccessInput` via:
 //
-// 		 GetServicePgUserConfigPrivateAccessArgs{...}
-//
+//          GetServicePgUserConfigPrivateAccessArgs{...}
 type GetServicePgUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -23439,12 +23179,11 @@ func (i GetServicePgUserConfigPrivateAccessArgs) ToGetServicePgUserConfigPrivate
 // GetServicePgUserConfigPrivateAccessPtrInput is an input type that accepts GetServicePgUserConfigPrivateAccessArgs, GetServicePgUserConfigPrivateAccessPtr and GetServicePgUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServicePgUserConfigPrivateAccessArgs{...}
+//          GetServicePgUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServicePgUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -23559,8 +23298,7 @@ type GetServicePgUserConfigPublicAccess struct {
 // GetServicePgUserConfigPublicAccessInput is an input type that accepts GetServicePgUserConfigPublicAccessArgs and GetServicePgUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPublicAccessInput` via:
 //
-// 		 GetServicePgUserConfigPublicAccessArgs{...}
-//
+//          GetServicePgUserConfigPublicAccessArgs{...}
 type GetServicePgUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -23597,12 +23335,11 @@ func (i GetServicePgUserConfigPublicAccessArgs) ToGetServicePgUserConfigPublicAc
 // GetServicePgUserConfigPublicAccessPtrInput is an input type that accepts GetServicePgUserConfigPublicAccessArgs, GetServicePgUserConfigPublicAccessPtr and GetServicePgUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServicePgUserConfigPublicAccessArgs{...}
+//          GetServicePgUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServicePgUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -23715,8 +23452,7 @@ type GetServicePgUserConfigTimescaledb struct {
 // GetServicePgUserConfigTimescaledbInput is an input type that accepts GetServicePgUserConfigTimescaledbArgs and GetServicePgUserConfigTimescaledbOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigTimescaledbInput` via:
 //
-// 		 GetServicePgUserConfigTimescaledbArgs{...}
-//
+//          GetServicePgUserConfigTimescaledbArgs{...}
 type GetServicePgUserConfigTimescaledbInput interface {
 	pulumi.Input
 
@@ -23751,12 +23487,11 @@ func (i GetServicePgUserConfigTimescaledbArgs) ToGetServicePgUserConfigTimescale
 // GetServicePgUserConfigTimescaledbPtrInput is an input type that accepts GetServicePgUserConfigTimescaledbArgs, GetServicePgUserConfigTimescaledbPtr and GetServicePgUserConfigTimescaledbPtrOutput values.
 // You can construct a concrete instance of `GetServicePgUserConfigTimescaledbPtrInput` via:
 //
-// 		 GetServicePgUserConfigTimescaledbArgs{...}
+//          GetServicePgUserConfigTimescaledbArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServicePgUserConfigTimescaledbPtrInput interface {
 	pulumi.Input
 
@@ -23842,8 +23577,7 @@ type GetServiceRedis struct {
 // GetServiceRedisInput is an input type that accepts GetServiceRedisArgs and GetServiceRedisOutput values.
 // You can construct a concrete instance of `GetServiceRedisInput` via:
 //
-// 		 GetServiceRedisArgs{...}
-//
+//          GetServiceRedisArgs{...}
 type GetServiceRedisInput interface {
 	pulumi.Input
 
@@ -23896,8 +23630,7 @@ type GetServiceRedisUserConfig struct {
 // GetServiceRedisUserConfigInput is an input type that accepts GetServiceRedisUserConfigArgs and GetServiceRedisUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceRedisUserConfigInput` via:
 //
-// 		 GetServiceRedisUserConfigArgs{...}
-//
+//          GetServiceRedisUserConfigArgs{...}
 type GetServiceRedisUserConfigInput interface {
 	pulumi.Input
 
@@ -23995,8 +23728,7 @@ type GetServiceRedisUserConfigMigration struct {
 // GetServiceRedisUserConfigMigrationInput is an input type that accepts GetServiceRedisUserConfigMigrationArgs and GetServiceRedisUserConfigMigrationOutput values.
 // You can construct a concrete instance of `GetServiceRedisUserConfigMigrationInput` via:
 //
-// 		 GetServiceRedisUserConfigMigrationArgs{...}
-//
+//          GetServiceRedisUserConfigMigrationArgs{...}
 type GetServiceRedisUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -24035,12 +23767,11 @@ func (i GetServiceRedisUserConfigMigrationArgs) ToGetServiceRedisUserConfigMigra
 // GetServiceRedisUserConfigMigrationPtrInput is an input type that accepts GetServiceRedisUserConfigMigrationArgs, GetServiceRedisUserConfigMigrationPtr and GetServiceRedisUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `GetServiceRedisUserConfigMigrationPtrInput` via:
 //
-// 		 GetServiceRedisUserConfigMigrationArgs{...}
+//          GetServiceRedisUserConfigMigrationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceRedisUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -24180,8 +23911,7 @@ type GetServiceRedisUserConfigPrivateAccess struct {
 // GetServiceRedisUserConfigPrivateAccessInput is an input type that accepts GetServiceRedisUserConfigPrivateAccessArgs and GetServiceRedisUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetServiceRedisUserConfigPrivateAccessInput` via:
 //
-// 		 GetServiceRedisUserConfigPrivateAccessArgs{...}
-//
+//          GetServiceRedisUserConfigPrivateAccessArgs{...}
 type GetServiceRedisUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -24217,12 +23947,11 @@ func (i GetServiceRedisUserConfigPrivateAccessArgs) ToGetServiceRedisUserConfigP
 // GetServiceRedisUserConfigPrivateAccessPtrInput is an input type that accepts GetServiceRedisUserConfigPrivateAccessArgs, GetServiceRedisUserConfigPrivateAccessPtr and GetServiceRedisUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceRedisUserConfigPrivateAccessPtrInput` via:
 //
-// 		 GetServiceRedisUserConfigPrivateAccessArgs{...}
+//          GetServiceRedisUserConfigPrivateAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceRedisUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -24323,8 +24052,7 @@ type GetServiceRedisUserConfigPublicAccess struct {
 // GetServiceRedisUserConfigPublicAccessInput is an input type that accepts GetServiceRedisUserConfigPublicAccessArgs and GetServiceRedisUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetServiceRedisUserConfigPublicAccessInput` via:
 //
-// 		 GetServiceRedisUserConfigPublicAccessArgs{...}
-//
+//          GetServiceRedisUserConfigPublicAccessArgs{...}
 type GetServiceRedisUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -24360,12 +24088,11 @@ func (i GetServiceRedisUserConfigPublicAccessArgs) ToGetServiceRedisUserConfigPu
 // GetServiceRedisUserConfigPublicAccessPtrInput is an input type that accepts GetServiceRedisUserConfigPublicAccessArgs, GetServiceRedisUserConfigPublicAccessPtr and GetServiceRedisUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetServiceRedisUserConfigPublicAccessPtrInput` via:
 //
-// 		 GetServiceRedisUserConfigPublicAccessArgs{...}
+//          GetServiceRedisUserConfigPublicAccessArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetServiceRedisUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -24466,8 +24193,7 @@ type GetServiceServiceIntegration struct {
 // GetServiceServiceIntegrationInput is an input type that accepts GetServiceServiceIntegrationArgs and GetServiceServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetServiceServiceIntegrationInput` via:
 //
-// 		 GetServiceServiceIntegrationArgs{...}
-//
+//          GetServiceServiceIntegrationArgs{...}
 type GetServiceServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -24495,8 +24221,7 @@ func (i GetServiceServiceIntegrationArgs) ToGetServiceServiceIntegrationOutputWi
 // GetServiceServiceIntegrationArrayInput is an input type that accepts GetServiceServiceIntegrationArray and GetServiceServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetServiceServiceIntegrationArrayInput` via:
 //
-// 		 GetServiceServiceIntegrationArray{ GetServiceServiceIntegrationArgs{...} }
-//
+//          GetServiceServiceIntegrationArray{ GetServiceServiceIntegrationArgs{...} }
 type GetServiceServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -24567,8 +24292,7 @@ type GetVpcPeeringConnectionClientTimeout struct {
 // GetVpcPeeringConnectionClientTimeoutInput is an input type that accepts GetVpcPeeringConnectionClientTimeoutArgs and GetVpcPeeringConnectionClientTimeoutOutput values.
 // You can construct a concrete instance of `GetVpcPeeringConnectionClientTimeoutInput` via:
 //
-// 		 GetVpcPeeringConnectionClientTimeoutArgs{...}
-//
+//          GetVpcPeeringConnectionClientTimeoutArgs{...}
 type GetVpcPeeringConnectionClientTimeoutInput interface {
 	pulumi.Input
 

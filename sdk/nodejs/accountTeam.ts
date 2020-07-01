@@ -7,13 +7,11 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const accountTeam1 = new aiven.AccountTeam("accountTeam1", {
+ * const accountTeam1 = new aiven.AccountTeam("account_team1", {
  *     accountId: aiven_account_team.accountId,
  * });
  * ```

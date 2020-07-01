@@ -10,6 +10,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v2/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewKafkaAcl(ctx, "mytestacl", &aiven.KafkaAclArgs{
+// 			Permission:  pulumi.String("admin"),
+// 			Project:     pulumi.String(aiven_project.Myproject.Project),
+// 			ServiceName: pulumi.String(aiven_service.Myservice.Service_name),
+// 			Topic:       pulumi.String("<TOPIC_NAME_PATTERN>"),
+// 			Username:    pulumi.String("<USERNAME_PATTERN>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KafkaAcl struct {
 	pulumi.CustomResourceState
 

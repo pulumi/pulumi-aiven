@@ -7,6 +7,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v2/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
+// 			Project:   data.Aiven_project.Myproject.Project,
+// 			CloudName: "google-europe-west1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...pulumi.InvokeOption) (*LookupProjectVpcResult, error) {
 	var rv LookupProjectVpcResult
 	err := ctx.Invoke("aiven:index/getProjectVpc:getProjectVpc", args, &rv, opts...)

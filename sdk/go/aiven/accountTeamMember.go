@@ -10,10 +10,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// During the creation of `.AccountTeamMember` resource, an email invitation will be sent
+// During the creation of `AccountTeamMember` resource, an email invitation will be sent
 // to a user using `userEmail` address. If the user accepts an invitation, he or she will become a member of the account team.
-// The deletion of `.AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the
+// The deletion of `AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the
 // user, and it will also eliminate an account team member if one has accepted an invitation previously.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v2/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewAccountTeamMember(ctx, "foo", &aiven.AccountTeamMemberArgs{
+// 			AccountId: pulumi.String(aiven_account.Developers.Account_id),
+// 			TeamId:    pulumi.String(aiven_account.Developers.Account_id),
+// 			UserEmail: pulumi.String("user+1@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccountTeamMember struct {
 	pulumi.CustomResourceState
 
