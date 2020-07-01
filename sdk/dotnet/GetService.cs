@@ -33,7 +33,6 @@ namespace Pulumi.Aiven
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

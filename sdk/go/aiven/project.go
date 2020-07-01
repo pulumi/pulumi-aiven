@@ -10,6 +10,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v2/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewProject(ctx, "myproject", &aiven.ProjectArgs{
+// 			CardId:  pulumi.String("<FULL_CARD_ID/LAST4_DIGITS>"),
+// 			Project: pulumi.String("<PROJECT_NAME>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Project struct {
 	pulumi.CustomResourceState
 

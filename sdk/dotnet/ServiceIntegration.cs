@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;

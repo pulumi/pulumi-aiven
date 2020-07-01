@@ -10,14 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// During the creation of `aiven..AccountTeamMember` resource, an email invitation will be sent
-    /// to a user using `user_email` address. If the user accepts an invitation, he or she will become a member of the account team. 
-    /// The deletion of `aiven..AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the 
+    /// During the creation of `aiven.AccountTeamMember` resource, an email invitation will be sent
+    /// to a user using `user_email` address. If the user accepts an invitation, he or she will become a member of the account team.
+    /// The deletion of `aiven.AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the
     /// user, and it will also eliminate an account team member if one has accepted an invitation previously.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
