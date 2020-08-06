@@ -17,7 +17,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> AllowedOrganizations;
         public readonly string? ClientId;
         public readonly string? ClientSecret;
-        public readonly ImmutableArray<int> TeamIds;
+        public readonly ImmutableArray<string> TeamIds;
 
         [OutputConstructor]
         private GetServiceGrafanaUserConfigAuthGithubResult(
@@ -29,7 +29,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? clientSecret,
 
-            ImmutableArray<int> teamIds)
+            ImmutableArray<string> teamIds)
         {
             AllowSignUp = allowSignUp;
             AllowedOrganizations = allowedOrganizations;

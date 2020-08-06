@@ -537,6 +537,14 @@
                         }
                     }
                 },
+                "searchMaxBuckets": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "threadPoolAnalyzeQueueSize": {
                     "type": "string",
                     "language": {
@@ -1105,7 +1113,7 @@
                 "teamIds": {
                     "type": "array",
                     "items": {
-                        "type": "integer"
+                        "type": "string"
                     },
                     "language": {
                         "python": {
@@ -2176,6 +2184,14 @@
                     }
                 },
                 "maxConnectionsPerIp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxIncrementalFetchSessionCacheSlots": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -4040,6 +4056,14 @@
                         }
                     }
                 },
+                "searchMaxBuckets": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "threadPoolAnalyzeQueueSize": {
                     "type": "string",
                     "language": {
@@ -4608,7 +4632,7 @@
                 "teamIds": {
                     "type": "array",
                     "items": {
-                        "type": "integer"
+                        "type": "string"
                     },
                     "language": {
                         "python": {
@@ -5681,6 +5705,14 @@
                     }
                 },
                 "maxConnectionsPerIp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxIncrementalFetchSessionCacheSlots": {
                     "type": "string",
                     "language": {
                         "python": {

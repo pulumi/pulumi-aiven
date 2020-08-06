@@ -779,6 +779,8 @@ github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200630130100-98b3a3ea7007
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200630130100-98b3a3ea7007/go.mod h1:grXslZ0qR6/9U1F0Sd0YkVSjG99P/kzRrQl8C/qpLGM=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200630130820-b51c625448a2 h1:++wsyQtuQ73evIPuNsZ/Jc3yV/n2uyDjZCvHXFcCWuE=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200630130820-b51c625448a2/go.mod h1:0oqTSrOWjr1dfsiLhrH+1LrIIYVfl+ml+DIgn55pyYw=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200806142812-5e4678e828ce h1:Uu9d9P/2j9sutKOj4RIbGzje3ic9JcsuN4HEGt7jfdo=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200806142812-5e4678e828ce/go.mod h1:0oqTSrOWjr1dfsiLhrH+1LrIIYVfl+ml+DIgn55pyYw=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=
