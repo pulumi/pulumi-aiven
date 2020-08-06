@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetKafkaConnectorResult:
     """
@@ -52,6 +53,8 @@ class GetKafkaConnectorResult:
         if tasks and not isinstance(tasks, list):
             raise TypeError("Expected argument 'tasks' to be a list")
         __self__.tasks = tasks
+
+
 class AwaitableGetKafkaConnectorResult(GetKafkaConnectorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,7 +74,8 @@ class AwaitableGetKafkaConnectorResult(GetKafkaConnectorResult):
             service_name=self.service_name,
             tasks=self.tasks)
 
-def get_kafka_connector(config=None,connector_name=None,plugin_author=None,plugin_class=None,plugin_doc_url=None,plugin_title=None,plugin_type=None,plugin_version=None,project=None,service_name=None,tasks=None,opts=None):
+
+def get_kafka_connector(config=None, connector_name=None, plugin_author=None, plugin_class=None, plugin_doc_url=None, plugin_title=None, plugin_type=None, plugin_version=None, project=None, service_name=None, tasks=None, opts=None):
     """
     Use this data source to access information about an existing resource.
 
@@ -82,8 +86,6 @@ def get_kafka_connector(config=None,connector_name=None,plugin_author=None,plugi
       * `task` (`float`)
     """
     __args__ = dict()
-
-
     __args__['config'] = config
     __args__['connectorName'] = connector_name
     __args__['pluginAuthor'] = plugin_author
@@ -98,7 +100,7 @@ def get_kafka_connector(config=None,connector_name=None,plugin_author=None,plugi
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaConnector:getKafkaConnector', __args__, opts=opts).value
 
     return AwaitableGetKafkaConnectorResult(

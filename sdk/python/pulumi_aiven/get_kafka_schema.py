@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetKafkaSchemaResult:
     """
@@ -34,6 +35,8 @@ class GetKafkaSchemaResult:
         if version and not isinstance(version, float):
             raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
+
+
 class AwaitableGetKafkaSchemaResult(GetKafkaSchemaResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,13 +50,12 @@ class AwaitableGetKafkaSchemaResult(GetKafkaSchemaResult):
             subject_name=self.subject_name,
             version=self.version)
 
-def get_kafka_schema(project=None,schema=None,service_name=None,subject_name=None,version=None,opts=None):
+
+def get_kafka_schema(project=None, schema=None, service_name=None, subject_name=None, version=None, opts=None):
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     __args__['schema'] = schema
     __args__['serviceName'] = service_name
@@ -62,7 +64,7 @@ def get_kafka_schema(project=None,schema=None,service_name=None,subject_name=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchema:getKafkaSchema', __args__, opts=opts).value
 
     return AwaitableGetKafkaSchemaResult(

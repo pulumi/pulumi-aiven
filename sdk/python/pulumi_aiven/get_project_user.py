@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetProjectUserResult:
     """
@@ -31,6 +32,8 @@ class GetProjectUserResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+
+
 class AwaitableGetProjectUserResult(GetProjectUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetProjectUserResult(GetProjectUserResult):
             member_type=self.member_type,
             project=self.project)
 
-def get_project_user(accepted=None,email=None,member_type=None,project=None,opts=None):
+
+def get_project_user(accepted=None, email=None, member_type=None, project=None, opts=None):
     """
     ## Example Usage
 
@@ -56,8 +60,6 @@ def get_project_user(accepted=None,email=None,member_type=None,project=None,opts
     ```
     """
     __args__ = dict()
-
-
     __args__['accepted'] = accepted
     __args__['email'] = email
     __args__['memberType'] = member_type
@@ -65,7 +67,7 @@ def get_project_user(accepted=None,email=None,member_type=None,project=None,opts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getProjectUser:getProjectUser', __args__, opts=opts).value
 
     return AwaitableGetProjectUserResult(

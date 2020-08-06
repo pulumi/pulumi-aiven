@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetServiceUserResult:
     """
@@ -40,6 +41,8 @@ class GetServiceUserResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         __self__.username = username
+
+
 class AwaitableGetServiceUserResult(GetServiceUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,7 +58,8 @@ class AwaitableGetServiceUserResult(GetServiceUserResult):
             type=self.type,
             username=self.username)
 
-def get_service_user(access_cert=None,access_key=None,password=None,project=None,service_name=None,type=None,username=None,opts=None):
+
+def get_service_user(access_cert=None, access_key=None, password=None, project=None, service_name=None, type=None, username=None, opts=None):
     """
     ## Example Usage
 
@@ -69,8 +73,6 @@ def get_service_user(access_cert=None,access_key=None,password=None,project=None
     ```
     """
     __args__ = dict()
-
-
     __args__['accessCert'] = access_cert
     __args__['accessKey'] = access_key
     __args__['password'] = password
@@ -81,7 +83,7 @@ def get_service_user(access_cert=None,access_key=None,password=None,project=None
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceUser:getServiceUser', __args__, opts=opts).value
 
     return AwaitableGetServiceUserResult(

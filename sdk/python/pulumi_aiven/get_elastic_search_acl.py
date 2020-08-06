@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetElasticSearchAclResult:
     """
@@ -34,6 +35,8 @@ class GetElasticSearchAclResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         __self__.service_name = service_name
+
+
 class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,7 +50,8 @@ class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
             project=self.project,
             service_name=self.service_name)
 
-def get_elastic_search_acl(acls=None,enabled=None,extended_acl=None,project=None,service_name=None,opts=None):
+
+def get_elastic_search_acl(acls=None, enabled=None, extended_acl=None, project=None, service_name=None, opts=None):
     """
     Use this data source to access information about an existing resource.
 
@@ -61,8 +65,6 @@ def get_elastic_search_acl(acls=None,enabled=None,extended_acl=None,project=None
       * `username` (`str`)
     """
     __args__ = dict()
-
-
     __args__['acls'] = acls
     __args__['enabled'] = enabled
     __args__['extendedAcl'] = extended_acl
@@ -71,7 +73,7 @@ def get_elastic_search_acl(acls=None,enabled=None,extended_acl=None,project=None
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getElasticSearchAcl:getElasticSearchAcl', __args__, opts=opts).value
 
     return AwaitableGetElasticSearchAclResult(

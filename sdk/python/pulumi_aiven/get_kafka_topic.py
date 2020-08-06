@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetKafkaTopicResult:
     """
@@ -52,6 +53,8 @@ class GetKafkaTopicResult:
         if topic_name and not isinstance(topic_name, str):
             raise TypeError("Expected argument 'topic_name' to be a str")
         __self__.topic_name = topic_name
+
+
 class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,7 +74,8 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             termination_protection=self.termination_protection,
             topic_name=self.topic_name)
 
-def get_kafka_topic(cleanup_policy=None,client_timeout=None,minimum_in_sync_replicas=None,partitions=None,project=None,replication=None,retention_bytes=None,retention_hours=None,service_name=None,termination_protection=None,topic_name=None,opts=None):
+
+def get_kafka_topic(cleanup_policy=None, client_timeout=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, opts=None):
     """
     ## Example Usage
 
@@ -92,8 +96,6 @@ def get_kafka_topic(cleanup_policy=None,client_timeout=None,minimum_in_sync_repl
       * `read` (`str`)
     """
     __args__ = dict()
-
-
     __args__['cleanupPolicy'] = cleanup_policy
     __args__['clientTimeout'] = client_timeout
     __args__['minimumInSyncReplicas'] = minimum_in_sync_replicas
@@ -108,7 +110,7 @@ def get_kafka_topic(cleanup_policy=None,client_timeout=None,minimum_in_sync_repl
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaTopic:getKafkaTopic', __args__, opts=opts).value
 
     return AwaitableGetKafkaTopicResult(

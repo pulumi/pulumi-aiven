@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetAccountTeamMemberResult:
     """
@@ -37,6 +38,8 @@ class GetAccountTeamMemberResult:
         if user_email and not isinstance(user_email, str):
             raise TypeError("Expected argument 'user_email' to be a str")
         __self__.user_email = user_email
+
+
 class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +54,8 @@ class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
             team_id=self.team_id,
             user_email=self.user_email)
 
-def get_account_team_member(accepted=None,account_id=None,create_time=None,invited_by_user_email=None,team_id=None,user_email=None,opts=None):
+
+def get_account_team_member(accepted=None, account_id=None, create_time=None, invited_by_user_email=None, team_id=None, user_email=None, opts=None):
     """
     ## Example Usage
 
@@ -65,8 +69,6 @@ def get_account_team_member(accepted=None,account_id=None,create_time=None,invit
     ```
     """
     __args__ = dict()
-
-
     __args__['accepted'] = accepted
     __args__['accountId'] = account_id
     __args__['createTime'] = create_time
@@ -76,7 +78,7 @@ def get_account_team_member(accepted=None,account_id=None,create_time=None,invit
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamMember:getAccountTeamMember', __args__, opts=opts).value
 
     return AwaitableGetAccountTeamMemberResult(

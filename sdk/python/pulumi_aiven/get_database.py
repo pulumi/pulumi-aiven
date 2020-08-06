@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetDatabaseResult:
     """
@@ -37,6 +38,8 @@ class GetDatabaseResult:
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         __self__.termination_protection = termination_protection
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +54,8 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             service_name=self.service_name,
             termination_protection=self.termination_protection)
 
-def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,service_name=None,termination_protection=None,opts=None):
+
+def get_database(database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, opts=None):
     """
     ## Example Usage
 
@@ -65,8 +69,6 @@ def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,s
     ```
     """
     __args__ = dict()
-
-
     __args__['databaseName'] = database_name
     __args__['lcCollate'] = lc_collate
     __args__['lcCtype'] = lc_ctype
@@ -76,7 +78,7 @@ def get_database(database_name=None,lc_collate=None,lc_ctype=None,project=None,s
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getDatabase:getDatabase', __args__, opts=opts).value
 
     return AwaitableGetDatabaseResult(

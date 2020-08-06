@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetVpcPeeringConnectionResult:
     """
@@ -43,6 +44,8 @@ class GetVpcPeeringConnectionResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
             state_info=self.state_info,
             vpc_id=self.vpc_id)
 
-def get_vpc_peering_connection(client_timeout=None,peer_cloud_account=None,peer_region=None,peer_vpc=None,peering_connection_id=None,state=None,state_info=None,vpc_id=None,opts=None):
+
+def get_vpc_peering_connection(client_timeout=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None, opts=None):
     """
     ## Example Usage
 
@@ -79,8 +83,6 @@ def get_vpc_peering_connection(client_timeout=None,peer_cloud_account=None,peer_
       * `create` (`str`)
     """
     __args__ = dict()
-
-
     __args__['clientTimeout'] = client_timeout
     __args__['peerCloudAccount'] = peer_cloud_account
     __args__['peerRegion'] = peer_region
@@ -92,7 +94,7 @@ def get_vpc_peering_connection(client_timeout=None,peer_cloud_account=None,peer_
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getVpcPeeringConnection:getVpcPeeringConnection', __args__, opts=opts).value
 
     return AwaitableGetVpcPeeringConnectionResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetAccountAuthenticationResult:
     """
@@ -55,6 +56,8 @@ class GetAccountAuthenticationResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         __self__.update_time = update_time
+
+
 class AwaitableGetAccountAuthenticationResult(GetAccountAuthenticationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,13 +78,12 @@ class AwaitableGetAccountAuthenticationResult(GetAccountAuthenticationResult):
             type=self.type,
             update_time=self.update_time)
 
-def get_account_authentication(account_id=None,authentication_id=None,create_time=None,enabled=None,name=None,saml_acs_url=None,saml_certificate=None,saml_entity_id=None,saml_idp_url=None,saml_metadata_url=None,type=None,update_time=None,opts=None):
+
+def get_account_authentication(account_id=None, authentication_id=None, create_time=None, enabled=None, name=None, saml_acs_url=None, saml_certificate=None, saml_entity_id=None, saml_idp_url=None, saml_metadata_url=None, type=None, update_time=None, opts=None):
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
-
-
     __args__['accountId'] = account_id
     __args__['authenticationId'] = authentication_id
     __args__['createTime'] = create_time
@@ -97,7 +99,7 @@ def get_account_authentication(account_id=None,authentication_id=None,create_tim
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccountAuthentication:getAccountAuthentication', __args__, opts=opts).value
 
     return AwaitableGetAccountAuthenticationResult(

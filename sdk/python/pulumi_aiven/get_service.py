@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetServiceResult:
     """
@@ -133,6 +134,8 @@ class GetServiceResult:
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         __self__.termination_protection = termination_protection
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -179,7 +182,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             state=self.state,
             termination_protection=self.termination_protection)
 
-def get_service(cassandra=None,cassandra_user_config=None,client_timeout=None,cloud_name=None,components=None,elasticsearch=None,elasticsearch_user_config=None,grafana=None,grafana_user_config=None,influxdb=None,influxdb_user_config=None,kafka=None,kafka_connect=None,kafka_connect_user_config=None,kafka_mirrormaker=None,kafka_mirrormaker_user_config=None,kafka_user_config=None,maintenance_window_dow=None,maintenance_window_time=None,mysql=None,mysql_user_config=None,pg=None,pg_user_config=None,plan=None,project=None,project_vpc_id=None,redis=None,redis_user_config=None,service_host=None,service_integrations=None,service_name=None,service_password=None,service_port=None,service_type=None,service_uri=None,service_username=None,state=None,termination_protection=None,opts=None):
+
+def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, opts=None):
     """
     ## Example Usage
 
@@ -618,8 +622,6 @@ def get_service(cassandra=None,cassandra_user_config=None,client_timeout=None,cl
       * `source_service_name` (`str`)
     """
     __args__ = dict()
-
-
     __args__['cassandra'] = cassandra
     __args__['cassandraUserConfig'] = cassandra_user_config
     __args__['clientTimeout'] = client_timeout
@@ -661,7 +663,7 @@ def get_service(cassandra=None,cassandra_user_config=None,client_timeout=None,cl
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

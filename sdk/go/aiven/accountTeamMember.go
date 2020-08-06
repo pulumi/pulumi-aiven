@@ -28,8 +28,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewAccountTeamMember(ctx, "foo", &aiven.AccountTeamMemberArgs{
-// 			AccountId: pulumi.String(aiven_account.Developers.Account_id),
-// 			TeamId:    pulumi.String(aiven_account.Developers.Account_id),
+// 			AccountId: pulumi.Any(aiven_account.Developers.Account_id),
+// 			TeamId:    pulumi.Any(aiven_account.Developers.Account_id),
 // 			UserEmail: pulumi.String("user+1@example.com"),
 // 		})
 // 		if err != nil {

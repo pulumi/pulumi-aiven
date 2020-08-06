@@ -25,7 +25,7 @@ import (
 // 		_, err := aiven.NewProjectUser(ctx, "mytestuser", &aiven.ProjectUserArgs{
 // 			Email:      pulumi.String("john.doe@example.com"),
 // 			MemberType: pulumi.String("admin"),
-// 			Project:    pulumi.String(aiven_project.Myproject.Project),
+// 			Project:    pulumi.Any(aiven_project.Myproject.Project),
 // 		})
 // 		if err != nil {
 // 			return err

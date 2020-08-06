@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetProjectVpcResult:
     """
@@ -34,6 +35,8 @@ class GetProjectVpcResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         __self__.state = state
+
+
 class AwaitableGetProjectVpcResult(GetProjectVpcResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,7 +50,8 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
             project=self.project,
             state=self.state)
 
-def get_project_vpc(client_timeout=None,cloud_name=None,network_cidr=None,project=None,state=None,opts=None):
+
+def get_project_vpc(client_timeout=None, cloud_name=None, network_cidr=None, project=None, state=None, opts=None):
     """
     ## Example Usage
 
@@ -67,8 +71,6 @@ def get_project_vpc(client_timeout=None,cloud_name=None,network_cidr=None,projec
       * `delete` (`str`)
     """
     __args__ = dict()
-
-
     __args__['clientTimeout'] = client_timeout
     __args__['cloudName'] = cloud_name
     __args__['networkCidr'] = network_cidr
@@ -77,7 +79,7 @@ def get_project_vpc(client_timeout=None,cloud_name=None,network_cidr=None,projec
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts).value
 
     return AwaitableGetProjectVpcResult(

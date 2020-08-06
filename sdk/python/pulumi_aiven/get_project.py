@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetProjectResult:
     """
@@ -46,6 +47,8 @@ class GetProjectResult:
         if technical_emails and not isinstance(technical_emails, list):
             raise TypeError("Expected argument 'technical_emails' to be a list")
         __self__.technical_emails = technical_emails
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             project=self.project,
             technical_emails=self.technical_emails)
 
-def get_project(account_id=None,billing_address=None,billing_emails=None,ca_cert=None,card_id=None,copy_from_project=None,country_code=None,project=None,technical_emails=None,opts=None):
+
+def get_project(account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, opts=None):
     """
     ## Example Usage
 
@@ -75,8 +79,6 @@ def get_project(account_id=None,billing_address=None,billing_emails=None,ca_cert
     ```
     """
     __args__ = dict()
-
-
     __args__['accountId'] = account_id
     __args__['billingAddress'] = billing_address
     __args__['billingEmails'] = billing_emails
@@ -89,7 +91,7 @@ def get_project(account_id=None,billing_address=None,billing_emails=None,ca_cert
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getProject:getProject', __args__, opts=opts).value
 
     return AwaitableGetProjectResult(

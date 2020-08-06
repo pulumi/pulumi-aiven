@@ -26,16 +26,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		project1, err := aiven.NewProject(ctx, "project1", &aiven.ProjectArgs{
-// 			AccountId: pulumi.String(aiven_account_team.Developers.Account_id),
+// 			AccountId: pulumi.Any(aiven_account_team.Developers.Account_id),
 // 			Project:   pulumi.String("project-1"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = aiven.NewAccountTeamProject(ctx, "accountTeamProject1", &aiven.AccountTeamProjectArgs{
-// 			AccountId:   pulumi.String(aiven_account_team.Developers.Account_id),
+// 			AccountId:   pulumi.Any(aiven_account_team.Developers.Account_id),
 // 			ProjectName: project1.Project,
-// 			TeamId:      pulumi.String(aiven_account_team.Developers.Team_id),
+// 			TeamId:      pulumi.Any(aiven_account_team.Developers.Team_id),
 // 			TeamType:    pulumi.String("admin"),
 // 		})
 // 		if err != nil {

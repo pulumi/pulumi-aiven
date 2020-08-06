@@ -25,7 +25,7 @@ import (
 // 		_, err := aiven.NewProjectVpc(ctx, "myvpc", &aiven.ProjectVpcArgs{
 // 			CloudName:   pulumi.String("google-europe-west1"),
 // 			NetworkCidr: pulumi.String("192.168.0.1/24"),
-// 			Project:     pulumi.String(aiven_project.Myproject.Project),
+// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetConnectionPoolResult:
     """
@@ -43,6 +44,8 @@ class GetConnectionPoolResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         __self__.username = username
+
+
 class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
             service_name=self.service_name,
             username=self.username)
 
-def get_connection_pool(connection_uri=None,database_name=None,pool_mode=None,pool_name=None,pool_size=None,project=None,service_name=None,username=None,opts=None):
+
+def get_connection_pool(connection_uri=None, database_name=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None, opts=None):
     """
     ## Example Usage
 
@@ -73,8 +77,6 @@ def get_connection_pool(connection_uri=None,database_name=None,pool_mode=None,po
     ```
     """
     __args__ = dict()
-
-
     __args__['connectionUri'] = connection_uri
     __args__['databaseName'] = database_name
     __args__['poolMode'] = pool_mode
@@ -86,7 +88,7 @@ def get_connection_pool(connection_uri=None,database_name=None,pool_mode=None,po
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getConnectionPool:getConnectionPool', __args__, opts=opts).value
 
     return AwaitableGetConnectionPoolResult(

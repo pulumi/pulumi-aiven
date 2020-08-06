@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetMirrorMakerReplicationFlowResult:
     """
@@ -40,6 +41,8 @@ class GetMirrorMakerReplicationFlowResult:
         if topics_blacklists and not isinstance(topics_blacklists, list):
             raise TypeError("Expected argument 'topics_blacklists' to be a list")
         __self__.topics_blacklists = topics_blacklists
+
+
 class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlowResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,13 +58,12 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             topics=self.topics,
             topics_blacklists=self.topics_blacklists)
 
-def get_mirror_maker_replication_flow(enable=None,project=None,service_name=None,source_cluster=None,target_cluster=None,topics=None,topics_blacklists=None,opts=None):
+
+def get_mirror_maker_replication_flow(enable=None, project=None, service_name=None, source_cluster=None, target_cluster=None, topics=None, topics_blacklists=None, opts=None):
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
-
-
     __args__['enable'] = enable
     __args__['project'] = project
     __args__['serviceName'] = service_name
@@ -72,7 +74,7 @@ def get_mirror_maker_replication_flow(enable=None,project=None,service_name=None
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts).value
 
     return AwaitableGetMirrorMakerReplicationFlowResult(

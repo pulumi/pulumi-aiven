@@ -28,7 +28,7 @@ import (
 // 			},
 // 			EndpointName: pulumi.String("<ENDPOINT_NAME>"),
 // 			EndpointType: pulumi.String("datadog"),
-// 			Project:      pulumi.String(aiven_project.Myproject.Project),
+// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
 // 		})
 // 		if err != nil {
 // 			return err

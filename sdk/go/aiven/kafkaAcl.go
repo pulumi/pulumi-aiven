@@ -24,8 +24,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewKafkaAcl(ctx, "mytestacl", &aiven.KafkaAclArgs{
 // 			Permission:  pulumi.String("admin"),
-// 			Project:     pulumi.String(aiven_project.Myproject.Project),
-// 			ServiceName: pulumi.String(aiven_service.Myservice.Service_name),
+// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
+// 			ServiceName: pulumi.Any(aiven_service.Myservice.Service_name),
 // 			Topic:       pulumi.String("<TOPIC_NAME_PATTERN>"),
 // 			Username:    pulumi.String("<USERNAME_PATTERN>"),
 // 		})
