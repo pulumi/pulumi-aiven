@@ -60,6 +60,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("maxConnectionsPerIp")]
         public Input<string>? MaxConnectionsPerIp { get; set; }
 
+        [Input("maxIncrementalFetchSessionCacheSlots")]
+        public Input<string>? MaxIncrementalFetchSessionCacheSlots { get; set; }
+
         [Input("messageMaxBytes")]
         public Input<string>? MessageMaxBytes { get; set; }
 

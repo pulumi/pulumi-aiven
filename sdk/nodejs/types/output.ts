@@ -104,6 +104,7 @@ export interface GetServiceElasticsearchUserConfigElasticsearch {
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
     reindexRemoteWhitelists?: string[];
+    searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
     threadPoolForceMergeSize?: string;
@@ -192,7 +193,7 @@ export interface GetServiceGrafanaUserConfigAuthGithub {
     allowedOrganizations?: string[];
     clientId?: string;
     clientSecret?: string;
-    teamIds?: number[];
+    teamIds?: string[];
 }
 
 export interface GetServiceGrafanaUserConfigAuthGitlab {
@@ -394,6 +395,7 @@ export interface GetServiceKafkaUserConfigKafka {
     logRetentionHours?: string;
     logSegmentBytes?: string;
     maxConnectionsPerIp?: string;
+    maxIncrementalFetchSessionCacheSlots?: string;
     messageMaxBytes?: string;
     numPartitions?: string;
     offsetsRetentionMinutes?: string;
@@ -699,6 +701,7 @@ export interface ServiceElasticsearchUserConfigElasticsearch {
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
     reindexRemoteWhitelists?: string[];
+    searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
     threadPoolForceMergeSize?: string;
@@ -787,7 +790,7 @@ export interface ServiceGrafanaUserConfigAuthGithub {
     allowedOrganizations?: string[];
     clientId?: string;
     clientSecret?: string;
-    teamIds?: number[];
+    teamIds?: string[];
 }
 
 export interface ServiceGrafanaUserConfigAuthGitlab {
@@ -989,6 +992,7 @@ export interface ServiceKafkaUserConfigKafka {
     logRetentionHours?: string;
     logSegmentBytes?: string;
     maxConnectionsPerIp?: string;
+    maxIncrementalFetchSessionCacheSlots?: string;
     messageMaxBytes?: string;
     numPartitions?: string;
     offsetsRetentionMinutes?: string;

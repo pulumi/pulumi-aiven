@@ -1849,6 +1849,7 @@ type ServiceElasticsearchUserConfigElasticsearch struct {
 	IndicesQueriesCacheSize            *string  `pulumi:"indicesQueriesCacheSize"`
 	IndicesQueryBoolMaxClauseCount     *string  `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            []string `pulumi:"reindexRemoteWhitelists"`
+	SearchMaxBuckets                   *string  `pulumi:"searchMaxBuckets"`
 	ThreadPoolAnalyzeQueueSize         *string  `pulumi:"threadPoolAnalyzeQueueSize"`
 	ThreadPoolAnalyzeSize              *string  `pulumi:"threadPoolAnalyzeSize"`
 	ThreadPoolForceMergeSize           *string  `pulumi:"threadPoolForceMergeSize"`
@@ -1886,6 +1887,7 @@ type ServiceElasticsearchUserConfigElasticsearchArgs struct {
 	IndicesQueriesCacheSize            pulumi.StringPtrInput   `pulumi:"indicesQueriesCacheSize"`
 	IndicesQueryBoolMaxClauseCount     pulumi.StringPtrInput   `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
+	SearchMaxBuckets                   pulumi.StringPtrInput   `pulumi:"searchMaxBuckets"`
 	ThreadPoolAnalyzeQueueSize         pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeQueueSize"`
 	ThreadPoolAnalyzeSize              pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeSize"`
 	ThreadPoolForceMergeSize           pulumi.StringPtrInput   `pulumi:"threadPoolForceMergeSize"`
@@ -2015,6 +2017,10 @@ func (o ServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMaxCl
 
 func (o ServiceElasticsearchUserConfigElasticsearchOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.SearchMaxBuckets }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
@@ -2179,6 +2185,15 @@ func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhite
 		}
 		return v.ReindexRemoteWhitelists
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SearchMaxBuckets
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
@@ -3751,7 +3766,7 @@ type ServiceGrafanaUserConfigAuthGithub struct {
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
 	ClientId             *string  `pulumi:"clientId"`
 	ClientSecret         *string  `pulumi:"clientSecret"`
-	TeamIds              []int    `pulumi:"teamIds"`
+	TeamIds              []string `pulumi:"teamIds"`
 }
 
 // ServiceGrafanaUserConfigAuthGithubInput is an input type that accepts ServiceGrafanaUserConfigAuthGithubArgs and ServiceGrafanaUserConfigAuthGithubOutput values.
@@ -3770,7 +3785,7 @@ type ServiceGrafanaUserConfigAuthGithubArgs struct {
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
 	ClientId             pulumi.StringPtrInput   `pulumi:"clientId"`
 	ClientSecret         pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	TeamIds              pulumi.IntArrayInput    `pulumi:"teamIds"`
+	TeamIds              pulumi.StringArrayInput `pulumi:"teamIds"`
 }
 
 func (ServiceGrafanaUserConfigAuthGithubArgs) ElementType() reflect.Type {
@@ -3865,8 +3880,8 @@ func (o ServiceGrafanaUserConfigAuthGithubOutput) ClientSecret() pulumi.StringPt
 	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) []int { return v.TeamIds }).(pulumi.IntArrayOutput)
+func (o ServiceGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfigAuthGithub) []string { return v.TeamIds }).(pulumi.StringArrayOutput)
 }
 
 type ServiceGrafanaUserConfigAuthGithubPtrOutput struct{ *pulumi.OutputState }
@@ -3923,13 +3938,13 @@ func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGithub) []int {
+func (o ServiceGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigAuthGithub) []string {
 		if v == nil {
 			return nil
 		}
 		return v.TeamIds
-	}).(pulumi.IntArrayOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServiceGrafanaUserConfigAuthGitlab struct {
@@ -8633,6 +8648,7 @@ type ServiceKafkaUserConfigKafka struct {
 	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
 	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
 	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
 	NumPartitions                          *string `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
@@ -8670,6 +8686,7 @@ type ServiceKafkaUserConfigKafkaArgs struct {
 	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
 	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
 	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
 	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
@@ -8817,6 +8834,10 @@ func (o ServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOut
 
 func (o ServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.MaxIncrementalFetchSessionCacheSlots }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
@@ -9006,6 +9027,15 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.Strin
 			return nil
 		}
 		return v.MaxConnectionsPerIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIncrementalFetchSessionCacheSlots
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15094,6 +15124,7 @@ type GetServiceElasticsearchUserConfigElasticsearch struct {
 	IndicesQueriesCacheSize            *string  `pulumi:"indicesQueriesCacheSize"`
 	IndicesQueryBoolMaxClauseCount     *string  `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            []string `pulumi:"reindexRemoteWhitelists"`
+	SearchMaxBuckets                   *string  `pulumi:"searchMaxBuckets"`
 	ThreadPoolAnalyzeQueueSize         *string  `pulumi:"threadPoolAnalyzeQueueSize"`
 	ThreadPoolAnalyzeSize              *string  `pulumi:"threadPoolAnalyzeSize"`
 	ThreadPoolForceMergeSize           *string  `pulumi:"threadPoolForceMergeSize"`
@@ -15131,6 +15162,7 @@ type GetServiceElasticsearchUserConfigElasticsearchArgs struct {
 	IndicesQueriesCacheSize            pulumi.StringPtrInput   `pulumi:"indicesQueriesCacheSize"`
 	IndicesQueryBoolMaxClauseCount     pulumi.StringPtrInput   `pulumi:"indicesQueryBoolMaxClauseCount"`
 	ReindexRemoteWhitelists            pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
+	SearchMaxBuckets                   pulumi.StringPtrInput   `pulumi:"searchMaxBuckets"`
 	ThreadPoolAnalyzeQueueSize         pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeQueueSize"`
 	ThreadPoolAnalyzeSize              pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeSize"`
 	ThreadPoolForceMergeSize           pulumi.StringPtrInput   `pulumi:"threadPoolForceMergeSize"`
@@ -15262,6 +15294,10 @@ func (o GetServiceElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMa
 
 func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.SearchMaxBuckets }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
@@ -15426,6 +15462,15 @@ func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWh
 		}
 		return v.ReindexRemoteWhitelists
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SearchMaxBuckets
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
@@ -16631,7 +16676,7 @@ type GetServiceGrafanaUserConfigAuthGithub struct {
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
 	ClientId             *string  `pulumi:"clientId"`
 	ClientSecret         *string  `pulumi:"clientSecret"`
-	TeamIds              []int    `pulumi:"teamIds"`
+	TeamIds              []string `pulumi:"teamIds"`
 }
 
 // GetServiceGrafanaUserConfigAuthGithubInput is an input type that accepts GetServiceGrafanaUserConfigAuthGithubArgs and GetServiceGrafanaUserConfigAuthGithubOutput values.
@@ -16650,7 +16695,7 @@ type GetServiceGrafanaUserConfigAuthGithubArgs struct {
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
 	ClientId             pulumi.StringPtrInput   `pulumi:"clientId"`
 	ClientSecret         pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	TeamIds              pulumi.IntArrayInput    `pulumi:"teamIds"`
+	TeamIds              pulumi.StringArrayInput `pulumi:"teamIds"`
 }
 
 func (GetServiceGrafanaUserConfigAuthGithubArgs) ElementType() reflect.Type {
@@ -16745,8 +16790,8 @@ func (o GetServiceGrafanaUserConfigAuthGithubOutput) ClientSecret() pulumi.Strin
 	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) []int { return v.TeamIds }).(pulumi.IntArrayOutput)
+func (o GetServiceGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfigAuthGithub) []string { return v.TeamIds }).(pulumi.StringArrayOutput)
 }
 
 type GetServiceGrafanaUserConfigAuthGithubPtrOutput struct{ *pulumi.OutputState }
@@ -16803,13 +16848,13 @@ func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGithub) []int {
+func (o GetServiceGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigAuthGithub) []string {
 		if v == nil {
 			return nil
 		}
 		return v.TeamIds
-	}).(pulumi.IntArrayOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 type GetServiceGrafanaUserConfigAuthGitlab struct {
@@ -19935,6 +19980,7 @@ type GetServiceKafkaUserConfigKafka struct {
 	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
 	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
 	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
 	NumPartitions                          *string `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
@@ -19972,6 +20018,7 @@ type GetServiceKafkaUserConfigKafkaArgs struct {
 	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
 	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
 	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
 	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
@@ -20119,6 +20166,10 @@ func (o GetServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtr
 
 func (o GetServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.MaxIncrementalFetchSessionCacheSlots }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
@@ -20308,6 +20359,15 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.St
 			return nil
 		}
 		return v.MaxConnectionsPerIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIncrementalFetchSessionCacheSlots
 	}).(pulumi.StringPtrOutput)
 }
 

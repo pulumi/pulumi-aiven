@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetAccountResult:
     """
@@ -37,6 +38,8 @@ class GetAccountResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         __self__.update_time = update_time
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +54,8 @@ class AwaitableGetAccountResult(GetAccountResult):
             tenant_id=self.tenant_id,
             update_time=self.update_time)
 
-def get_account(account_id=None,create_time=None,name=None,owner_team_id=None,tenant_id=None,update_time=None,opts=None):
+
+def get_account(account_id=None, create_time=None, name=None, owner_team_id=None, tenant_id=None, update_time=None, opts=None):
     """
     ## Example Usage
 
@@ -63,8 +67,6 @@ def get_account(account_id=None,create_time=None,name=None,owner_team_id=None,te
     ```
     """
     __args__ = dict()
-
-
     __args__['accountId'] = account_id
     __args__['createTime'] = create_time
     __args__['name'] = name
@@ -74,7 +76,7 @@ def get_account(account_id=None,create_time=None,name=None,owner_team_id=None,te
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccount:getAccount', __args__, opts=opts).value
 
     return AwaitableGetAccountResult(

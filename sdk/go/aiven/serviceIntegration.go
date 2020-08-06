@@ -23,12 +23,12 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewServiceIntegration(ctx, "myintegration", &aiven.ServiceIntegrationArgs{
-// 			DestinationEndpointId:  pulumi.String(aiven_service_integration_endpoint.Myendpoint.Id),
+// 			DestinationEndpointId:  pulumi.Any(aiven_service_integration_endpoint.Myendpoint.Id),
 // 			DestinationServiceName: pulumi.String(""),
 // 			IntegrationType:        pulumi.String("datadog"),
-// 			Project:                pulumi.String(aiven_project.Myproject.Project),
+// 			Project:                pulumi.Any(aiven_project.Myproject.Project),
 // 			SourceEndpointId:       pulumi.String(""),
-// 			SourceServiceName:      pulumi.String(aiven_service.Testkafka.Service_name),
+// 			SourceServiceName:      pulumi.Any(aiven_service.Testkafka.Service_name),
 // 		})
 // 		if err != nil {
 // 			return err

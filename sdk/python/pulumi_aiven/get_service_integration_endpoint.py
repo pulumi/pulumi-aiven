@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetServiceIntegrationEndpointResult:
     """
@@ -43,6 +44,8 @@ class GetServiceIntegrationEndpointResult:
         if rsyslog_user_config and not isinstance(rsyslog_user_config, dict):
             raise TypeError("Expected argument 'rsyslog_user_config' to be a dict")
         __self__.rsyslog_user_config = rsyslog_user_config
+
+
 class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             prometheus_user_config=self.prometheus_user_config,
             rsyslog_user_config=self.rsyslog_user_config)
 
-def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=None,endpoint_name=None,endpoint_type=None,external_elasticsearch_logs_user_config=None,project=None,prometheus_user_config=None,rsyslog_user_config=None,opts=None):
+
+def get_service_integration_endpoint(datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, opts=None):
     """
     ## Example Usage
 
@@ -106,8 +110,6 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
       * `tls` (`str`)
     """
     __args__ = dict()
-
-
     __args__['datadogUserConfig'] = datadog_user_config
     __args__['endpointConfig'] = endpoint_config
     __args__['endpointName'] = endpoint_name
@@ -119,7 +121,7 @@ def get_service_integration_endpoint(datadog_user_config=None,endpoint_config=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts).value
 
     return AwaitableGetServiceIntegrationEndpointResult(

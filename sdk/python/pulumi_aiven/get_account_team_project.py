@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetAccountTeamProjectResult:
     """
@@ -31,6 +32,8 @@ class GetAccountTeamProjectResult:
         if team_type and not isinstance(team_type, str):
             raise TypeError("Expected argument 'team_type' to be a str")
         __self__.team_type = team_type
+
+
 class AwaitableGetAccountTeamProjectResult(GetAccountTeamProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetAccountTeamProjectResult(GetAccountTeamProjectResult):
             team_id=self.team_id,
             team_type=self.team_type)
 
-def get_account_team_project(account_id=None,project_name=None,team_id=None,team_type=None,opts=None):
+
+def get_account_team_project(account_id=None, project_name=None, team_id=None, team_type=None, opts=None):
     """
     ## Example Usage
 
@@ -57,8 +61,6 @@ def get_account_team_project(account_id=None,project_name=None,team_id=None,team
     ```
     """
     __args__ = dict()
-
-
     __args__['accountId'] = account_id
     __args__['projectName'] = project_name
     __args__['teamId'] = team_id
@@ -66,7 +68,7 @@ def get_account_team_project(account_id=None,project_name=None,team_id=None,team
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamProject:getAccountTeamProject', __args__, opts=opts).value
 
     return AwaitableGetAccountTeamProjectResult(

@@ -26,7 +26,7 @@ import (
 // 			PeerCloudAccount: pulumi.String("<PEER_ACCOUNT_ID>"),
 // 			PeerRegion:       pulumi.String("<PEER_REGION>"),
 // 			PeerVpc:          pulumi.String("<PEER_VPC_ID/NAME>"),
-// 			VpcId:            pulumi.String(aiven_project_vpc.Myvpc.Id),
+// 			VpcId:            pulumi.Any(aiven_project_vpc.Myvpc.Id),
 // 		})
 // 		if err != nil {
 // 			return err

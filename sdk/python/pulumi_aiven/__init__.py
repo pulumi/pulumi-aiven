@@ -48,3 +48,8 @@ from .service_integration import *
 from .service_integration_endpoint import *
 from .service_user import *
 from .vpc_peering_connection import *
+
+# Make subpackages available:
+from . import (
+    config,
+)

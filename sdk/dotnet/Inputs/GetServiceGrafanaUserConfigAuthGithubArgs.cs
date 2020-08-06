@@ -30,10 +30,10 @@ namespace Pulumi.Aiven.Inputs
         public string? ClientSecret { get; set; }
 
         [Input("teamIds")]
-        private List<int>? _teamIds;
-        public List<int> TeamIds
+        private List<string>? _teamIds;
+        public List<string> TeamIds
         {
-            get => _teamIds ?? (_teamIds = new List<int>());
+            get => _teamIds ?? (_teamIds = new List<string>());
             set => _teamIds = value;
         }
 

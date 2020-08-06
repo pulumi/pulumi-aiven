@@ -23,8 +23,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewServiceUser(ctx, "myserviceuser", &aiven.ServiceUserArgs{
-// 			Project:     pulumi.String(aiven_project.Myproject.Project),
-// 			ServiceName: pulumi.String(aiven_service.Myservice.Service_name),
+// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
+// 			ServiceName: pulumi.Any(aiven_service.Myservice.Service_name),
 // 			Username:    pulumi.String("<USERNAME>"),
 // 		})
 // 		if err != nil {

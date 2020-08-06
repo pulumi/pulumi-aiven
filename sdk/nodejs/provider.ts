@@ -35,7 +35,9 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["apiToken"] = (args ? args.apiToken : undefined) || utilities.getEnv("AIVEN_API_TOKEN");
+        {
+            inputs["apiToken"] = (args ? args.apiToken : undefined) || utilities.getEnv("AIVEN_API_TOKEN");
+        }
         if (!opts) {
             opts = {}
         }

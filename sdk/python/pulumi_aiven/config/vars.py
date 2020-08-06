@@ -6,11 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 __config__ = pulumi.Config('aiven')
 
-api_token = __config__.get('apiToken') or utilities.get_env('AIVEN_API_TOKEN')
+api_token = __config__.get('apiToken') or _utilities.get_env('AIVEN_API_TOKEN')
 """
 Aiven Authentication Token
 """

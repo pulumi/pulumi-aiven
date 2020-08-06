@@ -29,6 +29,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? LogRetentionHours;
         public readonly string? LogSegmentBytes;
         public readonly string? MaxConnectionsPerIp;
+        public readonly string? MaxIncrementalFetchSessionCacheSlots;
         public readonly string? MessageMaxBytes;
         public readonly string? NumPartitions;
         public readonly string? OffsetsRetentionMinutes;
@@ -71,6 +72,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? maxConnectionsPerIp,
 
+            string? maxIncrementalFetchSessionCacheSlots,
+
             string? messageMaxBytes,
 
             string? numPartitions,
@@ -101,6 +104,7 @@ namespace Pulumi.Aiven.Outputs
             LogRetentionHours = logRetentionHours;
             LogSegmentBytes = logSegmentBytes;
             MaxConnectionsPerIp = maxConnectionsPerIp;
+            MaxIncrementalFetchSessionCacheSlots = maxIncrementalFetchSessionCacheSlots;
             MessageMaxBytes = messageMaxBytes;
             NumPartitions = numPartitions;
             OffsetsRetentionMinutes = offsetsRetentionMinutes;

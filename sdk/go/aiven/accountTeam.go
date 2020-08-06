@@ -23,7 +23,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewAccountTeam(ctx, "accountTeam1", &aiven.AccountTeamArgs{
-// 			AccountId: pulumi.String(aiven_account.Team.Account_id),
+// 			AccountId: pulumi.Any(aiven_account.Team.Account_id),
 // 		})
 // 		if err != nil {
 // 			return err

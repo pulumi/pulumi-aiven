@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetServiceIntegrationResult:
     """
@@ -49,6 +50,8 @@ class GetServiceIntegrationResult:
         if source_service_name and not isinstance(source_service_name, str):
             raise TypeError("Expected argument 'source_service_name' to be a str")
         __self__.source_service_name = source_service_name
+
+
 class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             source_endpoint_id=self.source_endpoint_id,
             source_service_name=self.source_service_name)
 
-def get_service_integration(destination_endpoint_id=None,destination_service_name=None,integration_type=None,kafka_connect_user_config=None,kafka_mirrormaker_user_config=None,logs_user_config=None,mirrormaker_user_config=None,project=None,source_endpoint_id=None,source_service_name=None,opts=None):
+
+def get_service_integration(destination_endpoint_id=None, destination_service_name=None, integration_type=None, kafka_connect_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, mirrormaker_user_config=None, project=None, source_endpoint_id=None, source_service_name=None, opts=None):
     """
     Use this data source to access information about an existing resource.
 
@@ -94,8 +98,6 @@ def get_service_integration(destination_endpoint_id=None,destination_service_nam
       * `mirrormakerWhitelist` (`str`)
     """
     __args__ = dict()
-
-
     __args__['destinationEndpointId'] = destination_endpoint_id
     __args__['destinationServiceName'] = destination_service_name
     __args__['integrationType'] = integration_type
@@ -109,7 +111,7 @@ def get_service_integration(destination_endpoint_id=None,destination_service_nam
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegration:getServiceIntegration', __args__, opts=opts).value
 
     return AwaitableGetServiceIntegrationResult(

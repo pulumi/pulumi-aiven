@@ -47,6 +47,9 @@ namespace Pulumi.Aiven.Inputs
             set => _reindexRemoteWhitelists = value;
         }
 
+        [Input("searchMaxBuckets")]
+        public string? SearchMaxBuckets { get; set; }
+
         [Input("threadPoolAnalyzeQueueSize")]
         public string? ThreadPoolAnalyzeQueueSize { get; set; }
 

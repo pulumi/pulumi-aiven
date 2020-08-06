@@ -104,6 +104,7 @@ export interface GetServiceElasticsearchUserConfigElasticsearch {
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
     reindexRemoteWhitelists?: string[];
+    searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
     threadPoolForceMergeSize?: string;
@@ -192,7 +193,7 @@ export interface GetServiceGrafanaUserConfigAuthGithub {
     allowedOrganizations?: string[];
     clientId?: string;
     clientSecret?: string;
-    teamIds?: number[];
+    teamIds?: string[];
 }
 
 export interface GetServiceGrafanaUserConfigAuthGitlab {
@@ -394,6 +395,7 @@ export interface GetServiceKafkaUserConfigKafka {
     logRetentionHours?: string;
     logSegmentBytes?: string;
     maxConnectionsPerIp?: string;
+    maxIncrementalFetchSessionCacheSlots?: string;
     messageMaxBytes?: string;
     numPartitions?: string;
     offsetsRetentionMinutes?: string;
@@ -699,6 +701,7 @@ export interface ServiceElasticsearchUserConfigElasticsearch {
     indicesQueriesCacheSize?: pulumi.Input<string>;
     indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    searchMaxBuckets?: pulumi.Input<string>;
     threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
     threadPoolAnalyzeSize?: pulumi.Input<string>;
     threadPoolForceMergeSize?: pulumi.Input<string>;
@@ -787,7 +790,7 @@ export interface ServiceGrafanaUserConfigAuthGithub {
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
-    teamIds?: pulumi.Input<pulumi.Input<number>[]>;
+    teamIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ServiceGrafanaUserConfigAuthGitlab {
@@ -989,6 +992,7 @@ export interface ServiceKafkaUserConfigKafka {
     logRetentionHours?: pulumi.Input<string>;
     logSegmentBytes?: pulumi.Input<string>;
     maxConnectionsPerIp?: pulumi.Input<string>;
+    maxIncrementalFetchSessionCacheSlots?: pulumi.Input<string>;
     messageMaxBytes?: pulumi.Input<string>;
     numPartitions?: pulumi.Input<string>;
     offsetsRetentionMinutes?: pulumi.Input<string>;
