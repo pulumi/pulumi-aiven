@@ -13,10 +13,7 @@ class GetProjectVpcResult:
     """
     A collection of values returned by getProjectVpc.
     """
-    def __init__(__self__, client_timeout=None, cloud_name=None, id=None, network_cidr=None, project=None, state=None):
-        if client_timeout and not isinstance(client_timeout, dict):
-            raise TypeError("Expected argument 'client_timeout' to be a dict")
-        __self__.client_timeout = client_timeout
+    def __init__(__self__, cloud_name=None, id=None, network_cidr=None, project=None, state=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         __self__.cloud_name = cloud_name
@@ -43,7 +40,6 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
         if False:
             yield self
         return GetProjectVpcResult(
-            client_timeout=self.client_timeout,
             cloud_name=self.cloud_name,
             id=self.id,
             network_cidr=self.network_cidr,
@@ -51,7 +47,7 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
             state=self.state)
 
 
-def get_project_vpc(client_timeout=None, cloud_name=None, network_cidr=None, project=None, state=None, opts=None):
+def get_project_vpc(cloud_name=None, network_cidr=None, project=None, state=None, opts=None):
     """
     ## Example Usage
 
@@ -62,16 +58,8 @@ def get_project_vpc(client_timeout=None, cloud_name=None, network_cidr=None, pro
     myvpc = aiven.get_project_vpc(project=data["aiven_project"]["myproject"]["project"],
         cloud_name="google-europe-west1")
     ```
-
-
-
-    The **client_timeout** object supports the following:
-
-      * `create` (`str`)
-      * `delete` (`str`)
     """
     __args__ = dict()
-    __args__['clientTimeout'] = client_timeout
     __args__['cloudName'] = cloud_name
     __args__['networkCidr'] = network_cidr
     __args__['project'] = project
@@ -83,7 +71,6 @@ def get_project_vpc(client_timeout=None, cloud_name=None, network_cidr=None, pro
     __ret__ = pulumi.runtime.invoke('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts).value
 
     return AwaitableGetProjectVpcResult(
-        client_timeout=__ret__.get('clientTimeout'),
         cloud_name=__ret__.get('cloudName'),
         id=__ret__.get('id'),
         network_cidr=__ret__.get('networkCidr'),

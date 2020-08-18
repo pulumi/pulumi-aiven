@@ -62,6 +62,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        [Input("sharedBuffersPercentage")]
+        public Input<string>? SharedBuffersPercentage { get; set; }
+
         [Input("synchronousReplication")]
         public Input<string>? SynchronousReplication { get; set; }
 
@@ -70,6 +73,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("variant")]
         public Input<string>? Variant { get; set; }
+
+        [Input("workMem")]
+        public Input<string>? WorkMem { get; set; }
 
         public ServicePgUserConfigArgs()
         {

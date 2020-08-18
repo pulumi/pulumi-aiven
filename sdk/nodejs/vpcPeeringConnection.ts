@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -50,11 +48,13 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
     }
 
     /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
      */
-    public readonly clientTimeout!: pulumi.Output<outputs.VpcPeeringConnectionClientTimeout | undefined>;
+    public /*out*/ readonly peerAzureAppId!: pulumi.Output<string>;
+    /**
+     * Azure tenant id in UUID4 form
+     */
+    public /*out*/ readonly peerAzureTenantId!: pulumi.Output<string>;
     /**
      * AWS account ID or GCP project ID of the peered VPC
      */
@@ -63,6 +63,10 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
      */
     public readonly peerRegion!: pulumi.Output<string | undefined>;
+    /**
+     * Azure resource group name of the peered VPC
+     */
+    public /*out*/ readonly peerResourceGroup!: pulumi.Output<string>;
     /**
      * AWS VPC ID or GCP VPC network name of the peered VPC
      */
@@ -96,9 +100,11 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as VpcPeeringConnectionState | undefined;
-            inputs["clientTimeout"] = state ? state.clientTimeout : undefined;
+            inputs["peerAzureAppId"] = state ? state.peerAzureAppId : undefined;
+            inputs["peerAzureTenantId"] = state ? state.peerAzureTenantId : undefined;
             inputs["peerCloudAccount"] = state ? state.peerCloudAccount : undefined;
             inputs["peerRegion"] = state ? state.peerRegion : undefined;
+            inputs["peerResourceGroup"] = state ? state.peerResourceGroup : undefined;
             inputs["peerVpc"] = state ? state.peerVpc : undefined;
             inputs["peeringConnectionId"] = state ? state.peeringConnectionId : undefined;
             inputs["state"] = state ? state.state : undefined;
@@ -115,11 +121,13 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             if (!args || args.vpcId === undefined) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["clientTimeout"] = args ? args.clientTimeout : undefined;
             inputs["peerCloudAccount"] = args ? args.peerCloudAccount : undefined;
             inputs["peerRegion"] = args ? args.peerRegion : undefined;
             inputs["peerVpc"] = args ? args.peerVpc : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
+            inputs["peerAzureAppId"] = undefined /*out*/;
+            inputs["peerAzureTenantId"] = undefined /*out*/;
+            inputs["peerResourceGroup"] = undefined /*out*/;
             inputs["peeringConnectionId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["stateInfo"] = undefined /*out*/;
@@ -140,11 +148,13 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
  */
 export interface VpcPeeringConnectionState {
     /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
      */
-    readonly clientTimeout?: pulumi.Input<inputs.VpcPeeringConnectionClientTimeout>;
+    readonly peerAzureAppId?: pulumi.Input<string>;
+    /**
+     * Azure tenant id in UUID4 form
+     */
+    readonly peerAzureTenantId?: pulumi.Input<string>;
     /**
      * AWS account ID or GCP project ID of the peered VPC
      */
@@ -153,6 +163,10 @@ export interface VpcPeeringConnectionState {
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
      */
     readonly peerRegion?: pulumi.Input<string>;
+    /**
+     * Azure resource group name of the peered VPC
+     */
+    readonly peerResourceGroup?: pulumi.Input<string>;
     /**
      * AWS VPC ID or GCP VPC network name of the peered VPC
      */
@@ -179,12 +193,6 @@ export interface VpcPeeringConnectionState {
  * The set of arguments for constructing a VpcPeeringConnection resource.
  */
 export interface VpcPeeringConnectionArgs {
-    /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
-     */
-    readonly clientTimeout?: pulumi.Input<inputs.VpcPeeringConnectionClientTimeout>;
     /**
      * AWS account ID or GCP project ID of the peered VPC
      */

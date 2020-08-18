@@ -5,6 +5,40 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CassandraCassandra {
+}
+
+export interface CassandraCassandraUserConfig {
+    ipFilters?: string[];
+    migrateSstableloader?: string;
+    privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
+    publicAccess?: outputs.CassandraCassandraUserConfigPublicAccess;
+    serviceToForkFrom?: string;
+}
+
+export interface CassandraCassandraUserConfigPrivateAccess {
+    prometheus?: string;
+}
+
+export interface CassandraCassandraUserConfigPublicAccess {
+    prometheus?: string;
+}
+
+export interface CassandraComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface CassandraServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
 export interface ElasticSearchAclAcl {
     rules: outputs.ElasticSearchAclAclRule[];
     username: string;
@@ -13,6 +47,124 @@ export interface ElasticSearchAclAcl {
 export interface ElasticSearchAclAclRule {
     index: string;
     permission: string;
+}
+
+export interface ElasticSearchComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface ElasticSearchElasticsearch {
+    kibanaUri: string;
+}
+
+export interface ElasticSearchElasticsearchUserConfig {
+    customDomain?: string;
+    disableReplicationFactorAdjustment?: string;
+    elasticsearch?: outputs.ElasticSearchElasticsearchUserConfigElasticsearch;
+    elasticsearchVersion?: string;
+    indexPatterns?: outputs.ElasticSearchElasticsearchUserConfigIndexPattern[];
+    ipFilters?: string[];
+    kibana?: outputs.ElasticSearchElasticsearchUserConfigKibana;
+    maxIndexCount?: string;
+    privateAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivateAccess;
+    publicAccess?: outputs.ElasticSearchElasticsearchUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
+}
+
+export interface ElasticSearchElasticsearchUserConfigElasticsearch {
+    actionAutoCreateIndexEnabled?: string;
+    actionDestructiveRequiresName?: string;
+    httpMaxContentLength?: string;
+    httpMaxHeaderSize?: string;
+    httpMaxInitialLineLength?: string;
+    indicesFielddataCacheSize?: string;
+    indicesMemoryIndexBufferSize?: string;
+    indicesQueriesCacheSize?: string;
+    indicesQueryBoolMaxClauseCount?: string;
+    reindexRemoteWhitelists?: string[];
+    searchMaxBuckets?: string;
+    threadPoolAnalyzeQueueSize?: string;
+    threadPoolAnalyzeSize?: string;
+    threadPoolForceMergeSize?: string;
+    threadPoolGetQueueSize?: string;
+    threadPoolGetSize?: string;
+    threadPoolIndexQueueSize?: string;
+    threadPoolIndexSize?: string;
+    threadPoolSearchQueueSize?: string;
+    threadPoolSearchSize?: string;
+    threadPoolSearchThrottledQueueSize?: string;
+    threadPoolSearchThrottledSize?: string;
+    threadPoolWriteQueueSize?: string;
+    threadPoolWriteSize?: string;
+}
+
+export interface ElasticSearchElasticsearchUserConfigIndexPattern {
+    maxIndexCount?: string;
+    pattern?: string;
+}
+
+export interface ElasticSearchElasticsearchUserConfigKibana {
+    elasticsearchRequestTimeout?: string;
+    enabled?: string;
+    maxOldSpaceSize?: string;
+}
+
+export interface ElasticSearchElasticsearchUserConfigPrivateAccess {
+    elasticsearch?: string;
+    kibana?: string;
+    prometheus?: string;
+}
+
+export interface ElasticSearchElasticsearchUserConfigPublicAccess {
+    elasticsearch?: string;
+    kibana?: string;
+    prometheus?: string;
+}
+
+export interface ElasticSearchServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetCassandaCassandra {
+}
+
+export interface GetCassandaCassandraUserConfig {
+    ipFilters?: string[];
+    migrateSstableloader?: string;
+    privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
+    publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
+    serviceToForkFrom?: string;
+}
+
+export interface GetCassandaCassandraUserConfigPrivateAccess {
+    prometheus?: string;
+}
+
+export interface GetCassandaCassandraUserConfigPublicAccess {
+    prometheus?: string;
+}
+
+export interface GetCassandaComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetCassandaServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface GetElasticSearchAclAcl {
@@ -25,19 +177,640 @@ export interface GetElasticSearchAclAclRule {
     permission: string;
 }
 
+export interface GetElasticSearchComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetElasticSearchElasticsearch {
+    kibanaUri: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfig {
+    customDomain?: string;
+    disableReplicationFactorAdjustment?: string;
+    elasticsearch?: outputs.GetElasticSearchElasticsearchUserConfigElasticsearch;
+    elasticsearchVersion?: string;
+    indexPatterns?: outputs.GetElasticSearchElasticsearchUserConfigIndexPattern[];
+    ipFilters?: string[];
+    kibana?: outputs.GetElasticSearchElasticsearchUserConfigKibana;
+    maxIndexCount?: string;
+    privateAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivateAccess;
+    publicAccess?: outputs.GetElasticSearchElasticsearchUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
+    actionAutoCreateIndexEnabled?: string;
+    actionDestructiveRequiresName?: string;
+    httpMaxContentLength?: string;
+    httpMaxHeaderSize?: string;
+    httpMaxInitialLineLength?: string;
+    indicesFielddataCacheSize?: string;
+    indicesMemoryIndexBufferSize?: string;
+    indicesQueriesCacheSize?: string;
+    indicesQueryBoolMaxClauseCount?: string;
+    reindexRemoteWhitelists?: string[];
+    searchMaxBuckets?: string;
+    threadPoolAnalyzeQueueSize?: string;
+    threadPoolAnalyzeSize?: string;
+    threadPoolForceMergeSize?: string;
+    threadPoolGetQueueSize?: string;
+    threadPoolGetSize?: string;
+    threadPoolIndexQueueSize?: string;
+    threadPoolIndexSize?: string;
+    threadPoolSearchQueueSize?: string;
+    threadPoolSearchSize?: string;
+    threadPoolSearchThrottledQueueSize?: string;
+    threadPoolSearchThrottledSize?: string;
+    threadPoolWriteQueueSize?: string;
+    threadPoolWriteSize?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigIndexPattern {
+    maxIndexCount?: string;
+    pattern?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigKibana {
+    elasticsearchRequestTimeout?: string;
+    enabled?: string;
+    maxOldSpaceSize?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigPrivateAccess {
+    elasticsearch?: string;
+    kibana?: string;
+    prometheus?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigPublicAccess {
+    elasticsearch?: string;
+    kibana?: string;
+    prometheus?: string;
+}
+
+export interface GetElasticSearchServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetGrafanaComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetGrafanaGrafana {
+}
+
+export interface GetGrafanaGrafanaUserConfig {
+    alertingEnabled?: string;
+    alertingErrorOrTimeout?: string;
+    alertingNodataOrNullvalues?: string;
+    allowEmbedding?: string;
+    authBasicEnabled?: string;
+    authGenericOauth?: outputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
+    authGithub?: outputs.GetGrafanaGrafanaUserConfigAuthGithub;
+    authGitlab?: outputs.GetGrafanaGrafanaUserConfigAuthGitlab;
+    authGoogle?: outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
+    cookieSamesite?: string;
+    customDomain?: string;
+    dashboardsVersionsToKeep?: string;
+    dataproxySendUserHeader?: string;
+    dataproxyTimeout?: string;
+    disableGravatar?: string;
+    editorsCanAdmin?: string;
+    externalImageStorage?: outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
+    googleAnalyticsUaId?: string;
+    ipFilters?: string[];
+    metricsEnabled?: string;
+    privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
+    publicAccess?: outputs.GetGrafanaGrafanaUserConfigPublicAccess;
+    smtpServer?: outputs.GetGrafanaGrafanaUserConfigSmtpServer;
+    userAutoAssignOrg?: string;
+    userAutoAssignOrgRole?: string;
+    viewersCanEdit?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    allowedOrganizations?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    name?: string;
+    scopes?: string[];
+    tokenUrl?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigAuthGithub {
+    allowSignUp?: string;
+    allowedOrganizations?: string[];
+    clientId?: string;
+    clientSecret?: string;
+    teamIds?: string[];
+}
+
+export interface GetGrafanaGrafanaUserConfigAuthGitlab {
+    allowSignUp?: string;
+    allowedGroups?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    tokenUrl?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigAuthGoogle {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    clientId?: string;
+    clientSecret?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
+    accessKey?: string;
+    bucketUrl?: string;
+    provider?: string;
+    secretKey?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigPrivateAccess {
+    grafana?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigPublicAccess {
+    grafana?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigSmtpServer {
+    fromAddress?: string;
+    fromName?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    skipVerify?: string;
+    username?: string;
+}
+
+export interface GetGrafanaServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetInfluxDbComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetInfluxDbInfluxdb {
+    databaseName: string;
+}
+
+export interface GetInfluxDbInfluxdbUserConfig {
+    customDomain?: string;
+    ipFilters?: string[];
+    privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
+    publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
+    serviceToForkFrom?: string;
+}
+
+export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
+    influxdb?: string;
+}
+
+export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
+    influxdb?: string;
+}
+
+export interface GetInfluxDbServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetKafkaComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetKafkaConnectComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetKafkaConnectKafkaConnect {
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfig {
+    ipFilters?: string[];
+    kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
+    privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
+    publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
+    consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
+    consumerMaxPollRecords?: string;
+    offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: string;
+    prometheus?: string;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: string;
+    prometheus?: string;
+}
+
+export interface GetKafkaConnectServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
 export interface GetKafkaConnectorTask {
     connector: string;
     task: number;
 }
 
-export interface GetKafkaTopicClientTimeout {
-    create?: string;
-    read?: string;
+export interface GetKafkaKafka {
+    accessCert: string;
+    accessKey: string;
+    connectUri: string;
+    restUri: string;
+    schemaRegistryUri: string;
 }
 
-export interface GetProjectVpcClientTimeout {
-    create?: string;
-    delete?: string;
+export interface GetKafkaKafkaUserConfig {
+    customDomain?: string;
+    ipFilters?: string[];
+    kafka?: outputs.GetKafkaKafkaUserConfigKafka;
+    kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
+    kafkaConnect?: string;
+    kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
+    kafkaRest?: string;
+    kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
+    kafkaVersion?: string;
+    privateAccess?: outputs.GetKafkaKafkaUserConfigPrivateAccess;
+    publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
+    schemaRegistry?: string;
+}
+
+export interface GetKafkaKafkaUserConfigKafka {
+    autoCreateTopicsEnable?: string;
+    compressionType?: string;
+    connectionsMaxIdleMs?: string;
+    defaultReplicationFactor?: string;
+    groupMaxSessionTimeoutMs?: string;
+    groupMinSessionTimeoutMs?: string;
+    logCleanerMaxCompactionLagMs?: string;
+    logCleanerMinCleanableRatio?: string;
+    logCleanerMinCompactionLagMs?: string;
+    logCleanupPolicy?: string;
+    logMessageTimestampDifferenceMaxMs?: string;
+    logMessageTimestampType?: string;
+    logRetentionBytes?: string;
+    logRetentionHours?: string;
+    logSegmentBytes?: string;
+    maxConnectionsPerIp?: string;
+    maxIncrementalFetchSessionCacheSlots?: string;
+    messageMaxBytes?: string;
+    numPartitions?: string;
+    offsetsRetentionMinutes?: string;
+    producerPurgatoryPurgeIntervalRequests?: string;
+    replicaFetchMaxBytes?: string;
+    replicaFetchResponseMaxBytes?: string;
+    socketRequestMaxBytes?: string;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
+    certificate?: string;
+    sasl?: string;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
+    consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
+    consumerMaxPollRecords?: string;
+    offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaRestConfig {
+    consumerEnableAutoCommit?: string;
+    consumerRequestMaxBytes?: string;
+    consumerRequestTimeoutMs?: string;
+    producerAcks?: string;
+    producerLingerMs?: string;
+    simpleconsumerPoolSizeMax?: string;
+}
+
+export interface GetKafkaKafkaUserConfigPrivateAccess {
+    prometheus?: string;
+}
+
+export interface GetKafkaKafkaUserConfigPublicAccess {
+    kafka?: string;
+    kafkaConnect?: string;
+    kafkaRest?: string;
+    prometheus?: string;
+    schemaRegistry?: string;
+}
+
+export interface GetKafkaMirrorMakerComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetKafkaMirrorMakerKafkaMirrormaker {
+}
+
+export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
+    ipFilters?: string[];
+    kafkaMirrormaker?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
+}
+
+export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    refreshGroupsEnabled?: string;
+    refreshGroupsIntervalSeconds?: string;
+    refreshTopicsEnabled?: string;
+    refreshTopicsIntervalSeconds?: string;
+}
+
+export interface GetKafkaMirrorMakerServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetKafkaServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetMySqlComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetMySqlMysql {
+}
+
+export interface GetMySqlMysqlUserConfig {
+    adminPassword?: string;
+    adminUsername?: string;
+    backupHour?: string;
+    backupMinute?: string;
+    ipFilters?: string[];
+    mysql?: outputs.GetMySqlMysqlUserConfigMysql;
+    mysqlVersion?: string;
+    privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
+    publicAccess?: outputs.GetMySqlMysqlUserConfigPublicAccess;
+    recoveryTargetTime?: string;
+    serviceToForkFrom?: string;
+}
+
+export interface GetMySqlMysqlUserConfigMysql {
+    connectTimeout?: string;
+    defaultTimeZone?: string;
+    groupConcatMaxLen?: string;
+    informationSchemaStatsExpiry?: string;
+    innodbFtMinTokenSize?: string;
+    innodbFtServerStopwordTable?: string;
+    innodbLockWaitTimeout?: string;
+    innodbLogBufferSize?: string;
+    innodbOnlineAlterLogMaxSize?: string;
+    innodbPrintAllDeadlocks?: string;
+    innodbRollbackOnTimeout?: string;
+    interactiveTimeout?: string;
+    maxAllowedPacket?: string;
+    maxHeapTableSize?: string;
+    netReadTimeout?: string;
+    netWriteTimeout?: string;
+    sortBufferSize?: string;
+    sqlMode?: string;
+    sqlRequirePrimaryKey?: string;
+    tmpTableSize?: string;
+    waitTimeout?: string;
+}
+
+export interface GetMySqlMysqlUserConfigPrivateAccess {
+    mysql?: string;
+    prometheus?: string;
+}
+
+export interface GetMySqlMysqlUserConfigPublicAccess {
+    mysql?: string;
+    prometheus?: string;
+}
+
+export interface GetMySqlServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetPgComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetPgPg {
+    dbname: string;
+    host: string;
+    password: string;
+    port: number;
+    replicaUri: string;
+    sslmode: string;
+    uri: string;
+    user: string;
+}
+
+export interface GetPgPgUserConfig {
+    adminPassword?: string;
+    adminUsername?: string;
+    backupHour?: string;
+    backupMinute?: string;
+    ipFilters?: string[];
+    pg?: outputs.GetPgPgUserConfigPg;
+    pgReadReplica?: string;
+    pgServiceToForkFrom?: string;
+    pgVersion?: string;
+    pgbouncer?: outputs.GetPgPgUserConfigPgbouncer;
+    pglookout?: outputs.GetPgPgUserConfigPglookout;
+    privateAccess?: outputs.GetPgPgUserConfigPrivateAccess;
+    publicAccess?: outputs.GetPgPgUserConfigPublicAccess;
+    recoveryTargetTime?: string;
+    serviceToForkFrom?: string;
+    sharedBuffersPercentage?: string;
+    synchronousReplication?: string;
+    timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
+    variant?: string;
+    workMem?: string;
+}
+
+export interface GetPgPgUserConfigPg {
+    autovacuumAnalyzeScaleFactor?: string;
+    autovacuumAnalyzeThreshold?: string;
+    autovacuumFreezeMaxAge?: string;
+    autovacuumMaxWorkers?: string;
+    autovacuumNaptime?: string;
+    autovacuumVacuumCostDelay?: string;
+    autovacuumVacuumCostLimit?: string;
+    autovacuumVacuumScaleFactor?: string;
+    autovacuumVacuumThreshold?: string;
+    deadlockTimeout?: string;
+    idleInTransactionSessionTimeout?: string;
+    jit?: string;
+    logAutovacuumMinDuration?: string;
+    logErrorVerbosity?: string;
+    logMinDurationStatement?: string;
+    maxLocksPerTransaction?: string;
+    maxParallelWorkers?: string;
+    maxParallelWorkersPerGather?: string;
+    maxPredLocksPerTransaction?: string;
+    maxPreparedTransactions?: string;
+    maxStackDepth?: string;
+    maxStandbyArchiveDelay?: string;
+    maxStandbyStreamingDelay?: string;
+    maxWorkerProcesses?: string;
+    pgStatStatementsDotTrack?: string;
+    tempFileLimit?: string;
+    timezone?: string;
+    trackActivityQuerySize?: string;
+    trackCommitTimestamp?: string;
+    trackFunctions?: string;
+    walSenderTimeout?: string;
+    walWriterDelay?: string;
+}
+
+export interface GetPgPgUserConfigPgbouncer {
+    ignoreStartupParameters?: string[];
+    serverResetQueryAlways?: string;
+}
+
+export interface GetPgPgUserConfigPglookout {
+    maxFailoverReplicationTimeLag?: string;
+}
+
+export interface GetPgPgUserConfigPrivateAccess {
+    pg?: string;
+    pgbouncer?: string;
+    prometheus?: string;
+}
+
+export interface GetPgPgUserConfigPublicAccess {
+    pg?: string;
+    pgbouncer?: string;
+    prometheus?: string;
+}
+
+export interface GetPgPgUserConfigTimescaledb {
+    maxBackgroundWorkers?: string;
+}
+
+export interface GetPgServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetRedisComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetRedisRedis {
+}
+
+export interface GetRedisRedisUserConfig {
+    ipFilters?: string[];
+    migration?: outputs.GetRedisRedisUserConfigMigration;
+    privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
+    publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
+    redisLfuDecayTime?: string;
+    redisLfuLogFactor?: string;
+    redisMaxmemoryPolicy?: string;
+    redisNotifyKeyspaceEvents?: string;
+    redisSsl?: string;
+    redisTimeout?: string;
+}
+
+export interface GetRedisRedisUserConfigMigration {
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
+}
+
+export interface GetRedisRedisUserConfigPrivateAccess {
+    prometheus?: string;
+    redis?: string;
+}
+
+export interface GetRedisRedisUserConfigPublicAccess {
+    prometheus?: string;
+    redis?: string;
+}
+
+export interface GetRedisServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface GetServiceCassandra {
@@ -57,11 +830,6 @@ export interface GetServiceCassandraUserConfigPrivateAccess {
 
 export interface GetServiceCassandraUserConfigPublicAccess {
     prometheus?: string;
-}
-
-export interface GetServiceClientTimeout {
-    create?: string;
-    update?: string;
 }
 
 export interface GetServiceComponent {
@@ -333,9 +1101,14 @@ export interface GetServiceKafkaConnectUserConfig {
 }
 
 export interface GetServiceKafkaConnectUserConfigKafkaConnect {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
     consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigPrivateAccess {
@@ -411,9 +1184,14 @@ export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
 }
 
 export interface GetServiceKafkaUserConfigKafkaConnectConfig {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
     consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaRestConfig {
@@ -464,6 +1242,7 @@ export interface GetServiceMysqlUserConfigMysql {
     innodbLockWaitTimeout?: string;
     innodbLogBufferSize?: string;
     innodbOnlineAlterLogMaxSize?: string;
+    innodbPrintAllDeadlocks?: string;
     innodbRollbackOnTimeout?: string;
     interactiveTimeout?: string;
     maxAllowedPacket?: string;
@@ -514,9 +1293,11 @@ export interface GetServicePgUserConfig {
     publicAccess?: outputs.GetServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    sharedBuffersPercentage?: string;
     synchronousReplication?: string;
     timescaledb?: outputs.GetServicePgUserConfigTimescaledb;
     variant?: string;
+    workMem?: string;
 }
 
 export interface GetServicePgUserConfigPg {
@@ -618,8 +1399,205 @@ export interface GetServiceServiceIntegration {
     sourceServiceName: string;
 }
 
-export interface GetVpcPeeringConnectionClientTimeout {
-    create?: string;
+export interface GrafanaComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GrafanaGrafana {
+}
+
+export interface GrafanaGrafanaUserConfig {
+    alertingEnabled?: string;
+    alertingErrorOrTimeout?: string;
+    alertingNodataOrNullvalues?: string;
+    allowEmbedding?: string;
+    authBasicEnabled?: string;
+    authGenericOauth?: outputs.GrafanaGrafanaUserConfigAuthGenericOauth;
+    authGithub?: outputs.GrafanaGrafanaUserConfigAuthGithub;
+    authGitlab?: outputs.GrafanaGrafanaUserConfigAuthGitlab;
+    authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
+    cookieSamesite?: string;
+    customDomain?: string;
+    dashboardsVersionsToKeep?: string;
+    dataproxySendUserHeader?: string;
+    dataproxyTimeout?: string;
+    disableGravatar?: string;
+    editorsCanAdmin?: string;
+    externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
+    googleAnalyticsUaId?: string;
+    ipFilters?: string[];
+    metricsEnabled?: string;
+    privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
+    publicAccess?: outputs.GrafanaGrafanaUserConfigPublicAccess;
+    smtpServer?: outputs.GrafanaGrafanaUserConfigSmtpServer;
+    userAutoAssignOrg?: string;
+    userAutoAssignOrgRole?: string;
+    viewersCanEdit?: string;
+}
+
+export interface GrafanaGrafanaUserConfigAuthGenericOauth {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    allowedOrganizations?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    name?: string;
+    scopes?: string[];
+    tokenUrl?: string;
+}
+
+export interface GrafanaGrafanaUserConfigAuthGithub {
+    allowSignUp?: string;
+    allowedOrganizations?: string[];
+    clientId?: string;
+    clientSecret?: string;
+    teamIds?: string[];
+}
+
+export interface GrafanaGrafanaUserConfigAuthGitlab {
+    allowSignUp?: string;
+    allowedGroups?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    tokenUrl?: string;
+}
+
+export interface GrafanaGrafanaUserConfigAuthGoogle {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    clientId?: string;
+    clientSecret?: string;
+}
+
+export interface GrafanaGrafanaUserConfigExternalImageStorage {
+    accessKey?: string;
+    bucketUrl?: string;
+    provider?: string;
+    secretKey?: string;
+}
+
+export interface GrafanaGrafanaUserConfigPrivateAccess {
+    grafana?: string;
+}
+
+export interface GrafanaGrafanaUserConfigPublicAccess {
+    grafana?: string;
+}
+
+export interface GrafanaGrafanaUserConfigSmtpServer {
+    fromAddress?: string;
+    fromName?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    skipVerify?: string;
+    username?: string;
+}
+
+export interface GrafanaServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface InfluxDbComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface InfluxDbInfluxdb {
+    databaseName: string;
+}
+
+export interface InfluxDbInfluxdbUserConfig {
+    customDomain?: string;
+    ipFilters?: string[];
+    privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
+    publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
+    serviceToForkFrom?: string;
+}
+
+export interface InfluxDbInfluxdbUserConfigPrivateAccess {
+    influxdb?: string;
+}
+
+export interface InfluxDbInfluxdbUserConfigPublicAccess {
+    influxdb?: string;
+}
+
+export interface InfluxDbServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface KafkaComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface KafkaConnectComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface KafkaConnectKafkaConnect {
+}
+
+export interface KafkaConnectKafkaConnectUserConfig {
+    ipFilters?: string[];
+    kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
+    privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
+    publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
+    consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
+    consumerMaxPollRecords?: string;
+    offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
+    kafkaConnect?: string;
+    prometheus?: string;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
+    kafkaConnect?: string;
+    prometheus?: string;
+}
+
+export interface KafkaConnectServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface KafkaConnectorTask {
@@ -627,14 +1605,350 @@ export interface KafkaConnectorTask {
     task: number;
 }
 
-export interface KafkaTopicClientTimeout {
-    create?: string;
-    read?: string;
+export interface KafkaKafka {
+    accessCert: string;
+    accessKey: string;
+    connectUri: string;
+    restUri: string;
+    schemaRegistryUri: string;
 }
 
-export interface ProjectVpcClientTimeout {
-    create?: string;
-    delete?: string;
+export interface KafkaKafkaUserConfig {
+    customDomain?: string;
+    ipFilters?: string[];
+    kafka?: outputs.KafkaKafkaUserConfigKafka;
+    kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
+    kafkaConnect?: string;
+    kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
+    kafkaRest?: string;
+    kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
+    kafkaVersion?: string;
+    privateAccess?: outputs.KafkaKafkaUserConfigPrivateAccess;
+    publicAccess?: outputs.KafkaKafkaUserConfigPublicAccess;
+    schemaRegistry?: string;
+}
+
+export interface KafkaKafkaUserConfigKafka {
+    autoCreateTopicsEnable?: string;
+    compressionType?: string;
+    connectionsMaxIdleMs?: string;
+    defaultReplicationFactor?: string;
+    groupMaxSessionTimeoutMs?: string;
+    groupMinSessionTimeoutMs?: string;
+    logCleanerMaxCompactionLagMs?: string;
+    logCleanerMinCleanableRatio?: string;
+    logCleanerMinCompactionLagMs?: string;
+    logCleanupPolicy?: string;
+    logMessageTimestampDifferenceMaxMs?: string;
+    logMessageTimestampType?: string;
+    logRetentionBytes?: string;
+    logRetentionHours?: string;
+    logSegmentBytes?: string;
+    maxConnectionsPerIp?: string;
+    maxIncrementalFetchSessionCacheSlots?: string;
+    messageMaxBytes?: string;
+    numPartitions?: string;
+    offsetsRetentionMinutes?: string;
+    producerPurgatoryPurgeIntervalRequests?: string;
+    replicaFetchMaxBytes?: string;
+    replicaFetchResponseMaxBytes?: string;
+    socketRequestMaxBytes?: string;
+}
+
+export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
+    certificate?: string;
+    sasl?: string;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectConfig {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
+    consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
+    consumerMaxPollRecords?: string;
+    offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
+}
+
+export interface KafkaKafkaUserConfigKafkaRestConfig {
+    consumerEnableAutoCommit?: string;
+    consumerRequestMaxBytes?: string;
+    consumerRequestTimeoutMs?: string;
+    producerAcks?: string;
+    producerLingerMs?: string;
+    simpleconsumerPoolSizeMax?: string;
+}
+
+export interface KafkaKafkaUserConfigPrivateAccess {
+    prometheus?: string;
+}
+
+export interface KafkaKafkaUserConfigPublicAccess {
+    kafka?: string;
+    kafkaConnect?: string;
+    kafkaRest?: string;
+    prometheus?: string;
+    schemaRegistry?: string;
+}
+
+export interface KafkaMirrorMakerComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface KafkaMirrorMakerKafkaMirrormaker {
+}
+
+export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
+    ipFilters?: string[];
+    kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
+}
+
+export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    refreshGroupsEnabled?: string;
+    refreshGroupsIntervalSeconds?: string;
+    refreshTopicsEnabled?: string;
+    refreshTopicsIntervalSeconds?: string;
+}
+
+export interface KafkaMirrorMakerServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface KafkaServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface MySqlComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface MySqlMysql {
+}
+
+export interface MySqlMysqlUserConfig {
+    adminPassword?: string;
+    adminUsername?: string;
+    backupHour?: string;
+    backupMinute?: string;
+    ipFilters?: string[];
+    mysql?: outputs.MySqlMysqlUserConfigMysql;
+    mysqlVersion?: string;
+    privateAccess?: outputs.MySqlMysqlUserConfigPrivateAccess;
+    publicAccess?: outputs.MySqlMysqlUserConfigPublicAccess;
+    recoveryTargetTime?: string;
+    serviceToForkFrom?: string;
+}
+
+export interface MySqlMysqlUserConfigMysql {
+    connectTimeout?: string;
+    defaultTimeZone?: string;
+    groupConcatMaxLen?: string;
+    informationSchemaStatsExpiry?: string;
+    innodbFtMinTokenSize?: string;
+    innodbFtServerStopwordTable?: string;
+    innodbLockWaitTimeout?: string;
+    innodbLogBufferSize?: string;
+    innodbOnlineAlterLogMaxSize?: string;
+    innodbPrintAllDeadlocks?: string;
+    innodbRollbackOnTimeout?: string;
+    interactiveTimeout?: string;
+    maxAllowedPacket?: string;
+    maxHeapTableSize?: string;
+    netReadTimeout?: string;
+    netWriteTimeout?: string;
+    sortBufferSize?: string;
+    sqlMode?: string;
+    sqlRequirePrimaryKey?: string;
+    tmpTableSize?: string;
+    waitTimeout?: string;
+}
+
+export interface MySqlMysqlUserConfigPrivateAccess {
+    mysql?: string;
+    prometheus?: string;
+}
+
+export interface MySqlMysqlUserConfigPublicAccess {
+    mysql?: string;
+    prometheus?: string;
+}
+
+export interface MySqlServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface PgComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface PgPg {
+    dbname: string;
+    host: string;
+    password: string;
+    port: number;
+    replicaUri: string;
+    sslmode: string;
+    uri: string;
+    user: string;
+}
+
+export interface PgPgUserConfig {
+    adminPassword?: string;
+    adminUsername?: string;
+    backupHour?: string;
+    backupMinute?: string;
+    ipFilters?: string[];
+    pg?: outputs.PgPgUserConfigPg;
+    pgReadReplica?: string;
+    pgServiceToForkFrom?: string;
+    pgVersion?: string;
+    pgbouncer?: outputs.PgPgUserConfigPgbouncer;
+    pglookout?: outputs.PgPgUserConfigPglookout;
+    privateAccess?: outputs.PgPgUserConfigPrivateAccess;
+    publicAccess?: outputs.PgPgUserConfigPublicAccess;
+    recoveryTargetTime?: string;
+    serviceToForkFrom?: string;
+    sharedBuffersPercentage?: string;
+    synchronousReplication?: string;
+    timescaledb?: outputs.PgPgUserConfigTimescaledb;
+    variant?: string;
+    workMem?: string;
+}
+
+export interface PgPgUserConfigPg {
+    autovacuumAnalyzeScaleFactor?: string;
+    autovacuumAnalyzeThreshold?: string;
+    autovacuumFreezeMaxAge?: string;
+    autovacuumMaxWorkers?: string;
+    autovacuumNaptime?: string;
+    autovacuumVacuumCostDelay?: string;
+    autovacuumVacuumCostLimit?: string;
+    autovacuumVacuumScaleFactor?: string;
+    autovacuumVacuumThreshold?: string;
+    deadlockTimeout?: string;
+    idleInTransactionSessionTimeout?: string;
+    jit?: string;
+    logAutovacuumMinDuration?: string;
+    logErrorVerbosity?: string;
+    logMinDurationStatement?: string;
+    maxLocksPerTransaction?: string;
+    maxParallelWorkers?: string;
+    maxParallelWorkersPerGather?: string;
+    maxPredLocksPerTransaction?: string;
+    maxPreparedTransactions?: string;
+    maxStackDepth?: string;
+    maxStandbyArchiveDelay?: string;
+    maxStandbyStreamingDelay?: string;
+    maxWorkerProcesses?: string;
+    pgStatStatementsDotTrack?: string;
+    tempFileLimit?: string;
+    timezone?: string;
+    trackActivityQuerySize?: string;
+    trackCommitTimestamp?: string;
+    trackFunctions?: string;
+    walSenderTimeout?: string;
+    walWriterDelay?: string;
+}
+
+export interface PgPgUserConfigPgbouncer {
+    ignoreStartupParameters?: string[];
+    serverResetQueryAlways?: string;
+}
+
+export interface PgPgUserConfigPglookout {
+    maxFailoverReplicationTimeLag?: string;
+}
+
+export interface PgPgUserConfigPrivateAccess {
+    pg?: string;
+    pgbouncer?: string;
+    prometheus?: string;
+}
+
+export interface PgPgUserConfigPublicAccess {
+    pg?: string;
+    pgbouncer?: string;
+    prometheus?: string;
+}
+
+export interface PgPgUserConfigTimescaledb {
+    maxBackgroundWorkers?: string;
+}
+
+export interface PgServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface RedisComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface RedisRedis {
+}
+
+export interface RedisRedisUserConfig {
+    ipFilters?: string[];
+    migration?: outputs.RedisRedisUserConfigMigration;
+    privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
+    publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
+    redisLfuDecayTime?: string;
+    redisLfuLogFactor?: string;
+    redisMaxmemoryPolicy?: string;
+    redisNotifyKeyspaceEvents?: string;
+    redisSsl?: string;
+    redisTimeout?: string;
+}
+
+export interface RedisRedisUserConfigMigration {
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
+}
+
+export interface RedisRedisUserConfigPrivateAccess {
+    prometheus?: string;
+    redis?: string;
+}
+
+export interface RedisRedisUserConfigPublicAccess {
+    prometheus?: string;
+    redis?: string;
+}
+
+export interface RedisServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface ServiceCassandra {
@@ -654,11 +1968,6 @@ export interface ServiceCassandraUserConfigPrivateAccess {
 
 export interface ServiceCassandraUserConfigPublicAccess {
     prometheus?: string;
-}
-
-export interface ServiceClientTimeout {
-    create?: string;
-    update?: string;
 }
 
 export interface ServiceComponent {
@@ -930,9 +2239,14 @@ export interface ServiceKafkaConnectUserConfig {
 }
 
 export interface ServiceKafkaConnectUserConfigKafkaConnect {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
     consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
 }
 
 export interface ServiceKafkaConnectUserConfigPrivateAccess {
@@ -1008,9 +2322,14 @@ export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
 }
 
 export interface ServiceKafkaUserConfigKafkaConnectConfig {
+    connectorClientConfigOverridePolicy?: string;
+    consumerAutoOffsetReset?: string;
     consumerIsolationLevel?: string;
+    consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
+    offsetFlushTimeoutMs?: string;
+    sessionTimeoutMs?: string;
 }
 
 export interface ServiceKafkaUserConfigKafkaRestConfig {
@@ -1061,6 +2380,7 @@ export interface ServiceMysqlUserConfigMysql {
     innodbLockWaitTimeout?: string;
     innodbLogBufferSize?: string;
     innodbOnlineAlterLogMaxSize?: string;
+    innodbPrintAllDeadlocks?: string;
     innodbRollbackOnTimeout?: string;
     interactiveTimeout?: string;
     maxAllowedPacket?: string;
@@ -1111,9 +2431,11 @@ export interface ServicePgUserConfig {
     publicAccess?: outputs.ServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    sharedBuffersPercentage?: string;
     synchronousReplication?: string;
     timescaledb?: outputs.ServicePgUserConfigTimescaledb;
     variant?: string;
+    workMem?: string;
 }
 
 export interface ServicePgUserConfigPg {
@@ -1213,8 +2535,4 @@ export interface ServiceRedisUserConfigPublicAccess {
 export interface ServiceServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
-}
-
-export interface VpcPeeringConnectionClientTimeout {
-    create?: string;
 }

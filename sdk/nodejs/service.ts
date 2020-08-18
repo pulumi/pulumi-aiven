@@ -65,12 +65,6 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.ServiceCassandraUserConfig | undefined>;
     /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
-     */
-    public readonly clientTimeout!: pulumi.Output<outputs.ServiceClientTimeout | undefined>;
-    /**
      * Cloud the service runs in
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
@@ -225,7 +219,6 @@ export class Service extends pulumi.CustomResource {
             const state = argsOrState as ServiceState | undefined;
             inputs["cassandra"] = state ? state.cassandra : undefined;
             inputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
-            inputs["clientTimeout"] = state ? state.clientTimeout : undefined;
             inputs["cloudName"] = state ? state.cloudName : undefined;
             inputs["components"] = state ? state.components : undefined;
             inputs["elasticsearch"] = state ? state.elasticsearch : undefined;
@@ -274,7 +267,6 @@ export class Service extends pulumi.CustomResource {
             }
             inputs["cassandra"] = args ? args.cassandra : undefined;
             inputs["cassandraUserConfig"] = args ? args.cassandraUserConfig : undefined;
-            inputs["clientTimeout"] = args ? args.clientTimeout : undefined;
             inputs["cloudName"] = args ? args.cloudName : undefined;
             inputs["elasticsearch"] = args ? args.elasticsearch : undefined;
             inputs["elasticsearchUserConfig"] = args ? args.elasticsearchUserConfig : undefined;
@@ -334,12 +326,6 @@ export interface ServiceState {
      * Cassandra specific user configurable settings
      */
     readonly cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
-    /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
-     */
-    readonly clientTimeout?: pulumi.Input<inputs.ServiceClientTimeout>;
     /**
      * Cloud the service runs in
      */
@@ -494,12 +480,6 @@ export interface ServiceArgs {
      * Cassandra specific user configurable settings
      */
     readonly cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
-    /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
-     */
-    readonly clientTimeout?: pulumi.Input<inputs.ServiceClientTimeout>;
     /**
      * Cloud the service runs in
      */

@@ -10,13 +10,6 @@ from . import _utilities, _tables
 
 
 class ProjectVpc(pulumi.CustomResource):
-    client_timeout: pulumi.Output[dict]
-    """
-    Custom Terraform Client timeouts
-
-      * `create` (`str`)
-      * `delete` (`str`)
-    """
     cloud_name: pulumi.Output[str]
     """
     Cloud the VPC is in
@@ -33,7 +26,7 @@ class ProjectVpc(pulumi.CustomResource):
     """
     State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
     """
-    def __init__(__self__, resource_name, opts=None, client_timeout=None, cloud_name=None, network_cidr=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cloud_name=None, network_cidr=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         ## Example Usage
 
@@ -49,15 +42,9 @@ class ProjectVpc(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[str] cloud_name: Cloud the VPC is in
         :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
         :param pulumi.Input[str] project: The project the VPC belongs to
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
-          * `delete` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,10 +63,6 @@ class ProjectVpc(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if client_timeout is not None:
-                warnings.warn("use timeouts instead", DeprecationWarning)
-                pulumi.log.warn("client_timeout is deprecated: use timeouts instead")
-            __props__['client_timeout'] = client_timeout
             if cloud_name is None:
                 raise TypeError("Missing required property 'cloud_name'")
             __props__['cloud_name'] = cloud_name
@@ -97,7 +80,7 @@ class ProjectVpc(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_timeout=None, cloud_name=None, network_cidr=None, project=None, state=None):
+    def get(resource_name, id, opts=None, cloud_name=None, network_cidr=None, project=None, state=None):
         """
         Get an existing ProjectVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -105,22 +88,15 @@ class ProjectVpc(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[str] cloud_name: Cloud the VPC is in
         :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
         :param pulumi.Input[str] project: The project the VPC belongs to
         :param pulumi.Input[str] state: State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
-          * `delete` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
-        __props__["client_timeout"] = client_timeout
         __props__["cloud_name"] = cloud_name
         __props__["network_cidr"] = network_cidr
         __props__["project"] = project

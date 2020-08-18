@@ -30,7 +30,6 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("aiven:index/getService:getService", {
         "cassandra": args.cassandra,
         "cassandraUserConfig": args.cassandraUserConfig,
-        "clientTimeout": args.clientTimeout,
         "cloudName": args.cloudName,
         "components": args.components,
         "elasticsearch": args.elasticsearch,
@@ -75,7 +74,6 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
 export interface GetServiceArgs {
     readonly cassandra?: inputs.GetServiceCassandra;
     readonly cassandraUserConfig?: inputs.GetServiceCassandraUserConfig;
-    readonly clientTimeout?: inputs.GetServiceClientTimeout;
     readonly cloudName?: string;
     readonly components?: inputs.GetServiceComponent[];
     readonly elasticsearch?: inputs.GetServiceElasticsearch;
@@ -119,7 +117,6 @@ export interface GetServiceArgs {
 export interface GetServiceResult {
     readonly cassandra: outputs.GetServiceCassandra;
     readonly cassandraUserConfig?: outputs.GetServiceCassandraUserConfig;
-    readonly clientTimeout?: outputs.GetServiceClientTimeout;
     readonly cloudName?: string;
     readonly components: outputs.GetServiceComponent[];
     readonly elasticsearch: outputs.GetServiceElasticsearch;

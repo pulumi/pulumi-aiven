@@ -13,16 +13,13 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         if cassandra and not isinstance(cassandra, dict):
             raise TypeError("Expected argument 'cassandra' to be a dict")
         __self__.cassandra = cassandra
         if cassandra_user_config and not isinstance(cassandra_user_config, dict):
             raise TypeError("Expected argument 'cassandra_user_config' to be a dict")
         __self__.cassandra_user_config = cassandra_user_config
-        if client_timeout and not isinstance(client_timeout, dict):
-            raise TypeError("Expected argument 'client_timeout' to be a dict")
-        __self__.client_timeout = client_timeout
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         __self__.cloud_name = cloud_name
@@ -144,7 +141,6 @@ class AwaitableGetServiceResult(GetServiceResult):
         return GetServiceResult(
             cassandra=self.cassandra,
             cassandra_user_config=self.cassandra_user_config,
-            client_timeout=self.client_timeout,
             cloud_name=self.cloud_name,
             components=self.components,
             elasticsearch=self.elasticsearch,
@@ -183,7 +179,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             termination_protection=self.termination_protection)
 
 
-def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, opts=None):
+def get_service(cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, opts=None):
     """
     ## Example Usage
 
@@ -208,11 +204,6 @@ def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None,
         * `prometheus` (`str`)
 
       * `serviceToForkFrom` (`str`)
-
-    The **client_timeout** object supports the following:
-
-      * `create` (`str`)
-      * `update` (`str`)
 
     The **components** object supports the following:
 
@@ -387,9 +378,14 @@ def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None,
 
       * `ipFilters` (`list`)
       * `kafka_connect` (`dict`)
+        * `connectorClientConfigOverridePolicy` (`str`)
+        * `consumerAutoOffsetReset` (`str`)
         * `consumerIsolationLevel` (`str`)
+        * `consumerMaxPollIntervalMs` (`str`)
         * `consumerMaxPollRecords` (`str`)
         * `offsetFlushIntervalMs` (`str`)
+        * `offsetFlushTimeoutMs` (`str`)
+        * `sessionTimeoutMs` (`str`)
 
       * `privateAccess` (`dict`)
         * `kafka_connect` (`str`)
@@ -444,9 +440,14 @@ def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None,
 
       * `kafka_connect` (`str`)
       * `kafkaConnectConfig` (`dict`)
+        * `connectorClientConfigOverridePolicy` (`str`)
+        * `consumerAutoOffsetReset` (`str`)
         * `consumerIsolationLevel` (`str`)
+        * `consumerMaxPollIntervalMs` (`str`)
         * `consumerMaxPollRecords` (`str`)
         * `offsetFlushIntervalMs` (`str`)
+        * `offsetFlushTimeoutMs` (`str`)
+        * `sessionTimeoutMs` (`str`)
 
       * `kafkaRest` (`str`)
       * `kafkaRestConfig` (`dict`)
@@ -487,6 +488,7 @@ def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None,
         * `innodbLockWaitTimeout` (`str`)
         * `innodbLogBufferSize` (`str`)
         * `innodbOnlineAlterLogMaxSize` (`str`)
+        * `innodbPrintAllDeadlocks` (`str`)
         * `innodbRollbackOnTimeout` (`str`)
         * `interactiveTimeout` (`str`)
         * `maxAllowedPacket` (`str`)
@@ -585,11 +587,13 @@ def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None,
 
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
+      * `sharedBuffersPercentage` (`str`)
       * `synchronousReplication` (`str`)
       * `timescaledb` (`dict`)
         * `maxBackgroundWorkers` (`str`)
 
       * `variant` (`str`)
+      * `workMem` (`str`)
 
     The **redis_user_config** object supports the following:
 
@@ -624,7 +628,6 @@ def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None,
     __args__ = dict()
     __args__['cassandra'] = cassandra
     __args__['cassandraUserConfig'] = cassandra_user_config
-    __args__['clientTimeout'] = client_timeout
     __args__['cloudName'] = cloud_name
     __args__['components'] = components
     __args__['elasticsearch'] = elasticsearch
@@ -669,7 +672,6 @@ def get_service(cassandra=None, cassandra_user_config=None, client_timeout=None,
     return AwaitableGetServiceResult(
         cassandra=__ret__.get('cassandra'),
         cassandra_user_config=__ret__.get('cassandraUserConfig'),
-        client_timeout=__ret__.get('clientTimeout'),
         cloud_name=__ret__.get('cloudName'),
         components=__ret__.get('components'),
         elasticsearch=__ret__.get('elasticsearch'),

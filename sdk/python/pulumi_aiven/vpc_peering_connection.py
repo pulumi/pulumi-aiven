@@ -10,11 +10,13 @@ from . import _utilities, _tables
 
 
 class VpcPeeringConnection(pulumi.CustomResource):
-    client_timeout: pulumi.Output[dict]
+    peer_azure_app_id: pulumi.Output[str]
     """
-    Custom Terraform Client timeouts
-
-      * `create` (`str`)
+    Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+    """
+    peer_azure_tenant_id: pulumi.Output[str]
+    """
+    Azure tenant id in UUID4 form
     """
     peer_cloud_account: pulumi.Output[str]
     """
@@ -23,6 +25,10 @@ class VpcPeeringConnection(pulumi.CustomResource):
     peer_region: pulumi.Output[str]
     """
     AWS region of the peered VPC (if not in the same region as Aiven VPC)
+    """
+    peer_resource_group: pulumi.Output[str]
+    """
+    Azure resource group name of the peered VPC
     """
     peer_vpc: pulumi.Output[str]
     """
@@ -44,7 +50,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
     """
     The VPC the peering connection belongs to
     """
-    def __init__(__self__, resource_name, opts=None, client_timeout=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         ## Example Usage
 
@@ -61,15 +67,10 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC
         :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
         :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,10 +89,6 @@ class VpcPeeringConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if client_timeout is not None:
-                warnings.warn("use timeouts instead", DeprecationWarning)
-                pulumi.log.warn("client_timeout is deprecated: use timeouts instead")
-            __props__['client_timeout'] = client_timeout
             if peer_cloud_account is None:
                 raise TypeError("Missing required property 'peer_cloud_account'")
             __props__['peer_cloud_account'] = peer_cloud_account
@@ -102,6 +99,9 @@ class VpcPeeringConnection(pulumi.CustomResource):
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
+            __props__['peer_azure_app_id'] = None
+            __props__['peer_azure_tenant_id'] = None
+            __props__['peer_resource_group'] = None
             __props__['peering_connection_id'] = None
             __props__['state'] = None
             __props__['state_info'] = None
@@ -112,7 +112,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_timeout=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
+    def get(resource_name, id, opts=None, peer_azure_app_id=None, peer_azure_tenant_id=None, peer_cloud_account=None, peer_region=None, peer_resource_group=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
         """
         Get an existing VpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -120,26 +120,26 @@ class VpcPeeringConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+        :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC
         :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC
         :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
         :param pulumi.Input[dict] state_info: State-specific help or error information
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
-        __props__["client_timeout"] = client_timeout
+        __props__["peer_azure_app_id"] = peer_azure_app_id
+        __props__["peer_azure_tenant_id"] = peer_azure_tenant_id
         __props__["peer_cloud_account"] = peer_cloud_account
         __props__["peer_region"] = peer_region
+        __props__["peer_resource_group"] = peer_resource_group
         __props__["peer_vpc"] = peer_vpc
         __props__["peering_connection_id"] = peering_connection_id
         __props__["state"] = state

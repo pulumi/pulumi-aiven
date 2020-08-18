@@ -14,13 +14,6 @@ class KafkaTopic(pulumi.CustomResource):
     """
     Topic cleanup policy. Allowed values: delete, compact
     """
-    client_timeout: pulumi.Output[dict]
-    """
-    Custom Terraform Client timeouts
-
-      * `create` (`str`)
-      * `read` (`str`)
-    """
     minimum_in_sync_replicas: pulumi.Output[float]
     """
     Minimum required nodes in-sync replicas (ISR) to produce to a partition
@@ -58,7 +51,7 @@ class KafkaTopic(pulumi.CustomResource):
     """
     Topic name
     """
-    def __init__(__self__, resource_name, opts=None, cleanup_policy=None, client_timeout=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
         """
         ## Example Usage
 
@@ -81,7 +74,6 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition
         :param pulumi.Input[float] partitions: Number of partitions to create in the topic
         :param pulumi.Input[str] project: Project to link the kafka topic to
@@ -92,11 +84,6 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
         :param pulumi.Input[str] topic_name: Topic name
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
-          * `read` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -116,10 +103,6 @@ class KafkaTopic(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cleanup_policy'] = cleanup_policy
-            if client_timeout is not None:
-                warnings.warn("use timeouts instead", DeprecationWarning)
-                pulumi.log.warn("client_timeout is deprecated: use timeouts instead")
-            __props__['client_timeout'] = client_timeout
             __props__['minimum_in_sync_replicas'] = minimum_in_sync_replicas
             if partitions is None:
                 raise TypeError("Missing required property 'partitions'")
@@ -146,7 +129,7 @@ class KafkaTopic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cleanup_policy=None, client_timeout=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
+    def get(resource_name, id, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
         """
         Get an existing KafkaTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -155,7 +138,6 @@ class KafkaTopic(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition
         :param pulumi.Input[float] partitions: Number of partitions to create in the topic
         :param pulumi.Input[str] project: Project to link the kafka topic to
@@ -166,18 +148,12 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
         :param pulumi.Input[str] topic_name: Topic name
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
-          * `read` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["cleanup_policy"] = cleanup_policy
-        __props__["client_timeout"] = client_timeout
         __props__["minimum_in_sync_replicas"] = minimum_in_sync_replicas
         __props__["partitions"] = partitions
         __props__["project"] = project

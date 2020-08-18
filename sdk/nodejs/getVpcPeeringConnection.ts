@@ -29,9 +29,11 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", {
-        "clientTimeout": args.clientTimeout,
+        "peerAzureAppId": args.peerAzureAppId,
+        "peerAzureTenantId": args.peerAzureTenantId,
         "peerCloudAccount": args.peerCloudAccount,
         "peerRegion": args.peerRegion,
+        "peerResourceGroup": args.peerResourceGroup,
         "peerVpc": args.peerVpc,
         "peeringConnectionId": args.peeringConnectionId,
         "state": args.state,
@@ -44,9 +46,11 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
  * A collection of arguments for invoking getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionArgs {
-    readonly clientTimeout?: inputs.GetVpcPeeringConnectionClientTimeout;
+    readonly peerAzureAppId?: string;
+    readonly peerAzureTenantId?: string;
     readonly peerCloudAccount: string;
     readonly peerRegion?: string;
+    readonly peerResourceGroup?: string;
     readonly peerVpc: string;
     readonly peeringConnectionId?: string;
     readonly state?: string;
@@ -58,13 +62,15 @@ export interface GetVpcPeeringConnectionArgs {
  * A collection of values returned by getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionResult {
-    readonly clientTimeout?: outputs.GetVpcPeeringConnectionClientTimeout;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly peerAzureAppId: string;
+    readonly peerAzureTenantId: string;
     readonly peerCloudAccount: string;
     readonly peerRegion?: string;
+    readonly peerResourceGroup: string;
     readonly peerVpc: string;
     readonly peeringConnectionId: string;
     readonly state: string;

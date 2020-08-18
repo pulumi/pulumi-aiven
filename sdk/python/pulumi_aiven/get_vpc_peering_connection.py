@@ -13,22 +13,28 @@ class GetVpcPeeringConnectionResult:
     """
     A collection of values returned by getVpcPeeringConnection.
     """
-    def __init__(__self__, client_timeout=None, id=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
-        if client_timeout and not isinstance(client_timeout, dict):
-            raise TypeError("Expected argument 'client_timeout' to be a dict")
-        __self__.client_timeout = client_timeout
+    def __init__(__self__, id=None, peer_azure_app_id=None, peer_azure_tenant_id=None, peer_cloud_account=None, peer_region=None, peer_resource_group=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         The provider-assigned unique ID for this managed resource.
         """
+        if peer_azure_app_id and not isinstance(peer_azure_app_id, str):
+            raise TypeError("Expected argument 'peer_azure_app_id' to be a str")
+        __self__.peer_azure_app_id = peer_azure_app_id
+        if peer_azure_tenant_id and not isinstance(peer_azure_tenant_id, str):
+            raise TypeError("Expected argument 'peer_azure_tenant_id' to be a str")
+        __self__.peer_azure_tenant_id = peer_azure_tenant_id
         if peer_cloud_account and not isinstance(peer_cloud_account, str):
             raise TypeError("Expected argument 'peer_cloud_account' to be a str")
         __self__.peer_cloud_account = peer_cloud_account
         if peer_region and not isinstance(peer_region, str):
             raise TypeError("Expected argument 'peer_region' to be a str")
         __self__.peer_region = peer_region
+        if peer_resource_group and not isinstance(peer_resource_group, str):
+            raise TypeError("Expected argument 'peer_resource_group' to be a str")
+        __self__.peer_resource_group = peer_resource_group
         if peer_vpc and not isinstance(peer_vpc, str):
             raise TypeError("Expected argument 'peer_vpc' to be a str")
         __self__.peer_vpc = peer_vpc
@@ -52,10 +58,12 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
         if False:
             yield self
         return GetVpcPeeringConnectionResult(
-            client_timeout=self.client_timeout,
             id=self.id,
+            peer_azure_app_id=self.peer_azure_app_id,
+            peer_azure_tenant_id=self.peer_azure_tenant_id,
             peer_cloud_account=self.peer_cloud_account,
             peer_region=self.peer_region,
+            peer_resource_group=self.peer_resource_group,
             peer_vpc=self.peer_vpc,
             peering_connection_id=self.peering_connection_id,
             state=self.state,
@@ -63,7 +71,7 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
             vpc_id=self.vpc_id)
 
 
-def get_vpc_peering_connection(client_timeout=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None, opts=None):
+def get_vpc_peering_connection(peer_azure_app_id=None, peer_azure_tenant_id=None, peer_cloud_account=None, peer_region=None, peer_resource_group=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None, opts=None):
     """
     ## Example Usage
 
@@ -75,17 +83,13 @@ def get_vpc_peering_connection(client_timeout=None, peer_cloud_account=None, pee
         peer_cloud_account="<PEER_ACCOUNT_ID>",
         peer_vpc="<PEER_VPC_ID/NAME>")
     ```
-
-
-
-    The **client_timeout** object supports the following:
-
-      * `create` (`str`)
     """
     __args__ = dict()
-    __args__['clientTimeout'] = client_timeout
+    __args__['peerAzureAppId'] = peer_azure_app_id
+    __args__['peerAzureTenantId'] = peer_azure_tenant_id
     __args__['peerCloudAccount'] = peer_cloud_account
     __args__['peerRegion'] = peer_region
+    __args__['peerResourceGroup'] = peer_resource_group
     __args__['peerVpc'] = peer_vpc
     __args__['peeringConnectionId'] = peering_connection_id
     __args__['state'] = state
@@ -98,10 +102,12 @@ def get_vpc_peering_connection(client_timeout=None, peer_cloud_account=None, pee
     __ret__ = pulumi.runtime.invoke('aiven:index/getVpcPeeringConnection:getVpcPeeringConnection', __args__, opts=opts).value
 
     return AwaitableGetVpcPeeringConnectionResult(
-        client_timeout=__ret__.get('clientTimeout'),
         id=__ret__.get('id'),
+        peer_azure_app_id=__ret__.get('peerAzureAppId'),
+        peer_azure_tenant_id=__ret__.get('peerAzureTenantId'),
         peer_cloud_account=__ret__.get('peerCloudAccount'),
         peer_region=__ret__.get('peerRegion'),
+        peer_resource_group=__ret__.get('peerResourceGroup'),
         peer_vpc=__ret__.get('peerVpc'),
         peering_connection_id=__ret__.get('peeringConnectionId'),
         state=__ret__.get('state'),

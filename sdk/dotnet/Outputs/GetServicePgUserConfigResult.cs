@@ -28,9 +28,11 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServicePgUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
+        public readonly string? SharedBuffersPercentage;
         public readonly string? SynchronousReplication;
         public readonly Outputs.GetServicePgUserConfigTimescaledbResult? Timescaledb;
         public readonly string? Variant;
+        public readonly string? WorkMem;
 
         [OutputConstructor]
         private GetServicePgUserConfigResult(
@@ -64,11 +66,15 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
+            string? sharedBuffersPercentage,
+
             string? synchronousReplication,
 
             Outputs.GetServicePgUserConfigTimescaledbResult? timescaledb,
 
-            string? variant)
+            string? variant,
+
+            string? workMem)
         {
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
@@ -85,9 +91,11 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;
+            SharedBuffersPercentage = sharedBuffersPercentage;
             SynchronousReplication = synchronousReplication;
             Timescaledb = timescaledb;
             Variant = variant;
+            WorkMem = workMem;
         }
     }
 }

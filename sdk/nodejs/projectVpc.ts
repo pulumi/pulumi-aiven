@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -49,12 +47,6 @@ export class ProjectVpc extends pulumi.CustomResource {
     }
 
     /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
-     */
-    public readonly clientTimeout!: pulumi.Output<outputs.ProjectVpcClientTimeout | undefined>;
-    /**
      * Cloud the VPC is in
      */
     public readonly cloudName!: pulumi.Output<string>;
@@ -83,7 +75,6 @@ export class ProjectVpc extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ProjectVpcState | undefined;
-            inputs["clientTimeout"] = state ? state.clientTimeout : undefined;
             inputs["cloudName"] = state ? state.cloudName : undefined;
             inputs["networkCidr"] = state ? state.networkCidr : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -99,7 +90,6 @@ export class ProjectVpc extends pulumi.CustomResource {
             if (!args || args.project === undefined) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["clientTimeout"] = args ? args.clientTimeout : undefined;
             inputs["cloudName"] = args ? args.cloudName : undefined;
             inputs["networkCidr"] = args ? args.networkCidr : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -120,12 +110,6 @@ export class ProjectVpc extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectVpc resources.
  */
 export interface ProjectVpcState {
-    /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
-     */
-    readonly clientTimeout?: pulumi.Input<inputs.ProjectVpcClientTimeout>;
     /**
      * Cloud the VPC is in
      */
@@ -148,12 +132,6 @@ export interface ProjectVpcState {
  * The set of arguments for constructing a ProjectVpc resource.
  */
 export interface ProjectVpcArgs {
-    /**
-     * Custom Terraform Client timeouts
-     *
-     * @deprecated use timeouts instead
-     */
-    readonly clientTimeout?: pulumi.Input<inputs.ProjectVpcClientTimeout>;
     /**
      * Cloud the VPC is in
      */

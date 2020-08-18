@@ -58,12 +58,6 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceCassandraUserConfig?> CassandraUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Custom Terraform Client timeouts
-        /// </summary>
-        [Output("clientTimeout")]
-        public Output<Outputs.ServiceClientTimeout?> ClientTimeout { get; private set; } = null!;
-
-        /// <summary>
         /// Cloud the service runs in
         /// </summary>
         [Output("cloudName")]
@@ -332,12 +326,6 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceCassandraUserConfigArgs>? CassandraUserConfig { get; set; }
 
         /// <summary>
-        /// Custom Terraform Client timeouts
-        /// </summary>
-        [Input("clientTimeout")]
-        public Input<Inputs.ServiceClientTimeoutArgs>? ClientTimeout { get; set; }
-
-        /// <summary>
         /// Cloud the service runs in
         /// </summary>
         [Input("cloudName")]
@@ -529,12 +517,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("cassandraUserConfig")]
         public Input<Inputs.ServiceCassandraUserConfigGetArgs>? CassandraUserConfig { get; set; }
-
-        /// <summary>
-        /// Custom Terraform Client timeouts
-        /// </summary>
-        [Input("clientTimeout")]
-        public Input<Inputs.ServiceClientTimeoutGetArgs>? ClientTimeout { get; set; }
 
         /// <summary>
         /// Cloud the service runs in

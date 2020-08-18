@@ -12,14 +12,29 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceKafkaConnectUserConfigKafkaConnectArgs : Pulumi.ResourceArgs
     {
+        [Input("connectorClientConfigOverridePolicy")]
+        public Input<string>? ConnectorClientConfigOverridePolicy { get; set; }
+
+        [Input("consumerAutoOffsetReset")]
+        public Input<string>? ConsumerAutoOffsetReset { get; set; }
+
         [Input("consumerIsolationLevel")]
         public Input<string>? ConsumerIsolationLevel { get; set; }
+
+        [Input("consumerMaxPollIntervalMs")]
+        public Input<string>? ConsumerMaxPollIntervalMs { get; set; }
 
         [Input("consumerMaxPollRecords")]
         public Input<string>? ConsumerMaxPollRecords { get; set; }
 
         [Input("offsetFlushIntervalMs")]
         public Input<string>? OffsetFlushIntervalMs { get; set; }
+
+        [Input("offsetFlushTimeoutMs")]
+        public Input<string>? OffsetFlushTimeoutMs { get; set; }
+
+        [Input("sessionTimeoutMs")]
+        public Input<string>? SessionTimeoutMs { get; set; }
 
         public ServiceKafkaConnectUserConfigKafkaConnectArgs()
         {
