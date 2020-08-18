@@ -39,6 +39,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("innodbOnlineAlterLogMaxSize")]
         public Input<string>? InnodbOnlineAlterLogMaxSize { get; set; }
 
+        [Input("innodbPrintAllDeadlocks")]
+        public Input<string>? InnodbPrintAllDeadlocks { get; set; }
+
         [Input("innodbRollbackOnTimeout")]
         public Input<string>? InnodbRollbackOnTimeout { get; set; }
 

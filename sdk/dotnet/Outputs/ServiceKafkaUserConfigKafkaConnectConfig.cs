@@ -13,21 +13,41 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceKafkaUserConfigKafkaConnectConfig
     {
+        public readonly string? ConnectorClientConfigOverridePolicy;
+        public readonly string? ConsumerAutoOffsetReset;
         public readonly string? ConsumerIsolationLevel;
+        public readonly string? ConsumerMaxPollIntervalMs;
         public readonly string? ConsumerMaxPollRecords;
         public readonly string? OffsetFlushIntervalMs;
+        public readonly string? OffsetFlushTimeoutMs;
+        public readonly string? SessionTimeoutMs;
 
         [OutputConstructor]
         private ServiceKafkaUserConfigKafkaConnectConfig(
+            string? connectorClientConfigOverridePolicy,
+
+            string? consumerAutoOffsetReset,
+
             string? consumerIsolationLevel,
+
+            string? consumerMaxPollIntervalMs,
 
             string? consumerMaxPollRecords,
 
-            string? offsetFlushIntervalMs)
+            string? offsetFlushIntervalMs,
+
+            string? offsetFlushTimeoutMs,
+
+            string? sessionTimeoutMs)
         {
+            ConnectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
+            ConsumerAutoOffsetReset = consumerAutoOffsetReset;
             ConsumerIsolationLevel = consumerIsolationLevel;
+            ConsumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
             ConsumerMaxPollRecords = consumerMaxPollRecords;
             OffsetFlushIntervalMs = offsetFlushIntervalMs;
+            OffsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            SessionTimeoutMs = sessionTimeoutMs;
         }
     }
 }

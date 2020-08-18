@@ -42,23 +42,27 @@ func LookupVpcPeeringConnection(ctx *pulumi.Context, args *LookupVpcPeeringConne
 
 // A collection of arguments for invoking getVpcPeeringConnection.
 type LookupVpcPeeringConnectionArgs struct {
-	ClientTimeout       *GetVpcPeeringConnectionClientTimeout `pulumi:"clientTimeout"`
-	PeerCloudAccount    string                                `pulumi:"peerCloudAccount"`
-	PeerRegion          *string                               `pulumi:"peerRegion"`
-	PeerVpc             string                                `pulumi:"peerVpc"`
-	PeeringConnectionId *string                               `pulumi:"peeringConnectionId"`
-	State               *string                               `pulumi:"state"`
-	StateInfo           map[string]interface{}                `pulumi:"stateInfo"`
-	VpcId               string                                `pulumi:"vpcId"`
+	PeerAzureAppId      *string                `pulumi:"peerAzureAppId"`
+	PeerAzureTenantId   *string                `pulumi:"peerAzureTenantId"`
+	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`
+	PeerRegion          *string                `pulumi:"peerRegion"`
+	PeerResourceGroup   *string                `pulumi:"peerResourceGroup"`
+	PeerVpc             string                 `pulumi:"peerVpc"`
+	PeeringConnectionId *string                `pulumi:"peeringConnectionId"`
+	State               *string                `pulumi:"state"`
+	StateInfo           map[string]interface{} `pulumi:"stateInfo"`
+	VpcId               string                 `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getVpcPeeringConnection.
 type LookupVpcPeeringConnectionResult struct {
-	ClientTimeout *GetVpcPeeringConnectionClientTimeout `pulumi:"clientTimeout"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                 `pulumi:"id"`
+	PeerAzureAppId      string                 `pulumi:"peerAzureAppId"`
+	PeerAzureTenantId   string                 `pulumi:"peerAzureTenantId"`
 	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`
 	PeerRegion          *string                `pulumi:"peerRegion"`
+	PeerResourceGroup   string                 `pulumi:"peerResourceGroup"`
 	PeerVpc             string                 `pulumi:"peerVpc"`
 	PeeringConnectionId string                 `pulumi:"peeringConnectionId"`
 	State               string                 `pulumi:"state"`

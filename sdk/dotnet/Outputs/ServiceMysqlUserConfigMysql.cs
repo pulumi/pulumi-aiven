@@ -22,6 +22,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? InnodbLockWaitTimeout;
         public readonly string? InnodbLogBufferSize;
         public readonly string? InnodbOnlineAlterLogMaxSize;
+        public readonly string? InnodbPrintAllDeadlocks;
         public readonly string? InnodbRollbackOnTimeout;
         public readonly string? InteractiveTimeout;
         public readonly string? MaxAllowedPacket;
@@ -54,6 +55,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? innodbOnlineAlterLogMaxSize,
 
+            string? innodbPrintAllDeadlocks,
+
             string? innodbRollbackOnTimeout,
 
             string? interactiveTimeout,
@@ -85,6 +88,7 @@ namespace Pulumi.Aiven.Outputs
             InnodbLockWaitTimeout = innodbLockWaitTimeout;
             InnodbLogBufferSize = innodbLogBufferSize;
             InnodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
+            InnodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
             InteractiveTimeout = interactiveTimeout;
             MaxAllowedPacket = maxAllowedPacket;

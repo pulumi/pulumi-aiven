@@ -43,9 +43,6 @@ namespace Pulumi.Aiven
 
     public sealed class GetProjectVpcArgs : Pulumi.InvokeArgs
     {
-        [Input("clientTimeout")]
-        public Inputs.GetProjectVpcClientTimeoutArgs? ClientTimeout { get; set; }
-
         [Input("cloudName", required: true)]
         public string CloudName { get; set; } = null!;
 
@@ -67,7 +64,6 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetProjectVpcResult
     {
-        public readonly Outputs.GetProjectVpcClientTimeoutResult? ClientTimeout;
         public readonly string CloudName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -79,8 +75,6 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetProjectVpcResult(
-            Outputs.GetProjectVpcClientTimeoutResult? clientTimeout,
-
             string cloudName,
 
             string id,
@@ -91,7 +85,6 @@ namespace Pulumi.Aiven
 
             string state)
         {
-            ClientTimeout = clientTimeout;
             CloudName = cloudName;
             Id = id;
             NetworkCidr = networkCidr;

@@ -49,9 +49,6 @@ namespace Pulumi.Aiven
         [Input("cassandraUserConfig")]
         public Inputs.GetServiceCassandraUserConfigArgs? CassandraUserConfig { get; set; }
 
-        [Input("clientTimeout")]
-        public Inputs.GetServiceClientTimeoutArgs? ClientTimeout { get; set; }
-
         [Input("cloudName")]
         public string? CloudName { get; set; }
 
@@ -178,7 +175,6 @@ namespace Pulumi.Aiven
     {
         public readonly Outputs.GetServiceCassandraResult Cassandra;
         public readonly Outputs.GetServiceCassandraUserConfigResult? CassandraUserConfig;
-        public readonly Outputs.GetServiceClientTimeoutResult? ClientTimeout;
         public readonly string? CloudName;
         public readonly ImmutableArray<Outputs.GetServiceComponentResult> Components;
         public readonly Outputs.GetServiceElasticsearchResult Elasticsearch;
@@ -224,8 +220,6 @@ namespace Pulumi.Aiven
             Outputs.GetServiceCassandraResult cassandra,
 
             Outputs.GetServiceCassandraUserConfigResult? cassandraUserConfig,
-
-            Outputs.GetServiceClientTimeoutResult? clientTimeout,
 
             string? cloudName,
 
@@ -301,7 +295,6 @@ namespace Pulumi.Aiven
         {
             Cassandra = cassandra;
             CassandraUserConfig = cassandraUserConfig;
-            ClientTimeout = clientTimeout;
             CloudName = cloudName;
             Components = components;
             Elasticsearch = elasticsearch;

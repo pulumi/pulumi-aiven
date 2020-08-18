@@ -35,10 +35,16 @@ namespace Pulumi.Aiven
     public partial class VpcPeeringConnection : Pulumi.CustomResource
     {
         /// <summary>
-        /// Custom Terraform Client timeouts
+        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
         /// </summary>
-        [Output("clientTimeout")]
-        public Output<Outputs.VpcPeeringConnectionClientTimeout?> ClientTimeout { get; private set; } = null!;
+        [Output("peerAzureAppId")]
+        public Output<string> PeerAzureAppId { get; private set; } = null!;
+
+        /// <summary>
+        /// Azure tenant id in UUID4 form
+        /// </summary>
+        [Output("peerAzureTenantId")]
+        public Output<string> PeerAzureTenantId { get; private set; } = null!;
 
         /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
@@ -51,6 +57,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("peerRegion")]
         public Output<string?> PeerRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// Azure resource group name of the peered VPC
+        /// </summary>
+        [Output("peerResourceGroup")]
+        public Output<string> PeerResourceGroup { get; private set; } = null!;
 
         /// <summary>
         /// AWS VPC ID or GCP VPC network name of the peered VPC
@@ -129,12 +141,6 @@ namespace Pulumi.Aiven
     public sealed class VpcPeeringConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom Terraform Client timeouts
-        /// </summary>
-        [Input("clientTimeout")]
-        public Input<Inputs.VpcPeeringConnectionClientTimeoutArgs>? ClientTimeout { get; set; }
-
-        /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
         /// </summary>
         [Input("peerCloudAccount", required: true)]
@@ -166,10 +172,16 @@ namespace Pulumi.Aiven
     public sealed class VpcPeeringConnectionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom Terraform Client timeouts
+        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
         /// </summary>
-        [Input("clientTimeout")]
-        public Input<Inputs.VpcPeeringConnectionClientTimeoutGetArgs>? ClientTimeout { get; set; }
+        [Input("peerAzureAppId")]
+        public Input<string>? PeerAzureAppId { get; set; }
+
+        /// <summary>
+        /// Azure tenant id in UUID4 form
+        /// </summary>
+        [Input("peerAzureTenantId")]
+        public Input<string>? PeerAzureTenantId { get; set; }
 
         /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
@@ -182,6 +194,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
+
+        /// <summary>
+        /// Azure resource group name of the peered VPC
+        /// </summary>
+        [Input("peerResourceGroup")]
+        public Input<string>? PeerResourceGroup { get; set; }
 
         /// <summary>
         /// AWS VPC ID or GCP VPC network name of the peered VPC

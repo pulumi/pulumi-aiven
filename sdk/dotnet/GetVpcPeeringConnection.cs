@@ -44,14 +44,20 @@ namespace Pulumi.Aiven
 
     public sealed class GetVpcPeeringConnectionArgs : Pulumi.InvokeArgs
     {
-        [Input("clientTimeout")]
-        public Inputs.GetVpcPeeringConnectionClientTimeoutArgs? ClientTimeout { get; set; }
+        [Input("peerAzureAppId")]
+        public string? PeerAzureAppId { get; set; }
+
+        [Input("peerAzureTenantId")]
+        public string? PeerAzureTenantId { get; set; }
 
         [Input("peerCloudAccount", required: true)]
         public string PeerCloudAccount { get; set; } = null!;
 
         [Input("peerRegion")]
         public string? PeerRegion { get; set; }
+
+        [Input("peerResourceGroup")]
+        public string? PeerResourceGroup { get; set; }
 
         [Input("peerVpc", required: true)]
         public string PeerVpc { get; set; } = null!;
@@ -82,13 +88,15 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetVpcPeeringConnectionResult
     {
-        public readonly Outputs.GetVpcPeeringConnectionClientTimeoutResult? ClientTimeout;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string PeerAzureAppId;
+        public readonly string PeerAzureTenantId;
         public readonly string PeerCloudAccount;
         public readonly string? PeerRegion;
+        public readonly string PeerResourceGroup;
         public readonly string PeerVpc;
         public readonly string PeeringConnectionId;
         public readonly string State;
@@ -97,13 +105,17 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetVpcPeeringConnectionResult(
-            Outputs.GetVpcPeeringConnectionClientTimeoutResult? clientTimeout,
-
             string id,
+
+            string peerAzureAppId,
+
+            string peerAzureTenantId,
 
             string peerCloudAccount,
 
             string? peerRegion,
+
+            string peerResourceGroup,
 
             string peerVpc,
 
@@ -115,10 +127,12 @@ namespace Pulumi.Aiven
 
             string vpcId)
         {
-            ClientTimeout = clientTimeout;
             Id = id;
+            PeerAzureAppId = peerAzureAppId;
+            PeerAzureTenantId = peerAzureTenantId;
             PeerCloudAccount = peerCloudAccount;
             PeerRegion = peerRegion;
+            PeerResourceGroup = peerResourceGroup;
             PeerVpc = peerVpc;
             PeeringConnectionId = peeringConnectionId;
             State = state;

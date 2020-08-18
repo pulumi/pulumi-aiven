@@ -28,13 +28,6 @@ class Service(pulumi.CustomResource):
 
       * `serviceToForkFrom` (`str`)
     """
-    client_timeout: pulumi.Output[dict]
-    """
-    Custom Terraform Client timeouts
-
-      * `create` (`str`)
-      * `update` (`str`)
-    """
     cloud_name: pulumi.Output[str]
     """
     Cloud the service runs in
@@ -236,9 +229,14 @@ class Service(pulumi.CustomResource):
 
       * `ipFilters` (`list`)
       * `kafka_connect` (`dict`)
+        * `connectorClientConfigOverridePolicy` (`str`)
+        * `consumerAutoOffsetReset` (`str`)
         * `consumerIsolationLevel` (`str`)
+        * `consumerMaxPollIntervalMs` (`str`)
         * `consumerMaxPollRecords` (`str`)
         * `offsetFlushIntervalMs` (`str`)
+        * `offsetFlushTimeoutMs` (`str`)
+        * `sessionTimeoutMs` (`str`)
 
       * `privateAccess` (`dict`)
         * `kafka_connect` (`str`)
@@ -301,9 +299,14 @@ class Service(pulumi.CustomResource):
 
       * `kafka_connect` (`str`)
       * `kafkaConnectConfig` (`dict`)
+        * `connectorClientConfigOverridePolicy` (`str`)
+        * `consumerAutoOffsetReset` (`str`)
         * `consumerIsolationLevel` (`str`)
+        * `consumerMaxPollIntervalMs` (`str`)
         * `consumerMaxPollRecords` (`str`)
         * `offsetFlushIntervalMs` (`str`)
+        * `offsetFlushTimeoutMs` (`str`)
+        * `sessionTimeoutMs` (`str`)
 
       * `kafkaRest` (`str`)
       * `kafkaRestConfig` (`dict`)
@@ -358,6 +361,7 @@ class Service(pulumi.CustomResource):
         * `innodbLockWaitTimeout` (`str`)
         * `innodbLogBufferSize` (`str`)
         * `innodbOnlineAlterLogMaxSize` (`str`)
+        * `innodbPrintAllDeadlocks` (`str`)
         * `innodbRollbackOnTimeout` (`str`)
         * `interactiveTimeout` (`str`)
         * `maxAllowedPacket` (`str`)
@@ -460,11 +464,13 @@ class Service(pulumi.CustomResource):
 
       * `recoveryTargetTime` (`str`)
       * `serviceToForkFrom` (`str`)
+      * `sharedBuffersPercentage` (`str`)
       * `synchronousReplication` (`str`)
       * `timescaledb` (`dict`)
         * `maxBackgroundWorkers` (`str`)
 
       * `variant` (`str`)
+      * `workMem` (`str`)
     """
     plan: pulumi.Output[str]
     """
@@ -552,7 +558,7 @@ class Service(pulumi.CustomResource):
     """
     Prevent service from being deleted. It is recommended to have this enabled for all services.
     """
-    def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
         """
         ## Example Usage
 
@@ -578,7 +584,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] cassandra: Cassandra specific server provided values
         :param pulumi.Input[dict] cassandra_user_config: Cassandra specific user configurable settings
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
         :param pulumi.Input[dict] elasticsearch: Elasticsearch specific server provided values
         :param pulumi.Input[dict] elasticsearch_user_config: Elasticsearch specific user configurable settings
@@ -619,11 +624,6 @@ class Service(pulumi.CustomResource):
             * `prometheus` (`pulumi.Input[str]`)
 
           * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
-          * `update` (`pulumi.Input[str]`)
 
         The **elasticsearch** object supports the following:
 
@@ -788,9 +788,14 @@ class Service(pulumi.CustomResource):
 
           * `ipFilters` (`pulumi.Input[list]`)
           * `kafka_connect` (`pulumi.Input[dict]`)
+            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
+            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
             * `consumerMaxPollRecords` (`pulumi.Input[str]`)
             * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
+            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
+            * `sessionTimeoutMs` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
             * `kafka_connect` (`pulumi.Input[str]`)
@@ -845,9 +850,14 @@ class Service(pulumi.CustomResource):
 
           * `kafka_connect` (`pulumi.Input[str]`)
           * `kafkaConnectConfig` (`pulumi.Input[dict]`)
+            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
+            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
             * `consumerMaxPollRecords` (`pulumi.Input[str]`)
             * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
+            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
+            * `sessionTimeoutMs` (`pulumi.Input[str]`)
 
           * `kafkaRest` (`pulumi.Input[str]`)
           * `kafkaRestConfig` (`pulumi.Input[dict]`)
@@ -888,6 +898,7 @@ class Service(pulumi.CustomResource):
             * `innodbLockWaitTimeout` (`pulumi.Input[str]`)
             * `innodbLogBufferSize` (`pulumi.Input[str]`)
             * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[str]`)
+            * `innodbPrintAllDeadlocks` (`pulumi.Input[str]`)
             * `innodbRollbackOnTimeout` (`pulumi.Input[str]`)
             * `interactiveTimeout` (`pulumi.Input[str]`)
             * `maxAllowedPacket` (`pulumi.Input[str]`)
@@ -986,11 +997,13 @@ class Service(pulumi.CustomResource):
 
           * `recoveryTargetTime` (`pulumi.Input[str]`)
           * `serviceToForkFrom` (`pulumi.Input[str]`)
+          * `sharedBuffersPercentage` (`pulumi.Input[str]`)
           * `synchronousReplication` (`pulumi.Input[str]`)
           * `timescaledb` (`pulumi.Input[dict]`)
             * `maxBackgroundWorkers` (`pulumi.Input[str]`)
 
           * `variant` (`pulumi.Input[str]`)
+          * `workMem` (`pulumi.Input[str]`)
 
         The **redis_user_config** object supports the following:
 
@@ -1041,10 +1054,6 @@ class Service(pulumi.CustomResource):
 
             __props__['cassandra'] = cassandra
             __props__['cassandra_user_config'] = cassandra_user_config
-            if client_timeout is not None:
-                warnings.warn("use timeouts instead", DeprecationWarning)
-                pulumi.log.warn("client_timeout is deprecated: use timeouts instead")
-            __props__['client_timeout'] = client_timeout
             __props__['cloud_name'] = cloud_name
             __props__['elasticsearch'] = elasticsearch
             __props__['elasticsearch_user_config'] = elasticsearch_user_config
@@ -1093,7 +1102,7 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cassandra=None, cassandra_user_config=None, client_timeout=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def get(resource_name, id, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1103,7 +1112,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] cassandra: Cassandra specific server provided values
         :param pulumi.Input[dict] cassandra_user_config: Cassandra specific user configurable settings
-        :param pulumi.Input[dict] client_timeout: Custom Terraform Client timeouts
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
         :param pulumi.Input[list] components: Service component information objects
         :param pulumi.Input[dict] elasticsearch: Elasticsearch specific server provided values
@@ -1151,11 +1159,6 @@ class Service(pulumi.CustomResource):
             * `prometheus` (`pulumi.Input[str]`)
 
           * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **client_timeout** object supports the following:
-
-          * `create` (`pulumi.Input[str]`)
-          * `update` (`pulumi.Input[str]`)
 
         The **components** object supports the following:
 
@@ -1330,9 +1333,14 @@ class Service(pulumi.CustomResource):
 
           * `ipFilters` (`pulumi.Input[list]`)
           * `kafka_connect` (`pulumi.Input[dict]`)
+            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
+            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
             * `consumerMaxPollRecords` (`pulumi.Input[str]`)
             * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
+            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
+            * `sessionTimeoutMs` (`pulumi.Input[str]`)
 
           * `privateAccess` (`pulumi.Input[dict]`)
             * `kafka_connect` (`pulumi.Input[str]`)
@@ -1387,9 +1395,14 @@ class Service(pulumi.CustomResource):
 
           * `kafka_connect` (`pulumi.Input[str]`)
           * `kafkaConnectConfig` (`pulumi.Input[dict]`)
+            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
+            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
             * `consumerIsolationLevel` (`pulumi.Input[str]`)
+            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
             * `consumerMaxPollRecords` (`pulumi.Input[str]`)
             * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
+            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
+            * `sessionTimeoutMs` (`pulumi.Input[str]`)
 
           * `kafkaRest` (`pulumi.Input[str]`)
           * `kafkaRestConfig` (`pulumi.Input[dict]`)
@@ -1430,6 +1443,7 @@ class Service(pulumi.CustomResource):
             * `innodbLockWaitTimeout` (`pulumi.Input[str]`)
             * `innodbLogBufferSize` (`pulumi.Input[str]`)
             * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[str]`)
+            * `innodbPrintAllDeadlocks` (`pulumi.Input[str]`)
             * `innodbRollbackOnTimeout` (`pulumi.Input[str]`)
             * `interactiveTimeout` (`pulumi.Input[str]`)
             * `maxAllowedPacket` (`pulumi.Input[str]`)
@@ -1528,11 +1542,13 @@ class Service(pulumi.CustomResource):
 
           * `recoveryTargetTime` (`pulumi.Input[str]`)
           * `serviceToForkFrom` (`pulumi.Input[str]`)
+          * `sharedBuffersPercentage` (`pulumi.Input[str]`)
           * `synchronousReplication` (`pulumi.Input[str]`)
           * `timescaledb` (`pulumi.Input[dict]`)
             * `maxBackgroundWorkers` (`pulumi.Input[str]`)
 
           * `variant` (`pulumi.Input[str]`)
+          * `workMem` (`pulumi.Input[str]`)
 
         The **redis_user_config** object supports the following:
 
@@ -1570,7 +1586,6 @@ class Service(pulumi.CustomResource):
 
         __props__["cassandra"] = cassandra
         __props__["cassandra_user_config"] = cassandra_user_config
-        __props__["client_timeout"] = client_timeout
         __props__["cloud_name"] = cloud_name
         __props__["components"] = components
         __props__["elasticsearch"] = elasticsearch

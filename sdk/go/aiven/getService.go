@@ -43,7 +43,6 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 type LookupServiceArgs struct {
 	Cassandra                  *GetServiceCassandra                  `pulumi:"cassandra"`
 	CassandraUserConfig        *GetServiceCassandraUserConfig        `pulumi:"cassandraUserConfig"`
-	ClientTimeout              *GetServiceClientTimeout              `pulumi:"clientTimeout"`
 	CloudName                  *string                               `pulumi:"cloudName"`
 	Components                 []GetServiceComponent                 `pulumi:"components"`
 	Elasticsearch              *GetServiceElasticsearch              `pulumi:"elasticsearch"`
@@ -85,7 +84,6 @@ type LookupServiceArgs struct {
 type LookupServiceResult struct {
 	Cassandra               GetServiceCassandra                `pulumi:"cassandra"`
 	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
-	ClientTimeout           *GetServiceClientTimeout           `pulumi:"clientTimeout"`
 	CloudName               *string                            `pulumi:"cloudName"`
 	Components              []GetServiceComponent              `pulumi:"components"`
 	Elasticsearch           GetServiceElasticsearch            `pulumi:"elasticsearch"`

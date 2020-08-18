@@ -42,23 +42,21 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...p
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicArgs struct {
-	CleanupPolicy         *string                     `pulumi:"cleanupPolicy"`
-	ClientTimeout         *GetKafkaTopicClientTimeout `pulumi:"clientTimeout"`
-	MinimumInSyncReplicas *int                        `pulumi:"minimumInSyncReplicas"`
-	Partitions            *int                        `pulumi:"partitions"`
-	Project               string                      `pulumi:"project"`
-	Replication           *int                        `pulumi:"replication"`
-	RetentionBytes        *int                        `pulumi:"retentionBytes"`
-	RetentionHours        *int                        `pulumi:"retentionHours"`
-	ServiceName           string                      `pulumi:"serviceName"`
-	TerminationProtection *bool                       `pulumi:"terminationProtection"`
-	TopicName             string                      `pulumi:"topicName"`
+	CleanupPolicy         *string `pulumi:"cleanupPolicy"`
+	MinimumInSyncReplicas *int    `pulumi:"minimumInSyncReplicas"`
+	Partitions            *int    `pulumi:"partitions"`
+	Project               string  `pulumi:"project"`
+	Replication           *int    `pulumi:"replication"`
+	RetentionBytes        *int    `pulumi:"retentionBytes"`
+	RetentionHours        *int    `pulumi:"retentionHours"`
+	ServiceName           string  `pulumi:"serviceName"`
+	TerminationProtection *bool   `pulumi:"terminationProtection"`
+	TopicName             string  `pulumi:"topicName"`
 }
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
-	CleanupPolicy *string                     `pulumi:"cleanupPolicy"`
-	ClientTimeout *GetKafkaTopicClientTimeout `pulumi:"clientTimeout"`
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                    string `pulumi:"id"`
 	MinimumInSyncReplicas *int   `pulumi:"minimumInSyncReplicas"`

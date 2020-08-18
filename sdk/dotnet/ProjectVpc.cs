@@ -34,12 +34,6 @@ namespace Pulumi.Aiven
     public partial class ProjectVpc : Pulumi.CustomResource
     {
         /// <summary>
-        /// Custom Terraform Client timeouts
-        /// </summary>
-        [Output("clientTimeout")]
-        public Output<Outputs.ProjectVpcClientTimeout?> ClientTimeout { get; private set; } = null!;
-
-        /// <summary>
         /// Cloud the VPC is in
         /// </summary>
         [Output("cloudName")]
@@ -110,12 +104,6 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom Terraform Client timeouts
-        /// </summary>
-        [Input("clientTimeout")]
-        public Input<Inputs.ProjectVpcClientTimeoutArgs>? ClientTimeout { get; set; }
-
-        /// <summary>
         /// Cloud the VPC is in
         /// </summary>
         [Input("cloudName", required: true)]
@@ -140,12 +128,6 @@ namespace Pulumi.Aiven
 
     public sealed class ProjectVpcState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Custom Terraform Client timeouts
-        /// </summary>
-        [Input("clientTimeout")]
-        public Input<Inputs.ProjectVpcClientTimeoutGetArgs>? ClientTimeout { get; set; }
-
         /// <summary>
         /// Cloud the VPC is in
         /// </summary>

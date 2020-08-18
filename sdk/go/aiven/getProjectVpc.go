@@ -41,17 +41,15 @@ func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...p
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcArgs struct {
-	ClientTimeout *GetProjectVpcClientTimeout `pulumi:"clientTimeout"`
-	CloudName     string                      `pulumi:"cloudName"`
-	NetworkCidr   *string                     `pulumi:"networkCidr"`
-	Project       string                      `pulumi:"project"`
-	State         *string                     `pulumi:"state"`
+	CloudName   string  `pulumi:"cloudName"`
+	NetworkCidr *string `pulumi:"networkCidr"`
+	Project     string  `pulumi:"project"`
+	State       *string `pulumi:"state"`
 }
 
 // A collection of values returned by getProjectVpc.
 type LookupProjectVpcResult struct {
-	ClientTimeout *GetProjectVpcClientTimeout `pulumi:"clientTimeout"`
-	CloudName     string                      `pulumi:"cloudName"`
+	CloudName string `pulumi:"cloudName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`
 	NetworkCidr *string `pulumi:"networkCidr"`

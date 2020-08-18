@@ -51,10 +51,6 @@ type Service struct {
 	Cassandra ServiceCassandraOutput `pulumi:"cassandra"`
 	// Cassandra specific user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
-	// Custom Terraform Client timeouts
-	//
-	// Deprecated: use timeouts instead
-	ClientTimeout ServiceClientTimeoutPtrOutput `pulumi:"clientTimeout"`
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -168,10 +164,6 @@ type serviceState struct {
 	Cassandra *ServiceCassandra `pulumi:"cassandra"`
 	// Cassandra specific user configurable settings
 	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	// Custom Terraform Client timeouts
-	//
-	// Deprecated: use timeouts instead
-	ClientTimeout *ServiceClientTimeout `pulumi:"clientTimeout"`
 	// Cloud the service runs in
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
@@ -249,10 +241,6 @@ type ServiceState struct {
 	Cassandra ServiceCassandraPtrInput
 	// Cassandra specific user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrInput
-	// Custom Terraform Client timeouts
-	//
-	// Deprecated: use timeouts instead
-	ClientTimeout ServiceClientTimeoutPtrInput
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
@@ -334,10 +322,6 @@ type serviceArgs struct {
 	Cassandra *ServiceCassandra `pulumi:"cassandra"`
 	// Cassandra specific user configurable settings
 	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	// Custom Terraform Client timeouts
-	//
-	// Deprecated: use timeouts instead
-	ClientTimeout *ServiceClientTimeout `pulumi:"clientTimeout"`
 	// Cloud the service runs in
 	CloudName *string `pulumi:"cloudName"`
 	// Elasticsearch specific server provided values
@@ -402,10 +386,6 @@ type ServiceArgs struct {
 	Cassandra ServiceCassandraPtrInput
 	// Cassandra specific user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrInput
-	// Custom Terraform Client timeouts
-	//
-	// Deprecated: use timeouts instead
-	ClientTimeout ServiceClientTimeoutPtrInput
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrInput
 	// Elasticsearch specific server provided values
