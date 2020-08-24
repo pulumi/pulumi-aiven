@@ -5,48 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['Project']
 
 
 class Project(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
-    """
-    Account ID
-    """
-    billing_address: pulumi.Output[str]
-    """
-    Billing name and address of the project
-    """
-    billing_emails: pulumi.Output[list]
-    """
-    Billing contact emails of the project
-    """
-    ca_cert: pulumi.Output[str]
-    """
-    Project root CA. This is used by some services like Kafka to sign service certificate
-    """
-    card_id: pulumi.Output[str]
-    """
-    Credit card ID
-    """
-    copy_from_project: pulumi.Output[str]
-    """
-    Copy properties from another project. Only has effect when a new project is created.
-    """
-    country_code: pulumi.Output[str]
-    """
-    Billing country code of the project
-    """
-    project: pulumi.Output[str]
-    """
-    Project name
-    """
-    technical_emails: pulumi.Output[list]
-    """
-    Technical contact emails of the project
-    """
-    def __init__(__self__, resource_name, opts=None, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 billing_address: Optional[pulumi.Input[str]] = None,
+                 billing_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ca_cert: Optional[pulumi.Input[str]] = None,
+                 card_id: Optional[pulumi.Input[str]] = None,
+                 copy_from_project: Optional[pulumi.Input[str]] = None,
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 technical_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -63,13 +43,13 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] billing_address: Billing name and address of the project
-        :param pulumi.Input[list] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[List[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
         :param pulumi.Input[str] ca_cert: Project root CA. This is used by some services like Kafka to sign service certificate
         :param pulumi.Input[str] card_id: Credit card ID
         :param pulumi.Input[str] copy_from_project: Copy properties from another project. Only has effect when a new project is created.
         :param pulumi.Input[str] country_code: Billing country code of the project
         :param pulumi.Input[str] project: Project name
-        :param pulumi.Input[list] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[List[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,23 +86,34 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            billing_address: Optional[pulumi.Input[str]] = None,
+            billing_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ca_cert: Optional[pulumi.Input[str]] = None,
+            card_id: Optional[pulumi.Input[str]] = None,
+            copy_from_project: Optional[pulumi.Input[str]] = None,
+            country_code: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            technical_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] billing_address: Billing name and address of the project
-        :param pulumi.Input[list] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[List[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
         :param pulumi.Input[str] ca_cert: Project root CA. This is used by some services like Kafka to sign service certificate
         :param pulumi.Input[str] card_id: Credit card ID
         :param pulumi.Input[str] copy_from_project: Copy properties from another project. Only has effect when a new project is created.
         :param pulumi.Input[str] country_code: Billing country code of the project
         :param pulumi.Input[str] project: Project name
-        :param pulumi.Input[list] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[List[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -139,8 +130,81 @@ class Project(pulumi.CustomResource):
         __props__["technical_emails"] = technical_emails
         return Project(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[str]:
+        """
+        Account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="billingAddress")
+    def billing_address(self) -> Optional[str]:
+        """
+        Billing name and address of the project
+        """
+        return pulumi.get(self, "billing_address")
+
+    @property
+    @pulumi.getter(name="billingEmails")
+    def billing_emails(self) -> Optional[List[str]]:
+        """
+        Billing contact emails of the project
+        """
+        return pulumi.get(self, "billing_emails")
+
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> str:
+        """
+        Project root CA. This is used by some services like Kafka to sign service certificate
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @property
+    @pulumi.getter(name="cardId")
+    def card_id(self) -> Optional[str]:
+        """
+        Credit card ID
+        """
+        return pulumi.get(self, "card_id")
+
+    @property
+    @pulumi.getter(name="copyFromProject")
+    def copy_from_project(self) -> Optional[str]:
+        """
+        Copy properties from another project. Only has effect when a new project is created.
+        """
+        return pulumi.get(self, "copy_from_project")
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[str]:
+        """
+        Billing country code of the project
+        """
+        return pulumi.get(self, "country_code")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project name
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="technicalEmails")
+    def technical_emails(self) -> Optional[List[str]]:
+        """
+        Technical contact emails of the project
+        """
+        return pulumi.get(self, "technical_emails")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

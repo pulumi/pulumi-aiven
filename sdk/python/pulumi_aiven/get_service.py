@@ -5,10 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetServiceResult',
+    'AwaitableGetServiceResult',
+    'get_service',
+]
 
+@pulumi.output_type
 class GetServiceResult:
     """
     A collection of values returned by getService.
@@ -16,121 +24,311 @@ class GetServiceResult:
     def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         if cassandra and not isinstance(cassandra, dict):
             raise TypeError("Expected argument 'cassandra' to be a dict")
-        __self__.cassandra = cassandra
+        pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config and not isinstance(cassandra_user_config, dict):
             raise TypeError("Expected argument 'cassandra_user_config' to be a dict")
-        __self__.cassandra_user_config = cassandra_user_config
+        pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
-        __self__.cloud_name = cloud_name
+        pulumi.set(__self__, "cloud_name", cloud_name)
         if components and not isinstance(components, list):
             raise TypeError("Expected argument 'components' to be a list")
-        __self__.components = components
+        pulumi.set(__self__, "components", components)
         if elasticsearch and not isinstance(elasticsearch, dict):
             raise TypeError("Expected argument 'elasticsearch' to be a dict")
-        __self__.elasticsearch = elasticsearch
+        pulumi.set(__self__, "elasticsearch", elasticsearch)
         if elasticsearch_user_config and not isinstance(elasticsearch_user_config, dict):
             raise TypeError("Expected argument 'elasticsearch_user_config' to be a dict")
-        __self__.elasticsearch_user_config = elasticsearch_user_config
+        pulumi.set(__self__, "elasticsearch_user_config", elasticsearch_user_config)
         if grafana and not isinstance(grafana, dict):
             raise TypeError("Expected argument 'grafana' to be a dict")
-        __self__.grafana = grafana
+        pulumi.set(__self__, "grafana", grafana)
         if grafana_user_config and not isinstance(grafana_user_config, dict):
             raise TypeError("Expected argument 'grafana_user_config' to be a dict")
-        __self__.grafana_user_config = grafana_user_config
+        pulumi.set(__self__, "grafana_user_config", grafana_user_config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if influxdb and not isinstance(influxdb, dict):
+            raise TypeError("Expected argument 'influxdb' to be a dict")
+        pulumi.set(__self__, "influxdb", influxdb)
+        if influxdb_user_config and not isinstance(influxdb_user_config, dict):
+            raise TypeError("Expected argument 'influxdb_user_config' to be a dict")
+        pulumi.set(__self__, "influxdb_user_config", influxdb_user_config)
+        if kafka and not isinstance(kafka, dict):
+            raise TypeError("Expected argument 'kafka' to be a dict")
+        pulumi.set(__self__, "kafka", kafka)
+        if kafka_connect and not isinstance(kafka_connect, dict):
+            raise TypeError("Expected argument 'kafka_connect' to be a dict")
+        pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
+            raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
+        pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
+        if kafka_mirrormaker and not isinstance(kafka_mirrormaker, dict):
+            raise TypeError("Expected argument 'kafka_mirrormaker' to be a dict")
+        pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
+        if kafka_mirrormaker_user_config and not isinstance(kafka_mirrormaker_user_config, dict):
+            raise TypeError("Expected argument 'kafka_mirrormaker_user_config' to be a dict")
+        pulumi.set(__self__, "kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
+        if kafka_user_config and not isinstance(kafka_user_config, dict):
+            raise TypeError("Expected argument 'kafka_user_config' to be a dict")
+        pulumi.set(__self__, "kafka_user_config", kafka_user_config)
+        if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
+            raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
+        pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+        if maintenance_window_time and not isinstance(maintenance_window_time, str):
+            raise TypeError("Expected argument 'maintenance_window_time' to be a str")
+        pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+        if mysql and not isinstance(mysql, dict):
+            raise TypeError("Expected argument 'mysql' to be a dict")
+        pulumi.set(__self__, "mysql", mysql)
+        if mysql_user_config and not isinstance(mysql_user_config, dict):
+            raise TypeError("Expected argument 'mysql_user_config' to be a dict")
+        pulumi.set(__self__, "mysql_user_config", mysql_user_config)
+        if pg and not isinstance(pg, dict):
+            raise TypeError("Expected argument 'pg' to be a dict")
+        pulumi.set(__self__, "pg", pg)
+        if pg_user_config and not isinstance(pg_user_config, dict):
+            raise TypeError("Expected argument 'pg_user_config' to be a dict")
+        pulumi.set(__self__, "pg_user_config", pg_user_config)
+        if plan and not isinstance(plan, str):
+            raise TypeError("Expected argument 'plan' to be a str")
+        pulumi.set(__self__, "plan", plan)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if project_vpc_id and not isinstance(project_vpc_id, str):
+            raise TypeError("Expected argument 'project_vpc_id' to be a str")
+        pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+        if redis and not isinstance(redis, dict):
+            raise TypeError("Expected argument 'redis' to be a dict")
+        pulumi.set(__self__, "redis", redis)
+        if redis_user_config and not isinstance(redis_user_config, dict):
+            raise TypeError("Expected argument 'redis_user_config' to be a dict")
+        pulumi.set(__self__, "redis_user_config", redis_user_config)
+        if service_host and not isinstance(service_host, str):
+            raise TypeError("Expected argument 'service_host' to be a str")
+        pulumi.set(__self__, "service_host", service_host)
+        if service_integrations and not isinstance(service_integrations, list):
+            raise TypeError("Expected argument 'service_integrations' to be a list")
+        pulumi.set(__self__, "service_integrations", service_integrations)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if service_password and not isinstance(service_password, str):
+            raise TypeError("Expected argument 'service_password' to be a str")
+        pulumi.set(__self__, "service_password", service_password)
+        if service_port and not isinstance(service_port, float):
+            raise TypeError("Expected argument 'service_port' to be a float")
+        pulumi.set(__self__, "service_port", service_port)
+        if service_type and not isinstance(service_type, str):
+            raise TypeError("Expected argument 'service_type' to be a str")
+        pulumi.set(__self__, "service_type", service_type)
+        if service_uri and not isinstance(service_uri, str):
+            raise TypeError("Expected argument 'service_uri' to be a str")
+        pulumi.set(__self__, "service_uri", service_uri)
+        if service_username and not isinstance(service_username, str):
+            raise TypeError("Expected argument 'service_username' to be a str")
+        pulumi.set(__self__, "service_username", service_username)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if termination_protection and not isinstance(termination_protection, bool):
+            raise TypeError("Expected argument 'termination_protection' to be a bool")
+        pulumi.set(__self__, "termination_protection", termination_protection)
+
+    @property
+    @pulumi.getter
+    def cassandra(self) -> 'outputs.GetServiceCassandraResult':
+        return pulumi.get(self, "cassandra")
+
+    @property
+    @pulumi.getter(name="cassandraUserConfig")
+    def cassandra_user_config(self) -> Optional['outputs.GetServiceCassandraUserConfigResult']:
+        return pulumi.get(self, "cassandra_user_config")
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[str]:
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter
+    def components(self) -> List['outputs.GetServiceComponentResult']:
+        return pulumi.get(self, "components")
+
+    @property
+    @pulumi.getter
+    def elasticsearch(self) -> 'outputs.GetServiceElasticsearchResult':
+        return pulumi.get(self, "elasticsearch")
+
+    @property
+    @pulumi.getter(name="elasticsearchUserConfig")
+    def elasticsearch_user_config(self) -> Optional['outputs.GetServiceElasticsearchUserConfigResult']:
+        return pulumi.get(self, "elasticsearch_user_config")
+
+    @property
+    @pulumi.getter
+    def grafana(self) -> 'outputs.GetServiceGrafanaResult':
+        return pulumi.get(self, "grafana")
+
+    @property
+    @pulumi.getter(name="grafanaUserConfig")
+    def grafana_user_config(self) -> Optional['outputs.GetServiceGrafanaUserConfigResult']:
+        return pulumi.get(self, "grafana_user_config")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if influxdb and not isinstance(influxdb, dict):
-            raise TypeError("Expected argument 'influxdb' to be a dict")
-        __self__.influxdb = influxdb
-        if influxdb_user_config and not isinstance(influxdb_user_config, dict):
-            raise TypeError("Expected argument 'influxdb_user_config' to be a dict")
-        __self__.influxdb_user_config = influxdb_user_config
-        if kafka and not isinstance(kafka, dict):
-            raise TypeError("Expected argument 'kafka' to be a dict")
-        __self__.kafka = kafka
-        if kafka_connect and not isinstance(kafka_connect, dict):
-            raise TypeError("Expected argument 'kafka_connect' to be a dict")
-        __self__.kafka_connect = kafka_connect
-        if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
-            raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
-        __self__.kafka_connect_user_config = kafka_connect_user_config
-        if kafka_mirrormaker and not isinstance(kafka_mirrormaker, dict):
-            raise TypeError("Expected argument 'kafka_mirrormaker' to be a dict")
-        __self__.kafka_mirrormaker = kafka_mirrormaker
-        if kafka_mirrormaker_user_config and not isinstance(kafka_mirrormaker_user_config, dict):
-            raise TypeError("Expected argument 'kafka_mirrormaker_user_config' to be a dict")
-        __self__.kafka_mirrormaker_user_config = kafka_mirrormaker_user_config
-        if kafka_user_config and not isinstance(kafka_user_config, dict):
-            raise TypeError("Expected argument 'kafka_user_config' to be a dict")
-        __self__.kafka_user_config = kafka_user_config
-        if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
-            raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
-        __self__.maintenance_window_dow = maintenance_window_dow
-        if maintenance_window_time and not isinstance(maintenance_window_time, str):
-            raise TypeError("Expected argument 'maintenance_window_time' to be a str")
-        __self__.maintenance_window_time = maintenance_window_time
-        if mysql and not isinstance(mysql, dict):
-            raise TypeError("Expected argument 'mysql' to be a dict")
-        __self__.mysql = mysql
-        if mysql_user_config and not isinstance(mysql_user_config, dict):
-            raise TypeError("Expected argument 'mysql_user_config' to be a dict")
-        __self__.mysql_user_config = mysql_user_config
-        if pg and not isinstance(pg, dict):
-            raise TypeError("Expected argument 'pg' to be a dict")
-        __self__.pg = pg
-        if pg_user_config and not isinstance(pg_user_config, dict):
-            raise TypeError("Expected argument 'pg_user_config' to be a dict")
-        __self__.pg_user_config = pg_user_config
-        if plan and not isinstance(plan, str):
-            raise TypeError("Expected argument 'plan' to be a str")
-        __self__.plan = plan
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if project_vpc_id and not isinstance(project_vpc_id, str):
-            raise TypeError("Expected argument 'project_vpc_id' to be a str")
-        __self__.project_vpc_id = project_vpc_id
-        if redis and not isinstance(redis, dict):
-            raise TypeError("Expected argument 'redis' to be a dict")
-        __self__.redis = redis
-        if redis_user_config and not isinstance(redis_user_config, dict):
-            raise TypeError("Expected argument 'redis_user_config' to be a dict")
-        __self__.redis_user_config = redis_user_config
-        if service_host and not isinstance(service_host, str):
-            raise TypeError("Expected argument 'service_host' to be a str")
-        __self__.service_host = service_host
-        if service_integrations and not isinstance(service_integrations, list):
-            raise TypeError("Expected argument 'service_integrations' to be a list")
-        __self__.service_integrations = service_integrations
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if service_password and not isinstance(service_password, str):
-            raise TypeError("Expected argument 'service_password' to be a str")
-        __self__.service_password = service_password
-        if service_port and not isinstance(service_port, float):
-            raise TypeError("Expected argument 'service_port' to be a float")
-        __self__.service_port = service_port
-        if service_type and not isinstance(service_type, str):
-            raise TypeError("Expected argument 'service_type' to be a str")
-        __self__.service_type = service_type
-        if service_uri and not isinstance(service_uri, str):
-            raise TypeError("Expected argument 'service_uri' to be a str")
-        __self__.service_uri = service_uri
-        if service_username and not isinstance(service_username, str):
-            raise TypeError("Expected argument 'service_username' to be a str")
-        __self__.service_username = service_username
-        if state and not isinstance(state, str):
-            raise TypeError("Expected argument 'state' to be a str")
-        __self__.state = state
-        if termination_protection and not isinstance(termination_protection, bool):
-            raise TypeError("Expected argument 'termination_protection' to be a bool")
-        __self__.termination_protection = termination_protection
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def influxdb(self) -> 'outputs.GetServiceInfluxdbResult':
+        return pulumi.get(self, "influxdb")
+
+    @property
+    @pulumi.getter(name="influxdbUserConfig")
+    def influxdb_user_config(self) -> Optional['outputs.GetServiceInfluxdbUserConfigResult']:
+        return pulumi.get(self, "influxdb_user_config")
+
+    @property
+    @pulumi.getter
+    def kafka(self) -> 'outputs.GetServiceKafkaResult':
+        return pulumi.get(self, "kafka")
+
+    @property
+    @pulumi.getter(name="kafkaConnect")
+    def kafka_connect(self) -> 'outputs.GetServiceKafkaConnectResult':
+        return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter(name="kafkaConnectUserConfig")
+    def kafka_connect_user_config(self) -> Optional['outputs.GetServiceKafkaConnectUserConfigResult']:
+        return pulumi.get(self, "kafka_connect_user_config")
+
+    @property
+    @pulumi.getter(name="kafkaMirrormaker")
+    def kafka_mirrormaker(self) -> 'outputs.GetServiceKafkaMirrormakerResult':
+        return pulumi.get(self, "kafka_mirrormaker")
+
+    @property
+    @pulumi.getter(name="kafkaMirrormakerUserConfig")
+    def kafka_mirrormaker_user_config(self) -> Optional['outputs.GetServiceKafkaMirrormakerUserConfigResult']:
+        return pulumi.get(self, "kafka_mirrormaker_user_config")
+
+    @property
+    @pulumi.getter(name="kafkaUserConfig")
+    def kafka_user_config(self) -> Optional['outputs.GetServiceKafkaUserConfigResult']:
+        return pulumi.get(self, "kafka_user_config")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowDow")
+    def maintenance_window_dow(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_window_dow")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowTime")
+    def maintenance_window_time(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_window_time")
+
+    @property
+    @pulumi.getter
+    def mysql(self) -> 'outputs.GetServiceMysqlResult':
+        return pulumi.get(self, "mysql")
+
+    @property
+    @pulumi.getter(name="mysqlUserConfig")
+    def mysql_user_config(self) -> Optional['outputs.GetServiceMysqlUserConfigResult']:
+        return pulumi.get(self, "mysql_user_config")
+
+    @property
+    @pulumi.getter
+    def pg(self) -> 'outputs.GetServicePgResult':
+        return pulumi.get(self, "pg")
+
+    @property
+    @pulumi.getter(name="pgUserConfig")
+    def pg_user_config(self) -> Optional['outputs.GetServicePgUserConfigResult']:
+        return pulumi.get(self, "pg_user_config")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[str]:
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_vpc_id")
+
+    @property
+    @pulumi.getter
+    def redis(self) -> 'outputs.GetServiceRedisResult':
+        return pulumi.get(self, "redis")
+
+    @property
+    @pulumi.getter(name="redisUserConfig")
+    def redis_user_config(self) -> Optional['outputs.GetServiceRedisUserConfigResult']:
+        return pulumi.get(self, "redis_user_config")
+
+    @property
+    @pulumi.getter(name="serviceHost")
+    def service_host(self) -> str:
+        return pulumi.get(self, "service_host")
+
+    @property
+    @pulumi.getter(name="serviceIntegrations")
+    def service_integrations(self) -> Optional[List['outputs.GetServiceServiceIntegrationResult']]:
+        return pulumi.get(self, "service_integrations")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="servicePassword")
+    def service_password(self) -> str:
+        return pulumi.get(self, "service_password")
+
+    @property
+    @pulumi.getter(name="servicePort")
+    def service_port(self) -> float:
+        return pulumi.get(self, "service_port")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[str]:
+        return pulumi.get(self, "service_type")
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> str:
+        return pulumi.get(self, "service_uri")
+
+    @property
+    @pulumi.getter(name="serviceUsername")
+    def service_username(self) -> str:
+        return pulumi.get(self, "service_username")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[bool]:
+        return pulumi.get(self, "termination_protection")
 
 
 class AwaitableGetServiceResult(GetServiceResult):
@@ -179,7 +377,44 @@ class AwaitableGetServiceResult(GetServiceResult):
             termination_protection=self.termination_protection)
 
 
-def get_service(cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, opts=None):
+def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']] = None,
+                cassandra_user_config: Optional[pulumi.InputType['GetServiceCassandraUserConfigArgs']] = None,
+                cloud_name: Optional[str] = None,
+                components: Optional[List[pulumi.InputType['GetServiceComponentArgs']]] = None,
+                elasticsearch: Optional[pulumi.InputType['GetServiceElasticsearchArgs']] = None,
+                elasticsearch_user_config: Optional[pulumi.InputType['GetServiceElasticsearchUserConfigArgs']] = None,
+                grafana: Optional[pulumi.InputType['GetServiceGrafanaArgs']] = None,
+                grafana_user_config: Optional[pulumi.InputType['GetServiceGrafanaUserConfigArgs']] = None,
+                influxdb: Optional[pulumi.InputType['GetServiceInfluxdbArgs']] = None,
+                influxdb_user_config: Optional[pulumi.InputType['GetServiceInfluxdbUserConfigArgs']] = None,
+                kafka: Optional[pulumi.InputType['GetServiceKafkaArgs']] = None,
+                kafka_connect: Optional[pulumi.InputType['GetServiceKafkaConnectArgs']] = None,
+                kafka_connect_user_config: Optional[pulumi.InputType['GetServiceKafkaConnectUserConfigArgs']] = None,
+                kafka_mirrormaker: Optional[pulumi.InputType['GetServiceKafkaMirrormakerArgs']] = None,
+                kafka_mirrormaker_user_config: Optional[pulumi.InputType['GetServiceKafkaMirrormakerUserConfigArgs']] = None,
+                kafka_user_config: Optional[pulumi.InputType['GetServiceKafkaUserConfigArgs']] = None,
+                maintenance_window_dow: Optional[str] = None,
+                maintenance_window_time: Optional[str] = None,
+                mysql: Optional[pulumi.InputType['GetServiceMysqlArgs']] = None,
+                mysql_user_config: Optional[pulumi.InputType['GetServiceMysqlUserConfigArgs']] = None,
+                pg: Optional[pulumi.InputType['GetServicePgArgs']] = None,
+                pg_user_config: Optional[pulumi.InputType['GetServicePgUserConfigArgs']] = None,
+                plan: Optional[str] = None,
+                project: Optional[str] = None,
+                project_vpc_id: Optional[str] = None,
+                redis: Optional[pulumi.InputType['GetServiceRedisArgs']] = None,
+                redis_user_config: Optional[pulumi.InputType['GetServiceRedisUserConfigArgs']] = None,
+                service_host: Optional[str] = None,
+                service_integrations: Optional[List[pulumi.InputType['GetServiceServiceIntegrationArgs']]] = None,
+                service_name: Optional[str] = None,
+                service_password: Optional[str] = None,
+                service_port: Optional[float] = None,
+                service_type: Optional[str] = None,
+                service_uri: Optional[str] = None,
+                service_username: Optional[str] = None,
+                state: Optional[str] = None,
+                termination_protection: Optional[bool] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     ## Example Usage
 
@@ -190,440 +425,6 @@ def get_service(cassandra=None, cassandra_user_config=None, cloud_name=None, com
     myservice = aiven.get_service(project=data["aiven_project"]["myproject"]["project"],
         service_name="<SERVICE_NAME>")
     ```
-
-
-
-    The **cassandra_user_config** object supports the following:
-
-      * `ipFilters` (`list`)
-      * `migrateSstableloader` (`str`)
-      * `privateAccess` (`dict`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `prometheus` (`str`)
-
-      * `serviceToForkFrom` (`str`)
-
-    The **components** object supports the following:
-
-      * `component` (`str`)
-      * `host` (`str`)
-      * `kafkaAuthenticationMethod` (`str`)
-      * `port` (`float`)
-      * `route` (`str`)
-      * `ssl` (`bool`)
-      * `usage` (`str`)
-
-    The **elasticsearch** object supports the following:
-
-      * `kibanaUri` (`str`)
-
-    The **elasticsearch_user_config** object supports the following:
-
-      * `customDomain` (`str`)
-      * `disableReplicationFactorAdjustment` (`str`)
-      * `elasticsearch` (`dict`)
-        * `actionAutoCreateIndexEnabled` (`str`)
-        * `actionDestructiveRequiresName` (`str`)
-        * `httpMaxContentLength` (`str`)
-        * `httpMaxHeaderSize` (`str`)
-        * `httpMaxInitialLineLength` (`str`)
-        * `indicesFielddataCacheSize` (`str`)
-        * `indicesMemoryIndexBufferSize` (`str`)
-        * `indicesQueriesCacheSize` (`str`)
-        * `indicesQueryBoolMaxClauseCount` (`str`)
-        * `reindexRemoteWhitelists` (`list`)
-        * `searchMaxBuckets` (`str`)
-        * `threadPoolAnalyzeQueueSize` (`str`)
-        * `threadPoolAnalyzeSize` (`str`)
-        * `threadPoolForceMergeSize` (`str`)
-        * `threadPoolGetQueueSize` (`str`)
-        * `threadPoolGetSize` (`str`)
-        * `threadPoolIndexQueueSize` (`str`)
-        * `threadPoolIndexSize` (`str`)
-        * `threadPoolSearchQueueSize` (`str`)
-        * `threadPoolSearchSize` (`str`)
-        * `threadPoolSearchThrottledQueueSize` (`str`)
-        * `threadPoolSearchThrottledSize` (`str`)
-        * `threadPoolWriteQueueSize` (`str`)
-        * `threadPoolWriteSize` (`str`)
-
-      * `elasticsearchVersion` (`str`)
-      * `indexPatterns` (`list`)
-        * `maxIndexCount` (`str`)
-        * `pattern` (`str`)
-
-      * `ipFilters` (`list`)
-      * `kibana` (`dict`)
-        * `elasticsearchRequestTimeout` (`str`)
-        * `enabled` (`str`)
-        * `maxOldSpaceSize` (`str`)
-
-      * `maxIndexCount` (`str`)
-      * `privateAccess` (`dict`)
-        * `elasticsearch` (`str`)
-        * `kibana` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `elasticsearch` (`str`)
-        * `kibana` (`str`)
-        * `prometheus` (`str`)
-
-      * `recoveryBasebackupName` (`str`)
-      * `serviceToForkFrom` (`str`)
-
-    The **grafana_user_config** object supports the following:
-
-      * `alertingEnabled` (`str`)
-      * `alertingErrorOrTimeout` (`str`)
-      * `alertingNodataOrNullvalues` (`str`)
-      * `allowEmbedding` (`str`)
-      * `authBasicEnabled` (`str`)
-      * `authGenericOauth` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedDomains` (`list`)
-        * `allowedOrganizations` (`list`)
-        * `apiUrl` (`str`)
-        * `authUrl` (`str`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `name` (`str`)
-        * `scopes` (`list`)
-        * `tokenUrl` (`str`)
-
-      * `authGithub` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedOrganizations` (`list`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `teamIds` (`list`)
-
-      * `authGitlab` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedGroups` (`list`)
-        * `apiUrl` (`str`)
-        * `authUrl` (`str`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `tokenUrl` (`str`)
-
-      * `authGoogle` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedDomains` (`list`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-
-      * `cookieSamesite` (`str`)
-      * `customDomain` (`str`)
-      * `dashboardsVersionsToKeep` (`str`)
-      * `dataproxySendUserHeader` (`str`)
-      * `dataproxyTimeout` (`str`)
-      * `disableGravatar` (`str`)
-      * `editorsCanAdmin` (`str`)
-      * `externalImageStorage` (`dict`)
-        * `access_key` (`str`)
-        * `bucketUrl` (`str`)
-        * `provider` (`str`)
-        * `secretKey` (`str`)
-
-      * `googleAnalyticsUaId` (`str`)
-      * `ipFilters` (`list`)
-      * `metricsEnabled` (`str`)
-      * `privateAccess` (`dict`)
-        * `grafana` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `grafana` (`str`)
-
-      * `smtpServer` (`dict`)
-        * `fromAddress` (`str`)
-        * `fromName` (`str`)
-        * `host` (`str`)
-        * `password` (`str`)
-        * `port` (`str`)
-        * `skipVerify` (`str`)
-        * `username` (`str`)
-
-      * `userAutoAssignOrg` (`str`)
-      * `userAutoAssignOrgRole` (`str`)
-      * `viewersCanEdit` (`str`)
-
-    The **influxdb** object supports the following:
-
-      * `database_name` (`str`)
-
-    The **influxdb_user_config** object supports the following:
-
-      * `customDomain` (`str`)
-      * `ipFilters` (`list`)
-      * `privateAccess` (`dict`)
-        * `influxdb` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `influxdb` (`str`)
-
-      * `serviceToForkFrom` (`str`)
-
-    The **kafka** object supports the following:
-
-      * `access_cert` (`str`)
-      * `access_key` (`str`)
-      * `connectUri` (`str`)
-      * `restUri` (`str`)
-      * `schemaRegistryUri` (`str`)
-
-    The **kafka_connect_user_config** object supports the following:
-
-      * `ipFilters` (`list`)
-      * `kafka_connect` (`dict`)
-        * `connectorClientConfigOverridePolicy` (`str`)
-        * `consumerAutoOffsetReset` (`str`)
-        * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollIntervalMs` (`str`)
-        * `consumerMaxPollRecords` (`str`)
-        * `offsetFlushIntervalMs` (`str`)
-        * `offsetFlushTimeoutMs` (`str`)
-        * `sessionTimeoutMs` (`str`)
-
-      * `privateAccess` (`dict`)
-        * `kafka_connect` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `kafka_connect` (`str`)
-        * `prometheus` (`str`)
-
-    The **kafka_mirrormaker_user_config** object supports the following:
-
-      * `ipFilters` (`list`)
-      * `kafka_mirrormaker` (`dict`)
-        * `refreshGroupsEnabled` (`str`)
-        * `refreshGroupsIntervalSeconds` (`str`)
-        * `refreshTopicsEnabled` (`str`)
-        * `refreshTopicsIntervalSeconds` (`str`)
-
-    The **kafka_user_config** object supports the following:
-
-      * `customDomain` (`str`)
-      * `ipFilters` (`list`)
-      * `kafka` (`dict`)
-        * `autoCreateTopicsEnable` (`str`)
-        * `compressionType` (`str`)
-        * `connectionsMaxIdleMs` (`str`)
-        * `defaultReplicationFactor` (`str`)
-        * `groupMaxSessionTimeoutMs` (`str`)
-        * `groupMinSessionTimeoutMs` (`str`)
-        * `logCleanerMaxCompactionLagMs` (`str`)
-        * `logCleanerMinCleanableRatio` (`str`)
-        * `logCleanerMinCompactionLagMs` (`str`)
-        * `logCleanupPolicy` (`str`)
-        * `logMessageTimestampDifferenceMaxMs` (`str`)
-        * `logMessageTimestampType` (`str`)
-        * `logRetentionBytes` (`str`)
-        * `logRetentionHours` (`str`)
-        * `logSegmentBytes` (`str`)
-        * `maxConnectionsPerIp` (`str`)
-        * `maxIncrementalFetchSessionCacheSlots` (`str`)
-        * `messageMaxBytes` (`str`)
-        * `numPartitions` (`str`)
-        * `offsetsRetentionMinutes` (`str`)
-        * `producerPurgatoryPurgeIntervalRequests` (`str`)
-        * `replicaFetchMaxBytes` (`str`)
-        * `replicaFetchResponseMaxBytes` (`str`)
-        * `socketRequestMaxBytes` (`str`)
-
-      * `kafkaAuthenticationMethods` (`dict`)
-        * `certificate` (`str`)
-        * `sasl` (`str`)
-
-      * `kafka_connect` (`str`)
-      * `kafkaConnectConfig` (`dict`)
-        * `connectorClientConfigOverridePolicy` (`str`)
-        * `consumerAutoOffsetReset` (`str`)
-        * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollIntervalMs` (`str`)
-        * `consumerMaxPollRecords` (`str`)
-        * `offsetFlushIntervalMs` (`str`)
-        * `offsetFlushTimeoutMs` (`str`)
-        * `sessionTimeoutMs` (`str`)
-
-      * `kafkaRest` (`str`)
-      * `kafkaRestConfig` (`dict`)
-        * `consumerEnableAutoCommit` (`str`)
-        * `consumerRequestMaxBytes` (`str`)
-        * `consumerRequestTimeoutMs` (`str`)
-        * `producerAcks` (`str`)
-        * `producerLingerMs` (`str`)
-        * `simpleconsumerPoolSizeMax` (`str`)
-
-      * `kafkaVersion` (`str`)
-      * `privateAccess` (`dict`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `kafka` (`str`)
-        * `kafka_connect` (`str`)
-        * `kafkaRest` (`str`)
-        * `prometheus` (`str`)
-        * `schemaRegistry` (`str`)
-
-      * `schemaRegistry` (`str`)
-
-    The **mysql_user_config** object supports the following:
-
-      * `adminPassword` (`str`)
-      * `adminUsername` (`str`)
-      * `backupHour` (`str`)
-      * `backupMinute` (`str`)
-      * `ipFilters` (`list`)
-      * `mysql` (`dict`)
-        * `connectTimeout` (`str`)
-        * `defaultTimeZone` (`str`)
-        * `groupConcatMaxLen` (`str`)
-        * `informationSchemaStatsExpiry` (`str`)
-        * `innodbFtMinTokenSize` (`str`)
-        * `innodbFtServerStopwordTable` (`str`)
-        * `innodbLockWaitTimeout` (`str`)
-        * `innodbLogBufferSize` (`str`)
-        * `innodbOnlineAlterLogMaxSize` (`str`)
-        * `innodbPrintAllDeadlocks` (`str`)
-        * `innodbRollbackOnTimeout` (`str`)
-        * `interactiveTimeout` (`str`)
-        * `maxAllowedPacket` (`str`)
-        * `maxHeapTableSize` (`str`)
-        * `netReadTimeout` (`str`)
-        * `netWriteTimeout` (`str`)
-        * `sortBufferSize` (`str`)
-        * `sqlMode` (`str`)
-        * `sqlRequirePrimaryKey` (`str`)
-        * `tmpTableSize` (`str`)
-        * `waitTimeout` (`str`)
-
-      * `mysqlVersion` (`str`)
-      * `privateAccess` (`dict`)
-        * `mysql` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `mysql` (`str`)
-        * `prometheus` (`str`)
-
-      * `recoveryTargetTime` (`str`)
-      * `serviceToForkFrom` (`str`)
-
-    The **pg** object supports the following:
-
-      * `dbname` (`str`)
-      * `host` (`str`)
-      * `password` (`str`)
-      * `port` (`float`)
-      * `replicaUri` (`str`)
-      * `sslmode` (`str`)
-      * `uri` (`str`)
-      * `user` (`str`)
-
-    The **pg_user_config** object supports the following:
-
-      * `adminPassword` (`str`)
-      * `adminUsername` (`str`)
-      * `backupHour` (`str`)
-      * `backupMinute` (`str`)
-      * `ipFilters` (`list`)
-      * `pg` (`dict`)
-        * `autovacuumAnalyzeScaleFactor` (`str`)
-        * `autovacuumAnalyzeThreshold` (`str`)
-        * `autovacuumFreezeMaxAge` (`str`)
-        * `autovacuumMaxWorkers` (`str`)
-        * `autovacuumNaptime` (`str`)
-        * `autovacuumVacuumCostDelay` (`str`)
-        * `autovacuumVacuumCostLimit` (`str`)
-        * `autovacuumVacuumScaleFactor` (`str`)
-        * `autovacuumVacuumThreshold` (`str`)
-        * `deadlockTimeout` (`str`)
-        * `idleInTransactionSessionTimeout` (`str`)
-        * `jit` (`str`)
-        * `logAutovacuumMinDuration` (`str`)
-        * `logErrorVerbosity` (`str`)
-        * `logMinDurationStatement` (`str`)
-        * `maxLocksPerTransaction` (`str`)
-        * `maxParallelWorkers` (`str`)
-        * `maxParallelWorkersPerGather` (`str`)
-        * `maxPredLocksPerTransaction` (`str`)
-        * `maxPreparedTransactions` (`str`)
-        * `maxStackDepth` (`str`)
-        * `maxStandbyArchiveDelay` (`str`)
-        * `maxStandbyStreamingDelay` (`str`)
-        * `maxWorkerProcesses` (`str`)
-        * `pgStatStatementsTrack` (`str`)
-        * `tempFileLimit` (`str`)
-        * `timezone` (`str`)
-        * `trackActivityQuerySize` (`str`)
-        * `trackCommitTimestamp` (`str`)
-        * `trackFunctions` (`str`)
-        * `walSenderTimeout` (`str`)
-        * `walWriterDelay` (`str`)
-
-      * `pgReadReplica` (`str`)
-      * `pgServiceToForkFrom` (`str`)
-      * `pgVersion` (`str`)
-      * `pgbouncer` (`dict`)
-        * `ignoreStartupParameters` (`list`)
-        * `serverResetQueryAlways` (`str`)
-
-      * `pglookout` (`dict`)
-        * `maxFailoverReplicationTimeLag` (`str`)
-
-      * `privateAccess` (`dict`)
-        * `pg` (`str`)
-        * `pgbouncer` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `pg` (`str`)
-        * `pgbouncer` (`str`)
-        * `prometheus` (`str`)
-
-      * `recoveryTargetTime` (`str`)
-      * `serviceToForkFrom` (`str`)
-      * `sharedBuffersPercentage` (`str`)
-      * `synchronousReplication` (`str`)
-      * `timescaledb` (`dict`)
-        * `maxBackgroundWorkers` (`str`)
-
-      * `variant` (`str`)
-      * `workMem` (`str`)
-
-    The **redis_user_config** object supports the following:
-
-      * `ipFilters` (`list`)
-      * `migration` (`dict`)
-        * `host` (`str`)
-        * `password` (`str`)
-        * `port` (`str`)
-        * `ssl` (`str`)
-        * `username` (`str`)
-
-      * `privateAccess` (`dict`)
-        * `prometheus` (`str`)
-        * `redis` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `prometheus` (`str`)
-        * `redis` (`str`)
-
-      * `redisLfuDecayTime` (`str`)
-      * `redisLfuLogFactor` (`str`)
-      * `redisMaxmemoryPolicy` (`str`)
-      * `redisNotifyKeyspaceEvents` (`str`)
-      * `redisSsl` (`str`)
-      * `redisTimeout` (`str`)
-
-    The **service_integrations** object supports the following:
-
-      * `integration_type` (`str`)
-      * `source_service_name` (`str`)
     """
     __args__ = dict()
     __args__['cassandra'] = cassandra
@@ -667,44 +468,44 @@ def get_service(cassandra=None, cassandra_user_config=None, cloud_name=None, com
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getService:getService', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getService:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        cassandra=__ret__.get('cassandra'),
-        cassandra_user_config=__ret__.get('cassandraUserConfig'),
-        cloud_name=__ret__.get('cloudName'),
-        components=__ret__.get('components'),
-        elasticsearch=__ret__.get('elasticsearch'),
-        elasticsearch_user_config=__ret__.get('elasticsearchUserConfig'),
-        grafana=__ret__.get('grafana'),
-        grafana_user_config=__ret__.get('grafanaUserConfig'),
-        id=__ret__.get('id'),
-        influxdb=__ret__.get('influxdb'),
-        influxdb_user_config=__ret__.get('influxdbUserConfig'),
-        kafka=__ret__.get('kafka'),
-        kafka_connect=__ret__.get('kafkaConnect'),
-        kafka_connect_user_config=__ret__.get('kafkaConnectUserConfig'),
-        kafka_mirrormaker=__ret__.get('kafkaMirrormaker'),
-        kafka_mirrormaker_user_config=__ret__.get('kafkaMirrormakerUserConfig'),
-        kafka_user_config=__ret__.get('kafkaUserConfig'),
-        maintenance_window_dow=__ret__.get('maintenanceWindowDow'),
-        maintenance_window_time=__ret__.get('maintenanceWindowTime'),
-        mysql=__ret__.get('mysql'),
-        mysql_user_config=__ret__.get('mysqlUserConfig'),
-        pg=__ret__.get('pg'),
-        pg_user_config=__ret__.get('pgUserConfig'),
-        plan=__ret__.get('plan'),
-        project=__ret__.get('project'),
-        project_vpc_id=__ret__.get('projectVpcId'),
-        redis=__ret__.get('redis'),
-        redis_user_config=__ret__.get('redisUserConfig'),
-        service_host=__ret__.get('serviceHost'),
-        service_integrations=__ret__.get('serviceIntegrations'),
-        service_name=__ret__.get('serviceName'),
-        service_password=__ret__.get('servicePassword'),
-        service_port=__ret__.get('servicePort'),
-        service_type=__ret__.get('serviceType'),
-        service_uri=__ret__.get('serviceUri'),
-        service_username=__ret__.get('serviceUsername'),
-        state=__ret__.get('state'),
-        termination_protection=__ret__.get('terminationProtection'))
+        cassandra=__ret__.cassandra,
+        cassandra_user_config=__ret__.cassandra_user_config,
+        cloud_name=__ret__.cloud_name,
+        components=__ret__.components,
+        elasticsearch=__ret__.elasticsearch,
+        elasticsearch_user_config=__ret__.elasticsearch_user_config,
+        grafana=__ret__.grafana,
+        grafana_user_config=__ret__.grafana_user_config,
+        id=__ret__.id,
+        influxdb=__ret__.influxdb,
+        influxdb_user_config=__ret__.influxdb_user_config,
+        kafka=__ret__.kafka,
+        kafka_connect=__ret__.kafka_connect,
+        kafka_connect_user_config=__ret__.kafka_connect_user_config,
+        kafka_mirrormaker=__ret__.kafka_mirrormaker,
+        kafka_mirrormaker_user_config=__ret__.kafka_mirrormaker_user_config,
+        kafka_user_config=__ret__.kafka_user_config,
+        maintenance_window_dow=__ret__.maintenance_window_dow,
+        maintenance_window_time=__ret__.maintenance_window_time,
+        mysql=__ret__.mysql,
+        mysql_user_config=__ret__.mysql_user_config,
+        pg=__ret__.pg,
+        pg_user_config=__ret__.pg_user_config,
+        plan=__ret__.plan,
+        project=__ret__.project,
+        project_vpc_id=__ret__.project_vpc_id,
+        redis=__ret__.redis,
+        redis_user_config=__ret__.redis_user_config,
+        service_host=__ret__.service_host,
+        service_integrations=__ret__.service_integrations,
+        service_name=__ret__.service_name,
+        service_password=__ret__.service_password,
+        service_port=__ret__.service_port,
+        service_type=__ret__.service_type,
+        service_uri=__ret__.service_uri,
+        service_username=__ret__.service_username,
+        state=__ret__.state,
+        termination_protection=__ret__.termination_protection)

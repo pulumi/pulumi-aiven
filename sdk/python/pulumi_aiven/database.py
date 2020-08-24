@@ -5,37 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['Database']
 
 
 class Database(pulumi.CustomResource):
-    database_name: pulumi.Output[str]
-    """
-    Service database name
-    """
-    lc_collate: pulumi.Output[str]
-    """
-    Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
-    """
-    lc_ctype: pulumi.Output[str]
-    """
-    Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the database to
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the database to
-    """
-    termination_protection: pulumi.Output[bool]
-    """
-    It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-    recommended to enable this for any production databases containing critical data.
-    """
-    def __init__(__self__, resource_name, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database_name: Optional[pulumi.Input[str]] = None,
+                 lc_collate: Optional[pulumi.Input[str]] = None,
+                 lc_ctype: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -95,13 +83,21 @@ class Database(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database_name: Optional[pulumi.Input[str]] = None,
+            lc_collate: Optional[pulumi.Input[str]] = None,
+            lc_ctype: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: Service database name
         :param pulumi.Input[str] lc_collate: Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
@@ -123,8 +119,58 @@ class Database(pulumi.CustomResource):
         __props__["termination_protection"] = termination_protection
         return Database(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> str:
+        """
+        Service database name
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter(name="lcCollate")
+    def lc_collate(self) -> Optional[str]:
+        """
+        Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+        """
+        return pulumi.get(self, "lc_collate")
+
+    @property
+    @pulumi.getter(name="lcCtype")
+    def lc_ctype(self) -> Optional[str]:
+        """
+        Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+        """
+        return pulumi.get(self, "lc_ctype")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the database to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the database to
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[bool]:
+        """
+        It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+        recommended to enable this for any production databases containing critical data.
+        """
+        return pulumi.get(self, "termination_protection")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

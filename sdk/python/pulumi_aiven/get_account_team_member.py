@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetAccountTeamMemberResult',
+    'AwaitableGetAccountTeamMemberResult',
+    'get_account_team_member',
+]
 
+@pulumi.output_type
 class GetAccountTeamMemberResult:
     """
     A collection of values returned by getAccountTeamMember.
@@ -16,28 +22,63 @@ class GetAccountTeamMemberResult:
     def __init__(__self__, accepted=None, account_id=None, create_time=None, id=None, invited_by_user_email=None, team_id=None, user_email=None):
         if accepted and not isinstance(accepted, bool):
             raise TypeError("Expected argument 'accepted' to be a bool")
-        __self__.accepted = accepted
+        pulumi.set(__self__, "accepted", accepted)
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
-        __self__.account_id = account_id
+        pulumi.set(__self__, "account_id", account_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
-        __self__.create_time = create_time
+        pulumi.set(__self__, "create_time", create_time)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if invited_by_user_email and not isinstance(invited_by_user_email, str):
+            raise TypeError("Expected argument 'invited_by_user_email' to be a str")
+        pulumi.set(__self__, "invited_by_user_email", invited_by_user_email)
+        if team_id and not isinstance(team_id, str):
+            raise TypeError("Expected argument 'team_id' to be a str")
+        pulumi.set(__self__, "team_id", team_id)
+        if user_email and not isinstance(user_email, str):
+            raise TypeError("Expected argument 'user_email' to be a str")
+        pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter
+    def accepted(self) -> bool:
+        return pulumi.get(self, "accepted")
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if invited_by_user_email and not isinstance(invited_by_user_email, str):
-            raise TypeError("Expected argument 'invited_by_user_email' to be a str")
-        __self__.invited_by_user_email = invited_by_user_email
-        if team_id and not isinstance(team_id, str):
-            raise TypeError("Expected argument 'team_id' to be a str")
-        __self__.team_id = team_id
-        if user_email and not isinstance(user_email, str):
-            raise TypeError("Expected argument 'user_email' to be a str")
-        __self__.user_email = user_email
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="invitedByUserEmail")
+    def invited_by_user_email(self) -> str:
+        return pulumi.get(self, "invited_by_user_email")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        return pulumi.get(self, "team_id")
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> str:
+        return pulumi.get(self, "user_email")
 
 
 class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
@@ -55,7 +96,13 @@ class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
             user_email=self.user_email)
 
 
-def get_account_team_member(accepted=None, account_id=None, create_time=None, invited_by_user_email=None, team_id=None, user_email=None, opts=None):
+def get_account_team_member(accepted: Optional[bool] = None,
+                            account_id: Optional[str] = None,
+                            create_time: Optional[str] = None,
+                            invited_by_user_email: Optional[str] = None,
+                            team_id: Optional[str] = None,
+                            user_email: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamMemberResult:
     """
     ## Example Usage
 
@@ -79,13 +126,13 @@ def get_account_team_member(accepted=None, account_id=None, create_time=None, in
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamMember:getAccountTeamMember', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamMember:getAccountTeamMember', __args__, opts=opts, typ=GetAccountTeamMemberResult).value
 
     return AwaitableGetAccountTeamMemberResult(
-        accepted=__ret__.get('accepted'),
-        account_id=__ret__.get('accountId'),
-        create_time=__ret__.get('createTime'),
-        id=__ret__.get('id'),
-        invited_by_user_email=__ret__.get('invitedByUserEmail'),
-        team_id=__ret__.get('teamId'),
-        user_email=__ret__.get('userEmail'))
+        accepted=__ret__.accepted,
+        account_id=__ret__.account_id,
+        create_time=__ret__.create_time,
+        id=__ret__.id,
+        invited_by_user_email=__ret__.invited_by_user_email,
+        team_id=__ret__.team_id,
+        user_email=__ret__.user_email)

@@ -5,560 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Service']
 
 
 class Service(pulumi.CustomResource):
-    cassandra: pulumi.Output[dict]
-    """
-    Cassandra specific server provided values
-    """
-    cassandra_user_config: pulumi.Output[dict]
-    """
-    Cassandra specific user configurable settings
-
-      * `ipFilters` (`list`)
-      * `migrateSstableloader` (`str`)
-      * `privateAccess` (`dict`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `prometheus` (`str`)
-
-      * `serviceToForkFrom` (`str`)
-    """
-    cloud_name: pulumi.Output[str]
-    """
-    Cloud the service runs in
-    """
-    components: pulumi.Output[list]
-    """
-    Service component information objects
-
-      * `component` (`str`)
-      * `host` (`str`)
-      * `kafkaAuthenticationMethod` (`str`)
-      * `port` (`float`)
-      * `route` (`str`)
-      * `ssl` (`bool`)
-      * `usage` (`str`)
-    """
-    elasticsearch: pulumi.Output[dict]
-    """
-    Elasticsearch specific server provided values
-
-      * `kibanaUri` (`str`)
-    """
-    elasticsearch_user_config: pulumi.Output[dict]
-    """
-    Elasticsearch specific user configurable settings
-
-      * `customDomain` (`str`)
-      * `disableReplicationFactorAdjustment` (`str`)
-      * `elasticsearch` (`dict`)
-        * `actionAutoCreateIndexEnabled` (`str`)
-        * `actionDestructiveRequiresName` (`str`)
-        * `httpMaxContentLength` (`str`)
-        * `httpMaxHeaderSize` (`str`)
-        * `httpMaxInitialLineLength` (`str`)
-        * `indicesFielddataCacheSize` (`str`)
-        * `indicesMemoryIndexBufferSize` (`str`)
-        * `indicesQueriesCacheSize` (`str`)
-        * `indicesQueryBoolMaxClauseCount` (`str`)
-        * `reindexRemoteWhitelists` (`list`)
-        * `searchMaxBuckets` (`str`)
-        * `threadPoolAnalyzeQueueSize` (`str`)
-        * `threadPoolAnalyzeSize` (`str`)
-        * `threadPoolForceMergeSize` (`str`)
-        * `threadPoolGetQueueSize` (`str`)
-        * `threadPoolGetSize` (`str`)
-        * `threadPoolIndexQueueSize` (`str`)
-        * `threadPoolIndexSize` (`str`)
-        * `threadPoolSearchQueueSize` (`str`)
-        * `threadPoolSearchSize` (`str`)
-        * `threadPoolSearchThrottledQueueSize` (`str`)
-        * `threadPoolSearchThrottledSize` (`str`)
-        * `threadPoolWriteQueueSize` (`str`)
-        * `threadPoolWriteSize` (`str`)
-
-      * `elasticsearchVersion` (`str`)
-      * `indexPatterns` (`list`)
-        * `maxIndexCount` (`str`)
-        * `pattern` (`str`)
-
-      * `ipFilters` (`list`)
-      * `kibana` (`dict`)
-        * `elasticsearchRequestTimeout` (`str`)
-        * `enabled` (`str`)
-        * `maxOldSpaceSize` (`str`)
-
-      * `maxIndexCount` (`str`)
-      * `privateAccess` (`dict`)
-        * `elasticsearch` (`str`)
-        * `kibana` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `elasticsearch` (`str`)
-        * `kibana` (`str`)
-        * `prometheus` (`str`)
-
-      * `recoveryBasebackupName` (`str`)
-      * `serviceToForkFrom` (`str`)
-    """
-    grafana: pulumi.Output[dict]
-    """
-    Grafana specific server provided values
-    """
-    grafana_user_config: pulumi.Output[dict]
-    """
-    Grafana specific user configurable settings
-
-      * `alertingEnabled` (`str`)
-      * `alertingErrorOrTimeout` (`str`)
-      * `alertingNodataOrNullvalues` (`str`)
-      * `allowEmbedding` (`str`)
-      * `authBasicEnabled` (`str`)
-      * `authGenericOauth` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedDomains` (`list`)
-        * `allowedOrganizations` (`list`)
-        * `apiUrl` (`str`)
-        * `authUrl` (`str`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `name` (`str`)
-        * `scopes` (`list`)
-        * `tokenUrl` (`str`)
-
-      * `authGithub` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedOrganizations` (`list`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `teamIds` (`list`)
-
-      * `authGitlab` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedGroups` (`list`)
-        * `apiUrl` (`str`)
-        * `authUrl` (`str`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `tokenUrl` (`str`)
-
-      * `authGoogle` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedDomains` (`list`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-
-      * `cookieSamesite` (`str`)
-      * `customDomain` (`str`)
-      * `dashboardsVersionsToKeep` (`str`)
-      * `dataproxySendUserHeader` (`str`)
-      * `dataproxyTimeout` (`str`)
-      * `disableGravatar` (`str`)
-      * `editorsCanAdmin` (`str`)
-      * `externalImageStorage` (`dict`)
-        * `access_key` (`str`)
-        * `bucketUrl` (`str`)
-        * `provider` (`str`)
-        * `secretKey` (`str`)
-
-      * `googleAnalyticsUaId` (`str`)
-      * `ipFilters` (`list`)
-      * `metricsEnabled` (`str`)
-      * `privateAccess` (`dict`)
-        * `grafana` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `grafana` (`str`)
-
-      * `smtpServer` (`dict`)
-        * `fromAddress` (`str`)
-        * `fromName` (`str`)
-        * `host` (`str`)
-        * `password` (`str`)
-        * `port` (`str`)
-        * `skipVerify` (`str`)
-        * `username` (`str`)
-
-      * `userAutoAssignOrg` (`str`)
-      * `userAutoAssignOrgRole` (`str`)
-      * `viewersCanEdit` (`str`)
-    """
-    influxdb: pulumi.Output[dict]
-    """
-    InfluxDB specific server provided values
-
-      * `database_name` (`str`)
-    """
-    influxdb_user_config: pulumi.Output[dict]
-    """
-    InfluxDB specific user configurable settings
-
-      * `customDomain` (`str`)
-      * `ipFilters` (`list`)
-      * `privateAccess` (`dict`)
-        * `influxdb` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `influxdb` (`str`)
-
-      * `serviceToForkFrom` (`str`)
-    """
-    kafka: pulumi.Output[dict]
-    """
-    Kafka specific server provided values
-
-      * `access_cert` (`str`)
-      * `access_key` (`str`)
-      * `connectUri` (`str`)
-      * `restUri` (`str`)
-      * `schemaRegistryUri` (`str`)
-    """
-    kafka_connect: pulumi.Output[dict]
-    """
-    Kafka Connect specific server provided values
-    """
-    kafka_connect_user_config: pulumi.Output[dict]
-    """
-    Kafka Connect specific user configurable settings
-
-      * `ipFilters` (`list`)
-      * `kafka_connect` (`dict`)
-        * `connectorClientConfigOverridePolicy` (`str`)
-        * `consumerAutoOffsetReset` (`str`)
-        * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollIntervalMs` (`str`)
-        * `consumerMaxPollRecords` (`str`)
-        * `offsetFlushIntervalMs` (`str`)
-        * `offsetFlushTimeoutMs` (`str`)
-        * `sessionTimeoutMs` (`str`)
-
-      * `privateAccess` (`dict`)
-        * `kafka_connect` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `kafka_connect` (`str`)
-        * `prometheus` (`str`)
-    """
-    kafka_mirrormaker: pulumi.Output[dict]
-    """
-    Kafka MirrorMaker 2 specific server provided values
-    """
-    kafka_mirrormaker_user_config: pulumi.Output[dict]
-    """
-    Kafka MirrorMaker 2 specific user configurable settings
-
-      * `ipFilters` (`list`)
-      * `kafka_mirrormaker` (`dict`)
-        * `refreshGroupsEnabled` (`str`)
-        * `refreshGroupsIntervalSeconds` (`str`)
-        * `refreshTopicsEnabled` (`str`)
-        * `refreshTopicsIntervalSeconds` (`str`)
-    """
-    kafka_user_config: pulumi.Output[dict]
-    """
-    Kafka specific user configurable settings
-
-      * `customDomain` (`str`)
-      * `ipFilters` (`list`)
-      * `kafka` (`dict`)
-        * `autoCreateTopicsEnable` (`str`)
-        * `compressionType` (`str`)
-        * `connectionsMaxIdleMs` (`str`)
-        * `defaultReplicationFactor` (`str`)
-        * `groupMaxSessionTimeoutMs` (`str`)
-        * `groupMinSessionTimeoutMs` (`str`)
-        * `logCleanerMaxCompactionLagMs` (`str`)
-        * `logCleanerMinCleanableRatio` (`str`)
-        * `logCleanerMinCompactionLagMs` (`str`)
-        * `logCleanupPolicy` (`str`)
-        * `logMessageTimestampDifferenceMaxMs` (`str`)
-        * `logMessageTimestampType` (`str`)
-        * `logRetentionBytes` (`str`)
-        * `logRetentionHours` (`str`)
-        * `logSegmentBytes` (`str`)
-        * `maxConnectionsPerIp` (`str`)
-        * `maxIncrementalFetchSessionCacheSlots` (`str`)
-        * `messageMaxBytes` (`str`)
-        * `numPartitions` (`str`)
-        * `offsetsRetentionMinutes` (`str`)
-        * `producerPurgatoryPurgeIntervalRequests` (`str`)
-        * `replicaFetchMaxBytes` (`str`)
-        * `replicaFetchResponseMaxBytes` (`str`)
-        * `socketRequestMaxBytes` (`str`)
-
-      * `kafkaAuthenticationMethods` (`dict`)
-        * `certificate` (`str`)
-        * `sasl` (`str`)
-
-      * `kafka_connect` (`str`)
-      * `kafkaConnectConfig` (`dict`)
-        * `connectorClientConfigOverridePolicy` (`str`)
-        * `consumerAutoOffsetReset` (`str`)
-        * `consumerIsolationLevel` (`str`)
-        * `consumerMaxPollIntervalMs` (`str`)
-        * `consumerMaxPollRecords` (`str`)
-        * `offsetFlushIntervalMs` (`str`)
-        * `offsetFlushTimeoutMs` (`str`)
-        * `sessionTimeoutMs` (`str`)
-
-      * `kafkaRest` (`str`)
-      * `kafkaRestConfig` (`dict`)
-        * `consumerEnableAutoCommit` (`str`)
-        * `consumerRequestMaxBytes` (`str`)
-        * `consumerRequestTimeoutMs` (`str`)
-        * `producerAcks` (`str`)
-        * `producerLingerMs` (`str`)
-        * `simpleconsumerPoolSizeMax` (`str`)
-
-      * `kafkaVersion` (`str`)
-      * `privateAccess` (`dict`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `kafka` (`str`)
-        * `kafka_connect` (`str`)
-        * `kafkaRest` (`str`)
-        * `prometheus` (`str`)
-        * `schemaRegistry` (`str`)
-
-      * `schemaRegistry` (`str`)
-    """
-    maintenance_window_dow: pulumi.Output[str]
-    """
-    Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-    """
-    maintenance_window_time: pulumi.Output[str]
-    """
-    Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-    """
-    mysql: pulumi.Output[dict]
-    """
-    MySQL specific server provided values
-    """
-    mysql_user_config: pulumi.Output[dict]
-    """
-    MySQL specific user configurable settings
-
-      * `adminPassword` (`str`)
-      * `adminUsername` (`str`)
-      * `backupHour` (`str`)
-      * `backupMinute` (`str`)
-      * `ipFilters` (`list`)
-      * `mysql` (`dict`)
-        * `connectTimeout` (`str`)
-        * `defaultTimeZone` (`str`)
-        * `groupConcatMaxLen` (`str`)
-        * `informationSchemaStatsExpiry` (`str`)
-        * `innodbFtMinTokenSize` (`str`)
-        * `innodbFtServerStopwordTable` (`str`)
-        * `innodbLockWaitTimeout` (`str`)
-        * `innodbLogBufferSize` (`str`)
-        * `innodbOnlineAlterLogMaxSize` (`str`)
-        * `innodbPrintAllDeadlocks` (`str`)
-        * `innodbRollbackOnTimeout` (`str`)
-        * `interactiveTimeout` (`str`)
-        * `maxAllowedPacket` (`str`)
-        * `maxHeapTableSize` (`str`)
-        * `netReadTimeout` (`str`)
-        * `netWriteTimeout` (`str`)
-        * `sortBufferSize` (`str`)
-        * `sqlMode` (`str`)
-        * `sqlRequirePrimaryKey` (`str`)
-        * `tmpTableSize` (`str`)
-        * `waitTimeout` (`str`)
-
-      * `mysqlVersion` (`str`)
-      * `privateAccess` (`dict`)
-        * `mysql` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `mysql` (`str`)
-        * `prometheus` (`str`)
-
-      * `recoveryTargetTime` (`str`)
-      * `serviceToForkFrom` (`str`)
-    """
-    pg: pulumi.Output[dict]
-    """
-    PostgreSQL specific server provided values
-
-      * `dbname` (`str`)
-      * `host` (`str`)
-      * `password` (`str`)
-      * `port` (`float`)
-      * `replicaUri` (`str`)
-      * `sslmode` (`str`)
-      * `uri` (`str`)
-      * `user` (`str`)
-    """
-    pg_user_config: pulumi.Output[dict]
-    """
-    PostgreSQL specific user configurable settings
-
-      * `adminPassword` (`str`)
-      * `adminUsername` (`str`)
-      * `backupHour` (`str`)
-      * `backupMinute` (`str`)
-      * `ipFilters` (`list`)
-      * `pg` (`dict`)
-        * `autovacuumAnalyzeScaleFactor` (`str`)
-        * `autovacuumAnalyzeThreshold` (`str`)
-        * `autovacuumFreezeMaxAge` (`str`)
-        * `autovacuumMaxWorkers` (`str`)
-        * `autovacuumNaptime` (`str`)
-        * `autovacuumVacuumCostDelay` (`str`)
-        * `autovacuumVacuumCostLimit` (`str`)
-        * `autovacuumVacuumScaleFactor` (`str`)
-        * `autovacuumVacuumThreshold` (`str`)
-        * `deadlockTimeout` (`str`)
-        * `idleInTransactionSessionTimeout` (`str`)
-        * `jit` (`str`)
-        * `logAutovacuumMinDuration` (`str`)
-        * `logErrorVerbosity` (`str`)
-        * `logMinDurationStatement` (`str`)
-        * `maxLocksPerTransaction` (`str`)
-        * `maxParallelWorkers` (`str`)
-        * `maxParallelWorkersPerGather` (`str`)
-        * `maxPredLocksPerTransaction` (`str`)
-        * `maxPreparedTransactions` (`str`)
-        * `maxStackDepth` (`str`)
-        * `maxStandbyArchiveDelay` (`str`)
-        * `maxStandbyStreamingDelay` (`str`)
-        * `maxWorkerProcesses` (`str`)
-        * `pgStatStatementsTrack` (`str`)
-        * `tempFileLimit` (`str`)
-        * `timezone` (`str`)
-        * `trackActivityQuerySize` (`str`)
-        * `trackCommitTimestamp` (`str`)
-        * `trackFunctions` (`str`)
-        * `walSenderTimeout` (`str`)
-        * `walWriterDelay` (`str`)
-
-      * `pgReadReplica` (`str`)
-      * `pgServiceToForkFrom` (`str`)
-      * `pgVersion` (`str`)
-      * `pgbouncer` (`dict`)
-        * `ignoreStartupParameters` (`list`)
-        * `serverResetQueryAlways` (`str`)
-
-      * `pglookout` (`dict`)
-        * `maxFailoverReplicationTimeLag` (`str`)
-
-      * `privateAccess` (`dict`)
-        * `pg` (`str`)
-        * `pgbouncer` (`str`)
-        * `prometheus` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `pg` (`str`)
-        * `pgbouncer` (`str`)
-        * `prometheus` (`str`)
-
-      * `recoveryTargetTime` (`str`)
-      * `serviceToForkFrom` (`str`)
-      * `sharedBuffersPercentage` (`str`)
-      * `synchronousReplication` (`str`)
-      * `timescaledb` (`dict`)
-        * `maxBackgroundWorkers` (`str`)
-
-      * `variant` (`str`)
-      * `workMem` (`str`)
-    """
-    plan: pulumi.Output[str]
-    """
-    Subscription plan
-    """
-    project: pulumi.Output[str]
-    """
-    Target project
-    """
-    project_vpc_id: pulumi.Output[str]
-    """
-    Identifier of the VPC the service should be in, if any
-    """
-    redis: pulumi.Output[dict]
-    """
-    Redis specific server provided values
-    """
-    redis_user_config: pulumi.Output[dict]
-    """
-    Redis specific user configurable settings
-
-      * `ipFilters` (`list`)
-      * `migration` (`dict`)
-        * `host` (`str`)
-        * `password` (`str`)
-        * `port` (`str`)
-        * `ssl` (`str`)
-        * `username` (`str`)
-
-      * `privateAccess` (`dict`)
-        * `prometheus` (`str`)
-        * `redis` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `prometheus` (`str`)
-        * `redis` (`str`)
-
-      * `redisLfuDecayTime` (`str`)
-      * `redisLfuLogFactor` (`str`)
-      * `redisMaxmemoryPolicy` (`str`)
-      * `redisNotifyKeyspaceEvents` (`str`)
-      * `redisSsl` (`str`)
-      * `redisTimeout` (`str`)
-    """
-    service_host: pulumi.Output[str]
-    """
-    Service hostname
-    """
-    service_integrations: pulumi.Output[list]
-    """
-    Service integrations to specify when creating a service. Not applied after initial service creation
-
-      * `integration_type` (`str`)
-      * `source_service_name` (`str`)
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service name
-    """
-    service_password: pulumi.Output[str]
-    """
-    Password used for connecting to the service, if applicable
-    """
-    service_port: pulumi.Output[float]
-    """
-    Service port
-    """
-    service_type: pulumi.Output[str]
-    """
-    Service type code
-    """
-    service_uri: pulumi.Output[str]
-    """
-    URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-    """
-    service_username: pulumi.Output[str]
-    """
-    Username used for connecting to the service, if applicable
-    """
-    state: pulumi.Output[str]
-    """
-    Service state
-    """
-    termination_protection: pulumi.Output[bool]
-    """
-    Prevent service from being deleted. It is recommended to have this enabled for all services.
-    """
-    def __init__(__self__, resource_name, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, service_type=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cassandra: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]] = None,
+                 cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']]] = None,
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 elasticsearch: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]] = None,
+                 elasticsearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']]] = None,
+                 grafana: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]] = None,
+                 grafana_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']]] = None,
+                 influxdb: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']]] = None,
+                 influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']]] = None,
+                 kafka: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]] = None,
+                 kafka_connect: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']]] = None,
+                 kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']]] = None,
+                 kafka_mirrormaker: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']]] = None,
+                 kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']]] = None,
+                 kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']]] = None,
+                 maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+                 maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
+                 mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
+                 pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
+                 pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 project_vpc_id: Optional[pulumi.Input[str]] = None,
+                 redis: Optional[pulumi.Input[pulumi.InputType['ServiceRedisArgs']]] = None,
+                 redis_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']]] = None,
+                 service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 service_type: Optional[pulumi.Input[str]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -568,10 +59,10 @@ class Service(pulumi.CustomResource):
 
         myservice = aiven.Service("myservice",
             cloud_name="google-europe-west1",
-            pg_user_config={
-                "ipFilters": ["0.0.0.0/0"],
-                "pgVersion": "10",
-            },
+            pg_user_config=aiven.ServicePgUserConfigArgs(
+                ip_filters=["0.0.0.0/0"],
+                pg_version="10",
+            ),
             plan="business-8",
             project=aiven_project["myproject"]["project"],
             project_vpc_id=aiven_project_vpc["vpc_gcp_europe_west1"]["id"],
@@ -582,458 +73,36 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] cassandra: Cassandra specific server provided values
-        :param pulumi.Input[dict] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceCassandraArgs']] cassandra: Cassandra specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']] cassandra_user_config: Cassandra specific user configurable settings
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
-        :param pulumi.Input[dict] elasticsearch: Elasticsearch specific server provided values
-        :param pulumi.Input[dict] elasticsearch_user_config: Elasticsearch specific user configurable settings
-        :param pulumi.Input[dict] grafana: Grafana specific server provided values
-        :param pulumi.Input[dict] grafana_user_config: Grafana specific user configurable settings
-        :param pulumi.Input[dict] influxdb: InfluxDB specific server provided values
-        :param pulumi.Input[dict] influxdb_user_config: InfluxDB specific user configurable settings
-        :param pulumi.Input[dict] kafka: Kafka specific server provided values
-        :param pulumi.Input[dict] kafka_connect: Kafka Connect specific server provided values
-        :param pulumi.Input[dict] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[dict] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
-        :param pulumi.Input[dict] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
-        :param pulumi.Input[dict] kafka_user_config: Kafka specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']] elasticsearch: Elasticsearch specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']] elasticsearch_user_config: Elasticsearch specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']] grafana: Grafana specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']] grafana_user_config: Grafana specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']] influxdb: InfluxDB specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']] influxdb_user_config: InfluxDB specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaArgs']] kafka: Kafka specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']] kafka_connect: Kafka Connect specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']] kafka_user_config: Kafka specific user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[dict] mysql: MySQL specific server provided values
-        :param pulumi.Input[dict] mysql_user_config: MySQL specific user configurable settings
-        :param pulumi.Input[dict] pg: PostgreSQL specific server provided values
-        :param pulumi.Input[dict] pg_user_config: PostgreSQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceMysqlArgs']] mysql: MySQL specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: MySQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServicePgArgs']] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: PostgreSQL specific user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input[dict] redis: Redis specific server provided values
-        :param pulumi.Input[dict] redis_user_config: Redis specific user configurable settings
-        :param pulumi.Input[list] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[pulumi.InputType['ServiceRedisArgs']] redis: Redis specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis specific user configurable settings
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] service_type: Service type code
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
-
-        The **cassandra_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `migrateSstableloader` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **elasticsearch** object supports the following:
-
-          * `kibanaUri` (`pulumi.Input[str]`)
-
-        The **elasticsearch_user_config** object supports the following:
-
-          * `customDomain` (`pulumi.Input[str]`)
-          * `disableReplicationFactorAdjustment` (`pulumi.Input[str]`)
-          * `elasticsearch` (`pulumi.Input[dict]`)
-            * `actionAutoCreateIndexEnabled` (`pulumi.Input[str]`)
-            * `actionDestructiveRequiresName` (`pulumi.Input[str]`)
-            * `httpMaxContentLength` (`pulumi.Input[str]`)
-            * `httpMaxHeaderSize` (`pulumi.Input[str]`)
-            * `httpMaxInitialLineLength` (`pulumi.Input[str]`)
-            * `indicesFielddataCacheSize` (`pulumi.Input[str]`)
-            * `indicesMemoryIndexBufferSize` (`pulumi.Input[str]`)
-            * `indicesQueriesCacheSize` (`pulumi.Input[str]`)
-            * `indicesQueryBoolMaxClauseCount` (`pulumi.Input[str]`)
-            * `reindexRemoteWhitelists` (`pulumi.Input[list]`)
-            * `searchMaxBuckets` (`pulumi.Input[str]`)
-            * `threadPoolAnalyzeQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolAnalyzeSize` (`pulumi.Input[str]`)
-            * `threadPoolForceMergeSize` (`pulumi.Input[str]`)
-            * `threadPoolGetQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolGetSize` (`pulumi.Input[str]`)
-            * `threadPoolIndexQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolIndexSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchThrottledQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchThrottledSize` (`pulumi.Input[str]`)
-            * `threadPoolWriteQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolWriteSize` (`pulumi.Input[str]`)
-
-          * `elasticsearchVersion` (`pulumi.Input[str]`)
-          * `indexPatterns` (`pulumi.Input[list]`)
-            * `maxIndexCount` (`pulumi.Input[str]`)
-            * `pattern` (`pulumi.Input[str]`)
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kibana` (`pulumi.Input[dict]`)
-            * `elasticsearchRequestTimeout` (`pulumi.Input[str]`)
-            * `enabled` (`pulumi.Input[str]`)
-            * `maxOldSpaceSize` (`pulumi.Input[str]`)
-
-          * `maxIndexCount` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `elasticsearch` (`pulumi.Input[str]`)
-            * `kibana` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `elasticsearch` (`pulumi.Input[str]`)
-            * `kibana` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `recoveryBasebackupName` (`pulumi.Input[str]`)
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **grafana_user_config** object supports the following:
-
-          * `alertingEnabled` (`pulumi.Input[str]`)
-          * `alertingErrorOrTimeout` (`pulumi.Input[str]`)
-          * `alertingNodataOrNullvalues` (`pulumi.Input[str]`)
-          * `allowEmbedding` (`pulumi.Input[str]`)
-          * `authBasicEnabled` (`pulumi.Input[str]`)
-          * `authGenericOauth` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedDomains` (`pulumi.Input[list]`)
-            * `allowedOrganizations` (`pulumi.Input[list]`)
-            * `apiUrl` (`pulumi.Input[str]`)
-            * `authUrl` (`pulumi.Input[str]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-            * `name` (`pulumi.Input[str]`)
-            * `scopes` (`pulumi.Input[list]`)
-            * `tokenUrl` (`pulumi.Input[str]`)
-
-          * `authGithub` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedOrganizations` (`pulumi.Input[list]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-            * `teamIds` (`pulumi.Input[list]`)
-
-          * `authGitlab` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedGroups` (`pulumi.Input[list]`)
-            * `apiUrl` (`pulumi.Input[str]`)
-            * `authUrl` (`pulumi.Input[str]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-            * `tokenUrl` (`pulumi.Input[str]`)
-
-          * `authGoogle` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedDomains` (`pulumi.Input[list]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-
-          * `cookieSamesite` (`pulumi.Input[str]`)
-          * `customDomain` (`pulumi.Input[str]`)
-          * `dashboardsVersionsToKeep` (`pulumi.Input[str]`)
-          * `dataproxySendUserHeader` (`pulumi.Input[str]`)
-          * `dataproxyTimeout` (`pulumi.Input[str]`)
-          * `disableGravatar` (`pulumi.Input[str]`)
-          * `editorsCanAdmin` (`pulumi.Input[str]`)
-          * `externalImageStorage` (`pulumi.Input[dict]`)
-            * `access_key` (`pulumi.Input[str]`)
-            * `bucketUrl` (`pulumi.Input[str]`)
-            * `provider` (`pulumi.Input[str]`)
-            * `secretKey` (`pulumi.Input[str]`)
-
-          * `googleAnalyticsUaId` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `metricsEnabled` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `grafana` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `grafana` (`pulumi.Input[str]`)
-
-          * `smtpServer` (`pulumi.Input[dict]`)
-            * `fromAddress` (`pulumi.Input[str]`)
-            * `fromName` (`pulumi.Input[str]`)
-            * `host` (`pulumi.Input[str]`)
-            * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[str]`)
-            * `skipVerify` (`pulumi.Input[str]`)
-            * `username` (`pulumi.Input[str]`)
-
-          * `userAutoAssignOrg` (`pulumi.Input[str]`)
-          * `userAutoAssignOrgRole` (`pulumi.Input[str]`)
-          * `viewersCanEdit` (`pulumi.Input[str]`)
-
-        The **influxdb** object supports the following:
-
-          * `database_name` (`pulumi.Input[str]`)
-
-        The **influxdb_user_config** object supports the following:
-
-          * `customDomain` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `influxdb` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `influxdb` (`pulumi.Input[str]`)
-
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **kafka** object supports the following:
-
-          * `access_cert` (`pulumi.Input[str]`)
-          * `access_key` (`pulumi.Input[str]`)
-          * `connectUri` (`pulumi.Input[str]`)
-          * `restUri` (`pulumi.Input[str]`)
-          * `schemaRegistryUri` (`pulumi.Input[str]`)
-
-        The **kafka_connect_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kafka_connect` (`pulumi.Input[dict]`)
-            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
-            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
-            * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
-            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
-            * `sessionTimeoutMs` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `kafka_connect` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `kafka_connect` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-        The **kafka_mirrormaker_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kafka_mirrormaker` (`pulumi.Input[dict]`)
-            * `refreshGroupsEnabled` (`pulumi.Input[str]`)
-            * `refreshGroupsIntervalSeconds` (`pulumi.Input[str]`)
-            * `refreshTopicsEnabled` (`pulumi.Input[str]`)
-            * `refreshTopicsIntervalSeconds` (`pulumi.Input[str]`)
-
-        The **kafka_user_config** object supports the following:
-
-          * `customDomain` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kafka` (`pulumi.Input[dict]`)
-            * `autoCreateTopicsEnable` (`pulumi.Input[str]`)
-            * `compressionType` (`pulumi.Input[str]`)
-            * `connectionsMaxIdleMs` (`pulumi.Input[str]`)
-            * `defaultReplicationFactor` (`pulumi.Input[str]`)
-            * `groupMaxSessionTimeoutMs` (`pulumi.Input[str]`)
-            * `groupMinSessionTimeoutMs` (`pulumi.Input[str]`)
-            * `logCleanerMaxCompactionLagMs` (`pulumi.Input[str]`)
-            * `logCleanerMinCleanableRatio` (`pulumi.Input[str]`)
-            * `logCleanerMinCompactionLagMs` (`pulumi.Input[str]`)
-            * `logCleanupPolicy` (`pulumi.Input[str]`)
-            * `logMessageTimestampDifferenceMaxMs` (`pulumi.Input[str]`)
-            * `logMessageTimestampType` (`pulumi.Input[str]`)
-            * `logRetentionBytes` (`pulumi.Input[str]`)
-            * `logRetentionHours` (`pulumi.Input[str]`)
-            * `logSegmentBytes` (`pulumi.Input[str]`)
-            * `maxConnectionsPerIp` (`pulumi.Input[str]`)
-            * `maxIncrementalFetchSessionCacheSlots` (`pulumi.Input[str]`)
-            * `messageMaxBytes` (`pulumi.Input[str]`)
-            * `numPartitions` (`pulumi.Input[str]`)
-            * `offsetsRetentionMinutes` (`pulumi.Input[str]`)
-            * `producerPurgatoryPurgeIntervalRequests` (`pulumi.Input[str]`)
-            * `replicaFetchMaxBytes` (`pulumi.Input[str]`)
-            * `replicaFetchResponseMaxBytes` (`pulumi.Input[str]`)
-            * `socketRequestMaxBytes` (`pulumi.Input[str]`)
-
-          * `kafkaAuthenticationMethods` (`pulumi.Input[dict]`)
-            * `certificate` (`pulumi.Input[str]`)
-            * `sasl` (`pulumi.Input[str]`)
-
-          * `kafka_connect` (`pulumi.Input[str]`)
-          * `kafkaConnectConfig` (`pulumi.Input[dict]`)
-            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
-            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
-            * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
-            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
-            * `sessionTimeoutMs` (`pulumi.Input[str]`)
-
-          * `kafkaRest` (`pulumi.Input[str]`)
-          * `kafkaRestConfig` (`pulumi.Input[dict]`)
-            * `consumerEnableAutoCommit` (`pulumi.Input[str]`)
-            * `consumerRequestMaxBytes` (`pulumi.Input[str]`)
-            * `consumerRequestTimeoutMs` (`pulumi.Input[str]`)
-            * `producerAcks` (`pulumi.Input[str]`)
-            * `producerLingerMs` (`pulumi.Input[str]`)
-            * `simpleconsumerPoolSizeMax` (`pulumi.Input[str]`)
-
-          * `kafkaVersion` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `kafka` (`pulumi.Input[str]`)
-            * `kafka_connect` (`pulumi.Input[str]`)
-            * `kafkaRest` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `schemaRegistry` (`pulumi.Input[str]`)
-
-          * `schemaRegistry` (`pulumi.Input[str]`)
-
-        The **mysql_user_config** object supports the following:
-
-          * `adminPassword` (`pulumi.Input[str]`)
-          * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[str]`)
-          * `backupMinute` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `mysql` (`pulumi.Input[dict]`)
-            * `connectTimeout` (`pulumi.Input[str]`)
-            * `defaultTimeZone` (`pulumi.Input[str]`)
-            * `groupConcatMaxLen` (`pulumi.Input[str]`)
-            * `informationSchemaStatsExpiry` (`pulumi.Input[str]`)
-            * `innodbFtMinTokenSize` (`pulumi.Input[str]`)
-            * `innodbFtServerStopwordTable` (`pulumi.Input[str]`)
-            * `innodbLockWaitTimeout` (`pulumi.Input[str]`)
-            * `innodbLogBufferSize` (`pulumi.Input[str]`)
-            * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[str]`)
-            * `innodbPrintAllDeadlocks` (`pulumi.Input[str]`)
-            * `innodbRollbackOnTimeout` (`pulumi.Input[str]`)
-            * `interactiveTimeout` (`pulumi.Input[str]`)
-            * `maxAllowedPacket` (`pulumi.Input[str]`)
-            * `maxHeapTableSize` (`pulumi.Input[str]`)
-            * `netReadTimeout` (`pulumi.Input[str]`)
-            * `netWriteTimeout` (`pulumi.Input[str]`)
-            * `sortBufferSize` (`pulumi.Input[str]`)
-            * `sqlMode` (`pulumi.Input[str]`)
-            * `sqlRequirePrimaryKey` (`pulumi.Input[str]`)
-            * `tmpTableSize` (`pulumi.Input[str]`)
-            * `waitTimeout` (`pulumi.Input[str]`)
-
-          * `mysqlVersion` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `mysql` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `mysql` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `recoveryTargetTime` (`pulumi.Input[str]`)
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **pg** object supports the following:
-
-          * `dbname` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `password` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `replicaUri` (`pulumi.Input[str]`)
-          * `sslmode` (`pulumi.Input[str]`)
-          * `uri` (`pulumi.Input[str]`)
-          * `user` (`pulumi.Input[str]`)
-
-        The **pg_user_config** object supports the following:
-
-          * `adminPassword` (`pulumi.Input[str]`)
-          * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[str]`)
-          * `backupMinute` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `pg` (`pulumi.Input[dict]`)
-            * `autovacuumAnalyzeScaleFactor` (`pulumi.Input[str]`)
-            * `autovacuumAnalyzeThreshold` (`pulumi.Input[str]`)
-            * `autovacuumFreezeMaxAge` (`pulumi.Input[str]`)
-            * `autovacuumMaxWorkers` (`pulumi.Input[str]`)
-            * `autovacuumNaptime` (`pulumi.Input[str]`)
-            * `autovacuumVacuumCostDelay` (`pulumi.Input[str]`)
-            * `autovacuumVacuumCostLimit` (`pulumi.Input[str]`)
-            * `autovacuumVacuumScaleFactor` (`pulumi.Input[str]`)
-            * `autovacuumVacuumThreshold` (`pulumi.Input[str]`)
-            * `deadlockTimeout` (`pulumi.Input[str]`)
-            * `idleInTransactionSessionTimeout` (`pulumi.Input[str]`)
-            * `jit` (`pulumi.Input[str]`)
-            * `logAutovacuumMinDuration` (`pulumi.Input[str]`)
-            * `logErrorVerbosity` (`pulumi.Input[str]`)
-            * `logMinDurationStatement` (`pulumi.Input[str]`)
-            * `maxLocksPerTransaction` (`pulumi.Input[str]`)
-            * `maxParallelWorkers` (`pulumi.Input[str]`)
-            * `maxParallelWorkersPerGather` (`pulumi.Input[str]`)
-            * `maxPredLocksPerTransaction` (`pulumi.Input[str]`)
-            * `maxPreparedTransactions` (`pulumi.Input[str]`)
-            * `maxStackDepth` (`pulumi.Input[str]`)
-            * `maxStandbyArchiveDelay` (`pulumi.Input[str]`)
-            * `maxStandbyStreamingDelay` (`pulumi.Input[str]`)
-            * `maxWorkerProcesses` (`pulumi.Input[str]`)
-            * `pgStatStatementsTrack` (`pulumi.Input[str]`)
-            * `tempFileLimit` (`pulumi.Input[str]`)
-            * `timezone` (`pulumi.Input[str]`)
-            * `trackActivityQuerySize` (`pulumi.Input[str]`)
-            * `trackCommitTimestamp` (`pulumi.Input[str]`)
-            * `trackFunctions` (`pulumi.Input[str]`)
-            * `walSenderTimeout` (`pulumi.Input[str]`)
-            * `walWriterDelay` (`pulumi.Input[str]`)
-
-          * `pgReadReplica` (`pulumi.Input[str]`)
-          * `pgServiceToForkFrom` (`pulumi.Input[str]`)
-          * `pgVersion` (`pulumi.Input[str]`)
-          * `pgbouncer` (`pulumi.Input[dict]`)
-            * `ignoreStartupParameters` (`pulumi.Input[list]`)
-            * `serverResetQueryAlways` (`pulumi.Input[str]`)
-
-          * `pglookout` (`pulumi.Input[dict]`)
-            * `maxFailoverReplicationTimeLag` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `pg` (`pulumi.Input[str]`)
-            * `pgbouncer` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `pg` (`pulumi.Input[str]`)
-            * `pgbouncer` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `recoveryTargetTime` (`pulumi.Input[str]`)
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-          * `sharedBuffersPercentage` (`pulumi.Input[str]`)
-          * `synchronousReplication` (`pulumi.Input[str]`)
-          * `timescaledb` (`pulumi.Input[dict]`)
-            * `maxBackgroundWorkers` (`pulumi.Input[str]`)
-
-          * `variant` (`pulumi.Input[str]`)
-          * `workMem` (`pulumi.Input[str]`)
-
-        The **redis_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `migration` (`pulumi.Input[dict]`)
-            * `host` (`pulumi.Input[str]`)
-            * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[str]`)
-            * `ssl` (`pulumi.Input[str]`)
-            * `username` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `redisLfuDecayTime` (`pulumi.Input[str]`)
-          * `redisLfuLogFactor` (`pulumi.Input[str]`)
-          * `redisMaxmemoryPolicy` (`pulumi.Input[str]`)
-          * `redisNotifyKeyspaceEvents` (`pulumi.Input[str]`)
-          * `redisSsl` (`pulumi.Input[str]`)
-          * `redisTimeout` (`pulumi.Input[str]`)
-
-        The **service_integrations** object supports the following:
-
-          * `integration_type` (`pulumi.Input[str]`)
-          * `source_service_name` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -1102,43 +171,82 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cassandra: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]] = None,
+            cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']]] = None,
+            cloud_name: Optional[pulumi.Input[str]] = None,
+            components: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]]] = None,
+            elasticsearch: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]] = None,
+            elasticsearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']]] = None,
+            grafana: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]] = None,
+            grafana_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']]] = None,
+            influxdb: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']]] = None,
+            influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']]] = None,
+            kafka: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]] = None,
+            kafka_connect: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']]] = None,
+            kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']]] = None,
+            kafka_mirrormaker: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']]] = None,
+            kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']]] = None,
+            kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']]] = None,
+            maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+            maintenance_window_time: Optional[pulumi.Input[str]] = None,
+            mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
+            mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
+            pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
+            pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
+            plan: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            project_vpc_id: Optional[pulumi.Input[str]] = None,
+            redis: Optional[pulumi.Input[pulumi.InputType['ServiceRedisArgs']]] = None,
+            redis_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']]] = None,
+            service_host: Optional[pulumi.Input[str]] = None,
+            service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            service_password: Optional[pulumi.Input[str]] = None,
+            service_port: Optional[pulumi.Input[float]] = None,
+            service_type: Optional[pulumi.Input[str]] = None,
+            service_uri: Optional[pulumi.Input[str]] = None,
+            service_username: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] cassandra: Cassandra specific server provided values
-        :param pulumi.Input[dict] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceCassandraArgs']] cassandra: Cassandra specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']] cassandra_user_config: Cassandra specific user configurable settings
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
-        :param pulumi.Input[list] components: Service component information objects
-        :param pulumi.Input[dict] elasticsearch: Elasticsearch specific server provided values
-        :param pulumi.Input[dict] elasticsearch_user_config: Elasticsearch specific user configurable settings
-        :param pulumi.Input[dict] grafana: Grafana specific server provided values
-        :param pulumi.Input[dict] grafana_user_config: Grafana specific user configurable settings
-        :param pulumi.Input[dict] influxdb: InfluxDB specific server provided values
-        :param pulumi.Input[dict] influxdb_user_config: InfluxDB specific user configurable settings
-        :param pulumi.Input[dict] kafka: Kafka specific server provided values
-        :param pulumi.Input[dict] kafka_connect: Kafka Connect specific server provided values
-        :param pulumi.Input[dict] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[dict] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
-        :param pulumi.Input[dict] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
-        :param pulumi.Input[dict] kafka_user_config: Kafka specific user configurable settings
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]] components: Service component information objects
+        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']] elasticsearch: Elasticsearch specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']] elasticsearch_user_config: Elasticsearch specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']] grafana: Grafana specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']] grafana_user_config: Grafana specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']] influxdb: InfluxDB specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']] influxdb_user_config: InfluxDB specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaArgs']] kafka: Kafka specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']] kafka_connect: Kafka Connect specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']] kafka_user_config: Kafka specific user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[dict] mysql: MySQL specific server provided values
-        :param pulumi.Input[dict] mysql_user_config: MySQL specific user configurable settings
-        :param pulumi.Input[dict] pg: PostgreSQL specific server provided values
-        :param pulumi.Input[dict] pg_user_config: PostgreSQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceMysqlArgs']] mysql: MySQL specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: MySQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServicePgArgs']] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: PostgreSQL specific user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input[dict] redis: Redis specific server provided values
-        :param pulumi.Input[dict] redis_user_config: Redis specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceRedisArgs']] redis: Redis specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis specific user configurable settings
         :param pulumi.Input[str] service_host: Service hostname
-        :param pulumi.Input[list] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[float] service_port: Service port
@@ -1147,438 +255,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
-
-        The **cassandra_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `migrateSstableloader` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **components** object supports the following:
-
-          * `component` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `kafkaAuthenticationMethod` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `route` (`pulumi.Input[str]`)
-          * `ssl` (`pulumi.Input[bool]`)
-          * `usage` (`pulumi.Input[str]`)
-
-        The **elasticsearch** object supports the following:
-
-          * `kibanaUri` (`pulumi.Input[str]`)
-
-        The **elasticsearch_user_config** object supports the following:
-
-          * `customDomain` (`pulumi.Input[str]`)
-          * `disableReplicationFactorAdjustment` (`pulumi.Input[str]`)
-          * `elasticsearch` (`pulumi.Input[dict]`)
-            * `actionAutoCreateIndexEnabled` (`pulumi.Input[str]`)
-            * `actionDestructiveRequiresName` (`pulumi.Input[str]`)
-            * `httpMaxContentLength` (`pulumi.Input[str]`)
-            * `httpMaxHeaderSize` (`pulumi.Input[str]`)
-            * `httpMaxInitialLineLength` (`pulumi.Input[str]`)
-            * `indicesFielddataCacheSize` (`pulumi.Input[str]`)
-            * `indicesMemoryIndexBufferSize` (`pulumi.Input[str]`)
-            * `indicesQueriesCacheSize` (`pulumi.Input[str]`)
-            * `indicesQueryBoolMaxClauseCount` (`pulumi.Input[str]`)
-            * `reindexRemoteWhitelists` (`pulumi.Input[list]`)
-            * `searchMaxBuckets` (`pulumi.Input[str]`)
-            * `threadPoolAnalyzeQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolAnalyzeSize` (`pulumi.Input[str]`)
-            * `threadPoolForceMergeSize` (`pulumi.Input[str]`)
-            * `threadPoolGetQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolGetSize` (`pulumi.Input[str]`)
-            * `threadPoolIndexQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolIndexSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchThrottledQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolSearchThrottledSize` (`pulumi.Input[str]`)
-            * `threadPoolWriteQueueSize` (`pulumi.Input[str]`)
-            * `threadPoolWriteSize` (`pulumi.Input[str]`)
-
-          * `elasticsearchVersion` (`pulumi.Input[str]`)
-          * `indexPatterns` (`pulumi.Input[list]`)
-            * `maxIndexCount` (`pulumi.Input[str]`)
-            * `pattern` (`pulumi.Input[str]`)
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kibana` (`pulumi.Input[dict]`)
-            * `elasticsearchRequestTimeout` (`pulumi.Input[str]`)
-            * `enabled` (`pulumi.Input[str]`)
-            * `maxOldSpaceSize` (`pulumi.Input[str]`)
-
-          * `maxIndexCount` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `elasticsearch` (`pulumi.Input[str]`)
-            * `kibana` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `elasticsearch` (`pulumi.Input[str]`)
-            * `kibana` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `recoveryBasebackupName` (`pulumi.Input[str]`)
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **grafana_user_config** object supports the following:
-
-          * `alertingEnabled` (`pulumi.Input[str]`)
-          * `alertingErrorOrTimeout` (`pulumi.Input[str]`)
-          * `alertingNodataOrNullvalues` (`pulumi.Input[str]`)
-          * `allowEmbedding` (`pulumi.Input[str]`)
-          * `authBasicEnabled` (`pulumi.Input[str]`)
-          * `authGenericOauth` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedDomains` (`pulumi.Input[list]`)
-            * `allowedOrganizations` (`pulumi.Input[list]`)
-            * `apiUrl` (`pulumi.Input[str]`)
-            * `authUrl` (`pulumi.Input[str]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-            * `name` (`pulumi.Input[str]`)
-            * `scopes` (`pulumi.Input[list]`)
-            * `tokenUrl` (`pulumi.Input[str]`)
-
-          * `authGithub` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedOrganizations` (`pulumi.Input[list]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-            * `teamIds` (`pulumi.Input[list]`)
-
-          * `authGitlab` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedGroups` (`pulumi.Input[list]`)
-            * `apiUrl` (`pulumi.Input[str]`)
-            * `authUrl` (`pulumi.Input[str]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-            * `tokenUrl` (`pulumi.Input[str]`)
-
-          * `authGoogle` (`pulumi.Input[dict]`)
-            * `allowSignUp` (`pulumi.Input[str]`)
-            * `allowedDomains` (`pulumi.Input[list]`)
-            * `clientId` (`pulumi.Input[str]`)
-            * `clientSecret` (`pulumi.Input[str]`)
-
-          * `cookieSamesite` (`pulumi.Input[str]`)
-          * `customDomain` (`pulumi.Input[str]`)
-          * `dashboardsVersionsToKeep` (`pulumi.Input[str]`)
-          * `dataproxySendUserHeader` (`pulumi.Input[str]`)
-          * `dataproxyTimeout` (`pulumi.Input[str]`)
-          * `disableGravatar` (`pulumi.Input[str]`)
-          * `editorsCanAdmin` (`pulumi.Input[str]`)
-          * `externalImageStorage` (`pulumi.Input[dict]`)
-            * `access_key` (`pulumi.Input[str]`)
-            * `bucketUrl` (`pulumi.Input[str]`)
-            * `provider` (`pulumi.Input[str]`)
-            * `secretKey` (`pulumi.Input[str]`)
-
-          * `googleAnalyticsUaId` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `metricsEnabled` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `grafana` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `grafana` (`pulumi.Input[str]`)
-
-          * `smtpServer` (`pulumi.Input[dict]`)
-            * `fromAddress` (`pulumi.Input[str]`)
-            * `fromName` (`pulumi.Input[str]`)
-            * `host` (`pulumi.Input[str]`)
-            * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[str]`)
-            * `skipVerify` (`pulumi.Input[str]`)
-            * `username` (`pulumi.Input[str]`)
-
-          * `userAutoAssignOrg` (`pulumi.Input[str]`)
-          * `userAutoAssignOrgRole` (`pulumi.Input[str]`)
-          * `viewersCanEdit` (`pulumi.Input[str]`)
-
-        The **influxdb** object supports the following:
-
-          * `database_name` (`pulumi.Input[str]`)
-
-        The **influxdb_user_config** object supports the following:
-
-          * `customDomain` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `influxdb` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `influxdb` (`pulumi.Input[str]`)
-
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **kafka** object supports the following:
-
-          * `access_cert` (`pulumi.Input[str]`)
-          * `access_key` (`pulumi.Input[str]`)
-          * `connectUri` (`pulumi.Input[str]`)
-          * `restUri` (`pulumi.Input[str]`)
-          * `schemaRegistryUri` (`pulumi.Input[str]`)
-
-        The **kafka_connect_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kafka_connect` (`pulumi.Input[dict]`)
-            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
-            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
-            * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
-            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
-            * `sessionTimeoutMs` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `kafka_connect` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `kafka_connect` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-        The **kafka_mirrormaker_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kafka_mirrormaker` (`pulumi.Input[dict]`)
-            * `refreshGroupsEnabled` (`pulumi.Input[str]`)
-            * `refreshGroupsIntervalSeconds` (`pulumi.Input[str]`)
-            * `refreshTopicsEnabled` (`pulumi.Input[str]`)
-            * `refreshTopicsIntervalSeconds` (`pulumi.Input[str]`)
-
-        The **kafka_user_config** object supports the following:
-
-          * `customDomain` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `kafka` (`pulumi.Input[dict]`)
-            * `autoCreateTopicsEnable` (`pulumi.Input[str]`)
-            * `compressionType` (`pulumi.Input[str]`)
-            * `connectionsMaxIdleMs` (`pulumi.Input[str]`)
-            * `defaultReplicationFactor` (`pulumi.Input[str]`)
-            * `groupMaxSessionTimeoutMs` (`pulumi.Input[str]`)
-            * `groupMinSessionTimeoutMs` (`pulumi.Input[str]`)
-            * `logCleanerMaxCompactionLagMs` (`pulumi.Input[str]`)
-            * `logCleanerMinCleanableRatio` (`pulumi.Input[str]`)
-            * `logCleanerMinCompactionLagMs` (`pulumi.Input[str]`)
-            * `logCleanupPolicy` (`pulumi.Input[str]`)
-            * `logMessageTimestampDifferenceMaxMs` (`pulumi.Input[str]`)
-            * `logMessageTimestampType` (`pulumi.Input[str]`)
-            * `logRetentionBytes` (`pulumi.Input[str]`)
-            * `logRetentionHours` (`pulumi.Input[str]`)
-            * `logSegmentBytes` (`pulumi.Input[str]`)
-            * `maxConnectionsPerIp` (`pulumi.Input[str]`)
-            * `maxIncrementalFetchSessionCacheSlots` (`pulumi.Input[str]`)
-            * `messageMaxBytes` (`pulumi.Input[str]`)
-            * `numPartitions` (`pulumi.Input[str]`)
-            * `offsetsRetentionMinutes` (`pulumi.Input[str]`)
-            * `producerPurgatoryPurgeIntervalRequests` (`pulumi.Input[str]`)
-            * `replicaFetchMaxBytes` (`pulumi.Input[str]`)
-            * `replicaFetchResponseMaxBytes` (`pulumi.Input[str]`)
-            * `socketRequestMaxBytes` (`pulumi.Input[str]`)
-
-          * `kafkaAuthenticationMethods` (`pulumi.Input[dict]`)
-            * `certificate` (`pulumi.Input[str]`)
-            * `sasl` (`pulumi.Input[str]`)
-
-          * `kafka_connect` (`pulumi.Input[str]`)
-          * `kafkaConnectConfig` (`pulumi.Input[dict]`)
-            * `connectorClientConfigOverridePolicy` (`pulumi.Input[str]`)
-            * `consumerAutoOffsetReset` (`pulumi.Input[str]`)
-            * `consumerIsolationLevel` (`pulumi.Input[str]`)
-            * `consumerMaxPollIntervalMs` (`pulumi.Input[str]`)
-            * `consumerMaxPollRecords` (`pulumi.Input[str]`)
-            * `offsetFlushIntervalMs` (`pulumi.Input[str]`)
-            * `offsetFlushTimeoutMs` (`pulumi.Input[str]`)
-            * `sessionTimeoutMs` (`pulumi.Input[str]`)
-
-          * `kafkaRest` (`pulumi.Input[str]`)
-          * `kafkaRestConfig` (`pulumi.Input[dict]`)
-            * `consumerEnableAutoCommit` (`pulumi.Input[str]`)
-            * `consumerRequestMaxBytes` (`pulumi.Input[str]`)
-            * `consumerRequestTimeoutMs` (`pulumi.Input[str]`)
-            * `producerAcks` (`pulumi.Input[str]`)
-            * `producerLingerMs` (`pulumi.Input[str]`)
-            * `simpleconsumerPoolSizeMax` (`pulumi.Input[str]`)
-
-          * `kafkaVersion` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `kafka` (`pulumi.Input[str]`)
-            * `kafka_connect` (`pulumi.Input[str]`)
-            * `kafkaRest` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `schemaRegistry` (`pulumi.Input[str]`)
-
-          * `schemaRegistry` (`pulumi.Input[str]`)
-
-        The **mysql_user_config** object supports the following:
-
-          * `adminPassword` (`pulumi.Input[str]`)
-          * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[str]`)
-          * `backupMinute` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `mysql` (`pulumi.Input[dict]`)
-            * `connectTimeout` (`pulumi.Input[str]`)
-            * `defaultTimeZone` (`pulumi.Input[str]`)
-            * `groupConcatMaxLen` (`pulumi.Input[str]`)
-            * `informationSchemaStatsExpiry` (`pulumi.Input[str]`)
-            * `innodbFtMinTokenSize` (`pulumi.Input[str]`)
-            * `innodbFtServerStopwordTable` (`pulumi.Input[str]`)
-            * `innodbLockWaitTimeout` (`pulumi.Input[str]`)
-            * `innodbLogBufferSize` (`pulumi.Input[str]`)
-            * `innodbOnlineAlterLogMaxSize` (`pulumi.Input[str]`)
-            * `innodbPrintAllDeadlocks` (`pulumi.Input[str]`)
-            * `innodbRollbackOnTimeout` (`pulumi.Input[str]`)
-            * `interactiveTimeout` (`pulumi.Input[str]`)
-            * `maxAllowedPacket` (`pulumi.Input[str]`)
-            * `maxHeapTableSize` (`pulumi.Input[str]`)
-            * `netReadTimeout` (`pulumi.Input[str]`)
-            * `netWriteTimeout` (`pulumi.Input[str]`)
-            * `sortBufferSize` (`pulumi.Input[str]`)
-            * `sqlMode` (`pulumi.Input[str]`)
-            * `sqlRequirePrimaryKey` (`pulumi.Input[str]`)
-            * `tmpTableSize` (`pulumi.Input[str]`)
-            * `waitTimeout` (`pulumi.Input[str]`)
-
-          * `mysqlVersion` (`pulumi.Input[str]`)
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `mysql` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `mysql` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `recoveryTargetTime` (`pulumi.Input[str]`)
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-
-        The **pg** object supports the following:
-
-          * `dbname` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `password` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `replicaUri` (`pulumi.Input[str]`)
-          * `sslmode` (`pulumi.Input[str]`)
-          * `uri` (`pulumi.Input[str]`)
-          * `user` (`pulumi.Input[str]`)
-
-        The **pg_user_config** object supports the following:
-
-          * `adminPassword` (`pulumi.Input[str]`)
-          * `adminUsername` (`pulumi.Input[str]`)
-          * `backupHour` (`pulumi.Input[str]`)
-          * `backupMinute` (`pulumi.Input[str]`)
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `pg` (`pulumi.Input[dict]`)
-            * `autovacuumAnalyzeScaleFactor` (`pulumi.Input[str]`)
-            * `autovacuumAnalyzeThreshold` (`pulumi.Input[str]`)
-            * `autovacuumFreezeMaxAge` (`pulumi.Input[str]`)
-            * `autovacuumMaxWorkers` (`pulumi.Input[str]`)
-            * `autovacuumNaptime` (`pulumi.Input[str]`)
-            * `autovacuumVacuumCostDelay` (`pulumi.Input[str]`)
-            * `autovacuumVacuumCostLimit` (`pulumi.Input[str]`)
-            * `autovacuumVacuumScaleFactor` (`pulumi.Input[str]`)
-            * `autovacuumVacuumThreshold` (`pulumi.Input[str]`)
-            * `deadlockTimeout` (`pulumi.Input[str]`)
-            * `idleInTransactionSessionTimeout` (`pulumi.Input[str]`)
-            * `jit` (`pulumi.Input[str]`)
-            * `logAutovacuumMinDuration` (`pulumi.Input[str]`)
-            * `logErrorVerbosity` (`pulumi.Input[str]`)
-            * `logMinDurationStatement` (`pulumi.Input[str]`)
-            * `maxLocksPerTransaction` (`pulumi.Input[str]`)
-            * `maxParallelWorkers` (`pulumi.Input[str]`)
-            * `maxParallelWorkersPerGather` (`pulumi.Input[str]`)
-            * `maxPredLocksPerTransaction` (`pulumi.Input[str]`)
-            * `maxPreparedTransactions` (`pulumi.Input[str]`)
-            * `maxStackDepth` (`pulumi.Input[str]`)
-            * `maxStandbyArchiveDelay` (`pulumi.Input[str]`)
-            * `maxStandbyStreamingDelay` (`pulumi.Input[str]`)
-            * `maxWorkerProcesses` (`pulumi.Input[str]`)
-            * `pgStatStatementsTrack` (`pulumi.Input[str]`)
-            * `tempFileLimit` (`pulumi.Input[str]`)
-            * `timezone` (`pulumi.Input[str]`)
-            * `trackActivityQuerySize` (`pulumi.Input[str]`)
-            * `trackCommitTimestamp` (`pulumi.Input[str]`)
-            * `trackFunctions` (`pulumi.Input[str]`)
-            * `walSenderTimeout` (`pulumi.Input[str]`)
-            * `walWriterDelay` (`pulumi.Input[str]`)
-
-          * `pgReadReplica` (`pulumi.Input[str]`)
-          * `pgServiceToForkFrom` (`pulumi.Input[str]`)
-          * `pgVersion` (`pulumi.Input[str]`)
-          * `pgbouncer` (`pulumi.Input[dict]`)
-            * `ignoreStartupParameters` (`pulumi.Input[list]`)
-            * `serverResetQueryAlways` (`pulumi.Input[str]`)
-
-          * `pglookout` (`pulumi.Input[dict]`)
-            * `maxFailoverReplicationTimeLag` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `pg` (`pulumi.Input[str]`)
-            * `pgbouncer` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `pg` (`pulumi.Input[str]`)
-            * `pgbouncer` (`pulumi.Input[str]`)
-            * `prometheus` (`pulumi.Input[str]`)
-
-          * `recoveryTargetTime` (`pulumi.Input[str]`)
-          * `serviceToForkFrom` (`pulumi.Input[str]`)
-          * `sharedBuffersPercentage` (`pulumi.Input[str]`)
-          * `synchronousReplication` (`pulumi.Input[str]`)
-          * `timescaledb` (`pulumi.Input[dict]`)
-            * `maxBackgroundWorkers` (`pulumi.Input[str]`)
-
-          * `variant` (`pulumi.Input[str]`)
-          * `workMem` (`pulumi.Input[str]`)
-
-        The **redis_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `migration` (`pulumi.Input[dict]`)
-            * `host` (`pulumi.Input[str]`)
-            * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[str]`)
-            * `ssl` (`pulumi.Input[str]`)
-            * `username` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `redisLfuDecayTime` (`pulumi.Input[str]`)
-          * `redisLfuLogFactor` (`pulumi.Input[str]`)
-          * `redisMaxmemoryPolicy` (`pulumi.Input[str]`)
-          * `redisNotifyKeyspaceEvents` (`pulumi.Input[str]`)
-          * `redisSsl` (`pulumi.Input[str]`)
-          * `redisTimeout` (`pulumi.Input[str]`)
-
-        The **service_integrations** object supports the following:
-
-          * `integration_type` (`pulumi.Input[str]`)
-          * `source_service_name` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1623,8 +299,305 @@ class Service(pulumi.CustomResource):
         __props__["termination_protection"] = termination_protection
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def cassandra(self) -> 'outputs.ServiceCassandra':
+        """
+        Cassandra specific server provided values
+        """
+        return pulumi.get(self, "cassandra")
+
+    @property
+    @pulumi.getter(name="cassandraUserConfig")
+    def cassandra_user_config(self) -> Optional['outputs.ServiceCassandraUserConfig']:
+        """
+        Cassandra specific user configurable settings
+        """
+        return pulumi.get(self, "cassandra_user_config")
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[str]:
+        """
+        Cloud the service runs in
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter
+    def components(self) -> List['outputs.ServiceComponent']:
+        """
+        Service component information objects
+        """
+        return pulumi.get(self, "components")
+
+    @property
+    @pulumi.getter
+    def elasticsearch(self) -> 'outputs.ServiceElasticsearch':
+        """
+        Elasticsearch specific server provided values
+        """
+        return pulumi.get(self, "elasticsearch")
+
+    @property
+    @pulumi.getter(name="elasticsearchUserConfig")
+    def elasticsearch_user_config(self) -> Optional['outputs.ServiceElasticsearchUserConfig']:
+        """
+        Elasticsearch specific user configurable settings
+        """
+        return pulumi.get(self, "elasticsearch_user_config")
+
+    @property
+    @pulumi.getter
+    def grafana(self) -> 'outputs.ServiceGrafana':
+        """
+        Grafana specific server provided values
+        """
+        return pulumi.get(self, "grafana")
+
+    @property
+    @pulumi.getter(name="grafanaUserConfig")
+    def grafana_user_config(self) -> Optional['outputs.ServiceGrafanaUserConfig']:
+        """
+        Grafana specific user configurable settings
+        """
+        return pulumi.get(self, "grafana_user_config")
+
+    @property
+    @pulumi.getter
+    def influxdb(self) -> 'outputs.ServiceInfluxdb':
+        """
+        InfluxDB specific server provided values
+        """
+        return pulumi.get(self, "influxdb")
+
+    @property
+    @pulumi.getter(name="influxdbUserConfig")
+    def influxdb_user_config(self) -> Optional['outputs.ServiceInfluxdbUserConfig']:
+        """
+        InfluxDB specific user configurable settings
+        """
+        return pulumi.get(self, "influxdb_user_config")
+
+    @property
+    @pulumi.getter
+    def kafka(self) -> 'outputs.ServiceKafka':
+        """
+        Kafka specific server provided values
+        """
+        return pulumi.get(self, "kafka")
+
+    @property
+    @pulumi.getter(name="kafkaConnect")
+    def kafka_connect(self) -> 'outputs.ServiceKafkaConnect':
+        """
+        Kafka Connect specific server provided values
+        """
+        return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter(name="kafkaConnectUserConfig")
+    def kafka_connect_user_config(self) -> Optional['outputs.ServiceKafkaConnectUserConfig']:
+        """
+        Kafka Connect specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_connect_user_config")
+
+    @property
+    @pulumi.getter(name="kafkaMirrormaker")
+    def kafka_mirrormaker(self) -> 'outputs.ServiceKafkaMirrormaker':
+        """
+        Kafka MirrorMaker 2 specific server provided values
+        """
+        return pulumi.get(self, "kafka_mirrormaker")
+
+    @property
+    @pulumi.getter(name="kafkaMirrormakerUserConfig")
+    def kafka_mirrormaker_user_config(self) -> Optional['outputs.ServiceKafkaMirrormakerUserConfig']:
+        """
+        Kafka MirrorMaker 2 specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_mirrormaker_user_config")
+
+    @property
+    @pulumi.getter(name="kafkaUserConfig")
+    def kafka_user_config(self) -> Optional['outputs.ServiceKafkaUserConfig']:
+        """
+        Kafka specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_user_config")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowDow")
+    def maintenance_window_dow(self) -> Optional[str]:
+        """
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        """
+        return pulumi.get(self, "maintenance_window_dow")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowTime")
+    def maintenance_window_time(self) -> Optional[str]:
+        """
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        """
+        return pulumi.get(self, "maintenance_window_time")
+
+    @property
+    @pulumi.getter
+    def mysql(self) -> 'outputs.ServiceMysql':
+        """
+        MySQL specific server provided values
+        """
+        return pulumi.get(self, "mysql")
+
+    @property
+    @pulumi.getter(name="mysqlUserConfig")
+    def mysql_user_config(self) -> Optional['outputs.ServiceMysqlUserConfig']:
+        """
+        MySQL specific user configurable settings
+        """
+        return pulumi.get(self, "mysql_user_config")
+
+    @property
+    @pulumi.getter
+    def pg(self) -> 'outputs.ServicePg':
+        """
+        PostgreSQL specific server provided values
+        """
+        return pulumi.get(self, "pg")
+
+    @property
+    @pulumi.getter(name="pgUserConfig")
+    def pg_user_config(self) -> Optional['outputs.ServicePgUserConfig']:
+        """
+        PostgreSQL specific user configurable settings
+        """
+        return pulumi.get(self, "pg_user_config")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[str]:
+        """
+        Subscription plan
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Target project
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> Optional[str]:
+        """
+        Identifier of the VPC the service should be in, if any
+        """
+        return pulumi.get(self, "project_vpc_id")
+
+    @property
+    @pulumi.getter
+    def redis(self) -> 'outputs.ServiceRedis':
+        """
+        Redis specific server provided values
+        """
+        return pulumi.get(self, "redis")
+
+    @property
+    @pulumi.getter(name="redisUserConfig")
+    def redis_user_config(self) -> Optional['outputs.ServiceRedisUserConfig']:
+        """
+        Redis specific user configurable settings
+        """
+        return pulumi.get(self, "redis_user_config")
+
+    @property
+    @pulumi.getter(name="serviceHost")
+    def service_host(self) -> str:
+        """
+        Service hostname
+        """
+        return pulumi.get(self, "service_host")
+
+    @property
+    @pulumi.getter(name="serviceIntegrations")
+    def service_integrations(self) -> Optional[List['outputs.ServiceServiceIntegration']]:
+        """
+        Service integrations to specify when creating a service. Not applied after initial service creation
+        """
+        return pulumi.get(self, "service_integrations")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service name
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="servicePassword")
+    def service_password(self) -> str:
+        """
+        Password used for connecting to the service, if applicable
+        """
+        return pulumi.get(self, "service_password")
+
+    @property
+    @pulumi.getter(name="servicePort")
+    def service_port(self) -> float:
+        """
+        Service port
+        """
+        return pulumi.get(self, "service_port")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> str:
+        """
+        Service type code
+        """
+        return pulumi.get(self, "service_type")
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> str:
+        """
+        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        """
+        return pulumi.get(self, "service_uri")
+
+    @property
+    @pulumi.getter(name="serviceUsername")
+    def service_username(self) -> str:
+        """
+        Username used for connecting to the service, if applicable
+        """
+        return pulumi.get(self, "service_username")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Service state
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[bool]:
+        """
+        Prevent service from being deleted. It is recommended to have this enabled for all services.
+        """
+        return pulumi.get(self, "termination_protection")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

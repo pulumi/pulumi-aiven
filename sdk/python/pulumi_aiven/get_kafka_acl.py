@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetKafkaAclResult',
+    'AwaitableGetKafkaAclResult',
+    'get_kafka_acl',
+]
 
+@pulumi.output_type
 class GetKafkaAclResult:
     """
     A collection of values returned by getKafkaAcl.
@@ -16,25 +22,55 @@ class GetKafkaAclResult:
     def __init__(__self__, id=None, permission=None, project=None, service_name=None, topic=None, username=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if permission and not isinstance(permission, str):
+            raise TypeError("Expected argument 'permission' to be a str")
+        pulumi.set(__self__, "permission", permission)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if topic and not isinstance(topic, str):
+            raise TypeError("Expected argument 'topic' to be a str")
+        pulumi.set(__self__, "topic", topic)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if permission and not isinstance(permission, str):
-            raise TypeError("Expected argument 'permission' to be a str")
-        __self__.permission = permission
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if topic and not isinstance(topic, str):
-            raise TypeError("Expected argument 'topic' to be a str")
-        __self__.topic = topic
-        if username and not isinstance(username, str):
-            raise TypeError("Expected argument 'username' to be a str")
-        __self__.username = username
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
 
 
 class AwaitableGetKafkaAclResult(GetKafkaAclResult):
@@ -51,7 +87,12 @@ class AwaitableGetKafkaAclResult(GetKafkaAclResult):
             username=self.username)
 
 
-def get_kafka_acl(permission=None, project=None, service_name=None, topic=None, username=None, opts=None):
+def get_kafka_acl(permission: Optional[str] = None,
+                  project: Optional[str] = None,
+                  service_name: Optional[str] = None,
+                  topic: Optional[str] = None,
+                  username: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaAclResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -65,12 +106,12 @@ def get_kafka_acl(permission=None, project=None, service_name=None, topic=None, 
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaAcl:getKafkaAcl', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaAcl:getKafkaAcl', __args__, opts=opts, typ=GetKafkaAclResult).value
 
     return AwaitableGetKafkaAclResult(
-        id=__ret__.get('id'),
-        permission=__ret__.get('permission'),
-        project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'),
-        topic=__ret__.get('topic'),
-        username=__ret__.get('username'))
+        id=__ret__.id,
+        permission=__ret__.permission,
+        project=__ret__.project,
+        service_name=__ret__.service_name,
+        topic=__ret__.topic,
+        username=__ret__.username)

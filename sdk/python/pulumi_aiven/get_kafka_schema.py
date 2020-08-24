@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetKafkaSchemaResult',
+    'AwaitableGetKafkaSchemaResult',
+    'get_kafka_schema',
+]
 
+@pulumi.output_type
 class GetKafkaSchemaResult:
     """
     A collection of values returned by getKafkaSchema.
@@ -16,25 +22,55 @@ class GetKafkaSchemaResult:
     def __init__(__self__, id=None, project=None, schema=None, service_name=None, subject_name=None, version=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if schema and not isinstance(schema, str):
+            raise TypeError("Expected argument 'schema' to be a str")
+        pulumi.set(__self__, "schema", schema)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if subject_name and not isinstance(subject_name, str):
+            raise TypeError("Expected argument 'subject_name' to be a str")
+        pulumi.set(__self__, "subject_name", subject_name)
+        if version and not isinstance(version, float):
+            raise TypeError("Expected argument 'version' to be a float")
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if schema and not isinstance(schema, str):
-            raise TypeError("Expected argument 'schema' to be a str")
-        __self__.schema = schema
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if subject_name and not isinstance(subject_name, str):
-            raise TypeError("Expected argument 'subject_name' to be a str")
-        __self__.subject_name = subject_name
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
-        __self__.version = version
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[str]:
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="subjectName")
+    def subject_name(self) -> str:
+        return pulumi.get(self, "subject_name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> float:
+        return pulumi.get(self, "version")
 
 
 class AwaitableGetKafkaSchemaResult(GetKafkaSchemaResult):
@@ -51,7 +87,12 @@ class AwaitableGetKafkaSchemaResult(GetKafkaSchemaResult):
             version=self.version)
 
 
-def get_kafka_schema(project=None, schema=None, service_name=None, subject_name=None, version=None, opts=None):
+def get_kafka_schema(project: Optional[str] = None,
+                     schema: Optional[str] = None,
+                     service_name: Optional[str] = None,
+                     subject_name: Optional[str] = None,
+                     version: Optional[float] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaSchemaResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -65,12 +106,12 @@ def get_kafka_schema(project=None, schema=None, service_name=None, subject_name=
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchema:getKafkaSchema', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchema:getKafkaSchema', __args__, opts=opts, typ=GetKafkaSchemaResult).value
 
     return AwaitableGetKafkaSchemaResult(
-        id=__ret__.get('id'),
-        project=__ret__.get('project'),
-        schema=__ret__.get('schema'),
-        service_name=__ret__.get('serviceName'),
-        subject_name=__ret__.get('subjectName'),
-        version=__ret__.get('version'))
+        id=__ret__.id,
+        project=__ret__.project,
+        schema=__ret__.schema,
+        service_name=__ret__.service_name,
+        subject_name=__ret__.subject_name,
+        version=__ret__.version)

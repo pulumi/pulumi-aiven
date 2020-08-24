@@ -70,6 +70,8 @@ from .service_integration_endpoint import *
 from .service_user import *
 from .transit_gateway_vpc_attachment import *
 from .vpc_peering_connection import *
+from ._inputs import *
+from . import outputs
 
 # Make subpackages available:
 from . import (

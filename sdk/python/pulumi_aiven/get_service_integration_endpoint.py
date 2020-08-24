@@ -5,10 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetServiceIntegrationEndpointResult',
+    'AwaitableGetServiceIntegrationEndpointResult',
+    'get_service_integration_endpoint',
+]
 
+@pulumi.output_type
 class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
@@ -16,34 +24,79 @@ class GetServiceIntegrationEndpointResult:
     def __init__(__self__, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, id=None, project=None, prometheus_user_config=None, rsyslog_user_config=None):
         if datadog_user_config and not isinstance(datadog_user_config, dict):
             raise TypeError("Expected argument 'datadog_user_config' to be a dict")
-        __self__.datadog_user_config = datadog_user_config
+        pulumi.set(__self__, "datadog_user_config", datadog_user_config)
         if endpoint_config and not isinstance(endpoint_config, dict):
             raise TypeError("Expected argument 'endpoint_config' to be a dict")
-        __self__.endpoint_config = endpoint_config
+        pulumi.set(__self__, "endpoint_config", endpoint_config)
         if endpoint_name and not isinstance(endpoint_name, str):
             raise TypeError("Expected argument 'endpoint_name' to be a str")
-        __self__.endpoint_name = endpoint_name
+        pulumi.set(__self__, "endpoint_name", endpoint_name)
         if endpoint_type and not isinstance(endpoint_type, str):
             raise TypeError("Expected argument 'endpoint_type' to be a str")
-        __self__.endpoint_type = endpoint_type
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
         if external_elasticsearch_logs_user_config and not isinstance(external_elasticsearch_logs_user_config, dict):
             raise TypeError("Expected argument 'external_elasticsearch_logs_user_config' to be a dict")
-        __self__.external_elasticsearch_logs_user_config = external_elasticsearch_logs_user_config
+        pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if prometheus_user_config and not isinstance(prometheus_user_config, dict):
+            raise TypeError("Expected argument 'prometheus_user_config' to be a dict")
+        pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
+        if rsyslog_user_config and not isinstance(rsyslog_user_config, dict):
+            raise TypeError("Expected argument 'rsyslog_user_config' to be a dict")
+        pulumi.set(__self__, "rsyslog_user_config", rsyslog_user_config)
+
+    @property
+    @pulumi.getter(name="datadogUserConfig")
+    def datadog_user_config(self) -> Optional['outputs.GetServiceIntegrationEndpointDatadogUserConfigResult']:
+        return pulumi.get(self, "datadog_user_config")
+
+    @property
+    @pulumi.getter(name="endpointConfig")
+    def endpoint_config(self) -> Mapping[str, str]:
+        return pulumi.get(self, "endpoint_config")
+
+    @property
+    @pulumi.getter(name="endpointName")
+    def endpoint_name(self) -> str:
+        return pulumi.get(self, "endpoint_name")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
+    def external_elasticsearch_logs_user_config(self) -> Optional['outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult']:
+        return pulumi.get(self, "external_elasticsearch_logs_user_config")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if prometheus_user_config and not isinstance(prometheus_user_config, dict):
-            raise TypeError("Expected argument 'prometheus_user_config' to be a dict")
-        __self__.prometheus_user_config = prometheus_user_config
-        if rsyslog_user_config and not isinstance(rsyslog_user_config, dict):
-            raise TypeError("Expected argument 'rsyslog_user_config' to be a dict")
-        __self__.rsyslog_user_config = rsyslog_user_config
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="prometheusUserConfig")
+    def prometheus_user_config(self) -> Optional['outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult']:
+        return pulumi.get(self, "prometheus_user_config")
+
+    @property
+    @pulumi.getter(name="rsyslogUserConfig")
+    def rsyslog_user_config(self) -> Optional['outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult']:
+        return pulumi.get(self, "rsyslog_user_config")
 
 
 class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpointResult):
@@ -63,7 +116,15 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             rsyslog_user_config=self.rsyslog_user_config)
 
 
-def get_service_integration_endpoint(datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, opts=None):
+def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointDatadogUserConfigArgs']] = None,
+                                     endpoint_config: Optional[Mapping[str, str]] = None,
+                                     endpoint_name: Optional[str] = None,
+                                     endpoint_type: Optional[str] = None,
+                                     external_elasticsearch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
+                                     project: Optional[str] = None,
+                                     prometheus_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointPrometheusUserConfigArgs']] = None,
+                                     rsyslog_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointRsyslogUserConfigArgs']] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationEndpointResult:
     """
     ## Example Usage
 
@@ -74,40 +135,6 @@ def get_service_integration_endpoint(datadog_user_config=None, endpoint_config=N
     myendpoint = aiven.get_service_integration_endpoint(project=data["aiven_project"]["myproject"]["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
-
-
-
-    The **datadog_user_config** object supports the following:
-
-      * `datadogApiKey` (`str`)
-      * `disableConsumerStats` (`str`)
-      * `maxPartitionContexts` (`str`)
-      * `site` (`str`)
-
-    The **external_elasticsearch_logs_user_config** object supports the following:
-
-      * `ca` (`str`)
-      * `indexDaysMax` (`str`)
-      * `indexPrefix` (`str`)
-      * `timeout` (`str`)
-      * `url` (`str`)
-
-    The **prometheus_user_config** object supports the following:
-
-      * `basicAuthPassword` (`str`)
-      * `basicAuthUsername` (`str`)
-
-    The **rsyslog_user_config** object supports the following:
-
-      * `ca` (`str`)
-      * `cert` (`str`)
-      * `format` (`str`)
-      * `key` (`str`)
-      * `logline` (`str`)
-      * `port` (`str`)
-      * `sd` (`str`)
-      * `server` (`str`)
-      * `tls` (`str`)
     """
     __args__ = dict()
     __args__['datadogUserConfig'] = datadog_user_config
@@ -122,15 +149,15 @@ def get_service_integration_endpoint(datadog_user_config=None, endpoint_config=N
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts, typ=GetServiceIntegrationEndpointResult).value
 
     return AwaitableGetServiceIntegrationEndpointResult(
-        datadog_user_config=__ret__.get('datadogUserConfig'),
-        endpoint_config=__ret__.get('endpointConfig'),
-        endpoint_name=__ret__.get('endpointName'),
-        endpoint_type=__ret__.get('endpointType'),
-        external_elasticsearch_logs_user_config=__ret__.get('externalElasticsearchLogsUserConfig'),
-        id=__ret__.get('id'),
-        project=__ret__.get('project'),
-        prometheus_user_config=__ret__.get('prometheusUserConfig'),
-        rsyslog_user_config=__ret__.get('rsyslogUserConfig'))
+        datadog_user_config=__ret__.datadog_user_config,
+        endpoint_config=__ret__.endpoint_config,
+        endpoint_name=__ret__.endpoint_name,
+        endpoint_type=__ret__.endpoint_type,
+        external_elasticsearch_logs_user_config=__ret__.external_elasticsearch_logs_user_config,
+        id=__ret__.id,
+        project=__ret__.project,
+        prometheus_user_config=__ret__.prometheus_user_config,
+        rsyslog_user_config=__ret__.rsyslog_user_config)

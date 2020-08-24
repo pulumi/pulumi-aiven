@@ -5,32 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['KafkaAcl']
 
 
 class KafkaAcl(pulumi.CustomResource):
-    permission: pulumi.Output[str]
-    """
-    Kafka permission to grant (admin, read, readwrite, write)
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the Kafka ACL to
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the Kafka ACL to
-    """
-    topic: pulumi.Output[str]
-    """
-    Topic name pattern for the ACL entry
-    """
-    username: pulumi.Output[str]
-    """
-    Username pattern for the ACL entry
-    """
-    def __init__(__self__, resource_name, opts=None, permission=None, project=None, service_name=None, topic=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 permission: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -93,13 +85,20 @@ class KafkaAcl(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, permission=None, project=None, service_name=None, topic=None, username=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            permission: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            topic: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None) -> 'KafkaAcl':
         """
         Get an existing KafkaAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] permission: Kafka permission to grant (admin, read, readwrite, write)
         :param pulumi.Input[str] project: Project to link the Kafka ACL to
@@ -118,8 +117,49 @@ class KafkaAcl(pulumi.CustomResource):
         __props__["username"] = username
         return KafkaAcl(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Kafka permission to grant (admin, read, readwrite, write)
+        """
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the Kafka ACL to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the Kafka ACL to
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        Topic name pattern for the ACL entry
+        """
+        return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username pattern for the ACL entry
+        """
+        return pulumi.get(self, "username")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

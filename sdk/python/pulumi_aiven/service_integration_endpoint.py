@@ -5,68 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ServiceIntegrationEndpoint']
 
 
 class ServiceIntegrationEndpoint(pulumi.CustomResource):
-    datadog_user_config: pulumi.Output[dict]
-    """
-    Datadog specific user configurable settings
-
-      * `datadogApiKey` (`str`)
-      * `disableConsumerStats` (`str`)
-      * `maxPartitionContexts` (`str`)
-      * `site` (`str`)
-    """
-    endpoint_config: pulumi.Output[dict]
-    """
-    Integration endpoint specific backend configuration
-    """
-    endpoint_name: pulumi.Output[str]
-    """
-    Name of the service integration endpoint
-    """
-    endpoint_type: pulumi.Output[str]
-    """
-    Type of the service integration endpoint
-    """
-    external_elasticsearch_logs_user_config: pulumi.Output[dict]
-    """
-    external elasticsearch specific user configurable settings
-
-      * `ca` (`str`)
-      * `indexDaysMax` (`str`)
-      * `indexPrefix` (`str`)
-      * `timeout` (`str`)
-      * `url` (`str`)
-    """
-    project: pulumi.Output[str]
-    """
-    Project the service integration endpoint belongs to
-    """
-    prometheus_user_config: pulumi.Output[dict]
-    """
-    Prometheus specific user configurable settings
-
-      * `basicAuthPassword` (`str`)
-      * `basicAuthUsername` (`str`)
-    """
-    rsyslog_user_config: pulumi.Output[dict]
-    """
-    rsyslog specific user configurable settings
-
-      * `ca` (`str`)
-      * `cert` (`str`)
-      * `format` (`str`)
-      * `key` (`str`)
-      * `logline` (`str`)
-      * `port` (`str`)
-      * `sd` (`str`)
-      * `server` (`str`)
-      * `tls` (`str`)
-    """
-    def __init__(__self__, resource_name, opts=None, datadog_user_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']]] = None,
+                 endpoint_name: Optional[pulumi.Input[str]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
+                 rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -75,9 +35,9 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         myendpoint = aiven.ServiceIntegrationEndpoint("myendpoint",
-            datadog_user_config={
-                "datadogApiKey": "<DATADOG_API_KEY>",
-            },
+            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
+                datadog_api_key="<DATADOG_API_KEY>",
+            ),
             endpoint_name="<ENDPOINT_NAME>",
             endpoint_type="datadog",
             project=aiven_project["myproject"]["project"])
@@ -85,45 +45,13 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] datadog_user_config: Datadog specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog specific user configurable settings
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
         :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint
-        :param pulumi.Input[dict] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
-        :param pulumi.Input[dict] prometheus_user_config: Prometheus specific user configurable settings
-        :param pulumi.Input[dict] rsyslog_user_config: rsyslog specific user configurable settings
-
-        The **datadog_user_config** object supports the following:
-
-          * `datadogApiKey` (`pulumi.Input[str]`)
-          * `disableConsumerStats` (`pulumi.Input[str]`)
-          * `maxPartitionContexts` (`pulumi.Input[str]`)
-          * `site` (`pulumi.Input[str]`)
-
-        The **external_elasticsearch_logs_user_config** object supports the following:
-
-          * `ca` (`pulumi.Input[str]`)
-          * `indexDaysMax` (`pulumi.Input[str]`)
-          * `indexPrefix` (`pulumi.Input[str]`)
-          * `timeout` (`pulumi.Input[str]`)
-          * `url` (`pulumi.Input[str]`)
-
-        The **prometheus_user_config** object supports the following:
-
-          * `basicAuthPassword` (`pulumi.Input[str]`)
-          * `basicAuthUsername` (`pulumi.Input[str]`)
-
-        The **rsyslog_user_config** object supports the following:
-
-          * `ca` (`pulumi.Input[str]`)
-          * `cert` (`pulumi.Input[str]`)
-          * `format` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-          * `logline` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[str]`)
-          * `sd` (`pulumi.Input[str]`)
-          * `server` (`pulumi.Input[str]`)
-          * `tls` (`pulumi.Input[str]`)
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']] rsyslog_user_config: rsyslog specific user configurable settings
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -163,54 +91,32 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_elasticsearch_logs_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']]] = None,
+            endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            endpoint_name: Optional[pulumi.Input[str]] = None,
+            endpoint_type: Optional[pulumi.Input[str]] = None,
+            external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
+            rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None) -> 'ServiceIntegrationEndpoint':
         """
         Get an existing ServiceIntegrationEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] datadog_user_config: Datadog specific user configurable settings
-        :param pulumi.Input[dict] endpoint_config: Integration endpoint specific backend configuration
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog specific user configurable settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoint_config: Integration endpoint specific backend configuration
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
         :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint
-        :param pulumi.Input[dict] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
-        :param pulumi.Input[dict] prometheus_user_config: Prometheus specific user configurable settings
-        :param pulumi.Input[dict] rsyslog_user_config: rsyslog specific user configurable settings
-
-        The **datadog_user_config** object supports the following:
-
-          * `datadogApiKey` (`pulumi.Input[str]`)
-          * `disableConsumerStats` (`pulumi.Input[str]`)
-          * `maxPartitionContexts` (`pulumi.Input[str]`)
-          * `site` (`pulumi.Input[str]`)
-
-        The **external_elasticsearch_logs_user_config** object supports the following:
-
-          * `ca` (`pulumi.Input[str]`)
-          * `indexDaysMax` (`pulumi.Input[str]`)
-          * `indexPrefix` (`pulumi.Input[str]`)
-          * `timeout` (`pulumi.Input[str]`)
-          * `url` (`pulumi.Input[str]`)
-
-        The **prometheus_user_config** object supports the following:
-
-          * `basicAuthPassword` (`pulumi.Input[str]`)
-          * `basicAuthUsername` (`pulumi.Input[str]`)
-
-        The **rsyslog_user_config** object supports the following:
-
-          * `ca` (`pulumi.Input[str]`)
-          * `cert` (`pulumi.Input[str]`)
-          * `format` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-          * `logline` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[str]`)
-          * `sd` (`pulumi.Input[str]`)
-          * `server` (`pulumi.Input[str]`)
-          * `tls` (`pulumi.Input[str]`)
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']] rsyslog_user_config: rsyslog specific user configurable settings
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -226,8 +132,73 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         __props__["rsyslog_user_config"] = rsyslog_user_config
         return ServiceIntegrationEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="datadogUserConfig")
+    def datadog_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointDatadogUserConfig']:
+        """
+        Datadog specific user configurable settings
+        """
+        return pulumi.get(self, "datadog_user_config")
+
+    @property
+    @pulumi.getter(name="endpointConfig")
+    def endpoint_config(self) -> Mapping[str, str]:
+        """
+        Integration endpoint specific backend configuration
+        """
+        return pulumi.get(self, "endpoint_config")
+
+    @property
+    @pulumi.getter(name="endpointName")
+    def endpoint_name(self) -> str:
+        """
+        Name of the service integration endpoint
+        """
+        return pulumi.get(self, "endpoint_name")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> str:
+        """
+        Type of the service integration endpoint
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
+    def external_elasticsearch_logs_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig']:
+        """
+        external elasticsearch specific user configurable settings
+        """
+        return pulumi.get(self, "external_elasticsearch_logs_user_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project the service integration endpoint belongs to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="prometheusUserConfig")
+    def prometheus_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointPrometheusUserConfig']:
+        """
+        Prometheus specific user configurable settings
+        """
+        return pulumi.get(self, "prometheus_user_config")
+
+    @property
+    @pulumi.getter(name="rsyslogUserConfig")
+    def rsyslog_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointRsyslogUserConfig']:
+        """
+        rsyslog specific user configurable settings
+        """
+        return pulumi.get(self, "rsyslog_user_config")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

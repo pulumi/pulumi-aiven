@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetConnectionPoolResult',
+    'AwaitableGetConnectionPoolResult',
+    'get_connection_pool',
+]
 
+@pulumi.output_type
 class GetConnectionPoolResult:
     """
     A collection of values returned by getConnectionPool.
@@ -16,34 +22,79 @@ class GetConnectionPoolResult:
     def __init__(__self__, connection_uri=None, database_name=None, id=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None):
         if connection_uri and not isinstance(connection_uri, str):
             raise TypeError("Expected argument 'connection_uri' to be a str")
-        __self__.connection_uri = connection_uri
+        pulumi.set(__self__, "connection_uri", connection_uri)
         if database_name and not isinstance(database_name, str):
             raise TypeError("Expected argument 'database_name' to be a str")
-        __self__.database_name = database_name
+        pulumi.set(__self__, "database_name", database_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if pool_mode and not isinstance(pool_mode, str):
+            raise TypeError("Expected argument 'pool_mode' to be a str")
+        pulumi.set(__self__, "pool_mode", pool_mode)
+        if pool_name and not isinstance(pool_name, str):
+            raise TypeError("Expected argument 'pool_name' to be a str")
+        pulumi.set(__self__, "pool_name", pool_name)
+        if pool_size and not isinstance(pool_size, float):
+            raise TypeError("Expected argument 'pool_size' to be a float")
+        pulumi.set(__self__, "pool_size", pool_size)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="connectionUri")
+    def connection_uri(self) -> str:
+        return pulumi.get(self, "connection_uri")
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> Optional[str]:
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if pool_mode and not isinstance(pool_mode, str):
-            raise TypeError("Expected argument 'pool_mode' to be a str")
-        __self__.pool_mode = pool_mode
-        if pool_name and not isinstance(pool_name, str):
-            raise TypeError("Expected argument 'pool_name' to be a str")
-        __self__.pool_name = pool_name
-        if pool_size and not isinstance(pool_size, float):
-            raise TypeError("Expected argument 'pool_size' to be a float")
-        __self__.pool_size = pool_size
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if username and not isinstance(username, str):
-            raise TypeError("Expected argument 'username' to be a str")
-        __self__.username = username
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="poolMode")
+    def pool_mode(self) -> Optional[str]:
+        return pulumi.get(self, "pool_mode")
+
+    @property
+    @pulumi.getter(name="poolName")
+    def pool_name(self) -> str:
+        return pulumi.get(self, "pool_name")
+
+    @property
+    @pulumi.getter(name="poolSize")
+    def pool_size(self) -> Optional[float]:
+        return pulumi.get(self, "pool_size")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
 
 
 class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
@@ -63,7 +114,15 @@ class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
             username=self.username)
 
 
-def get_connection_pool(connection_uri=None, database_name=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None, opts=None):
+def get_connection_pool(connection_uri: Optional[str] = None,
+                        database_name: Optional[str] = None,
+                        pool_mode: Optional[str] = None,
+                        pool_name: Optional[str] = None,
+                        pool_size: Optional[float] = None,
+                        project: Optional[str] = None,
+                        service_name: Optional[str] = None,
+                        username: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionPoolResult:
     """
     ## Example Usage
 
@@ -89,15 +148,15 @@ def get_connection_pool(connection_uri=None, database_name=None, pool_mode=None,
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getConnectionPool:getConnectionPool', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getConnectionPool:getConnectionPool', __args__, opts=opts, typ=GetConnectionPoolResult).value
 
     return AwaitableGetConnectionPoolResult(
-        connection_uri=__ret__.get('connectionUri'),
-        database_name=__ret__.get('databaseName'),
-        id=__ret__.get('id'),
-        pool_mode=__ret__.get('poolMode'),
-        pool_name=__ret__.get('poolName'),
-        pool_size=__ret__.get('poolSize'),
-        project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'),
-        username=__ret__.get('username'))
+        connection_uri=__ret__.connection_uri,
+        database_name=__ret__.database_name,
+        id=__ret__.id,
+        pool_mode=__ret__.pool_mode,
+        pool_name=__ret__.pool_name,
+        pool_size=__ret__.pool_size,
+        project=__ret__.project,
+        service_name=__ret__.service_name,
+        username=__ret__.username)

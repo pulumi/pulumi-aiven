@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
 
+@pulumi.output_type
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -16,28 +22,63 @@ class GetAccountResult:
     def __init__(__self__, account_id=None, create_time=None, id=None, name=None, owner_team_id=None, tenant_id=None, update_time=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
-        __self__.account_id = account_id
+        pulumi.set(__self__, "account_id", account_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
-        __self__.create_time = create_time
+        pulumi.set(__self__, "create_time", create_time)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if owner_team_id and not isinstance(owner_team_id, str):
+            raise TypeError("Expected argument 'owner_team_id' to be a str")
+        pulumi.set(__self__, "owner_team_id", owner_team_id)
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        pulumi.set(__self__, "tenant_id", tenant_id)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if owner_team_id and not isinstance(owner_team_id, str):
-            raise TypeError("Expected argument 'owner_team_id' to be a str")
-        __self__.owner_team_id = owner_team_id
-        if tenant_id and not isinstance(tenant_id, str):
-            raise TypeError("Expected argument 'tenant_id' to be a str")
-        __self__.tenant_id = tenant_id
-        if update_time and not isinstance(update_time, str):
-            raise TypeError("Expected argument 'update_time' to be a str")
-        __self__.update_time = update_time
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="ownerTeamId")
+    def owner_team_id(self) -> str:
+        return pulumi.get(self, "owner_team_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        return pulumi.get(self, "update_time")
 
 
 class AwaitableGetAccountResult(GetAccountResult):
@@ -55,7 +96,13 @@ class AwaitableGetAccountResult(GetAccountResult):
             update_time=self.update_time)
 
 
-def get_account(account_id=None, create_time=None, name=None, owner_team_id=None, tenant_id=None, update_time=None, opts=None):
+def get_account(account_id: Optional[str] = None,
+                create_time: Optional[str] = None,
+                name: Optional[str] = None,
+                owner_team_id: Optional[str] = None,
+                tenant_id: Optional[str] = None,
+                update_time: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     ## Example Usage
 
@@ -77,13 +124,13 @@ def get_account(account_id=None, create_time=None, name=None, owner_team_id=None
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getAccount:getAccount', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        account_id=__ret__.get('accountId'),
-        create_time=__ret__.get('createTime'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        owner_team_id=__ret__.get('ownerTeamId'),
-        tenant_id=__ret__.get('tenantId'),
-        update_time=__ret__.get('updateTime'))
+        account_id=__ret__.account_id,
+        create_time=__ret__.create_time,
+        id=__ret__.id,
+        name=__ret__.name,
+        owner_team_id=__ret__.owner_team_id,
+        tenant_id=__ret__.tenant_id,
+        update_time=__ret__.update_time)

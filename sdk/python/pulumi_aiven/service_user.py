@@ -5,40 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ServiceUser']
 
 
 class ServiceUser(pulumi.CustomResource):
-    access_cert: pulumi.Output[str]
-    """
-    Access certificate for the user if applicable for the service in question
-    """
-    access_key: pulumi.Output[str]
-    """
-    Access certificate key for the user if applicable for the service in question
-    """
-    password: pulumi.Output[str]
-    """
-    Password of the user
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the user to
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the user to
-    """
-    type: pulumi.Output[str]
-    """
-    Type of the user account
-    """
-    username: pulumi.Output[str]
-    """
-    Name of the user account
-    """
-    def __init__(__self__, resource_name, opts=None, project=None, service_name=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -95,13 +77,22 @@ class ServiceUser(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_cert=None, access_key=None, password=None, project=None, service_name=None, type=None, username=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_cert: Optional[pulumi.Input[str]] = None,
+            access_key: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None) -> 'ServiceUser':
         """
         Get an existing ServiceUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_cert: Access certificate for the user if applicable for the service in question
         :param pulumi.Input[str] access_key: Access certificate key for the user if applicable for the service in question
@@ -124,8 +115,65 @@ class ServiceUser(pulumi.CustomResource):
         __props__["username"] = username
         return ServiceUser(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accessCert")
+    def access_cert(self) -> str:
+        """
+        Access certificate for the user if applicable for the service in question
+        """
+        return pulumi.get(self, "access_cert")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        Access certificate key for the user if applicable for the service in question
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password of the user
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the user to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the user to
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the user account
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Name of the user account
+        """
+        return pulumi.get(self, "username")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

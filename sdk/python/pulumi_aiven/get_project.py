@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetProjectResult',
+    'AwaitableGetProjectResult',
+    'get_project',
+]
 
+@pulumi.output_type
 class GetProjectResult:
     """
     A collection of values returned by getProject.
@@ -16,37 +22,87 @@ class GetProjectResult:
     def __init__(__self__, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, id=None, project=None, technical_emails=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
-        __self__.account_id = account_id
+        pulumi.set(__self__, "account_id", account_id)
         if billing_address and not isinstance(billing_address, str):
             raise TypeError("Expected argument 'billing_address' to be a str")
-        __self__.billing_address = billing_address
+        pulumi.set(__self__, "billing_address", billing_address)
         if billing_emails and not isinstance(billing_emails, list):
             raise TypeError("Expected argument 'billing_emails' to be a list")
-        __self__.billing_emails = billing_emails
+        pulumi.set(__self__, "billing_emails", billing_emails)
         if ca_cert and not isinstance(ca_cert, str):
             raise TypeError("Expected argument 'ca_cert' to be a str")
-        __self__.ca_cert = ca_cert
+        pulumi.set(__self__, "ca_cert", ca_cert)
         if card_id and not isinstance(card_id, str):
             raise TypeError("Expected argument 'card_id' to be a str")
-        __self__.card_id = card_id
+        pulumi.set(__self__, "card_id", card_id)
         if copy_from_project and not isinstance(copy_from_project, str):
             raise TypeError("Expected argument 'copy_from_project' to be a str")
-        __self__.copy_from_project = copy_from_project
+        pulumi.set(__self__, "copy_from_project", copy_from_project)
         if country_code and not isinstance(country_code, str):
             raise TypeError("Expected argument 'country_code' to be a str")
-        __self__.country_code = country_code
+        pulumi.set(__self__, "country_code", country_code)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if technical_emails and not isinstance(technical_emails, list):
+            raise TypeError("Expected argument 'technical_emails' to be a list")
+        pulumi.set(__self__, "technical_emails", technical_emails)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[str]:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="billingAddress")
+    def billing_address(self) -> Optional[str]:
+        return pulumi.get(self, "billing_address")
+
+    @property
+    @pulumi.getter(name="billingEmails")
+    def billing_emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "billing_emails")
+
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> str:
+        return pulumi.get(self, "ca_cert")
+
+    @property
+    @pulumi.getter(name="cardId")
+    def card_id(self) -> Optional[str]:
+        return pulumi.get(self, "card_id")
+
+    @property
+    @pulumi.getter(name="copyFromProject")
+    def copy_from_project(self) -> Optional[str]:
+        return pulumi.get(self, "copy_from_project")
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[str]:
+        return pulumi.get(self, "country_code")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if technical_emails and not isinstance(technical_emails, list):
-            raise TypeError("Expected argument 'technical_emails' to be a list")
-        __self__.technical_emails = technical_emails
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="technicalEmails")
+    def technical_emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "technical_emails")
 
 
 class AwaitableGetProjectResult(GetProjectResult):
@@ -67,7 +123,16 @@ class AwaitableGetProjectResult(GetProjectResult):
             technical_emails=self.technical_emails)
 
 
-def get_project(account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, project=None, technical_emails=None, opts=None):
+def get_project(account_id: Optional[str] = None,
+                billing_address: Optional[str] = None,
+                billing_emails: Optional[List[str]] = None,
+                ca_cert: Optional[str] = None,
+                card_id: Optional[str] = None,
+                copy_from_project: Optional[str] = None,
+                country_code: Optional[str] = None,
+                project: Optional[str] = None,
+                technical_emails: Optional[List[str]] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     ## Example Usage
 
@@ -92,16 +157,16 @@ def get_project(account_id=None, billing_address=None, billing_emails=None, ca_c
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getProject:getProject', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        account_id=__ret__.get('accountId'),
-        billing_address=__ret__.get('billingAddress'),
-        billing_emails=__ret__.get('billingEmails'),
-        ca_cert=__ret__.get('caCert'),
-        card_id=__ret__.get('cardId'),
-        copy_from_project=__ret__.get('copyFromProject'),
-        country_code=__ret__.get('countryCode'),
-        id=__ret__.get('id'),
-        project=__ret__.get('project'),
-        technical_emails=__ret__.get('technicalEmails'))
+        account_id=__ret__.account_id,
+        billing_address=__ret__.billing_address,
+        billing_emails=__ret__.billing_emails,
+        ca_cert=__ret__.ca_cert,
+        card_id=__ret__.card_id,
+        copy_from_project=__ret__.copy_from_project,
+        country_code=__ret__.country_code,
+        id=__ret__.id,
+        project=__ret__.project,
+        technical_emails=__ret__.technical_emails)

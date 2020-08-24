@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetDatabaseResult',
+    'AwaitableGetDatabaseResult',
+    'get_database',
+]
 
+@pulumi.output_type
 class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
@@ -16,28 +22,63 @@ class GetDatabaseResult:
     def __init__(__self__, database_name=None, id=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None):
         if database_name and not isinstance(database_name, str):
             raise TypeError("Expected argument 'database_name' to be a str")
-        __self__.database_name = database_name
+        pulumi.set(__self__, "database_name", database_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if lc_collate and not isinstance(lc_collate, str):
+            raise TypeError("Expected argument 'lc_collate' to be a str")
+        pulumi.set(__self__, "lc_collate", lc_collate)
+        if lc_ctype and not isinstance(lc_ctype, str):
+            raise TypeError("Expected argument 'lc_ctype' to be a str")
+        pulumi.set(__self__, "lc_ctype", lc_ctype)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if termination_protection and not isinstance(termination_protection, bool):
+            raise TypeError("Expected argument 'termination_protection' to be a bool")
+        pulumi.set(__self__, "termination_protection", termination_protection)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> str:
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if lc_collate and not isinstance(lc_collate, str):
-            raise TypeError("Expected argument 'lc_collate' to be a str")
-        __self__.lc_collate = lc_collate
-        if lc_ctype and not isinstance(lc_ctype, str):
-            raise TypeError("Expected argument 'lc_ctype' to be a str")
-        __self__.lc_ctype = lc_ctype
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if termination_protection and not isinstance(termination_protection, bool):
-            raise TypeError("Expected argument 'termination_protection' to be a bool")
-        __self__.termination_protection = termination_protection
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lcCollate")
+    def lc_collate(self) -> Optional[str]:
+        return pulumi.get(self, "lc_collate")
+
+    @property
+    @pulumi.getter(name="lcCtype")
+    def lc_ctype(self) -> Optional[str]:
+        return pulumi.get(self, "lc_ctype")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[bool]:
+        return pulumi.get(self, "termination_protection")
 
 
 class AwaitableGetDatabaseResult(GetDatabaseResult):
@@ -55,7 +96,13 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             termination_protection=self.termination_protection)
 
 
-def get_database(database_name=None, lc_collate=None, lc_ctype=None, project=None, service_name=None, termination_protection=None, opts=None):
+def get_database(database_name: Optional[str] = None,
+                 lc_collate: Optional[str] = None,
+                 lc_ctype: Optional[str] = None,
+                 project: Optional[str] = None,
+                 service_name: Optional[str] = None,
+                 termination_protection: Optional[bool] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
     ## Example Usage
 
@@ -79,13 +126,13 @@ def get_database(database_name=None, lc_collate=None, lc_ctype=None, project=Non
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getDatabase:getDatabase', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getDatabase:getDatabase', __args__, opts=opts, typ=GetDatabaseResult).value
 
     return AwaitableGetDatabaseResult(
-        database_name=__ret__.get('databaseName'),
-        id=__ret__.get('id'),
-        lc_collate=__ret__.get('lcCollate'),
-        lc_ctype=__ret__.get('lcCtype'),
-        project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'),
-        termination_protection=__ret__.get('terminationProtection'))
+        database_name=__ret__.database_name,
+        id=__ret__.id,
+        lc_collate=__ret__.lc_collate,
+        lc_ctype=__ret__.lc_ctype,
+        project=__ret__.project,
+        service_name=__ret__.service_name,
+        termination_protection=__ret__.termination_protection)

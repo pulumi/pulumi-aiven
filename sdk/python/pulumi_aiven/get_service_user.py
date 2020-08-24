@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetServiceUserResult',
+    'AwaitableGetServiceUserResult',
+    'get_service_user',
+]
 
+@pulumi.output_type
 class GetServiceUserResult:
     """
     A collection of values returned by getServiceUser.
@@ -16,31 +22,71 @@ class GetServiceUserResult:
     def __init__(__self__, access_cert=None, access_key=None, id=None, password=None, project=None, service_name=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
-        __self__.access_cert = access_cert
+        pulumi.set(__self__, "access_cert", access_cert)
         if access_key and not isinstance(access_key, str):
             raise TypeError("Expected argument 'access_key' to be a str")
-        __self__.access_key = access_key
+        pulumi.set(__self__, "access_key", access_key)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        pulumi.set(__self__, "password", password)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="accessCert")
+    def access_cert(self) -> str:
+        return pulumi.get(self, "access_cert")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if password and not isinstance(password, str):
-            raise TypeError("Expected argument 'password' to be a str")
-        __self__.password = password
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
-        if username and not isinstance(username, str):
-            raise TypeError("Expected argument 'username' to be a str")
-        __self__.username = username
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
 
 
 class AwaitableGetServiceUserResult(GetServiceUserResult):
@@ -59,7 +105,14 @@ class AwaitableGetServiceUserResult(GetServiceUserResult):
             username=self.username)
 
 
-def get_service_user(access_cert=None, access_key=None, password=None, project=None, service_name=None, type=None, username=None, opts=None):
+def get_service_user(access_cert: Optional[str] = None,
+                     access_key: Optional[str] = None,
+                     password: Optional[str] = None,
+                     project: Optional[str] = None,
+                     service_name: Optional[str] = None,
+                     type: Optional[str] = None,
+                     username: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceUserResult:
     """
     ## Example Usage
 
@@ -84,14 +137,14 @@ def get_service_user(access_cert=None, access_key=None, password=None, project=N
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getServiceUser:getServiceUser', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getServiceUser:getServiceUser', __args__, opts=opts, typ=GetServiceUserResult).value
 
     return AwaitableGetServiceUserResult(
-        access_cert=__ret__.get('accessCert'),
-        access_key=__ret__.get('accessKey'),
-        id=__ret__.get('id'),
-        password=__ret__.get('password'),
-        project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'),
-        type=__ret__.get('type'),
-        username=__ret__.get('username'))
+        access_cert=__ret__.access_cert,
+        access_key=__ret__.access_key,
+        id=__ret__.id,
+        password=__ret__.password,
+        project=__ret__.project,
+        service_name=__ret__.service_name,
+        type=__ret__.type,
+        username=__ret__.username)

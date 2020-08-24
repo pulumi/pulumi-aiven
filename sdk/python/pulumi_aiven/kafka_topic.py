@@ -5,53 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['KafkaTopic']
 
 
 class KafkaTopic(pulumi.CustomResource):
-    cleanup_policy: pulumi.Output[str]
-    """
-    Topic cleanup policy. Allowed values: delete, compact
-    """
-    minimum_in_sync_replicas: pulumi.Output[float]
-    """
-    Minimum required nodes in-sync replicas (ISR) to produce to a partition
-    """
-    partitions: pulumi.Output[float]
-    """
-    Number of partitions to create in the topic
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the kafka topic to
-    """
-    replication: pulumi.Output[float]
-    """
-    Replication factor for the topic
-    """
-    retention_bytes: pulumi.Output[float]
-    """
-    Retention bytes
-    """
-    retention_hours: pulumi.Output[float]
-    """
-    Retention period (hours)
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the kafka topic to
-    """
-    termination_protection: pulumi.Output[bool]
-    """
-    It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-    enable this for any production Kafka topic containing critical data.
-    """
-    topic_name: pulumi.Output[str]
-    """
-    Topic name
-    """
-    def __init__(__self__, resource_name, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cleanup_policy: Optional[pulumi.Input[str]] = None,
+                 minimum_in_sync_replicas: Optional[pulumi.Input[float]] = None,
+                 partitions: Optional[pulumi.Input[float]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 replication: Optional[pulumi.Input[float]] = None,
+                 retention_bytes: Optional[pulumi.Input[float]] = None,
+                 retention_hours: Optional[pulumi.Input[float]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None,
+                 topic_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -129,13 +105,25 @@ class KafkaTopic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cleanup_policy=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cleanup_policy: Optional[pulumi.Input[str]] = None,
+            minimum_in_sync_replicas: Optional[pulumi.Input[float]] = None,
+            partitions: Optional[pulumi.Input[float]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            replication: Optional[pulumi.Input[float]] = None,
+            retention_bytes: Optional[pulumi.Input[float]] = None,
+            retention_hours: Optional[pulumi.Input[float]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            termination_protection: Optional[pulumi.Input[bool]] = None,
+            topic_name: Optional[pulumi.Input[str]] = None) -> 'KafkaTopic':
         """
         Get an existing KafkaTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact
         :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition
@@ -165,8 +153,90 @@ class KafkaTopic(pulumi.CustomResource):
         __props__["topic_name"] = topic_name
         return KafkaTopic(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[str]:
+        """
+        Topic cleanup policy. Allowed values: delete, compact
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @property
+    @pulumi.getter(name="minimumInSyncReplicas")
+    def minimum_in_sync_replicas(self) -> Optional[float]:
+        """
+        Minimum required nodes in-sync replicas (ISR) to produce to a partition
+        """
+        return pulumi.get(self, "minimum_in_sync_replicas")
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> float:
+        """
+        Number of partitions to create in the topic
+        """
+        return pulumi.get(self, "partitions")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the kafka topic to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def replication(self) -> float:
+        """
+        Replication factor for the topic
+        """
+        return pulumi.get(self, "replication")
+
+    @property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> Optional[float]:
+        """
+        Retention bytes
+        """
+        return pulumi.get(self, "retention_bytes")
+
+    @property
+    @pulumi.getter(name="retentionHours")
+    def retention_hours(self) -> Optional[float]:
+        """
+        Retention period (hours)
+        """
+        return pulumi.get(self, "retention_hours")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the kafka topic to
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[bool]:
+        """
+        It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+        enable this for any production Kafka topic containing critical data.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> str:
+        """
+        Topic name
+        """
+        return pulumi.get(self, "topic_name")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

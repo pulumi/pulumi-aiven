@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['KafkaSchemaConfiguration']
 
 
 class KafkaSchemaConfiguration(pulumi.CustomResource):
-    compatibility_level: pulumi.Output[str]
-    """
-    Kafka Schemas compatibility level
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the Kafka Schemas Configuration to
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the Kafka Schemas Configuration to
-    """
-    def __init__(__self__, resource_name, opts=None, compatibility_level=None, project=None, service_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compatibility_level: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a KafkaSchemaConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -64,13 +62,18 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, compatibility_level=None, project=None, service_name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compatibility_level: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None) -> 'KafkaSchemaConfiguration':
         """
         Get an existing KafkaSchemaConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
         :param pulumi.Input[str] project: Project to link the Kafka Schemas Configuration to
@@ -85,8 +88,33 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         __props__["service_name"] = service_name
         return KafkaSchemaConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="compatibilityLevel")
+    def compatibility_level(self) -> str:
+        """
+        Kafka Schemas compatibility level
+        """
+        return pulumi.get(self, "compatibility_level")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the Kafka Schemas Configuration to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the Kafka Schemas Configuration to
+        """
+        return pulumi.get(self, "service_name")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

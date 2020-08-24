@@ -5,65 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ServiceIntegration']
 
 
 class ServiceIntegration(pulumi.CustomResource):
-    destination_endpoint_id: pulumi.Output[str]
-    """
-    Destination endpoint for the integration (if any)
-    """
-    destination_service_name: pulumi.Output[str]
-    """
-    Destination service for the integration (if any)
-    """
-    integration_type: pulumi.Output[str]
-    """
-    Type of the service integration
-    """
-    kafka_connect_user_config: pulumi.Output[dict]
-    """
-    Kafka Connect specific user configurable settings
-
-      * `kafka_connect` (`dict`)
-        * `configStorageTopic` (`str`)
-        * `groupId` (`str`)
-        * `offsetStorageTopic` (`str`)
-        * `statusStorageTopic` (`str`)
-    """
-    kafka_mirrormaker_user_config: pulumi.Output[dict]
-    """
-    Mirrormaker 2 integration specific user configurable settings
-
-      * `clusterAlias` (`str`)
-    """
-    logs_user_config: pulumi.Output[dict]
-    """
-    Log integration specific user configurable settings
-
-      * `elasticsearchIndexDaysMax` (`str`)
-      * `elasticsearchIndexPrefix` (`str`)
-    """
-    mirrormaker_user_config: pulumi.Output[dict]
-    """
-    Mirrormaker 1 integration specific user configurable settings
-
-      * `mirrormakerWhitelist` (`str`)
-    """
-    project: pulumi.Output[str]
-    """
-    Project the integration belongs to
-    """
-    source_endpoint_id: pulumi.Output[str]
-    """
-    Source endpoint for the integration (if any)
-    """
-    source_service_name: pulumi.Output[str]
-    """
-    Source service for the integration (if any)
-    """
-    def __init__(__self__, resource_name, opts=None, destination_endpoint_id=None, destination_service_name=None, integration_type=None, kafka_connect_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, mirrormaker_user_config=None, project=None, source_endpoint_id=None, source_service_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 destination_service_name: Optional[pulumi.Input[str]] = None,
+                 integration_type: Optional[pulumi.Input[str]] = None,
+                 kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']]] = None,
+                 kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]] = None,
+                 logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
+                 mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 source_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 source_service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -85,34 +51,13 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_type: Type of the service integration
-        :param pulumi.Input[dict] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[dict] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
-        :param pulumi.Input[dict] logs_user_config: Log integration specific user configurable settings
-        :param pulumi.Input[dict] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Log integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
-
-        The **kafka_connect_user_config** object supports the following:
-
-          * `kafka_connect` (`pulumi.Input[dict]`)
-            * `configStorageTopic` (`pulumi.Input[str]`)
-            * `groupId` (`pulumi.Input[str]`)
-            * `offsetStorageTopic` (`pulumi.Input[str]`)
-            * `statusStorageTopic` (`pulumi.Input[str]`)
-
-        The **kafka_mirrormaker_user_config** object supports the following:
-
-          * `clusterAlias` (`pulumi.Input[str]`)
-
-        The **logs_user_config** object supports the following:
-
-          * `elasticsearchIndexDaysMax` (`pulumi.Input[str]`)
-          * `elasticsearchIndexPrefix` (`pulumi.Input[str]`)
-
-        The **mirrormaker_user_config** object supports the following:
-
-          * `mirrormakerWhitelist` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -152,45 +97,36 @@ class ServiceIntegration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, destination_endpoint_id=None, destination_service_name=None, integration_type=None, kafka_connect_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, mirrormaker_user_config=None, project=None, source_endpoint_id=None, source_service_name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destination_endpoint_id: Optional[pulumi.Input[str]] = None,
+            destination_service_name: Optional[pulumi.Input[str]] = None,
+            integration_type: Optional[pulumi.Input[str]] = None,
+            kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']]] = None,
+            kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]] = None,
+            logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
+            mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            source_endpoint_id: Optional[pulumi.Input[str]] = None,
+            source_service_name: Optional[pulumi.Input[str]] = None) -> 'ServiceIntegration':
         """
         Get an existing ServiceIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_type: Type of the service integration
-        :param pulumi.Input[dict] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[dict] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
-        :param pulumi.Input[dict] logs_user_config: Log integration specific user configurable settings
-        :param pulumi.Input[dict] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Log integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
-
-        The **kafka_connect_user_config** object supports the following:
-
-          * `kafka_connect` (`pulumi.Input[dict]`)
-            * `configStorageTopic` (`pulumi.Input[str]`)
-            * `groupId` (`pulumi.Input[str]`)
-            * `offsetStorageTopic` (`pulumi.Input[str]`)
-            * `statusStorageTopic` (`pulumi.Input[str]`)
-
-        The **kafka_mirrormaker_user_config** object supports the following:
-
-          * `clusterAlias` (`pulumi.Input[str]`)
-
-        The **logs_user_config** object supports the following:
-
-          * `elasticsearchIndexDaysMax` (`pulumi.Input[str]`)
-          * `elasticsearchIndexPrefix` (`pulumi.Input[str]`)
-
-        The **mirrormaker_user_config** object supports the following:
-
-          * `mirrormakerWhitelist` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -208,8 +144,89 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__["source_service_name"] = source_service_name
         return ServiceIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="destinationEndpointId")
+    def destination_endpoint_id(self) -> Optional[str]:
+        """
+        Destination endpoint for the integration (if any)
+        """
+        return pulumi.get(self, "destination_endpoint_id")
+
+    @property
+    @pulumi.getter(name="destinationServiceName")
+    def destination_service_name(self) -> Optional[str]:
+        """
+        Destination service for the integration (if any)
+        """
+        return pulumi.get(self, "destination_service_name")
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        """
+        Type of the service integration
+        """
+        return pulumi.get(self, "integration_type")
+
+    @property
+    @pulumi.getter(name="kafkaConnectUserConfig")
+    def kafka_connect_user_config(self) -> Optional['outputs.ServiceIntegrationKafkaConnectUserConfig']:
+        """
+        Kafka Connect specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_connect_user_config")
+
+    @property
+    @pulumi.getter(name="kafkaMirrormakerUserConfig")
+    def kafka_mirrormaker_user_config(self) -> Optional['outputs.ServiceIntegrationKafkaMirrormakerUserConfig']:
+        """
+        Mirrormaker 2 integration specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_mirrormaker_user_config")
+
+    @property
+    @pulumi.getter(name="logsUserConfig")
+    def logs_user_config(self) -> Optional['outputs.ServiceIntegrationLogsUserConfig']:
+        """
+        Log integration specific user configurable settings
+        """
+        return pulumi.get(self, "logs_user_config")
+
+    @property
+    @pulumi.getter(name="mirrormakerUserConfig")
+    def mirrormaker_user_config(self) -> Optional['outputs.ServiceIntegrationMirrormakerUserConfig']:
+        """
+        Mirrormaker 1 integration specific user configurable settings
+        """
+        return pulumi.get(self, "mirrormaker_user_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project the integration belongs to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sourceEndpointId")
+    def source_endpoint_id(self) -> Optional[str]:
+        """
+        Source endpoint for the integration (if any)
+        """
+        return pulumi.get(self, "source_endpoint_id")
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> Optional[str]:
+        """
+        Source service for the integration (if any)
+        """
+        return pulumi.get(self, "source_service_name")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

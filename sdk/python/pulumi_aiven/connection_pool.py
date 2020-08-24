@@ -5,44 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ConnectionPool']
 
 
 class ConnectionPool(pulumi.CustomResource):
-    connection_uri: pulumi.Output[str]
-    """
-    URI for connecting to the pool
-    """
-    database_name: pulumi.Output[str]
-    """
-    Name of the database the pool connects to
-    """
-    pool_mode: pulumi.Output[str]
-    """
-    Mode the pool operates in (session, transaction, statement)
-    """
-    pool_name: pulumi.Output[str]
-    """
-    Name of the pool
-    """
-    pool_size: pulumi.Output[float]
-    """
-    Number of connections the pool may create towards the backend server
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the connection pool to
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the connection pool to
-    """
-    username: pulumi.Output[str]
-    """
-    Name of the service user used to connect to the database
-    """
-    def __init__(__self__, resource_name, opts=None, database_name=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database_name: Optional[pulumi.Input[str]] = None,
+                 pool_mode: Optional[pulumi.Input[str]] = None,
+                 pool_name: Optional[pulumi.Input[str]] = None,
+                 pool_size: Optional[pulumi.Input[float]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -112,13 +94,23 @@ class ConnectionPool(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, connection_uri=None, database_name=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_uri: Optional[pulumi.Input[str]] = None,
+            database_name: Optional[pulumi.Input[str]] = None,
+            pool_mode: Optional[pulumi.Input[str]] = None,
+            pool_name: Optional[pulumi.Input[str]] = None,
+            pool_size: Optional[pulumi.Input[float]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None) -> 'ConnectionPool':
         """
         Get an existing ConnectionPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_uri: URI for connecting to the pool
         :param pulumi.Input[str] database_name: Name of the database the pool connects to
@@ -143,8 +135,73 @@ class ConnectionPool(pulumi.CustomResource):
         __props__["username"] = username
         return ConnectionPool(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="connectionUri")
+    def connection_uri(self) -> str:
+        """
+        URI for connecting to the pool
+        """
+        return pulumi.get(self, "connection_uri")
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> str:
+        """
+        Name of the database the pool connects to
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter(name="poolMode")
+    def pool_mode(self) -> Optional[str]:
+        """
+        Mode the pool operates in (session, transaction, statement)
+        """
+        return pulumi.get(self, "pool_mode")
+
+    @property
+    @pulumi.getter(name="poolName")
+    def pool_name(self) -> str:
+        """
+        Name of the pool
+        """
+        return pulumi.get(self, "pool_name")
+
+    @property
+    @pulumi.getter(name="poolSize")
+    def pool_size(self) -> Optional[float]:
+        """
+        Number of connections the pool may create towards the backend server
+        """
+        return pulumi.get(self, "pool_size")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the connection pool to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the connection pool to
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Name of the service user used to connect to the database
+        """
+        return pulumi.get(self, "username")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
