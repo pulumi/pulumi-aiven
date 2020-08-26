@@ -53,6 +53,7 @@
         "getProjectVpc.ts",
         "getRedis.ts",
         "getService.ts",
+        "getServiceComponent.ts",
         "getServiceIntegration.ts",
         "getServiceIntegrationEndpoint.ts",
         "getServiceUser.ts",

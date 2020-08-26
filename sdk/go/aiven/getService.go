@@ -44,7 +44,7 @@ type LookupServiceArgs struct {
 	Cassandra                  *GetServiceCassandra                  `pulumi:"cassandra"`
 	CassandraUserConfig        *GetServiceCassandraUserConfig        `pulumi:"cassandraUserConfig"`
 	CloudName                  *string                               `pulumi:"cloudName"`
-	Components                 []GetServiceComponent                 `pulumi:"components"`
+	Components                 []GetServiceComponentType             `pulumi:"components"`
 	Elasticsearch              *GetServiceElasticsearch              `pulumi:"elasticsearch"`
 	ElasticsearchUserConfig    *GetServiceElasticsearchUserConfig    `pulumi:"elasticsearchUserConfig"`
 	Grafana                    *GetServiceGrafana                    `pulumi:"grafana"`
@@ -85,7 +85,7 @@ type LookupServiceResult struct {
 	Cassandra               GetServiceCassandra                `pulumi:"cassandra"`
 	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
 	CloudName               *string                            `pulumi:"cloudName"`
-	Components              []GetServiceComponent              `pulumi:"components"`
+	Components              []GetServiceComponentType          `pulumi:"components"`
 	Elasticsearch           GetServiceElasticsearch            `pulumi:"elasticsearch"`
 	ElasticsearchUserConfig *GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
 	Grafana                 GetServiceGrafana                  `pulumi:"grafana"`
