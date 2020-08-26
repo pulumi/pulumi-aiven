@@ -41,6 +41,7 @@ from .get_project_user import *
 from .get_project_vpc import *
 from .get_redis import *
 from .get_service import *
+from .get_service_component import *
 from .get_service_integration import *
 from .get_service_integration_endpoint import *
 from .get_service_user import *

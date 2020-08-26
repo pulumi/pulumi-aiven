@@ -126,6 +126,8 @@ github.com/aiven/aiven-go-client v1.5.5 h1:iNvT0xBzOyeMXHrRbg3YgE5QF26d3VHRpRZbl
 github.com/aiven/aiven-go-client v1.5.5/go.mod h1:D9NBJ9OeXnhWQ+p0heu+zklaKwH/DOEpIqlnJTRCA4M=
 github.com/aiven/aiven-go-client v1.5.7-0.20200723071816-76bc47f624b3 h1:mfWkdNIh8bHoF0otQjHZARX8iRSyUlvVjIq1fw8EdGk=
 github.com/aiven/aiven-go-client v1.5.7-0.20200723071816-76bc47f624b3/go.mod h1:tcoqGxvGReymGMsP62X5YkhOgpWgIRgM8mxTmVRNC3g=
+github.com/aiven/aiven-go-client v1.5.7 h1:8NlYyMZeMLjK/XHlsG2jlppOk54Ptn5fHhNUMeB4ZoM=
+github.com/aiven/aiven-go-client v1.5.7/go.mod h1:tcoqGxvGReymGMsP62X5YkhOgpWgIRgM8mxTmVRNC3g=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
@@ -858,6 +860,8 @@ github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200818123630-2ad74d634f9c
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200818123630-2ad74d634f9c/go.mod h1:U6YXSeibZ+omj2PdxfGCxsaQjYy2AavBayIaKKK0XiA=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200818130452-8e1d99f6db06 h1:Ec6xr+YceVA3Qkh1uRcLMy+EfSkqhDEmsEwj+BPv3/Q=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200818130452-8e1d99f6db06/go.mod h1:U6YXSeibZ+omj2PdxfGCxsaQjYy2AavBayIaKKK0XiA=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200826192824-54d419013e89 h1:pxSNA6t5UBP1dwIjm9Lq6DMdX4AoXAXidncv1KLceO8=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20200826192824-54d419013e89/go.mod h1:mycyATyo9MdzXsmuKvqXwGJuKLjfkwt/Lt33E5kNuXg=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=

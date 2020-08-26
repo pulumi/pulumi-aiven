@@ -39774,7 +39774,7 @@ func (o GetServiceCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetServiceComponent struct {
+type GetServiceComponentType struct {
 	Component                 string `pulumi:"component"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
@@ -39784,18 +39784,18 @@ type GetServiceComponent struct {
 	Usage                     string `pulumi:"usage"`
 }
 
-// GetServiceComponentInput is an input type that accepts GetServiceComponentArgs and GetServiceComponentOutput values.
-// You can construct a concrete instance of `GetServiceComponentInput` via:
+// GetServiceComponentTypeInput is an input type that accepts GetServiceComponentTypeArgs and GetServiceComponentTypeOutput values.
+// You can construct a concrete instance of `GetServiceComponentTypeInput` via:
 //
-//          GetServiceComponentArgs{...}
-type GetServiceComponentInput interface {
+//          GetServiceComponentTypeArgs{...}
+type GetServiceComponentTypeInput interface {
 	pulumi.Input
 
-	ToGetServiceComponentOutput() GetServiceComponentOutput
-	ToGetServiceComponentOutputWithContext(context.Context) GetServiceComponentOutput
+	ToGetServiceComponentTypeOutput() GetServiceComponentTypeOutput
+	ToGetServiceComponentTypeOutputWithContext(context.Context) GetServiceComponentTypeOutput
 }
 
-type GetServiceComponentArgs struct {
+type GetServiceComponentTypeArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
@@ -39805,103 +39805,103 @@ type GetServiceComponentArgs struct {
 	Usage                     pulumi.StringInput `pulumi:"usage"`
 }
 
-func (GetServiceComponentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceComponent)(nil)).Elem()
+func (GetServiceComponentTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceComponentType)(nil)).Elem()
 }
 
-func (i GetServiceComponentArgs) ToGetServiceComponentOutput() GetServiceComponentOutput {
-	return i.ToGetServiceComponentOutputWithContext(context.Background())
+func (i GetServiceComponentTypeArgs) ToGetServiceComponentTypeOutput() GetServiceComponentTypeOutput {
+	return i.ToGetServiceComponentTypeOutputWithContext(context.Background())
 }
 
-func (i GetServiceComponentArgs) ToGetServiceComponentOutputWithContext(ctx context.Context) GetServiceComponentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceComponentOutput)
+func (i GetServiceComponentTypeArgs) ToGetServiceComponentTypeOutputWithContext(ctx context.Context) GetServiceComponentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceComponentTypeOutput)
 }
 
-// GetServiceComponentArrayInput is an input type that accepts GetServiceComponentArray and GetServiceComponentArrayOutput values.
-// You can construct a concrete instance of `GetServiceComponentArrayInput` via:
+// GetServiceComponentTypeArrayInput is an input type that accepts GetServiceComponentTypeArray and GetServiceComponentTypeArrayOutput values.
+// You can construct a concrete instance of `GetServiceComponentTypeArrayInput` via:
 //
-//          GetServiceComponentArray{ GetServiceComponentArgs{...} }
-type GetServiceComponentArrayInput interface {
+//          GetServiceComponentTypeArray{ GetServiceComponentTypeArgs{...} }
+type GetServiceComponentTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceComponentArrayOutput() GetServiceComponentArrayOutput
-	ToGetServiceComponentArrayOutputWithContext(context.Context) GetServiceComponentArrayOutput
+	ToGetServiceComponentTypeArrayOutput() GetServiceComponentTypeArrayOutput
+	ToGetServiceComponentTypeArrayOutputWithContext(context.Context) GetServiceComponentTypeArrayOutput
 }
 
-type GetServiceComponentArray []GetServiceComponentInput
+type GetServiceComponentTypeArray []GetServiceComponentTypeInput
 
-func (GetServiceComponentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceComponent)(nil)).Elem()
+func (GetServiceComponentTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceComponentType)(nil)).Elem()
 }
 
-func (i GetServiceComponentArray) ToGetServiceComponentArrayOutput() GetServiceComponentArrayOutput {
-	return i.ToGetServiceComponentArrayOutputWithContext(context.Background())
+func (i GetServiceComponentTypeArray) ToGetServiceComponentTypeArrayOutput() GetServiceComponentTypeArrayOutput {
+	return i.ToGetServiceComponentTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceComponentArray) ToGetServiceComponentArrayOutputWithContext(ctx context.Context) GetServiceComponentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceComponentArrayOutput)
+func (i GetServiceComponentTypeArray) ToGetServiceComponentTypeArrayOutputWithContext(ctx context.Context) GetServiceComponentTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceComponentTypeArrayOutput)
 }
 
-type GetServiceComponentOutput struct{ *pulumi.OutputState }
+type GetServiceComponentTypeOutput struct{ *pulumi.OutputState }
 
-func (GetServiceComponentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceComponent)(nil)).Elem()
+func (GetServiceComponentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceComponentType)(nil)).Elem()
 }
 
-func (o GetServiceComponentOutput) ToGetServiceComponentOutput() GetServiceComponentOutput {
+func (o GetServiceComponentTypeOutput) ToGetServiceComponentTypeOutput() GetServiceComponentTypeOutput {
 	return o
 }
 
-func (o GetServiceComponentOutput) ToGetServiceComponentOutputWithContext(ctx context.Context) GetServiceComponentOutput {
+func (o GetServiceComponentTypeOutput) ToGetServiceComponentTypeOutputWithContext(ctx context.Context) GetServiceComponentTypeOutput {
 	return o
 }
 
-func (o GetServiceComponentOutput) Component() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceComponent) string { return v.Component }).(pulumi.StringOutput)
+func (o GetServiceComponentTypeOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentType) string { return v.Component }).(pulumi.StringOutput)
 }
 
-func (o GetServiceComponentOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceComponent) string { return v.Host }).(pulumi.StringOutput)
+func (o GetServiceComponentTypeOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentType) string { return v.Host }).(pulumi.StringOutput)
 }
 
-func (o GetServiceComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+func (o GetServiceComponentTypeOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentType) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
 }
 
-func (o GetServiceComponentOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceComponent) int { return v.Port }).(pulumi.IntOutput)
+func (o GetServiceComponentTypeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceComponentType) int { return v.Port }).(pulumi.IntOutput)
 }
 
-func (o GetServiceComponentOutput) Route() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceComponent) string { return v.Route }).(pulumi.StringOutput)
+func (o GetServiceComponentTypeOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentType) string { return v.Route }).(pulumi.StringOutput)
 }
 
-func (o GetServiceComponentOutput) Ssl() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+func (o GetServiceComponentTypeOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceComponentType) bool { return v.Ssl }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceComponentOutput) Usage() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceComponent) string { return v.Usage }).(pulumi.StringOutput)
+func (o GetServiceComponentTypeOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentType) string { return v.Usage }).(pulumi.StringOutput)
 }
 
-type GetServiceComponentArrayOutput struct{ *pulumi.OutputState }
+type GetServiceComponentTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceComponentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceComponent)(nil)).Elem()
+func (GetServiceComponentTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceComponentType)(nil)).Elem()
 }
 
-func (o GetServiceComponentArrayOutput) ToGetServiceComponentArrayOutput() GetServiceComponentArrayOutput {
+func (o GetServiceComponentTypeArrayOutput) ToGetServiceComponentTypeArrayOutput() GetServiceComponentTypeArrayOutput {
 	return o
 }
 
-func (o GetServiceComponentArrayOutput) ToGetServiceComponentArrayOutputWithContext(ctx context.Context) GetServiceComponentArrayOutput {
+func (o GetServiceComponentTypeArrayOutput) ToGetServiceComponentTypeArrayOutputWithContext(ctx context.Context) GetServiceComponentTypeArrayOutput {
 	return o
 }
 
-func (o GetServiceComponentArrayOutput) Index(i pulumi.IntInput) GetServiceComponentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceComponent {
-		return vs[0].([]GetServiceComponent)[vs[1].(int)]
-	}).(GetServiceComponentOutput)
+func (o GetServiceComponentTypeArrayOutput) Index(i pulumi.IntInput) GetServiceComponentTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceComponentType {
+		return vs[0].([]GetServiceComponentType)[vs[1].(int)]
+	}).(GetServiceComponentTypeOutput)
 }
 
 type GetServiceElasticsearch struct {
@@ -49944,8 +49944,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceCassandraUserConfigPublicAccessPtrOutput{})
-	pulumi.RegisterOutputType(GetServiceComponentOutput{})
-	pulumi.RegisterOutputType(GetServiceComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceComponentTypeOutput{})
+	pulumi.RegisterOutputType(GetServiceComponentTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigElasticsearchOutput{})

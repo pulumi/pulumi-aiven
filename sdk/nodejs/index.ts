@@ -40,6 +40,7 @@ export * from "./getProjectUser";
 export * from "./getProjectVpc";
 export * from "./getRedis";
 export * from "./getService";
+export * from "./getServiceComponent";
 export * from "./getServiceIntegration";
 export * from "./getServiceIntegrationEndpoint";
 export * from "./getServiceUser";

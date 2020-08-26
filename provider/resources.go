@@ -233,6 +233,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"aiven_service_component":              {Tok: makeDataSource(mainMod, "getServiceComponent")},
 			"aiven_service_integration":            {Tok: makeDataSource(mainMod, "getServiceIntegration")},
 			"aiven_service_integration_endpoint":   {Tok: makeDataSource(mainMod, "getServiceIntegrationEndpoint")},
 			"aiven_service_user":                   {Tok: makeDataSource(mainMod, "getServiceUser")},

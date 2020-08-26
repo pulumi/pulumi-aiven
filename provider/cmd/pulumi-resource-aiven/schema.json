@@ -23791,6 +23791,83 @@
                 ]
             }
         },
+        "aiven:index/getServiceComponent:getServiceComponent": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getServiceComponent.\n",
+                "properties": {
+                    "component": {
+                        "type": "string"
+                    },
+                    "kafkaAuthenticationMethod": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "route": {
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "ssl": {
+                        "type": "boolean"
+                    },
+                    "usage": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "component",
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServiceComponent.\n",
+                "properties": {
+                    "component": {
+                        "type": "string"
+                    },
+                    "host": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "kafkaAuthenticationMethod": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "route": {
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "ssl": {
+                        "type": "boolean"
+                    },
+                    "usage": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "component",
+                    "host",
+                    "port",
+                    "project",
+                    "id"
+                ]
+            }
+        },
         "aiven:index/getServiceIntegration:getServiceIntegration": {
             "inputs": {
                 "description": "A collection of arguments for invoking getServiceIntegration.\n",
