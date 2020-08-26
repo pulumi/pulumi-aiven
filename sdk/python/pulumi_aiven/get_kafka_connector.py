@@ -5,10 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetKafkaConnectorResult',
+    'AwaitableGetKafkaConnectorResult',
+    'get_kafka_connector',
+]
 
+@pulumi.output_type
 class GetKafkaConnectorResult:
     """
     A collection of values returned by getKafkaConnector.
@@ -16,43 +24,103 @@ class GetKafkaConnectorResult:
     def __init__(__self__, config=None, connector_name=None, id=None, plugin_author=None, plugin_class=None, plugin_doc_url=None, plugin_title=None, plugin_type=None, plugin_version=None, project=None, service_name=None, tasks=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
-        __self__.config = config
+        pulumi.set(__self__, "config", config)
         if connector_name and not isinstance(connector_name, str):
             raise TypeError("Expected argument 'connector_name' to be a str")
-        __self__.connector_name = connector_name
+        pulumi.set(__self__, "connector_name", connector_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if plugin_author and not isinstance(plugin_author, str):
+            raise TypeError("Expected argument 'plugin_author' to be a str")
+        pulumi.set(__self__, "plugin_author", plugin_author)
+        if plugin_class and not isinstance(plugin_class, str):
+            raise TypeError("Expected argument 'plugin_class' to be a str")
+        pulumi.set(__self__, "plugin_class", plugin_class)
+        if plugin_doc_url and not isinstance(plugin_doc_url, str):
+            raise TypeError("Expected argument 'plugin_doc_url' to be a str")
+        pulumi.set(__self__, "plugin_doc_url", plugin_doc_url)
+        if plugin_title and not isinstance(plugin_title, str):
+            raise TypeError("Expected argument 'plugin_title' to be a str")
+        pulumi.set(__self__, "plugin_title", plugin_title)
+        if plugin_type and not isinstance(plugin_type, str):
+            raise TypeError("Expected argument 'plugin_type' to be a str")
+        pulumi.set(__self__, "plugin_type", plugin_type)
+        if plugin_version and not isinstance(plugin_version, str):
+            raise TypeError("Expected argument 'plugin_version' to be a str")
+        pulumi.set(__self__, "plugin_version", plugin_version)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if tasks and not isinstance(tasks, list):
+            raise TypeError("Expected argument 'tasks' to be a list")
+        pulumi.set(__self__, "tasks", tasks)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> str:
+        return pulumi.get(self, "connector_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if plugin_author and not isinstance(plugin_author, str):
-            raise TypeError("Expected argument 'plugin_author' to be a str")
-        __self__.plugin_author = plugin_author
-        if plugin_class and not isinstance(plugin_class, str):
-            raise TypeError("Expected argument 'plugin_class' to be a str")
-        __self__.plugin_class = plugin_class
-        if plugin_doc_url and not isinstance(plugin_doc_url, str):
-            raise TypeError("Expected argument 'plugin_doc_url' to be a str")
-        __self__.plugin_doc_url = plugin_doc_url
-        if plugin_title and not isinstance(plugin_title, str):
-            raise TypeError("Expected argument 'plugin_title' to be a str")
-        __self__.plugin_title = plugin_title
-        if plugin_type and not isinstance(plugin_type, str):
-            raise TypeError("Expected argument 'plugin_type' to be a str")
-        __self__.plugin_type = plugin_type
-        if plugin_version and not isinstance(plugin_version, str):
-            raise TypeError("Expected argument 'plugin_version' to be a str")
-        __self__.plugin_version = plugin_version
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if tasks and not isinstance(tasks, list):
-            raise TypeError("Expected argument 'tasks' to be a list")
-        __self__.tasks = tasks
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="pluginAuthor")
+    def plugin_author(self) -> str:
+        return pulumi.get(self, "plugin_author")
+
+    @property
+    @pulumi.getter(name="pluginClass")
+    def plugin_class(self) -> str:
+        return pulumi.get(self, "plugin_class")
+
+    @property
+    @pulumi.getter(name="pluginDocUrl")
+    def plugin_doc_url(self) -> str:
+        return pulumi.get(self, "plugin_doc_url")
+
+    @property
+    @pulumi.getter(name="pluginTitle")
+    def plugin_title(self) -> str:
+        return pulumi.get(self, "plugin_title")
+
+    @property
+    @pulumi.getter(name="pluginType")
+    def plugin_type(self) -> str:
+        return pulumi.get(self, "plugin_type")
+
+    @property
+    @pulumi.getter(name="pluginVersion")
+    def plugin_version(self) -> str:
+        return pulumi.get(self, "plugin_version")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def tasks(self) -> List['outputs.GetKafkaConnectorTaskResult']:
+        return pulumi.get(self, "tasks")
 
 
 class AwaitableGetKafkaConnectorResult(GetKafkaConnectorResult):
@@ -75,15 +143,20 @@ class AwaitableGetKafkaConnectorResult(GetKafkaConnectorResult):
             tasks=self.tasks)
 
 
-def get_kafka_connector(config=None, connector_name=None, plugin_author=None, plugin_class=None, plugin_doc_url=None, plugin_title=None, plugin_type=None, plugin_version=None, project=None, service_name=None, tasks=None, opts=None):
+def get_kafka_connector(config: Optional[Mapping[str, str]] = None,
+                        connector_name: Optional[str] = None,
+                        plugin_author: Optional[str] = None,
+                        plugin_class: Optional[str] = None,
+                        plugin_doc_url: Optional[str] = None,
+                        plugin_title: Optional[str] = None,
+                        plugin_type: Optional[str] = None,
+                        plugin_version: Optional[str] = None,
+                        project: Optional[str] = None,
+                        service_name: Optional[str] = None,
+                        tasks: Optional[List[pulumi.InputType['GetKafkaConnectorTaskArgs']]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaConnectorResult:
     """
     Use this data source to access information about an existing resource.
-
-
-    The **tasks** object supports the following:
-
-      * `connector` (`str`)
-      * `task` (`float`)
     """
     __args__ = dict()
     __args__['config'] = config
@@ -101,18 +174,18 @@ def get_kafka_connector(config=None, connector_name=None, plugin_author=None, pl
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaConnector:getKafkaConnector', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaConnector:getKafkaConnector', __args__, opts=opts, typ=GetKafkaConnectorResult).value
 
     return AwaitableGetKafkaConnectorResult(
-        config=__ret__.get('config'),
-        connector_name=__ret__.get('connectorName'),
-        id=__ret__.get('id'),
-        plugin_author=__ret__.get('pluginAuthor'),
-        plugin_class=__ret__.get('pluginClass'),
-        plugin_doc_url=__ret__.get('pluginDocUrl'),
-        plugin_title=__ret__.get('pluginTitle'),
-        plugin_type=__ret__.get('pluginType'),
-        plugin_version=__ret__.get('pluginVersion'),
-        project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'),
-        tasks=__ret__.get('tasks'))
+        config=__ret__.config,
+        connector_name=__ret__.connector_name,
+        id=__ret__.id,
+        plugin_author=__ret__.plugin_author,
+        plugin_class=__ret__.plugin_class,
+        plugin_doc_url=__ret__.plugin_doc_url,
+        plugin_title=__ret__.plugin_title,
+        plugin_type=__ret__.plugin_type,
+        plugin_version=__ret__.plugin_version,
+        project=__ret__.project,
+        service_name=__ret__.service_name,
+        tasks=__ret__.tasks)

@@ -5,10 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetServiceIntegrationResult',
+    'AwaitableGetServiceIntegrationResult',
+    'get_service_integration',
+]
 
+@pulumi.output_type
 class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
@@ -16,40 +24,95 @@ class GetServiceIntegrationResult:
     def __init__(__self__, destination_endpoint_id=None, destination_service_name=None, id=None, integration_type=None, kafka_connect_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, mirrormaker_user_config=None, project=None, source_endpoint_id=None, source_service_name=None):
         if destination_endpoint_id and not isinstance(destination_endpoint_id, str):
             raise TypeError("Expected argument 'destination_endpoint_id' to be a str")
-        __self__.destination_endpoint_id = destination_endpoint_id
+        pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name and not isinstance(destination_service_name, str):
             raise TypeError("Expected argument 'destination_service_name' to be a str")
-        __self__.destination_service_name = destination_service_name
+        pulumi.set(__self__, "destination_service_name", destination_service_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if integration_type and not isinstance(integration_type, str):
+            raise TypeError("Expected argument 'integration_type' to be a str")
+        pulumi.set(__self__, "integration_type", integration_type)
+        if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
+            raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
+        pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
+        if kafka_mirrormaker_user_config and not isinstance(kafka_mirrormaker_user_config, dict):
+            raise TypeError("Expected argument 'kafka_mirrormaker_user_config' to be a dict")
+        pulumi.set(__self__, "kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
+        if logs_user_config and not isinstance(logs_user_config, dict):
+            raise TypeError("Expected argument 'logs_user_config' to be a dict")
+        pulumi.set(__self__, "logs_user_config", logs_user_config)
+        if mirrormaker_user_config and not isinstance(mirrormaker_user_config, dict):
+            raise TypeError("Expected argument 'mirrormaker_user_config' to be a dict")
+        pulumi.set(__self__, "mirrormaker_user_config", mirrormaker_user_config)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if source_endpoint_id and not isinstance(source_endpoint_id, str):
+            raise TypeError("Expected argument 'source_endpoint_id' to be a str")
+        pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
+        if source_service_name and not isinstance(source_service_name, str):
+            raise TypeError("Expected argument 'source_service_name' to be a str")
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="destinationEndpointId")
+    def destination_endpoint_id(self) -> Optional[str]:
+        return pulumi.get(self, "destination_endpoint_id")
+
+    @property
+    @pulumi.getter(name="destinationServiceName")
+    def destination_service_name(self) -> str:
+        return pulumi.get(self, "destination_service_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if integration_type and not isinstance(integration_type, str):
-            raise TypeError("Expected argument 'integration_type' to be a str")
-        __self__.integration_type = integration_type
-        if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
-            raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
-        __self__.kafka_connect_user_config = kafka_connect_user_config
-        if kafka_mirrormaker_user_config and not isinstance(kafka_mirrormaker_user_config, dict):
-            raise TypeError("Expected argument 'kafka_mirrormaker_user_config' to be a dict")
-        __self__.kafka_mirrormaker_user_config = kafka_mirrormaker_user_config
-        if logs_user_config and not isinstance(logs_user_config, dict):
-            raise TypeError("Expected argument 'logs_user_config' to be a dict")
-        __self__.logs_user_config = logs_user_config
-        if mirrormaker_user_config and not isinstance(mirrormaker_user_config, dict):
-            raise TypeError("Expected argument 'mirrormaker_user_config' to be a dict")
-        __self__.mirrormaker_user_config = mirrormaker_user_config
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if source_endpoint_id and not isinstance(source_endpoint_id, str):
-            raise TypeError("Expected argument 'source_endpoint_id' to be a str")
-        __self__.source_endpoint_id = source_endpoint_id
-        if source_service_name and not isinstance(source_service_name, str):
-            raise TypeError("Expected argument 'source_service_name' to be a str")
-        __self__.source_service_name = source_service_name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        return pulumi.get(self, "integration_type")
+
+    @property
+    @pulumi.getter(name="kafkaConnectUserConfig")
+    def kafka_connect_user_config(self) -> Optional['outputs.GetServiceIntegrationKafkaConnectUserConfigResult']:
+        return pulumi.get(self, "kafka_connect_user_config")
+
+    @property
+    @pulumi.getter(name="kafkaMirrormakerUserConfig")
+    def kafka_mirrormaker_user_config(self) -> Optional['outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult']:
+        return pulumi.get(self, "kafka_mirrormaker_user_config")
+
+    @property
+    @pulumi.getter(name="logsUserConfig")
+    def logs_user_config(self) -> Optional['outputs.GetServiceIntegrationLogsUserConfigResult']:
+        return pulumi.get(self, "logs_user_config")
+
+    @property
+    @pulumi.getter(name="mirrormakerUserConfig")
+    def mirrormaker_user_config(self) -> Optional['outputs.GetServiceIntegrationMirrormakerUserConfigResult']:
+        return pulumi.get(self, "mirrormaker_user_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sourceEndpointId")
+    def source_endpoint_id(self) -> Optional[str]:
+        return pulumi.get(self, "source_endpoint_id")
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> str:
+        return pulumi.get(self, "source_service_name")
 
 
 class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
@@ -71,31 +134,19 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             source_service_name=self.source_service_name)
 
 
-def get_service_integration(destination_endpoint_id=None, destination_service_name=None, integration_type=None, kafka_connect_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, mirrormaker_user_config=None, project=None, source_endpoint_id=None, source_service_name=None, opts=None):
+def get_service_integration(destination_endpoint_id: Optional[str] = None,
+                            destination_service_name: Optional[str] = None,
+                            integration_type: Optional[str] = None,
+                            kafka_connect_user_config: Optional[pulumi.InputType['GetServiceIntegrationKafkaConnectUserConfigArgs']] = None,
+                            kafka_mirrormaker_user_config: Optional[pulumi.InputType['GetServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
+                            logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationLogsUserConfigArgs']] = None,
+                            mirrormaker_user_config: Optional[pulumi.InputType['GetServiceIntegrationMirrormakerUserConfigArgs']] = None,
+                            project: Optional[str] = None,
+                            source_endpoint_id: Optional[str] = None,
+                            source_service_name: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationResult:
     """
     Use this data source to access information about an existing resource.
-
-
-    The **kafka_connect_user_config** object supports the following:
-
-      * `kafka_connect` (`dict`)
-        * `configStorageTopic` (`str`)
-        * `groupId` (`str`)
-        * `offsetStorageTopic` (`str`)
-        * `statusStorageTopic` (`str`)
-
-    The **kafka_mirrormaker_user_config** object supports the following:
-
-      * `clusterAlias` (`str`)
-
-    The **logs_user_config** object supports the following:
-
-      * `elasticsearchIndexDaysMax` (`str`)
-      * `elasticsearchIndexPrefix` (`str`)
-
-    The **mirrormaker_user_config** object supports the following:
-
-      * `mirrormakerWhitelist` (`str`)
     """
     __args__ = dict()
     __args__['destinationEndpointId'] = destination_endpoint_id
@@ -112,17 +163,17 @@ def get_service_integration(destination_endpoint_id=None, destination_service_na
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegration:getServiceIntegration', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegration:getServiceIntegration', __args__, opts=opts, typ=GetServiceIntegrationResult).value
 
     return AwaitableGetServiceIntegrationResult(
-        destination_endpoint_id=__ret__.get('destinationEndpointId'),
-        destination_service_name=__ret__.get('destinationServiceName'),
-        id=__ret__.get('id'),
-        integration_type=__ret__.get('integrationType'),
-        kafka_connect_user_config=__ret__.get('kafkaConnectUserConfig'),
-        kafka_mirrormaker_user_config=__ret__.get('kafkaMirrormakerUserConfig'),
-        logs_user_config=__ret__.get('logsUserConfig'),
-        mirrormaker_user_config=__ret__.get('mirrormakerUserConfig'),
-        project=__ret__.get('project'),
-        source_endpoint_id=__ret__.get('sourceEndpointId'),
-        source_service_name=__ret__.get('sourceServiceName'))
+        destination_endpoint_id=__ret__.destination_endpoint_id,
+        destination_service_name=__ret__.destination_service_name,
+        id=__ret__.id,
+        integration_type=__ret__.integration_type,
+        kafka_connect_user_config=__ret__.kafka_connect_user_config,
+        kafka_mirrormaker_user_config=__ret__.kafka_mirrormaker_user_config,
+        logs_user_config=__ret__.logs_user_config,
+        mirrormaker_user_config=__ret__.mirrormaker_user_config,
+        project=__ret__.project,
+        source_endpoint_id=__ret__.source_endpoint_id,
+        source_service_name=__ret__.source_service_name)

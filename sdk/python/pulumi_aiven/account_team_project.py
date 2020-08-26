@@ -5,28 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['AccountTeamProject']
 
 
 class AccountTeamProject(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
-    """
-    Account id
-    """
-    project_name: pulumi.Output[str]
-    """
-    Account team project name
-    """
-    team_id: pulumi.Output[str]
-    """
-    Account team id
-    """
-    team_type: pulumi.Output[str]
-    """
-    Account team project type, can one of the following values: admin, developer, operator and read_only
-    """
-    def __init__(__self__, resource_name, opts=None, account_id=None, project_name=None, team_id=None, team_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 team_id: Optional[pulumi.Input[str]] = None,
+                 team_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The account team project is intended to link and existing project to the existing account team. It is important to note
         that the project should have an `account_id` property set and equal to account team you are trying to link this project.
@@ -86,13 +81,19 @@ class AccountTeamProject(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_id=None, project_name=None, team_id=None, team_type=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            project_name: Optional[pulumi.Input[str]] = None,
+            team_id: Optional[pulumi.Input[str]] = None,
+            team_type: Optional[pulumi.Input[str]] = None) -> 'AccountTeamProject':
         """
         Get an existing AccountTeamProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account id
         :param pulumi.Input[str] project_name: Account team project name
@@ -109,8 +110,41 @@ class AccountTeamProject(pulumi.CustomResource):
         __props__["team_type"] = team_type
         return AccountTeamProject(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        Account id
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[str]:
+        """
+        Account team project name
+        """
+        return pulumi.get(self, "project_name")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        """
+        Account team id
+        """
+        return pulumi.get(self, "team_id")
+
+    @property
+    @pulumi.getter(name="teamType")
+    def team_type(self) -> Optional[str]:
+        """
+        Account team project type, can one of the following values: admin, developer, operator and read_only
+        """
+        return pulumi.get(self, "team_type")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

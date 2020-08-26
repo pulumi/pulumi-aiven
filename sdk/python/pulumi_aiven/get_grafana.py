@@ -5,10 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetGrafanaResult',
+    'AwaitableGetGrafanaResult',
+    'get_grafana',
+]
 
+@pulumi.output_type
 class GetGrafanaResult:
     """
     A collection of values returned by getGrafana.
@@ -16,67 +24,167 @@ class GetGrafanaResult:
     def __init__(__self__, cloud_name=None, components=None, grafana=None, grafana_user_config=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
-        __self__.cloud_name = cloud_name
+        pulumi.set(__self__, "cloud_name", cloud_name)
         if components and not isinstance(components, list):
             raise TypeError("Expected argument 'components' to be a list")
-        __self__.components = components
+        pulumi.set(__self__, "components", components)
         if grafana and not isinstance(grafana, dict):
             raise TypeError("Expected argument 'grafana' to be a dict")
-        __self__.grafana = grafana
+        pulumi.set(__self__, "grafana", grafana)
         if grafana_user_config and not isinstance(grafana_user_config, dict):
             raise TypeError("Expected argument 'grafana_user_config' to be a dict")
-        __self__.grafana_user_config = grafana_user_config
+        pulumi.set(__self__, "grafana_user_config", grafana_user_config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
+            raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
+        pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+        if maintenance_window_time and not isinstance(maintenance_window_time, str):
+            raise TypeError("Expected argument 'maintenance_window_time' to be a str")
+        pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+        if plan and not isinstance(plan, str):
+            raise TypeError("Expected argument 'plan' to be a str")
+        pulumi.set(__self__, "plan", plan)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if project_vpc_id and not isinstance(project_vpc_id, str):
+            raise TypeError("Expected argument 'project_vpc_id' to be a str")
+        pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+        if service_host and not isinstance(service_host, str):
+            raise TypeError("Expected argument 'service_host' to be a str")
+        pulumi.set(__self__, "service_host", service_host)
+        if service_integrations and not isinstance(service_integrations, list):
+            raise TypeError("Expected argument 'service_integrations' to be a list")
+        pulumi.set(__self__, "service_integrations", service_integrations)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if service_password and not isinstance(service_password, str):
+            raise TypeError("Expected argument 'service_password' to be a str")
+        pulumi.set(__self__, "service_password", service_password)
+        if service_port and not isinstance(service_port, float):
+            raise TypeError("Expected argument 'service_port' to be a float")
+        pulumi.set(__self__, "service_port", service_port)
+        if service_type and not isinstance(service_type, str):
+            raise TypeError("Expected argument 'service_type' to be a str")
+        pulumi.set(__self__, "service_type", service_type)
+        if service_uri and not isinstance(service_uri, str):
+            raise TypeError("Expected argument 'service_uri' to be a str")
+        pulumi.set(__self__, "service_uri", service_uri)
+        if service_username and not isinstance(service_username, str):
+            raise TypeError("Expected argument 'service_username' to be a str")
+        pulumi.set(__self__, "service_username", service_username)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if termination_protection and not isinstance(termination_protection, bool):
+            raise TypeError("Expected argument 'termination_protection' to be a bool")
+        pulumi.set(__self__, "termination_protection", termination_protection)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[str]:
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter
+    def components(self) -> List['outputs.GetGrafanaComponentResult']:
+        return pulumi.get(self, "components")
+
+    @property
+    @pulumi.getter
+    def grafana(self) -> 'outputs.GetGrafanaGrafanaResult':
+        return pulumi.get(self, "grafana")
+
+    @property
+    @pulumi.getter(name="grafanaUserConfig")
+    def grafana_user_config(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigResult']:
+        return pulumi.get(self, "grafana_user_config")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
-            raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
-        __self__.maintenance_window_dow = maintenance_window_dow
-        if maintenance_window_time and not isinstance(maintenance_window_time, str):
-            raise TypeError("Expected argument 'maintenance_window_time' to be a str")
-        __self__.maintenance_window_time = maintenance_window_time
-        if plan and not isinstance(plan, str):
-            raise TypeError("Expected argument 'plan' to be a str")
-        __self__.plan = plan
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if project_vpc_id and not isinstance(project_vpc_id, str):
-            raise TypeError("Expected argument 'project_vpc_id' to be a str")
-        __self__.project_vpc_id = project_vpc_id
-        if service_host and not isinstance(service_host, str):
-            raise TypeError("Expected argument 'service_host' to be a str")
-        __self__.service_host = service_host
-        if service_integrations and not isinstance(service_integrations, list):
-            raise TypeError("Expected argument 'service_integrations' to be a list")
-        __self__.service_integrations = service_integrations
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if service_password and not isinstance(service_password, str):
-            raise TypeError("Expected argument 'service_password' to be a str")
-        __self__.service_password = service_password
-        if service_port and not isinstance(service_port, float):
-            raise TypeError("Expected argument 'service_port' to be a float")
-        __self__.service_port = service_port
-        if service_type and not isinstance(service_type, str):
-            raise TypeError("Expected argument 'service_type' to be a str")
-        __self__.service_type = service_type
-        if service_uri and not isinstance(service_uri, str):
-            raise TypeError("Expected argument 'service_uri' to be a str")
-        __self__.service_uri = service_uri
-        if service_username and not isinstance(service_username, str):
-            raise TypeError("Expected argument 'service_username' to be a str")
-        __self__.service_username = service_username
-        if state and not isinstance(state, str):
-            raise TypeError("Expected argument 'state' to be a str")
-        __self__.state = state
-        if termination_protection and not isinstance(termination_protection, bool):
-            raise TypeError("Expected argument 'termination_protection' to be a bool")
-        __self__.termination_protection = termination_protection
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowDow")
+    def maintenance_window_dow(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_window_dow")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowTime")
+    def maintenance_window_time(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_window_time")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[str]:
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_vpc_id")
+
+    @property
+    @pulumi.getter(name="serviceHost")
+    def service_host(self) -> str:
+        return pulumi.get(self, "service_host")
+
+    @property
+    @pulumi.getter(name="serviceIntegrations")
+    def service_integrations(self) -> Optional[List['outputs.GetGrafanaServiceIntegrationResult']]:
+        return pulumi.get(self, "service_integrations")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="servicePassword")
+    def service_password(self) -> str:
+        return pulumi.get(self, "service_password")
+
+    @property
+    @pulumi.getter(name="servicePort")
+    def service_port(self) -> float:
+        return pulumi.get(self, "service_port")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> str:
+        return pulumi.get(self, "service_type")
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> str:
+        return pulumi.get(self, "service_uri")
+
+    @property
+    @pulumi.getter(name="serviceUsername")
+    def service_username(self) -> str:
+        return pulumi.get(self, "service_username")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[bool]:
+        return pulumi.get(self, "termination_protection")
 
 
 class AwaitableGetGrafanaResult(GetGrafanaResult):
@@ -107,101 +215,28 @@ class AwaitableGetGrafanaResult(GetGrafanaResult):
             termination_protection=self.termination_protection)
 
 
-def get_grafana(cloud_name=None, components=None, grafana=None, grafana_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None, opts=None):
+def get_grafana(cloud_name: Optional[str] = None,
+                components: Optional[List[pulumi.InputType['GetGrafanaComponentArgs']]] = None,
+                grafana: Optional[pulumi.InputType['GetGrafanaGrafanaArgs']] = None,
+                grafana_user_config: Optional[pulumi.InputType['GetGrafanaGrafanaUserConfigArgs']] = None,
+                maintenance_window_dow: Optional[str] = None,
+                maintenance_window_time: Optional[str] = None,
+                plan: Optional[str] = None,
+                project: Optional[str] = None,
+                project_vpc_id: Optional[str] = None,
+                service_host: Optional[str] = None,
+                service_integrations: Optional[List[pulumi.InputType['GetGrafanaServiceIntegrationArgs']]] = None,
+                service_name: Optional[str] = None,
+                service_password: Optional[str] = None,
+                service_port: Optional[float] = None,
+                service_type: Optional[str] = None,
+                service_uri: Optional[str] = None,
+                service_username: Optional[str] = None,
+                state: Optional[str] = None,
+                termination_protection: Optional[bool] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGrafanaResult:
     """
     Use this data source to access information about an existing resource.
-
-
-    The **components** object supports the following:
-
-      * `component` (`str`)
-      * `host` (`str`)
-      * `kafkaAuthenticationMethod` (`str`)
-      * `port` (`float`)
-      * `route` (`str`)
-      * `ssl` (`bool`)
-      * `usage` (`str`)
-
-    The **grafana_user_config** object supports the following:
-
-      * `alertingEnabled` (`str`)
-      * `alertingErrorOrTimeout` (`str`)
-      * `alertingNodataOrNullvalues` (`str`)
-      * `allowEmbedding` (`str`)
-      * `authBasicEnabled` (`str`)
-      * `authGenericOauth` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedDomains` (`list`)
-        * `allowedOrganizations` (`list`)
-        * `apiUrl` (`str`)
-        * `authUrl` (`str`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `name` (`str`)
-        * `scopes` (`list`)
-        * `tokenUrl` (`str`)
-
-      * `authGithub` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedOrganizations` (`list`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `teamIds` (`list`)
-
-      * `authGitlab` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedGroups` (`list`)
-        * `apiUrl` (`str`)
-        * `authUrl` (`str`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-        * `tokenUrl` (`str`)
-
-      * `authGoogle` (`dict`)
-        * `allowSignUp` (`str`)
-        * `allowedDomains` (`list`)
-        * `clientId` (`str`)
-        * `clientSecret` (`str`)
-
-      * `cookieSamesite` (`str`)
-      * `customDomain` (`str`)
-      * `dashboardsVersionsToKeep` (`str`)
-      * `dataproxySendUserHeader` (`str`)
-      * `dataproxyTimeout` (`str`)
-      * `disableGravatar` (`str`)
-      * `editorsCanAdmin` (`str`)
-      * `externalImageStorage` (`dict`)
-        * `access_key` (`str`)
-        * `bucketUrl` (`str`)
-        * `provider` (`str`)
-        * `secretKey` (`str`)
-
-      * `googleAnalyticsUaId` (`str`)
-      * `ipFilters` (`list`)
-      * `metricsEnabled` (`str`)
-      * `privateAccess` (`dict`)
-        * `grafana` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `grafana` (`str`)
-
-      * `smtpServer` (`dict`)
-        * `fromAddress` (`str`)
-        * `fromName` (`str`)
-        * `host` (`str`)
-        * `password` (`str`)
-        * `port` (`str`)
-        * `skipVerify` (`str`)
-        * `username` (`str`)
-
-      * `userAutoAssignOrg` (`str`)
-      * `userAutoAssignOrgRole` (`str`)
-      * `viewersCanEdit` (`str`)
-
-    The **service_integrations** object supports the following:
-
-      * `integration_type` (`str`)
-      * `source_service_name` (`str`)
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name
@@ -227,26 +262,26 @@ def get_grafana(cloud_name=None, components=None, grafana=None, grafana_user_con
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getGrafana:getGrafana', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getGrafana:getGrafana', __args__, opts=opts, typ=GetGrafanaResult).value
 
     return AwaitableGetGrafanaResult(
-        cloud_name=__ret__.get('cloudName'),
-        components=__ret__.get('components'),
-        grafana=__ret__.get('grafana'),
-        grafana_user_config=__ret__.get('grafanaUserConfig'),
-        id=__ret__.get('id'),
-        maintenance_window_dow=__ret__.get('maintenanceWindowDow'),
-        maintenance_window_time=__ret__.get('maintenanceWindowTime'),
-        plan=__ret__.get('plan'),
-        project=__ret__.get('project'),
-        project_vpc_id=__ret__.get('projectVpcId'),
-        service_host=__ret__.get('serviceHost'),
-        service_integrations=__ret__.get('serviceIntegrations'),
-        service_name=__ret__.get('serviceName'),
-        service_password=__ret__.get('servicePassword'),
-        service_port=__ret__.get('servicePort'),
-        service_type=__ret__.get('serviceType'),
-        service_uri=__ret__.get('serviceUri'),
-        service_username=__ret__.get('serviceUsername'),
-        state=__ret__.get('state'),
-        termination_protection=__ret__.get('terminationProtection'))
+        cloud_name=__ret__.cloud_name,
+        components=__ret__.components,
+        grafana=__ret__.grafana,
+        grafana_user_config=__ret__.grafana_user_config,
+        id=__ret__.id,
+        maintenance_window_dow=__ret__.maintenance_window_dow,
+        maintenance_window_time=__ret__.maintenance_window_time,
+        plan=__ret__.plan,
+        project=__ret__.project,
+        project_vpc_id=__ret__.project_vpc_id,
+        service_host=__ret__.service_host,
+        service_integrations=__ret__.service_integrations,
+        service_name=__ret__.service_name,
+        service_password=__ret__.service_password,
+        service_port=__ret__.service_port,
+        service_type=__ret__.service_type,
+        service_uri=__ret__.service_uri,
+        service_username=__ret__.service_username,
+        state=__ret__.state,
+        termination_protection=__ret__.termination_protection)

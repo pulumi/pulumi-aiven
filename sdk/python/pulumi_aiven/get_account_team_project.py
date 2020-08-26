@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetAccountTeamProjectResult',
+    'AwaitableGetAccountTeamProjectResult',
+    'get_account_team_project',
+]
 
+@pulumi.output_type
 class GetAccountTeamProjectResult:
     """
     A collection of values returned by getAccountTeamProject.
@@ -16,22 +22,47 @@ class GetAccountTeamProjectResult:
     def __init__(__self__, account_id=None, id=None, project_name=None, team_id=None, team_type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
-        __self__.account_id = account_id
+        pulumi.set(__self__, "account_id", account_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if project_name and not isinstance(project_name, str):
+            raise TypeError("Expected argument 'project_name' to be a str")
+        pulumi.set(__self__, "project_name", project_name)
+        if team_id and not isinstance(team_id, str):
+            raise TypeError("Expected argument 'team_id' to be a str")
+        pulumi.set(__self__, "team_id", team_id)
+        if team_type and not isinstance(team_type, str):
+            raise TypeError("Expected argument 'team_type' to be a str")
+        pulumi.set(__self__, "team_type", team_type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project_name and not isinstance(project_name, str):
-            raise TypeError("Expected argument 'project_name' to be a str")
-        __self__.project_name = project_name
-        if team_id and not isinstance(team_id, str):
-            raise TypeError("Expected argument 'team_id' to be a str")
-        __self__.team_id = team_id
-        if team_type and not isinstance(team_type, str):
-            raise TypeError("Expected argument 'team_type' to be a str")
-        __self__.team_type = team_type
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> str:
+        return pulumi.get(self, "project_name")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        return pulumi.get(self, "team_id")
+
+    @property
+    @pulumi.getter(name="teamType")
+    def team_type(self) -> Optional[str]:
+        return pulumi.get(self, "team_type")
 
 
 class AwaitableGetAccountTeamProjectResult(GetAccountTeamProjectResult):
@@ -47,7 +78,11 @@ class AwaitableGetAccountTeamProjectResult(GetAccountTeamProjectResult):
             team_type=self.team_type)
 
 
-def get_account_team_project(account_id=None, project_name=None, team_id=None, team_type=None, opts=None):
+def get_account_team_project(account_id: Optional[str] = None,
+                             project_name: Optional[str] = None,
+                             team_id: Optional[str] = None,
+                             team_type: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamProjectResult:
     """
     ## Example Usage
 
@@ -69,11 +104,11 @@ def get_account_team_project(account_id=None, project_name=None, team_id=None, t
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamProject:getAccountTeamProject', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamProject:getAccountTeamProject', __args__, opts=opts, typ=GetAccountTeamProjectResult).value
 
     return AwaitableGetAccountTeamProjectResult(
-        account_id=__ret__.get('accountId'),
-        id=__ret__.get('id'),
-        project_name=__ret__.get('projectName'),
-        team_id=__ret__.get('teamId'),
-        team_type=__ret__.get('teamType'))
+        account_id=__ret__.account_id,
+        id=__ret__.id,
+        project_name=__ret__.project_name,
+        team_id=__ret__.team_id,
+        team_type=__ret__.team_type)

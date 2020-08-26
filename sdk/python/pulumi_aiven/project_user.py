@@ -5,28 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ProjectUser']
 
 
 class ProjectUser(pulumi.CustomResource):
-    accepted: pulumi.Output[bool]
-    """
-    Whether the user has accepted project membership or not
-    """
-    email: pulumi.Output[str]
-    """
-    Email address of the user
-    """
-    member_type: pulumi.Output[str]
-    """
-    Project membership type. One of: admin, developer, operator
-    """
-    project: pulumi.Output[str]
-    """
-    The project the user belongs to
-    """
-    def __init__(__self__, resource_name, opts=None, email=None, member_type=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 member_type: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -80,13 +74,19 @@ class ProjectUser(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, accepted=None, email=None, member_type=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accepted: Optional[pulumi.Input[bool]] = None,
+            email: Optional[pulumi.Input[str]] = None,
+            member_type: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'ProjectUser':
         """
         Get an existing ProjectUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] accepted: Whether the user has accepted project membership or not
         :param pulumi.Input[str] email: Email address of the user
@@ -103,8 +103,41 @@ class ProjectUser(pulumi.CustomResource):
         __props__["project"] = project
         return ProjectUser(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def accepted(self) -> bool:
+        """
+        Whether the user has accepted project membership or not
+        """
+        return pulumi.get(self, "accepted")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Email address of the user
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> str:
+        """
+        Project membership type. One of: admin, developer, operator
+        """
+        return pulumi.get(self, "member_type")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project the user belongs to
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

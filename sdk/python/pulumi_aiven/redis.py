@@ -5,122 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Redis']
 
 
 class Redis(pulumi.CustomResource):
-    cloud_name: pulumi.Output[str]
-    """
-    Cloud the service runs in
-    """
-    components: pulumi.Output[list]
-    """
-    Service component information objects
-
-      * `component` (`str`)
-      * `host` (`str`)
-      * `kafkaAuthenticationMethod` (`str`)
-      * `port` (`float`)
-      * `route` (`str`)
-      * `ssl` (`bool`)
-      * `usage` (`str`)
-    """
-    maintenance_window_dow: pulumi.Output[str]
-    """
-    Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-    """
-    maintenance_window_time: pulumi.Output[str]
-    """
-    Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-    """
-    plan: pulumi.Output[str]
-    """
-    Subscription plan
-    """
-    project: pulumi.Output[str]
-    """
-    Target project
-    """
-    project_vpc_id: pulumi.Output[str]
-    """
-    Identifier of the VPC the service should be in, if any
-    """
-    redis: pulumi.Output[dict]
-    """
-    Redis server provided values
-    """
-    redis_user_config: pulumi.Output[dict]
-    """
-    Redis user configurable settings
-
-      * `ipFilters` (`list`)
-      * `migration` (`dict`)
-        * `host` (`str`)
-        * `password` (`str`)
-        * `port` (`str`)
-        * `ssl` (`str`)
-        * `username` (`str`)
-
-      * `privateAccess` (`dict`)
-        * `prometheus` (`str`)
-        * `redis` (`str`)
-
-      * `publicAccess` (`dict`)
-        * `prometheus` (`str`)
-        * `redis` (`str`)
-
-      * `redisLfuDecayTime` (`str`)
-      * `redisLfuLogFactor` (`str`)
-      * `redisMaxmemoryPolicy` (`str`)
-      * `redisNotifyKeyspaceEvents` (`str`)
-      * `redisSsl` (`str`)
-      * `redisTimeout` (`str`)
-    """
-    service_host: pulumi.Output[str]
-    """
-    Service hostname
-    """
-    service_integrations: pulumi.Output[list]
-    """
-    Service integrations to specify when creating a service. Not applied after initial service creation
-
-      * `integration_type` (`str`)
-      * `source_service_name` (`str`)
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service name
-    """
-    service_password: pulumi.Output[str]
-    """
-    Password used for connecting to the service, if applicable
-    """
-    service_port: pulumi.Output[float]
-    """
-    Service port
-    """
-    service_type: pulumi.Output[str]
-    """
-    Aiven internal service type code
-    """
-    service_uri: pulumi.Output[str]
-    """
-    URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-    """
-    service_username: pulumi.Output[str]
-    """
-    Username used for connecting to the service, if applicable
-    """
-    state: pulumi.Output[str]
-    """
-    Service state
-    """
-    termination_protection: pulumi.Output[bool]
-    """
-    Prevent service from being deleted. It is recommended to have this enabled for all services.
-    """
-    def __init__(__self__, resource_name, opts=None, cloud_name=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_integrations=None, service_name=None, termination_protection=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+                 maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 project_vpc_id: Optional[pulumi.Input[str]] = None,
+                 redis: Optional[pulumi.Input[pulumi.InputType['RedisRedisArgs']]] = None,
+                 redis_user_config: Optional[pulumi.Input[pulumi.InputType['RedisRedisUserConfigArgs']]] = None,
+                 service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RedisServiceIntegrationArgs']]]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Redis resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -131,41 +41,11 @@ class Redis(pulumi.CustomResource):
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input[dict] redis: Redis server provided values
-        :param pulumi.Input[dict] redis_user_config: Redis user configurable settings
-        :param pulumi.Input[list] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[pulumi.InputType['RedisRedisArgs']] redis: Redis server provided values
+        :param pulumi.Input[pulumi.InputType['RedisRedisUserConfigArgs']] redis_user_config: Redis user configurable settings
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RedisServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
-
-        The **redis_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `migration` (`pulumi.Input[dict]`)
-            * `host` (`pulumi.Input[str]`)
-            * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[str]`)
-            * `ssl` (`pulumi.Input[str]`)
-            * `username` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `redisLfuDecayTime` (`pulumi.Input[str]`)
-          * `redisLfuLogFactor` (`pulumi.Input[str]`)
-          * `redisMaxmemoryPolicy` (`pulumi.Input[str]`)
-          * `redisNotifyKeyspaceEvents` (`pulumi.Input[str]`)
-          * `redisSsl` (`pulumi.Input[str]`)
-          * `redisTimeout` (`pulumi.Input[str]`)
-
-        The **service_integrations** object supports the following:
-
-          * `integration_type` (`pulumi.Input[str]`)
-          * `source_service_name` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -214,25 +94,46 @@ class Redis(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cloud_name=None, components=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_name: Optional[pulumi.Input[str]] = None,
+            components: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RedisComponentArgs']]]]] = None,
+            maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+            maintenance_window_time: Optional[pulumi.Input[str]] = None,
+            plan: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            project_vpc_id: Optional[pulumi.Input[str]] = None,
+            redis: Optional[pulumi.Input[pulumi.InputType['RedisRedisArgs']]] = None,
+            redis_user_config: Optional[pulumi.Input[pulumi.InputType['RedisRedisUserConfigArgs']]] = None,
+            service_host: Optional[pulumi.Input[str]] = None,
+            service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RedisServiceIntegrationArgs']]]]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            service_password: Optional[pulumi.Input[str]] = None,
+            service_port: Optional[pulumi.Input[float]] = None,
+            service_type: Optional[pulumi.Input[str]] = None,
+            service_uri: Optional[pulumi.Input[str]] = None,
+            service_username: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Redis':
         """
         Get an existing Redis resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
-        :param pulumi.Input[list] components: Service component information objects
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RedisComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input[dict] redis: Redis server provided values
-        :param pulumi.Input[dict] redis_user_config: Redis user configurable settings
+        :param pulumi.Input[pulumi.InputType['RedisRedisArgs']] redis: Redis server provided values
+        :param pulumi.Input[pulumi.InputType['RedisRedisUserConfigArgs']] redis_user_config: Redis user configurable settings
         :param pulumi.Input[str] service_host: Service hostname
-        :param pulumi.Input[list] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RedisServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[float] service_port: Service port
@@ -241,46 +142,6 @@ class Redis(pulumi.CustomResource):
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
-
-        The **components** object supports the following:
-
-          * `component` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `kafkaAuthenticationMethod` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `route` (`pulumi.Input[str]`)
-          * `ssl` (`pulumi.Input[bool]`)
-          * `usage` (`pulumi.Input[str]`)
-
-        The **redis_user_config** object supports the following:
-
-          * `ipFilters` (`pulumi.Input[list]`)
-          * `migration` (`pulumi.Input[dict]`)
-            * `host` (`pulumi.Input[str]`)
-            * `password` (`pulumi.Input[str]`)
-            * `port` (`pulumi.Input[str]`)
-            * `ssl` (`pulumi.Input[str]`)
-            * `username` (`pulumi.Input[str]`)
-
-          * `privateAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `publicAccess` (`pulumi.Input[dict]`)
-            * `prometheus` (`pulumi.Input[str]`)
-            * `redis` (`pulumi.Input[str]`)
-
-          * `redisLfuDecayTime` (`pulumi.Input[str]`)
-          * `redisLfuLogFactor` (`pulumi.Input[str]`)
-          * `redisMaxmemoryPolicy` (`pulumi.Input[str]`)
-          * `redisNotifyKeyspaceEvents` (`pulumi.Input[str]`)
-          * `redisSsl` (`pulumi.Input[str]`)
-          * `redisTimeout` (`pulumi.Input[str]`)
-
-        The **service_integrations** object supports the following:
-
-          * `integration_type` (`pulumi.Input[str]`)
-          * `source_service_name` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -307,8 +168,161 @@ class Redis(pulumi.CustomResource):
         __props__["termination_protection"] = termination_protection
         return Redis(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[str]:
+        """
+        Cloud the service runs in
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter
+    def components(self) -> List['outputs.RedisComponent']:
+        """
+        Service component information objects
+        """
+        return pulumi.get(self, "components")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowDow")
+    def maintenance_window_dow(self) -> Optional[str]:
+        """
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        """
+        return pulumi.get(self, "maintenance_window_dow")
+
+    @property
+    @pulumi.getter(name="maintenanceWindowTime")
+    def maintenance_window_time(self) -> Optional[str]:
+        """
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        """
+        return pulumi.get(self, "maintenance_window_time")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[str]:
+        """
+        Subscription plan
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Target project
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> Optional[str]:
+        """
+        Identifier of the VPC the service should be in, if any
+        """
+        return pulumi.get(self, "project_vpc_id")
+
+    @property
+    @pulumi.getter
+    def redis(self) -> 'outputs.RedisRedis':
+        """
+        Redis server provided values
+        """
+        return pulumi.get(self, "redis")
+
+    @property
+    @pulumi.getter(name="redisUserConfig")
+    def redis_user_config(self) -> Optional['outputs.RedisRedisUserConfig']:
+        """
+        Redis user configurable settings
+        """
+        return pulumi.get(self, "redis_user_config")
+
+    @property
+    @pulumi.getter(name="serviceHost")
+    def service_host(self) -> str:
+        """
+        Service hostname
+        """
+        return pulumi.get(self, "service_host")
+
+    @property
+    @pulumi.getter(name="serviceIntegrations")
+    def service_integrations(self) -> Optional[List['outputs.RedisServiceIntegration']]:
+        """
+        Service integrations to specify when creating a service. Not applied after initial service creation
+        """
+        return pulumi.get(self, "service_integrations")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service name
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="servicePassword")
+    def service_password(self) -> str:
+        """
+        Password used for connecting to the service, if applicable
+        """
+        return pulumi.get(self, "service_password")
+
+    @property
+    @pulumi.getter(name="servicePort")
+    def service_port(self) -> float:
+        """
+        Service port
+        """
+        return pulumi.get(self, "service_port")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> str:
+        """
+        Aiven internal service type code
+        """
+        return pulumi.get(self, "service_type")
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> str:
+        """
+        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        """
+        return pulumi.get(self, "service_uri")
+
+    @property
+    @pulumi.getter(name="serviceUsername")
+    def service_username(self) -> str:
+        """
+        Username used for connecting to the service, if applicable
+        """
+        return pulumi.get(self, "service_username")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Service state
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[bool]:
+        """
+        Prevent service from being deleted. It is recommended to have this enabled for all services.
+        """
+        return pulumi.get(self, "termination_protection")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

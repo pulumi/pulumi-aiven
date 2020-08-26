@@ -5,36 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['Account']
 
 
 class Account(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
-    """
-    Account id
-    """
-    create_time: pulumi.Output[str]
-    """
-    Time of creation
-    """
-    name: pulumi.Output[str]
-    """
-    Account name
-    """
-    owner_team_id: pulumi.Output[str]
-    """
-    Owner team id
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    Tenant id
-    """
-    update_time: pulumi.Output[str]
-    """
-    Time of last update
-    """
-    def __init__(__self__, resource_name, opts=None, create_time=None, name=None, owner_team_id=None, tenant_id=None, update_time=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner_team_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -83,13 +71,21 @@ class Account(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_id=None, create_time=None, name=None, owner_team_id=None, tenant_id=None, update_time=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            owner_team_id: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account id
         :param pulumi.Input[str] create_time: Time of creation
@@ -110,8 +106,57 @@ class Account(pulumi.CustomResource):
         __props__["update_time"] = update_time
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        Account id
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time of creation
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Account name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="ownerTeamId")
+    def owner_team_id(self) -> str:
+        """
+        Owner team id
+        """
+        return pulumi.get(self, "owner_team_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        Tenant id
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Time of last update
+        """
+        return pulumi.get(self, "update_time")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

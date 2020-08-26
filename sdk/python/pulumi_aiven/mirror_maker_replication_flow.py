@@ -5,40 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['MirrorMakerReplicationFlow']
 
 
 class MirrorMakerReplicationFlow(pulumi.CustomResource):
-    enable: pulumi.Output[bool]
-    """
-    Enable of disable replication flows for a service
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the kafka topic to
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the kafka topic to
-    """
-    source_cluster: pulumi.Output[str]
-    """
-    Source cluster alias
-    """
-    target_cluster: pulumi.Output[str]
-    """
-    Target cluster alias
-    """
-    topics: pulumi.Output[list]
-    """
-    List of topics and/or regular expressions to replicate
-    """
-    topics_blacklists: pulumi.Output[list]
-    """
-    List of topics and/or regular expressions to not replicate.
-    """
-    def __init__(__self__, resource_name, opts=None, enable=None, project=None, service_name=None, source_cluster=None, target_cluster=None, topics=None, topics_blacklists=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 source_cluster: Optional[pulumi.Input[str]] = None,
+                 target_cluster: Optional[pulumi.Input[str]] = None,
+                 topics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 topics_blacklists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a MirrorMakerReplicationFlow resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -48,8 +34,8 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[str] source_cluster: Source cluster alias
         :param pulumi.Input[str] target_cluster: Target cluster alias
-        :param pulumi.Input[list] topics: List of topics and/or regular expressions to replicate
-        :param pulumi.Input[list] topics_blacklists: List of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[List[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
+        :param pulumi.Input[List[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,21 +78,30 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enable=None, project=None, service_name=None, source_cluster=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable: Optional[pulumi.Input[bool]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            source_cluster: Optional[pulumi.Input[str]] = None,
+            target_cluster: Optional[pulumi.Input[str]] = None,
+            topics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            topics_blacklists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'MirrorMakerReplicationFlow':
         """
         Get an existing MirrorMakerReplicationFlow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service
         :param pulumi.Input[str] project: Project to link the kafka topic to
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[str] source_cluster: Source cluster alias
         :param pulumi.Input[str] target_cluster: Target cluster alias
-        :param pulumi.Input[list] topics: List of topics and/or regular expressions to replicate
-        :param pulumi.Input[list] topics_blacklists: List of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[List[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
+        :param pulumi.Input[List[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,8 +116,65 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         __props__["topics_blacklists"] = topics_blacklists
         return MirrorMakerReplicationFlow(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Enable of disable replication flows for a service
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the kafka topic to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the kafka topic to
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="sourceCluster")
+    def source_cluster(self) -> str:
+        """
+        Source cluster alias
+        """
+        return pulumi.get(self, "source_cluster")
+
+    @property
+    @pulumi.getter(name="targetCluster")
+    def target_cluster(self) -> str:
+        """
+        Target cluster alias
+        """
+        return pulumi.get(self, "target_cluster")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Optional[List[str]]:
+        """
+        List of topics and/or regular expressions to replicate
+        """
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter(name="topicsBlacklists")
+    def topics_blacklists(self) -> Optional[List[str]]:
+        """
+        List of topics and/or regular expressions to not replicate.
+        """
+        return pulumi.get(self, "topics_blacklists")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

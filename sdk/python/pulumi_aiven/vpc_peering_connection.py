@@ -5,52 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['VpcPeeringConnection']
 
 
 class VpcPeeringConnection(pulumi.CustomResource):
-    peer_azure_app_id: pulumi.Output[str]
-    """
-    Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
-    """
-    peer_azure_tenant_id: pulumi.Output[str]
-    """
-    Azure tenant id in UUID4 form
-    """
-    peer_cloud_account: pulumi.Output[str]
-    """
-    AWS account ID or GCP project ID of the peered VPC
-    """
-    peer_region: pulumi.Output[str]
-    """
-    AWS region of the peered VPC (if not in the same region as Aiven VPC)
-    """
-    peer_resource_group: pulumi.Output[str]
-    """
-    Azure resource group name of the peered VPC
-    """
-    peer_vpc: pulumi.Output[str]
-    """
-    AWS VPC ID or GCP VPC network name of the peered VPC
-    """
-    peering_connection_id: pulumi.Output[str]
-    """
-    Cloud provider identifier for the peering connection if available
-    """
-    state: pulumi.Output[str]
-    """
-    State of the peering connection
-    """
-    state_info: pulumi.Output[dict]
-    """
-    State-specific help or error information
-    """
-    vpc_id: pulumi.Output[str]
-    """
-    The VPC the peering connection belongs to
-    """
-    def __init__(__self__, resource_name, opts=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 peer_cloud_account: Optional[pulumi.Input[str]] = None,
+                 peer_region: Optional[pulumi.Input[str]] = None,
+                 peer_vpc: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -112,13 +83,25 @@ class VpcPeeringConnection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, peer_azure_app_id=None, peer_azure_tenant_id=None, peer_cloud_account=None, peer_region=None, peer_resource_group=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, vpc_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+            peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
+            peer_cloud_account: Optional[pulumi.Input[str]] = None,
+            peer_region: Optional[pulumi.Input[str]] = None,
+            peer_resource_group: Optional[pulumi.Input[str]] = None,
+            peer_vpc: Optional[pulumi.Input[str]] = None,
+            peering_connection_id: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None) -> 'VpcPeeringConnection':
         """
         Get an existing VpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form
@@ -128,7 +111,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
         :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
-        :param pulumi.Input[dict] state_info: State-specific help or error information
+        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -147,8 +130,89 @@ class VpcPeeringConnection(pulumi.CustomResource):
         __props__["vpc_id"] = vpc_id
         return VpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="peerAzureAppId")
+    def peer_azure_app_id(self) -> str:
+        """
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+        """
+        return pulumi.get(self, "peer_azure_app_id")
+
+    @property
+    @pulumi.getter(name="peerAzureTenantId")
+    def peer_azure_tenant_id(self) -> str:
+        """
+        Azure tenant id in UUID4 form
+        """
+        return pulumi.get(self, "peer_azure_tenant_id")
+
+    @property
+    @pulumi.getter(name="peerCloudAccount")
+    def peer_cloud_account(self) -> str:
+        """
+        AWS account ID or GCP project ID of the peered VPC
+        """
+        return pulumi.get(self, "peer_cloud_account")
+
+    @property
+    @pulumi.getter(name="peerRegion")
+    def peer_region(self) -> Optional[str]:
+        """
+        AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        """
+        return pulumi.get(self, "peer_region")
+
+    @property
+    @pulumi.getter(name="peerResourceGroup")
+    def peer_resource_group(self) -> str:
+        """
+        Azure resource group name of the peered VPC
+        """
+        return pulumi.get(self, "peer_resource_group")
+
+    @property
+    @pulumi.getter(name="peerVpc")
+    def peer_vpc(self) -> str:
+        """
+        AWS VPC ID or GCP VPC network name of the peered VPC
+        """
+        return pulumi.get(self, "peer_vpc")
+
+    @property
+    @pulumi.getter(name="peeringConnectionId")
+    def peering_connection_id(self) -> str:
+        """
+        Cloud provider identifier for the peering connection if available
+        """
+        return pulumi.get(self, "peering_connection_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the peering connection
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateInfo")
+    def state_info(self) -> Mapping[str, Any]:
+        """
+        State-specific help or error information
+        """
+        return pulumi.get(self, "state_info")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The VPC the peering connection belongs to
+        """
+        return pulumi.get(self, "vpc_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

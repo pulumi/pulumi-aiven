@@ -5,28 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ProjectVpc']
 
 
 class ProjectVpc(pulumi.CustomResource):
-    cloud_name: pulumi.Output[str]
-    """
-    Cloud the VPC is in
-    """
-    network_cidr: pulumi.Output[str]
-    """
-    Network address range used by the VPC like 192.168.0.0/24
-    """
-    project: pulumi.Output[str]
-    """
-    The project the VPC belongs to
-    """
-    state: pulumi.Output[str]
-    """
-    State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
-    """
-    def __init__(__self__, resource_name, opts=None, cloud_name=None, network_cidr=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 network_cidr: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -80,13 +74,19 @@ class ProjectVpc(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cloud_name=None, network_cidr=None, project=None, state=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_name: Optional[pulumi.Input[str]] = None,
+            network_cidr: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None) -> 'ProjectVpc':
         """
         Get an existing ProjectVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: Cloud the VPC is in
         :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
@@ -103,8 +103,41 @@ class ProjectVpc(pulumi.CustomResource):
         __props__["state"] = state
         return ProjectVpc(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> str:
+        """
+        Cloud the VPC is in
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter(name="networkCidr")
+    def network_cidr(self) -> str:
+        """
+        Network address range used by the VPC like 192.168.0.0/24
+        """
+        return pulumi.get(self, "network_cidr")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project the VPC belongs to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+        """
+        return pulumi.get(self, "state")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetProjectUserResult',
+    'AwaitableGetProjectUserResult',
+    'get_project_user',
+]
 
+@pulumi.output_type
 class GetProjectUserResult:
     """
     A collection of values returned by getProjectUser.
@@ -16,22 +22,47 @@ class GetProjectUserResult:
     def __init__(__self__, accepted=None, email=None, id=None, member_type=None, project=None):
         if accepted and not isinstance(accepted, bool):
             raise TypeError("Expected argument 'accepted' to be a bool")
-        __self__.accepted = accepted
+        pulumi.set(__self__, "accepted", accepted)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        pulumi.set(__self__, "email", email)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if member_type and not isinstance(member_type, str):
+            raise TypeError("Expected argument 'member_type' to be a str")
+        pulumi.set(__self__, "member_type", member_type)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def accepted(self) -> bool:
+        return pulumi.get(self, "accepted")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if member_type and not isinstance(member_type, str):
-            raise TypeError("Expected argument 'member_type' to be a str")
-        __self__.member_type = member_type
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> Optional[str]:
+        return pulumi.get(self, "member_type")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
 
 
 class AwaitableGetProjectUserResult(GetProjectUserResult):
@@ -47,7 +78,11 @@ class AwaitableGetProjectUserResult(GetProjectUserResult):
             project=self.project)
 
 
-def get_project_user(accepted=None, email=None, member_type=None, project=None, opts=None):
+def get_project_user(accepted: Optional[bool] = None,
+                     email: Optional[str] = None,
+                     member_type: Optional[str] = None,
+                     project: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectUserResult:
     """
     ## Example Usage
 
@@ -68,11 +103,11 @@ def get_project_user(accepted=None, email=None, member_type=None, project=None, 
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getProjectUser:getProjectUser', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getProjectUser:getProjectUser', __args__, opts=opts, typ=GetProjectUserResult).value
 
     return AwaitableGetProjectUserResult(
-        accepted=__ret__.get('accepted'),
-        email=__ret__.get('email'),
-        id=__ret__.get('id'),
-        member_type=__ret__.get('memberType'),
-        project=__ret__.get('project'))
+        accepted=__ret__.accepted,
+        email=__ret__.email,
+        id=__ret__.id,
+        member_type=__ret__.member_type,
+        project=__ret__.project)

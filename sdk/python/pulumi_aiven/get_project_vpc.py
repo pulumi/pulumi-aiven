@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetProjectVpcResult',
+    'AwaitableGetProjectVpcResult',
+    'get_project_vpc',
+]
 
+@pulumi.output_type
 class GetProjectVpcResult:
     """
     A collection of values returned by getProjectVpc.
@@ -16,22 +22,47 @@ class GetProjectVpcResult:
     def __init__(__self__, cloud_name=None, id=None, network_cidr=None, project=None, state=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
-        __self__.cloud_name = cloud_name
+        pulumi.set(__self__, "cloud_name", cloud_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if network_cidr and not isinstance(network_cidr, str):
+            raise TypeError("Expected argument 'network_cidr' to be a str")
+        pulumi.set(__self__, "network_cidr", network_cidr)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> str:
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if network_cidr and not isinstance(network_cidr, str):
-            raise TypeError("Expected argument 'network_cidr' to be a str")
-        __self__.network_cidr = network_cidr
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if state and not isinstance(state, str):
-            raise TypeError("Expected argument 'state' to be a str")
-        __self__.state = state
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="networkCidr")
+    def network_cidr(self) -> Optional[str]:
+        return pulumi.get(self, "network_cidr")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
 
 
 class AwaitableGetProjectVpcResult(GetProjectVpcResult):
@@ -47,7 +78,11 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
             state=self.state)
 
 
-def get_project_vpc(cloud_name=None, network_cidr=None, project=None, state=None, opts=None):
+def get_project_vpc(cloud_name: Optional[str] = None,
+                    network_cidr: Optional[str] = None,
+                    project: Optional[str] = None,
+                    state: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
     ## Example Usage
 
@@ -68,11 +103,11 @@ def get_project_vpc(cloud_name=None, network_cidr=None, project=None, state=None
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts, typ=GetProjectVpcResult).value
 
     return AwaitableGetProjectVpcResult(
-        cloud_name=__ret__.get('cloudName'),
-        id=__ret__.get('id'),
-        network_cidr=__ret__.get('networkCidr'),
-        project=__ret__.get('project'),
-        state=__ret__.get('state'))
+        cloud_name=__ret__.cloud_name,
+        id=__ret__.id,
+        network_cidr=__ret__.network_cidr,
+        project=__ret__.project,
+        state=__ret__.state)

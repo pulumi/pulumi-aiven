@@ -5,10 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetElasticSearchAclResult',
+    'AwaitableGetElasticSearchAclResult',
+    'get_elastic_search_acl',
+]
 
+@pulumi.output_type
 class GetElasticSearchAclResult:
     """
     A collection of values returned by getElasticSearchAcl.
@@ -16,25 +24,55 @@ class GetElasticSearchAclResult:
     def __init__(__self__, acls=None, enabled=None, extended_acl=None, id=None, project=None, service_name=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
-        __self__.acls = acls
+        pulumi.set(__self__, "acls", acls)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
-        __self__.enabled = enabled
+        pulumi.set(__self__, "enabled", enabled)
         if extended_acl and not isinstance(extended_acl, bool):
             raise TypeError("Expected argument 'extended_acl' to be a bool")
-        __self__.extended_acl = extended_acl
+        pulumi.set(__self__, "extended_acl", extended_acl)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[List['outputs.GetElasticSearchAclAclResult']]:
+        return pulumi.get(self, "acls")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="extendedAcl")
+    def extended_acl(self) -> Optional[bool]:
+        return pulumi.get(self, "extended_acl")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
 
 
 class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
@@ -51,18 +89,14 @@ class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
             service_name=self.service_name)
 
 
-def get_elastic_search_acl(acls=None, enabled=None, extended_acl=None, project=None, service_name=None, opts=None):
+def get_elastic_search_acl(acls: Optional[List[pulumi.InputType['GetElasticSearchAclAclArgs']]] = None,
+                           enabled: Optional[bool] = None,
+                           extended_acl: Optional[bool] = None,
+                           project: Optional[str] = None,
+                           service_name: Optional[str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticSearchAclResult:
     """
     Use this data source to access information about an existing resource.
-
-
-    The **acls** object supports the following:
-
-      * `rules` (`list`)
-        * `index` (`str`)
-        * `permission` (`str`)
-
-      * `username` (`str`)
     """
     __args__ = dict()
     __args__['acls'] = acls
@@ -74,12 +108,12 @@ def get_elastic_search_acl(acls=None, enabled=None, extended_acl=None, project=N
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getElasticSearchAcl:getElasticSearchAcl', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getElasticSearchAcl:getElasticSearchAcl', __args__, opts=opts, typ=GetElasticSearchAclResult).value
 
     return AwaitableGetElasticSearchAclResult(
-        acls=__ret__.get('acls'),
-        enabled=__ret__.get('enabled'),
-        extended_acl=__ret__.get('extendedAcl'),
-        id=__ret__.get('id'),
-        project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'))
+        acls=__ret__.acls,
+        enabled=__ret__.enabled,
+        extended_acl=__ret__.extended_acl,
+        id=__ret__.id,
+        project=__ret__.project,
+        service_name=__ret__.service_name)

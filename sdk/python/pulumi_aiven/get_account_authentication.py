@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetAccountAuthenticationResult',
+    'AwaitableGetAccountAuthenticationResult',
+    'get_account_authentication',
+]
 
+@pulumi.output_type
 class GetAccountAuthenticationResult:
     """
     A collection of values returned by getAccountAuthentication.
@@ -16,46 +22,111 @@ class GetAccountAuthenticationResult:
     def __init__(__self__, account_id=None, authentication_id=None, create_time=None, enabled=None, id=None, name=None, saml_acs_url=None, saml_certificate=None, saml_entity_id=None, saml_idp_url=None, saml_metadata_url=None, type=None, update_time=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
-        __self__.account_id = account_id
+        pulumi.set(__self__, "account_id", account_id)
         if authentication_id and not isinstance(authentication_id, str):
             raise TypeError("Expected argument 'authentication_id' to be a str")
-        __self__.authentication_id = authentication_id
+        pulumi.set(__self__, "authentication_id", authentication_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
-        __self__.create_time = create_time
+        pulumi.set(__self__, "create_time", create_time)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
-        __self__.enabled = enabled
+        pulumi.set(__self__, "enabled", enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if saml_acs_url and not isinstance(saml_acs_url, str):
+            raise TypeError("Expected argument 'saml_acs_url' to be a str")
+        pulumi.set(__self__, "saml_acs_url", saml_acs_url)
+        if saml_certificate and not isinstance(saml_certificate, str):
+            raise TypeError("Expected argument 'saml_certificate' to be a str")
+        pulumi.set(__self__, "saml_certificate", saml_certificate)
+        if saml_entity_id and not isinstance(saml_entity_id, str):
+            raise TypeError("Expected argument 'saml_entity_id' to be a str")
+        pulumi.set(__self__, "saml_entity_id", saml_entity_id)
+        if saml_idp_url and not isinstance(saml_idp_url, str):
+            raise TypeError("Expected argument 'saml_idp_url' to be a str")
+        pulumi.set(__self__, "saml_idp_url", saml_idp_url)
+        if saml_metadata_url and not isinstance(saml_metadata_url, str):
+            raise TypeError("Expected argument 'saml_metadata_url' to be a str")
+        pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="authenticationId")
+    def authentication_id(self) -> str:
+        return pulumi.get(self, "authentication_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if saml_acs_url and not isinstance(saml_acs_url, str):
-            raise TypeError("Expected argument 'saml_acs_url' to be a str")
-        __self__.saml_acs_url = saml_acs_url
-        if saml_certificate and not isinstance(saml_certificate, str):
-            raise TypeError("Expected argument 'saml_certificate' to be a str")
-        __self__.saml_certificate = saml_certificate
-        if saml_entity_id and not isinstance(saml_entity_id, str):
-            raise TypeError("Expected argument 'saml_entity_id' to be a str")
-        __self__.saml_entity_id = saml_entity_id
-        if saml_idp_url and not isinstance(saml_idp_url, str):
-            raise TypeError("Expected argument 'saml_idp_url' to be a str")
-        __self__.saml_idp_url = saml_idp_url
-        if saml_metadata_url and not isinstance(saml_metadata_url, str):
-            raise TypeError("Expected argument 'saml_metadata_url' to be a str")
-        __self__.saml_metadata_url = saml_metadata_url
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
-        if update_time and not isinstance(update_time, str):
-            raise TypeError("Expected argument 'update_time' to be a str")
-        __self__.update_time = update_time
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="samlAcsUrl")
+    def saml_acs_url(self) -> str:
+        return pulumi.get(self, "saml_acs_url")
+
+    @property
+    @pulumi.getter(name="samlCertificate")
+    def saml_certificate(self) -> Optional[str]:
+        return pulumi.get(self, "saml_certificate")
+
+    @property
+    @pulumi.getter(name="samlEntityId")
+    def saml_entity_id(self) -> Optional[str]:
+        return pulumi.get(self, "saml_entity_id")
+
+    @property
+    @pulumi.getter(name="samlIdpUrl")
+    def saml_idp_url(self) -> Optional[str]:
+        return pulumi.get(self, "saml_idp_url")
+
+    @property
+    @pulumi.getter(name="samlMetadataUrl")
+    def saml_metadata_url(self) -> str:
+        return pulumi.get(self, "saml_metadata_url")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        return pulumi.get(self, "update_time")
 
 
 class AwaitableGetAccountAuthenticationResult(GetAccountAuthenticationResult):
@@ -79,7 +150,19 @@ class AwaitableGetAccountAuthenticationResult(GetAccountAuthenticationResult):
             update_time=self.update_time)
 
 
-def get_account_authentication(account_id=None, authentication_id=None, create_time=None, enabled=None, name=None, saml_acs_url=None, saml_certificate=None, saml_entity_id=None, saml_idp_url=None, saml_metadata_url=None, type=None, update_time=None, opts=None):
+def get_account_authentication(account_id: Optional[str] = None,
+                               authentication_id: Optional[str] = None,
+                               create_time: Optional[str] = None,
+                               enabled: Optional[bool] = None,
+                               name: Optional[str] = None,
+                               saml_acs_url: Optional[str] = None,
+                               saml_certificate: Optional[str] = None,
+                               saml_entity_id: Optional[str] = None,
+                               saml_idp_url: Optional[str] = None,
+                               saml_metadata_url: Optional[str] = None,
+                               type: Optional[str] = None,
+                               update_time: Optional[str] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAuthenticationResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -100,19 +183,19 @@ def get_account_authentication(account_id=None, authentication_id=None, create_t
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getAccountAuthentication:getAccountAuthentication', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getAccountAuthentication:getAccountAuthentication', __args__, opts=opts, typ=GetAccountAuthenticationResult).value
 
     return AwaitableGetAccountAuthenticationResult(
-        account_id=__ret__.get('accountId'),
-        authentication_id=__ret__.get('authenticationId'),
-        create_time=__ret__.get('createTime'),
-        enabled=__ret__.get('enabled'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        saml_acs_url=__ret__.get('samlAcsUrl'),
-        saml_certificate=__ret__.get('samlCertificate'),
-        saml_entity_id=__ret__.get('samlEntityId'),
-        saml_idp_url=__ret__.get('samlIdpUrl'),
-        saml_metadata_url=__ret__.get('samlMetadataUrl'),
-        type=__ret__.get('type'),
-        update_time=__ret__.get('updateTime'))
+        account_id=__ret__.account_id,
+        authentication_id=__ret__.authentication_id,
+        create_time=__ret__.create_time,
+        enabled=__ret__.enabled,
+        id=__ret__.id,
+        name=__ret__.name,
+        saml_acs_url=__ret__.saml_acs_url,
+        saml_certificate=__ret__.saml_certificate,
+        saml_entity_id=__ret__.saml_entity_id,
+        saml_idp_url=__ret__.saml_idp_url,
+        saml_metadata_url=__ret__.saml_metadata_url,
+        type=__ret__.type,
+        update_time=__ret__.update_time)

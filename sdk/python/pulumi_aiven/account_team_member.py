@@ -5,36 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['AccountTeamMember']
 
 
 class AccountTeamMember(pulumi.CustomResource):
-    accepted: pulumi.Output[bool]
-    """
-    Team member invitation status
-    """
-    account_id: pulumi.Output[str]
-    """
-    Account id
-    """
-    create_time: pulumi.Output[str]
-    """
-    Time of creation
-    """
-    invited_by_user_email: pulumi.Output[str]
-    """
-    Team invited by user email
-    """
-    team_id: pulumi.Output[str]
-    """
-    Account team id
-    """
-    user_email: pulumi.Output[str]
-    """
-    Team invite user email
-    """
-    def __init__(__self__, resource_name, opts=None, accepted=None, account_id=None, create_time=None, invited_by_user_email=None, team_id=None, user_email=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accepted: Optional[pulumi.Input[bool]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 invited_by_user_email: Optional[pulumi.Input[str]] = None,
+                 team_id: Optional[pulumi.Input[str]] = None,
+                 user_email: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         During the creation of `AccountTeamMember` resource, an email invitation will be sent
         to a user using `user_email` address. If the user accepts an invitation, he or she will become a member of the account team.
@@ -98,13 +87,21 @@ class AccountTeamMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, accepted=None, account_id=None, create_time=None, invited_by_user_email=None, team_id=None, user_email=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accepted: Optional[pulumi.Input[bool]] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            invited_by_user_email: Optional[pulumi.Input[str]] = None,
+            team_id: Optional[pulumi.Input[str]] = None,
+            user_email: Optional[pulumi.Input[str]] = None) -> 'AccountTeamMember':
         """
         Get an existing AccountTeamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] accepted: Team member invitation status
         :param pulumi.Input[str] account_id: Account id
@@ -125,8 +122,57 @@ class AccountTeamMember(pulumi.CustomResource):
         __props__["user_email"] = user_email
         return AccountTeamMember(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def accepted(self) -> bool:
+        """
+        Team member invitation status
+        """
+        return pulumi.get(self, "accepted")
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        Account id
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time of creation
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="invitedByUserEmail")
+    def invited_by_user_email(self) -> str:
+        """
+        Team invited by user email
+        """
+        return pulumi.get(self, "invited_by_user_email")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        """
+        Account team id
+        """
+        return pulumi.get(self, "team_id")
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> str:
+        """
+        Team invite user email
+        """
+        return pulumi.get(self, "user_email")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

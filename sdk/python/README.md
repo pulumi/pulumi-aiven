@@ -1,4 +1,10 @@
-[![Build Status](https://travis-ci.com/pulumi/pulumi-aiven.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-aiven)
+[![Actions Status](https://github.com/pulumi/pulumi-aiven/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-aiven/actions)
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Faiven.svg)](https://www.npmjs.com/package/@pulumi/aiven)
+[![Python version](https://badge.fury.io/py/pulumi-aiven.svg)](https://pypi.org/project/pulumi-aiven)
+[![NuGet version](https://badge.fury.io/nu/pulumi.aiven.svg)](https://badge.fury.io/nu/pulumi.aiven)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-aiven/sdk/v3/go)](https://pkg.go.dev/github.com/pulumi/pulumi-aiven/sdk/v3/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-aiven/blob/master/LICENSE)
 
 # Aiven Resource Provider
 

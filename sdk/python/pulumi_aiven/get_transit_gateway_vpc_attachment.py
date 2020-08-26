@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetTransitGatewayVpcAttachmentResult',
+    'AwaitableGetTransitGatewayVpcAttachmentResult',
+    'get_transit_gateway_vpc_attachment',
+]
 
+@pulumi.output_type
 class GetTransitGatewayVpcAttachmentResult:
     """
     A collection of values returned by getTransitGatewayVpcAttachment.
@@ -16,34 +22,79 @@ class GetTransitGatewayVpcAttachmentResult:
     def __init__(__self__, id=None, peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, user_peer_network_cidrs=None, vpc_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if peer_cloud_account and not isinstance(peer_cloud_account, str):
+            raise TypeError("Expected argument 'peer_cloud_account' to be a str")
+        pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
+        if peer_region and not isinstance(peer_region, str):
+            raise TypeError("Expected argument 'peer_region' to be a str")
+        pulumi.set(__self__, "peer_region", peer_region)
+        if peer_vpc and not isinstance(peer_vpc, str):
+            raise TypeError("Expected argument 'peer_vpc' to be a str")
+        pulumi.set(__self__, "peer_vpc", peer_vpc)
+        if peering_connection_id and not isinstance(peering_connection_id, str):
+            raise TypeError("Expected argument 'peering_connection_id' to be a str")
+        pulumi.set(__self__, "peering_connection_id", peering_connection_id)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if state_info and not isinstance(state_info, dict):
+            raise TypeError("Expected argument 'state_info' to be a dict")
+        pulumi.set(__self__, "state_info", state_info)
+        if user_peer_network_cidrs and not isinstance(user_peer_network_cidrs, list):
+            raise TypeError("Expected argument 'user_peer_network_cidrs' to be a list")
+        pulumi.set(__self__, "user_peer_network_cidrs", user_peer_network_cidrs)
+        if vpc_id and not isinstance(vpc_id, str):
+            raise TypeError("Expected argument 'vpc_id' to be a str")
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if peer_cloud_account and not isinstance(peer_cloud_account, str):
-            raise TypeError("Expected argument 'peer_cloud_account' to be a str")
-        __self__.peer_cloud_account = peer_cloud_account
-        if peer_region and not isinstance(peer_region, str):
-            raise TypeError("Expected argument 'peer_region' to be a str")
-        __self__.peer_region = peer_region
-        if peer_vpc and not isinstance(peer_vpc, str):
-            raise TypeError("Expected argument 'peer_vpc' to be a str")
-        __self__.peer_vpc = peer_vpc
-        if peering_connection_id and not isinstance(peering_connection_id, str):
-            raise TypeError("Expected argument 'peering_connection_id' to be a str")
-        __self__.peering_connection_id = peering_connection_id
-        if state and not isinstance(state, str):
-            raise TypeError("Expected argument 'state' to be a str")
-        __self__.state = state
-        if state_info and not isinstance(state_info, dict):
-            raise TypeError("Expected argument 'state_info' to be a dict")
-        __self__.state_info = state_info
-        if user_peer_network_cidrs and not isinstance(user_peer_network_cidrs, list):
-            raise TypeError("Expected argument 'user_peer_network_cidrs' to be a list")
-        __self__.user_peer_network_cidrs = user_peer_network_cidrs
-        if vpc_id and not isinstance(vpc_id, str):
-            raise TypeError("Expected argument 'vpc_id' to be a str")
-        __self__.vpc_id = vpc_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="peerCloudAccount")
+    def peer_cloud_account(self) -> str:
+        return pulumi.get(self, "peer_cloud_account")
+
+    @property
+    @pulumi.getter(name="peerRegion")
+    def peer_region(self) -> Optional[str]:
+        return pulumi.get(self, "peer_region")
+
+    @property
+    @pulumi.getter(name="peerVpc")
+    def peer_vpc(self) -> str:
+        return pulumi.get(self, "peer_vpc")
+
+    @property
+    @pulumi.getter(name="peeringConnectionId")
+    def peering_connection_id(self) -> str:
+        return pulumi.get(self, "peering_connection_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateInfo")
+    def state_info(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "state_info")
+
+    @property
+    @pulumi.getter(name="userPeerNetworkCidrs")
+    def user_peer_network_cidrs(self) -> Optional[List[str]]:
+        return pulumi.get(self, "user_peer_network_cidrs")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        return pulumi.get(self, "vpc_id")
 
 
 class AwaitableGetTransitGatewayVpcAttachmentResult(GetTransitGatewayVpcAttachmentResult):
@@ -63,7 +114,15 @@ class AwaitableGetTransitGatewayVpcAttachmentResult(GetTransitGatewayVpcAttachme
             vpc_id=self.vpc_id)
 
 
-def get_transit_gateway_vpc_attachment(peer_cloud_account=None, peer_region=None, peer_vpc=None, peering_connection_id=None, state=None, state_info=None, user_peer_network_cidrs=None, vpc_id=None, opts=None):
+def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
+                                       peer_region: Optional[str] = None,
+                                       peer_vpc: Optional[str] = None,
+                                       peering_connection_id: Optional[str] = None,
+                                       state: Optional[str] = None,
+                                       state_info: Optional[Mapping[str, Any]] = None,
+                                       user_peer_network_cidrs: Optional[List[str]] = None,
+                                       vpc_id: Optional[str] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitGatewayVpcAttachmentResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -80,15 +139,15 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account=None, peer_region=None
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment', __args__, opts=opts, typ=GetTransitGatewayVpcAttachmentResult).value
 
     return AwaitableGetTransitGatewayVpcAttachmentResult(
-        id=__ret__.get('id'),
-        peer_cloud_account=__ret__.get('peerCloudAccount'),
-        peer_region=__ret__.get('peerRegion'),
-        peer_vpc=__ret__.get('peerVpc'),
-        peering_connection_id=__ret__.get('peeringConnectionId'),
-        state=__ret__.get('state'),
-        state_info=__ret__.get('stateInfo'),
-        user_peer_network_cidrs=__ret__.get('userPeerNetworkCidrs'),
-        vpc_id=__ret__.get('vpcId'))
+        id=__ret__.id,
+        peer_cloud_account=__ret__.peer_cloud_account,
+        peer_region=__ret__.peer_region,
+        peer_vpc=__ret__.peer_vpc,
+        peering_connection_id=__ret__.peering_connection_id,
+        state=__ret__.state,
+        state_info=__ret__.state_info,
+        user_peer_network_cidrs=__ret__.user_peer_network_cidrs,
+        vpc_id=__ret__.vpc_id)

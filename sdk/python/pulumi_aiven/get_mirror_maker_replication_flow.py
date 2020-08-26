@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetMirrorMakerReplicationFlowResult',
+    'AwaitableGetMirrorMakerReplicationFlowResult',
+    'get_mirror_maker_replication_flow',
+]
 
+@pulumi.output_type
 class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
@@ -16,31 +22,71 @@ class GetMirrorMakerReplicationFlowResult:
     def __init__(__self__, enable=None, id=None, project=None, service_name=None, source_cluster=None, target_cluster=None, topics=None, topics_blacklists=None):
         if enable and not isinstance(enable, bool):
             raise TypeError("Expected argument 'enable' to be a bool")
-        __self__.enable = enable
+        pulumi.set(__self__, "enable", enable)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if source_cluster and not isinstance(source_cluster, str):
+            raise TypeError("Expected argument 'source_cluster' to be a str")
+        pulumi.set(__self__, "source_cluster", source_cluster)
+        if target_cluster and not isinstance(target_cluster, str):
+            raise TypeError("Expected argument 'target_cluster' to be a str")
+        pulumi.set(__self__, "target_cluster", target_cluster)
+        if topics and not isinstance(topics, list):
+            raise TypeError("Expected argument 'topics' to be a list")
+        pulumi.set(__self__, "topics", topics)
+        if topics_blacklists and not isinstance(topics_blacklists, list):
+            raise TypeError("Expected argument 'topics_blacklists' to be a list")
+        pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
-        if source_cluster and not isinstance(source_cluster, str):
-            raise TypeError("Expected argument 'source_cluster' to be a str")
-        __self__.source_cluster = source_cluster
-        if target_cluster and not isinstance(target_cluster, str):
-            raise TypeError("Expected argument 'target_cluster' to be a str")
-        __self__.target_cluster = target_cluster
-        if topics and not isinstance(topics, list):
-            raise TypeError("Expected argument 'topics' to be a list")
-        __self__.topics = topics
-        if topics_blacklists and not isinstance(topics_blacklists, list):
-            raise TypeError("Expected argument 'topics_blacklists' to be a list")
-        __self__.topics_blacklists = topics_blacklists
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="sourceCluster")
+    def source_cluster(self) -> str:
+        return pulumi.get(self, "source_cluster")
+
+    @property
+    @pulumi.getter(name="targetCluster")
+    def target_cluster(self) -> str:
+        return pulumi.get(self, "target_cluster")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Optional[List[str]]:
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter(name="topicsBlacklists")
+    def topics_blacklists(self) -> Optional[List[str]]:
+        return pulumi.get(self, "topics_blacklists")
 
 
 class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlowResult):
@@ -59,7 +105,14 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             topics_blacklists=self.topics_blacklists)
 
 
-def get_mirror_maker_replication_flow(enable=None, project=None, service_name=None, source_cluster=None, target_cluster=None, topics=None, topics_blacklists=None, opts=None):
+def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
+                                      project: Optional[str] = None,
+                                      service_name: Optional[str] = None,
+                                      source_cluster: Optional[str] = None,
+                                      target_cluster: Optional[str] = None,
+                                      topics: Optional[List[str]] = None,
+                                      topics_blacklists: Optional[List[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMirrorMakerReplicationFlowResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -75,14 +128,14 @@ def get_mirror_maker_replication_flow(enable=None, project=None, service_name=No
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult).value
 
     return AwaitableGetMirrorMakerReplicationFlowResult(
-        enable=__ret__.get('enable'),
-        id=__ret__.get('id'),
-        project=__ret__.get('project'),
-        service_name=__ret__.get('serviceName'),
-        source_cluster=__ret__.get('sourceCluster'),
-        target_cluster=__ret__.get('targetCluster'),
-        topics=__ret__.get('topics'),
-        topics_blacklists=__ret__.get('topicsBlacklists'))
+        enable=__ret__.enable,
+        id=__ret__.id,
+        project=__ret__.project,
+        service_name=__ret__.service_name,
+        source_cluster=__ret__.source_cluster,
+        target_cluster=__ret__.target_cluster,
+        topics=__ret__.topics,
+        topics_blacklists=__ret__.topics_blacklists)

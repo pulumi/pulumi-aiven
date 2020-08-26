@@ -5,64 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['KafkaConnector']
 
 
 class KafkaConnector(pulumi.CustomResource):
-    config: pulumi.Output[dict]
-    """
-    Kafka Connector configuration parameters
-    """
-    connector_name: pulumi.Output[str]
-    """
-    Kafka connector name
-    """
-    plugin_author: pulumi.Output[str]
-    """
-    Kafka connector author
-    """
-    plugin_class: pulumi.Output[str]
-    """
-    Kafka connector Java class
-    """
-    plugin_doc_url: pulumi.Output[str]
-    """
-    Kafka connector documentation URL
-    """
-    plugin_title: pulumi.Output[str]
-    """
-    Kafka connector title
-    """
-    plugin_type: pulumi.Output[str]
-    """
-    Kafka connector type
-    """
-    plugin_version: pulumi.Output[str]
-    """
-    Kafka connector version
-    """
-    project: pulumi.Output[str]
-    """
-    Project to link the kafka connector to
-    """
-    service_name: pulumi.Output[str]
-    """
-    Service to link the kafka connector to
-    """
-    tasks: pulumi.Output[list]
-    """
-    List of tasks of a connector
-
-      * `connector` (`str`)
-      * `task` (`float`)
-    """
-    def __init__(__self__, resource_name, opts=None, config=None, connector_name=None, project=None, service_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 connector_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a KafkaConnector resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] config: Kafka Connector configuration parameters
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Kafka Connector configuration parameters
         :param pulumi.Input[str] connector_name: Kafka connector name
         :param pulumi.Input[str] project: Project to link the kafka connector to
         :param pulumi.Input[str] service_name: Service to link the kafka connector to
@@ -110,15 +76,28 @@ class KafkaConnector(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, config=None, connector_name=None, plugin_author=None, plugin_class=None, plugin_doc_url=None, plugin_title=None, plugin_type=None, plugin_version=None, project=None, service_name=None, tasks=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            connector_name: Optional[pulumi.Input[str]] = None,
+            plugin_author: Optional[pulumi.Input[str]] = None,
+            plugin_class: Optional[pulumi.Input[str]] = None,
+            plugin_doc_url: Optional[pulumi.Input[str]] = None,
+            plugin_title: Optional[pulumi.Input[str]] = None,
+            plugin_type: Optional[pulumi.Input[str]] = None,
+            plugin_version: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]]] = None) -> 'KafkaConnector':
         """
         Get an existing KafkaConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] config: Kafka Connector configuration parameters
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Kafka Connector configuration parameters
         :param pulumi.Input[str] connector_name: Kafka connector name
         :param pulumi.Input[str] plugin_author: Kafka connector author
         :param pulumi.Input[str] plugin_class: Kafka connector Java class
@@ -128,12 +107,7 @@ class KafkaConnector(pulumi.CustomResource):
         :param pulumi.Input[str] plugin_version: Kafka connector version
         :param pulumi.Input[str] project: Project to link the kafka connector to
         :param pulumi.Input[str] service_name: Service to link the kafka connector to
-        :param pulumi.Input[list] tasks: List of tasks of a connector
-
-        The **tasks** object supports the following:
-
-          * `connector` (`pulumi.Input[str]`)
-          * `task` (`pulumi.Input[float]`)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]] tasks: List of tasks of a connector
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -152,8 +126,97 @@ class KafkaConnector(pulumi.CustomResource):
         __props__["tasks"] = tasks
         return KafkaConnector(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def config(self) -> Mapping[str, str]:
+        """
+        Kafka Connector configuration parameters
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> str:
+        """
+        Kafka connector name
+        """
+        return pulumi.get(self, "connector_name")
+
+    @property
+    @pulumi.getter(name="pluginAuthor")
+    def plugin_author(self) -> str:
+        """
+        Kafka connector author
+        """
+        return pulumi.get(self, "plugin_author")
+
+    @property
+    @pulumi.getter(name="pluginClass")
+    def plugin_class(self) -> str:
+        """
+        Kafka connector Java class
+        """
+        return pulumi.get(self, "plugin_class")
+
+    @property
+    @pulumi.getter(name="pluginDocUrl")
+    def plugin_doc_url(self) -> str:
+        """
+        Kafka connector documentation URL
+        """
+        return pulumi.get(self, "plugin_doc_url")
+
+    @property
+    @pulumi.getter(name="pluginTitle")
+    def plugin_title(self) -> str:
+        """
+        Kafka connector title
+        """
+        return pulumi.get(self, "plugin_title")
+
+    @property
+    @pulumi.getter(name="pluginType")
+    def plugin_type(self) -> str:
+        """
+        Kafka connector type
+        """
+        return pulumi.get(self, "plugin_type")
+
+    @property
+    @pulumi.getter(name="pluginVersion")
+    def plugin_version(self) -> str:
+        """
+        Kafka connector version
+        """
+        return pulumi.get(self, "plugin_version")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project to link the kafka connector to
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service to link the kafka connector to
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def tasks(self) -> List['outputs.KafkaConnectorTask']:
+        """
+        List of tasks of a connector
+        """
+        return pulumi.get(self, "tasks")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
