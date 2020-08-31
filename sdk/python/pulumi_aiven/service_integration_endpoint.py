@@ -15,7 +15,7 @@ __all__ = ['ServiceIntegrationEndpoint']
 
 class ServiceIntegrationEndpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']]] = None,
                  endpoint_name: Optional[pulumi.Input[str]] = None,
@@ -134,7 +134,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datadogUserConfig")
-    def datadog_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointDatadogUserConfig']:
+    def datadog_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointDatadogUserConfig']]:
         """
         Datadog specific user configurable settings
         """
@@ -142,7 +142,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Mapping[str, str]:
+    def endpoint_config(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Integration endpoint specific backend configuration
         """
@@ -150,7 +150,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointName")
-    def endpoint_name(self) -> str:
+    def endpoint_name(self) -> pulumi.Output[str]:
         """
         Name of the service integration endpoint
         """
@@ -158,7 +158,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> str:
+    def endpoint_type(self) -> pulumi.Output[str]:
         """
         Type of the service integration endpoint
         """
@@ -166,7 +166,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
-    def external_elasticsearch_logs_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig']:
+    def external_elasticsearch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig']]:
         """
         external elasticsearch specific user configurable settings
         """
@@ -174,7 +174,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project the service integration endpoint belongs to
         """
@@ -182,7 +182,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prometheusUserConfig")
-    def prometheus_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointPrometheusUserConfig']:
+    def prometheus_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointPrometheusUserConfig']]:
         """
         Prometheus specific user configurable settings
         """
@@ -190,7 +190,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rsyslogUserConfig")
-    def rsyslog_user_config(self) -> Optional['outputs.ServiceIntegrationEndpointRsyslogUserConfig']:
+    def rsyslog_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointRsyslogUserConfig']]:
         """
         rsyslog specific user configurable settings
         """

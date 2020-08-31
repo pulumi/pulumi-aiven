@@ -13,7 +13,7 @@ __all__ = ['AccountAuthentication']
 
 class AccountAuthentication(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  authentication_id: Optional[pulumi.Input[str]] = None,
@@ -142,7 +142,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account id
         """
@@ -150,7 +150,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authenticationId")
-    def authentication_id(self) -> str:
+    def authentication_id(self) -> pulumi.Output[str]:
         """
         Account authentication id
         """
@@ -158,7 +158,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Time of creation
         """
@@ -166,7 +166,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Status of account authentication method
         """
@@ -174,7 +174,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Account team name
         """
@@ -182,7 +182,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="samlAcsUrl")
-    def saml_acs_url(self) -> str:
+    def saml_acs_url(self) -> pulumi.Output[str]:
         """
         SAML Assertion Consumer Service URL
         """
@@ -190,7 +190,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="samlCertificate")
-    def saml_certificate(self) -> Optional[str]:
+    def saml_certificate(self) -> pulumi.Output[Optional[str]]:
         """
         SAML Certificate
         """
@@ -198,7 +198,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="samlEntityId")
-    def saml_entity_id(self) -> Optional[str]:
+    def saml_entity_id(self) -> pulumi.Output[Optional[str]]:
         """
         SAML Entity id
         """
@@ -206,7 +206,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="samlIdpUrl")
-    def saml_idp_url(self) -> Optional[str]:
+    def saml_idp_url(self) -> pulumi.Output[Optional[str]]:
         """
         SAML Idp URL
         """
@@ -214,7 +214,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="samlMetadataUrl")
-    def saml_metadata_url(self) -> str:
+    def saml_metadata_url(self) -> pulumi.Output[str]:
         """
         SAML Metadata URL
         """
@@ -222,7 +222,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         Account authentication id
         """
@@ -230,7 +230,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         Time of last update
         """

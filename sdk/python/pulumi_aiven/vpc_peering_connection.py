@@ -13,7 +13,7 @@ __all__ = ['VpcPeeringConnection']
 
 class VpcPeeringConnection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  peer_cloud_account: Optional[pulumi.Input[str]] = None,
                  peer_region: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerAzureAppId")
-    def peer_azure_app_id(self) -> str:
+    def peer_azure_app_id(self) -> pulumi.Output[str]:
         """
         Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
         """
@@ -140,7 +140,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerAzureTenantId")
-    def peer_azure_tenant_id(self) -> str:
+    def peer_azure_tenant_id(self) -> pulumi.Output[str]:
         """
         Azure tenant id in UUID4 form
         """
@@ -148,7 +148,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerCloudAccount")
-    def peer_cloud_account(self) -> str:
+    def peer_cloud_account(self) -> pulumi.Output[str]:
         """
         AWS account ID or GCP project ID of the peered VPC
         """
@@ -156,7 +156,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> Optional[str]:
+    def peer_region(self) -> pulumi.Output[Optional[str]]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
@@ -164,7 +164,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerResourceGroup")
-    def peer_resource_group(self) -> str:
+    def peer_resource_group(self) -> pulumi.Output[str]:
         """
         Azure resource group name of the peered VPC
         """
@@ -172,7 +172,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerVpc")
-    def peer_vpc(self) -> str:
+    def peer_vpc(self) -> pulumi.Output[str]:
         """
         AWS VPC ID or GCP VPC network name of the peered VPC
         """
@@ -180,7 +180,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peeringConnectionId")
-    def peering_connection_id(self) -> str:
+    def peering_connection_id(self) -> pulumi.Output[str]:
         """
         Cloud provider identifier for the peering connection if available
         """
@@ -188,7 +188,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         State of the peering connection
         """
@@ -196,7 +196,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Mapping[str, Any]:
+    def state_info(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         State-specific help or error information
         """
@@ -204,7 +204,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC the peering connection belongs to
         """

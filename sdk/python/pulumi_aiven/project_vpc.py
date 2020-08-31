@@ -13,7 +13,7 @@ __all__ = ['ProjectVpc']
 
 class ProjectVpc(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  network_cidr: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class ProjectVpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> str:
+    def cloud_name(self) -> pulumi.Output[str]:
         """
         Cloud the VPC is in
         """
@@ -113,7 +113,7 @@ class ProjectVpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkCidr")
-    def network_cidr(self) -> str:
+    def network_cidr(self) -> pulumi.Output[str]:
         """
         Network address range used by the VPC like 192.168.0.0/24
         """
@@ -121,7 +121,7 @@ class ProjectVpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project the VPC belongs to
         """
@@ -129,7 +129,7 @@ class ProjectVpc(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
         """

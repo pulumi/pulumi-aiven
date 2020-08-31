@@ -15,7 +15,7 @@ __all__ = ['Service']
 
 class Service(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cassandra: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]] = None,
                  cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']]] = None,
@@ -301,7 +301,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cassandra(self) -> 'outputs.ServiceCassandra':
+    def cassandra(self) -> pulumi.Output['outputs.ServiceCassandra']:
         """
         Cassandra specific server provided values
         """
@@ -309,7 +309,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
-    def cassandra_user_config(self) -> Optional['outputs.ServiceCassandraUserConfig']:
+    def cassandra_user_config(self) -> pulumi.Output[Optional['outputs.ServiceCassandraUserConfig']]:
         """
         Cassandra specific user configurable settings
         """
@@ -317,7 +317,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[str]:
+    def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
         Cloud the service runs in
         """
@@ -325,7 +325,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> List['outputs.ServiceComponent']:
+    def components(self) -> pulumi.Output[List['outputs.ServiceComponent']]:
         """
         Service component information objects
         """
@@ -333,7 +333,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def elasticsearch(self) -> 'outputs.ServiceElasticsearch':
+    def elasticsearch(self) -> pulumi.Output['outputs.ServiceElasticsearch']:
         """
         Elasticsearch specific server provided values
         """
@@ -341,7 +341,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticsearchUserConfig")
-    def elasticsearch_user_config(self) -> Optional['outputs.ServiceElasticsearchUserConfig']:
+    def elasticsearch_user_config(self) -> pulumi.Output[Optional['outputs.ServiceElasticsearchUserConfig']]:
         """
         Elasticsearch specific user configurable settings
         """
@@ -349,7 +349,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def grafana(self) -> 'outputs.ServiceGrafana':
+    def grafana(self) -> pulumi.Output['outputs.ServiceGrafana']:
         """
         Grafana specific server provided values
         """
@@ -357,7 +357,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="grafanaUserConfig")
-    def grafana_user_config(self) -> Optional['outputs.ServiceGrafanaUserConfig']:
+    def grafana_user_config(self) -> pulumi.Output[Optional['outputs.ServiceGrafanaUserConfig']]:
         """
         Grafana specific user configurable settings
         """
@@ -365,7 +365,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def influxdb(self) -> 'outputs.ServiceInfluxdb':
+    def influxdb(self) -> pulumi.Output['outputs.ServiceInfluxdb']:
         """
         InfluxDB specific server provided values
         """
@@ -373,7 +373,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="influxdbUserConfig")
-    def influxdb_user_config(self) -> Optional['outputs.ServiceInfluxdbUserConfig']:
+    def influxdb_user_config(self) -> pulumi.Output[Optional['outputs.ServiceInfluxdbUserConfig']]:
         """
         InfluxDB specific user configurable settings
         """
@@ -381,7 +381,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kafka(self) -> 'outputs.ServiceKafka':
+    def kafka(self) -> pulumi.Output['outputs.ServiceKafka']:
         """
         Kafka specific server provided values
         """
@@ -389,7 +389,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> 'outputs.ServiceKafkaConnect':
+    def kafka_connect(self) -> pulumi.Output['outputs.ServiceKafkaConnect']:
         """
         Kafka Connect specific server provided values
         """
@@ -397,7 +397,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaConnectUserConfig")
-    def kafka_connect_user_config(self) -> Optional['outputs.ServiceKafkaConnectUserConfig']:
+    def kafka_connect_user_config(self) -> pulumi.Output[Optional['outputs.ServiceKafkaConnectUserConfig']]:
         """
         Kafka Connect specific user configurable settings
         """
@@ -405,7 +405,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaMirrormaker")
-    def kafka_mirrormaker(self) -> 'outputs.ServiceKafkaMirrormaker':
+    def kafka_mirrormaker(self) -> pulumi.Output['outputs.ServiceKafkaMirrormaker']:
         """
         Kafka MirrorMaker 2 specific server provided values
         """
@@ -413,7 +413,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
-    def kafka_mirrormaker_user_config(self) -> Optional['outputs.ServiceKafkaMirrormakerUserConfig']:
+    def kafka_mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceKafkaMirrormakerUserConfig']]:
         """
         Kafka MirrorMaker 2 specific user configurable settings
         """
@@ -421,7 +421,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaUserConfig")
-    def kafka_user_config(self) -> Optional['outputs.ServiceKafkaUserConfig']:
+    def kafka_user_config(self) -> pulumi.Output[Optional['outputs.ServiceKafkaUserConfig']]:
         """
         Kafka specific user configurable settings
         """
@@ -429,7 +429,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
-    def maintenance_window_dow(self) -> Optional[str]:
+    def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
@@ -437,7 +437,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceWindowTime")
-    def maintenance_window_time(self) -> Optional[str]:
+    def maintenance_window_time(self) -> pulumi.Output[Optional[str]]:
         """
         Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
@@ -445,7 +445,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mysql(self) -> 'outputs.ServiceMysql':
+    def mysql(self) -> pulumi.Output['outputs.ServiceMysql']:
         """
         MySQL specific server provided values
         """
@@ -453,7 +453,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mysqlUserConfig")
-    def mysql_user_config(self) -> Optional['outputs.ServiceMysqlUserConfig']:
+    def mysql_user_config(self) -> pulumi.Output[Optional['outputs.ServiceMysqlUserConfig']]:
         """
         MySQL specific user configurable settings
         """
@@ -461,7 +461,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def pg(self) -> 'outputs.ServicePg':
+    def pg(self) -> pulumi.Output['outputs.ServicePg']:
         """
         PostgreSQL specific server provided values
         """
@@ -469,7 +469,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pgUserConfig")
-    def pg_user_config(self) -> Optional['outputs.ServicePgUserConfig']:
+    def pg_user_config(self) -> pulumi.Output[Optional['outputs.ServicePgUserConfig']]:
         """
         PostgreSQL specific user configurable settings
         """
@@ -477,7 +477,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def plan(self) -> Optional[str]:
+    def plan(self) -> pulumi.Output[Optional[str]]:
         """
         Subscription plan
         """
@@ -485,7 +485,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Target project
         """
@@ -493,7 +493,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> Optional[str]:
+    def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         Identifier of the VPC the service should be in, if any
         """
@@ -501,7 +501,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def redis(self) -> 'outputs.ServiceRedis':
+    def redis(self) -> pulumi.Output['outputs.ServiceRedis']:
         """
         Redis specific server provided values
         """
@@ -509,7 +509,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redisUserConfig")
-    def redis_user_config(self) -> Optional['outputs.ServiceRedisUserConfig']:
+    def redis_user_config(self) -> pulumi.Output[Optional['outputs.ServiceRedisUserConfig']]:
         """
         Redis specific user configurable settings
         """
@@ -517,7 +517,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceHost")
-    def service_host(self) -> str:
+    def service_host(self) -> pulumi.Output[str]:
         """
         Service hostname
         """
@@ -525,7 +525,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[List['outputs.ServiceServiceIntegration']]:
+    def service_integrations(self) -> pulumi.Output[Optional[List['outputs.ServiceServiceIntegration']]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
@@ -533,7 +533,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service name
         """
@@ -541,7 +541,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePassword")
-    def service_password(self) -> str:
+    def service_password(self) -> pulumi.Output[str]:
         """
         Password used for connecting to the service, if applicable
         """
@@ -549,7 +549,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> float:
+    def service_port(self) -> pulumi.Output[float]:
         """
         Service port
         """
@@ -557,7 +557,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> str:
+    def service_type(self) -> pulumi.Output[str]:
         """
         Service type code
         """
@@ -565,7 +565,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceUri")
-    def service_uri(self) -> str:
+    def service_uri(self) -> pulumi.Output[str]:
         """
         URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
@@ -573,7 +573,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceUsername")
-    def service_username(self) -> str:
+    def service_username(self) -> pulumi.Output[str]:
         """
         Username used for connecting to the service, if applicable
         """
@@ -581,7 +581,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         Service state
         """
@@ -589,7 +589,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         Prevent service from being deleted. It is recommended to have this enabled for all services.
         """

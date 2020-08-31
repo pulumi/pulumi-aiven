@@ -13,7 +13,7 @@ __all__ = ['KafkaTopic']
 
 class KafkaTopic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cleanup_policy: Optional[pulumi.Input[str]] = None,
                  minimum_in_sync_replicas: Optional[pulumi.Input[float]] = None,
@@ -155,7 +155,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cleanupPolicy")
-    def cleanup_policy(self) -> Optional[str]:
+    def cleanup_policy(self) -> pulumi.Output[Optional[str]]:
         """
         Topic cleanup policy. Allowed values: delete, compact
         """
@@ -163,7 +163,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumInSyncReplicas")
-    def minimum_in_sync_replicas(self) -> Optional[float]:
+    def minimum_in_sync_replicas(self) -> pulumi.Output[Optional[float]]:
         """
         Minimum required nodes in-sync replicas (ISR) to produce to a partition
         """
@@ -171,7 +171,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def partitions(self) -> float:
+    def partitions(self) -> pulumi.Output[float]:
         """
         Number of partitions to create in the topic
         """
@@ -179,7 +179,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the kafka topic to
         """
@@ -187,7 +187,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def replication(self) -> float:
+    def replication(self) -> pulumi.Output[float]:
         """
         Replication factor for the topic
         """
@@ -195,7 +195,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[float]:
+    def retention_bytes(self) -> pulumi.Output[Optional[float]]:
         """
         Retention bytes
         """
@@ -203,7 +203,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionHours")
-    def retention_hours(self) -> Optional[float]:
+    def retention_hours(self) -> pulumi.Output[Optional[float]]:
         """
         Retention period (hours)
         """
@@ -211,7 +211,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the kafka topic to
         """
@@ -219,7 +219,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
         enable this for any production Kafka topic containing critical data.
@@ -228,7 +228,7 @@ class KafkaTopic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> str:
+    def topic_name(self) -> pulumi.Output[str]:
         """
         Topic name
         """

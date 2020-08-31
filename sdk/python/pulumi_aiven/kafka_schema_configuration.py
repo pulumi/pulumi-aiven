@@ -13,7 +13,7 @@ __all__ = ['KafkaSchemaConfiguration']
 
 class KafkaSchemaConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compatibility_level: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -90,7 +90,7 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="compatibilityLevel")
-    def compatibility_level(self) -> str:
+    def compatibility_level(self) -> pulumi.Output[str]:
         """
         Kafka Schemas compatibility level
         """
@@ -98,7 +98,7 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the Kafka Schemas Configuration to
         """
@@ -106,7 +106,7 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the Kafka Schemas Configuration to
         """

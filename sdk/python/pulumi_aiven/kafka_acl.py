@@ -13,7 +13,7 @@ __all__ = ['KafkaAcl']
 
 class KafkaAcl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  permission: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,7 @@ class KafkaAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permission(self) -> str:
+    def permission(self) -> pulumi.Output[str]:
         """
         Kafka permission to grant (admin, read, readwrite, write)
         """
@@ -127,7 +127,7 @@ class KafkaAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the Kafka ACL to
         """
@@ -135,7 +135,7 @@ class KafkaAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the Kafka ACL to
         """
@@ -143,7 +143,7 @@ class KafkaAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def topic(self) -> str:
+    def topic(self) -> pulumi.Output[str]:
         """
         Topic name pattern for the ACL entry
         """
@@ -151,7 +151,7 @@ class KafkaAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         Username pattern for the ACL entry
         """

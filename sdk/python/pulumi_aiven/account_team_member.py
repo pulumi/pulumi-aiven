@@ -13,7 +13,7 @@ __all__ = ['AccountTeamMember']
 
 class AccountTeamMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accepted: Optional[pulumi.Input[bool]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class AccountTeamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def accepted(self) -> bool:
+    def accepted(self) -> pulumi.Output[bool]:
         """
         Team member invitation status
         """
@@ -132,7 +132,7 @@ class AccountTeamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account id
         """
@@ -140,7 +140,7 @@ class AccountTeamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Time of creation
         """
@@ -148,7 +148,7 @@ class AccountTeamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="invitedByUserEmail")
-    def invited_by_user_email(self) -> str:
+    def invited_by_user_email(self) -> pulumi.Output[str]:
         """
         Team invited by user email
         """
@@ -156,7 +156,7 @@ class AccountTeamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> str:
+    def team_id(self) -> pulumi.Output[str]:
         """
         Account team id
         """
@@ -164,7 +164,7 @@ class AccountTeamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> str:
+    def user_email(self) -> pulumi.Output[str]:
         """
         Team invite user email
         """

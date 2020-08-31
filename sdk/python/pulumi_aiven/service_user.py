@@ -13,7 +13,7 @@ __all__ = ['ServiceUser']
 
 class ServiceUser(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,7 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessCert")
-    def access_cert(self) -> str:
+    def access_cert(self) -> pulumi.Output[str]:
         """
         Access certificate for the user if applicable for the service in question
         """
@@ -125,7 +125,7 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
+    def access_key(self) -> pulumi.Output[str]:
         """
         Access certificate key for the user if applicable for the service in question
         """
@@ -133,7 +133,7 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password of the user
         """
@@ -141,7 +141,7 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the user to
         """
@@ -149,7 +149,7 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the user to
         """
@@ -157,7 +157,7 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         Type of the user account
         """
@@ -165,7 +165,7 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         Name of the user account
         """

@@ -13,7 +13,7 @@ __all__ = ['KafkaSchema']
 
 class KafkaSchema(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,7 @@ class KafkaSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the Kafka Schema to
         """
@@ -110,7 +110,7 @@ class KafkaSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> str:
+    def schema(self) -> pulumi.Output[str]:
         """
         Kafka Schema configuration should be a valid Avro Schema JSON format
         """
@@ -118,7 +118,7 @@ class KafkaSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the Kafka Schema to
         """
@@ -126,7 +126,7 @@ class KafkaSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subjectName")
-    def subject_name(self) -> str:
+    def subject_name(self) -> pulumi.Output[str]:
         """
         Kafka Schema Subject name
         """
@@ -134,7 +134,7 @@ class KafkaSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> pulumi.Output[float]:
         """
         Kafka Schema configuration version
         """

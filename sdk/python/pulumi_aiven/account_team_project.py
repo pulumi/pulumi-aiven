@@ -13,7 +13,7 @@ __all__ = ['AccountTeamProject']
 
 class AccountTeamProject(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class AccountTeamProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account id
         """
@@ -120,7 +120,7 @@ class AccountTeamProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[str]:
+    def project_name(self) -> pulumi.Output[Optional[str]]:
         """
         Account team project name
         """
@@ -128,7 +128,7 @@ class AccountTeamProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> str:
+    def team_id(self) -> pulumi.Output[str]:
         """
         Account team id
         """
@@ -136,7 +136,7 @@ class AccountTeamProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamType")
-    def team_type(self) -> Optional[str]:
+    def team_type(self) -> pulumi.Output[Optional[str]]:
         """
         Account team project type, can one of the following values: admin, developer, operator and read_only
         """
