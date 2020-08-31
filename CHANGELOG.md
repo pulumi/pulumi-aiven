@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.1.0 (2020-08-31)
 * Upgrade to pulumi-terraform-bridge v2.7.3
 * Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 * Upgrade to v2.0.1 of the Aiven Terraform Provider
-
----
 
 ## 3.0.0 (2020-08-19)
 * Upgrade to v2.0.0 of the Aiven Terraform Provider
