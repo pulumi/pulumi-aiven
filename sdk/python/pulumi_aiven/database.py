@@ -13,7 +13,7 @@ __all__ = ['Database']
 
 class Database(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_name: Optional[pulumi.Input[str]] = None,
                  lc_collate: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> str:
+    def database_name(self) -> pulumi.Output[str]:
         """
         Service database name
         """
@@ -129,7 +129,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lcCollate")
-    def lc_collate(self) -> Optional[str]:
+    def lc_collate(self) -> pulumi.Output[Optional[str]]:
         """
         Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
         """
@@ -137,7 +137,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lcCtype")
-    def lc_ctype(self) -> Optional[str]:
+    def lc_ctype(self) -> pulumi.Output[Optional[str]]:
         """
         Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
         """
@@ -145,7 +145,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the database to
         """
@@ -153,7 +153,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the database to
         """
@@ -161,7 +161,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
         recommended to enable this for any production databases containing critical data.

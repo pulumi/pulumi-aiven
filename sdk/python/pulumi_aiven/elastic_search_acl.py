@@ -15,7 +15,7 @@ __all__ = ['ElasticSearchAcl']
 
 class ElasticSearchAcl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -106,7 +106,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acls(self) -> Optional[List['outputs.ElasticSearchAclAcl']]:
+    def acls(self) -> pulumi.Output[Optional[List['outputs.ElasticSearchAclAcl']]]:
         """
         List of Elasticsearch ACLs
         """
@@ -114,7 +114,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access
         """
@@ -122,7 +122,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extendedAcl")
-    def extended_acl(self) -> Optional[bool]:
+    def extended_acl(self) -> pulumi.Output[Optional[bool]]:
         """
         Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
         ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
@@ -132,7 +132,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the Elasticsearch ACLs to
         """
@@ -140,7 +140,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the Elasticsearch ACLs to
         """

@@ -15,7 +15,7 @@ __all__ = ['Pg']
 
 class Pg(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
@@ -170,7 +170,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[str]:
+    def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
         Cloud the service runs in
         """
@@ -178,7 +178,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> List['outputs.PgComponent']:
+    def components(self) -> pulumi.Output[List['outputs.PgComponent']]:
         """
         Service component information objects
         """
@@ -186,7 +186,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
-    def maintenance_window_dow(self) -> Optional[str]:
+    def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
@@ -194,7 +194,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceWindowTime")
-    def maintenance_window_time(self) -> Optional[str]:
+    def maintenance_window_time(self) -> pulumi.Output[Optional[str]]:
         """
         Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
@@ -202,7 +202,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def pg(self) -> 'outputs.PgPg':
+    def pg(self) -> pulumi.Output['outputs.PgPg']:
         """
         PostgreSQL specific server provided values
         """
@@ -210,7 +210,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pgUserConfig")
-    def pg_user_config(self) -> Optional['outputs.PgPgUserConfig']:
+    def pg_user_config(self) -> pulumi.Output[Optional['outputs.PgPgUserConfig']]:
         """
         PostgreSQL specific user configurable settings
         """
@@ -218,7 +218,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def plan(self) -> Optional[str]:
+    def plan(self) -> pulumi.Output[Optional[str]]:
         """
         Subscription plan
         """
@@ -226,7 +226,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Target project
         """
@@ -234,7 +234,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> Optional[str]:
+    def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         Identifier of the VPC the service should be in, if any
         """
@@ -242,7 +242,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceHost")
-    def service_host(self) -> str:
+    def service_host(self) -> pulumi.Output[str]:
         """
         Service hostname
         """
@@ -250,7 +250,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[List['outputs.PgServiceIntegration']]:
+    def service_integrations(self) -> pulumi.Output[Optional[List['outputs.PgServiceIntegration']]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
@@ -258,7 +258,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service name
         """
@@ -266,7 +266,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePassword")
-    def service_password(self) -> str:
+    def service_password(self) -> pulumi.Output[str]:
         """
         Password used for connecting to the service, if applicable
         """
@@ -274,7 +274,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> float:
+    def service_port(self) -> pulumi.Output[float]:
         """
         Service port
         """
@@ -282,7 +282,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> str:
+    def service_type(self) -> pulumi.Output[str]:
         """
         Aiven internal service type code
         """
@@ -290,7 +290,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceUri")
-    def service_uri(self) -> str:
+    def service_uri(self) -> pulumi.Output[str]:
         """
         URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
@@ -298,7 +298,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceUsername")
-    def service_username(self) -> str:
+    def service_username(self) -> pulumi.Output[str]:
         """
         Username used for connecting to the service, if applicable
         """
@@ -306,7 +306,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         Service state
         """
@@ -314,7 +314,7 @@ class Pg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         Prevent service from being deleted. It is recommended to have this enabled for all services.
         """

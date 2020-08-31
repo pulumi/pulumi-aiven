@@ -13,7 +13,7 @@ __all__ = ['Account']
 
 class Account(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account id
         """
@@ -116,7 +116,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Time of creation
         """
@@ -124,7 +124,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Account name
         """
@@ -132,7 +132,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownerTeamId")
-    def owner_team_id(self) -> str:
+    def owner_team_id(self) -> pulumi.Output[str]:
         """
         Owner team id
         """
@@ -140,7 +140,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Tenant id
         """
@@ -148,7 +148,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         Time of last update
         """

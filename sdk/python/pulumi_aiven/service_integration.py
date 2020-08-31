@@ -15,7 +15,7 @@ __all__ = ['ServiceIntegration']
 
 class ServiceIntegration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
@@ -146,7 +146,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationEndpointId")
-    def destination_endpoint_id(self) -> Optional[str]:
+    def destination_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
         Destination endpoint for the integration (if any)
         """
@@ -154,7 +154,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationServiceName")
-    def destination_service_name(self) -> Optional[str]:
+    def destination_service_name(self) -> pulumi.Output[Optional[str]]:
         """
         Destination service for the integration (if any)
         """
@@ -162,7 +162,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="integrationType")
-    def integration_type(self) -> str:
+    def integration_type(self) -> pulumi.Output[str]:
         """
         Type of the service integration
         """
@@ -170,7 +170,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaConnectUserConfig")
-    def kafka_connect_user_config(self) -> Optional['outputs.ServiceIntegrationKafkaConnectUserConfig']:
+    def kafka_connect_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaConnectUserConfig']]:
         """
         Kafka Connect specific user configurable settings
         """
@@ -178,7 +178,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
-    def kafka_mirrormaker_user_config(self) -> Optional['outputs.ServiceIntegrationKafkaMirrormakerUserConfig']:
+    def kafka_mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaMirrormakerUserConfig']]:
         """
         Mirrormaker 2 integration specific user configurable settings
         """
@@ -186,7 +186,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logsUserConfig")
-    def logs_user_config(self) -> Optional['outputs.ServiceIntegrationLogsUserConfig']:
+    def logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationLogsUserConfig']]:
         """
         Log integration specific user configurable settings
         """
@@ -194,7 +194,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mirrormakerUserConfig")
-    def mirrormaker_user_config(self) -> Optional['outputs.ServiceIntegrationMirrormakerUserConfig']:
+    def mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationMirrormakerUserConfig']]:
         """
         Mirrormaker 1 integration specific user configurable settings
         """
@@ -202,7 +202,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project the integration belongs to
         """
@@ -210,7 +210,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceEndpointId")
-    def source_endpoint_id(self) -> Optional[str]:
+    def source_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
         Source endpoint for the integration (if any)
         """
@@ -218,7 +218,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> Optional[str]:
+    def source_service_name(self) -> pulumi.Output[Optional[str]]:
         """
         Source service for the integration (if any)
         """

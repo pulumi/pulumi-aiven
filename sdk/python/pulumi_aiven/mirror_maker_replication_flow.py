@@ -13,7 +13,7 @@ __all__ = ['MirrorMakerReplicationFlow']
 
 class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enable(self) -> bool:
+    def enable(self) -> pulumi.Output[bool]:
         """
         Enable of disable replication flows for a service
         """
@@ -126,7 +126,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the kafka topic to
         """
@@ -134,7 +134,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the kafka topic to
         """
@@ -142,7 +142,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceCluster")
-    def source_cluster(self) -> str:
+    def source_cluster(self) -> pulumi.Output[str]:
         """
         Source cluster alias
         """
@@ -150,7 +150,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetCluster")
-    def target_cluster(self) -> str:
+    def target_cluster(self) -> pulumi.Output[str]:
         """
         Target cluster alias
         """
@@ -158,7 +158,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def topics(self) -> Optional[List[str]]:
+    def topics(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of topics and/or regular expressions to replicate
         """
@@ -166,7 +166,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="topicsBlacklists")
-    def topics_blacklists(self) -> Optional[List[str]]:
+    def topics_blacklists(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of topics and/or regular expressions to not replicate.
         """

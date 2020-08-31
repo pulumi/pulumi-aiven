@@ -13,7 +13,7 @@ __all__ = ['ProjectUser']
 
 class ProjectUser(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  member_type: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class ProjectUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def accepted(self) -> bool:
+    def accepted(self) -> pulumi.Output[bool]:
         """
         Whether the user has accepted project membership or not
         """
@@ -113,7 +113,7 @@ class ProjectUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> str:
+    def email(self) -> pulumi.Output[str]:
         """
         Email address of the user
         """
@@ -121,7 +121,7 @@ class ProjectUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberType")
-    def member_type(self) -> str:
+    def member_type(self) -> pulumi.Output[str]:
         """
         Project membership type. One of: admin, developer, operator
         """
@@ -129,7 +129,7 @@ class ProjectUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project the user belongs to
         """

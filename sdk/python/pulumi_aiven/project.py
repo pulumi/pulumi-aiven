@@ -13,7 +13,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  billing_address: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
         Account ID
         """
@@ -140,7 +140,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingAddress")
-    def billing_address(self) -> Optional[str]:
+    def billing_address(self) -> pulumi.Output[Optional[str]]:
         """
         Billing name and address of the project
         """
@@ -148,7 +148,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[List[str]]:
+    def billing_emails(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Billing contact emails of the project
         """
@@ -156,7 +156,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> str:
+    def ca_cert(self) -> pulumi.Output[str]:
         """
         Project root CA. This is used by some services like Kafka to sign service certificate
         """
@@ -164,7 +164,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cardId")
-    def card_id(self) -> Optional[str]:
+    def card_id(self) -> pulumi.Output[Optional[str]]:
         """
         Credit card ID
         """
@@ -172,7 +172,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="copyFromProject")
-    def copy_from_project(self) -> Optional[str]:
+    def copy_from_project(self) -> pulumi.Output[Optional[str]]:
         """
         Copy properties from another project. Only has effect when a new project is created.
         """
@@ -180,7 +180,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[str]:
+    def country_code(self) -> pulumi.Output[Optional[str]]:
         """
         Billing country code of the project
         """
@@ -188,7 +188,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project name
         """
@@ -196,7 +196,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> Optional[List[str]]:
+    def technical_emails(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Technical contact emails of the project
         """

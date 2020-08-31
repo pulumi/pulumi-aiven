@@ -15,7 +15,7 @@ __all__ = ['Kafka']
 
 class Kafka(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  default_acl: Optional[pulumi.Input[bool]] = None,
@@ -176,7 +176,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[str]:
+    def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
         Cloud the service runs in
         """
@@ -184,7 +184,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> List['outputs.KafkaComponent']:
+    def components(self) -> pulumi.Output[List['outputs.KafkaComponent']]:
         """
         Service component information objects
         """
@@ -192,7 +192,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultAcl")
-    def default_acl(self) -> Optional[bool]:
+    def default_acl(self) -> pulumi.Output[Optional[bool]]:
         """
         Create default wildcard Kafka ACL
         """
@@ -200,7 +200,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kafka(self) -> 'outputs.KafkaKafka':
+    def kafka(self) -> pulumi.Output['outputs.KafkaKafka']:
         """
         Kafka server provided values
         """
@@ -208,7 +208,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaUserConfig")
-    def kafka_user_config(self) -> Optional['outputs.KafkaKafkaUserConfig']:
+    def kafka_user_config(self) -> pulumi.Output[Optional['outputs.KafkaKafkaUserConfig']]:
         """
         Kafka user configurable settings
         """
@@ -216,7 +216,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
-    def maintenance_window_dow(self) -> Optional[str]:
+    def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
@@ -224,7 +224,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceWindowTime")
-    def maintenance_window_time(self) -> Optional[str]:
+    def maintenance_window_time(self) -> pulumi.Output[Optional[str]]:
         """
         Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
@@ -232,7 +232,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def plan(self) -> Optional[str]:
+    def plan(self) -> pulumi.Output[Optional[str]]:
         """
         Subscription plan
         """
@@ -240,7 +240,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Target project
         """
@@ -248,7 +248,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> Optional[str]:
+    def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         Identifier of the VPC the service should be in, if any
         """
@@ -256,7 +256,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceHost")
-    def service_host(self) -> str:
+    def service_host(self) -> pulumi.Output[str]:
         """
         Service hostname
         """
@@ -264,7 +264,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[List['outputs.KafkaServiceIntegration']]:
+    def service_integrations(self) -> pulumi.Output[Optional[List['outputs.KafkaServiceIntegration']]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
@@ -272,7 +272,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service name
         """
@@ -280,7 +280,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePassword")
-    def service_password(self) -> str:
+    def service_password(self) -> pulumi.Output[str]:
         """
         Password used for connecting to the service, if applicable
         """
@@ -288,7 +288,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> float:
+    def service_port(self) -> pulumi.Output[float]:
         """
         Service port
         """
@@ -296,7 +296,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> str:
+    def service_type(self) -> pulumi.Output[str]:
         """
         Aiven internal service type code
         """
@@ -304,7 +304,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceUri")
-    def service_uri(self) -> str:
+    def service_uri(self) -> pulumi.Output[str]:
         """
         URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
@@ -312,7 +312,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceUsername")
-    def service_username(self) -> str:
+    def service_username(self) -> pulumi.Output[str]:
         """
         Username used for connecting to the service, if applicable
         """
@@ -320,7 +320,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         Service state
         """
@@ -328,7 +328,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         Prevent service from being deleted. It is recommended to have this enabled for all services.
         """

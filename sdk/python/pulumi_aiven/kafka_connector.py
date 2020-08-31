@@ -15,7 +15,7 @@ __all__ = ['KafkaConnector']
 
 class KafkaConnector(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connector_name: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> Mapping[str, str]:
+    def config(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Kafka Connector configuration parameters
         """
@@ -136,7 +136,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectorName")
-    def connector_name(self) -> str:
+    def connector_name(self) -> pulumi.Output[str]:
         """
         Kafka connector name
         """
@@ -144,7 +144,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pluginAuthor")
-    def plugin_author(self) -> str:
+    def plugin_author(self) -> pulumi.Output[str]:
         """
         Kafka connector author
         """
@@ -152,7 +152,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pluginClass")
-    def plugin_class(self) -> str:
+    def plugin_class(self) -> pulumi.Output[str]:
         """
         Kafka connector Java class
         """
@@ -160,7 +160,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pluginDocUrl")
-    def plugin_doc_url(self) -> str:
+    def plugin_doc_url(self) -> pulumi.Output[str]:
         """
         Kafka connector documentation URL
         """
@@ -168,7 +168,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pluginTitle")
-    def plugin_title(self) -> str:
+    def plugin_title(self) -> pulumi.Output[str]:
         """
         Kafka connector title
         """
@@ -176,7 +176,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pluginType")
-    def plugin_type(self) -> str:
+    def plugin_type(self) -> pulumi.Output[str]:
         """
         Kafka connector type
         """
@@ -184,7 +184,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pluginVersion")
-    def plugin_version(self) -> str:
+    def plugin_version(self) -> pulumi.Output[str]:
         """
         Kafka connector version
         """
@@ -192,7 +192,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the kafka connector to
         """
@@ -200,7 +200,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the kafka connector to
         """
@@ -208,7 +208,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tasks(self) -> List['outputs.KafkaConnectorTask']:
+    def tasks(self) -> pulumi.Output[List['outputs.KafkaConnectorTask']]:
         """
         List of tasks of a connector
         """

@@ -13,7 +13,7 @@ __all__ = ['TransitGatewayVpcAttachment']
 
 class TransitGatewayVpcAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  peer_cloud_account: Optional[pulumi.Input[str]] = None,
                  peer_region: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerCloudAccount")
-    def peer_cloud_account(self) -> str:
+    def peer_cloud_account(self) -> pulumi.Output[str]:
         """
         AWS account ID or GCP project ID of the peered VPC
         """
@@ -126,7 +126,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> str:
+    def peer_region(self) -> pulumi.Output[str]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
@@ -134,7 +134,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerVpc")
-    def peer_vpc(self) -> str:
+    def peer_vpc(self) -> pulumi.Output[str]:
         """
         Transit gateway ID
         """
@@ -142,7 +142,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peeringConnectionId")
-    def peering_connection_id(self) -> str:
+    def peering_connection_id(self) -> pulumi.Output[str]:
         """
         Cloud provider identifier for the peering connection if available
         """
@@ -150,7 +150,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         State of the peering connection
         """
@@ -158,7 +158,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Mapping[str, Any]:
+    def state_info(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         State-specific help or error information
         """
@@ -166,7 +166,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userPeerNetworkCidrs")
-    def user_peer_network_cidrs(self) -> List[str]:
+    def user_peer_network_cidrs(self) -> pulumi.Output[List[str]]:
         """
         List of private IPv4 ranges to route through the peering connection
         """
@@ -174,7 +174,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC the peering connection belongs to
         """

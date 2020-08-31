@@ -13,7 +13,7 @@ __all__ = ['ConnectionPool']
 
 class ConnectionPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_name: Optional[pulumi.Input[str]] = None,
                  pool_mode: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionUri")
-    def connection_uri(self) -> str:
+    def connection_uri(self) -> pulumi.Output[str]:
         """
         URI for connecting to the pool
         """
@@ -145,7 +145,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> str:
+    def database_name(self) -> pulumi.Output[str]:
         """
         Name of the database the pool connects to
         """
@@ -153,7 +153,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolMode")
-    def pool_mode(self) -> Optional[str]:
+    def pool_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Mode the pool operates in (session, transaction, statement)
         """
@@ -161,7 +161,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolName")
-    def pool_name(self) -> str:
+    def pool_name(self) -> pulumi.Output[str]:
         """
         Name of the pool
         """
@@ -169,7 +169,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> Optional[float]:
+    def pool_size(self) -> pulumi.Output[Optional[float]]:
         """
         Number of connections the pool may create towards the backend server
         """
@@ -177,7 +177,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project to link the connection pool to
         """
@@ -185,7 +185,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Service to link the connection pool to
         """
@@ -193,7 +193,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         Name of the service user used to connect to the database
         """
