@@ -84,6 +84,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("maxWorkerProcesses")]
         public Input<string>? MaxWorkerProcesses { get; set; }
 
+        [Input("pgPartmanBgwDotInterval")]
+        public Input<string>? PgPartmanBgwDotInterval { get; set; }
+
+        [Input("pgPartmanBgwDotRole")]
+        public Input<string>? PgPartmanBgwDotRole { get; set; }
+
         [Input("pgStatStatementsDotTrack")]
         public Input<string>? PgStatStatementsDotTrack { get; set; }
 

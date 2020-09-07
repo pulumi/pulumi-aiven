@@ -77,6 +77,7 @@ __all__ = [
     'PgComponentArgs',
     'PgPgArgs',
     'PgPgUserConfigArgs',
+    'PgPgUserConfigMigrationArgs',
     'PgPgUserConfigPgArgs',
     'PgPgUserConfigPgbouncerArgs',
     'PgPgUserConfigPglookoutArgs',
@@ -149,6 +150,7 @@ __all__ = [
     'ServiceMysqlUserConfigPublicAccessArgs',
     'ServicePgArgs',
     'ServicePgUserConfigArgs',
+    'ServicePgUserConfigMigrationArgs',
     'ServicePgUserConfigPgArgs',
     'ServicePgUserConfigPgbouncerArgs',
     'ServicePgUserConfigPglookoutArgs',
@@ -229,6 +231,7 @@ __all__ = [
     'GetPgComponentArgs',
     'GetPgPgArgs',
     'GetPgPgUserConfigArgs',
+    'GetPgPgUserConfigMigrationArgs',
     'GetPgPgUserConfigPgArgs',
     'GetPgPgUserConfigPgbouncerArgs',
     'GetPgPgUserConfigPglookoutArgs',
@@ -301,6 +304,7 @@ __all__ = [
     'GetServiceMysqlUserConfigPublicAccessArgs',
     'GetServicePgArgs',
     'GetServicePgUserConfigArgs',
+    'GetServicePgUserConfigMigrationArgs',
     'GetServicePgUserConfigPgArgs',
     'GetServicePgUserConfigPgbouncerArgs',
     'GetServicePgUserConfigPglookoutArgs',
@@ -4747,6 +4751,7 @@ class PgPgUserConfigArgs:
                  backup_hour: Optional[pulumi.Input[str]] = None,
                  backup_minute: Optional[pulumi.Input[str]] = None,
                  ip_filters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 migration: Optional[pulumi.Input['PgPgUserConfigMigrationArgs']] = None,
                  pg: Optional[pulumi.Input['PgPgUserConfigPgArgs']] = None,
                  pg_read_replica: Optional[pulumi.Input[str]] = None,
                  pg_service_to_fork_from: Optional[pulumi.Input[str]] = None,
@@ -4772,6 +4777,8 @@ class PgPgUserConfigArgs:
             pulumi.set(__self__, "backup_minute", backup_minute)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if migration is not None:
+            pulumi.set(__self__, "migration", migration)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_read_replica is not None:
@@ -4847,6 +4854,15 @@ class PgPgUserConfigArgs:
     @ip_filters.setter
     def ip_filters(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
         pulumi.set(self, "ip_filters", value)
+
+    @property
+    @pulumi.getter
+    def migration(self) -> Optional[pulumi.Input['PgPgUserConfigMigrationArgs']]:
+        return pulumi.get(self, "migration")
+
+    @migration.setter
+    def migration(self, value: Optional[pulumi.Input['PgPgUserConfigMigrationArgs']]):
+        pulumi.set(self, "migration", value)
 
     @property
     @pulumi.getter
@@ -4985,6 +5001,83 @@ class PgPgUserConfigArgs:
 
 
 @pulumi.input_type
+class PgPgUserConfigMigrationArgs:
+    def __init__(__self__, *,
+                 dbname: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dbname", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
 class PgPgUserConfigPgArgs:
     def __init__(__self__, *,
                  autovacuum_analyze_scale_factor: Optional[pulumi.Input[str]] = None,
@@ -5011,6 +5104,8 @@ class PgPgUserConfigPgArgs:
                  max_standby_archive_delay: Optional[pulumi.Input[str]] = None,
                  max_standby_streaming_delay: Optional[pulumi.Input[str]] = None,
                  max_worker_processes: Optional[pulumi.Input[str]] = None,
+                 pg_partman_bgw_dot_interval: Optional[pulumi.Input[str]] = None,
+                 pg_partman_bgw_dot_role: Optional[pulumi.Input[str]] = None,
                  pg_stat_statements_dot_track: Optional[pulumi.Input[str]] = None,
                  temp_file_limit: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -5067,6 +5162,10 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
+        if pg_partman_bgw_dot_interval is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
+        if pg_partman_bgw_dot_role is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
         if pg_stat_statements_dot_track is not None:
             pulumi.set(__self__, "pg_stat_statements_dot_track", pg_stat_statements_dot_track)
         if temp_file_limit is not None:
@@ -5299,6 +5398,24 @@ class PgPgUserConfigPgArgs:
     @max_worker_processes.setter
     def max_worker_processes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_worker_processes", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotInterval")
+    def pg_partman_bgw_dot_interval(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pg_partman_bgw_dot_interval")
+
+    @pg_partman_bgw_dot_interval.setter
+    def pg_partman_bgw_dot_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pg_partman_bgw_dot_interval", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotRole")
+    def pg_partman_bgw_dot_role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pg_partman_bgw_dot_role")
+
+    @pg_partman_bgw_dot_role.setter
+    def pg_partman_bgw_dot_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pg_partman_bgw_dot_role", value)
 
     @property
     @pulumi.getter(name="pgStatStatementsDotTrack")
@@ -5652,7 +5769,8 @@ class RedisRedisUserConfigArgs:
                  redis_maxmemory_policy: Optional[pulumi.Input[str]] = None,
                  redis_notify_keyspace_events: Optional[pulumi.Input[str]] = None,
                  redis_ssl: Optional[pulumi.Input[str]] = None,
-                 redis_timeout: Optional[pulumi.Input[str]] = None):
+                 redis_timeout: Optional[pulumi.Input[str]] = None,
+                 service_to_fork_from: Optional[pulumi.Input[str]] = None):
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -5673,6 +5791,8 @@ class RedisRedisUserConfigArgs:
             pulumi.set(__self__, "redis_ssl", redis_ssl)
         if redis_timeout is not None:
             pulumi.set(__self__, "redis_timeout", redis_timeout)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -5764,15 +5884,27 @@ class RedisRedisUserConfigArgs:
     def redis_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redis_timeout", value)
 
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_to_fork_from", value)
+
 
 @pulumi.input_type
 class RedisRedisUserConfigMigrationArgs:
     def __init__(__self__, *,
+                 dbname: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if password is not None:
@@ -5783,6 +5915,15 @@ class RedisRedisUserConfigMigrationArgs:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dbname", value)
 
     @property
     @pulumi.getter
@@ -9729,6 +9870,7 @@ class ServicePgUserConfigArgs:
                  backup_hour: Optional[pulumi.Input[str]] = None,
                  backup_minute: Optional[pulumi.Input[str]] = None,
                  ip_filters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 migration: Optional[pulumi.Input['ServicePgUserConfigMigrationArgs']] = None,
                  pg: Optional[pulumi.Input['ServicePgUserConfigPgArgs']] = None,
                  pg_read_replica: Optional[pulumi.Input[str]] = None,
                  pg_service_to_fork_from: Optional[pulumi.Input[str]] = None,
@@ -9754,6 +9896,8 @@ class ServicePgUserConfigArgs:
             pulumi.set(__self__, "backup_minute", backup_minute)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if migration is not None:
+            pulumi.set(__self__, "migration", migration)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_read_replica is not None:
@@ -9829,6 +9973,15 @@ class ServicePgUserConfigArgs:
     @ip_filters.setter
     def ip_filters(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
         pulumi.set(self, "ip_filters", value)
+
+    @property
+    @pulumi.getter
+    def migration(self) -> Optional[pulumi.Input['ServicePgUserConfigMigrationArgs']]:
+        return pulumi.get(self, "migration")
+
+    @migration.setter
+    def migration(self, value: Optional[pulumi.Input['ServicePgUserConfigMigrationArgs']]):
+        pulumi.set(self, "migration", value)
 
     @property
     @pulumi.getter
@@ -9967,6 +10120,83 @@ class ServicePgUserConfigArgs:
 
 
 @pulumi.input_type
+class ServicePgUserConfigMigrationArgs:
+    def __init__(__self__, *,
+                 dbname: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dbname", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
 class ServicePgUserConfigPgArgs:
     def __init__(__self__, *,
                  autovacuum_analyze_scale_factor: Optional[pulumi.Input[str]] = None,
@@ -9993,6 +10223,8 @@ class ServicePgUserConfigPgArgs:
                  max_standby_archive_delay: Optional[pulumi.Input[str]] = None,
                  max_standby_streaming_delay: Optional[pulumi.Input[str]] = None,
                  max_worker_processes: Optional[pulumi.Input[str]] = None,
+                 pg_partman_bgw_dot_interval: Optional[pulumi.Input[str]] = None,
+                 pg_partman_bgw_dot_role: Optional[pulumi.Input[str]] = None,
                  pg_stat_statements_track: Optional[pulumi.Input[str]] = None,
                  temp_file_limit: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -10049,6 +10281,10 @@ class ServicePgUserConfigPgArgs:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
+        if pg_partman_bgw_dot_interval is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
+        if pg_partman_bgw_dot_role is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
         if pg_stat_statements_track is not None:
             pulumi.set(__self__, "pg_stat_statements_track", pg_stat_statements_track)
         if temp_file_limit is not None:
@@ -10281,6 +10517,24 @@ class ServicePgUserConfigPgArgs:
     @max_worker_processes.setter
     def max_worker_processes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_worker_processes", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotInterval")
+    def pg_partman_bgw_dot_interval(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pg_partman_bgw_dot_interval")
+
+    @pg_partman_bgw_dot_interval.setter
+    def pg_partman_bgw_dot_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pg_partman_bgw_dot_interval", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotRole")
+    def pg_partman_bgw_dot_role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pg_partman_bgw_dot_role")
+
+    @pg_partman_bgw_dot_role.setter
+    def pg_partman_bgw_dot_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pg_partman_bgw_dot_role", value)
 
     @property
     @pulumi.getter(name="pgStatStatementsTrack")
@@ -10518,7 +10772,8 @@ class ServiceRedisUserConfigArgs:
                  redis_maxmemory_policy: Optional[pulumi.Input[str]] = None,
                  redis_notify_keyspace_events: Optional[pulumi.Input[str]] = None,
                  redis_ssl: Optional[pulumi.Input[str]] = None,
-                 redis_timeout: Optional[pulumi.Input[str]] = None):
+                 redis_timeout: Optional[pulumi.Input[str]] = None,
+                 service_to_fork_from: Optional[pulumi.Input[str]] = None):
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -10539,6 +10794,8 @@ class ServiceRedisUserConfigArgs:
             pulumi.set(__self__, "redis_ssl", redis_ssl)
         if redis_timeout is not None:
             pulumi.set(__self__, "redis_timeout", redis_timeout)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -10630,15 +10887,27 @@ class ServiceRedisUserConfigArgs:
     def redis_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redis_timeout", value)
 
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_to_fork_from", value)
+
 
 @pulumi.input_type
 class ServiceRedisUserConfigMigrationArgs:
     def __init__(__self__, *,
+                 dbname: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if password is not None:
@@ -10649,6 +10918,15 @@ class ServiceRedisUserConfigMigrationArgs:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dbname", value)
 
     @property
     @pulumi.getter
@@ -15133,6 +15411,7 @@ class GetPgPgUserConfigArgs:
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
                  ip_filters: Optional[List[str]] = None,
+                 migration: Optional['GetPgPgUserConfigMigrationArgs'] = None,
                  pg: Optional['GetPgPgUserConfigPgArgs'] = None,
                  pg_read_replica: Optional[str] = None,
                  pg_service_to_fork_from: Optional[str] = None,
@@ -15158,6 +15437,8 @@ class GetPgPgUserConfigArgs:
             pulumi.set(__self__, "backup_minute", backup_minute)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if migration is not None:
+            pulumi.set(__self__, "migration", migration)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_read_replica is not None:
@@ -15233,6 +15514,15 @@ class GetPgPgUserConfigArgs:
     @ip_filters.setter
     def ip_filters(self, value: Optional[List[str]]):
         pulumi.set(self, "ip_filters", value)
+
+    @property
+    @pulumi.getter
+    def migration(self) -> Optional['GetPgPgUserConfigMigrationArgs']:
+        return pulumi.get(self, "migration")
+
+    @migration.setter
+    def migration(self, value: Optional['GetPgPgUserConfigMigrationArgs']):
+        pulumi.set(self, "migration", value)
 
     @property
     @pulumi.getter
@@ -15371,6 +15661,83 @@ class GetPgPgUserConfigArgs:
 
 
 @pulumi.input_type
+class GetPgPgUserConfigMigrationArgs:
+    def __init__(__self__, *,
+                 dbname: Optional[str] = None,
+                 host: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[str] = None,
+                 ssl: Optional[str] = None,
+                 username: Optional[str] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[str]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[str]):
+        pulumi.set(self, "dbname", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[str]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[str]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[str]:
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[str]):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[str]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
 class GetPgPgUserConfigPgArgs:
     def __init__(__self__, *,
                  autovacuum_analyze_scale_factor: Optional[str] = None,
@@ -15397,6 +15764,8 @@ class GetPgPgUserConfigPgArgs:
                  max_standby_archive_delay: Optional[str] = None,
                  max_standby_streaming_delay: Optional[str] = None,
                  max_worker_processes: Optional[str] = None,
+                 pg_partman_bgw_dot_interval: Optional[str] = None,
+                 pg_partman_bgw_dot_role: Optional[str] = None,
                  pg_stat_statements_dot_track: Optional[str] = None,
                  temp_file_limit: Optional[str] = None,
                  timezone: Optional[str] = None,
@@ -15453,6 +15822,10 @@ class GetPgPgUserConfigPgArgs:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
+        if pg_partman_bgw_dot_interval is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
+        if pg_partman_bgw_dot_role is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
         if pg_stat_statements_dot_track is not None:
             pulumi.set(__self__, "pg_stat_statements_dot_track", pg_stat_statements_dot_track)
         if temp_file_limit is not None:
@@ -15685,6 +16058,24 @@ class GetPgPgUserConfigPgArgs:
     @max_worker_processes.setter
     def max_worker_processes(self, value: Optional[str]):
         pulumi.set(self, "max_worker_processes", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotInterval")
+    def pg_partman_bgw_dot_interval(self) -> Optional[str]:
+        return pulumi.get(self, "pg_partman_bgw_dot_interval")
+
+    @pg_partman_bgw_dot_interval.setter
+    def pg_partman_bgw_dot_interval(self, value: Optional[str]):
+        pulumi.set(self, "pg_partman_bgw_dot_interval", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotRole")
+    def pg_partman_bgw_dot_role(self) -> Optional[str]:
+        return pulumi.get(self, "pg_partman_bgw_dot_role")
+
+    @pg_partman_bgw_dot_role.setter
+    def pg_partman_bgw_dot_role(self, value: Optional[str]):
+        pulumi.set(self, "pg_partman_bgw_dot_role", value)
 
     @property
     @pulumi.getter(name="pgStatStatementsDotTrack")
@@ -16031,7 +16422,8 @@ class GetRedisRedisUserConfigArgs:
                  redis_maxmemory_policy: Optional[str] = None,
                  redis_notify_keyspace_events: Optional[str] = None,
                  redis_ssl: Optional[str] = None,
-                 redis_timeout: Optional[str] = None):
+                 redis_timeout: Optional[str] = None,
+                 service_to_fork_from: Optional[str] = None):
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -16052,6 +16444,8 @@ class GetRedisRedisUserConfigArgs:
             pulumi.set(__self__, "redis_ssl", redis_ssl)
         if redis_timeout is not None:
             pulumi.set(__self__, "redis_timeout", redis_timeout)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -16143,15 +16537,27 @@ class GetRedisRedisUserConfigArgs:
     def redis_timeout(self, value: Optional[str]):
         pulumi.set(self, "redis_timeout", value)
 
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[str]):
+        pulumi.set(self, "service_to_fork_from", value)
+
 
 @pulumi.input_type
 class GetRedisRedisUserConfigMigrationArgs:
     def __init__(__self__, *,
+                 dbname: Optional[str] = None,
                  host: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[str] = None,
                  ssl: Optional[str] = None,
                  username: Optional[str] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if password is not None:
@@ -16162,6 +16568,15 @@ class GetRedisRedisUserConfigMigrationArgs:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[str]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[str]):
+        pulumi.set(self, "dbname", value)
 
     @property
     @pulumi.getter
@@ -20086,6 +20501,7 @@ class GetServicePgUserConfigArgs:
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
                  ip_filters: Optional[List[str]] = None,
+                 migration: Optional['GetServicePgUserConfigMigrationArgs'] = None,
                  pg: Optional['GetServicePgUserConfigPgArgs'] = None,
                  pg_read_replica: Optional[str] = None,
                  pg_service_to_fork_from: Optional[str] = None,
@@ -20111,6 +20527,8 @@ class GetServicePgUserConfigArgs:
             pulumi.set(__self__, "backup_minute", backup_minute)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if migration is not None:
+            pulumi.set(__self__, "migration", migration)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_read_replica is not None:
@@ -20186,6 +20604,15 @@ class GetServicePgUserConfigArgs:
     @ip_filters.setter
     def ip_filters(self, value: Optional[List[str]]):
         pulumi.set(self, "ip_filters", value)
+
+    @property
+    @pulumi.getter
+    def migration(self) -> Optional['GetServicePgUserConfigMigrationArgs']:
+        return pulumi.get(self, "migration")
+
+    @migration.setter
+    def migration(self, value: Optional['GetServicePgUserConfigMigrationArgs']):
+        pulumi.set(self, "migration", value)
 
     @property
     @pulumi.getter
@@ -20324,6 +20751,83 @@ class GetServicePgUserConfigArgs:
 
 
 @pulumi.input_type
+class GetServicePgUserConfigMigrationArgs:
+    def __init__(__self__, *,
+                 dbname: Optional[str] = None,
+                 host: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[str] = None,
+                 ssl: Optional[str] = None,
+                 username: Optional[str] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[str]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[str]):
+        pulumi.set(self, "dbname", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[str]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[str]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[str]:
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[str]):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[str]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
 class GetServicePgUserConfigPgArgs:
     def __init__(__self__, *,
                  autovacuum_analyze_scale_factor: Optional[str] = None,
@@ -20350,6 +20854,8 @@ class GetServicePgUserConfigPgArgs:
                  max_standby_archive_delay: Optional[str] = None,
                  max_standby_streaming_delay: Optional[str] = None,
                  max_worker_processes: Optional[str] = None,
+                 pg_partman_bgw_dot_interval: Optional[str] = None,
+                 pg_partman_bgw_dot_role: Optional[str] = None,
                  pg_stat_statements_track: Optional[str] = None,
                  temp_file_limit: Optional[str] = None,
                  timezone: Optional[str] = None,
@@ -20406,6 +20912,10 @@ class GetServicePgUserConfigPgArgs:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
+        if pg_partman_bgw_dot_interval is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
+        if pg_partman_bgw_dot_role is not None:
+            pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
         if pg_stat_statements_track is not None:
             pulumi.set(__self__, "pg_stat_statements_track", pg_stat_statements_track)
         if temp_file_limit is not None:
@@ -20638,6 +21148,24 @@ class GetServicePgUserConfigPgArgs:
     @max_worker_processes.setter
     def max_worker_processes(self, value: Optional[str]):
         pulumi.set(self, "max_worker_processes", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotInterval")
+    def pg_partman_bgw_dot_interval(self) -> Optional[str]:
+        return pulumi.get(self, "pg_partman_bgw_dot_interval")
+
+    @pg_partman_bgw_dot_interval.setter
+    def pg_partman_bgw_dot_interval(self, value: Optional[str]):
+        pulumi.set(self, "pg_partman_bgw_dot_interval", value)
+
+    @property
+    @pulumi.getter(name="pgPartmanBgwDotRole")
+    def pg_partman_bgw_dot_role(self) -> Optional[str]:
+        return pulumi.get(self, "pg_partman_bgw_dot_role")
+
+    @pg_partman_bgw_dot_role.setter
+    def pg_partman_bgw_dot_role(self, value: Optional[str]):
+        pulumi.set(self, "pg_partman_bgw_dot_role", value)
 
     @property
     @pulumi.getter(name="pgStatStatementsTrack")
@@ -20875,7 +21403,8 @@ class GetServiceRedisUserConfigArgs:
                  redis_maxmemory_policy: Optional[str] = None,
                  redis_notify_keyspace_events: Optional[str] = None,
                  redis_ssl: Optional[str] = None,
-                 redis_timeout: Optional[str] = None):
+                 redis_timeout: Optional[str] = None,
+                 service_to_fork_from: Optional[str] = None):
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -20896,6 +21425,8 @@ class GetServiceRedisUserConfigArgs:
             pulumi.set(__self__, "redis_ssl", redis_ssl)
         if redis_timeout is not None:
             pulumi.set(__self__, "redis_timeout", redis_timeout)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -20987,15 +21518,27 @@ class GetServiceRedisUserConfigArgs:
     def redis_timeout(self, value: Optional[str]):
         pulumi.set(self, "redis_timeout", value)
 
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[str]):
+        pulumi.set(self, "service_to_fork_from", value)
+
 
 @pulumi.input_type
 class GetServiceRedisUserConfigMigrationArgs:
     def __init__(__self__, *,
+                 dbname: Optional[str] = None,
                  host: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[str] = None,
                  ssl: Optional[str] = None,
                  username: Optional[str] = None):
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if password is not None:
@@ -21006,6 +21549,15 @@ class GetServiceRedisUserConfigMigrationArgs:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[str]:
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[str]):
+        pulumi.set(self, "dbname", value)
 
     @property
     @pulumi.getter

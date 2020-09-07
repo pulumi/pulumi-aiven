@@ -12,6 +12,12 @@ namespace Pulumi.Aiven
     public partial class KafkaSchema : Pulumi.CustomResource
     {
         /// <summary>
+        /// Kafka Schemas compatibility level
+        /// </summary>
+        [Output("compatibilityLevel")]
+        public Output<string?> CompatibilityLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Project to link the Kafka Schema to
         /// </summary>
         [Output("project")]
@@ -88,6 +94,12 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Kafka Schemas compatibility level
+        /// </summary>
+        [Input("compatibilityLevel")]
+        public Input<string>? CompatibilityLevel { get; set; }
+
+        /// <summary>
         /// Project to link the Kafka Schema to
         /// </summary>
         [Input("project", required: true)]
@@ -118,6 +130,12 @@ namespace Pulumi.Aiven
 
     public sealed class KafkaSchemaState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kafka Schemas compatibility level
+        /// </summary>
+        [Input("compatibilityLevel")]
+        public Input<string>? CompatibilityLevel { get; set; }
+
         /// <summary>
         /// Project to link the Kafka Schema to
         /// </summary>

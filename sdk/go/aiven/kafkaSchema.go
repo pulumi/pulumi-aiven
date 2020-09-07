@@ -13,6 +13,8 @@ import (
 type KafkaSchema struct {
 	pulumi.CustomResourceState
 
+	// Kafka Schemas compatibility level
+	CompatibilityLevel pulumi.StringPtrOutput `pulumi:"compatibilityLevel"`
 	// Project to link the Kafka Schema to
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Kafka Schema configuration should be a valid Avro Schema JSON format
@@ -65,6 +67,8 @@ func GetKafkaSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaSchema resources.
 type kafkaSchemaState struct {
+	// Kafka Schemas compatibility level
+	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// Project to link the Kafka Schema to
 	Project *string `pulumi:"project"`
 	// Kafka Schema configuration should be a valid Avro Schema JSON format
@@ -78,6 +82,8 @@ type kafkaSchemaState struct {
 }
 
 type KafkaSchemaState struct {
+	// Kafka Schemas compatibility level
+	CompatibilityLevel pulumi.StringPtrInput
 	// Project to link the Kafka Schema to
 	Project pulumi.StringPtrInput
 	// Kafka Schema configuration should be a valid Avro Schema JSON format
@@ -95,6 +101,8 @@ func (KafkaSchemaState) ElementType() reflect.Type {
 }
 
 type kafkaSchemaArgs struct {
+	// Kafka Schemas compatibility level
+	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// Project to link the Kafka Schema to
 	Project string `pulumi:"project"`
 	// Kafka Schema configuration should be a valid Avro Schema JSON format
@@ -107,6 +115,8 @@ type kafkaSchemaArgs struct {
 
 // The set of arguments for constructing a KafkaSchema resource.
 type KafkaSchemaArgs struct {
+	// Kafka Schemas compatibility level
+	CompatibilityLevel pulumi.StringPtrInput
 	// Project to link the Kafka Schema to
 	Project pulumi.StringInput
 	// Kafka Schema configuration should be a valid Avro Schema JSON format

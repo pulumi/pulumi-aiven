@@ -682,6 +682,7 @@ export interface GetPgPgUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: inputs.GetPgPgUserConfigMigration;
     pg?: inputs.GetPgPgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -697,6 +698,15 @@ export interface GetPgPgUserConfig {
     timescaledb?: inputs.GetPgPgUserConfigTimescaledb;
     variant?: string;
     workMem?: string;
+}
+
+export interface GetPgPgUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface GetPgPgUserConfigPg {
@@ -724,6 +734,8 @@ export interface GetPgPgUserConfigPg {
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
     maxWorkerProcesses?: string;
+    pgPartmanBgwDotInterval?: string;
+    pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
     tempFileLimit?: string;
     timezone?: string;
@@ -788,9 +800,11 @@ export interface GetRedisRedisUserConfig {
     redisNotifyKeyspaceEvents?: string;
     redisSsl?: string;
     redisTimeout?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
+    dbname?: string;
     host?: string;
     password?: string;
     port?: string;
@@ -1283,6 +1297,7 @@ export interface GetServicePgUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: inputs.GetServicePgUserConfigMigration;
     pg?: inputs.GetServicePgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -1298,6 +1313,15 @@ export interface GetServicePgUserConfig {
     timescaledb?: inputs.GetServicePgUserConfigTimescaledb;
     variant?: string;
     workMem?: string;
+}
+
+export interface GetServicePgUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface GetServicePgUserConfigPg {
@@ -1325,6 +1349,8 @@ export interface GetServicePgUserConfigPg {
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
     maxWorkerProcesses?: string;
+    pgPartmanBgwDotInterval?: string;
+    pgPartmanBgwDotRole?: string;
     pgStatStatementsTrack?: string;
     tempFileLimit?: string;
     timezone?: string;
@@ -1374,9 +1400,11 @@ export interface GetServiceRedisUserConfig {
     redisNotifyKeyspaceEvents?: string;
     redisSsl?: string;
     redisTimeout?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface GetServiceRedisUserConfigMigration {
+    dbname?: string;
     host?: string;
     password?: string;
     port?: string;
@@ -1820,6 +1848,7 @@ export interface PgPgUserConfig {
     backupHour?: pulumi.Input<string>;
     backupMinute?: pulumi.Input<string>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    migration?: pulumi.Input<inputs.PgPgUserConfigMigration>;
     pg?: pulumi.Input<inputs.PgPgUserConfigPg>;
     pgReadReplica?: pulumi.Input<string>;
     pgServiceToForkFrom?: pulumi.Input<string>;
@@ -1835,6 +1864,15 @@ export interface PgPgUserConfig {
     timescaledb?: pulumi.Input<inputs.PgPgUserConfigTimescaledb>;
     variant?: pulumi.Input<string>;
     workMem?: pulumi.Input<string>;
+}
+
+export interface PgPgUserConfigMigration {
+    dbname?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
+    ssl?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPg {
@@ -1862,6 +1900,8 @@ export interface PgPgUserConfigPg {
     maxStandbyArchiveDelay?: pulumi.Input<string>;
     maxStandbyStreamingDelay?: pulumi.Input<string>;
     maxWorkerProcesses?: pulumi.Input<string>;
+    pgPartmanBgwDotInterval?: pulumi.Input<string>;
+    pgPartmanBgwDotRole?: pulumi.Input<string>;
     pgStatStatementsDotTrack?: pulumi.Input<string>;
     tempFileLimit?: pulumi.Input<string>;
     timezone?: pulumi.Input<string>;
@@ -1926,9 +1966,11 @@ export interface RedisRedisUserConfig {
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
     redisSsl?: pulumi.Input<string>;
     redisTimeout?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigMigration {
+    dbname?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     port?: pulumi.Input<string>;
@@ -2421,6 +2463,7 @@ export interface ServicePgUserConfig {
     backupHour?: pulumi.Input<string>;
     backupMinute?: pulumi.Input<string>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    migration?: pulumi.Input<inputs.ServicePgUserConfigMigration>;
     pg?: pulumi.Input<inputs.ServicePgUserConfigPg>;
     pgReadReplica?: pulumi.Input<string>;
     pgServiceToForkFrom?: pulumi.Input<string>;
@@ -2436,6 +2479,15 @@ export interface ServicePgUserConfig {
     timescaledb?: pulumi.Input<inputs.ServicePgUserConfigTimescaledb>;
     variant?: pulumi.Input<string>;
     workMem?: pulumi.Input<string>;
+}
+
+export interface ServicePgUserConfigMigration {
+    dbname?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
+    ssl?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPg {
@@ -2463,6 +2515,8 @@ export interface ServicePgUserConfigPg {
     maxStandbyArchiveDelay?: pulumi.Input<string>;
     maxStandbyStreamingDelay?: pulumi.Input<string>;
     maxWorkerProcesses?: pulumi.Input<string>;
+    pgPartmanBgwDotInterval?: pulumi.Input<string>;
+    pgPartmanBgwDotRole?: pulumi.Input<string>;
     pgStatStatementsTrack?: pulumi.Input<string>;
     tempFileLimit?: pulumi.Input<string>;
     timezone?: pulumi.Input<string>;
@@ -2512,9 +2566,11 @@ export interface ServiceRedisUserConfig {
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
     redisSsl?: pulumi.Input<string>;
     redisTimeout?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface ServiceRedisUserConfigMigration {
+    dbname?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     port?: pulumi.Input<string>;

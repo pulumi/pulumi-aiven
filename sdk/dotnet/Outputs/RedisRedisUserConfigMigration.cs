@@ -13,6 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class RedisRedisUserConfigMigration
     {
+        public readonly string? Dbname;
         public readonly string? Host;
         public readonly string? Password;
         public readonly string? Port;
@@ -21,6 +22,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private RedisRedisUserConfigMigration(
+            string? dbname,
+
             string? host,
 
             string? password,
@@ -31,6 +34,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? username)
         {
+            Dbname = dbname;
             Host = host;
             Password = password;
             Port = port;

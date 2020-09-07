@@ -15,6 +15,7 @@ export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArg
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", {
+        "compatibilityLevel": args.compatibilityLevel,
         "project": args.project,
         "schema": args.schema,
         "serviceName": args.serviceName,
@@ -27,6 +28,7 @@ export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArg
  * A collection of arguments for invoking getKafkaSchemaConfiguration.
  */
 export interface GetKafkaSchemaConfigurationArgs {
+    readonly compatibilityLevel?: string;
     readonly project: string;
     readonly schema?: string;
     readonly serviceName: string;
@@ -38,6 +40,7 @@ export interface GetKafkaSchemaConfigurationArgs {
  * A collection of values returned by getKafkaSchemaConfiguration.
  */
 export interface GetKafkaSchemaConfigurationResult {
+    readonly compatibilityLevel?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -11392,6 +11392,7 @@ type PgPgUserConfig struct {
 	BackupHour              *string                      `pulumi:"backupHour"`
 	BackupMinute            *string                      `pulumi:"backupMinute"`
 	IpFilters               []string                     `pulumi:"ipFilters"`
+	Migration               *PgPgUserConfigMigration     `pulumi:"migration"`
 	Pg                      *PgPgUserConfigPg            `pulumi:"pg"`
 	PgReadReplica           *string                      `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     *string                      `pulumi:"pgServiceToForkFrom"`
@@ -11426,6 +11427,7 @@ type PgPgUserConfigArgs struct {
 	BackupHour              pulumi.StringPtrInput               `pulumi:"backupHour"`
 	BackupMinute            pulumi.StringPtrInput               `pulumi:"backupMinute"`
 	IpFilters               pulumi.StringArrayInput             `pulumi:"ipFilters"`
+	Migration               PgPgUserConfigMigrationPtrInput     `pulumi:"migration"`
 	Pg                      PgPgUserConfigPgPtrInput            `pulumi:"pg"`
 	PgReadReplica           pulumi.StringPtrInput               `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     pulumi.StringPtrInput               `pulumi:"pgServiceToForkFrom"`
@@ -11537,6 +11539,10 @@ func (o PgPgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 
 func (o PgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+func (o PgPgUserConfigOutput) Migration() PgPgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigMigration { return v.Migration }).(PgPgUserConfigMigrationPtrOutput)
 }
 
 func (o PgPgUserConfigOutput) Pg() PgPgUserConfigPgPtrOutput {
@@ -11660,6 +11666,15 @@ func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 		}
 		return v.IpFilters
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigMigration {
+		if v == nil {
+			return nil
+		}
+		return v.Migration
+	}).(PgPgUserConfigMigrationPtrOutput)
 }
 
 func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
@@ -11797,6 +11812,207 @@ func (o PgPgUserConfigPtrOutput) WorkMem() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PgPgUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
+	Host     *string `pulumi:"host"`
+	Password *string `pulumi:"password"`
+	Port     *string `pulumi:"port"`
+	Ssl      *string `pulumi:"ssl"`
+	Username *string `pulumi:"username"`
+}
+
+// PgPgUserConfigMigrationInput is an input type that accepts PgPgUserConfigMigrationArgs and PgPgUserConfigMigrationOutput values.
+// You can construct a concrete instance of `PgPgUserConfigMigrationInput` via:
+//
+//          PgPgUserConfigMigrationArgs{...}
+type PgPgUserConfigMigrationInput interface {
+	pulumi.Input
+
+	ToPgPgUserConfigMigrationOutput() PgPgUserConfigMigrationOutput
+	ToPgPgUserConfigMigrationOutputWithContext(context.Context) PgPgUserConfigMigrationOutput
+}
+
+type PgPgUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
+	Host     pulumi.StringPtrInput `pulumi:"host"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
+	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (PgPgUserConfigMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (i PgPgUserConfigMigrationArgs) ToPgPgUserConfigMigrationOutput() PgPgUserConfigMigrationOutput {
+	return i.ToPgPgUserConfigMigrationOutputWithContext(context.Background())
+}
+
+func (i PgPgUserConfigMigrationArgs) ToPgPgUserConfigMigrationOutputWithContext(ctx context.Context) PgPgUserConfigMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigMigrationOutput)
+}
+
+func (i PgPgUserConfigMigrationArgs) ToPgPgUserConfigMigrationPtrOutput() PgPgUserConfigMigrationPtrOutput {
+	return i.ToPgPgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i PgPgUserConfigMigrationArgs) ToPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) PgPgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigMigrationOutput).ToPgPgUserConfigMigrationPtrOutputWithContext(ctx)
+}
+
+// PgPgUserConfigMigrationPtrInput is an input type that accepts PgPgUserConfigMigrationArgs, PgPgUserConfigMigrationPtr and PgPgUserConfigMigrationPtrOutput values.
+// You can construct a concrete instance of `PgPgUserConfigMigrationPtrInput` via:
+//
+//          PgPgUserConfigMigrationArgs{...}
+//
+//  or:
+//
+//          nil
+type PgPgUserConfigMigrationPtrInput interface {
+	pulumi.Input
+
+	ToPgPgUserConfigMigrationPtrOutput() PgPgUserConfigMigrationPtrOutput
+	ToPgPgUserConfigMigrationPtrOutputWithContext(context.Context) PgPgUserConfigMigrationPtrOutput
+}
+
+type pgPgUserConfigMigrationPtrType PgPgUserConfigMigrationArgs
+
+func PgPgUserConfigMigrationPtr(v *PgPgUserConfigMigrationArgs) PgPgUserConfigMigrationPtrInput {
+	return (*pgPgUserConfigMigrationPtrType)(v)
+}
+
+func (*pgPgUserConfigMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (i *pgPgUserConfigMigrationPtrType) ToPgPgUserConfigMigrationPtrOutput() PgPgUserConfigMigrationPtrOutput {
+	return i.ToPgPgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *pgPgUserConfigMigrationPtrType) ToPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) PgPgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigMigrationPtrOutput)
+}
+
+type PgPgUserConfigMigrationOutput struct{ *pulumi.OutputState }
+
+func (PgPgUserConfigMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (o PgPgUserConfigMigrationOutput) ToPgPgUserConfigMigrationOutput() PgPgUserConfigMigrationOutput {
+	return o
+}
+
+func (o PgPgUserConfigMigrationOutput) ToPgPgUserConfigMigrationOutputWithContext(ctx context.Context) PgPgUserConfigMigrationOutput {
+	return o
+}
+
+func (o PgPgUserConfigMigrationOutput) ToPgPgUserConfigMigrationPtrOutput() PgPgUserConfigMigrationPtrOutput {
+	return o.ToPgPgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o PgPgUserConfigMigrationOutput) ToPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) PgPgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigMigration) *PgPgUserConfigMigration {
+		return &v
+	}).(PgPgUserConfigMigrationPtrOutput)
+}
+func (o PgPgUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type PgPgUserConfigMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (PgPgUserConfigMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) ToPgPgUserConfigMigrationPtrOutput() PgPgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) ToPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) PgPgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) Elem() PgPgUserConfigMigrationOutput {
+	return o.ApplyT(func(v *PgPgUserConfigMigration) PgPgUserConfigMigration { return *v }).(PgPgUserConfigMigrationOutput)
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type PgPgUserConfigPg struct {
 	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
 	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
@@ -11822,6 +12038,8 @@ type PgPgUserConfigPg struct {
 	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsDotTrack        *string `pulumi:"pgStatStatementsDotTrack"`
 	TempFileLimit                   *string `pulumi:"tempFileLimit"`
 	Timezone                        *string `pulumi:"timezone"`
@@ -11868,6 +12086,8 @@ type PgPgUserConfigPgArgs struct {
 	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsDotTrack        pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
 	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
 	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
@@ -12048,6 +12268,14 @@ func (o PgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutpu
 
 func (o PgPgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.PgPartmanBgwDotInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
 }
 
 func (o PgPgUserConfigPgOutput) PgStatStatementsDotTrack() pulumi.StringPtrOutput {
@@ -12313,6 +12541,24 @@ func (o PgPgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.MaxWorkerProcesses
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotRole
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13446,6 +13692,7 @@ type RedisRedisUserConfig struct {
 	RedisNotifyKeyspaceEvents *string                            `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  *string                            `pulumi:"redisSsl"`
 	RedisTimeout              *string                            `pulumi:"redisTimeout"`
+	ServiceToForkFrom         *string                            `pulumi:"serviceToForkFrom"`
 }
 
 // RedisRedisUserConfigInput is an input type that accepts RedisRedisUserConfigArgs and RedisRedisUserConfigOutput values.
@@ -13470,6 +13717,7 @@ type RedisRedisUserConfigArgs struct {
 	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                     `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  pulumi.StringPtrInput                     `pulumi:"redisSsl"`
 	RedisTimeout              pulumi.StringPtrInput                     `pulumi:"redisTimeout"`
+	ServiceToForkFrom         pulumi.StringPtrInput                     `pulumi:"serviceToForkFrom"`
 }
 
 func (RedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -13588,6 +13836,10 @@ func (o RedisRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
+func (o RedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 type RedisRedisUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RedisRedisUserConfigPtrOutput) ElementType() reflect.Type {
@@ -13696,7 +13948,17 @@ func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o RedisRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
+}
+
 type RedisRedisUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
 	Host     *string `pulumi:"host"`
 	Password *string `pulumi:"password"`
 	Port     *string `pulumi:"port"`
@@ -13716,6 +13978,7 @@ type RedisRedisUserConfigMigrationInput interface {
 }
 
 type RedisRedisUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
 	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	Port     pulumi.StringPtrInput `pulumi:"port"`
@@ -13799,6 +14062,10 @@ func (o RedisRedisUserConfigMigrationOutput) ToRedisRedisUserConfigMigrationPtrO
 		return &v
 	}).(RedisRedisUserConfigMigrationPtrOutput)
 }
+func (o RedisRedisUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
 func (o RedisRedisUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -13835,6 +14102,15 @@ func (o RedisRedisUserConfigMigrationPtrOutput) ToRedisRedisUserConfigMigrationP
 
 func (o RedisRedisUserConfigMigrationPtrOutput) Elem() RedisRedisUserConfigMigrationOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) RedisRedisUserConfigMigration { return *v }).(RedisRedisUserConfigMigrationOutput)
+}
+
+func (o RedisRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RedisRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
@@ -24930,6 +25206,7 @@ type ServicePgUserConfig struct {
 	BackupHour              *string                           `pulumi:"backupHour"`
 	BackupMinute            *string                           `pulumi:"backupMinute"`
 	IpFilters               []string                          `pulumi:"ipFilters"`
+	Migration               *ServicePgUserConfigMigration     `pulumi:"migration"`
 	Pg                      *ServicePgUserConfigPg            `pulumi:"pg"`
 	PgReadReplica           *string                           `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     *string                           `pulumi:"pgServiceToForkFrom"`
@@ -24964,6 +25241,7 @@ type ServicePgUserConfigArgs struct {
 	BackupHour              pulumi.StringPtrInput                    `pulumi:"backupHour"`
 	BackupMinute            pulumi.StringPtrInput                    `pulumi:"backupMinute"`
 	IpFilters               pulumi.StringArrayInput                  `pulumi:"ipFilters"`
+	Migration               ServicePgUserConfigMigrationPtrInput     `pulumi:"migration"`
 	Pg                      ServicePgUserConfigPgPtrInput            `pulumi:"pg"`
 	PgReadReplica           pulumi.StringPtrInput                    `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     pulumi.StringPtrInput                    `pulumi:"pgServiceToForkFrom"`
@@ -25075,6 +25353,10 @@ func (o ServicePgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 
 func (o ServicePgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePgUserConfigOutput) Migration() ServicePgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigMigration { return v.Migration }).(ServicePgUserConfigMigrationPtrOutput)
 }
 
 func (o ServicePgUserConfigOutput) Pg() ServicePgUserConfigPgPtrOutput {
@@ -25198,6 +25480,15 @@ func (o ServicePgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 		}
 		return v.IpFilters
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePgUserConfigPtrOutput) Migration() ServicePgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigMigration {
+		if v == nil {
+			return nil
+		}
+		return v.Migration
+	}).(ServicePgUserConfigMigrationPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) Pg() ServicePgUserConfigPgPtrOutput {
@@ -25335,6 +25626,207 @@ func (o ServicePgUserConfigPtrOutput) WorkMem() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServicePgUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
+	Host     *string `pulumi:"host"`
+	Password *string `pulumi:"password"`
+	Port     *string `pulumi:"port"`
+	Ssl      *string `pulumi:"ssl"`
+	Username *string `pulumi:"username"`
+}
+
+// ServicePgUserConfigMigrationInput is an input type that accepts ServicePgUserConfigMigrationArgs and ServicePgUserConfigMigrationOutput values.
+// You can construct a concrete instance of `ServicePgUserConfigMigrationInput` via:
+//
+//          ServicePgUserConfigMigrationArgs{...}
+type ServicePgUserConfigMigrationInput interface {
+	pulumi.Input
+
+	ToServicePgUserConfigMigrationOutput() ServicePgUserConfigMigrationOutput
+	ToServicePgUserConfigMigrationOutputWithContext(context.Context) ServicePgUserConfigMigrationOutput
+}
+
+type ServicePgUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
+	Host     pulumi.StringPtrInput `pulumi:"host"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
+	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ServicePgUserConfigMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (i ServicePgUserConfigMigrationArgs) ToServicePgUserConfigMigrationOutput() ServicePgUserConfigMigrationOutput {
+	return i.ToServicePgUserConfigMigrationOutputWithContext(context.Background())
+}
+
+func (i ServicePgUserConfigMigrationArgs) ToServicePgUserConfigMigrationOutputWithContext(ctx context.Context) ServicePgUserConfigMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePgUserConfigMigrationOutput)
+}
+
+func (i ServicePgUserConfigMigrationArgs) ToServicePgUserConfigMigrationPtrOutput() ServicePgUserConfigMigrationPtrOutput {
+	return i.ToServicePgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePgUserConfigMigrationArgs) ToServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) ServicePgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePgUserConfigMigrationOutput).ToServicePgUserConfigMigrationPtrOutputWithContext(ctx)
+}
+
+// ServicePgUserConfigMigrationPtrInput is an input type that accepts ServicePgUserConfigMigrationArgs, ServicePgUserConfigMigrationPtr and ServicePgUserConfigMigrationPtrOutput values.
+// You can construct a concrete instance of `ServicePgUserConfigMigrationPtrInput` via:
+//
+//          ServicePgUserConfigMigrationArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePgUserConfigMigrationPtrInput interface {
+	pulumi.Input
+
+	ToServicePgUserConfigMigrationPtrOutput() ServicePgUserConfigMigrationPtrOutput
+	ToServicePgUserConfigMigrationPtrOutputWithContext(context.Context) ServicePgUserConfigMigrationPtrOutput
+}
+
+type servicePgUserConfigMigrationPtrType ServicePgUserConfigMigrationArgs
+
+func ServicePgUserConfigMigrationPtr(v *ServicePgUserConfigMigrationArgs) ServicePgUserConfigMigrationPtrInput {
+	return (*servicePgUserConfigMigrationPtrType)(v)
+}
+
+func (*servicePgUserConfigMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (i *servicePgUserConfigMigrationPtrType) ToServicePgUserConfigMigrationPtrOutput() ServicePgUserConfigMigrationPtrOutput {
+	return i.ToServicePgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePgUserConfigMigrationPtrType) ToServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) ServicePgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePgUserConfigMigrationPtrOutput)
+}
+
+type ServicePgUserConfigMigrationOutput struct{ *pulumi.OutputState }
+
+func (ServicePgUserConfigMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (o ServicePgUserConfigMigrationOutput) ToServicePgUserConfigMigrationOutput() ServicePgUserConfigMigrationOutput {
+	return o
+}
+
+func (o ServicePgUserConfigMigrationOutput) ToServicePgUserConfigMigrationOutputWithContext(ctx context.Context) ServicePgUserConfigMigrationOutput {
+	return o
+}
+
+func (o ServicePgUserConfigMigrationOutput) ToServicePgUserConfigMigrationPtrOutput() ServicePgUserConfigMigrationPtrOutput {
+	return o.ToServicePgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePgUserConfigMigrationOutput) ToServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) ServicePgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigMigration) *ServicePgUserConfigMigration {
+		return &v
+	}).(ServicePgUserConfigMigrationPtrOutput)
+}
+func (o ServicePgUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ServicePgUserConfigMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePgUserConfigMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) ToServicePgUserConfigMigrationPtrOutput() ServicePgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) ToServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) ServicePgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) Elem() ServicePgUserConfigMigrationOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigMigration) ServicePgUserConfigMigration { return *v }).(ServicePgUserConfigMigrationOutput)
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServicePgUserConfigPg struct {
 	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
 	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
@@ -25360,6 +25852,8 @@ type ServicePgUserConfigPg struct {
 	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsTrack           *string `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   *string `pulumi:"tempFileLimit"`
 	Timezone                        *string `pulumi:"timezone"`
@@ -25406,6 +25900,8 @@ type ServicePgUserConfigPgArgs struct {
 	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsTrack           pulumi.StringPtrInput `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
 	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
@@ -25586,6 +26082,14 @@ func (o ServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtr
 
 func (o ServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgPartmanBgwDotInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
@@ -25851,6 +26355,24 @@ func (o ServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOut
 			return nil
 		}
 		return v.MaxWorkerProcesses
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotRole
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26754,6 +27276,7 @@ type ServiceRedisUserConfig struct {
 	RedisNotifyKeyspaceEvents *string                              `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  *string                              `pulumi:"redisSsl"`
 	RedisTimeout              *string                              `pulumi:"redisTimeout"`
+	ServiceToForkFrom         *string                              `pulumi:"serviceToForkFrom"`
 }
 
 // ServiceRedisUserConfigInput is an input type that accepts ServiceRedisUserConfigArgs and ServiceRedisUserConfigOutput values.
@@ -26778,6 +27301,7 @@ type ServiceRedisUserConfigArgs struct {
 	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                       `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  pulumi.StringPtrInput                       `pulumi:"redisSsl"`
 	RedisTimeout              pulumi.StringPtrInput                       `pulumi:"redisTimeout"`
+	ServiceToForkFrom         pulumi.StringPtrInput                       `pulumi:"serviceToForkFrom"`
 }
 
 func (ServiceRedisUserConfigArgs) ElementType() reflect.Type {
@@ -26896,6 +27420,10 @@ func (o ServiceRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 type ServiceRedisUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceRedisUserConfigPtrOutput) ElementType() reflect.Type {
@@ -27004,7 +27532,17 @@ func (o ServiceRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceRedisUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
 	Host     *string `pulumi:"host"`
 	Password *string `pulumi:"password"`
 	Port     *string `pulumi:"port"`
@@ -27024,6 +27562,7 @@ type ServiceRedisUserConfigMigrationInput interface {
 }
 
 type ServiceRedisUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
 	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	Port     pulumi.StringPtrInput `pulumi:"port"`
@@ -27107,6 +27646,10 @@ func (o ServiceRedisUserConfigMigrationOutput) ToServiceRedisUserConfigMigration
 		return &v
 	}).(ServiceRedisUserConfigMigrationPtrOutput)
 }
+func (o ServiceRedisUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceRedisUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -27143,6 +27686,15 @@ func (o ServiceRedisUserConfigMigrationPtrOutput) ToServiceRedisUserConfigMigrat
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Elem() ServiceRedisUserConfigMigrationOutput {
 	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) ServiceRedisUserConfigMigration { return *v }).(ServiceRedisUserConfigMigrationOutput)
+}
+
+func (o ServiceRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
@@ -37001,6 +37553,7 @@ type GetPgPgUserConfig struct {
 	BackupHour              *string                         `pulumi:"backupHour"`
 	BackupMinute            *string                         `pulumi:"backupMinute"`
 	IpFilters               []string                        `pulumi:"ipFilters"`
+	Migration               *GetPgPgUserConfigMigration     `pulumi:"migration"`
 	Pg                      *GetPgPgUserConfigPg            `pulumi:"pg"`
 	PgReadReplica           *string                         `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     *string                         `pulumi:"pgServiceToForkFrom"`
@@ -37035,6 +37588,7 @@ type GetPgPgUserConfigArgs struct {
 	BackupHour              pulumi.StringPtrInput                  `pulumi:"backupHour"`
 	BackupMinute            pulumi.StringPtrInput                  `pulumi:"backupMinute"`
 	IpFilters               pulumi.StringArrayInput                `pulumi:"ipFilters"`
+	Migration               GetPgPgUserConfigMigrationPtrInput     `pulumi:"migration"`
 	Pg                      GetPgPgUserConfigPgPtrInput            `pulumi:"pg"`
 	PgReadReplica           pulumi.StringPtrInput                  `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     pulumi.StringPtrInput                  `pulumi:"pgServiceToForkFrom"`
@@ -37098,6 +37652,10 @@ func (o GetPgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+func (o GetPgPgUserConfigOutput) Migration() GetPgPgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigMigration { return v.Migration }).(GetPgPgUserConfigMigrationPtrOutput)
+}
+
 func (o GetPgPgUserConfigOutput) Pg() GetPgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPg { return v.Pg }).(GetPgPgUserConfigPgPtrOutput)
 }
@@ -37158,6 +37716,207 @@ func (o GetPgPgUserConfigOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.WorkMem }).(pulumi.StringPtrOutput)
 }
 
+type GetPgPgUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
+	Host     *string `pulumi:"host"`
+	Password *string `pulumi:"password"`
+	Port     *string `pulumi:"port"`
+	Ssl      *string `pulumi:"ssl"`
+	Username *string `pulumi:"username"`
+}
+
+// GetPgPgUserConfigMigrationInput is an input type that accepts GetPgPgUserConfigMigrationArgs and GetPgPgUserConfigMigrationOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigMigrationInput` via:
+//
+//          GetPgPgUserConfigMigrationArgs{...}
+type GetPgPgUserConfigMigrationInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigMigrationOutput() GetPgPgUserConfigMigrationOutput
+	ToGetPgPgUserConfigMigrationOutputWithContext(context.Context) GetPgPgUserConfigMigrationOutput
+}
+
+type GetPgPgUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
+	Host     pulumi.StringPtrInput `pulumi:"host"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
+	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetPgPgUserConfigMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigMigrationArgs) ToGetPgPgUserConfigMigrationOutput() GetPgPgUserConfigMigrationOutput {
+	return i.ToGetPgPgUserConfigMigrationOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigMigrationArgs) ToGetPgPgUserConfigMigrationOutputWithContext(ctx context.Context) GetPgPgUserConfigMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigMigrationOutput)
+}
+
+func (i GetPgPgUserConfigMigrationArgs) ToGetPgPgUserConfigMigrationPtrOutput() GetPgPgUserConfigMigrationPtrOutput {
+	return i.ToGetPgPgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigMigrationArgs) ToGetPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigMigrationOutput).ToGetPgPgUserConfigMigrationPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigMigrationPtrInput is an input type that accepts GetPgPgUserConfigMigrationArgs, GetPgPgUserConfigMigrationPtr and GetPgPgUserConfigMigrationPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigMigrationPtrInput` via:
+//
+//          GetPgPgUserConfigMigrationArgs{...}
+//
+//  or:
+//
+//          nil
+type GetPgPgUserConfigMigrationPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigMigrationPtrOutput() GetPgPgUserConfigMigrationPtrOutput
+	ToGetPgPgUserConfigMigrationPtrOutputWithContext(context.Context) GetPgPgUserConfigMigrationPtrOutput
+}
+
+type getPgPgUserConfigMigrationPtrType GetPgPgUserConfigMigrationArgs
+
+func GetPgPgUserConfigMigrationPtr(v *GetPgPgUserConfigMigrationArgs) GetPgPgUserConfigMigrationPtrInput {
+	return (*getPgPgUserConfigMigrationPtrType)(v)
+}
+
+func (*getPgPgUserConfigMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigMigrationPtrType) ToGetPgPgUserConfigMigrationPtrOutput() GetPgPgUserConfigMigrationPtrOutput {
+	return i.ToGetPgPgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigMigrationPtrType) ToGetPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigMigrationPtrOutput)
+}
+
+type GetPgPgUserConfigMigrationOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigMigrationOutput) ToGetPgPgUserConfigMigrationOutput() GetPgPgUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigMigrationOutput) ToGetPgPgUserConfigMigrationOutputWithContext(ctx context.Context) GetPgPgUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigMigrationOutput) ToGetPgPgUserConfigMigrationPtrOutput() GetPgPgUserConfigMigrationPtrOutput {
+	return o.ToGetPgPgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigMigrationOutput) ToGetPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigMigration) *GetPgPgUserConfigMigration {
+		return &v
+	}).(GetPgPgUserConfigMigrationPtrOutput)
+}
+func (o GetPgPgUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetPgPgUserConfigMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) ToGetPgPgUserConfigMigrationPtrOutput() GetPgPgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) ToGetPgPgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) Elem() GetPgPgUserConfigMigrationOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigMigration) GetPgPgUserConfigMigration { return *v }).(GetPgPgUserConfigMigrationOutput)
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetPgPgUserConfigPg struct {
 	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
 	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
@@ -37183,6 +37942,8 @@ type GetPgPgUserConfigPg struct {
 	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsDotTrack        *string `pulumi:"pgStatStatementsDotTrack"`
 	TempFileLimit                   *string `pulumi:"tempFileLimit"`
 	Timezone                        *string `pulumi:"timezone"`
@@ -37229,6 +37990,8 @@ type GetPgPgUserConfigPgArgs struct {
 	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsDotTrack        pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
 	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
 	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
@@ -37409,6 +38172,14 @@ func (o GetPgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOu
 
 func (o GetPgPgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgPartmanBgwDotInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
 }
 
 func (o GetPgPgUserConfigPgOutput) PgStatStatementsDotTrack() pulumi.StringPtrOutput {
@@ -37674,6 +38445,24 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.MaxWorkerProcesses
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotRole
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38738,6 +39527,7 @@ type GetRedisRedisUserConfig struct {
 	RedisNotifyKeyspaceEvents *string                               `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  *string                               `pulumi:"redisSsl"`
 	RedisTimeout              *string                               `pulumi:"redisTimeout"`
+	ServiceToForkFrom         *string                               `pulumi:"serviceToForkFrom"`
 }
 
 // GetRedisRedisUserConfigInput is an input type that accepts GetRedisRedisUserConfigArgs and GetRedisRedisUserConfigOutput values.
@@ -38762,6 +39552,7 @@ type GetRedisRedisUserConfigArgs struct {
 	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                        `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  pulumi.StringPtrInput                        `pulumi:"redisSsl"`
 	RedisTimeout              pulumi.StringPtrInput                        `pulumi:"redisTimeout"`
+	ServiceToForkFrom         pulumi.StringPtrInput                        `pulumi:"serviceToForkFrom"`
 }
 
 func (GetRedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -38830,7 +39621,12 @@ func (o GetRedisRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
+func (o GetRedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 type GetRedisRedisUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
 	Host     *string `pulumi:"host"`
 	Password *string `pulumi:"password"`
 	Port     *string `pulumi:"port"`
@@ -38850,6 +39646,7 @@ type GetRedisRedisUserConfigMigrationInput interface {
 }
 
 type GetRedisRedisUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
 	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	Port     pulumi.StringPtrInput `pulumi:"port"`
@@ -38933,6 +39730,10 @@ func (o GetRedisRedisUserConfigMigrationOutput) ToGetRedisRedisUserConfigMigrati
 		return &v
 	}).(GetRedisRedisUserConfigMigrationPtrOutput)
 }
+func (o GetRedisRedisUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
 func (o GetRedisRedisUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -38969,6 +39770,15 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) ToGetRedisRedisUserConfigMigr
 
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Elem() GetRedisRedisUserConfigMigrationOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) GetRedisRedisUserConfigMigration { return *v }).(GetRedisRedisUserConfigMigrationOutput)
+}
+
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
@@ -47322,6 +48132,7 @@ type GetServicePgUserConfig struct {
 	BackupHour              *string                              `pulumi:"backupHour"`
 	BackupMinute            *string                              `pulumi:"backupMinute"`
 	IpFilters               []string                             `pulumi:"ipFilters"`
+	Migration               *GetServicePgUserConfigMigration     `pulumi:"migration"`
 	Pg                      *GetServicePgUserConfigPg            `pulumi:"pg"`
 	PgReadReplica           *string                              `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     *string                              `pulumi:"pgServiceToForkFrom"`
@@ -47356,6 +48167,7 @@ type GetServicePgUserConfigArgs struct {
 	BackupHour              pulumi.StringPtrInput                       `pulumi:"backupHour"`
 	BackupMinute            pulumi.StringPtrInput                       `pulumi:"backupMinute"`
 	IpFilters               pulumi.StringArrayInput                     `pulumi:"ipFilters"`
+	Migration               GetServicePgUserConfigMigrationPtrInput     `pulumi:"migration"`
 	Pg                      GetServicePgUserConfigPgPtrInput            `pulumi:"pg"`
 	PgReadReplica           pulumi.StringPtrInput                       `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     pulumi.StringPtrInput                       `pulumi:"pgServiceToForkFrom"`
@@ -47419,6 +48231,10 @@ func (o GetServicePgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+func (o GetServicePgUserConfigOutput) Migration() GetServicePgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfig) *GetServicePgUserConfigMigration { return v.Migration }).(GetServicePgUserConfigMigrationPtrOutput)
+}
+
 func (o GetServicePgUserConfigOutput) Pg() GetServicePgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfig) *GetServicePgUserConfigPg { return v.Pg }).(GetServicePgUserConfigPgPtrOutput)
 }
@@ -47479,6 +48295,207 @@ func (o GetServicePgUserConfigOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfig) *string { return v.WorkMem }).(pulumi.StringPtrOutput)
 }
 
+type GetServicePgUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
+	Host     *string `pulumi:"host"`
+	Password *string `pulumi:"password"`
+	Port     *string `pulumi:"port"`
+	Ssl      *string `pulumi:"ssl"`
+	Username *string `pulumi:"username"`
+}
+
+// GetServicePgUserConfigMigrationInput is an input type that accepts GetServicePgUserConfigMigrationArgs and GetServicePgUserConfigMigrationOutput values.
+// You can construct a concrete instance of `GetServicePgUserConfigMigrationInput` via:
+//
+//          GetServicePgUserConfigMigrationArgs{...}
+type GetServicePgUserConfigMigrationInput interface {
+	pulumi.Input
+
+	ToGetServicePgUserConfigMigrationOutput() GetServicePgUserConfigMigrationOutput
+	ToGetServicePgUserConfigMigrationOutputWithContext(context.Context) GetServicePgUserConfigMigrationOutput
+}
+
+type GetServicePgUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
+	Host     pulumi.StringPtrInput `pulumi:"host"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
+	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetServicePgUserConfigMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (i GetServicePgUserConfigMigrationArgs) ToGetServicePgUserConfigMigrationOutput() GetServicePgUserConfigMigrationOutput {
+	return i.ToGetServicePgUserConfigMigrationOutputWithContext(context.Background())
+}
+
+func (i GetServicePgUserConfigMigrationArgs) ToGetServicePgUserConfigMigrationOutputWithContext(ctx context.Context) GetServicePgUserConfigMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePgUserConfigMigrationOutput)
+}
+
+func (i GetServicePgUserConfigMigrationArgs) ToGetServicePgUserConfigMigrationPtrOutput() GetServicePgUserConfigMigrationPtrOutput {
+	return i.ToGetServicePgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetServicePgUserConfigMigrationArgs) ToGetServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePgUserConfigMigrationOutput).ToGetServicePgUserConfigMigrationPtrOutputWithContext(ctx)
+}
+
+// GetServicePgUserConfigMigrationPtrInput is an input type that accepts GetServicePgUserConfigMigrationArgs, GetServicePgUserConfigMigrationPtr and GetServicePgUserConfigMigrationPtrOutput values.
+// You can construct a concrete instance of `GetServicePgUserConfigMigrationPtrInput` via:
+//
+//          GetServicePgUserConfigMigrationArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServicePgUserConfigMigrationPtrInput interface {
+	pulumi.Input
+
+	ToGetServicePgUserConfigMigrationPtrOutput() GetServicePgUserConfigMigrationPtrOutput
+	ToGetServicePgUserConfigMigrationPtrOutputWithContext(context.Context) GetServicePgUserConfigMigrationPtrOutput
+}
+
+type getServicePgUserConfigMigrationPtrType GetServicePgUserConfigMigrationArgs
+
+func GetServicePgUserConfigMigrationPtr(v *GetServicePgUserConfigMigrationArgs) GetServicePgUserConfigMigrationPtrInput {
+	return (*getServicePgUserConfigMigrationPtrType)(v)
+}
+
+func (*getServicePgUserConfigMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (i *getServicePgUserConfigMigrationPtrType) ToGetServicePgUserConfigMigrationPtrOutput() GetServicePgUserConfigMigrationPtrOutput {
+	return i.ToGetServicePgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getServicePgUserConfigMigrationPtrType) ToGetServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePgUserConfigMigrationPtrOutput)
+}
+
+type GetServicePgUserConfigMigrationOutput struct{ *pulumi.OutputState }
+
+func (GetServicePgUserConfigMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetServicePgUserConfigMigrationOutput) ToGetServicePgUserConfigMigrationOutput() GetServicePgUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigMigrationOutput) ToGetServicePgUserConfigMigrationOutputWithContext(ctx context.Context) GetServicePgUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigMigrationOutput) ToGetServicePgUserConfigMigrationPtrOutput() GetServicePgUserConfigMigrationPtrOutput {
+	return o.ToGetServicePgUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetServicePgUserConfigMigrationOutput) ToGetServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigMigration) *GetServicePgUserConfigMigration {
+		return &v
+	}).(GetServicePgUserConfigMigrationPtrOutput)
+}
+func (o GetServicePgUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetServicePgUserConfigMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServicePgUserConfigMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePgUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) ToGetServicePgUserConfigMigrationPtrOutput() GetServicePgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) ToGetServicePgUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) Elem() GetServicePgUserConfigMigrationOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigMigration) GetServicePgUserConfigMigration { return *v }).(GetServicePgUserConfigMigrationOutput)
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServicePgUserConfigPg struct {
 	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
 	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
@@ -47504,6 +48521,8 @@ type GetServicePgUserConfigPg struct {
 	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsTrack           *string `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   *string `pulumi:"tempFileLimit"`
 	Timezone                        *string `pulumi:"timezone"`
@@ -47550,6 +48569,8 @@ type GetServicePgUserConfigPgArgs struct {
 	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
 	PgStatStatementsTrack           pulumi.StringPtrInput `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
 	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
@@ -47730,6 +48751,14 @@ func (o GetServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.String
 
 func (o GetServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgPartmanBgwDotInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
@@ -47995,6 +49024,24 @@ func (o GetServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtr
 			return nil
 		}
 		return v.MaxWorkerProcesses
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotRole
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -48829,6 +49876,7 @@ type GetServiceRedisUserConfig struct {
 	RedisNotifyKeyspaceEvents *string                                 `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  *string                                 `pulumi:"redisSsl"`
 	RedisTimeout              *string                                 `pulumi:"redisTimeout"`
+	ServiceToForkFrom         *string                                 `pulumi:"serviceToForkFrom"`
 }
 
 // GetServiceRedisUserConfigInput is an input type that accepts GetServiceRedisUserConfigArgs and GetServiceRedisUserConfigOutput values.
@@ -48853,6 +49901,7 @@ type GetServiceRedisUserConfigArgs struct {
 	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                          `pulumi:"redisNotifyKeyspaceEvents"`
 	RedisSsl                  pulumi.StringPtrInput                          `pulumi:"redisSsl"`
 	RedisTimeout              pulumi.StringPtrInput                          `pulumi:"redisTimeout"`
+	ServiceToForkFrom         pulumi.StringPtrInput                          `pulumi:"serviceToForkFrom"`
 }
 
 func (GetServiceRedisUserConfigArgs) ElementType() reflect.Type {
@@ -48921,7 +49970,12 @@ func (o GetServiceRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 type GetServiceRedisUserConfigMigration struct {
+	Dbname   *string `pulumi:"dbname"`
 	Host     *string `pulumi:"host"`
 	Password *string `pulumi:"password"`
 	Port     *string `pulumi:"port"`
@@ -48941,6 +49995,7 @@ type GetServiceRedisUserConfigMigrationInput interface {
 }
 
 type GetServiceRedisUserConfigMigrationArgs struct {
+	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
 	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	Port     pulumi.StringPtrInput `pulumi:"port"`
@@ -49024,6 +50079,10 @@ func (o GetServiceRedisUserConfigMigrationOutput) ToGetServiceRedisUserConfigMig
 		return &v
 	}).(GetServiceRedisUserConfigMigrationPtrOutput)
 }
+func (o GetServiceRedisUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceRedisUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -49060,6 +50119,15 @@ func (o GetServiceRedisUserConfigMigrationPtrOutput) ToGetServiceRedisUserConfig
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Elem() GetServiceRedisUserConfigMigrationOutput {
 	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) GetServiceRedisUserConfigMigration { return *v }).(GetServiceRedisUserConfigMigrationOutput)
+}
+
+func (o GetServiceRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
@@ -49626,6 +50694,8 @@ func init() {
 	pulumi.RegisterOutputType(PgPgPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(PgPgUserConfigMigrationOutput{})
+	pulumi.RegisterOutputType(PgPgUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPgOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPgPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPgbouncerOutput{})
@@ -49770,6 +50840,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePgPtrOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServicePgUserConfigMigrationOutput{})
+	pulumi.RegisterOutputType(ServicePgUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPgOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPgPtrOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPgbouncerOutput{})
@@ -49912,6 +50984,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPgComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetPgPgOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigMigrationOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPgOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPgPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPgbouncerOutput{})
@@ -50028,6 +51102,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceMysqlUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServicePgOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServicePgUserConfigMigrationOutput{})
+	pulumi.RegisterOutputType(GetServicePgUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigPgOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigPgPtrOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigPgbouncerOutput{})

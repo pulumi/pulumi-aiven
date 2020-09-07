@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetRedisRedisUserConfigMigrationArgs : Pulumi.InvokeArgs
     {
+        [Input("dbname")]
+        public string? Dbname { get; set; }
+
         [Input("host")]
         public string? Host { get; set; }
 

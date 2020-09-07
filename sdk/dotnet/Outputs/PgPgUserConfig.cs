@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? BackupHour;
         public readonly string? BackupMinute;
         public readonly ImmutableArray<string> IpFilters;
+        public readonly Outputs.PgPgUserConfigMigration? Migration;
         public readonly Outputs.PgPgUserConfigPg? Pg;
         public readonly string? PgReadReplica;
         public readonly string? PgServiceToForkFrom;
@@ -45,6 +46,8 @@ namespace Pulumi.Aiven.Outputs
             string? backupMinute,
 
             ImmutableArray<string> ipFilters,
+
+            Outputs.PgPgUserConfigMigration? migration,
 
             Outputs.PgPgUserConfigPg? pg,
 
@@ -81,6 +84,7 @@ namespace Pulumi.Aiven.Outputs
             BackupHour = backupHour;
             BackupMinute = backupMinute;
             IpFilters = ipFilters;
+            Migration = migration;
             Pg = pg;
             PgReadReplica = pgReadReplica;
             PgServiceToForkFrom = pgServiceToForkFrom;
