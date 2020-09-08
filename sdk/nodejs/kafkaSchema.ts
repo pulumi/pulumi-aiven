@@ -33,6 +33,10 @@ export class KafkaSchema extends pulumi.CustomResource {
     }
 
     /**
+     * Kafka Schemas compatibility level
+     */
+    public readonly compatibilityLevel!: pulumi.Output<string | undefined>;
+    /**
      * Project to link the Kafka Schema to
      */
     public readonly project!: pulumi.Output<string>;
@@ -65,6 +69,7 @@ export class KafkaSchema extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KafkaSchemaState | undefined;
+            inputs["compatibilityLevel"] = state ? state.compatibilityLevel : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["schema"] = state ? state.schema : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
@@ -84,6 +89,7 @@ export class KafkaSchema extends pulumi.CustomResource {
             if (!args || args.subjectName === undefined) {
                 throw new Error("Missing required property 'subjectName'");
             }
+            inputs["compatibilityLevel"] = args ? args.compatibilityLevel : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["schema"] = args ? args.schema : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
@@ -105,6 +111,10 @@ export class KafkaSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KafkaSchema resources.
  */
 export interface KafkaSchemaState {
+    /**
+     * Kafka Schemas compatibility level
+     */
+    readonly compatibilityLevel?: pulumi.Input<string>;
     /**
      * Project to link the Kafka Schema to
      */
@@ -131,6 +141,10 @@ export interface KafkaSchemaState {
  * The set of arguments for constructing a KafkaSchema resource.
  */
 export interface KafkaSchemaArgs {
+    /**
+     * Kafka Schemas compatibility level
+     */
+    readonly compatibilityLevel?: pulumi.Input<string>;
     /**
      * Project to link the Kafka Schema to
      */

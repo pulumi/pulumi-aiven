@@ -10,27 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceRedisUserConfigMigrationArgs : Pulumi.ResourceArgs
+    public sealed class GetServicePgUserConfigMigrationArgs : Pulumi.InvokeArgs
     {
         [Input("dbname")]
-        public Input<string>? Dbname { get; set; }
+        public string? Dbname { get; set; }
 
         [Input("host")]
-        public Input<string>? Host { get; set; }
+        public string? Host { get; set; }
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        public string? Password { get; set; }
 
         [Input("port")]
-        public Input<string>? Port { get; set; }
+        public string? Port { get; set; }
 
         [Input("ssl")]
-        public Input<string>? Ssl { get; set; }
+        public string? Ssl { get; set; }
 
         [Input("username")]
-        public Input<string>? Username { get; set; }
+        public string? Username { get; set; }
 
-        public ServiceRedisUserConfigMigrationArgs()
+        public GetServicePgUserConfigMigrationArgs()
         {
         }
     }

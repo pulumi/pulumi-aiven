@@ -682,6 +682,7 @@ export interface GetPgPgUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: outputs.GetPgPgUserConfigMigration;
     pg?: outputs.GetPgPgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -697,6 +698,15 @@ export interface GetPgPgUserConfig {
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
     variant?: string;
     workMem?: string;
+}
+
+export interface GetPgPgUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface GetPgPgUserConfigPg {
@@ -724,6 +734,8 @@ export interface GetPgPgUserConfigPg {
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
     maxWorkerProcesses?: string;
+    pgPartmanBgwDotInterval?: string;
+    pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
     tempFileLimit?: string;
     timezone?: string;
@@ -788,9 +800,11 @@ export interface GetRedisRedisUserConfig {
     redisNotifyKeyspaceEvents?: string;
     redisSsl?: string;
     redisTimeout?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
+    dbname?: string;
     host?: string;
     password?: string;
     port?: string;
@@ -1283,6 +1297,7 @@ export interface GetServicePgUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: outputs.GetServicePgUserConfigMigration;
     pg?: outputs.GetServicePgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -1298,6 +1313,15 @@ export interface GetServicePgUserConfig {
     timescaledb?: outputs.GetServicePgUserConfigTimescaledb;
     variant?: string;
     workMem?: string;
+}
+
+export interface GetServicePgUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface GetServicePgUserConfigPg {
@@ -1325,6 +1349,8 @@ export interface GetServicePgUserConfigPg {
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
     maxWorkerProcesses?: string;
+    pgPartmanBgwDotInterval?: string;
+    pgPartmanBgwDotRole?: string;
     pgStatStatementsTrack?: string;
     tempFileLimit?: string;
     timezone?: string;
@@ -1374,9 +1400,11 @@ export interface GetServiceRedisUserConfig {
     redisNotifyKeyspaceEvents?: string;
     redisSsl?: string;
     redisTimeout?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface GetServiceRedisUserConfigMigration {
+    dbname?: string;
     host?: string;
     password?: string;
     port?: string;
@@ -1820,6 +1848,7 @@ export interface PgPgUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: outputs.PgPgUserConfigMigration;
     pg?: outputs.PgPgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -1835,6 +1864,15 @@ export interface PgPgUserConfig {
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
     variant?: string;
     workMem?: string;
+}
+
+export interface PgPgUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface PgPgUserConfigPg {
@@ -1862,6 +1900,8 @@ export interface PgPgUserConfigPg {
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
     maxWorkerProcesses?: string;
+    pgPartmanBgwDotInterval?: string;
+    pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
     tempFileLimit?: string;
     timezone?: string;
@@ -1926,9 +1966,11 @@ export interface RedisRedisUserConfig {
     redisNotifyKeyspaceEvents?: string;
     redisSsl?: string;
     redisTimeout?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface RedisRedisUserConfigMigration {
+    dbname?: string;
     host?: string;
     password?: string;
     port?: string;
@@ -2421,6 +2463,7 @@ export interface ServicePgUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: outputs.ServicePgUserConfigMigration;
     pg?: outputs.ServicePgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -2436,6 +2479,15 @@ export interface ServicePgUserConfig {
     timescaledb?: outputs.ServicePgUserConfigTimescaledb;
     variant?: string;
     workMem?: string;
+}
+
+export interface ServicePgUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface ServicePgUserConfigPg {
@@ -2463,6 +2515,8 @@ export interface ServicePgUserConfigPg {
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
     maxWorkerProcesses?: string;
+    pgPartmanBgwDotInterval?: string;
+    pgPartmanBgwDotRole?: string;
     pgStatStatementsTrack?: string;
     tempFileLimit?: string;
     timezone?: string;
@@ -2512,9 +2566,11 @@ export interface ServiceRedisUserConfig {
     redisNotifyKeyspaceEvents?: string;
     redisSsl?: string;
     redisTimeout?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface ServiceRedisUserConfigMigration {
+    dbname?: string;
     host?: string;
     password?: string;
     port?: string;

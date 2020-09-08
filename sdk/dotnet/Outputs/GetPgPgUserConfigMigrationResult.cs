@@ -11,7 +11,7 @@ namespace Pulumi.Aiven.Outputs
 {
 
     [OutputType]
-    public sealed class GetRedisRedisUserConfigMigrationResult
+    public sealed class GetPgPgUserConfigMigrationResult
     {
         public readonly string? Dbname;
         public readonly string? Host;
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? Username;
 
         [OutputConstructor]
-        private GetRedisRedisUserConfigMigrationResult(
+        private GetPgPgUserConfigMigrationResult(
             string? dbname,
 
             string? host,

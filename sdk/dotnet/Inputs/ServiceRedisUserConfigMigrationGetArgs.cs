@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceRedisUserConfigMigrationGetArgs : Pulumi.ResourceArgs
     {
+        [Input("dbname")]
+        public Input<string>? Dbname { get; set; }
+
         [Input("host")]
         public Input<string>? Host { get; set; }
 

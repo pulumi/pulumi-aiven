@@ -19,7 +19,10 @@ class GetKafkaSchemaConfigurationResult:
     """
     A collection of values returned by getKafkaSchemaConfiguration.
     """
-    def __init__(__self__, id=None, project=None, schema=None, service_name=None, subject_name=None, version=None):
+    def __init__(__self__, compatibility_level=None, id=None, project=None, schema=None, service_name=None, subject_name=None, version=None):
+        if compatibility_level and not isinstance(compatibility_level, str):
+            raise TypeError("Expected argument 'compatibility_level' to be a str")
+        pulumi.set(__self__, "compatibility_level", compatibility_level)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -38,6 +41,11 @@ class GetKafkaSchemaConfigurationResult:
         if version and not isinstance(version, float):
             raise TypeError("Expected argument 'version' to be a float")
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="compatibilityLevel")
+    def compatibility_level(self) -> Optional[str]:
+        return pulumi.get(self, "compatibility_level")
 
     @property
     @pulumi.getter
@@ -79,6 +87,7 @@ class AwaitableGetKafkaSchemaConfigurationResult(GetKafkaSchemaConfigurationResu
         if False:
             yield self
         return GetKafkaSchemaConfigurationResult(
+            compatibility_level=self.compatibility_level,
             id=self.id,
             project=self.project,
             schema=self.schema,
@@ -87,7 +96,8 @@ class AwaitableGetKafkaSchemaConfigurationResult(GetKafkaSchemaConfigurationResu
             version=self.version)
 
 
-def get_kafka_schema_configuration(project: Optional[str] = None,
+def get_kafka_schema_configuration(compatibility_level: Optional[str] = None,
+                                   project: Optional[str] = None,
                                    schema: Optional[str] = None,
                                    service_name: Optional[str] = None,
                                    subject_name: Optional[str] = None,
@@ -97,6 +107,7 @@ def get_kafka_schema_configuration(project: Optional[str] = None,
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
+    __args__['compatibilityLevel'] = compatibility_level
     __args__['project'] = project
     __args__['schema'] = schema
     __args__['serviceName'] = service_name
@@ -109,6 +120,7 @@ def get_kafka_schema_configuration(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration', __args__, opts=opts, typ=GetKafkaSchemaConfigurationResult).value
 
     return AwaitableGetKafkaSchemaConfigurationResult(
+        compatibility_level=__ret__.compatibility_level,
         id=__ret__.id,
         project=__ret__.project,
         schema=__ret__.schema,

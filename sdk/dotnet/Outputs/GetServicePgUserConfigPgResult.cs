@@ -37,6 +37,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? MaxStandbyArchiveDelay;
         public readonly string? MaxStandbyStreamingDelay;
         public readonly string? MaxWorkerProcesses;
+        public readonly string? PgPartmanBgwDotInterval;
+        public readonly string? PgPartmanBgwDotRole;
         public readonly string? PgStatStatementsTrack;
         public readonly string? TempFileLimit;
         public readonly string? Timezone;
@@ -96,6 +98,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? maxWorkerProcesses,
 
+            string? pgPartmanBgwDotInterval,
+
+            string? pgPartmanBgwDotRole,
+
             string? pgStatStatementsTrack,
 
             string? tempFileLimit,
@@ -136,6 +142,8 @@ namespace Pulumi.Aiven.Outputs
             MaxStandbyArchiveDelay = maxStandbyArchiveDelay;
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;
             MaxWorkerProcesses = maxWorkerProcesses;
+            PgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
+            PgPartmanBgwDotRole = pgPartmanBgwDotRole;
             PgStatStatementsTrack = pgStatStatementsTrack;
             TempFileLimit = tempFileLimit;
             Timezone = timezone;

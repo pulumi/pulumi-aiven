@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceRedisUserConfigMigrationArgs : Pulumi.ResourceArgs
+    public sealed class ServicePgUserConfigMigrationGetArgs : Pulumi.ResourceArgs
     {
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Inputs
         [Input("username")]
         public Input<string>? Username { get; set; }
 
-        public ServiceRedisUserConfigMigrationArgs()
+        public ServicePgUserConfigMigrationGetArgs()
         {
         }
     }

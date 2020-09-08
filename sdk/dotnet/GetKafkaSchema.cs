@@ -18,6 +18,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaSchemaArgs : Pulumi.InvokeArgs
     {
+        [Input("compatibilityLevel")]
+        public string? CompatibilityLevel { get; set; }
+
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -42,6 +45,7 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetKafkaSchemaResult
     {
+        public readonly string? CompatibilityLevel;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -54,6 +58,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetKafkaSchemaResult(
+            string? compatibilityLevel,
+
             string id,
 
             string project,
@@ -66,6 +72,7 @@ namespace Pulumi.Aiven
 
             int version)
         {
+            CompatibilityLevel = compatibilityLevel;
             Id = id;
             Project = project;
             Schema = schema;

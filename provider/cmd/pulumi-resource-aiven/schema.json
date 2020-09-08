@@ -3393,6 +3393,14 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:/PgPgUserConfigMigration:PgPgUserConfigMigration",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pg": {
                     "$ref": "#/types/aiven:/PgPgUserConfigPg:PgPgUserConfigPg",
                     "language": {
@@ -3506,6 +3514,59 @@
                     }
                 },
                 "workMem": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/PgPgUserConfigMigration:PgPgUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -3703,6 +3764,22 @@
                     }
                 },
                 "maxWorkerProcesses": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotInterval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotRole": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -4071,12 +4148,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "aiven:/RedisRedisUserConfigMigration:RedisRedisUserConfigMigration": {
             "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "host": {
                     "type": "string",
                     "language": {
@@ -6954,6 +7047,14 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:/ServicePgUserConfigMigration:ServicePgUserConfigMigration",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pg": {
                     "$ref": "#/types/aiven:/ServicePgUserConfigPg:ServicePgUserConfigPg",
                     "language": {
@@ -7067,6 +7168,59 @@
                     }
                 },
                 "workMem": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/ServicePgUserConfigMigration:ServicePgUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7264,6 +7418,22 @@
                     }
                 },
                 "maxWorkerProcesses": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotInterval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotRole": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7533,12 +7703,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "aiven:/ServiceRedisUserConfigMigration:ServiceRedisUserConfigMigration": {
             "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "host": {
                     "type": "string",
                     "language": {
@@ -11027,6 +11213,14 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:/getPgPgUserConfigMigration:getPgPgUserConfigMigration",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pg": {
                     "$ref": "#/types/aiven:/getPgPgUserConfigPg:getPgPgUserConfigPg",
                     "language": {
@@ -11140,6 +11334,59 @@
                     }
                 },
                 "workMem": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/getPgPgUserConfigMigration:getPgPgUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -11337,6 +11584,22 @@
                     }
                 },
                 "maxWorkerProcesses": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotInterval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotRole": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -11706,12 +11969,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "aiven:/getRedisRedisUserConfigMigration:getRedisRedisUserConfigMigration": {
             "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "host": {
                     "type": "string",
                     "language": {
@@ -14594,6 +14873,14 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:/getServicePgUserConfigMigration:getServicePgUserConfigMigration",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pg": {
                     "$ref": "#/types/aiven:/getServicePgUserConfigPg:getServicePgUserConfigPg",
                     "language": {
@@ -14707,6 +14994,59 @@
                     }
                 },
                 "workMem": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/getServicePgUserConfigMigration:getServicePgUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -14904,6 +15244,22 @@
                     }
                 },
                 "maxWorkerProcesses": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotInterval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgPartmanBgwDotRole": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -15173,12 +15529,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "aiven:/getServiceRedisUserConfigMigration:getServiceRedisUserConfigMigration": {
             "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "host": {
                     "type": "string",
                     "language": {
@@ -18105,6 +18477,10 @@
         },
         "aiven:index/kafkaSchema:KafkaSchema": {
             "properties": {
+                "compatibilityLevel": {
+                    "type": "string",
+                    "description": "Kafka Schemas compatibility level\n"
+                },
                 "project": {
                     "type": "string",
                     "description": "Project to link the Kafka Schema to\n"
@@ -18134,6 +18510,10 @@
                 "version"
             ],
             "inputProperties": {
+                "compatibilityLevel": {
+                    "type": "string",
+                    "description": "Kafka Schemas compatibility level\n"
+                },
                 "project": {
                     "type": "string",
                     "description": "Project to link the Kafka Schema to\n"
@@ -18160,6 +18540,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering KafkaSchema resources.\n",
                 "properties": {
+                    "compatibilityLevel": {
+                        "type": "string",
+                        "description": "Kafka Schemas compatibility level\n"
+                    },
                     "project": {
                         "type": "string",
                         "description": "Project to link the Kafka Schema to\n"
@@ -22538,6 +22922,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getKafkaSchema.\n",
                 "properties": {
+                    "compatibilityLevel": {
+                        "type": "string"
+                    },
                     "project": {
                         "type": "string"
                     },
@@ -22564,6 +22951,9 @@
             "outputs": {
                 "description": "A collection of values returned by getKafkaSchema.\n",
                 "properties": {
+                    "compatibilityLevel": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -22598,6 +22988,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getKafkaSchemaConfiguration.\n",
                 "properties": {
+                    "compatibilityLevel": {
+                        "type": "string"
+                    },
                     "project": {
                         "type": "string"
                     },
@@ -22623,6 +23016,9 @@
             "outputs": {
                 "description": "A collection of values returned by getKafkaSchemaConfiguration.\n",
                 "properties": {
+                    "compatibilityLevel": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"

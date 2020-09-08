@@ -23,6 +23,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RedisNotifyKeyspaceEvents;
         public readonly string? RedisSsl;
         public readonly string? RedisTimeout;
+        public readonly string? ServiceToForkFrom;
 
         [OutputConstructor]
         private ServiceRedisUserConfig(
@@ -44,7 +45,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? redisSsl,
 
-            string? redisTimeout)
+            string? redisTimeout,
+
+            string? serviceToForkFrom)
         {
             IpFilters = ipFilters;
             Migration = migration;
@@ -56,6 +59,7 @@ namespace Pulumi.Aiven.Outputs
             RedisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
             RedisSsl = redisSsl;
             RedisTimeout = redisTimeout;
+            ServiceToForkFrom = serviceToForkFrom;
         }
     }
 }

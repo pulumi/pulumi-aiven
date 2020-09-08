@@ -32,6 +32,9 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        [Input("migration")]
+        public Inputs.GetPgPgUserConfigMigrationArgs? Migration { get; set; }
+
         [Input("pg")]
         public Inputs.GetPgPgUserConfigPgArgs? Pg { get; set; }
 

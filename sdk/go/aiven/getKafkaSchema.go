@@ -18,15 +18,17 @@ func LookupKafkaSchema(ctx *pulumi.Context, args *LookupKafkaSchemaArgs, opts ..
 
 // A collection of arguments for invoking getKafkaSchema.
 type LookupKafkaSchemaArgs struct {
-	Project     string  `pulumi:"project"`
-	Schema      *string `pulumi:"schema"`
-	ServiceName string  `pulumi:"serviceName"`
-	SubjectName string  `pulumi:"subjectName"`
-	Version     *int    `pulumi:"version"`
+	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
+	Project            string  `pulumi:"project"`
+	Schema             *string `pulumi:"schema"`
+	ServiceName        string  `pulumi:"serviceName"`
+	SubjectName        string  `pulumi:"subjectName"`
+	Version            *int    `pulumi:"version"`
 }
 
 // A collection of values returned by getKafkaSchema.
 type LookupKafkaSchemaResult struct {
+	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`
 	Project     string  `pulumi:"project"`

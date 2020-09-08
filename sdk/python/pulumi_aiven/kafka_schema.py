@@ -15,6 +15,7 @@ class KafkaSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 compatibility_level: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,7 @@ class KafkaSchema(pulumi.CustomResource):
         Create a KafkaSchema resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
         :param pulumi.Input[str] project: Project to link the Kafka Schema to
         :param pulumi.Input[str] schema: Kafka Schema configuration should be a valid Avro Schema JSON format
         :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
@@ -48,6 +50,7 @@ class KafkaSchema(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['compatibility_level'] = compatibility_level
             if project is None:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
@@ -71,6 +74,7 @@ class KafkaSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            compatibility_level: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -83,6 +87,7 @@ class KafkaSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
         :param pulumi.Input[str] project: Project to link the Kafka Schema to
         :param pulumi.Input[str] schema: Kafka Schema configuration should be a valid Avro Schema JSON format
         :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
@@ -93,12 +98,21 @@ class KafkaSchema(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["compatibility_level"] = compatibility_level
         __props__["project"] = project
         __props__["schema"] = schema
         __props__["service_name"] = service_name
         __props__["subject_name"] = subject_name
         __props__["version"] = version
         return KafkaSchema(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="compatibilityLevel")
+    def compatibility_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Kafka Schemas compatibility level
+        """
+        return pulumi.get(self, "compatibility_level")
 
     @property
     @pulumi.getter
