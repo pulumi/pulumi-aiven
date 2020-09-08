@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.0.3 of the Aiven Terraform Provider
+_(none)_
 
 ---
+
+## 3.1.1 (2020-09-08)
+* Upgrade to v2.0.3 of the Aiven Terraform Provider
 
 ## 3.1.0 (2020-08-31)
 * Upgrade to pulumi-terraform-bridge v2.7.3
