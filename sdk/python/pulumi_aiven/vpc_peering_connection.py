@@ -15,8 +15,11 @@ class VpcPeeringConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+                 peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  peer_cloud_account: Optional[pulumi.Input[str]] = None,
                  peer_region: Optional[pulumi.Input[str]] = None,
+                 peer_resource_group: Optional[pulumi.Input[str]] = None,
                  peer_vpc: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -38,8 +41,11 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+        :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC
         :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC
         :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to
         """
@@ -60,19 +66,19 @@ class VpcPeeringConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['peer_azure_app_id'] = peer_azure_app_id
+            __props__['peer_azure_tenant_id'] = peer_azure_tenant_id
             if peer_cloud_account is None:
                 raise TypeError("Missing required property 'peer_cloud_account'")
             __props__['peer_cloud_account'] = peer_cloud_account
             __props__['peer_region'] = peer_region
+            __props__['peer_resource_group'] = peer_resource_group
             if peer_vpc is None:
                 raise TypeError("Missing required property 'peer_vpc'")
             __props__['peer_vpc'] = peer_vpc
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
-            __props__['peer_azure_app_id'] = None
-            __props__['peer_azure_tenant_id'] = None
-            __props__['peer_resource_group'] = None
             __props__['peering_connection_id'] = None
             __props__['state'] = None
             __props__['state_info'] = None
@@ -132,7 +138,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerAzureAppId")
-    def peer_azure_app_id(self) -> pulumi.Output[str]:
+    def peer_azure_app_id(self) -> pulumi.Output[Optional[str]]:
         """
         Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
         """
@@ -140,7 +146,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerAzureTenantId")
-    def peer_azure_tenant_id(self) -> pulumi.Output[str]:
+    def peer_azure_tenant_id(self) -> pulumi.Output[Optional[str]]:
         """
         Azure tenant id in UUID4 form
         """
@@ -164,7 +170,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerResourceGroup")
-    def peer_resource_group(self) -> pulumi.Output[str]:
+    def peer_resource_group(self) -> pulumi.Output[Optional[str]]:
         """
         Azure resource group name of the peered VPC
         """

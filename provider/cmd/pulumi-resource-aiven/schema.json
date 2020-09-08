@@ -20953,10 +20953,7 @@
                 }
             },
             "required": [
-                "peerAzureAppId",
-                "peerAzureTenantId",
                 "peerCloudAccount",
-                "peerResourceGroup",
                 "peerVpc",
                 "peeringConnectionId",
                 "state",
@@ -20964,6 +20961,14 @@
                 "vpcId"
             ],
             "inputProperties": {
+                "peerAzureAppId": {
+                    "type": "string",
+                    "description": "Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet\n"
+                },
+                "peerAzureTenantId": {
+                    "type": "string",
+                    "description": "Azure tenant id in UUID4 form\n"
+                },
                 "peerCloudAccount": {
                     "type": "string",
                     "description": "AWS account ID or GCP project ID of the peered VPC\n"
@@ -20971,6 +20976,10 @@
                 "peerRegion": {
                     "type": "string",
                     "description": "AWS region of the peered VPC (if not in the same region as Aiven VPC)\n"
+                },
+                "peerResourceGroup": {
+                    "type": "string",
+                    "description": "Azure resource group name of the peered VPC\n"
                 },
                 "peerVpc": {
                     "type": "string",
@@ -24695,10 +24704,7 @@
                 },
                 "type": "object",
                 "required": [
-                    "peerAzureAppId",
-                    "peerAzureTenantId",
                     "peerCloudAccount",
-                    "peerResourceGroup",
                     "peerVpc",
                     "peeringConnectionId",
                     "state",

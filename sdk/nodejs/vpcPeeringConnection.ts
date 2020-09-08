@@ -50,11 +50,11 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
     /**
      * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
      */
-    public /*out*/ readonly peerAzureAppId!: pulumi.Output<string>;
+    public readonly peerAzureAppId!: pulumi.Output<string | undefined>;
     /**
      * Azure tenant id in UUID4 form
      */
-    public /*out*/ readonly peerAzureTenantId!: pulumi.Output<string>;
+    public readonly peerAzureTenantId!: pulumi.Output<string | undefined>;
     /**
      * AWS account ID or GCP project ID of the peered VPC
      */
@@ -66,7 +66,7 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
     /**
      * Azure resource group name of the peered VPC
      */
-    public /*out*/ readonly peerResourceGroup!: pulumi.Output<string>;
+    public readonly peerResourceGroup!: pulumi.Output<string | undefined>;
     /**
      * AWS VPC ID or GCP VPC network name of the peered VPC
      */
@@ -121,13 +121,13 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             if (!args || args.vpcId === undefined) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            inputs["peerAzureAppId"] = args ? args.peerAzureAppId : undefined;
+            inputs["peerAzureTenantId"] = args ? args.peerAzureTenantId : undefined;
             inputs["peerCloudAccount"] = args ? args.peerCloudAccount : undefined;
             inputs["peerRegion"] = args ? args.peerRegion : undefined;
+            inputs["peerResourceGroup"] = args ? args.peerResourceGroup : undefined;
             inputs["peerVpc"] = args ? args.peerVpc : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["peerAzureAppId"] = undefined /*out*/;
-            inputs["peerAzureTenantId"] = undefined /*out*/;
-            inputs["peerResourceGroup"] = undefined /*out*/;
             inputs["peeringConnectionId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["stateInfo"] = undefined /*out*/;
@@ -194,6 +194,14 @@ export interface VpcPeeringConnectionState {
  */
 export interface VpcPeeringConnectionArgs {
     /**
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+     */
+    readonly peerAzureAppId?: pulumi.Input<string>;
+    /**
+     * Azure tenant id in UUID4 form
+     */
+    readonly peerAzureTenantId?: pulumi.Input<string>;
+    /**
      * AWS account ID or GCP project ID of the peered VPC
      */
     readonly peerCloudAccount: pulumi.Input<string>;
@@ -201,6 +209,10 @@ export interface VpcPeeringConnectionArgs {
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
      */
     readonly peerRegion?: pulumi.Input<string>;
+    /**
+     * Azure resource group name of the peered VPC
+     */
+    readonly peerResourceGroup?: pulumi.Input<string>;
     /**
      * AWS VPC ID or GCP VPC network name of the peered VPC
      */

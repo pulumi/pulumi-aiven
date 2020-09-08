@@ -92,11 +92,11 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string PeerAzureAppId;
-        public readonly string PeerAzureTenantId;
+        public readonly string? PeerAzureAppId;
+        public readonly string? PeerAzureTenantId;
         public readonly string PeerCloudAccount;
         public readonly string? PeerRegion;
-        public readonly string PeerResourceGroup;
+        public readonly string? PeerResourceGroup;
         public readonly string PeerVpc;
         public readonly string PeeringConnectionId;
         public readonly string State;
@@ -107,15 +107,15 @@ namespace Pulumi.Aiven
         private GetVpcPeeringConnectionResult(
             string id,
 
-            string peerAzureAppId,
+            string? peerAzureAppId,
 
-            string peerAzureTenantId,
+            string? peerAzureTenantId,
 
             string peerCloudAccount,
 
             string? peerRegion,
 
-            string peerResourceGroup,
+            string? peerResourceGroup,
 
             string peerVpc,
 

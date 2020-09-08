@@ -64,12 +64,12 @@ class GetVpcPeeringConnectionResult:
 
     @property
     @pulumi.getter(name="peerAzureAppId")
-    def peer_azure_app_id(self) -> str:
+    def peer_azure_app_id(self) -> Optional[str]:
         return pulumi.get(self, "peer_azure_app_id")
 
     @property
     @pulumi.getter(name="peerAzureTenantId")
-    def peer_azure_tenant_id(self) -> str:
+    def peer_azure_tenant_id(self) -> Optional[str]:
         return pulumi.get(self, "peer_azure_tenant_id")
 
     @property
@@ -84,7 +84,7 @@ class GetVpcPeeringConnectionResult:
 
     @property
     @pulumi.getter(name="peerResourceGroup")
-    def peer_resource_group(self) -> str:
+    def peer_resource_group(self) -> Optional[str]:
         return pulumi.get(self, "peer_resource_group")
 
     @property
