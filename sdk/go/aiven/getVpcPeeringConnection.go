@@ -58,11 +58,11 @@ type LookupVpcPeeringConnectionArgs struct {
 type LookupVpcPeeringConnectionResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                 `pulumi:"id"`
-	PeerAzureAppId      string                 `pulumi:"peerAzureAppId"`
-	PeerAzureTenantId   string                 `pulumi:"peerAzureTenantId"`
+	PeerAzureAppId      *string                `pulumi:"peerAzureAppId"`
+	PeerAzureTenantId   *string                `pulumi:"peerAzureTenantId"`
 	PeerCloudAccount    string                 `pulumi:"peerCloudAccount"`
 	PeerRegion          *string                `pulumi:"peerRegion"`
-	PeerResourceGroup   string                 `pulumi:"peerResourceGroup"`
+	PeerResourceGroup   *string                `pulumi:"peerResourceGroup"`
 	PeerVpc             string                 `pulumi:"peerVpc"`
 	PeeringConnectionId string                 `pulumi:"peeringConnectionId"`
 	State               string                 `pulumi:"state"`

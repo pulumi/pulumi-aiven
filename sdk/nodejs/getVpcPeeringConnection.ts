@@ -66,11 +66,11 @@ export interface GetVpcPeeringConnectionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly peerAzureAppId: string;
-    readonly peerAzureTenantId: string;
+    readonly peerAzureAppId?: string;
+    readonly peerAzureTenantId?: string;
     readonly peerCloudAccount: string;
     readonly peerRegion?: string;
-    readonly peerResourceGroup: string;
+    readonly peerResourceGroup?: string;
     readonly peerVpc: string;
     readonly peeringConnectionId: string;
     readonly state: string;

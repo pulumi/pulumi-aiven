@@ -38,13 +38,13 @@ namespace Pulumi.Aiven
         /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
         /// </summary>
         [Output("peerAzureAppId")]
-        public Output<string> PeerAzureAppId { get; private set; } = null!;
+        public Output<string?> PeerAzureAppId { get; private set; } = null!;
 
         /// <summary>
         /// Azure tenant id in UUID4 form
         /// </summary>
         [Output("peerAzureTenantId")]
-        public Output<string> PeerAzureTenantId { get; private set; } = null!;
+        public Output<string?> PeerAzureTenantId { get; private set; } = null!;
 
         /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven
         /// Azure resource group name of the peered VPC
         /// </summary>
         [Output("peerResourceGroup")]
-        public Output<string> PeerResourceGroup { get; private set; } = null!;
+        public Output<string?> PeerResourceGroup { get; private set; } = null!;
 
         /// <summary>
         /// AWS VPC ID or GCP VPC network name of the peered VPC
@@ -141,6 +141,18 @@ namespace Pulumi.Aiven
     public sealed class VpcPeeringConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+        /// </summary>
+        [Input("peerAzureAppId")]
+        public Input<string>? PeerAzureAppId { get; set; }
+
+        /// <summary>
+        /// Azure tenant id in UUID4 form
+        /// </summary>
+        [Input("peerAzureTenantId")]
+        public Input<string>? PeerAzureTenantId { get; set; }
+
+        /// <summary>
         /// AWS account ID or GCP project ID of the peered VPC
         /// </summary>
         [Input("peerCloudAccount", required: true)]
@@ -151,6 +163,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
+
+        /// <summary>
+        /// Azure resource group name of the peered VPC
+        /// </summary>
+        [Input("peerResourceGroup")]
+        public Input<string>? PeerResourceGroup { get; set; }
 
         /// <summary>
         /// AWS VPC ID or GCP VPC network name of the peered VPC

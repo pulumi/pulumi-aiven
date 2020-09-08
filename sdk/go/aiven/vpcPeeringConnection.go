@@ -39,15 +39,15 @@ type VpcPeeringConnection struct {
 	pulumi.CustomResourceState
 
 	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
-	PeerAzureAppId pulumi.StringOutput `pulumi:"peerAzureAppId"`
+	PeerAzureAppId pulumi.StringPtrOutput `pulumi:"peerAzureAppId"`
 	// Azure tenant id in UUID4 form
-	PeerAzureTenantId pulumi.StringOutput `pulumi:"peerAzureTenantId"`
+	PeerAzureTenantId pulumi.StringPtrOutput `pulumi:"peerAzureTenantId"`
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount pulumi.StringOutput `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
 	PeerRegion pulumi.StringPtrOutput `pulumi:"peerRegion"`
 	// Azure resource group name of the peered VPC
-	PeerResourceGroup pulumi.StringOutput `pulumi:"peerResourceGroup"`
+	PeerResourceGroup pulumi.StringPtrOutput `pulumi:"peerResourceGroup"`
 	// AWS VPC ID or GCP VPC network name of the peered VPC
 	PeerVpc pulumi.StringOutput `pulumi:"peerVpc"`
 	// Cloud provider identifier for the peering connection if available
@@ -147,10 +147,16 @@ func (VpcPeeringConnectionState) ElementType() reflect.Type {
 }
 
 type vpcPeeringConnectionArgs struct {
+	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+	PeerAzureAppId *string `pulumi:"peerAzureAppId"`
+	// Azure tenant id in UUID4 form
+	PeerAzureTenantId *string `pulumi:"peerAzureTenantId"`
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount string `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
 	PeerRegion *string `pulumi:"peerRegion"`
+	// Azure resource group name of the peered VPC
+	PeerResourceGroup *string `pulumi:"peerResourceGroup"`
 	// AWS VPC ID or GCP VPC network name of the peered VPC
 	PeerVpc string `pulumi:"peerVpc"`
 	// The VPC the peering connection belongs to
@@ -159,10 +165,16 @@ type vpcPeeringConnectionArgs struct {
 
 // The set of arguments for constructing a VpcPeeringConnection resource.
 type VpcPeeringConnectionArgs struct {
+	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+	PeerAzureAppId pulumi.StringPtrInput
+	// Azure tenant id in UUID4 form
+	PeerAzureTenantId pulumi.StringPtrInput
 	// AWS account ID or GCP project ID of the peered VPC
 	PeerCloudAccount pulumi.StringInput
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
 	PeerRegion pulumi.StringPtrInput
+	// Azure resource group name of the peered VPC
+	PeerResourceGroup pulumi.StringPtrInput
 	// AWS VPC ID or GCP VPC network name of the peered VPC
 	PeerVpc pulumi.StringInput
 	// The VPC the peering connection belongs to
