@@ -124,16 +124,7 @@ def get_connection_pool(connection_uri: Optional[str] = None,
                         username: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionPoolResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mytestpool = aiven.get_connection_pool(project=data["aiven_service"]["myservice"]["project"],
-        service_name=data["aiven_service"]["myservice"]["service_name"],
-        pool_name="<POOLNAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['connectionUri'] = connection_uri

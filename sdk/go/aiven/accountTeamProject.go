@@ -10,41 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The account team project is intended to link and existing project to the existing account team. It is important to note
-// that the project should have an `accountId` property set and equal to account team you are trying to link this project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := aiven.NewProject(ctx, "project1", &aiven.ProjectArgs{
-// 			AccountId: pulumi.Any(aiven_account_team.Developers.Account_id),
-// 			Project:   pulumi.String("project-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = aiven.NewAccountTeamProject(ctx, "accountTeamProject1", &aiven.AccountTeamProjectArgs{
-// 			AccountId:   pulumi.Any(aiven_account_team.Developers.Account_id),
-// 			ProjectName: project1.Project,
-// 			TeamId:      pulumi.Any(aiven_account_team.Developers.Team_id),
-// 			TeamType:    pulumi.String("admin"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type AccountTeamProject struct {
 	pulumi.CustomResourceState
 

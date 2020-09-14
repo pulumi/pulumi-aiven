@@ -6,18 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const account1 = pulumi.output(aiven.getAccount({
- *     name: "<ACCOUNT_NAME>",
- * }, { async: true }));
- * ```
- */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     if (!opts) {
         opts = {}

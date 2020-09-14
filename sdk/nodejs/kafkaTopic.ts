@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytesttopic = new aiven.KafkaTopic("mytesttopic", {
- *     cleanupPolicy: "delete",
- *     minimumInSyncReplicas: 2,
- *     partitions: 5,
- *     project: aiven_project_myproject.project,
- *     replication: 3,
- *     retentionBytes: -1,
- *     retentionHours: 72,
- *     serviceName: aiven_service_myservice.serviceName,
- *     topicName: "<TOPIC_NAME>",
- * });
- * ```
- */
 export class KafkaTopic extends pulumi.CustomResource {
     /**
      * Get an existing KafkaTopic resource's state with the given name, ID, and optional extra

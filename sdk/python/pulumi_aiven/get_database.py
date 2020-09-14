@@ -104,16 +104,7 @@ def get_database(database_name: Optional[str] = None,
                  termination_protection: Optional[bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mydatabase = aiven.get_database(project=data["aiven_service"]["myservice"]["project"],
-        service_name=data["aiven_service"]["myservice"]["service_name"],
-        database_name="<DATABASE_NAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name

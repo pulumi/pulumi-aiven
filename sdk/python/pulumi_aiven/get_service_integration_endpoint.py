@@ -126,15 +126,7 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
                                      rsyslog_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointRsyslogUserConfigArgs']] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationEndpointResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myendpoint = aiven.get_service_integration_endpoint(project=data["aiven_project"]["myproject"]["project"],
-        endpoint_name="<ENDPOINT_NAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['datadogUserConfig'] = datadog_user_config

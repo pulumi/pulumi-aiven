@@ -7,29 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupAccountTeam(ctx, &aiven.LookupAccountTeamArgs{
-// 			AccountId: aiven_account.Team.Account_id,
-// 			Name:      "account_team1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamResult, error) {
 	var rv LookupAccountTeamResult
 	err := ctx.Invoke("aiven:index/getAccountTeam:getAccountTeam", args, &rv, opts...)

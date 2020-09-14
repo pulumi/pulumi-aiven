@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myserviceuser = aiven.getServiceUser({
- *     project: data.aiven_service.myservice.project,
- *     serviceName: data.aiven_service.myservice.service_name,
- *     username: "<USERNAME>",
- * });
- * ```
- */
 export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceUserResult> {
     if (!opts) {
         opts = {}

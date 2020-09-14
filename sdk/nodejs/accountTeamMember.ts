@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * During the creation of `aiven.AccountTeamMember` resource, an email invitation will be sent
- * to a user using `userEmail` address. If the user accepts an invitation, he or she will become a member of the account team.
- * The deletion of `aiven.AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the
- * user, and it will also eliminate an account team member if one has accepted an invitation previously.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.AccountTeamMember("foo", {
- *     accountId: aiven_account_developers.accountId,
- *     teamId: aiven_account_developers.accountId,
- *     userEmail: "user+1@example.com",
- * });
- * ```
- */
 export class AccountTeamMember extends pulumi.CustomResource {
     /**
      * Get an existing AccountTeamMember resource's state with the given name, ID, and optional extra

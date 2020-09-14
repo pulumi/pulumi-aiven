@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
-// 			Project:     data.Aiven_service.Myservice.Project,
-// 			ServiceName: data.Aiven_service.Myservice.Service_name,
-// 			PoolName:    "<POOLNAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, opts ...pulumi.InvokeOption) (*LookupConnectionPoolResult, error) {
 	var rv LookupConnectionPoolResult
 	err := ctx.Invoke("aiven:index/getConnectionPool:getConnectionPool", args, &rv, opts...)

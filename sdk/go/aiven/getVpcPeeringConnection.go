@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupVpcPeeringConnection(ctx, &aiven.LookupVpcPeeringConnectionArgs{
-// 			VpcId:            data.Aiven_project_vpc.Vpc_id,
-// 			PeerCloudAccount: "<PEER_ACCOUNT_ID>",
-// 			PeerVpc:          "<PEER_VPC_ID/NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupVpcPeeringConnection(ctx *pulumi.Context, args *LookupVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVpcPeeringConnectionResult, error) {
 	var rv LookupVpcPeeringConnectionResult
 	err := ctx.Invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", args, &rv, opts...)

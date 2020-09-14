@@ -104,16 +104,7 @@ def get_account_team_member(accepted: Optional[bool] = None,
                             user_email: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamMemberResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    foo = aiven.get_account_team_member(account_id=aiven_account["developers"]["account_id"],
-        team_id=aiven_account["developers"]["account_id"],
-        user_email="user+1@example.com")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accepted'] = accepted

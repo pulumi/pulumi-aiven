@@ -51,26 +51,7 @@ class Service(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        myservice = aiven.Service("myservice",
-            cloud_name="google-europe-west1",
-            pg_user_config=aiven.ServicePgUserConfigArgs(
-                ip_filters=["0.0.0.0/0"],
-                pg_version="10",
-            ),
-            plan="business-8",
-            project=aiven_project["myproject"]["project"],
-            project_vpc_id=aiven_project_vpc["vpc_gcp_europe_west1"]["id"],
-            service_name="<SERVICE_NAME>",
-            service_type="pg",
-            termination_protection=True)
-        ```
-
+        Create a Service resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServiceCassandraArgs']] cassandra: Cassandra specific server provided values

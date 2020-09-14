@@ -134,14 +134,7 @@ def get_project(account_id: Optional[str] = None,
                 technical_emails: Optional[List[str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myproject = aiven.get_project(project="<PROJECT_NAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

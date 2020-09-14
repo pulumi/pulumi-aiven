@@ -10,36 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewKafkaTopic(ctx, "mytesttopic", &aiven.KafkaTopicArgs{
-// 			CleanupPolicy:         pulumi.String("delete"),
-// 			MinimumInSyncReplicas: pulumi.Int(2),
-// 			Partitions:            pulumi.Int(5),
-// 			Project:               pulumi.Any(aiven_project.Myproject.Project),
-// 			Replication:           pulumi.Int(3),
-// 			RetentionBytes:        pulumi.Int(-1),
-// 			RetentionHours:        pulumi.Int(72),
-// 			ServiceName:           pulumi.Any(aiven_service.Myservice.Service_name),
-// 			TopicName:             pulumi.String("<TOPIC_NAME>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 

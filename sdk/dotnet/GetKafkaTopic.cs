@@ -11,32 +11,6 @@ namespace Pulumi.Aiven
 {
     public static class GetKafkaTopic
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var mytesttopic = Output.Create(Aiven.GetKafkaTopic.InvokeAsync(new Aiven.GetKafkaTopicArgs
-        ///         {
-        ///             Project = data.Aiven_service.Myservice.Project,
-        ///             ServiceName = data.Aiven_service.Myservice.Service_name,
-        ///             TopicName = "&lt;TOPIC_NAME&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetKafkaTopicResult> InvokeAsync(GetKafkaTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithVersion());
     }

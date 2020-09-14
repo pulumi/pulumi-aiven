@@ -25,23 +25,7 @@ class AccountTeamMember(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        During the creation of `AccountTeamMember` resource, an email invitation will be sent
-        to a user using `user_email` address. If the user accepts an invitation, he or she will become a member of the account team.
-        The deletion of `AccountTeamMember` will not only delete invitation if one was sent but not yet accepted by the
-        user, and it will also eliminate an account team member if one has accepted an invitation previously.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.AccountTeamMember("foo",
-            account_id=aiven_account["developers"]["account_id"],
-            team_id=aiven_account["developers"]["account_id"],
-            user_email="user+1@example.com")
-        ```
-
+        Create a AccountTeamMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] accepted: Team member invitation status

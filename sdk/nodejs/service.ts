@@ -6,28 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myservice = new aiven.Service("myservice", {
- *     cloudName: "google-europe-west1",
- *     pgUserConfig: {
- *         ipFilters: ["0.0.0.0/0"],
- *         pgVersion: "10",
- *     },
- *     plan: "business-8",
- *     project: aiven_project_myproject.project,
- *     projectVpcId: aiven_project_vpc_vpc_gcp_europe_west1.id,
- *     serviceName: "<SERVICE_NAME>",
- *     serviceType: "pg",
- *     terminationProtection: true,
- * });
- * ```
- */
 export class Service extends pulumi.CustomResource {
     /**
      * Get an existing Service resource's state with the given name, ID, and optional extra

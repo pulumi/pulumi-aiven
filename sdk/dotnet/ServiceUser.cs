@@ -9,28 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myserviceuser = new Aiven.ServiceUser("myserviceuser", new Aiven.ServiceUserArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             ServiceName = aiven_service.Myservice.Service_name,
-    ///             Username = "&lt;USERNAME&gt;",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ServiceUser : Pulumi.CustomResource
     {
         /// <summary>

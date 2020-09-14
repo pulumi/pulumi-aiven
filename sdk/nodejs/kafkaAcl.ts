@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestacl = new aiven.KafkaAcl("mytestacl", {
- *     permission: "admin",
- *     project: aiven_project_myproject.project,
- *     serviceName: aiven_service_myservice.serviceName,
- *     topic: "<TOPIC_NAME_PATTERN>",
- *     username: "<USERNAME_PATTERN>",
- * });
- * ```
- */
 export class KafkaAcl extends pulumi.CustomResource {
     /**
      * Get an existing KafkaAcl resource's state with the given name, ID, and optional extra

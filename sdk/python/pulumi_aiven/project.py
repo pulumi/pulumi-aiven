@@ -28,17 +28,7 @@ class Project(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        myproject = aiven.Project("myproject",
-            card_id="<FULL_CARD_ID/LAST4_DIGITS>",
-            project="<PROJECT_NAME>")
-        ```
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID

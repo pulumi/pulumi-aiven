@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaTopic(ctx, &aiven.LookupKafkaTopicArgs{
-// 			Project:     data.Aiven_service.Myservice.Project,
-// 			ServiceName: data.Aiven_service.Myservice.Service_name,
-// 			TopicName:   "<TOPIC_NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...pulumi.InvokeOption) (*LookupKafkaTopicResult, error) {
 	var rv LookupKafkaTopicResult
 	err := ctx.Invoke("aiven:index/getKafkaTopic:getKafkaTopic", args, &rv, opts...)

@@ -4,19 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myproject = new aiven.Project("myproject", {
- *     cardId: "<FULL_CARD_ID/LAST4_DIGITS>",
- *     project: "<PROJECT_NAME>",
- * });
- * ```
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
