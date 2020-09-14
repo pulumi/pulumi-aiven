@@ -31,21 +31,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        myintegration = aiven.ServiceIntegration("myintegration",
-            destination_endpoint_id=aiven_service_integration_endpoint["myendpoint"]["id"],
-            destination_service_name="",
-            integration_type="datadog",
-            project=aiven_project["myproject"]["project"],
-            source_endpoint_id="",
-            source_service_name=aiven_service["testkafka"]["service_name"])
-        ```
-
+        Create a ServiceIntegration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)

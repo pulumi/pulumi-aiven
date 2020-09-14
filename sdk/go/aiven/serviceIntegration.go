@@ -10,33 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewServiceIntegration(ctx, "myintegration", &aiven.ServiceIntegrationArgs{
-// 			DestinationEndpointId:  pulumi.Any(aiven_service_integration_endpoint.Myendpoint.Id),
-// 			DestinationServiceName: pulumi.String(""),
-// 			IntegrationType:        pulumi.String("datadog"),
-// 			Project:                pulumi.Any(aiven_project.Myproject.Project),
-// 			SourceEndpointId:       pulumi.String(""),
-// 			SourceServiceName:      pulumi.Any(aiven_service.Testkafka.Service_name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ServiceIntegration struct {
 	pulumi.CustomResourceState
 

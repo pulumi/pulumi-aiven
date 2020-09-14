@@ -84,15 +84,7 @@ def get_project_user(accepted: Optional[bool] = None,
                      project: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectUserResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mytestuser = aiven.get_project_user(project=data["aiven_project"]["myproject"]["project"],
-        email="john.doe@example.com")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accepted'] = accepted

@@ -22,18 +22,7 @@ class ProjectVpc(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        myvpc = aiven.ProjectVpc("myvpc",
-            cloud_name="google-europe-west1",
-            network_cidr="192.168.0.1/24",
-            project=aiven_project["myproject"]["project"])
-        ```
-
+        Create a ProjectVpc resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: Cloud the VPC is in

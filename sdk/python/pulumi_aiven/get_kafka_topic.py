@@ -144,16 +144,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
                     topic_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mytesttopic = aiven.get_kafka_topic(project=data["aiven_service"]["myservice"]["project"],
-        service_name=data["aiven_service"]["myservice"]["service_name"],
-        topic_name="<TOPIC_NAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cleanupPolicy'] = cleanup_policy

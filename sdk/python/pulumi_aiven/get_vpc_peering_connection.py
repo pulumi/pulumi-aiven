@@ -144,16 +144,7 @@ def get_vpc_peering_connection(peer_azure_app_id: Optional[str] = None,
                                vpc_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcPeeringConnectionResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mypeeringconnection = aiven.get_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc_id"],
-        peer_cloud_account="<PEER_ACCOUNT_ID>",
-        peer_vpc="<PEER_VPC_ID/NAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['peerAzureAppId'] = peer_azure_app_id

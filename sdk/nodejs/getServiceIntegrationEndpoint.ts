@@ -6,19 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myendpoint = aiven.getServiceIntegrationEndpoint({
- *     project: data.aiven_project.myproject.project,
- *     endpointName: "<ENDPOINT_NAME>",
- * });
- * ```
- */
 export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {
     if (!opts) {
         opts = {}

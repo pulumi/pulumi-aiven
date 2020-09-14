@@ -10,34 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewConnectionPool(ctx, "mytestpool", &aiven.ConnectionPoolArgs{
-// 			DatabaseName: pulumi.Any(aiven_database.Mydatabase.Database_name),
-// 			PoolMode:     pulumi.String("transaction"),
-// 			PoolName:     pulumi.String("mypool"),
-// 			PoolSize:     pulumi.Int(10),
-// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
-// 			ServiceName:  pulumi.Any(aiven_service.Myservice.Service_name),
-// 			Username:     pulumi.Any(aiven_service_user.Myserviceuser.Username),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ConnectionPool struct {
 	pulumi.CustomResourceState
 

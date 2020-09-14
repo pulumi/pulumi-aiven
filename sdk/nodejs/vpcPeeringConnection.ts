@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mypeeringconnection = new aiven.VpcPeeringConnection("mypeeringconnection", {
- *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
- *     peerRegion: "<PEER_REGION>",
- *     peerVpc: "<PEER_VPC_ID/NAME>",
- *     vpcId: aiven_project_vpc_myvpc.id,
- * });
- * ```
- */
 export class VpcPeeringConnection extends pulumi.CustomResource {
     /**
      * Get an existing VpcPeeringConnection resource's state with the given name, ID, and optional extra

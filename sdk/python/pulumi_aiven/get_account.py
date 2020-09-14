@@ -104,14 +104,7 @@ def get_account(account_id: Optional[str] = None,
                 update_time: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    account1 = aiven.get_account(name="<ACCOUNT_NAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

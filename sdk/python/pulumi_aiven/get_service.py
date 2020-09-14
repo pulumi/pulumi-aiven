@@ -416,15 +416,7 @@ def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']]
                 termination_protection: Optional[bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myservice = aiven.get_service(project=data["aiven_project"]["myproject"]["project"],
-        service_name="<SERVICE_NAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cassandra'] = cassandra

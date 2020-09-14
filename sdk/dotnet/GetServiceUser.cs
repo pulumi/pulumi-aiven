@@ -11,32 +11,6 @@ namespace Pulumi.Aiven
 {
     public static class GetServiceUser
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myserviceuser = Output.Create(Aiven.GetServiceUser.InvokeAsync(new Aiven.GetServiceUserArgs
-        ///         {
-        ///             Project = data.Aiven_service.Myservice.Project,
-        ///             ServiceName = data.Aiven_service.Myservice.Service_name,
-        ///             Username = "&lt;USERNAME&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetServiceUserResult> InvokeAsync(GetServiceUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserArgs(), options.WithVersion());
     }

@@ -6,23 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myendpoint = new aiven.ServiceIntegrationEndpoint("myendpoint", {
- *     datadogUserConfig: {
- *         datadogApiKey: "<DATADOG_API_KEY>",
- *     },
- *     endpointName: "<ENDPOINT_NAME>",
- *     endpointType: "datadog",
- *     project: aiven_project_myproject.project,
- * });
- * ```
- */
 export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     /**
      * Get an existing ServiceIntegrationEndpoint resource's state with the given name, ID, and optional extra

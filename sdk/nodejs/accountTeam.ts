@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const accountTeam1 = new aiven.AccountTeam("account_team1", {
- *     accountId: aiven_account_team.accountId,
- * });
- * ```
- */
 export class AccountTeam extends pulumi.CustomResource {
     /**
      * Get an existing AccountTeam resource's state with the given name, ID, and optional extra

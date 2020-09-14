@@ -24,20 +24,7 @@ class KafkaAcl(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mytestacl = aiven.KafkaAcl("mytestacl",
-            permission="admin",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_service["myservice"]["service_name"],
-            topic="<TOPIC_NAME_PATTERN>",
-            username="<USERNAME_PATTERN>")
-        ```
-
+        Create a KafkaAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] permission: Kafka permission to grant (admin, read, readwrite, write)

@@ -6,19 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestuser = aiven.getProjectUser({
- *     project: data.aiven_project.myproject.project,
- *     email: "john.doe@example.com",
- * });
- * ```
- */
 export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> {
     if (!opts) {
         opts = {}

@@ -11,30 +11,6 @@ namespace Pulumi.Aiven
 {
     public static class GetAccount
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var account1 = Output.Create(Aiven.GetAccount.InvokeAsync(new Aiven.GetAccountArgs
-        ///         {
-        ///             Name = "&lt;ACCOUNT_NAME&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("aiven:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithVersion());
     }

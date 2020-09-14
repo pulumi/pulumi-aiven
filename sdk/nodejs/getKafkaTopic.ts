@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytesttopic = aiven.getKafkaTopic({
- *     project: data.aiven_service.myservice.project,
- *     serviceName: data.aiven_service.myservice.service_name,
- *     topicName: "<TOPIC_NAME>",
- * });
- * ```
- */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
     if (!opts) {
         opts = {}

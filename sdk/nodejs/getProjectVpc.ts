@@ -6,19 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myvpc = aiven.getProjectVpc({
- *     project: data.aiven_project.myproject.project,
- *     cloudName: "google-europe-west1",
- * });
- * ```
- */
 export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {
     if (!opts) {
         opts = {}

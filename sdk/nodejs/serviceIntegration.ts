@@ -6,23 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myintegration = new aiven.ServiceIntegration("myintegration", {
- *     destinationEndpointId: aiven_service_integration_endpoint_myendpoint.id,
- *     destinationServiceName: "",
- *     integrationType: "datadog",
- *     project: aiven_project_myproject.project,
- *     sourceEndpointId: "",
- *     sourceServiceName: aiven_service_testkafka.serviceName,
- * });
- * ```
- */
 export class ServiceIntegration extends pulumi.CustomResource {
     /**
      * Get an existing ServiceIntegration resource's state with the given name, ID, and optional extra

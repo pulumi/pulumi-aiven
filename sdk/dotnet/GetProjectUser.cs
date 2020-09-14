@@ -11,31 +11,6 @@ namespace Pulumi.Aiven
 {
     public static class GetProjectUser
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var mytestuser = Output.Create(Aiven.GetProjectUser.InvokeAsync(new Aiven.GetProjectUserArgs
-        ///         {
-        ///             Project = data.Aiven_project.Myproject.Project,
-        ///             Email = "john.doe@example.com",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetProjectUserResult> InvokeAsync(GetProjectUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserArgs(), options.WithVersion());
     }

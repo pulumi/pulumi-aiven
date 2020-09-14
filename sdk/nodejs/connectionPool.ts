@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestpool = new aiven.ConnectionPool("mytestpool", {
- *     databaseName: aiven_database_mydatabase.databaseName,
- *     poolMode: "transaction",
- *     poolName: "mypool",
- *     poolSize: 10,
- *     project: aiven_project_myproject.project,
- *     serviceName: aiven_service_myservice.serviceName,
- *     username: aiven_service_user_myserviceuser.username,
- * });
- * ```
- */
 export class ConnectionPool extends pulumi.CustomResource {
     /**
      * Get an existing ConnectionPool resource's state with the given name, ID, and optional extra

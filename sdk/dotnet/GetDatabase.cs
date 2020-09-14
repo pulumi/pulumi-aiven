@@ -11,32 +11,6 @@ namespace Pulumi.Aiven
 {
     public static class GetDatabase
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var mydatabase = Output.Create(Aiven.GetDatabase.InvokeAsync(new Aiven.GetDatabaseArgs
-        ///         {
-        ///             Project = data.Aiven_service.Myservice.Project,
-        ///             ServiceName = data.Aiven_service.Myservice.Service_name,
-        ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithVersion());
     }

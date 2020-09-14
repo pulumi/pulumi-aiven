@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const accountTeamProject1 = pulumi.all([aiven_account_team_developers.accountId, aiven_project_project1.project, aiven_account_team_developers.teamId]).apply(([accountId, project, teamId]) => aiven.getAccountTeamProject({
- *     accountId: accountId,
- *     projectName: project,
- *     teamId: teamId,
- * }, { async: true }));
- * ```
- */
 export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamProjectResult> {
     if (!opts) {
         opts = {}

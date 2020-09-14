@@ -28,21 +28,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        myendpoint = aiven.ServiceIntegrationEndpoint("myendpoint",
-            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
-                datadog_api_key="<DATADOG_API_KEY>",
-            ),
-            endpoint_name="<ENDPOINT_NAME>",
-            endpoint_type="datadog",
-            project=aiven_project["myproject"]["project"])
-        ```
-
+        Create a ServiceIntegrationEndpoint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog specific user configurable settings

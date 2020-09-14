@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mydatabase = new aiven.Database("mydatabase", {
- *     databaseName: "<DATABASE_NAME>",
- *     project: aiven_project_myproject.project,
- *     serviceName: aiven_service_myservice.serviceName,
- * });
- * ```
- */
 export class Database extends pulumi.CustomResource {
     /**
      * Get an existing Database resource's state with the given name, ID, and optional extra

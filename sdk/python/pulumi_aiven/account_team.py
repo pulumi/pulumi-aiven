@@ -23,15 +23,7 @@ class AccountTeam(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        account_team1 = aiven.AccountTeam("accountTeam1", account_id=aiven_account["team"]["account_id"])
-        ```
-
+        Create a AccountTeam resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account id

@@ -11,32 +11,6 @@ namespace Pulumi.Aiven
 {
     public static class GetVpcPeeringConnection
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var mypeeringconnection = Output.Create(Aiven.GetVpcPeeringConnection.InvokeAsync(new Aiven.GetVpcPeeringConnectionArgs
-        ///         {
-        ///             VpcId = data.Aiven_project_vpc.Vpc_id,
-        ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
-        ///             PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetVpcPeeringConnectionResult> InvokeAsync(GetVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcPeeringConnectionResult>("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", args ?? new GetVpcPeeringConnectionArgs(), options.WithVersion());
     }

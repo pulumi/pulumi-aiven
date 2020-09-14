@@ -114,16 +114,7 @@ def get_service_user(access_cert: Optional[str] = None,
                      username: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceUserResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myserviceuser = aiven.get_service_user(project=data["aiven_service"]["myservice"]["project"],
-        service_name=data["aiven_service"]["myservice"]["service_name"],
-        username="<USERNAME>")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accessCert'] = access_cert

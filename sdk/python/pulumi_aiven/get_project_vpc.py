@@ -84,15 +84,7 @@ def get_project_vpc(cloud_name: Optional[str] = None,
                     state: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myvpc = aiven.get_project_vpc(project=data["aiven_project"]["myproject"]["project"],
-        cloud_name="google-europe-west1")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name

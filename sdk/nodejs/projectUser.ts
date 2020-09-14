@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestuser = new aiven.ProjectUser("mytestuser", {
- *     email: "john.doe@example.com",
- *     memberType: "admin",
- *     project: aiven_project_myproject.project,
- * });
- * ```
- */
 export class ProjectUser extends pulumi.CustomResource {
     /**
      * Get an existing ProjectUser resource's state with the given name, ID, and optional extra
