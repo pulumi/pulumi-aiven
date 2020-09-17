@@ -35,6 +35,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? MetricsEnabled;
         public readonly Outputs.GetServiceGrafanaUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetServiceGrafanaUserConfigPublicAccessResult? PublicAccess;
+        public readonly string? RecoveryBasebackupName;
+        public readonly string? ServiceToForkFrom;
         public readonly Outputs.GetServiceGrafanaUserConfigSmtpServerResult? SmtpServer;
         public readonly string? UserAutoAssignOrg;
         public readonly string? UserAutoAssignOrgRole;
@@ -86,6 +88,10 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetServiceGrafanaUserConfigPublicAccessResult? publicAccess,
 
+            string? recoveryBasebackupName,
+
+            string? serviceToForkFrom,
+
             Outputs.GetServiceGrafanaUserConfigSmtpServerResult? smtpServer,
 
             string? userAutoAssignOrg,
@@ -116,6 +122,8 @@ namespace Pulumi.Aiven.Outputs
             MetricsEnabled = metricsEnabled;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
+            RecoveryBasebackupName = recoveryBasebackupName;
+            ServiceToForkFrom = serviceToForkFrom;
             SmtpServer = smtpServer;
             UserAutoAssignOrg = userAutoAssignOrg;
             UserAutoAssignOrgRole = userAutoAssignOrgRole;

@@ -297,6 +297,8 @@ export interface GetGrafanaGrafanaUserConfig {
     metricsEnabled?: string;
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
     publicAccess?: outputs.GetGrafanaGrafanaUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
     smtpServer?: outputs.GetGrafanaGrafanaUserConfigSmtpServer;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -390,6 +392,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
     ipFilters?: string[];
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
     publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
 }
 
@@ -794,6 +797,7 @@ export interface GetRedisRedisUserConfig {
     migration?: outputs.GetRedisRedisUserConfigMigration;
     privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
     publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
@@ -951,6 +955,8 @@ export interface GetServiceGrafanaUserConfig {
     metricsEnabled?: string;
     privateAccess?: outputs.GetServiceGrafanaUserConfigPrivateAccess;
     publicAccess?: outputs.GetServiceGrafanaUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
     smtpServer?: outputs.GetServiceGrafanaUserConfigSmtpServer;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -1029,6 +1035,7 @@ export interface GetServiceInfluxdbUserConfig {
     ipFilters?: string[];
     privateAccess?: outputs.GetServiceInfluxdbUserConfigPrivateAccess;
     publicAccess?: outputs.GetServiceInfluxdbUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
 }
 
@@ -1047,12 +1054,38 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
     site?: string;
 }
 
+export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+    accessKey?: string;
+    logGroupName?: string;
+    region?: string;
+    secretKey?: string;
+}
+
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: string;
     indexDaysMax?: string;
     indexPrefix?: string;
     timeout?: string;
     url?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+    logId?: string;
+    projectId?: string;
+    serviceAccountCredentials?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
+    bootstrapServers?: string;
+    securityProtocol?: string;
+    sslCaCert?: string;
+    sslClientCert?: string;
+    sslClientKey?: string;
+}
+
+export interface GetServiceIntegrationEndpointJolokiaUserConfig {
+    basicAuthPassword?: string;
+    basicAuthUsername?: string;
 }
 
 export interface GetServiceIntegrationEndpointPrometheusUserConfig {
@@ -1070,6 +1103,12 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     sd?: string;
     server?: string;
     tls?: string;
+}
+
+export interface GetServiceIntegrationEndpointSignalfxUserConfig {
+    enabledMetrics?: string[];
+    signalfxApiKey?: string;
+    signalfxRealm?: string;
 }
 
 export interface GetServiceIntegrationKafkaConnectUserConfig {
@@ -1394,6 +1433,7 @@ export interface GetServiceRedisUserConfig {
     migration?: outputs.GetServiceRedisUserConfigMigration;
     privateAccess?: outputs.GetServiceRedisUserConfigPrivateAccess;
     publicAccess?: outputs.GetServiceRedisUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
@@ -1463,6 +1503,8 @@ export interface GrafanaGrafanaUserConfig {
     metricsEnabled?: string;
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
     publicAccess?: outputs.GrafanaGrafanaUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
     smtpServer?: outputs.GrafanaGrafanaUserConfigSmtpServer;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -1556,6 +1598,7 @@ export interface InfluxDbInfluxdbUserConfig {
     ipFilters?: string[];
     privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
     publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
 }
 
@@ -1960,6 +2003,7 @@ export interface RedisRedisUserConfig {
     migration?: outputs.RedisRedisUserConfigMigration;
     privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
     publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
@@ -2117,6 +2161,8 @@ export interface ServiceGrafanaUserConfig {
     metricsEnabled?: string;
     privateAccess?: outputs.ServiceGrafanaUserConfigPrivateAccess;
     publicAccess?: outputs.ServiceGrafanaUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
     smtpServer?: outputs.ServiceGrafanaUserConfigSmtpServer;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -2195,6 +2241,7 @@ export interface ServiceInfluxdbUserConfig {
     ipFilters?: string[];
     privateAccess?: outputs.ServiceInfluxdbUserConfigPrivateAccess;
     publicAccess?: outputs.ServiceInfluxdbUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
 }
 
@@ -2213,12 +2260,38 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
     site?: string;
 }
 
+export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+    accessKey?: string;
+    logGroupName?: string;
+    region?: string;
+    secretKey?: string;
+}
+
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: string;
     indexDaysMax?: string;
     indexPrefix?: string;
     timeout?: string;
     url?: string;
+}
+
+export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+    logId?: string;
+    projectId?: string;
+    serviceAccountCredentials?: string;
+}
+
+export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
+    bootstrapServers?: string;
+    securityProtocol?: string;
+    sslCaCert?: string;
+    sslClientCert?: string;
+    sslClientKey?: string;
+}
+
+export interface ServiceIntegrationEndpointJolokiaUserConfig {
+    basicAuthPassword?: string;
+    basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
@@ -2236,6 +2309,12 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     sd?: string;
     server?: string;
     tls?: string;
+}
+
+export interface ServiceIntegrationEndpointSignalfxUserConfig {
+    enabledMetrics?: string[];
+    signalfxApiKey?: string;
+    signalfxRealm?: string;
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {
@@ -2560,6 +2639,7 @@ export interface ServiceRedisUserConfig {
     migration?: outputs.ServiceRedisUserConfigMigration;
     privateAccess?: outputs.ServiceRedisUserConfigPrivateAccess;
     publicAccess?: outputs.ServiceRedisUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;

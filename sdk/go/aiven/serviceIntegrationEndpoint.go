@@ -21,14 +21,24 @@ type ServiceIntegrationEndpoint struct {
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
 	// Type of the service integration endpoint
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
+	// external AWS CloudWatch Logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
+	// external Google Cloud Logginig specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	// external Kafka specific user configurable settings
+	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput `pulumi:"externalKafkaUserConfig"`
+	// Jolokia specific user configurable settings
+	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrOutput `pulumi:"jolokiaUserConfig"`
 	// Project the service integration endpoint belongs to
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
 	// rsyslog specific user configurable settings
 	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrOutput `pulumi:"rsyslogUserConfig"`
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig ServiceIntegrationEndpointSignalfxUserConfigPtrOutput `pulumi:"signalfxUserConfig"`
 }
 
 // NewServiceIntegrationEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -76,14 +86,24 @@ type serviceIntegrationEndpointState struct {
 	EndpointName *string `pulumi:"endpointName"`
 	// Type of the service integration endpoint
 	EndpointType *string `pulumi:"endpointType"`
+	// external AWS CloudWatch Logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// external Google Cloud Logginig specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	// external Kafka specific user configurable settings
+	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
+	// Jolokia specific user configurable settings
+	JolokiaUserConfig *ServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfig"`
 	// Project the service integration endpoint belongs to
 	Project *string `pulumi:"project"`
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// rsyslog specific user configurable settings
 	RsyslogUserConfig *ServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig *ServiceIntegrationEndpointSignalfxUserConfig `pulumi:"signalfxUserConfig"`
 }
 
 type ServiceIntegrationEndpointState struct {
@@ -95,14 +115,24 @@ type ServiceIntegrationEndpointState struct {
 	EndpointName pulumi.StringPtrInput
 	// Type of the service integration endpoint
 	EndpointType pulumi.StringPtrInput
+	// external AWS CloudWatch Logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
+	// external Google Cloud Logginig specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
+	// external Kafka specific user configurable settings
+	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
+	// Jolokia specific user configurable settings
+	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrInput
 	// Project the service integration endpoint belongs to
 	Project pulumi.StringPtrInput
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput
 	// rsyslog specific user configurable settings
 	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrInput
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig ServiceIntegrationEndpointSignalfxUserConfigPtrInput
 }
 
 func (ServiceIntegrationEndpointState) ElementType() reflect.Type {
@@ -116,14 +146,24 @@ type serviceIntegrationEndpointArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// Type of the service integration endpoint
 	EndpointType string `pulumi:"endpointType"`
+	// external AWS CloudWatch Logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// external Google Cloud Logginig specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	// external Kafka specific user configurable settings
+	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
+	// Jolokia specific user configurable settings
+	JolokiaUserConfig *ServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfig"`
 	// Project the service integration endpoint belongs to
 	Project string `pulumi:"project"`
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// rsyslog specific user configurable settings
 	RsyslogUserConfig *ServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig *ServiceIntegrationEndpointSignalfxUserConfig `pulumi:"signalfxUserConfig"`
 }
 
 // The set of arguments for constructing a ServiceIntegrationEndpoint resource.
@@ -134,14 +174,24 @@ type ServiceIntegrationEndpointArgs struct {
 	EndpointName pulumi.StringInput
 	// Type of the service integration endpoint
 	EndpointType pulumi.StringInput
+	// external AWS CloudWatch Logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
+	// external Google Cloud Logginig specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
+	// external Kafka specific user configurable settings
+	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
+	// Jolokia specific user configurable settings
+	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrInput
 	// Project the service integration endpoint belongs to
 	Project pulumi.StringInput
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput
 	// rsyslog specific user configurable settings
 	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrInput
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig ServiceIntegrationEndpointSignalfxUserConfigPtrInput
 }
 
 func (ServiceIntegrationEndpointArgs) ElementType() reflect.Type {

@@ -29,6 +29,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("publicAccess")]
         public Input<Inputs.ServiceRedisUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        [Input("recoveryBasebackupName")]
+        public Input<string>? RecoveryBasebackupName { get; set; }
+
         [Input("redisLfuDecayTime")]
         public Input<string>? RedisLfuDecayTime { get; set; }
 

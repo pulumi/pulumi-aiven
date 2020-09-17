@@ -83,6 +83,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("publicAccess")]
         public Inputs.GetGrafanaGrafanaUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
+        [Input("recoveryBasebackupName")]
+        public string? RecoveryBasebackupName { get; set; }
+
+        [Input("serviceToForkFrom")]
+        public string? ServiceToForkFrom { get; set; }
+
         [Input("smtpServer")]
         public Inputs.GetGrafanaGrafanaUserConfigSmtpServerArgs? SmtpServer { get; set; }
 

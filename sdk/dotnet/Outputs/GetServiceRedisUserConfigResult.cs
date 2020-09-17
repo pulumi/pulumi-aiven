@@ -17,6 +17,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServiceRedisUserConfigMigrationResult? Migration;
         public readonly Outputs.GetServiceRedisUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetServiceRedisUserConfigPublicAccessResult? PublicAccess;
+        public readonly string? RecoveryBasebackupName;
         public readonly string? RedisLfuDecayTime;
         public readonly string? RedisLfuLogFactor;
         public readonly string? RedisMaxmemoryPolicy;
@@ -34,6 +35,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.GetServiceRedisUserConfigPrivateAccessResult? privateAccess,
 
             Outputs.GetServiceRedisUserConfigPublicAccessResult? publicAccess,
+
+            string? recoveryBasebackupName,
 
             string? redisLfuDecayTime,
 
@@ -53,6 +56,7 @@ namespace Pulumi.Aiven.Outputs
             Migration = migration;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
+            RecoveryBasebackupName = recoveryBasebackupName;
             RedisLfuDecayTime = redisLfuDecayTime;
             RedisLfuLogFactor = redisLfuLogFactor;
             RedisMaxmemoryPolicy = redisMaxmemoryPolicy;

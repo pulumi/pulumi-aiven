@@ -35,8 +35,20 @@ namespace Pulumi.Aiven
         [Input("endpointType")]
         public string? EndpointType { get; set; }
 
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
         [Input("externalElasticsearchLogsUserConfig")]
         public Inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs? ExternalGoogleCloudLoggingUserConfig { get; set; }
+
+        [Input("externalKafkaUserConfig")]
+        public Inputs.GetServiceIntegrationEndpointExternalKafkaUserConfigArgs? ExternalKafkaUserConfig { get; set; }
+
+        [Input("jolokiaUserConfig")]
+        public Inputs.GetServiceIntegrationEndpointJolokiaUserConfigArgs? JolokiaUserConfig { get; set; }
 
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -46,6 +58,9 @@ namespace Pulumi.Aiven
 
         [Input("rsyslogUserConfig")]
         public Inputs.GetServiceIntegrationEndpointRsyslogUserConfigArgs? RsyslogUserConfig { get; set; }
+
+        [Input("signalfxUserConfig")]
+        public Inputs.GetServiceIntegrationEndpointSignalfxUserConfigArgs? SignalfxUserConfig { get; set; }
 
         public GetServiceIntegrationEndpointArgs()
         {
@@ -60,14 +75,19 @@ namespace Pulumi.Aiven
         public readonly ImmutableDictionary<string, string> EndpointConfig;
         public readonly string EndpointName;
         public readonly string? EndpointType;
+        public readonly Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult? ExternalAwsCloudwatchLogsUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;
+        public readonly Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult? ExternalGoogleCloudLoggingUserConfig;
+        public readonly Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult? ExternalKafkaUserConfig;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult? JolokiaUserConfig;
         public readonly string Project;
         public readonly Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult? PrometheusUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult? RsyslogUserConfig;
+        public readonly Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult? SignalfxUserConfig;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointResult(
@@ -79,25 +99,40 @@ namespace Pulumi.Aiven
 
             string? endpointType,
 
+            Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult? externalAwsCloudwatchLogsUserConfig,
+
             Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? externalElasticsearchLogsUserConfig,
 
+            Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult? externalGoogleCloudLoggingUserConfig,
+
+            Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult? externalKafkaUserConfig,
+
             string id,
+
+            Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult? jolokiaUserConfig,
 
             string project,
 
             Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult? prometheusUserConfig,
 
-            Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult? rsyslogUserConfig)
+            Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult? rsyslogUserConfig,
+
+            Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult? signalfxUserConfig)
         {
             DatadogUserConfig = datadogUserConfig;
             EndpointConfig = endpointConfig;
             EndpointName = endpointName;
             EndpointType = endpointType;
+            ExternalAwsCloudwatchLogsUserConfig = externalAwsCloudwatchLogsUserConfig;
             ExternalElasticsearchLogsUserConfig = externalElasticsearchLogsUserConfig;
+            ExternalGoogleCloudLoggingUserConfig = externalGoogleCloudLoggingUserConfig;
+            ExternalKafkaUserConfig = externalKafkaUserConfig;
             Id = id;
+            JolokiaUserConfig = jolokiaUserConfig;
             Project = project;
             PrometheusUserConfig = prometheusUserConfig;
             RsyslogUserConfig = rsyslogUserConfig;
+            SignalfxUserConfig = signalfxUserConfig;
         }
     }
 }

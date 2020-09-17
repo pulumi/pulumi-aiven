@@ -2975,6 +2975,8 @@ type GrafanaGrafanaUserConfig struct {
 	MetricsEnabled             *string                                       `pulumi:"metricsEnabled"`
 	PrivateAccess              *GrafanaGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
 	PublicAccess               *GrafanaGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     *string                                       `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          *string                                       `pulumi:"serviceToForkFrom"`
 	SmtpServer                 *GrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          *string                                       `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      *string                                       `pulumi:"userAutoAssignOrgRole"`
@@ -3015,6 +3017,8 @@ type GrafanaGrafanaUserConfigArgs struct {
 	MetricsEnabled             pulumi.StringPtrInput                                `pulumi:"metricsEnabled"`
 	PrivateAccess              GrafanaGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
 	PublicAccess               GrafanaGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
 	SmtpServer                 GrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrgRole"`
@@ -3185,6 +3189,14 @@ func (o GrafanaGrafanaUserConfigOutput) PrivateAccess() GrafanaGrafanaUserConfig
 
 func (o GrafanaGrafanaUserConfigOutput) PublicAccess() GrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPublicAccess { return v.PublicAccess }).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GrafanaGrafanaUserConfigOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
@@ -3417,6 +3429,24 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PublicAccess() GrafanaGrafanaUserConf
 		}
 		return v.PublicAccess
 	}).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GrafanaGrafanaUserConfigPtrOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
@@ -5287,11 +5317,12 @@ func (o InfluxDbInfluxdbPtrOutput) DatabaseName() pulumi.StringPtrOutput {
 }
 
 type InfluxDbInfluxdbUserConfig struct {
-	CustomDomain      *string                                  `pulumi:"customDomain"`
-	IpFilters         []string                                 `pulumi:"ipFilters"`
-	PrivateAccess     *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess      *InfluxDbInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	ServiceToForkFrom *string                                  `pulumi:"serviceToForkFrom"`
+	CustomDomain           *string                                  `pulumi:"customDomain"`
+	IpFilters              []string                                 `pulumi:"ipFilters"`
+	PrivateAccess          *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PublicAccess           *InfluxDbInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName *string                                  `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      *string                                  `pulumi:"serviceToForkFrom"`
 }
 
 // InfluxDbInfluxdbUserConfigInput is an input type that accepts InfluxDbInfluxdbUserConfigArgs and InfluxDbInfluxdbUserConfigOutput values.
@@ -5306,11 +5337,12 @@ type InfluxDbInfluxdbUserConfigInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigArgs struct {
-	CustomDomain      pulumi.StringPtrInput                           `pulumi:"customDomain"`
-	IpFilters         pulumi.StringArrayInput                         `pulumi:"ipFilters"`
-	PrivateAccess     InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess      InfluxDbInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	ServiceToForkFrom pulumi.StringPtrInput                           `pulumi:"serviceToForkFrom"`
+	CustomDomain           pulumi.StringPtrInput                           `pulumi:"customDomain"`
+	IpFilters              pulumi.StringArrayInput                         `pulumi:"ipFilters"`
+	PrivateAccess          InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PublicAccess           InfluxDbInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName pulumi.StringPtrInput                           `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      pulumi.StringPtrInput                           `pulumi:"serviceToForkFrom"`
 }
 
 func (InfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -5405,6 +5437,10 @@ func (o InfluxDbInfluxdbUserConfigOutput) PublicAccess() InfluxDbInfluxdbUserCon
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+func (o InfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
 func (o InfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -5461,6 +5497,15 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PublicAccess() InfluxDbInfluxdbUser
 		}
 		return v.PublicAccess
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
+}
+
+func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -13686,6 +13731,7 @@ type RedisRedisUserConfig struct {
 	Migration                 *RedisRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *RedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *RedisRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    *string                            `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         *string                            `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         *string                            `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                            `pulumi:"redisMaxmemoryPolicy"`
@@ -13711,6 +13757,7 @@ type RedisRedisUserConfigArgs struct {
 	Migration                 RedisRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             RedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              RedisRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    pulumi.StringPtrInput                     `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         pulumi.StringPtrInput                     `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         pulumi.StringPtrInput                     `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                     `pulumi:"redisMaxmemoryPolicy"`
@@ -13812,6 +13859,10 @@ func (o RedisRedisUserConfigOutput) PublicAccess() RedisRedisUserConfigPublicAcc
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess { return v.PublicAccess }).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
 
+func (o RedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
 func (o RedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
@@ -13892,6 +13943,15 @@ func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublic
 		}
 		return v.PublicAccess
 	}).(RedisRedisUserConfigPublicAccessPtrOutput)
+}
+
+func (o RedisRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RedisRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
@@ -16827,6 +16887,8 @@ type ServiceGrafanaUserConfig struct {
 	MetricsEnabled             *string                                       `pulumi:"metricsEnabled"`
 	PrivateAccess              *ServiceGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
 	PublicAccess               *ServiceGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     *string                                       `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          *string                                       `pulumi:"serviceToForkFrom"`
 	SmtpServer                 *ServiceGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          *string                                       `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      *string                                       `pulumi:"userAutoAssignOrgRole"`
@@ -16867,6 +16929,8 @@ type ServiceGrafanaUserConfigArgs struct {
 	MetricsEnabled             pulumi.StringPtrInput                                `pulumi:"metricsEnabled"`
 	PrivateAccess              ServiceGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
 	PublicAccess               ServiceGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
 	SmtpServer                 ServiceGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrgRole"`
@@ -17037,6 +17101,14 @@ func (o ServiceGrafanaUserConfigOutput) PrivateAccess() ServiceGrafanaUserConfig
 
 func (o ServiceGrafanaUserConfigOutput) PublicAccess() ServiceGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigPublicAccess { return v.PublicAccess }).(ServiceGrafanaUserConfigPublicAccessPtrOutput)
+}
+
+func (o ServiceGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigOutput) SmtpServer() ServiceGrafanaUserConfigSmtpServerPtrOutput {
@@ -17269,6 +17341,24 @@ func (o ServiceGrafanaUserConfigPtrOutput) PublicAccess() ServiceGrafanaUserConf
 		}
 		return v.PublicAccess
 	}).(ServiceGrafanaUserConfigPublicAccessPtrOutput)
+}
+
+func (o ServiceGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) SmtpServer() ServiceGrafanaUserConfigSmtpServerPtrOutput {
@@ -18909,11 +18999,12 @@ func (o ServiceInfluxdbPtrOutput) DatabaseName() pulumi.StringPtrOutput {
 }
 
 type ServiceInfluxdbUserConfig struct {
-	CustomDomain      *string                                 `pulumi:"customDomain"`
-	IpFilters         []string                                `pulumi:"ipFilters"`
-	PrivateAccess     *ServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess      *ServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	ServiceToForkFrom *string                                 `pulumi:"serviceToForkFrom"`
+	CustomDomain           *string                                 `pulumi:"customDomain"`
+	IpFilters              []string                                `pulumi:"ipFilters"`
+	PrivateAccess          *ServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PublicAccess           *ServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName *string                                 `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      *string                                 `pulumi:"serviceToForkFrom"`
 }
 
 // ServiceInfluxdbUserConfigInput is an input type that accepts ServiceInfluxdbUserConfigArgs and ServiceInfluxdbUserConfigOutput values.
@@ -18928,11 +19019,12 @@ type ServiceInfluxdbUserConfigInput interface {
 }
 
 type ServiceInfluxdbUserConfigArgs struct {
-	CustomDomain      pulumi.StringPtrInput                          `pulumi:"customDomain"`
-	IpFilters         pulumi.StringArrayInput                        `pulumi:"ipFilters"`
-	PrivateAccess     ServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess      ServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	ServiceToForkFrom pulumi.StringPtrInput                          `pulumi:"serviceToForkFrom"`
+	CustomDomain           pulumi.StringPtrInput                          `pulumi:"customDomain"`
+	IpFilters              pulumi.StringArrayInput                        `pulumi:"ipFilters"`
+	PrivateAccess          ServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PublicAccess           ServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName pulumi.StringPtrInput                          `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      pulumi.StringPtrInput                          `pulumi:"serviceToForkFrom"`
 }
 
 func (ServiceInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -19027,6 +19119,10 @@ func (o ServiceInfluxdbUserConfigOutput) PublicAccess() ServiceInfluxdbUserConfi
 	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(ServiceInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+func (o ServiceInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -19083,6 +19179,15 @@ func (o ServiceInfluxdbUserConfigPtrOutput) PublicAccess() ServiceInfluxdbUserCo
 		}
 		return v.PublicAccess
 	}).(ServiceInfluxdbUserConfigPublicAccessPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -19519,6 +19624,179 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Site() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
+	AccessKey    *string `pulumi:"accessKey"`
+	LogGroupName *string `pulumi:"logGroupName"`
+	Region       *string `pulumi:"region"`
+	SecretKey    *string `pulumi:"secretKey"`
+}
+
+// ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs and ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput` via:
+//
+//          ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
+type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput
+	ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput
+}
+
+type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs struct {
+	AccessKey    pulumi.StringPtrInput `pulumi:"accessKey"`
+	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	SecretKey    pulumi.StringPtrInput `pulumi:"secretKey"`
+}
+
+func (ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return i.ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+func (i ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput).ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs, ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtr and ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput` via:
+//
+//          ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput
+	ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput
+}
+
+type serviceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrType ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs
+
+func ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtr(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput {
+	return (*serviceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrType) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrType) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o.ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+		return &v
+	}).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput)
+}
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) LogGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.LogGroupName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) ToServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) Elem() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+		return *v
+	}).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) LogGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
 	Ca           *string `pulumi:"ca"`
 	IndexDaysMax *string `pulumi:"indexDaysMax"`
@@ -19704,6 +19982,497 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 			return nil
 		}
 		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
+	LogId                     *string `pulumi:"logId"`
+	ProjectId                 *string `pulumi:"projectId"`
+	ServiceAccountCredentials *string `pulumi:"serviceAccountCredentials"`
+}
+
+// ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs and ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput` via:
+//
+//          ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
+type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput
+	ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput
+}
+
+type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs struct {
+	LogId                     pulumi.StringPtrInput `pulumi:"logId"`
+	ProjectId                 pulumi.StringPtrInput `pulumi:"projectId"`
+	ServiceAccountCredentials pulumi.StringPtrInput `pulumi:"serviceAccountCredentials"`
+}
+
+func (ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return i.ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput).ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs, ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtr and ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput` via:
+//
+//          ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput
+	ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput
+}
+
+type serviceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrType ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs
+
+func ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtr(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput {
+	return (*serviceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrType) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrType) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o.ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+		return &v
+	}).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
+}
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) LogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.LogId }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
+		return v.ServiceAccountCredentials
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ToServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) Elem() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+		return *v
+	}).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) LogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountCredentials
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalKafkaUserConfig struct {
+	BootstrapServers *string `pulumi:"bootstrapServers"`
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	SslCaCert        *string `pulumi:"sslCaCert"`
+	SslClientCert    *string `pulumi:"sslClientCert"`
+	SslClientKey     *string `pulumi:"sslClientKey"`
+}
+
+// ServiceIntegrationEndpointExternalKafkaUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalKafkaUserConfigArgs and ServiceIntegrationEndpointExternalKafkaUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalKafkaUserConfigInput` via:
+//
+//          ServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
+type ServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalKafkaUserConfigOutput() ServiceIntegrationEndpointExternalKafkaUserConfigOutput
+	ToServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigOutput
+}
+
+type ServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
+	BootstrapServers pulumi.StringPtrInput `pulumi:"bootstrapServers"`
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	SslCaCert        pulumi.StringPtrInput `pulumi:"sslCaCert"`
+	SslClientCert    pulumi.StringPtrInput `pulumi:"sslClientCert"`
+	SslClientKey     pulumi.StringPtrInput `pulumi:"sslClientKey"`
+}
+
+func (ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToServiceIntegrationEndpointExternalKafkaUserConfigOutput() ServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return i.ToServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalKafkaUserConfigOutput)
+}
+
+func (i ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput() ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalKafkaUserConfigOutput).ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalKafkaUserConfigArgs, ServiceIntegrationEndpointExternalKafkaUserConfigPtr and ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput` via:
+//
+//          ServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput() ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput
+	ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput
+}
+
+type serviceIntegrationEndpointExternalKafkaUserConfigPtrType ServiceIntegrationEndpointExternalKafkaUserConfigArgs
+
+func ServiceIntegrationEndpointExternalKafkaUserConfigPtr(v *ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput {
+	return (*serviceIntegrationEndpointExternalKafkaUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointExternalKafkaUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointExternalKafkaUserConfigPtrType) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput() ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointExternalKafkaUserConfigPtrType) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalKafkaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalKafkaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToServiceIntegrationEndpointExternalKafkaUserConfigOutput() ServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput() ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return o.ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *ServiceIntegrationEndpointExternalKafkaUserConfig {
+		return &v
+	}).(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput)
+}
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapServers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.BootstrapServers }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslCaCert }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientCert }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput() ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) ToServiceIntegrationEndpointExternalKafkaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) Elem() ServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) ServiceIntegrationEndpointExternalKafkaUserConfig {
+		return *v
+	}).(ServiceIntegrationEndpointExternalKafkaUserConfigOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) BootstrapServers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootstrapServers
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCaCert
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslClientCert
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointJolokiaUserConfig struct {
+	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
+}
+
+// ServiceIntegrationEndpointJolokiaUserConfigInput is an input type that accepts ServiceIntegrationEndpointJolokiaUserConfigArgs and ServiceIntegrationEndpointJolokiaUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointJolokiaUserConfigInput` via:
+//
+//          ServiceIntegrationEndpointJolokiaUserConfigArgs{...}
+type ServiceIntegrationEndpointJolokiaUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointJolokiaUserConfigOutput() ServiceIntegrationEndpointJolokiaUserConfigOutput
+	ToServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(context.Context) ServiceIntegrationEndpointJolokiaUserConfigOutput
+}
+
+type ServiceIntegrationEndpointJolokiaUserConfigArgs struct {
+	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
+}
+
+func (ServiceIntegrationEndpointJolokiaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointJolokiaUserConfigArgs) ToServiceIntegrationEndpointJolokiaUserConfigOutput() ServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return i.ToServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointJolokiaUserConfigArgs) ToServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointJolokiaUserConfigOutput)
+}
+
+func (i ServiceIntegrationEndpointJolokiaUserConfigArgs) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutput() ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointJolokiaUserConfigArgs) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointJolokiaUserConfigOutput).ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointJolokiaUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointJolokiaUserConfigArgs, ServiceIntegrationEndpointJolokiaUserConfigPtr and ServiceIntegrationEndpointJolokiaUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointJolokiaUserConfigPtrInput` via:
+//
+//          ServiceIntegrationEndpointJolokiaUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationEndpointJolokiaUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointJolokiaUserConfigPtrOutput() ServiceIntegrationEndpointJolokiaUserConfigPtrOutput
+	ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationEndpointJolokiaUserConfigPtrOutput
+}
+
+type serviceIntegrationEndpointJolokiaUserConfigPtrType ServiceIntegrationEndpointJolokiaUserConfigArgs
+
+func ServiceIntegrationEndpointJolokiaUserConfigPtr(v *ServiceIntegrationEndpointJolokiaUserConfigArgs) ServiceIntegrationEndpointJolokiaUserConfigPtrInput {
+	return (*serviceIntegrationEndpointJolokiaUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointJolokiaUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointJolokiaUserConfigPtrType) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutput() ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointJolokiaUserConfigPtrType) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointJolokiaUserConfigPtrOutput)
+}
+
+type ServiceIntegrationEndpointJolokiaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointJolokiaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) ToServiceIntegrationEndpointJolokiaUserConfigOutput() ServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) ToServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutput() ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return o.ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointJolokiaUserConfig) *ServiceIntegrationEndpointJolokiaUserConfig {
+		return &v
+	}).(ServiceIntegrationEndpointJolokiaUserConfigPtrOutput)
+}
+func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointJolokiaUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutput() ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) ToServiceIntegrationEndpointJolokiaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) Elem() ServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointJolokiaUserConfig) ServiceIntegrationEndpointJolokiaUserConfig {
+		return *v
+	}).(ServiceIntegrationEndpointJolokiaUserConfigOutput)
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointJolokiaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuthPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointJolokiaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuthUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20095,6 +20864,164 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.Strin
 			return nil
 		}
 		return v.Tls
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointSignalfxUserConfig struct {
+	EnabledMetrics []string `pulumi:"enabledMetrics"`
+	SignalfxApiKey *string  `pulumi:"signalfxApiKey"`
+	SignalfxRealm  *string  `pulumi:"signalfxRealm"`
+}
+
+// ServiceIntegrationEndpointSignalfxUserConfigInput is an input type that accepts ServiceIntegrationEndpointSignalfxUserConfigArgs and ServiceIntegrationEndpointSignalfxUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointSignalfxUserConfigInput` via:
+//
+//          ServiceIntegrationEndpointSignalfxUserConfigArgs{...}
+type ServiceIntegrationEndpointSignalfxUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointSignalfxUserConfigOutput() ServiceIntegrationEndpointSignalfxUserConfigOutput
+	ToServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(context.Context) ServiceIntegrationEndpointSignalfxUserConfigOutput
+}
+
+type ServiceIntegrationEndpointSignalfxUserConfigArgs struct {
+	EnabledMetrics pulumi.StringArrayInput `pulumi:"enabledMetrics"`
+	SignalfxApiKey pulumi.StringPtrInput   `pulumi:"signalfxApiKey"`
+	SignalfxRealm  pulumi.StringPtrInput   `pulumi:"signalfxRealm"`
+}
+
+func (ServiceIntegrationEndpointSignalfxUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointSignalfxUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointSignalfxUserConfigArgs) ToServiceIntegrationEndpointSignalfxUserConfigOutput() ServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return i.ToServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointSignalfxUserConfigArgs) ToServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointSignalfxUserConfigOutput)
+}
+
+func (i ServiceIntegrationEndpointSignalfxUserConfigArgs) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutput() ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointSignalfxUserConfigArgs) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointSignalfxUserConfigOutput).ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointSignalfxUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointSignalfxUserConfigArgs, ServiceIntegrationEndpointSignalfxUserConfigPtr and ServiceIntegrationEndpointSignalfxUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointSignalfxUserConfigPtrInput` via:
+//
+//          ServiceIntegrationEndpointSignalfxUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationEndpointSignalfxUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointSignalfxUserConfigPtrOutput() ServiceIntegrationEndpointSignalfxUserConfigPtrOutput
+	ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationEndpointSignalfxUserConfigPtrOutput
+}
+
+type serviceIntegrationEndpointSignalfxUserConfigPtrType ServiceIntegrationEndpointSignalfxUserConfigArgs
+
+func ServiceIntegrationEndpointSignalfxUserConfigPtr(v *ServiceIntegrationEndpointSignalfxUserConfigArgs) ServiceIntegrationEndpointSignalfxUserConfigPtrInput {
+	return (*serviceIntegrationEndpointSignalfxUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointSignalfxUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointSignalfxUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointSignalfxUserConfigPtrType) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutput() ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointSignalfxUserConfigPtrType) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput)
+}
+
+type ServiceIntegrationEndpointSignalfxUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointSignalfxUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointSignalfxUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) ToServiceIntegrationEndpointSignalfxUserConfigOutput() ServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) ToServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutput() ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return o.ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) *ServiceIntegrationEndpointSignalfxUserConfig {
+		return &v
+	}).(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput)
+}
+func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) EnabledMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) []string { return v.EnabledMetrics }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxApiKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxRealm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxRealm }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointSignalfxUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointSignalfxUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutput() ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) ToServiceIntegrationEndpointSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) Elem() ServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) ServiceIntegrationEndpointSignalfxUserConfig {
+		return *v
+	}).(ServiceIntegrationEndpointSignalfxUserConfigOutput)
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) EnabledMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledMetrics
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignalfxApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxRealm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignalfxRealm
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27270,6 +28197,7 @@ type ServiceRedisUserConfig struct {
 	Migration                 *ServiceRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *ServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *ServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    *string                              `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         *string                              `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         *string                              `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                              `pulumi:"redisMaxmemoryPolicy"`
@@ -27295,6 +28223,7 @@ type ServiceRedisUserConfigArgs struct {
 	Migration                 ServiceRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             ServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              ServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    pulumi.StringPtrInput                       `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         pulumi.StringPtrInput                       `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         pulumi.StringPtrInput                       `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                       `pulumi:"redisMaxmemoryPolicy"`
@@ -27396,6 +28325,10 @@ func (o ServiceRedisUserConfigOutput) PublicAccess() ServiceRedisUserConfigPubli
 	return o.ApplyT(func(v ServiceRedisUserConfig) *ServiceRedisUserConfigPublicAccess { return v.PublicAccess }).(ServiceRedisUserConfigPublicAccessPtrOutput)
 }
 
+func (o ServiceRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
@@ -27476,6 +28409,15 @@ func (o ServiceRedisUserConfigPtrOutput) PublicAccess() ServiceRedisUserConfigPu
 		}
 		return v.PublicAccess
 	}).(ServiceRedisUserConfigPublicAccessPtrOutput)
+}
+
+func (o ServiceRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
@@ -30605,6 +31547,8 @@ type GetGrafanaGrafanaUserConfig struct {
 	MetricsEnabled             *string                                          `pulumi:"metricsEnabled"`
 	PrivateAccess              *GetGrafanaGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
 	PublicAccess               *GetGrafanaGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     *string                                          `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          *string                                          `pulumi:"serviceToForkFrom"`
 	SmtpServer                 *GetGrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          *string                                          `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      *string                                          `pulumi:"userAutoAssignOrgRole"`
@@ -30645,6 +31589,8 @@ type GetGrafanaGrafanaUserConfigArgs struct {
 	MetricsEnabled             pulumi.StringPtrInput                                   `pulumi:"metricsEnabled"`
 	PrivateAccess              GetGrafanaGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
 	PublicAccess               GetGrafanaGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          pulumi.StringPtrInput                                   `pulumi:"serviceToForkFrom"`
 	SmtpServer                 GetGrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrgRole"`
@@ -30767,6 +31713,14 @@ func (o GetGrafanaGrafanaUserConfigOutput) PrivateAccess() GetGrafanaGrafanaUser
 
 func (o GetGrafanaGrafanaUserConfigOutput) PublicAccess() GetGrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigPublicAccess { return v.PublicAccess }).(GetGrafanaGrafanaUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetGrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetGrafanaGrafanaUserConfigOutput) SmtpServer() GetGrafanaGrafanaUserConfigSmtpServerPtrOutput {
@@ -32542,11 +33496,12 @@ func (o GetInfluxDbInfluxdbOutput) DatabaseName() pulumi.StringOutput {
 }
 
 type GetInfluxDbInfluxdbUserConfig struct {
-	CustomDomain      *string                                     `pulumi:"customDomain"`
-	IpFilters         []string                                    `pulumi:"ipFilters"`
-	PrivateAccess     *GetInfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess      *GetInfluxDbInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	ServiceToForkFrom *string                                     `pulumi:"serviceToForkFrom"`
+	CustomDomain           *string                                     `pulumi:"customDomain"`
+	IpFilters              []string                                    `pulumi:"ipFilters"`
+	PrivateAccess          *GetInfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PublicAccess           *GetInfluxDbInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName *string                                     `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      *string                                     `pulumi:"serviceToForkFrom"`
 }
 
 // GetInfluxDbInfluxdbUserConfigInput is an input type that accepts GetInfluxDbInfluxdbUserConfigArgs and GetInfluxDbInfluxdbUserConfigOutput values.
@@ -32561,11 +33516,12 @@ type GetInfluxDbInfluxdbUserConfigInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigArgs struct {
-	CustomDomain      pulumi.StringPtrInput                              `pulumi:"customDomain"`
-	IpFilters         pulumi.StringArrayInput                            `pulumi:"ipFilters"`
-	PrivateAccess     GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess      GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	ServiceToForkFrom pulumi.StringPtrInput                              `pulumi:"serviceToForkFrom"`
+	CustomDomain           pulumi.StringPtrInput                              `pulumi:"customDomain"`
+	IpFilters              pulumi.StringArrayInput                            `pulumi:"ipFilters"`
+	PrivateAccess          GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PublicAccess           GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName pulumi.StringPtrInput                              `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      pulumi.StringPtrInput                              `pulumi:"serviceToForkFrom"`
 }
 
 func (GetInfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -32612,6 +33568,10 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) PublicAccess() GetInfluxDbInfluxdbU
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *GetInfluxDbInfluxdbUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetInfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
 func (o GetInfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -39521,6 +40481,7 @@ type GetRedisRedisUserConfig struct {
 	Migration                 *GetRedisRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *GetRedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *GetRedisRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    *string                               `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         *string                               `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         *string                               `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                               `pulumi:"redisMaxmemoryPolicy"`
@@ -39546,6 +40507,7 @@ type GetRedisRedisUserConfigArgs struct {
 	Migration                 GetRedisRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             GetRedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              GetRedisRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    pulumi.StringPtrInput                        `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         pulumi.StringPtrInput                        `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         pulumi.StringPtrInput                        `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                        `pulumi:"redisMaxmemoryPolicy"`
@@ -39595,6 +40557,10 @@ func (o GetRedisRedisUserConfigOutput) PrivateAccess() GetRedisRedisUserConfigPr
 
 func (o GetRedisRedisUserConfigOutput) PublicAccess() GetRedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigPublicAccess { return v.PublicAccess }).(GetRedisRedisUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetRedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
 func (o GetRedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
@@ -42001,6 +42967,8 @@ type GetServiceGrafanaUserConfig struct {
 	MetricsEnabled             *string                                          `pulumi:"metricsEnabled"`
 	PrivateAccess              *GetServiceGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
 	PublicAccess               *GetServiceGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     *string                                          `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          *string                                          `pulumi:"serviceToForkFrom"`
 	SmtpServer                 *GetServiceGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          *string                                          `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      *string                                          `pulumi:"userAutoAssignOrgRole"`
@@ -42041,6 +43009,8 @@ type GetServiceGrafanaUserConfigArgs struct {
 	MetricsEnabled             pulumi.StringPtrInput                                   `pulumi:"metricsEnabled"`
 	PrivateAccess              GetServiceGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
 	PublicAccess               GetServiceGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName     pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom          pulumi.StringPtrInput                                   `pulumi:"serviceToForkFrom"`
 	SmtpServer                 GetServiceGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
 	UserAutoAssignOrg          pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole      pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrgRole"`
@@ -42163,6 +43133,14 @@ func (o GetServiceGrafanaUserConfigOutput) PrivateAccess() GetServiceGrafanaUser
 
 func (o GetServiceGrafanaUserConfigOutput) PublicAccess() GetServiceGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *GetServiceGrafanaUserConfigPublicAccess { return v.PublicAccess }).(GetServiceGrafanaUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetServiceGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigOutput) SmtpServer() GetServiceGrafanaUserConfigSmtpServerPtrOutput {
@@ -43708,11 +44686,12 @@ func (o GetServiceInfluxdbOutput) DatabaseName() pulumi.StringOutput {
 }
 
 type GetServiceInfluxdbUserConfig struct {
-	CustomDomain      *string                                    `pulumi:"customDomain"`
-	IpFilters         []string                                   `pulumi:"ipFilters"`
-	PrivateAccess     *GetServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess      *GetServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	ServiceToForkFrom *string                                    `pulumi:"serviceToForkFrom"`
+	CustomDomain           *string                                    `pulumi:"customDomain"`
+	IpFilters              []string                                   `pulumi:"ipFilters"`
+	PrivateAccess          *GetServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PublicAccess           *GetServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName *string                                    `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      *string                                    `pulumi:"serviceToForkFrom"`
 }
 
 // GetServiceInfluxdbUserConfigInput is an input type that accepts GetServiceInfluxdbUserConfigArgs and GetServiceInfluxdbUserConfigOutput values.
@@ -43727,11 +44706,12 @@ type GetServiceInfluxdbUserConfigInput interface {
 }
 
 type GetServiceInfluxdbUserConfigArgs struct {
-	CustomDomain      pulumi.StringPtrInput                             `pulumi:"customDomain"`
-	IpFilters         pulumi.StringArrayInput                           `pulumi:"ipFilters"`
-	PrivateAccess     GetServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess      GetServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	ServiceToForkFrom pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
+	CustomDomain           pulumi.StringPtrInput                             `pulumi:"customDomain"`
+	IpFilters              pulumi.StringArrayInput                           `pulumi:"ipFilters"`
+	PrivateAccess          GetServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PublicAccess           GetServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName pulumi.StringPtrInput                             `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
 }
 
 func (GetServiceInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -43776,6 +44756,10 @@ func (o GetServiceInfluxdbUserConfigOutput) PrivateAccess() GetServiceInfluxdbUs
 
 func (o GetServiceInfluxdbUserConfigOutput) PublicAccess() GetServiceInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) *GetServiceInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(GetServiceInfluxdbUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -44103,6 +45087,75 @@ func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.Stri
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.Site }).(pulumi.StringPtrOutput)
 }
 
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
+	AccessKey    *string `pulumi:"accessKey"`
+	LogGroupName *string `pulumi:"logGroupName"`
+	Region       *string `pulumi:"region"`
+	SecretKey    *string `pulumi:"secretKey"`
+}
+
+// GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput` via:
+//
+//          GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs struct {
+	AccessKey    pulumi.StringPtrInput `pulumi:"accessKey"`
+	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	SecretKey    pulumi.StringPtrInput `pulumi:"secretKey"`
+}
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) LogGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
+		return v.LogGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
 type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
 	Ca           *string `pulumi:"ca"`
 	IndexDaysMax *string `pulumi:"indexDaysMax"`
@@ -44176,6 +45229,197 @@ func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) 
 
 func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
+	LogId                     *string `pulumi:"logId"`
+	ProjectId                 *string `pulumi:"projectId"`
+	ServiceAccountCredentials *string `pulumi:"serviceAccountCredentials"`
+}
+
+// GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs and GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput` via:
+//
+//          GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs struct {
+	LogId                     pulumi.StringPtrInput `pulumi:"logId"`
+	ProjectId                 pulumi.StringPtrInput `pulumi:"projectId"`
+	ServiceAccountCredentials pulumi.StringPtrInput `pulumi:"serviceAccountCredentials"`
+}
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) LogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.LogId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
+		return v.ServiceAccountCredentials
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointExternalKafkaUserConfig struct {
+	BootstrapServers *string `pulumi:"bootstrapServers"`
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	SslCaCert        *string `pulumi:"sslCaCert"`
+	SslClientCert    *string `pulumi:"sslClientCert"`
+	SslClientKey     *string `pulumi:"sslClientKey"`
+}
+
+// GetServiceIntegrationEndpointExternalKafkaUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalKafkaUserConfigArgs and GetServiceIntegrationEndpointExternalKafkaUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalKafkaUserConfigInput` via:
+//
+//          GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
+	BootstrapServers pulumi.StringPtrInput `pulumi:"bootstrapServers"`
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	SslCaCert        pulumi.StringPtrInput `pulumi:"sslCaCert"`
+	SslClientCert    pulumi.StringPtrInput `pulumi:"sslClientCert"`
+	SslClientKey     pulumi.StringPtrInput `pulumi:"sslClientKey"`
+}
+
+func (GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalKafkaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapServers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.BootstrapServers }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslCaCert }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientCert }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfig struct {
+	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
+}
+
+// GetServiceIntegrationEndpointJolokiaUserConfigInput is an input type that accepts GetServiceIntegrationEndpointJolokiaUserConfigArgs and GetServiceIntegrationEndpointJolokiaUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointJolokiaUserConfigInput` via:
+//
+//          GetServiceIntegrationEndpointJolokiaUserConfigArgs{...}
+type GetServiceIntegrationEndpointJolokiaUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointJolokiaUserConfigOutput() GetServiceIntegrationEndpointJolokiaUserConfigOutput
+	ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointJolokiaUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfigArgs struct {
+	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
+}
+
+func (GetServiceIntegrationEndpointJolokiaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointJolokiaUserConfigArgs) ToGetServiceIntegrationEndpointJolokiaUserConfigOutput() GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointJolokiaUserConfigArgs) ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointJolokiaUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointJolokiaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) ToGetServiceIntegrationEndpointJolokiaUserConfigOutput() GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceIntegrationEndpointPrometheusUserConfig struct {
@@ -44328,6 +45572,67 @@ func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Server() pulumi.St
 
 func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Tls }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointSignalfxUserConfig struct {
+	EnabledMetrics []string `pulumi:"enabledMetrics"`
+	SignalfxApiKey *string  `pulumi:"signalfxApiKey"`
+	SignalfxRealm  *string  `pulumi:"signalfxRealm"`
+}
+
+// GetServiceIntegrationEndpointSignalfxUserConfigInput is an input type that accepts GetServiceIntegrationEndpointSignalfxUserConfigArgs and GetServiceIntegrationEndpointSignalfxUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointSignalfxUserConfigInput` via:
+//
+//          GetServiceIntegrationEndpointSignalfxUserConfigArgs{...}
+type GetServiceIntegrationEndpointSignalfxUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointSignalfxUserConfigOutput() GetServiceIntegrationEndpointSignalfxUserConfigOutput
+	ToGetServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointSignalfxUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointSignalfxUserConfigArgs struct {
+	EnabledMetrics pulumi.StringArrayInput `pulumi:"enabledMetrics"`
+	SignalfxApiKey pulumi.StringPtrInput   `pulumi:"signalfxApiKey"`
+	SignalfxRealm  pulumi.StringPtrInput   `pulumi:"signalfxRealm"`
+}
+
+func (GetServiceIntegrationEndpointSignalfxUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointSignalfxUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointSignalfxUserConfigArgs) ToGetServiceIntegrationEndpointSignalfxUserConfigOutput() GetServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointSignalfxUserConfigArgs) ToGetServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointSignalfxUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointSignalfxUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointSignalfxUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointSignalfxUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointSignalfxUserConfigOutput) ToGetServiceIntegrationEndpointSignalfxUserConfigOutput() GetServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointSignalfxUserConfigOutput) ToGetServiceIntegrationEndpointSignalfxUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointSignalfxUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointSignalfxUserConfigOutput) EnabledMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointSignalfxUserConfig) []string { return v.EnabledMetrics }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxApiKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxRealm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxRealm }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceIntegrationKafkaConnectUserConfig struct {
@@ -49870,6 +51175,7 @@ type GetServiceRedisUserConfig struct {
 	Migration                 *GetServiceRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *GetServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *GetServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    *string                                 `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         *string                                 `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         *string                                 `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                                 `pulumi:"redisMaxmemoryPolicy"`
@@ -49895,6 +51201,7 @@ type GetServiceRedisUserConfigArgs struct {
 	Migration                 GetServiceRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             GetServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              GetServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	RecoveryBasebackupName    pulumi.StringPtrInput                          `pulumi:"recoveryBasebackupName"`
 	RedisLfuDecayTime         pulumi.StringPtrInput                          `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         pulumi.StringPtrInput                          `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                          `pulumi:"redisMaxmemoryPolicy"`
@@ -49944,6 +51251,10 @@ func (o GetServiceRedisUserConfigOutput) PrivateAccess() GetServiceRedisUserConf
 
 func (o GetServiceRedisUserConfigOutput) PublicAccess() GetServiceRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetServiceRedisUserConfig) *GetServiceRedisUserConfigPublicAccess { return v.PublicAccess }).(GetServiceRedisUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetServiceRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
@@ -50778,12 +52089,22 @@ func init() {
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointJolokiaUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointJolokiaUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointPrometheusUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointPrometheusUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointRsyslogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointSignalfxUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
@@ -51057,9 +52378,14 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointJolokiaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput{})

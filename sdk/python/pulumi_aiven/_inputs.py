@@ -119,9 +119,14 @@ __all__ = [
     'ServiceInfluxdbUserConfigPrivateAccessArgs',
     'ServiceInfluxdbUserConfigPublicAccessArgs',
     'ServiceIntegrationEndpointDatadogUserConfigArgs',
+    'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs',
     'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs',
+    'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs',
+    'ServiceIntegrationEndpointExternalKafkaUserConfigArgs',
+    'ServiceIntegrationEndpointJolokiaUserConfigArgs',
     'ServiceIntegrationEndpointPrometheusUserConfigArgs',
     'ServiceIntegrationEndpointRsyslogUserConfigArgs',
+    'ServiceIntegrationEndpointSignalfxUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs',
     'ServiceIntegrationKafkaMirrormakerUserConfigArgs',
@@ -273,9 +278,14 @@ __all__ = [
     'GetServiceInfluxdbUserConfigPrivateAccessArgs',
     'GetServiceInfluxdbUserConfigPublicAccessArgs',
     'GetServiceIntegrationEndpointDatadogUserConfigArgs',
+    'GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs',
     'GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs',
+    'GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs',
+    'GetServiceIntegrationEndpointExternalKafkaUserConfigArgs',
+    'GetServiceIntegrationEndpointJolokiaUserConfigArgs',
     'GetServiceIntegrationEndpointPrometheusUserConfigArgs',
     'GetServiceIntegrationEndpointRsyslogUserConfigArgs',
+    'GetServiceIntegrationEndpointSignalfxUserConfigArgs',
     'GetServiceIntegrationKafkaConnectUserConfigArgs',
     'GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs',
     'GetServiceIntegrationKafkaMirrormakerUserConfigArgs',
@@ -1441,6 +1451,8 @@ class GrafanaGrafanaUserConfigArgs:
                  metrics_enabled: Optional[pulumi.Input[str]] = None,
                  private_access: Optional[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['GrafanaGrafanaUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
+                 service_to_fork_from: Optional[pulumi.Input[str]] = None,
                  smtp_server: Optional[pulumi.Input['GrafanaGrafanaUserConfigSmtpServerArgs']] = None,
                  user_auto_assign_org: Optional[pulumi.Input[str]] = None,
                  user_auto_assign_org_role: Optional[pulumi.Input[str]] = None,
@@ -1489,6 +1501,10 @@ class GrafanaGrafanaUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
         if smtp_server is not None:
             pulumi.set(__self__, "smtp_server", smtp_server)
         if user_auto_assign_org is not None:
@@ -1695,6 +1711,24 @@ class GrafanaGrafanaUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['GrafanaGrafanaUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_to_fork_from", value)
 
     @property
     @pulumi.getter(name="smtpServer")
@@ -2381,6 +2415,7 @@ class InfluxDbInfluxdbUserConfigArgs:
                  ip_filters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  private_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -2390,6 +2425,8 @@ class InfluxDbInfluxdbUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
@@ -2428,6 +2465,15 @@ class InfluxDbInfluxdbUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -5764,6 +5810,7 @@ class RedisRedisUserConfigArgs:
                  migration: Optional[pulumi.Input['RedisRedisUserConfigMigrationArgs']] = None,
                  private_access: Optional[pulumi.Input['RedisRedisUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['RedisRedisUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  redis_lfu_decay_time: Optional[pulumi.Input[str]] = None,
                  redis_lfu_log_factor: Optional[pulumi.Input[str]] = None,
                  redis_maxmemory_policy: Optional[pulumi.Input[str]] = None,
@@ -5779,6 +5826,8 @@ class RedisRedisUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -5829,6 +5878,15 @@ class RedisRedisUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['RedisRedisUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
@@ -6892,6 +6950,8 @@ class ServiceGrafanaUserConfigArgs:
                  metrics_enabled: Optional[pulumi.Input[str]] = None,
                  private_access: Optional[pulumi.Input['ServiceGrafanaUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['ServiceGrafanaUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
+                 service_to_fork_from: Optional[pulumi.Input[str]] = None,
                  smtp_server: Optional[pulumi.Input['ServiceGrafanaUserConfigSmtpServerArgs']] = None,
                  user_auto_assign_org: Optional[pulumi.Input[str]] = None,
                  user_auto_assign_org_role: Optional[pulumi.Input[str]] = None,
@@ -6940,6 +7000,10 @@ class ServiceGrafanaUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
         if smtp_server is not None:
             pulumi.set(__self__, "smtp_server", smtp_server)
         if user_auto_assign_org is not None:
@@ -7146,6 +7210,24 @@ class ServiceGrafanaUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['ServiceGrafanaUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_to_fork_from", value)
 
     @property
     @pulumi.getter(name="smtpServer")
@@ -7716,6 +7798,7 @@ class ServiceInfluxdbUserConfigArgs:
                  ip_filters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  private_access: Optional[pulumi.Input['ServiceInfluxdbUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['ServiceInfluxdbUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -7725,6 +7808,8 @@ class ServiceInfluxdbUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
@@ -7763,6 +7848,15 @@ class ServiceInfluxdbUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['ServiceInfluxdbUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -7862,6 +7956,59 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
 
 
 @pulumi.input_type
+class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
+    def __init__(__self__, *,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 log_group_name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None):
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if log_group_name is not None:
+            pulumi.set(__self__, "log_group_name", log_group_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="logGroupName")
+    def log_group_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_group_name")
+
+    @log_group_name.setter
+    def log_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_group_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+
+@pulumi.input_type
 class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     def __init__(__self__, *,
                  ca: Optional[pulumi.Input[str]] = None,
@@ -7924,6 +8071,141 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
+    def __init__(__self__, *,
+                 log_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 service_account_credentials: Optional[pulumi.Input[str]] = None):
+        if log_id is not None:
+            pulumi.set(__self__, "log_id", log_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if service_account_credentials is not None:
+            pulumi.set(__self__, "service_account_credentials", service_account_credentials)
+
+    @property
+    @pulumi.getter(name="logId")
+    def log_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_id")
+
+    @log_id.setter
+    def log_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountCredentials")
+    def service_account_credentials(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_account_credentials")
+
+    @service_account_credentials.setter
+    def service_account_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_credentials", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
+    def __init__(__self__, *,
+                 bootstrap_servers: Optional[pulumi.Input[str]] = None,
+                 security_protocol: Optional[pulumi.Input[str]] = None,
+                 ssl_ca_cert: Optional[pulumi.Input[str]] = None,
+                 ssl_client_cert: Optional[pulumi.Input[str]] = None,
+                 ssl_client_key: Optional[pulumi.Input[str]] = None):
+        if bootstrap_servers is not None:
+            pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if ssl_ca_cert is not None:
+            pulumi.set(__self__, "ssl_ca_cert", ssl_ca_cert)
+        if ssl_client_cert is not None:
+            pulumi.set(__self__, "ssl_client_cert", ssl_client_cert)
+        if ssl_client_key is not None:
+            pulumi.set(__self__, "ssl_client_key", ssl_client_key)
+
+    @property
+    @pulumi.getter(name="bootstrapServers")
+    def bootstrap_servers(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bootstrap_servers")
+
+    @bootstrap_servers.setter
+    def bootstrap_servers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bootstrap_servers", value)
+
+    @property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_protocol")
+
+    @security_protocol.setter
+    def security_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_protocol", value)
+
+    @property
+    @pulumi.getter(name="sslCaCert")
+    def ssl_ca_cert(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_ca_cert")
+
+    @ssl_ca_cert.setter
+    def ssl_ca_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_ca_cert", value)
+
+    @property
+    @pulumi.getter(name="sslClientCert")
+    def ssl_client_cert(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_client_cert")
+
+    @ssl_client_cert.setter
+    def ssl_client_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_client_cert", value)
+
+    @property
+    @pulumi.getter(name="sslClientKey")
+    def ssl_client_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_client_key")
+
+    @ssl_client_key.setter
+    def ssl_client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_client_key", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationEndpointJolokiaUserConfigArgs:
+    def __init__(__self__, *,
+                 basic_auth_password: Optional[pulumi.Input[str]] = None,
+                 basic_auth_username: Optional[pulumi.Input[str]] = None):
+        if basic_auth_password is not None:
+            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+        if basic_auth_username is not None:
+            pulumi.set(__self__, "basic_auth_username", basic_auth_username)
+
+    @property
+    @pulumi.getter(name="basicAuthPassword")
+    def basic_auth_password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "basic_auth_password")
+
+    @basic_auth_password.setter
+    def basic_auth_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "basic_auth_password", value)
+
+    @property
+    @pulumi.getter(name="basicAuthUsername")
+    def basic_auth_username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "basic_auth_username")
+
+    @basic_auth_username.setter
+    def basic_auth_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "basic_auth_username", value)
 
 
 @pulumi.input_type
@@ -8066,6 +8348,47 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @tls.setter
     def tls(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tls", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationEndpointSignalfxUserConfigArgs:
+    def __init__(__self__, *,
+                 enabled_metrics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 signalfx_api_key: Optional[pulumi.Input[str]] = None,
+                 signalfx_realm: Optional[pulumi.Input[str]] = None):
+        if enabled_metrics is not None:
+            pulumi.set(__self__, "enabled_metrics", enabled_metrics)
+        if signalfx_api_key is not None:
+            pulumi.set(__self__, "signalfx_api_key", signalfx_api_key)
+        if signalfx_realm is not None:
+            pulumi.set(__self__, "signalfx_realm", signalfx_realm)
+
+    @property
+    @pulumi.getter(name="enabledMetrics")
+    def enabled_metrics(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "enabled_metrics")
+
+    @enabled_metrics.setter
+    def enabled_metrics(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_metrics", value)
+
+    @property
+    @pulumi.getter(name="signalfxApiKey")
+    def signalfx_api_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signalfx_api_key")
+
+    @signalfx_api_key.setter
+    def signalfx_api_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signalfx_api_key", value)
+
+    @property
+    @pulumi.getter(name="signalfxRealm")
+    def signalfx_realm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signalfx_realm")
+
+    @signalfx_realm.setter
+    def signalfx_realm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signalfx_realm", value)
 
 
 @pulumi.input_type
@@ -10767,6 +11090,7 @@ class ServiceRedisUserConfigArgs:
                  migration: Optional[pulumi.Input['ServiceRedisUserConfigMigrationArgs']] = None,
                  private_access: Optional[pulumi.Input['ServiceRedisUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['ServiceRedisUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  redis_lfu_decay_time: Optional[pulumi.Input[str]] = None,
                  redis_lfu_log_factor: Optional[pulumi.Input[str]] = None,
                  redis_maxmemory_policy: Optional[pulumi.Input[str]] = None,
@@ -10782,6 +11106,8 @@ class ServiceRedisUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -10832,6 +11158,15 @@ class ServiceRedisUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['ServiceRedisUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
@@ -12159,6 +12494,8 @@ class GetGrafanaGrafanaUserConfigArgs:
                  metrics_enabled: Optional[str] = None,
                  private_access: Optional['GetGrafanaGrafanaUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetGrafanaGrafanaUserConfigPublicAccessArgs'] = None,
+                 recovery_basebackup_name: Optional[str] = None,
+                 service_to_fork_from: Optional[str] = None,
                  smtp_server: Optional['GetGrafanaGrafanaUserConfigSmtpServerArgs'] = None,
                  user_auto_assign_org: Optional[str] = None,
                  user_auto_assign_org_role: Optional[str] = None,
@@ -12207,6 +12544,10 @@ class GetGrafanaGrafanaUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
         if smtp_server is not None:
             pulumi.set(__self__, "smtp_server", smtp_server)
         if user_auto_assign_org is not None:
@@ -12413,6 +12754,24 @@ class GetGrafanaGrafanaUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional['GetGrafanaGrafanaUserConfigPublicAccessArgs']):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[str]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[str]):
+        pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[str]):
+        pulumi.set(self, "service_to_fork_from", value)
 
     @property
     @pulumi.getter(name="smtpServer")
@@ -13091,6 +13450,7 @@ class GetInfluxDbInfluxdbUserConfigArgs:
                  ip_filters: Optional[List[str]] = None,
                  private_access: Optional['GetInfluxDbInfluxdbUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetInfluxDbInfluxdbUserConfigPublicAccessArgs'] = None,
+                 recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -13100,6 +13460,8 @@ class GetInfluxDbInfluxdbUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
@@ -13138,6 +13500,15 @@ class GetInfluxDbInfluxdbUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional['GetInfluxDbInfluxdbUserConfigPublicAccessArgs']):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[str]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[str]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -16417,6 +16788,7 @@ class GetRedisRedisUserConfigArgs:
                  migration: Optional['GetRedisRedisUserConfigMigrationArgs'] = None,
                  private_access: Optional['GetRedisRedisUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetRedisRedisUserConfigPublicAccessArgs'] = None,
+                 recovery_basebackup_name: Optional[str] = None,
                  redis_lfu_decay_time: Optional[str] = None,
                  redis_lfu_log_factor: Optional[str] = None,
                  redis_maxmemory_policy: Optional[str] = None,
@@ -16432,6 +16804,8 @@ class GetRedisRedisUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -16482,6 +16856,15 @@ class GetRedisRedisUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional['GetRedisRedisUserConfigPublicAccessArgs']):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[str]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[str]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
@@ -17537,6 +17920,8 @@ class GetServiceGrafanaUserConfigArgs:
                  metrics_enabled: Optional[str] = None,
                  private_access: Optional['GetServiceGrafanaUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetServiceGrafanaUserConfigPublicAccessArgs'] = None,
+                 recovery_basebackup_name: Optional[str] = None,
+                 service_to_fork_from: Optional[str] = None,
                  smtp_server: Optional['GetServiceGrafanaUserConfigSmtpServerArgs'] = None,
                  user_auto_assign_org: Optional[str] = None,
                  user_auto_assign_org_role: Optional[str] = None,
@@ -17585,6 +17970,10 @@ class GetServiceGrafanaUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
         if smtp_server is not None:
             pulumi.set(__self__, "smtp_server", smtp_server)
         if user_auto_assign_org is not None:
@@ -17791,6 +18180,24 @@ class GetServiceGrafanaUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional['GetServiceGrafanaUserConfigPublicAccessArgs']):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[str]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[str]):
+        pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[str]):
+        pulumi.set(self, "service_to_fork_from", value)
 
     @property
     @pulumi.getter(name="smtpServer")
@@ -18360,6 +18767,7 @@ class GetServiceInfluxdbUserConfigArgs:
                  ip_filters: Optional[List[str]] = None,
                  private_access: Optional['GetServiceInfluxdbUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetServiceInfluxdbUserConfigPublicAccessArgs'] = None,
+                 recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -18369,6 +18777,8 @@ class GetServiceInfluxdbUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
@@ -18407,6 +18817,15 @@ class GetServiceInfluxdbUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional['GetServiceInfluxdbUserConfigPublicAccessArgs']):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[str]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[str]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -18506,6 +18925,59 @@ class GetServiceIntegrationEndpointDatadogUserConfigArgs:
 
 
 @pulumi.input_type
+class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
+    def __init__(__self__, *,
+                 access_key: Optional[str] = None,
+                 log_group_name: Optional[str] = None,
+                 region: Optional[str] = None,
+                 secret_key: Optional[str] = None):
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if log_group_name is not None:
+            pulumi.set(__self__, "log_group_name", log_group_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[str]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="logGroupName")
+    def log_group_name(self) -> Optional[str]:
+        return pulumi.get(self, "log_group_name")
+
+    @log_group_name.setter
+    def log_group_name(self, value: Optional[str]):
+        pulumi.set(self, "log_group_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[str]):
+        pulumi.set(self, "secret_key", value)
+
+
+@pulumi.input_type
 class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     def __init__(__self__, *,
                  ca: Optional[str] = None,
@@ -18568,6 +19040,141 @@ class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     @url.setter
     def url(self, value: Optional[str]):
         pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
+    def __init__(__self__, *,
+                 log_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 service_account_credentials: Optional[str] = None):
+        if log_id is not None:
+            pulumi.set(__self__, "log_id", log_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if service_account_credentials is not None:
+            pulumi.set(__self__, "service_account_credentials", service_account_credentials)
+
+    @property
+    @pulumi.getter(name="logId")
+    def log_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_id")
+
+    @log_id.setter
+    def log_id(self, value: Optional[str]):
+        pulumi.set(self, "log_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountCredentials")
+    def service_account_credentials(self) -> Optional[str]:
+        return pulumi.get(self, "service_account_credentials")
+
+    @service_account_credentials.setter
+    def service_account_credentials(self, value: Optional[str]):
+        pulumi.set(self, "service_account_credentials", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationEndpointExternalKafkaUserConfigArgs:
+    def __init__(__self__, *,
+                 bootstrap_servers: Optional[str] = None,
+                 security_protocol: Optional[str] = None,
+                 ssl_ca_cert: Optional[str] = None,
+                 ssl_client_cert: Optional[str] = None,
+                 ssl_client_key: Optional[str] = None):
+        if bootstrap_servers is not None:
+            pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if ssl_ca_cert is not None:
+            pulumi.set(__self__, "ssl_ca_cert", ssl_ca_cert)
+        if ssl_client_cert is not None:
+            pulumi.set(__self__, "ssl_client_cert", ssl_client_cert)
+        if ssl_client_key is not None:
+            pulumi.set(__self__, "ssl_client_key", ssl_client_key)
+
+    @property
+    @pulumi.getter(name="bootstrapServers")
+    def bootstrap_servers(self) -> Optional[str]:
+        return pulumi.get(self, "bootstrap_servers")
+
+    @bootstrap_servers.setter
+    def bootstrap_servers(self, value: Optional[str]):
+        pulumi.set(self, "bootstrap_servers", value)
+
+    @property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[str]:
+        return pulumi.get(self, "security_protocol")
+
+    @security_protocol.setter
+    def security_protocol(self, value: Optional[str]):
+        pulumi.set(self, "security_protocol", value)
+
+    @property
+    @pulumi.getter(name="sslCaCert")
+    def ssl_ca_cert(self) -> Optional[str]:
+        return pulumi.get(self, "ssl_ca_cert")
+
+    @ssl_ca_cert.setter
+    def ssl_ca_cert(self, value: Optional[str]):
+        pulumi.set(self, "ssl_ca_cert", value)
+
+    @property
+    @pulumi.getter(name="sslClientCert")
+    def ssl_client_cert(self) -> Optional[str]:
+        return pulumi.get(self, "ssl_client_cert")
+
+    @ssl_client_cert.setter
+    def ssl_client_cert(self, value: Optional[str]):
+        pulumi.set(self, "ssl_client_cert", value)
+
+    @property
+    @pulumi.getter(name="sslClientKey")
+    def ssl_client_key(self) -> Optional[str]:
+        return pulumi.get(self, "ssl_client_key")
+
+    @ssl_client_key.setter
+    def ssl_client_key(self, value: Optional[str]):
+        pulumi.set(self, "ssl_client_key", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationEndpointJolokiaUserConfigArgs:
+    def __init__(__self__, *,
+                 basic_auth_password: Optional[str] = None,
+                 basic_auth_username: Optional[str] = None):
+        if basic_auth_password is not None:
+            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+        if basic_auth_username is not None:
+            pulumi.set(__self__, "basic_auth_username", basic_auth_username)
+
+    @property
+    @pulumi.getter(name="basicAuthPassword")
+    def basic_auth_password(self) -> Optional[str]:
+        return pulumi.get(self, "basic_auth_password")
+
+    @basic_auth_password.setter
+    def basic_auth_password(self, value: Optional[str]):
+        pulumi.set(self, "basic_auth_password", value)
+
+    @property
+    @pulumi.getter(name="basicAuthUsername")
+    def basic_auth_username(self) -> Optional[str]:
+        return pulumi.get(self, "basic_auth_username")
+
+    @basic_auth_username.setter
+    def basic_auth_username(self, value: Optional[str]):
+        pulumi.set(self, "basic_auth_username", value)
 
 
 @pulumi.input_type
@@ -18710,6 +19317,47 @@ class GetServiceIntegrationEndpointRsyslogUserConfigArgs:
     @tls.setter
     def tls(self, value: Optional[str]):
         pulumi.set(self, "tls", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationEndpointSignalfxUserConfigArgs:
+    def __init__(__self__, *,
+                 enabled_metrics: Optional[List[str]] = None,
+                 signalfx_api_key: Optional[str] = None,
+                 signalfx_realm: Optional[str] = None):
+        if enabled_metrics is not None:
+            pulumi.set(__self__, "enabled_metrics", enabled_metrics)
+        if signalfx_api_key is not None:
+            pulumi.set(__self__, "signalfx_api_key", signalfx_api_key)
+        if signalfx_realm is not None:
+            pulumi.set(__self__, "signalfx_realm", signalfx_realm)
+
+    @property
+    @pulumi.getter(name="enabledMetrics")
+    def enabled_metrics(self) -> Optional[List[str]]:
+        return pulumi.get(self, "enabled_metrics")
+
+    @enabled_metrics.setter
+    def enabled_metrics(self, value: Optional[List[str]]):
+        pulumi.set(self, "enabled_metrics", value)
+
+    @property
+    @pulumi.getter(name="signalfxApiKey")
+    def signalfx_api_key(self) -> Optional[str]:
+        return pulumi.get(self, "signalfx_api_key")
+
+    @signalfx_api_key.setter
+    def signalfx_api_key(self, value: Optional[str]):
+        pulumi.set(self, "signalfx_api_key", value)
+
+    @property
+    @pulumi.getter(name="signalfxRealm")
+    def signalfx_realm(self) -> Optional[str]:
+        return pulumi.get(self, "signalfx_realm")
+
+    @signalfx_realm.setter
+    def signalfx_realm(self, value: Optional[str]):
+        pulumi.set(self, "signalfx_realm", value)
 
 
 @pulumi.input_type
@@ -21398,6 +22046,7 @@ class GetServiceRedisUserConfigArgs:
                  migration: Optional['GetServiceRedisUserConfigMigrationArgs'] = None,
                  private_access: Optional['GetServiceRedisUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetServiceRedisUserConfigPublicAccessArgs'] = None,
+                 recovery_basebackup_name: Optional[str] = None,
                  redis_lfu_decay_time: Optional[str] = None,
                  redis_lfu_log_factor: Optional[str] = None,
                  redis_maxmemory_policy: Optional[str] = None,
@@ -21413,6 +22062,8 @@ class GetServiceRedisUserConfigArgs:
             pulumi.set(__self__, "private_access", private_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -21463,6 +22114,15 @@ class GetServiceRedisUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional['GetServiceRedisUserConfigPublicAccessArgs']):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[str]:
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[str]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
