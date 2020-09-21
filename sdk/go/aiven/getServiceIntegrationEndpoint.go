@@ -18,26 +18,36 @@ func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *LookupServiceIn
 
 // A collection of arguments for invoking getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointArgs struct {
-	DatadogUserConfig                   *GetServiceIntegrationEndpointDatadogUserConfig                   `pulumi:"datadogUserConfig"`
-	EndpointConfig                      map[string]string                                                 `pulumi:"endpointConfig"`
-	EndpointName                        string                                                            `pulumi:"endpointName"`
-	EndpointType                        *string                                                           `pulumi:"endpointType"`
-	ExternalElasticsearchLogsUserConfig *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
-	Project                             string                                                            `pulumi:"project"`
-	PrometheusUserConfig                *GetServiceIntegrationEndpointPrometheusUserConfig                `pulumi:"prometheusUserConfig"`
-	RsyslogUserConfig                   *GetServiceIntegrationEndpointRsyslogUserConfig                   `pulumi:"rsyslogUserConfig"`
+	DatadogUserConfig                    *GetServiceIntegrationEndpointDatadogUserConfig                    `pulumi:"datadogUserConfig"`
+	EndpointConfig                       map[string]string                                                  `pulumi:"endpointConfig"`
+	EndpointName                         string                                                             `pulumi:"endpointName"`
+	EndpointType                         *string                                                            `pulumi:"endpointType"`
+	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
+	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	ExternalKafkaUserConfig              *GetServiceIntegrationEndpointExternalKafkaUserConfig              `pulumi:"externalKafkaUserConfig"`
+	JolokiaUserConfig                    *GetServiceIntegrationEndpointJolokiaUserConfig                    `pulumi:"jolokiaUserConfig"`
+	Project                              string                                                             `pulumi:"project"`
+	PrometheusUserConfig                 *GetServiceIntegrationEndpointPrometheusUserConfig                 `pulumi:"prometheusUserConfig"`
+	RsyslogUserConfig                    *GetServiceIntegrationEndpointRsyslogUserConfig                    `pulumi:"rsyslogUserConfig"`
+	SignalfxUserConfig                   *GetServiceIntegrationEndpointSignalfxUserConfig                   `pulumi:"signalfxUserConfig"`
 }
 
 // A collection of values returned by getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointResult struct {
-	DatadogUserConfig                   *GetServiceIntegrationEndpointDatadogUserConfig                   `pulumi:"datadogUserConfig"`
-	EndpointConfig                      map[string]string                                                 `pulumi:"endpointConfig"`
-	EndpointName                        string                                                            `pulumi:"endpointName"`
-	EndpointType                        *string                                                           `pulumi:"endpointType"`
-	ExternalElasticsearchLogsUserConfig *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	DatadogUserConfig                    *GetServiceIntegrationEndpointDatadogUserConfig                    `pulumi:"datadogUserConfig"`
+	EndpointConfig                       map[string]string                                                  `pulumi:"endpointConfig"`
+	EndpointName                         string                                                             `pulumi:"endpointName"`
+	EndpointType                         *string                                                            `pulumi:"endpointType"`
+	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
+	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	ExternalKafkaUserConfig              *GetServiceIntegrationEndpointExternalKafkaUserConfig              `pulumi:"externalKafkaUserConfig"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                   string                                             `pulumi:"id"`
+	JolokiaUserConfig    *GetServiceIntegrationEndpointJolokiaUserConfig    `pulumi:"jolokiaUserConfig"`
 	Project              string                                             `pulumi:"project"`
 	PrometheusUserConfig *GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	RsyslogUserConfig    *GetServiceIntegrationEndpointRsyslogUserConfig    `pulumi:"rsyslogUserConfig"`
+	SignalfxUserConfig   *GetServiceIntegrationEndpointSignalfxUserConfig   `pulumi:"signalfxUserConfig"`
 }

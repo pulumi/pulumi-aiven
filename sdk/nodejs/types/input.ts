@@ -297,6 +297,8 @@ export interface GetGrafanaGrafanaUserConfig {
     metricsEnabled?: string;
     privateAccess?: inputs.GetGrafanaGrafanaUserConfigPrivateAccess;
     publicAccess?: inputs.GetGrafanaGrafanaUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
     smtpServer?: inputs.GetGrafanaGrafanaUserConfigSmtpServer;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -390,6 +392,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
     ipFilters?: string[];
     privateAccess?: inputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
     publicAccess?: inputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
 }
 
@@ -794,6 +797,7 @@ export interface GetRedisRedisUserConfig {
     migration?: inputs.GetRedisRedisUserConfigMigration;
     privateAccess?: inputs.GetRedisRedisUserConfigPrivateAccess;
     publicAccess?: inputs.GetRedisRedisUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
@@ -951,6 +955,8 @@ export interface GetServiceGrafanaUserConfig {
     metricsEnabled?: string;
     privateAccess?: inputs.GetServiceGrafanaUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceGrafanaUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
     smtpServer?: inputs.GetServiceGrafanaUserConfigSmtpServer;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -1029,6 +1035,7 @@ export interface GetServiceInfluxdbUserConfig {
     ipFilters?: string[];
     privateAccess?: inputs.GetServiceInfluxdbUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceInfluxdbUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
 }
 
@@ -1047,12 +1054,38 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
     site?: string;
 }
 
+export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+    accessKey?: string;
+    logGroupName?: string;
+    region?: string;
+    secretKey?: string;
+}
+
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: string;
     indexDaysMax?: string;
     indexPrefix?: string;
     timeout?: string;
     url?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+    logId?: string;
+    projectId?: string;
+    serviceAccountCredentials?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
+    bootstrapServers?: string;
+    securityProtocol?: string;
+    sslCaCert?: string;
+    sslClientCert?: string;
+    sslClientKey?: string;
+}
+
+export interface GetServiceIntegrationEndpointJolokiaUserConfig {
+    basicAuthPassword?: string;
+    basicAuthUsername?: string;
 }
 
 export interface GetServiceIntegrationEndpointPrometheusUserConfig {
@@ -1070,6 +1103,12 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     sd?: string;
     server?: string;
     tls?: string;
+}
+
+export interface GetServiceIntegrationEndpointSignalfxUserConfig {
+    enabledMetrics?: string[];
+    signalfxApiKey?: string;
+    signalfxRealm?: string;
 }
 
 export interface GetServiceIntegrationKafkaConnectUserConfig {
@@ -1394,6 +1433,7 @@ export interface GetServiceRedisUserConfig {
     migration?: inputs.GetServiceRedisUserConfigMigration;
     privateAccess?: inputs.GetServiceRedisUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceRedisUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
@@ -1463,6 +1503,8 @@ export interface GrafanaGrafanaUserConfig {
     metricsEnabled?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
     smtpServer?: pulumi.Input<inputs.GrafanaGrafanaUserConfigSmtpServer>;
     userAutoAssignOrg?: pulumi.Input<string>;
     userAutoAssignOrgRole?: pulumi.Input<string>;
@@ -1556,6 +1598,7 @@ export interface InfluxDbInfluxdbUserConfig {
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     privateAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
@@ -1960,6 +2003,7 @@ export interface RedisRedisUserConfig {
     migration?: pulumi.Input<inputs.RedisRedisUserConfigMigration>;
     privateAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.RedisRedisUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
     redisLfuDecayTime?: pulumi.Input<string>;
     redisLfuLogFactor?: pulumi.Input<string>;
     redisMaxmemoryPolicy?: pulumi.Input<string>;
@@ -2117,6 +2161,8 @@ export interface ServiceGrafanaUserConfig {
     metricsEnabled?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.ServiceGrafanaUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceGrafanaUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
     smtpServer?: pulumi.Input<inputs.ServiceGrafanaUserConfigSmtpServer>;
     userAutoAssignOrg?: pulumi.Input<string>;
     userAutoAssignOrgRole?: pulumi.Input<string>;
@@ -2195,6 +2241,7 @@ export interface ServiceInfluxdbUserConfig {
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     privateAccess?: pulumi.Input<inputs.ServiceInfluxdbUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceInfluxdbUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
@@ -2213,12 +2260,38 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
     site?: pulumi.Input<string>;
 }
 
+export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+    accessKey?: pulumi.Input<string>;
+    logGroupName?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
+}
+
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: pulumi.Input<string>;
     indexDaysMax?: pulumi.Input<string>;
     indexPrefix?: pulumi.Input<string>;
     timeout?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+    logId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    serviceAccountCredentials?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
+    bootstrapServers?: pulumi.Input<string>;
+    securityProtocol?: pulumi.Input<string>;
+    sslCaCert?: pulumi.Input<string>;
+    sslClientCert?: pulumi.Input<string>;
+    sslClientKey?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointJolokiaUserConfig {
+    basicAuthPassword?: pulumi.Input<string>;
+    basicAuthUsername?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
@@ -2236,6 +2309,12 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     sd?: pulumi.Input<string>;
     server?: pulumi.Input<string>;
     tls?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointSignalfxUserConfig {
+    enabledMetrics?: pulumi.Input<pulumi.Input<string>[]>;
+    signalfxApiKey?: pulumi.Input<string>;
+    signalfxRealm?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {
@@ -2560,6 +2639,7 @@ export interface ServiceRedisUserConfig {
     migration?: pulumi.Input<inputs.ServiceRedisUserConfigMigration>;
     privateAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
     redisLfuDecayTime?: pulumi.Input<string>;
     redisLfuLogFactor?: pulumi.Input<string>;
     redisMaxmemoryPolicy?: pulumi.Input<string>;

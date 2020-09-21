@@ -29,6 +29,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("publicAccess")]
         public Inputs.GetInfluxDbInfluxdbUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
+        [Input("recoveryBasebackupName")]
+        public string? RecoveryBasebackupName { get; set; }
+
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
 

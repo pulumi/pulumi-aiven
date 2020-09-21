@@ -51,9 +51,25 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
+     * external AWS CloudWatch Logs specific user configurable settings
+     */
+    public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig | undefined>;
+    /**
      * external elasticsearch specific user configurable settings
      */
     public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
+    /**
+     * external Google Cloud Logginig specific user configurable settings
+     */
+    public readonly externalGoogleCloudLoggingUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig | undefined>;
+    /**
+     * external Kafka specific user configurable settings
+     */
+    public readonly externalKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
+    /**
+     * Jolokia specific user configurable settings
+     */
+    public readonly jolokiaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
      * Project the service integration endpoint belongs to
      */
@@ -66,6 +82,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      * rsyslog specific user configurable settings
      */
     public readonly rsyslogUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointRsyslogUserConfig | undefined>;
+    /**
+     * Signalfx specific user configurable settings
+     */
+    public readonly signalfxUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointSignalfxUserConfig | undefined>;
 
     /**
      * Create a ServiceIntegrationEndpoint resource with the given unique name, arguments, and options.
@@ -83,10 +103,15 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["endpointConfig"] = state ? state.endpointConfig : undefined;
             inputs["endpointName"] = state ? state.endpointName : undefined;
             inputs["endpointType"] = state ? state.endpointType : undefined;
+            inputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
             inputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
+            inputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
+            inputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
+            inputs["jolokiaUserConfig"] = state ? state.jolokiaUserConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
             inputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
+            inputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationEndpointArgs | undefined;
             if (!args || args.endpointName === undefined) {
@@ -101,10 +126,15 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
             inputs["endpointName"] = args ? args.endpointName : undefined;
             inputs["endpointType"] = args ? args.endpointType : undefined;
+            inputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
             inputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
+            inputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
+            inputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
+            inputs["jolokiaUserConfig"] = args ? args.jolokiaUserConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
             inputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
+            inputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
             inputs["endpointConfig"] = undefined /*out*/;
         }
         if (!opts) {
@@ -139,9 +169,25 @@ export interface ServiceIntegrationEndpointState {
      */
     readonly endpointType?: pulumi.Input<string>;
     /**
+     * external AWS CloudWatch Logs specific user configurable settings
+     */
+    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    /**
      * external elasticsearch specific user configurable settings
      */
     readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
+    /**
+     * external Google Cloud Logginig specific user configurable settings
+     */
+    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
+    /**
+     * external Kafka specific user configurable settings
+     */
+    readonly externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    /**
+     * Jolokia specific user configurable settings
+     */
+    readonly jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
      * Project the service integration endpoint belongs to
      */
@@ -154,6 +200,10 @@ export interface ServiceIntegrationEndpointState {
      * rsyslog specific user configurable settings
      */
     readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
+    /**
+     * Signalfx specific user configurable settings
+     */
+    readonly signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }
 
 /**
@@ -173,9 +223,25 @@ export interface ServiceIntegrationEndpointArgs {
      */
     readonly endpointType: pulumi.Input<string>;
     /**
+     * external AWS CloudWatch Logs specific user configurable settings
+     */
+    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    /**
      * external elasticsearch specific user configurable settings
      */
     readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
+    /**
+     * external Google Cloud Logginig specific user configurable settings
+     */
+    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
+    /**
+     * external Kafka specific user configurable settings
+     */
+    readonly externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    /**
+     * Jolokia specific user configurable settings
+     */
+    readonly jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
      * Project the service integration endpoint belongs to
      */
@@ -188,4 +254,8 @@ export interface ServiceIntegrationEndpointArgs {
      * rsyslog specific user configurable settings
      */
     readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
+    /**
+     * Signalfx specific user configurable settings
+     */
+    readonly signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }

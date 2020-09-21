@@ -19,10 +19,15 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
         "endpointConfig": args.endpointConfig,
         "endpointName": args.endpointName,
         "endpointType": args.endpointType,
+        "externalAwsCloudwatchLogsUserConfig": args.externalAwsCloudwatchLogsUserConfig,
         "externalElasticsearchLogsUserConfig": args.externalElasticsearchLogsUserConfig,
+        "externalGoogleCloudLoggingUserConfig": args.externalGoogleCloudLoggingUserConfig,
+        "externalKafkaUserConfig": args.externalKafkaUserConfig,
+        "jolokiaUserConfig": args.jolokiaUserConfig,
         "project": args.project,
         "prometheusUserConfig": args.prometheusUserConfig,
         "rsyslogUserConfig": args.rsyslogUserConfig,
+        "signalfxUserConfig": args.signalfxUserConfig,
     }, opts);
 }
 
@@ -34,10 +39,15 @@ export interface GetServiceIntegrationEndpointArgs {
     readonly endpointConfig?: {[key: string]: string};
     readonly endpointName: string;
     readonly endpointType?: string;
+    readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
+    readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
+    readonly externalKafkaUserConfig?: inputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
+    readonly jolokiaUserConfig?: inputs.GetServiceIntegrationEndpointJolokiaUserConfig;
     readonly project: string;
     readonly prometheusUserConfig?: inputs.GetServiceIntegrationEndpointPrometheusUserConfig;
     readonly rsyslogUserConfig?: inputs.GetServiceIntegrationEndpointRsyslogUserConfig;
+    readonly signalfxUserConfig?: inputs.GetServiceIntegrationEndpointSignalfxUserConfig;
 }
 
 /**
@@ -48,12 +58,17 @@ export interface GetServiceIntegrationEndpointResult {
     readonly endpointConfig: {[key: string]: string};
     readonly endpointName: string;
     readonly endpointType?: string;
+    readonly externalAwsCloudwatchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
+    readonly externalGoogleCloudLoggingUserConfig?: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
+    readonly externalKafkaUserConfig?: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly jolokiaUserConfig?: outputs.GetServiceIntegrationEndpointJolokiaUserConfig;
     readonly project: string;
     readonly prometheusUserConfig?: outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
     readonly rsyslogUserConfig?: outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
+    readonly signalfxUserConfig?: outputs.GetServiceIntegrationEndpointSignalfxUserConfig;
 }

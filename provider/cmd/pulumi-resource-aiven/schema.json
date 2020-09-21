@@ -1050,6 +1050,22 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "smtpServer": {
                     "$ref": "#/types/aiven:/GrafanaGrafanaUserConfigSmtpServer:GrafanaGrafanaUserConfigSmtpServer",
                     "language": {
@@ -1608,6 +1624,14 @@
                 },
                 "publicAccess": {
                     "$ref": "#/types/aiven:/InfluxDbInfluxdbUserConfigPublicAccess:InfluxDbInfluxdbUserConfigPublicAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recoveryBasebackupName": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4101,6 +4125,14 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "redisLfuDecayTime": {
                     "type": "string",
                     "language": {
@@ -5050,6 +5082,22 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "smtpServer": {
                     "$ref": "#/types/aiven:/ServiceGrafanaUserConfigSmtpServer:ServiceGrafanaUserConfigSmtpServer",
                     "language": {
@@ -5515,6 +5563,14 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "language": {
@@ -5589,6 +5645,43 @@
             },
             "type": "object"
         },
+        "aiven:/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logGroupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig": {
             "properties": {
                 "ca": {
@@ -5624,6 +5717,101 @@
                     }
                 },
                 "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
+            "properties": {
+                "logId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceAccountCredentials": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig": {
+            "properties": {
+                "bootstrapServers": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "securityProtocol": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslCaCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslClientCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslClientKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig": {
+            "properties": {
+                "basicAuthPassword": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "basicAuthUsername": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -5722,6 +5910,38 @@
                     }
                 },
                 "tls": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig": {
+            "properties": {
+                "enabledMetrics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signalfxApiKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signalfxRealm": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7656,6 +7876,14 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "redisLfuDecayTime": {
                     "type": "string",
                     "language": {
@@ -8860,6 +9088,22 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "smtpServer": {
                     "$ref": "#/types/aiven:/getGrafanaGrafanaUserConfigSmtpServer:getGrafanaGrafanaUserConfigSmtpServer",
                     "language": {
@@ -9420,6 +9664,14 @@
                 },
                 "publicAccess": {
                     "$ref": "#/types/aiven:/getInfluxDbInfluxdbUserConfigPublicAccess:getInfluxDbInfluxdbUserConfigPublicAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recoveryBasebackupName": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11922,6 +12174,14 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "redisLfuDecayTime": {
                     "type": "string",
                     "language": {
@@ -12873,6 +13133,22 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "smtpServer": {
                     "$ref": "#/types/aiven:/getServiceGrafanaUserConfigSmtpServer:getServiceGrafanaUserConfigSmtpServer",
                     "language": {
@@ -13339,6 +13615,14 @@
                         }
                     }
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "language": {
@@ -13413,6 +13697,43 @@
             },
             "type": "object"
         },
+        "aiven:/getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logGroupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:/getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig": {
             "properties": {
                 "ca": {
@@ -13448,6 +13769,101 @@
                     }
                 },
                 "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
+            "properties": {
+                "logId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceAccountCredentials": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/getServiceIntegrationEndpointExternalKafkaUserConfig:getServiceIntegrationEndpointExternalKafkaUserConfig": {
+            "properties": {
+                "bootstrapServers": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "securityProtocol": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslCaCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslClientCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslClientKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/getServiceIntegrationEndpointJolokiaUserConfig:getServiceIntegrationEndpointJolokiaUserConfig": {
+            "properties": {
+                "basicAuthPassword": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "basicAuthUsername": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -13546,6 +13962,38 @@
                     }
                 },
                 "tls": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:/getServiceIntegrationEndpointSignalfxUserConfig:getServiceIntegrationEndpointSignalfxUserConfig": {
+            "properties": {
+                "enabledMetrics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signalfxApiKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signalfxRealm": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -15476,6 +15924,14 @@
                 },
                 "publicAccess": {
                     "$ref": "#/types/aiven:/getServiceRedisUserConfigPublicAccess:getServiceRedisUserConfigPublicAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recoveryBasebackupName": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20568,9 +21024,25 @@
                     "type": "string",
                     "description": "Type of the service integration endpoint\n"
                 },
+                "externalAwsCloudwatchLogsUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
+                    "description": "external AWS CloudWatch Logs specific user configurable settings\n"
+                },
                 "externalElasticsearchLogsUserConfig": {
                     "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
                     "description": "external elasticsearch specific user configurable settings\n"
+                },
+                "externalGoogleCloudLoggingUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig",
+                    "description": "external Google Cloud Logginig specific user configurable settings\n"
+                },
+                "externalKafkaUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig",
+                    "description": "external Kafka specific user configurable settings\n"
+                },
+                "jolokiaUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig",
+                    "description": "Jolokia specific user configurable settings\n"
                 },
                 "project": {
                     "type": "string",
@@ -20583,6 +21055,10 @@
                 "rsyslogUserConfig": {
                     "$ref": "#/types/aiven:/ServiceIntegrationEndpointRsyslogUserConfig:ServiceIntegrationEndpointRsyslogUserConfig",
                     "description": "rsyslog specific user configurable settings\n"
+                },
+                "signalfxUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig",
+                    "description": "Signalfx specific user configurable settings\n"
                 }
             },
             "required": [
@@ -20604,9 +21080,25 @@
                     "type": "string",
                     "description": "Type of the service integration endpoint\n"
                 },
+                "externalAwsCloudwatchLogsUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
+                    "description": "external AWS CloudWatch Logs specific user configurable settings\n"
+                },
                 "externalElasticsearchLogsUserConfig": {
                     "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
                     "description": "external elasticsearch specific user configurable settings\n"
+                },
+                "externalGoogleCloudLoggingUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig",
+                    "description": "external Google Cloud Logginig specific user configurable settings\n"
+                },
+                "externalKafkaUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig",
+                    "description": "external Kafka specific user configurable settings\n"
+                },
+                "jolokiaUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig",
+                    "description": "Jolokia specific user configurable settings\n"
                 },
                 "project": {
                     "type": "string",
@@ -20619,6 +21111,10 @@
                 "rsyslogUserConfig": {
                     "$ref": "#/types/aiven:/ServiceIntegrationEndpointRsyslogUserConfig:ServiceIntegrationEndpointRsyslogUserConfig",
                     "description": "rsyslog specific user configurable settings\n"
+                },
+                "signalfxUserConfig": {
+                    "$ref": "#/types/aiven:/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig",
+                    "description": "Signalfx specific user configurable settings\n"
                 }
             },
             "requiredInputs": [
@@ -20648,9 +21144,25 @@
                         "type": "string",
                         "description": "Type of the service integration endpoint\n"
                     },
+                    "externalAwsCloudwatchLogsUserConfig": {
+                        "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
+                        "description": "external AWS CloudWatch Logs specific user configurable settings\n"
+                    },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
                         "description": "external elasticsearch specific user configurable settings\n"
+                    },
+                    "externalGoogleCloudLoggingUserConfig": {
+                        "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig",
+                        "description": "external Google Cloud Logginig specific user configurable settings\n"
+                    },
+                    "externalKafkaUserConfig": {
+                        "$ref": "#/types/aiven:/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig",
+                        "description": "external Kafka specific user configurable settings\n"
+                    },
+                    "jolokiaUserConfig": {
+                        "$ref": "#/types/aiven:/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig",
+                        "description": "Jolokia specific user configurable settings\n"
                     },
                     "project": {
                         "type": "string",
@@ -20663,6 +21175,10 @@
                     "rsyslogUserConfig": {
                         "$ref": "#/types/aiven:/ServiceIntegrationEndpointRsyslogUserConfig:ServiceIntegrationEndpointRsyslogUserConfig",
                         "description": "rsyslog specific user configurable settings\n"
+                    },
+                    "signalfxUserConfig": {
+                        "$ref": "#/types/aiven:/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig",
+                        "description": "Signalfx specific user configurable settings\n"
                     }
                 },
                 "type": "object"
@@ -24356,8 +24872,20 @@
                     "endpointType": {
                         "type": "string"
                     },
+                    "externalAwsCloudwatchLogsUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig"
+                    },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig"
+                    },
+                    "externalGoogleCloudLoggingUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig"
+                    },
+                    "externalKafkaUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalKafkaUserConfig:getServiceIntegrationEndpointExternalKafkaUserConfig"
+                    },
+                    "jolokiaUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointJolokiaUserConfig:getServiceIntegrationEndpointJolokiaUserConfig"
                     },
                     "project": {
                         "type": "string"
@@ -24367,6 +24895,9 @@
                     },
                     "rsyslogUserConfig": {
                         "$ref": "#/types/aiven:/getServiceIntegrationEndpointRsyslogUserConfig:getServiceIntegrationEndpointRsyslogUserConfig"
+                    },
+                    "signalfxUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointSignalfxUserConfig:getServiceIntegrationEndpointSignalfxUserConfig"
                     }
                 },
                 "type": "object",
@@ -24393,12 +24924,24 @@
                     "endpointType": {
                         "type": "string"
                     },
+                    "externalAwsCloudwatchLogsUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig"
+                    },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig"
+                    },
+                    "externalGoogleCloudLoggingUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig"
+                    },
+                    "externalKafkaUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointExternalKafkaUserConfig:getServiceIntegrationEndpointExternalKafkaUserConfig"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "jolokiaUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointJolokiaUserConfig:getServiceIntegrationEndpointJolokiaUserConfig"
                     },
                     "project": {
                         "type": "string"
@@ -24408,6 +24951,9 @@
                     },
                     "rsyslogUserConfig": {
                         "$ref": "#/types/aiven:/getServiceIntegrationEndpointRsyslogUserConfig:getServiceIntegrationEndpointRsyslogUserConfig"
+                    },
+                    "signalfxUserConfig": {
+                        "$ref": "#/types/aiven:/getServiceIntegrationEndpointSignalfxUserConfig:getServiceIntegrationEndpointSignalfxUserConfig"
                     }
                 },
                 "type": "object",

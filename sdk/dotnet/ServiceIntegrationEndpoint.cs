@@ -36,10 +36,34 @@ namespace Pulumi.Aiven
         public Output<string> EndpointType { get; private set; } = null!;
 
         /// <summary>
+        /// external AWS CloudWatch Logs specific user configurable settings
+        /// </summary>
+        [Output("externalAwsCloudwatchLogsUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig?> ExternalAwsCloudwatchLogsUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// external elasticsearch specific user configurable settings
         /// </summary>
         [Output("externalElasticsearchLogsUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig?> ExternalElasticsearchLogsUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// external Google Cloud Logginig specific user configurable settings
+        /// </summary>
+        [Output("externalGoogleCloudLoggingUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig?> ExternalGoogleCloudLoggingUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// external Kafka specific user configurable settings
+        /// </summary>
+        [Output("externalKafkaUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalKafkaUserConfig?> ExternalKafkaUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Jolokia specific user configurable settings
+        /// </summary>
+        [Output("jolokiaUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointJolokiaUserConfig?> JolokiaUserConfig { get; private set; } = null!;
 
         /// <summary>
         /// Project the service integration endpoint belongs to
@@ -58,6 +82,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("rsyslogUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointRsyslogUserConfig?> RsyslogUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Signalfx specific user configurable settings
+        /// </summary>
+        [Output("signalfxUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointSignalfxUserConfig?> SignalfxUserConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -124,10 +154,34 @@ namespace Pulumi.Aiven
         public Input<string> EndpointType { get; set; } = null!;
 
         /// <summary>
+        /// external AWS CloudWatch Logs specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        /// <summary>
         /// external elasticsearch specific user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// external Google Cloud Logginig specific user configurable settings
+        /// </summary>
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
+
+        /// <summary>
+        /// external Kafka specific user configurable settings
+        /// </summary>
+        [Input("externalKafkaUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs>? ExternalKafkaUserConfig { get; set; }
+
+        /// <summary>
+        /// Jolokia specific user configurable settings
+        /// </summary>
+        [Input("jolokiaUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs>? JolokiaUserConfig { get; set; }
 
         /// <summary>
         /// Project the service integration endpoint belongs to
@@ -146,6 +200,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("rsyslogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointRsyslogUserConfigArgs>? RsyslogUserConfig { get; set; }
+
+        /// <summary>
+        /// Signalfx specific user configurable settings
+        /// </summary>
+        [Input("signalfxUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointSignalfxUserConfigArgs>? SignalfxUserConfig { get; set; }
 
         public ServiceIntegrationEndpointArgs()
         {
@@ -185,10 +245,34 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
+        /// external AWS CloudWatch Logs specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigGetArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        /// <summary>
         /// external elasticsearch specific user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// external Google Cloud Logginig specific user configurable settings
+        /// </summary>
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigGetArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
+
+        /// <summary>
+        /// external Kafka specific user configurable settings
+        /// </summary>
+        [Input("externalKafkaUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs>? ExternalKafkaUserConfig { get; set; }
+
+        /// <summary>
+        /// Jolokia specific user configurable settings
+        /// </summary>
+        [Input("jolokiaUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigGetArgs>? JolokiaUserConfig { get; set; }
 
         /// <summary>
         /// Project the service integration endpoint belongs to
@@ -207,6 +291,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("rsyslogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointRsyslogUserConfigGetArgs>? RsyslogUserConfig { get; set; }
+
+        /// <summary>
+        /// Signalfx specific user configurable settings
+        /// </summary>
+        [Input("signalfxUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointSignalfxUserConfigGetArgs>? SignalfxUserConfig { get; set; }
 
         public ServiceIntegrationEndpointState()
         {
