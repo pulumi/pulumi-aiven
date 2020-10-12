@@ -10,16 +10,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Project VPC Resource
+//
+// The Project VPC resource allows the creation and management of an Aiven Project VPCs.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewProjectVpc(ctx, "myvpc", &aiven.ProjectVpcArgs{
+// 			CloudName:   pulumi.String("google-europe-west1"),
+// 			NetworkCidr: pulumi.String("192.168.0.1/24"),
+// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectVpc struct {
 	pulumi.CustomResourceState
 
-	// Cloud the VPC is in
+	// defines where the cloud provider and region where the service is hosted
+	// in. See the Service resource for additional information.
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
-	// Network address range used by the VPC like 192.168.0.0/24
+	// defines the network CIDR of the VPC.
 	NetworkCidr pulumi.StringOutput `pulumi:"networkCidr"`
-	// The project the VPC belongs to
+	// defines the project the VPC belongs to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+	// ia a computed property that tells the current state of the VPC. This property cannot be
+	// set, only read.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -60,24 +90,28 @@ func GetProjectVpc(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectVpc resources.
 type projectVpcState struct {
-	// Cloud the VPC is in
+	// defines where the cloud provider and region where the service is hosted
+	// in. See the Service resource for additional information.
 	CloudName *string `pulumi:"cloudName"`
-	// Network address range used by the VPC like 192.168.0.0/24
+	// defines the network CIDR of the VPC.
 	NetworkCidr *string `pulumi:"networkCidr"`
-	// The project the VPC belongs to
+	// defines the project the VPC belongs to.
 	Project *string `pulumi:"project"`
-	// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+	// ia a computed property that tells the current state of the VPC. This property cannot be
+	// set, only read.
 	State *string `pulumi:"state"`
 }
 
 type ProjectVpcState struct {
-	// Cloud the VPC is in
+	// defines where the cloud provider and region where the service is hosted
+	// in. See the Service resource for additional information.
 	CloudName pulumi.StringPtrInput
-	// Network address range used by the VPC like 192.168.0.0/24
+	// defines the network CIDR of the VPC.
 	NetworkCidr pulumi.StringPtrInput
-	// The project the VPC belongs to
+	// defines the project the VPC belongs to.
 	Project pulumi.StringPtrInput
-	// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+	// ia a computed property that tells the current state of the VPC. This property cannot be
+	// set, only read.
 	State pulumi.StringPtrInput
 }
 
@@ -86,21 +120,23 @@ func (ProjectVpcState) ElementType() reflect.Type {
 }
 
 type projectVpcArgs struct {
-	// Cloud the VPC is in
+	// defines where the cloud provider and region where the service is hosted
+	// in. See the Service resource for additional information.
 	CloudName string `pulumi:"cloudName"`
-	// Network address range used by the VPC like 192.168.0.0/24
+	// defines the network CIDR of the VPC.
 	NetworkCidr string `pulumi:"networkCidr"`
-	// The project the VPC belongs to
+	// defines the project the VPC belongs to.
 	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectVpc resource.
 type ProjectVpcArgs struct {
-	// Cloud the VPC is in
+	// defines where the cloud provider and region where the service is hosted
+	// in. See the Service resource for additional information.
 	CloudName pulumi.StringInput
-	// Network address range used by the VPC like 192.168.0.0/24
+	// defines the network CIDR of the VPC.
 	NetworkCidr pulumi.StringInput
-	// The project the VPC belongs to
+	// defines the project the VPC belongs to.
 	Project pulumi.StringInput
 }
 

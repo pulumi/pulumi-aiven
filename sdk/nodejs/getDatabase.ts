@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Database Data Source
+ *
+ * The Database data source provides information about the existing Aiven Database.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mydatabase = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getDatabase({
+ *     databaseName: "<DATABASE_NAME>",
+ *     project: project,
+ *     serviceName: serviceName,
+ * }, { async: true }));
+ * ```
+ */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
     if (!opts) {
         opts = {}
@@ -28,9 +46,22 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getDatabase.
  */
 export interface GetDatabaseArgs {
+    /**
+     * is the actual name of the database.
+     */
     readonly databaseName: string;
+    /**
+     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+     */
     readonly lcCollate?: string;
+    /**
+     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+     */
     readonly lcCtype?: string;
+    /**
+     * and `serviceName` - (Required) define the project and service the database belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly project: string;
     readonly serviceName: string;
     readonly terminationProtection?: boolean;
@@ -45,7 +76,13 @@ export interface GetDatabaseResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+     */
     readonly lcCollate?: string;
+    /**
+     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+     */
     readonly lcCtype?: string;
     readonly project: string;
     readonly serviceName: string;

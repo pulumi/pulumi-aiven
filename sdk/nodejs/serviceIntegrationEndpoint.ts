@@ -6,6 +6,27 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Service Integration Endpoint Resource
+ *
+ * The Service Integration Endpoint resource allows the creation and management of an Aiven Service Integration Endpoint`s.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myendpoint = new aiven.ServiceIntegrationEndpoint("myendpoint", {
+ *     datadogUserConfig: {
+ *         datadogApiKey: "<DATADOG_API_KEY>",
+ *     },
+ *     endpointName: "<ENDPOINT_NAME>",
+ *     endpointType: "datadog",
+ *     project: aiven_project_myproject.project,
+ * });
+ * ```
+ */
 export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     /**
      * Get an existing ServiceIntegrationEndpoint resource's state with the given name, ID, and optional extra
@@ -43,11 +64,13 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpointConfig!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Name of the service integration endpoint
+     * is the name of the endpoint. This value has no effect beyond being used
+     * to identify different integration endpoints.
      */
     public readonly endpointName!: pulumi.Output<string>;
     /**
-     * Type of the service integration endpoint
+     * is the type of the external service this endpoint is associated with.
+     * By the time of writing the only available option is `datadog`.
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
@@ -71,7 +94,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly jolokiaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
-     * Project the service integration endpoint belongs to
+     * defines the project the endpoint is associated with.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -161,11 +184,13 @@ export interface ServiceIntegrationEndpointState {
      */
     readonly endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the service integration endpoint
+     * is the name of the endpoint. This value has no effect beyond being used
+     * to identify different integration endpoints.
      */
     readonly endpointName?: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint
+     * is the type of the external service this endpoint is associated with.
+     * By the time of writing the only available option is `datadog`.
      */
     readonly endpointType?: pulumi.Input<string>;
     /**
@@ -189,7 +214,7 @@ export interface ServiceIntegrationEndpointState {
      */
     readonly jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
-     * Project the service integration endpoint belongs to
+     * defines the project the endpoint is associated with.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -215,11 +240,13 @@ export interface ServiceIntegrationEndpointArgs {
      */
     readonly datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
     /**
-     * Name of the service integration endpoint
+     * is the name of the endpoint. This value has no effect beyond being used
+     * to identify different integration endpoints.
      */
     readonly endpointName: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint
+     * is the type of the external service this endpoint is associated with.
+     * By the time of writing the only available option is `datadog`.
      */
     readonly endpointType: pulumi.Input<string>;
     /**
@@ -243,7 +270,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     readonly jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
-     * Project the service integration endpoint belongs to
+     * defines the project the endpoint is associated with.
      */
     readonly project: pulumi.Input<string>;
     /**

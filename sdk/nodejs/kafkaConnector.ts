@@ -6,6 +6,39 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Kafka connectors Resource
+ *
+ * The Kafka connectors resource allows the creation and management of an Aiven Kafka connectors.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka_es_con1 = new aiven.KafkaConnector("kafka-es-con1", {
+ *     project: aiven_project["kafka-con-project1"].project,
+ *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     connectorName: "kafka-es-con1",
+ *     config: {
+ *         topics: aiven_kafka_topic["kafka-topic1"].topic_name,
+ *         "connector.class": "io.aiven.connect.elasticsearch.ElasticsearchSinkConnector",
+ *         "type.name": "es-connector",
+ *         name: "kafka-es-con1",
+ *         "connection.url": aiven_service["es-service1"].service_uri,
+ *     },
+ * });
+ * ```
+ *
+ * * `project` and `serviceName`- (Required) define the project and service the Kafka Connectors belongs to.
+ * They should be defined using reference as shown above to set up dependencies correctly.
+ *
+ * * `connectorName`- (Required) is the Kafka connector name.
+ *
+ * * `config`- (Required)is the Kafka Connector configuration parameters, where `topics`, `connector.class` and `name`
+ * are required parameters but the rest of them are connector type specific.
+ */
 export class KafkaConnector extends pulumi.CustomResource {
     /**
      * Get an existing KafkaConnector resource's state with the given name, ID, and optional extra
@@ -43,27 +76,27 @@ export class KafkaConnector extends pulumi.CustomResource {
      */
     public readonly connectorName!: pulumi.Output<string>;
     /**
-     * Kafka connector author
+     * Kafka connector author.
      */
     public /*out*/ readonly pluginAuthor!: pulumi.Output<string>;
     /**
-     * Kafka connector Java class
+     * Kafka connector Java class.
      */
     public /*out*/ readonly pluginClass!: pulumi.Output<string>;
     /**
-     * Kafka connector documentation URL
+     * Kafka connector documentation URL.
      */
     public /*out*/ readonly pluginDocUrl!: pulumi.Output<string>;
     /**
-     * Kafka connector title
+     * Kafka connector title.
      */
     public /*out*/ readonly pluginTitle!: pulumi.Output<string>;
     /**
-     * Kafka connector type
+     * Kafka connector type.
      */
     public /*out*/ readonly pluginType!: pulumi.Output<string>;
     /**
-     * Kafka connector version
+     * Kafka connector version.
      */
     public /*out*/ readonly pluginVersion!: pulumi.Output<string>;
     /**
@@ -75,7 +108,8 @@ export class KafkaConnector extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * List of tasks of a connector
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
      */
     public /*out*/ readonly tasks!: pulumi.Output<outputs.KafkaConnectorTask[]>;
 
@@ -152,27 +186,27 @@ export interface KafkaConnectorState {
      */
     readonly connectorName?: pulumi.Input<string>;
     /**
-     * Kafka connector author
+     * Kafka connector author.
      */
     readonly pluginAuthor?: pulumi.Input<string>;
     /**
-     * Kafka connector Java class
+     * Kafka connector Java class.
      */
     readonly pluginClass?: pulumi.Input<string>;
     /**
-     * Kafka connector documentation URL
+     * Kafka connector documentation URL.
      */
     readonly pluginDocUrl?: pulumi.Input<string>;
     /**
-     * Kafka connector title
+     * Kafka connector title.
      */
     readonly pluginTitle?: pulumi.Input<string>;
     /**
-     * Kafka connector type
+     * Kafka connector type.
      */
     readonly pluginType?: pulumi.Input<string>;
     /**
-     * Kafka connector version
+     * Kafka connector version.
      */
     readonly pluginVersion?: pulumi.Input<string>;
     /**
@@ -184,7 +218,8 @@ export interface KafkaConnectorState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * List of tasks of a connector
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
      */
     readonly tasks?: pulumi.Input<pulumi.Input<inputs.KafkaConnectorTask>[]>;
 }

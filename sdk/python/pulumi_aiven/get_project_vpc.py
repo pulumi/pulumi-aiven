@@ -52,6 +52,9 @@ class GetProjectVpcResult:
     @property
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> Optional[str]:
+        """
+        defines the network CIDR of the VPC.
+        """
         return pulumi.get(self, "network_cidr")
 
     @property
@@ -62,6 +65,10 @@ class GetProjectVpcResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        ia a computed property that tells the current state of the VPC. This property cannot be
+        set, only read.
+        """
         return pulumi.get(self, "state")
 
 
@@ -84,7 +91,27 @@ def get_project_vpc(cloud_name: Optional[str] = None,
                     state: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Project VPC Data Source
+
+    The Project VPC data source provides information about the existing Aiven Project VPC.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myvpc = aiven.get_project_vpc(cloud_name="google-europe-west1",
+        project=aiven_project["myproject"]["project"])
+    ```
+
+
+    :param str cloud_name: defines where the cloud provider and region where the service is hosted
+           in. See the Service resource for additional information.
+    :param str network_cidr: defines the network CIDR of the VPC.
+    :param str project: defines the project the VPC belongs to.
+    :param str state: ia a computed property that tells the current state of the VPC. This property cannot be
+           set, only read.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name

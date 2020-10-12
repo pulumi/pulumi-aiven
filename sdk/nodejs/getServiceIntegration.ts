@@ -6,6 +6,31 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Service Integration Data Source
+ *
+ * The Service Integration data source provides information about the existing Aiven Service Integration.
+ *
+ * Service Integration defines an integration between two Aiven services or between Aiven
+ * service and an external integration endpoint. Integration could be for example sending
+ * metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+ * service to a Grafana service to show dashboards, sending logs from any service to
+ * Elasticsearch, etc.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myintegration = aiven_project_myproject.project.apply(project => aiven.getServiceIntegration({
+ *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
+ *     integrationType: "datadog",
+ *     project: project,
+ *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
+ * }, { async: true }));
+ * ```
+ */
 export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationResult> {
     if (!opts) {
         opts = {}
@@ -33,14 +58,29 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
  */
 export interface GetServiceIntegrationArgs {
     readonly destinationEndpointId?: string;
+    /**
+     * identifies the target side of
+     * the integration.
+     */
     readonly destinationServiceName: string;
+    /**
+     * identifies the type of integration that is set up. Possible values
+     * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+     */
     readonly integrationType: string;
     readonly kafkaConnectUserConfig?: inputs.GetServiceIntegrationKafkaConnectUserConfig;
     readonly kafkaMirrormakerUserConfig?: inputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
     readonly logsUserConfig?: inputs.GetServiceIntegrationLogsUserConfig;
     readonly mirrormakerUserConfig?: inputs.GetServiceIntegrationMirrormakerUserConfig;
+    /**
+     * defines the project the integration belongs to.
+     */
     readonly project: string;
     readonly sourceEndpointId?: string;
+    /**
+     * identifies the source side of the
+     * integration.
+     */
     readonly sourceServiceName: string;
 }
 

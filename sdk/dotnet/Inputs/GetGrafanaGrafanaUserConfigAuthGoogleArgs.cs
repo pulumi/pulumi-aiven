@@ -12,20 +12,33 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetGrafanaGrafanaUserConfigAuthGoogleArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in
+        /// </summary>
         [Input("allowSignUp")]
         public string? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private List<string>? _allowedDomains;
+
+        /// <summary>
+        /// Allowed domain
+        /// </summary>
         public List<string> AllowedDomains
         {
             get => _allowedDomains ?? (_allowedDomains = new List<string>());
             set => _allowedDomains = value;
         }
 
+        /// <summary>
+        /// (Required) Client ID from provider
+        /// </summary>
         [Input("clientId")]
         public string? ClientId { get; set; }
 
+        /// <summary>
+        /// (Required) Client secret from provider
+        /// </summary>
         [Input("clientSecret")]
         public string? ClientSecret { get; set; }
 

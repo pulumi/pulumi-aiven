@@ -51,11 +51,19 @@ class GetConnectionPoolResult:
     @property
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> str:
+        """
+        is a computed property that tells the URI for connecting to the pool.
+        This value cannot be set, only read.
+        """
         return pulumi.get(self, "connection_uri")
 
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[str]:
+        """
+        is the name of the database the pool connects to. This should be
+        defined using reference as shown above to set up dependencies correctly.
+        """
         return pulumi.get(self, "database_name")
 
     @property
@@ -69,6 +77,9 @@ class GetConnectionPoolResult:
     @property
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[str]:
+        """
+        is the mode the pool operates in (session, transaction, statement).
+        """
         return pulumi.get(self, "pool_mode")
 
     @property
@@ -79,6 +90,11 @@ class GetConnectionPoolResult:
     @property
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[float]:
+        """
+        is the number of connections the pool may create towards the backend
+        server. This does not affect the number of incoming connections, which is always a much
+        larger number.
+        """
         return pulumi.get(self, "pool_size")
 
     @property
@@ -94,6 +110,10 @@ class GetConnectionPoolResult:
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        is the name of the service user used to connect to the database. This should
+        be defined using reference as shown above to set up dependencies correctly.
+        """
         return pulumi.get(self, "username")
 
 
@@ -124,7 +144,37 @@ def get_connection_pool(connection_uri: Optional[str] = None,
                         username: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionPoolResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Connection Pool Data Source
+
+    The Connection Pool data source provides information about the existing Aiven Connection Pool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestpool = aiven.get_connection_pool(pool_name="mypool",
+        project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"])
+    ```
+
+
+    :param str connection_uri: is a computed property that tells the URI for connecting to the pool.
+           This value cannot be set, only read.
+    :param str database_name: is the name of the database the pool connects to. This should be
+           defined using reference as shown above to set up dependencies correctly.
+    :param str pool_mode: is the mode the pool operates in (session, transaction, statement).
+    :param str pool_name: is the name of the pool.
+    :param float pool_size: is the number of connections the pool may create towards the backend
+           server. This does not affect the number of incoming connections, which is always a much
+           larger number.
+    :param str project: and `service_name` - (Required) define the project and service the connection pool
+           belongs to. They should be defined using reference as shown above to set up dependencies
+           correctly. These properties cannot be changed once the service is created. Doing so will
+           result in the connection pool being deleted and new one created instead.
+    :param str username: is the name of the service user used to connect to the database. This should
+           be defined using reference as shown above to set up dependencies correctly.
     """
     __args__ = dict()
     __args__['connectionUri'] = connection_uri

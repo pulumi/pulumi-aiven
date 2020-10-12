@@ -7,6 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Kafka Schema Configuration Data Source
+//
+// The Kafka Schema Configuration data source provides information about the existing Aiven
+// Kafka Schema Configuration.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupKafkaSchemaConfiguration(ctx, &aiven.LookupKafkaSchemaConfigurationArgs{
+// 			Project:     aiven_project.Kafka - schemas - project1.Project,
+// 			ServiceName: aiven_service.Kafka - service1.Service_name,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupKafkaSchemaConfiguration(ctx *pulumi.Context, args *LookupKafkaSchemaConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupKafkaSchemaConfigurationResult, error) {
 	var rv LookupKafkaSchemaConfigurationResult
 	err := ctx.Invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args, &rv, opts...)
@@ -18,16 +46,30 @@ func LookupKafkaSchemaConfiguration(ctx *pulumi.Context, args *LookupKafkaSchema
 
 // A collection of arguments for invoking getKafkaSchemaConfiguration.
 type LookupKafkaSchemaConfigurationArgs struct {
+	// is the Global Kafka Schema configuration compatibility level when defined
+	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
-	Project            string  `pulumi:"project"`
-	Schema             *string `pulumi:"schema"`
-	ServiceName        string  `pulumi:"serviceName"`
-	SubjectName        *string `pulumi:"subjectName"`
-	Version            *int    `pulumi:"version"`
+	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	Project     string  `pulumi:"project"`
+	Schema      *string `pulumi:"schema"`
+	ServiceName string  `pulumi:"serviceName"`
+	SubjectName *string `pulumi:"subjectName"`
+	Version     *int    `pulumi:"version"`
 }
 
 // A collection of values returned by getKafkaSchemaConfiguration.
 type LookupKafkaSchemaConfigurationResult struct {
+	// is the Global Kafka Schema configuration compatibility level when defined
+	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`

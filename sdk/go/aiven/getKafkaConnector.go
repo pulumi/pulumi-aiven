@@ -7,6 +7,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Kafka connector Data Source
+//
+// The Kafka connector data source provides information about the existing Aiven Kafka connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupKafkaConnector(ctx, &aiven.LookupKafkaConnectorArgs{
+// 			Project:       aiven_project.Kafka - con - project1.Project,
+// 			ServiceName:   aiven_service.Kafka - service1.Service_name,
+// 			ConnectorName: "kafka-es-con1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// * `project` and `serviceName`- (Required) define the project and service the Kafka Connectors belongs to.
+// They should be defined using reference as shown above to set up dependencies correctly.
+//
+// * `connectorName`- (Required) is the Kafka connector name.
 func LookupKafkaConnector(ctx *pulumi.Context, args *LookupKafkaConnectorArgs, opts ...pulumi.InvokeOption) (*LookupKafkaConnectorResult, error) {
 	var rv LookupKafkaConnectorResult
 	err := ctx.Invoke("aiven:index/getKafkaConnector:getKafkaConnector", args, &rv, opts...)
@@ -18,17 +51,25 @@ func LookupKafkaConnector(ctx *pulumi.Context, args *LookupKafkaConnectorArgs, o
 
 // A collection of arguments for invoking getKafkaConnector.
 type LookupKafkaConnectorArgs struct {
-	Config        map[string]string       `pulumi:"config"`
-	ConnectorName string                  `pulumi:"connectorName"`
-	PluginAuthor  *string                 `pulumi:"pluginAuthor"`
-	PluginClass   *string                 `pulumi:"pluginClass"`
-	PluginDocUrl  *string                 `pulumi:"pluginDocUrl"`
-	PluginTitle   *string                 `pulumi:"pluginTitle"`
-	PluginType    *string                 `pulumi:"pluginType"`
-	PluginVersion *string                 `pulumi:"pluginVersion"`
-	Project       string                  `pulumi:"project"`
-	ServiceName   string                  `pulumi:"serviceName"`
-	Tasks         []GetKafkaConnectorTask `pulumi:"tasks"`
+	Config        map[string]string `pulumi:"config"`
+	ConnectorName string            `pulumi:"connectorName"`
+	// Kafka connector author.
+	PluginAuthor *string `pulumi:"pluginAuthor"`
+	// Kafka connector Java class.
+	PluginClass *string `pulumi:"pluginClass"`
+	// Kafka connector documentation URL.
+	PluginDocUrl *string `pulumi:"pluginDocUrl"`
+	// Kafka connector title.
+	PluginTitle *string `pulumi:"pluginTitle"`
+	// Kafka connector type.
+	PluginType *string `pulumi:"pluginType"`
+	// Kafka connector version.
+	PluginVersion *string `pulumi:"pluginVersion"`
+	Project       string  `pulumi:"project"`
+	ServiceName   string  `pulumi:"serviceName"`
+	// List of tasks of a connector, each element contains `connector`
+	// (Related connector name) and `task` (Task id / number).
+	Tasks []GetKafkaConnectorTask `pulumi:"tasks"`
 }
 
 // A collection of values returned by getKafkaConnector.
@@ -36,14 +77,22 @@ type LookupKafkaConnectorResult struct {
 	Config        map[string]string `pulumi:"config"`
 	ConnectorName string            `pulumi:"connectorName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                  `pulumi:"id"`
-	PluginAuthor  string                  `pulumi:"pluginAuthor"`
-	PluginClass   string                  `pulumi:"pluginClass"`
-	PluginDocUrl  string                  `pulumi:"pluginDocUrl"`
-	PluginTitle   string                  `pulumi:"pluginTitle"`
-	PluginType    string                  `pulumi:"pluginType"`
-	PluginVersion string                  `pulumi:"pluginVersion"`
-	Project       string                  `pulumi:"project"`
-	ServiceName   string                  `pulumi:"serviceName"`
-	Tasks         []GetKafkaConnectorTask `pulumi:"tasks"`
+	Id string `pulumi:"id"`
+	// Kafka connector author.
+	PluginAuthor string `pulumi:"pluginAuthor"`
+	// Kafka connector Java class.
+	PluginClass string `pulumi:"pluginClass"`
+	// Kafka connector documentation URL.
+	PluginDocUrl string `pulumi:"pluginDocUrl"`
+	// Kafka connector title.
+	PluginTitle string `pulumi:"pluginTitle"`
+	// Kafka connector type.
+	PluginType string `pulumi:"pluginType"`
+	// Kafka connector version.
+	PluginVersion string `pulumi:"pluginVersion"`
+	Project       string `pulumi:"project"`
+	ServiceName   string `pulumi:"serviceName"`
+	// List of tasks of a connector, each element contains `connector`
+	// (Related connector name) and `task` (Task id / number).
+	Tasks []GetKafkaConnectorTask `pulumi:"tasks"`
 }

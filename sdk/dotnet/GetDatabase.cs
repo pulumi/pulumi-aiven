@@ -11,6 +11,36 @@ namespace Pulumi.Aiven
 {
     public static class GetDatabase
     {
+        /// <summary>
+        /// ## # Database Data Source
+        /// 
+        /// The Database data source provides information about the existing Aiven Database.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mydatabase = Output.Create(Aiven.GetDatabase.InvokeAsync(new Aiven.GetDatabaseArgs
+        ///         {
+        ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithVersion());
     }
@@ -18,15 +48,28 @@ namespace Pulumi.Aiven
 
     public sealed class GetDatabaseArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is the actual name of the database.
+        /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        /// </summary>
         [Input("lcCollate")]
         public string? LcCollate { get; set; }
 
+        /// <summary>
+        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        /// </summary>
         [Input("lcCtype")]
         public string? LcCtype { get; set; }
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the database belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -50,7 +93,13 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        /// </summary>
         public readonly string? LcCollate;
+        /// <summary>
+        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        /// </summary>
         public readonly string? LcCtype;
         public readonly string Project;
         public readonly string ServiceName;

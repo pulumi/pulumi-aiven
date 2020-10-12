@@ -47,6 +47,9 @@ class GetAccountTeamResult:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        time of creation.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -65,11 +68,17 @@ class GetAccountTeamResult:
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
+        """
+        is an auto-generated unique account team id.
+        """
         return pulumi.get(self, "team_id")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        time of last update.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -94,7 +103,16 @@ def get_account_team(account_id: Optional[str] = None,
                      update_time: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Account Team Data Source
+
+    The Account Team data source provides information about the existing Account Team.
+
+
+    :param str account_id: is a unique account id.
+    :param str create_time: time of creation.
+    :param str name: defines an account team name.
+    :param str team_id: is an auto-generated unique account team id.
+    :param str update_time: time of last update.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

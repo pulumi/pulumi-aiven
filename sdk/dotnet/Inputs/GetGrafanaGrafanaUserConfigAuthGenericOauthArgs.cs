@@ -12,11 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetGrafanaGrafanaUserConfigAuthGenericOauthArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in
+        /// </summary>
         [Input("allowSignUp")]
         public string? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private List<string>? _allowedDomains;
+
+        /// <summary>
+        /// Allowed domain
+        /// </summary>
         public List<string> AllowedDomains
         {
             get => _allowedDomains ?? (_allowedDomains = new List<string>());
@@ -25,35 +32,61 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("allowedOrganizations")]
         private List<string>? _allowedOrganizations;
+
+        /// <summary>
+        /// Must consist of alpha-numeric characters and dashes"
+        /// </summary>
         public List<string> AllowedOrganizations
         {
             get => _allowedOrganizations ?? (_allowedOrganizations = new List<string>());
             set => _allowedOrganizations = value;
         }
 
+        /// <summary>
+        /// API URL. This only needs to be set when using self hosted GitLab
+        /// </summary>
         [Input("apiUrl")]
         public string? ApiUrl { get; set; }
 
+        /// <summary>
+        /// Authorization URL. This only needs to be set when using self hosted GitLab
+        /// </summary>
         [Input("authUrl")]
         public string? AuthUrl { get; set; }
 
+        /// <summary>
+        /// (Required) Client ID from provider
+        /// </summary>
         [Input("clientId")]
         public string? ClientId { get; set; }
 
+        /// <summary>
+        /// (Required) Client secret from provider
+        /// </summary>
         [Input("clientSecret")]
         public string? ClientSecret { get; set; }
 
+        /// <summary>
+        /// Name of the OAuth integration
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         [Input("scopes")]
         private List<string>? _scopes;
+
+        /// <summary>
+        /// Scope must be non-empty string without whitespace
+        /// </summary>
         public List<string> Scopes
         {
             get => _scopes ?? (_scopes = new List<string>());
             set => _scopes = value;
         }
 
+        /// <summary>
+        /// Token URL. This only needs to be set when using self hosted GitLab
+        /// </summary>
         [Input("tokenUrl")]
         public string? TokenUrl { get; set; }
 

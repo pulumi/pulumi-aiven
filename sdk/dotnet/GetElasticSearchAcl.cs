@@ -11,6 +11,36 @@ namespace Pulumi.Aiven
 {
     public static class GetElasticSearchAcl
     {
+        /// <summary>
+        /// ## # Elasticsearch ACL Data Source
+        /// 
+        /// The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL 
+        /// for Elasticsearch service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var es_acls = Output.Create(Aiven.GetElasticSearchAcl.InvokeAsync(new Aiven.GetElasticSearchAclArgs
+        ///         {
+        ///             Project = aiven_project.Es_project.Project,
+        ///             ServiceName = aiven_service.Es.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetElasticSearchAclResult> InvokeAsync(GetElasticSearchAclArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclResult>("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args ?? new GetElasticSearchAclArgs(), options.WithVersion());
     }
@@ -26,12 +56,24 @@ namespace Pulumi.Aiven
             set => _acls = value;
         }
 
+        /// <summary>
+        /// enables of disables Elasticsearch ACL's.
+        /// </summary>
         [Input("enabled")]
         public bool? Enabled { get; set; }
 
+        /// <summary>
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+        /// these APIs as long as all operations only target indexes they have been granted access to.
+        /// </summary>
         [Input("extendedAcl")]
         public bool? ExtendedAcl { get; set; }
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the ACL belongs to. 
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -48,7 +90,15 @@ namespace Pulumi.Aiven
     public sealed class GetElasticSearchAclResult
     {
         public readonly ImmutableArray<Outputs.GetElasticSearchAclAclResult> Acls;
+        /// <summary>
+        /// enables of disables Elasticsearch ACL's.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+        /// these APIs as long as all operations only target indexes they have been granted access to.
+        /// </summary>
         public readonly bool? ExtendedAcl;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -6,6 +6,33 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Grafana Resource
+ *
+ * The Grafana resource allows the creation and management of an Aiven Grafana services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const gr1 = new aiven.Grafana("gr1", {
+ *     project: data.aiven_project.ps1.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-1",
+ *     serviceName: "my-gr1",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     grafanaUserConfig: {
+ *         alertingEnabled: true,
+ *         publicAccess: {
+ *             grafana: true,
+ *         },
+ *     },
+ * });
+ * ```
+ */
 export class Grafana extends pulumi.CustomResource {
     /**
      * Get an existing Grafana resource's state with the given name, ID, and optional extra
@@ -35,7 +62,13 @@ export class Grafana extends pulumi.CustomResource {
     }
 
     /**
-     * Cloud the service runs in
+     * defines where the cloud provider and region where the service is hosted
+     * in. This can be changed freely after service is created. Changing the value will trigger
+     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+     * specific region name. These are documented on each Cloud provider's own support articles,
+     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
     /**
@@ -43,35 +76,53 @@ export class Grafana extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.GrafanaComponent[]>;
     /**
-     * Grafana server provided values
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
      */
     public readonly grafana!: pulumi.Output<outputs.GrafanaGrafana>;
     /**
-     * Grafana user configurable settings
+     * defines Grafana specific additional configuration options. The following 
+     * configuration options available:
      */
     public readonly grafanaUserConfig!: pulumi.Output<outputs.GrafanaGrafanaUserConfig | undefined>;
     /**
-     * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+     * day of week when maintenance operations should be performed. 
+     * One monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
     /**
-     * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+     * time of day when maintenance operations should be performed. 
+     * UTC time in HH:mm:ss format.
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * Subscription plan
+     * defines what kind of computing resources are allocated for the service. It can
+     * be changed after creation, though there are some restrictions when going to a smaller
+     * plan such as the new plan must have sufficient amount of disk space to store all current
+     * data and switching to a plan with fewer nodes might not be supported. The basic plan
+     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
+     * and amount of disk space varies but naming is based on memory). The exact options can be
+     * seen from the Aiven web console's Create Service dialog.
      */
     public readonly plan!: pulumi.Output<string | undefined>;
     /**
-     * Target project
+     * identifies the project the service belongs to. To set up proper dependency
+     * between the project and the service, refer to the project as shown in the above example.
+     * Project cannot be changed later without destroying and re-creating the service.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Identifier of the VPC the service should be in, if any
+     * optionally specifies the VPC the service should run in. If the value
+     * is not set the service is not run inside a VPC. When set, the value should be given as a
+     * reference as shown above to set up dependencies correctly and the VPC must be in the same
+     * cloud and region as the service itself. Project can be freely moved to and from VPC after
+     * creation but doing so triggers migration to new servers so the operation can take
+     * significant amount of time to complete if the service has a lot of data.
      */
     public readonly projectVpcId!: pulumi.Output<string | undefined>;
     /**
-     * Service hostname
+     * Grafana hostname.
      */
     public /*out*/ readonly serviceHost!: pulumi.Output<string>;
     /**
@@ -79,15 +130,17 @@ export class Grafana extends pulumi.CustomResource {
      */
     public readonly serviceIntegrations!: pulumi.Output<outputs.GrafanaServiceIntegration[] | undefined>;
     /**
-     * Service name
+     * specifies the actual name of the service. The name cannot be changed
+     * later without destroying and re-creating the service so name should be picked based on
+     * intended service usage rather than current attributes.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Password used for connecting to the service, if applicable
+     * Password used for connecting to the Grafana service, if applicable.
      */
     public /*out*/ readonly servicePassword!: pulumi.Output<string>;
     /**
-     * Service port
+     * Grafana port.
      */
     public /*out*/ readonly servicePort!: pulumi.Output<number>;
     /**
@@ -95,19 +148,23 @@ export class Grafana extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceType!: pulumi.Output<string>;
     /**
-     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+     * URI for connecting to the Grafana service.
      */
     public /*out*/ readonly serviceUri!: pulumi.Output<string>;
     /**
-     * Username used for connecting to the service, if applicable
+     * Username used for connecting to the Grafana service, if applicable.
      */
     public /*out*/ readonly serviceUsername!: pulumi.Output<string>;
     /**
-     * Service state
+     * Service state.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Prevent service from being deleted. It is recommended to have this enabled for all services.
+     * prevents the service from being deleted. It is recommended to
+     * set this to `true` for all production services to prevent unintentional service
+     * deletions. This does not shield against deleting databases or topics but for services
+     * with backups much of the content can at least be restored from backup in case accidental
+     * deletion is done.
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
 
@@ -186,7 +243,13 @@ export class Grafana extends pulumi.CustomResource {
  */
 export interface GrafanaState {
     /**
-     * Cloud the service runs in
+     * defines where the cloud provider and region where the service is hosted
+     * in. This can be changed freely after service is created. Changing the value will trigger
+     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+     * specific region name. These are documented on each Cloud provider's own support articles,
+     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     readonly cloudName?: pulumi.Input<string>;
     /**
@@ -194,35 +257,53 @@ export interface GrafanaState {
      */
     readonly components?: pulumi.Input<pulumi.Input<inputs.GrafanaComponent>[]>;
     /**
-     * Grafana server provided values
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
      */
     readonly grafana?: pulumi.Input<inputs.GrafanaGrafana>;
     /**
-     * Grafana user configurable settings
+     * defines Grafana specific additional configuration options. The following 
+     * configuration options available:
      */
     readonly grafanaUserConfig?: pulumi.Input<inputs.GrafanaGrafanaUserConfig>;
     /**
-     * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+     * day of week when maintenance operations should be performed. 
+     * One monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
-     * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+     * time of day when maintenance operations should be performed. 
+     * UTC time in HH:mm:ss format.
      */
     readonly maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Subscription plan
+     * defines what kind of computing resources are allocated for the service. It can
+     * be changed after creation, though there are some restrictions when going to a smaller
+     * plan such as the new plan must have sufficient amount of disk space to store all current
+     * data and switching to a plan with fewer nodes might not be supported. The basic plan
+     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
+     * and amount of disk space varies but naming is based on memory). The exact options can be
+     * seen from the Aiven web console's Create Service dialog.
      */
     readonly plan?: pulumi.Input<string>;
     /**
-     * Target project
+     * identifies the project the service belongs to. To set up proper dependency
+     * between the project and the service, refer to the project as shown in the above example.
+     * Project cannot be changed later without destroying and re-creating the service.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Identifier of the VPC the service should be in, if any
+     * optionally specifies the VPC the service should run in. If the value
+     * is not set the service is not run inside a VPC. When set, the value should be given as a
+     * reference as shown above to set up dependencies correctly and the VPC must be in the same
+     * cloud and region as the service itself. Project can be freely moved to and from VPC after
+     * creation but doing so triggers migration to new servers so the operation can take
+     * significant amount of time to complete if the service has a lot of data.
      */
     readonly projectVpcId?: pulumi.Input<string>;
     /**
-     * Service hostname
+     * Grafana hostname.
      */
     readonly serviceHost?: pulumi.Input<string>;
     /**
@@ -230,15 +311,17 @@ export interface GrafanaState {
      */
     readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.GrafanaServiceIntegration>[]>;
     /**
-     * Service name
+     * specifies the actual name of the service. The name cannot be changed
+     * later without destroying and re-creating the service so name should be picked based on
+     * intended service usage rather than current attributes.
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * Password used for connecting to the service, if applicable
+     * Password used for connecting to the Grafana service, if applicable.
      */
     readonly servicePassword?: pulumi.Input<string>;
     /**
-     * Service port
+     * Grafana port.
      */
     readonly servicePort?: pulumi.Input<number>;
     /**
@@ -246,19 +329,23 @@ export interface GrafanaState {
      */
     readonly serviceType?: pulumi.Input<string>;
     /**
-     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+     * URI for connecting to the Grafana service.
      */
     readonly serviceUri?: pulumi.Input<string>;
     /**
-     * Username used for connecting to the service, if applicable
+     * Username used for connecting to the Grafana service, if applicable.
      */
     readonly serviceUsername?: pulumi.Input<string>;
     /**
-     * Service state
+     * Service state.
      */
     readonly state?: pulumi.Input<string>;
     /**
-     * Prevent service from being deleted. It is recommended to have this enabled for all services.
+     * prevents the service from being deleted. It is recommended to
+     * set this to `true` for all production services to prevent unintentional service
+     * deletions. This does not shield against deleting databases or topics but for services
+     * with backups much of the content can at least be restored from backup in case accidental
+     * deletion is done.
      */
     readonly terminationProtection?: pulumi.Input<boolean>;
 }
@@ -268,35 +355,59 @@ export interface GrafanaState {
  */
 export interface GrafanaArgs {
     /**
-     * Cloud the service runs in
+     * defines where the cloud provider and region where the service is hosted
+     * in. This can be changed freely after service is created. Changing the value will trigger
+     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+     * specific region name. These are documented on each Cloud provider's own support articles,
+     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     readonly cloudName?: pulumi.Input<string>;
     /**
-     * Grafana server provided values
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
      */
     readonly grafana?: pulumi.Input<inputs.GrafanaGrafana>;
     /**
-     * Grafana user configurable settings
+     * defines Grafana specific additional configuration options. The following 
+     * configuration options available:
      */
     readonly grafanaUserConfig?: pulumi.Input<inputs.GrafanaGrafanaUserConfig>;
     /**
-     * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+     * day of week when maintenance operations should be performed. 
+     * One monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
-     * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+     * time of day when maintenance operations should be performed. 
+     * UTC time in HH:mm:ss format.
      */
     readonly maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Subscription plan
+     * defines what kind of computing resources are allocated for the service. It can
+     * be changed after creation, though there are some restrictions when going to a smaller
+     * plan such as the new plan must have sufficient amount of disk space to store all current
+     * data and switching to a plan with fewer nodes might not be supported. The basic plan
+     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
+     * and amount of disk space varies but naming is based on memory). The exact options can be
+     * seen from the Aiven web console's Create Service dialog.
      */
     readonly plan?: pulumi.Input<string>;
     /**
-     * Target project
+     * identifies the project the service belongs to. To set up proper dependency
+     * between the project and the service, refer to the project as shown in the above example.
+     * Project cannot be changed later without destroying and re-creating the service.
      */
     readonly project: pulumi.Input<string>;
     /**
-     * Identifier of the VPC the service should be in, if any
+     * optionally specifies the VPC the service should run in. If the value
+     * is not set the service is not run inside a VPC. When set, the value should be given as a
+     * reference as shown above to set up dependencies correctly and the VPC must be in the same
+     * cloud and region as the service itself. Project can be freely moved to and from VPC after
+     * creation but doing so triggers migration to new servers so the operation can take
+     * significant amount of time to complete if the service has a lot of data.
      */
     readonly projectVpcId?: pulumi.Input<string>;
     /**
@@ -304,11 +415,17 @@ export interface GrafanaArgs {
      */
     readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.GrafanaServiceIntegration>[]>;
     /**
-     * Service name
+     * specifies the actual name of the service. The name cannot be changed
+     * later without destroying and re-creating the service so name should be picked based on
+     * intended service usage rather than current attributes.
      */
     readonly serviceName: pulumi.Input<string>;
     /**
-     * Prevent service from being deleted. It is recommended to have this enabled for all services.
+     * prevents the service from being deleted. It is recommended to
+     * set this to `true` for all production services to prevent unintentional service
+     * deletions. This does not shield against deleting databases or topics but for services
+     * with backups much of the content can at least be restored from backup in case accidental
+     * deletion is done.
      */
     readonly terminationProtection?: pulumi.Input<boolean>;
 }

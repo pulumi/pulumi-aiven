@@ -7,6 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Elasticsearch ACL Data Source
+//
+// The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL
+// for Elasticsearch service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupElasticSearchAcl(ctx, &aiven.LookupElasticSearchAclArgs{
+// 			Project:     aiven_project.Es - project.Project,
+// 			ServiceName: aiven_service.Es.Service_name,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupElasticSearchAcl(ctx *pulumi.Context, args *LookupElasticSearchAclArgs, opts ...pulumi.InvokeOption) (*LookupElasticSearchAclResult, error) {
 	var rv LookupElasticSearchAclResult
 	err := ctx.Invoke("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args, &rv, opts...)
@@ -18,18 +46,28 @@ func LookupElasticSearchAcl(ctx *pulumi.Context, args *LookupElasticSearchAclArg
 
 // A collection of arguments for invoking getElasticSearchAcl.
 type LookupElasticSearchAclArgs struct {
-	Acls        []GetElasticSearchAclAcl `pulumi:"acls"`
-	Enabled     *bool                    `pulumi:"enabled"`
-	ExtendedAcl *bool                    `pulumi:"extendedAcl"`
-	Project     string                   `pulumi:"project"`
-	ServiceName string                   `pulumi:"serviceName"`
+	Acls []GetElasticSearchAclAcl `pulumi:"acls"`
+	// enables of disables Elasticsearch ACL's.
+	Enabled *bool `pulumi:"enabled"`
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
+	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+	// these APIs as long as all operations only target indexes they have been granted access to.
+	ExtendedAcl *bool `pulumi:"extendedAcl"`
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getElasticSearchAcl.
 type LookupElasticSearchAclResult struct {
-	Acls        []GetElasticSearchAclAcl `pulumi:"acls"`
-	Enabled     *bool                    `pulumi:"enabled"`
-	ExtendedAcl *bool                    `pulumi:"extendedAcl"`
+	Acls []GetElasticSearchAclAcl `pulumi:"acls"`
+	// enables of disables Elasticsearch ACL's.
+	Enabled *bool `pulumi:"enabled"`
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
+	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+	// these APIs as long as all operations only target indexes they have been granted access to.
+	ExtendedAcl *bool `pulumi:"extendedAcl"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
 	Project     string `pulumi:"project"`

@@ -10,16 +10,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Project User Resource
+//
+// The Project User resource allows the creation and management of an Aiven Project Users.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewProjectUser(ctx, "mytestuser", &aiven.ProjectUserArgs{
+// 			Email:      pulumi.String("john.doe@example.com"),
+// 			MemberType: pulumi.String("admin"),
+// 			Project:    pulumi.Any(aiven_project.Myproject.Project),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectUser struct {
 	pulumi.CustomResourceState
 
-	// Whether the user has accepted project membership or not
+	// is a computed property tells whether the user has accepted the request to join
+	// the project; adding user to a project sends an invitation to the target user and the
+	// actual membership is only created once the user accepts the invitation. This property
+	// cannot be set, only read.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
-	// Email address of the user
+	// identifies the email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Project membership type. One of: admin, developer, operator
+	// defines the access level the user has to the project.
 	MemberType pulumi.StringOutput `pulumi:"memberType"`
-	// The project the user belongs to
+	// defines the project the user is a member of.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -60,24 +91,30 @@ func GetProjectUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectUser resources.
 type projectUserState struct {
-	// Whether the user has accepted project membership or not
+	// is a computed property tells whether the user has accepted the request to join
+	// the project; adding user to a project sends an invitation to the target user and the
+	// actual membership is only created once the user accepts the invitation. This property
+	// cannot be set, only read.
 	Accepted *bool `pulumi:"accepted"`
-	// Email address of the user
+	// identifies the email address of the user.
 	Email *string `pulumi:"email"`
-	// Project membership type. One of: admin, developer, operator
+	// defines the access level the user has to the project.
 	MemberType *string `pulumi:"memberType"`
-	// The project the user belongs to
+	// defines the project the user is a member of.
 	Project *string `pulumi:"project"`
 }
 
 type ProjectUserState struct {
-	// Whether the user has accepted project membership or not
+	// is a computed property tells whether the user has accepted the request to join
+	// the project; adding user to a project sends an invitation to the target user and the
+	// actual membership is only created once the user accepts the invitation. This property
+	// cannot be set, only read.
 	Accepted pulumi.BoolPtrInput
-	// Email address of the user
+	// identifies the email address of the user.
 	Email pulumi.StringPtrInput
-	// Project membership type. One of: admin, developer, operator
+	// defines the access level the user has to the project.
 	MemberType pulumi.StringPtrInput
-	// The project the user belongs to
+	// defines the project the user is a member of.
 	Project pulumi.StringPtrInput
 }
 
@@ -86,21 +123,21 @@ func (ProjectUserState) ElementType() reflect.Type {
 }
 
 type projectUserArgs struct {
-	// Email address of the user
+	// identifies the email address of the user.
 	Email string `pulumi:"email"`
-	// Project membership type. One of: admin, developer, operator
+	// defines the access level the user has to the project.
 	MemberType string `pulumi:"memberType"`
-	// The project the user belongs to
+	// defines the project the user is a member of.
 	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectUser resource.
 type ProjectUserArgs struct {
-	// Email address of the user
+	// identifies the email address of the user.
 	Email pulumi.StringInput
-	// Project membership type. One of: admin, developer, operator
+	// defines the access level the user has to the project.
 	MemberType pulumi.StringInput
-	// The project the user belongs to
+	// defines the project the user is a member of.
 	Project pulumi.StringInput
 }
 

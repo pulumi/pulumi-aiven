@@ -11,6 +11,38 @@ namespace Pulumi.Aiven
 {
     public static class GetMirrorMakerReplicationFlow
     {
+        /// <summary>
+        /// ## # MirrorMaker 2 Replication Flow Data Source
+        /// 
+        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 
+        /// Replication Flow on Aiven Cloud.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var f1 = Output.Create(Aiven.GetMirrorMakerReplicationFlow.InvokeAsync(new Aiven.GetMirrorMakerReplicationFlowArgs
+        ///         {
+        ///             Project = aiven_project.Kafka_mm_project1.Project,
+        ///             ServiceName = aiven_service.Mm.Service_name,
+        ///             SourceCluster = aiven_service.Source.Service_name,
+        ///             TargetCluster = aiven_service.Target.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetMirrorMakerReplicationFlowResult> InvokeAsync(GetMirrorMakerReplicationFlowArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithVersion());
     }
@@ -18,23 +50,40 @@ namespace Pulumi.Aiven
 
     public sealed class GetMirrorMakerReplicationFlowArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// enable of disable replication flows for a mirror maker service
+        /// </summary>
         [Input("enable")]
         public bool? Enable { get; set; }
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// is a source cluster alias.
+        /// </summary>
         [Input("sourceCluster", required: true)]
         public string SourceCluster { get; set; } = null!;
 
+        /// <summary>
+        /// is a target cluster alias.
+        /// </summary>
         [Input("targetCluster", required: true)]
         public string TargetCluster { get; set; } = null!;
 
         [Input("topics")]
         private List<string>? _topics;
+
+        /// <summary>
+        /// is a list of topics and/or regular expressions to replicate.
+        /// </summary>
         public List<string> Topics
         {
             get => _topics ?? (_topics = new List<string>());
@@ -43,6 +92,10 @@ namespace Pulumi.Aiven
 
         [Input("topicsBlacklists")]
         private List<string>? _topicsBlacklists;
+
+        /// <summary>
+        /// is a list of topics and/or regular expressions to not replicate.
+        /// </summary>
         public List<string> TopicsBlacklists
         {
             get => _topicsBlacklists ?? (_topicsBlacklists = new List<string>());
@@ -58,6 +111,9 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetMirrorMakerReplicationFlowResult
     {
+        /// <summary>
+        /// enable of disable replication flows for a mirror maker service
+        /// </summary>
         public readonly bool? Enable;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -67,7 +123,13 @@ namespace Pulumi.Aiven
         public readonly string ServiceName;
         public readonly string SourceCluster;
         public readonly string TargetCluster;
+        /// <summary>
+        /// is a list of topics and/or regular expressions to replicate.
+        /// </summary>
         public readonly ImmutableArray<string> Topics;
+        /// <summary>
+        /// is a list of topics and/or regular expressions to not replicate.
+        /// </summary>
         public readonly ImmutableArray<string> TopicsBlacklists;
 
         [OutputConstructor]

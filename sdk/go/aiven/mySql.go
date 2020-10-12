@@ -10,46 +10,120 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # MySQL Resource
+//
+// The MySQL resource allows the creation and management of an Aiven MySQL services.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewMySql(ctx, "mysql1", &aiven.MySqlArgs{
+// 			Project:               pulumi.Any(data.Aiven_project.Foo.Project),
+// 			CloudName:             pulumi.String("google-europe-west1"),
+// 			Plan:                  pulumi.String("business-4"),
+// 			ServiceName:           pulumi.String("my-mysql1"),
+// 			MaintenanceWindowDow:  pulumi.String("monday"),
+// 			MaintenanceWindowTime: pulumi.String("10:00:00"),
+// 			MysqlUserConfig: &aiven.MySqlMysqlUserConfigArgs{
+// 				MysqlVersion: pulumi.String("8"),
+// 				Mysql: &aiven.MySqlMysqlUserConfigMysqlArgs{
+// 					SqlMode:              pulumi.String("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE"),
+// 					SqlRequirePrimaryKey: pulumi.String("true"),
+// 				},
+// 				PublicAccess: &aiven.MySqlMysqlUserConfigPublicAccessArgs{
+// 					Mysql: pulumi.String("true"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type MySql struct {
 	pulumi.CustomResourceState
 
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components MySqlComponentArrayOutput `pulumi:"components"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
 	Mysql MySqlMysqlOutput `pulumi:"mysql"`
-	// MySQL specific user configurable settings
+	// defines MySQL specific additional configuration options. The following
+	// configuration options available:
 	MysqlUserConfig MySqlMysqlUserConfigPtrOutput `pulumi:"mysqlUserConfig"`
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan pulumi.StringPtrOutput `pulumi:"plan"`
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
-	// Service hostname
+	// MySQL hostname.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// can be used to define service integrations that must exist
+	// immediately upon service creation. By the time of writing the only such integration is
+	// defining that MySQL service is a read-replica of another service. To define a read-
+	// replica the following configuration needs to be added:
 	ServiceIntegrations MySqlServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Password used for connecting to the service, if applicable
+	// Password used for connecting to the MySQL service, if applicable.
 	ServicePassword pulumi.StringOutput `pulumi:"servicePassword"`
-	// Service port
+	// MySQL port.
 	ServicePort pulumi.IntOutput `pulumi:"servicePort"`
 	// Aiven internal service type code
 	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	// URI for connecting to the MySQL service.
 	ServiceUri pulumi.StringOutput `pulumi:"serviceUri"`
-	// Username used for connecting to the service, if applicable
+	// Username used for connecting to the MySQL service, if applicable.
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
-	// Service state
+	// Service state.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -87,84 +161,150 @@ func GetMySql(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MySql resources.
 type mySqlState struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []MySqlComponent `pulumi:"components"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
 	Mysql *MySqlMysql `pulumi:"mysql"`
-	// MySQL specific user configurable settings
+	// defines MySQL specific additional configuration options. The following
+	// configuration options available:
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan *string `pulumi:"plan"`
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project *string `pulumi:"project"`
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Service hostname
+	// MySQL hostname.
 	ServiceHost *string `pulumi:"serviceHost"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// can be used to define service integrations that must exist
+	// immediately upon service creation. By the time of writing the only such integration is
+	// defining that MySQL service is a read-replica of another service. To define a read-
+	// replica the following configuration needs to be added:
 	ServiceIntegrations []MySqlServiceIntegration `pulumi:"serviceIntegrations"`
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
-	// Password used for connecting to the service, if applicable
+	// Password used for connecting to the MySQL service, if applicable.
 	ServicePassword *string `pulumi:"servicePassword"`
-	// Service port
+	// MySQL port.
 	ServicePort *int `pulumi:"servicePort"`
 	// Aiven internal service type code
 	ServiceType *string `pulumi:"serviceType"`
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	// URI for connecting to the MySQL service.
 	ServiceUri *string `pulumi:"serviceUri"`
-	// Username used for connecting to the service, if applicable
+	// Username used for connecting to the MySQL service, if applicable.
 	ServiceUsername *string `pulumi:"serviceUsername"`
-	// Service state
+	// Service state.
 	State *string `pulumi:"state"`
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type MySqlState struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components MySqlComponentArrayInput
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// MySQL specific server provided values
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
 	Mysql MySqlMysqlPtrInput
-	// MySQL specific user configurable settings
+	// defines MySQL specific additional configuration options. The following
+	// configuration options available:
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan pulumi.StringPtrInput
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project pulumi.StringPtrInput
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
-	// Service hostname
+	// MySQL hostname.
 	ServiceHost pulumi.StringPtrInput
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// can be used to define service integrations that must exist
+	// immediately upon service creation. By the time of writing the only such integration is
+	// defining that MySQL service is a read-replica of another service. To define a read-
+	// replica the following configuration needs to be added:
 	ServiceIntegrations MySqlServiceIntegrationArrayInput
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
-	// Password used for connecting to the service, if applicable
+	// Password used for connecting to the MySQL service, if applicable.
 	ServicePassword pulumi.StringPtrInput
-	// Service port
+	// MySQL port.
 	ServicePort pulumi.IntPtrInput
 	// Aiven internal service type code
 	ServiceType pulumi.StringPtrInput
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	// URI for connecting to the MySQL service.
 	ServiceUri pulumi.StringPtrInput
-	// Username used for connecting to the service, if applicable
+	// Username used for connecting to the MySQL service, if applicable.
 	ServiceUsername pulumi.StringPtrInput
-	// Service state
+	// Service state.
 	State pulumi.StringPtrInput
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -173,53 +313,119 @@ func (MySqlState) ElementType() reflect.Type {
 }
 
 type mySqlArgs struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
 	Mysql *MySqlMysql `pulumi:"mysql"`
-	// MySQL specific user configurable settings
+	// defines MySQL specific additional configuration options. The following
+	// configuration options available:
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan *string `pulumi:"plan"`
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project string `pulumi:"project"`
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// can be used to define service integrations that must exist
+	// immediately upon service creation. By the time of writing the only such integration is
+	// defining that MySQL service is a read-replica of another service. To define a read-
+	// replica the following configuration needs to be added:
 	ServiceIntegrations []MySqlServiceIntegration `pulumi:"serviceIntegrations"`
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a MySql resource.
 type MySqlArgs struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// MySQL specific server provided values
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
 	Mysql MySqlMysqlPtrInput
-	// MySQL specific user configurable settings
+	// defines MySQL specific additional configuration options. The following
+	// configuration options available:
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan pulumi.StringPtrInput
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project pulumi.StringInput
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// can be used to define service integrations that must exist
+	// immediately upon service creation. By the time of writing the only such integration is
+	// defining that MySQL service is a read-replica of another service. To define a read-
+	// replica the following configuration needs to be added:
 	ServiceIntegrations MySqlServiceIntegrationArrayInput
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 

@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Service User Data Source
+ *
+ * The Service User data source provides information about the existing Aiven Service User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myserviceuser = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getServiceUser({
+ *     project: project,
+ *     serviceName: serviceName,
+ *     username: "<USERNAME>",
+ * }, { async: true }));
+ * ```
+ */
 export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceUserResult> {
     if (!opts) {
         opts = {}
@@ -29,12 +47,31 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getServiceUser.
  */
 export interface GetServiceUserArgs {
+    /**
+     * is the access certificate of the user (not applicable for all services).
+     */
     readonly accessCert?: string;
+    /**
+     * is the access key of the user (not applicable for all services).
+     */
     readonly accessKey?: string;
+    /**
+     * is the password of the user (not applicable for all services).
+     */
     readonly password?: string;
+    /**
+     * and `serviceName` - (Required) define the project and service the user belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * tells whether the user is primary account or regular account.
+     */
     readonly type?: string;
+    /**
+     * is the actual name of the user account.
+     */
     readonly username: string;
 }
 
@@ -42,15 +79,27 @@ export interface GetServiceUserArgs {
  * A collection of values returned by getServiceUser.
  */
 export interface GetServiceUserResult {
+    /**
+     * is the access certificate of the user (not applicable for all services).
+     */
     readonly accessCert: string;
+    /**
+     * is the access key of the user (not applicable for all services).
+     */
     readonly accessKey: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * is the password of the user (not applicable for all services).
+     */
     readonly password: string;
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * tells whether the user is primary account or regular account.
+     */
     readonly type: string;
     readonly username: string;
 }

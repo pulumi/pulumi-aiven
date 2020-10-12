@@ -12,15 +12,33 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetKafkaKafkaUserConfigKafkaArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Enable auto creation of topics
+        /// </summary>
         [Input("autoCreateTopicsEnable")]
         public string? AutoCreateTopicsEnable { get; set; }
 
+        /// <summary>
+        /// Specify the final compression type for a given topic. This 
+        /// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+        /// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+        /// which means retain the original compression codec set by the producer.
+        /// </summary>
         [Input("compressionType")]
         public string? CompressionType { get; set; }
 
+        /// <summary>
+        /// Idle connections timeout: the server socket processor 
+        /// threads close the connections that idle for longer than this.
+        /// </summary>
         [Input("connectionsMaxIdleMs")]
         public string? ConnectionsMaxIdleMs { get; set; }
 
+        /// <summary>
+        /// Replication factor for autocreated topics
+        /// * `group_max_session_timeout_ms": {
+        /// * `group_min_session_timeout_ms": {
+        /// </summary>
         [Input("defaultReplicationFactor")]
         public string? DefaultReplicationFactor { get; set; }
 
@@ -30,33 +48,66 @@ namespace Pulumi.Aiven.Inputs
         [Input("groupMinSessionTimeoutMs")]
         public string? GroupMinSessionTimeoutMs { get; set; }
 
+        /// <summary>
+        /// The maximum amount of time message will 
+        /// remain uncompacted. Only applicable for logs that are being compacted
+        /// * `log_cleaner_min_cleanable_ratio": {
+        /// </summary>
         [Input("logCleanerMaxCompactionLagMs")]
         public string? LogCleanerMaxCompactionLagMs { get; set; }
 
         [Input("logCleanerMinCleanableRatio")]
         public string? LogCleanerMinCleanableRatio { get; set; }
 
+        /// <summary>
+        /// The minimum time a message will remain 
+        /// uncompacted in the log. Only applicable for logs that are being compacted.
+        /// * `log_cleanup_policy": {
+        /// </summary>
         [Input("logCleanerMinCompactionLagMs")]
         public string? LogCleanerMinCompactionLagMs { get; set; }
 
         [Input("logCleanupPolicy")]
         public string? LogCleanupPolicy { get; set; }
 
+        /// <summary>
+        /// The maximum difference allowed between 
+        /// the timestamp when a broker receives a message and the timestamp specified in the message
+        /// </summary>
         [Input("logMessageTimestampDifferenceMaxMs")]
         public string? LogMessageTimestampDifferenceMaxMs { get; set; }
 
+        /// <summary>
+        /// Define whether the timestamp in the message is 
+        /// message create time or log append time.
+        /// </summary>
         [Input("logMessageTimestampType")]
         public string? LogMessageTimestampType { get; set; }
 
+        /// <summary>
+        /// The maximum size of the log before deleting messages
+        /// </summary>
         [Input("logRetentionBytes")]
         public string? LogRetentionBytes { get; set; }
 
+        /// <summary>
+        /// The number of hours to keep a log file before deleting it
+        /// </summary>
         [Input("logRetentionHours")]
         public string? LogRetentionHours { get; set; }
 
+        /// <summary>
+        /// The maximum size of a single log file
+        /// </summary>
         [Input("logSegmentBytes")]
         public string? LogSegmentBytes { get; set; }
 
+        /// <summary>
+        /// The maximum number of connections allowed from each ip 
+        /// address (defaults to 2147483647).
+        /// * `max_incremental_fetch_session_cache_slots": {
+        /// * `message_max_bytes": {
+        /// </summary>
         [Input("maxConnectionsPerIp")]
         public string? MaxConnectionsPerIp { get; set; }
 
@@ -66,21 +117,45 @@ namespace Pulumi.Aiven.Inputs
         [Input("messageMaxBytes")]
         public string? MessageMaxBytes { get; set; }
 
+        /// <summary>
+        /// Number of partitions for autocreated topics
+        /// * `offsets_retention_minutes": {
+        /// </summary>
         [Input("numPartitions")]
         public string? NumPartitions { get; set; }
 
         [Input("offsetsRetentionMinutes")]
         public string? OffsetsRetentionMinutes { get; set; }
 
+        /// <summary>
+        /// The purge interval (in number of 
+        /// requests) of the producer request purgatory(defaults to 1000).
+        /// </summary>
         [Input("producerPurgatoryPurgeIntervalRequests")]
         public string? ProducerPurgatoryPurgeIntervalRequests { get; set; }
 
+        /// <summary>
+        /// The number of bytes of messages to attempt to fetch 
+        /// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+        /// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+        /// will still be returned to ensure that progress can be made.
+        /// </summary>
         [Input("replicaFetchMaxBytes")]
         public string? ReplicaFetchMaxBytes { get; set; }
 
+        /// <summary>
+        /// Maximum bytes expected for the entire fetch 
+        /// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+        /// in the first non-empty partition of the fetch is larger than this value, the record batch will
+        /// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        /// </summary>
         [Input("replicaFetchResponseMaxBytes")]
         public string? ReplicaFetchResponseMaxBytes { get; set; }
 
+        /// <summary>
+        /// The maximum number of bytes in a socket request 
+        /// (defaults to 104857600).
+        /// </summary>
         [Input("socketRequestMaxBytes")]
         public string? SocketRequestMaxBytes { get; set; }
 

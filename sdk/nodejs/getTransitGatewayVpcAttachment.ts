@@ -6,6 +6,25 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Transit Gateway VPC Attachment Data Source
+ *
+ * The Transit Gateway VPC Attachment resource allows the creation and management Transit
+ * Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const attachment = aiven.getTransitGatewayVpcAttachment({
+ *     vpcId: aiven_project_vpc.bar.id,
+ *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
+ *     peerVpc: "google-project1",
+ * });
+ * ```
+ */
 export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitGatewayVpcAttachmentResult> {
     if (!opts) {
         opts = {}
@@ -30,13 +49,28 @@ export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachm
  * A collection of arguments for invoking getTransitGatewayVpcAttachment.
  */
 export interface GetTransitGatewayVpcAttachmentArgs {
+    /**
+     * AWS account ID of the peered VPC.
+     */
     readonly peerCloudAccount: string;
+    /**
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC).
+     */
     readonly peerRegion?: string;
+    /**
+     * Transit gateway ID
+     */
     readonly peerVpc: string;
     readonly peeringConnectionId?: string;
     readonly state?: string;
     readonly stateInfo?: {[key: string]: any};
+    /**
+     * List of private IPv4 ranges to route through the peering connection.
+     */
     readonly userPeerNetworkCidrs?: string[];
+    /**
+     * is the Aiven VPC the peering connection is associated with.
+     */
     readonly vpcId: string;
 }
 
@@ -49,11 +83,17 @@ export interface GetTransitGatewayVpcAttachmentResult {
      */
     readonly id: string;
     readonly peerCloudAccount: string;
+    /**
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC).
+     */
     readonly peerRegion?: string;
     readonly peerVpc: string;
     readonly peeringConnectionId: string;
     readonly state: string;
     readonly stateInfo: {[key: string]: any};
+    /**
+     * List of private IPv4 ranges to route through the peering connection.
+     */
     readonly userPeerNetworkCidrs?: string[];
     readonly vpcId: string;
 }

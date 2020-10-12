@@ -7,6 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Account Team Member Data Source
+//
+// The Account Team Member  data source provides information about the existing Aiven Account Team Member.
 func LookupAccountTeamMember(ctx *pulumi.Context, args *LookupAccountTeamMemberArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamMemberResult, error) {
 	var rv LookupAccountTeamMemberResult
 	err := ctx.Invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", args, &rv, opts...)
@@ -18,21 +21,35 @@ func LookupAccountTeamMember(ctx *pulumi.Context, args *LookupAccountTeamMemberA
 
 // A collection of arguments for invoking getAccountTeamMember.
 type LookupAccountTeamMemberArgs struct {
-	Accepted           *bool   `pulumi:"accepted"`
-	AccountId          string  `pulumi:"accountId"`
-	CreateTime         *string `pulumi:"createTime"`
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and now a member of an account team.
+	Accepted *bool `pulumi:"accepted"`
+	// is a unique account id.
+	AccountId string `pulumi:"accountId"`
+	// time of creation.
+	CreateTime *string `pulumi:"createTime"`
+	// team invited by user email.
 	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
-	TeamId             string  `pulumi:"teamId"`
-	UserEmail          string  `pulumi:"userEmail"`
+	// is an account team id.
+	TeamId string `pulumi:"teamId"`
+	// is a user email address that first will be invited, and after accepting an invitation,
+	// he or she becomes a member of a team.
+	UserEmail string `pulumi:"userEmail"`
 }
 
 // A collection of values returned by getAccountTeamMember.
 type LookupAccountTeamMemberResult struct {
-	Accepted   bool   `pulumi:"accepted"`
-	AccountId  string `pulumi:"accountId"`
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and now a member of an account team.
+	Accepted  bool   `pulumi:"accepted"`
+	AccountId string `pulumi:"accountId"`
+	// time of creation.
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// team invited by user email.
 	InvitedByUserEmail string `pulumi:"invitedByUserEmail"`
 	TeamId             string `pulumi:"teamId"`
 	UserEmail          string `pulumi:"userEmail"`

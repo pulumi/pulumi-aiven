@@ -64,6 +64,9 @@ class GetTransitGatewayVpcAttachmentResult:
     @property
     @pulumi.getter(name="peerRegion")
     def peer_region(self) -> Optional[str]:
+        """
+        AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        """
         return pulumi.get(self, "peer_region")
 
     @property
@@ -89,6 +92,9 @@ class GetTransitGatewayVpcAttachmentResult:
     @property
     @pulumi.getter(name="userPeerNetworkCidrs")
     def user_peer_network_cidrs(self) -> Optional[List[str]]:
+        """
+        List of private IPv4 ranges to route through the peering connection.
+        """
         return pulumi.get(self, "user_peer_network_cidrs")
 
     @property
@@ -124,7 +130,28 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
                                        vpc_id: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitGatewayVpcAttachmentResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Transit Gateway VPC Attachment Data Source
+
+    The Transit Gateway VPC Attachment resource allows the creation and management Transit
+    Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=aiven_project_vpc["bar"]["id"],
+        peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="google-project1")
+    ```
+
+
+    :param str peer_cloud_account: AWS account ID of the peered VPC.
+    :param str peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC).
+    :param str peer_vpc: Transit gateway ID
+    :param List[str] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
+    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
     """
     __args__ = dict()
     __args__['peerCloudAccount'] = peer_cloud_account

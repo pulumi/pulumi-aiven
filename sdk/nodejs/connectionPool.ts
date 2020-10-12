@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Connection Pool Resource
+ *
+ * The Connection Pool resource allows the creation and management of an Aiven Connection Pool`s.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestpool = new aiven.ConnectionPool("mytestpool", {
+ *     databaseName: aiven_database_mydatabase.databaseName,
+ *     poolMode: "transaction",
+ *     poolName: "mypool",
+ *     poolSize: 10,
+ *     project: aiven_project_myproject.project,
+ *     serviceName: aiven_service_myservice.serviceName,
+ *     username: aiven_service_user_myserviceuser.username,
+ * });
+ * ```
+ */
 export class ConnectionPool extends pulumi.CustomResource {
     /**
      * Get an existing ConnectionPool resource's state with the given name, ID, and optional extra
@@ -33,27 +55,34 @@ export class ConnectionPool extends pulumi.CustomResource {
     }
 
     /**
-     * URI for connecting to the pool
+     * (Optional) is a computed property that tells the URI for connecting to the pool.
+     * This value cannot be set, only read.
      */
     public /*out*/ readonly connectionUri!: pulumi.Output<string>;
     /**
-     * Name of the database the pool connects to
+     * is the name of the database the pool connects to. This should be
+     * defined using reference as shown above to set up dependencies correctly.
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * Mode the pool operates in (session, transaction, statement)
+     * is the mode the pool operates in (session, transaction, statement).
      */
     public readonly poolMode!: pulumi.Output<string | undefined>;
     /**
-     * Name of the pool
+     * is the name of the pool.
      */
     public readonly poolName!: pulumi.Output<string>;
     /**
-     * Number of connections the pool may create towards the backend server
+     * is the number of connections the pool may create towards the backend
+     * server. This does not affect the number of incoming connections, which is always a much
+     * larger number.
      */
     public readonly poolSize!: pulumi.Output<number | undefined>;
     /**
-     * Project to link the connection pool to
+     * and `serviceName` - (Required) define the project and service the connection pool
+     * belongs to. They should be defined using reference as shown above to set up dependencies
+     * correctly. These properties cannot be changed once the service is created. Doing so will
+     * result in the connection pool being deleted and new one created instead.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -61,7 +90,8 @@ export class ConnectionPool extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Name of the service user used to connect to the database
+     * is the name of the service user used to connect to the database. This should
+     * be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -127,27 +157,34 @@ export class ConnectionPool extends pulumi.CustomResource {
  */
 export interface ConnectionPoolState {
     /**
-     * URI for connecting to the pool
+     * (Optional) is a computed property that tells the URI for connecting to the pool.
+     * This value cannot be set, only read.
      */
     readonly connectionUri?: pulumi.Input<string>;
     /**
-     * Name of the database the pool connects to
+     * is the name of the database the pool connects to. This should be
+     * defined using reference as shown above to set up dependencies correctly.
      */
     readonly databaseName?: pulumi.Input<string>;
     /**
-     * Mode the pool operates in (session, transaction, statement)
+     * is the mode the pool operates in (session, transaction, statement).
      */
     readonly poolMode?: pulumi.Input<string>;
     /**
-     * Name of the pool
+     * is the name of the pool.
      */
     readonly poolName?: pulumi.Input<string>;
     /**
-     * Number of connections the pool may create towards the backend server
+     * is the number of connections the pool may create towards the backend
+     * server. This does not affect the number of incoming connections, which is always a much
+     * larger number.
      */
     readonly poolSize?: pulumi.Input<number>;
     /**
-     * Project to link the connection pool to
+     * and `serviceName` - (Required) define the project and service the connection pool
+     * belongs to. They should be defined using reference as shown above to set up dependencies
+     * correctly. These properties cannot be changed once the service is created. Doing so will
+     * result in the connection pool being deleted and new one created instead.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -155,7 +192,8 @@ export interface ConnectionPoolState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * Name of the service user used to connect to the database
+     * is the name of the service user used to connect to the database. This should
+     * be defined using reference as shown above to set up dependencies correctly.
      */
     readonly username?: pulumi.Input<string>;
 }
@@ -165,23 +203,29 @@ export interface ConnectionPoolState {
  */
 export interface ConnectionPoolArgs {
     /**
-     * Name of the database the pool connects to
+     * is the name of the database the pool connects to. This should be
+     * defined using reference as shown above to set up dependencies correctly.
      */
     readonly databaseName: pulumi.Input<string>;
     /**
-     * Mode the pool operates in (session, transaction, statement)
+     * is the mode the pool operates in (session, transaction, statement).
      */
     readonly poolMode?: pulumi.Input<string>;
     /**
-     * Name of the pool
+     * is the name of the pool.
      */
     readonly poolName: pulumi.Input<string>;
     /**
-     * Number of connections the pool may create towards the backend server
+     * is the number of connections the pool may create towards the backend
+     * server. This does not affect the number of incoming connections, which is always a much
+     * larger number.
      */
     readonly poolSize?: pulumi.Input<number>;
     /**
-     * Project to link the connection pool to
+     * and `serviceName` - (Required) define the project and service the connection pool
+     * belongs to. They should be defined using reference as shown above to set up dependencies
+     * correctly. These properties cannot be changed once the service is created. Doing so will
+     * result in the connection pool being deleted and new one created instead.
      */
     readonly project: pulumi.Input<string>;
     /**
@@ -189,7 +233,8 @@ export interface ConnectionPoolArgs {
      */
     readonly serviceName: pulumi.Input<string>;
     /**
-     * Name of the service user used to connect to the database
+     * is the name of the service user used to connect to the database. This should
+     * be defined using reference as shown above to set up dependencies correctly.
      */
     readonly username: pulumi.Input<string>;
 }

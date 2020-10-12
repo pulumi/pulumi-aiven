@@ -6,6 +6,25 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # VPC Peering Connection Data Source
+ *
+ * The VPC Peering Connection data source provides information about the existing Aiven
+ * VPC Peering Connection.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mypeeringconnection = aiven_project_vpc_myvpc.id.apply(id => aiven.getVpcPeeringConnection({
+ *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
+ *     peerVpc: "<PEER_VPC_ID/NAME>",
+ *     vpcId: id,
+ * }, { async: true }));
+ * ```
+ */
 export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcPeeringConnectionResult> {
     if (!opts) {
         opts = {}
@@ -32,15 +51,49 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
  * A collection of arguments for invoking getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionArgs {
+    /**
+     * an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+     */
     readonly peerAzureAppId?: string;
+    /**
+     * an Azure tenant id in UUID4 form.
+     */
     readonly peerAzureTenantId?: string;
+    /**
+     * defines the identifier of the cloud account the VPC is being
+     * peered with.
+     */
     readonly peerCloudAccount: string;
+    /**
+     * defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+     */
     readonly peerRegion?: string;
+    /**
+     * an Azure resource group name of the peered VPC.
+     */
     readonly peerResourceGroup?: string;
+    /**
+     * defines the identifier or name of the remote VPC.
+     */
     readonly peerVpc: string;
+    /**
+     * a cloud provider identifier for the peering connection if available.
+     */
     readonly peeringConnectionId?: string;
+    /**
+     * is the state of the peering connection. This property is computed by Aiven 
+     * therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+     * `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+     * `INVALID_SPECIFICATION`.
+     */
     readonly state?: string;
+    /**
+     * state-specific help or error information.
+     */
     readonly stateInfo?: {[key: string]: any};
+    /**
+     * is the Aiven VPC the peering connection is associated with.
+     */
     readonly vpcId: string;
 }
 
@@ -52,14 +105,38 @@ export interface GetVpcPeeringConnectionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+     */
     readonly peerAzureAppId?: string;
+    /**
+     * an Azure tenant id in UUID4 form.
+     */
     readonly peerAzureTenantId?: string;
     readonly peerCloudAccount: string;
+    /**
+     * defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+     */
     readonly peerRegion?: string;
+    /**
+     * an Azure resource group name of the peered VPC.
+     */
     readonly peerResourceGroup?: string;
     readonly peerVpc: string;
+    /**
+     * a cloud provider identifier for the peering connection if available.
+     */
     readonly peeringConnectionId: string;
+    /**
+     * is the state of the peering connection. This property is computed by Aiven 
+     * therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+     * `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+     * `INVALID_SPECIFICATION`.
+     */
     readonly state: string;
+    /**
+     * state-specific help or error information.
+     */
     readonly stateInfo: {[key: string]: any};
     readonly vpcId: string;
 }

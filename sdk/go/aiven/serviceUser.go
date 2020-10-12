@@ -10,22 +10,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Service User Resource
+//
+// The Service User resource allows the creation and management of an Aiven Service Users.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewServiceUser(ctx, "myserviceuser", &aiven.ServiceUserArgs{
+// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
+// 			ServiceName: pulumi.Any(aiven_service.Myservice.Service_name),
+// 			Username:    pulumi.String("<USERNAME>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ServiceUser struct {
 	pulumi.CustomResourceState
 
-	// Access certificate for the user if applicable for the service in question
+	// is the access certificate of the user (not applicable for all services).
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
-	// Access certificate key for the user if applicable for the service in question
+	// is the access key of the user (not applicable for all services).
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// Password of the user
+	// is the password of the user (not applicable for all services).
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Project to link the user to
+	// and `serviceName` - (Required) define the project and service the user belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service to link the user to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Type of the user account
+	// tells whether the user is primary account or regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Name of the user account
+	// is the actual name of the user account.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -66,36 +95,38 @@ func GetServiceUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceUser resources.
 type serviceUserState struct {
-	// Access certificate for the user if applicable for the service in question
+	// is the access certificate of the user (not applicable for all services).
 	AccessCert *string `pulumi:"accessCert"`
-	// Access certificate key for the user if applicable for the service in question
+	// is the access key of the user (not applicable for all services).
 	AccessKey *string `pulumi:"accessKey"`
-	// Password of the user
+	// is the password of the user (not applicable for all services).
 	Password *string `pulumi:"password"`
-	// Project to link the user to
+	// and `serviceName` - (Required) define the project and service the user belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project *string `pulumi:"project"`
 	// Service to link the user to
 	ServiceName *string `pulumi:"serviceName"`
-	// Type of the user account
+	// tells whether the user is primary account or regular account.
 	Type *string `pulumi:"type"`
-	// Name of the user account
+	// is the actual name of the user account.
 	Username *string `pulumi:"username"`
 }
 
 type ServiceUserState struct {
-	// Access certificate for the user if applicable for the service in question
+	// is the access certificate of the user (not applicable for all services).
 	AccessCert pulumi.StringPtrInput
-	// Access certificate key for the user if applicable for the service in question
+	// is the access key of the user (not applicable for all services).
 	AccessKey pulumi.StringPtrInput
-	// Password of the user
+	// is the password of the user (not applicable for all services).
 	Password pulumi.StringPtrInput
-	// Project to link the user to
+	// and `serviceName` - (Required) define the project and service the user belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringPtrInput
 	// Service to link the user to
 	ServiceName pulumi.StringPtrInput
-	// Type of the user account
+	// tells whether the user is primary account or regular account.
 	Type pulumi.StringPtrInput
-	// Name of the user account
+	// is the actual name of the user account.
 	Username pulumi.StringPtrInput
 }
 
@@ -104,21 +135,23 @@ func (ServiceUserState) ElementType() reflect.Type {
 }
 
 type serviceUserArgs struct {
-	// Project to link the user to
+	// and `serviceName` - (Required) define the project and service the user belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project string `pulumi:"project"`
 	// Service to link the user to
 	ServiceName string `pulumi:"serviceName"`
-	// Name of the user account
+	// is the actual name of the user account.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ServiceUser resource.
 type ServiceUserArgs struct {
-	// Project to link the user to
+	// and `serviceName` - (Required) define the project and service the user belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringInput
 	// Service to link the user to
 	ServiceName pulumi.StringInput
-	// Name of the user account
+	// is the actual name of the user account.
 	Username pulumi.StringInput
 }
 

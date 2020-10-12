@@ -11,6 +11,43 @@ namespace Pulumi.Aiven
 {
     public static class GetServiceIntegration
     {
+        /// <summary>
+        /// ## # Service Integration Data Source
+        /// 
+        /// The Service Integration data source provides information about the existing Aiven Service Integration.
+        /// 
+        /// Service Integration defines an integration between two Aiven services or between Aiven
+        /// service and an external integration endpoint. Integration could be for example sending
+        /// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+        /// service to a Grafana service to show dashboards, sending logs from any service to
+        /// Elasticsearch, etc.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myintegration = Output.Create(Aiven.GetServiceIntegration.InvokeAsync(new Aiven.GetServiceIntegrationArgs
+        ///         {
+        ///             DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
+        ///             IntegrationType = "datadog",
+        ///             Project = aiven_project.Myproject.Project,
+        ///             SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetServiceIntegrationResult> InvokeAsync(GetServiceIntegrationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithVersion());
     }
@@ -21,9 +58,17 @@ namespace Pulumi.Aiven
         [Input("destinationEndpointId")]
         public string? DestinationEndpointId { get; set; }
 
+        /// <summary>
+        /// identifies the target side of
+        /// the integration.
+        /// </summary>
         [Input("destinationServiceName", required: true)]
         public string DestinationServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// identifies the type of integration that is set up. Possible values
+        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// </summary>
         [Input("integrationType", required: true)]
         public string IntegrationType { get; set; } = null!;
 
@@ -39,12 +84,19 @@ namespace Pulumi.Aiven
         [Input("mirrormakerUserConfig")]
         public Inputs.GetServiceIntegrationMirrormakerUserConfigArgs? MirrormakerUserConfig { get; set; }
 
+        /// <summary>
+        /// defines the project the integration belongs to.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         [Input("sourceEndpointId")]
         public string? SourceEndpointId { get; set; }
 
+        /// <summary>
+        /// identifies the source side of the
+        /// integration.
+        /// </summary>
         [Input("sourceServiceName", required: true)]
         public string SourceServiceName { get; set; } = null!;
 

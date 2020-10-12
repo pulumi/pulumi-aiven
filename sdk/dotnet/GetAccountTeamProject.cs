@@ -11,6 +11,11 @@ namespace Pulumi.Aiven
 {
     public static class GetAccountTeamProject
     {
+        /// <summary>
+        /// ## # Account Team Project Data Source
+        /// 
+        /// The Account Team Project data source provides information about the existing Account Team Project.
+        /// </summary>
         public static Task<GetAccountTeamProjectResult> InvokeAsync(GetAccountTeamProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectArgs(), options.WithVersion());
     }
@@ -18,15 +23,28 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountTeamProjectArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is a unique account id.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// is a project name of already existing project.
+        /// </summary>
         [Input("projectName", required: true)]
         public string ProjectName { get; set; } = null!;
 
+        /// <summary>
+        /// is an account team id.
+        /// </summary>
         [Input("teamId", required: true)]
         public string TeamId { get; set; } = null!;
 
+        /// <summary>
+        /// is an account team project type, can one of the following values: `admin`, 
+        /// `developer`, `operator` and `read_only`.
+        /// </summary>
         [Input("teamType")]
         public string? TeamType { get; set; }
 
@@ -46,6 +64,10 @@ namespace Pulumi.Aiven
         public readonly string Id;
         public readonly string ProjectName;
         public readonly string TeamId;
+        /// <summary>
+        /// is an account team project type, can one of the following values: `admin`, 
+        /// `developer`, `operator` and `read_only`.
+        /// </summary>
         public readonly string? TeamType;
 
         [OutputConstructor]

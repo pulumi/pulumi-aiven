@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetElasticSearchElasticsearchArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// URI for Kibana frontend.
+        /// </summary>
         [Input("kibanaUri", required: true)]
         public string KibanaUri { get; set; } = null!;
 

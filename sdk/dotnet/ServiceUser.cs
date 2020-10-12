@@ -9,28 +9,55 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Service User Resource
+    /// 
+    /// The Service User resource allows the creation and management of an Aiven Service Users.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myserviceuser = new Aiven.ServiceUser("myserviceuser", new Aiven.ServiceUserArgs
+    ///         {
+    ///             Project = aiven_project.Myproject.Project,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             Username = "&lt;USERNAME&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ServiceUser : Pulumi.CustomResource
     {
         /// <summary>
-        /// Access certificate for the user if applicable for the service in question
+        /// is the access certificate of the user (not applicable for all services).
         /// </summary>
         [Output("accessCert")]
         public Output<string> AccessCert { get; private set; } = null!;
 
         /// <summary>
-        /// Access certificate key for the user if applicable for the service in question
+        /// is the access key of the user (not applicable for all services).
         /// </summary>
         [Output("accessKey")]
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Password of the user
+        /// is the password of the user (not applicable for all services).
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Project to link the user to
+        /// and `service_name` - (Required) define the project and service the user belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -42,13 +69,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the user account
+        /// tells whether the user is primary account or regular account.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user account
+        /// is the actual name of the user account.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -100,7 +127,8 @@ namespace Pulumi.Aiven
     public sealed class ServiceUserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Project to link the user to
+        /// and `service_name` - (Required) define the project and service the user belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -112,7 +140,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the user account
+        /// is the actual name of the user account.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -125,25 +153,26 @@ namespace Pulumi.Aiven
     public sealed class ServiceUserState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access certificate for the user if applicable for the service in question
+        /// is the access certificate of the user (not applicable for all services).
         /// </summary>
         [Input("accessCert")]
         public Input<string>? AccessCert { get; set; }
 
         /// <summary>
-        /// Access certificate key for the user if applicable for the service in question
+        /// is the access key of the user (not applicable for all services).
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// Password of the user
+        /// is the password of the user (not applicable for all services).
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Project to link the user to
+        /// and `service_name` - (Required) define the project and service the user belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -155,13 +184,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Type of the user account
+        /// tells whether the user is primary account or regular account.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Name of the user account
+        /// is the actual name of the user account.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

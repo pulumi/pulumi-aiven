@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Project VPC Resource
+ *
+ * The Project VPC resource allows the creation and management of an Aiven Project VPCs.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myvpc = new aiven.ProjectVpc("myvpc", {
+ *     cloudName: "google-europe-west1",
+ *     networkCidr: "192.168.0.1/24",
+ *     project: aiven_project_myproject.project,
+ * }, { timeouts: {
+ *     create: "5m",
+ * } });
+ * ```
+ */
 export class ProjectVpc extends pulumi.CustomResource {
     /**
      * Get an existing ProjectVpc resource's state with the given name, ID, and optional extra
@@ -33,19 +53,21 @@ export class ProjectVpc extends pulumi.CustomResource {
     }
 
     /**
-     * Cloud the VPC is in
+     * defines where the cloud provider and region where the service is hosted
+     * in. See the Service resource for additional information.
      */
     public readonly cloudName!: pulumi.Output<string>;
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * defines the network CIDR of the VPC.
      */
     public readonly networkCidr!: pulumi.Output<string>;
     /**
-     * The project the VPC belongs to
+     * defines the project the VPC belongs to.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+     * ia a computed property that tells the current state of the VPC. This property cannot be
+     * set, only read.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -97,19 +119,21 @@ export class ProjectVpc extends pulumi.CustomResource {
  */
 export interface ProjectVpcState {
     /**
-     * Cloud the VPC is in
+     * defines where the cloud provider and region where the service is hosted
+     * in. See the Service resource for additional information.
      */
     readonly cloudName?: pulumi.Input<string>;
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * defines the network CIDR of the VPC.
      */
     readonly networkCidr?: pulumi.Input<string>;
     /**
-     * The project the VPC belongs to
+     * defines the project the VPC belongs to.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+     * ia a computed property that tells the current state of the VPC. This property cannot be
+     * set, only read.
      */
     readonly state?: pulumi.Input<string>;
 }
@@ -119,15 +143,16 @@ export interface ProjectVpcState {
  */
 export interface ProjectVpcArgs {
     /**
-     * Cloud the VPC is in
+     * defines where the cloud provider and region where the service is hosted
+     * in. See the Service resource for additional information.
      */
     readonly cloudName: pulumi.Input<string>;
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * defines the network CIDR of the VPC.
      */
     readonly networkCidr: pulumi.Input<string>;
     /**
-     * The project the VPC belongs to
+     * defines the project the VPC belongs to.
      */
     readonly project: pulumi.Input<string>;
 }

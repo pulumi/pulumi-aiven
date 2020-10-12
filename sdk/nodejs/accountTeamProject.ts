@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Team Project Resource
+ *
+ * The Account Team Project resource allows the creation and management of an Account Team Projects.
+ *
+ * It is intended to link and existing project to the existing account team.
+ * It is important to note that the project should have an `accountId` property set and equal to
+ * account team you are trying to link this project.
+ */
 export class AccountTeamProject extends pulumi.CustomResource {
     /**
      * Get an existing AccountTeamProject resource's state with the given name, ID, and optional extra
@@ -33,19 +42,20 @@ export class AccountTeamProject extends pulumi.CustomResource {
     }
 
     /**
-     * Account id
+     * is a unique account id.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Account team project name
+     * is a project name of already existing project.
      */
     public readonly projectName!: pulumi.Output<string | undefined>;
     /**
-     * Account team id
+     * is an account team id.
      */
     public readonly teamId!: pulumi.Output<string>;
     /**
-     * Account team project type, can one of the following values: admin, developer, operator and read_only
+     * is an account team project type, can one of the following values: `admin`, 
+     * `developer`, `operator` and `readOnly`.
      */
     public readonly teamType!: pulumi.Output<string | undefined>;
 
@@ -94,19 +104,20 @@ export class AccountTeamProject extends pulumi.CustomResource {
  */
 export interface AccountTeamProjectState {
     /**
-     * Account id
+     * is a unique account id.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * Account team project name
+     * is a project name of already existing project.
      */
     readonly projectName?: pulumi.Input<string>;
     /**
-     * Account team id
+     * is an account team id.
      */
     readonly teamId?: pulumi.Input<string>;
     /**
-     * Account team project type, can one of the following values: admin, developer, operator and read_only
+     * is an account team project type, can one of the following values: `admin`, 
+     * `developer`, `operator` and `readOnly`.
      */
     readonly teamType?: pulumi.Input<string>;
 }
@@ -116,19 +127,20 @@ export interface AccountTeamProjectState {
  */
 export interface AccountTeamProjectArgs {
     /**
-     * Account id
+     * is a unique account id.
      */
     readonly accountId: pulumi.Input<string>;
     /**
-     * Account team project name
+     * is a project name of already existing project.
      */
     readonly projectName?: pulumi.Input<string>;
     /**
-     * Account team id
+     * is an account team id.
      */
     readonly teamId: pulumi.Input<string>;
     /**
-     * Account team project type, can one of the following values: admin, developer, operator and read_only
+     * is an account team project type, can one of the following values: `admin`, 
+     * `developer`, `operator` and `readOnly`.
      */
     readonly teamType?: pulumi.Input<string>;
 }

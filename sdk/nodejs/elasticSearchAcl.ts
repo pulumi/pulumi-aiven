@@ -6,6 +6,54 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Elasticsearch ACL Resource
+ *
+ * The Elasticsearch ACL resource allows the creation and management of an Aiven Elasticsearch ACLs
+ * for Elasticsearch service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const es_acls = new aiven.ElasticSearchAcl("es-acls", {
+ *     project: aiven_project["es-project"].project,
+ *     serviceName: aiven_service.es.service_name,
+ *     enabled: true,
+ *     extendedAcl: false,
+ *     acls: [
+ *         {
+ *             username: aiven_service_user["es-user"].username,
+ *             rules: [
+ *                 {
+ *                     index: "_*",
+ *                     permission: "admin",
+ *                 },
+ *                 {
+ *                     index: "*",
+ *                     permission: "admin",
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             username: "avnadmin",
+ *             rules: [
+ *                 {
+ *                     index: "_*",
+ *                     permission: "read",
+ *                 },
+ *                 {
+ *                     index: "*",
+ *                     permission: "read",
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class ElasticSearchAcl extends pulumi.CustomResource {
     /**
      * Get an existing ElasticSearchAcl resource's state with the given name, ID, and optional extra
@@ -39,17 +87,18 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
      */
     public readonly acls!: pulumi.Output<outputs.ElasticSearchAclAcl[] | undefined>;
     /**
-     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access
+     * enables of disables Elasticsearch ACL's.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-     * indexes they have been granted access to
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+     * these APIs as long as all operations only target indexes they have been granted access to.
      */
     public readonly extendedAcl!: pulumi.Output<boolean | undefined>;
     /**
-     * Project to link the Elasticsearch ACLs to
+     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -108,17 +157,18 @@ export interface ElasticSearchAclState {
      */
     readonly acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
     /**
-     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access
+     * enables of disables Elasticsearch ACL's.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-     * indexes they have been granted access to
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+     * these APIs as long as all operations only target indexes they have been granted access to.
      */
     readonly extendedAcl?: pulumi.Input<boolean>;
     /**
-     * Project to link the Elasticsearch ACLs to
+     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -136,17 +186,18 @@ export interface ElasticSearchAclArgs {
      */
     readonly acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
     /**
-     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access
+     * enables of disables Elasticsearch ACL's.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-     * indexes they have been granted access to
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+     * these APIs as long as all operations only target indexes they have been granted access to.
      */
     readonly extendedAcl?: pulumi.Input<boolean>;
     /**
-     * Project to link the Elasticsearch ACLs to
+     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
     /**

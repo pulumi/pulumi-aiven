@@ -12,92 +12,181 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetGrafanaGrafanaUserConfigArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Enable or disable Grafana alerting functionality
+        /// </summary>
         [Input("alertingEnabled")]
         public string? AlertingEnabled { get; set; }
 
+        /// <summary>
+        /// Default error or timeout setting for new alerting rules
+        /// </summary>
         [Input("alertingErrorOrTimeout")]
         public string? AlertingErrorOrTimeout { get; set; }
 
+        /// <summary>
+        /// Default value for 'no data or null values' for
+        /// new alerting rules
+        /// </summary>
         [Input("alertingNodataOrNullvalues")]
         public string? AlertingNodataOrNullvalues { get; set; }
 
+        /// <summary>
+        /// Allow embedding Grafana dashboards with iframe/frame/object/embed 
+        /// tags. Disabled by default to limit impact of clickjacking
+        /// </summary>
         [Input("allowEmbedding")]
         public string? AllowEmbedding { get; set; }
 
+        /// <summary>
+        /// Enable or disable basic authentication form, used by Grafana 
+        /// built-in login.
+        /// </summary>
         [Input("authBasicEnabled")]
         public string? AuthBasicEnabled { get; set; }
 
+        /// <summary>
+        /// Generic OAuth integration.
+        /// </summary>
         [Input("authGenericOauth")]
         public Inputs.GetGrafanaGrafanaUserConfigAuthGenericOauthArgs? AuthGenericOauth { get; set; }
 
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in
+        /// </summary>
         [Input("authGithub")]
         public Inputs.GetGrafanaGrafanaUserConfigAuthGithubArgs? AuthGithub { get; set; }
 
+        /// <summary>
+        /// GitLab Auth integration.
+        /// </summary>
         [Input("authGitlab")]
         public Inputs.GetGrafanaGrafanaUserConfigAuthGitlabArgs? AuthGitlab { get; set; }
 
+        /// <summary>
+        /// Google Auth integration
+        /// </summary>
         [Input("authGoogle")]
         public Inputs.GetGrafanaGrafanaUserConfigAuthGoogleArgs? AuthGoogle { get; set; }
 
+        /// <summary>
+        /// Cookie SameSite attribute: 'strict' prevents sending cookie for 
+        /// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        /// </summary>
         [Input("cookieSamesite")]
         public string? CookieSamesite { get; set; }
 
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         [Input("customDomain")]
         public string? CustomDomain { get; set; }
 
+        /// <summary>
+        /// Dashboard versions to keep per dashboard.
+        /// </summary>
         [Input("dashboardsVersionsToKeep")]
         public string? DashboardsVersionsToKeep { get; set; }
 
+        /// <summary>
+        /// Send 'X-Grafana-User' header to data source.
+        /// </summary>
         [Input("dataproxySendUserHeader")]
         public string? DataproxySendUserHeader { get; set; }
 
+        /// <summary>
+        /// Timeout for data proxy requests in seconds.
+        /// </summary>
         [Input("dataproxyTimeout")]
         public string? DataproxyTimeout { get; set; }
 
+        /// <summary>
+        /// Set to true to disable gravatar. Defaults to false 
+        /// (gravatar is enabled).
+        /// </summary>
         [Input("disableGravatar")]
         public string? DisableGravatar { get; set; }
 
+        /// <summary>
+        /// Editors can manage folders, teams and dashboards created by them.
+        /// </summary>
         [Input("editorsCanAdmin")]
         public string? EditorsCanAdmin { get; set; }
 
+        /// <summary>
+        /// External image store settings
+        /// </summary>
         [Input("externalImageStorage")]
         public Inputs.GetGrafanaGrafanaUserConfigExternalImageStorageArgs? ExternalImageStorage { get; set; }
 
+        /// <summary>
+        /// Google Analytics Universal Analytics ID for tracking Grafana usage
+        /// </summary>
         [Input("googleAnalyticsUaId")]
         public string? GoogleAnalyticsUaId { get; set; }
 
         [Input("ipFilters")]
         private List<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
         public List<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new List<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Enable Grafana /metrics endpoint
+        /// </summary>
         [Input("metricsEnabled")]
         public string? MetricsEnabled { get; set; }
 
         [Input("privateAccess")]
         public Inputs.GetGrafanaGrafanaUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         [Input("publicAccess")]
         public Inputs.GetGrafanaGrafanaUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Name of the basebackup to restore in forked service.
+        /// </summary>
         [Input("recoveryBasebackupName")]
         public string? RecoveryBasebackupName { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only 
+        /// when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// SMTP server settings.
+        /// </summary>
         [Input("smtpServer")]
         public Inputs.GetGrafanaGrafanaUserConfigSmtpServerArgs? SmtpServer { get; set; }
 
+        /// <summary>
+        /// Auto-assign new users on signup to main organization. 
+        /// Defaults to false.
+        /// </summary>
         [Input("userAutoAssignOrg")]
         public string? UserAutoAssignOrg { get; set; }
 
+        /// <summary>
+        /// Set role for new signups. Defaults to Viewer.
+        /// </summary>
         [Input("userAutoAssignOrgRole")]
         public string? UserAutoAssignOrgRole { get; set; }
 
+        /// <summary>
+        /// Users with view-only permission can edit but not save dashboards.
+        /// </summary>
         [Input("viewersCanEdit")]
         public string? ViewersCanEdit { get; set; }
 

@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaConnectKafkaConnectUserConfigResult
     {
+        /// <summary>
+        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka Connect specific server provided values.
+        /// </summary>
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult? KafkaConnect;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult? PublicAccess;

@@ -347,6 +347,15 @@ class CassandraCassandraUserConfig(dict):
                  private_access: Optional['outputs.CassandraCassandraUserConfigPrivateAccess'] = None,
                  public_access: Optional['outputs.CassandraCassandraUserConfigPublicAccess'] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param str migrate_sstableloader: sets the service into migration mode enabling the sstableloader 
+               utility to be used to upload Cassandra data files. Available only on service create.
+        :param 'CassandraCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'CassandraCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migrate_sstableloader is not None:
@@ -361,26 +370,43 @@ class CassandraCassandraUserConfig(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="migrateSstableloader")
     def migrate_sstableloader(self) -> Optional[str]:
+        """
+        sets the service into migration mode enabling the sstableloader 
+        utility to be used to upload Cassandra data files. Available only on service create.
+        """
         return pulumi.get(self, "migrate_sstableloader")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.CassandraCassandraUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks.
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.CassandraCassandraUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     def _translate_property(self, prop):
@@ -391,12 +417,20 @@ class CassandraCassandraUserConfig(dict):
 class CassandraCassandraUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -407,12 +441,20 @@ class CassandraCassandraUserConfigPrivateAccess(dict):
 class CassandraCassandraUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -617,12 +659,18 @@ class ElasticSearchComponent(dict):
 class ElasticSearchElasticsearch(dict):
     def __init__(__self__, *,
                  kibana_uri: Optional[str] = None):
+        """
+        :param str kibana_uri: URI for Kibana frontend.
+        """
         if kibana_uri is not None:
             pulumi.set(__self__, "kibana_uri", kibana_uri)
 
     @property
     @pulumi.getter(name="kibanaUri")
     def kibana_uri(self) -> Optional[str]:
+        """
+        URI for Kibana frontend.
+        """
         return pulumi.get(self, "kibana_uri")
 
     def _translate_property(self, prop):
@@ -644,6 +692,28 @@ class ElasticSearchElasticsearchUserConfig(dict):
                  public_access: Optional['outputs.ElasticSearchElasticsearchUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the 
+               Aiven DNS name.
+        :param str disable_replication_factor_adjustment: Disable automatic replication factor 
+               adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+               least to two nodes. Note: setting this to true increases a risk of data loss in case of
+               virtual machine failure.
+        :param 'ElasticSearchElasticsearchUserConfigElasticsearchArgs' elasticsearch: Allow clients to connect to elasticsearch from the public 
+               internet for service nodes that are in a project VPC or another type of private network.
+        :param str elasticsearch_version: Elasticsearch major version.
+        :param List['ElasticSearchElasticsearchUserConfigIndexPatternArgs'] index_patterns: Glob pattern and number of indexes matching that pattern to 
+               be kept.
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'ElasticSearchElasticsearchUserConfigKibanaArgs' kibana: Allow clients to connect to kibana from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str max_index_count: Maximum number of indexes to keep before deleting the oldest one.
+        :param 'ElasticSearchElasticsearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'ElasticSearchElasticsearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect 
+               only when a new service is being created.
+        """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if disable_replication_factor_adjustment is not None:
@@ -672,61 +742,105 @@ class ElasticSearchElasticsearchUserConfig(dict):
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the 
+        Aiven DNS name.
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="disableReplicationFactorAdjustment")
     def disable_replication_factor_adjustment(self) -> Optional[str]:
+        """
+        Disable automatic replication factor 
+        adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+        least to two nodes. Note: setting this to true increases a risk of data loss in case of
+        virtual machine failure.
+        """
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @property
     @pulumi.getter
     def elasticsearch(self) -> Optional['outputs.ElasticSearchElasticsearchUserConfigElasticsearch']:
+        """
+        Allow clients to connect to elasticsearch from the public 
+        internet for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "elasticsearch")
 
     @property
     @pulumi.getter(name="elasticsearchVersion")
     def elasticsearch_version(self) -> Optional[str]:
+        """
+        Elasticsearch major version.
+        """
         return pulumi.get(self, "elasticsearch_version")
 
     @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[List['outputs.ElasticSearchElasticsearchUserConfigIndexPattern']]:
+        """
+        Glob pattern and number of indexes matching that pattern to 
+        be kept.
+        """
         return pulumi.get(self, "index_patterns")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def kibana(self) -> Optional['outputs.ElasticSearchElasticsearchUserConfigKibana']:
+        """
+        Allow clients to connect to kibana from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kibana")
 
     @property
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[str]:
+        """
+        Maximum number of indexes to keep before deleting the oldest one.
+        """
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ElasticSearchElasticsearchUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks.
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.ElasticSearchElasticsearchUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service.
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     def _translate_property(self, prop):
@@ -760,6 +874,67 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
                  thread_pool_search_throttled_size: Optional[str] = None,
                  thread_pool_write_queue_size: Optional[str] = None,
                  thread_pool_write_size: Optional[str] = None):
+        """
+        :param str action_auto_create_index_enabled: Explicitly allow or block automatic 
+               creation of indices. Defaults to true
+        :param str action_destructive_requires_name: Require explicit index names when deleting
+        :param str http_max_content_length: Maximum content length for HTTP requests to 
+               the Elasticsearch HTTP API, in bytes.
+        :param str http_max_header_size: The max size of allowed headers, in bytes.
+        :param str http_max_initial_line_length: The max length of an HTTP URL, in bytes.
+        :param str indices_fielddata_cache_size: Relative amount. Maximum amount of 
+               heap memory used for field data cache. This is an expert setting; decreasing the
+               value too much will increase overhead of loading field data; too much memory used
+               for field data cache will decrease amount of heap available for other operations.
+        :param str indices_memory_index_buffer_size: Percentage value. Default is 10%. 
+               Total amount of heap used for indexing buffer, before writing segments to disk.
+               This is an expert setting. Too low value will slow down indexing; too high value
+               will increase indexing performance but causes performance issues for query performance.
+        :param str indices_queries_cache_size: Percentage value. Default is 10%. 
+               Maximum amount of heap used for query cache. This is an expert setting.
+               Too low value will decrease query performance and increase performance for other
+               operations; too high value will cause issues with other Elasticsearch functionality.
+        :param str indices_query_bool_max_clause_count: Maximum number of clauses Lucene 
+               BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+               may cause performance issues. Investigate other approaches first before increasing this value.
+        :param List[str] reindex_remote_whitelists: Whitelisted addresses for reindexing. 
+               Changing this value will cause all Elasticsearch instances to restart.
+        :param str search_max_buckets: Maximum number of aggregation buckets allowed 
+               in a single response. Elasticsearch default value is used when this is not defined.
+        :param str thread_pool_analyze_queue_size: Size for the thread pool queue. 
+               See documentation for exact details.
+        :param str thread_pool_analyze_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count -
+               value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_force_merge_size: Size for the thread pool. See 
+               documentation for exact details. Do note this may have maximum value depending on
+               CPU count - value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_get_queue_size: Size for the thread pool queue. See 
+               documentation for exact details.
+        :param str thread_pool_get_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count -
+               value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_index_queue_size: Size for the thread pool queue. 
+               See documentation for exact details.
+        :param str thread_pool_index_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count -
+               value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_search_queue_size: Size for the thread pool queue. See 
+               documentation for exact details.
+        :param str thread_pool_search_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count - value
+               is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_search_throttled_queue_size: Size for the thread pool queue. 
+               See documentation for exact details.
+        :param str thread_pool_search_throttled_size: Size for the thread pool. See 
+               documentation for exact details. Do note this may have maximum value depending on
+               CPU count - value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_write_queue_size: Size for the thread pool queue. See 
+               documentation for exact details.
+        :param str thread_pool_write_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count - value
+               is automatically lowered if set to higher than maximum value.
+        """
         if action_auto_create_index_enabled is not None:
             pulumi.set(__self__, "action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
@@ -812,121 +987,228 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
     @property
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
     def action_auto_create_index_enabled(self) -> Optional[str]:
+        """
+        Explicitly allow or block automatic 
+        creation of indices. Defaults to true
+        """
         return pulumi.get(self, "action_auto_create_index_enabled")
 
     @property
     @pulumi.getter(name="actionDestructiveRequiresName")
     def action_destructive_requires_name(self) -> Optional[str]:
+        """
+        Require explicit index names when deleting
+        """
         return pulumi.get(self, "action_destructive_requires_name")
 
     @property
     @pulumi.getter(name="httpMaxContentLength")
     def http_max_content_length(self) -> Optional[str]:
+        """
+        Maximum content length for HTTP requests to 
+        the Elasticsearch HTTP API, in bytes.
+        """
         return pulumi.get(self, "http_max_content_length")
 
     @property
     @pulumi.getter(name="httpMaxHeaderSize")
     def http_max_header_size(self) -> Optional[str]:
+        """
+        The max size of allowed headers, in bytes.
+        """
         return pulumi.get(self, "http_max_header_size")
 
     @property
     @pulumi.getter(name="httpMaxInitialLineLength")
     def http_max_initial_line_length(self) -> Optional[str]:
+        """
+        The max length of an HTTP URL, in bytes.
+        """
         return pulumi.get(self, "http_max_initial_line_length")
 
     @property
     @pulumi.getter(name="indicesFielddataCacheSize")
     def indices_fielddata_cache_size(self) -> Optional[str]:
+        """
+        Relative amount. Maximum amount of 
+        heap memory used for field data cache. This is an expert setting; decreasing the
+        value too much will increase overhead of loading field data; too much memory used
+        for field data cache will decrease amount of heap available for other operations.
+        """
         return pulumi.get(self, "indices_fielddata_cache_size")
 
     @property
     @pulumi.getter(name="indicesMemoryIndexBufferSize")
     def indices_memory_index_buffer_size(self) -> Optional[str]:
+        """
+        Percentage value. Default is 10%. 
+        Total amount of heap used for indexing buffer, before writing segments to disk.
+        This is an expert setting. Too low value will slow down indexing; too high value
+        will increase indexing performance but causes performance issues for query performance.
+        """
         return pulumi.get(self, "indices_memory_index_buffer_size")
 
     @property
     @pulumi.getter(name="indicesQueriesCacheSize")
     def indices_queries_cache_size(self) -> Optional[str]:
+        """
+        Percentage value. Default is 10%. 
+        Maximum amount of heap used for query cache. This is an expert setting.
+        Too low value will decrease query performance and increase performance for other
+        operations; too high value will cause issues with other Elasticsearch functionality.
+        """
         return pulumi.get(self, "indices_queries_cache_size")
 
     @property
     @pulumi.getter(name="indicesQueryBoolMaxClauseCount")
     def indices_query_bool_max_clause_count(self) -> Optional[str]:
+        """
+        Maximum number of clauses Lucene 
+        BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+        may cause performance issues. Investigate other approaches first before increasing this value.
+        """
         return pulumi.get(self, "indices_query_bool_max_clause_count")
 
     @property
     @pulumi.getter(name="reindexRemoteWhitelists")
     def reindex_remote_whitelists(self) -> Optional[List[str]]:
+        """
+        Whitelisted addresses for reindexing. 
+        Changing this value will cause all Elasticsearch instances to restart.
+        """
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
     def search_max_buckets(self) -> Optional[str]:
+        """
+        Maximum number of aggregation buckets allowed 
+        in a single response. Elasticsearch default value is used when this is not defined.
+        """
         return pulumi.get(self, "search_max_buckets")
 
     @property
     @pulumi.getter(name="threadPoolAnalyzeQueueSize")
     def thread_pool_analyze_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. 
+        See documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_analyze_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolAnalyzeSize")
     def thread_pool_analyze_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count -
+        value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_analyze_size")
 
     @property
     @pulumi.getter(name="threadPoolForceMergeSize")
     def thread_pool_force_merge_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See 
+        documentation for exact details. Do note this may have maximum value depending on
+        CPU count - value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_force_merge_size")
 
     @property
     @pulumi.getter(name="threadPoolGetQueueSize")
     def thread_pool_get_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. See 
+        documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_get_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolGetSize")
     def thread_pool_get_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count -
+        value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_get_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexQueueSize")
     def thread_pool_index_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. 
+        See documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_index_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexSize")
     def thread_pool_index_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count -
+        value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_index_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchQueueSize")
     def thread_pool_search_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. See 
+        documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_search_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchSize")
     def thread_pool_search_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count - value
+        is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_search_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchThrottledQueueSize")
     def thread_pool_search_throttled_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. 
+        See documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_search_throttled_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchThrottledSize")
     def thread_pool_search_throttled_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See 
+        documentation for exact details. Do note this may have maximum value depending on
+        CPU count - value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_search_throttled_size")
 
     @property
     @pulumi.getter(name="threadPoolWriteQueueSize")
     def thread_pool_write_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. See 
+        documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_write_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolWriteSize")
     def thread_pool_write_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count - value
+        is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_write_size")
 
     def _translate_property(self, prop):
@@ -938,6 +1220,11 @@ class ElasticSearchElasticsearchUserConfigIndexPattern(dict):
     def __init__(__self__, *,
                  max_index_count: Optional[str] = None,
                  pattern: Optional[str] = None):
+        """
+        :param str max_index_count: Maximum number of indexes to keep before deleting the oldest one.
+        :param str pattern: Must consist of alpha-numeric characters, dashes, underscores, 
+               dots and glob characters (* and ?)
+        """
         if max_index_count is not None:
             pulumi.set(__self__, "max_index_count", max_index_count)
         if pattern is not None:
@@ -946,11 +1233,18 @@ class ElasticSearchElasticsearchUserConfigIndexPattern(dict):
     @property
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[str]:
+        """
+        Maximum number of indexes to keep before deleting the oldest one.
+        """
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter
     def pattern(self) -> Optional[str]:
+        """
+        Must consist of alpha-numeric characters, dashes, underscores, 
+        dots and glob characters (* and ?)
+        """
         return pulumi.get(self, "pattern")
 
     def _translate_property(self, prop):
@@ -963,6 +1257,14 @@ class ElasticSearchElasticsearchUserConfigKibana(dict):
                  elasticsearch_request_timeout: Optional[str] = None,
                  enabled: Optional[str] = None,
                  max_old_space_size: Optional[str] = None):
+        """
+        :param str elasticsearch_request_timeout: Timeout in milliseconds for requests 
+               made by Kibana towards Elasticsearch.
+        :param str enabled: Enable or disable Kibana.
+        :param str max_old_space_size: Limits the maximum amount of memory (in MiB) the 
+               Kibana process can use. This sets the max_old_space_size option of the nodejs running
+               the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+        """
         if elasticsearch_request_timeout is not None:
             pulumi.set(__self__, "elasticsearch_request_timeout", elasticsearch_request_timeout)
         if enabled is not None:
@@ -973,16 +1275,28 @@ class ElasticSearchElasticsearchUserConfigKibana(dict):
     @property
     @pulumi.getter(name="elasticsearchRequestTimeout")
     def elasticsearch_request_timeout(self) -> Optional[str]:
+        """
+        Timeout in milliseconds for requests 
+        made by Kibana towards Elasticsearch.
+        """
         return pulumi.get(self, "elasticsearch_request_timeout")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[str]:
+        """
+        Enable or disable Kibana.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="maxOldSpaceSize")
     def max_old_space_size(self) -> Optional[str]:
+        """
+        Limits the maximum amount of memory (in MiB) the 
+        Kibana process can use. This sets the max_old_space_size option of the nodejs running
+        the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+        """
         return pulumi.get(self, "max_old_space_size")
 
     def _translate_property(self, prop):
@@ -995,6 +1309,14 @@ class ElasticSearchElasticsearchUserConfigPrivateAccess(dict):
                  elasticsearch: Optional[str] = None,
                  kibana: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str elasticsearch: Allow clients to connect to elasticsearch from the public 
+               internet for service nodes that are in a project VPC or another type of private network.
+        :param str kibana: Allow clients to connect to kibana from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str prometheus: Allow clients to connect to prometheus from the public 
+               internet for service nodes that are in a project VPC or another type of private network.
+        """
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
@@ -1005,16 +1327,28 @@ class ElasticSearchElasticsearchUserConfigPrivateAccess(dict):
     @property
     @pulumi.getter
     def elasticsearch(self) -> Optional[str]:
+        """
+        Allow clients to connect to elasticsearch from the public 
+        internet for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "elasticsearch")
 
     @property
     @pulumi.getter
     def kibana(self) -> Optional[str]:
+        """
+        Allow clients to connect to kibana from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kibana")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public 
+        internet for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -1027,6 +1361,14 @@ class ElasticSearchElasticsearchUserConfigPublicAccess(dict):
                  elasticsearch: Optional[str] = None,
                  kibana: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str elasticsearch: Allow clients to connect to elasticsearch from the public 
+               internet for service nodes that are in a project VPC or another type of private network.
+        :param str kibana: Allow clients to connect to kibana from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str prometheus: Allow clients to connect to prometheus from the public 
+               internet for service nodes that are in a project VPC or another type of private network.
+        """
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
@@ -1037,16 +1379,28 @@ class ElasticSearchElasticsearchUserConfigPublicAccess(dict):
     @property
     @pulumi.getter
     def elasticsearch(self) -> Optional[str]:
+        """
+        Allow clients to connect to elasticsearch from the public 
+        internet for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "elasticsearch")
 
     @property
     @pulumi.getter
     def kibana(self) -> Optional[str]:
+        """
+        Allow clients to connect to kibana from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kibana")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public 
+        internet for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -1085,6 +1439,10 @@ class GrafanaComponent(dict):
                  route: Optional[str] = None,
                  ssl: Optional[bool] = None,
                  usage: Optional[str] = None):
+        """
+        :param str host: Server hostname or IP
+        :param float port: SMTP server port
+        """
         if component is not None:
             pulumi.set(__self__, "component", component)
         if host is not None:
@@ -1108,6 +1466,9 @@ class GrafanaComponent(dict):
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        Server hostname or IP
+        """
         return pulumi.get(self, "host")
 
     @property
@@ -1118,6 +1479,9 @@ class GrafanaComponent(dict):
     @property
     @pulumi.getter
     def port(self) -> Optional[float]:
+        """
+        SMTP server port
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -1179,6 +1543,42 @@ class GrafanaGrafanaUserConfig(dict):
                  user_auto_assign_org: Optional[str] = None,
                  user_auto_assign_org_role: Optional[str] = None,
                  viewers_can_edit: Optional[str] = None):
+        """
+        :param str alerting_enabled: Enable or disable Grafana alerting functionality
+        :param str alerting_error_or_timeout: Default error or timeout setting for new alerting rules
+        :param str alerting_nodata_or_nullvalues: Default value for 'no data or null values' for
+               new alerting rules
+        :param str allow_embedding: Allow embedding Grafana dashboards with iframe/frame/object/embed 
+               tags. Disabled by default to limit impact of clickjacking
+        :param str auth_basic_enabled: Enable or disable basic authentication form, used by Grafana 
+               built-in login.
+        :param 'GrafanaGrafanaUserConfigAuthGenericOauthArgs' auth_generic_oauth: Generic OAuth integration.
+        :param 'GrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Automatically sign-up users on successful sign-in
+        :param 'GrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration.
+        :param 'GrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration
+        :param str cookie_samesite: Cookie SameSite attribute: 'strict' prevents sending cookie for 
+               cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param str dashboards_versions_to_keep: Dashboard versions to keep per dashboard.
+        :param str dataproxy_send_user_header: Send 'X-Grafana-User' header to data source.
+        :param str dataproxy_timeout: Timeout for data proxy requests in seconds.
+        :param str disable_gravatar: Set to true to disable gravatar. Defaults to false 
+               (gravatar is enabled).
+        :param str editors_can_admin: Editors can manage folders, teams and dashboards created by them.
+        :param 'GrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings
+        :param str google_analytics_ua_id: Google Analytics Universal Analytics ID for tracking Grafana usage
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param str metrics_enabled: Enable Grafana /metrics endpoint
+        :param 'GrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
+        :param 'GrafanaGrafanaUserConfigSmtpServerArgs' smtp_server: SMTP server settings.
+        :param str user_auto_assign_org: Auto-assign new users on signup to main organization. 
+               Defaults to false.
+        :param str user_auto_assign_org_role: Set role for new signups. Defaults to Viewer.
+        :param str viewers_can_edit: Users with view-only permission can edit but not save dashboards.
+        """
         if alerting_enabled is not None:
             pulumi.set(__self__, "alerting_enabled", alerting_enabled)
         if alerting_error_or_timeout is not None:
@@ -1239,101 +1639,166 @@ class GrafanaGrafanaUserConfig(dict):
     @property
     @pulumi.getter(name="alertingEnabled")
     def alerting_enabled(self) -> Optional[str]:
+        """
+        Enable or disable Grafana alerting functionality
+        """
         return pulumi.get(self, "alerting_enabled")
 
     @property
     @pulumi.getter(name="alertingErrorOrTimeout")
     def alerting_error_or_timeout(self) -> Optional[str]:
+        """
+        Default error or timeout setting for new alerting rules
+        """
         return pulumi.get(self, "alerting_error_or_timeout")
 
     @property
     @pulumi.getter(name="alertingNodataOrNullvalues")
     def alerting_nodata_or_nullvalues(self) -> Optional[str]:
+        """
+        Default value for 'no data or null values' for
+        new alerting rules
+        """
         return pulumi.get(self, "alerting_nodata_or_nullvalues")
 
     @property
     @pulumi.getter(name="allowEmbedding")
     def allow_embedding(self) -> Optional[str]:
+        """
+        Allow embedding Grafana dashboards with iframe/frame/object/embed 
+        tags. Disabled by default to limit impact of clickjacking
+        """
         return pulumi.get(self, "allow_embedding")
 
     @property
     @pulumi.getter(name="authBasicEnabled")
     def auth_basic_enabled(self) -> Optional[str]:
+        """
+        Enable or disable basic authentication form, used by Grafana 
+        built-in login.
+        """
         return pulumi.get(self, "auth_basic_enabled")
 
     @property
     @pulumi.getter(name="authGenericOauth")
     def auth_generic_oauth(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGenericOauth']:
+        """
+        Generic OAuth integration.
+        """
         return pulumi.get(self, "auth_generic_oauth")
 
     @property
     @pulumi.getter(name="authGithub")
     def auth_github(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGithub']:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "auth_github")
 
     @property
     @pulumi.getter(name="authGitlab")
     def auth_gitlab(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGitlab']:
+        """
+        GitLab Auth integration.
+        """
         return pulumi.get(self, "auth_gitlab")
 
     @property
     @pulumi.getter(name="authGoogle")
     def auth_google(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGoogle']:
+        """
+        Google Auth integration
+        """
         return pulumi.get(self, "auth_google")
 
     @property
     @pulumi.getter(name="cookieSamesite")
     def cookie_samesite(self) -> Optional[str]:
+        """
+        Cookie SameSite attribute: 'strict' prevents sending cookie for 
+        cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        """
         return pulumi.get(self, "cookie_samesite")
 
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="dashboardsVersionsToKeep")
     def dashboards_versions_to_keep(self) -> Optional[str]:
+        """
+        Dashboard versions to keep per dashboard.
+        """
         return pulumi.get(self, "dashboards_versions_to_keep")
 
     @property
     @pulumi.getter(name="dataproxySendUserHeader")
     def dataproxy_send_user_header(self) -> Optional[str]:
+        """
+        Send 'X-Grafana-User' header to data source.
+        """
         return pulumi.get(self, "dataproxy_send_user_header")
 
     @property
     @pulumi.getter(name="dataproxyTimeout")
     def dataproxy_timeout(self) -> Optional[str]:
+        """
+        Timeout for data proxy requests in seconds.
+        """
         return pulumi.get(self, "dataproxy_timeout")
 
     @property
     @pulumi.getter(name="disableGravatar")
     def disable_gravatar(self) -> Optional[str]:
+        """
+        Set to true to disable gravatar. Defaults to false 
+        (gravatar is enabled).
+        """
         return pulumi.get(self, "disable_gravatar")
 
     @property
     @pulumi.getter(name="editorsCanAdmin")
     def editors_can_admin(self) -> Optional[str]:
+        """
+        Editors can manage folders, teams and dashboards created by them.
+        """
         return pulumi.get(self, "editors_can_admin")
 
     @property
     @pulumi.getter(name="externalImageStorage")
     def external_image_storage(self) -> Optional['outputs.GrafanaGrafanaUserConfigExternalImageStorage']:
+        """
+        External image store settings
+        """
         return pulumi.get(self, "external_image_storage")
 
     @property
     @pulumi.getter(name="googleAnalyticsUaId")
     def google_analytics_ua_id(self) -> Optional[str]:
+        """
+        Google Analytics Universal Analytics ID for tracking Grafana usage
+        """
         return pulumi.get(self, "google_analytics_ua_id")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="metricsEnabled")
     def metrics_enabled(self) -> Optional[str]:
+        """
+        Enable Grafana /metrics endpoint
+        """
         return pulumi.get(self, "metrics_enabled")
 
     @property
@@ -1344,36 +1809,59 @@ class GrafanaGrafanaUserConfig(dict):
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GrafanaGrafanaUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service.
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     @property
     @pulumi.getter(name="smtpServer")
     def smtp_server(self) -> Optional['outputs.GrafanaGrafanaUserConfigSmtpServer']:
+        """
+        SMTP server settings.
+        """
         return pulumi.get(self, "smtp_server")
 
     @property
     @pulumi.getter(name="userAutoAssignOrg")
     def user_auto_assign_org(self) -> Optional[str]:
+        """
+        Auto-assign new users on signup to main organization. 
+        Defaults to false.
+        """
         return pulumi.get(self, "user_auto_assign_org")
 
     @property
     @pulumi.getter(name="userAutoAssignOrgRole")
     def user_auto_assign_org_role(self) -> Optional[str]:
+        """
+        Set role for new signups. Defaults to Viewer.
+        """
         return pulumi.get(self, "user_auto_assign_org_role")
 
     @property
     @pulumi.getter(name="viewersCanEdit")
     def viewers_can_edit(self) -> Optional[str]:
+        """
+        Users with view-only permission can edit but not save dashboards.
+        """
         return pulumi.get(self, "viewers_can_edit")
 
     def _translate_property(self, prop):
@@ -1393,6 +1881,18 @@ class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
                  name: Optional[str] = None,
                  scopes: Optional[List[str]] = None,
                  token_url: Optional[str] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_domains: Allowed domain
+        :param List[str] allowed_organizations: Must consist of alpha-numeric characters and dashes"
+        :param str api_url: API URL. This only needs to be set when using self hosted GitLab
+        :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
+        :param str name: Name of the OAuth integration
+        :param List[str] scopes: Scope must be non-empty string without whitespace
+        :param str token_url: Token URL. This only needs to be set when using self hosted GitLab
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_domains is not None:
@@ -1417,51 +1917,81 @@ class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedDomains")
     def allowed_domains(self) -> Optional[List[str]]:
+        """
+        Allowed domain
+        """
         return pulumi.get(self, "allowed_domains")
 
     @property
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[List[str]]:
+        """
+        Must consist of alpha-numeric characters and dashes"
+        """
         return pulumi.get(self, "allowed_organizations")
 
     @property
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[str]:
+        """
+        API URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "api_url")
 
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> Optional[str]:
+        """
+        Authorization URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "auth_url")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of the OAuth integration
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def scopes(self) -> Optional[List[str]]:
+        """
+        Scope must be non-empty string without whitespace
+        """
         return pulumi.get(self, "scopes")
 
     @property
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[str]:
+        """
+        Token URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "token_url")
 
     def _translate_property(self, prop):
@@ -1476,6 +2006,13 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  team_ids: Optional[List[str]] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_organizations: Must consist of alpha-numeric characters and dashes"
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
+        :param List[str] team_ids: Require users to belong to one of given team IDs
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_organizations is not None:
@@ -1490,26 +2027,41 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[List[str]]:
+        """
+        Must consist of alpha-numeric characters and dashes"
+        """
         return pulumi.get(self, "allowed_organizations")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="teamIds")
     def team_ids(self) -> Optional[List[str]]:
+        """
+        Require users to belong to one of given team IDs
+        """
         return pulumi.get(self, "team_ids")
 
     def _translate_property(self, prop):
@@ -1526,6 +2078,15 @@ class GrafanaGrafanaUserConfigAuthGitlab(dict):
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  token_url: Optional[str] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_groups: Require users to belong to one of given groups
+        :param str api_url: API URL. This only needs to be set when using self hosted GitLab
+        :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
+        :param str token_url: Token URL. This only needs to be set when using self hosted GitLab
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_groups is not None:
@@ -1544,36 +2105,57 @@ class GrafanaGrafanaUserConfigAuthGitlab(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedGroups")
     def allowed_groups(self) -> Optional[List[str]]:
+        """
+        Require users to belong to one of given groups
+        """
         return pulumi.get(self, "allowed_groups")
 
     @property
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[str]:
+        """
+        API URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "api_url")
 
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> Optional[str]:
+        """
+        Authorization URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "auth_url")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[str]:
+        """
+        Token URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "token_url")
 
     def _translate_property(self, prop):
@@ -1587,6 +2169,12 @@ class GrafanaGrafanaUserConfigAuthGoogle(dict):
                  allowed_domains: Optional[List[str]] = None,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_domains: Allowed domain
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_domains is not None:
@@ -1599,21 +2187,33 @@ class GrafanaGrafanaUserConfigAuthGoogle(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedDomains")
     def allowed_domains(self) -> Optional[List[str]]:
+        """
+        Allowed domain
+        """
         return pulumi.get(self, "allowed_domains")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
     def _translate_property(self, prop):
@@ -1627,6 +2227,13 @@ class GrafanaGrafanaUserConfigExternalImageStorage(dict):
                  bucket_url: Optional[str] = None,
                  provider: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str access_key: S3 access key. Requires permissions to the S3 bucket for the 
+               s3:PutObject and s3:PutObjectAcl actions
+        :param str bucket_url: Bucket URL for S3
+        :param str provider: Provider type
+        :param str secret_key: S3 secret key
+        """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bucket_url is not None:
@@ -1639,21 +2246,34 @@ class GrafanaGrafanaUserConfigExternalImageStorage(dict):
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        S3 access key. Requires permissions to the S3 bucket for the 
+        s3:PutObject and s3:PutObjectAcl actions
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="bucketUrl")
     def bucket_url(self) -> Optional[str]:
+        """
+        Bucket URL for S3
+        """
         return pulumi.get(self, "bucket_url")
 
     @property
     @pulumi.getter
     def provider(self) -> Optional[str]:
+        """
+        Provider type
+        """
         return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        S3 secret key
+        """
         return pulumi.get(self, "secret_key")
 
     def _translate_property(self, prop):
@@ -1664,12 +2284,20 @@ class GrafanaGrafanaUserConfigExternalImageStorage(dict):
 class GrafanaGrafanaUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  grafana: Optional[str] = None):
+        """
+        :param str grafana: Allow clients to connect to grafana from the public internet for service nodes that 
+               are in a project VPC or another type of private network.
+        """
         if grafana is not None:
             pulumi.set(__self__, "grafana", grafana)
 
     @property
     @pulumi.getter
     def grafana(self) -> Optional[str]:
+        """
+        Allow clients to connect to grafana from the public internet for service nodes that 
+        are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "grafana")
 
     def _translate_property(self, prop):
@@ -1680,12 +2308,20 @@ class GrafanaGrafanaUserConfigPrivateAccess(dict):
 class GrafanaGrafanaUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  grafana: Optional[str] = None):
+        """
+        :param str grafana: Allow clients to connect to grafana from the public internet for service nodes that 
+               are in a project VPC or another type of private network.
+        """
         if grafana is not None:
             pulumi.set(__self__, "grafana", grafana)
 
     @property
     @pulumi.getter
     def grafana(self) -> Optional[str]:
+        """
+        Allow clients to connect to grafana from the public internet for service nodes that 
+        are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "grafana")
 
     def _translate_property(self, prop):
@@ -1702,6 +2338,15 @@ class GrafanaGrafanaUserConfigSmtpServer(dict):
                  port: Optional[str] = None,
                  skip_verify: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param str from_address: Address used for sending emails
+        :param str from_name: Name used in outgoing emails, defaults to Grafana
+        :param str host: Server hostname or IP
+        :param str password: Password for SMTP authentication
+        :param str port: SMTP server port
+        :param str skip_verify: Skip verifying server certificate. Defaults to false
+        :param str username: Username for SMTP authentication
+        """
         if from_address is not None:
             pulumi.set(__self__, "from_address", from_address)
         if from_name is not None:
@@ -1720,36 +2365,57 @@ class GrafanaGrafanaUserConfigSmtpServer(dict):
     @property
     @pulumi.getter(name="fromAddress")
     def from_address(self) -> Optional[str]:
+        """
+        Address used for sending emails
+        """
         return pulumi.get(self, "from_address")
 
     @property
     @pulumi.getter(name="fromName")
     def from_name(self) -> Optional[str]:
+        """
+        Name used in outgoing emails, defaults to Grafana
+        """
         return pulumi.get(self, "from_name")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        Server hostname or IP
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Password for SMTP authentication
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        SMTP server port
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="skipVerify")
     def skip_verify(self) -> Optional[str]:
+        """
+        Skip verifying server certificate. Defaults to false
+        """
         return pulumi.get(self, "skip_verify")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        Username for SMTP authentication
+        """
         return pulumi.get(self, "username")
 
     def _translate_property(self, prop):
@@ -1867,6 +2533,15 @@ class InfluxDbInfluxdbUserConfig(dict):
                  public_access: Optional['outputs.InfluxDbInfluxdbUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'InfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'InfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
+        :param str service_to_fork_from: Name of another service to fork from. This has effect 
+               only when a new service is being created.
+        """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filters is not None:
@@ -1883,31 +2558,50 @@ class InfluxDbInfluxdbUserConfig(dict):
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.InfluxDbInfluxdbUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.InfluxDbInfluxdbUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     def _translate_property(self, prop):
@@ -1918,12 +2612,20 @@ class InfluxDbInfluxdbUserConfig(dict):
 class InfluxDbInfluxdbUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  influxdb: Optional[str] = None):
+        """
+        :param str influxdb: Allow clients to connect to influxdb from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
 
     @property
     @pulumi.getter
     def influxdb(self) -> Optional[str]:
+        """
+        Allow clients to connect to influxdb from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "influxdb")
 
     def _translate_property(self, prop):
@@ -1934,12 +2636,20 @@ class InfluxDbInfluxdbUserConfigPrivateAccess(dict):
 class InfluxDbInfluxdbUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  influxdb: Optional[str] = None):
+        """
+        :param str influxdb: Allow clients to connect to influxdb from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
 
     @property
     @pulumi.getter
     def influxdb(self) -> Optional[str]:
+        """
+        Allow clients to connect to influxdb from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "influxdb")
 
     def _translate_property(self, prop):
@@ -2112,6 +2822,13 @@ class KafkaConnectKafkaConnectUserConfig(dict):
                  kafka_connect: Optional['outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect'] = None,
                  private_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess'] = None,
                  public_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPublicAccess'] = None):
+        """
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'KafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Allow clients to connect to kafka_connect from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param 'KafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'KafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_connect is not None:
@@ -2124,21 +2841,34 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect']:
+        """
+        Allow clients to connect to kafka_connect from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks.
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
         return pulumi.get(self, "public_access")
 
     def _translate_property(self, prop):
@@ -2156,6 +2886,24 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
+        """
+        :param str connector_client_config_override_policy: Defines what client configurations can be 
+               overridden by the connector. Default is None.
+        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
+               if the current offset does not exist any more on the server. Default is earliest.
+        :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
+               the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations 
+               of poll() when using consumer group management (defaults to 300000).
+        :param str consumer_max_poll_records: The maximum number of records returned by a single poll.
+        :param str offset_flush_interval_ms: The interval at which to try committing offsets for tasks 
+               (defaults to 60000).
+        :param str offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush 
+               and partition offset data to be committed to offset storage before cancelling the process and restoring
+               the offset data to be committed in a future attempt (defaults to 5000).
+        :param str session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s 
+               group management facilities (defaults to 10000).
+        """
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -2176,41 +2924,73 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @property
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
+        """
+        Defines what client configurations can be 
+        overridden by the connector. Default is None.
+        """
         return pulumi.get(self, "connector_client_config_override_policy")
 
     @property
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
+        """
+        What to do when there is no initial offset in Kafka or 
+        if the current offset does not exist any more on the server. Default is earliest.
+        """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
+        """
+        Transaction read isolation level. read_uncommitted is 
+        the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        """
         return pulumi.get(self, "consumer_isolation_level")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
     def consumer_max_poll_interval_ms(self) -> Optional[str]:
+        """
+        The maximum delay in milliseconds between invocations 
+        of poll() when using consumer group management (defaults to 300000).
+        """
         return pulumi.get(self, "consumer_max_poll_interval_ms")
 
     @property
     @pulumi.getter(name="consumerMaxPollRecords")
     def consumer_max_poll_records(self) -> Optional[str]:
+        """
+        The maximum number of records returned by a single poll.
+        """
         return pulumi.get(self, "consumer_max_poll_records")
 
     @property
     @pulumi.getter(name="offsetFlushIntervalMs")
     def offset_flush_interval_ms(self) -> Optional[str]:
+        """
+        The interval at which to try committing offsets for tasks 
+        (defaults to 60000).
+        """
         return pulumi.get(self, "offset_flush_interval_ms")
 
     @property
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
+        """
+        Maximum number of milliseconds to wait for records to flush 
+        and partition offset data to be committed to offset storage before cancelling the process and restoring
+        the offset data to be committed in a future attempt (defaults to 5000).
+        """
         return pulumi.get(self, "offset_flush_timeout_ms")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
     def session_timeout_ms(self) -> Optional[str]:
+        """
+        The timeout in milliseconds used to detect failures when using Kafka’s 
+        group management facilities (defaults to 10000).
+        """
         return pulumi.get(self, "session_timeout_ms")
 
     def _translate_property(self, prop):
@@ -2222,6 +3002,12 @@ class KafkaConnectKafkaConnectUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for service 
+               nodes that are in a project VPC or another type of private network.
+        """
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -2230,11 +3016,19 @@ class KafkaConnectKafkaConnectUserConfigPrivateAccess(dict):
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_connect from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for service 
+        nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -2246,6 +3040,12 @@ class KafkaConnectKafkaConnectUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for service 
+               nodes that are in a project VPC or another type of private network.
+        """
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -2254,11 +3054,19 @@ class KafkaConnectKafkaConnectUserConfigPublicAccess(dict):
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_connect from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for service 
+        nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -2292,6 +3100,10 @@ class KafkaConnectorTask(dict):
     def __init__(__self__, *,
                  connector: Optional[str] = None,
                  task: Optional[float] = None):
+        """
+        :param float task: List of tasks of a connector, each element contains `connector` 
+               (Related connector name) and `task` (Task id / number).
+        """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
         if task is not None:
@@ -2305,6 +3117,10 @@ class KafkaConnectorTask(dict):
     @property
     @pulumi.getter
     def task(self) -> Optional[float]:
+        """
+        List of tasks of a connector, each element contains `connector` 
+        (Related connector name) and `task` (Task id / number).
+        """
         return pulumi.get(self, "task")
 
     def _translate_property(self, prop):
@@ -2319,6 +3135,13 @@ class KafkaKafka(dict):
                  connect_uri: Optional[str] = None,
                  rest_uri: Optional[str] = None,
                  schema_registry_uri: Optional[str] = None):
+        """
+        :param str access_cert: The Kafka client certificate
+        :param str access_key: The Kafka client certificate key
+        :param str connect_uri: The Kafka Connect URI, if any
+        :param str rest_uri: The Kafka REST URI, if any
+        :param str schema_registry_uri: The Schema Registry URI, if any
+        """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
         if access_key is not None:
@@ -2333,26 +3156,41 @@ class KafkaKafka(dict):
     @property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> Optional[str]:
+        """
+        The Kafka client certificate
+        """
         return pulumi.get(self, "access_cert")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        The Kafka client certificate key
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="connectUri")
     def connect_uri(self) -> Optional[str]:
+        """
+        The Kafka Connect URI, if any
+        """
         return pulumi.get(self, "connect_uri")
 
     @property
     @pulumi.getter(name="restUri")
     def rest_uri(self) -> Optional[str]:
+        """
+        The Kafka REST URI, if any
+        """
         return pulumi.get(self, "rest_uri")
 
     @property
     @pulumi.getter(name="schemaRegistryUri")
     def schema_registry_uri(self) -> Optional[str]:
+        """
+        The Schema Registry URI, if any
+        """
         return pulumi.get(self, "schema_registry_uri")
 
     def _translate_property(self, prop):
@@ -2374,6 +3212,23 @@ class KafkaKafkaUserConfig(dict):
                  private_access: Optional['outputs.KafkaKafkaUserConfigPrivateAccess'] = None,
                  public_access: Optional['outputs.KafkaKafkaUserConfigPublicAccess'] = None,
                  schema_registry: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param 'KafkaKafkaUserConfigKafkaArgs' kafka: Allow clients to connect to kafka from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param 'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
+        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param 'KafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
+        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka-REST configuration
+        :param str kafka_version: Kafka major version
+        :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str schema_registry: Enable Schema-Registry service
+        """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filters is not None:
@@ -2402,61 +3257,100 @@ class KafkaKafkaUserConfig(dict):
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def kafka(self) -> Optional['outputs.KafkaKafkaUserConfigKafka']:
+        """
+        Allow clients to connect to kafka from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka")
 
     @property
     @pulumi.getter(name="kafkaAuthenticationMethods")
     def kafka_authentication_methods(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods']:
+        """
+        Kafka authentication methods
+        """
         return pulumi.get(self, "kafka_authentication_methods")
 
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_connect from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
     @pulumi.getter(name="kafkaConnectConfig")
     def kafka_connect_config(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaConnectConfig']:
+        """
+        Kafka Connect configuration values
+        """
         return pulumi.get(self, "kafka_connect_config")
 
     @property
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_rest from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_rest")
 
     @property
     @pulumi.getter(name="kafkaRestConfig")
     def kafka_rest_config(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaRestConfig']:
+        """
+        Kafka-REST configuration
+        """
         return pulumi.get(self, "kafka_rest_config")
 
     @property
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[str]:
+        """
+        Kafka major version
+        """
         return pulumi.get(self, "kafka_version")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.KafkaKafkaUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.KafkaKafkaUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
+        """
+        Enable Schema-Registry service
+        """
         return pulumi.get(self, "schema_registry")
 
     def _translate_property(self, prop):
@@ -2490,6 +3384,49 @@ class KafkaKafkaUserConfigKafka(dict):
                  replica_fetch_max_bytes: Optional[str] = None,
                  replica_fetch_response_max_bytes: Optional[str] = None,
                  socket_request_max_bytes: Optional[str] = None):
+        """
+        :param str auto_create_topics_enable: Enable auto creation of topics
+        :param str compression_type: Specify the final compression type for a given topic. This 
+               configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+               It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+               which means retain the original compression codec set by the producer.
+        :param str connections_max_idle_ms: Idle connections timeout: the server socket processor 
+               threads close the connections that idle for longer than this.
+        :param str default_replication_factor: Replication factor for autocreated topics
+               * `group_max_session_timeout_ms": {
+               * `group_min_session_timeout_ms": {
+        :param str log_cleaner_max_compaction_lag_ms: The maximum amount of time message will 
+               remain uncompacted. Only applicable for logs that are being compacted
+               * `log_cleaner_min_cleanable_ratio": {
+        :param str log_cleaner_min_compaction_lag_ms: The minimum time a message will remain 
+               uncompacted in the log. Only applicable for logs that are being compacted.
+               * `log_cleanup_policy": {
+        :param str log_message_timestamp_difference_max_ms: The maximum difference allowed between 
+               the timestamp when a broker receives a message and the timestamp specified in the message
+        :param str log_message_timestamp_type: Define whether the timestamp in the message is 
+               message create time or log append time.
+        :param str log_retention_bytes: The maximum size of the log before deleting messages
+        :param str log_retention_hours: The number of hours to keep a log file before deleting it
+        :param str log_segment_bytes: The maximum size of a single log file
+        :param str max_connections_per_ip: The maximum number of connections allowed from each ip 
+               address (defaults to 2147483647).
+               * `max_incremental_fetch_session_cache_slots": {
+               * `message_max_bytes": {
+        :param str num_partitions: Number of partitions for autocreated topics
+               * `offsets_retention_minutes": {
+        :param str producer_purgatory_purge_interval_requests: The purge interval (in number of 
+               requests) of the producer request purgatory(defaults to 1000).
+        :param str replica_fetch_max_bytes: The number of bytes of messages to attempt to fetch 
+               for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+               batch in the first non-empty partition of the fetch is larger than this value, the record batch
+               will still be returned to ensure that progress can be made.
+        :param str replica_fetch_response_max_bytes: Maximum bytes expected for the entire fetch 
+               response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+               in the first non-empty partition of the fetch is larger than this value, the record batch will
+               still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        :param str socket_request_max_bytes: The maximum number of bytes in a socket request 
+               (defaults to 104857600).
+        """
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -2542,21 +3479,39 @@ class KafkaKafkaUserConfigKafka(dict):
     @property
     @pulumi.getter(name="autoCreateTopicsEnable")
     def auto_create_topics_enable(self) -> Optional[str]:
+        """
+        Enable auto creation of topics
+        """
         return pulumi.get(self, "auto_create_topics_enable")
 
     @property
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[str]:
+        """
+        Specify the final compression type for a given topic. This 
+        configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+        It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+        which means retain the original compression codec set by the producer.
+        """
         return pulumi.get(self, "compression_type")
 
     @property
     @pulumi.getter(name="connectionsMaxIdleMs")
     def connections_max_idle_ms(self) -> Optional[str]:
+        """
+        Idle connections timeout: the server socket processor 
+        threads close the connections that idle for longer than this.
+        """
         return pulumi.get(self, "connections_max_idle_ms")
 
     @property
     @pulumi.getter(name="defaultReplicationFactor")
     def default_replication_factor(self) -> Optional[str]:
+        """
+        Replication factor for autocreated topics
+        * `group_max_session_timeout_ms": {
+        * `group_min_session_timeout_ms": {
+        """
         return pulumi.get(self, "default_replication_factor")
 
     @property
@@ -2572,6 +3527,11 @@ class KafkaKafkaUserConfigKafka(dict):
     @property
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
     def log_cleaner_max_compaction_lag_ms(self) -> Optional[str]:
+        """
+        The maximum amount of time message will 
+        remain uncompacted. Only applicable for logs that are being compacted
+        * `log_cleaner_min_cleanable_ratio": {
+        """
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
 
     @property
@@ -2582,6 +3542,11 @@ class KafkaKafkaUserConfigKafka(dict):
     @property
     @pulumi.getter(name="logCleanerMinCompactionLagMs")
     def log_cleaner_min_compaction_lag_ms(self) -> Optional[str]:
+        """
+        The minimum time a message will remain 
+        uncompacted in the log. Only applicable for logs that are being compacted.
+        * `log_cleanup_policy": {
+        """
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
     @property
@@ -2592,31 +3557,54 @@ class KafkaKafkaUserConfigKafka(dict):
     @property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
     def log_message_timestamp_difference_max_ms(self) -> Optional[str]:
+        """
+        The maximum difference allowed between 
+        the timestamp when a broker receives a message and the timestamp specified in the message
+        """
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
 
     @property
     @pulumi.getter(name="logMessageTimestampType")
     def log_message_timestamp_type(self) -> Optional[str]:
+        """
+        Define whether the timestamp in the message is 
+        message create time or log append time.
+        """
         return pulumi.get(self, "log_message_timestamp_type")
 
     @property
     @pulumi.getter(name="logRetentionBytes")
     def log_retention_bytes(self) -> Optional[str]:
+        """
+        The maximum size of the log before deleting messages
+        """
         return pulumi.get(self, "log_retention_bytes")
 
     @property
     @pulumi.getter(name="logRetentionHours")
     def log_retention_hours(self) -> Optional[str]:
+        """
+        The number of hours to keep a log file before deleting it
+        """
         return pulumi.get(self, "log_retention_hours")
 
     @property
     @pulumi.getter(name="logSegmentBytes")
     def log_segment_bytes(self) -> Optional[str]:
+        """
+        The maximum size of a single log file
+        """
         return pulumi.get(self, "log_segment_bytes")
 
     @property
     @pulumi.getter(name="maxConnectionsPerIp")
     def max_connections_per_ip(self) -> Optional[str]:
+        """
+        The maximum number of connections allowed from each ip 
+        address (defaults to 2147483647).
+        * `max_incremental_fetch_session_cache_slots": {
+        * `message_max_bytes": {
+        """
         return pulumi.get(self, "max_connections_per_ip")
 
     @property
@@ -2632,6 +3620,10 @@ class KafkaKafkaUserConfigKafka(dict):
     @property
     @pulumi.getter(name="numPartitions")
     def num_partitions(self) -> Optional[str]:
+        """
+        Number of partitions for autocreated topics
+        * `offsets_retention_minutes": {
+        """
         return pulumi.get(self, "num_partitions")
 
     @property
@@ -2642,21 +3634,41 @@ class KafkaKafkaUserConfigKafka(dict):
     @property
     @pulumi.getter(name="producerPurgatoryPurgeIntervalRequests")
     def producer_purgatory_purge_interval_requests(self) -> Optional[str]:
+        """
+        The purge interval (in number of 
+        requests) of the producer request purgatory(defaults to 1000).
+        """
         return pulumi.get(self, "producer_purgatory_purge_interval_requests")
 
     @property
     @pulumi.getter(name="replicaFetchMaxBytes")
     def replica_fetch_max_bytes(self) -> Optional[str]:
+        """
+        The number of bytes of messages to attempt to fetch 
+        for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+        batch in the first non-empty partition of the fetch is larger than this value, the record batch
+        will still be returned to ensure that progress can be made.
+        """
         return pulumi.get(self, "replica_fetch_max_bytes")
 
     @property
     @pulumi.getter(name="replicaFetchResponseMaxBytes")
     def replica_fetch_response_max_bytes(self) -> Optional[str]:
+        """
+        Maximum bytes expected for the entire fetch 
+        response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+        in the first non-empty partition of the fetch is larger than this value, the record batch will
+        still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        """
         return pulumi.get(self, "replica_fetch_response_max_bytes")
 
     @property
     @pulumi.getter(name="socketRequestMaxBytes")
     def socket_request_max_bytes(self) -> Optional[str]:
+        """
+        The maximum number of bytes in a socket request 
+        (defaults to 104857600).
+        """
         return pulumi.get(self, "socket_request_max_bytes")
 
     def _translate_property(self, prop):
@@ -2668,6 +3680,10 @@ class KafkaKafkaUserConfigKafkaAuthenticationMethods(dict):
     def __init__(__self__, *,
                  certificate: Optional[str] = None,
                  sasl: Optional[str] = None):
+        """
+        :param str certificate: Enable certificate/SSL authentication
+        :param str sasl: Enable SASL authentication
+        """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if sasl is not None:
@@ -2676,11 +3692,17 @@ class KafkaKafkaUserConfigKafkaAuthenticationMethods(dict):
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        Enable certificate/SSL authentication
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter
     def sasl(self) -> Optional[str]:
+        """
+        Enable SASL authentication
+        """
         return pulumi.get(self, "sasl")
 
     def _translate_property(self, prop):
@@ -2698,6 +3720,25 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
+        """
+        :param str connector_client_config_override_policy: Defines what client configurations can 
+               be overridden by the connector. Default is None
+        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
+               if the current offset does not exist any more on the server. Default is earliest
+        :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
+               the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations 
+               of poll() when using consumer group management (defaults to 300000).
+        :param str consumer_max_poll_records: The maximum number of records returned in a single call 
+               to poll() (defaults to 500).
+        :param str offset_flush_interval_ms: The interval at which to try committing offsets for 
+               tasks (defaults to 60000).
+        :param str offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to 
+               flush and partition offset data to be committed to offset storage before cancelling the process
+               and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        :param str session_timeout_ms: The timeout in milliseconds used to detect failures when 
+               using Kafka’s group management facilities (defaults to 10000).
+        """
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -2718,41 +3759,74 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @property
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
+        """
+        Defines what client configurations can 
+        be overridden by the connector. Default is None
+        """
         return pulumi.get(self, "connector_client_config_override_policy")
 
     @property
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
+        """
+        What to do when there is no initial offset in Kafka or 
+        if the current offset does not exist any more on the server. Default is earliest
+        """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
+        """
+        Transaction read isolation level. read_uncommitted is 
+        the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        """
         return pulumi.get(self, "consumer_isolation_level")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
     def consumer_max_poll_interval_ms(self) -> Optional[str]:
+        """
+        The maximum delay in milliseconds between invocations 
+        of poll() when using consumer group management (defaults to 300000).
+        """
         return pulumi.get(self, "consumer_max_poll_interval_ms")
 
     @property
     @pulumi.getter(name="consumerMaxPollRecords")
     def consumer_max_poll_records(self) -> Optional[str]:
+        """
+        The maximum number of records returned in a single call 
+        to poll() (defaults to 500).
+        """
         return pulumi.get(self, "consumer_max_poll_records")
 
     @property
     @pulumi.getter(name="offsetFlushIntervalMs")
     def offset_flush_interval_ms(self) -> Optional[str]:
+        """
+        The interval at which to try committing offsets for 
+        tasks (defaults to 60000).
+        """
         return pulumi.get(self, "offset_flush_interval_ms")
 
     @property
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
+        """
+        Maximum number of milliseconds to wait for records to 
+        flush and partition offset data to be committed to offset storage before cancelling the process
+        and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        """
         return pulumi.get(self, "offset_flush_timeout_ms")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
     def session_timeout_ms(self) -> Optional[str]:
+        """
+        The timeout in milliseconds used to detect failures when 
+        using Kafka’s group management facilities (defaults to 10000).
+        """
         return pulumi.get(self, "session_timeout_ms")
 
     def _translate_property(self, prop):
@@ -2768,6 +3842,20 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
                  producer_acks: Optional[str] = None,
                  producer_linger_ms: Optional[str] = None,
                  simpleconsumer_pool_size_max: Optional[str] = None):
+        """
+        :param str consumer_enable_auto_commit: If true the consumer's offset will be periodically 
+               committed to Kafka in the background
+        :param str consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and 
+               values by a single request
+        :param str consumer_request_timeout_ms: The maximum total time to wait for messages for a 
+               request if the maximum number of messages has not yet been reached
+        :param str producer_acks: The number of acknowledgments the producer requires the leader to 
+               have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+               for the full set of in-sync replicas to acknowledge the record.
+        :param str producer_linger_ms: Wait for up to the given delay to allow batching records together
+        :param str simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be 
+               instantiated per broker.
+        """
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
         if consumer_request_max_bytes is not None:
@@ -2784,31 +3872,55 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @property
     @pulumi.getter(name="consumerEnableAutoCommit")
     def consumer_enable_auto_commit(self) -> Optional[str]:
+        """
+        If true the consumer's offset will be periodically 
+        committed to Kafka in the background
+        """
         return pulumi.get(self, "consumer_enable_auto_commit")
 
     @property
     @pulumi.getter(name="consumerRequestMaxBytes")
     def consumer_request_max_bytes(self) -> Optional[str]:
+        """
+        Maximum number of bytes in unencoded message keys and 
+        values by a single request
+        """
         return pulumi.get(self, "consumer_request_max_bytes")
 
     @property
     @pulumi.getter(name="consumerRequestTimeoutMs")
     def consumer_request_timeout_ms(self) -> Optional[str]:
+        """
+        The maximum total time to wait for messages for a 
+        request if the maximum number of messages has not yet been reached
+        """
         return pulumi.get(self, "consumer_request_timeout_ms")
 
     @property
     @pulumi.getter(name="producerAcks")
     def producer_acks(self) -> Optional[str]:
+        """
+        The number of acknowledgments the producer requires the leader to 
+        have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+        for the full set of in-sync replicas to acknowledge the record.
+        """
         return pulumi.get(self, "producer_acks")
 
     @property
     @pulumi.getter(name="producerLingerMs")
     def producer_linger_ms(self) -> Optional[str]:
+        """
+        Wait for up to the given delay to allow batching records together
+        """
         return pulumi.get(self, "producer_linger_ms")
 
     @property
     @pulumi.getter(name="simpleconsumerPoolSizeMax")
     def simpleconsumer_pool_size_max(self) -> Optional[str]:
+        """
+        Maximum number of SimpleConsumers that can be 
+        instantiated per broker.
+        """
         return pulumi.get(self, "simpleconsumer_pool_size_max")
 
     def _translate_property(self, prop):
@@ -2819,12 +3931,20 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
 class KafkaKafkaUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -2839,6 +3959,17 @@ class KafkaKafkaUserConfigPublicAccess(dict):
                  kafka_rest: Optional[str] = None,
                  prometheus: Optional[str] = None,
                  schema_registry: Optional[str] = None):
+        """
+        :param str kafka: Allow clients to connect to kafka from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str schema_registry: Enable Schema-Registry service
+        """
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
         if kafka_connect is not None:
@@ -2853,26 +3984,45 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @property
     @pulumi.getter
     def kafka(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka")
 
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_connect from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_rest from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_rest")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
+        """
+        Enable Schema-Registry service
+        """
         return pulumi.get(self, "schema_registry")
 
     def _translate_property(self, prop):
@@ -2957,6 +4107,10 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
     def __init__(__self__, *,
                  ip_filters: Optional[List[str]] = None,
                  kafka_mirrormaker: Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker'] = None):
+        """
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
@@ -2965,11 +4119,17 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="kafkaMirrormaker")
     def kafka_mirrormaker(self) -> Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker']:
+        """
+        Kafka MirrorMaker configuration values
+        """
         return pulumi.get(self, "kafka_mirrormaker")
 
     def _translate_property(self, prop):
@@ -2983,6 +4143,14 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
                  refresh_groups_interval_seconds: Optional[str] = None,
                  refresh_topics_enabled: Optional[str] = None,
                  refresh_topics_interval_seconds: Optional[str] = None):
+        """
+        :param str refresh_groups_enabled: Whether to periodically check for new consumer groups. 
+               Defaults to 'true'.
+        :param str refresh_groups_interval_seconds: Whether to periodically check for new topics and 
+               partitions. Defaults to 'true'.
+        :param str refresh_topics_interval_seconds: Frequency of topic and partitions refresh in 
+               seconds. Defaults to 600 seconds (10 minutes).
+        """
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -2995,11 +4163,19 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
     def refresh_groups_enabled(self) -> Optional[str]:
+        """
+        Whether to periodically check for new consumer groups. 
+        Defaults to 'true'.
+        """
         return pulumi.get(self, "refresh_groups_enabled")
 
     @property
     @pulumi.getter(name="refreshGroupsIntervalSeconds")
     def refresh_groups_interval_seconds(self) -> Optional[str]:
+        """
+        Whether to periodically check for new topics and 
+        partitions. Defaults to 'true'.
+        """
         return pulumi.get(self, "refresh_groups_interval_seconds")
 
     @property
@@ -3010,6 +4186,10 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @property
     @pulumi.getter(name="refreshTopicsIntervalSeconds")
     def refresh_topics_interval_seconds(self) -> Optional[str]:
+        """
+        Frequency of topic and partitions refresh in 
+        seconds. Defaults to 600 seconds (10 minutes).
+        """
         return pulumi.get(self, "refresh_topics_interval_seconds")
 
     def _translate_property(self, prop):
@@ -3147,6 +4327,26 @@ class MySqlMysqlUserConfig(dict):
                  public_access: Optional['outputs.MySqlMysqlUserConfigPublicAccess'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param str admin_password: Custom password for admin user. Defaults to random string. 
+               This must be set only when a new service is being created.
+        :param str admin_username: Custom username for admin user. This must be set only when a 
+               new service is being created.
+        :param str backup_hour: The hour of day (in UTC) when backup for the service is started. 
+               New backup is only started if previous backup has already completed.
+        :param str backup_minute: The minute of an hour when backup for the service is started. 
+               New backup is only started if previous backup has already completed.
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param 'MySqlMysqlUserConfigMysqlArgs' mysql: Allow clients to connect to mysql from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param str mysql_version: MySQL major version
+        :param 'MySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'MySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_target_time: Recovery target time when forking a service. This has effect 
+               only when a new service is being created.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only when 
+               a new service is being created.
+        """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
         if admin_username is not None:
@@ -3173,56 +4373,96 @@ class MySqlMysqlUserConfig(dict):
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
+        """
+        Custom password for admin user. Defaults to random string. 
+        This must be set only when a new service is being created.
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter(name="adminUsername")
     def admin_username(self) -> Optional[str]:
+        """
+        Custom username for admin user. This must be set only when a 
+        new service is being created.
+        """
         return pulumi.get(self, "admin_username")
 
     @property
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> Optional[str]:
+        """
+        The hour of day (in UTC) when backup for the service is started. 
+        New backup is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_hour")
 
     @property
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[str]:
+        """
+        The minute of an hour when backup for the service is started. 
+        New backup is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_minute")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def mysql(self) -> Optional['outputs.MySqlMysqlUserConfigMysql']:
+        """
+        Allow clients to connect to mysql from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter(name="mysqlVersion")
     def mysql_version(self) -> Optional[str]:
+        """
+        MySQL major version
+        """
         return pulumi.get(self, "mysql_version")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.MySqlMysqlUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.MySqlMysqlUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryTargetTime")
     def recovery_target_time(self) -> Optional[str]:
+        """
+        Recovery target time when forking a service. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "recovery_target_time")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only when 
+        a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     def _translate_property(self, prop):
@@ -3253,6 +4493,53 @@ class MySqlMysqlUserConfigMysql(dict):
                  sql_require_primary_key: Optional[str] = None,
                  tmp_table_size: Optional[str] = None,
                  wait_timeout: Optional[str] = None):
+        """
+        :param str connect_timeout: The number of seconds that the mysqld server waits for a 
+               connect packet before responding with Bad handshake
+        :param str default_time_zone: Default server time zone as an offset from UTC 
+               (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+        :param str group_concat_max_len: The maximum permitted result length in bytes for 
+               the GROUP_CONCAT() function.
+        :param str information_schema_stats_expiry: The time, in seconds, before cached 
+               statistics expire
+        :param str innodb_ft_min_token_size: Minimum length of words that are stored in 
+               an InnoDB FULLTEXT index.
+        :param str innodb_ft_server_stopword_table: This option is used to specify your 
+               own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        :param str innodb_lock_wait_timeout: The length of time in seconds an InnoDB 
+               transaction waits for a row lock before giving up.
+        :param str innodb_log_buffer_size: The size in bytes of the buffer that InnoDB 
+               uses to write to the log files on disk.
+        :param str innodb_online_alter_log_max_size: The upper limit in bytes on the 
+               size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param str innodb_print_all_deadlocks: When enabled, information about all 
+               deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+        :param str innodb_rollback_on_timeout: When enabled a transaction timeout 
+               causes InnoDB to abort and roll back the entire transaction.
+        :param str interactive_timeout: The number of seconds the server waits for 
+               activity on an interactive connection before closing it.
+        :param str max_allowed_packet: Size of the largest message in bytes that can 
+               be received by the server. Default is 67108864 (64M)
+        :param str max_heap_table_size: Limits the size of internal in-memory tables. 
+               Also set tmp_table_size. Default is 16777216 (16M)
+        :param str net_read_timeout: The number of seconds to wait for more data from 
+               a connection before aborting the read.
+        :param str net_write_timeout: The number of seconds to wait for a block to be 
+               written to a connection before aborting the write.
+        :param str sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. 
+               Default is 262144 (256K)
+        :param str sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. 
+               When creating a new service and not setting this field Aiven default SQL mode (strict,
+               SQL standard compliant) will be assigned.
+        :param str sql_require_primary_key: Require primary key to be defined for new 
+               tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+               to always have primary keys because various functionality may break if any large table
+               is missing them.
+        :param str tmp_table_size: Limits the size of internal in-memory tables. Also set 
+               max_heap_table_size. Default is 16777216 (16M)
+        :param str wait_timeout: The number of seconds the server waits for activity on 
+               a noninteractive connection before closing it.
+        """
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if default_time_zone is not None:
@@ -3299,106 +4586,193 @@ class MySqlMysqlUserConfigMysql(dict):
     @property
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional[str]:
+        """
+        The number of seconds that the mysqld server waits for a 
+        connect packet before responding with Bad handshake
+        """
         return pulumi.get(self, "connect_timeout")
 
     @property
     @pulumi.getter(name="defaultTimeZone")
     def default_time_zone(self) -> Optional[str]:
+        """
+        Default server time zone as an offset from UTC 
+        (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+        """
         return pulumi.get(self, "default_time_zone")
 
     @property
     @pulumi.getter(name="groupConcatMaxLen")
     def group_concat_max_len(self) -> Optional[str]:
+        """
+        The maximum permitted result length in bytes for 
+        the GROUP_CONCAT() function.
+        """
         return pulumi.get(self, "group_concat_max_len")
 
     @property
     @pulumi.getter(name="informationSchemaStatsExpiry")
     def information_schema_stats_expiry(self) -> Optional[str]:
+        """
+        The time, in seconds, before cached 
+        statistics expire
+        """
         return pulumi.get(self, "information_schema_stats_expiry")
 
     @property
     @pulumi.getter(name="innodbFtMinTokenSize")
     def innodb_ft_min_token_size(self) -> Optional[str]:
+        """
+        Minimum length of words that are stored in 
+        an InnoDB FULLTEXT index.
+        """
         return pulumi.get(self, "innodb_ft_min_token_size")
 
     @property
     @pulumi.getter(name="innodbFtServerStopwordTable")
     def innodb_ft_server_stopword_table(self) -> Optional[str]:
+        """
+        This option is used to specify your 
+        own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
 
     @property
     @pulumi.getter(name="innodbLockWaitTimeout")
     def innodb_lock_wait_timeout(self) -> Optional[str]:
+        """
+        The length of time in seconds an InnoDB 
+        transaction waits for a row lock before giving up.
+        """
         return pulumi.get(self, "innodb_lock_wait_timeout")
 
     @property
     @pulumi.getter(name="innodbLogBufferSize")
     def innodb_log_buffer_size(self) -> Optional[str]:
+        """
+        The size in bytes of the buffer that InnoDB 
+        uses to write to the log files on disk.
+        """
         return pulumi.get(self, "innodb_log_buffer_size")
 
     @property
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
     def innodb_online_alter_log_max_size(self) -> Optional[str]:
+        """
+        The upper limit in bytes on the 
+        size of the temporary log files used during online DDL operations for InnoDB tables.
+        """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
 
     @property
     @pulumi.getter(name="innodbPrintAllDeadlocks")
     def innodb_print_all_deadlocks(self) -> Optional[str]:
+        """
+        When enabled, information about all 
+        deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+        """
         return pulumi.get(self, "innodb_print_all_deadlocks")
 
     @property
     @pulumi.getter(name="innodbRollbackOnTimeout")
     def innodb_rollback_on_timeout(self) -> Optional[str]:
+        """
+        When enabled a transaction timeout 
+        causes InnoDB to abort and roll back the entire transaction.
+        """
         return pulumi.get(self, "innodb_rollback_on_timeout")
 
     @property
     @pulumi.getter(name="interactiveTimeout")
     def interactive_timeout(self) -> Optional[str]:
+        """
+        The number of seconds the server waits for 
+        activity on an interactive connection before closing it.
+        """
         return pulumi.get(self, "interactive_timeout")
 
     @property
     @pulumi.getter(name="maxAllowedPacket")
     def max_allowed_packet(self) -> Optional[str]:
+        """
+        Size of the largest message in bytes that can 
+        be received by the server. Default is 67108864 (64M)
+        """
         return pulumi.get(self, "max_allowed_packet")
 
     @property
     @pulumi.getter(name="maxHeapTableSize")
     def max_heap_table_size(self) -> Optional[str]:
+        """
+        Limits the size of internal in-memory tables. 
+        Also set tmp_table_size. Default is 16777216 (16M)
+        """
         return pulumi.get(self, "max_heap_table_size")
 
     @property
     @pulumi.getter(name="netReadTimeout")
     def net_read_timeout(self) -> Optional[str]:
+        """
+        The number of seconds to wait for more data from 
+        a connection before aborting the read.
+        """
         return pulumi.get(self, "net_read_timeout")
 
     @property
     @pulumi.getter(name="netWriteTimeout")
     def net_write_timeout(self) -> Optional[str]:
+        """
+        The number of seconds to wait for a block to be 
+        written to a connection before aborting the write.
+        """
         return pulumi.get(self, "net_write_timeout")
 
     @property
     @pulumi.getter(name="sortBufferSize")
     def sort_buffer_size(self) -> Optional[str]:
+        """
+        Sort buffer size in bytes for ORDER BY optimization. 
+        Default is 262144 (256K)
+        """
         return pulumi.get(self, "sort_buffer_size")
 
     @property
     @pulumi.getter(name="sqlMode")
     def sql_mode(self) -> Optional[str]:
+        """
+        Global SQL mode. Set to empty to use MySQL server defaults. 
+        When creating a new service and not setting this field Aiven default SQL mode (strict,
+        SQL standard compliant) will be assigned.
+        """
         return pulumi.get(self, "sql_mode")
 
     @property
     @pulumi.getter(name="sqlRequirePrimaryKey")
     def sql_require_primary_key(self) -> Optional[str]:
+        """
+        Require primary key to be defined for new 
+        tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+        to always have primary keys because various functionality may break if any large table
+        is missing them.
+        """
         return pulumi.get(self, "sql_require_primary_key")
 
     @property
     @pulumi.getter(name="tmpTableSize")
     def tmp_table_size(self) -> Optional[str]:
+        """
+        Limits the size of internal in-memory tables. Also set 
+        max_heap_table_size. Default is 16777216 (16M)
+        """
         return pulumi.get(self, "tmp_table_size")
 
     @property
     @pulumi.getter(name="waitTimeout")
     def wait_timeout(self) -> Optional[str]:
+        """
+        The number of seconds the server waits for activity on 
+        a noninteractive connection before closing it.
+        """
         return pulumi.get(self, "wait_timeout")
 
     def _translate_property(self, prop):
@@ -3410,6 +4784,12 @@ class MySqlMysqlUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str mysql: Allow clients to connect to mysql from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if prometheus is not None:
@@ -3418,11 +4798,19 @@ class MySqlMysqlUserConfigPrivateAccess(dict):
     @property
     @pulumi.getter
     def mysql(self) -> Optional[str]:
+        """
+        Allow clients to connect to mysql from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -3434,6 +4822,12 @@ class MySqlMysqlUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str mysql: Allow clients to connect to mysql from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if prometheus is not None:
@@ -3442,11 +4836,19 @@ class MySqlMysqlUserConfigPublicAccess(dict):
     @property
     @pulumi.getter
     def mysql(self) -> Optional[str]:
+        """
+        Allow clients to connect to mysql from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -3485,6 +4887,11 @@ class PgComponent(dict):
                  route: Optional[str] = None,
                  ssl: Optional[bool] = None,
                  usage: Optional[str] = None):
+        """
+        :param str host: hostname or IP address of the server where to migrate data from.
+        :param float port: port number of the server where to migrate data from.
+        :param bool ssl: the server where to migrate data from is secured with SSL.
+        """
         if component is not None:
             pulumi.set(__self__, "component", component)
         if host is not None:
@@ -3508,6 +4915,9 @@ class PgComponent(dict):
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        hostname or IP address of the server where to migrate data from.
+        """
         return pulumi.get(self, "host")
 
     @property
@@ -3518,6 +4928,9 @@ class PgComponent(dict):
     @property
     @pulumi.getter
     def port(self) -> Optional[float]:
+        """
+        port number of the server where to migrate data from.
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -3528,6 +4941,9 @@ class PgComponent(dict):
     @property
     @pulumi.getter
     def ssl(self) -> Optional[bool]:
+        """
+        the server where to migrate data from is secured with SSL.
+        """
         return pulumi.get(self, "ssl")
 
     @property
@@ -3550,6 +4966,16 @@ class PgPg(dict):
                  sslmode: Optional[str] = None,
                  uri: Optional[str] = None,
                  user: Optional[str] = None):
+        """
+        :param str dbname: database name for bootstrapping the initial connection.
+        :param str host: hostname or IP address of the server where to migrate data from.
+        :param str password: password for authentication with the server where to migrate data from.
+        :param float port: port number of the server where to migrate data from.
+        :param str replica_uri: PostgreSQL replica URI for services with a replica
+        :param str sslmode: PostgreSQL sslmode setting (currently always `require`)
+        :param str uri: PostgreSQL master connection URI
+        :param str user: PostgreSQL admin user name
+        """
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
         if host is not None:
@@ -3570,41 +4996,65 @@ class PgPg(dict):
     @property
     @pulumi.getter
     def dbname(self) -> Optional[str]:
+        """
+        database name for bootstrapping the initial connection.
+        """
         return pulumi.get(self, "dbname")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        hostname or IP address of the server where to migrate data from.
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        password for authentication with the server where to migrate data from.
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[float]:
+        """
+        port number of the server where to migrate data from.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="replicaUri")
     def replica_uri(self) -> Optional[str]:
+        """
+        PostgreSQL replica URI for services with a replica
+        """
         return pulumi.get(self, "replica_uri")
 
     @property
     @pulumi.getter
     def sslmode(self) -> Optional[str]:
+        """
+        PostgreSQL sslmode setting (currently always `require`)
+        """
         return pulumi.get(self, "sslmode")
 
     @property
     @pulumi.getter
     def uri(self) -> Optional[str]:
+        """
+        PostgreSQL master connection URI
+        """
         return pulumi.get(self, "uri")
 
     @property
     @pulumi.getter
     def user(self) -> Optional[str]:
+        """
+        PostgreSQL admin user name
+        """
         return pulumi.get(self, "user")
 
     def _translate_property(self, prop):
@@ -3635,6 +5085,44 @@ class PgPgUserConfig(dict):
                  timescaledb: Optional['outputs.PgPgUserConfigTimescaledb'] = None,
                  variant: Optional[str] = None,
                  work_mem: Optional[str] = None):
+        """
+        :param str admin_password: custom password for admin user. Defaults to random string. *This must
+               be set only when a new service is being created.*
+        :param str admin_username: custom username for admin user. *This must be set only when a new service
+               is being created.*
+        :param str backup_hour: the hour of day (in UTC) when backup for the service is started. New backup 
+               is only started if previous backup has already completed.
+        :param str backup_minute: the minute of an hour when backup for the service is started. New backup 
+               is only started if previous backup has already completed.
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'PgPgUserConfigMigrationArgs' migration: migrate data from existing server, has the following options:
+        :param 'PgPgUserConfigPgArgs' pg: Allow clients to connect to pg from the public internet for service nodes
+               that are in a project VPC or another type of private network
+        :param str pg_read_replica: This setting is deprecated. Use read-replica service integration instead.
+        :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+               This has effect only when a new service is being created.
+        :param str pg_version: PostgreSQL major version.
+        :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param 'PgPgUserConfigPglookoutArgs' pglookout: PGLookout settings.
+        :param 'PgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'PgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_target_time: Recovery target time when forking a service. This has effect 
+               only when a new service is being created.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
+        :param str shared_buffers_percentage: Percentage of total RAM that the database server uses for 
+               memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+               the shared_buffers configuration value. The absolute maximum is 12 GB.
+        :param str synchronous_replication: Synchronous replication type. Note that the service plan 
+               also needs to support synchronous replication.
+        :param 'PgPgUserConfigTimescaledbArgs' timescaledb: TimescaleDB extension configuration values.
+        :param str variant: Variant of the PostgreSQL service, may affect the features that are 
+               exposed by default. Options: `aiven` or `timescale`.
+        :param str work_mem: Sets the maximum amount of memory to be used by a query operation (such 
+               as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+               total RAM (up to 32MB).
+        """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
         if admin_username is not None:
@@ -3681,106 +5169,184 @@ class PgPgUserConfig(dict):
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
+        """
+        custom password for admin user. Defaults to random string. *This must
+        be set only when a new service is being created.*
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter(name="adminUsername")
     def admin_username(self) -> Optional[str]:
+        """
+        custom username for admin user. *This must be set only when a new service
+        is being created.*
+        """
         return pulumi.get(self, "admin_username")
 
     @property
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> Optional[str]:
+        """
+        the hour of day (in UTC) when backup for the service is started. New backup 
+        is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_hour")
 
     @property
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[str]:
+        """
+        the minute of an hour when backup for the service is started. New backup 
+        is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_minute")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def migration(self) -> Optional['outputs.PgPgUserConfigMigration']:
+        """
+        migrate data from existing server, has the following options:
+        """
         return pulumi.get(self, "migration")
 
     @property
     @pulumi.getter
     def pg(self) -> Optional['outputs.PgPgUserConfigPg']:
+        """
+        Allow clients to connect to pg from the public internet for service nodes
+        that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pg")
 
     @property
     @pulumi.getter(name="pgReadReplica")
     def pg_read_replica(self) -> Optional[str]:
+        """
+        This setting is deprecated. Use read-replica service integration instead.
+        """
         return pulumi.get(self, "pg_read_replica")
 
     @property
     @pulumi.getter(name="pgServiceToForkFrom")
     def pg_service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+        This has effect only when a new service is being created.
+        """
         return pulumi.get(self, "pg_service_to_fork_from")
 
     @property
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[str]:
+        """
+        PostgreSQL major version.
+        """
         return pulumi.get(self, "pg_version")
 
     @property
     @pulumi.getter
     def pgbouncer(self) -> Optional['outputs.PgPgUserConfigPgbouncer']:
+        """
+        Allow clients to connect to pgbouncer from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pgbouncer")
 
     @property
     @pulumi.getter
     def pglookout(self) -> Optional['outputs.PgPgUserConfigPglookout']:
+        """
+        PGLookout settings.
+        """
         return pulumi.get(self, "pglookout")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.PgPgUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks.
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.PgPgUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryTargetTime")
     def recovery_target_time(self) -> Optional[str]:
+        """
+        Recovery target time when forking a service. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "recovery_target_time")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     @property
     @pulumi.getter(name="sharedBuffersPercentage")
     def shared_buffers_percentage(self) -> Optional[str]:
+        """
+        Percentage of total RAM that the database server uses for 
+        memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+        the shared_buffers configuration value. The absolute maximum is 12 GB.
+        """
         return pulumi.get(self, "shared_buffers_percentage")
 
     @property
     @pulumi.getter(name="synchronousReplication")
     def synchronous_replication(self) -> Optional[str]:
+        """
+        Synchronous replication type. Note that the service plan 
+        also needs to support synchronous replication.
+        """
         return pulumi.get(self, "synchronous_replication")
 
     @property
     @pulumi.getter
     def timescaledb(self) -> Optional['outputs.PgPgUserConfigTimescaledb']:
+        """
+        TimescaleDB extension configuration values.
+        """
         return pulumi.get(self, "timescaledb")
 
     @property
     @pulumi.getter
     def variant(self) -> Optional[str]:
+        """
+        Variant of the PostgreSQL service, may affect the features that are 
+        exposed by default. Options: `aiven` or `timescale`.
+        """
         return pulumi.get(self, "variant")
 
     @property
     @pulumi.getter(name="workMem")
     def work_mem(self) -> Optional[str]:
+        """
+        Sets the maximum amount of memory to be used by a query operation (such 
+        as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+        total RAM (up to 32MB).
+        """
         return pulumi.get(self, "work_mem")
 
     def _translate_property(self, prop):
@@ -3796,6 +5362,14 @@ class PgPgUserConfigMigration(dict):
                  port: Optional[str] = None,
                  ssl: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param str dbname: database name for bootstrapping the initial connection.
+        :param str host: hostname or IP address of the server where to migrate data from.
+        :param str password: password for authentication with the server where to migrate data from.
+        :param str port: port number of the server where to migrate data from.
+        :param str ssl: the server where to migrate data from is secured with SSL.
+        :param str username: user name for authentication with the server where to migrate data from.
+        """
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
         if host is not None:
@@ -3812,31 +5386,49 @@ class PgPgUserConfigMigration(dict):
     @property
     @pulumi.getter
     def dbname(self) -> Optional[str]:
+        """
+        database name for bootstrapping the initial connection.
+        """
         return pulumi.get(self, "dbname")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        hostname or IP address of the server where to migrate data from.
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        password for authentication with the server where to migrate data from.
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        port number of the server where to migrate data from.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def ssl(self) -> Optional[str]:
+        """
+        the server where to migrate data from is secured with SSL.
+        """
         return pulumi.get(self, "ssl")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        user name for authentication with the server where to migrate data from.
+        """
         return pulumi.get(self, "username")
 
     def _translate_property(self, prop):
@@ -3880,6 +5472,73 @@ class PgPgUserConfigPg(dict):
                  track_functions: Optional[str] = None,
                  wal_sender_timeout: Optional[str] = None,
                  wal_writer_delay: Optional[str] = None):
+        """
+        :param str autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to 
+               autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2
+               (20% of table size).
+        :param str autovacuum_analyze_threshold: specifies the minimum number of inserted, updated 
+               or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        :param str autovacuum_freeze_max_age: specifies the maximum age (in transactions) that a table's 
+               pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+               wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+               even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        :param str autovacuum_max_workers: specifies the maximum number of autovacuum processes (other 
+               than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+               can only be set at server start.
+        :param str autovacuum_naptime: specifies the minimum delay between autovacuum runs on any 
+               given database. The delay is measured in seconds, and the default is one minute.
+        :param str autovacuum_vacuum_cost_delay: specifies the cost delay value that will be used 
+               in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be
+               used. The default value is 20 milliseconds.
+        :param str autovacuum_vacuum_cost_limit: specifies the cost limit value that will be used in 
+               automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit
+               value will be used.
+        :param str autovacuum_vacuum_scale_factor: specifies a fraction of the table size to add to 
+               autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        :param str autovacuum_vacuum_threshold: specifies the minimum number of updated or deleted tuples 
+               needed to trigger a VACUUM in any one table. The default is 50 tuples
+        :param str deadlock_timeout: this is the amount of time, in milliseconds, to wait on a lock before 
+               checking to see if there is a deadlock condition.
+        :param str idle_in_transaction_session_timeout: Time out sessions with open transactions after 
+               this number of milliseconds.
+        :param str jit: Controls system-wide use of Just-in-Time Compilation (JIT).
+        :param str log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged 
+               if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+               actions. Minus-one (the default) disables logging autovacuum actions.
+        :param str log_error_verbosity: Controls the amount of detail written in the server log for 
+               each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+        :param str log_min_duration_statement: Log statements that take more than this number of 
+               milliseconds to run, -1 disables
+        :param str max_locks_per_transaction: PostgreSQL maximum locks per transaction
+        :param str max_parallel_workers: Sets the maximum number of workers that the system can 
+               support for parallel queries.
+        :param str max_parallel_workers_per_gather: Sets the maximum number of workers that can be 
+               started by a single Gather or Gather Merge node.
+        :param str max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction
+        :param str max_prepared_transactions: PostgreSQL maximum prepared transactions
+        :param str max_stack_depth: Maximum depth of the stack in bytes
+        :param str max_standby_archive_delay: Max standby archive delay in milliseconds
+        :param str max_standby_streaming_delay: Max standby streaming delay in milliseconds
+        :param str max_worker_processes: Sets the maximum number of background processes that the system
+               can support
+               * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+               * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+               background tasks.
+               * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+               to track top-level statements (those issued directly by clients), all to also track nested
+               statements (such as statements invoked within functions), or none to disable statement statistics
+               collection. The default value is top.
+        :param str temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited
+        :param str timezone: PostgreSQL service timezone
+        :param str track_activity_query_size: Specifies the number of bytes reserved to track the currently 
+               executing command for each active session.
+        :param str track_commit_timestamp: Record commit time of transactions
+        :param str track_functions: Enables tracking of function call counts and time used.
+        :param str wal_sender_timeout: Terminate replication connections that are inactive for longer than 
+               this amount of time, in milliseconds.
+        :param str wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value 
+               to lower than the default 200ms may negatively impact performance
+        """
         if autovacuum_analyze_scale_factor is not None:
             pulumi.set(__self__, "autovacuum_analyze_scale_factor", autovacuum_analyze_scale_factor)
         if autovacuum_analyze_threshold is not None:
@@ -3952,121 +5611,224 @@ class PgPgUserConfigPg(dict):
     @property
     @pulumi.getter(name="autovacuumAnalyzeScaleFactor")
     def autovacuum_analyze_scale_factor(self) -> Optional[str]:
+        """
+        Specifies a fraction of the table size to add to 
+        autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2
+        (20% of table size).
+        """
         return pulumi.get(self, "autovacuum_analyze_scale_factor")
 
     @property
     @pulumi.getter(name="autovacuumAnalyzeThreshold")
     def autovacuum_analyze_threshold(self) -> Optional[str]:
+        """
+        specifies the minimum number of inserted, updated 
+        or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        """
         return pulumi.get(self, "autovacuum_analyze_threshold")
 
     @property
     @pulumi.getter(name="autovacuumFreezeMaxAge")
     def autovacuum_freeze_max_age(self) -> Optional[str]:
+        """
+        specifies the maximum age (in transactions) that a table's 
+        pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+        wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+        even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
     @property
     @pulumi.getter(name="autovacuumMaxWorkers")
     def autovacuum_max_workers(self) -> Optional[str]:
+        """
+        specifies the maximum number of autovacuum processes (other 
+        than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+        can only be set at server start.
+        """
         return pulumi.get(self, "autovacuum_max_workers")
 
     @property
     @pulumi.getter(name="autovacuumNaptime")
     def autovacuum_naptime(self) -> Optional[str]:
+        """
+        specifies the minimum delay between autovacuum runs on any 
+        given database. The delay is measured in seconds, and the default is one minute.
+        """
         return pulumi.get(self, "autovacuum_naptime")
 
     @property
     @pulumi.getter(name="autovacuumVacuumCostDelay")
     def autovacuum_vacuum_cost_delay(self) -> Optional[str]:
+        """
+        specifies the cost delay value that will be used 
+        in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be
+        used. The default value is 20 milliseconds.
+        """
         return pulumi.get(self, "autovacuum_vacuum_cost_delay")
 
     @property
     @pulumi.getter(name="autovacuumVacuumCostLimit")
     def autovacuum_vacuum_cost_limit(self) -> Optional[str]:
+        """
+        specifies the cost limit value that will be used in 
+        automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit
+        value will be used.
+        """
         return pulumi.get(self, "autovacuum_vacuum_cost_limit")
 
     @property
     @pulumi.getter(name="autovacuumVacuumScaleFactor")
     def autovacuum_vacuum_scale_factor(self) -> Optional[str]:
+        """
+        specifies a fraction of the table size to add to 
+        autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        """
         return pulumi.get(self, "autovacuum_vacuum_scale_factor")
 
     @property
     @pulumi.getter(name="autovacuumVacuumThreshold")
     def autovacuum_vacuum_threshold(self) -> Optional[str]:
+        """
+        specifies the minimum number of updated or deleted tuples 
+        needed to trigger a VACUUM in any one table. The default is 50 tuples
+        """
         return pulumi.get(self, "autovacuum_vacuum_threshold")
 
     @property
     @pulumi.getter(name="deadlockTimeout")
     def deadlock_timeout(self) -> Optional[str]:
+        """
+        this is the amount of time, in milliseconds, to wait on a lock before 
+        checking to see if there is a deadlock condition.
+        """
         return pulumi.get(self, "deadlock_timeout")
 
     @property
     @pulumi.getter(name="idleInTransactionSessionTimeout")
     def idle_in_transaction_session_timeout(self) -> Optional[str]:
+        """
+        Time out sessions with open transactions after 
+        this number of milliseconds.
+        """
         return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @property
     @pulumi.getter
     def jit(self) -> Optional[str]:
+        """
+        Controls system-wide use of Just-in-Time Compilation (JIT).
+        """
         return pulumi.get(self, "jit")
 
     @property
     @pulumi.getter(name="logAutovacuumMinDuration")
     def log_autovacuum_min_duration(self) -> Optional[str]:
+        """
+        Causes each action executed by autovacuum to be logged 
+        if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+        actions. Minus-one (the default) disables logging autovacuum actions.
+        """
         return pulumi.get(self, "log_autovacuum_min_duration")
 
     @property
     @pulumi.getter(name="logErrorVerbosity")
     def log_error_verbosity(self) -> Optional[str]:
+        """
+        Controls the amount of detail written in the server log for 
+        each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+        """
         return pulumi.get(self, "log_error_verbosity")
 
     @property
     @pulumi.getter(name="logMinDurationStatement")
     def log_min_duration_statement(self) -> Optional[str]:
+        """
+        Log statements that take more than this number of 
+        milliseconds to run, -1 disables
+        """
         return pulumi.get(self, "log_min_duration_statement")
 
     @property
     @pulumi.getter(name="maxLocksPerTransaction")
     def max_locks_per_transaction(self) -> Optional[str]:
+        """
+        PostgreSQL maximum locks per transaction
+        """
         return pulumi.get(self, "max_locks_per_transaction")
 
     @property
     @pulumi.getter(name="maxParallelWorkers")
     def max_parallel_workers(self) -> Optional[str]:
+        """
+        Sets the maximum number of workers that the system can 
+        support for parallel queries.
+        """
         return pulumi.get(self, "max_parallel_workers")
 
     @property
     @pulumi.getter(name="maxParallelWorkersPerGather")
     def max_parallel_workers_per_gather(self) -> Optional[str]:
+        """
+        Sets the maximum number of workers that can be 
+        started by a single Gather or Gather Merge node.
+        """
         return pulumi.get(self, "max_parallel_workers_per_gather")
 
     @property
     @pulumi.getter(name="maxPredLocksPerTransaction")
     def max_pred_locks_per_transaction(self) -> Optional[str]:
+        """
+        PostgreSQL maximum predicate locks per transaction
+        """
         return pulumi.get(self, "max_pred_locks_per_transaction")
 
     @property
     @pulumi.getter(name="maxPreparedTransactions")
     def max_prepared_transactions(self) -> Optional[str]:
+        """
+        PostgreSQL maximum prepared transactions
+        """
         return pulumi.get(self, "max_prepared_transactions")
 
     @property
     @pulumi.getter(name="maxStackDepth")
     def max_stack_depth(self) -> Optional[str]:
+        """
+        Maximum depth of the stack in bytes
+        """
         return pulumi.get(self, "max_stack_depth")
 
     @property
     @pulumi.getter(name="maxStandbyArchiveDelay")
     def max_standby_archive_delay(self) -> Optional[str]:
+        """
+        Max standby archive delay in milliseconds
+        """
         return pulumi.get(self, "max_standby_archive_delay")
 
     @property
     @pulumi.getter(name="maxStandbyStreamingDelay")
     def max_standby_streaming_delay(self) -> Optional[str]:
+        """
+        Max standby streaming delay in milliseconds
+        """
         return pulumi.get(self, "max_standby_streaming_delay")
 
     @property
     @pulumi.getter(name="maxWorkerProcesses")
     def max_worker_processes(self) -> Optional[str]:
+        """
+        Sets the maximum number of background processes that the system
+        can support
+        * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+        * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+        background tasks.
+        * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+        to track top-level statements (those issued directly by clients), all to also track nested
+        statements (such as statements invoked within functions), or none to disable statement statistics
+        collection. The default value is top.
+        """
         return pulumi.get(self, "max_worker_processes")
 
     @property
@@ -4087,36 +5849,60 @@ class PgPgUserConfigPg(dict):
     @property
     @pulumi.getter(name="tempFileLimit")
     def temp_file_limit(self) -> Optional[str]:
+        """
+        PostgreSQL temporary file limit in KiB, -1 for unlimited
+        """
         return pulumi.get(self, "temp_file_limit")
 
     @property
     @pulumi.getter
     def timezone(self) -> Optional[str]:
+        """
+        PostgreSQL service timezone
+        """
         return pulumi.get(self, "timezone")
 
     @property
     @pulumi.getter(name="trackActivityQuerySize")
     def track_activity_query_size(self) -> Optional[str]:
+        """
+        Specifies the number of bytes reserved to track the currently 
+        executing command for each active session.
+        """
         return pulumi.get(self, "track_activity_query_size")
 
     @property
     @pulumi.getter(name="trackCommitTimestamp")
     def track_commit_timestamp(self) -> Optional[str]:
+        """
+        Record commit time of transactions
+        """
         return pulumi.get(self, "track_commit_timestamp")
 
     @property
     @pulumi.getter(name="trackFunctions")
     def track_functions(self) -> Optional[str]:
+        """
+        Enables tracking of function call counts and time used.
+        """
         return pulumi.get(self, "track_functions")
 
     @property
     @pulumi.getter(name="walSenderTimeout")
     def wal_sender_timeout(self) -> Optional[str]:
+        """
+        Terminate replication connections that are inactive for longer than 
+        this amount of time, in milliseconds.
+        """
         return pulumi.get(self, "wal_sender_timeout")
 
     @property
     @pulumi.getter(name="walWriterDelay")
     def wal_writer_delay(self) -> Optional[str]:
+        """
+        WAL flush interval in milliseconds. Note that setting this value 
+        to lower than the default 200ms may negatively impact performance
+        """
         return pulumi.get(self, "wal_writer_delay")
 
     def _translate_property(self, prop):
@@ -4128,6 +5914,10 @@ class PgPgUserConfigPgbouncer(dict):
     def __init__(__self__, *,
                  ignore_startup_parameters: Optional[List[str]] = None,
                  server_reset_query_always: Optional[str] = None):
+        """
+        :param List[str] ignore_startup_parameters: Enum of parameters to ignore when given in startup packet.
+        :param str server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes.
+        """
         if ignore_startup_parameters is not None:
             pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
         if server_reset_query_always is not None:
@@ -4136,11 +5926,17 @@ class PgPgUserConfigPgbouncer(dict):
     @property
     @pulumi.getter(name="ignoreStartupParameters")
     def ignore_startup_parameters(self) -> Optional[List[str]]:
+        """
+        Enum of parameters to ignore when given in startup packet.
+        """
         return pulumi.get(self, "ignore_startup_parameters")
 
     @property
     @pulumi.getter(name="serverResetQueryAlways")
     def server_reset_query_always(self) -> Optional[str]:
+        """
+        Run server_reset_query (DISCARD ALL) in all pooling modes.
+        """
         return pulumi.get(self, "server_reset_query_always")
 
     def _translate_property(self, prop):
@@ -4151,12 +5947,20 @@ class PgPgUserConfigPgbouncer(dict):
 class PgPgUserConfigPglookout(dict):
     def __init__(__self__, *,
                  max_failover_replication_time_lag: Optional[str] = None):
+        """
+        :param str max_failover_replication_time_lag: Number of seconds of master unavailability before 
+               triggering database failover to standby
+        """
         if max_failover_replication_time_lag is not None:
             pulumi.set(__self__, "max_failover_replication_time_lag", max_failover_replication_time_lag)
 
     @property
     @pulumi.getter(name="maxFailoverReplicationTimeLag")
     def max_failover_replication_time_lag(self) -> Optional[str]:
+        """
+        Number of seconds of master unavailability before 
+        triggering database failover to standby
+        """
         return pulumi.get(self, "max_failover_replication_time_lag")
 
     def _translate_property(self, prop):
@@ -4169,6 +5973,14 @@ class PgPgUserConfigPrivateAccess(dict):
                  pg: Optional[str] = None,
                  pgbouncer: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str pg: Allow clients to connect to pg from the public internet for service nodes
+               that are in a project VPC or another type of private network
+        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
@@ -4179,16 +5991,28 @@ class PgPgUserConfigPrivateAccess(dict):
     @property
     @pulumi.getter
     def pg(self) -> Optional[str]:
+        """
+        Allow clients to connect to pg from the public internet for service nodes
+        that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pg")
 
     @property
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
+        """
+        Allow clients to connect to pgbouncer from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pgbouncer")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -4201,6 +6025,14 @@ class PgPgUserConfigPublicAccess(dict):
                  pg: Optional[str] = None,
                  pgbouncer: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str pg: Allow clients to connect to pg from the public internet for service nodes
+               that are in a project VPC or another type of private network
+        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
@@ -4211,16 +6043,28 @@ class PgPgUserConfigPublicAccess(dict):
     @property
     @pulumi.getter
     def pg(self) -> Optional[str]:
+        """
+        Allow clients to connect to pg from the public internet for service nodes
+        that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pg")
 
     @property
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
+        """
+        Allow clients to connect to pgbouncer from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pgbouncer")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     def _translate_property(self, prop):
@@ -4231,12 +6075,22 @@ class PgPgUserConfigPublicAccess(dict):
 class PgPgUserConfigTimescaledb(dict):
     def __init__(__self__, *,
                  max_background_workers: Optional[str] = None):
+        """
+        :param str max_background_workers: The number of background workers for timescaledb 
+               operations. You should configure this setting to the sum of your number of databases and the
+               total number of concurrent background workers you want running at any given point in time.
+        """
         if max_background_workers is not None:
             pulumi.set(__self__, "max_background_workers", max_background_workers)
 
     @property
     @pulumi.getter(name="maxBackgroundWorkers")
     def max_background_workers(self) -> Optional[str]:
+        """
+        The number of background workers for timescaledb 
+        operations. You should configure this setting to the sum of your number of databases and the
+        total number of concurrent background workers you want running at any given point in time.
+        """
         return pulumi.get(self, "max_background_workers")
 
     def _translate_property(self, prop):
@@ -4275,6 +6129,11 @@ class RedisComponent(dict):
                  route: Optional[str] = None,
                  ssl: Optional[bool] = None,
                  usage: Optional[str] = None):
+        """
+        :param str host: Hostname or IP address of the server where to migrate data from
+        :param float port: Port number of the server where to migrate data from
+        :param bool ssl: The server where to migrate data from is secured with SSL
+        """
         if component is not None:
             pulumi.set(__self__, "component", component)
         if host is not None:
@@ -4298,6 +6157,9 @@ class RedisComponent(dict):
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        Hostname or IP address of the server where to migrate data from
+        """
         return pulumi.get(self, "host")
 
     @property
@@ -4308,6 +6170,9 @@ class RedisComponent(dict):
     @property
     @pulumi.getter
     def port(self) -> Optional[float]:
+        """
+        Port number of the server where to migrate data from
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -4318,6 +6183,9 @@ class RedisComponent(dict):
     @property
     @pulumi.getter
     def ssl(self) -> Optional[bool]:
+        """
+        The server where to migrate data from is secured with SSL
+        """
         return pulumi.get(self, "ssl")
 
     @property
@@ -4353,6 +6221,22 @@ class RedisRedisUserConfig(dict):
                  redis_ssl: Optional[str] = None,
                  redis_timeout: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'RedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'RedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'RedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
+               * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+        :param str redis_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu 
+               maxmemory-policies
+        :param str redis_maxmemory_policy: Redis maxmemory-policy
+        :param str redis_notify_keyspace_events: Set notify-keyspace-events option
+        :param str redis_ssl: Require SSL to access Redis
+        :param str redis_timeout: Redis idle connection timeout
+               * `service_to_fork_from"` - (Optional) Name of another service to fork from. This has effect only
+               when a new service is being created.
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -4381,26 +6265,42 @@ class RedisRedisUserConfig(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def migration(self) -> Optional['outputs.RedisRedisUserConfigMigration']:
+        """
+        Migrate data from existing server
+        """
         return pulumi.get(self, "migration")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.RedisRedisUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.RedisRedisUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service
+        * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
@@ -4411,26 +6311,44 @@ class RedisRedisUserConfig(dict):
     @property
     @pulumi.getter(name="redisLfuLogFactor")
     def redis_lfu_log_factor(self) -> Optional[str]:
+        """
+        Counter logarithm factor for volatile-lfu and allkeys-lfu 
+        maxmemory-policies
+        """
         return pulumi.get(self, "redis_lfu_log_factor")
 
     @property
     @pulumi.getter(name="redisMaxmemoryPolicy")
     def redis_maxmemory_policy(self) -> Optional[str]:
+        """
+        Redis maxmemory-policy
+        """
         return pulumi.get(self, "redis_maxmemory_policy")
 
     @property
     @pulumi.getter(name="redisNotifyKeyspaceEvents")
     def redis_notify_keyspace_events(self) -> Optional[str]:
+        """
+        Set notify-keyspace-events option
+        """
         return pulumi.get(self, "redis_notify_keyspace_events")
 
     @property
     @pulumi.getter(name="redisSsl")
     def redis_ssl(self) -> Optional[str]:
+        """
+        Require SSL to access Redis
+        """
         return pulumi.get(self, "redis_ssl")
 
     @property
     @pulumi.getter(name="redisTimeout")
     def redis_timeout(self) -> Optional[str]:
+        """
+        Redis idle connection timeout
+        * `service_to_fork_from"` - (Optional) Name of another service to fork from. This has effect only
+        when a new service is being created.
+        """
         return pulumi.get(self, "redis_timeout")
 
     @property
@@ -4451,6 +6369,14 @@ class RedisRedisUserConfigMigration(dict):
                  port: Optional[str] = None,
                  ssl: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param str dbname: Database name for bootstrapping the initial connection
+        :param str host: Hostname or IP address of the server where to migrate data from
+        :param str password: Password for authentication with the server where to migrate data from
+        :param str port: Port number of the server where to migrate data from
+        :param str ssl: The server where to migrate data from is secured with SSL
+        :param str username: User name for authentication with the server where to migrate data from
+        """
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
         if host is not None:
@@ -4467,31 +6393,49 @@ class RedisRedisUserConfigMigration(dict):
     @property
     @pulumi.getter
     def dbname(self) -> Optional[str]:
+        """
+        Database name for bootstrapping the initial connection
+        """
         return pulumi.get(self, "dbname")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        Hostname or IP address of the server where to migrate data from
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Password for authentication with the server where to migrate data from
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        Port number of the server where to migrate data from
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def ssl(self) -> Optional[str]:
+        """
+        The server where to migrate data from is secured with SSL
+        """
         return pulumi.get(self, "ssl")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        User name for authentication with the server where to migrate data from
+        """
         return pulumi.get(self, "username")
 
     def _translate_property(self, prop):
@@ -4503,6 +6447,12 @@ class RedisRedisUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param str redis: Allow clients to connect to redis from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
@@ -4511,11 +6461,19 @@ class RedisRedisUserConfigPrivateAccess(dict):
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter
     def redis(self) -> Optional[str]:
+        """
+        Allow clients to connect to redis from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "redis")
 
     def _translate_property(self, prop):
@@ -4527,6 +6485,12 @@ class RedisRedisUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param str redis: Allow clients to connect to redis from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
@@ -4535,11 +6499,19 @@ class RedisRedisUserConfigPublicAccess(dict):
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter
     def redis(self) -> Optional[str]:
+        """
+        Allow clients to connect to redis from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "redis")
 
     def _translate_property(self, prop):
@@ -8458,6 +10430,15 @@ class GetCassandaCassandraUserConfigResult(dict):
                  private_access: Optional['outputs.GetCassandaCassandraUserConfigPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetCassandaCassandraUserConfigPublicAccessResult'] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param str migrate_sstableloader: sets the service into migration mode enabling the sstableloader 
+               utility to be used to upload Cassandra data files. Available only on service create.
+        :param 'GetCassandaCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'GetCassandaCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migrate_sstableloader is not None:
@@ -8472,26 +10453,43 @@ class GetCassandaCassandraUserConfigResult(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="migrateSstableloader")
     def migrate_sstableloader(self) -> Optional[str]:
+        """
+        sets the service into migration mode enabling the sstableloader 
+        utility to be used to upload Cassandra data files. Available only on service create.
+        """
         return pulumi.get(self, "migrate_sstableloader")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetCassandaCassandraUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks.
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetCassandaCassandraUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
 
@@ -8499,12 +10497,20 @@ class GetCassandaCassandraUserConfigResult(dict):
 class GetCassandaCassandraUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -8512,12 +10518,20 @@ class GetCassandaCassandraUserConfigPrivateAccessResult(dict):
 class GetCassandaCassandraUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -8690,11 +10704,17 @@ class GetElasticSearchComponentResult(dict):
 class GetElasticSearchElasticsearchResult(dict):
     def __init__(__self__, *,
                  kibana_uri: str):
+        """
+        :param str kibana_uri: URI for Kibana frontend.
+        """
         pulumi.set(__self__, "kibana_uri", kibana_uri)
 
     @property
     @pulumi.getter(name="kibanaUri")
     def kibana_uri(self) -> str:
+        """
+        URI for Kibana frontend.
+        """
         return pulumi.get(self, "kibana_uri")
 
 
@@ -8713,6 +10733,27 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
                  public_access: Optional['outputs.GetElasticSearchElasticsearchUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the 
+               Aiven DNS name.
+        :param str disable_replication_factor_adjustment: Disable automatic replication factor 
+               adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+               least to two nodes. Note: setting this to true increases a risk of data loss in case of
+               virtual machine failure.
+        :param 'GetElasticSearchElasticsearchUserConfigElasticsearchArgs' elasticsearch: Elasticsearch specific server provided values.
+        :param str elasticsearch_version: Elasticsearch major version.
+        :param List['GetElasticSearchElasticsearchUserConfigIndexPatternArgs'] index_patterns: Glob pattern and number of indexes matching that pattern to 
+               be kept.
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'GetElasticSearchElasticsearchUserConfigKibanaArgs' kibana: Allow clients to connect to kibana from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str max_index_count: Maximum number of indexes to keep before deleting the oldest one.
+        :param 'GetElasticSearchElasticsearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'GetElasticSearchElasticsearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect 
+               only when a new service is being created.
+        """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if disable_replication_factor_adjustment is not None:
@@ -8741,61 +10782,104 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the 
+        Aiven DNS name.
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="disableReplicationFactorAdjustment")
     def disable_replication_factor_adjustment(self) -> Optional[str]:
+        """
+        Disable automatic replication factor 
+        adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+        least to two nodes. Note: setting this to true increases a risk of data loss in case of
+        virtual machine failure.
+        """
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @property
     @pulumi.getter
     def elasticsearch(self) -> Optional['outputs.GetElasticSearchElasticsearchUserConfigElasticsearchResult']:
+        """
+        Elasticsearch specific server provided values.
+        """
         return pulumi.get(self, "elasticsearch")
 
     @property
     @pulumi.getter(name="elasticsearchVersion")
     def elasticsearch_version(self) -> Optional[str]:
+        """
+        Elasticsearch major version.
+        """
         return pulumi.get(self, "elasticsearch_version")
 
     @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[List['outputs.GetElasticSearchElasticsearchUserConfigIndexPatternResult']]:
+        """
+        Glob pattern and number of indexes matching that pattern to 
+        be kept.
+        """
         return pulumi.get(self, "index_patterns")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def kibana(self) -> Optional['outputs.GetElasticSearchElasticsearchUserConfigKibanaResult']:
+        """
+        Allow clients to connect to kibana from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kibana")
 
     @property
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[str]:
+        """
+        Maximum number of indexes to keep before deleting the oldest one.
+        """
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetElasticSearchElasticsearchUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks.
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetElasticSearchElasticsearchUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service.
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
 
@@ -8826,6 +10910,67 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
                  thread_pool_search_throttled_size: Optional[str] = None,
                  thread_pool_write_queue_size: Optional[str] = None,
                  thread_pool_write_size: Optional[str] = None):
+        """
+        :param str action_auto_create_index_enabled: Explicitly allow or block automatic 
+               creation of indices. Defaults to true
+        :param str action_destructive_requires_name: Require explicit index names when deleting
+        :param str http_max_content_length: Maximum content length for HTTP requests to 
+               the Elasticsearch HTTP API, in bytes.
+        :param str http_max_header_size: The max size of allowed headers, in bytes.
+        :param str http_max_initial_line_length: The max length of an HTTP URL, in bytes.
+        :param str indices_fielddata_cache_size: Relative amount. Maximum amount of 
+               heap memory used for field data cache. This is an expert setting; decreasing the
+               value too much will increase overhead of loading field data; too much memory used
+               for field data cache will decrease amount of heap available for other operations.
+        :param str indices_memory_index_buffer_size: Percentage value. Default is 10%. 
+               Total amount of heap used for indexing buffer, before writing segments to disk.
+               This is an expert setting. Too low value will slow down indexing; too high value
+               will increase indexing performance but causes performance issues for query performance.
+        :param str indices_queries_cache_size: Percentage value. Default is 10%. 
+               Maximum amount of heap used for query cache. This is an expert setting.
+               Too low value will decrease query performance and increase performance for other
+               operations; too high value will cause issues with other Elasticsearch functionality.
+        :param str indices_query_bool_max_clause_count: Maximum number of clauses Lucene 
+               BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+               may cause performance issues. Investigate other approaches first before increasing this value.
+        :param List[str] reindex_remote_whitelists: Whitelisted addresses for reindexing. 
+               Changing this value will cause all Elasticsearch instances to restart.
+        :param str search_max_buckets: Maximum number of aggregation buckets allowed 
+               in a single response. Elasticsearch default value is used when this is not defined.
+        :param str thread_pool_analyze_queue_size: Size for the thread pool queue. 
+               See documentation for exact details.
+        :param str thread_pool_analyze_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count -
+               value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_force_merge_size: Size for the thread pool. See 
+               documentation for exact details. Do note this may have maximum value depending on
+               CPU count - value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_get_queue_size: Size for the thread pool queue. See 
+               documentation for exact details.
+        :param str thread_pool_get_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count -
+               value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_index_queue_size: Size for the thread pool queue. 
+               See documentation for exact details.
+        :param str thread_pool_index_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count -
+               value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_search_queue_size: Size for the thread pool queue. See 
+               documentation for exact details.
+        :param str thread_pool_search_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count - value
+               is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_search_throttled_queue_size: Size for the thread pool queue. 
+               See documentation for exact details.
+        :param str thread_pool_search_throttled_size: Size for the thread pool. See 
+               documentation for exact details. Do note this may have maximum value depending on
+               CPU count - value is automatically lowered if set to higher than maximum value.
+        :param str thread_pool_write_queue_size: Size for the thread pool queue. See 
+               documentation for exact details.
+        :param str thread_pool_write_size: Size for the thread pool. See documentation 
+               for exact details. Do note this may have maximum value depending on CPU count - value
+               is automatically lowered if set to higher than maximum value.
+        """
         if action_auto_create_index_enabled is not None:
             pulumi.set(__self__, "action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
@@ -8878,121 +11023,228 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
     @property
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
     def action_auto_create_index_enabled(self) -> Optional[str]:
+        """
+        Explicitly allow or block automatic 
+        creation of indices. Defaults to true
+        """
         return pulumi.get(self, "action_auto_create_index_enabled")
 
     @property
     @pulumi.getter(name="actionDestructiveRequiresName")
     def action_destructive_requires_name(self) -> Optional[str]:
+        """
+        Require explicit index names when deleting
+        """
         return pulumi.get(self, "action_destructive_requires_name")
 
     @property
     @pulumi.getter(name="httpMaxContentLength")
     def http_max_content_length(self) -> Optional[str]:
+        """
+        Maximum content length for HTTP requests to 
+        the Elasticsearch HTTP API, in bytes.
+        """
         return pulumi.get(self, "http_max_content_length")
 
     @property
     @pulumi.getter(name="httpMaxHeaderSize")
     def http_max_header_size(self) -> Optional[str]:
+        """
+        The max size of allowed headers, in bytes.
+        """
         return pulumi.get(self, "http_max_header_size")
 
     @property
     @pulumi.getter(name="httpMaxInitialLineLength")
     def http_max_initial_line_length(self) -> Optional[str]:
+        """
+        The max length of an HTTP URL, in bytes.
+        """
         return pulumi.get(self, "http_max_initial_line_length")
 
     @property
     @pulumi.getter(name="indicesFielddataCacheSize")
     def indices_fielddata_cache_size(self) -> Optional[str]:
+        """
+        Relative amount. Maximum amount of 
+        heap memory used for field data cache. This is an expert setting; decreasing the
+        value too much will increase overhead of loading field data; too much memory used
+        for field data cache will decrease amount of heap available for other operations.
+        """
         return pulumi.get(self, "indices_fielddata_cache_size")
 
     @property
     @pulumi.getter(name="indicesMemoryIndexBufferSize")
     def indices_memory_index_buffer_size(self) -> Optional[str]:
+        """
+        Percentage value. Default is 10%. 
+        Total amount of heap used for indexing buffer, before writing segments to disk.
+        This is an expert setting. Too low value will slow down indexing; too high value
+        will increase indexing performance but causes performance issues for query performance.
+        """
         return pulumi.get(self, "indices_memory_index_buffer_size")
 
     @property
     @pulumi.getter(name="indicesQueriesCacheSize")
     def indices_queries_cache_size(self) -> Optional[str]:
+        """
+        Percentage value. Default is 10%. 
+        Maximum amount of heap used for query cache. This is an expert setting.
+        Too low value will decrease query performance and increase performance for other
+        operations; too high value will cause issues with other Elasticsearch functionality.
+        """
         return pulumi.get(self, "indices_queries_cache_size")
 
     @property
     @pulumi.getter(name="indicesQueryBoolMaxClauseCount")
     def indices_query_bool_max_clause_count(self) -> Optional[str]:
+        """
+        Maximum number of clauses Lucene 
+        BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+        may cause performance issues. Investigate other approaches first before increasing this value.
+        """
         return pulumi.get(self, "indices_query_bool_max_clause_count")
 
     @property
     @pulumi.getter(name="reindexRemoteWhitelists")
     def reindex_remote_whitelists(self) -> Optional[List[str]]:
+        """
+        Whitelisted addresses for reindexing. 
+        Changing this value will cause all Elasticsearch instances to restart.
+        """
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
     def search_max_buckets(self) -> Optional[str]:
+        """
+        Maximum number of aggregation buckets allowed 
+        in a single response. Elasticsearch default value is used when this is not defined.
+        """
         return pulumi.get(self, "search_max_buckets")
 
     @property
     @pulumi.getter(name="threadPoolAnalyzeQueueSize")
     def thread_pool_analyze_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. 
+        See documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_analyze_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolAnalyzeSize")
     def thread_pool_analyze_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count -
+        value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_analyze_size")
 
     @property
     @pulumi.getter(name="threadPoolForceMergeSize")
     def thread_pool_force_merge_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See 
+        documentation for exact details. Do note this may have maximum value depending on
+        CPU count - value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_force_merge_size")
 
     @property
     @pulumi.getter(name="threadPoolGetQueueSize")
     def thread_pool_get_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. See 
+        documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_get_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolGetSize")
     def thread_pool_get_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count -
+        value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_get_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexQueueSize")
     def thread_pool_index_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. 
+        See documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_index_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexSize")
     def thread_pool_index_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count -
+        value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_index_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchQueueSize")
     def thread_pool_search_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. See 
+        documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_search_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchSize")
     def thread_pool_search_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count - value
+        is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_search_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchThrottledQueueSize")
     def thread_pool_search_throttled_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. 
+        See documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_search_throttled_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolSearchThrottledSize")
     def thread_pool_search_throttled_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See 
+        documentation for exact details. Do note this may have maximum value depending on
+        CPU count - value is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_search_throttled_size")
 
     @property
     @pulumi.getter(name="threadPoolWriteQueueSize")
     def thread_pool_write_queue_size(self) -> Optional[str]:
+        """
+        Size for the thread pool queue. See 
+        documentation for exact details.
+        """
         return pulumi.get(self, "thread_pool_write_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolWriteSize")
     def thread_pool_write_size(self) -> Optional[str]:
+        """
+        Size for the thread pool. See documentation 
+        for exact details. Do note this may have maximum value depending on CPU count - value
+        is automatically lowered if set to higher than maximum value.
+        """
         return pulumi.get(self, "thread_pool_write_size")
 
 
@@ -9001,6 +11253,11 @@ class GetElasticSearchElasticsearchUserConfigIndexPatternResult(dict):
     def __init__(__self__, *,
                  max_index_count: Optional[str] = None,
                  pattern: Optional[str] = None):
+        """
+        :param str max_index_count: Maximum number of indexes to keep before deleting the oldest one.
+        :param str pattern: Must consist of alpha-numeric characters, dashes, underscores, 
+               dots and glob characters (* and ?)
+        """
         if max_index_count is not None:
             pulumi.set(__self__, "max_index_count", max_index_count)
         if pattern is not None:
@@ -9009,11 +11266,18 @@ class GetElasticSearchElasticsearchUserConfigIndexPatternResult(dict):
     @property
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[str]:
+        """
+        Maximum number of indexes to keep before deleting the oldest one.
+        """
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter
     def pattern(self) -> Optional[str]:
+        """
+        Must consist of alpha-numeric characters, dashes, underscores, 
+        dots and glob characters (* and ?)
+        """
         return pulumi.get(self, "pattern")
 
 
@@ -9023,6 +11287,14 @@ class GetElasticSearchElasticsearchUserConfigKibanaResult(dict):
                  elasticsearch_request_timeout: Optional[str] = None,
                  enabled: Optional[str] = None,
                  max_old_space_size: Optional[str] = None):
+        """
+        :param str elasticsearch_request_timeout: Timeout in milliseconds for requests 
+               made by Kibana towards Elasticsearch.
+        :param str enabled: Enable or disable Kibana.
+        :param str max_old_space_size: Limits the maximum amount of memory (in MiB) the 
+               Kibana process can use. This sets the max_old_space_size option of the nodejs running
+               the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+        """
         if elasticsearch_request_timeout is not None:
             pulumi.set(__self__, "elasticsearch_request_timeout", elasticsearch_request_timeout)
         if enabled is not None:
@@ -9033,16 +11305,28 @@ class GetElasticSearchElasticsearchUserConfigKibanaResult(dict):
     @property
     @pulumi.getter(name="elasticsearchRequestTimeout")
     def elasticsearch_request_timeout(self) -> Optional[str]:
+        """
+        Timeout in milliseconds for requests 
+        made by Kibana towards Elasticsearch.
+        """
         return pulumi.get(self, "elasticsearch_request_timeout")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[str]:
+        """
+        Enable or disable Kibana.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="maxOldSpaceSize")
     def max_old_space_size(self) -> Optional[str]:
+        """
+        Limits the maximum amount of memory (in MiB) the 
+        Kibana process can use. This sets the max_old_space_size option of the nodejs running
+        the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+        """
         return pulumi.get(self, "max_old_space_size")
 
 
@@ -9052,6 +11336,13 @@ class GetElasticSearchElasticsearchUserConfigPrivateAccessResult(dict):
                  elasticsearch: Optional[str] = None,
                  kibana: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str elasticsearch: Elasticsearch specific server provided values.
+        :param str kibana: Allow clients to connect to kibana from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str prometheus: Allow clients to connect to prometheus from the public 
+               internet for service nodes that are in a project VPC or another type of private network.
+        """
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
@@ -9062,16 +11353,27 @@ class GetElasticSearchElasticsearchUserConfigPrivateAccessResult(dict):
     @property
     @pulumi.getter
     def elasticsearch(self) -> Optional[str]:
+        """
+        Elasticsearch specific server provided values.
+        """
         return pulumi.get(self, "elasticsearch")
 
     @property
     @pulumi.getter
     def kibana(self) -> Optional[str]:
+        """
+        Allow clients to connect to kibana from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kibana")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public 
+        internet for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -9081,6 +11383,13 @@ class GetElasticSearchElasticsearchUserConfigPublicAccessResult(dict):
                  elasticsearch: Optional[str] = None,
                  kibana: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str elasticsearch: Elasticsearch specific server provided values.
+        :param str kibana: Allow clients to connect to kibana from the public internet for 
+               service nodes that are in a project VPC or another type of private network.
+        :param str prometheus: Allow clients to connect to prometheus from the public 
+               internet for service nodes that are in a project VPC or another type of private network.
+        """
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
@@ -9091,16 +11400,27 @@ class GetElasticSearchElasticsearchUserConfigPublicAccessResult(dict):
     @property
     @pulumi.getter
     def elasticsearch(self) -> Optional[str]:
+        """
+        Elasticsearch specific server provided values.
+        """
         return pulumi.get(self, "elasticsearch")
 
     @property
     @pulumi.getter
     def kibana(self) -> Optional[str]:
+        """
+        Allow clients to connect to kibana from the public internet for 
+        service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "kibana")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public 
+        internet for service nodes that are in a project VPC or another type of private network.
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -9133,6 +11453,10 @@ class GetGrafanaComponentResult(dict):
                  route: str,
                  ssl: bool,
                  usage: str):
+        """
+        :param str host: (Required) Server hostname or IP
+        :param float port: (Required) SMTP server port
+        """
         pulumi.set(__self__, "component", component)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
@@ -9149,6 +11473,9 @@ class GetGrafanaComponentResult(dict):
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        (Required) Server hostname or IP
+        """
         return pulumi.get(self, "host")
 
     @property
@@ -9159,6 +11486,9 @@ class GetGrafanaComponentResult(dict):
     @property
     @pulumi.getter
     def port(self) -> float:
+        """
+        (Required) SMTP server port
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -9214,6 +11544,42 @@ class GetGrafanaGrafanaUserConfigResult(dict):
                  user_auto_assign_org: Optional[str] = None,
                  user_auto_assign_org_role: Optional[str] = None,
                  viewers_can_edit: Optional[str] = None):
+        """
+        :param str alerting_enabled: Enable or disable Grafana alerting functionality
+        :param str alerting_error_or_timeout: Default error or timeout setting for new alerting rules
+        :param str alerting_nodata_or_nullvalues: Default value for 'no data or null values' for
+               new alerting rules
+        :param str allow_embedding: Allow embedding Grafana dashboards with iframe/frame/object/embed 
+               tags. Disabled by default to limit impact of clickjacking
+        :param str auth_basic_enabled: Enable or disable basic authentication form, used by Grafana 
+               built-in login.
+        :param 'GetGrafanaGrafanaUserConfigAuthGenericOauthArgs' auth_generic_oauth: Generic OAuth integration.
+        :param 'GetGrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Automatically sign-up users on successful sign-in
+        :param 'GetGrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration.
+        :param 'GetGrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration
+        :param str cookie_samesite: Cookie SameSite attribute: 'strict' prevents sending cookie for 
+               cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param str dashboards_versions_to_keep: Dashboard versions to keep per dashboard.
+        :param str dataproxy_send_user_header: Send 'X-Grafana-User' header to data source.
+        :param str dataproxy_timeout: Timeout for data proxy requests in seconds.
+        :param str disable_gravatar: Set to true to disable gravatar. Defaults to false 
+               (gravatar is enabled).
+        :param str editors_can_admin: Editors can manage folders, teams and dashboards created by them.
+        :param 'GetGrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings
+        :param str google_analytics_ua_id: Google Analytics Universal Analytics ID for tracking Grafana usage
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param str metrics_enabled: Enable Grafana /metrics endpoint
+        :param 'GetGrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
+        :param 'GetGrafanaGrafanaUserConfigSmtpServerArgs' smtp_server: SMTP server settings.
+        :param str user_auto_assign_org: Auto-assign new users on signup to main organization. 
+               Defaults to false.
+        :param str user_auto_assign_org_role: Set role for new signups. Defaults to Viewer.
+        :param str viewers_can_edit: Users with view-only permission can edit but not save dashboards.
+        """
         if alerting_enabled is not None:
             pulumi.set(__self__, "alerting_enabled", alerting_enabled)
         if alerting_error_or_timeout is not None:
@@ -9274,101 +11640,166 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @property
     @pulumi.getter(name="alertingEnabled")
     def alerting_enabled(self) -> Optional[str]:
+        """
+        Enable or disable Grafana alerting functionality
+        """
         return pulumi.get(self, "alerting_enabled")
 
     @property
     @pulumi.getter(name="alertingErrorOrTimeout")
     def alerting_error_or_timeout(self) -> Optional[str]:
+        """
+        Default error or timeout setting for new alerting rules
+        """
         return pulumi.get(self, "alerting_error_or_timeout")
 
     @property
     @pulumi.getter(name="alertingNodataOrNullvalues")
     def alerting_nodata_or_nullvalues(self) -> Optional[str]:
+        """
+        Default value for 'no data or null values' for
+        new alerting rules
+        """
         return pulumi.get(self, "alerting_nodata_or_nullvalues")
 
     @property
     @pulumi.getter(name="allowEmbedding")
     def allow_embedding(self) -> Optional[str]:
+        """
+        Allow embedding Grafana dashboards with iframe/frame/object/embed 
+        tags. Disabled by default to limit impact of clickjacking
+        """
         return pulumi.get(self, "allow_embedding")
 
     @property
     @pulumi.getter(name="authBasicEnabled")
     def auth_basic_enabled(self) -> Optional[str]:
+        """
+        Enable or disable basic authentication form, used by Grafana 
+        built-in login.
+        """
         return pulumi.get(self, "auth_basic_enabled")
 
     @property
     @pulumi.getter(name="authGenericOauth")
     def auth_generic_oauth(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGenericOauthResult']:
+        """
+        Generic OAuth integration.
+        """
         return pulumi.get(self, "auth_generic_oauth")
 
     @property
     @pulumi.getter(name="authGithub")
     def auth_github(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGithubResult']:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "auth_github")
 
     @property
     @pulumi.getter(name="authGitlab")
     def auth_gitlab(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGitlabResult']:
+        """
+        GitLab Auth integration.
+        """
         return pulumi.get(self, "auth_gitlab")
 
     @property
     @pulumi.getter(name="authGoogle")
     def auth_google(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGoogleResult']:
+        """
+        Google Auth integration
+        """
         return pulumi.get(self, "auth_google")
 
     @property
     @pulumi.getter(name="cookieSamesite")
     def cookie_samesite(self) -> Optional[str]:
+        """
+        Cookie SameSite attribute: 'strict' prevents sending cookie for 
+        cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        """
         return pulumi.get(self, "cookie_samesite")
 
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="dashboardsVersionsToKeep")
     def dashboards_versions_to_keep(self) -> Optional[str]:
+        """
+        Dashboard versions to keep per dashboard.
+        """
         return pulumi.get(self, "dashboards_versions_to_keep")
 
     @property
     @pulumi.getter(name="dataproxySendUserHeader")
     def dataproxy_send_user_header(self) -> Optional[str]:
+        """
+        Send 'X-Grafana-User' header to data source.
+        """
         return pulumi.get(self, "dataproxy_send_user_header")
 
     @property
     @pulumi.getter(name="dataproxyTimeout")
     def dataproxy_timeout(self) -> Optional[str]:
+        """
+        Timeout for data proxy requests in seconds.
+        """
         return pulumi.get(self, "dataproxy_timeout")
 
     @property
     @pulumi.getter(name="disableGravatar")
     def disable_gravatar(self) -> Optional[str]:
+        """
+        Set to true to disable gravatar. Defaults to false 
+        (gravatar is enabled).
+        """
         return pulumi.get(self, "disable_gravatar")
 
     @property
     @pulumi.getter(name="editorsCanAdmin")
     def editors_can_admin(self) -> Optional[str]:
+        """
+        Editors can manage folders, teams and dashboards created by them.
+        """
         return pulumi.get(self, "editors_can_admin")
 
     @property
     @pulumi.getter(name="externalImageStorage")
     def external_image_storage(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult']:
+        """
+        External image store settings
+        """
         return pulumi.get(self, "external_image_storage")
 
     @property
     @pulumi.getter(name="googleAnalyticsUaId")
     def google_analytics_ua_id(self) -> Optional[str]:
+        """
+        Google Analytics Universal Analytics ID for tracking Grafana usage
+        """
         return pulumi.get(self, "google_analytics_ua_id")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="metricsEnabled")
     def metrics_enabled(self) -> Optional[str]:
+        """
+        Enable Grafana /metrics endpoint
+        """
         return pulumi.get(self, "metrics_enabled")
 
     @property
@@ -9379,36 +11810,59 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service.
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     @property
     @pulumi.getter(name="smtpServer")
     def smtp_server(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigSmtpServerResult']:
+        """
+        SMTP server settings.
+        """
         return pulumi.get(self, "smtp_server")
 
     @property
     @pulumi.getter(name="userAutoAssignOrg")
     def user_auto_assign_org(self) -> Optional[str]:
+        """
+        Auto-assign new users on signup to main organization. 
+        Defaults to false.
+        """
         return pulumi.get(self, "user_auto_assign_org")
 
     @property
     @pulumi.getter(name="userAutoAssignOrgRole")
     def user_auto_assign_org_role(self) -> Optional[str]:
+        """
+        Set role for new signups. Defaults to Viewer.
+        """
         return pulumi.get(self, "user_auto_assign_org_role")
 
     @property
     @pulumi.getter(name="viewersCanEdit")
     def viewers_can_edit(self) -> Optional[str]:
+        """
+        Users with view-only permission can edit but not save dashboards.
+        """
         return pulumi.get(self, "viewers_can_edit")
 
 
@@ -9425,6 +11879,18 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthResult(dict):
                  name: Optional[str] = None,
                  scopes: Optional[List[str]] = None,
                  token_url: Optional[str] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_domains: Allowed domain
+        :param List[str] allowed_organizations: Must consist of alpha-numeric characters and dashes"
+        :param str api_url: API URL. This only needs to be set when using self hosted GitLab
+        :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab
+        :param str client_id: (Required) Client ID from provider
+        :param str client_secret: (Required) Client secret from provider
+        :param str name: Name of the OAuth integration
+        :param List[str] scopes: Scope must be non-empty string without whitespace
+        :param str token_url: Token URL. This only needs to be set when using self hosted GitLab
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_domains is not None:
@@ -9449,51 +11915,81 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthResult(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedDomains")
     def allowed_domains(self) -> Optional[List[str]]:
+        """
+        Allowed domain
+        """
         return pulumi.get(self, "allowed_domains")
 
     @property
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[List[str]]:
+        """
+        Must consist of alpha-numeric characters and dashes"
+        """
         return pulumi.get(self, "allowed_organizations")
 
     @property
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[str]:
+        """
+        API URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "api_url")
 
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> Optional[str]:
+        """
+        Authorization URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "auth_url")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        (Required) Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        (Required) Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of the OAuth integration
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def scopes(self) -> Optional[List[str]]:
+        """
+        Scope must be non-empty string without whitespace
+        """
         return pulumi.get(self, "scopes")
 
     @property
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[str]:
+        """
+        Token URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "token_url")
 
 
@@ -9505,6 +12001,13 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  team_ids: Optional[List[str]] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_organizations: Must consist of alpha-numeric characters and dashes"
+        :param str client_id: (Required) Client ID from provider
+        :param str client_secret: (Required) Client secret from provider
+        :param List[str] team_ids: Require users to belong to one of given team IDs
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_organizations is not None:
@@ -9519,26 +12022,41 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[List[str]]:
+        """
+        Must consist of alpha-numeric characters and dashes"
+        """
         return pulumi.get(self, "allowed_organizations")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        (Required) Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        (Required) Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="teamIds")
     def team_ids(self) -> Optional[List[str]]:
+        """
+        Require users to belong to one of given team IDs
+        """
         return pulumi.get(self, "team_ids")
 
 
@@ -9552,6 +12070,15 @@ class GetGrafanaGrafanaUserConfigAuthGitlabResult(dict):
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  token_url: Optional[str] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_groups: (Required) Require users to belong to one of given groups
+        :param str api_url: API URL. This only needs to be set when using self hosted GitLab
+        :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab
+        :param str client_id: (Required) Client ID from provider
+        :param str client_secret: (Required) Client secret from provider
+        :param str token_url: Token URL. This only needs to be set when using self hosted GitLab
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_groups is not None:
@@ -9570,36 +12097,57 @@ class GetGrafanaGrafanaUserConfigAuthGitlabResult(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedGroups")
     def allowed_groups(self) -> Optional[List[str]]:
+        """
+        (Required) Require users to belong to one of given groups
+        """
         return pulumi.get(self, "allowed_groups")
 
     @property
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[str]:
+        """
+        API URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "api_url")
 
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> Optional[str]:
+        """
+        Authorization URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "auth_url")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        (Required) Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        (Required) Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[str]:
+        """
+        Token URL. This only needs to be set when using self hosted GitLab
+        """
         return pulumi.get(self, "token_url")
 
 
@@ -9610,6 +12158,12 @@ class GetGrafanaGrafanaUserConfigAuthGoogleResult(dict):
                  allowed_domains: Optional[List[str]] = None,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None):
+        """
+        :param str allow_sign_up: Automatically sign-up users on successful sign-in
+        :param List[str] allowed_domains: Allowed domain
+        :param str client_id: (Required) Client ID from provider
+        :param str client_secret: (Required) Client secret from provider
+        """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_domains is not None:
@@ -9622,21 +12176,33 @@ class GetGrafanaGrafanaUserConfigAuthGoogleResult(dict):
     @property
     @pulumi.getter(name="allowSignUp")
     def allow_sign_up(self) -> Optional[str]:
+        """
+        Automatically sign-up users on successful sign-in
+        """
         return pulumi.get(self, "allow_sign_up")
 
     @property
     @pulumi.getter(name="allowedDomains")
     def allowed_domains(self) -> Optional[List[str]]:
+        """
+        Allowed domain
+        """
         return pulumi.get(self, "allowed_domains")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        (Required) Client ID from provider
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        (Required) Client secret from provider
+        """
         return pulumi.get(self, "client_secret")
 
 
@@ -9647,6 +12213,13 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageResult(dict):
                  bucket_url: Optional[str] = None,
                  provider: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str access_key: (Required) S3 access key. Requires permissions to the S3 bucket for the 
+               s3:PutObject and s3:PutObjectAcl actions
+        :param str bucket_url: (Required) Bucket URL for S3
+        :param str provider: (Required) Provider type
+        :param str secret_key: (Required) S3 secret key
+        """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bucket_url is not None:
@@ -9659,21 +12232,34 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageResult(dict):
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        (Required) S3 access key. Requires permissions to the S3 bucket for the 
+        s3:PutObject and s3:PutObjectAcl actions
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="bucketUrl")
     def bucket_url(self) -> Optional[str]:
+        """
+        (Required) Bucket URL for S3
+        """
         return pulumi.get(self, "bucket_url")
 
     @property
     @pulumi.getter
     def provider(self) -> Optional[str]:
+        """
+        (Required) Provider type
+        """
         return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        (Required) S3 secret key
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -9681,12 +12267,18 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageResult(dict):
 class GetGrafanaGrafanaUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  grafana: Optional[str] = None):
+        """
+        :param str grafana: Grafana specific server provided values.
+        """
         if grafana is not None:
             pulumi.set(__self__, "grafana", grafana)
 
     @property
     @pulumi.getter
     def grafana(self) -> Optional[str]:
+        """
+        Grafana specific server provided values.
+        """
         return pulumi.get(self, "grafana")
 
 
@@ -9694,12 +12286,18 @@ class GetGrafanaGrafanaUserConfigPrivateAccessResult(dict):
 class GetGrafanaGrafanaUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  grafana: Optional[str] = None):
+        """
+        :param str grafana: Grafana specific server provided values.
+        """
         if grafana is not None:
             pulumi.set(__self__, "grafana", grafana)
 
     @property
     @pulumi.getter
     def grafana(self) -> Optional[str]:
+        """
+        Grafana specific server provided values.
+        """
         return pulumi.get(self, "grafana")
 
 
@@ -9713,6 +12311,15 @@ class GetGrafanaGrafanaUserConfigSmtpServerResult(dict):
                  port: Optional[str] = None,
                  skip_verify: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param str from_address: (Required) Address used for sending emails
+        :param str from_name: Name used in outgoing emails, defaults to Grafana
+        :param str host: (Required) Server hostname or IP
+        :param str password: Password for SMTP authentication
+        :param str port: (Required) SMTP server port
+        :param str skip_verify: Skip verifying server certificate. Defaults to false
+        :param str username: Username for SMTP authentication
+        """
         if from_address is not None:
             pulumi.set(__self__, "from_address", from_address)
         if from_name is not None:
@@ -9731,36 +12338,57 @@ class GetGrafanaGrafanaUserConfigSmtpServerResult(dict):
     @property
     @pulumi.getter(name="fromAddress")
     def from_address(self) -> Optional[str]:
+        """
+        (Required) Address used for sending emails
+        """
         return pulumi.get(self, "from_address")
 
     @property
     @pulumi.getter(name="fromName")
     def from_name(self) -> Optional[str]:
+        """
+        Name used in outgoing emails, defaults to Grafana
+        """
         return pulumi.get(self, "from_name")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        (Required) Server hostname or IP
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Password for SMTP authentication
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        (Required) SMTP server port
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="skipVerify")
     def skip_verify(self) -> Optional[str]:
+        """
+        Skip verifying server certificate. Defaults to false
+        """
         return pulumi.get(self, "skip_verify")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        Username for SMTP authentication
+        """
         return pulumi.get(self, "username")
 
 
@@ -9858,6 +12486,15 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
                  public_access: Optional['outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'GetInfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetInfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
+        :param str service_to_fork_from: Name of another service to fork from. This has effect 
+               only when a new service is being created.
+        """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filters is not None:
@@ -9874,31 +12511,50 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
 
@@ -9906,12 +12562,18 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
 class GetInfluxDbInfluxdbUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  influxdb: Optional[str] = None):
+        """
+        :param str influxdb: InfluxDB specific server provided values.
+        """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
 
     @property
     @pulumi.getter
     def influxdb(self) -> Optional[str]:
+        """
+        InfluxDB specific server provided values.
+        """
         return pulumi.get(self, "influxdb")
 
 
@@ -9919,12 +12581,18 @@ class GetInfluxDbInfluxdbUserConfigPrivateAccessResult(dict):
 class GetInfluxDbInfluxdbUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  influxdb: Optional[str] = None):
+        """
+        :param str influxdb: InfluxDB specific server provided values.
+        """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
 
     @property
     @pulumi.getter
     def influxdb(self) -> Optional[str]:
+        """
+        InfluxDB specific server provided values.
+        """
         return pulumi.get(self, "influxdb")
 
 
@@ -10068,6 +12736,10 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
                  kafka_connect: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult'] = None,
                  private_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult'] = None):
+        """
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Kafka Connect specific server provided values.
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_connect is not None:
@@ -10080,11 +12752,17 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult']:
+        """
+        Kafka Connect specific server provided values.
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
@@ -10109,6 +12787,24 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
+        """
+        :param str connector_client_config_override_policy: Defines what client configurations can be 
+               overridden by the connector. Default is None.
+        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
+               if the current offset does not exist any more on the server. Default is earliest.
+        :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
+               the default, but read_committed can be used if consume-exactly-once behavior is desired.
+               * `consumer_max_poll_interval_ms`- The maximum delay in milliseconds between invocations
+               of poll() when using consumer group management (defaults to 300000).
+               * `consumer_max_poll_records` The maximum number of records returned by a single poll.
+               * `offset_flush_interval_ms`- The interval at which to try committing offsets for tasks
+               (defaults to 60000).
+               * `offset_flush_timeout_ms`- Maximum number of milliseconds to wait for records to flush
+               and partition offset data to be committed to offset storage before cancelling the process and restoring
+               the offset data to be committed in a future attempt (defaults to 5000).
+        :param str session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s 
+               group management facilities (defaults to 10000).
+        """
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -10129,16 +12825,36 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @property
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
+        """
+        Defines what client configurations can be 
+        overridden by the connector. Default is None.
+        """
         return pulumi.get(self, "connector_client_config_override_policy")
 
     @property
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
+        """
+        What to do when there is no initial offset in Kafka or 
+        if the current offset does not exist any more on the server. Default is earliest.
+        """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
+        """
+        Transaction read isolation level. read_uncommitted is 
+        the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        * `consumer_max_poll_interval_ms`- The maximum delay in milliseconds between invocations
+        of poll() when using consumer group management (defaults to 300000).
+        * `consumer_max_poll_records` The maximum number of records returned by a single poll.
+        * `offset_flush_interval_ms`- The interval at which to try committing offsets for tasks
+        (defaults to 60000).
+        * `offset_flush_timeout_ms`- Maximum number of milliseconds to wait for records to flush
+        and partition offset data to be committed to offset storage before cancelling the process and restoring
+        the offset data to be committed in a future attempt (defaults to 5000).
+        """
         return pulumi.get(self, "consumer_isolation_level")
 
     @property
@@ -10164,6 +12880,10 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @property
     @pulumi.getter(name="sessionTimeoutMs")
     def session_timeout_ms(self) -> Optional[str]:
+        """
+        The timeout in milliseconds used to detect failures when using Kafka’s 
+        group management facilities (defaults to 10000).
+        """
         return pulumi.get(self, "session_timeout_ms")
 
 
@@ -10172,6 +12892,9 @@ class GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str kafka_connect: Kafka Connect specific server provided values.
+        """
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -10180,6 +12903,9 @@ class GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult(dict):
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Kafka Connect specific server provided values.
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
@@ -10193,6 +12919,9 @@ class GetKafkaConnectKafkaConnectUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str kafka_connect: Kafka Connect specific server provided values.
+        """
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -10201,6 +12930,9 @@ class GetKafkaConnectKafkaConnectUserConfigPublicAccessResult(dict):
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Kafka Connect specific server provided values.
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
@@ -10233,6 +12965,10 @@ class GetKafkaConnectorTaskResult(dict):
     def __init__(__self__, *,
                  connector: str,
                  task: float):
+        """
+        :param float task: List of tasks of a connector, each element contains `connector` 
+               (Related connector name) and `task` (Task id / number).
+        """
         pulumi.set(__self__, "connector", connector)
         pulumi.set(__self__, "task", task)
 
@@ -10244,6 +12980,10 @@ class GetKafkaConnectorTaskResult(dict):
     @property
     @pulumi.getter
     def task(self) -> float:
+        """
+        List of tasks of a connector, each element contains `connector` 
+        (Related connector name) and `task` (Task id / number).
+        """
         return pulumi.get(self, "task")
 
 
@@ -10255,6 +12995,13 @@ class GetKafkaKafkaResult(dict):
                  connect_uri: str,
                  rest_uri: str,
                  schema_registry_uri: str):
+        """
+        :param str access_cert: The Kafka client certificate
+        :param str access_key: The Kafka client certificate key
+        :param str connect_uri: The Kafka Connect URI, if any
+        :param str rest_uri: The Kafka REST URI, if any
+        :param str schema_registry_uri: The Schema Registry URI, if any
+        """
         pulumi.set(__self__, "access_cert", access_cert)
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "connect_uri", connect_uri)
@@ -10264,26 +13011,41 @@ class GetKafkaKafkaResult(dict):
     @property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> str:
+        """
+        The Kafka client certificate
+        """
         return pulumi.get(self, "access_cert")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
+        """
+        The Kafka client certificate key
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="connectUri")
     def connect_uri(self) -> str:
+        """
+        The Kafka Connect URI, if any
+        """
         return pulumi.get(self, "connect_uri")
 
     @property
     @pulumi.getter(name="restUri")
     def rest_uri(self) -> str:
+        """
+        The Kafka REST URI, if any
+        """
         return pulumi.get(self, "rest_uri")
 
     @property
     @pulumi.getter(name="schemaRegistryUri")
     def schema_registry_uri(self) -> str:
+        """
+        The Schema Registry URI, if any
+        """
         return pulumi.get(self, "schema_registry_uri")
 
 
@@ -10302,6 +13064,22 @@ class GetKafkaKafkaUserConfigResult(dict):
                  private_access: Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult'] = None,
                  schema_registry: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param 'GetKafkaKafkaUserConfigKafkaArgs' kafka: Kafka server provided values:
+        :param 'GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
+        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param 'GetKafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
+        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka-REST configuration
+        :param str kafka_version: Kafka major version
+        :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str schema_registry: Enable Schema-Registry service
+        """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filters is not None:
@@ -10330,61 +13108,99 @@ class GetKafkaKafkaUserConfigResult(dict):
     @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
         return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def kafka(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaResult']:
+        """
+        Kafka server provided values:
+        """
         return pulumi.get(self, "kafka")
 
     @property
     @pulumi.getter(name="kafkaAuthenticationMethods")
     def kafka_authentication_methods(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult']:
+        """
+        Kafka authentication methods
+        """
         return pulumi.get(self, "kafka_authentication_methods")
 
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_connect from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
     @pulumi.getter(name="kafkaConnectConfig")
     def kafka_connect_config(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult']:
+        """
+        Kafka Connect configuration values
+        """
         return pulumi.get(self, "kafka_connect_config")
 
     @property
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_rest from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_rest")
 
     @property
     @pulumi.getter(name="kafkaRestConfig")
     def kafka_rest_config(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult']:
+        """
+        Kafka-REST configuration
+        """
         return pulumi.get(self, "kafka_rest_config")
 
     @property
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[str]:
+        """
+        Kafka major version
+        """
         return pulumi.get(self, "kafka_version")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
+        """
+        Enable Schema-Registry service
+        """
         return pulumi.get(self, "schema_registry")
 
 
@@ -10415,6 +13231,49 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
                  replica_fetch_max_bytes: Optional[str] = None,
                  replica_fetch_response_max_bytes: Optional[str] = None,
                  socket_request_max_bytes: Optional[str] = None):
+        """
+        :param str auto_create_topics_enable: Enable auto creation of topics
+        :param str compression_type: Specify the final compression type for a given topic. This 
+               configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+               It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+               which means retain the original compression codec set by the producer.
+        :param str connections_max_idle_ms: Idle connections timeout: the server socket processor 
+               threads close the connections that idle for longer than this.
+        :param str default_replication_factor: Replication factor for autocreated topics
+               * `group_max_session_timeout_ms": {
+               * `group_min_session_timeout_ms": {
+        :param str log_cleaner_max_compaction_lag_ms: The maximum amount of time message will 
+               remain uncompacted. Only applicable for logs that are being compacted
+               * `log_cleaner_min_cleanable_ratio": {
+        :param str log_cleaner_min_compaction_lag_ms: The minimum time a message will remain 
+               uncompacted in the log. Only applicable for logs that are being compacted.
+               * `log_cleanup_policy": {
+        :param str log_message_timestamp_difference_max_ms: The maximum difference allowed between 
+               the timestamp when a broker receives a message and the timestamp specified in the message
+        :param str log_message_timestamp_type: Define whether the timestamp in the message is 
+               message create time or log append time.
+        :param str log_retention_bytes: The maximum size of the log before deleting messages
+        :param str log_retention_hours: The number of hours to keep a log file before deleting it
+        :param str log_segment_bytes: The maximum size of a single log file
+        :param str max_connections_per_ip: The maximum number of connections allowed from each ip 
+               address (defaults to 2147483647).
+               * `max_incremental_fetch_session_cache_slots": {
+               * `message_max_bytes": {
+        :param str num_partitions: Number of partitions for autocreated topics
+               * `offsets_retention_minutes": {
+        :param str producer_purgatory_purge_interval_requests: The purge interval (in number of 
+               requests) of the producer request purgatory(defaults to 1000).
+        :param str replica_fetch_max_bytes: The number of bytes of messages to attempt to fetch 
+               for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+               batch in the first non-empty partition of the fetch is larger than this value, the record batch
+               will still be returned to ensure that progress can be made.
+        :param str replica_fetch_response_max_bytes: Maximum bytes expected for the entire fetch 
+               response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+               in the first non-empty partition of the fetch is larger than this value, the record batch will
+               still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        :param str socket_request_max_bytes: The maximum number of bytes in a socket request 
+               (defaults to 104857600).
+        """
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -10467,21 +13326,39 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @property
     @pulumi.getter(name="autoCreateTopicsEnable")
     def auto_create_topics_enable(self) -> Optional[str]:
+        """
+        Enable auto creation of topics
+        """
         return pulumi.get(self, "auto_create_topics_enable")
 
     @property
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[str]:
+        """
+        Specify the final compression type for a given topic. This 
+        configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+        It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+        which means retain the original compression codec set by the producer.
+        """
         return pulumi.get(self, "compression_type")
 
     @property
     @pulumi.getter(name="connectionsMaxIdleMs")
     def connections_max_idle_ms(self) -> Optional[str]:
+        """
+        Idle connections timeout: the server socket processor 
+        threads close the connections that idle for longer than this.
+        """
         return pulumi.get(self, "connections_max_idle_ms")
 
     @property
     @pulumi.getter(name="defaultReplicationFactor")
     def default_replication_factor(self) -> Optional[str]:
+        """
+        Replication factor for autocreated topics
+        * `group_max_session_timeout_ms": {
+        * `group_min_session_timeout_ms": {
+        """
         return pulumi.get(self, "default_replication_factor")
 
     @property
@@ -10497,6 +13374,11 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @property
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
     def log_cleaner_max_compaction_lag_ms(self) -> Optional[str]:
+        """
+        The maximum amount of time message will 
+        remain uncompacted. Only applicable for logs that are being compacted
+        * `log_cleaner_min_cleanable_ratio": {
+        """
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
 
     @property
@@ -10507,6 +13389,11 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @property
     @pulumi.getter(name="logCleanerMinCompactionLagMs")
     def log_cleaner_min_compaction_lag_ms(self) -> Optional[str]:
+        """
+        The minimum time a message will remain 
+        uncompacted in the log. Only applicable for logs that are being compacted.
+        * `log_cleanup_policy": {
+        """
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
     @property
@@ -10517,31 +13404,54 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
     def log_message_timestamp_difference_max_ms(self) -> Optional[str]:
+        """
+        The maximum difference allowed between 
+        the timestamp when a broker receives a message and the timestamp specified in the message
+        """
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
 
     @property
     @pulumi.getter(name="logMessageTimestampType")
     def log_message_timestamp_type(self) -> Optional[str]:
+        """
+        Define whether the timestamp in the message is 
+        message create time or log append time.
+        """
         return pulumi.get(self, "log_message_timestamp_type")
 
     @property
     @pulumi.getter(name="logRetentionBytes")
     def log_retention_bytes(self) -> Optional[str]:
+        """
+        The maximum size of the log before deleting messages
+        """
         return pulumi.get(self, "log_retention_bytes")
 
     @property
     @pulumi.getter(name="logRetentionHours")
     def log_retention_hours(self) -> Optional[str]:
+        """
+        The number of hours to keep a log file before deleting it
+        """
         return pulumi.get(self, "log_retention_hours")
 
     @property
     @pulumi.getter(name="logSegmentBytes")
     def log_segment_bytes(self) -> Optional[str]:
+        """
+        The maximum size of a single log file
+        """
         return pulumi.get(self, "log_segment_bytes")
 
     @property
     @pulumi.getter(name="maxConnectionsPerIp")
     def max_connections_per_ip(self) -> Optional[str]:
+        """
+        The maximum number of connections allowed from each ip 
+        address (defaults to 2147483647).
+        * `max_incremental_fetch_session_cache_slots": {
+        * `message_max_bytes": {
+        """
         return pulumi.get(self, "max_connections_per_ip")
 
     @property
@@ -10557,6 +13467,10 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @property
     @pulumi.getter(name="numPartitions")
     def num_partitions(self) -> Optional[str]:
+        """
+        Number of partitions for autocreated topics
+        * `offsets_retention_minutes": {
+        """
         return pulumi.get(self, "num_partitions")
 
     @property
@@ -10567,21 +13481,41 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @property
     @pulumi.getter(name="producerPurgatoryPurgeIntervalRequests")
     def producer_purgatory_purge_interval_requests(self) -> Optional[str]:
+        """
+        The purge interval (in number of 
+        requests) of the producer request purgatory(defaults to 1000).
+        """
         return pulumi.get(self, "producer_purgatory_purge_interval_requests")
 
     @property
     @pulumi.getter(name="replicaFetchMaxBytes")
     def replica_fetch_max_bytes(self) -> Optional[str]:
+        """
+        The number of bytes of messages to attempt to fetch 
+        for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+        batch in the first non-empty partition of the fetch is larger than this value, the record batch
+        will still be returned to ensure that progress can be made.
+        """
         return pulumi.get(self, "replica_fetch_max_bytes")
 
     @property
     @pulumi.getter(name="replicaFetchResponseMaxBytes")
     def replica_fetch_response_max_bytes(self) -> Optional[str]:
+        """
+        Maximum bytes expected for the entire fetch 
+        response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+        in the first non-empty partition of the fetch is larger than this value, the record batch will
+        still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        """
         return pulumi.get(self, "replica_fetch_response_max_bytes")
 
     @property
     @pulumi.getter(name="socketRequestMaxBytes")
     def socket_request_max_bytes(self) -> Optional[str]:
+        """
+        The maximum number of bytes in a socket request 
+        (defaults to 104857600).
+        """
         return pulumi.get(self, "socket_request_max_bytes")
 
 
@@ -10590,6 +13524,10 @@ class GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult(dict):
     def __init__(__self__, *,
                  certificate: Optional[str] = None,
                  sasl: Optional[str] = None):
+        """
+        :param str certificate: Enable certificate/SSL authentication
+        :param str sasl: Enable SASL authentication
+        """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if sasl is not None:
@@ -10598,11 +13536,17 @@ class GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult(dict):
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        Enable certificate/SSL authentication
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter
     def sasl(self) -> Optional[str]:
+        """
+        Enable SASL authentication
+        """
         return pulumi.get(self, "sasl")
 
 
@@ -10617,6 +13561,25 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
+        """
+        :param str connector_client_config_override_policy: Defines what client configurations can 
+               be overridden by the connector. Default is None
+        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
+               if the current offset does not exist any more on the server. Default is earliest
+        :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
+               the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations 
+               of poll() when using consumer group management (defaults to 300000).
+        :param str consumer_max_poll_records: The maximum number of records returned in a single call 
+               to poll() (defaults to 500).
+        :param str offset_flush_interval_ms: The interval at which to try committing offsets for 
+               tasks (defaults to 60000).
+        :param str offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to 
+               flush and partition offset data to be committed to offset storage before cancelling the process
+               and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        :param str session_timeout_ms: The timeout in milliseconds used to detect failures when 
+               using Kafka’s group management facilities (defaults to 10000).
+        """
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -10637,41 +13600,74 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @property
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
+        """
+        Defines what client configurations can 
+        be overridden by the connector. Default is None
+        """
         return pulumi.get(self, "connector_client_config_override_policy")
 
     @property
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
+        """
+        What to do when there is no initial offset in Kafka or 
+        if the current offset does not exist any more on the server. Default is earliest
+        """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
+        """
+        Transaction read isolation level. read_uncommitted is 
+        the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        """
         return pulumi.get(self, "consumer_isolation_level")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
     def consumer_max_poll_interval_ms(self) -> Optional[str]:
+        """
+        The maximum delay in milliseconds between invocations 
+        of poll() when using consumer group management (defaults to 300000).
+        """
         return pulumi.get(self, "consumer_max_poll_interval_ms")
 
     @property
     @pulumi.getter(name="consumerMaxPollRecords")
     def consumer_max_poll_records(self) -> Optional[str]:
+        """
+        The maximum number of records returned in a single call 
+        to poll() (defaults to 500).
+        """
         return pulumi.get(self, "consumer_max_poll_records")
 
     @property
     @pulumi.getter(name="offsetFlushIntervalMs")
     def offset_flush_interval_ms(self) -> Optional[str]:
+        """
+        The interval at which to try committing offsets for 
+        tasks (defaults to 60000).
+        """
         return pulumi.get(self, "offset_flush_interval_ms")
 
     @property
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
+        """
+        Maximum number of milliseconds to wait for records to 
+        flush and partition offset data to be committed to offset storage before cancelling the process
+        and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        """
         return pulumi.get(self, "offset_flush_timeout_ms")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
     def session_timeout_ms(self) -> Optional[str]:
+        """
+        The timeout in milliseconds used to detect failures when 
+        using Kafka’s group management facilities (defaults to 10000).
+        """
         return pulumi.get(self, "session_timeout_ms")
 
 
@@ -10684,6 +13680,20 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
                  producer_acks: Optional[str] = None,
                  producer_linger_ms: Optional[str] = None,
                  simpleconsumer_pool_size_max: Optional[str] = None):
+        """
+        :param str consumer_enable_auto_commit: If true the consumer's offset will be periodically 
+               committed to Kafka in the background
+        :param str consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and 
+               values by a single request
+        :param str consumer_request_timeout_ms: The maximum total time to wait for messages for a 
+               request if the maximum number of messages has not yet been reached
+        :param str producer_acks: The number of acknowledgments the producer requires the leader to 
+               have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+               for the full set of in-sync replicas to acknowledge the record.
+        :param str producer_linger_ms: Wait for up to the given delay to allow batching records together
+        :param str simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be 
+               instantiated per broker.
+        """
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
         if consumer_request_max_bytes is not None:
@@ -10700,31 +13710,55 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @property
     @pulumi.getter(name="consumerEnableAutoCommit")
     def consumer_enable_auto_commit(self) -> Optional[str]:
+        """
+        If true the consumer's offset will be periodically 
+        committed to Kafka in the background
+        """
         return pulumi.get(self, "consumer_enable_auto_commit")
 
     @property
     @pulumi.getter(name="consumerRequestMaxBytes")
     def consumer_request_max_bytes(self) -> Optional[str]:
+        """
+        Maximum number of bytes in unencoded message keys and 
+        values by a single request
+        """
         return pulumi.get(self, "consumer_request_max_bytes")
 
     @property
     @pulumi.getter(name="consumerRequestTimeoutMs")
     def consumer_request_timeout_ms(self) -> Optional[str]:
+        """
+        The maximum total time to wait for messages for a 
+        request if the maximum number of messages has not yet been reached
+        """
         return pulumi.get(self, "consumer_request_timeout_ms")
 
     @property
     @pulumi.getter(name="producerAcks")
     def producer_acks(self) -> Optional[str]:
+        """
+        The number of acknowledgments the producer requires the leader to 
+        have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+        for the full set of in-sync replicas to acknowledge the record.
+        """
         return pulumi.get(self, "producer_acks")
 
     @property
     @pulumi.getter(name="producerLingerMs")
     def producer_linger_ms(self) -> Optional[str]:
+        """
+        Wait for up to the given delay to allow batching records together
+        """
         return pulumi.get(self, "producer_linger_ms")
 
     @property
     @pulumi.getter(name="simpleconsumerPoolSizeMax")
     def simpleconsumer_pool_size_max(self) -> Optional[str]:
+        """
+        Maximum number of SimpleConsumers that can be 
+        instantiated per broker.
+        """
         return pulumi.get(self, "simpleconsumer_pool_size_max")
 
 
@@ -10732,12 +13766,20 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
 class GetKafkaKafkaUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -10749,6 +13791,16 @@ class GetKafkaKafkaUserConfigPublicAccessResult(dict):
                  kafka_rest: Optional[str] = None,
                  prometheus: Optional[str] = None,
                  schema_registry: Optional[str] = None):
+        """
+        :param str kafka: Kafka server provided values:
+        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str schema_registry: Enable Schema-Registry service
+        """
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
         if kafka_connect is not None:
@@ -10763,26 +13815,44 @@ class GetKafkaKafkaUserConfigPublicAccessResult(dict):
     @property
     @pulumi.getter
     def kafka(self) -> Optional[str]:
+        """
+        Kafka server provided values:
+        """
         return pulumi.get(self, "kafka")
 
     @property
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_connect from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_connect")
 
     @property
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
+        """
+        Allow clients to connect to kafka_rest from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "kafka_rest")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
+        """
+        Enable Schema-Registry service
+        """
         return pulumi.get(self, "schema_registry")
 
 
@@ -10851,6 +13921,10 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
     def __init__(__self__, *,
                  ip_filters: Optional[List[str]] = None,
                  kafka_mirrormaker: Optional['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult'] = None):
+        """
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka Mirror Maker 2 specific server provided values.
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
@@ -10859,11 +13933,17 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter(name="kafkaMirrormaker")
     def kafka_mirrormaker(self) -> Optional['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult']:
+        """
+        Kafka Mirror Maker 2 specific server provided values.
+        """
         return pulumi.get(self, "kafka_mirrormaker")
 
 
@@ -10874,6 +13954,14 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
                  refresh_groups_interval_seconds: Optional[str] = None,
                  refresh_topics_enabled: Optional[str] = None,
                  refresh_topics_interval_seconds: Optional[str] = None):
+        """
+        :param str refresh_groups_enabled: Whether to periodically check for new consumer groups. 
+               Defaults to 'true'.
+        :param str refresh_groups_interval_seconds: Whether to periodically check for new topics and 
+               partitions. Defaults to 'true'.
+        :param str refresh_topics_interval_seconds: Frequency of topic and partitions refresh in 
+               seconds. Defaults to 600 seconds (10 minutes).
+        """
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -10886,11 +13974,19 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
     def refresh_groups_enabled(self) -> Optional[str]:
+        """
+        Whether to periodically check for new consumer groups. 
+        Defaults to 'true'.
+        """
         return pulumi.get(self, "refresh_groups_enabled")
 
     @property
     @pulumi.getter(name="refreshGroupsIntervalSeconds")
     def refresh_groups_interval_seconds(self) -> Optional[str]:
+        """
+        Whether to periodically check for new topics and 
+        partitions. Defaults to 'true'.
+        """
         return pulumi.get(self, "refresh_groups_interval_seconds")
 
     @property
@@ -10901,6 +13997,10 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
     @property
     @pulumi.getter(name="refreshTopicsIntervalSeconds")
     def refresh_topics_interval_seconds(self) -> Optional[str]:
+        """
+        Frequency of topic and partitions refresh in 
+        seconds. Defaults to 600 seconds (10 minutes).
+        """
         return pulumi.get(self, "refresh_topics_interval_seconds")
 
 
@@ -11016,6 +14116,25 @@ class GetMySqlMysqlUserConfigResult(dict):
                  public_access: Optional['outputs.GetMySqlMysqlUserConfigPublicAccessResult'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param str admin_password: Custom password for admin user. Defaults to random string. 
+               This must be set only when a new service is being created.
+        :param str admin_username: Custom username for admin user. This must be set only when a 
+               new service is being created.
+        :param str backup_hour: The hour of day (in UTC) when backup for the service is started. 
+               New backup is only started if previous backup has already completed.
+        :param str backup_minute: The minute of an hour when backup for the service is started. 
+               New backup is only started if previous backup has already completed.
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param 'GetMySqlMysqlUserConfigMysqlArgs' mysql: MySQL specific server provided values.
+        :param str mysql_version: MySQL major version
+        :param 'GetMySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetMySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_target_time: Recovery target time when forking a service. This has effect 
+               only when a new service is being created.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only when 
+               a new service is being created.
+        """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
         if admin_username is not None:
@@ -11042,56 +14161,95 @@ class GetMySqlMysqlUserConfigResult(dict):
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
+        """
+        Custom password for admin user. Defaults to random string. 
+        This must be set only when a new service is being created.
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter(name="adminUsername")
     def admin_username(self) -> Optional[str]:
+        """
+        Custom username for admin user. This must be set only when a 
+        new service is being created.
+        """
         return pulumi.get(self, "admin_username")
 
     @property
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> Optional[str]:
+        """
+        The hour of day (in UTC) when backup for the service is started. 
+        New backup is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_hour")
 
     @property
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[str]:
+        """
+        The minute of an hour when backup for the service is started. 
+        New backup is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_minute")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def mysql(self) -> Optional['outputs.GetMySqlMysqlUserConfigMysqlResult']:
+        """
+        MySQL specific server provided values.
+        """
         return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter(name="mysqlVersion")
     def mysql_version(self) -> Optional[str]:
+        """
+        MySQL major version
+        """
         return pulumi.get(self, "mysql_version")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetMySqlMysqlUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetMySqlMysqlUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryTargetTime")
     def recovery_target_time(self) -> Optional[str]:
+        """
+        Recovery target time when forking a service. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "recovery_target_time")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only when 
+        a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
 
@@ -11119,6 +14277,53 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
                  sql_require_primary_key: Optional[str] = None,
                  tmp_table_size: Optional[str] = None,
                  wait_timeout: Optional[str] = None):
+        """
+        :param str connect_timeout: The number of seconds that the mysqld server waits for a 
+               connect packet before responding with Bad handshake
+        :param str default_time_zone: Default server time zone as an offset from UTC 
+               (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+        :param str group_concat_max_len: The maximum permitted result length in bytes for 
+               the GROUP_CONCAT() function.
+        :param str information_schema_stats_expiry: The time, in seconds, before cached 
+               statistics expire
+        :param str innodb_ft_min_token_size: Minimum length of words that are stored in 
+               an InnoDB FULLTEXT index.
+        :param str innodb_ft_server_stopword_table: This option is used to specify your 
+               own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        :param str innodb_lock_wait_timeout: The length of time in seconds an InnoDB 
+               transaction waits for a row lock before giving up.
+        :param str innodb_log_buffer_size: The size in bytes of the buffer that InnoDB 
+               uses to write to the log files on disk.
+        :param str innodb_online_alter_log_max_size: The upper limit in bytes on the 
+               size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param str innodb_print_all_deadlocks: When enabled, information about all 
+               deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+        :param str innodb_rollback_on_timeout: When enabled a transaction timeout 
+               causes InnoDB to abort and roll back the entire transaction.
+        :param str interactive_timeout: The number of seconds the server waits for 
+               activity on an interactive connection before closing it.
+        :param str max_allowed_packet: Size of the largest message in bytes that can 
+               be received by the server. Default is 67108864 (64M)
+        :param str max_heap_table_size: Limits the size of internal in-memory tables. 
+               Also set tmp_table_size. Default is 16777216 (16M)
+        :param str net_read_timeout: The number of seconds to wait for more data from 
+               a connection before aborting the read.
+        :param str net_write_timeout: The number of seconds to wait for a block to be 
+               written to a connection before aborting the write.
+        :param str sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. 
+               Default is 262144 (256K)
+        :param str sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. 
+               When creating a new service and not setting this field Aiven default SQL mode (strict,
+               SQL standard compliant) will be assigned.
+        :param str sql_require_primary_key: Require primary key to be defined for new 
+               tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+               to always have primary keys because various functionality may break if any large table
+               is missing them.
+        :param str tmp_table_size: Limits the size of internal in-memory tables. Also set 
+               max_heap_table_size. Default is 16777216 (16M)
+        :param str wait_timeout: The number of seconds the server waits for activity on 
+               a noninteractive connection before closing it.
+        """
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if default_time_zone is not None:
@@ -11165,106 +14370,193 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @property
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional[str]:
+        """
+        The number of seconds that the mysqld server waits for a 
+        connect packet before responding with Bad handshake
+        """
         return pulumi.get(self, "connect_timeout")
 
     @property
     @pulumi.getter(name="defaultTimeZone")
     def default_time_zone(self) -> Optional[str]:
+        """
+        Default server time zone as an offset from UTC 
+        (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+        """
         return pulumi.get(self, "default_time_zone")
 
     @property
     @pulumi.getter(name="groupConcatMaxLen")
     def group_concat_max_len(self) -> Optional[str]:
+        """
+        The maximum permitted result length in bytes for 
+        the GROUP_CONCAT() function.
+        """
         return pulumi.get(self, "group_concat_max_len")
 
     @property
     @pulumi.getter(name="informationSchemaStatsExpiry")
     def information_schema_stats_expiry(self) -> Optional[str]:
+        """
+        The time, in seconds, before cached 
+        statistics expire
+        """
         return pulumi.get(self, "information_schema_stats_expiry")
 
     @property
     @pulumi.getter(name="innodbFtMinTokenSize")
     def innodb_ft_min_token_size(self) -> Optional[str]:
+        """
+        Minimum length of words that are stored in 
+        an InnoDB FULLTEXT index.
+        """
         return pulumi.get(self, "innodb_ft_min_token_size")
 
     @property
     @pulumi.getter(name="innodbFtServerStopwordTable")
     def innodb_ft_server_stopword_table(self) -> Optional[str]:
+        """
+        This option is used to specify your 
+        own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
 
     @property
     @pulumi.getter(name="innodbLockWaitTimeout")
     def innodb_lock_wait_timeout(self) -> Optional[str]:
+        """
+        The length of time in seconds an InnoDB 
+        transaction waits for a row lock before giving up.
+        """
         return pulumi.get(self, "innodb_lock_wait_timeout")
 
     @property
     @pulumi.getter(name="innodbLogBufferSize")
     def innodb_log_buffer_size(self) -> Optional[str]:
+        """
+        The size in bytes of the buffer that InnoDB 
+        uses to write to the log files on disk.
+        """
         return pulumi.get(self, "innodb_log_buffer_size")
 
     @property
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
     def innodb_online_alter_log_max_size(self) -> Optional[str]:
+        """
+        The upper limit in bytes on the 
+        size of the temporary log files used during online DDL operations for InnoDB tables.
+        """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
 
     @property
     @pulumi.getter(name="innodbPrintAllDeadlocks")
     def innodb_print_all_deadlocks(self) -> Optional[str]:
+        """
+        When enabled, information about all 
+        deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+        """
         return pulumi.get(self, "innodb_print_all_deadlocks")
 
     @property
     @pulumi.getter(name="innodbRollbackOnTimeout")
     def innodb_rollback_on_timeout(self) -> Optional[str]:
+        """
+        When enabled a transaction timeout 
+        causes InnoDB to abort and roll back the entire transaction.
+        """
         return pulumi.get(self, "innodb_rollback_on_timeout")
 
     @property
     @pulumi.getter(name="interactiveTimeout")
     def interactive_timeout(self) -> Optional[str]:
+        """
+        The number of seconds the server waits for 
+        activity on an interactive connection before closing it.
+        """
         return pulumi.get(self, "interactive_timeout")
 
     @property
     @pulumi.getter(name="maxAllowedPacket")
     def max_allowed_packet(self) -> Optional[str]:
+        """
+        Size of the largest message in bytes that can 
+        be received by the server. Default is 67108864 (64M)
+        """
         return pulumi.get(self, "max_allowed_packet")
 
     @property
     @pulumi.getter(name="maxHeapTableSize")
     def max_heap_table_size(self) -> Optional[str]:
+        """
+        Limits the size of internal in-memory tables. 
+        Also set tmp_table_size. Default is 16777216 (16M)
+        """
         return pulumi.get(self, "max_heap_table_size")
 
     @property
     @pulumi.getter(name="netReadTimeout")
     def net_read_timeout(self) -> Optional[str]:
+        """
+        The number of seconds to wait for more data from 
+        a connection before aborting the read.
+        """
         return pulumi.get(self, "net_read_timeout")
 
     @property
     @pulumi.getter(name="netWriteTimeout")
     def net_write_timeout(self) -> Optional[str]:
+        """
+        The number of seconds to wait for a block to be 
+        written to a connection before aborting the write.
+        """
         return pulumi.get(self, "net_write_timeout")
 
     @property
     @pulumi.getter(name="sortBufferSize")
     def sort_buffer_size(self) -> Optional[str]:
+        """
+        Sort buffer size in bytes for ORDER BY optimization. 
+        Default is 262144 (256K)
+        """
         return pulumi.get(self, "sort_buffer_size")
 
     @property
     @pulumi.getter(name="sqlMode")
     def sql_mode(self) -> Optional[str]:
+        """
+        Global SQL mode. Set to empty to use MySQL server defaults. 
+        When creating a new service and not setting this field Aiven default SQL mode (strict,
+        SQL standard compliant) will be assigned.
+        """
         return pulumi.get(self, "sql_mode")
 
     @property
     @pulumi.getter(name="sqlRequirePrimaryKey")
     def sql_require_primary_key(self) -> Optional[str]:
+        """
+        Require primary key to be defined for new 
+        tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+        to always have primary keys because various functionality may break if any large table
+        is missing them.
+        """
         return pulumi.get(self, "sql_require_primary_key")
 
     @property
     @pulumi.getter(name="tmpTableSize")
     def tmp_table_size(self) -> Optional[str]:
+        """
+        Limits the size of internal in-memory tables. Also set 
+        max_heap_table_size. Default is 16777216 (16M)
+        """
         return pulumi.get(self, "tmp_table_size")
 
     @property
     @pulumi.getter(name="waitTimeout")
     def wait_timeout(self) -> Optional[str]:
+        """
+        The number of seconds the server waits for activity on 
+        a noninteractive connection before closing it.
+        """
         return pulumi.get(self, "wait_timeout")
 
 
@@ -11273,6 +14565,11 @@ class GetMySqlMysqlUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str mysql: MySQL specific server provided values.
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if prometheus is not None:
@@ -11281,11 +14578,18 @@ class GetMySqlMysqlUserConfigPrivateAccessResult(dict):
     @property
     @pulumi.getter
     def mysql(self) -> Optional[str]:
+        """
+        MySQL specific server provided values.
+        """
         return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -11294,6 +14598,11 @@ class GetMySqlMysqlUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str mysql: MySQL specific server provided values.
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if prometheus is not None:
@@ -11302,11 +14611,18 @@ class GetMySqlMysqlUserConfigPublicAccessResult(dict):
     @property
     @pulumi.getter
     def mysql(self) -> Optional[str]:
+        """
+        MySQL specific server provided values.
+        """
         return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -11339,6 +14655,11 @@ class GetPgComponentResult(dict):
                  route: str,
                  ssl: bool,
                  usage: str):
+        """
+        :param str host: PostgreSQL master node host IP or name
+        :param float port: PostgreSQL port
+        :param bool ssl: the server where to migrate data from is secured with SSL.
+        """
         pulumi.set(__self__, "component", component)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
@@ -11355,6 +14676,9 @@ class GetPgComponentResult(dict):
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        PostgreSQL master node host IP or name
+        """
         return pulumi.get(self, "host")
 
     @property
@@ -11365,6 +14689,9 @@ class GetPgComponentResult(dict):
     @property
     @pulumi.getter
     def port(self) -> float:
+        """
+        PostgreSQL port
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -11375,6 +14702,9 @@ class GetPgComponentResult(dict):
     @property
     @pulumi.getter
     def ssl(self) -> bool:
+        """
+        the server where to migrate data from is secured with SSL.
+        """
         return pulumi.get(self, "ssl")
 
     @property
@@ -11394,6 +14724,16 @@ class GetPgPgResult(dict):
                  sslmode: str,
                  uri: str,
                  user: str):
+        """
+        :param str dbname: Primary PostgreSQL database name
+        :param str host: PostgreSQL master node host IP or name
+        :param str password: PostgreSQL admin user password
+        :param float port: PostgreSQL port
+        :param str replica_uri: PostgreSQL replica URI for services with a replica
+        :param str sslmode: PostgreSQL sslmode setting (currently always `require`)
+        :param str uri: PostgreSQL master connection URI
+        :param str user: PostgreSQL admin user name
+        """
         pulumi.set(__self__, "dbname", dbname)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "password", password)
@@ -11406,41 +14746,65 @@ class GetPgPgResult(dict):
     @property
     @pulumi.getter
     def dbname(self) -> str:
+        """
+        Primary PostgreSQL database name
+        """
         return pulumi.get(self, "dbname")
 
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        PostgreSQL master node host IP or name
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        PostgreSQL admin user password
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> float:
+        """
+        PostgreSQL port
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="replicaUri")
     def replica_uri(self) -> str:
+        """
+        PostgreSQL replica URI for services with a replica
+        """
         return pulumi.get(self, "replica_uri")
 
     @property
     @pulumi.getter
     def sslmode(self) -> str:
+        """
+        PostgreSQL sslmode setting (currently always `require`)
+        """
         return pulumi.get(self, "sslmode")
 
     @property
     @pulumi.getter
     def uri(self) -> str:
+        """
+        PostgreSQL master connection URI
+        """
         return pulumi.get(self, "uri")
 
     @property
     @pulumi.getter
     def user(self) -> str:
+        """
+        PostgreSQL admin user name
+        """
         return pulumi.get(self, "user")
 
 
@@ -11468,6 +14832,43 @@ class GetPgPgUserConfigResult(dict):
                  timescaledb: Optional['outputs.GetPgPgUserConfigTimescaledbResult'] = None,
                  variant: Optional[str] = None,
                  work_mem: Optional[str] = None):
+        """
+        :param str admin_password: custom password for admin user. Defaults to random string. *This must
+               be set only when a new service is being created.*
+        :param str admin_username: custom username for admin user. *This must be set only when a new service
+               is being created.*
+        :param str backup_hour: the hour of day (in UTC) when backup for the service is started. New backup 
+               is only started if previous backup has already completed.
+        :param str backup_minute: the minute of an hour when backup for the service is started. New backup 
+               is only started if previous backup has already completed.
+        :param List[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'GetPgPgUserConfigMigrationArgs' migration: migrate data from existing server, has the following options:
+        :param 'GetPgPgUserConfigPgArgs' pg: PostgreSQL specific server provided values.
+        :param str pg_read_replica: This setting is deprecated. Use read-replica service integration instead.
+        :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+               This has effect only when a new service is being created.
+        :param str pg_version: PostgreSQL major version.
+        :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param 'GetPgPgUserConfigPglookoutArgs' pglookout: PGLookout settings.
+        :param 'GetPgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'GetPgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_target_time: Recovery target time when forking a service. This has effect 
+               only when a new service is being created.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
+        :param str shared_buffers_percentage: Percentage of total RAM that the database server uses for 
+               memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+               the shared_buffers configuration value. The absolute maximum is 12 GB.
+        :param str synchronous_replication: Synchronous replication type. Note that the service plan 
+               also needs to support synchronous replication.
+        :param 'GetPgPgUserConfigTimescaledbArgs' timescaledb: TimescaleDB extension configuration values.
+        :param str variant: Variant of the PostgreSQL service, may affect the features that are 
+               exposed by default. Options: `aiven` or `timescale`.
+        :param str work_mem: Sets the maximum amount of memory to be used by a query operation (such 
+               as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+               total RAM (up to 32MB).
+        """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
         if admin_username is not None:
@@ -11514,106 +14915,183 @@ class GetPgPgUserConfigResult(dict):
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
+        """
+        custom password for admin user. Defaults to random string. *This must
+        be set only when a new service is being created.*
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter(name="adminUsername")
     def admin_username(self) -> Optional[str]:
+        """
+        custom username for admin user. *This must be set only when a new service
+        is being created.*
+        """
         return pulumi.get(self, "admin_username")
 
     @property
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> Optional[str]:
+        """
+        the hour of day (in UTC) when backup for the service is started. New backup 
+        is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_hour")
 
     @property
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[str]:
+        """
+        the minute of an hour when backup for the service is started. New backup 
+        is only started if previous backup has already completed.
+        """
         return pulumi.get(self, "backup_minute")
 
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def migration(self) -> Optional['outputs.GetPgPgUserConfigMigrationResult']:
+        """
+        migrate data from existing server, has the following options:
+        """
         return pulumi.get(self, "migration")
 
     @property
     @pulumi.getter
     def pg(self) -> Optional['outputs.GetPgPgUserConfigPgResult']:
+        """
+        PostgreSQL specific server provided values.
+        """
         return pulumi.get(self, "pg")
 
     @property
     @pulumi.getter(name="pgReadReplica")
     def pg_read_replica(self) -> Optional[str]:
+        """
+        This setting is deprecated. Use read-replica service integration instead.
+        """
         return pulumi.get(self, "pg_read_replica")
 
     @property
     @pulumi.getter(name="pgServiceToForkFrom")
     def pg_service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+        This has effect only when a new service is being created.
+        """
         return pulumi.get(self, "pg_service_to_fork_from")
 
     @property
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[str]:
+        """
+        PostgreSQL major version.
+        """
         return pulumi.get(self, "pg_version")
 
     @property
     @pulumi.getter
     def pgbouncer(self) -> Optional['outputs.GetPgPgUserConfigPgbouncerResult']:
+        """
+        Allow clients to connect to pgbouncer from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pgbouncer")
 
     @property
     @pulumi.getter
     def pglookout(self) -> Optional['outputs.GetPgPgUserConfigPglookoutResult']:
+        """
+        PGLookout settings.
+        """
         return pulumi.get(self, "pglookout")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetPgPgUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks.
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetPgPgUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryTargetTime")
     def recovery_target_time(self) -> Optional[str]:
+        """
+        Recovery target time when forking a service. This has effect 
+        only when a new service is being created.
+        """
         return pulumi.get(self, "recovery_target_time")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
         return pulumi.get(self, "service_to_fork_from")
 
     @property
     @pulumi.getter(name="sharedBuffersPercentage")
     def shared_buffers_percentage(self) -> Optional[str]:
+        """
+        Percentage of total RAM that the database server uses for 
+        memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+        the shared_buffers configuration value. The absolute maximum is 12 GB.
+        """
         return pulumi.get(self, "shared_buffers_percentage")
 
     @property
     @pulumi.getter(name="synchronousReplication")
     def synchronous_replication(self) -> Optional[str]:
+        """
+        Synchronous replication type. Note that the service plan 
+        also needs to support synchronous replication.
+        """
         return pulumi.get(self, "synchronous_replication")
 
     @property
     @pulumi.getter
     def timescaledb(self) -> Optional['outputs.GetPgPgUserConfigTimescaledbResult']:
+        """
+        TimescaleDB extension configuration values.
+        """
         return pulumi.get(self, "timescaledb")
 
     @property
     @pulumi.getter
     def variant(self) -> Optional[str]:
+        """
+        Variant of the PostgreSQL service, may affect the features that are 
+        exposed by default. Options: `aiven` or `timescale`.
+        """
         return pulumi.get(self, "variant")
 
     @property
     @pulumi.getter(name="workMem")
     def work_mem(self) -> Optional[str]:
+        """
+        Sets the maximum amount of memory to be used by a query operation (such 
+        as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+        total RAM (up to 32MB).
+        """
         return pulumi.get(self, "work_mem")
 
 
@@ -11626,6 +15104,14 @@ class GetPgPgUserConfigMigrationResult(dict):
                  port: Optional[str] = None,
                  ssl: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param str dbname: Primary PostgreSQL database name
+        :param str host: PostgreSQL master node host IP or name
+        :param str password: PostgreSQL admin user password
+        :param str port: PostgreSQL port
+        :param str ssl: the server where to migrate data from is secured with SSL.
+        :param str username: user name for authentication with the server where to migrate data from.
+        """
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
         if host is not None:
@@ -11642,31 +15128,49 @@ class GetPgPgUserConfigMigrationResult(dict):
     @property
     @pulumi.getter
     def dbname(self) -> Optional[str]:
+        """
+        Primary PostgreSQL database name
+        """
         return pulumi.get(self, "dbname")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        PostgreSQL master node host IP or name
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        PostgreSQL admin user password
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        PostgreSQL port
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def ssl(self) -> Optional[str]:
+        """
+        the server where to migrate data from is secured with SSL.
+        """
         return pulumi.get(self, "ssl")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        user name for authentication with the server where to migrate data from.
+        """
         return pulumi.get(self, "username")
 
 
@@ -11707,6 +15211,73 @@ class GetPgPgUserConfigPgResult(dict):
                  track_functions: Optional[str] = None,
                  wal_sender_timeout: Optional[str] = None,
                  wal_writer_delay: Optional[str] = None):
+        """
+        :param str autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to 
+               autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2
+               (20% of table size).
+        :param str autovacuum_analyze_threshold: specifies the minimum number of inserted, updated 
+               or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        :param str autovacuum_freeze_max_age: specifies the maximum age (in transactions) that a table's 
+               pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+               wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+               even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        :param str autovacuum_max_workers: specifies the maximum number of autovacuum processes (other 
+               than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+               can only be set at server start.
+        :param str autovacuum_naptime: specifies the minimum delay between autovacuum runs on any 
+               given database. The delay is measured in seconds, and the default is one minute.
+        :param str autovacuum_vacuum_cost_delay: specifies the cost delay value that will be used 
+               in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be
+               used. The default value is 20 milliseconds.
+        :param str autovacuum_vacuum_cost_limit: specifies the cost limit value that will be used in 
+               automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit
+               value will be used.
+        :param str autovacuum_vacuum_scale_factor: specifies a fraction of the table size to add to 
+               autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        :param str autovacuum_vacuum_threshold: specifies the minimum number of updated or deleted tuples 
+               needed to trigger a VACUUM in any one table. The default is 50 tuples
+        :param str deadlock_timeout: this is the amount of time, in milliseconds, to wait on a lock before 
+               checking to see if there is a deadlock condition.
+        :param str idle_in_transaction_session_timeout: Time out sessions with open transactions after 
+               this number of milliseconds.
+        :param str jit: Controls system-wide use of Just-in-Time Compilation (JIT).
+        :param str log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged 
+               if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+               actions. Minus-one (the default) disables logging autovacuum actions.
+        :param str log_error_verbosity: Controls the amount of detail written in the server log for 
+               each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+        :param str log_min_duration_statement: Log statements that take more than this number of 
+               milliseconds to run, -1 disables
+        :param str max_locks_per_transaction: PostgreSQL maximum locks per transaction
+        :param str max_parallel_workers: Sets the maximum number of workers that the system can 
+               support for parallel queries.
+        :param str max_parallel_workers_per_gather: Sets the maximum number of workers that can be 
+               started by a single Gather or Gather Merge node.
+        :param str max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction
+        :param str max_prepared_transactions: PostgreSQL maximum prepared transactions
+        :param str max_stack_depth: Maximum depth of the stack in bytes
+        :param str max_standby_archive_delay: Max standby archive delay in milliseconds
+        :param str max_standby_streaming_delay: Max standby streaming delay in milliseconds
+        :param str max_worker_processes: Sets the maximum number of background processes that the system
+               can support
+               * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+               * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+               background tasks.
+               * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+               to track top-level statements (those issued directly by clients), all to also track nested
+               statements (such as statements invoked within functions), or none to disable statement statistics
+               collection. The default value is top.
+        :param str temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited
+        :param str timezone: PostgreSQL service timezone
+        :param str track_activity_query_size: Specifies the number of bytes reserved to track the currently 
+               executing command for each active session.
+        :param str track_commit_timestamp: Record commit time of transactions
+        :param str track_functions: Enables tracking of function call counts and time used.
+        :param str wal_sender_timeout: Terminate replication connections that are inactive for longer than 
+               this amount of time, in milliseconds.
+        :param str wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value 
+               to lower than the default 200ms may negatively impact performance
+        """
         if autovacuum_analyze_scale_factor is not None:
             pulumi.set(__self__, "autovacuum_analyze_scale_factor", autovacuum_analyze_scale_factor)
         if autovacuum_analyze_threshold is not None:
@@ -11779,121 +15350,224 @@ class GetPgPgUserConfigPgResult(dict):
     @property
     @pulumi.getter(name="autovacuumAnalyzeScaleFactor")
     def autovacuum_analyze_scale_factor(self) -> Optional[str]:
+        """
+        Specifies a fraction of the table size to add to 
+        autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2
+        (20% of table size).
+        """
         return pulumi.get(self, "autovacuum_analyze_scale_factor")
 
     @property
     @pulumi.getter(name="autovacuumAnalyzeThreshold")
     def autovacuum_analyze_threshold(self) -> Optional[str]:
+        """
+        specifies the minimum number of inserted, updated 
+        or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        """
         return pulumi.get(self, "autovacuum_analyze_threshold")
 
     @property
     @pulumi.getter(name="autovacuumFreezeMaxAge")
     def autovacuum_freeze_max_age(self) -> Optional[str]:
+        """
+        specifies the maximum age (in transactions) that a table's 
+        pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+        wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+        even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
     @property
     @pulumi.getter(name="autovacuumMaxWorkers")
     def autovacuum_max_workers(self) -> Optional[str]:
+        """
+        specifies the maximum number of autovacuum processes (other 
+        than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+        can only be set at server start.
+        """
         return pulumi.get(self, "autovacuum_max_workers")
 
     @property
     @pulumi.getter(name="autovacuumNaptime")
     def autovacuum_naptime(self) -> Optional[str]:
+        """
+        specifies the minimum delay between autovacuum runs on any 
+        given database. The delay is measured in seconds, and the default is one minute.
+        """
         return pulumi.get(self, "autovacuum_naptime")
 
     @property
     @pulumi.getter(name="autovacuumVacuumCostDelay")
     def autovacuum_vacuum_cost_delay(self) -> Optional[str]:
+        """
+        specifies the cost delay value that will be used 
+        in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be
+        used. The default value is 20 milliseconds.
+        """
         return pulumi.get(self, "autovacuum_vacuum_cost_delay")
 
     @property
     @pulumi.getter(name="autovacuumVacuumCostLimit")
     def autovacuum_vacuum_cost_limit(self) -> Optional[str]:
+        """
+        specifies the cost limit value that will be used in 
+        automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit
+        value will be used.
+        """
         return pulumi.get(self, "autovacuum_vacuum_cost_limit")
 
     @property
     @pulumi.getter(name="autovacuumVacuumScaleFactor")
     def autovacuum_vacuum_scale_factor(self) -> Optional[str]:
+        """
+        specifies a fraction of the table size to add to 
+        autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        """
         return pulumi.get(self, "autovacuum_vacuum_scale_factor")
 
     @property
     @pulumi.getter(name="autovacuumVacuumThreshold")
     def autovacuum_vacuum_threshold(self) -> Optional[str]:
+        """
+        specifies the minimum number of updated or deleted tuples 
+        needed to trigger a VACUUM in any one table. The default is 50 tuples
+        """
         return pulumi.get(self, "autovacuum_vacuum_threshold")
 
     @property
     @pulumi.getter(name="deadlockTimeout")
     def deadlock_timeout(self) -> Optional[str]:
+        """
+        this is the amount of time, in milliseconds, to wait on a lock before 
+        checking to see if there is a deadlock condition.
+        """
         return pulumi.get(self, "deadlock_timeout")
 
     @property
     @pulumi.getter(name="idleInTransactionSessionTimeout")
     def idle_in_transaction_session_timeout(self) -> Optional[str]:
+        """
+        Time out sessions with open transactions after 
+        this number of milliseconds.
+        """
         return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @property
     @pulumi.getter
     def jit(self) -> Optional[str]:
+        """
+        Controls system-wide use of Just-in-Time Compilation (JIT).
+        """
         return pulumi.get(self, "jit")
 
     @property
     @pulumi.getter(name="logAutovacuumMinDuration")
     def log_autovacuum_min_duration(self) -> Optional[str]:
+        """
+        Causes each action executed by autovacuum to be logged 
+        if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+        actions. Minus-one (the default) disables logging autovacuum actions.
+        """
         return pulumi.get(self, "log_autovacuum_min_duration")
 
     @property
     @pulumi.getter(name="logErrorVerbosity")
     def log_error_verbosity(self) -> Optional[str]:
+        """
+        Controls the amount of detail written in the server log for 
+        each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+        """
         return pulumi.get(self, "log_error_verbosity")
 
     @property
     @pulumi.getter(name="logMinDurationStatement")
     def log_min_duration_statement(self) -> Optional[str]:
+        """
+        Log statements that take more than this number of 
+        milliseconds to run, -1 disables
+        """
         return pulumi.get(self, "log_min_duration_statement")
 
     @property
     @pulumi.getter(name="maxLocksPerTransaction")
     def max_locks_per_transaction(self) -> Optional[str]:
+        """
+        PostgreSQL maximum locks per transaction
+        """
         return pulumi.get(self, "max_locks_per_transaction")
 
     @property
     @pulumi.getter(name="maxParallelWorkers")
     def max_parallel_workers(self) -> Optional[str]:
+        """
+        Sets the maximum number of workers that the system can 
+        support for parallel queries.
+        """
         return pulumi.get(self, "max_parallel_workers")
 
     @property
     @pulumi.getter(name="maxParallelWorkersPerGather")
     def max_parallel_workers_per_gather(self) -> Optional[str]:
+        """
+        Sets the maximum number of workers that can be 
+        started by a single Gather or Gather Merge node.
+        """
         return pulumi.get(self, "max_parallel_workers_per_gather")
 
     @property
     @pulumi.getter(name="maxPredLocksPerTransaction")
     def max_pred_locks_per_transaction(self) -> Optional[str]:
+        """
+        PostgreSQL maximum predicate locks per transaction
+        """
         return pulumi.get(self, "max_pred_locks_per_transaction")
 
     @property
     @pulumi.getter(name="maxPreparedTransactions")
     def max_prepared_transactions(self) -> Optional[str]:
+        """
+        PostgreSQL maximum prepared transactions
+        """
         return pulumi.get(self, "max_prepared_transactions")
 
     @property
     @pulumi.getter(name="maxStackDepth")
     def max_stack_depth(self) -> Optional[str]:
+        """
+        Maximum depth of the stack in bytes
+        """
         return pulumi.get(self, "max_stack_depth")
 
     @property
     @pulumi.getter(name="maxStandbyArchiveDelay")
     def max_standby_archive_delay(self) -> Optional[str]:
+        """
+        Max standby archive delay in milliseconds
+        """
         return pulumi.get(self, "max_standby_archive_delay")
 
     @property
     @pulumi.getter(name="maxStandbyStreamingDelay")
     def max_standby_streaming_delay(self) -> Optional[str]:
+        """
+        Max standby streaming delay in milliseconds
+        """
         return pulumi.get(self, "max_standby_streaming_delay")
 
     @property
     @pulumi.getter(name="maxWorkerProcesses")
     def max_worker_processes(self) -> Optional[str]:
+        """
+        Sets the maximum number of background processes that the system
+        can support
+        * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+        * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+        background tasks.
+        * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+        to track top-level statements (those issued directly by clients), all to also track nested
+        statements (such as statements invoked within functions), or none to disable statement statistics
+        collection. The default value is top.
+        """
         return pulumi.get(self, "max_worker_processes")
 
     @property
@@ -11914,36 +15588,60 @@ class GetPgPgUserConfigPgResult(dict):
     @property
     @pulumi.getter(name="tempFileLimit")
     def temp_file_limit(self) -> Optional[str]:
+        """
+        PostgreSQL temporary file limit in KiB, -1 for unlimited
+        """
         return pulumi.get(self, "temp_file_limit")
 
     @property
     @pulumi.getter
     def timezone(self) -> Optional[str]:
+        """
+        PostgreSQL service timezone
+        """
         return pulumi.get(self, "timezone")
 
     @property
     @pulumi.getter(name="trackActivityQuerySize")
     def track_activity_query_size(self) -> Optional[str]:
+        """
+        Specifies the number of bytes reserved to track the currently 
+        executing command for each active session.
+        """
         return pulumi.get(self, "track_activity_query_size")
 
     @property
     @pulumi.getter(name="trackCommitTimestamp")
     def track_commit_timestamp(self) -> Optional[str]:
+        """
+        Record commit time of transactions
+        """
         return pulumi.get(self, "track_commit_timestamp")
 
     @property
     @pulumi.getter(name="trackFunctions")
     def track_functions(self) -> Optional[str]:
+        """
+        Enables tracking of function call counts and time used.
+        """
         return pulumi.get(self, "track_functions")
 
     @property
     @pulumi.getter(name="walSenderTimeout")
     def wal_sender_timeout(self) -> Optional[str]:
+        """
+        Terminate replication connections that are inactive for longer than 
+        this amount of time, in milliseconds.
+        """
         return pulumi.get(self, "wal_sender_timeout")
 
     @property
     @pulumi.getter(name="walWriterDelay")
     def wal_writer_delay(self) -> Optional[str]:
+        """
+        WAL flush interval in milliseconds. Note that setting this value 
+        to lower than the default 200ms may negatively impact performance
+        """
         return pulumi.get(self, "wal_writer_delay")
 
 
@@ -11952,6 +15650,10 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     def __init__(__self__, *,
                  ignore_startup_parameters: Optional[List[str]] = None,
                  server_reset_query_always: Optional[str] = None):
+        """
+        :param List[str] ignore_startup_parameters: Enum of parameters to ignore when given in startup packet.
+        :param str server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes.
+        """
         if ignore_startup_parameters is not None:
             pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
         if server_reset_query_always is not None:
@@ -11960,11 +15662,17 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @property
     @pulumi.getter(name="ignoreStartupParameters")
     def ignore_startup_parameters(self) -> Optional[List[str]]:
+        """
+        Enum of parameters to ignore when given in startup packet.
+        """
         return pulumi.get(self, "ignore_startup_parameters")
 
     @property
     @pulumi.getter(name="serverResetQueryAlways")
     def server_reset_query_always(self) -> Optional[str]:
+        """
+        Run server_reset_query (DISCARD ALL) in all pooling modes.
+        """
         return pulumi.get(self, "server_reset_query_always")
 
 
@@ -11972,12 +15680,20 @@ class GetPgPgUserConfigPgbouncerResult(dict):
 class GetPgPgUserConfigPglookoutResult(dict):
     def __init__(__self__, *,
                  max_failover_replication_time_lag: Optional[str] = None):
+        """
+        :param str max_failover_replication_time_lag: Number of seconds of master unavailability before 
+               triggering database failover to standby
+        """
         if max_failover_replication_time_lag is not None:
             pulumi.set(__self__, "max_failover_replication_time_lag", max_failover_replication_time_lag)
 
     @property
     @pulumi.getter(name="maxFailoverReplicationTimeLag")
     def max_failover_replication_time_lag(self) -> Optional[str]:
+        """
+        Number of seconds of master unavailability before 
+        triggering database failover to standby
+        """
         return pulumi.get(self, "max_failover_replication_time_lag")
 
 
@@ -11987,6 +15703,13 @@ class GetPgPgUserConfigPrivateAccessResult(dict):
                  pg: Optional[str] = None,
                  pgbouncer: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str pg: PostgreSQL specific server provided values.
+        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
@@ -11997,16 +15720,27 @@ class GetPgPgUserConfigPrivateAccessResult(dict):
     @property
     @pulumi.getter
     def pg(self) -> Optional[str]:
+        """
+        PostgreSQL specific server provided values.
+        """
         return pulumi.get(self, "pg")
 
     @property
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
+        """
+        Allow clients to connect to pgbouncer from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pgbouncer")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -12016,6 +15750,13 @@ class GetPgPgUserConfigPublicAccessResult(dict):
                  pg: Optional[str] = None,
                  pgbouncer: Optional[str] = None,
                  prometheus: Optional[str] = None):
+        """
+        :param str pg: PostgreSQL specific server provided values.
+        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param str prometheus: Allow clients to connect to prometheus from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
@@ -12026,16 +15767,27 @@ class GetPgPgUserConfigPublicAccessResult(dict):
     @property
     @pulumi.getter
     def pg(self) -> Optional[str]:
+        """
+        PostgreSQL specific server provided values.
+        """
         return pulumi.get(self, "pg")
 
     @property
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
+        """
+        Allow clients to connect to pgbouncer from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "pgbouncer")
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet for 
+        service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
 
@@ -12043,12 +15795,22 @@ class GetPgPgUserConfigPublicAccessResult(dict):
 class GetPgPgUserConfigTimescaledbResult(dict):
     def __init__(__self__, *,
                  max_background_workers: Optional[str] = None):
+        """
+        :param str max_background_workers: The number of background workers for timescaledb 
+               operations. You should configure this setting to the sum of your number of databases and the
+               total number of concurrent background workers you want running at any given point in time.
+        """
         if max_background_workers is not None:
             pulumi.set(__self__, "max_background_workers", max_background_workers)
 
     @property
     @pulumi.getter(name="maxBackgroundWorkers")
     def max_background_workers(self) -> Optional[str]:
+        """
+        The number of background workers for timescaledb 
+        operations. You should configure this setting to the sum of your number of databases and the
+        total number of concurrent background workers you want running at any given point in time.
+        """
         return pulumi.get(self, "max_background_workers")
 
 
@@ -12081,6 +15843,11 @@ class GetRedisComponentResult(dict):
                  route: str,
                  ssl: bool,
                  usage: str):
+        """
+        :param str host: (Required) Hostname or IP address of the server where to migrate data from
+        :param float port: (Required) Port number of the server where to migrate data from
+        :param bool ssl: The server where to migrate data from is secured with SSL
+        """
         pulumi.set(__self__, "component", component)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
@@ -12097,6 +15864,9 @@ class GetRedisComponentResult(dict):
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        (Required) Hostname or IP address of the server where to migrate data from
+        """
         return pulumi.get(self, "host")
 
     @property
@@ -12107,6 +15877,9 @@ class GetRedisComponentResult(dict):
     @property
     @pulumi.getter
     def port(self) -> float:
+        """
+        (Required) Port number of the server where to migrate data from
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -12117,6 +15890,9 @@ class GetRedisComponentResult(dict):
     @property
     @pulumi.getter
     def ssl(self) -> bool:
+        """
+        The server where to migrate data from is secured with SSL
+        """
         return pulumi.get(self, "ssl")
 
     @property
@@ -12146,6 +15922,22 @@ class GetRedisRedisUserConfigResult(dict):
                  redis_ssl: Optional[str] = None,
                  redis_timeout: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
+        """
+        :param List[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param 'GetRedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'GetRedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetRedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
+               * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
+        :param str redis_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu 
+               maxmemory-policies
+        :param str redis_maxmemory_policy: Redis maxmemory-policy
+        :param str redis_notify_keyspace_events: Set notify-keyspace-events option
+        :param str redis_ssl: Require SSL to access Redis
+        :param str redis_timeout: Redis idle connection timeout
+               * `service_to_fork_from"` - Name of another service to fork from. This has effect only
+               when a new service is being created.
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -12174,26 +15966,42 @@ class GetRedisRedisUserConfigResult(dict):
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[List[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
         return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
     def migration(self) -> Optional['outputs.GetRedisRedisUserConfigMigrationResult']:
+        """
+        Migrate data from existing server
+        """
         return pulumi.get(self, "migration")
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetRedisRedisUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks
+        """
         return pulumi.get(self, "private_access")
 
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetRedisRedisUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
         return pulumi.get(self, "public_access")
 
     @property
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
+        """
+        Name of the basebackup to restore in forked service
+        * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
+        """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
@@ -12204,26 +16012,44 @@ class GetRedisRedisUserConfigResult(dict):
     @property
     @pulumi.getter(name="redisLfuLogFactor")
     def redis_lfu_log_factor(self) -> Optional[str]:
+        """
+        Counter logarithm factor for volatile-lfu and allkeys-lfu 
+        maxmemory-policies
+        """
         return pulumi.get(self, "redis_lfu_log_factor")
 
     @property
     @pulumi.getter(name="redisMaxmemoryPolicy")
     def redis_maxmemory_policy(self) -> Optional[str]:
+        """
+        Redis maxmemory-policy
+        """
         return pulumi.get(self, "redis_maxmemory_policy")
 
     @property
     @pulumi.getter(name="redisNotifyKeyspaceEvents")
     def redis_notify_keyspace_events(self) -> Optional[str]:
+        """
+        Set notify-keyspace-events option
+        """
         return pulumi.get(self, "redis_notify_keyspace_events")
 
     @property
     @pulumi.getter(name="redisSsl")
     def redis_ssl(self) -> Optional[str]:
+        """
+        Require SSL to access Redis
+        """
         return pulumi.get(self, "redis_ssl")
 
     @property
     @pulumi.getter(name="redisTimeout")
     def redis_timeout(self) -> Optional[str]:
+        """
+        Redis idle connection timeout
+        * `service_to_fork_from"` - Name of another service to fork from. This has effect only
+        when a new service is being created.
+        """
         return pulumi.get(self, "redis_timeout")
 
     @property
@@ -12241,6 +16067,14 @@ class GetRedisRedisUserConfigMigrationResult(dict):
                  port: Optional[str] = None,
                  ssl: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param str dbname: Database name for bootstrapping the initial connection
+        :param str host: (Required) Hostname or IP address of the server where to migrate data from
+        :param str password: Password for authentication with the server where to migrate data from
+        :param str port: (Required) Port number of the server where to migrate data from
+        :param str ssl: The server where to migrate data from is secured with SSL
+        :param str username: User name for authentication with the server where to migrate data from
+        """
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
         if host is not None:
@@ -12257,31 +16091,49 @@ class GetRedisRedisUserConfigMigrationResult(dict):
     @property
     @pulumi.getter
     def dbname(self) -> Optional[str]:
+        """
+        Database name for bootstrapping the initial connection
+        """
         return pulumi.get(self, "dbname")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        (Required) Hostname or IP address of the server where to migrate data from
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Password for authentication with the server where to migrate data from
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        (Required) Port number of the server where to migrate data from
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def ssl(self) -> Optional[str]:
+        """
+        The server where to migrate data from is secured with SSL
+        """
         return pulumi.get(self, "ssl")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        User name for authentication with the server where to migrate data from
+        """
         return pulumi.get(self, "username")
 
 
@@ -12290,6 +16142,11 @@ class GetRedisRedisUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param str redis: Redis specific server provided values.
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
@@ -12298,11 +16155,18 @@ class GetRedisRedisUserConfigPrivateAccessResult(dict):
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter
     def redis(self) -> Optional[str]:
+        """
+        Redis specific server provided values.
+        """
         return pulumi.get(self, "redis")
 
 
@@ -12311,6 +16175,11 @@ class GetRedisRedisUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network
+        :param str redis: Redis specific server provided values.
+        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
@@ -12319,11 +16188,18 @@ class GetRedisRedisUserConfigPublicAccessResult(dict):
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network
+        """
         return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter
     def redis(self) -> Optional[str]:
+        """
+        Redis specific server provided values.
+        """
         return pulumi.get(self, "redis")
 
 

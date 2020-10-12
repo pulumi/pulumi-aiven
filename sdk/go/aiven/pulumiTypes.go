@@ -123,11 +123,18 @@ func (o CassandraCassandraPtrOutput) Elem() CassandraCassandraOutput {
 }
 
 type CassandraCassandraUserConfig struct {
-	IpFilters            []string                                   `pulumi:"ipFilters"`
-	MigrateSstableloader *string                                    `pulumi:"migrateSstableloader"`
-	PrivateAccess        *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess         *CassandraCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
-	ServiceToForkFrom    *string                                    `pulumi:"serviceToForkFrom"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// sets the service into migration mode enabling the sstableloader
+	// utility to be used to upload Cassandra data files. Available only on service create.
+	MigrateSstableloader *string `pulumi:"migrateSstableloader"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *CassandraCassandraUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // CassandraCassandraUserConfigInput is an input type that accepts CassandraCassandraUserConfigArgs and CassandraCassandraUserConfigOutput values.
@@ -142,11 +149,18 @@ type CassandraCassandraUserConfigInput interface {
 }
 
 type CassandraCassandraUserConfigArgs struct {
-	IpFilters            pulumi.StringArrayInput                           `pulumi:"ipFilters"`
-	MigrateSstableloader pulumi.StringPtrInput                             `pulumi:"migrateSstableloader"`
-	PrivateAccess        CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess         CassandraCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	ServiceToForkFrom    pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// sets the service into migration mode enabling the sstableloader
+	// utility to be used to upload Cassandra data files. Available only on service create.
+	MigrateSstableloader pulumi.StringPtrInput `pulumi:"migrateSstableloader"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess CassandraCassandraUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (CassandraCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -225,24 +239,32 @@ func (o CassandraCassandraUserConfigOutput) ToCassandraCassandraUserConfigPtrOut
 		return &v
 	}).(CassandraCassandraUserConfigPtrOutput)
 }
+
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o CassandraCassandraUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// sets the service into migration mode enabling the sstableloader
+// utility to be used to upload Cassandra data files. Available only on service create.
 func (o CassandraCassandraUserConfigOutput) MigrateSstableloader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.MigrateSstableloader }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o CassandraCassandraUserConfigOutput) PrivateAccess() CassandraCassandraUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o CassandraCassandraUserConfigOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess { return v.PublicAccess }).(CassandraCassandraUserConfigPublicAccessPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o CassandraCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -265,6 +287,7 @@ func (o CassandraCassandraUserConfigPtrOutput) Elem() CassandraCassandraUserConf
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) CassandraCassandraUserConfig { return *v }).(CassandraCassandraUserConfigOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o CassandraCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) []string {
 		if v == nil {
@@ -274,6 +297,8 @@ func (o CassandraCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// sets the service into migration mode enabling the sstableloader
+// utility to be used to upload Cassandra data files. Available only on service create.
 func (o CassandraCassandraUserConfigPtrOutput) MigrateSstableloader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -283,6 +308,7 @@ func (o CassandraCassandraUserConfigPtrOutput) MigrateSstableloader() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o CassandraCassandraUserConfigPtrOutput) PrivateAccess() CassandraCassandraUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigPrivateAccess {
 		if v == nil {
@@ -292,6 +318,7 @@ func (o CassandraCassandraUserConfigPtrOutput) PrivateAccess() CassandraCassandr
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o CassandraCassandraUserConfigPtrOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess {
 		if v == nil {
@@ -301,6 +328,8 @@ func (o CassandraCassandraUserConfigPtrOutput) PublicAccess() CassandraCassandra
 	}).(CassandraCassandraUserConfigPublicAccessPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o CassandraCassandraUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -311,6 +340,8 @@ func (o CassandraCassandraUserConfigPtrOutput) ServiceToForkFrom() pulumi.String
 }
 
 type CassandraCassandraUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -326,6 +357,8 @@ type CassandraCassandraUserConfigPrivateAccessInput interface {
 }
 
 type CassandraCassandraUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -405,6 +438,9 @@ func (o CassandraCassandraUserConfigPrivateAccessOutput) ToCassandraCassandraUse
 		return &v
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o CassandraCassandraUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -429,6 +465,8 @@ func (o CassandraCassandraUserConfigPrivateAccessPtrOutput) Elem() CassandraCass
 	}).(CassandraCassandraUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o CassandraCassandraUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -439,6 +477,8 @@ func (o CassandraCassandraUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.
 }
 
 type CassandraCassandraUserConfigPublicAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -454,6 +494,8 @@ type CassandraCassandraUserConfigPublicAccessInput interface {
 }
 
 type CassandraCassandraUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -533,6 +575,9 @@ func (o CassandraCassandraUserConfigPublicAccessOutput) ToCassandraCassandraUser
 		return &v
 	}).(CassandraCassandraUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o CassandraCassandraUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -555,6 +600,8 @@ func (o CassandraCassandraUserConfigPublicAccessPtrOutput) Elem() CassandraCassa
 	return o.ApplyT(func(v *CassandraCassandraUserConfigPublicAccess) CassandraCassandraUserConfigPublicAccess { return *v }).(CassandraCassandraUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o CassandraCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfigPublicAccess) *string {
 		if v == nil {
@@ -1125,6 +1172,7 @@ func (o ElasticSearchComponentArrayOutput) Index(i pulumi.IntInput) ElasticSearc
 }
 
 type ElasticSearchElasticsearch struct {
+	// URI for Kibana frontend.
 	KibanaUri *string `pulumi:"kibanaUri"`
 }
 
@@ -1140,6 +1188,7 @@ type ElasticSearchElasticsearchInput interface {
 }
 
 type ElasticSearchElasticsearchArgs struct {
+	// URI for Kibana frontend.
 	KibanaUri pulumi.StringPtrInput `pulumi:"kibanaUri"`
 }
 
@@ -1219,6 +1268,8 @@ func (o ElasticSearchElasticsearchOutput) ToElasticSearchElasticsearchPtrOutputW
 		return &v
 	}).(ElasticSearchElasticsearchPtrOutput)
 }
+
+// URI for Kibana frontend.
 func (o ElasticSearchElasticsearchOutput) KibanaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearch) *string { return v.KibanaUri }).(pulumi.StringPtrOutput)
 }
@@ -1241,6 +1292,7 @@ func (o ElasticSearchElasticsearchPtrOutput) Elem() ElasticSearchElasticsearchOu
 	return o.ApplyT(func(v *ElasticSearchElasticsearch) ElasticSearchElasticsearch { return *v }).(ElasticSearchElasticsearchOutput)
 }
 
+// URI for Kibana frontend.
 func (o ElasticSearchElasticsearchPtrOutput) KibanaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearch) *string {
 		if v == nil {
@@ -1251,18 +1303,38 @@ func (o ElasticSearchElasticsearchPtrOutput) KibanaUri() pulumi.StringPtrOutput 
 }
 
 type ElasticSearchElasticsearchUserConfig struct {
-	CustomDomain                       *string                                            `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment *string                                            `pulumi:"disableReplicationFactorAdjustment"`
-	Elasticsearch                      *ElasticSearchElasticsearchUserConfigElasticsearch `pulumi:"elasticsearch"`
-	ElasticsearchVersion               *string                                            `pulumi:"elasticsearchVersion"`
-	IndexPatterns                      []ElasticSearchElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
-	IpFilters                          []string                                           `pulumi:"ipFilters"`
-	Kibana                             *ElasticSearchElasticsearchUserConfigKibana        `pulumi:"kibana"`
-	MaxIndexCount                      *string                                            `pulumi:"maxIndexCount"`
-	PrivateAccess                      *ElasticSearchElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess                       *ElasticSearchElasticsearchUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryBasebackupName             *string                                            `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  *string                                            `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the
+	// Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Disable automatic replication factor
+	// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+	// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+	// virtual machine failure.
+	DisableReplicationFactorAdjustment *string `pulumi:"disableReplicationFactorAdjustment"`
+	// Allow clients to connect to elasticsearch from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Elasticsearch *ElasticSearchElasticsearchUserConfigElasticsearch `pulumi:"elasticsearch"`
+	// Elasticsearch major version.
+	ElasticsearchVersion *string `pulumi:"elasticsearchVersion"`
+	// Glob pattern and number of indexes matching that pattern to
+	// be kept.
+	IndexPatterns []ElasticSearchElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana *ElasticSearchElasticsearchUserConfigKibana `pulumi:"kibana"`
+	// Maximum number of indexes to keep before deleting the oldest one.
+	MaxIndexCount *string `pulumi:"maxIndexCount"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *ElasticSearchElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *ElasticSearchElasticsearchUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // ElasticSearchElasticsearchUserConfigInput is an input type that accepts ElasticSearchElasticsearchUserConfigArgs and ElasticSearchElasticsearchUserConfigOutput values.
@@ -1277,18 +1349,38 @@ type ElasticSearchElasticsearchUserConfigInput interface {
 }
 
 type ElasticSearchElasticsearchUserConfigArgs struct {
-	CustomDomain                       pulumi.StringPtrInput                                      `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                      `pulumi:"disableReplicationFactorAdjustment"`
-	Elasticsearch                      ElasticSearchElasticsearchUserConfigElasticsearchPtrInput  `pulumi:"elasticsearch"`
-	ElasticsearchVersion               pulumi.StringPtrInput                                      `pulumi:"elasticsearchVersion"`
-	IndexPatterns                      ElasticSearchElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
-	IpFilters                          pulumi.StringArrayInput                                    `pulumi:"ipFilters"`
-	Kibana                             ElasticSearchElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
-	MaxIndexCount                      pulumi.StringPtrInput                                      `pulumi:"maxIndexCount"`
-	PrivateAccess                      ElasticSearchElasticsearchUserConfigPrivateAccessPtrInput  `pulumi:"privateAccess"`
-	PublicAccess                       ElasticSearchElasticsearchUserConfigPublicAccessPtrInput   `pulumi:"publicAccess"`
-	RecoveryBasebackupName             pulumi.StringPtrInput                                      `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  pulumi.StringPtrInput                                      `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the
+	// Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Disable automatic replication factor
+	// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+	// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+	// virtual machine failure.
+	DisableReplicationFactorAdjustment pulumi.StringPtrInput `pulumi:"disableReplicationFactorAdjustment"`
+	// Allow clients to connect to elasticsearch from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Elasticsearch ElasticSearchElasticsearchUserConfigElasticsearchPtrInput `pulumi:"elasticsearch"`
+	// Elasticsearch major version.
+	ElasticsearchVersion pulumi.StringPtrInput `pulumi:"elasticsearchVersion"`
+	// Glob pattern and number of indexes matching that pattern to
+	// be kept.
+	IndexPatterns ElasticSearchElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana ElasticSearchElasticsearchUserConfigKibanaPtrInput `pulumi:"kibana"`
+	// Maximum number of indexes to keep before deleting the oldest one.
+	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess ElasticSearchElasticsearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess ElasticSearchElasticsearchUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (ElasticSearchElasticsearchUserConfigArgs) ElementType() reflect.Type {
@@ -1367,60 +1459,81 @@ func (o ElasticSearchElasticsearchUserConfigOutput) ToElasticSearchElasticsearch
 		return &v
 	}).(ElasticSearchElasticsearchUserConfigPtrOutput)
 }
+
+// Serve the web frontend using a custom CNAME pointing to the
+// Aiven DNS name.
 func (o ElasticSearchElasticsearchUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Disable automatic replication factor
+// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+// virtual machine failure.
 func (o ElasticSearchElasticsearchUserConfigOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *string { return v.DisableReplicationFactorAdjustment }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to elasticsearch from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigOutput) Elasticsearch() ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigElasticsearch {
 		return v.Elasticsearch
 	}).(ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput)
 }
 
+// Elasticsearch major version.
 func (o ElasticSearchElasticsearchUserConfigOutput) ElasticsearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *string { return v.ElasticsearchVersion }).(pulumi.StringPtrOutput)
 }
 
+// Glob pattern and number of indexes matching that pattern to
+// be kept.
 func (o ElasticSearchElasticsearchUserConfigOutput) IndexPatterns() ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) []ElasticSearchElasticsearchUserConfigIndexPattern {
 		return v.IndexPatterns
 	}).(ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o ElasticSearchElasticsearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigOutput) Kibana() ElasticSearchElasticsearchUserConfigKibanaPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigKibana {
 		return v.Kibana
 	}).(ElasticSearchElasticsearchUserConfigKibanaPtrOutput)
 }
 
+// Maximum number of indexes to keep before deleting the oldest one.
 func (o ElasticSearchElasticsearchUserConfigOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o ElasticSearchElasticsearchUserConfigOutput) PrivateAccess() ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o ElasticSearchElasticsearchUserConfigOutput) PublicAccess() ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service.
 func (o ElasticSearchElasticsearchUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect
+// only when a new service is being created.
 func (o ElasticSearchElasticsearchUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -1443,6 +1556,8 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) Elem() ElasticSearchElast
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) ElasticSearchElasticsearchUserConfig { return *v }).(ElasticSearchElasticsearchUserConfigOutput)
 }
 
+// Serve the web frontend using a custom CNAME pointing to the
+// Aiven DNS name.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *string {
 		if v == nil {
@@ -1452,6 +1567,10 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) CustomDomain() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Disable automatic replication factor
+// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+// virtual machine failure.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *string {
 		if v == nil {
@@ -1461,6 +1580,8 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) DisableReplicationFactorA
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to elasticsearch from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) Elasticsearch() ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigElasticsearch {
 		if v == nil {
@@ -1470,6 +1591,7 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) Elasticsearch() ElasticSe
 	}).(ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput)
 }
 
+// Elasticsearch major version.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) ElasticsearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *string {
 		if v == nil {
@@ -1479,6 +1601,8 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) ElasticsearchVersion() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Glob pattern and number of indexes matching that pattern to
+// be kept.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) IndexPatterns() ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) []ElasticSearchElasticsearchUserConfigIndexPattern {
 		if v == nil {
@@ -1488,6 +1612,7 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) IndexPatterns() ElasticSe
 	}).(ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) []string {
 		if v == nil {
@@ -1497,6 +1622,8 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) IpFilters() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) Kibana() ElasticSearchElasticsearchUserConfigKibanaPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigKibana {
 		if v == nil {
@@ -1506,6 +1633,7 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) Kibana() ElasticSearchEla
 	}).(ElasticSearchElasticsearchUserConfigKibanaPtrOutput)
 }
 
+// Maximum number of indexes to keep before deleting the oldest one.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *string {
 		if v == nil {
@@ -1515,6 +1643,7 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) MaxIndexCount() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) PrivateAccess() ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigPrivateAccess {
 		if v == nil {
@@ -1524,6 +1653,7 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) PrivateAccess() ElasticSe
 	}).(ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) PublicAccess() ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigPublicAccess {
 		if v == nil {
@@ -1533,6 +1663,7 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) PublicAccess() ElasticSea
 	}).(ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *string {
 		if v == nil {
@@ -1542,6 +1673,8 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) RecoveryBasebackupName() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect
+// only when a new service is being created.
 func (o ElasticSearchElasticsearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *string {
 		if v == nil {
@@ -1552,30 +1685,89 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) ServiceToForkFrom() pulum
 }
 
 type ElasticSearchElasticsearchUserConfigElasticsearch struct {
-	ActionAutoCreateIndexEnabled       *string  `pulumi:"actionAutoCreateIndexEnabled"`
-	ActionDestructiveRequiresName      *string  `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               *string  `pulumi:"httpMaxContentLength"`
-	HttpMaxHeaderSize                  *string  `pulumi:"httpMaxHeaderSize"`
-	HttpMaxInitialLineLength           *string  `pulumi:"httpMaxInitialLineLength"`
-	IndicesFielddataCacheSize          *string  `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       *string  `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            *string  `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     *string  `pulumi:"indicesQueryBoolMaxClauseCount"`
-	ReindexRemoteWhitelists            []string `pulumi:"reindexRemoteWhitelists"`
-	SearchMaxBuckets                   *string  `pulumi:"searchMaxBuckets"`
-	ThreadPoolAnalyzeQueueSize         *string  `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              *string  `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           *string  `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             *string  `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  *string  `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           *string  `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                *string  `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          *string  `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               *string  `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize *string  `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      *string  `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           *string  `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                *string  `pulumi:"threadPoolWriteSize"`
+	// Explicitly allow or block automatic
+	// creation of indices. Defaults to true
+	ActionAutoCreateIndexEnabled *string `pulumi:"actionAutoCreateIndexEnabled"`
+	// Require explicit index names when deleting
+	ActionDestructiveRequiresName *string `pulumi:"actionDestructiveRequiresName"`
+	// Maximum content length for HTTP requests to
+	// the Elasticsearch HTTP API, in bytes.
+	HttpMaxContentLength *string `pulumi:"httpMaxContentLength"`
+	// The max size of allowed headers, in bytes.
+	HttpMaxHeaderSize *string `pulumi:"httpMaxHeaderSize"`
+	// The max length of an HTTP URL, in bytes.
+	HttpMaxInitialLineLength *string `pulumi:"httpMaxInitialLineLength"`
+	// Relative amount. Maximum amount of
+	// heap memory used for field data cache. This is an expert setting; decreasing the
+	// value too much will increase overhead of loading field data; too much memory used
+	// for field data cache will decrease amount of heap available for other operations.
+	IndicesFielddataCacheSize *string `pulumi:"indicesFielddataCacheSize"`
+	// Percentage value. Default is 10%.
+	// Total amount of heap used for indexing buffer, before writing segments to disk.
+	// This is an expert setting. Too low value will slow down indexing; too high value
+	// will increase indexing performance but causes performance issues for query performance.
+	IndicesMemoryIndexBufferSize *string `pulumi:"indicesMemoryIndexBufferSize"`
+	// Percentage value. Default is 10%.
+	// Maximum amount of heap used for query cache. This is an expert setting.
+	// Too low value will decrease query performance and increase performance for other
+	// operations; too high value will cause issues with other Elasticsearch functionality.
+	IndicesQueriesCacheSize *string `pulumi:"indicesQueriesCacheSize"`
+	// Maximum number of clauses Lucene
+	// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+	// may cause performance issues. Investigate other approaches first before increasing this value.
+	IndicesQueryBoolMaxClauseCount *string `pulumi:"indicesQueryBoolMaxClauseCount"`
+	// Whitelisted addresses for reindexing.
+	// Changing this value will cause all Elasticsearch instances to restart.
+	ReindexRemoteWhitelists []string `pulumi:"reindexRemoteWhitelists"`
+	// Maximum number of aggregation buckets allowed
+	// in a single response. Elasticsearch default value is used when this is not defined.
+	SearchMaxBuckets *string `pulumi:"searchMaxBuckets"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolAnalyzeQueueSize *string `pulumi:"threadPoolAnalyzeQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolAnalyzeSize *string `pulumi:"threadPoolAnalyzeSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolForceMergeSize *string `pulumi:"threadPoolForceMergeSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolGetQueueSize *string `pulumi:"threadPoolGetQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolGetSize *string `pulumi:"threadPoolGetSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolIndexQueueSize *string `pulumi:"threadPoolIndexQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolIndexSize *string `pulumi:"threadPoolIndexSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolSearchQueueSize *string `pulumi:"threadPoolSearchQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchSize *string `pulumi:"threadPoolSearchSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolSearchThrottledQueueSize *string `pulumi:"threadPoolSearchThrottledQueueSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchThrottledSize *string `pulumi:"threadPoolSearchThrottledSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolWriteQueueSize *string `pulumi:"threadPoolWriteQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolWriteSize *string `pulumi:"threadPoolWriteSize"`
 }
 
 // ElasticSearchElasticsearchUserConfigElasticsearchInput is an input type that accepts ElasticSearchElasticsearchUserConfigElasticsearchArgs and ElasticSearchElasticsearchUserConfigElasticsearchOutput values.
@@ -1590,30 +1782,89 @@ type ElasticSearchElasticsearchUserConfigElasticsearchInput interface {
 }
 
 type ElasticSearchElasticsearchUserConfigElasticsearchArgs struct {
-	ActionAutoCreateIndexEnabled       pulumi.StringPtrInput   `pulumi:"actionAutoCreateIndexEnabled"`
-	ActionDestructiveRequiresName      pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
-	HttpMaxHeaderSize                  pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
-	HttpMaxInitialLineLength           pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
-	IndicesFielddataCacheSize          pulumi.StringPtrInput   `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       pulumi.StringPtrInput   `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            pulumi.StringPtrInput   `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     pulumi.StringPtrInput   `pulumi:"indicesQueryBoolMaxClauseCount"`
-	ReindexRemoteWhitelists            pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
-	SearchMaxBuckets                   pulumi.StringPtrInput   `pulumi:"searchMaxBuckets"`
-	ThreadPoolAnalyzeQueueSize         pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           pulumi.StringPtrInput   `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             pulumi.StringPtrInput   `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  pulumi.StringPtrInput   `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                pulumi.StringPtrInput   `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          pulumi.StringPtrInput   `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               pulumi.StringPtrInput   `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                pulumi.StringPtrInput   `pulumi:"threadPoolWriteSize"`
+	// Explicitly allow or block automatic
+	// creation of indices. Defaults to true
+	ActionAutoCreateIndexEnabled pulumi.StringPtrInput `pulumi:"actionAutoCreateIndexEnabled"`
+	// Require explicit index names when deleting
+	ActionDestructiveRequiresName pulumi.StringPtrInput `pulumi:"actionDestructiveRequiresName"`
+	// Maximum content length for HTTP requests to
+	// the Elasticsearch HTTP API, in bytes.
+	HttpMaxContentLength pulumi.StringPtrInput `pulumi:"httpMaxContentLength"`
+	// The max size of allowed headers, in bytes.
+	HttpMaxHeaderSize pulumi.StringPtrInput `pulumi:"httpMaxHeaderSize"`
+	// The max length of an HTTP URL, in bytes.
+	HttpMaxInitialLineLength pulumi.StringPtrInput `pulumi:"httpMaxInitialLineLength"`
+	// Relative amount. Maximum amount of
+	// heap memory used for field data cache. This is an expert setting; decreasing the
+	// value too much will increase overhead of loading field data; too much memory used
+	// for field data cache will decrease amount of heap available for other operations.
+	IndicesFielddataCacheSize pulumi.StringPtrInput `pulumi:"indicesFielddataCacheSize"`
+	// Percentage value. Default is 10%.
+	// Total amount of heap used for indexing buffer, before writing segments to disk.
+	// This is an expert setting. Too low value will slow down indexing; too high value
+	// will increase indexing performance but causes performance issues for query performance.
+	IndicesMemoryIndexBufferSize pulumi.StringPtrInput `pulumi:"indicesMemoryIndexBufferSize"`
+	// Percentage value. Default is 10%.
+	// Maximum amount of heap used for query cache. This is an expert setting.
+	// Too low value will decrease query performance and increase performance for other
+	// operations; too high value will cause issues with other Elasticsearch functionality.
+	IndicesQueriesCacheSize pulumi.StringPtrInput `pulumi:"indicesQueriesCacheSize"`
+	// Maximum number of clauses Lucene
+	// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+	// may cause performance issues. Investigate other approaches first before increasing this value.
+	IndicesQueryBoolMaxClauseCount pulumi.StringPtrInput `pulumi:"indicesQueryBoolMaxClauseCount"`
+	// Whitelisted addresses for reindexing.
+	// Changing this value will cause all Elasticsearch instances to restart.
+	ReindexRemoteWhitelists pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
+	// Maximum number of aggregation buckets allowed
+	// in a single response. Elasticsearch default value is used when this is not defined.
+	SearchMaxBuckets pulumi.StringPtrInput `pulumi:"searchMaxBuckets"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolAnalyzeQueueSize pulumi.StringPtrInput `pulumi:"threadPoolAnalyzeQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolAnalyzeSize pulumi.StringPtrInput `pulumi:"threadPoolAnalyzeSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolForceMergeSize pulumi.StringPtrInput `pulumi:"threadPoolForceMergeSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolGetQueueSize pulumi.StringPtrInput `pulumi:"threadPoolGetQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolGetSize pulumi.StringPtrInput `pulumi:"threadPoolGetSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolIndexQueueSize pulumi.StringPtrInput `pulumi:"threadPoolIndexQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolIndexSize pulumi.StringPtrInput `pulumi:"threadPoolIndexSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolSearchQueueSize pulumi.StringPtrInput `pulumi:"threadPoolSearchQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchSize pulumi.StringPtrInput `pulumi:"threadPoolSearchSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolSearchThrottledQueueSize pulumi.StringPtrInput `pulumi:"threadPoolSearchThrottledQueueSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchThrottledSize pulumi.StringPtrInput `pulumi:"threadPoolSearchThrottledSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolWriteQueueSize pulumi.StringPtrInput `pulumi:"threadPoolWriteQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolWriteSize pulumi.StringPtrInput `pulumi:"threadPoolWriteSize"`
 }
 
 func (ElasticSearchElasticsearchUserConfigElasticsearchArgs) ElementType() reflect.Type {
@@ -1692,110 +1943,170 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ToElasticSearch
 		return &v
 	}).(ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput)
 }
+
+// Explicitly allow or block automatic
+// creation of indices. Defaults to true
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ActionAutoCreateIndexEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ActionAutoCreateIndexEnabled
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require explicit index names when deleting
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ActionDestructiveRequiresName
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum content length for HTTP requests to
+// the Elasticsearch HTTP API, in bytes.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxContentLength }).(pulumi.StringPtrOutput)
 }
 
+// The max size of allowed headers, in bytes.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxHeaderSize }).(pulumi.StringPtrOutput)
 }
 
+// The max length of an HTTP URL, in bytes.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxInitialLineLength }).(pulumi.StringPtrOutput)
 }
 
+// Relative amount. Maximum amount of
+// heap memory used for field data cache. This is an expert setting; decreasing the
+// value too much will increase overhead of loading field data; too much memory used
+// for field data cache will decrease amount of heap available for other operations.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.IndicesFielddataCacheSize }).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Total amount of heap used for indexing buffer, before writing segments to disk.
+// This is an expert setting. Too low value will slow down indexing; too high value
+// will increase indexing performance but causes performance issues for query performance.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.IndicesMemoryIndexBufferSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Maximum amount of heap used for query cache. This is an expert setting.
+// Too low value will decrease query performance and increase performance for other
+// operations; too high value will cause issues with other Elasticsearch functionality.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.IndicesQueriesCacheSize }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of clauses Lucene
+// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+// may cause performance issues. Investigate other approaches first before increasing this value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.IndicesQueryBoolMaxClauseCount
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whitelisted addresses for reindexing.
+// Changing this value will cause all Elasticsearch instances to restart.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of aggregation buckets allowed
+// in a single response. Elasticsearch default value is used when this is not defined.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.SearchMaxBuckets }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolAnalyzeQueueSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolAnalyzeSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolForceMergeSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetQueueSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolIndexQueueSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolIndexSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchQueueSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolSearchThrottledQueueSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolSearchThrottledSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolWriteQueueSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolWriteSize }).(pulumi.StringPtrOutput)
 }
@@ -1820,6 +2131,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) Elem() Elast
 	}).(ElasticSearchElasticsearchUserConfigElasticsearchOutput)
 }
 
+// Explicitly allow or block automatic
+// creation of indices. Defaults to true
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionAutoCreateIndexEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1829,6 +2142,7 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionAutoCr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require explicit index names when deleting
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1838,6 +2152,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionDestru
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum content length for HTTP requests to
+// the Elasticsearch HTTP API, in bytes.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1847,6 +2163,7 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxConte
 	}).(pulumi.StringPtrOutput)
 }
 
+// The max size of allowed headers, in bytes.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1856,6 +2173,7 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxHeade
 	}).(pulumi.StringPtrOutput)
 }
 
+// The max length of an HTTP URL, in bytes.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1865,6 +2183,10 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxIniti
 	}).(pulumi.StringPtrOutput)
 }
 
+// Relative amount. Maximum amount of
+// heap memory used for field data cache. This is an expert setting; decreasing the
+// value too much will increase overhead of loading field data; too much memory used
+// for field data cache will decrease amount of heap available for other operations.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1874,6 +2196,10 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesField
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Total amount of heap used for indexing buffer, before writing segments to disk.
+// This is an expert setting. Too low value will slow down indexing; too high value
+// will increase indexing performance but causes performance issues for query performance.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1883,6 +2209,10 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemor
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Maximum amount of heap used for query cache. This is an expert setting.
+// Too low value will decrease query performance and increase performance for other
+// operations; too high value will cause issues with other Elasticsearch functionality.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1892,6 +2222,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of clauses Lucene
+// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+// may cause performance issues. Investigate other approaches first before increasing this value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1901,6 +2234,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQuery
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whitelisted addresses for reindexing.
+// Changing this value will cause all Elasticsearch instances to restart.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) []string {
 		if v == nil {
@@ -1910,6 +2245,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemot
 	}).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of aggregation buckets allowed
+// in a single response. Elasticsearch default value is used when this is not defined.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1919,6 +2256,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) SearchMaxBuc
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1928,6 +2267,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAn
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1937,6 +2279,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAn
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1946,6 +2291,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolFo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1955,6 +2302,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1964,6 +2314,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1973,6 +2325,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIn
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1982,6 +2337,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIn
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -1991,6 +2348,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -2000,6 +2360,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -2009,6 +2371,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -2018,6 +2383,8 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -2027,6 +2394,9 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -2037,8 +2407,11 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWr
 }
 
 type ElasticSearchElasticsearchUserConfigIndexPattern struct {
+	// Maximum number of indexes to keep before deleting the oldest one.
 	MaxIndexCount *string `pulumi:"maxIndexCount"`
-	Pattern       *string `pulumi:"pattern"`
+	// Must consist of alpha-numeric characters, dashes, underscores,
+	// dots and glob characters (* and ?)
+	Pattern *string `pulumi:"pattern"`
 }
 
 // ElasticSearchElasticsearchUserConfigIndexPatternInput is an input type that accepts ElasticSearchElasticsearchUserConfigIndexPatternArgs and ElasticSearchElasticsearchUserConfigIndexPatternOutput values.
@@ -2053,8 +2426,11 @@ type ElasticSearchElasticsearchUserConfigIndexPatternInput interface {
 }
 
 type ElasticSearchElasticsearchUserConfigIndexPatternArgs struct {
+	// Maximum number of indexes to keep before deleting the oldest one.
 	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
-	Pattern       pulumi.StringPtrInput `pulumi:"pattern"`
+	// Must consist of alpha-numeric characters, dashes, underscores,
+	// dots and glob characters (* and ?)
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 }
 
 func (ElasticSearchElasticsearchUserConfigIndexPatternArgs) ElementType() reflect.Type {
@@ -2108,10 +2484,13 @@ func (o ElasticSearchElasticsearchUserConfigIndexPatternOutput) ToElasticSearchE
 	return o
 }
 
+// Maximum number of indexes to keep before deleting the oldest one.
 func (o ElasticSearchElasticsearchUserConfigIndexPatternOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigIndexPattern) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
+// Must consist of alpha-numeric characters, dashes, underscores,
+// dots and glob characters (* and ?)
 func (o ElasticSearchElasticsearchUserConfigIndexPatternOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigIndexPattern) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
@@ -2137,9 +2516,15 @@ func (o ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput) Index(i pul
 }
 
 type ElasticSearchElasticsearchUserConfigKibana struct {
+	// Timeout in milliseconds for requests
+	// made by Kibana towards Elasticsearch.
 	ElasticsearchRequestTimeout *string `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     *string `pulumi:"enabled"`
-	MaxOldSpaceSize             *string `pulumi:"maxOldSpaceSize"`
+	// Enable or disable Kibana.
+	Enabled *string `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the
+	// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+	// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+	MaxOldSpaceSize *string `pulumi:"maxOldSpaceSize"`
 }
 
 // ElasticSearchElasticsearchUserConfigKibanaInput is an input type that accepts ElasticSearchElasticsearchUserConfigKibanaArgs and ElasticSearchElasticsearchUserConfigKibanaOutput values.
@@ -2154,9 +2539,15 @@ type ElasticSearchElasticsearchUserConfigKibanaInput interface {
 }
 
 type ElasticSearchElasticsearchUserConfigKibanaArgs struct {
+	// Timeout in milliseconds for requests
+	// made by Kibana towards Elasticsearch.
 	ElasticsearchRequestTimeout pulumi.StringPtrInput `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     pulumi.StringPtrInput `pulumi:"enabled"`
-	MaxOldSpaceSize             pulumi.StringPtrInput `pulumi:"maxOldSpaceSize"`
+	// Enable or disable Kibana.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the
+	// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+	// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+	MaxOldSpaceSize pulumi.StringPtrInput `pulumi:"maxOldSpaceSize"`
 }
 
 func (ElasticSearchElasticsearchUserConfigKibanaArgs) ElementType() reflect.Type {
@@ -2235,14 +2626,21 @@ func (o ElasticSearchElasticsearchUserConfigKibanaOutput) ToElasticSearchElastic
 		return &v
 	}).(ElasticSearchElasticsearchUserConfigKibanaPtrOutput)
 }
+
+// Timeout in milliseconds for requests
+// made by Kibana towards Elasticsearch.
 func (o ElasticSearchElasticsearchUserConfigKibanaOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigKibana) *string { return v.ElasticsearchRequestTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kibana.
 func (o ElasticSearchElasticsearchUserConfigKibanaOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigKibana) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
+// Limits the maximum amount of memory (in MiB) the
+// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
 func (o ElasticSearchElasticsearchUserConfigKibanaOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigKibana) *string { return v.MaxOldSpaceSize }).(pulumi.StringPtrOutput)
 }
@@ -2267,6 +2665,8 @@ func (o ElasticSearchElasticsearchUserConfigKibanaPtrOutput) Elem() ElasticSearc
 	}).(ElasticSearchElasticsearchUserConfigKibanaOutput)
 }
 
+// Timeout in milliseconds for requests
+// made by Kibana towards Elasticsearch.
 func (o ElasticSearchElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigKibana) *string {
 		if v == nil {
@@ -2276,6 +2676,7 @@ func (o ElasticSearchElasticsearchUserConfigKibanaPtrOutput) ElasticsearchReques
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kibana.
 func (o ElasticSearchElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigKibana) *string {
 		if v == nil {
@@ -2285,6 +2686,9 @@ func (o ElasticSearchElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limits the maximum amount of memory (in MiB) the
+// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
 func (o ElasticSearchElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigKibana) *string {
 		if v == nil {
@@ -2295,9 +2699,15 @@ func (o ElasticSearchElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() p
 }
 
 type ElasticSearchElasticsearchUserConfigPrivateAccess struct {
+	// Allow clients to connect to elasticsearch from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
 	Elasticsearch *string `pulumi:"elasticsearch"`
-	Kibana        *string `pulumi:"kibana"`
-	Prometheus    *string `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana *string `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *string `pulumi:"prometheus"`
 }
 
 // ElasticSearchElasticsearchUserConfigPrivateAccessInput is an input type that accepts ElasticSearchElasticsearchUserConfigPrivateAccessArgs and ElasticSearchElasticsearchUserConfigPrivateAccessOutput values.
@@ -2312,9 +2722,15 @@ type ElasticSearchElasticsearchUserConfigPrivateAccessInput interface {
 }
 
 type ElasticSearchElasticsearchUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to elasticsearch from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
 	Elasticsearch pulumi.StringPtrInput `pulumi:"elasticsearch"`
-	Kibana        pulumi.StringPtrInput `pulumi:"kibana"`
-	Prometheus    pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana pulumi.StringPtrInput `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
 func (ElasticSearchElasticsearchUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -2393,14 +2809,21 @@ func (o ElasticSearchElasticsearchUserConfigPrivateAccessOutput) ToElasticSearch
 		return &v
 	}).(ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to elasticsearch from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPrivateAccessOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigPrivateAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPrivateAccessOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigPrivateAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -2425,6 +2848,8 @@ func (o ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Elem() Elast
 	}).(ElasticSearchElasticsearchUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to elasticsearch from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -2434,6 +2859,8 @@ func (o ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Elasticsearc
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -2443,6 +2870,8 @@ func (o ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Kibana() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -2453,9 +2882,15 @@ func (o ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Prometheus()
 }
 
 type ElasticSearchElasticsearchUserConfigPublicAccess struct {
+	// Allow clients to connect to elasticsearch from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
 	Elasticsearch *string `pulumi:"elasticsearch"`
-	Kibana        *string `pulumi:"kibana"`
-	Prometheus    *string `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana *string `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *string `pulumi:"prometheus"`
 }
 
 // ElasticSearchElasticsearchUserConfigPublicAccessInput is an input type that accepts ElasticSearchElasticsearchUserConfigPublicAccessArgs and ElasticSearchElasticsearchUserConfigPublicAccessOutput values.
@@ -2470,9 +2905,15 @@ type ElasticSearchElasticsearchUserConfigPublicAccessInput interface {
 }
 
 type ElasticSearchElasticsearchUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to elasticsearch from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
 	Elasticsearch pulumi.StringPtrInput `pulumi:"elasticsearch"`
-	Kibana        pulumi.StringPtrInput `pulumi:"kibana"`
-	Prometheus    pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana pulumi.StringPtrInput `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
 func (ElasticSearchElasticsearchUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -2551,14 +2992,21 @@ func (o ElasticSearchElasticsearchUserConfigPublicAccessOutput) ToElasticSearchE
 		return &v
 	}).(ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to elasticsearch from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPublicAccessOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigPublicAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPublicAccessOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigPublicAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -2583,6 +3031,8 @@ func (o ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Elem() Elasti
 	}).(ElasticSearchElasticsearchUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to elasticsearch from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -2592,6 +3042,8 @@ func (o ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Elasticsearch
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -2601,6 +3053,8 @@ func (o ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Kibana() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -2711,13 +3165,15 @@ func (o ElasticSearchServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Ela
 }
 
 type GrafanaComponent struct {
-	Component                 *string `pulumi:"component"`
+	Component *string `pulumi:"component"`
+	// Server hostname or IP
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
-	Port                      *int    `pulumi:"port"`
-	Route                     *string `pulumi:"route"`
-	Ssl                       *bool   `pulumi:"ssl"`
-	Usage                     *string `pulumi:"usage"`
+	// SMTP server port
+	Port  *int    `pulumi:"port"`
+	Route *string `pulumi:"route"`
+	Ssl   *bool   `pulumi:"ssl"`
+	Usage *string `pulumi:"usage"`
 }
 
 // GrafanaComponentInput is an input type that accepts GrafanaComponentArgs and GrafanaComponentOutput values.
@@ -2732,13 +3188,15 @@ type GrafanaComponentInput interface {
 }
 
 type GrafanaComponentArgs struct {
-	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	Component pulumi.StringPtrInput `pulumi:"component"`
+	// Server hostname or IP
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
-	Port                      pulumi.IntPtrInput    `pulumi:"port"`
-	Route                     pulumi.StringPtrInput `pulumi:"route"`
-	Ssl                       pulumi.BoolPtrInput   `pulumi:"ssl"`
-	Usage                     pulumi.StringPtrInput `pulumi:"usage"`
+	// SMTP server port
+	Port  pulumi.IntPtrInput    `pulumi:"port"`
+	Route pulumi.StringPtrInput `pulumi:"route"`
+	Ssl   pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Usage pulumi.StringPtrInput `pulumi:"usage"`
 }
 
 func (GrafanaComponentArgs) ElementType() reflect.Type {
@@ -2796,6 +3254,7 @@ func (o GrafanaComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
+// Server hostname or IP
 func (o GrafanaComponentOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaComponent) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -2804,6 +3263,7 @@ func (o GrafanaComponentOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GrafanaComponent) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
+// SMTP server port
 func (o GrafanaComponentOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GrafanaComponent) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -2953,34 +3413,68 @@ func (o GrafanaGrafanaPtrOutput) Elem() GrafanaGrafanaOutput {
 }
 
 type GrafanaGrafanaUserConfig struct {
-	AlertingEnabled            *string                                       `pulumi:"alertingEnabled"`
-	AlertingErrorOrTimeout     *string                                       `pulumi:"alertingErrorOrTimeout"`
-	AlertingNodataOrNullvalues *string                                       `pulumi:"alertingNodataOrNullvalues"`
-	AllowEmbedding             *string                                       `pulumi:"allowEmbedding"`
-	AuthBasicEnabled           *string                                       `pulumi:"authBasicEnabled"`
-	AuthGenericOauth           *GrafanaGrafanaUserConfigAuthGenericOauth     `pulumi:"authGenericOauth"`
-	AuthGithub                 *GrafanaGrafanaUserConfigAuthGithub           `pulumi:"authGithub"`
-	AuthGitlab                 *GrafanaGrafanaUserConfigAuthGitlab           `pulumi:"authGitlab"`
-	AuthGoogle                 *GrafanaGrafanaUserConfigAuthGoogle           `pulumi:"authGoogle"`
-	CookieSamesite             *string                                       `pulumi:"cookieSamesite"`
-	CustomDomain               *string                                       `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   *string                                       `pulumi:"dashboardsVersionsToKeep"`
-	DataproxySendUserHeader    *string                                       `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           *string                                       `pulumi:"dataproxyTimeout"`
-	DisableGravatar            *string                                       `pulumi:"disableGravatar"`
-	EditorsCanAdmin            *string                                       `pulumi:"editorsCanAdmin"`
-	ExternalImageStorage       *GrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
-	GoogleAnalyticsUaId        *string                                       `pulumi:"googleAnalyticsUaId"`
-	IpFilters                  []string                                      `pulumi:"ipFilters"`
-	MetricsEnabled             *string                                       `pulumi:"metricsEnabled"`
-	PrivateAccess              *GrafanaGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
-	PublicAccess               *GrafanaGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
-	RecoveryBasebackupName     *string                                       `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom          *string                                       `pulumi:"serviceToForkFrom"`
-	SmtpServer                 *GrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
-	UserAutoAssignOrg          *string                                       `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole      *string                                       `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit             *string                                       `pulumi:"viewersCanEdit"`
+	// Enable or disable Grafana alerting functionality
+	AlertingEnabled *string `pulumi:"alertingEnabled"`
+	// Default error or timeout setting for new alerting rules
+	AlertingErrorOrTimeout *string `pulumi:"alertingErrorOrTimeout"`
+	// Default value for 'no data or null values' for
+	// new alerting rules
+	AlertingNodataOrNullvalues *string `pulumi:"alertingNodataOrNullvalues"`
+	// Allow embedding Grafana dashboards with iframe/frame/object/embed
+	// tags. Disabled by default to limit impact of clickjacking
+	AllowEmbedding *string `pulumi:"allowEmbedding"`
+	// Enable or disable basic authentication form, used by Grafana
+	// built-in login.
+	AuthBasicEnabled *string `pulumi:"authBasicEnabled"`
+	// Generic OAuth integration.
+	AuthGenericOauth *GrafanaGrafanaUserConfigAuthGenericOauth `pulumi:"authGenericOauth"`
+	// Automatically sign-up users on successful sign-in
+	AuthGithub *GrafanaGrafanaUserConfigAuthGithub `pulumi:"authGithub"`
+	// GitLab Auth integration.
+	AuthGitlab *GrafanaGrafanaUserConfigAuthGitlab `pulumi:"authGitlab"`
+	// Google Auth integration
+	AuthGoogle *GrafanaGrafanaUserConfigAuthGoogle `pulumi:"authGoogle"`
+	// Cookie SameSite attribute: 'strict' prevents sending cookie for
+	// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+	CookieSamesite *string `pulumi:"cookieSamesite"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Dashboard versions to keep per dashboard.
+	DashboardsVersionsToKeep *string `pulumi:"dashboardsVersionsToKeep"`
+	// Send 'X-Grafana-User' header to data source.
+	DataproxySendUserHeader *string `pulumi:"dataproxySendUserHeader"`
+	// Timeout for data proxy requests in seconds.
+	DataproxyTimeout *string `pulumi:"dataproxyTimeout"`
+	// Set to true to disable gravatar. Defaults to false
+	// (gravatar is enabled).
+	DisableGravatar *string `pulumi:"disableGravatar"`
+	// Editors can manage folders, teams and dashboards created by them.
+	EditorsCanAdmin *string `pulumi:"editorsCanAdmin"`
+	// External image store settings
+	ExternalImageStorage *GrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
+	// Google Analytics Universal Analytics ID for tracking Grafana usage
+	GoogleAnalyticsUaId *string `pulumi:"googleAnalyticsUaId"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// Enable Grafana /metrics endpoint
+	MetricsEnabled *string                                `pulumi:"metricsEnabled"`
+	PrivateAccess  *GrafanaGrafanaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *GrafanaGrafanaUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// SMTP server settings.
+	SmtpServer *GrafanaGrafanaUserConfigSmtpServer `pulumi:"smtpServer"`
+	// Auto-assign new users on signup to main organization.
+	// Defaults to false.
+	UserAutoAssignOrg *string `pulumi:"userAutoAssignOrg"`
+	// Set role for new signups. Defaults to Viewer.
+	UserAutoAssignOrgRole *string `pulumi:"userAutoAssignOrgRole"`
+	// Users with view-only permission can edit but not save dashboards.
+	ViewersCanEdit *string `pulumi:"viewersCanEdit"`
 }
 
 // GrafanaGrafanaUserConfigInput is an input type that accepts GrafanaGrafanaUserConfigArgs and GrafanaGrafanaUserConfigOutput values.
@@ -2995,34 +3489,68 @@ type GrafanaGrafanaUserConfigInput interface {
 }
 
 type GrafanaGrafanaUserConfigArgs struct {
-	AlertingEnabled            pulumi.StringPtrInput                                `pulumi:"alertingEnabled"`
-	AlertingErrorOrTimeout     pulumi.StringPtrInput                                `pulumi:"alertingErrorOrTimeout"`
-	AlertingNodataOrNullvalues pulumi.StringPtrInput                                `pulumi:"alertingNodataOrNullvalues"`
-	AllowEmbedding             pulumi.StringPtrInput                                `pulumi:"allowEmbedding"`
-	AuthBasicEnabled           pulumi.StringPtrInput                                `pulumi:"authBasicEnabled"`
-	AuthGenericOauth           GrafanaGrafanaUserConfigAuthGenericOauthPtrInput     `pulumi:"authGenericOauth"`
-	AuthGithub                 GrafanaGrafanaUserConfigAuthGithubPtrInput           `pulumi:"authGithub"`
-	AuthGitlab                 GrafanaGrafanaUserConfigAuthGitlabPtrInput           `pulumi:"authGitlab"`
-	AuthGoogle                 GrafanaGrafanaUserConfigAuthGooglePtrInput           `pulumi:"authGoogle"`
-	CookieSamesite             pulumi.StringPtrInput                                `pulumi:"cookieSamesite"`
-	CustomDomain               pulumi.StringPtrInput                                `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   pulumi.StringPtrInput                                `pulumi:"dashboardsVersionsToKeep"`
-	DataproxySendUserHeader    pulumi.StringPtrInput                                `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           pulumi.StringPtrInput                                `pulumi:"dataproxyTimeout"`
-	DisableGravatar            pulumi.StringPtrInput                                `pulumi:"disableGravatar"`
-	EditorsCanAdmin            pulumi.StringPtrInput                                `pulumi:"editorsCanAdmin"`
-	ExternalImageStorage       GrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
-	GoogleAnalyticsUaId        pulumi.StringPtrInput                                `pulumi:"googleAnalyticsUaId"`
-	IpFilters                  pulumi.StringArrayInput                              `pulumi:"ipFilters"`
-	MetricsEnabled             pulumi.StringPtrInput                                `pulumi:"metricsEnabled"`
-	PrivateAccess              GrafanaGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
-	PublicAccess               GrafanaGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
-	RecoveryBasebackupName     pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom          pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
-	SmtpServer                 GrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
-	UserAutoAssignOrg          pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole      pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit             pulumi.StringPtrInput                                `pulumi:"viewersCanEdit"`
+	// Enable or disable Grafana alerting functionality
+	AlertingEnabled pulumi.StringPtrInput `pulumi:"alertingEnabled"`
+	// Default error or timeout setting for new alerting rules
+	AlertingErrorOrTimeout pulumi.StringPtrInput `pulumi:"alertingErrorOrTimeout"`
+	// Default value for 'no data or null values' for
+	// new alerting rules
+	AlertingNodataOrNullvalues pulumi.StringPtrInput `pulumi:"alertingNodataOrNullvalues"`
+	// Allow embedding Grafana dashboards with iframe/frame/object/embed
+	// tags. Disabled by default to limit impact of clickjacking
+	AllowEmbedding pulumi.StringPtrInput `pulumi:"allowEmbedding"`
+	// Enable or disable basic authentication form, used by Grafana
+	// built-in login.
+	AuthBasicEnabled pulumi.StringPtrInput `pulumi:"authBasicEnabled"`
+	// Generic OAuth integration.
+	AuthGenericOauth GrafanaGrafanaUserConfigAuthGenericOauthPtrInput `pulumi:"authGenericOauth"`
+	// Automatically sign-up users on successful sign-in
+	AuthGithub GrafanaGrafanaUserConfigAuthGithubPtrInput `pulumi:"authGithub"`
+	// GitLab Auth integration.
+	AuthGitlab GrafanaGrafanaUserConfigAuthGitlabPtrInput `pulumi:"authGitlab"`
+	// Google Auth integration
+	AuthGoogle GrafanaGrafanaUserConfigAuthGooglePtrInput `pulumi:"authGoogle"`
+	// Cookie SameSite attribute: 'strict' prevents sending cookie for
+	// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+	CookieSamesite pulumi.StringPtrInput `pulumi:"cookieSamesite"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Dashboard versions to keep per dashboard.
+	DashboardsVersionsToKeep pulumi.StringPtrInput `pulumi:"dashboardsVersionsToKeep"`
+	// Send 'X-Grafana-User' header to data source.
+	DataproxySendUserHeader pulumi.StringPtrInput `pulumi:"dataproxySendUserHeader"`
+	// Timeout for data proxy requests in seconds.
+	DataproxyTimeout pulumi.StringPtrInput `pulumi:"dataproxyTimeout"`
+	// Set to true to disable gravatar. Defaults to false
+	// (gravatar is enabled).
+	DisableGravatar pulumi.StringPtrInput `pulumi:"disableGravatar"`
+	// Editors can manage folders, teams and dashboards created by them.
+	EditorsCanAdmin pulumi.StringPtrInput `pulumi:"editorsCanAdmin"`
+	// External image store settings
+	ExternalImageStorage GrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
+	// Google Analytics Universal Analytics ID for tracking Grafana usage
+	GoogleAnalyticsUaId pulumi.StringPtrInput `pulumi:"googleAnalyticsUaId"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Enable Grafana /metrics endpoint
+	MetricsEnabled pulumi.StringPtrInput                         `pulumi:"metricsEnabled"`
+	PrivateAccess  GrafanaGrafanaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess GrafanaGrafanaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// SMTP server settings.
+	SmtpServer GrafanaGrafanaUserConfigSmtpServerPtrInput `pulumi:"smtpServer"`
+	// Auto-assign new users on signup to main organization.
+	// Defaults to false.
+	UserAutoAssignOrg pulumi.StringPtrInput `pulumi:"userAutoAssignOrg"`
+	// Set role for new signups. Defaults to Viewer.
+	UserAutoAssignOrgRole pulumi.StringPtrInput `pulumi:"userAutoAssignOrgRole"`
+	// Users with view-only permission can edit but not save dashboards.
+	ViewersCanEdit pulumi.StringPtrInput `pulumi:"viewersCanEdit"`
 }
 
 func (GrafanaGrafanaUserConfigArgs) ElementType() reflect.Type {
@@ -3101,84 +3629,110 @@ func (o GrafanaGrafanaUserConfigOutput) ToGrafanaGrafanaUserConfigPtrOutputWithC
 		return &v
 	}).(GrafanaGrafanaUserConfigPtrOutput)
 }
+
+// Enable or disable Grafana alerting functionality
 func (o GrafanaGrafanaUserConfigOutput) AlertingEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Default error or timeout setting for new alerting rules
 func (o GrafanaGrafanaUserConfigOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingErrorOrTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Default value for 'no data or null values' for
+// new alerting rules
 func (o GrafanaGrafanaUserConfigOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingNodataOrNullvalues }).(pulumi.StringPtrOutput)
 }
 
+// Allow embedding Grafana dashboards with iframe/frame/object/embed
+// tags. Disabled by default to limit impact of clickjacking
 func (o GrafanaGrafanaUserConfigOutput) AllowEmbedding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AllowEmbedding }).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable basic authentication form, used by Grafana
+// built-in login.
 func (o GrafanaGrafanaUserConfigOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AuthBasicEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Generic OAuth integration.
 func (o GrafanaGrafanaUserConfigOutput) AuthGenericOauth() GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGenericOauth { return v.AuthGenericOauth }).(GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigOutput) AuthGithub() GrafanaGrafanaUserConfigAuthGithubPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGithub { return v.AuthGithub }).(GrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
 
+// GitLab Auth integration.
 func (o GrafanaGrafanaUserConfigOutput) AuthGitlab() GrafanaGrafanaUserConfigAuthGitlabPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGitlab { return v.AuthGitlab }).(GrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
+// Google Auth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGoogle() GrafanaGrafanaUserConfigAuthGooglePtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGoogle { return v.AuthGoogle }).(GrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
 
+// Cookie SameSite attribute: 'strict' prevents sending cookie for
+// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
 func (o GrafanaGrafanaUserConfigOutput) CookieSamesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.CookieSamesite }).(pulumi.StringPtrOutput)
 }
 
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 func (o GrafanaGrafanaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Dashboard versions to keep per dashboard.
 func (o GrafanaGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DashboardsVersionsToKeep }).(pulumi.StringPtrOutput)
 }
 
+// Send 'X-Grafana-User' header to data source.
 func (o GrafanaGrafanaUserConfigOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DataproxySendUserHeader }).(pulumi.StringPtrOutput)
 }
 
+// Timeout for data proxy requests in seconds.
 func (o GrafanaGrafanaUserConfigOutput) DataproxyTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DataproxyTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Set to true to disable gravatar. Defaults to false
+// (gravatar is enabled).
 func (o GrafanaGrafanaUserConfigOutput) DisableGravatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DisableGravatar }).(pulumi.StringPtrOutput)
 }
 
+// Editors can manage folders, teams and dashboards created by them.
 func (o GrafanaGrafanaUserConfigOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.EditorsCanAdmin }).(pulumi.StringPtrOutput)
 }
 
+// External image store settings
 func (o GrafanaGrafanaUserConfigOutput) ExternalImageStorage() GrafanaGrafanaUserConfigExternalImageStoragePtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigExternalImageStorage {
 		return v.ExternalImageStorage
 	}).(GrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
+// Google Analytics Universal Analytics ID for tracking Grafana usage
 func (o GrafanaGrafanaUserConfigOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.GoogleAnalyticsUaId }).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 func (o GrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Enable Grafana /metrics endpoint
 func (o GrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.MetricsEnabled }).(pulumi.StringPtrOutput)
 }
@@ -3187,30 +3741,39 @@ func (o GrafanaGrafanaUserConfigOutput) PrivateAccess() GrafanaGrafanaUserConfig
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o GrafanaGrafanaUserConfigOutput) PublicAccess() GrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPublicAccess { return v.PublicAccess }).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service.
 func (o GrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o GrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// SMTP server settings.
 func (o GrafanaGrafanaUserConfigOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigSmtpServer { return v.SmtpServer }).(GrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
+// Auto-assign new users on signup to main organization.
+// Defaults to false.
 func (o GrafanaGrafanaUserConfigOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrg }).(pulumi.StringPtrOutput)
 }
 
+// Set role for new signups. Defaults to Viewer.
 func (o GrafanaGrafanaUserConfigOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrgRole }).(pulumi.StringPtrOutput)
 }
 
+// Users with view-only permission can edit but not save dashboards.
 func (o GrafanaGrafanaUserConfigOutput) ViewersCanEdit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ViewersCanEdit }).(pulumi.StringPtrOutput)
 }
@@ -3233,6 +3796,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) Elem() GrafanaGrafanaUserConfigOutput
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) GrafanaGrafanaUserConfig { return *v }).(GrafanaGrafanaUserConfigOutput)
 }
 
+// Enable or disable Grafana alerting functionality
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3242,6 +3806,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingEnabled() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default error or timeout setting for new alerting rules
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3251,6 +3816,8 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingErrorOrTimeout() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default value for 'no data or null values' for
+// new alerting rules
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3260,6 +3827,8 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingNodataOrNullvalues() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow embedding Grafana dashboards with iframe/frame/object/embed
+// tags. Disabled by default to limit impact of clickjacking
 func (o GrafanaGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3269,6 +3838,8 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable basic authentication form, used by Grafana
+// built-in login.
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3278,6 +3849,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthBasicEnabled() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Generic OAuth integration.
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGenericOauth() GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGenericOauth {
 		if v == nil {
@@ -3287,6 +3859,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGenericOauth() GrafanaGrafanaUser
 	}).(GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGithub() GrafanaGrafanaUserConfigAuthGithubPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGithub {
 		if v == nil {
@@ -3296,6 +3869,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGithub() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
 
+// GitLab Auth integration.
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGitlab() GrafanaGrafanaUserConfigAuthGitlabPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGitlab {
 		if v == nil {
@@ -3305,6 +3879,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGitlab() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
+// Google Auth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGoogle() GrafanaGrafanaUserConfigAuthGooglePtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGoogle {
 		if v == nil {
@@ -3314,6 +3889,8 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGoogle() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
 
+// Cookie SameSite attribute: 'strict' prevents sending cookie for
+// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
 func (o GrafanaGrafanaUserConfigPtrOutput) CookieSamesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3323,6 +3900,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) CookieSamesite() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 func (o GrafanaGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3332,6 +3910,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Dashboard versions to keep per dashboard.
 func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3341,6 +3920,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Send 'X-Grafana-User' header to data source.
 func (o GrafanaGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3350,6 +3930,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout for data proxy requests in seconds.
 func (o GrafanaGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3359,6 +3940,8 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Set to true to disable gravatar. Defaults to false
+// (gravatar is enabled).
 func (o GrafanaGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3368,6 +3951,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Editors can manage folders, teams and dashboards created by them.
 func (o GrafanaGrafanaUserConfigPtrOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3377,6 +3961,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) EditorsCanAdmin() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// External image store settings
 func (o GrafanaGrafanaUserConfigPtrOutput) ExternalImageStorage() GrafanaGrafanaUserConfigExternalImageStoragePtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigExternalImageStorage {
 		if v == nil {
@@ -3386,6 +3971,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ExternalImageStorage() GrafanaGrafana
 	}).(GrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
+// Google Analytics Universal Analytics ID for tracking Grafana usage
 func (o GrafanaGrafanaUserConfigPtrOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3395,6 +3981,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) GoogleAnalyticsUaId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 func (o GrafanaGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) []string {
 		if v == nil {
@@ -3404,6 +3991,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Enable Grafana /metrics endpoint
 func (o GrafanaGrafanaUserConfigPtrOutput) MetricsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3422,6 +4010,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PrivateAccess() GrafanaGrafanaUserCon
 	}).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o GrafanaGrafanaUserConfigPtrOutput) PublicAccess() GrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPublicAccess {
 		if v == nil {
@@ -3431,6 +4020,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PublicAccess() GrafanaGrafanaUserConf
 	}).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service.
 func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3440,6 +4030,8 @@ func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3449,6 +4041,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// SMTP server settings.
 func (o GrafanaGrafanaUserConfigPtrOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigSmtpServer {
 		if v == nil {
@@ -3458,6 +4051,8 @@ func (o GrafanaGrafanaUserConfigPtrOutput) SmtpServer() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
+// Auto-assign new users on signup to main organization.
+// Defaults to false.
 func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3467,6 +4062,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrg() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Set role for new signups. Defaults to Viewer.
 func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3476,6 +4072,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrgRole() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Users with view-only permission can edit but not save dashboards.
 func (o GrafanaGrafanaUserConfigPtrOutput) ViewersCanEdit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3486,16 +4083,26 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ViewersCanEdit() pulumi.StringPtrOutp
 }
 
 type GrafanaGrafanaUserConfigAuthGenericOauth struct {
-	AllowSignUp          *string  `pulumi:"allowSignUp"`
-	AllowedDomains       []string `pulumi:"allowedDomains"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// Allowed domain
+	AllowedDomains []string `pulumi:"allowedDomains"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
-	ApiUrl               *string  `pulumi:"apiUrl"`
-	AuthUrl              *string  `pulumi:"authUrl"`
-	ClientId             *string  `pulumi:"clientId"`
-	ClientSecret         *string  `pulumi:"clientSecret"`
-	Name                 *string  `pulumi:"name"`
-	Scopes               []string `pulumi:"scopes"`
-	TokenUrl             *string  `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl *string `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl *string `pulumi:"authUrl"`
+	// Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Name of the OAuth integration
+	Name *string `pulumi:"name"`
+	// Scope must be non-empty string without whitespace
+	Scopes []string `pulumi:"scopes"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl *string `pulumi:"tokenUrl"`
 }
 
 // GrafanaGrafanaUserConfigAuthGenericOauthInput is an input type that accepts GrafanaGrafanaUserConfigAuthGenericOauthArgs and GrafanaGrafanaUserConfigAuthGenericOauthOutput values.
@@ -3510,16 +4117,26 @@ type GrafanaGrafanaUserConfigAuthGenericOauthInput interface {
 }
 
 type GrafanaGrafanaUserConfigAuthGenericOauthArgs struct {
-	AllowSignUp          pulumi.StringPtrInput   `pulumi:"allowSignUp"`
-	AllowedDomains       pulumi.StringArrayInput `pulumi:"allowedDomains"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// Allowed domain
+	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
-	ApiUrl               pulumi.StringPtrInput   `pulumi:"apiUrl"`
-	AuthUrl              pulumi.StringPtrInput   `pulumi:"authUrl"`
-	ClientId             pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret         pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	Name                 pulumi.StringPtrInput   `pulumi:"name"`
-	Scopes               pulumi.StringArrayInput `pulumi:"scopes"`
-	TokenUrl             pulumi.StringPtrInput   `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
+	// Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Name of the OAuth integration
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Scope must be non-empty string without whitespace
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
 }
 
 func (GrafanaGrafanaUserConfigAuthGenericOauthArgs) ElementType() reflect.Type {
@@ -3598,42 +4215,53 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) ToGrafanaGrafanaUserConf
 		return &v
 	}).(GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Name of the OAuth integration
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Scope must be non-empty string without whitespace
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
 }
@@ -3656,6 +4284,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Elem() GrafanaGrafana
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) GrafanaGrafanaUserConfigAuthGenericOauth { return *v }).(GrafanaGrafanaUserConfigAuthGenericOauthOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -3665,6 +4294,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowSignUp() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) []string {
 		if v == nil {
@@ -3674,6 +4304,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedDomains() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) []string {
 		if v == nil {
@@ -3683,6 +4314,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedOrganizations(
 	}).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -3692,6 +4324,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ApiUrl() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -3701,6 +4334,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -3710,6 +4344,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -3719,6 +4354,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientSecret() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the OAuth integration
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -3728,6 +4364,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Name() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Scope must be non-empty string without whitespace
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) []string {
 		if v == nil {
@@ -3737,6 +4374,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Scopes() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -3747,11 +4385,16 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.Str
 }
 
 type GrafanaGrafanaUserConfigAuthGithub struct {
-	AllowSignUp          *string  `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
-	ClientId             *string  `pulumi:"clientId"`
-	ClientSecret         *string  `pulumi:"clientSecret"`
-	TeamIds              []string `pulumi:"teamIds"`
+	// Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Require users to belong to one of given team IDs
+	TeamIds []string `pulumi:"teamIds"`
 }
 
 // GrafanaGrafanaUserConfigAuthGithubInput is an input type that accepts GrafanaGrafanaUserConfigAuthGithubArgs and GrafanaGrafanaUserConfigAuthGithubOutput values.
@@ -3766,11 +4409,16 @@ type GrafanaGrafanaUserConfigAuthGithubInput interface {
 }
 
 type GrafanaGrafanaUserConfigAuthGithubArgs struct {
-	AllowSignUp          pulumi.StringPtrInput   `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
-	ClientId             pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret         pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	TeamIds              pulumi.StringArrayInput `pulumi:"teamIds"`
+	// Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Require users to belong to one of given team IDs
+	TeamIds pulumi.StringArrayInput `pulumi:"teamIds"`
 }
 
 func (GrafanaGrafanaUserConfigAuthGithubArgs) ElementType() reflect.Type {
@@ -3849,22 +4497,28 @@ func (o GrafanaGrafanaUserConfigAuthGithubOutput) ToGrafanaGrafanaUserConfigAuth
 		return &v
 	}).(GrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGithubOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GrafanaGrafanaUserConfigAuthGithubOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGithubOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGithubOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Require users to belong to one of given team IDs
 func (o GrafanaGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) []string { return v.TeamIds }).(pulumi.StringArrayOutput)
 }
@@ -3887,6 +4541,7 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) Elem() GrafanaGrafanaUserCo
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) GrafanaGrafanaUserConfigAuthGithub { return *v }).(GrafanaGrafanaUserConfigAuthGithubOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -3896,6 +4551,7 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowSignUp() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) []string {
 		if v == nil {
@@ -3905,6 +4561,7 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -3914,6 +4571,7 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -3923,6 +4581,7 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require users to belong to one of given team IDs
 func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) []string {
 		if v == nil {
@@ -3933,13 +4592,20 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.StringArra
 }
 
 type GrafanaGrafanaUserConfigAuthGitlab struct {
-	AllowSignUp   *string  `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// Require users to belong to one of given groups
 	AllowedGroups []string `pulumi:"allowedGroups"`
-	ApiUrl        *string  `pulumi:"apiUrl"`
-	AuthUrl       *string  `pulumi:"authUrl"`
-	ClientId      *string  `pulumi:"clientId"`
-	ClientSecret  *string  `pulumi:"clientSecret"`
-	TokenUrl      *string  `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl *string `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl *string `pulumi:"authUrl"`
+	// Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl *string `pulumi:"tokenUrl"`
 }
 
 // GrafanaGrafanaUserConfigAuthGitlabInput is an input type that accepts GrafanaGrafanaUserConfigAuthGitlabArgs and GrafanaGrafanaUserConfigAuthGitlabOutput values.
@@ -3954,13 +4620,20 @@ type GrafanaGrafanaUserConfigAuthGitlabInput interface {
 }
 
 type GrafanaGrafanaUserConfigAuthGitlabArgs struct {
-	AllowSignUp   pulumi.StringPtrInput   `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// Require users to belong to one of given groups
 	AllowedGroups pulumi.StringArrayInput `pulumi:"allowedGroups"`
-	ApiUrl        pulumi.StringPtrInput   `pulumi:"apiUrl"`
-	AuthUrl       pulumi.StringPtrInput   `pulumi:"authUrl"`
-	ClientId      pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret  pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	TokenUrl      pulumi.StringPtrInput   `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
+	// Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
 }
 
 func (GrafanaGrafanaUserConfigAuthGitlabArgs) ElementType() reflect.Type {
@@ -4039,30 +4712,38 @@ func (o GrafanaGrafanaUserConfigAuthGitlabOutput) ToGrafanaGrafanaUserConfigAuth
 		return &v
 	}).(GrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGitlabOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGitlab) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// Require users to belong to one of given groups
 func (o GrafanaGrafanaUserConfigAuthGitlabOutput) AllowedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGitlab) []string { return v.AllowedGroups }).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGitlabOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGitlab) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGitlabOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGitlab) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGitlabOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGitlab) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGitlabOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGitlab) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGitlabOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGitlab) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
 }
@@ -4085,6 +4766,7 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) Elem() GrafanaGrafanaUserCo
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) GrafanaGrafanaUserConfigAuthGitlab { return *v }).(GrafanaGrafanaUserConfigAuthGitlabOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -4094,6 +4776,7 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowSignUp() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require users to belong to one of given groups
 func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) []string {
 		if v == nil {
@@ -4103,6 +4786,7 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowedGroups() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -4112,6 +4796,7 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) ApiUrl() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -4121,6 +4806,7 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) AuthUrl() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -4130,6 +4816,7 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -4139,6 +4826,7 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientSecret() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -4149,10 +4837,14 @@ func (o GrafanaGrafanaUserConfigAuthGitlabPtrOutput) TokenUrl() pulumi.StringPtr
 }
 
 type GrafanaGrafanaUserConfigAuthGoogle struct {
-	AllowSignUp    *string  `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// Allowed domain
 	AllowedDomains []string `pulumi:"allowedDomains"`
-	ClientId       *string  `pulumi:"clientId"`
-	ClientSecret   *string  `pulumi:"clientSecret"`
+	// Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
 }
 
 // GrafanaGrafanaUserConfigAuthGoogleInput is an input type that accepts GrafanaGrafanaUserConfigAuthGoogleArgs and GrafanaGrafanaUserConfigAuthGoogleOutput values.
@@ -4167,10 +4859,14 @@ type GrafanaGrafanaUserConfigAuthGoogleInput interface {
 }
 
 type GrafanaGrafanaUserConfigAuthGoogleArgs struct {
-	AllowSignUp    pulumi.StringPtrInput   `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// Allowed domain
 	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
-	ClientId       pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret   pulumi.StringPtrInput   `pulumi:"clientSecret"`
+	// Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 }
 
 func (GrafanaGrafanaUserConfigAuthGoogleArgs) ElementType() reflect.Type {
@@ -4249,18 +4945,23 @@ func (o GrafanaGrafanaUserConfigAuthGoogleOutput) ToGrafanaGrafanaUserConfigAuth
 		return &v
 	}).(GrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGoogleOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGoogle) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GrafanaGrafanaUserConfigAuthGoogleOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGoogle) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGoogleOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGoogle) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGoogleOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGoogle) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -4283,6 +4984,7 @@ func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) Elem() GrafanaGrafanaUserCo
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGoogle) GrafanaGrafanaUserConfigAuthGoogle { return *v }).(GrafanaGrafanaUserConfigAuthGoogleOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -4292,6 +4994,7 @@ func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowSignUp() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGoogle) []string {
 		if v == nil {
@@ -4301,6 +5004,7 @@ func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowedDomains() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// Client ID from provider
 func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -4310,6 +5014,7 @@ func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Client secret from provider
 func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -4320,9 +5025,14 @@ func (o GrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.Strin
 }
 
 type GrafanaGrafanaUserConfigExternalImageStorage struct {
+	// S3 access key. Requires permissions to the S3 bucket for the
+	// s3:PutObject and s3:PutObjectAcl actions
 	AccessKey *string `pulumi:"accessKey"`
+	// Bucket URL for S3
 	BucketUrl *string `pulumi:"bucketUrl"`
-	Provider  *string `pulumi:"provider"`
+	// Provider type
+	Provider *string `pulumi:"provider"`
+	// S3 secret key
 	SecretKey *string `pulumi:"secretKey"`
 }
 
@@ -4338,9 +5048,14 @@ type GrafanaGrafanaUserConfigExternalImageStorageInput interface {
 }
 
 type GrafanaGrafanaUserConfigExternalImageStorageArgs struct {
+	// S3 access key. Requires permissions to the S3 bucket for the
+	// s3:PutObject and s3:PutObjectAcl actions
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Bucket URL for S3
 	BucketUrl pulumi.StringPtrInput `pulumi:"bucketUrl"`
-	Provider  pulumi.StringPtrInput `pulumi:"provider"`
+	// Provider type
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// S3 secret key
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
@@ -4420,18 +5135,24 @@ func (o GrafanaGrafanaUserConfigExternalImageStorageOutput) ToGrafanaGrafanaUser
 		return &v
 	}).(GrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
+
+// S3 access key. Requires permissions to the S3 bucket for the
+// s3:PutObject and s3:PutObjectAcl actions
 func (o GrafanaGrafanaUserConfigExternalImageStorageOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigExternalImageStorage) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Bucket URL for S3
 func (o GrafanaGrafanaUserConfigExternalImageStorageOutput) BucketUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigExternalImageStorage) *string { return v.BucketUrl }).(pulumi.StringPtrOutput)
 }
 
+// Provider type
 func (o GrafanaGrafanaUserConfigExternalImageStorageOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigExternalImageStorage) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
+// S3 secret key
 func (o GrafanaGrafanaUserConfigExternalImageStorageOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigExternalImageStorage) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -4456,6 +5177,8 @@ func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Elem() GrafanaGra
 	}).(GrafanaGrafanaUserConfigExternalImageStorageOutput)
 }
 
+// S3 access key. Requires permissions to the S3 bucket for the
+// s3:PutObject and s3:PutObjectAcl actions
 func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -4465,6 +5188,7 @@ func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Bucket URL for S3
 func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -4474,6 +5198,7 @@ func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Provider type
 func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -4483,6 +5208,7 @@ func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// S3 secret key
 func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -4493,6 +5219,8 @@ func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulum
 }
 
 type GrafanaGrafanaUserConfigPrivateAccess struct {
+	// Allow clients to connect to grafana from the public internet for service nodes that
+	// are in a project VPC or another type of private network.
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -4508,6 +5236,8 @@ type GrafanaGrafanaUserConfigPrivateAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to grafana from the public internet for service nodes that
+	// are in a project VPC or another type of private network.
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -4587,6 +5317,9 @@ func (o GrafanaGrafanaUserConfigPrivateAccessOutput) ToGrafanaGrafanaUserConfigP
 		return &v
 	}).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to grafana from the public internet for service nodes that
+// are in a project VPC or another type of private network.
 func (o GrafanaGrafanaUserConfigPrivateAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -4609,6 +5342,8 @@ func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Elem() GrafanaGrafanaUse
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPrivateAccess) GrafanaGrafanaUserConfigPrivateAccess { return *v }).(GrafanaGrafanaUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to grafana from the public internet for service nodes that
+// are in a project VPC or another type of private network.
 func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -4619,6 +5354,8 @@ func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringP
 }
 
 type GrafanaGrafanaUserConfigPublicAccess struct {
+	// Allow clients to connect to grafana from the public internet for service nodes that
+	// are in a project VPC or another type of private network.
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -4634,6 +5371,8 @@ type GrafanaGrafanaUserConfigPublicAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to grafana from the public internet for service nodes that
+	// are in a project VPC or another type of private network.
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -4713,6 +5452,9 @@ func (o GrafanaGrafanaUserConfigPublicAccessOutput) ToGrafanaGrafanaUserConfigPu
 		return &v
 	}).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to grafana from the public internet for service nodes that
+// are in a project VPC or another type of private network.
 func (o GrafanaGrafanaUserConfigPublicAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -4735,6 +5477,8 @@ func (o GrafanaGrafanaUserConfigPublicAccessPtrOutput) Elem() GrafanaGrafanaUser
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPublicAccess) GrafanaGrafanaUserConfigPublicAccess { return *v }).(GrafanaGrafanaUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to grafana from the public internet for service nodes that
+// are in a project VPC or another type of private network.
 func (o GrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -4745,13 +5489,20 @@ func (o GrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPt
 }
 
 type GrafanaGrafanaUserConfigSmtpServer struct {
+	// Address used for sending emails
 	FromAddress *string `pulumi:"fromAddress"`
-	FromName    *string `pulumi:"fromName"`
-	Host        *string `pulumi:"host"`
-	Password    *string `pulumi:"password"`
-	Port        *string `pulumi:"port"`
-	SkipVerify  *string `pulumi:"skipVerify"`
-	Username    *string `pulumi:"username"`
+	// Name used in outgoing emails, defaults to Grafana
+	FromName *string `pulumi:"fromName"`
+	// Server hostname or IP
+	Host *string `pulumi:"host"`
+	// Password for SMTP authentication
+	Password *string `pulumi:"password"`
+	// SMTP server port
+	Port *string `pulumi:"port"`
+	// Skip verifying server certificate. Defaults to false
+	SkipVerify *string `pulumi:"skipVerify"`
+	// Username for SMTP authentication
+	Username *string `pulumi:"username"`
 }
 
 // GrafanaGrafanaUserConfigSmtpServerInput is an input type that accepts GrafanaGrafanaUserConfigSmtpServerArgs and GrafanaGrafanaUserConfigSmtpServerOutput values.
@@ -4766,13 +5517,20 @@ type GrafanaGrafanaUserConfigSmtpServerInput interface {
 }
 
 type GrafanaGrafanaUserConfigSmtpServerArgs struct {
+	// Address used for sending emails
 	FromAddress pulumi.StringPtrInput `pulumi:"fromAddress"`
-	FromName    pulumi.StringPtrInput `pulumi:"fromName"`
-	Host        pulumi.StringPtrInput `pulumi:"host"`
-	Password    pulumi.StringPtrInput `pulumi:"password"`
-	Port        pulumi.StringPtrInput `pulumi:"port"`
-	SkipVerify  pulumi.StringPtrInput `pulumi:"skipVerify"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// Name used in outgoing emails, defaults to Grafana
+	FromName pulumi.StringPtrInput `pulumi:"fromName"`
+	// Server hostname or IP
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Password for SMTP authentication
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// SMTP server port
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Skip verifying server certificate. Defaults to false
+	SkipVerify pulumi.StringPtrInput `pulumi:"skipVerify"`
+	// Username for SMTP authentication
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GrafanaGrafanaUserConfigSmtpServerArgs) ElementType() reflect.Type {
@@ -4851,30 +5609,38 @@ func (o GrafanaGrafanaUserConfigSmtpServerOutput) ToGrafanaGrafanaUserConfigSmtp
 		return &v
 	}).(GrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
+
+// Address used for sending emails
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) FromAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.FromAddress }).(pulumi.StringPtrOutput)
 }
 
+// Name used in outgoing emails, defaults to Grafana
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) FromName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.FromName }).(pulumi.StringPtrOutput)
 }
 
+// Server hostname or IP
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// Password for SMTP authentication
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// SMTP server port
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// Skip verifying server certificate. Defaults to false
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
 }
 
+// Username for SMTP authentication
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -4897,6 +5663,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Elem() GrafanaGrafanaUserCo
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) GrafanaGrafanaUserConfigSmtpServer { return *v }).(GrafanaGrafanaUserConfigSmtpServerOutput)
 }
 
+// Address used for sending emails
 func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) FromAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -4906,6 +5673,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) FromAddress() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name used in outgoing emails, defaults to Grafana
 func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) FromName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -4915,6 +5683,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) FromName() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Server hostname or IP
 func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -4924,6 +5693,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Host() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Password for SMTP authentication
 func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -4933,6 +5703,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// SMTP server port
 func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -4942,6 +5713,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Skip verifying server certificate. Defaults to false
 func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -4951,6 +5723,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username for SMTP authentication
 func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -5317,12 +6090,19 @@ func (o InfluxDbInfluxdbPtrOutput) DatabaseName() pulumi.StringPtrOutput {
 }
 
 type InfluxDbInfluxdbUserConfig struct {
-	CustomDomain           *string                                  `pulumi:"customDomain"`
-	IpFilters              []string                                 `pulumi:"ipFilters"`
-	PrivateAccess          *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess           *InfluxDbInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryBasebackupName *string                                  `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      *string                                  `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+	CustomDomain *string `pulumi:"customDomain"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *InfluxDbInfluxdbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // InfluxDbInfluxdbUserConfigInput is an input type that accepts InfluxDbInfluxdbUserConfigArgs and InfluxDbInfluxdbUserConfigOutput values.
@@ -5337,12 +6117,19 @@ type InfluxDbInfluxdbUserConfigInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigArgs struct {
-	CustomDomain           pulumi.StringPtrInput                           `pulumi:"customDomain"`
-	IpFilters              pulumi.StringArrayInput                         `pulumi:"ipFilters"`
-	PrivateAccess          InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess           InfluxDbInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryBasebackupName pulumi.StringPtrInput                           `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      pulumi.StringPtrInput                           `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess InfluxDbInfluxdbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (InfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -5421,26 +6208,34 @@ func (o InfluxDbInfluxdbUserConfigOutput) ToInfluxDbInfluxdbUserConfigPtrOutputW
 		return &v
 	}).(InfluxDbInfluxdbUserConfigPtrOutput)
 }
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
 func (o InfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o InfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o InfluxDbInfluxdbUserConfigOutput) PrivateAccess() InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivateAccess { return v.PrivateAccess }).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o InfluxDbInfluxdbUserConfigOutput) PublicAccess() InfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o InfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect
+// only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -5463,6 +6258,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) Elem() InfluxDbInfluxdbUserConfigOu
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) InfluxDbInfluxdbUserConfig { return *v }).(InfluxDbInfluxdbUserConfigOutput)
 }
 
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
 func (o InfluxDbInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -5472,6 +6268,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) []string {
 		if v == nil {
@@ -5481,6 +6278,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivateAccess() InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivateAccess {
 		if v == nil {
@@ -5490,6 +6288,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivateAccess() InfluxDbInfluxdbUse
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PublicAccess() InfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess {
 		if v == nil {
@@ -5499,6 +6298,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PublicAccess() InfluxDbInfluxdbUser
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -5508,6 +6308,8 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect
+// only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -5518,6 +6320,8 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPt
 }
 
 type InfluxDbInfluxdbUserConfigPrivateAccess struct {
+	// Allow clients to connect to influxdb from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -5533,6 +6337,8 @@ type InfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to influxdb from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -5612,6 +6418,9 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) ToInfluxDbInfluxdbUserCon
 		return &v
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to influxdb from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -5634,6 +6443,8 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Elem() InfluxDbInfluxd
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivateAccess) InfluxDbInfluxdbUserConfigPrivateAccess { return *v }).(InfluxDbInfluxdbUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to influxdb from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -5644,6 +6455,8 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.Stri
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccess struct {
+	// Allow clients to connect to influxdb from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -5659,6 +6472,8 @@ type InfluxDbInfluxdbUserConfigPublicAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to influxdb from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -5738,6 +6553,9 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) ToInfluxDbInfluxdbUserConf
 		return &v
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to influxdb from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -5760,6 +6578,8 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Elem() InfluxDbInfluxdb
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPublicAccess) InfluxDbInfluxdbUserConfigPublicAccess { return *v }).(InfluxDbInfluxdbUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to influxdb from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPublicAccess) *string {
 		if v == nil {
@@ -6242,10 +7062,15 @@ func (o KafkaConnectKafkaConnectPtrOutput) Elem() KafkaConnectKafkaConnectOutput
 }
 
 type KafkaConnectKafkaConnectUserConfig struct {
-	IpFilters     []string                                         `pulumi:"ipFilters"`
-	KafkaConnect  *KafkaConnectKafkaConnectUserConfigKafkaConnect  `pulumi:"kafkaConnect"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	KafkaConnect *KafkaConnectKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
+	// Allow access to selected service ports from private networks.
 	PrivateAccess *KafkaConnectKafkaConnectUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess  *KafkaConnectKafkaConnectUserConfigPublicAccess  `pulumi:"publicAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *KafkaConnectKafkaConnectUserConfigPublicAccess `pulumi:"publicAccess"`
 }
 
 // KafkaConnectKafkaConnectUserConfigInput is an input type that accepts KafkaConnectKafkaConnectUserConfigArgs and KafkaConnectKafkaConnectUserConfigOutput values.
@@ -6260,10 +7085,15 @@ type KafkaConnectKafkaConnectUserConfigInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigArgs struct {
-	IpFilters     pulumi.StringArrayInput                                 `pulumi:"ipFilters"`
-	KafkaConnect  KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput  `pulumi:"kafkaConnect"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	KafkaConnect KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
+	// Allow access to selected service ports from private networks.
 	PrivateAccess KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess  KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 }
 
 func (KafkaConnectKafkaConnectUserConfigArgs) ElementType() reflect.Type {
@@ -6342,22 +7172,28 @@ func (o KafkaConnectKafkaConnectUserConfigOutput) ToKafkaConnectKafkaConnectUser
 		return &v
 	}).(KafkaConnectKafkaConnectUserConfigPtrOutput)
 }
+
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o KafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigOutput) KafkaConnect() KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o KafkaConnectKafkaConnectUserConfigOutput) PrivateAccess() KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o KafkaConnectKafkaConnectUserConfigOutput) PublicAccess() KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPublicAccess {
 		return v.PublicAccess
@@ -6382,6 +7218,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) Elem() KafkaConnectKafkaCon
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) KafkaConnectKafkaConnectUserConfig { return *v }).(KafkaConnectKafkaConnectUserConfigOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) []string {
 		if v == nil {
@@ -6391,6 +7228,8 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) KafkaConnect() KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigKafkaConnect {
 		if v == nil {
@@ -6400,6 +7239,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) KafkaConnect() KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivateAccess() KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivateAccess {
 		if v == nil {
@@ -6409,6 +7249,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivateAccess() KafkaConnec
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PublicAccess() KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPublicAccess {
 		if v == nil {
@@ -6419,14 +7260,30 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PublicAccess() KafkaConnect
 }
 
 type KafkaConnectKafkaConnectUserConfigKafkaConnect struct {
+	// Defines what client configurations can be
+	// overridden by the connector. Default is None.
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest.
+	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
+	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
+	// The maximum number of records returned by a single poll.
+	ConsumerMaxPollRecords *string `pulumi:"consumerMaxPollRecords"`
+	// The interval at which to try committing offsets for tasks
+	// (defaults to 60000).
+	OffsetFlushIntervalMs *string `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to flush
+	// and partition offset data to be committed to offset storage before cancelling the process and restoring
+	// the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs *string `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when using Kafka’s
+	// group management facilities (defaults to 10000).
+	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
 }
 
 // KafkaConnectKafkaConnectUserConfigKafkaConnectInput is an input type that accepts KafkaConnectKafkaConnectUserConfigKafkaConnectArgs and KafkaConnectKafkaConnectUserConfigKafkaConnectOutput values.
@@ -6441,14 +7298,30 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnectInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigKafkaConnectArgs struct {
+	// Defines what client configurations can be
+	// overridden by the connector. Default is None.
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest.
+	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
+	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
+	// The maximum number of records returned by a single poll.
+	ConsumerMaxPollRecords pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	// The interval at which to try committing offsets for tasks
+	// (defaults to 60000).
+	OffsetFlushIntervalMs pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to flush
+	// and partition offset data to be committed to offset storage before cancelling the process and restoring
+	// the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when using Kafka’s
+	// group management facilities (defaults to 10000).
+	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
 func (KafkaConnectKafkaConnectUserConfigKafkaConnectArgs) ElementType() reflect.Type {
@@ -6527,36 +7400,53 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ToKafkaConnectKafk
 		return &v
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
+
+// Defines what client configurations can be
+// overridden by the connector. Default is None.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		return v.ConnectorClientConfigOverridePolicy
 	}).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPollIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of records returned by a single poll.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for tasks
+// (defaults to 60000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to flush
+// and partition offset data to be committed to offset storage before cancelling the process and restoring
+// the offset data to be committed in a future attempt (defaults to 5000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when using Kafka’s
+// group management facilities (defaults to 10000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.SessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
@@ -6581,6 +7471,8 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) Elem() KafkaCon
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectOutput)
 }
 
+// Defines what client configurations can be
+// overridden by the connector. Default is None.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6590,6 +7482,8 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConnectorClient
 	}).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6599,6 +7493,8 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAutoOff
 	}).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6608,6 +7504,8 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolati
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6617,6 +7515,7 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPoll
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of records returned by a single poll.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6626,6 +7525,8 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPoll
 	}).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for tasks
+// (defaults to 60000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6635,6 +7536,9 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushInte
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to flush
+// and partition offset data to be committed to offset storage before cancelling the process and restoring
+// the offset data to be committed in a future attempt (defaults to 5000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6644,6 +7548,8 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushTime
 	}).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when using Kafka’s
+// group management facilities (defaults to 10000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -6654,8 +7560,12 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeoutM
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivateAccess struct {
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect *string `pulumi:"kafkaConnect"`
-	Prometheus   *string `pulumi:"prometheus"`
+	// Allow clients to connect to prometheus from the public internet for service
+	// nodes that are in a project VPC or another type of private network.
+	Prometheus *string `pulumi:"prometheus"`
 }
 
 // KafkaConnectKafkaConnectUserConfigPrivateAccessInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPrivateAccessArgs and KafkaConnectKafkaConnectUserConfigPrivateAccessOutput values.
@@ -6670,8 +7580,12 @@ type KafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
-	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to prometheus from the public internet for service
+	// nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
 func (KafkaConnectKafkaConnectUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -6750,10 +7664,15 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessOutput) ToKafkaConnectKaf
 		return &v
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to kafkaConnect from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for service
+// nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -6778,6 +7697,8 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() KafkaCo
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -6787,6 +7708,8 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for service
+// nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -6797,8 +7720,12 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus() p
 }
 
 type KafkaConnectKafkaConnectUserConfigPublicAccess struct {
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect *string `pulumi:"kafkaConnect"`
-	Prometheus   *string `pulumi:"prometheus"`
+	// Allow clients to connect to prometheus from the public internet for service
+	// nodes that are in a project VPC or another type of private network.
+	Prometheus *string `pulumi:"prometheus"`
 }
 
 // KafkaConnectKafkaConnectUserConfigPublicAccessInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPublicAccessArgs and KafkaConnectKafkaConnectUserConfigPublicAccessOutput values.
@@ -6813,8 +7740,12 @@ type KafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
-	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to prometheus from the public internet for service
+	// nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
 func (KafkaConnectKafkaConnectUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -6893,10 +7824,15 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessOutput) ToKafkaConnectKafk
 		return &v
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to kafkaConnect from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for service
+// nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -6921,6 +7857,8 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Elem() KafkaCon
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPublicAccess) *string {
 		if v == nil {
@@ -6930,6 +7868,8 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for service
+// nodes that are in a project VPC or another type of private network.
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPublicAccess) *string {
 		if v == nil {
@@ -7041,7 +7981,9 @@ func (o KafkaConnectServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Kafk
 
 type KafkaConnectorTask struct {
 	Connector *string `pulumi:"connector"`
-	Task      *int    `pulumi:"task"`
+	// List of tasks of a connector, each element contains `connector`
+	// (Related connector name) and `task` (Task id / number).
+	Task *int `pulumi:"task"`
 }
 
 // KafkaConnectorTaskInput is an input type that accepts KafkaConnectorTaskArgs and KafkaConnectorTaskOutput values.
@@ -7057,7 +7999,9 @@ type KafkaConnectorTaskInput interface {
 
 type KafkaConnectorTaskArgs struct {
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
-	Task      pulumi.IntPtrInput    `pulumi:"task"`
+	// List of tasks of a connector, each element contains `connector`
+	// (Related connector name) and `task` (Task id / number).
+	Task pulumi.IntPtrInput `pulumi:"task"`
 }
 
 func (KafkaConnectorTaskArgs) ElementType() reflect.Type {
@@ -7115,6 +8059,8 @@ func (o KafkaConnectorTaskOutput) Connector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectorTask) *string { return v.Connector }).(pulumi.StringPtrOutput)
 }
 
+// List of tasks of a connector, each element contains `connector`
+// (Related connector name) and `task` (Task id / number).
 func (o KafkaConnectorTaskOutput) Task() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaConnectorTask) *int { return v.Task }).(pulumi.IntPtrOutput)
 }
@@ -7140,10 +8086,15 @@ func (o KafkaConnectorTaskArrayOutput) Index(i pulumi.IntInput) KafkaConnectorTa
 }
 
 type KafkaKafka struct {
-	AccessCert        *string `pulumi:"accessCert"`
-	AccessKey         *string `pulumi:"accessKey"`
-	ConnectUri        *string `pulumi:"connectUri"`
-	RestUri           *string `pulumi:"restUri"`
+	// The Kafka client certificate
+	AccessCert *string `pulumi:"accessCert"`
+	// The Kafka client certificate key
+	AccessKey *string `pulumi:"accessKey"`
+	// The Kafka Connect URI, if any
+	ConnectUri *string `pulumi:"connectUri"`
+	// The Kafka REST URI, if any
+	RestUri *string `pulumi:"restUri"`
+	// The Schema Registry URI, if any
 	SchemaRegistryUri *string `pulumi:"schemaRegistryUri"`
 }
 
@@ -7159,10 +8110,15 @@ type KafkaKafkaInput interface {
 }
 
 type KafkaKafkaArgs struct {
-	AccessCert        pulumi.StringPtrInput `pulumi:"accessCert"`
-	AccessKey         pulumi.StringPtrInput `pulumi:"accessKey"`
-	ConnectUri        pulumi.StringPtrInput `pulumi:"connectUri"`
-	RestUri           pulumi.StringPtrInput `pulumi:"restUri"`
+	// The Kafka client certificate
+	AccessCert pulumi.StringPtrInput `pulumi:"accessCert"`
+	// The Kafka client certificate key
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// The Kafka Connect URI, if any
+	ConnectUri pulumi.StringPtrInput `pulumi:"connectUri"`
+	// The Kafka REST URI, if any
+	RestUri pulumi.StringPtrInput `pulumi:"restUri"`
+	// The Schema Registry URI, if any
 	SchemaRegistryUri pulumi.StringPtrInput `pulumi:"schemaRegistryUri"`
 }
 
@@ -7242,22 +8198,28 @@ func (o KafkaKafkaOutput) ToKafkaKafkaPtrOutputWithContext(ctx context.Context) 
 		return &v
 	}).(KafkaKafkaPtrOutput)
 }
+
+// The Kafka client certificate
 func (o KafkaKafkaOutput) AccessCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.AccessCert }).(pulumi.StringPtrOutput)
 }
 
+// The Kafka client certificate key
 func (o KafkaKafkaOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// The Kafka Connect URI, if any
 func (o KafkaKafkaOutput) ConnectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.ConnectUri }).(pulumi.StringPtrOutput)
 }
 
+// The Kafka REST URI, if any
 func (o KafkaKafkaOutput) RestUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.RestUri }).(pulumi.StringPtrOutput)
 }
 
+// The Schema Registry URI, if any
 func (o KafkaKafkaOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.SchemaRegistryUri }).(pulumi.StringPtrOutput)
 }
@@ -7280,6 +8242,7 @@ func (o KafkaKafkaPtrOutput) Elem() KafkaKafkaOutput {
 	return o.ApplyT(func(v *KafkaKafka) KafkaKafka { return *v }).(KafkaKafkaOutput)
 }
 
+// The Kafka client certificate
 func (o KafkaKafkaPtrOutput) AccessCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -7289,6 +8252,7 @@ func (o KafkaKafkaPtrOutput) AccessCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Kafka client certificate key
 func (o KafkaKafkaPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -7298,6 +8262,7 @@ func (o KafkaKafkaPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Kafka Connect URI, if any
 func (o KafkaKafkaPtrOutput) ConnectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -7307,6 +8272,7 @@ func (o KafkaKafkaPtrOutput) ConnectUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Kafka REST URI, if any
 func (o KafkaKafkaPtrOutput) RestUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -7316,6 +8282,7 @@ func (o KafkaKafkaPtrOutput) RestUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Schema Registry URI, if any
 func (o KafkaKafkaPtrOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -7326,18 +8293,33 @@ func (o KafkaKafkaPtrOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 }
 
 type KafkaKafkaUserConfig struct {
-	CustomDomain               *string                                         `pulumi:"customDomain"`
-	IpFilters                  []string                                        `pulumi:"ipFilters"`
-	Kafka                      *KafkaKafkaUserConfigKafka                      `pulumi:"kafka"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow clients to connect to kafka from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Kafka *KafkaKafkaUserConfigKafka `pulumi:"kafka"`
+	// Kafka authentication methods
 	KafkaAuthenticationMethods *KafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               *string                                         `pulumi:"kafkaConnect"`
-	KafkaConnectConfig         *KafkaKafkaUserConfigKafkaConnectConfig         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  *string                                         `pulumi:"kafkaRest"`
-	KafkaRestConfig            *KafkaKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
-	KafkaVersion               *string                                         `pulumi:"kafkaVersion"`
-	PrivateAccess              *KafkaKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
-	PublicAccess               *KafkaKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
-	SchemaRegistry             *string                                         `pulumi:"schemaRegistry"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect *string `pulumi:"kafkaConnect"`
+	// Kafka Connect configuration values
+	KafkaConnectConfig *KafkaKafkaUserConfigKafkaConnectConfig `pulumi:"kafkaConnectConfig"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest *string `pulumi:"kafkaRest"`
+	// Kafka-REST configuration
+	KafkaRestConfig *KafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
+	// Kafka major version
+	KafkaVersion *string `pulumi:"kafkaVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *KafkaKafkaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *KafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Enable Schema-Registry service
+	SchemaRegistry *string `pulumi:"schemaRegistry"`
 }
 
 // KafkaKafkaUserConfigInput is an input type that accepts KafkaKafkaUserConfigArgs and KafkaKafkaUserConfigOutput values.
@@ -7352,18 +8334,33 @@ type KafkaKafkaUserConfigInput interface {
 }
 
 type KafkaKafkaUserConfigArgs struct {
-	CustomDomain               pulumi.StringPtrInput                                  `pulumi:"customDomain"`
-	IpFilters                  pulumi.StringArrayInput                                `pulumi:"ipFilters"`
-	Kafka                      KafkaKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow clients to connect to kafka from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Kafka KafkaKafkaUserConfigKafkaPtrInput `pulumi:"kafka"`
+	// Kafka authentication methods
 	KafkaAuthenticationMethods KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               pulumi.StringPtrInput                                  `pulumi:"kafkaConnect"`
-	KafkaConnectConfig         KafkaKafkaUserConfigKafkaConnectConfigPtrInput         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  pulumi.StringPtrInput                                  `pulumi:"kafkaRest"`
-	KafkaRestConfig            KafkaKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
-	KafkaVersion               pulumi.StringPtrInput                                  `pulumi:"kafkaVersion"`
-	PrivateAccess              KafkaKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
-	PublicAccess               KafkaKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
-	SchemaRegistry             pulumi.StringPtrInput                                  `pulumi:"schemaRegistry"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	// Kafka Connect configuration values
+	KafkaConnectConfig KafkaKafkaUserConfigKafkaConnectConfigPtrInput `pulumi:"kafkaConnectConfig"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	// Kafka-REST configuration
+	KafkaRestConfig KafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
+	// Kafka major version
+	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess KafkaKafkaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess KafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Enable Schema-Registry service
+	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
 }
 
 func (KafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -7442,52 +8439,68 @@ func (o KafkaKafkaUserConfigOutput) ToKafkaKafkaUserConfigPtrOutputWithContext(c
 		return &v
 	}).(KafkaKafkaUserConfigPtrOutput)
 }
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 func (o KafkaKafkaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 func (o KafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to kafka from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka { return v.Kafka }).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
 
+// Kafka authentication methods
 func (o KafkaKafkaUserConfigOutput) KafkaAuthenticationMethods() KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaAuthenticationMethods {
 		return v.KafkaAuthenticationMethods
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect configuration values
 func (o KafkaKafkaUserConfigOutput) KafkaConnectConfig() KafkaKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaConnectConfig { return v.KafkaConnectConfig }).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
+// Allow clients to connect to kafkaRest from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
+// Kafka-REST configuration
 func (o KafkaKafkaUserConfigOutput) KafkaRestConfig() KafkaKafkaUserConfigKafkaRestConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaRestConfig { return v.KafkaRestConfig }).(KafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
+// Kafka major version
 func (o KafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o KafkaKafkaUserConfigOutput) PrivateAccess() KafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o KafkaKafkaUserConfigOutput) PublicAccess() KafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPublicAccess { return v.PublicAccess }).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
@@ -7510,6 +8523,7 @@ func (o KafkaKafkaUserConfigPtrOutput) Elem() KafkaKafkaUserConfigOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) KafkaKafkaUserConfig { return *v }).(KafkaKafkaUserConfigOutput)
 }
 
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 func (o KafkaKafkaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -7519,6 +8533,7 @@ func (o KafkaKafkaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) []string {
 		if v == nil {
@@ -7528,6 +8543,8 @@ func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to kafka from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPtrOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka {
 		if v == nil {
@@ -7537,6 +8554,7 @@ func (o KafkaKafkaUserConfigPtrOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutpu
 	}).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
 
+// Kafka authentication methods
 func (o KafkaKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaAuthenticationMethods {
 		if v == nil {
@@ -7546,6 +8564,8 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() KafkaKafkaUs
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -7555,6 +8575,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect configuration values
 func (o KafkaKafkaUserConfigPtrOutput) KafkaConnectConfig() KafkaKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaConnectConfig {
 		if v == nil {
@@ -7564,6 +8585,8 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaConnectConfig() KafkaKafkaUserConfig
 	}).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
+// Allow clients to connect to kafkaRest from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -7573,6 +8596,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka-REST configuration
 func (o KafkaKafkaUserConfigPtrOutput) KafkaRestConfig() KafkaKafkaUserConfigKafkaRestConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaRestConfig {
 		if v == nil {
@@ -7582,6 +8606,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaRestConfig() KafkaKafkaUserConfigKaf
 	}).(KafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
+// Kafka major version
 func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -7591,6 +8616,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o KafkaKafkaUserConfigPtrOutput) PrivateAccess() KafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivateAccess {
 		if v == nil {
@@ -7600,6 +8626,7 @@ func (o KafkaKafkaUserConfigPtrOutput) PrivateAccess() KafkaKafkaUserConfigPriva
 	}).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o KafkaKafkaUserConfigPtrOutput) PublicAccess() KafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPublicAccess {
 		if v == nil {
@@ -7609,6 +8636,7 @@ func (o KafkaKafkaUserConfigPtrOutput) PublicAccess() KafkaKafkaUserConfigPublic
 	}).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -7619,30 +8647,71 @@ func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 }
 
 type KafkaKafkaUserConfigKafka struct {
-	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        *string `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   *string `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
-	NumPartitions                          *string `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
+	// Enable auto creation of topics
+	AutoCreateTopicsEnable *string `pulumi:"autoCreateTopicsEnable"`
+	// Specify the final compression type for a given topic. This
+	// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+	// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+	// which means retain the original compression codec set by the producer.
+	CompressionType *string `pulumi:"compressionType"`
+	// Idle connections timeout: the server socket processor
+	// threads close the connections that idle for longer than this.
+	ConnectionsMaxIdleMs *string `pulumi:"connectionsMaxIdleMs"`
+	// Replication factor for autocreated topics
+	// * `groupMaxSessionTimeoutMs": {
+	// * `groupMinSessionTimeoutMs": {
+	DefaultReplicationFactor *string `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs *string `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs *string `pulumi:"groupMinSessionTimeoutMs"`
+	// The maximum amount of time message will
+	// remain uncompacted. Only applicable for logs that are being compacted
+	// * `logCleanerMinCleanableRatio": {
+	LogCleanerMaxCompactionLagMs *string `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio  *string `pulumi:"logCleanerMinCleanableRatio"`
+	// The minimum time a message will remain
+	// uncompacted in the log. Only applicable for logs that are being compacted.
+	// * `logCleanupPolicy": {
+	LogCleanerMinCompactionLagMs *string `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy             *string `pulumi:"logCleanupPolicy"`
+	// The maximum difference allowed between
+	// the timestamp when a broker receives a message and the timestamp specified in the message
+	LogMessageTimestampDifferenceMaxMs *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	// Define whether the timestamp in the message is
+	// message create time or log append time.
+	LogMessageTimestampType *string `pulumi:"logMessageTimestampType"`
+	// The maximum size of the log before deleting messages
+	LogRetentionBytes *string `pulumi:"logRetentionBytes"`
+	// The number of hours to keep a log file before deleting it
+	LogRetentionHours *string `pulumi:"logRetentionHours"`
+	// The maximum size of a single log file
+	LogSegmentBytes *string `pulumi:"logSegmentBytes"`
+	// The maximum number of connections allowed from each ip
+	// address (defaults to 2147483647).
+	// * `maxIncrementalFetchSessionCacheSlots": {
+	// * `messageMaxBytes": {
+	MaxConnectionsPerIp                  *string `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                      *string `pulumi:"messageMaxBytes"`
+	// Number of partitions for autocreated topics
+	// * `offsetsRetentionMinutes": {
+	NumPartitions           *string `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes *string `pulumi:"offsetsRetentionMinutes"`
+	// The purge interval (in number of
+	// requests) of the producer request purgatory(defaults to 1000).
 	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   *string `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           *string `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  *string `pulumi:"socketRequestMaxBytes"`
+	// The number of bytes of messages to attempt to fetch
+	// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+	// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+	// will still be returned to ensure that progress can be made.
+	ReplicaFetchMaxBytes *string `pulumi:"replicaFetchMaxBytes"`
+	// Maximum bytes expected for the entire fetch
+	// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+	// in the first non-empty partition of the fetch is larger than this value, the record batch will
+	// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+	ReplicaFetchResponseMaxBytes *string `pulumi:"replicaFetchResponseMaxBytes"`
+	// The maximum number of bytes in a socket request
+	// (defaults to 104857600).
+	SocketRequestMaxBytes *string `pulumi:"socketRequestMaxBytes"`
 }
 
 // KafkaKafkaUserConfigKafkaInput is an input type that accepts KafkaKafkaUserConfigKafkaArgs and KafkaKafkaUserConfigKafkaOutput values.
@@ -7657,30 +8726,71 @@ type KafkaKafkaUserConfigKafkaInput interface {
 }
 
 type KafkaKafkaUserConfigKafkaArgs struct {
-	AutoCreateTopicsEnable                 pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        pulumi.StringPtrInput `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
-	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	// Enable auto creation of topics
+	AutoCreateTopicsEnable pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
+	// Specify the final compression type for a given topic. This
+	// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+	// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+	// which means retain the original compression codec set by the producer.
+	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
+	// Idle connections timeout: the server socket processor
+	// threads close the connections that idle for longer than this.
+	ConnectionsMaxIdleMs pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
+	// Replication factor for autocreated topics
+	// * `groupMaxSessionTimeoutMs": {
+	// * `groupMinSessionTimeoutMs": {
+	DefaultReplicationFactor pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	// The maximum amount of time message will
+	// remain uncompacted. Only applicable for logs that are being compacted
+	// * `logCleanerMinCleanableRatio": {
+	LogCleanerMaxCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio  pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	// The minimum time a message will remain
+	// uncompacted in the log. Only applicable for logs that are being compacted.
+	// * `logCleanupPolicy": {
+	LogCleanerMinCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy             pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	// The maximum difference allowed between
+	// the timestamp when a broker receives a message and the timestamp specified in the message
+	LogMessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	// Define whether the timestamp in the message is
+	// message create time or log append time.
+	LogMessageTimestampType pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	// The maximum size of the log before deleting messages
+	LogRetentionBytes pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	// The number of hours to keep a log file before deleting it
+	LogRetentionHours pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	// The maximum size of a single log file
+	LogSegmentBytes pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	// The maximum number of connections allowed from each ip
+	// address (defaults to 2147483647).
+	// * `maxIncrementalFetchSessionCacheSlots": {
+	// * `messageMaxBytes": {
+	MaxConnectionsPerIp                  pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                      pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	// Number of partitions for autocreated topics
+	// * `offsetsRetentionMinutes": {
+	NumPartitions           pulumi.StringPtrInput `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	// The purge interval (in number of
+	// requests) of the producer request purgatory(defaults to 1000).
 	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	// The number of bytes of messages to attempt to fetch
+	// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+	// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+	// will still be returned to ensure that progress can be made.
+	ReplicaFetchMaxBytes pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
+	// Maximum bytes expected for the entire fetch
+	// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+	// in the first non-empty partition of the fetch is larger than this value, the record batch will
+	// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+	ReplicaFetchResponseMaxBytes pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
+	// The maximum number of bytes in a socket request
+	// (defaults to 104857600).
+	SocketRequestMaxBytes pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
 }
 
 func (KafkaKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -7759,18 +8869,29 @@ func (o KafkaKafkaUserConfigKafkaOutput) ToKafkaKafkaUserConfigKafkaPtrOutputWit
 		return &v
 	}).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
+
+// Enable auto creation of topics
 func (o KafkaKafkaUserConfigKafkaOutput) AutoCreateTopicsEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.AutoCreateTopicsEnable }).(pulumi.StringPtrOutput)
 }
 
+// Specify the final compression type for a given topic. This
+// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+// which means retain the original compression codec set by the producer.
 func (o KafkaKafkaUserConfigKafkaOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
+// Idle connections timeout: the server socket processor
+// threads close the connections that idle for longer than this.
 func (o KafkaKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.ConnectionsMaxIdleMs }).(pulumi.StringPtrOutput)
 }
 
+// Replication factor for autocreated topics
+// * `groupMaxSessionTimeoutMs": {
+// * `groupMinSessionTimeoutMs": {
 func (o KafkaKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
@@ -7783,6 +8904,9 @@ func (o KafkaKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.Strin
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The maximum amount of time message will
+// remain uncompacted. Only applicable for logs that are being compacted
+// * `logCleanerMinCleanableRatio": {
 func (o KafkaKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
@@ -7791,6 +8915,9 @@ func (o KafkaKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi.St
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCleanableRatio }).(pulumi.StringPtrOutput)
 }
 
+// The minimum time a message will remain
+// uncompacted in the log. Only applicable for logs that are being compacted.
+// * `logCleanupPolicy": {
 func (o KafkaKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
@@ -7799,26 +8926,37 @@ func (o KafkaKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPtrOutp
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
+// The maximum difference allowed between
+// the timestamp when a broker receives a message and the timestamp specified in the message
 func (o KafkaKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
+// Define whether the timestamp in the message is
+// message create time or log append time.
 func (o KafkaKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of the log before deleting messages
 func (o KafkaKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
+// The number of hours to keep a log file before deleting it
 func (o KafkaKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of a single log file
 func (o KafkaKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of connections allowed from each ip
+// address (defaults to 2147483647).
+// * `maxIncrementalFetchSessionCacheSlots": {
+// * `messageMaxBytes": {
 func (o KafkaKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
 }
@@ -7831,6 +8969,8 @@ func (o KafkaKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// Number of partitions for autocreated topics
+// * `offsetsRetentionMinutes": {
 func (o KafkaKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
@@ -7839,18 +8979,30 @@ func (o KafkaKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.String
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.OffsetsRetentionMinutes }).(pulumi.StringPtrOutput)
 }
 
+// The purge interval (in number of
+// requests) of the producer request purgatory(defaults to 1000).
 func (o KafkaKafkaUserConfigKafkaOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.StringPtrOutput)
 }
 
+// The number of bytes of messages to attempt to fetch
+// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+// will still be returned to ensure that progress can be made.
 func (o KafkaKafkaUserConfigKafkaOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.ReplicaFetchMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// Maximum bytes expected for the entire fetch
+// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+// in the first non-empty partition of the fetch is larger than this value, the record batch will
+// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
 func (o KafkaKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.ReplicaFetchResponseMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of bytes in a socket request
+// (defaults to 104857600).
 func (o KafkaKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
@@ -7873,6 +9025,7 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) Elem() KafkaKafkaUserConfigKafkaOutp
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) KafkaKafkaUserConfigKafka { return *v }).(KafkaKafkaUserConfigKafkaOutput)
 }
 
+// Enable auto creation of topics
 func (o KafkaKafkaUserConfigKafkaPtrOutput) AutoCreateTopicsEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7882,6 +9035,10 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) AutoCreateTopicsEnable() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the final compression type for a given topic. This
+// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+// which means retain the original compression codec set by the producer.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7891,6 +9048,8 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Idle connections timeout: the server socket processor
+// threads close the connections that idle for longer than this.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7900,6 +9059,9 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Replication factor for autocreated topics
+// * `groupMaxSessionTimeoutMs": {
+// * `groupMinSessionTimeoutMs": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7927,6 +9089,9 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum amount of time message will
+// remain uncompacted. Only applicable for logs that are being compacted
+// * `logCleanerMinCleanableRatio": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7945,6 +9110,9 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minimum time a message will remain
+// uncompacted in the log. Only applicable for logs that are being compacted.
+// * `logCleanupPolicy": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7963,6 +9131,8 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum difference allowed between
+// the timestamp when a broker receives a message and the timestamp specified in the message
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7972,6 +9142,8 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Define whether the timestamp in the message is
+// message create time or log append time.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7981,6 +9153,7 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of the log before deleting messages
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7990,6 +9163,7 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of hours to keep a log file before deleting it
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -7999,6 +9173,7 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of a single log file
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -8008,6 +9183,10 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of connections allowed from each ip
+// address (defaults to 2147483647).
+// * `maxIncrementalFetchSessionCacheSlots": {
+// * `messageMaxBytes": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -8035,6 +9214,8 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of partitions for autocreated topics
+// * `offsetsRetentionMinutes": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -8053,6 +9234,8 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The purge interval (in number of
+// requests) of the producer request purgatory(defaults to 1000).
 func (o KafkaKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -8062,6 +9245,10 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalReques
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of bytes of messages to attempt to fetch
+// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+// will still be returned to ensure that progress can be made.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -8071,6 +9258,10 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum bytes expected for the entire fetch
+// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+// in the first non-empty partition of the fetch is larger than this value, the record batch will
+// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -8080,6 +9271,8 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of bytes in a socket request
+// (defaults to 104857600).
 func (o KafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -8090,8 +9283,10 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.Strin
 }
 
 type KafkaKafkaUserConfigKafkaAuthenticationMethods struct {
+	// Enable certificate/SSL authentication
 	Certificate *string `pulumi:"certificate"`
-	Sasl        *string `pulumi:"sasl"`
+	// Enable SASL authentication
+	Sasl *string `pulumi:"sasl"`
 }
 
 // KafkaKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs and KafkaKafkaUserConfigKafkaAuthenticationMethodsOutput values.
@@ -8106,8 +9301,10 @@ type KafkaKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 }
 
 type KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs struct {
+	// Enable certificate/SSL authentication
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
-	Sasl        pulumi.StringPtrInput `pulumi:"sasl"`
+	// Enable SASL authentication
+	Sasl pulumi.StringPtrInput `pulumi:"sasl"`
 }
 
 func (KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs) ElementType() reflect.Type {
@@ -8186,10 +9383,13 @@ func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsOutput) ToKafkaKafkaUserCo
 		return &v
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
+
+// Enable certificate/SSL authentication
 func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
+// Enable SASL authentication
 func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsOutput) Sasl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Sasl }).(pulumi.StringPtrOutput)
 }
@@ -8214,6 +9414,7 @@ func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Elem() KafkaKaf
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsOutput)
 }
 
+// Enable certificate/SSL authentication
 func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
@@ -8223,6 +9424,7 @@ func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable SASL authentication
 func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
@@ -8233,14 +9435,31 @@ func (o KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.S
 }
 
 type KafkaKafkaUserConfigKafkaConnectConfig struct {
+	// Defines what client configurations can
+	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest
+	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
+	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
+	// The maximum number of records returned in a single call
+	// to poll() (defaults to 500).
+	ConsumerMaxPollRecords *string `pulumi:"consumerMaxPollRecords"`
+	// The interval at which to try committing offsets for
+	// tasks (defaults to 60000).
+	OffsetFlushIntervalMs *string `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to
+	// flush and partition offset data to be committed to offset storage before cancelling the process
+	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs *string `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when
+	// using Kafka’s group management facilities (defaults to 10000).
+	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
 }
 
 // KafkaKafkaUserConfigKafkaConnectConfigInput is an input type that accepts KafkaKafkaUserConfigKafkaConnectConfigArgs and KafkaKafkaUserConfigKafkaConnectConfigOutput values.
@@ -8255,14 +9474,31 @@ type KafkaKafkaUserConfigKafkaConnectConfigInput interface {
 }
 
 type KafkaKafkaUserConfigKafkaConnectConfigArgs struct {
+	// Defines what client configurations can
+	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest
+	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
+	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
+	// The maximum number of records returned in a single call
+	// to poll() (defaults to 500).
+	ConsumerMaxPollRecords pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	// The interval at which to try committing offsets for
+	// tasks (defaults to 60000).
+	OffsetFlushIntervalMs pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to
+	// flush and partition offset data to be committed to offset storage before cancelling the process
+	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when
+	// using Kafka’s group management facilities (defaults to 10000).
+	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
 func (KafkaKafkaUserConfigKafkaConnectConfigArgs) ElementType() reflect.Type {
@@ -8341,34 +9577,52 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ToKafkaKafkaUserConfigKafk
 		return &v
 	}).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
+
+// Defines what client configurations can
+// be overridden by the connector. Default is None
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConnectorClientConfigOverridePolicy }).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPollIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of records returned in a single call
+// to poll() (defaults to 500).
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for
+// tasks (defaults to 60000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to
+// flush and partition offset data to be committed to offset storage before cancelling the process
+// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when
+// using Kafka’s group management facilities (defaults to 10000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.SessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
@@ -8391,6 +9645,8 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) Elem() KafkaKafkaUserCo
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) KafkaKafkaUserConfigKafkaConnectConfig { return *v }).(KafkaKafkaUserConfigKafkaConnectConfigOutput)
 }
 
+// Defines what client configurations can
+// be overridden by the connector. Default is None
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8400,6 +9656,8 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConnectorClientConfigOv
 	}).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8409,6 +9667,8 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffsetReset
 	}).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8418,6 +9678,8 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel(
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8427,6 +9689,8 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollInterval
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of records returned in a single call
+// to poll() (defaults to 500).
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8436,6 +9700,8 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords(
 	}).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for
+// tasks (defaults to 60000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8445,6 +9711,9 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to
+// flush and partition offset data to be committed to offset storage before cancelling the process
+// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8454,6 +9723,8 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeoutMs() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when
+// using Kafka’s group management facilities (defaults to 10000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -8464,11 +9735,23 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) SessionTimeoutMs() pulu
 }
 
 type KafkaKafkaUserConfigKafkaRestConfig struct {
-	ConsumerEnableAutoCommit  *string `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   *string `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  *string `pulumi:"consumerRequestTimeoutMs"`
-	ProducerAcks              *string `pulumi:"producerAcks"`
-	ProducerLingerMs          *string `pulumi:"producerLingerMs"`
+	// If true the consumer's offset will be periodically
+	// committed to Kafka in the background
+	ConsumerEnableAutoCommit *string `pulumi:"consumerEnableAutoCommit"`
+	// Maximum number of bytes in unencoded message keys and
+	// values by a single request
+	ConsumerRequestMaxBytes *string `pulumi:"consumerRequestMaxBytes"`
+	// The maximum total time to wait for messages for a
+	// request if the maximum number of messages has not yet been reached
+	ConsumerRequestTimeoutMs *string `pulumi:"consumerRequestTimeoutMs"`
+	// The number of acknowledgments the producer requires the leader to
+	// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+	// for the full set of in-sync replicas to acknowledge the record.
+	ProducerAcks *string `pulumi:"producerAcks"`
+	// Wait for up to the given delay to allow batching records together
+	ProducerLingerMs *string `pulumi:"producerLingerMs"`
+	// Maximum number of SimpleConsumers that can be
+	// instantiated per broker.
 	SimpleconsumerPoolSizeMax *string `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -8484,11 +9767,23 @@ type KafkaKafkaUserConfigKafkaRestConfigInput interface {
 }
 
 type KafkaKafkaUserConfigKafkaRestConfigArgs struct {
-	ConsumerEnableAutoCommit  pulumi.StringPtrInput `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   pulumi.StringPtrInput `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  pulumi.StringPtrInput `pulumi:"consumerRequestTimeoutMs"`
-	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
-	ProducerLingerMs          pulumi.StringPtrInput `pulumi:"producerLingerMs"`
+	// If true the consumer's offset will be periodically
+	// committed to Kafka in the background
+	ConsumerEnableAutoCommit pulumi.StringPtrInput `pulumi:"consumerEnableAutoCommit"`
+	// Maximum number of bytes in unencoded message keys and
+	// values by a single request
+	ConsumerRequestMaxBytes pulumi.StringPtrInput `pulumi:"consumerRequestMaxBytes"`
+	// The maximum total time to wait for messages for a
+	// request if the maximum number of messages has not yet been reached
+	ConsumerRequestTimeoutMs pulumi.StringPtrInput `pulumi:"consumerRequestTimeoutMs"`
+	// The number of acknowledgments the producer requires the leader to
+	// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+	// for the full set of in-sync replicas to acknowledge the record.
+	ProducerAcks pulumi.StringPtrInput `pulumi:"producerAcks"`
+	// Wait for up to the given delay to allow batching records together
+	ProducerLingerMs pulumi.StringPtrInput `pulumi:"producerLingerMs"`
+	// Maximum number of SimpleConsumers that can be
+	// instantiated per broker.
 	SimpleconsumerPoolSizeMax pulumi.StringPtrInput `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -8568,26 +9863,39 @@ func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ToKafkaKafkaUserConfigKafkaRe
 		return &v
 	}).(KafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
+
+// If true the consumer's offset will be periodically
+// committed to Kafka in the background
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerEnableAutoCommit }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of bytes in unencoded message keys and
+// values by a single request
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// The maximum total time to wait for messages for a
+// request if the maximum number of messages has not yet been reached
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The number of acknowledgments the producer requires the leader to
+// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+// for the full set of in-sync replicas to acknowledge the record.
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
 }
 
+// Wait for up to the given delay to allow batching records together
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.ProducerLingerMs }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of SimpleConsumers that can be
+// instantiated per broker.
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.SimpleconsumerPoolSizeMax }).(pulumi.StringPtrOutput)
 }
@@ -8610,6 +9918,8 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) Elem() KafkaKafkaUserConfi
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) KafkaKafkaUserConfigKafkaRestConfig { return *v }).(KafkaKafkaUserConfigKafkaRestConfigOutput)
 }
 
+// If true the consumer's offset will be periodically
+// committed to Kafka in the background
 func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -8619,6 +9929,8 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of bytes in unencoded message keys and
+// values by a single request
 func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -8628,6 +9940,8 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum total time to wait for messages for a
+// request if the maximum number of messages has not yet been reached
 func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -8637,6 +9951,9 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs()
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of acknowledgments the producer requires the leader to
+// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+// for the full set of in-sync replicas to acknowledge the record.
 func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -8646,6 +9963,7 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Wait for up to the given delay to allow batching records together
 func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -8655,6 +9973,8 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of SimpleConsumers that can be
+// instantiated per broker.
 func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -8665,6 +9985,8 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax(
 }
 
 type KafkaKafkaUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -8680,6 +10002,8 @@ type KafkaKafkaUserConfigPrivateAccessInput interface {
 }
 
 type KafkaKafkaUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -8759,6 +10083,9 @@ func (o KafkaKafkaUserConfigPrivateAccessOutput) ToKafkaKafkaUserConfigPrivateAc
 		return &v
 	}).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -8781,6 +10108,8 @@ func (o KafkaKafkaUserConfigPrivateAccessPtrOutput) Elem() KafkaKafkaUserConfigP
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivateAccess) KafkaKafkaUserConfigPrivateAccess { return *v }).(KafkaKafkaUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -8791,10 +10120,19 @@ func (o KafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 }
 
 type KafkaKafkaUserConfigPublicAccess struct {
-	Kafka          *string `pulumi:"kafka"`
-	KafkaConnect   *string `pulumi:"kafkaConnect"`
-	KafkaRest      *string `pulumi:"kafkaRest"`
-	Prometheus     *string `pulumi:"prometheus"`
+	// Allow clients to connect to kafka from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Kafka *string `pulumi:"kafka"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect *string `pulumi:"kafkaConnect"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest *string `pulumi:"kafkaRest"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Prometheus *string `pulumi:"prometheus"`
+	// Enable Schema-Registry service
 	SchemaRegistry *string `pulumi:"schemaRegistry"`
 }
 
@@ -8810,10 +10148,19 @@ type KafkaKafkaUserConfigPublicAccessInput interface {
 }
 
 type KafkaKafkaUserConfigPublicAccessArgs struct {
-	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
-	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
-	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
-	Prometheus     pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to kafka from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Kafka pulumi.StringPtrInput `pulumi:"kafka"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Enable Schema-Registry service
 	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
 }
 
@@ -8893,22 +10240,32 @@ func (o KafkaKafkaUserConfigPublicAccessOutput) ToKafkaKafkaUserConfigPublicAcce
 		return &v
 	}).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to kafka from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaRest from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigPublicAccessOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
@@ -8931,6 +10288,8 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Elem() KafkaKafkaUserConfigPu
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) KafkaKafkaUserConfigPublicAccess { return *v }).(KafkaKafkaUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to kafka from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -8940,6 +10299,8 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -8949,6 +10310,8 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaRest from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -8958,6 +10321,8 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -8967,6 +10332,7 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -9219,7 +10585,9 @@ func (o KafkaMirrorMakerKafkaMirrormakerPtrOutput) Elem() KafkaMirrorMakerKafkaM
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfig struct {
-	IpFilters        []string                                                    `pulumi:"ipFilters"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka MirrorMaker configuration values
 	KafkaMirrormaker *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
 }
 
@@ -9235,7 +10603,9 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
-	IpFilters        pulumi.StringArrayInput                                            `pulumi:"ipFilters"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka MirrorMaker configuration values
 	KafkaMirrormaker KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
 }
 
@@ -9315,10 +10685,13 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ToKafkaMirrorMakerKafk
 		return &v
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput)
 }
+
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka MirrorMaker configuration values
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
@@ -9345,6 +10718,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) Elem() KafkaMirrorM
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) []string {
 		if v == nil {
@@ -9354,6 +10728,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+// Kafka MirrorMaker configuration values
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		if v == nil {
@@ -9364,9 +10739,15 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() 
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	RefreshGroupsEnabled         *string `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new consumer groups.
+	// Defaults to 'true'.
+	RefreshGroupsEnabled *string `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new topics and
+	// partitions. Defaults to 'true'.
 	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
 	RefreshTopicsEnabled         *string `pulumi:"refreshTopicsEnabled"`
+	// Frequency of topic and partitions refresh in
+	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
 }
 
@@ -9382,9 +10763,15 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	RefreshGroupsEnabled         pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new consumer groups.
+	// Defaults to 'true'.
+	RefreshGroupsEnabled pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new topics and
+	// partitions. Defaults to 'true'.
 	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
 	RefreshTopicsEnabled         pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
+	// Frequency of topic and partitions refresh in
+	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
 }
 
@@ -9464,12 +10851,17 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToKafk
 		return &v
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
+
+// Whether to periodically check for new consumer groups.
+// Defaults to 'true'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshGroupsEnabled
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically check for new topics and
+// partitions. Defaults to 'true'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshGroupsIntervalSeconds
@@ -9482,6 +10874,8 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Refres
 	}).(pulumi.StringPtrOutput)
 }
 
+// Frequency of topic and partitions refresh in
+// seconds. Defaults to 600 seconds (10 minutes).
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshTopicsIntervalSeconds
@@ -9508,6 +10902,8 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ele
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
 }
 
+// Whether to periodically check for new consumer groups.
+// Defaults to 'true'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -9517,6 +10913,8 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ref
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically check for new topics and
+// partitions. Defaults to 'true'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -9535,6 +10933,8 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ref
 	}).(pulumi.StringPtrOutput)
 }
 
+// Frequency of topic and partitions refresh in
+// seconds. Defaults to 600 seconds (10 minutes).
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -9987,17 +11387,35 @@ func (o MySqlMysqlPtrOutput) Elem() MySqlMysqlOutput {
 }
 
 type MySqlMysqlUserConfig struct {
-	AdminPassword      *string                            `pulumi:"adminPassword"`
-	AdminUsername      *string                            `pulumi:"adminUsername"`
-	BackupHour         *string                            `pulumi:"backupHour"`
-	BackupMinute       *string                            `pulumi:"backupMinute"`
-	IpFilters          []string                           `pulumi:"ipFilters"`
-	Mysql              *MySqlMysqlUserConfigMysql         `pulumi:"mysql"`
-	MysqlVersion       *string                            `pulumi:"mysqlVersion"`
-	PrivateAccess      *MySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess       *MySqlMysqlUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime *string                            `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  *string                            `pulumi:"serviceToForkFrom"`
+	// Custom password for admin user. Defaults to random string.
+	// This must be set only when a new service is being created.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a
+	// new service is being created.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupHour *string `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupMinute *string `pulumi:"backupMinute"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysql *MySqlMysqlUserConfigMysql `pulumi:"mysql"`
+	// MySQL major version
+	MysqlVersion *string `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *MySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *MySqlMysqlUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when
+	// a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // MySqlMysqlUserConfigInput is an input type that accepts MySqlMysqlUserConfigArgs and MySqlMysqlUserConfigOutput values.
@@ -10012,17 +11430,35 @@ type MySqlMysqlUserConfigInput interface {
 }
 
 type MySqlMysqlUserConfigArgs struct {
-	AdminPassword      pulumi.StringPtrInput                     `pulumi:"adminPassword"`
-	AdminUsername      pulumi.StringPtrInput                     `pulumi:"adminUsername"`
-	BackupHour         pulumi.StringPtrInput                     `pulumi:"backupHour"`
-	BackupMinute       pulumi.StringPtrInput                     `pulumi:"backupMinute"`
-	IpFilters          pulumi.StringArrayInput                   `pulumi:"ipFilters"`
-	Mysql              MySqlMysqlUserConfigMysqlPtrInput         `pulumi:"mysql"`
-	MysqlVersion       pulumi.StringPtrInput                     `pulumi:"mysqlVersion"`
-	PrivateAccess      MySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess       MySqlMysqlUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime pulumi.StringPtrInput                     `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  pulumi.StringPtrInput                     `pulumi:"serviceToForkFrom"`
+	// Custom password for admin user. Defaults to random string.
+	// This must be set only when a new service is being created.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a
+	// new service is being created.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysql MySqlMysqlUserConfigMysqlPtrInput `pulumi:"mysql"`
+	// MySQL major version
+	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess MySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess MySqlMysqlUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when
+	// a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (MySqlMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -10101,46 +11537,65 @@ func (o MySqlMysqlUserConfigOutput) ToMySqlMysqlUserConfigPtrOutputWithContext(c
 		return &v
 	}).(MySqlMysqlUserConfigPtrOutput)
 }
+
+// Custom password for admin user. Defaults to random string.
+// This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// Custom username for admin user. This must be set only when a
+// new service is being created.
 func (o MySqlMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started.
+// New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
+// The minute of an hour when backup for the service is started.
+// New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 func (o MySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to mysql from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigMysql { return v.Mysql }).(MySqlMysqlUserConfigMysqlPtrOutput)
 }
 
+// MySQL major version
 func (o MySqlMysqlUserConfigOutput) MysqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.MysqlVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o MySqlMysqlUserConfigOutput) PrivateAccess() MySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o MySqlMysqlUserConfigOutput) PublicAccess() MySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPublicAccess { return v.PublicAccess }).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect
+// only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when
+// a new service is being created.
 func (o MySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -10163,6 +11618,8 @@ func (o MySqlMysqlUserConfigPtrOutput) Elem() MySqlMysqlUserConfigOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) MySqlMysqlUserConfig { return *v }).(MySqlMysqlUserConfigOutput)
 }
 
+// Custom password for admin user. Defaults to random string.
+// This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -10172,6 +11629,8 @@ func (o MySqlMysqlUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom username for admin user. This must be set only when a
+// new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -10181,6 +11640,8 @@ func (o MySqlMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started.
+// New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -10190,6 +11651,8 @@ func (o MySqlMysqlUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minute of an hour when backup for the service is started.
+// New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -10199,6 +11662,7 @@ func (o MySqlMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 func (o MySqlMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) []string {
 		if v == nil {
@@ -10208,6 +11672,8 @@ func (o MySqlMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to mysql from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPtrOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigMysql {
 		if v == nil {
@@ -10217,6 +11683,7 @@ func (o MySqlMysqlUserConfigPtrOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutpu
 	}).(MySqlMysqlUserConfigMysqlPtrOutput)
 }
 
+// MySQL major version
 func (o MySqlMysqlUserConfigPtrOutput) MysqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -10226,6 +11693,7 @@ func (o MySqlMysqlUserConfigPtrOutput) MysqlVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o MySqlMysqlUserConfigPtrOutput) PrivateAccess() MySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivateAccess {
 		if v == nil {
@@ -10235,6 +11703,7 @@ func (o MySqlMysqlUserConfigPtrOutput) PrivateAccess() MySqlMysqlUserConfigPriva
 	}).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o MySqlMysqlUserConfigPtrOutput) PublicAccess() MySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPublicAccess {
 		if v == nil {
@@ -10244,6 +11713,8 @@ func (o MySqlMysqlUserConfigPtrOutput) PublicAccess() MySqlMysqlUserConfigPublic
 	}).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect
+// only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -10253,6 +11724,8 @@ func (o MySqlMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when
+// a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -10263,27 +11736,72 @@ func (o MySqlMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 }
 
 type MySqlMysqlUserConfigMysql struct {
-	ConnectTimeout               *string `pulumi:"connectTimeout"`
-	DefaultTimeZone              *string `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            *string `pulumi:"groupConcatMaxLen"`
+	// The number of seconds that the mysqld server waits for a
+	// connect packet before responding with Bad handshake
+	ConnectTimeout *string `pulumi:"connectTimeout"`
+	// Default server time zone as an offset from UTC
+	// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
+	// The maximum permitted result length in bytes for
+	// the GROUP_CONCAT() function.
+	GroupConcatMaxLen *string `pulumi:"groupConcatMaxLen"`
+	// The time, in seconds, before cached
+	// statistics expire
 	InformationSchemaStatsExpiry *string `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         *string `pulumi:"innodbFtMinTokenSize"`
-	InnodbFtServerStopwordTable  *string `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        *string `pulumi:"innodbLockWaitTimeout"`
-	InnodbLogBufferSize          *string `pulumi:"innodbLogBufferSize"`
-	InnodbOnlineAlterLogMaxSize  *string `pulumi:"innodbOnlineAlterLogMaxSize"`
-	InnodbPrintAllDeadlocks      *string `pulumi:"innodbPrintAllDeadlocks"`
-	InnodbRollbackOnTimeout      *string `pulumi:"innodbRollbackOnTimeout"`
-	InteractiveTimeout           *string `pulumi:"interactiveTimeout"`
-	MaxAllowedPacket             *string `pulumi:"maxAllowedPacket"`
-	MaxHeapTableSize             *string `pulumi:"maxHeapTableSize"`
-	NetReadTimeout               *string `pulumi:"netReadTimeout"`
-	NetWriteTimeout              *string `pulumi:"netWriteTimeout"`
-	SortBufferSize               *string `pulumi:"sortBufferSize"`
-	SqlMode                      *string `pulumi:"sqlMode"`
-	SqlRequirePrimaryKey         *string `pulumi:"sqlRequirePrimaryKey"`
-	TmpTableSize                 *string `pulumi:"tmpTableSize"`
-	WaitTimeout                  *string `pulumi:"waitTimeout"`
+	// Minimum length of words that are stored in
+	// an InnoDB FULLTEXT index.
+	InnodbFtMinTokenSize *string `pulumi:"innodbFtMinTokenSize"`
+	// This option is used to specify your
+	// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+	InnodbFtServerStopwordTable *string `pulumi:"innodbFtServerStopwordTable"`
+	// The length of time in seconds an InnoDB
+	// transaction waits for a row lock before giving up.
+	InnodbLockWaitTimeout *string `pulumi:"innodbLockWaitTimeout"`
+	// The size in bytes of the buffer that InnoDB
+	// uses to write to the log files on disk.
+	InnodbLogBufferSize *string `pulumi:"innodbLogBufferSize"`
+	// The upper limit in bytes on the
+	// size of the temporary log files used during online DDL operations for InnoDB tables.
+	InnodbOnlineAlterLogMaxSize *string `pulumi:"innodbOnlineAlterLogMaxSize"`
+	// When enabled, information about all
+	// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+	InnodbPrintAllDeadlocks *string `pulumi:"innodbPrintAllDeadlocks"`
+	// When enabled a transaction timeout
+	// causes InnoDB to abort and roll back the entire transaction.
+	InnodbRollbackOnTimeout *string `pulumi:"innodbRollbackOnTimeout"`
+	// The number of seconds the server waits for
+	// activity on an interactive connection before closing it.
+	InteractiveTimeout *string `pulumi:"interactiveTimeout"`
+	// Size of the largest message in bytes that can
+	// be received by the server. Default is 67108864 (64M)
+	MaxAllowedPacket *string `pulumi:"maxAllowedPacket"`
+	// Limits the size of internal in-memory tables.
+	// Also set tmp_table_size. Default is 16777216 (16M)
+	MaxHeapTableSize *string `pulumi:"maxHeapTableSize"`
+	// The number of seconds to wait for more data from
+	// a connection before aborting the read.
+	NetReadTimeout *string `pulumi:"netReadTimeout"`
+	// The number of seconds to wait for a block to be
+	// written to a connection before aborting the write.
+	NetWriteTimeout *string `pulumi:"netWriteTimeout"`
+	// Sort buffer size in bytes for ORDER BY optimization.
+	// Default is 262144 (256K)
+	SortBufferSize *string `pulumi:"sortBufferSize"`
+	// Global SQL mode. Set to empty to use MySQL server defaults.
+	// When creating a new service and not setting this field Aiven default SQL mode (strict,
+	// SQL standard compliant) will be assigned.
+	SqlMode *string `pulumi:"sqlMode"`
+	// Require primary key to be defined for new
+	// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+	// to always have primary keys because various functionality may break if any large table
+	// is missing them.
+	SqlRequirePrimaryKey *string `pulumi:"sqlRequirePrimaryKey"`
+	// Limits the size of internal in-memory tables. Also set
+	// max_heap_table_size. Default is 16777216 (16M)
+	TmpTableSize *string `pulumi:"tmpTableSize"`
+	// The number of seconds the server waits for activity on
+	// a noninteractive connection before closing it.
+	WaitTimeout *string `pulumi:"waitTimeout"`
 }
 
 // MySqlMysqlUserConfigMysqlInput is an input type that accepts MySqlMysqlUserConfigMysqlArgs and MySqlMysqlUserConfigMysqlOutput values.
@@ -10298,27 +11816,72 @@ type MySqlMysqlUserConfigMysqlInput interface {
 }
 
 type MySqlMysqlUserConfigMysqlArgs struct {
-	ConnectTimeout               pulumi.StringPtrInput `pulumi:"connectTimeout"`
-	DefaultTimeZone              pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
+	// The number of seconds that the mysqld server waits for a
+	// connect packet before responding with Bad handshake
+	ConnectTimeout pulumi.StringPtrInput `pulumi:"connectTimeout"`
+	// Default server time zone as an offset from UTC
+	// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+	DefaultTimeZone pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
+	// The maximum permitted result length in bytes for
+	// the GROUP_CONCAT() function.
+	GroupConcatMaxLen pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
+	// The time, in seconds, before cached
+	// statistics expire
 	InformationSchemaStatsExpiry pulumi.StringPtrInput `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
-	InnodbFtServerStopwordTable  pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
-	InnodbLogBufferSize          pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
-	InnodbOnlineAlterLogMaxSize  pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
-	InnodbPrintAllDeadlocks      pulumi.StringPtrInput `pulumi:"innodbPrintAllDeadlocks"`
-	InnodbRollbackOnTimeout      pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
-	InteractiveTimeout           pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
-	MaxAllowedPacket             pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
-	MaxHeapTableSize             pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
-	NetReadTimeout               pulumi.StringPtrInput `pulumi:"netReadTimeout"`
-	NetWriteTimeout              pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
-	SortBufferSize               pulumi.StringPtrInput `pulumi:"sortBufferSize"`
-	SqlMode                      pulumi.StringPtrInput `pulumi:"sqlMode"`
-	SqlRequirePrimaryKey         pulumi.StringPtrInput `pulumi:"sqlRequirePrimaryKey"`
-	TmpTableSize                 pulumi.StringPtrInput `pulumi:"tmpTableSize"`
-	WaitTimeout                  pulumi.StringPtrInput `pulumi:"waitTimeout"`
+	// Minimum length of words that are stored in
+	// an InnoDB FULLTEXT index.
+	InnodbFtMinTokenSize pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
+	// This option is used to specify your
+	// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+	InnodbFtServerStopwordTable pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
+	// The length of time in seconds an InnoDB
+	// transaction waits for a row lock before giving up.
+	InnodbLockWaitTimeout pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
+	// The size in bytes of the buffer that InnoDB
+	// uses to write to the log files on disk.
+	InnodbLogBufferSize pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
+	// The upper limit in bytes on the
+	// size of the temporary log files used during online DDL operations for InnoDB tables.
+	InnodbOnlineAlterLogMaxSize pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
+	// When enabled, information about all
+	// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+	InnodbPrintAllDeadlocks pulumi.StringPtrInput `pulumi:"innodbPrintAllDeadlocks"`
+	// When enabled a transaction timeout
+	// causes InnoDB to abort and roll back the entire transaction.
+	InnodbRollbackOnTimeout pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
+	// The number of seconds the server waits for
+	// activity on an interactive connection before closing it.
+	InteractiveTimeout pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
+	// Size of the largest message in bytes that can
+	// be received by the server. Default is 67108864 (64M)
+	MaxAllowedPacket pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
+	// Limits the size of internal in-memory tables.
+	// Also set tmp_table_size. Default is 16777216 (16M)
+	MaxHeapTableSize pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
+	// The number of seconds to wait for more data from
+	// a connection before aborting the read.
+	NetReadTimeout pulumi.StringPtrInput `pulumi:"netReadTimeout"`
+	// The number of seconds to wait for a block to be
+	// written to a connection before aborting the write.
+	NetWriteTimeout pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
+	// Sort buffer size in bytes for ORDER BY optimization.
+	// Default is 262144 (256K)
+	SortBufferSize pulumi.StringPtrInput `pulumi:"sortBufferSize"`
+	// Global SQL mode. Set to empty to use MySQL server defaults.
+	// When creating a new service and not setting this field Aiven default SQL mode (strict,
+	// SQL standard compliant) will be assigned.
+	SqlMode pulumi.StringPtrInput `pulumi:"sqlMode"`
+	// Require primary key to be defined for new
+	// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+	// to always have primary keys because various functionality may break if any large table
+	// is missing them.
+	SqlRequirePrimaryKey pulumi.StringPtrInput `pulumi:"sqlRequirePrimaryKey"`
+	// Limits the size of internal in-memory tables. Also set
+	// max_heap_table_size. Default is 16777216 (16M)
+	TmpTableSize pulumi.StringPtrInput `pulumi:"tmpTableSize"`
+	// The number of seconds the server waits for activity on
+	// a noninteractive connection before closing it.
+	WaitTimeout pulumi.StringPtrInput `pulumi:"waitTimeout"`
 }
 
 func (MySqlMysqlUserConfigMysqlArgs) ElementType() reflect.Type {
@@ -10397,86 +11960,132 @@ func (o MySqlMysqlUserConfigMysqlOutput) ToMySqlMysqlUserConfigMysqlPtrOutputWit
 		return &v
 	}).(MySqlMysqlUserConfigMysqlPtrOutput)
 }
+
+// The number of seconds that the mysqld server waits for a
+// connect packet before responding with Bad handshake
 func (o MySqlMysqlUserConfigMysqlOutput) ConnectTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.ConnectTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Default server time zone as an offset from UTC
+// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
 func (o MySqlMysqlUserConfigMysqlOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
 }
 
+// The maximum permitted result length in bytes for
+// the GROUP_CONCAT() function.
 func (o MySqlMysqlUserConfigMysqlOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.GroupConcatMaxLen }).(pulumi.StringPtrOutput)
 }
 
+// The time, in seconds, before cached
+// statistics expire
 func (o MySqlMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InformationSchemaStatsExpiry }).(pulumi.StringPtrOutput)
 }
 
+// Minimum length of words that are stored in
+// an InnoDB FULLTEXT index.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbFtMinTokenSize }).(pulumi.StringPtrOutput)
 }
 
+// This option is used to specify your
+// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbFtServerStopwordTable }).(pulumi.StringPtrOutput)
 }
 
+// The length of time in seconds an InnoDB
+// transaction waits for a row lock before giving up.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbLockWaitTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The size in bytes of the buffer that InnoDB
+// uses to write to the log files on disk.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbLogBufferSize }).(pulumi.StringPtrOutput)
 }
 
+// The upper limit in bytes on the
+// size of the temporary log files used during online DDL operations for InnoDB tables.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.StringPtrOutput)
 }
 
+// When enabled, information about all
+// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbPrintAllDeadlocks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbPrintAllDeadlocks }).(pulumi.StringPtrOutput)
 }
 
+// When enabled a transaction timeout
+// causes InnoDB to abort and roll back the entire transaction.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for
+// activity on an interactive connection before closing it.
 func (o MySqlMysqlUserConfigMysqlOutput) InteractiveTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InteractiveTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Size of the largest message in bytes that can
+// be received by the server. Default is 67108864 (64M)
 func (o MySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.MaxAllowedPacket }).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables.
+// Also set tmp_table_size. Default is 16777216 (16M)
 func (o MySqlMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.MaxHeapTableSize }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for more data from
+// a connection before aborting the read.
 func (o MySqlMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.NetReadTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for a block to be
+// written to a connection before aborting the write.
 func (o MySqlMysqlUserConfigMysqlOutput) NetWriteTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.NetWriteTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Sort buffer size in bytes for ORDER BY optimization.
+// Default is 262144 (256K)
 func (o MySqlMysqlUserConfigMysqlOutput) SortBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.SortBufferSize }).(pulumi.StringPtrOutput)
 }
 
+// Global SQL mode. Set to empty to use MySQL server defaults.
+// When creating a new service and not setting this field Aiven default SQL mode (strict,
+// SQL standard compliant) will be assigned.
 func (o MySqlMysqlUserConfigMysqlOutput) SqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.SqlMode }).(pulumi.StringPtrOutput)
 }
 
+// Require primary key to be defined for new
+// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+// to always have primary keys because various functionality may break if any large table
+// is missing them.
 func (o MySqlMysqlUserConfigMysqlOutput) SqlRequirePrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.SqlRequirePrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables. Also set
+// max_heap_table_size. Default is 16777216 (16M)
 func (o MySqlMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.TmpTableSize }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for activity on
+// a noninteractive connection before closing it.
 func (o MySqlMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.WaitTimeout }).(pulumi.StringPtrOutput)
 }
@@ -10499,6 +12108,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) Elem() MySqlMysqlUserConfigMysqlOutp
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) MySqlMysqlUserConfigMysql { return *v }).(MySqlMysqlUserConfigMysqlOutput)
 }
 
+// The number of seconds that the mysqld server waits for a
+// connect packet before responding with Bad handshake
 func (o MySqlMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10508,6 +12119,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default server time zone as an offset from UTC
+// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10517,6 +12130,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum permitted result length in bytes for
+// the GROUP_CONCAT() function.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10526,6 +12141,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The time, in seconds, before cached
+// statistics expire
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10535,6 +12152,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum length of words that are stored in
+// an InnoDB FULLTEXT index.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10544,6 +12163,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// This option is used to specify your
+// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10553,6 +12174,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The length of time in seconds an InnoDB
+// transaction waits for a row lock before giving up.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10562,6 +12185,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The size in bytes of the buffer that InnoDB
+// uses to write to the log files on disk.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10571,6 +12196,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The upper limit in bytes on the
+// size of the temporary log files used during online DDL operations for InnoDB tables.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10580,6 +12207,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// When enabled, information about all
+// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbPrintAllDeadlocks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10589,6 +12218,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbPrintAllDeadlocks() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// When enabled a transaction timeout
+// causes InnoDB to abort and roll back the entire transaction.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10598,6 +12229,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for
+// activity on an interactive connection before closing it.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InteractiveTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10607,6 +12240,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InteractiveTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size of the largest message in bytes that can
+// be received by the server. Default is 67108864 (64M)
 func (o MySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10616,6 +12251,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables.
+// Also set tmp_table_size. Default is 16777216 (16M)
 func (o MySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10625,6 +12262,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for more data from
+// a connection before aborting the read.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10634,6 +12273,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for a block to be
+// written to a connection before aborting the write.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10643,6 +12284,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sort buffer size in bytes for ORDER BY optimization.
+// Default is 262144 (256K)
 func (o MySqlMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10652,6 +12295,9 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Global SQL mode. Set to empty to use MySQL server defaults.
+// When creating a new service and not setting this field Aiven default SQL mode (strict,
+// SQL standard compliant) will be assigned.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10661,6 +12307,10 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require primary key to be defined for new
+// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+// to always have primary keys because various functionality may break if any large table
+// is missing them.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10670,6 +12320,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables. Also set
+// max_heap_table_size. Default is 16777216 (16M)
 func (o MySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10679,6 +12331,8 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for activity on
+// a noninteractive connection before closing it.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -10689,7 +12343,11 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutput
 }
 
 type MySqlMysqlUserConfigPrivateAccess struct {
-	Mysql      *string `pulumi:"mysql"`
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysql *string `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -10705,7 +12363,11 @@ type MySqlMysqlUserConfigPrivateAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPrivateAccessArgs struct {
-	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -10785,10 +12447,15 @@ func (o MySqlMysqlUserConfigPrivateAccessOutput) ToMySqlMysqlUserConfigPrivateAc
 		return &v
 	}).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to mysql from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -10811,6 +12478,8 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Elem() MySqlMysqlUserConfigP
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivateAccess) MySqlMysqlUserConfigPrivateAccess { return *v }).(MySqlMysqlUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to mysql from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -10820,6 +12489,8 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -10830,7 +12501,11 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 }
 
 type MySqlMysqlUserConfigPublicAccess struct {
-	Mysql      *string `pulumi:"mysql"`
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysql *string `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -10846,7 +12521,11 @@ type MySqlMysqlUserConfigPublicAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPublicAccessArgs struct {
-	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to mysql from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -10926,10 +12605,15 @@ func (o MySqlMysqlUserConfigPublicAccessOutput) ToMySqlMysqlUserConfigPublicAcce
 		return &v
 	}).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to mysql from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -10952,6 +12636,8 @@ func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Elem() MySqlMysqlUserConfigPu
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPublicAccess) MySqlMysqlUserConfigPublicAccess { return *v }).(MySqlMysqlUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to mysql from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -10961,6 +12647,8 @@ func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -11071,13 +12759,16 @@ func (o MySqlServiceIntegrationArrayOutput) Index(i pulumi.IntInput) MySqlServic
 }
 
 type PgComponent struct {
-	Component                 *string `pulumi:"component"`
+	Component *string `pulumi:"component"`
+	// hostname or IP address of the server where to migrate data from.
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
-	Port                      *int    `pulumi:"port"`
-	Route                     *string `pulumi:"route"`
-	Ssl                       *bool   `pulumi:"ssl"`
-	Usage                     *string `pulumi:"usage"`
+	// port number of the server where to migrate data from.
+	Port  *int    `pulumi:"port"`
+	Route *string `pulumi:"route"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl   *bool   `pulumi:"ssl"`
+	Usage *string `pulumi:"usage"`
 }
 
 // PgComponentInput is an input type that accepts PgComponentArgs and PgComponentOutput values.
@@ -11092,13 +12783,16 @@ type PgComponentInput interface {
 }
 
 type PgComponentArgs struct {
-	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	Component pulumi.StringPtrInput `pulumi:"component"`
+	// hostname or IP address of the server where to migrate data from.
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
-	Port                      pulumi.IntPtrInput    `pulumi:"port"`
-	Route                     pulumi.StringPtrInput `pulumi:"route"`
-	Ssl                       pulumi.BoolPtrInput   `pulumi:"ssl"`
-	Usage                     pulumi.StringPtrInput `pulumi:"usage"`
+	// port number of the server where to migrate data from.
+	Port  pulumi.IntPtrInput    `pulumi:"port"`
+	Route pulumi.StringPtrInput `pulumi:"route"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl   pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Usage pulumi.StringPtrInput `pulumi:"usage"`
 }
 
 func (PgComponentArgs) ElementType() reflect.Type {
@@ -11156,6 +12850,7 @@ func (o PgComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
+// hostname or IP address of the server where to migrate data from.
 func (o PgComponentOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgComponent) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -11164,6 +12859,7 @@ func (o PgComponentOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgComponent) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
+// port number of the server where to migrate data from.
 func (o PgComponentOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PgComponent) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -11172,6 +12868,7 @@ func (o PgComponentOutput) Route() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgComponent) *string { return v.Route }).(pulumi.StringPtrOutput)
 }
 
+// the server where to migrate data from is secured with SSL.
 func (o PgComponentOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PgComponent) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
@@ -11201,14 +12898,22 @@ func (o PgComponentArrayOutput) Index(i pulumi.IntInput) PgComponentOutput {
 }
 
 type PgPg struct {
-	Dbname     *string `pulumi:"dbname"`
-	Host       *string `pulumi:"host"`
-	Password   *string `pulumi:"password"`
-	Port       *int    `pulumi:"port"`
+	// database name for bootstrapping the initial connection.
+	Dbname *string `pulumi:"dbname"`
+	// hostname or IP address of the server where to migrate data from.
+	Host *string `pulumi:"host"`
+	// password for authentication with the server where to migrate data from.
+	Password *string `pulumi:"password"`
+	// port number of the server where to migrate data from.
+	Port *int `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica
 	ReplicaUri *string `pulumi:"replicaUri"`
-	Sslmode    *string `pulumi:"sslmode"`
-	Uri        *string `pulumi:"uri"`
-	User       *string `pulumi:"user"`
+	// PostgreSQL sslmode setting (currently always `require`)
+	Sslmode *string `pulumi:"sslmode"`
+	// PostgreSQL master connection URI
+	Uri *string `pulumi:"uri"`
+	// PostgreSQL admin user name
+	User *string `pulumi:"user"`
 }
 
 // PgPgInput is an input type that accepts PgPgArgs and PgPgOutput values.
@@ -11223,14 +12928,22 @@ type PgPgInput interface {
 }
 
 type PgPgArgs struct {
-	Dbname     pulumi.StringPtrInput `pulumi:"dbname"`
-	Host       pulumi.StringPtrInput `pulumi:"host"`
-	Password   pulumi.StringPtrInput `pulumi:"password"`
-	Port       pulumi.IntPtrInput    `pulumi:"port"`
+	// database name for bootstrapping the initial connection.
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// hostname or IP address of the server where to migrate data from.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// password for authentication with the server where to migrate data from.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// port number of the server where to migrate data from.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica
 	ReplicaUri pulumi.StringPtrInput `pulumi:"replicaUri"`
-	Sslmode    pulumi.StringPtrInput `pulumi:"sslmode"`
-	Uri        pulumi.StringPtrInput `pulumi:"uri"`
-	User       pulumi.StringPtrInput `pulumi:"user"`
+	// PostgreSQL sslmode setting (currently always `require`)
+	Sslmode pulumi.StringPtrInput `pulumi:"sslmode"`
+	// PostgreSQL master connection URI
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// PostgreSQL admin user name
+	User pulumi.StringPtrInput `pulumi:"user"`
 }
 
 func (PgPgArgs) ElementType() reflect.Type {
@@ -11309,34 +13022,43 @@ func (o PgPgOutput) ToPgPgPtrOutputWithContext(ctx context.Context) PgPgPtrOutpu
 		return &v
 	}).(PgPgPtrOutput)
 }
+
+// database name for bootstrapping the initial connection.
 func (o PgPgOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
+// hostname or IP address of the server where to migrate data from.
 func (o PgPgOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// password for authentication with the server where to migrate data from.
 func (o PgPgOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// port number of the server where to migrate data from.
 func (o PgPgOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PgPg) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// PostgreSQL replica URI for services with a replica
 func (o PgPgOutput) ReplicaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.ReplicaUri }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL sslmode setting (currently always `require`)
 func (o PgPgOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Sslmode }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master connection URI
 func (o PgPgOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL admin user name
 func (o PgPgOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.User }).(pulumi.StringPtrOutput)
 }
@@ -11359,6 +13081,7 @@ func (o PgPgPtrOutput) Elem() PgPgOutput {
 	return o.ApplyT(func(v *PgPg) PgPg { return *v }).(PgPgOutput)
 }
 
+// database name for bootstrapping the initial connection.
 func (o PgPgPtrOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -11368,6 +13091,7 @@ func (o PgPgPtrOutput) Dbname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// hostname or IP address of the server where to migrate data from.
 func (o PgPgPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -11377,6 +13101,7 @@ func (o PgPgPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// password for authentication with the server where to migrate data from.
 func (o PgPgPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -11386,6 +13111,7 @@ func (o PgPgPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// port number of the server where to migrate data from.
 func (o PgPgPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PgPg) *int {
 		if v == nil {
@@ -11395,6 +13121,7 @@ func (o PgPgPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// PostgreSQL replica URI for services with a replica
 func (o PgPgPtrOutput) ReplicaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -11404,6 +13131,7 @@ func (o PgPgPtrOutput) ReplicaUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL sslmode setting (currently always `require`)
 func (o PgPgPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -11413,6 +13141,7 @@ func (o PgPgPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master connection URI
 func (o PgPgPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -11422,6 +13151,7 @@ func (o PgPgPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL admin user name
 func (o PgPgPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -11432,27 +13162,63 @@ func (o PgPgPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 type PgPgUserConfig struct {
-	AdminPassword           *string                      `pulumi:"adminPassword"`
-	AdminUsername           *string                      `pulumi:"adminUsername"`
-	BackupHour              *string                      `pulumi:"backupHour"`
-	BackupMinute            *string                      `pulumi:"backupMinute"`
-	IpFilters               []string                     `pulumi:"ipFilters"`
-	Migration               *PgPgUserConfigMigration     `pulumi:"migration"`
-	Pg                      *PgPgUserConfigPg            `pulumi:"pg"`
-	PgReadReplica           *string                      `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     *string                      `pulumi:"pgServiceToForkFrom"`
-	PgVersion               *string                      `pulumi:"pgVersion"`
-	Pgbouncer               *PgPgUserConfigPgbouncer     `pulumi:"pgbouncer"`
-	Pglookout               *PgPgUserConfigPglookout     `pulumi:"pglookout"`
-	PrivateAccess           *PgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess            *PgPgUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime      *string                      `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       *string                      `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage *string                      `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  *string                      `pulumi:"synchronousReplication"`
-	Timescaledb             *PgPgUserConfigTimescaledb   `pulumi:"timescaledb"`
-	Variant                 *string                      `pulumi:"variant"`
-	WorkMem                 *string                      `pulumi:"workMem"`
+	// custom password for admin user. Defaults to random string. *This must
+	// be set only when a new service is being created.*
+	AdminPassword *string `pulumi:"adminPassword"`
+	// custom username for admin user. *This must be set only when a new service
+	// is being created.*
+	AdminUsername *string `pulumi:"adminUsername"`
+	// the hour of day (in UTC) when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupHour *string `pulumi:"backupHour"`
+	// the minute of an hour when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupMinute *string `pulumi:"backupMinute"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// migrate data from existing server, has the following options:
+	Migration *PgPgUserConfigMigration `pulumi:"migration"`
+	// Allow clients to connect to pg from the public internet for service nodes
+	// that are in a project VPC or another type of private network
+	Pg *PgPgUserConfigPg `pulumi:"pg"`
+	// This setting is deprecated. Use read-replica service integration instead.
+	PgReadReplica *string `pulumi:"pgReadReplica"`
+	// Name of the PG Service from which to fork (deprecated, use service_to_fork_from).
+	// This has effect only when a new service is being created.
+	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
+	// PostgreSQL major version.
+	PgVersion *string `pulumi:"pgVersion"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer *PgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
+	// PGLookout settings.
+	Pglookout *PgPgUserConfigPglookout `pulumi:"pglookout"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *PgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *PgPgUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Percentage of total RAM that the database server uses for
+	// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+	// the sharedBuffers configuration value. The absolute maximum is 12 GB.
+	SharedBuffersPercentage *string `pulumi:"sharedBuffersPercentage"`
+	// Synchronous replication type. Note that the service plan
+	// also needs to support synchronous replication.
+	SynchronousReplication *string `pulumi:"synchronousReplication"`
+	// TimescaleDB extension configuration values.
+	Timescaledb *PgPgUserConfigTimescaledb `pulumi:"timescaledb"`
+	// Variant of the PostgreSQL service, may affect the features that are
+	// exposed by default. Options: `aiven` or `timescale`.
+	Variant *string `pulumi:"variant"`
+	// Sets the maximum amount of memory to be used by a query operation (such
+	// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+	// total RAM (up to 32MB).
+	WorkMem *string `pulumi:"workMem"`
 }
 
 // PgPgUserConfigInput is an input type that accepts PgPgUserConfigArgs and PgPgUserConfigOutput values.
@@ -11467,27 +13233,63 @@ type PgPgUserConfigInput interface {
 }
 
 type PgPgUserConfigArgs struct {
-	AdminPassword           pulumi.StringPtrInput               `pulumi:"adminPassword"`
-	AdminUsername           pulumi.StringPtrInput               `pulumi:"adminUsername"`
-	BackupHour              pulumi.StringPtrInput               `pulumi:"backupHour"`
-	BackupMinute            pulumi.StringPtrInput               `pulumi:"backupMinute"`
-	IpFilters               pulumi.StringArrayInput             `pulumi:"ipFilters"`
-	Migration               PgPgUserConfigMigrationPtrInput     `pulumi:"migration"`
-	Pg                      PgPgUserConfigPgPtrInput            `pulumi:"pg"`
-	PgReadReplica           pulumi.StringPtrInput               `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     pulumi.StringPtrInput               `pulumi:"pgServiceToForkFrom"`
-	PgVersion               pulumi.StringPtrInput               `pulumi:"pgVersion"`
-	Pgbouncer               PgPgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
-	Pglookout               PgPgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
-	PrivateAccess           PgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess            PgPgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime      pulumi.StringPtrInput               `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       pulumi.StringPtrInput               `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage pulumi.StringPtrInput               `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  pulumi.StringPtrInput               `pulumi:"synchronousReplication"`
-	Timescaledb             PgPgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
-	Variant                 pulumi.StringPtrInput               `pulumi:"variant"`
-	WorkMem                 pulumi.StringPtrInput               `pulumi:"workMem"`
+	// custom password for admin user. Defaults to random string. *This must
+	// be set only when a new service is being created.*
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// custom username for admin user. *This must be set only when a new service
+	// is being created.*
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// the hour of day (in UTC) when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
+	// the minute of an hour when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// migrate data from existing server, has the following options:
+	Migration PgPgUserConfigMigrationPtrInput `pulumi:"migration"`
+	// Allow clients to connect to pg from the public internet for service nodes
+	// that are in a project VPC or another type of private network
+	Pg PgPgUserConfigPgPtrInput `pulumi:"pg"`
+	// This setting is deprecated. Use read-replica service integration instead.
+	PgReadReplica pulumi.StringPtrInput `pulumi:"pgReadReplica"`
+	// Name of the PG Service from which to fork (deprecated, use service_to_fork_from).
+	// This has effect only when a new service is being created.
+	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
+	// PostgreSQL major version.
+	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer PgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
+	// PGLookout settings.
+	Pglookout PgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess PgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess PgPgUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Percentage of total RAM that the database server uses for
+	// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+	// the sharedBuffers configuration value. The absolute maximum is 12 GB.
+	SharedBuffersPercentage pulumi.StringPtrInput `pulumi:"sharedBuffersPercentage"`
+	// Synchronous replication type. Note that the service plan
+	// also needs to support synchronous replication.
+	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
+	// TimescaleDB extension configuration values.
+	Timescaledb PgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
+	// Variant of the PostgreSQL service, may affect the features that are
+	// exposed by default. Options: `aiven` or `timescale`.
+	Variant pulumi.StringPtrInput `pulumi:"variant"`
+	// Sets the maximum amount of memory to be used by a query operation (such
+	// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+	// total RAM (up to 32MB).
+	WorkMem pulumi.StringPtrInput `pulumi:"workMem"`
 }
 
 func (PgPgUserConfigArgs) ElementType() reflect.Type {
@@ -11566,86 +13368,123 @@ func (o PgPgUserConfigOutput) ToPgPgUserConfigPtrOutputWithContext(ctx context.C
 		return &v
 	}).(PgPgUserConfigPtrOutput)
 }
+
+// custom password for admin user. Defaults to random string. *This must
+// be set only when a new service is being created.*
 func (o PgPgUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// custom username for admin user. *This must be set only when a new service
+// is being created.*
 func (o PgPgUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// the hour of day (in UTC) when backup for the service is started. New backup
+// is only started if previous backup has already completed.
 func (o PgPgUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
+// the minute of an hour when backup for the service is started. New backup
+// is only started if previous backup has already completed.
 func (o PgPgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o PgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// migrate data from existing server, has the following options:
 func (o PgPgUserConfigOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigMigration { return v.Migration }).(PgPgUserConfigMigrationPtrOutput)
 }
 
+// Allow clients to connect to pg from the public internet for service nodes
+// that are in a project VPC or another type of private network
 func (o PgPgUserConfigOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPg { return v.Pg }).(PgPgUserConfigPgPtrOutput)
 }
 
+// This setting is deprecated. Use read-replica service integration instead.
 func (o PgPgUserConfigOutput) PgReadReplica() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgReadReplica }).(pulumi.StringPtrOutput)
 }
 
+// Name of the PG Service from which to fork (deprecated, use service_to_fork_from).
+// This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL major version.
 func (o PgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPgbouncer { return v.Pgbouncer }).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
+// PGLookout settings.
 func (o PgPgUserConfigOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPglookout { return v.Pglookout }).(PgPgUserConfigPglookoutPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o PgPgUserConfigOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivateAccess { return v.PrivateAccess }).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o PgPgUserConfigOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPublicAccess { return v.PublicAccess }).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect
+// only when a new service is being created.
 func (o PgPgUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o PgPgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Percentage of total RAM that the database server uses for
+// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+// the sharedBuffers configuration value. The absolute maximum is 12 GB.
 func (o PgPgUserConfigOutput) SharedBuffersPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.SharedBuffersPercentage }).(pulumi.StringPtrOutput)
 }
 
+// Synchronous replication type. Note that the service plan
+// also needs to support synchronous replication.
 func (o PgPgUserConfigOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.SynchronousReplication }).(pulumi.StringPtrOutput)
 }
 
+// TimescaleDB extension configuration values.
 func (o PgPgUserConfigOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigTimescaledb { return v.Timescaledb }).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
+// Variant of the PostgreSQL service, may affect the features that are
+// exposed by default. Options: `aiven` or `timescale`.
 func (o PgPgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum amount of memory to be used by a query operation (such
+// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+// total RAM (up to 32MB).
 func (o PgPgUserConfigOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.WorkMem }).(pulumi.StringPtrOutput)
 }
@@ -11668,6 +13507,8 @@ func (o PgPgUserConfigPtrOutput) Elem() PgPgUserConfigOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) PgPgUserConfig { return *v }).(PgPgUserConfigOutput)
 }
 
+// custom password for admin user. Defaults to random string. *This must
+// be set only when a new service is being created.*
 func (o PgPgUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11677,6 +13518,8 @@ func (o PgPgUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// custom username for admin user. *This must be set only when a new service
+// is being created.*
 func (o PgPgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11686,6 +13529,8 @@ func (o PgPgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the hour of day (in UTC) when backup for the service is started. New backup
+// is only started if previous backup has already completed.
 func (o PgPgUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11695,6 +13540,8 @@ func (o PgPgUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the minute of an hour when backup for the service is started. New backup
+// is only started if previous backup has already completed.
 func (o PgPgUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11704,6 +13551,7 @@ func (o PgPgUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) []string {
 		if v == nil {
@@ -11713,6 +13561,7 @@ func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// migrate data from existing server, has the following options:
 func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigMigration {
 		if v == nil {
@@ -11722,6 +13571,8 @@ func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	}).(PgPgUserConfigMigrationPtrOutput)
 }
 
+// Allow clients to connect to pg from the public internet for service nodes
+// that are in a project VPC or another type of private network
 func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPg {
 		if v == nil {
@@ -11731,6 +13582,7 @@ func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	}).(PgPgUserConfigPgPtrOutput)
 }
 
+// This setting is deprecated. Use read-replica service integration instead.
 func (o PgPgUserConfigPtrOutput) PgReadReplica() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11740,6 +13592,8 @@ func (o PgPgUserConfigPtrOutput) PgReadReplica() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the PG Service from which to fork (deprecated, use service_to_fork_from).
+// This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11749,6 +13603,7 @@ func (o PgPgUserConfigPtrOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL major version.
 func (o PgPgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11758,6 +13613,8 @@ func (o PgPgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPgbouncer {
 		if v == nil {
@@ -11767,6 +13624,7 @@ func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	}).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
+// PGLookout settings.
 func (o PgPgUserConfigPtrOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPglookout {
 		if v == nil {
@@ -11776,6 +13634,7 @@ func (o PgPgUserConfigPtrOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	}).(PgPgUserConfigPglookoutPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPrivateAccess {
 		if v == nil {
@@ -11785,6 +13644,7 @@ func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrO
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o PgPgUserConfigPtrOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPublicAccess {
 		if v == nil {
@@ -11794,6 +13654,8 @@ func (o PgPgUserConfigPtrOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOut
 	}).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect
+// only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11803,6 +13665,8 @@ func (o PgPgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o PgPgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11812,6 +13676,9 @@ func (o PgPgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage of total RAM that the database server uses for
+// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+// the sharedBuffers configuration value. The absolute maximum is 12 GB.
 func (o PgPgUserConfigPtrOutput) SharedBuffersPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11821,6 +13688,8 @@ func (o PgPgUserConfigPtrOutput) SharedBuffersPercentage() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Synchronous replication type. Note that the service plan
+// also needs to support synchronous replication.
 func (o PgPgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11830,6 +13699,7 @@ func (o PgPgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// TimescaleDB extension configuration values.
 func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigTimescaledb {
 		if v == nil {
@@ -11839,6 +13709,8 @@ func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutpu
 	}).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
+// Variant of the PostgreSQL service, may affect the features that are
+// exposed by default. Options: `aiven` or `timescale`.
 func (o PgPgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11848,6 +13720,9 @@ func (o PgPgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum amount of memory to be used by a query operation (such
+// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+// total RAM (up to 32MB).
 func (o PgPgUserConfigPtrOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -11858,11 +13733,17 @@ func (o PgPgUserConfigPtrOutput) WorkMem() pulumi.StringPtrOutput {
 }
 
 type PgPgUserConfigMigration struct {
-	Dbname   *string `pulumi:"dbname"`
-	Host     *string `pulumi:"host"`
+	// database name for bootstrapping the initial connection.
+	Dbname *string `pulumi:"dbname"`
+	// hostname or IP address of the server where to migrate data from.
+	Host *string `pulumi:"host"`
+	// password for authentication with the server where to migrate data from.
 	Password *string `pulumi:"password"`
-	Port     *string `pulumi:"port"`
-	Ssl      *string `pulumi:"ssl"`
+	// port number of the server where to migrate data from.
+	Port *string `pulumi:"port"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl *string `pulumi:"ssl"`
+	// user name for authentication with the server where to migrate data from.
 	Username *string `pulumi:"username"`
 }
 
@@ -11878,11 +13759,17 @@ type PgPgUserConfigMigrationInput interface {
 }
 
 type PgPgUserConfigMigrationArgs struct {
-	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
-	Host     pulumi.StringPtrInput `pulumi:"host"`
+	// database name for bootstrapping the initial connection.
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// hostname or IP address of the server where to migrate data from.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// password for authentication with the server where to migrate data from.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.StringPtrInput `pulumi:"port"`
-	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	// port number of the server where to migrate data from.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
+	// user name for authentication with the server where to migrate data from.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -11962,26 +13849,33 @@ func (o PgPgUserConfigMigrationOutput) ToPgPgUserConfigMigrationPtrOutputWithCon
 		return &v
 	}).(PgPgUserConfigMigrationPtrOutput)
 }
+
+// database name for bootstrapping the initial connection.
 func (o PgPgUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
+// hostname or IP address of the server where to migrate data from.
 func (o PgPgUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// password for authentication with the server where to migrate data from.
 func (o PgPgUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// port number of the server where to migrate data from.
 func (o PgPgUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// the server where to migrate data from is secured with SSL.
 func (o PgPgUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+// user name for authentication with the server where to migrate data from.
 func (o PgPgUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -12004,6 +13898,7 @@ func (o PgPgUserConfigMigrationPtrOutput) Elem() PgPgUserConfigMigrationOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) PgPgUserConfigMigration { return *v }).(PgPgUserConfigMigrationOutput)
 }
 
+// database name for bootstrapping the initial connection.
 func (o PgPgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
 		if v == nil {
@@ -12013,6 +13908,7 @@ func (o PgPgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// hostname or IP address of the server where to migrate data from.
 func (o PgPgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
 		if v == nil {
@@ -12022,6 +13918,7 @@ func (o PgPgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// password for authentication with the server where to migrate data from.
 func (o PgPgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
 		if v == nil {
@@ -12031,6 +13928,7 @@ func (o PgPgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// port number of the server where to migrate data from.
 func (o PgPgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
 		if v == nil {
@@ -12040,6 +13938,7 @@ func (o PgPgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the server where to migrate data from is secured with SSL.
 func (o PgPgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
 		if v == nil {
@@ -12049,6 +13948,7 @@ func (o PgPgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// user name for authentication with the server where to migrate data from.
 func (o PgPgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
 		if v == nil {
@@ -12059,40 +13959,105 @@ func (o PgPgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type PgPgUserConfigPg struct {
-	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumFreezeMaxAge          *string `pulumi:"autovacuumFreezeMaxAge"`
-	AutovacuumMaxWorkers            *string `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               *string `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       *string `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       *string `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     *string `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       *string `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 *string `pulumi:"deadlockTimeout"`
+	// Specifies a fraction of the table size to add to
+	// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+	// (20% of table size).
+	AutovacuumAnalyzeScaleFactor *string `pulumi:"autovacuumAnalyzeScaleFactor"`
+	// specifies the minimum number of inserted, updated
+	// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	AutovacuumAnalyzeThreshold *string `pulumi:"autovacuumAnalyzeThreshold"`
+	// specifies the maximum age (in transactions) that a table's
+	// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+	// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+	// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+	AutovacuumFreezeMaxAge *string `pulumi:"autovacuumFreezeMaxAge"`
+	// specifies the maximum number of autovacuum processes (other
+	// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+	// can only be set at server start.
+	AutovacuumMaxWorkers *string `pulumi:"autovacuumMaxWorkers"`
+	// specifies the minimum delay between autovacuum runs on any
+	// given database. The delay is measured in seconds, and the default is one minute.
+	AutovacuumNaptime *string `pulumi:"autovacuumNaptime"`
+	// specifies the cost delay value that will be used
+	// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+	// used. The default value is 20 milliseconds.
+	AutovacuumVacuumCostDelay *string `pulumi:"autovacuumVacuumCostDelay"`
+	// specifies the cost limit value that will be used in
+	// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+	// value will be used.
+	AutovacuumVacuumCostLimit *string `pulumi:"autovacuumVacuumCostLimit"`
+	// specifies a fraction of the table size to add to
+	// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	AutovacuumVacuumScaleFactor *string `pulumi:"autovacuumVacuumScaleFactor"`
+	// specifies the minimum number of updated or deleted tuples
+	// needed to trigger a VACUUM in any one table. The default is 50 tuples
+	AutovacuumVacuumThreshold *string `pulumi:"autovacuumVacuumThreshold"`
+	// this is the amount of time, in milliseconds, to wait on a lock before
+	// checking to see if there is a deadlock condition.
+	DeadlockTimeout *string `pulumi:"deadlockTimeout"`
+	// Time out sessions with open transactions after
+	// this number of milliseconds.
 	IdleInTransactionSessionTimeout *string `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             *string `pulumi:"jit"`
-	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              *string `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     *string `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      *string `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         *string `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   *string `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
-	PgStatStatementsDotTrack        *string `pulumi:"pgStatStatementsDotTrack"`
-	TempFileLimit                   *string `pulumi:"tempFileLimit"`
-	Timezone                        *string `pulumi:"timezone"`
-	TrackActivityQuerySize          *string `pulumi:"trackActivityQuerySize"`
-	TrackCommitTimestamp            *string `pulumi:"trackCommitTimestamp"`
-	TrackFunctions                  *string `pulumi:"trackFunctions"`
-	WalSenderTimeout                *string `pulumi:"walSenderTimeout"`
-	WalWriterDelay                  *string `pulumi:"walWriterDelay"`
+	// Controls system-wide use of Just-in-Time Compilation (JIT).
+	Jit *string `pulumi:"jit"`
+	// Causes each action executed by autovacuum to be logged
+	// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+	// actions. Minus-one (the default) disables logging autovacuum actions.
+	LogAutovacuumMinDuration *string `pulumi:"logAutovacuumMinDuration"`
+	// Controls the amount of detail written in the server log for
+	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+	LogErrorVerbosity *string `pulumi:"logErrorVerbosity"`
+	// Log statements that take more than this number of
+	// milliseconds to run, -1 disables
+	LogMinDurationStatement *string `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum locks per transaction
+	MaxLocksPerTransaction *string `pulumi:"maxLocksPerTransaction"`
+	// Sets the maximum number of workers that the system can
+	// support for parallel queries.
+	MaxParallelWorkers *string `pulumi:"maxParallelWorkers"`
+	// Sets the maximum number of workers that can be
+	// started by a single Gather or Gather Merge node.
+	MaxParallelWorkersPerGather *string `pulumi:"maxParallelWorkersPerGather"`
+	// PostgreSQL maximum predicate locks per transaction
+	MaxPredLocksPerTransaction *string `pulumi:"maxPredLocksPerTransaction"`
+	// PostgreSQL maximum prepared transactions
+	MaxPreparedTransactions *string `pulumi:"maxPreparedTransactions"`
+	// Maximum depth of the stack in bytes
+	MaxStackDepth *string `pulumi:"maxStackDepth"`
+	// Max standby archive delay in milliseconds
+	MaxStandbyArchiveDelay *string `pulumi:"maxStandbyArchiveDelay"`
+	// Max standby streaming delay in milliseconds
+	MaxStandbyStreamingDelay *string `pulumi:"maxStandbyStreamingDelay"`
+	// Sets the maximum number of background processes that the system
+	// can support
+	// * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+	// * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+	//   background tasks.
+	// * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+	//   to track top-level statements (those issued directly by clients), all to also track nested
+	//   statements (such as statements invoked within functions), or none to disable statement statistics
+	//   collection. The default value is top.
+	MaxWorkerProcesses       *string `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval  *string `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole      *string `pulumi:"pgPartmanBgwDotRole"`
+	PgStatStatementsDotTrack *string `pulumi:"pgStatStatementsDotTrack"`
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited
+	TempFileLimit *string `pulumi:"tempFileLimit"`
+	// PostgreSQL service timezone
+	Timezone *string `pulumi:"timezone"`
+	// Specifies the number of bytes reserved to track the currently
+	// executing command for each active session.
+	TrackActivityQuerySize *string `pulumi:"trackActivityQuerySize"`
+	// Record commit time of transactions
+	TrackCommitTimestamp *string `pulumi:"trackCommitTimestamp"`
+	// Enables tracking of function call counts and time used.
+	TrackFunctions *string `pulumi:"trackFunctions"`
+	// Terminate replication connections that are inactive for longer than
+	// this amount of time, in milliseconds.
+	WalSenderTimeout *string `pulumi:"walSenderTimeout"`
+	// WAL flush interval in milliseconds. Note that setting this value
+	// to lower than the default 200ms may negatively impact performance
+	WalWriterDelay *string `pulumi:"walWriterDelay"`
 }
 
 // PgPgUserConfigPgInput is an input type that accepts PgPgUserConfigPgArgs and PgPgUserConfigPgOutput values.
@@ -12107,40 +14072,105 @@ type PgPgUserConfigPgInput interface {
 }
 
 type PgPgUserConfigPgArgs struct {
-	AutovacuumAnalyzeScaleFactor    pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumFreezeMaxAge          pulumi.StringPtrInput `pulumi:"autovacuumFreezeMaxAge"`
-	AutovacuumMaxWorkers            pulumi.StringPtrInput `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               pulumi.StringPtrInput `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     pulumi.StringPtrInput `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       pulumi.StringPtrInput `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 pulumi.StringPtrInput `pulumi:"deadlockTimeout"`
+	// Specifies a fraction of the table size to add to
+	// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+	// (20% of table size).
+	AutovacuumAnalyzeScaleFactor pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
+	// specifies the minimum number of inserted, updated
+	// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	AutovacuumAnalyzeThreshold pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
+	// specifies the maximum age (in transactions) that a table's
+	// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+	// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+	// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+	AutovacuumFreezeMaxAge pulumi.StringPtrInput `pulumi:"autovacuumFreezeMaxAge"`
+	// specifies the maximum number of autovacuum processes (other
+	// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+	// can only be set at server start.
+	AutovacuumMaxWorkers pulumi.StringPtrInput `pulumi:"autovacuumMaxWorkers"`
+	// specifies the minimum delay between autovacuum runs on any
+	// given database. The delay is measured in seconds, and the default is one minute.
+	AutovacuumNaptime pulumi.StringPtrInput `pulumi:"autovacuumNaptime"`
+	// specifies the cost delay value that will be used
+	// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+	// used. The default value is 20 milliseconds.
+	AutovacuumVacuumCostDelay pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostDelay"`
+	// specifies the cost limit value that will be used in
+	// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+	// value will be used.
+	AutovacuumVacuumCostLimit pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostLimit"`
+	// specifies a fraction of the table size to add to
+	// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	AutovacuumVacuumScaleFactor pulumi.StringPtrInput `pulumi:"autovacuumVacuumScaleFactor"`
+	// specifies the minimum number of updated or deleted tuples
+	// needed to trigger a VACUUM in any one table. The default is 50 tuples
+	AutovacuumVacuumThreshold pulumi.StringPtrInput `pulumi:"autovacuumVacuumThreshold"`
+	// this is the amount of time, in milliseconds, to wait on a lock before
+	// checking to see if there is a deadlock condition.
+	DeadlockTimeout pulumi.StringPtrInput `pulumi:"deadlockTimeout"`
+	// Time out sessions with open transactions after
+	// this number of milliseconds.
 	IdleInTransactionSessionTimeout pulumi.StringPtrInput `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             pulumi.StringPtrInput `pulumi:"jit"`
-	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   pulumi.StringPtrInput `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
-	PgStatStatementsDotTrack        pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
-	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
-	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
-	TrackActivityQuerySize          pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
-	TrackCommitTimestamp            pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
-	TrackFunctions                  pulumi.StringPtrInput `pulumi:"trackFunctions"`
-	WalSenderTimeout                pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
-	WalWriterDelay                  pulumi.StringPtrInput `pulumi:"walWriterDelay"`
+	// Controls system-wide use of Just-in-Time Compilation (JIT).
+	Jit pulumi.StringPtrInput `pulumi:"jit"`
+	// Causes each action executed by autovacuum to be logged
+	// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+	// actions. Minus-one (the default) disables logging autovacuum actions.
+	LogAutovacuumMinDuration pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
+	// Controls the amount of detail written in the server log for
+	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+	LogErrorVerbosity pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	// Log statements that take more than this number of
+	// milliseconds to run, -1 disables
+	LogMinDurationStatement pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum locks per transaction
+	MaxLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	// Sets the maximum number of workers that the system can
+	// support for parallel queries.
+	MaxParallelWorkers pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
+	// Sets the maximum number of workers that can be
+	// started by a single Gather or Gather Merge node.
+	MaxParallelWorkersPerGather pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
+	// PostgreSQL maximum predicate locks per transaction
+	MaxPredLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
+	// PostgreSQL maximum prepared transactions
+	MaxPreparedTransactions pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	// Maximum depth of the stack in bytes
+	MaxStackDepth pulumi.StringPtrInput `pulumi:"maxStackDepth"`
+	// Max standby archive delay in milliseconds
+	MaxStandbyArchiveDelay pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
+	// Max standby streaming delay in milliseconds
+	MaxStandbyStreamingDelay pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	// Sets the maximum number of background processes that the system
+	// can support
+	// * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+	// * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+	//   background tasks.
+	// * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+	//   to track top-level statements (those issued directly by clients), all to also track nested
+	//   statements (such as statements invoked within functions), or none to disable statement statistics
+	//   collection. The default value is top.
+	MaxWorkerProcesses       pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval  pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole      pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
+	PgStatStatementsDotTrack pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited
+	TempFileLimit pulumi.StringPtrInput `pulumi:"tempFileLimit"`
+	// PostgreSQL service timezone
+	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
+	// Specifies the number of bytes reserved to track the currently
+	// executing command for each active session.
+	TrackActivityQuerySize pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
+	// Record commit time of transactions
+	TrackCommitTimestamp pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
+	// Enables tracking of function call counts and time used.
+	TrackFunctions pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	// Terminate replication connections that are inactive for longer than
+	// this amount of time, in milliseconds.
+	WalSenderTimeout pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
+	// WAL flush interval in milliseconds. Note that setting this value
+	// to lower than the default 200ms may negatively impact performance
+	WalWriterDelay pulumi.StringPtrInput `pulumi:"walWriterDelay"`
 }
 
 func (PgPgUserConfigPgArgs) ElementType() reflect.Type {
@@ -12219,98 +14249,154 @@ func (o PgPgUserConfigPgOutput) ToPgPgUserConfigPgPtrOutputWithContext(ctx conte
 		return &v
 	}).(PgPgUserConfigPgPtrOutput)
 }
+
+// Specifies a fraction of the table size to add to
+// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+// (20% of table size).
 func (o PgPgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of inserted, updated
+// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
 func (o PgPgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumAnalyzeThreshold }).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum age (in transactions) that a table's
+// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
 func (o PgPgUserConfigPgOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumFreezeMaxAge }).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum number of autovacuum processes (other
+// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+// can only be set at server start.
 func (o PgPgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumMaxWorkers }).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum delay between autovacuum runs on any
+// given database. The delay is measured in seconds, and the default is one minute.
 func (o PgPgUserConfigPgOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumNaptime }).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost delay value that will be used
+// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+// used. The default value is 20 milliseconds.
 func (o PgPgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumVacuumCostDelay }).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost limit value that will be used in
+// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+// value will be used.
 func (o PgPgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumVacuumCostLimit }).(pulumi.StringPtrOutput)
 }
 
+// specifies a fraction of the table size to add to
+// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
 func (o PgPgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumVacuumScaleFactor }).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of updated or deleted tuples
+// needed to trigger a VACUUM in any one table. The default is 50 tuples
 func (o PgPgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.AutovacuumVacuumThreshold }).(pulumi.StringPtrOutput)
 }
 
+// this is the amount of time, in milliseconds, to wait on a lock before
+// checking to see if there is a deadlock condition.
 func (o PgPgUserConfigPgOutput) DeadlockTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.DeadlockTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Time out sessions with open transactions after
+// this number of milliseconds.
 func (o PgPgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.IdleInTransactionSessionTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Controls system-wide use of Just-in-Time Compilation (JIT).
 func (o PgPgUserConfigPgOutput) Jit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.Jit }).(pulumi.StringPtrOutput)
 }
 
+// Causes each action executed by autovacuum to be logged
+// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+// actions. Minus-one (the default) disables logging autovacuum actions.
 func (o PgPgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogAutovacuumMinDuration }).(pulumi.StringPtrOutput)
 }
 
+// Controls the amount of detail written in the server log for
+// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 func (o PgPgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
 }
 
+// Log statements that take more than this number of
+// milliseconds to run, -1 disables
 func (o PgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum locks per transaction
 func (o PgPgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that the system can
+// support for parallel queries.
 func (o PgPgUserConfigPgOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxParallelWorkers }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that can be
+// started by a single Gather or Gather Merge node.
 func (o PgPgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxParallelWorkersPerGather }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum predicate locks per transaction
 func (o PgPgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxPredLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum prepared transactions
 func (o PgPgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
+// Maximum depth of the stack in bytes
 func (o PgPgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
 }
 
+// Max standby archive delay in milliseconds
 func (o PgPgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxStandbyArchiveDelay }).(pulumi.StringPtrOutput)
 }
 
+// Max standby streaming delay in milliseconds
 func (o PgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of background processes that the system
+// can support
+// * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+// * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+//   background tasks.
+// * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+//   to track top-level statements (those issued directly by clients), all to also track nested
+//   statements (such as statements invoked within functions), or none to disable statement statistics
+//   collection. The default value is top.
 func (o PgPgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
 }
@@ -12327,30 +14413,40 @@ func (o PgPgUserConfigPgOutput) PgStatStatementsDotTrack() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.PgStatStatementsDotTrack }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL temporary file limit in KiB, -1 for unlimited
 func (o PgPgUserConfigPgOutput) TempFileLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.TempFileLimit }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL service timezone
 func (o PgPgUserConfigPgOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the number of bytes reserved to track the currently
+// executing command for each active session.
 func (o PgPgUserConfigPgOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.TrackActivityQuerySize }).(pulumi.StringPtrOutput)
 }
 
+// Record commit time of transactions
 func (o PgPgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.TrackCommitTimestamp }).(pulumi.StringPtrOutput)
 }
 
+// Enables tracking of function call counts and time used.
 func (o PgPgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
 }
 
+// Terminate replication connections that are inactive for longer than
+// this amount of time, in milliseconds.
 func (o PgPgUserConfigPgOutput) WalSenderTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.WalSenderTimeout }).(pulumi.StringPtrOutput)
 }
 
+// WAL flush interval in milliseconds. Note that setting this value
+// to lower than the default 200ms may negatively impact performance
 func (o PgPgUserConfigPgOutput) WalWriterDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.WalWriterDelay }).(pulumi.StringPtrOutput)
 }
@@ -12373,6 +14469,9 @@ func (o PgPgUserConfigPgPtrOutput) Elem() PgPgUserConfigPgOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) PgPgUserConfigPg { return *v }).(PgPgUserConfigPgOutput)
 }
 
+// Specifies a fraction of the table size to add to
+// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+// (20% of table size).
 func (o PgPgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12382,6 +14481,8 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of inserted, updated
+// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
 func (o PgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12391,6 +14492,10 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum age (in transactions) that a table's
+// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
 func (o PgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12400,6 +14505,9 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum number of autovacuum processes (other
+// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+// can only be set at server start.
 func (o PgPgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12409,6 +14517,8 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum delay between autovacuum runs on any
+// given database. The delay is measured in seconds, and the default is one minute.
 func (o PgPgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12418,6 +14528,9 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost delay value that will be used
+// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+// used. The default value is 20 milliseconds.
 func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12427,6 +14540,9 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost limit value that will be used in
+// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+// value will be used.
 func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12436,6 +14552,8 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies a fraction of the table size to add to
+// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
 func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12445,6 +14563,8 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of updated or deleted tuples
+// needed to trigger a VACUUM in any one table. The default is 50 tuples
 func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12454,6 +14574,8 @@ func (o PgPgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// this is the amount of time, in milliseconds, to wait on a lock before
+// checking to see if there is a deadlock condition.
 func (o PgPgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12463,6 +14585,8 @@ func (o PgPgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time out sessions with open transactions after
+// this number of milliseconds.
 func (o PgPgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12472,6 +14596,7 @@ func (o PgPgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls system-wide use of Just-in-Time Compilation (JIT).
 func (o PgPgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12481,6 +14606,9 @@ func (o PgPgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Causes each action executed by autovacuum to be logged
+// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+// actions. Minus-one (the default) disables logging autovacuum actions.
 func (o PgPgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12490,6 +14618,8 @@ func (o PgPgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls the amount of detail written in the server log for
+// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 func (o PgPgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12499,6 +14629,8 @@ func (o PgPgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Log statements that take more than this number of
+// milliseconds to run, -1 disables
 func (o PgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12508,6 +14640,7 @@ func (o PgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum locks per transaction
 func (o PgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12517,6 +14650,8 @@ func (o PgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that the system can
+// support for parallel queries.
 func (o PgPgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12526,6 +14661,8 @@ func (o PgPgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that can be
+// started by a single Gather or Gather Merge node.
 func (o PgPgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12535,6 +14672,7 @@ func (o PgPgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum predicate locks per transaction
 func (o PgPgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12544,6 +14682,7 @@ func (o PgPgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum prepared transactions
 func (o PgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12553,6 +14692,7 @@ func (o PgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum depth of the stack in bytes
 func (o PgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12562,6 +14702,7 @@ func (o PgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Max standby archive delay in milliseconds
 func (o PgPgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12571,6 +14712,7 @@ func (o PgPgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Max standby streaming delay in milliseconds
 func (o PgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12580,6 +14722,15 @@ func (o PgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of background processes that the system
+// can support
+// * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+// * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+//   background tasks.
+// * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+//   to track top-level statements (those issued directly by clients), all to also track nested
+//   statements (such as statements invoked within functions), or none to disable statement statistics
+//   collection. The default value is top.
 func (o PgPgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12616,6 +14767,7 @@ func (o PgPgUserConfigPgPtrOutput) PgStatStatementsDotTrack() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL temporary file limit in KiB, -1 for unlimited
 func (o PgPgUserConfigPgPtrOutput) TempFileLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12625,6 +14777,7 @@ func (o PgPgUserConfigPgPtrOutput) TempFileLimit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL service timezone
 func (o PgPgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12634,6 +14787,8 @@ func (o PgPgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the number of bytes reserved to track the currently
+// executing command for each active session.
 func (o PgPgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12643,6 +14798,7 @@ func (o PgPgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Record commit time of transactions
 func (o PgPgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12652,6 +14808,7 @@ func (o PgPgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enables tracking of function call counts and time used.
 func (o PgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12661,6 +14818,8 @@ func (o PgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Terminate replication connections that are inactive for longer than
+// this amount of time, in milliseconds.
 func (o PgPgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12670,6 +14829,8 @@ func (o PgPgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// WAL flush interval in milliseconds. Note that setting this value
+// to lower than the default 200ms may negatively impact performance
 func (o PgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -12680,8 +14841,10 @@ func (o PgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
 }
 
 type PgPgUserConfigPgbouncer struct {
+	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
-	ServerResetQueryAlways  *string  `pulumi:"serverResetQueryAlways"`
+	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
+	ServerResetQueryAlways *string `pulumi:"serverResetQueryAlways"`
 }
 
 // PgPgUserConfigPgbouncerInput is an input type that accepts PgPgUserConfigPgbouncerArgs and PgPgUserConfigPgbouncerOutput values.
@@ -12696,8 +14859,10 @@ type PgPgUserConfigPgbouncerInput interface {
 }
 
 type PgPgUserConfigPgbouncerArgs struct {
+	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
-	ServerResetQueryAlways  pulumi.StringPtrInput   `pulumi:"serverResetQueryAlways"`
+	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
+	ServerResetQueryAlways pulumi.StringPtrInput `pulumi:"serverResetQueryAlways"`
 }
 
 func (PgPgUserConfigPgbouncerArgs) ElementType() reflect.Type {
@@ -12776,10 +14941,13 @@ func (o PgPgUserConfigPgbouncerOutput) ToPgPgUserConfigPgbouncerPtrOutputWithCon
 		return &v
 	}).(PgPgUserConfigPgbouncerPtrOutput)
 }
+
+// Enum of parameters to ignore when given in startup packet.
 func (o PgPgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PgPgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
 }
 
+// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 func (o PgPgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.ServerResetQueryAlways }).(pulumi.StringPtrOutput)
 }
@@ -12802,6 +14970,7 @@ func (o PgPgUserConfigPgbouncerPtrOutput) Elem() PgPgUserConfigPgbouncerOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) PgPgUserConfigPgbouncer { return *v }).(PgPgUserConfigPgbouncerOutput)
 }
 
+// Enum of parameters to ignore when given in startup packet.
 func (o PgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) []string {
 		if v == nil {
@@ -12811,6 +14980,7 @@ func (o PgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
+// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 func (o PgPgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
 		if v == nil {
@@ -12821,6 +14991,8 @@ func (o PgPgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.String
 }
 
 type PgPgUserConfigPglookout struct {
+	// Number of seconds of master unavailability before
+	// triggering database failover to standby
 	MaxFailoverReplicationTimeLag *string `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
@@ -12836,6 +15008,8 @@ type PgPgUserConfigPglookoutInput interface {
 }
 
 type PgPgUserConfigPglookoutArgs struct {
+	// Number of seconds of master unavailability before
+	// triggering database failover to standby
 	MaxFailoverReplicationTimeLag pulumi.StringPtrInput `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
@@ -12915,6 +15089,9 @@ func (o PgPgUserConfigPglookoutOutput) ToPgPgUserConfigPglookoutPtrOutputWithCon
 		return &v
 	}).(PgPgUserConfigPglookoutPtrOutput)
 }
+
+// Number of seconds of master unavailability before
+// triggering database failover to standby
 func (o PgPgUserConfigPglookoutOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPglookout) *string { return v.MaxFailoverReplicationTimeLag }).(pulumi.StringPtrOutput)
 }
@@ -12937,6 +15114,8 @@ func (o PgPgUserConfigPglookoutPtrOutput) Elem() PgPgUserConfigPglookoutOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPglookout) PgPgUserConfigPglookout { return *v }).(PgPgUserConfigPglookoutOutput)
 }
 
+// Number of seconds of master unavailability before
+// triggering database failover to standby
 func (o PgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPglookout) *string {
 		if v == nil {
@@ -12947,8 +15126,14 @@ func (o PgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi
 }
 
 type PgPgUserConfigPrivateAccess struct {
-	Pg         *string `pulumi:"pg"`
-	Pgbouncer  *string `pulumi:"pgbouncer"`
+	// Allow clients to connect to pg from the public internet for service nodes
+	// that are in a project VPC or another type of private network
+	Pg *string `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer *string `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -12964,8 +15149,14 @@ type PgPgUserConfigPrivateAccessInput interface {
 }
 
 type PgPgUserConfigPrivateAccessArgs struct {
-	Pg         pulumi.StringPtrInput `pulumi:"pg"`
-	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to pg from the public internet for service nodes
+	// that are in a project VPC or another type of private network
+	Pg pulumi.StringPtrInput `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -13045,14 +15236,21 @@ func (o PgPgUserConfigPrivateAccessOutput) ToPgPgUserConfigPrivateAccessPtrOutpu
 		return &v
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to pg from the public internet for service nodes
+// that are in a project VPC or another type of private network
 func (o PgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPrivateAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivateAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -13075,6 +15273,8 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Elem() PgPgUserConfigPrivateAccess
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) PgPgUserConfigPrivateAccess { return *v }).(PgPgUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to pg from the public internet for service nodes
+// that are in a project VPC or another type of private network
 func (o PgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -13084,6 +15284,8 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -13093,6 +15295,8 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -13103,8 +15307,14 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutpu
 }
 
 type PgPgUserConfigPublicAccess struct {
-	Pg         *string `pulumi:"pg"`
-	Pgbouncer  *string `pulumi:"pgbouncer"`
+	// Allow clients to connect to pg from the public internet for service nodes
+	// that are in a project VPC or another type of private network
+	Pg *string `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer *string `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -13120,8 +15330,14 @@ type PgPgUserConfigPublicAccessInput interface {
 }
 
 type PgPgUserConfigPublicAccessArgs struct {
-	Pg         pulumi.StringPtrInput `pulumi:"pg"`
-	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to pg from the public internet for service nodes
+	// that are in a project VPC or another type of private network
+	Pg pulumi.StringPtrInput `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -13201,14 +15417,21 @@ func (o PgPgUserConfigPublicAccessOutput) ToPgPgUserConfigPublicAccessPtrOutputW
 		return &v
 	}).(PgPgUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to pg from the public internet for service nodes
+// that are in a project VPC or another type of private network
 func (o PgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPublicAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPublicAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -13231,6 +15454,8 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Elem() PgPgUserConfigPublicAccessOu
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) PgPgUserConfigPublicAccess { return *v }).(PgPgUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to pg from the public internet for service nodes
+// that are in a project VPC or another type of private network
 func (o PgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -13240,6 +15465,8 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -13249,6 +15476,8 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o PgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -13259,6 +15488,9 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput
 }
 
 type PgPgUserConfigTimescaledb struct {
+	// The number of background workers for timescaledb
+	// operations. You should configure this setting to the sum of your number of databases and the
+	// total number of concurrent background workers you want running at any given point in time.
 	MaxBackgroundWorkers *string `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -13274,6 +15506,9 @@ type PgPgUserConfigTimescaledbInput interface {
 }
 
 type PgPgUserConfigTimescaledbArgs struct {
+	// The number of background workers for timescaledb
+	// operations. You should configure this setting to the sum of your number of databases and the
+	// total number of concurrent background workers you want running at any given point in time.
 	MaxBackgroundWorkers pulumi.StringPtrInput `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -13353,6 +15588,10 @@ func (o PgPgUserConfigTimescaledbOutput) ToPgPgUserConfigTimescaledbPtrOutputWit
 		return &v
 	}).(PgPgUserConfigTimescaledbPtrOutput)
 }
+
+// The number of background workers for timescaledb
+// operations. You should configure this setting to the sum of your number of databases and the
+// total number of concurrent background workers you want running at any given point in time.
 func (o PgPgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigTimescaledb) *string { return v.MaxBackgroundWorkers }).(pulumi.StringPtrOutput)
 }
@@ -13375,6 +15614,9 @@ func (o PgPgUserConfigTimescaledbPtrOutput) Elem() PgPgUserConfigTimescaledbOutp
 	return o.ApplyT(func(v *PgPgUserConfigTimescaledb) PgPgUserConfigTimescaledb { return *v }).(PgPgUserConfigTimescaledbOutput)
 }
 
+// The number of background workers for timescaledb
+// operations. You should configure this setting to the sum of your number of databases and the
+// total number of concurrent background workers you want running at any given point in time.
 func (o PgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigTimescaledb) *string {
 		if v == nil {
@@ -13485,13 +15727,16 @@ func (o PgServiceIntegrationArrayOutput) Index(i pulumi.IntInput) PgServiceInteg
 }
 
 type RedisComponent struct {
-	Component                 *string `pulumi:"component"`
+	Component *string `pulumi:"component"`
+	// Hostname or IP address of the server where to migrate data from
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
-	Port                      *int    `pulumi:"port"`
-	Route                     *string `pulumi:"route"`
-	Ssl                       *bool   `pulumi:"ssl"`
-	Usage                     *string `pulumi:"usage"`
+	// Port number of the server where to migrate data from
+	Port  *int    `pulumi:"port"`
+	Route *string `pulumi:"route"`
+	// The server where to migrate data from is secured with SSL
+	Ssl   *bool   `pulumi:"ssl"`
+	Usage *string `pulumi:"usage"`
 }
 
 // RedisComponentInput is an input type that accepts RedisComponentArgs and RedisComponentOutput values.
@@ -13506,13 +15751,16 @@ type RedisComponentInput interface {
 }
 
 type RedisComponentArgs struct {
-	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	Component pulumi.StringPtrInput `pulumi:"component"`
+	// Hostname or IP address of the server where to migrate data from
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
-	Port                      pulumi.IntPtrInput    `pulumi:"port"`
-	Route                     pulumi.StringPtrInput `pulumi:"route"`
-	Ssl                       pulumi.BoolPtrInput   `pulumi:"ssl"`
-	Usage                     pulumi.StringPtrInput `pulumi:"usage"`
+	// Port number of the server where to migrate data from
+	Port  pulumi.IntPtrInput    `pulumi:"port"`
+	Route pulumi.StringPtrInput `pulumi:"route"`
+	// The server where to migrate data from is secured with SSL
+	Ssl   pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Usage pulumi.StringPtrInput `pulumi:"usage"`
 }
 
 func (RedisComponentArgs) ElementType() reflect.Type {
@@ -13570,6 +15818,7 @@ func (o RedisComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
+// Hostname or IP address of the server where to migrate data from
 func (o RedisComponentOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisComponent) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -13578,6 +15827,7 @@ func (o RedisComponentOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput
 	return o.ApplyT(func(v RedisComponent) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
+// Port number of the server where to migrate data from
 func (o RedisComponentOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RedisComponent) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -13586,6 +15836,7 @@ func (o RedisComponentOutput) Route() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisComponent) *string { return v.Route }).(pulumi.StringPtrOutput)
 }
 
+// The server where to migrate data from is secured with SSL
 func (o RedisComponentOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RedisComponent) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
@@ -13727,18 +15978,32 @@ func (o RedisRedisPtrOutput) Elem() RedisRedisOutput {
 }
 
 type RedisRedisUserConfig struct {
-	IpFilters                 []string                           `pulumi:"ipFilters"`
-	Migration                 *RedisRedisUserConfigMigration     `pulumi:"migration"`
-	PrivateAccess             *RedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess              *RedisRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryBasebackupName    *string                            `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime         *string                            `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         *string                            `pulumi:"redisLfuLogFactor"`
-	RedisMaxmemoryPolicy      *string                            `pulumi:"redisMaxmemoryPolicy"`
-	RedisNotifyKeyspaceEvents *string                            `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  *string                            `pulumi:"redisSsl"`
-	RedisTimeout              *string                            `pulumi:"redisTimeout"`
-	ServiceToForkFrom         *string                            `pulumi:"serviceToForkFrom"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *RedisRedisUserConfigMigration `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *RedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *RedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	RedisLfuDecayTime      *string `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu
+	// maxmemory-policies
+	RedisLfuLogFactor *string `pulumi:"redisLfuLogFactor"`
+	// Redis maxmemory-policy
+	RedisMaxmemoryPolicy *string `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option
+	RedisNotifyKeyspaceEvents *string `pulumi:"redisNotifyKeyspaceEvents"`
+	// Require SSL to access Redis
+	RedisSsl *string `pulumi:"redisSsl"`
+	// Redis idle connection timeout
+	// * `serviceToForkFrom"` - (Optional) Name of another service to fork from. This has effect only
+	//   when a new service is being created.
+	RedisTimeout      *string `pulumi:"redisTimeout"`
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // RedisRedisUserConfigInput is an input type that accepts RedisRedisUserConfigArgs and RedisRedisUserConfigOutput values.
@@ -13753,18 +16018,32 @@ type RedisRedisUserConfigInput interface {
 }
 
 type RedisRedisUserConfigArgs struct {
-	IpFilters                 pulumi.StringArrayInput                   `pulumi:"ipFilters"`
-	Migration                 RedisRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
-	PrivateAccess             RedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess              RedisRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryBasebackupName    pulumi.StringPtrInput                     `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime         pulumi.StringPtrInput                     `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         pulumi.StringPtrInput                     `pulumi:"redisLfuLogFactor"`
-	RedisMaxmemoryPolicy      pulumi.StringPtrInput                     `pulumi:"redisMaxmemoryPolicy"`
-	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                     `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  pulumi.StringPtrInput                     `pulumi:"redisSsl"`
-	RedisTimeout              pulumi.StringPtrInput                     `pulumi:"redisTimeout"`
-	ServiceToForkFrom         pulumi.StringPtrInput                     `pulumi:"serviceToForkFrom"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration RedisRedisUserConfigMigrationPtrInput `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess RedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess RedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	RedisLfuDecayTime      pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu
+	// maxmemory-policies
+	RedisLfuLogFactor pulumi.StringPtrInput `pulumi:"redisLfuLogFactor"`
+	// Redis maxmemory-policy
+	RedisMaxmemoryPolicy pulumi.StringPtrInput `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option
+	RedisNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"redisNotifyKeyspaceEvents"`
+	// Require SSL to access Redis
+	RedisSsl pulumi.StringPtrInput `pulumi:"redisSsl"`
+	// Redis idle connection timeout
+	// * `serviceToForkFrom"` - (Optional) Name of another service to fork from. This has effect only
+	//   when a new service is being created.
+	RedisTimeout      pulumi.StringPtrInput `pulumi:"redisTimeout"`
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (RedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -13843,22 +16122,29 @@ func (o RedisRedisUserConfigOutput) ToRedisRedisUserConfigPtrOutputWithContext(c
 		return &v
 	}).(RedisRedisUserConfigPtrOutput)
 }
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o RedisRedisUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o RedisRedisUserConfigOutput) Migration() RedisRedisUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigMigration { return v.Migration }).(RedisRedisUserConfigMigrationPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o RedisRedisUserConfigOutput) PrivateAccess() RedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPrivateAccess { return v.PrivateAccess }).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o RedisRedisUserConfigOutput) PublicAccess() RedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess { return v.PublicAccess }).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
+// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
@@ -13867,22 +16153,30 @@ func (o RedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
 
+// Counter logarithm factor for volatile-lfu and allkeys-lfu
+// maxmemory-policies
 func (o RedisRedisUserConfigOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisLfuLogFactor }).(pulumi.StringPtrOutput)
 }
 
+// Redis maxmemory-policy
 func (o RedisRedisUserConfigOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisMaxmemoryPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Set notify-keyspace-events option
 func (o RedisRedisUserConfigOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
+// Require SSL to access Redis
 func (o RedisRedisUserConfigOutput) RedisSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisSsl }).(pulumi.StringPtrOutput)
 }
 
+// Redis idle connection timeout
+// * `serviceToForkFrom"` - (Optional) Name of another service to fork from. This has effect only
+//   when a new service is being created.
 func (o RedisRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
@@ -13909,6 +16203,7 @@ func (o RedisRedisUserConfigPtrOutput) Elem() RedisRedisUserConfigOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) RedisRedisUserConfig { return *v }).(RedisRedisUserConfigOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o RedisRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) []string {
 		if v == nil {
@@ -13918,6 +16213,7 @@ func (o RedisRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o RedisRedisUserConfigPtrOutput) Migration() RedisRedisUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigMigration {
 		if v == nil {
@@ -13927,6 +16223,7 @@ func (o RedisRedisUserConfigPtrOutput) Migration() RedisRedisUserConfigMigration
 	}).(RedisRedisUserConfigMigrationPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o RedisRedisUserConfigPtrOutput) PrivateAccess() RedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPrivateAccess {
 		if v == nil {
@@ -13936,6 +16233,7 @@ func (o RedisRedisUserConfigPtrOutput) PrivateAccess() RedisRedisUserConfigPriva
 	}).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess {
 		if v == nil {
@@ -13945,6 +16243,8 @@ func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublic
 	}).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
+// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -13963,6 +16263,8 @@ func (o RedisRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Counter logarithm factor for volatile-lfu and allkeys-lfu
+// maxmemory-policies
 func (o RedisRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -13972,6 +16274,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis maxmemory-policy
 func (o RedisRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -13981,6 +16284,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Set notify-keyspace-events option
 func (o RedisRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -13990,6 +16294,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require SSL to access Redis
 func (o RedisRedisUserConfigPtrOutput) RedisSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -13999,6 +16304,9 @@ func (o RedisRedisUserConfigPtrOutput) RedisSsl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis idle connection timeout
+// * `serviceToForkFrom"` - (Optional) Name of another service to fork from. This has effect only
+//   when a new service is being created.
 func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -14018,11 +16326,17 @@ func (o RedisRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 }
 
 type RedisRedisUserConfigMigration struct {
-	Dbname   *string `pulumi:"dbname"`
-	Host     *string `pulumi:"host"`
+	// Database name for bootstrapping the initial connection
+	Dbname *string `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from
+	Host *string `pulumi:"host"`
+	// Password for authentication with the server where to migrate data from
 	Password *string `pulumi:"password"`
-	Port     *string `pulumi:"port"`
-	Ssl      *string `pulumi:"ssl"`
+	// Port number of the server where to migrate data from
+	Port *string `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL
+	Ssl *string `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from
 	Username *string `pulumi:"username"`
 }
 
@@ -14038,11 +16352,17 @@ type RedisRedisUserConfigMigrationInput interface {
 }
 
 type RedisRedisUserConfigMigrationArgs struct {
-	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
-	Host     pulumi.StringPtrInput `pulumi:"host"`
+	// Database name for bootstrapping the initial connection
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Password for authentication with the server where to migrate data from
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.StringPtrInput `pulumi:"port"`
-	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	// Port number of the server where to migrate data from
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL
+	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -14122,26 +16442,33 @@ func (o RedisRedisUserConfigMigrationOutput) ToRedisRedisUserConfigMigrationPtrO
 		return &v
 	}).(RedisRedisUserConfigMigrationPtrOutput)
 }
+
+// Database name for bootstrapping the initial connection
 func (o RedisRedisUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
+// Hostname or IP address of the server where to migrate data from
 func (o RedisRedisUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// Password for authentication with the server where to migrate data from
 func (o RedisRedisUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Port number of the server where to migrate data from
 func (o RedisRedisUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// The server where to migrate data from is secured with SSL
 func (o RedisRedisUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+// User name for authentication with the server where to migrate data from
 func (o RedisRedisUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -14164,6 +16491,7 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Elem() RedisRedisUserConfigMigra
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) RedisRedisUserConfigMigration { return *v }).(RedisRedisUserConfigMigrationOutput)
 }
 
+// Database name for bootstrapping the initial connection
 func (o RedisRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -14173,6 +16501,7 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hostname or IP address of the server where to migrate data from
 func (o RedisRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -14182,6 +16511,7 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Password for authentication with the server where to migrate data from
 func (o RedisRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -14191,6 +16521,7 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Port number of the server where to migrate data from
 func (o RedisRedisUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -14200,6 +16531,7 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The server where to migrate data from is secured with SSL
 func (o RedisRedisUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -14209,6 +16541,7 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// User name for authentication with the server where to migrate data from
 func (o RedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -14219,8 +16552,12 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutpu
 }
 
 type RedisRedisUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Allow clients to connect to redis from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Redis *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPrivateAccessInput is an input type that accepts RedisRedisUserConfigPrivateAccessArgs and RedisRedisUserConfigPrivateAccessOutput values.
@@ -14235,8 +16572,12 @@ type RedisRedisUserConfigPrivateAccessInput interface {
 }
 
 type RedisRedisUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Allow clients to connect to redis from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -14315,10 +16656,15 @@ func (o RedisRedisUserConfigPrivateAccessOutput) ToRedisRedisUserConfigPrivateAc
 		return &v
 	}).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to redis from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPrivateAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -14341,6 +16687,8 @@ func (o RedisRedisUserConfigPrivateAccessPtrOutput) Elem() RedisRedisUserConfigP
 	return o.ApplyT(func(v *RedisRedisUserConfigPrivateAccess) RedisRedisUserConfigPrivateAccess { return *v }).(RedisRedisUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -14350,6 +16698,8 @@ func (o RedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to redis from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -14360,8 +16710,12 @@ func (o RedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutp
 }
 
 type RedisRedisUserConfigPublicAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Allow clients to connect to redis from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Redis *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPublicAccessInput is an input type that accepts RedisRedisUserConfigPublicAccessArgs and RedisRedisUserConfigPublicAccessOutput values.
@@ -14376,8 +16730,12 @@ type RedisRedisUserConfigPublicAccessInput interface {
 }
 
 type RedisRedisUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Allow clients to connect to redis from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -14456,10 +16814,15 @@ func (o RedisRedisUserConfigPublicAccessOutput) ToRedisRedisUserConfigPublicAcce
 		return &v
 	}).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to redis from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPublicAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -14482,6 +16845,8 @@ func (o RedisRedisUserConfigPublicAccessPtrOutput) Elem() RedisRedisUserConfigPu
 	return o.ApplyT(func(v *RedisRedisUserConfigPublicAccess) RedisRedisUserConfigPublicAccess { return *v }).(RedisRedisUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPublicAccess) *string {
 		if v == nil {
@@ -14491,6 +16856,8 @@ func (o RedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to redis from the public internet for service
+// nodes that are in a project VPC or another type of private network
 func (o RedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPublicAccess) *string {
 		if v == nil {
@@ -29110,11 +31477,18 @@ func (o GetCassandaCassandraOutput) ToGetCassandaCassandraOutputWithContext(ctx 
 }
 
 type GetCassandaCassandraUserConfig struct {
-	IpFilters            []string                                     `pulumi:"ipFilters"`
-	MigrateSstableloader *string                                      `pulumi:"migrateSstableloader"`
-	PrivateAccess        *GetCassandaCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess         *GetCassandaCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
-	ServiceToForkFrom    *string                                      `pulumi:"serviceToForkFrom"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// sets the service into migration mode enabling the sstableloader
+	// utility to be used to upload Cassandra data files. Available only on service create.
+	MigrateSstableloader *string `pulumi:"migrateSstableloader"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *GetCassandaCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetCassandaCassandraUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // GetCassandaCassandraUserConfigInput is an input type that accepts GetCassandaCassandraUserConfigArgs and GetCassandaCassandraUserConfigOutput values.
@@ -29129,11 +31503,18 @@ type GetCassandaCassandraUserConfigInput interface {
 }
 
 type GetCassandaCassandraUserConfigArgs struct {
-	IpFilters            pulumi.StringArrayInput                             `pulumi:"ipFilters"`
-	MigrateSstableloader pulumi.StringPtrInput                               `pulumi:"migrateSstableloader"`
-	PrivateAccess        GetCassandaCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess         GetCassandaCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	ServiceToForkFrom    pulumi.StringPtrInput                               `pulumi:"serviceToForkFrom"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// sets the service into migration mode enabling the sstableloader
+	// utility to be used to upload Cassandra data files. Available only on service create.
+	MigrateSstableloader pulumi.StringPtrInput `pulumi:"migrateSstableloader"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess GetCassandaCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetCassandaCassandraUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (GetCassandaCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -29162,31 +31543,40 @@ func (o GetCassandaCassandraUserConfigOutput) ToGetCassandaCassandraUserConfigOu
 	return o
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetCassandaCassandraUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// sets the service into migration mode enabling the sstableloader
+// utility to be used to upload Cassandra data files. Available only on service create.
 func (o GetCassandaCassandraUserConfigOutput) MigrateSstableloader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.MigrateSstableloader }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o GetCassandaCassandraUserConfigOutput) PrivateAccess() GetCassandaCassandraUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *GetCassandaCassandraUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetCassandaCassandraUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GetCassandaCassandraUserConfigOutput) PublicAccess() GetCassandaCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *GetCassandaCassandraUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetCassandaCassandraUserConfigPublicAccessPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o GetCassandaCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 type GetCassandaCassandraUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -29202,6 +31592,8 @@ type GetCassandaCassandraUserConfigPrivateAccessInput interface {
 }
 
 type GetCassandaCassandraUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -29281,6 +31673,9 @@ func (o GetCassandaCassandraUserConfigPrivateAccessOutput) ToGetCassandaCassandr
 		return &v
 	}).(GetCassandaCassandraUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o GetCassandaCassandraUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -29305,6 +31700,8 @@ func (o GetCassandaCassandraUserConfigPrivateAccessPtrOutput) Elem() GetCassanda
 	}).(GetCassandaCassandraUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o GetCassandaCassandraUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCassandaCassandraUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -29315,6 +31712,8 @@ func (o GetCassandaCassandraUserConfigPrivateAccessPtrOutput) Prometheus() pulum
 }
 
 type GetCassandaCassandraUserConfigPublicAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -29330,6 +31729,8 @@ type GetCassandaCassandraUserConfigPublicAccessInput interface {
 }
 
 type GetCassandaCassandraUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -29409,6 +31810,9 @@ func (o GetCassandaCassandraUserConfigPublicAccessOutput) ToGetCassandaCassandra
 		return &v
 	}).(GetCassandaCassandraUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o GetCassandaCassandraUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -29433,6 +31837,8 @@ func (o GetCassandaCassandraUserConfigPublicAccessPtrOutput) Elem() GetCassandaC
 	}).(GetCassandaCassandraUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network.
 func (o GetCassandaCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCassandaCassandraUserConfigPublicAccess) *string {
 		if v == nil {
@@ -30003,6 +32409,7 @@ func (o GetElasticSearchComponentArrayOutput) Index(i pulumi.IntInput) GetElasti
 }
 
 type GetElasticSearchElasticsearch struct {
+	// URI for Kibana frontend.
 	KibanaUri string `pulumi:"kibanaUri"`
 }
 
@@ -30018,6 +32425,7 @@ type GetElasticSearchElasticsearchInput interface {
 }
 
 type GetElasticSearchElasticsearchArgs struct {
+	// URI for Kibana frontend.
 	KibanaUri pulumi.StringInput `pulumi:"kibanaUri"`
 }
 
@@ -30047,23 +32455,43 @@ func (o GetElasticSearchElasticsearchOutput) ToGetElasticSearchElasticsearchOutp
 	return o
 }
 
+// URI for Kibana frontend.
 func (o GetElasticSearchElasticsearchOutput) KibanaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearch) string { return v.KibanaUri }).(pulumi.StringOutput)
 }
 
 type GetElasticSearchElasticsearchUserConfig struct {
-	CustomDomain                       *string                                               `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment *string                                               `pulumi:"disableReplicationFactorAdjustment"`
-	Elasticsearch                      *GetElasticSearchElasticsearchUserConfigElasticsearch `pulumi:"elasticsearch"`
-	ElasticsearchVersion               *string                                               `pulumi:"elasticsearchVersion"`
-	IndexPatterns                      []GetElasticSearchElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
-	IpFilters                          []string                                              `pulumi:"ipFilters"`
-	Kibana                             *GetElasticSearchElasticsearchUserConfigKibana        `pulumi:"kibana"`
-	MaxIndexCount                      *string                                               `pulumi:"maxIndexCount"`
-	PrivateAccess                      *GetElasticSearchElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess                       *GetElasticSearchElasticsearchUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryBasebackupName             *string                                               `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  *string                                               `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the
+	// Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Disable automatic replication factor
+	// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+	// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+	// virtual machine failure.
+	DisableReplicationFactorAdjustment *string `pulumi:"disableReplicationFactorAdjustment"`
+	// Elasticsearch specific server provided values.
+	Elasticsearch *GetElasticSearchElasticsearchUserConfigElasticsearch `pulumi:"elasticsearch"`
+	// Elasticsearch major version.
+	ElasticsearchVersion *string `pulumi:"elasticsearchVersion"`
+	// Glob pattern and number of indexes matching that pattern to
+	// be kept.
+	IndexPatterns []GetElasticSearchElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana *GetElasticSearchElasticsearchUserConfigKibana `pulumi:"kibana"`
+	// Maximum number of indexes to keep before deleting the oldest one.
+	MaxIndexCount *string `pulumi:"maxIndexCount"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *GetElasticSearchElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *GetElasticSearchElasticsearchUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // GetElasticSearchElasticsearchUserConfigInput is an input type that accepts GetElasticSearchElasticsearchUserConfigArgs and GetElasticSearchElasticsearchUserConfigOutput values.
@@ -30078,18 +32506,37 @@ type GetElasticSearchElasticsearchUserConfigInput interface {
 }
 
 type GetElasticSearchElasticsearchUserConfigArgs struct {
-	CustomDomain                       pulumi.StringPtrInput                                         `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                         `pulumi:"disableReplicationFactorAdjustment"`
-	Elasticsearch                      GetElasticSearchElasticsearchUserConfigElasticsearchPtrInput  `pulumi:"elasticsearch"`
-	ElasticsearchVersion               pulumi.StringPtrInput                                         `pulumi:"elasticsearchVersion"`
-	IndexPatterns                      GetElasticSearchElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
-	IpFilters                          pulumi.StringArrayInput                                       `pulumi:"ipFilters"`
-	Kibana                             GetElasticSearchElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
-	MaxIndexCount                      pulumi.StringPtrInput                                         `pulumi:"maxIndexCount"`
-	PrivateAccess                      GetElasticSearchElasticsearchUserConfigPrivateAccessPtrInput  `pulumi:"privateAccess"`
-	PublicAccess                       GetElasticSearchElasticsearchUserConfigPublicAccessPtrInput   `pulumi:"publicAccess"`
-	RecoveryBasebackupName             pulumi.StringPtrInput                                         `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  pulumi.StringPtrInput                                         `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the
+	// Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Disable automatic replication factor
+	// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+	// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+	// virtual machine failure.
+	DisableReplicationFactorAdjustment pulumi.StringPtrInput `pulumi:"disableReplicationFactorAdjustment"`
+	// Elasticsearch specific server provided values.
+	Elasticsearch GetElasticSearchElasticsearchUserConfigElasticsearchPtrInput `pulumi:"elasticsearch"`
+	// Elasticsearch major version.
+	ElasticsearchVersion pulumi.StringPtrInput `pulumi:"elasticsearchVersion"`
+	// Glob pattern and number of indexes matching that pattern to
+	// be kept.
+	IndexPatterns GetElasticSearchElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana GetElasticSearchElasticsearchUserConfigKibanaPtrInput `pulumi:"kibana"`
+	// Maximum number of indexes to keep before deleting the oldest one.
+	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess GetElasticSearchElasticsearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess GetElasticSearchElasticsearchUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (GetElasticSearchElasticsearchUserConfigArgs) ElementType() reflect.Type {
@@ -30118,89 +32565,167 @@ func (o GetElasticSearchElasticsearchUserConfigOutput) ToGetElasticSearchElastic
 	return o
 }
 
+// Serve the web frontend using a custom CNAME pointing to the
+// Aiven DNS name.
 func (o GetElasticSearchElasticsearchUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Disable automatic replication factor
+// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+// virtual machine failure.
 func (o GetElasticSearchElasticsearchUserConfigOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *string { return v.DisableReplicationFactorAdjustment }).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch specific server provided values.
 func (o GetElasticSearchElasticsearchUserConfigOutput) Elasticsearch() GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *GetElasticSearchElasticsearchUserConfigElasticsearch {
 		return v.Elasticsearch
 	}).(GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput)
 }
 
+// Elasticsearch major version.
 func (o GetElasticSearchElasticsearchUserConfigOutput) ElasticsearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *string { return v.ElasticsearchVersion }).(pulumi.StringPtrOutput)
 }
 
+// Glob pattern and number of indexes matching that pattern to
+// be kept.
 func (o GetElasticSearchElasticsearchUserConfigOutput) IndexPatterns() GetElasticSearchElasticsearchUserConfigIndexPatternArrayOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) []GetElasticSearchElasticsearchUserConfigIndexPattern {
 		return v.IndexPatterns
 	}).(GetElasticSearchElasticsearchUserConfigIndexPatternArrayOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetElasticSearchElasticsearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigOutput) Kibana() GetElasticSearchElasticsearchUserConfigKibanaPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *GetElasticSearchElasticsearchUserConfigKibana {
 		return v.Kibana
 	}).(GetElasticSearchElasticsearchUserConfigKibanaPtrOutput)
 }
 
+// Maximum number of indexes to keep before deleting the oldest one.
 func (o GetElasticSearchElasticsearchUserConfigOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o GetElasticSearchElasticsearchUserConfigOutput) PrivateAccess() GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *GetElasticSearchElasticsearchUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o GetElasticSearchElasticsearchUserConfigOutput) PublicAccess() GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *GetElasticSearchElasticsearchUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service.
 func (o GetElasticSearchElasticsearchUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect
+// only when a new service is being created.
 func (o GetElasticSearchElasticsearchUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 type GetElasticSearchElasticsearchUserConfigElasticsearch struct {
-	ActionAutoCreateIndexEnabled       *string  `pulumi:"actionAutoCreateIndexEnabled"`
-	ActionDestructiveRequiresName      *string  `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               *string  `pulumi:"httpMaxContentLength"`
-	HttpMaxHeaderSize                  *string  `pulumi:"httpMaxHeaderSize"`
-	HttpMaxInitialLineLength           *string  `pulumi:"httpMaxInitialLineLength"`
-	IndicesFielddataCacheSize          *string  `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       *string  `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            *string  `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     *string  `pulumi:"indicesQueryBoolMaxClauseCount"`
-	ReindexRemoteWhitelists            []string `pulumi:"reindexRemoteWhitelists"`
-	SearchMaxBuckets                   *string  `pulumi:"searchMaxBuckets"`
-	ThreadPoolAnalyzeQueueSize         *string  `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              *string  `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           *string  `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             *string  `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  *string  `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           *string  `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                *string  `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          *string  `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               *string  `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize *string  `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      *string  `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           *string  `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                *string  `pulumi:"threadPoolWriteSize"`
+	// Explicitly allow or block automatic
+	// creation of indices. Defaults to true
+	ActionAutoCreateIndexEnabled *string `pulumi:"actionAutoCreateIndexEnabled"`
+	// Require explicit index names when deleting
+	ActionDestructiveRequiresName *string `pulumi:"actionDestructiveRequiresName"`
+	// Maximum content length for HTTP requests to
+	// the Elasticsearch HTTP API, in bytes.
+	HttpMaxContentLength *string `pulumi:"httpMaxContentLength"`
+	// The max size of allowed headers, in bytes.
+	HttpMaxHeaderSize *string `pulumi:"httpMaxHeaderSize"`
+	// The max length of an HTTP URL, in bytes.
+	HttpMaxInitialLineLength *string `pulumi:"httpMaxInitialLineLength"`
+	// Relative amount. Maximum amount of
+	// heap memory used for field data cache. This is an expert setting; decreasing the
+	// value too much will increase overhead of loading field data; too much memory used
+	// for field data cache will decrease amount of heap available for other operations.
+	IndicesFielddataCacheSize *string `pulumi:"indicesFielddataCacheSize"`
+	// Percentage value. Default is 10%.
+	// Total amount of heap used for indexing buffer, before writing segments to disk.
+	// This is an expert setting. Too low value will slow down indexing; too high value
+	// will increase indexing performance but causes performance issues for query performance.
+	IndicesMemoryIndexBufferSize *string `pulumi:"indicesMemoryIndexBufferSize"`
+	// Percentage value. Default is 10%.
+	// Maximum amount of heap used for query cache. This is an expert setting.
+	// Too low value will decrease query performance and increase performance for other
+	// operations; too high value will cause issues with other Elasticsearch functionality.
+	IndicesQueriesCacheSize *string `pulumi:"indicesQueriesCacheSize"`
+	// Maximum number of clauses Lucene
+	// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+	// may cause performance issues. Investigate other approaches first before increasing this value.
+	IndicesQueryBoolMaxClauseCount *string `pulumi:"indicesQueryBoolMaxClauseCount"`
+	// Whitelisted addresses for reindexing.
+	// Changing this value will cause all Elasticsearch instances to restart.
+	ReindexRemoteWhitelists []string `pulumi:"reindexRemoteWhitelists"`
+	// Maximum number of aggregation buckets allowed
+	// in a single response. Elasticsearch default value is used when this is not defined.
+	SearchMaxBuckets *string `pulumi:"searchMaxBuckets"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolAnalyzeQueueSize *string `pulumi:"threadPoolAnalyzeQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolAnalyzeSize *string `pulumi:"threadPoolAnalyzeSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolForceMergeSize *string `pulumi:"threadPoolForceMergeSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolGetQueueSize *string `pulumi:"threadPoolGetQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolGetSize *string `pulumi:"threadPoolGetSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolIndexQueueSize *string `pulumi:"threadPoolIndexQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolIndexSize *string `pulumi:"threadPoolIndexSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolSearchQueueSize *string `pulumi:"threadPoolSearchQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchSize *string `pulumi:"threadPoolSearchSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolSearchThrottledQueueSize *string `pulumi:"threadPoolSearchThrottledQueueSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchThrottledSize *string `pulumi:"threadPoolSearchThrottledSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolWriteQueueSize *string `pulumi:"threadPoolWriteQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolWriteSize *string `pulumi:"threadPoolWriteSize"`
 }
 
 // GetElasticSearchElasticsearchUserConfigElasticsearchInput is an input type that accepts GetElasticSearchElasticsearchUserConfigElasticsearchArgs and GetElasticSearchElasticsearchUserConfigElasticsearchOutput values.
@@ -30215,30 +32740,89 @@ type GetElasticSearchElasticsearchUserConfigElasticsearchInput interface {
 }
 
 type GetElasticSearchElasticsearchUserConfigElasticsearchArgs struct {
-	ActionAutoCreateIndexEnabled       pulumi.StringPtrInput   `pulumi:"actionAutoCreateIndexEnabled"`
-	ActionDestructiveRequiresName      pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
-	HttpMaxContentLength               pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
-	HttpMaxHeaderSize                  pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
-	HttpMaxInitialLineLength           pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
-	IndicesFielddataCacheSize          pulumi.StringPtrInput   `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize       pulumi.StringPtrInput   `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize            pulumi.StringPtrInput   `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount     pulumi.StringPtrInput   `pulumi:"indicesQueryBoolMaxClauseCount"`
-	ReindexRemoteWhitelists            pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
-	SearchMaxBuckets                   pulumi.StringPtrInput   `pulumi:"searchMaxBuckets"`
-	ThreadPoolAnalyzeQueueSize         pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize              pulumi.StringPtrInput   `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize           pulumi.StringPtrInput   `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize             pulumi.StringPtrInput   `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                  pulumi.StringPtrInput   `pulumi:"threadPoolGetSize"`
-	ThreadPoolIndexQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolIndexQueueSize"`
-	ThreadPoolIndexSize                pulumi.StringPtrInput   `pulumi:"threadPoolIndexSize"`
-	ThreadPoolSearchQueueSize          pulumi.StringPtrInput   `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize               pulumi.StringPtrInput   `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize      pulumi.StringPtrInput   `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize           pulumi.StringPtrInput   `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                pulumi.StringPtrInput   `pulumi:"threadPoolWriteSize"`
+	// Explicitly allow or block automatic
+	// creation of indices. Defaults to true
+	ActionAutoCreateIndexEnabled pulumi.StringPtrInput `pulumi:"actionAutoCreateIndexEnabled"`
+	// Require explicit index names when deleting
+	ActionDestructiveRequiresName pulumi.StringPtrInput `pulumi:"actionDestructiveRequiresName"`
+	// Maximum content length for HTTP requests to
+	// the Elasticsearch HTTP API, in bytes.
+	HttpMaxContentLength pulumi.StringPtrInput `pulumi:"httpMaxContentLength"`
+	// The max size of allowed headers, in bytes.
+	HttpMaxHeaderSize pulumi.StringPtrInput `pulumi:"httpMaxHeaderSize"`
+	// The max length of an HTTP URL, in bytes.
+	HttpMaxInitialLineLength pulumi.StringPtrInput `pulumi:"httpMaxInitialLineLength"`
+	// Relative amount. Maximum amount of
+	// heap memory used for field data cache. This is an expert setting; decreasing the
+	// value too much will increase overhead of loading field data; too much memory used
+	// for field data cache will decrease amount of heap available for other operations.
+	IndicesFielddataCacheSize pulumi.StringPtrInput `pulumi:"indicesFielddataCacheSize"`
+	// Percentage value. Default is 10%.
+	// Total amount of heap used for indexing buffer, before writing segments to disk.
+	// This is an expert setting. Too low value will slow down indexing; too high value
+	// will increase indexing performance but causes performance issues for query performance.
+	IndicesMemoryIndexBufferSize pulumi.StringPtrInput `pulumi:"indicesMemoryIndexBufferSize"`
+	// Percentage value. Default is 10%.
+	// Maximum amount of heap used for query cache. This is an expert setting.
+	// Too low value will decrease query performance and increase performance for other
+	// operations; too high value will cause issues with other Elasticsearch functionality.
+	IndicesQueriesCacheSize pulumi.StringPtrInput `pulumi:"indicesQueriesCacheSize"`
+	// Maximum number of clauses Lucene
+	// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+	// may cause performance issues. Investigate other approaches first before increasing this value.
+	IndicesQueryBoolMaxClauseCount pulumi.StringPtrInput `pulumi:"indicesQueryBoolMaxClauseCount"`
+	// Whitelisted addresses for reindexing.
+	// Changing this value will cause all Elasticsearch instances to restart.
+	ReindexRemoteWhitelists pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
+	// Maximum number of aggregation buckets allowed
+	// in a single response. Elasticsearch default value is used when this is not defined.
+	SearchMaxBuckets pulumi.StringPtrInput `pulumi:"searchMaxBuckets"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolAnalyzeQueueSize pulumi.StringPtrInput `pulumi:"threadPoolAnalyzeQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolAnalyzeSize pulumi.StringPtrInput `pulumi:"threadPoolAnalyzeSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolForceMergeSize pulumi.StringPtrInput `pulumi:"threadPoolForceMergeSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolGetQueueSize pulumi.StringPtrInput `pulumi:"threadPoolGetQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolGetSize pulumi.StringPtrInput `pulumi:"threadPoolGetSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolIndexQueueSize pulumi.StringPtrInput `pulumi:"threadPoolIndexQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count -
+	// value is automatically lowered if set to higher than maximum value.
+	ThreadPoolIndexSize pulumi.StringPtrInput `pulumi:"threadPoolIndexSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolSearchQueueSize pulumi.StringPtrInput `pulumi:"threadPoolSearchQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchSize pulumi.StringPtrInput `pulumi:"threadPoolSearchSize"`
+	// Size for the thread pool queue.
+	// See documentation for exact details.
+	ThreadPoolSearchThrottledQueueSize pulumi.StringPtrInput `pulumi:"threadPoolSearchThrottledQueueSize"`
+	// Size for the thread pool. See
+	// documentation for exact details. Do note this may have maximum value depending on
+	// CPU count - value is automatically lowered if set to higher than maximum value.
+	ThreadPoolSearchThrottledSize pulumi.StringPtrInput `pulumi:"threadPoolSearchThrottledSize"`
+	// Size for the thread pool queue. See
+	// documentation for exact details.
+	ThreadPoolWriteQueueSize pulumi.StringPtrInput `pulumi:"threadPoolWriteQueueSize"`
+	// Size for the thread pool. See documentation
+	// for exact details. Do note this may have maximum value depending on CPU count - value
+	// is automatically lowered if set to higher than maximum value.
+	ThreadPoolWriteSize pulumi.StringPtrInput `pulumi:"threadPoolWriteSize"`
 }
 
 func (GetElasticSearchElasticsearchUserConfigElasticsearchArgs) ElementType() reflect.Type {
@@ -30317,126 +32901,186 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ToGetElastic
 		return &v
 	}).(GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput)
 }
+
+// Explicitly allow or block automatic
+// creation of indices. Defaults to true
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ActionAutoCreateIndexEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ActionAutoCreateIndexEnabled
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require explicit index names when deleting
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ActionDestructiveRequiresName
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum content length for HTTP requests to
+// the Elasticsearch HTTP API, in bytes.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxContentLength }).(pulumi.StringPtrOutput)
 }
 
+// The max size of allowed headers, in bytes.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.HttpMaxHeaderSize }).(pulumi.StringPtrOutput)
 }
 
+// The max length of an HTTP URL, in bytes.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.HttpMaxInitialLineLength
 	}).(pulumi.StringPtrOutput)
 }
 
+// Relative amount. Maximum amount of
+// heap memory used for field data cache. This is an expert setting; decreasing the
+// value too much will increase overhead of loading field data; too much memory used
+// for field data cache will decrease amount of heap available for other operations.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.IndicesFielddataCacheSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Total amount of heap used for indexing buffer, before writing segments to disk.
+// This is an expert setting. Too low value will slow down indexing; too high value
+// will increase indexing performance but causes performance issues for query performance.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.IndicesMemoryIndexBufferSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Maximum amount of heap used for query cache. This is an expert setting.
+// Too low value will decrease query performance and increase performance for other
+// operations; too high value will cause issues with other Elasticsearch functionality.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.IndicesQueriesCacheSize }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of clauses Lucene
+// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+// may cause performance issues. Investigate other approaches first before increasing this value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.IndicesQueryBoolMaxClauseCount
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whitelisted addresses for reindexing.
+// Changing this value will cause all Elasticsearch instances to restart.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) []string {
 		return v.ReindexRemoteWhitelists
 	}).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of aggregation buckets allowed
+// in a single response. Elasticsearch default value is used when this is not defined.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.SearchMaxBuckets }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolAnalyzeQueueSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolAnalyzeSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolForceMergeSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetQueueSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolGetSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolIndexQueueSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolIndexSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolSearchQueueSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolSearchSize }).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolSearchThrottledQueueSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolSearchThrottledSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ThreadPoolWriteQueueSize
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ThreadPoolWriteSize }).(pulumi.StringPtrOutput)
 }
@@ -30461,6 +33105,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) Elem() Ge
 	}).(GetElasticSearchElasticsearchUserConfigElasticsearchOutput)
 }
 
+// Explicitly allow or block automatic
+// creation of indices. Defaults to true
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionAutoCreateIndexEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30470,6 +33116,7 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionAut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require explicit index names when deleting
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30479,6 +33126,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionDes
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum content length for HTTP requests to
+// the Elasticsearch HTTP API, in bytes.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30488,6 +33137,7 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxCo
 	}).(pulumi.StringPtrOutput)
 }
 
+// The max size of allowed headers, in bytes.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxHeaderSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30497,6 +33147,7 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxHe
 	}).(pulumi.StringPtrOutput)
 }
 
+// The max length of an HTTP URL, in bytes.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxInitialLineLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30506,6 +33157,10 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) HttpMaxIn
 	}).(pulumi.StringPtrOutput)
 }
 
+// Relative amount. Maximum amount of
+// heap memory used for field data cache. This is an expert setting; decreasing the
+// value too much will increase overhead of loading field data; too much memory used
+// for field data cache will decrease amount of heap available for other operations.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesFielddataCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30515,6 +33170,10 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesFi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Total amount of heap used for indexing buffer, before writing segments to disk.
+// This is an expert setting. Too low value will slow down indexing; too high value
+// will increase indexing performance but causes performance issues for query performance.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesMemoryIndexBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30524,6 +33183,10 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesMe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Percentage value. Default is 10%.
+// Maximum amount of heap used for query cache. This is an expert setting.
+// Too low value will decrease query performance and increase performance for other
+// operations; too high value will cause issues with other Elasticsearch functionality.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueriesCacheSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30533,6 +33196,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of clauses Lucene
+// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+// may cause performance issues. Investigate other approaches first before increasing this value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQueryBoolMaxClauseCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30542,6 +33208,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) IndicesQu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whitelisted addresses for reindexing.
+// Changing this value will cause all Elasticsearch instances to restart.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) []string {
 		if v == nil {
@@ -30551,6 +33219,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ReindexRe
 	}).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of aggregation buckets allowed
+// in a single response. Elasticsearch default value is used when this is not defined.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) SearchMaxBuckets() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30560,6 +33230,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) SearchMax
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30569,6 +33241,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolAnalyzeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30578,6 +33253,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolForceMergeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30587,6 +33265,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30596,6 +33276,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolGetSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30605,6 +33288,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30614,6 +33299,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count -
+// value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolIndexSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30623,6 +33311,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30632,6 +33322,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30641,6 +33334,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue.
+// See documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30650,6 +33345,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See
+// documentation for exact details. Do note this may have maximum value depending on
+// CPU count - value is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolSearchThrottledSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30659,6 +33357,8 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool queue. See
+// documentation for exact details.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteQueueSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30668,6 +33368,9 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size for the thread pool. See documentation
+// for exact details. Do note this may have maximum value depending on CPU count - value
+// is automatically lowered if set to higher than maximum value.
 func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoolWriteSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -30678,8 +33381,11 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ThreadPoo
 }
 
 type GetElasticSearchElasticsearchUserConfigIndexPattern struct {
+	// Maximum number of indexes to keep before deleting the oldest one.
 	MaxIndexCount *string `pulumi:"maxIndexCount"`
-	Pattern       *string `pulumi:"pattern"`
+	// Must consist of alpha-numeric characters, dashes, underscores,
+	// dots and glob characters (* and ?)
+	Pattern *string `pulumi:"pattern"`
 }
 
 // GetElasticSearchElasticsearchUserConfigIndexPatternInput is an input type that accepts GetElasticSearchElasticsearchUserConfigIndexPatternArgs and GetElasticSearchElasticsearchUserConfigIndexPatternOutput values.
@@ -30694,8 +33400,11 @@ type GetElasticSearchElasticsearchUserConfigIndexPatternInput interface {
 }
 
 type GetElasticSearchElasticsearchUserConfigIndexPatternArgs struct {
+	// Maximum number of indexes to keep before deleting the oldest one.
 	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
-	Pattern       pulumi.StringPtrInput `pulumi:"pattern"`
+	// Must consist of alpha-numeric characters, dashes, underscores,
+	// dots and glob characters (* and ?)
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 }
 
 func (GetElasticSearchElasticsearchUserConfigIndexPatternArgs) ElementType() reflect.Type {
@@ -30749,10 +33458,13 @@ func (o GetElasticSearchElasticsearchUserConfigIndexPatternOutput) ToGetElasticS
 	return o
 }
 
+// Maximum number of indexes to keep before deleting the oldest one.
 func (o GetElasticSearchElasticsearchUserConfigIndexPatternOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigIndexPattern) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
+// Must consist of alpha-numeric characters, dashes, underscores,
+// dots and glob characters (* and ?)
 func (o GetElasticSearchElasticsearchUserConfigIndexPatternOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigIndexPattern) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
@@ -30778,9 +33490,15 @@ func (o GetElasticSearchElasticsearchUserConfigIndexPatternArrayOutput) Index(i 
 }
 
 type GetElasticSearchElasticsearchUserConfigKibana struct {
+	// Timeout in milliseconds for requests
+	// made by Kibana towards Elasticsearch.
 	ElasticsearchRequestTimeout *string `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     *string `pulumi:"enabled"`
-	MaxOldSpaceSize             *string `pulumi:"maxOldSpaceSize"`
+	// Enable or disable Kibana.
+	Enabled *string `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the
+	// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+	// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+	MaxOldSpaceSize *string `pulumi:"maxOldSpaceSize"`
 }
 
 // GetElasticSearchElasticsearchUserConfigKibanaInput is an input type that accepts GetElasticSearchElasticsearchUserConfigKibanaArgs and GetElasticSearchElasticsearchUserConfigKibanaOutput values.
@@ -30795,9 +33513,15 @@ type GetElasticSearchElasticsearchUserConfigKibanaInput interface {
 }
 
 type GetElasticSearchElasticsearchUserConfigKibanaArgs struct {
+	// Timeout in milliseconds for requests
+	// made by Kibana towards Elasticsearch.
 	ElasticsearchRequestTimeout pulumi.StringPtrInput `pulumi:"elasticsearchRequestTimeout"`
-	Enabled                     pulumi.StringPtrInput `pulumi:"enabled"`
-	MaxOldSpaceSize             pulumi.StringPtrInput `pulumi:"maxOldSpaceSize"`
+	// Enable or disable Kibana.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the
+	// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+	// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+	MaxOldSpaceSize pulumi.StringPtrInput `pulumi:"maxOldSpaceSize"`
 }
 
 func (GetElasticSearchElasticsearchUserConfigKibanaArgs) ElementType() reflect.Type {
@@ -30876,14 +33600,21 @@ func (o GetElasticSearchElasticsearchUserConfigKibanaOutput) ToGetElasticSearchE
 		return &v
 	}).(GetElasticSearchElasticsearchUserConfigKibanaPtrOutput)
 }
+
+// Timeout in milliseconds for requests
+// made by Kibana towards Elasticsearch.
 func (o GetElasticSearchElasticsearchUserConfigKibanaOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigKibana) *string { return v.ElasticsearchRequestTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kibana.
 func (o GetElasticSearchElasticsearchUserConfigKibanaOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigKibana) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
+// Limits the maximum amount of memory (in MiB) the
+// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
 func (o GetElasticSearchElasticsearchUserConfigKibanaOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigKibana) *string { return v.MaxOldSpaceSize }).(pulumi.StringPtrOutput)
 }
@@ -30908,6 +33639,8 @@ func (o GetElasticSearchElasticsearchUserConfigKibanaPtrOutput) Elem() GetElasti
 	}).(GetElasticSearchElasticsearchUserConfigKibanaOutput)
 }
 
+// Timeout in milliseconds for requests
+// made by Kibana towards Elasticsearch.
 func (o GetElasticSearchElasticsearchUserConfigKibanaPtrOutput) ElasticsearchRequestTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigKibana) *string {
 		if v == nil {
@@ -30917,6 +33650,7 @@ func (o GetElasticSearchElasticsearchUserConfigKibanaPtrOutput) ElasticsearchReq
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kibana.
 func (o GetElasticSearchElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigKibana) *string {
 		if v == nil {
@@ -30926,6 +33660,9 @@ func (o GetElasticSearchElasticsearchUserConfigKibanaPtrOutput) Enabled() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limits the maximum amount of memory (in MiB) the
+// Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
 func (o GetElasticSearchElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigKibana) *string {
 		if v == nil {
@@ -30936,9 +33673,14 @@ func (o GetElasticSearchElasticsearchUserConfigKibanaPtrOutput) MaxOldSpaceSize(
 }
 
 type GetElasticSearchElasticsearchUserConfigPrivateAccess struct {
+	// Elasticsearch specific server provided values.
 	Elasticsearch *string `pulumi:"elasticsearch"`
-	Kibana        *string `pulumi:"kibana"`
-	Prometheus    *string `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana *string `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *string `pulumi:"prometheus"`
 }
 
 // GetElasticSearchElasticsearchUserConfigPrivateAccessInput is an input type that accepts GetElasticSearchElasticsearchUserConfigPrivateAccessArgs and GetElasticSearchElasticsearchUserConfigPrivateAccessOutput values.
@@ -30953,9 +33695,14 @@ type GetElasticSearchElasticsearchUserConfigPrivateAccessInput interface {
 }
 
 type GetElasticSearchElasticsearchUserConfigPrivateAccessArgs struct {
+	// Elasticsearch specific server provided values.
 	Elasticsearch pulumi.StringPtrInput `pulumi:"elasticsearch"`
-	Kibana        pulumi.StringPtrInput `pulumi:"kibana"`
-	Prometheus    pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana pulumi.StringPtrInput `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
 func (GetElasticSearchElasticsearchUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -31034,14 +33781,20 @@ func (o GetElasticSearchElasticsearchUserConfigPrivateAccessOutput) ToGetElastic
 		return &v
 	}).(GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
 }
+
+// Elasticsearch specific server provided values.
 func (o GetElasticSearchElasticsearchUserConfigPrivateAccessOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigPrivateAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPrivateAccessOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigPrivateAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -31066,6 +33819,7 @@ func (o GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Elem() Ge
 	}).(GetElasticSearchElasticsearchUserConfigPrivateAccessOutput)
 }
 
+// Elasticsearch specific server provided values.
 func (o GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -31075,6 +33829,8 @@ func (o GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Elasticse
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -31084,6 +33840,8 @@ func (o GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Kibana() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -31094,9 +33852,14 @@ func (o GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput) Prometheu
 }
 
 type GetElasticSearchElasticsearchUserConfigPublicAccess struct {
+	// Elasticsearch specific server provided values.
 	Elasticsearch *string `pulumi:"elasticsearch"`
-	Kibana        *string `pulumi:"kibana"`
-	Prometheus    *string `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana *string `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *string `pulumi:"prometheus"`
 }
 
 // GetElasticSearchElasticsearchUserConfigPublicAccessInput is an input type that accepts GetElasticSearchElasticsearchUserConfigPublicAccessArgs and GetElasticSearchElasticsearchUserConfigPublicAccessOutput values.
@@ -31111,9 +33874,14 @@ type GetElasticSearchElasticsearchUserConfigPublicAccessInput interface {
 }
 
 type GetElasticSearchElasticsearchUserConfigPublicAccessArgs struct {
+	// Elasticsearch specific server provided values.
 	Elasticsearch pulumi.StringPtrInput `pulumi:"elasticsearch"`
-	Kibana        pulumi.StringPtrInput `pulumi:"kibana"`
-	Prometheus    pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to kibana from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
+	Kibana pulumi.StringPtrInput `pulumi:"kibana"`
+	// Allow clients to connect to prometheus from the public
+	// internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
 func (GetElasticSearchElasticsearchUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -31192,14 +33960,20 @@ func (o GetElasticSearchElasticsearchUserConfigPublicAccessOutput) ToGetElasticS
 		return &v
 	}).(GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput)
 }
+
+// Elasticsearch specific server provided values.
 func (o GetElasticSearchElasticsearchUserConfigPublicAccessOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigPublicAccess) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPublicAccessOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigPublicAccess) *string { return v.Kibana }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -31224,6 +33998,7 @@ func (o GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Elem() Get
 	}).(GetElasticSearchElasticsearchUserConfigPublicAccessOutput)
 }
 
+// Elasticsearch specific server provided values.
 func (o GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -31233,6 +34008,8 @@ func (o GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Elasticsea
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kibana from the public internet for
+// service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Kibana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -31242,6 +34019,8 @@ func (o GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Kibana() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public
+// internet for service nodes that are in a project VPC or another type of private network.
 func (o GetElasticSearchElasticsearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -31352,13 +34131,15 @@ func (o GetElasticSearchServiceIntegrationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetGrafanaComponent struct {
-	Component                 string `pulumi:"component"`
+	Component string `pulumi:"component"`
+	// (Required) Server hostname or IP
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
-	Port                      int    `pulumi:"port"`
-	Route                     string `pulumi:"route"`
-	Ssl                       bool   `pulumi:"ssl"`
-	Usage                     string `pulumi:"usage"`
+	// (Required) SMTP server port
+	Port  int    `pulumi:"port"`
+	Route string `pulumi:"route"`
+	Ssl   bool   `pulumi:"ssl"`
+	Usage string `pulumi:"usage"`
 }
 
 // GetGrafanaComponentInput is an input type that accepts GetGrafanaComponentArgs and GetGrafanaComponentOutput values.
@@ -31373,13 +34154,15 @@ type GetGrafanaComponentInput interface {
 }
 
 type GetGrafanaComponentArgs struct {
-	Component                 pulumi.StringInput `pulumi:"component"`
+	Component pulumi.StringInput `pulumi:"component"`
+	// (Required) Server hostname or IP
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
-	Port                      pulumi.IntInput    `pulumi:"port"`
-	Route                     pulumi.StringInput `pulumi:"route"`
-	Ssl                       pulumi.BoolInput   `pulumi:"ssl"`
-	Usage                     pulumi.StringInput `pulumi:"usage"`
+	// (Required) SMTP server port
+	Port  pulumi.IntInput    `pulumi:"port"`
+	Route pulumi.StringInput `pulumi:"route"`
+	Ssl   pulumi.BoolInput   `pulumi:"ssl"`
+	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
 func (GetGrafanaComponentArgs) ElementType() reflect.Type {
@@ -31437,6 +34220,7 @@ func (o GetGrafanaComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGrafanaComponent) string { return v.Component }).(pulumi.StringOutput)
 }
 
+// (Required) Server hostname or IP
 func (o GetGrafanaComponentOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGrafanaComponent) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -31445,6 +34229,7 @@ func (o GetGrafanaComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutp
 	return o.ApplyT(func(v GetGrafanaComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
 }
 
+// (Required) SMTP server port
 func (o GetGrafanaComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGrafanaComponent) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -31525,34 +34310,68 @@ func (o GetGrafanaGrafanaOutput) ToGetGrafanaGrafanaOutputWithContext(ctx contex
 }
 
 type GetGrafanaGrafanaUserConfig struct {
-	AlertingEnabled            *string                                          `pulumi:"alertingEnabled"`
-	AlertingErrorOrTimeout     *string                                          `pulumi:"alertingErrorOrTimeout"`
-	AlertingNodataOrNullvalues *string                                          `pulumi:"alertingNodataOrNullvalues"`
-	AllowEmbedding             *string                                          `pulumi:"allowEmbedding"`
-	AuthBasicEnabled           *string                                          `pulumi:"authBasicEnabled"`
-	AuthGenericOauth           *GetGrafanaGrafanaUserConfigAuthGenericOauth     `pulumi:"authGenericOauth"`
-	AuthGithub                 *GetGrafanaGrafanaUserConfigAuthGithub           `pulumi:"authGithub"`
-	AuthGitlab                 *GetGrafanaGrafanaUserConfigAuthGitlab           `pulumi:"authGitlab"`
-	AuthGoogle                 *GetGrafanaGrafanaUserConfigAuthGoogle           `pulumi:"authGoogle"`
-	CookieSamesite             *string                                          `pulumi:"cookieSamesite"`
-	CustomDomain               *string                                          `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   *string                                          `pulumi:"dashboardsVersionsToKeep"`
-	DataproxySendUserHeader    *string                                          `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           *string                                          `pulumi:"dataproxyTimeout"`
-	DisableGravatar            *string                                          `pulumi:"disableGravatar"`
-	EditorsCanAdmin            *string                                          `pulumi:"editorsCanAdmin"`
-	ExternalImageStorage       *GetGrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
-	GoogleAnalyticsUaId        *string                                          `pulumi:"googleAnalyticsUaId"`
-	IpFilters                  []string                                         `pulumi:"ipFilters"`
-	MetricsEnabled             *string                                          `pulumi:"metricsEnabled"`
-	PrivateAccess              *GetGrafanaGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
-	PublicAccess               *GetGrafanaGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
-	RecoveryBasebackupName     *string                                          `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom          *string                                          `pulumi:"serviceToForkFrom"`
-	SmtpServer                 *GetGrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
-	UserAutoAssignOrg          *string                                          `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole      *string                                          `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit             *string                                          `pulumi:"viewersCanEdit"`
+	// Enable or disable Grafana alerting functionality
+	AlertingEnabled *string `pulumi:"alertingEnabled"`
+	// Default error or timeout setting for new alerting rules
+	AlertingErrorOrTimeout *string `pulumi:"alertingErrorOrTimeout"`
+	// Default value for 'no data or null values' for
+	// new alerting rules
+	AlertingNodataOrNullvalues *string `pulumi:"alertingNodataOrNullvalues"`
+	// Allow embedding Grafana dashboards with iframe/frame/object/embed
+	// tags. Disabled by default to limit impact of clickjacking
+	AllowEmbedding *string `pulumi:"allowEmbedding"`
+	// Enable or disable basic authentication form, used by Grafana
+	// built-in login.
+	AuthBasicEnabled *string `pulumi:"authBasicEnabled"`
+	// Generic OAuth integration.
+	AuthGenericOauth *GetGrafanaGrafanaUserConfigAuthGenericOauth `pulumi:"authGenericOauth"`
+	// Automatically sign-up users on successful sign-in
+	AuthGithub *GetGrafanaGrafanaUserConfigAuthGithub `pulumi:"authGithub"`
+	// GitLab Auth integration.
+	AuthGitlab *GetGrafanaGrafanaUserConfigAuthGitlab `pulumi:"authGitlab"`
+	// Google Auth integration
+	AuthGoogle *GetGrafanaGrafanaUserConfigAuthGoogle `pulumi:"authGoogle"`
+	// Cookie SameSite attribute: 'strict' prevents sending cookie for
+	// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+	CookieSamesite *string `pulumi:"cookieSamesite"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Dashboard versions to keep per dashboard.
+	DashboardsVersionsToKeep *string `pulumi:"dashboardsVersionsToKeep"`
+	// Send 'X-Grafana-User' header to data source.
+	DataproxySendUserHeader *string `pulumi:"dataproxySendUserHeader"`
+	// Timeout for data proxy requests in seconds.
+	DataproxyTimeout *string `pulumi:"dataproxyTimeout"`
+	// Set to true to disable gravatar. Defaults to false
+	// (gravatar is enabled).
+	DisableGravatar *string `pulumi:"disableGravatar"`
+	// Editors can manage folders, teams and dashboards created by them.
+	EditorsCanAdmin *string `pulumi:"editorsCanAdmin"`
+	// External image store settings
+	ExternalImageStorage *GetGrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
+	// Google Analytics Universal Analytics ID for tracking Grafana usage
+	GoogleAnalyticsUaId *string `pulumi:"googleAnalyticsUaId"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// Enable Grafana /metrics endpoint
+	MetricsEnabled *string                                   `pulumi:"metricsEnabled"`
+	PrivateAccess  *GetGrafanaGrafanaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *GetGrafanaGrafanaUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// SMTP server settings.
+	SmtpServer *GetGrafanaGrafanaUserConfigSmtpServer `pulumi:"smtpServer"`
+	// Auto-assign new users on signup to main organization.
+	// Defaults to false.
+	UserAutoAssignOrg *string `pulumi:"userAutoAssignOrg"`
+	// Set role for new signups. Defaults to Viewer.
+	UserAutoAssignOrgRole *string `pulumi:"userAutoAssignOrgRole"`
+	// Users with view-only permission can edit but not save dashboards.
+	ViewersCanEdit *string `pulumi:"viewersCanEdit"`
 }
 
 // GetGrafanaGrafanaUserConfigInput is an input type that accepts GetGrafanaGrafanaUserConfigArgs and GetGrafanaGrafanaUserConfigOutput values.
@@ -31567,34 +34386,68 @@ type GetGrafanaGrafanaUserConfigInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigArgs struct {
-	AlertingEnabled            pulumi.StringPtrInput                                   `pulumi:"alertingEnabled"`
-	AlertingErrorOrTimeout     pulumi.StringPtrInput                                   `pulumi:"alertingErrorOrTimeout"`
-	AlertingNodataOrNullvalues pulumi.StringPtrInput                                   `pulumi:"alertingNodataOrNullvalues"`
-	AllowEmbedding             pulumi.StringPtrInput                                   `pulumi:"allowEmbedding"`
-	AuthBasicEnabled           pulumi.StringPtrInput                                   `pulumi:"authBasicEnabled"`
-	AuthGenericOauth           GetGrafanaGrafanaUserConfigAuthGenericOauthPtrInput     `pulumi:"authGenericOauth"`
-	AuthGithub                 GetGrafanaGrafanaUserConfigAuthGithubPtrInput           `pulumi:"authGithub"`
-	AuthGitlab                 GetGrafanaGrafanaUserConfigAuthGitlabPtrInput           `pulumi:"authGitlab"`
-	AuthGoogle                 GetGrafanaGrafanaUserConfigAuthGooglePtrInput           `pulumi:"authGoogle"`
-	CookieSamesite             pulumi.StringPtrInput                                   `pulumi:"cookieSamesite"`
-	CustomDomain               pulumi.StringPtrInput                                   `pulumi:"customDomain"`
-	DashboardsVersionsToKeep   pulumi.StringPtrInput                                   `pulumi:"dashboardsVersionsToKeep"`
-	DataproxySendUserHeader    pulumi.StringPtrInput                                   `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout           pulumi.StringPtrInput                                   `pulumi:"dataproxyTimeout"`
-	DisableGravatar            pulumi.StringPtrInput                                   `pulumi:"disableGravatar"`
-	EditorsCanAdmin            pulumi.StringPtrInput                                   `pulumi:"editorsCanAdmin"`
-	ExternalImageStorage       GetGrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
-	GoogleAnalyticsUaId        pulumi.StringPtrInput                                   `pulumi:"googleAnalyticsUaId"`
-	IpFilters                  pulumi.StringArrayInput                                 `pulumi:"ipFilters"`
-	MetricsEnabled             pulumi.StringPtrInput                                   `pulumi:"metricsEnabled"`
-	PrivateAccess              GetGrafanaGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
-	PublicAccess               GetGrafanaGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
-	RecoveryBasebackupName     pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom          pulumi.StringPtrInput                                   `pulumi:"serviceToForkFrom"`
-	SmtpServer                 GetGrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
-	UserAutoAssignOrg          pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole      pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit             pulumi.StringPtrInput                                   `pulumi:"viewersCanEdit"`
+	// Enable or disable Grafana alerting functionality
+	AlertingEnabled pulumi.StringPtrInput `pulumi:"alertingEnabled"`
+	// Default error or timeout setting for new alerting rules
+	AlertingErrorOrTimeout pulumi.StringPtrInput `pulumi:"alertingErrorOrTimeout"`
+	// Default value for 'no data or null values' for
+	// new alerting rules
+	AlertingNodataOrNullvalues pulumi.StringPtrInput `pulumi:"alertingNodataOrNullvalues"`
+	// Allow embedding Grafana dashboards with iframe/frame/object/embed
+	// tags. Disabled by default to limit impact of clickjacking
+	AllowEmbedding pulumi.StringPtrInput `pulumi:"allowEmbedding"`
+	// Enable or disable basic authentication form, used by Grafana
+	// built-in login.
+	AuthBasicEnabled pulumi.StringPtrInput `pulumi:"authBasicEnabled"`
+	// Generic OAuth integration.
+	AuthGenericOauth GetGrafanaGrafanaUserConfigAuthGenericOauthPtrInput `pulumi:"authGenericOauth"`
+	// Automatically sign-up users on successful sign-in
+	AuthGithub GetGrafanaGrafanaUserConfigAuthGithubPtrInput `pulumi:"authGithub"`
+	// GitLab Auth integration.
+	AuthGitlab GetGrafanaGrafanaUserConfigAuthGitlabPtrInput `pulumi:"authGitlab"`
+	// Google Auth integration
+	AuthGoogle GetGrafanaGrafanaUserConfigAuthGooglePtrInput `pulumi:"authGoogle"`
+	// Cookie SameSite attribute: 'strict' prevents sending cookie for
+	// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+	CookieSamesite pulumi.StringPtrInput `pulumi:"cookieSamesite"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Dashboard versions to keep per dashboard.
+	DashboardsVersionsToKeep pulumi.StringPtrInput `pulumi:"dashboardsVersionsToKeep"`
+	// Send 'X-Grafana-User' header to data source.
+	DataproxySendUserHeader pulumi.StringPtrInput `pulumi:"dataproxySendUserHeader"`
+	// Timeout for data proxy requests in seconds.
+	DataproxyTimeout pulumi.StringPtrInput `pulumi:"dataproxyTimeout"`
+	// Set to true to disable gravatar. Defaults to false
+	// (gravatar is enabled).
+	DisableGravatar pulumi.StringPtrInput `pulumi:"disableGravatar"`
+	// Editors can manage folders, teams and dashboards created by them.
+	EditorsCanAdmin pulumi.StringPtrInput `pulumi:"editorsCanAdmin"`
+	// External image store settings
+	ExternalImageStorage GetGrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
+	// Google Analytics Universal Analytics ID for tracking Grafana usage
+	GoogleAnalyticsUaId pulumi.StringPtrInput `pulumi:"googleAnalyticsUaId"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Enable Grafana /metrics endpoint
+	MetricsEnabled pulumi.StringPtrInput                            `pulumi:"metricsEnabled"`
+	PrivateAccess  GetGrafanaGrafanaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess GetGrafanaGrafanaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service.
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// SMTP server settings.
+	SmtpServer GetGrafanaGrafanaUserConfigSmtpServerPtrInput `pulumi:"smtpServer"`
+	// Auto-assign new users on signup to main organization.
+	// Defaults to false.
+	UserAutoAssignOrg pulumi.StringPtrInput `pulumi:"userAutoAssignOrg"`
+	// Set role for new signups. Defaults to Viewer.
+	UserAutoAssignOrgRole pulumi.StringPtrInput `pulumi:"userAutoAssignOrgRole"`
+	// Users with view-only permission can edit but not save dashboards.
+	ViewersCanEdit pulumi.StringPtrInput `pulumi:"viewersCanEdit"`
 }
 
 func (GetGrafanaGrafanaUserConfigArgs) ElementType() reflect.Type {
@@ -31623,86 +34476,111 @@ func (o GetGrafanaGrafanaUserConfigOutput) ToGetGrafanaGrafanaUserConfigOutputWi
 	return o
 }
 
+// Enable or disable Grafana alerting functionality
 func (o GetGrafanaGrafanaUserConfigOutput) AlertingEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.AlertingEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Default error or timeout setting for new alerting rules
 func (o GetGrafanaGrafanaUserConfigOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.AlertingErrorOrTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Default value for 'no data or null values' for
+// new alerting rules
 func (o GetGrafanaGrafanaUserConfigOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.AlertingNodataOrNullvalues }).(pulumi.StringPtrOutput)
 }
 
+// Allow embedding Grafana dashboards with iframe/frame/object/embed
+// tags. Disabled by default to limit impact of clickjacking
 func (o GetGrafanaGrafanaUserConfigOutput) AllowEmbedding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.AllowEmbedding }).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable basic authentication form, used by Grafana
+// built-in login.
 func (o GetGrafanaGrafanaUserConfigOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.AuthBasicEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Generic OAuth integration.
 func (o GetGrafanaGrafanaUserConfigOutput) AuthGenericOauth() GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigAuthGenericOauth {
 		return v.AuthGenericOauth
 	}).(GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigOutput) AuthGithub() GetGrafanaGrafanaUserConfigAuthGithubPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigAuthGithub { return v.AuthGithub }).(GetGrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
 
+// GitLab Auth integration.
 func (o GetGrafanaGrafanaUserConfigOutput) AuthGitlab() GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigAuthGitlab { return v.AuthGitlab }).(GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
+// Google Auth integration
 func (o GetGrafanaGrafanaUserConfigOutput) AuthGoogle() GetGrafanaGrafanaUserConfigAuthGooglePtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigAuthGoogle { return v.AuthGoogle }).(GetGrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
 
+// Cookie SameSite attribute: 'strict' prevents sending cookie for
+// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
 func (o GetGrafanaGrafanaUserConfigOutput) CookieSamesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.CookieSamesite }).(pulumi.StringPtrOutput)
 }
 
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 func (o GetGrafanaGrafanaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Dashboard versions to keep per dashboard.
 func (o GetGrafanaGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.DashboardsVersionsToKeep }).(pulumi.StringPtrOutput)
 }
 
+// Send 'X-Grafana-User' header to data source.
 func (o GetGrafanaGrafanaUserConfigOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.DataproxySendUserHeader }).(pulumi.StringPtrOutput)
 }
 
+// Timeout for data proxy requests in seconds.
 func (o GetGrafanaGrafanaUserConfigOutput) DataproxyTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.DataproxyTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Set to true to disable gravatar. Defaults to false
+// (gravatar is enabled).
 func (o GetGrafanaGrafanaUserConfigOutput) DisableGravatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.DisableGravatar }).(pulumi.StringPtrOutput)
 }
 
+// Editors can manage folders, teams and dashboards created by them.
 func (o GetGrafanaGrafanaUserConfigOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.EditorsCanAdmin }).(pulumi.StringPtrOutput)
 }
 
+// External image store settings
 func (o GetGrafanaGrafanaUserConfigOutput) ExternalImageStorage() GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigExternalImageStorage {
 		return v.ExternalImageStorage
 	}).(GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
+// Google Analytics Universal Analytics ID for tracking Grafana usage
 func (o GetGrafanaGrafanaUserConfigOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.GoogleAnalyticsUaId }).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 func (o GetGrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Enable Grafana /metrics endpoint
 func (o GetGrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.MetricsEnabled }).(pulumi.StringPtrOutput)
 }
@@ -31711,45 +34589,64 @@ func (o GetGrafanaGrafanaUserConfigOutput) PrivateAccess() GetGrafanaGrafanaUser
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
 func (o GetGrafanaGrafanaUserConfigOutput) PublicAccess() GetGrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigPublicAccess { return v.PublicAccess }).(GetGrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service.
 func (o GetGrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o GetGrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// SMTP server settings.
 func (o GetGrafanaGrafanaUserConfigOutput) SmtpServer() GetGrafanaGrafanaUserConfigSmtpServerPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigSmtpServer { return v.SmtpServer }).(GetGrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
+// Auto-assign new users on signup to main organization.
+// Defaults to false.
 func (o GetGrafanaGrafanaUserConfigOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrg }).(pulumi.StringPtrOutput)
 }
 
+// Set role for new signups. Defaults to Viewer.
 func (o GetGrafanaGrafanaUserConfigOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrgRole }).(pulumi.StringPtrOutput)
 }
 
+// Users with view-only permission can edit but not save dashboards.
 func (o GetGrafanaGrafanaUserConfigOutput) ViewersCanEdit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.ViewersCanEdit }).(pulumi.StringPtrOutput)
 }
 
 type GetGrafanaGrafanaUserConfigAuthGenericOauth struct {
-	AllowSignUp          *string  `pulumi:"allowSignUp"`
-	AllowedDomains       []string `pulumi:"allowedDomains"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// Allowed domain
+	AllowedDomains []string `pulumi:"allowedDomains"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
-	ApiUrl               *string  `pulumi:"apiUrl"`
-	AuthUrl              *string  `pulumi:"authUrl"`
-	ClientId             *string  `pulumi:"clientId"`
-	ClientSecret         *string  `pulumi:"clientSecret"`
-	Name                 *string  `pulumi:"name"`
-	Scopes               []string `pulumi:"scopes"`
-	TokenUrl             *string  `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl *string `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl *string `pulumi:"authUrl"`
+	// (Required) Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Name of the OAuth integration
+	Name *string `pulumi:"name"`
+	// Scope must be non-empty string without whitespace
+	Scopes []string `pulumi:"scopes"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl *string `pulumi:"tokenUrl"`
 }
 
 // GetGrafanaGrafanaUserConfigAuthGenericOauthInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGenericOauthArgs and GetGrafanaGrafanaUserConfigAuthGenericOauthOutput values.
@@ -31764,16 +34661,26 @@ type GetGrafanaGrafanaUserConfigAuthGenericOauthInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigAuthGenericOauthArgs struct {
-	AllowSignUp          pulumi.StringPtrInput   `pulumi:"allowSignUp"`
-	AllowedDomains       pulumi.StringArrayInput `pulumi:"allowedDomains"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// Allowed domain
+	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
-	ApiUrl               pulumi.StringPtrInput   `pulumi:"apiUrl"`
-	AuthUrl              pulumi.StringPtrInput   `pulumi:"authUrl"`
-	ClientId             pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret         pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	Name                 pulumi.StringPtrInput   `pulumi:"name"`
-	Scopes               pulumi.StringArrayInput `pulumi:"scopes"`
-	TokenUrl             pulumi.StringPtrInput   `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
+	// (Required) Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Name of the OAuth integration
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Scope must be non-empty string without whitespace
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
 }
 
 func (GetGrafanaGrafanaUserConfigAuthGenericOauthArgs) ElementType() reflect.Type {
@@ -31852,42 +34759,53 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) ToGetGrafanaGrafanaUs
 		return &v
 	}).(GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Name of the OAuth integration
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Scope must be non-empty string without whitespace
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
 }
@@ -31912,6 +34830,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Elem() GetGrafanaG
 	}).(GetGrafanaGrafanaUserConfigAuthGenericOauthOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -31921,6 +34840,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowSignUp() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) []string {
 		if v == nil {
@@ -31930,6 +34850,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedDomains() p
 	}).(pulumi.StringArrayOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) []string {
 		if v == nil {
@@ -31939,6 +34860,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AllowedOrganizatio
 	}).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -31948,6 +34870,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ApiUrl() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -31957,6 +34880,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -31966,6 +34890,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -31975,6 +34900,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientSecret() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the OAuth integration
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -31984,6 +34910,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Name() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Scope must be non-empty string without whitespace
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) []string {
 		if v == nil {
@@ -31993,6 +34920,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) Scopes() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -32003,11 +34931,16 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.
 }
 
 type GetGrafanaGrafanaUserConfigAuthGithub struct {
-	AllowSignUp          *string  `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
-	ClientId             *string  `pulumi:"clientId"`
-	ClientSecret         *string  `pulumi:"clientSecret"`
-	TeamIds              []string `pulumi:"teamIds"`
+	// (Required) Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Require users to belong to one of given team IDs
+	TeamIds []string `pulumi:"teamIds"`
 }
 
 // GetGrafanaGrafanaUserConfigAuthGithubInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGithubArgs and GetGrafanaGrafanaUserConfigAuthGithubOutput values.
@@ -32022,11 +34955,16 @@ type GetGrafanaGrafanaUserConfigAuthGithubInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigAuthGithubArgs struct {
-	AllowSignUp          pulumi.StringPtrInput   `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
-	ClientId             pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret         pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	TeamIds              pulumi.StringArrayInput `pulumi:"teamIds"`
+	// (Required) Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Require users to belong to one of given team IDs
+	TeamIds pulumi.StringArrayInput `pulumi:"teamIds"`
 }
 
 func (GetGrafanaGrafanaUserConfigAuthGithubArgs) ElementType() reflect.Type {
@@ -32105,22 +35043,28 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) ToGetGrafanaGrafanaUserConf
 		return &v
 	}).(GetGrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Require users to belong to one of given team IDs
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) []string { return v.TeamIds }).(pulumi.StringArrayOutput)
 }
@@ -32143,6 +35087,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) Elem() GetGrafanaGrafana
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) GetGrafanaGrafanaUserConfigAuthGithub { return *v }).(GetGrafanaGrafanaUserConfigAuthGithubOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -32152,6 +35097,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowSignUp() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Must consist of alpha-numeric characters and dashes"
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) []string {
 		if v == nil {
@@ -32161,6 +35107,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() p
 	}).(pulumi.StringArrayOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -32170,6 +35117,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -32179,6 +35127,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require users to belong to one of given team IDs
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) []string {
 		if v == nil {
@@ -32189,13 +35138,20 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.StringA
 }
 
 type GetGrafanaGrafanaUserConfigAuthGitlab struct {
-	AllowSignUp   *string  `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// (Required) Require users to belong to one of given groups
 	AllowedGroups []string `pulumi:"allowedGroups"`
-	ApiUrl        *string  `pulumi:"apiUrl"`
-	AuthUrl       *string  `pulumi:"authUrl"`
-	ClientId      *string  `pulumi:"clientId"`
-	ClientSecret  *string  `pulumi:"clientSecret"`
-	TokenUrl      *string  `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl *string `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl *string `pulumi:"authUrl"`
+	// (Required) Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl *string `pulumi:"tokenUrl"`
 }
 
 // GetGrafanaGrafanaUserConfigAuthGitlabInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGitlabArgs and GetGrafanaGrafanaUserConfigAuthGitlabOutput values.
@@ -32210,13 +35166,20 @@ type GetGrafanaGrafanaUserConfigAuthGitlabInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigAuthGitlabArgs struct {
-	AllowSignUp   pulumi.StringPtrInput   `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// (Required) Require users to belong to one of given groups
 	AllowedGroups pulumi.StringArrayInput `pulumi:"allowedGroups"`
-	ApiUrl        pulumi.StringPtrInput   `pulumi:"apiUrl"`
-	AuthUrl       pulumi.StringPtrInput   `pulumi:"authUrl"`
-	ClientId      pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret  pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	TokenUrl      pulumi.StringPtrInput   `pulumi:"tokenUrl"`
+	// API URL. This only needs to be set when using self hosted GitLab
+	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
+	// Authorization URL. This only needs to be set when using self hosted GitLab
+	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
+	// (Required) Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Token URL. This only needs to be set when using self hosted GitLab
+	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
 }
 
 func (GetGrafanaGrafanaUserConfigAuthGitlabArgs) ElementType() reflect.Type {
@@ -32295,30 +35258,38 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) ToGetGrafanaGrafanaUserConf
 		return &v
 	}).(GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Require users to belong to one of given groups
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) AllowedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) []string { return v.AllowedGroups }).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
 }
@@ -32341,6 +35312,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) Elem() GetGrafanaGrafana
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) GetGrafanaGrafanaUserConfigAuthGitlab { return *v }).(GetGrafanaGrafanaUserConfigAuthGitlabOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -32350,6 +35322,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowSignUp() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Require users to belong to one of given groups
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) []string {
 		if v == nil {
@@ -32359,6 +35332,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowedGroups() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+// API URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -32368,6 +35342,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ApiUrl() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Authorization URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -32377,6 +35352,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AuthUrl() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -32386,6 +35362,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -32395,6 +35372,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientSecret() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Token URL. This only needs to be set when using self hosted GitLab
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -32405,10 +35383,14 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) TokenUrl() pulumi.String
 }
 
 type GetGrafanaGrafanaUserConfigAuthGoogle struct {
-	AllowSignUp    *string  `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp *string `pulumi:"allowSignUp"`
+	// Allowed domain
 	AllowedDomains []string `pulumi:"allowedDomains"`
-	ClientId       *string  `pulumi:"clientId"`
-	ClientSecret   *string  `pulumi:"clientSecret"`
+	// (Required) Client ID from provider
+	ClientId *string `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret *string `pulumi:"clientSecret"`
 }
 
 // GetGrafanaGrafanaUserConfigAuthGoogleInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGoogleArgs and GetGrafanaGrafanaUserConfigAuthGoogleOutput values.
@@ -32423,10 +35405,14 @@ type GetGrafanaGrafanaUserConfigAuthGoogleInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigAuthGoogleArgs struct {
-	AllowSignUp    pulumi.StringPtrInput   `pulumi:"allowSignUp"`
+	// Automatically sign-up users on successful sign-in
+	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
+	// Allowed domain
 	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
-	ClientId       pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret   pulumi.StringPtrInput   `pulumi:"clientSecret"`
+	// (Required) Client ID from provider
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// (Required) Client secret from provider
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 }
 
 func (GetGrafanaGrafanaUserConfigAuthGoogleArgs) ElementType() reflect.Type {
@@ -32505,18 +35491,23 @@ func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) ToGetGrafanaGrafanaUserConf
 		return &v
 	}).(GetGrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
+
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGoogle) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGoogle) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGoogle) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGoogle) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -32539,6 +35530,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) Elem() GetGrafanaGrafana
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGoogle) GetGrafanaGrafanaUserConfigAuthGoogle { return *v }).(GetGrafanaGrafanaUserConfigAuthGoogleOutput)
 }
 
+// Automatically sign-up users on successful sign-in
 func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowSignUp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -32548,6 +35540,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowSignUp() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed domain
 func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGoogle) []string {
 		if v == nil {
@@ -32557,6 +35550,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowedDomains() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+// (Required) Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -32566,6 +35560,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -32576,9 +35571,14 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.St
 }
 
 type GetGrafanaGrafanaUserConfigExternalImageStorage struct {
+	// (Required) S3 access key. Requires permissions to the S3 bucket for the
+	// s3:PutObject and s3:PutObjectAcl actions
 	AccessKey *string `pulumi:"accessKey"`
+	// (Required) Bucket URL for S3
 	BucketUrl *string `pulumi:"bucketUrl"`
-	Provider  *string `pulumi:"provider"`
+	// (Required) Provider type
+	Provider *string `pulumi:"provider"`
+	// (Required) S3 secret key
 	SecretKey *string `pulumi:"secretKey"`
 }
 
@@ -32594,9 +35594,14 @@ type GetGrafanaGrafanaUserConfigExternalImageStorageInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigExternalImageStorageArgs struct {
+	// (Required) S3 access key. Requires permissions to the S3 bucket for the
+	// s3:PutObject and s3:PutObjectAcl actions
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// (Required) Bucket URL for S3
 	BucketUrl pulumi.StringPtrInput `pulumi:"bucketUrl"`
-	Provider  pulumi.StringPtrInput `pulumi:"provider"`
+	// (Required) Provider type
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// (Required) S3 secret key
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
@@ -32676,18 +35681,24 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) ToGetGrafanaGrafa
 		return &v
 	}).(GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
+
+// (Required) S3 access key. Requires permissions to the S3 bucket for the
+// s3:PutObject and s3:PutObjectAcl actions
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Bucket URL for S3
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) BucketUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.BucketUrl }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Provider type
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
+// (Required) S3 secret key
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -32712,6 +35723,8 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Elem() GetGraf
 	}).(GetGrafanaGrafanaUserConfigExternalImageStorageOutput)
 }
 
+// (Required) S3 access key. Requires permissions to the S3 bucket for the
+// s3:PutObject and s3:PutObjectAcl actions
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -32721,6 +35734,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Bucket URL for S3
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -32730,6 +35744,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Provider type
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -32739,6 +35754,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) S3 secret key
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -32749,6 +35765,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pu
 }
 
 type GetGrafanaGrafanaUserConfigPrivateAccess struct {
+	// Grafana specific server provided values.
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -32764,6 +35781,7 @@ type GetGrafanaGrafanaUserConfigPrivateAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPrivateAccessArgs struct {
+	// Grafana specific server provided values.
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -32843,6 +35861,8 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessOutput) ToGetGrafanaGrafanaUserC
 		return &v
 	}).(GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
+
+// Grafana specific server provided values.
 func (o GetGrafanaGrafanaUserConfigPrivateAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -32865,6 +35885,7 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Elem() GetGrafanaGraf
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPrivateAccess) GetGrafanaGrafanaUserConfigPrivateAccess { return *v }).(GetGrafanaGrafanaUserConfigPrivateAccessOutput)
 }
 
+// Grafana specific server provided values.
 func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -32875,6 +35896,7 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.Stri
 }
 
 type GetGrafanaGrafanaUserConfigPublicAccess struct {
+	// Grafana specific server provided values.
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -32890,6 +35912,7 @@ type GetGrafanaGrafanaUserConfigPublicAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPublicAccessArgs struct {
+	// Grafana specific server provided values.
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -32969,6 +35992,8 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessOutput) ToGetGrafanaGrafanaUserCo
 		return &v
 	}).(GetGrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
+
+// Grafana specific server provided values.
 func (o GetGrafanaGrafanaUserConfigPublicAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -32991,6 +36016,7 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Elem() GetGrafanaGrafa
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPublicAccess) GetGrafanaGrafanaUserConfigPublicAccess { return *v }).(GetGrafanaGrafanaUserConfigPublicAccessOutput)
 }
 
+// Grafana specific server provided values.
 func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -33001,13 +36027,20 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.Strin
 }
 
 type GetGrafanaGrafanaUserConfigSmtpServer struct {
+	// (Required) Address used for sending emails
 	FromAddress *string `pulumi:"fromAddress"`
-	FromName    *string `pulumi:"fromName"`
-	Host        *string `pulumi:"host"`
-	Password    *string `pulumi:"password"`
-	Port        *string `pulumi:"port"`
-	SkipVerify  *string `pulumi:"skipVerify"`
-	Username    *string `pulumi:"username"`
+	// Name used in outgoing emails, defaults to Grafana
+	FromName *string `pulumi:"fromName"`
+	// (Required) Server hostname or IP
+	Host *string `pulumi:"host"`
+	// Password for SMTP authentication
+	Password *string `pulumi:"password"`
+	// (Required) SMTP server port
+	Port *string `pulumi:"port"`
+	// Skip verifying server certificate. Defaults to false
+	SkipVerify *string `pulumi:"skipVerify"`
+	// Username for SMTP authentication
+	Username *string `pulumi:"username"`
 }
 
 // GetGrafanaGrafanaUserConfigSmtpServerInput is an input type that accepts GetGrafanaGrafanaUserConfigSmtpServerArgs and GetGrafanaGrafanaUserConfigSmtpServerOutput values.
@@ -33022,13 +36055,20 @@ type GetGrafanaGrafanaUserConfigSmtpServerInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigSmtpServerArgs struct {
+	// (Required) Address used for sending emails
 	FromAddress pulumi.StringPtrInput `pulumi:"fromAddress"`
-	FromName    pulumi.StringPtrInput `pulumi:"fromName"`
-	Host        pulumi.StringPtrInput `pulumi:"host"`
-	Password    pulumi.StringPtrInput `pulumi:"password"`
-	Port        pulumi.StringPtrInput `pulumi:"port"`
-	SkipVerify  pulumi.StringPtrInput `pulumi:"skipVerify"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// Name used in outgoing emails, defaults to Grafana
+	FromName pulumi.StringPtrInput `pulumi:"fromName"`
+	// (Required) Server hostname or IP
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Password for SMTP authentication
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// (Required) SMTP server port
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Skip verifying server certificate. Defaults to false
+	SkipVerify pulumi.StringPtrInput `pulumi:"skipVerify"`
+	// Username for SMTP authentication
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetGrafanaGrafanaUserConfigSmtpServerArgs) ElementType() reflect.Type {
@@ -33107,30 +36147,38 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) ToGetGrafanaGrafanaUserConf
 		return &v
 	}).(GetGrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
+
+// (Required) Address used for sending emails
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) FromAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.FromAddress }).(pulumi.StringPtrOutput)
 }
 
+// Name used in outgoing emails, defaults to Grafana
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) FromName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.FromName }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Server hostname or IP
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// Password for SMTP authentication
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// (Required) SMTP server port
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// Skip verifying server certificate. Defaults to false
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
 }
 
+// Username for SMTP authentication
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -33153,6 +36201,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Elem() GetGrafanaGrafana
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) GetGrafanaGrafanaUserConfigSmtpServer { return *v }).(GetGrafanaGrafanaUserConfigSmtpServerOutput)
 }
 
+// (Required) Address used for sending emails
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) FromAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -33162,6 +36211,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) FromAddress() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name used in outgoing emails, defaults to Grafana
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) FromName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -33171,6 +36221,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) FromName() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Server hostname or IP
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -33180,6 +36231,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Host() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Password for SMTP authentication
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -33189,6 +36241,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) SMTP server port
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -33198,6 +36251,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Skip verifying server certificate. Defaults to false
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -33207,6 +36261,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username for SMTP authentication
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -33496,12 +36551,19 @@ func (o GetInfluxDbInfluxdbOutput) DatabaseName() pulumi.StringOutput {
 }
 
 type GetInfluxDbInfluxdbUserConfig struct {
-	CustomDomain           *string                                     `pulumi:"customDomain"`
-	IpFilters              []string                                    `pulumi:"ipFilters"`
-	PrivateAccess          *GetInfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess           *GetInfluxDbInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryBasebackupName *string                                     `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      *string                                     `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+	CustomDomain *string `pulumi:"customDomain"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetInfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetInfluxDbInfluxdbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // GetInfluxDbInfluxdbUserConfigInput is an input type that accepts GetInfluxDbInfluxdbUserConfigArgs and GetInfluxDbInfluxdbUserConfigOutput values.
@@ -33516,12 +36578,19 @@ type GetInfluxDbInfluxdbUserConfigInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigArgs struct {
-	CustomDomain           pulumi.StringPtrInput                              `pulumi:"customDomain"`
-	IpFilters              pulumi.StringArrayInput                            `pulumi:"ipFilters"`
-	PrivateAccess          GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess           GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryBasebackupName pulumi.StringPtrInput                              `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      pulumi.StringPtrInput                              `pulumi:"serviceToForkFrom"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect
+	// only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (GetInfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -33550,35 +36619,43 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) ToGetInfluxDbInfluxdbUserConfigOutp
 	return o
 }
 
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
 func (o GetInfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetInfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o GetInfluxDbInfluxdbUserConfigOutput) PrivateAccess() GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *GetInfluxDbInfluxdbUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GetInfluxDbInfluxdbUserConfigOutput) PublicAccess() GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *GetInfluxDbInfluxdbUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o GetInfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect
+// only when a new service is being created.
 func (o GetInfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivateAccess struct {
+	// InfluxDB specific server provided values.
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -33594,6 +36671,7 @@ type GetInfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivateAccessArgs struct {
+	// InfluxDB specific server provided values.
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -33673,6 +36751,8 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessOutput) ToGetInfluxDbInfluxdbU
 		return &v
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
+
+// InfluxDB specific server provided values.
 func (o GetInfluxDbInfluxdbUserConfigPrivateAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -33697,6 +36777,7 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Elem() GetInfluxDbI
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessOutput)
 }
 
+// InfluxDB specific server provided values.
 func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -33707,6 +36788,7 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.S
 }
 
 type GetInfluxDbInfluxdbUserConfigPublicAccess struct {
+	// InfluxDB specific server provided values.
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -33722,6 +36804,7 @@ type GetInfluxDbInfluxdbUserConfigPublicAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPublicAccessArgs struct {
+	// InfluxDB specific server provided values.
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -33801,6 +36884,8 @@ func (o GetInfluxDbInfluxdbUserConfigPublicAccessOutput) ToGetInfluxDbInfluxdbUs
 		return &v
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
+
+// InfluxDB specific server provided values.
 func (o GetInfluxDbInfluxdbUserConfigPublicAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -33825,6 +36910,7 @@ func (o GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Elem() GetInfluxDbIn
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessOutput)
 }
 
+// InfluxDB specific server provided values.
 func (o GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPublicAccess) *string {
 		if v == nil {
@@ -34238,7 +37324,9 @@ func (o GetKafkaConnectKafkaConnectOutput) ToGetKafkaConnectKafkaConnectOutputWi
 }
 
 type GetKafkaConnectKafkaConnectUserConfig struct {
-	IpFilters     []string                                            `pulumi:"ipFilters"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka Connect specific server provided values.
 	KafkaConnect  *GetKafkaConnectKafkaConnectUserConfigKafkaConnect  `pulumi:"kafkaConnect"`
 	PrivateAccess *GetKafkaConnectKafkaConnectUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess  *GetKafkaConnectKafkaConnectUserConfigPublicAccess  `pulumi:"publicAccess"`
@@ -34256,7 +37344,9 @@ type GetKafkaConnectKafkaConnectUserConfigInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigArgs struct {
-	IpFilters     pulumi.StringArrayInput                                    `pulumi:"ipFilters"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka Connect specific server provided values.
 	KafkaConnect  GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput  `pulumi:"kafkaConnect"`
 	PrivateAccess GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess  GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
@@ -34288,10 +37378,12 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) ToGetKafkaConnectKafkaConne
 	return o
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka Connect specific server provided values.
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) KafkaConnect() GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
@@ -34311,14 +37403,30 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) PublicAccess() GetKafkaConn
 }
 
 type GetKafkaConnectKafkaConnectUserConfigKafkaConnect struct {
+	// Defines what client configurations can be
+	// overridden by the connector. Default is None.
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest.
+	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
+	//   of poll() when using consumer group management (defaults to 300000).
+	// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
+	// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
+	//   (defaults to 60000).
+	// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
+	//   and partition offset data to be committed to offset storage before cancelling the process and restoring
+	//   the offset data to be committed in a future attempt (defaults to 5000).
+	ConsumerIsolationLevel    *string `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
+	ConsumerMaxPollRecords    *string `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs     *string `pulumi:"offsetFlushIntervalMs"`
+	OffsetFlushTimeoutMs      *string `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when using Kafka’s
+	// group management facilities (defaults to 10000).
+	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
 }
 
 // GetKafkaConnectKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs and GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput values.
@@ -34333,14 +37441,30 @@ type GetKafkaConnectKafkaConnectUserConfigKafkaConnectInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs struct {
+	// Defines what client configurations can be
+	// overridden by the connector. Default is None.
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest.
+	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
+	//   of poll() when using consumer group management (defaults to 300000).
+	// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
+	// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
+	//   (defaults to 60000).
+	// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
+	//   and partition offset data to be committed to offset storage before cancelling the process and restoring
+	//   the offset data to be committed in a future attempt (defaults to 5000).
+	ConsumerIsolationLevel    pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
+	ConsumerMaxPollRecords    pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	OffsetFlushIntervalMs     pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
+	OffsetFlushTimeoutMs      pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when using Kafka’s
+	// group management facilities (defaults to 10000).
+	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
 func (GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs) ElementType() reflect.Type {
@@ -34419,16 +37543,31 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ToGetKafkaConne
 		return &v
 	}).(GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
+
+// Defines what client configurations can be
+// overridden by the connector. Default is None.
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		return v.ConnectorClientConfigOverridePolicy
 	}).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
+//   of poll() when using consumer group management (defaults to 300000).
+// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
+// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
+//   (defaults to 60000).
+// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
+//   and partition offset data to be committed to offset storage before cancelling the process and restoring
+//   the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
@@ -34449,6 +37588,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushTime
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when using Kafka’s
+// group management facilities (defaults to 10000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.SessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
@@ -34473,6 +37614,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) Elem() GetKa
 	}).(GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput)
 }
 
+// Defines what client configurations can be
+// overridden by the connector. Default is None.
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -34482,6 +37625,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConnectorCli
 	}).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -34491,6 +37636,16 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAuto
 	}).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
+//   of poll() when using consumer group management (defaults to 300000).
+// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
+// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
+//   (defaults to 60000).
+// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
+//   and partition offset data to be committed to offset storage before cancelling the process and restoring
+//   the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -34536,6 +37691,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushT
 	}).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when using Kafka’s
+// group management facilities (defaults to 10000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -34546,6 +37703,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeo
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccess struct {
+	// Kafka Connect specific server provided values.
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -34562,6 +37720,7 @@ type GetKafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs struct {
+	// Kafka Connect specific server provided values.
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -34642,6 +37801,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput) ToGetKafkaConn
 		return &v
 	}).(GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
+
+// Kafka Connect specific server provided values.
 func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -34670,6 +37831,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() GetK
 	}).(GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput)
 }
 
+// Kafka Connect specific server provided values.
 func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -34689,6 +37851,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus(
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPublicAccess struct {
+	// Kafka Connect specific server provided values.
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -34705,6 +37868,7 @@ type GetKafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs struct {
+	// Kafka Connect specific server provided values.
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -34785,6 +37949,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput) ToGetKafkaConne
 		return &v
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
+
+// Kafka Connect specific server provided values.
 func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -34813,6 +37979,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Elem() GetKa
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput)
 }
 
+// Kafka Connect specific server provided values.
 func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPublicAccess) *string {
 		if v == nil {
@@ -34933,7 +38100,9 @@ func (o GetKafkaConnectServiceIntegrationArrayOutput) Index(i pulumi.IntInput) G
 
 type GetKafkaConnectorTask struct {
 	Connector string `pulumi:"connector"`
-	Task      int    `pulumi:"task"`
+	// List of tasks of a connector, each element contains `connector`
+	// (Related connector name) and `task` (Task id / number).
+	Task int `pulumi:"task"`
 }
 
 // GetKafkaConnectorTaskInput is an input type that accepts GetKafkaConnectorTaskArgs and GetKafkaConnectorTaskOutput values.
@@ -34949,7 +38118,9 @@ type GetKafkaConnectorTaskInput interface {
 
 type GetKafkaConnectorTaskArgs struct {
 	Connector pulumi.StringInput `pulumi:"connector"`
-	Task      pulumi.IntInput    `pulumi:"task"`
+	// List of tasks of a connector, each element contains `connector`
+	// (Related connector name) and `task` (Task id / number).
+	Task pulumi.IntInput `pulumi:"task"`
 }
 
 func (GetKafkaConnectorTaskArgs) ElementType() reflect.Type {
@@ -35007,6 +38178,8 @@ func (o GetKafkaConnectorTaskOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaConnectorTask) string { return v.Connector }).(pulumi.StringOutput)
 }
 
+// List of tasks of a connector, each element contains `connector`
+// (Related connector name) and `task` (Task id / number).
 func (o GetKafkaConnectorTaskOutput) Task() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKafkaConnectorTask) int { return v.Task }).(pulumi.IntOutput)
 }
@@ -35032,10 +38205,15 @@ func (o GetKafkaConnectorTaskArrayOutput) Index(i pulumi.IntInput) GetKafkaConne
 }
 
 type GetKafkaKafka struct {
-	AccessCert        string `pulumi:"accessCert"`
-	AccessKey         string `pulumi:"accessKey"`
-	ConnectUri        string `pulumi:"connectUri"`
-	RestUri           string `pulumi:"restUri"`
+	// The Kafka client certificate
+	AccessCert string `pulumi:"accessCert"`
+	// The Kafka client certificate key
+	AccessKey string `pulumi:"accessKey"`
+	// The Kafka Connect URI, if any
+	ConnectUri string `pulumi:"connectUri"`
+	// The Kafka REST URI, if any
+	RestUri string `pulumi:"restUri"`
+	// The Schema Registry URI, if any
 	SchemaRegistryUri string `pulumi:"schemaRegistryUri"`
 }
 
@@ -35051,10 +38229,15 @@ type GetKafkaKafkaInput interface {
 }
 
 type GetKafkaKafkaArgs struct {
-	AccessCert        pulumi.StringInput `pulumi:"accessCert"`
-	AccessKey         pulumi.StringInput `pulumi:"accessKey"`
-	ConnectUri        pulumi.StringInput `pulumi:"connectUri"`
-	RestUri           pulumi.StringInput `pulumi:"restUri"`
+	// The Kafka client certificate
+	AccessCert pulumi.StringInput `pulumi:"accessCert"`
+	// The Kafka client certificate key
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// The Kafka Connect URI, if any
+	ConnectUri pulumi.StringInput `pulumi:"connectUri"`
+	// The Kafka REST URI, if any
+	RestUri pulumi.StringInput `pulumi:"restUri"`
+	// The Schema Registry URI, if any
 	SchemaRegistryUri pulumi.StringInput `pulumi:"schemaRegistryUri"`
 }
 
@@ -35084,39 +38267,58 @@ func (o GetKafkaKafkaOutput) ToGetKafkaKafkaOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Kafka client certificate
 func (o GetKafkaKafkaOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaKafka) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
+// The Kafka client certificate key
 func (o GetKafkaKafkaOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaKafka) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
+// The Kafka Connect URI, if any
 func (o GetKafkaKafkaOutput) ConnectUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaKafka) string { return v.ConnectUri }).(pulumi.StringOutput)
 }
 
+// The Kafka REST URI, if any
 func (o GetKafkaKafkaOutput) RestUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaKafka) string { return v.RestUri }).(pulumi.StringOutput)
 }
 
+// The Schema Registry URI, if any
 func (o GetKafkaKafkaOutput) SchemaRegistryUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaKafka) string { return v.SchemaRegistryUri }).(pulumi.StringOutput)
 }
 
 type GetKafkaKafkaUserConfig struct {
-	CustomDomain               *string                                            `pulumi:"customDomain"`
-	IpFilters                  []string                                           `pulumi:"ipFilters"`
-	Kafka                      *GetKafkaKafkaUserConfigKafka                      `pulumi:"kafka"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka server provided values:
+	Kafka *GetKafkaKafkaUserConfigKafka `pulumi:"kafka"`
+	// Kafka authentication methods
 	KafkaAuthenticationMethods *GetKafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               *string                                            `pulumi:"kafkaConnect"`
-	KafkaConnectConfig         *GetKafkaKafkaUserConfigKafkaConnectConfig         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  *string                                            `pulumi:"kafkaRest"`
-	KafkaRestConfig            *GetKafkaKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
-	KafkaVersion               *string                                            `pulumi:"kafkaVersion"`
-	PrivateAccess              *GetKafkaKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
-	PublicAccess               *GetKafkaKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
-	SchemaRegistry             *string                                            `pulumi:"schemaRegistry"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect *string `pulumi:"kafkaConnect"`
+	// Kafka Connect configuration values
+	KafkaConnectConfig *GetKafkaKafkaUserConfigKafkaConnectConfig `pulumi:"kafkaConnectConfig"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest *string `pulumi:"kafkaRest"`
+	// Kafka-REST configuration
+	KafkaRestConfig *GetKafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
+	// Kafka major version
+	KafkaVersion *string `pulumi:"kafkaVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetKafkaKafkaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetKafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Enable Schema-Registry service
+	SchemaRegistry *string `pulumi:"schemaRegistry"`
 }
 
 // GetKafkaKafkaUserConfigInput is an input type that accepts GetKafkaKafkaUserConfigArgs and GetKafkaKafkaUserConfigOutput values.
@@ -35131,18 +38333,32 @@ type GetKafkaKafkaUserConfigInput interface {
 }
 
 type GetKafkaKafkaUserConfigArgs struct {
-	CustomDomain               pulumi.StringPtrInput                                     `pulumi:"customDomain"`
-	IpFilters                  pulumi.StringArrayInput                                   `pulumi:"ipFilters"`
-	Kafka                      GetKafkaKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka server provided values:
+	Kafka GetKafkaKafkaUserConfigKafkaPtrInput `pulumi:"kafka"`
+	// Kafka authentication methods
 	KafkaAuthenticationMethods GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               pulumi.StringPtrInput                                     `pulumi:"kafkaConnect"`
-	KafkaConnectConfig         GetKafkaKafkaUserConfigKafkaConnectConfigPtrInput         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  pulumi.StringPtrInput                                     `pulumi:"kafkaRest"`
-	KafkaRestConfig            GetKafkaKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
-	KafkaVersion               pulumi.StringPtrInput                                     `pulumi:"kafkaVersion"`
-	PrivateAccess              GetKafkaKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
-	PublicAccess               GetKafkaKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
-	SchemaRegistry             pulumi.StringPtrInput                                     `pulumi:"schemaRegistry"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	// Kafka Connect configuration values
+	KafkaConnectConfig GetKafkaKafkaUserConfigKafkaConnectConfigPtrInput `pulumi:"kafkaConnectConfig"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	// Kafka-REST configuration
+	KafkaRestConfig GetKafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
+	// Kafka major version
+	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetKafkaKafkaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetKafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Enable Schema-Registry service
+	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
 }
 
 func (GetKafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -35171,83 +38387,138 @@ func (o GetKafkaKafkaUserConfigOutput) ToGetKafkaKafkaUserConfigOutputWithContex
 	return o
 }
 
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 func (o GetKafkaKafkaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 func (o GetKafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka server provided values:
 func (o GetKafkaKafkaUserConfigOutput) Kafka() GetKafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigKafka { return v.Kafka }).(GetKafkaKafkaUserConfigKafkaPtrOutput)
 }
 
+// Kafka authentication methods
 func (o GetKafkaKafkaUserConfigOutput) KafkaAuthenticationMethods() GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
 		return v.KafkaAuthenticationMethods
 	}).(GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect configuration values
 func (o GetKafkaKafkaUserConfigOutput) KafkaConnectConfig() GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigKafkaConnectConfig {
 		return v.KafkaConnectConfig
 	}).(GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
+// Allow clients to connect to kafkaRest from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
+// Kafka-REST configuration
 func (o GetKafkaKafkaUserConfigOutput) KafkaRestConfig() GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigKafkaRestConfig { return v.KafkaRestConfig }).(GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
+// Kafka major version
 func (o GetKafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o GetKafkaKafkaUserConfigOutput) PrivateAccess() GetKafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(GetKafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GetKafkaKafkaUserConfigOutput) PublicAccess() GetKafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigPublicAccess { return v.PublicAccess }).(GetKafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o GetKafkaKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
 type GetKafkaKafkaUserConfigKafka struct {
-	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        *string `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   *string `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
-	NumPartitions                          *string `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
+	// Enable auto creation of topics
+	AutoCreateTopicsEnable *string `pulumi:"autoCreateTopicsEnable"`
+	// Specify the final compression type for a given topic. This
+	// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+	// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+	// which means retain the original compression codec set by the producer.
+	CompressionType *string `pulumi:"compressionType"`
+	// Idle connections timeout: the server socket processor
+	// threads close the connections that idle for longer than this.
+	ConnectionsMaxIdleMs *string `pulumi:"connectionsMaxIdleMs"`
+	// Replication factor for autocreated topics
+	// * `groupMaxSessionTimeoutMs": {
+	// * `groupMinSessionTimeoutMs": {
+	DefaultReplicationFactor *string `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs *string `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs *string `pulumi:"groupMinSessionTimeoutMs"`
+	// The maximum amount of time message will
+	// remain uncompacted. Only applicable for logs that are being compacted
+	// * `logCleanerMinCleanableRatio": {
+	LogCleanerMaxCompactionLagMs *string `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio  *string `pulumi:"logCleanerMinCleanableRatio"`
+	// The minimum time a message will remain
+	// uncompacted in the log. Only applicable for logs that are being compacted.
+	// * `logCleanupPolicy": {
+	LogCleanerMinCompactionLagMs *string `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy             *string `pulumi:"logCleanupPolicy"`
+	// The maximum difference allowed between
+	// the timestamp when a broker receives a message and the timestamp specified in the message
+	LogMessageTimestampDifferenceMaxMs *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	// Define whether the timestamp in the message is
+	// message create time or log append time.
+	LogMessageTimestampType *string `pulumi:"logMessageTimestampType"`
+	// The maximum size of the log before deleting messages
+	LogRetentionBytes *string `pulumi:"logRetentionBytes"`
+	// The number of hours to keep a log file before deleting it
+	LogRetentionHours *string `pulumi:"logRetentionHours"`
+	// The maximum size of a single log file
+	LogSegmentBytes *string `pulumi:"logSegmentBytes"`
+	// The maximum number of connections allowed from each ip
+	// address (defaults to 2147483647).
+	// * `maxIncrementalFetchSessionCacheSlots": {
+	// * `messageMaxBytes": {
+	MaxConnectionsPerIp                  *string `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                      *string `pulumi:"messageMaxBytes"`
+	// Number of partitions for autocreated topics
+	// * `offsetsRetentionMinutes": {
+	NumPartitions           *string `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes *string `pulumi:"offsetsRetentionMinutes"`
+	// The purge interval (in number of
+	// requests) of the producer request purgatory(defaults to 1000).
 	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   *string `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           *string `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  *string `pulumi:"socketRequestMaxBytes"`
+	// The number of bytes of messages to attempt to fetch
+	// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+	// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+	// will still be returned to ensure that progress can be made.
+	ReplicaFetchMaxBytes *string `pulumi:"replicaFetchMaxBytes"`
+	// Maximum bytes expected for the entire fetch
+	// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+	// in the first non-empty partition of the fetch is larger than this value, the record batch will
+	// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+	ReplicaFetchResponseMaxBytes *string `pulumi:"replicaFetchResponseMaxBytes"`
+	// The maximum number of bytes in a socket request
+	// (defaults to 104857600).
+	SocketRequestMaxBytes *string `pulumi:"socketRequestMaxBytes"`
 }
 
 // GetKafkaKafkaUserConfigKafkaInput is an input type that accepts GetKafkaKafkaUserConfigKafkaArgs and GetKafkaKafkaUserConfigKafkaOutput values.
@@ -35262,30 +38533,71 @@ type GetKafkaKafkaUserConfigKafkaInput interface {
 }
 
 type GetKafkaKafkaUserConfigKafkaArgs struct {
-	AutoCreateTopicsEnable                 pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        pulumi.StringPtrInput `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
-	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
-	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
-	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
-	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
-	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	// Enable auto creation of topics
+	AutoCreateTopicsEnable pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
+	// Specify the final compression type for a given topic. This
+	// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+	// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+	// which means retain the original compression codec set by the producer.
+	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
+	// Idle connections timeout: the server socket processor
+	// threads close the connections that idle for longer than this.
+	ConnectionsMaxIdleMs pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
+	// Replication factor for autocreated topics
+	// * `groupMaxSessionTimeoutMs": {
+	// * `groupMinSessionTimeoutMs": {
+	DefaultReplicationFactor pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	// The maximum amount of time message will
+	// remain uncompacted. Only applicable for logs that are being compacted
+	// * `logCleanerMinCleanableRatio": {
+	LogCleanerMaxCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio  pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	// The minimum time a message will remain
+	// uncompacted in the log. Only applicable for logs that are being compacted.
+	// * `logCleanupPolicy": {
+	LogCleanerMinCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy             pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	// The maximum difference allowed between
+	// the timestamp when a broker receives a message and the timestamp specified in the message
+	LogMessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	// Define whether the timestamp in the message is
+	// message create time or log append time.
+	LogMessageTimestampType pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	// The maximum size of the log before deleting messages
+	LogRetentionBytes pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	// The number of hours to keep a log file before deleting it
+	LogRetentionHours pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	// The maximum size of a single log file
+	LogSegmentBytes pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	// The maximum number of connections allowed from each ip
+	// address (defaults to 2147483647).
+	// * `maxIncrementalFetchSessionCacheSlots": {
+	// * `messageMaxBytes": {
+	MaxConnectionsPerIp                  pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                      pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	// Number of partitions for autocreated topics
+	// * `offsetsRetentionMinutes": {
+	NumPartitions           pulumi.StringPtrInput `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	// The purge interval (in number of
+	// requests) of the producer request purgatory(defaults to 1000).
 	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	// The number of bytes of messages to attempt to fetch
+	// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+	// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+	// will still be returned to ensure that progress can be made.
+	ReplicaFetchMaxBytes pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
+	// Maximum bytes expected for the entire fetch
+	// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+	// in the first non-empty partition of the fetch is larger than this value, the record batch will
+	// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+	ReplicaFetchResponseMaxBytes pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
+	// The maximum number of bytes in a socket request
+	// (defaults to 104857600).
+	SocketRequestMaxBytes pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
 }
 
 func (GetKafkaKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -35364,18 +38676,29 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) ToGetKafkaKafkaUserConfigKafkaPtrOut
 		return &v
 	}).(GetKafkaKafkaUserConfigKafkaPtrOutput)
 }
+
+// Enable auto creation of topics
 func (o GetKafkaKafkaUserConfigKafkaOutput) AutoCreateTopicsEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.AutoCreateTopicsEnable }).(pulumi.StringPtrOutput)
 }
 
+// Specify the final compression type for a given topic. This
+// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+// which means retain the original compression codec set by the producer.
 func (o GetKafkaKafkaUserConfigKafkaOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
+// Idle connections timeout: the server socket processor
+// threads close the connections that idle for longer than this.
 func (o GetKafkaKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.ConnectionsMaxIdleMs }).(pulumi.StringPtrOutput)
 }
 
+// Replication factor for autocreated topics
+// * `groupMaxSessionTimeoutMs": {
+// * `groupMinSessionTimeoutMs": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
@@ -35388,6 +38711,9 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.St
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The maximum amount of time message will
+// remain uncompacted. Only applicable for logs that are being compacted
+// * `logCleanerMinCleanableRatio": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
@@ -35396,6 +38722,9 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCleanableRatio }).(pulumi.StringPtrOutput)
 }
 
+// The minimum time a message will remain
+// uncompacted in the log. Only applicable for logs that are being compacted.
+// * `logCleanupPolicy": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
@@ -35404,26 +38733,37 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPtrO
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
+// The maximum difference allowed between
+// the timestamp when a broker receives a message and the timestamp specified in the message
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
+// Define whether the timestamp in the message is
+// message create time or log append time.
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of the log before deleting messages
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
+// The number of hours to keep a log file before deleting it
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of a single log file
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of connections allowed from each ip
+// address (defaults to 2147483647).
+// * `maxIncrementalFetchSessionCacheSlots": {
+// * `messageMaxBytes": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
 }
@@ -35436,6 +38776,8 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// Number of partitions for autocreated topics
+// * `offsetsRetentionMinutes": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
@@ -35444,18 +38786,30 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.Str
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.OffsetsRetentionMinutes }).(pulumi.StringPtrOutput)
 }
 
+// The purge interval (in number of
+// requests) of the producer request purgatory(defaults to 1000).
 func (o GetKafkaKafkaUserConfigKafkaOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.ProducerPurgatoryPurgeIntervalRequests }).(pulumi.StringPtrOutput)
 }
 
+// The number of bytes of messages to attempt to fetch
+// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+// will still be returned to ensure that progress can be made.
 func (o GetKafkaKafkaUserConfigKafkaOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.ReplicaFetchMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// Maximum bytes expected for the entire fetch
+// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+// in the first non-empty partition of the fetch is larger than this value, the record batch will
+// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
 func (o GetKafkaKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.ReplicaFetchResponseMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of bytes in a socket request
+// (defaults to 104857600).
 func (o GetKafkaKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
@@ -35478,6 +38832,7 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) Elem() GetKafkaKafkaUserConfigKaf
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) GetKafkaKafkaUserConfigKafka { return *v }).(GetKafkaKafkaUserConfigKafkaOutput)
 }
 
+// Enable auto creation of topics
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) AutoCreateTopicsEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35487,6 +38842,10 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) AutoCreateTopicsEnable() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify the final compression type for a given topic. This
+// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+// which means retain the original compression codec set by the producer.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35496,6 +38855,8 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) CompressionType() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Idle connections timeout: the server socket processor
+// threads close the connections that idle for longer than this.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35505,6 +38866,9 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Replication factor for autocreated topics
+// * `groupMaxSessionTimeoutMs": {
+// * `groupMinSessionTimeoutMs": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35532,6 +38896,9 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum amount of time message will
+// remain uncompacted. Only applicable for logs that are being compacted
+// * `logCleanerMinCleanableRatio": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35550,6 +38917,9 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minimum time a message will remain
+// uncompacted in the log. Only applicable for logs that are being compacted.
+// * `logCleanupPolicy": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35568,6 +38938,8 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum difference allowed between
+// the timestamp when a broker receives a message and the timestamp specified in the message
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35577,6 +38949,8 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxM
 	}).(pulumi.StringPtrOutput)
 }
 
+// Define whether the timestamp in the message is
+// message create time or log append time.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35586,6 +38960,7 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of the log before deleting messages
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35595,6 +38970,7 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of hours to keep a log file before deleting it
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35604,6 +38980,7 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of a single log file
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35613,6 +38990,10 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of connections allowed from each ip
+// address (defaults to 2147483647).
+// * `maxIncrementalFetchSessionCacheSlots": {
+// * `messageMaxBytes": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35640,6 +39021,8 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of partitions for autocreated topics
+// * `offsetsRetentionMinutes": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35658,6 +39041,8 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// The purge interval (in number of
+// requests) of the producer request purgatory(defaults to 1000).
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalRequests() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35667,6 +39052,10 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ProducerPurgatoryPurgeIntervalReq
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of bytes of messages to attempt to fetch
+// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+// will still be returned to ensure that progress can be made.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35676,6 +39065,10 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchMaxBytes() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum bytes expected for the entire fetch
+// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+// in the first non-empty partition of the fetch is larger than this value, the record batch will
+// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35685,6 +39078,8 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of bytes in a socket request
+// (defaults to 104857600).
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -35695,8 +39090,10 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.St
 }
 
 type GetKafkaKafkaUserConfigKafkaAuthenticationMethods struct {
+	// Enable certificate/SSL authentication
 	Certificate *string `pulumi:"certificate"`
-	Sasl        *string `pulumi:"sasl"`
+	// Enable SASL authentication
+	Sasl *string `pulumi:"sasl"`
 }
 
 // GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs and GetKafkaKafkaUserConfigKafkaAuthenticationMethodsOutput values.
@@ -35711,8 +39108,10 @@ type GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 }
 
 type GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs struct {
+	// Enable certificate/SSL authentication
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
-	Sasl        pulumi.StringPtrInput `pulumi:"sasl"`
+	// Enable SASL authentication
+	Sasl pulumi.StringPtrInput `pulumi:"sasl"`
 }
 
 func (GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs) ElementType() reflect.Type {
@@ -35791,10 +39190,13 @@ func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsOutput) ToGetKafkaKafka
 		return &v
 	}).(GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
+
+// Enable certificate/SSL authentication
 func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
+// Enable SASL authentication
 func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsOutput) Sasl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaAuthenticationMethods) *string { return v.Sasl }).(pulumi.StringPtrOutput)
 }
@@ -35819,6 +39221,7 @@ func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Elem() GetKa
 	}).(GetKafkaKafkaUserConfigKafkaAuthenticationMethodsOutput)
 }
 
+// Enable certificate/SSL authentication
 func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
@@ -35828,6 +39231,7 @@ func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Certificate(
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable SASL authentication
 func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaAuthenticationMethods) *string {
 		if v == nil {
@@ -35838,14 +39242,31 @@ func (o GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulum
 }
 
 type GetKafkaKafkaUserConfigKafkaConnectConfig struct {
+	// Defines what client configurations can
+	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest
+	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
+	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
+	// The maximum number of records returned in a single call
+	// to poll() (defaults to 500).
+	ConsumerMaxPollRecords *string `pulumi:"consumerMaxPollRecords"`
+	// The interval at which to try committing offsets for
+	// tasks (defaults to 60000).
+	OffsetFlushIntervalMs *string `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to
+	// flush and partition offset data to be committed to offset storage before cancelling the process
+	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs *string `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when
+	// using Kafka’s group management facilities (defaults to 10000).
+	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
 }
 
 // GetKafkaKafkaUserConfigKafkaConnectConfigInput is an input type that accepts GetKafkaKafkaUserConfigKafkaConnectConfigArgs and GetKafkaKafkaUserConfigKafkaConnectConfigOutput values.
@@ -35860,14 +39281,31 @@ type GetKafkaKafkaUserConfigKafkaConnectConfigInput interface {
 }
 
 type GetKafkaKafkaUserConfigKafkaConnectConfigArgs struct {
+	// Defines what client configurations can
+	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
-	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
-	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
-	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
-	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
-	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
+	// What to do when there is no initial offset in Kafka or
+	// if the current offset does not exist any more on the server. Default is earliest
+	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Transaction read isolation level. readUncommitted is
+	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
+	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
+	// The maximum number of records returned in a single call
+	// to poll() (defaults to 500).
+	ConsumerMaxPollRecords pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
+	// The interval at which to try committing offsets for
+	// tasks (defaults to 60000).
+	OffsetFlushIntervalMs pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to
+	// flush and partition offset data to be committed to offset storage before cancelling the process
+	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// The timeout in milliseconds used to detect failures when
+	// using Kafka’s group management facilities (defaults to 10000).
+	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
 func (GetKafkaKafkaUserConfigKafkaConnectConfigArgs) ElementType() reflect.Type {
@@ -35946,36 +39384,54 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ToGetKafkaKafkaUserConf
 		return &v
 	}).(GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
+
+// Defines what client configurations can
+// be overridden by the connector. Default is None
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		return v.ConnectorClientConfigOverridePolicy
 	}).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPollIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of records returned in a single call
+// to poll() (defaults to 500).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for
+// tasks (defaults to 60000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to
+// flush and partition offset data to be committed to offset storage before cancelling the process
+// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when
+// using Kafka’s group management facilities (defaults to 10000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.SessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
@@ -36000,6 +39456,8 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) Elem() GetKafkaKafka
 	}).(GetKafkaKafkaUserConfigKafkaConnectConfigOutput)
 }
 
+// Defines what client configurations can
+// be overridden by the connector. Default is None
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConnectorClientConfigOverridePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36009,6 +39467,8 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConnectorClientConfi
 	}).(pulumi.StringPtrOutput)
 }
 
+// What to do when there is no initial offset in Kafka or
+// if the current offset does not exist any more on the server. Default is earliest
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36018,6 +39478,8 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffsetRe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Transaction read isolation level. readUncommitted is
+// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36027,6 +39489,8 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLev
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36036,6 +39500,8 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollInter
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of records returned in a single call
+// to poll() (defaults to 500).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36045,6 +39511,8 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPollRecor
 	}).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for
+// tasks (defaults to 60000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36054,6 +39522,9 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushIntervalM
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to
+// flush and partition offset data to be committed to offset storage before cancelling the process
+// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36063,6 +39534,8 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeoutMs
 	}).(pulumi.StringPtrOutput)
 }
 
+// The timeout in milliseconds used to detect failures when
+// using Kafka’s group management facilities (defaults to 10000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
@@ -36073,11 +39546,23 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) SessionTimeoutMs() p
 }
 
 type GetKafkaKafkaUserConfigKafkaRestConfig struct {
-	ConsumerEnableAutoCommit  *string `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   *string `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  *string `pulumi:"consumerRequestTimeoutMs"`
-	ProducerAcks              *string `pulumi:"producerAcks"`
-	ProducerLingerMs          *string `pulumi:"producerLingerMs"`
+	// If true the consumer's offset will be periodically
+	// committed to Kafka in the background
+	ConsumerEnableAutoCommit *string `pulumi:"consumerEnableAutoCommit"`
+	// Maximum number of bytes in unencoded message keys and
+	// values by a single request
+	ConsumerRequestMaxBytes *string `pulumi:"consumerRequestMaxBytes"`
+	// The maximum total time to wait for messages for a
+	// request if the maximum number of messages has not yet been reached
+	ConsumerRequestTimeoutMs *string `pulumi:"consumerRequestTimeoutMs"`
+	// The number of acknowledgments the producer requires the leader to
+	// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+	// for the full set of in-sync replicas to acknowledge the record.
+	ProducerAcks *string `pulumi:"producerAcks"`
+	// Wait for up to the given delay to allow batching records together
+	ProducerLingerMs *string `pulumi:"producerLingerMs"`
+	// Maximum number of SimpleConsumers that can be
+	// instantiated per broker.
 	SimpleconsumerPoolSizeMax *string `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -36093,11 +39578,23 @@ type GetKafkaKafkaUserConfigKafkaRestConfigInput interface {
 }
 
 type GetKafkaKafkaUserConfigKafkaRestConfigArgs struct {
-	ConsumerEnableAutoCommit  pulumi.StringPtrInput `pulumi:"consumerEnableAutoCommit"`
-	ConsumerRequestMaxBytes   pulumi.StringPtrInput `pulumi:"consumerRequestMaxBytes"`
-	ConsumerRequestTimeoutMs  pulumi.StringPtrInput `pulumi:"consumerRequestTimeoutMs"`
-	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
-	ProducerLingerMs          pulumi.StringPtrInput `pulumi:"producerLingerMs"`
+	// If true the consumer's offset will be periodically
+	// committed to Kafka in the background
+	ConsumerEnableAutoCommit pulumi.StringPtrInput `pulumi:"consumerEnableAutoCommit"`
+	// Maximum number of bytes in unencoded message keys and
+	// values by a single request
+	ConsumerRequestMaxBytes pulumi.StringPtrInput `pulumi:"consumerRequestMaxBytes"`
+	// The maximum total time to wait for messages for a
+	// request if the maximum number of messages has not yet been reached
+	ConsumerRequestTimeoutMs pulumi.StringPtrInput `pulumi:"consumerRequestTimeoutMs"`
+	// The number of acknowledgments the producer requires the leader to
+	// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+	// for the full set of in-sync replicas to acknowledge the record.
+	ProducerAcks pulumi.StringPtrInput `pulumi:"producerAcks"`
+	// Wait for up to the given delay to allow batching records together
+	ProducerLingerMs pulumi.StringPtrInput `pulumi:"producerLingerMs"`
+	// Maximum number of SimpleConsumers that can be
+	// instantiated per broker.
 	SimpleconsumerPoolSizeMax pulumi.StringPtrInput `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -36177,26 +39674,39 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ToGetKafkaKafkaUserConfigK
 		return &v
 	}).(GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
+
+// If true the consumer's offset will be periodically
+// committed to Kafka in the background
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerEnableAutoCommit }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of bytes in unencoded message keys and
+// values by a single request
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// The maximum total time to wait for messages for a
+// request if the maximum number of messages has not yet been reached
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.ConsumerRequestTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The number of acknowledgments the producer requires the leader to
+// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+// for the full set of in-sync replicas to acknowledge the record.
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
 }
 
+// Wait for up to the given delay to allow batching records together
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.ProducerLingerMs }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of SimpleConsumers that can be
+// instantiated per broker.
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.SimpleconsumerPoolSizeMax }).(pulumi.StringPtrOutput)
 }
@@ -36219,6 +39729,8 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) Elem() GetKafkaKafkaUse
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) GetKafkaKafkaUserConfigKafkaRestConfig { return *v }).(GetKafkaKafkaUserConfigKafkaRestConfigOutput)
 }
 
+// If true the consumer's offset will be periodically
+// committed to Kafka in the background
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -36228,6 +39740,8 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerEnableAutoCommi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of bytes in unencoded message keys and
+// values by a single request
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -36237,6 +39751,8 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestMaxBytes
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum total time to wait for messages for a
+// request if the maximum number of messages has not yet been reached
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -36246,6 +39762,9 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutM
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of acknowledgments the producer requires the leader to
+// have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+// for the full set of in-sync replicas to acknowledge the record.
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -36255,6 +39774,7 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Wait for up to the given delay to allow batching records together
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -36264,6 +39784,8 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of SimpleConsumers that can be
+// instantiated per broker.
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *string {
 		if v == nil {
@@ -36274,6 +39796,8 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) SimpleconsumerPoolSizeM
 }
 
 type GetKafkaKafkaUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -36289,6 +39813,8 @@ type GetKafkaKafkaUserConfigPrivateAccessInput interface {
 }
 
 type GetKafkaKafkaUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -36368,6 +39894,9 @@ func (o GetKafkaKafkaUserConfigPrivateAccessOutput) ToGetKafkaKafkaUserConfigPri
 		return &v
 	}).(GetKafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -36390,6 +39919,8 @@ func (o GetKafkaKafkaUserConfigPrivateAccessPtrOutput) Elem() GetKafkaKafkaUserC
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivateAccess) GetKafkaKafkaUserConfigPrivateAccess { return *v }).(GetKafkaKafkaUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -36400,10 +39931,18 @@ func (o GetKafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 }
 
 type GetKafkaKafkaUserConfigPublicAccess struct {
-	Kafka          *string `pulumi:"kafka"`
-	KafkaConnect   *string `pulumi:"kafkaConnect"`
-	KafkaRest      *string `pulumi:"kafkaRest"`
-	Prometheus     *string `pulumi:"prometheus"`
+	// Kafka server provided values:
+	Kafka *string `pulumi:"kafka"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect *string `pulumi:"kafkaConnect"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest *string `pulumi:"kafkaRest"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Prometheus *string `pulumi:"prometheus"`
+	// Enable Schema-Registry service
 	SchemaRegistry *string `pulumi:"schemaRegistry"`
 }
 
@@ -36419,10 +39958,18 @@ type GetKafkaKafkaUserConfigPublicAccessInput interface {
 }
 
 type GetKafkaKafkaUserConfigPublicAccessArgs struct {
-	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
-	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
-	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
-	Prometheus     pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Kafka server provided values:
+	Kafka pulumi.StringPtrInput `pulumi:"kafka"`
+	// Allow clients to connect to kafkaConnect from the public internet
+	// for service nodes that are in a project VPC or another type of private network
+	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	// Allow clients to connect to kafkaRest from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
+	// Enable Schema-Registry service
 	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
 }
 
@@ -36502,22 +40049,31 @@ func (o GetKafkaKafkaUserConfigPublicAccessOutput) ToGetKafkaKafkaUserConfigPubl
 		return &v
 	}).(GetKafkaKafkaUserConfigPublicAccessPtrOutput)
 }
+
+// Kafka server provided values:
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaRest from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
@@ -36540,6 +40096,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Elem() GetKafkaKafkaUserCo
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) GetKafkaKafkaUserConfigPublicAccess { return *v }).(GetKafkaKafkaUserConfigPublicAccessOutput)
 }
 
+// Kafka server provided values:
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -36549,6 +40106,8 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaConnect from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -36558,6 +40117,8 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to kafkaRest from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -36567,6 +40128,8 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -36576,6 +40139,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -36759,7 +40323,9 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerOutput) ToGetKafkaMirrorMakerKafkaMir
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
-	IpFilters        []string                                                       `pulumi:"ipFilters"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka Mirror Maker 2 specific server provided values.
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
 }
 
@@ -36775,7 +40341,9 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
-	IpFilters        pulumi.StringArrayInput                                               `pulumi:"ipFilters"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka Mirror Maker 2 specific server provided values.
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
 }
 
@@ -36805,10 +40373,12 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ToGetKafkaMirrorMak
 	return o
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka Mirror Maker 2 specific server provided values.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
@@ -36816,9 +40386,15 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() 
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	RefreshGroupsEnabled         *string `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new consumer groups.
+	// Defaults to 'true'.
+	RefreshGroupsEnabled *string `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new topics and
+	// partitions. Defaults to 'true'.
 	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
 	RefreshTopicsEnabled         *string `pulumi:"refreshTopicsEnabled"`
+	// Frequency of topic and partitions refresh in
+	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
 }
 
@@ -36834,9 +40410,15 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interfac
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	RefreshGroupsEnabled         pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new consumer groups.
+	// Defaults to 'true'.
+	RefreshGroupsEnabled pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	// Whether to periodically check for new topics and
+	// partitions. Defaults to 'true'.
 	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
 	RefreshTopicsEnabled         pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
+	// Frequency of topic and partitions refresh in
+	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
 }
 
@@ -36916,12 +40498,17 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToG
 		return &v
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
+
+// Whether to periodically check for new consumer groups.
+// Defaults to 'true'.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshGroupsEnabled
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically check for new topics and
+// partitions. Defaults to 'true'.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshGroupsIntervalSeconds
@@ -36934,6 +40521,8 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Ref
 	}).(pulumi.StringPtrOutput)
 }
 
+// Frequency of topic and partitions refresh in
+// seconds. Defaults to 600 seconds (10 minutes).
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshTopicsIntervalSeconds
@@ -36960,6 +40549,8 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) 
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
 }
 
+// Whether to periodically check for new consumer groups.
+// Defaults to 'true'.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -36969,6 +40560,8 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically check for new topics and
+// partitions. Defaults to 'true'.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -36987,6 +40580,8 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Frequency of topic and partitions refresh in
+// seconds. Defaults to 600 seconds (10 minutes).
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -37370,17 +40965,34 @@ func (o GetMySqlMysqlOutput) ToGetMySqlMysqlOutputWithContext(ctx context.Contex
 }
 
 type GetMySqlMysqlUserConfig struct {
-	AdminPassword      *string                               `pulumi:"adminPassword"`
-	AdminUsername      *string                               `pulumi:"adminUsername"`
-	BackupHour         *string                               `pulumi:"backupHour"`
-	BackupMinute       *string                               `pulumi:"backupMinute"`
-	IpFilters          []string                              `pulumi:"ipFilters"`
-	Mysql              *GetMySqlMysqlUserConfigMysql         `pulumi:"mysql"`
-	MysqlVersion       *string                               `pulumi:"mysqlVersion"`
-	PrivateAccess      *GetMySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess       *GetMySqlMysqlUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime *string                               `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  *string                               `pulumi:"serviceToForkFrom"`
+	// Custom password for admin user. Defaults to random string.
+	// This must be set only when a new service is being created.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a
+	// new service is being created.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupHour *string `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupMinute *string `pulumi:"backupMinute"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// MySQL specific server provided values.
+	Mysql *GetMySqlMysqlUserConfigMysql `pulumi:"mysql"`
+	// MySQL major version
+	MysqlVersion *string `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetMySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetMySqlMysqlUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when
+	// a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // GetMySqlMysqlUserConfigInput is an input type that accepts GetMySqlMysqlUserConfigArgs and GetMySqlMysqlUserConfigOutput values.
@@ -37395,17 +41007,34 @@ type GetMySqlMysqlUserConfigInput interface {
 }
 
 type GetMySqlMysqlUserConfigArgs struct {
-	AdminPassword      pulumi.StringPtrInput                        `pulumi:"adminPassword"`
-	AdminUsername      pulumi.StringPtrInput                        `pulumi:"adminUsername"`
-	BackupHour         pulumi.StringPtrInput                        `pulumi:"backupHour"`
-	BackupMinute       pulumi.StringPtrInput                        `pulumi:"backupMinute"`
-	IpFilters          pulumi.StringArrayInput                      `pulumi:"ipFilters"`
-	Mysql              GetMySqlMysqlUserConfigMysqlPtrInput         `pulumi:"mysql"`
-	MysqlVersion       pulumi.StringPtrInput                        `pulumi:"mysqlVersion"`
-	PrivateAccess      GetMySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess       GetMySqlMysqlUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime pulumi.StringPtrInput                        `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  pulumi.StringPtrInput                        `pulumi:"serviceToForkFrom"`
+	// Custom password for admin user. Defaults to random string.
+	// This must be set only when a new service is being created.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a
+	// new service is being created.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started.
+	// New backup is only started if previous backup has already completed.
+	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// MySQL specific server provided values.
+	Mysql GetMySqlMysqlUserConfigMysqlPtrInput `pulumi:"mysql"`
+	// MySQL major version
+	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetMySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetMySqlMysqlUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when
+	// a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (GetMySqlMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -37434,72 +41063,134 @@ func (o GetMySqlMysqlUserConfigOutput) ToGetMySqlMysqlUserConfigOutputWithContex
 	return o
 }
 
+// Custom password for admin user. Defaults to random string.
+// This must be set only when a new service is being created.
 func (o GetMySqlMysqlUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// Custom username for admin user. This must be set only when a
+// new service is being created.
 func (o GetMySqlMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started.
+// New backup is only started if previous backup has already completed.
 func (o GetMySqlMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
+// The minute of an hour when backup for the service is started.
+// New backup is only started if previous backup has already completed.
 func (o GetMySqlMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 func (o GetMySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// MySQL specific server provided values.
 func (o GetMySqlMysqlUserConfigOutput) Mysql() GetMySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMysql { return v.Mysql }).(GetMySqlMysqlUserConfigMysqlPtrOutput)
 }
 
+// MySQL major version
 func (o GetMySqlMysqlUserConfigOutput) MysqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.MysqlVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o GetMySqlMysqlUserConfigOutput) PrivateAccess() GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GetMySqlMysqlUserConfigOutput) PublicAccess() GetMySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigPublicAccess { return v.PublicAccess }).(GetMySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect
+// only when a new service is being created.
 func (o GetMySqlMysqlUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when
+// a new service is being created.
 func (o GetMySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 type GetMySqlMysqlUserConfigMysql struct {
-	ConnectTimeout               *string `pulumi:"connectTimeout"`
-	DefaultTimeZone              *string `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            *string `pulumi:"groupConcatMaxLen"`
+	// The number of seconds that the mysqld server waits for a
+	// connect packet before responding with Bad handshake
+	ConnectTimeout *string `pulumi:"connectTimeout"`
+	// Default server time zone as an offset from UTC
+	// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
+	// The maximum permitted result length in bytes for
+	// the GROUP_CONCAT() function.
+	GroupConcatMaxLen *string `pulumi:"groupConcatMaxLen"`
+	// The time, in seconds, before cached
+	// statistics expire
 	InformationSchemaStatsExpiry *string `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         *string `pulumi:"innodbFtMinTokenSize"`
-	InnodbFtServerStopwordTable  *string `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        *string `pulumi:"innodbLockWaitTimeout"`
-	InnodbLogBufferSize          *string `pulumi:"innodbLogBufferSize"`
-	InnodbOnlineAlterLogMaxSize  *string `pulumi:"innodbOnlineAlterLogMaxSize"`
-	InnodbPrintAllDeadlocks      *string `pulumi:"innodbPrintAllDeadlocks"`
-	InnodbRollbackOnTimeout      *string `pulumi:"innodbRollbackOnTimeout"`
-	InteractiveTimeout           *string `pulumi:"interactiveTimeout"`
-	MaxAllowedPacket             *string `pulumi:"maxAllowedPacket"`
-	MaxHeapTableSize             *string `pulumi:"maxHeapTableSize"`
-	NetReadTimeout               *string `pulumi:"netReadTimeout"`
-	NetWriteTimeout              *string `pulumi:"netWriteTimeout"`
-	SortBufferSize               *string `pulumi:"sortBufferSize"`
-	SqlMode                      *string `pulumi:"sqlMode"`
-	SqlRequirePrimaryKey         *string `pulumi:"sqlRequirePrimaryKey"`
-	TmpTableSize                 *string `pulumi:"tmpTableSize"`
-	WaitTimeout                  *string `pulumi:"waitTimeout"`
+	// Minimum length of words that are stored in
+	// an InnoDB FULLTEXT index.
+	InnodbFtMinTokenSize *string `pulumi:"innodbFtMinTokenSize"`
+	// This option is used to specify your
+	// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+	InnodbFtServerStopwordTable *string `pulumi:"innodbFtServerStopwordTable"`
+	// The length of time in seconds an InnoDB
+	// transaction waits for a row lock before giving up.
+	InnodbLockWaitTimeout *string `pulumi:"innodbLockWaitTimeout"`
+	// The size in bytes of the buffer that InnoDB
+	// uses to write to the log files on disk.
+	InnodbLogBufferSize *string `pulumi:"innodbLogBufferSize"`
+	// The upper limit in bytes on the
+	// size of the temporary log files used during online DDL operations for InnoDB tables.
+	InnodbOnlineAlterLogMaxSize *string `pulumi:"innodbOnlineAlterLogMaxSize"`
+	// When enabled, information about all
+	// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+	InnodbPrintAllDeadlocks *string `pulumi:"innodbPrintAllDeadlocks"`
+	// When enabled a transaction timeout
+	// causes InnoDB to abort and roll back the entire transaction.
+	InnodbRollbackOnTimeout *string `pulumi:"innodbRollbackOnTimeout"`
+	// The number of seconds the server waits for
+	// activity on an interactive connection before closing it.
+	InteractiveTimeout *string `pulumi:"interactiveTimeout"`
+	// Size of the largest message in bytes that can
+	// be received by the server. Default is 67108864 (64M)
+	MaxAllowedPacket *string `pulumi:"maxAllowedPacket"`
+	// Limits the size of internal in-memory tables.
+	// Also set tmp_table_size. Default is 16777216 (16M)
+	MaxHeapTableSize *string `pulumi:"maxHeapTableSize"`
+	// The number of seconds to wait for more data from
+	// a connection before aborting the read.
+	NetReadTimeout *string `pulumi:"netReadTimeout"`
+	// The number of seconds to wait for a block to be
+	// written to a connection before aborting the write.
+	NetWriteTimeout *string `pulumi:"netWriteTimeout"`
+	// Sort buffer size in bytes for ORDER BY optimization.
+	// Default is 262144 (256K)
+	SortBufferSize *string `pulumi:"sortBufferSize"`
+	// Global SQL mode. Set to empty to use MySQL server defaults.
+	// When creating a new service and not setting this field Aiven default SQL mode (strict,
+	// SQL standard compliant) will be assigned.
+	SqlMode *string `pulumi:"sqlMode"`
+	// Require primary key to be defined for new
+	// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+	// to always have primary keys because various functionality may break if any large table
+	// is missing them.
+	SqlRequirePrimaryKey *string `pulumi:"sqlRequirePrimaryKey"`
+	// Limits the size of internal in-memory tables. Also set
+	// max_heap_table_size. Default is 16777216 (16M)
+	TmpTableSize *string `pulumi:"tmpTableSize"`
+	// The number of seconds the server waits for activity on
+	// a noninteractive connection before closing it.
+	WaitTimeout *string `pulumi:"waitTimeout"`
 }
 
 // GetMySqlMysqlUserConfigMysqlInput is an input type that accepts GetMySqlMysqlUserConfigMysqlArgs and GetMySqlMysqlUserConfigMysqlOutput values.
@@ -37514,27 +41205,72 @@ type GetMySqlMysqlUserConfigMysqlInput interface {
 }
 
 type GetMySqlMysqlUserConfigMysqlArgs struct {
-	ConnectTimeout               pulumi.StringPtrInput `pulumi:"connectTimeout"`
-	DefaultTimeZone              pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
-	GroupConcatMaxLen            pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
+	// The number of seconds that the mysqld server waits for a
+	// connect packet before responding with Bad handshake
+	ConnectTimeout pulumi.StringPtrInput `pulumi:"connectTimeout"`
+	// Default server time zone as an offset from UTC
+	// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+	DefaultTimeZone pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
+	// The maximum permitted result length in bytes for
+	// the GROUP_CONCAT() function.
+	GroupConcatMaxLen pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
+	// The time, in seconds, before cached
+	// statistics expire
 	InformationSchemaStatsExpiry pulumi.StringPtrInput `pulumi:"informationSchemaStatsExpiry"`
-	InnodbFtMinTokenSize         pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
-	InnodbFtServerStopwordTable  pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
-	InnodbLockWaitTimeout        pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
-	InnodbLogBufferSize          pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
-	InnodbOnlineAlterLogMaxSize  pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
-	InnodbPrintAllDeadlocks      pulumi.StringPtrInput `pulumi:"innodbPrintAllDeadlocks"`
-	InnodbRollbackOnTimeout      pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
-	InteractiveTimeout           pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
-	MaxAllowedPacket             pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
-	MaxHeapTableSize             pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
-	NetReadTimeout               pulumi.StringPtrInput `pulumi:"netReadTimeout"`
-	NetWriteTimeout              pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
-	SortBufferSize               pulumi.StringPtrInput `pulumi:"sortBufferSize"`
-	SqlMode                      pulumi.StringPtrInput `pulumi:"sqlMode"`
-	SqlRequirePrimaryKey         pulumi.StringPtrInput `pulumi:"sqlRequirePrimaryKey"`
-	TmpTableSize                 pulumi.StringPtrInput `pulumi:"tmpTableSize"`
-	WaitTimeout                  pulumi.StringPtrInput `pulumi:"waitTimeout"`
+	// Minimum length of words that are stored in
+	// an InnoDB FULLTEXT index.
+	InnodbFtMinTokenSize pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
+	// This option is used to specify your
+	// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+	InnodbFtServerStopwordTable pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
+	// The length of time in seconds an InnoDB
+	// transaction waits for a row lock before giving up.
+	InnodbLockWaitTimeout pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
+	// The size in bytes of the buffer that InnoDB
+	// uses to write to the log files on disk.
+	InnodbLogBufferSize pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
+	// The upper limit in bytes on the
+	// size of the temporary log files used during online DDL operations for InnoDB tables.
+	InnodbOnlineAlterLogMaxSize pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
+	// When enabled, information about all
+	// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+	InnodbPrintAllDeadlocks pulumi.StringPtrInput `pulumi:"innodbPrintAllDeadlocks"`
+	// When enabled a transaction timeout
+	// causes InnoDB to abort and roll back the entire transaction.
+	InnodbRollbackOnTimeout pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
+	// The number of seconds the server waits for
+	// activity on an interactive connection before closing it.
+	InteractiveTimeout pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
+	// Size of the largest message in bytes that can
+	// be received by the server. Default is 67108864 (64M)
+	MaxAllowedPacket pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
+	// Limits the size of internal in-memory tables.
+	// Also set tmp_table_size. Default is 16777216 (16M)
+	MaxHeapTableSize pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
+	// The number of seconds to wait for more data from
+	// a connection before aborting the read.
+	NetReadTimeout pulumi.StringPtrInput `pulumi:"netReadTimeout"`
+	// The number of seconds to wait for a block to be
+	// written to a connection before aborting the write.
+	NetWriteTimeout pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
+	// Sort buffer size in bytes for ORDER BY optimization.
+	// Default is 262144 (256K)
+	SortBufferSize pulumi.StringPtrInput `pulumi:"sortBufferSize"`
+	// Global SQL mode. Set to empty to use MySQL server defaults.
+	// When creating a new service and not setting this field Aiven default SQL mode (strict,
+	// SQL standard compliant) will be assigned.
+	SqlMode pulumi.StringPtrInput `pulumi:"sqlMode"`
+	// Require primary key to be defined for new
+	// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+	// to always have primary keys because various functionality may break if any large table
+	// is missing them.
+	SqlRequirePrimaryKey pulumi.StringPtrInput `pulumi:"sqlRequirePrimaryKey"`
+	// Limits the size of internal in-memory tables. Also set
+	// max_heap_table_size. Default is 16777216 (16M)
+	TmpTableSize pulumi.StringPtrInput `pulumi:"tmpTableSize"`
+	// The number of seconds the server waits for activity on
+	// a noninteractive connection before closing it.
+	WaitTimeout pulumi.StringPtrInput `pulumi:"waitTimeout"`
 }
 
 func (GetMySqlMysqlUserConfigMysqlArgs) ElementType() reflect.Type {
@@ -37613,86 +41349,132 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) ToGetMySqlMysqlUserConfigMysqlPtrOut
 		return &v
 	}).(GetMySqlMysqlUserConfigMysqlPtrOutput)
 }
+
+// The number of seconds that the mysqld server waits for a
+// connect packet before responding with Bad handshake
 func (o GetMySqlMysqlUserConfigMysqlOutput) ConnectTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.ConnectTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Default server time zone as an offset from UTC
+// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
 func (o GetMySqlMysqlUserConfigMysqlOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
 }
 
+// The maximum permitted result length in bytes for
+// the GROUP_CONCAT() function.
 func (o GetMySqlMysqlUserConfigMysqlOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.GroupConcatMaxLen }).(pulumi.StringPtrOutput)
 }
 
+// The time, in seconds, before cached
+// statistics expire
 func (o GetMySqlMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InformationSchemaStatsExpiry }).(pulumi.StringPtrOutput)
 }
 
+// Minimum length of words that are stored in
+// an InnoDB FULLTEXT index.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbFtMinTokenSize }).(pulumi.StringPtrOutput)
 }
 
+// This option is used to specify your
+// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbFtServerStopwordTable }).(pulumi.StringPtrOutput)
 }
 
+// The length of time in seconds an InnoDB
+// transaction waits for a row lock before giving up.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbLockWaitTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The size in bytes of the buffer that InnoDB
+// uses to write to the log files on disk.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbLogBufferSize }).(pulumi.StringPtrOutput)
 }
 
+// The upper limit in bytes on the
+// size of the temporary log files used during online DDL operations for InnoDB tables.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.StringPtrOutput)
 }
 
+// When enabled, information about all
+// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbPrintAllDeadlocks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbPrintAllDeadlocks }).(pulumi.StringPtrOutput)
 }
 
+// When enabled a transaction timeout
+// causes InnoDB to abort and roll back the entire transaction.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for
+// activity on an interactive connection before closing it.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InteractiveTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InteractiveTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Size of the largest message in bytes that can
+// be received by the server. Default is 67108864 (64M)
 func (o GetMySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.MaxAllowedPacket }).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables.
+// Also set tmp_table_size. Default is 16777216 (16M)
 func (o GetMySqlMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.MaxHeapTableSize }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for more data from
+// a connection before aborting the read.
 func (o GetMySqlMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.NetReadTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for a block to be
+// written to a connection before aborting the write.
 func (o GetMySqlMysqlUserConfigMysqlOutput) NetWriteTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.NetWriteTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Sort buffer size in bytes for ORDER BY optimization.
+// Default is 262144 (256K)
 func (o GetMySqlMysqlUserConfigMysqlOutput) SortBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.SortBufferSize }).(pulumi.StringPtrOutput)
 }
 
+// Global SQL mode. Set to empty to use MySQL server defaults.
+// When creating a new service and not setting this field Aiven default SQL mode (strict,
+// SQL standard compliant) will be assigned.
 func (o GetMySqlMysqlUserConfigMysqlOutput) SqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.SqlMode }).(pulumi.StringPtrOutput)
 }
 
+// Require primary key to be defined for new
+// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+// to always have primary keys because various functionality may break if any large table
+// is missing them.
 func (o GetMySqlMysqlUserConfigMysqlOutput) SqlRequirePrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.SqlRequirePrimaryKey }).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables. Also set
+// max_heap_table_size. Default is 16777216 (16M)
 func (o GetMySqlMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.TmpTableSize }).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for activity on
+// a noninteractive connection before closing it.
 func (o GetMySqlMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.WaitTimeout }).(pulumi.StringPtrOutput)
 }
@@ -37715,6 +41497,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) Elem() GetMySqlMysqlUserConfigMys
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) GetMySqlMysqlUserConfigMysql { return *v }).(GetMySqlMysqlUserConfigMysqlOutput)
 }
 
+// The number of seconds that the mysqld server waits for a
+// connect packet before responding with Bad handshake
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37724,6 +41508,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default server time zone as an offset from UTC
+// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37733,6 +41519,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum permitted result length in bytes for
+// the GROUP_CONCAT() function.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37742,6 +41530,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The time, in seconds, before cached
+// statistics expire
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37751,6 +41541,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum length of words that are stored in
+// an InnoDB FULLTEXT index.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37760,6 +41552,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// This option is used to specify your
+// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37769,6 +41563,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// The length of time in seconds an InnoDB
+// transaction waits for a row lock before giving up.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37778,6 +41574,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The size in bytes of the buffer that InnoDB
+// uses to write to the log files on disk.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37787,6 +41585,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The upper limit in bytes on the
+// size of the temporary log files used during online DDL operations for InnoDB tables.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37796,6 +41596,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// When enabled, information about all
+// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbPrintAllDeadlocks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37805,6 +41607,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbPrintAllDeadlocks() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// When enabled a transaction timeout
+// causes InnoDB to abort and roll back the entire transaction.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37814,6 +41618,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for
+// activity on an interactive connection before closing it.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InteractiveTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37823,6 +41629,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InteractiveTimeout() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Size of the largest message in bytes that can
+// be received by the server. Default is 67108864 (64M)
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37832,6 +41640,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables.
+// Also set tmp_table_size. Default is 16777216 (16M)
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37841,6 +41651,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for more data from
+// a connection before aborting the read.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37850,6 +41662,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds to wait for a block to be
+// written to a connection before aborting the write.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37859,6 +41673,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sort buffer size in bytes for ORDER BY optimization.
+// Default is 262144 (256K)
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37868,6 +41684,9 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Global SQL mode. Set to empty to use MySQL server defaults.
+// When creating a new service and not setting this field Aiven default SQL mode (strict,
+// SQL standard compliant) will be assigned.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37877,6 +41696,10 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require primary key to be defined for new
+// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+// to always have primary keys because various functionality may break if any large table
+// is missing them.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37886,6 +41709,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limits the size of internal in-memory tables. Also set
+// max_heap_table_size. Default is 16777216 (16M)
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37895,6 +41720,8 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of seconds the server waits for activity on
+// a noninteractive connection before closing it.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -37905,7 +41732,10 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOut
 }
 
 type GetMySqlMysqlUserConfigPrivateAccess struct {
-	Mysql      *string `pulumi:"mysql"`
+	// MySQL specific server provided values.
+	Mysql *string `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -37921,7 +41751,10 @@ type GetMySqlMysqlUserConfigPrivateAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPrivateAccessArgs struct {
-	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	// MySQL specific server provided values.
+	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -38001,10 +41834,14 @@ func (o GetMySqlMysqlUserConfigPrivateAccessOutput) ToGetMySqlMysqlUserConfigPri
 		return &v
 	}).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
+
+// MySQL specific server provided values.
 func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -38027,6 +41864,7 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Elem() GetMySqlMysqlUserC
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) GetMySqlMysqlUserConfigPrivateAccess { return *v }).(GetMySqlMysqlUserConfigPrivateAccessOutput)
 }
 
+// MySQL specific server provided values.
 func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -38036,6 +41874,8 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -38046,7 +41886,10 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 }
 
 type GetMySqlMysqlUserConfigPublicAccess struct {
-	Mysql      *string `pulumi:"mysql"`
+	// MySQL specific server provided values.
+	Mysql *string `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -38062,7 +41905,10 @@ type GetMySqlMysqlUserConfigPublicAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPublicAccessArgs struct {
-	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	// MySQL specific server provided values.
+	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -38142,10 +41988,14 @@ func (o GetMySqlMysqlUserConfigPublicAccessOutput) ToGetMySqlMysqlUserConfigPubl
 		return &v
 	}).(GetMySqlMysqlUserConfigPublicAccessPtrOutput)
 }
+
+// MySQL specific server provided values.
 func (o GetMySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetMySqlMysqlUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -38168,6 +42018,7 @@ func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Elem() GetMySqlMysqlUserCo
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) GetMySqlMysqlUserConfigPublicAccess { return *v }).(GetMySqlMysqlUserConfigPublicAccessOutput)
 }
 
+// MySQL specific server provided values.
 func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -38177,6 +42028,8 @@ func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -38287,13 +42140,16 @@ func (o GetMySqlServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetMySql
 }
 
 type GetPgComponent struct {
-	Component                 string `pulumi:"component"`
+	Component string `pulumi:"component"`
+	// PostgreSQL master node host IP or name
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
-	Port                      int    `pulumi:"port"`
-	Route                     string `pulumi:"route"`
-	Ssl                       bool   `pulumi:"ssl"`
-	Usage                     string `pulumi:"usage"`
+	// PostgreSQL port
+	Port  int    `pulumi:"port"`
+	Route string `pulumi:"route"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl   bool   `pulumi:"ssl"`
+	Usage string `pulumi:"usage"`
 }
 
 // GetPgComponentInput is an input type that accepts GetPgComponentArgs and GetPgComponentOutput values.
@@ -38308,13 +42164,16 @@ type GetPgComponentInput interface {
 }
 
 type GetPgComponentArgs struct {
-	Component                 pulumi.StringInput `pulumi:"component"`
+	Component pulumi.StringInput `pulumi:"component"`
+	// PostgreSQL master node host IP or name
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
-	Port                      pulumi.IntInput    `pulumi:"port"`
-	Route                     pulumi.StringInput `pulumi:"route"`
-	Ssl                       pulumi.BoolInput   `pulumi:"ssl"`
-	Usage                     pulumi.StringInput `pulumi:"usage"`
+	// PostgreSQL port
+	Port  pulumi.IntInput    `pulumi:"port"`
+	Route pulumi.StringInput `pulumi:"route"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl   pulumi.BoolInput   `pulumi:"ssl"`
+	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
 func (GetPgComponentArgs) ElementType() reflect.Type {
@@ -38372,6 +42231,7 @@ func (o GetPgComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgComponent) string { return v.Component }).(pulumi.StringOutput)
 }
 
+// PostgreSQL master node host IP or name
 func (o GetPgComponentOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgComponent) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -38380,6 +42240,7 @@ func (o GetPgComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
 }
 
+// PostgreSQL port
 func (o GetPgComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPgComponent) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -38388,6 +42249,7 @@ func (o GetPgComponentOutput) Route() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgComponent) string { return v.Route }).(pulumi.StringOutput)
 }
 
+// the server where to migrate data from is secured with SSL.
 func (o GetPgComponentOutput) Ssl() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPgComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
 }
@@ -38417,14 +42279,22 @@ func (o GetPgComponentArrayOutput) Index(i pulumi.IntInput) GetPgComponentOutput
 }
 
 type GetPgPg struct {
-	Dbname     string `pulumi:"dbname"`
-	Host       string `pulumi:"host"`
-	Password   string `pulumi:"password"`
-	Port       int    `pulumi:"port"`
+	// Primary PostgreSQL database name
+	Dbname string `pulumi:"dbname"`
+	// PostgreSQL master node host IP or name
+	Host string `pulumi:"host"`
+	// PostgreSQL admin user password
+	Password string `pulumi:"password"`
+	// PostgreSQL port
+	Port int `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica
 	ReplicaUri string `pulumi:"replicaUri"`
-	Sslmode    string `pulumi:"sslmode"`
-	Uri        string `pulumi:"uri"`
-	User       string `pulumi:"user"`
+	// PostgreSQL sslmode setting (currently always `require`)
+	Sslmode string `pulumi:"sslmode"`
+	// PostgreSQL master connection URI
+	Uri string `pulumi:"uri"`
+	// PostgreSQL admin user name
+	User string `pulumi:"user"`
 }
 
 // GetPgPgInput is an input type that accepts GetPgPgArgs and GetPgPgOutput values.
@@ -38439,14 +42309,22 @@ type GetPgPgInput interface {
 }
 
 type GetPgPgArgs struct {
-	Dbname     pulumi.StringInput `pulumi:"dbname"`
-	Host       pulumi.StringInput `pulumi:"host"`
-	Password   pulumi.StringInput `pulumi:"password"`
-	Port       pulumi.IntInput    `pulumi:"port"`
+	// Primary PostgreSQL database name
+	Dbname pulumi.StringInput `pulumi:"dbname"`
+	// PostgreSQL master node host IP or name
+	Host pulumi.StringInput `pulumi:"host"`
+	// PostgreSQL admin user password
+	Password pulumi.StringInput `pulumi:"password"`
+	// PostgreSQL port
+	Port pulumi.IntInput `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica
 	ReplicaUri pulumi.StringInput `pulumi:"replicaUri"`
-	Sslmode    pulumi.StringInput `pulumi:"sslmode"`
-	Uri        pulumi.StringInput `pulumi:"uri"`
-	User       pulumi.StringInput `pulumi:"user"`
+	// PostgreSQL sslmode setting (currently always `require`)
+	Sslmode pulumi.StringInput `pulumi:"sslmode"`
+	// PostgreSQL master connection URI
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// PostgreSQL admin user name
+	User pulumi.StringInput `pulumi:"user"`
 }
 
 func (GetPgPgArgs) ElementType() reflect.Type {
@@ -38475,60 +42353,103 @@ func (o GetPgPgOutput) ToGetPgPgOutputWithContext(ctx context.Context) GetPgPgOu
 	return o
 }
 
+// Primary PostgreSQL database name
 func (o GetPgPgOutput) Dbname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.Dbname }).(pulumi.StringOutput)
 }
 
+// PostgreSQL master node host IP or name
 func (o GetPgPgOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// PostgreSQL admin user password
 func (o GetPgPgOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// PostgreSQL port
 func (o GetPgPgOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPgPg) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// PostgreSQL replica URI for services with a replica
 func (o GetPgPgOutput) ReplicaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.ReplicaUri }).(pulumi.StringOutput)
 }
 
+// PostgreSQL sslmode setting (currently always `require`)
 func (o GetPgPgOutput) Sslmode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.Sslmode }).(pulumi.StringOutput)
 }
 
+// PostgreSQL master connection URI
 func (o GetPgPgOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.Uri }).(pulumi.StringOutput)
 }
 
+// PostgreSQL admin user name
 func (o GetPgPgOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.User }).(pulumi.StringOutput)
 }
 
 type GetPgPgUserConfig struct {
-	AdminPassword           *string                         `pulumi:"adminPassword"`
-	AdminUsername           *string                         `pulumi:"adminUsername"`
-	BackupHour              *string                         `pulumi:"backupHour"`
-	BackupMinute            *string                         `pulumi:"backupMinute"`
-	IpFilters               []string                        `pulumi:"ipFilters"`
-	Migration               *GetPgPgUserConfigMigration     `pulumi:"migration"`
-	Pg                      *GetPgPgUserConfigPg            `pulumi:"pg"`
-	PgReadReplica           *string                         `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     *string                         `pulumi:"pgServiceToForkFrom"`
-	PgVersion               *string                         `pulumi:"pgVersion"`
-	Pgbouncer               *GetPgPgUserConfigPgbouncer     `pulumi:"pgbouncer"`
-	Pglookout               *GetPgPgUserConfigPglookout     `pulumi:"pglookout"`
-	PrivateAccess           *GetPgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess            *GetPgPgUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime      *string                         `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       *string                         `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage *string                         `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  *string                         `pulumi:"synchronousReplication"`
-	Timescaledb             *GetPgPgUserConfigTimescaledb   `pulumi:"timescaledb"`
-	Variant                 *string                         `pulumi:"variant"`
-	WorkMem                 *string                         `pulumi:"workMem"`
+	// custom password for admin user. Defaults to random string. *This must
+	// be set only when a new service is being created.*
+	AdminPassword *string `pulumi:"adminPassword"`
+	// custom username for admin user. *This must be set only when a new service
+	// is being created.*
+	AdminUsername *string `pulumi:"adminUsername"`
+	// the hour of day (in UTC) when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupHour *string `pulumi:"backupHour"`
+	// the minute of an hour when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupMinute *string `pulumi:"backupMinute"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// migrate data from existing server, has the following options:
+	Migration *GetPgPgUserConfigMigration `pulumi:"migration"`
+	// PostgreSQL specific server provided values.
+	Pg *GetPgPgUserConfigPg `pulumi:"pg"`
+	// This setting is deprecated. Use read-replica service integration instead.
+	PgReadReplica *string `pulumi:"pgReadReplica"`
+	// Name of the PG Service from which to fork (deprecated, use service_to_fork_from).
+	// This has effect only when a new service is being created.
+	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
+	// PostgreSQL major version.
+	PgVersion *string `pulumi:"pgVersion"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer *GetPgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
+	// PGLookout settings.
+	Pglookout *GetPgPgUserConfigPglookout `pulumi:"pglookout"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *GetPgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetPgPgUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Percentage of total RAM that the database server uses for
+	// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+	// the sharedBuffers configuration value. The absolute maximum is 12 GB.
+	SharedBuffersPercentage *string `pulumi:"sharedBuffersPercentage"`
+	// Synchronous replication type. Note that the service plan
+	// also needs to support synchronous replication.
+	SynchronousReplication *string `pulumi:"synchronousReplication"`
+	// TimescaleDB extension configuration values.
+	Timescaledb *GetPgPgUserConfigTimescaledb `pulumi:"timescaledb"`
+	// Variant of the PostgreSQL service, may affect the features that are
+	// exposed by default. Options: `aiven` or `timescale`.
+	Variant *string `pulumi:"variant"`
+	// Sets the maximum amount of memory to be used by a query operation (such
+	// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+	// total RAM (up to 32MB).
+	WorkMem *string `pulumi:"workMem"`
 }
 
 // GetPgPgUserConfigInput is an input type that accepts GetPgPgUserConfigArgs and GetPgPgUserConfigOutput values.
@@ -38543,27 +42464,62 @@ type GetPgPgUserConfigInput interface {
 }
 
 type GetPgPgUserConfigArgs struct {
-	AdminPassword           pulumi.StringPtrInput                  `pulumi:"adminPassword"`
-	AdminUsername           pulumi.StringPtrInput                  `pulumi:"adminUsername"`
-	BackupHour              pulumi.StringPtrInput                  `pulumi:"backupHour"`
-	BackupMinute            pulumi.StringPtrInput                  `pulumi:"backupMinute"`
-	IpFilters               pulumi.StringArrayInput                `pulumi:"ipFilters"`
-	Migration               GetPgPgUserConfigMigrationPtrInput     `pulumi:"migration"`
-	Pg                      GetPgPgUserConfigPgPtrInput            `pulumi:"pg"`
-	PgReadReplica           pulumi.StringPtrInput                  `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     pulumi.StringPtrInput                  `pulumi:"pgServiceToForkFrom"`
-	PgVersion               pulumi.StringPtrInput                  `pulumi:"pgVersion"`
-	Pgbouncer               GetPgPgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
-	Pglookout               GetPgPgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
-	PrivateAccess           GetPgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess            GetPgPgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime      pulumi.StringPtrInput                  `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       pulumi.StringPtrInput                  `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage pulumi.StringPtrInput                  `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  pulumi.StringPtrInput                  `pulumi:"synchronousReplication"`
-	Timescaledb             GetPgPgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
-	Variant                 pulumi.StringPtrInput                  `pulumi:"variant"`
-	WorkMem                 pulumi.StringPtrInput                  `pulumi:"workMem"`
+	// custom password for admin user. Defaults to random string. *This must
+	// be set only when a new service is being created.*
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// custom username for admin user. *This must be set only when a new service
+	// is being created.*
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// the hour of day (in UTC) when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
+	// the minute of an hour when backup for the service is started. New backup
+	// is only started if previous backup has already completed.
+	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// migrate data from existing server, has the following options:
+	Migration GetPgPgUserConfigMigrationPtrInput `pulumi:"migration"`
+	// PostgreSQL specific server provided values.
+	Pg GetPgPgUserConfigPgPtrInput `pulumi:"pg"`
+	// This setting is deprecated. Use read-replica service integration instead.
+	PgReadReplica pulumi.StringPtrInput `pulumi:"pgReadReplica"`
+	// Name of the PG Service from which to fork (deprecated, use service_to_fork_from).
+	// This has effect only when a new service is being created.
+	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
+	// PostgreSQL major version.
+	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer GetPgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
+	// PGLookout settings.
+	Pglookout GetPgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess GetPgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetPgPgUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect
+	// only when a new service is being created.
+	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Percentage of total RAM that the database server uses for
+	// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+	// the sharedBuffers configuration value. The absolute maximum is 12 GB.
+	SharedBuffersPercentage pulumi.StringPtrInput `pulumi:"sharedBuffersPercentage"`
+	// Synchronous replication type. Note that the service plan
+	// also needs to support synchronous replication.
+	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
+	// TimescaleDB extension configuration values.
+	Timescaledb GetPgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
+	// Variant of the PostgreSQL service, may affect the features that are
+	// exposed by default. Options: `aiven` or `timescale`.
+	Variant pulumi.StringPtrInput `pulumi:"variant"`
+	// Sets the maximum amount of memory to be used by a query operation (such
+	// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+	// total RAM (up to 32MB).
+	WorkMem pulumi.StringPtrInput `pulumi:"workMem"`
 }
 
 func (GetPgPgUserConfigArgs) ElementType() reflect.Type {
@@ -38592,96 +42548,137 @@ func (o GetPgPgUserConfigOutput) ToGetPgPgUserConfigOutputWithContext(ctx contex
 	return o
 }
 
+// custom password for admin user. Defaults to random string. *This must
+// be set only when a new service is being created.*
 func (o GetPgPgUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// custom username for admin user. *This must be set only when a new service
+// is being created.*
 func (o GetPgPgUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// the hour of day (in UTC) when backup for the service is started. New backup
+// is only started if previous backup has already completed.
 func (o GetPgPgUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
+// the minute of an hour when backup for the service is started. New backup
+// is only started if previous backup has already completed.
 func (o GetPgPgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetPgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// migrate data from existing server, has the following options:
 func (o GetPgPgUserConfigOutput) Migration() GetPgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigMigration { return v.Migration }).(GetPgPgUserConfigMigrationPtrOutput)
 }
 
+// PostgreSQL specific server provided values.
 func (o GetPgPgUserConfigOutput) Pg() GetPgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPg { return v.Pg }).(GetPgPgUserConfigPgPtrOutput)
 }
 
+// This setting is deprecated. Use read-replica service integration instead.
 func (o GetPgPgUserConfigOutput) PgReadReplica() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgReadReplica }).(pulumi.StringPtrOutput)
 }
 
+// Name of the PG Service from which to fork (deprecated, use service_to_fork_from).
+// This has effect only when a new service is being created.
 func (o GetPgPgUserConfigOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL major version.
 func (o GetPgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigOutput) Pgbouncer() GetPgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPgbouncer { return v.Pgbouncer }).(GetPgPgUserConfigPgbouncerPtrOutput)
 }
 
+// PGLookout settings.
 func (o GetPgPgUserConfigOutput) Pglookout() GetPgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPglookout { return v.Pglookout }).(GetPgPgUserConfigPglookoutPtrOutput)
 }
 
+// Allow access to selected service ports from private networks.
 func (o GetPgPgUserConfigOutput) PrivateAccess() GetPgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPrivateAccess { return v.PrivateAccess }).(GetPgPgUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GetPgPgUserConfigOutput) PublicAccess() GetPgPgUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPublicAccess { return v.PublicAccess }).(GetPgPgUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect
+// only when a new service is being created.
 func (o GetPgPgUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
 func (o GetPgPgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Percentage of total RAM that the database server uses for
+// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+// the sharedBuffers configuration value. The absolute maximum is 12 GB.
 func (o GetPgPgUserConfigOutput) SharedBuffersPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.SharedBuffersPercentage }).(pulumi.StringPtrOutput)
 }
 
+// Synchronous replication type. Note that the service plan
+// also needs to support synchronous replication.
 func (o GetPgPgUserConfigOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.SynchronousReplication }).(pulumi.StringPtrOutput)
 }
 
+// TimescaleDB extension configuration values.
 func (o GetPgPgUserConfigOutput) Timescaledb() GetPgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigTimescaledb { return v.Timescaledb }).(GetPgPgUserConfigTimescaledbPtrOutput)
 }
 
+// Variant of the PostgreSQL service, may affect the features that are
+// exposed by default. Options: `aiven` or `timescale`.
 func (o GetPgPgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum amount of memory to be used by a query operation (such
+// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+// total RAM (up to 32MB).
 func (o GetPgPgUserConfigOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.WorkMem }).(pulumi.StringPtrOutput)
 }
 
 type GetPgPgUserConfigMigration struct {
-	Dbname   *string `pulumi:"dbname"`
-	Host     *string `pulumi:"host"`
+	// Primary PostgreSQL database name
+	Dbname *string `pulumi:"dbname"`
+	// PostgreSQL master node host IP or name
+	Host *string `pulumi:"host"`
+	// PostgreSQL admin user password
 	Password *string `pulumi:"password"`
-	Port     *string `pulumi:"port"`
-	Ssl      *string `pulumi:"ssl"`
+	// PostgreSQL port
+	Port *string `pulumi:"port"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl *string `pulumi:"ssl"`
+	// user name for authentication with the server where to migrate data from.
 	Username *string `pulumi:"username"`
 }
 
@@ -38697,11 +42694,17 @@ type GetPgPgUserConfigMigrationInput interface {
 }
 
 type GetPgPgUserConfigMigrationArgs struct {
-	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
-	Host     pulumi.StringPtrInput `pulumi:"host"`
+	// Primary PostgreSQL database name
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// PostgreSQL master node host IP or name
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// PostgreSQL admin user password
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.StringPtrInput `pulumi:"port"`
-	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	// PostgreSQL port
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// the server where to migrate data from is secured with SSL.
+	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
+	// user name for authentication with the server where to migrate data from.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -38781,26 +42784,33 @@ func (o GetPgPgUserConfigMigrationOutput) ToGetPgPgUserConfigMigrationPtrOutputW
 		return &v
 	}).(GetPgPgUserConfigMigrationPtrOutput)
 }
+
+// Primary PostgreSQL database name
 func (o GetPgPgUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master node host IP or name
 func (o GetPgPgUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL admin user password
 func (o GetPgPgUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL port
 func (o GetPgPgUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// the server where to migrate data from is secured with SSL.
 func (o GetPgPgUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+// user name for authentication with the server where to migrate data from.
 func (o GetPgPgUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -38823,6 +42833,7 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Elem() GetPgPgUserConfigMigrationOu
 	return o.ApplyT(func(v *GetPgPgUserConfigMigration) GetPgPgUserConfigMigration { return *v }).(GetPgPgUserConfigMigrationOutput)
 }
 
+// Primary PostgreSQL database name
 func (o GetPgPgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
 		if v == nil {
@@ -38832,6 +42843,7 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master node host IP or name
 func (o GetPgPgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
 		if v == nil {
@@ -38841,6 +42853,7 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL admin user password
 func (o GetPgPgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
 		if v == nil {
@@ -38850,6 +42863,7 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL port
 func (o GetPgPgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
 		if v == nil {
@@ -38859,6 +42873,7 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the server where to migrate data from is secured with SSL.
 func (o GetPgPgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
 		if v == nil {
@@ -38868,6 +42883,7 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// user name for authentication with the server where to migrate data from.
 func (o GetPgPgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigMigration) *string {
 		if v == nil {
@@ -38878,40 +42894,105 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type GetPgPgUserConfigPg struct {
-	AutovacuumAnalyzeScaleFactor    *string `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      *string `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumFreezeMaxAge          *string `pulumi:"autovacuumFreezeMaxAge"`
-	AutovacuumMaxWorkers            *string `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               *string `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       *string `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       *string `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     *string `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       *string `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 *string `pulumi:"deadlockTimeout"`
+	// Specifies a fraction of the table size to add to
+	// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+	// (20% of table size).
+	AutovacuumAnalyzeScaleFactor *string `pulumi:"autovacuumAnalyzeScaleFactor"`
+	// specifies the minimum number of inserted, updated
+	// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	AutovacuumAnalyzeThreshold *string `pulumi:"autovacuumAnalyzeThreshold"`
+	// specifies the maximum age (in transactions) that a table's
+	// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+	// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+	// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+	AutovacuumFreezeMaxAge *string `pulumi:"autovacuumFreezeMaxAge"`
+	// specifies the maximum number of autovacuum processes (other
+	// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+	// can only be set at server start.
+	AutovacuumMaxWorkers *string `pulumi:"autovacuumMaxWorkers"`
+	// specifies the minimum delay between autovacuum runs on any
+	// given database. The delay is measured in seconds, and the default is one minute.
+	AutovacuumNaptime *string `pulumi:"autovacuumNaptime"`
+	// specifies the cost delay value that will be used
+	// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+	// used. The default value is 20 milliseconds.
+	AutovacuumVacuumCostDelay *string `pulumi:"autovacuumVacuumCostDelay"`
+	// specifies the cost limit value that will be used in
+	// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+	// value will be used.
+	AutovacuumVacuumCostLimit *string `pulumi:"autovacuumVacuumCostLimit"`
+	// specifies a fraction of the table size to add to
+	// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	AutovacuumVacuumScaleFactor *string `pulumi:"autovacuumVacuumScaleFactor"`
+	// specifies the minimum number of updated or deleted tuples
+	// needed to trigger a VACUUM in any one table. The default is 50 tuples
+	AutovacuumVacuumThreshold *string `pulumi:"autovacuumVacuumThreshold"`
+	// this is the amount of time, in milliseconds, to wait on a lock before
+	// checking to see if there is a deadlock condition.
+	DeadlockTimeout *string `pulumi:"deadlockTimeout"`
+	// Time out sessions with open transactions after
+	// this number of milliseconds.
 	IdleInTransactionSessionTimeout *string `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             *string `pulumi:"jit"`
-	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              *string `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     *string `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      *string `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         *string `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   *string `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
-	PgStatStatementsDotTrack        *string `pulumi:"pgStatStatementsDotTrack"`
-	TempFileLimit                   *string `pulumi:"tempFileLimit"`
-	Timezone                        *string `pulumi:"timezone"`
-	TrackActivityQuerySize          *string `pulumi:"trackActivityQuerySize"`
-	TrackCommitTimestamp            *string `pulumi:"trackCommitTimestamp"`
-	TrackFunctions                  *string `pulumi:"trackFunctions"`
-	WalSenderTimeout                *string `pulumi:"walSenderTimeout"`
-	WalWriterDelay                  *string `pulumi:"walWriterDelay"`
+	// Controls system-wide use of Just-in-Time Compilation (JIT).
+	Jit *string `pulumi:"jit"`
+	// Causes each action executed by autovacuum to be logged
+	// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+	// actions. Minus-one (the default) disables logging autovacuum actions.
+	LogAutovacuumMinDuration *string `pulumi:"logAutovacuumMinDuration"`
+	// Controls the amount of detail written in the server log for
+	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+	LogErrorVerbosity *string `pulumi:"logErrorVerbosity"`
+	// Log statements that take more than this number of
+	// milliseconds to run, -1 disables
+	LogMinDurationStatement *string `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum locks per transaction
+	MaxLocksPerTransaction *string `pulumi:"maxLocksPerTransaction"`
+	// Sets the maximum number of workers that the system can
+	// support for parallel queries.
+	MaxParallelWorkers *string `pulumi:"maxParallelWorkers"`
+	// Sets the maximum number of workers that can be
+	// started by a single Gather or Gather Merge node.
+	MaxParallelWorkersPerGather *string `pulumi:"maxParallelWorkersPerGather"`
+	// PostgreSQL maximum predicate locks per transaction
+	MaxPredLocksPerTransaction *string `pulumi:"maxPredLocksPerTransaction"`
+	// PostgreSQL maximum prepared transactions
+	MaxPreparedTransactions *string `pulumi:"maxPreparedTransactions"`
+	// Maximum depth of the stack in bytes
+	MaxStackDepth *string `pulumi:"maxStackDepth"`
+	// Max standby archive delay in milliseconds
+	MaxStandbyArchiveDelay *string `pulumi:"maxStandbyArchiveDelay"`
+	// Max standby streaming delay in milliseconds
+	MaxStandbyStreamingDelay *string `pulumi:"maxStandbyStreamingDelay"`
+	// Sets the maximum number of background processes that the system
+	// can support
+	// * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+	// * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+	//   background tasks.
+	// * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+	//   to track top-level statements (those issued directly by clients), all to also track nested
+	//   statements (such as statements invoked within functions), or none to disable statement statistics
+	//   collection. The default value is top.
+	MaxWorkerProcesses       *string `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval  *string `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole      *string `pulumi:"pgPartmanBgwDotRole"`
+	PgStatStatementsDotTrack *string `pulumi:"pgStatStatementsDotTrack"`
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited
+	TempFileLimit *string `pulumi:"tempFileLimit"`
+	// PostgreSQL service timezone
+	Timezone *string `pulumi:"timezone"`
+	// Specifies the number of bytes reserved to track the currently
+	// executing command for each active session.
+	TrackActivityQuerySize *string `pulumi:"trackActivityQuerySize"`
+	// Record commit time of transactions
+	TrackCommitTimestamp *string `pulumi:"trackCommitTimestamp"`
+	// Enables tracking of function call counts and time used.
+	TrackFunctions *string `pulumi:"trackFunctions"`
+	// Terminate replication connections that are inactive for longer than
+	// this amount of time, in milliseconds.
+	WalSenderTimeout *string `pulumi:"walSenderTimeout"`
+	// WAL flush interval in milliseconds. Note that setting this value
+	// to lower than the default 200ms may negatively impact performance
+	WalWriterDelay *string `pulumi:"walWriterDelay"`
 }
 
 // GetPgPgUserConfigPgInput is an input type that accepts GetPgPgUserConfigPgArgs and GetPgPgUserConfigPgOutput values.
@@ -38926,40 +43007,105 @@ type GetPgPgUserConfigPgInput interface {
 }
 
 type GetPgPgUserConfigPgArgs struct {
-	AutovacuumAnalyzeScaleFactor    pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
-	AutovacuumAnalyzeThreshold      pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
-	AutovacuumFreezeMaxAge          pulumi.StringPtrInput `pulumi:"autovacuumFreezeMaxAge"`
-	AutovacuumMaxWorkers            pulumi.StringPtrInput `pulumi:"autovacuumMaxWorkers"`
-	AutovacuumNaptime               pulumi.StringPtrInput `pulumi:"autovacuumNaptime"`
-	AutovacuumVacuumCostDelay       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostDelay"`
-	AutovacuumVacuumCostLimit       pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostLimit"`
-	AutovacuumVacuumScaleFactor     pulumi.StringPtrInput `pulumi:"autovacuumVacuumScaleFactor"`
-	AutovacuumVacuumThreshold       pulumi.StringPtrInput `pulumi:"autovacuumVacuumThreshold"`
-	DeadlockTimeout                 pulumi.StringPtrInput `pulumi:"deadlockTimeout"`
+	// Specifies a fraction of the table size to add to
+	// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+	// (20% of table size).
+	AutovacuumAnalyzeScaleFactor pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
+	// specifies the minimum number of inserted, updated
+	// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	AutovacuumAnalyzeThreshold pulumi.StringPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
+	// specifies the maximum age (in transactions) that a table's
+	// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+	// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+	// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+	AutovacuumFreezeMaxAge pulumi.StringPtrInput `pulumi:"autovacuumFreezeMaxAge"`
+	// specifies the maximum number of autovacuum processes (other
+	// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+	// can only be set at server start.
+	AutovacuumMaxWorkers pulumi.StringPtrInput `pulumi:"autovacuumMaxWorkers"`
+	// specifies the minimum delay between autovacuum runs on any
+	// given database. The delay is measured in seconds, and the default is one minute.
+	AutovacuumNaptime pulumi.StringPtrInput `pulumi:"autovacuumNaptime"`
+	// specifies the cost delay value that will be used
+	// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+	// used. The default value is 20 milliseconds.
+	AutovacuumVacuumCostDelay pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostDelay"`
+	// specifies the cost limit value that will be used in
+	// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+	// value will be used.
+	AutovacuumVacuumCostLimit pulumi.StringPtrInput `pulumi:"autovacuumVacuumCostLimit"`
+	// specifies a fraction of the table size to add to
+	// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	AutovacuumVacuumScaleFactor pulumi.StringPtrInput `pulumi:"autovacuumVacuumScaleFactor"`
+	// specifies the minimum number of updated or deleted tuples
+	// needed to trigger a VACUUM in any one table. The default is 50 tuples
+	AutovacuumVacuumThreshold pulumi.StringPtrInput `pulumi:"autovacuumVacuumThreshold"`
+	// this is the amount of time, in milliseconds, to wait on a lock before
+	// checking to see if there is a deadlock condition.
+	DeadlockTimeout pulumi.StringPtrInput `pulumi:"deadlockTimeout"`
+	// Time out sessions with open transactions after
+	// this number of milliseconds.
 	IdleInTransactionSessionTimeout pulumi.StringPtrInput `pulumi:"idleInTransactionSessionTimeout"`
-	Jit                             pulumi.StringPtrInput `pulumi:"jit"`
-	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
-	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
-	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
-	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
-	MaxParallelWorkers              pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
-	MaxParallelWorkersPerGather     pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
-	MaxPredLocksPerTransaction      pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
-	MaxPreparedTransactions         pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
-	MaxStackDepth                   pulumi.StringPtrInput `pulumi:"maxStackDepth"`
-	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
-	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
-	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
-	PgStatStatementsDotTrack        pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
-	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
-	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
-	TrackActivityQuerySize          pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
-	TrackCommitTimestamp            pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
-	TrackFunctions                  pulumi.StringPtrInput `pulumi:"trackFunctions"`
-	WalSenderTimeout                pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
-	WalWriterDelay                  pulumi.StringPtrInput `pulumi:"walWriterDelay"`
+	// Controls system-wide use of Just-in-Time Compilation (JIT).
+	Jit pulumi.StringPtrInput `pulumi:"jit"`
+	// Causes each action executed by autovacuum to be logged
+	// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+	// actions. Minus-one (the default) disables logging autovacuum actions.
+	LogAutovacuumMinDuration pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
+	// Controls the amount of detail written in the server log for
+	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+	LogErrorVerbosity pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	// Log statements that take more than this number of
+	// milliseconds to run, -1 disables
+	LogMinDurationStatement pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum locks per transaction
+	MaxLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	// Sets the maximum number of workers that the system can
+	// support for parallel queries.
+	MaxParallelWorkers pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
+	// Sets the maximum number of workers that can be
+	// started by a single Gather or Gather Merge node.
+	MaxParallelWorkersPerGather pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
+	// PostgreSQL maximum predicate locks per transaction
+	MaxPredLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
+	// PostgreSQL maximum prepared transactions
+	MaxPreparedTransactions pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	// Maximum depth of the stack in bytes
+	MaxStackDepth pulumi.StringPtrInput `pulumi:"maxStackDepth"`
+	// Max standby archive delay in milliseconds
+	MaxStandbyArchiveDelay pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
+	// Max standby streaming delay in milliseconds
+	MaxStandbyStreamingDelay pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	// Sets the maximum number of background processes that the system
+	// can support
+	// * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+	// * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+	//   background tasks.
+	// * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+	//   to track top-level statements (those issued directly by clients), all to also track nested
+	//   statements (such as statements invoked within functions), or none to disable statement statistics
+	//   collection. The default value is top.
+	MaxWorkerProcesses       pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
+	PgPartmanBgwDotInterval  pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
+	PgPartmanBgwDotRole      pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
+	PgStatStatementsDotTrack pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited
+	TempFileLimit pulumi.StringPtrInput `pulumi:"tempFileLimit"`
+	// PostgreSQL service timezone
+	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
+	// Specifies the number of bytes reserved to track the currently
+	// executing command for each active session.
+	TrackActivityQuerySize pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
+	// Record commit time of transactions
+	TrackCommitTimestamp pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
+	// Enables tracking of function call counts and time used.
+	TrackFunctions pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	// Terminate replication connections that are inactive for longer than
+	// this amount of time, in milliseconds.
+	WalSenderTimeout pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
+	// WAL flush interval in milliseconds. Note that setting this value
+	// to lower than the default 200ms may negatively impact performance
+	WalWriterDelay pulumi.StringPtrInput `pulumi:"walWriterDelay"`
 }
 
 func (GetPgPgUserConfigPgArgs) ElementType() reflect.Type {
@@ -39038,98 +43184,154 @@ func (o GetPgPgUserConfigPgOutput) ToGetPgPgUserConfigPgPtrOutputWithContext(ctx
 		return &v
 	}).(GetPgPgUserConfigPgPtrOutput)
 }
+
+// Specifies a fraction of the table size to add to
+// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+// (20% of table size).
 func (o GetPgPgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of inserted, updated
+// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
 func (o GetPgPgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumAnalyzeThreshold }).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum age (in transactions) that a table's
+// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
 func (o GetPgPgUserConfigPgOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumFreezeMaxAge }).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum number of autovacuum processes (other
+// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+// can only be set at server start.
 func (o GetPgPgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumMaxWorkers }).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum delay between autovacuum runs on any
+// given database. The delay is measured in seconds, and the default is one minute.
 func (o GetPgPgUserConfigPgOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumNaptime }).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost delay value that will be used
+// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+// used. The default value is 20 milliseconds.
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumVacuumCostDelay }).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost limit value that will be used in
+// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+// value will be used.
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumVacuumCostLimit }).(pulumi.StringPtrOutput)
 }
 
+// specifies a fraction of the table size to add to
+// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumVacuumScaleFactor }).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of updated or deleted tuples
+// needed to trigger a VACUUM in any one table. The default is 50 tuples
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.AutovacuumVacuumThreshold }).(pulumi.StringPtrOutput)
 }
 
+// this is the amount of time, in milliseconds, to wait on a lock before
+// checking to see if there is a deadlock condition.
 func (o GetPgPgUserConfigPgOutput) DeadlockTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.DeadlockTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Time out sessions with open transactions after
+// this number of milliseconds.
 func (o GetPgPgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.IdleInTransactionSessionTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Controls system-wide use of Just-in-Time Compilation (JIT).
 func (o GetPgPgUserConfigPgOutput) Jit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.Jit }).(pulumi.StringPtrOutput)
 }
 
+// Causes each action executed by autovacuum to be logged
+// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+// actions. Minus-one (the default) disables logging autovacuum actions.
 func (o GetPgPgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogAutovacuumMinDuration }).(pulumi.StringPtrOutput)
 }
 
+// Controls the amount of detail written in the server log for
+// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 func (o GetPgPgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
 }
 
+// Log statements that take more than this number of
+// milliseconds to run, -1 disables
 func (o GetPgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum locks per transaction
 func (o GetPgPgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that the system can
+// support for parallel queries.
 func (o GetPgPgUserConfigPgOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxParallelWorkers }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that can be
+// started by a single Gather or Gather Merge node.
 func (o GetPgPgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxParallelWorkersPerGather }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum predicate locks per transaction
 func (o GetPgPgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxPredLocksPerTransaction }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum prepared transactions
 func (o GetPgPgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
+// Maximum depth of the stack in bytes
 func (o GetPgPgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
 }
 
+// Max standby archive delay in milliseconds
 func (o GetPgPgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxStandbyArchiveDelay }).(pulumi.StringPtrOutput)
 }
 
+// Max standby streaming delay in milliseconds
 func (o GetPgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of background processes that the system
+// can support
+// * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+// * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+//   background tasks.
+// * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+//   to track top-level statements (those issued directly by clients), all to also track nested
+//   statements (such as statements invoked within functions), or none to disable statement statistics
+//   collection. The default value is top.
 func (o GetPgPgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
 }
@@ -39146,30 +43348,40 @@ func (o GetPgPgUserConfigPgOutput) PgStatStatementsDotTrack() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgStatStatementsDotTrack }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL temporary file limit in KiB, -1 for unlimited
 func (o GetPgPgUserConfigPgOutput) TempFileLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TempFileLimit }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL service timezone
 func (o GetPgPgUserConfigPgOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the number of bytes reserved to track the currently
+// executing command for each active session.
 func (o GetPgPgUserConfigPgOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackActivityQuerySize }).(pulumi.StringPtrOutput)
 }
 
+// Record commit time of transactions
 func (o GetPgPgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackCommitTimestamp }).(pulumi.StringPtrOutput)
 }
 
+// Enables tracking of function call counts and time used.
 func (o GetPgPgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
 }
 
+// Terminate replication connections that are inactive for longer than
+// this amount of time, in milliseconds.
 func (o GetPgPgUserConfigPgOutput) WalSenderTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.WalSenderTimeout }).(pulumi.StringPtrOutput)
 }
 
+// WAL flush interval in milliseconds. Note that setting this value
+// to lower than the default 200ms may negatively impact performance
 func (o GetPgPgUserConfigPgOutput) WalWriterDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.WalWriterDelay }).(pulumi.StringPtrOutput)
 }
@@ -39192,6 +43404,9 @@ func (o GetPgPgUserConfigPgPtrOutput) Elem() GetPgPgUserConfigPgOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) GetPgPgUserConfigPg { return *v }).(GetPgPgUserConfigPgOutput)
 }
 
+// Specifies a fraction of the table size to add to
+// autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+// (20% of table size).
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39201,6 +43416,8 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of inserted, updated
+// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39210,6 +43427,10 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum age (in transactions) that a table's
+// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39219,6 +43440,9 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the maximum number of autovacuum processes (other
+// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+// can only be set at server start.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39228,6 +43452,8 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum delay between autovacuum runs on any
+// given database. The delay is measured in seconds, and the default is one minute.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39237,6 +43463,9 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost delay value that will be used
+// in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+// used. The default value is 20 milliseconds.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39246,6 +43475,9 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the cost limit value that will be used in
+// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+// value will be used.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39255,6 +43487,8 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies a fraction of the table size to add to
+// autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39264,6 +43498,8 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// specifies the minimum number of updated or deleted tuples
+// needed to trigger a VACUUM in any one table. The default is 50 tuples
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39273,6 +43509,8 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// this is the amount of time, in milliseconds, to wait on a lock before
+// checking to see if there is a deadlock condition.
 func (o GetPgPgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39282,6 +43520,8 @@ func (o GetPgPgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time out sessions with open transactions after
+// this number of milliseconds.
 func (o GetPgPgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39291,6 +43531,7 @@ func (o GetPgPgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls system-wide use of Just-in-Time Compilation (JIT).
 func (o GetPgPgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39300,6 +43541,9 @@ func (o GetPgPgUserConfigPgPtrOutput) Jit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Causes each action executed by autovacuum to be logged
+// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+// actions. Minus-one (the default) disables logging autovacuum actions.
 func (o GetPgPgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39309,6 +43553,8 @@ func (o GetPgPgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls the amount of detail written in the server log for
+// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 func (o GetPgPgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39318,6 +43564,8 @@ func (o GetPgPgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Log statements that take more than this number of
+// milliseconds to run, -1 disables
 func (o GetPgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39327,6 +43575,7 @@ func (o GetPgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum locks per transaction
 func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39336,6 +43585,8 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that the system can
+// support for parallel queries.
 func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39345,6 +43596,8 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of workers that can be
+// started by a single Gather or Gather Merge node.
 func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39354,6 +43607,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum predicate locks per transaction
 func (o GetPgPgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39363,6 +43617,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum prepared transactions
 func (o GetPgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39372,6 +43627,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum depth of the stack in bytes
 func (o GetPgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39381,6 +43637,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Max standby archive delay in milliseconds
 func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39390,6 +43647,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Max standby streaming delay in milliseconds
 func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39399,6 +43657,15 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the maximum number of background processes that the system
+// can support
+// * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+// * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+//   background tasks.
+// * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+//   to track top-level statements (those issued directly by clients), all to also track nested
+//   statements (such as statements invoked within functions), or none to disable statement statistics
+//   collection. The default value is top.
 func (o GetPgPgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39435,6 +43702,7 @@ func (o GetPgPgUserConfigPgPtrOutput) PgStatStatementsDotTrack() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL temporary file limit in KiB, -1 for unlimited
 func (o GetPgPgUserConfigPgPtrOutput) TempFileLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39444,6 +43712,7 @@ func (o GetPgPgUserConfigPgPtrOutput) TempFileLimit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL service timezone
 func (o GetPgPgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39453,6 +43722,8 @@ func (o GetPgPgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the number of bytes reserved to track the currently
+// executing command for each active session.
 func (o GetPgPgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39462,6 +43733,7 @@ func (o GetPgPgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Record commit time of transactions
 func (o GetPgPgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39471,6 +43743,7 @@ func (o GetPgPgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enables tracking of function call counts and time used.
 func (o GetPgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39480,6 +43753,8 @@ func (o GetPgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Terminate replication connections that are inactive for longer than
+// this amount of time, in milliseconds.
 func (o GetPgPgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39489,6 +43764,8 @@ func (o GetPgPgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// WAL flush interval in milliseconds. Note that setting this value
+// to lower than the default 200ms may negatively impact performance
 func (o GetPgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -39499,8 +43776,10 @@ func (o GetPgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
 }
 
 type GetPgPgUserConfigPgbouncer struct {
+	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
-	ServerResetQueryAlways  *string  `pulumi:"serverResetQueryAlways"`
+	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
+	ServerResetQueryAlways *string `pulumi:"serverResetQueryAlways"`
 }
 
 // GetPgPgUserConfigPgbouncerInput is an input type that accepts GetPgPgUserConfigPgbouncerArgs and GetPgPgUserConfigPgbouncerOutput values.
@@ -39515,8 +43794,10 @@ type GetPgPgUserConfigPgbouncerInput interface {
 }
 
 type GetPgPgUserConfigPgbouncerArgs struct {
+	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
-	ServerResetQueryAlways  pulumi.StringPtrInput   `pulumi:"serverResetQueryAlways"`
+	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
+	ServerResetQueryAlways pulumi.StringPtrInput `pulumi:"serverResetQueryAlways"`
 }
 
 func (GetPgPgUserConfigPgbouncerArgs) ElementType() reflect.Type {
@@ -39595,10 +43876,13 @@ func (o GetPgPgUserConfigPgbouncerOutput) ToGetPgPgUserConfigPgbouncerPtrOutputW
 		return &v
 	}).(GetPgPgUserConfigPgbouncerPtrOutput)
 }
+
+// Enum of parameters to ignore when given in startup packet.
 func (o GetPgPgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
 }
 
+// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 func (o GetPgPgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.ServerResetQueryAlways }).(pulumi.StringPtrOutput)
 }
@@ -39621,6 +43905,7 @@ func (o GetPgPgUserConfigPgbouncerPtrOutput) Elem() GetPgPgUserConfigPgbouncerOu
 	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) GetPgPgUserConfigPgbouncer { return *v }).(GetPgPgUserConfigPgbouncerOutput)
 }
 
+// Enum of parameters to ignore when given in startup packet.
 func (o GetPgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) []string {
 		if v == nil {
@@ -39630,6 +43915,7 @@ func (o GetPgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
+// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
 		if v == nil {
@@ -39640,6 +43926,8 @@ func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.Str
 }
 
 type GetPgPgUserConfigPglookout struct {
+	// Number of seconds of master unavailability before
+	// triggering database failover to standby
 	MaxFailoverReplicationTimeLag *string `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
@@ -39655,6 +43943,8 @@ type GetPgPgUserConfigPglookoutInput interface {
 }
 
 type GetPgPgUserConfigPglookoutArgs struct {
+	// Number of seconds of master unavailability before
+	// triggering database failover to standby
 	MaxFailoverReplicationTimeLag pulumi.StringPtrInput `pulumi:"maxFailoverReplicationTimeLag"`
 }
 
@@ -39734,6 +44024,9 @@ func (o GetPgPgUserConfigPglookoutOutput) ToGetPgPgUserConfigPglookoutPtrOutputW
 		return &v
 	}).(GetPgPgUserConfigPglookoutPtrOutput)
 }
+
+// Number of seconds of master unavailability before
+// triggering database failover to standby
 func (o GetPgPgUserConfigPglookoutOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPglookout) *string { return v.MaxFailoverReplicationTimeLag }).(pulumi.StringPtrOutput)
 }
@@ -39756,6 +44049,8 @@ func (o GetPgPgUserConfigPglookoutPtrOutput) Elem() GetPgPgUserConfigPglookoutOu
 	return o.ApplyT(func(v *GetPgPgUserConfigPglookout) GetPgPgUserConfigPglookout { return *v }).(GetPgPgUserConfigPglookoutOutput)
 }
 
+// Number of seconds of master unavailability before
+// triggering database failover to standby
 func (o GetPgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPglookout) *string {
 		if v == nil {
@@ -39766,8 +44061,13 @@ func (o GetPgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pul
 }
 
 type GetPgPgUserConfigPrivateAccess struct {
-	Pg         *string `pulumi:"pg"`
-	Pgbouncer  *string `pulumi:"pgbouncer"`
+	// PostgreSQL specific server provided values.
+	Pg *string `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer *string `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -39783,8 +44083,13 @@ type GetPgPgUserConfigPrivateAccessInput interface {
 }
 
 type GetPgPgUserConfigPrivateAccessArgs struct {
-	Pg         pulumi.StringPtrInput `pulumi:"pg"`
-	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// PostgreSQL specific server provided values.
+	Pg pulumi.StringPtrInput `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -39864,14 +44169,20 @@ func (o GetPgPgUserConfigPrivateAccessOutput) ToGetPgPgUserConfigPrivateAccessPt
 		return &v
 	}).(GetPgPgUserConfigPrivateAccessPtrOutput)
 }
+
+// PostgreSQL specific server provided values.
 func (o GetPgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPrivateAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -39894,6 +44205,7 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Elem() GetPgPgUserConfigPrivate
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) GetPgPgUserConfigPrivateAccess { return *v }).(GetPgPgUserConfigPrivateAccessOutput)
 }
 
+// PostgreSQL specific server provided values.
 func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -39903,6 +44215,8 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -39912,6 +44226,8 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -39922,8 +44238,13 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOu
 }
 
 type GetPgPgUserConfigPublicAccess struct {
-	Pg         *string `pulumi:"pg"`
-	Pgbouncer  *string `pulumi:"pgbouncer"`
+	// PostgreSQL specific server provided values.
+	Pg *string `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer *string `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -39939,8 +44260,13 @@ type GetPgPgUserConfigPublicAccessInput interface {
 }
 
 type GetPgPgUserConfigPublicAccessArgs struct {
-	Pg         pulumi.StringPtrInput `pulumi:"pg"`
-	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// PostgreSQL specific server provided values.
+	Pg pulumi.StringPtrInput `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for
+	// service nodes that are in a project VPC or another type of private network
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for
+	// service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -40020,14 +44346,20 @@ func (o GetPgPgUserConfigPublicAccessOutput) ToGetPgPgUserConfigPublicAccessPtrO
 		return &v
 	}).(GetPgPgUserConfigPublicAccessPtrOutput)
 }
+
+// PostgreSQL specific server provided values.
 func (o GetPgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPublicAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -40050,6 +44382,7 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Elem() GetPgPgUserConfigPublicAc
 	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) GetPgPgUserConfigPublicAccess { return *v }).(GetPgPgUserConfigPublicAccessOutput)
 }
 
+// PostgreSQL specific server provided values.
 func (o GetPgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -40059,6 +44392,8 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to pgbouncer from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -40068,6 +44403,8 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet for
+// service nodes that are in a project VPC or another type of private network
 func (o GetPgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -40078,6 +44415,9 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOut
 }
 
 type GetPgPgUserConfigTimescaledb struct {
+	// The number of background workers for timescaledb
+	// operations. You should configure this setting to the sum of your number of databases and the
+	// total number of concurrent background workers you want running at any given point in time.
 	MaxBackgroundWorkers *string `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -40093,6 +44433,9 @@ type GetPgPgUserConfigTimescaledbInput interface {
 }
 
 type GetPgPgUserConfigTimescaledbArgs struct {
+	// The number of background workers for timescaledb
+	// operations. You should configure this setting to the sum of your number of databases and the
+	// total number of concurrent background workers you want running at any given point in time.
 	MaxBackgroundWorkers pulumi.StringPtrInput `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -40172,6 +44515,10 @@ func (o GetPgPgUserConfigTimescaledbOutput) ToGetPgPgUserConfigTimescaledbPtrOut
 		return &v
 	}).(GetPgPgUserConfigTimescaledbPtrOutput)
 }
+
+// The number of background workers for timescaledb
+// operations. You should configure this setting to the sum of your number of databases and the
+// total number of concurrent background workers you want running at any given point in time.
 func (o GetPgPgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigTimescaledb) *string { return v.MaxBackgroundWorkers }).(pulumi.StringPtrOutput)
 }
@@ -40194,6 +44541,9 @@ func (o GetPgPgUserConfigTimescaledbPtrOutput) Elem() GetPgPgUserConfigTimescale
 	return o.ApplyT(func(v *GetPgPgUserConfigTimescaledb) GetPgPgUserConfigTimescaledb { return *v }).(GetPgPgUserConfigTimescaledbOutput)
 }
 
+// The number of background workers for timescaledb
+// operations. You should configure this setting to the sum of your number of databases and the
+// total number of concurrent background workers you want running at any given point in time.
 func (o GetPgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigTimescaledb) *string {
 		if v == nil {
@@ -40304,13 +44654,16 @@ func (o GetPgServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetPgServic
 }
 
 type GetRedisComponent struct {
-	Component                 string `pulumi:"component"`
+	Component string `pulumi:"component"`
+	// (Required) Hostname or IP address of the server where to migrate data from
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
-	Port                      int    `pulumi:"port"`
-	Route                     string `pulumi:"route"`
-	Ssl                       bool   `pulumi:"ssl"`
-	Usage                     string `pulumi:"usage"`
+	// (Required) Port number of the server where to migrate data from
+	Port  int    `pulumi:"port"`
+	Route string `pulumi:"route"`
+	// The server where to migrate data from is secured with SSL
+	Ssl   bool   `pulumi:"ssl"`
+	Usage string `pulumi:"usage"`
 }
 
 // GetRedisComponentInput is an input type that accepts GetRedisComponentArgs and GetRedisComponentOutput values.
@@ -40325,13 +44678,16 @@ type GetRedisComponentInput interface {
 }
 
 type GetRedisComponentArgs struct {
-	Component                 pulumi.StringInput `pulumi:"component"`
+	Component pulumi.StringInput `pulumi:"component"`
+	// (Required) Hostname or IP address of the server where to migrate data from
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
-	Port                      pulumi.IntInput    `pulumi:"port"`
-	Route                     pulumi.StringInput `pulumi:"route"`
-	Ssl                       pulumi.BoolInput   `pulumi:"ssl"`
-	Usage                     pulumi.StringInput `pulumi:"usage"`
+	// (Required) Port number of the server where to migrate data from
+	Port  pulumi.IntInput    `pulumi:"port"`
+	Route pulumi.StringInput `pulumi:"route"`
+	// The server where to migrate data from is secured with SSL
+	Ssl   pulumi.BoolInput   `pulumi:"ssl"`
+	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
 func (GetRedisComponentArgs) ElementType() reflect.Type {
@@ -40389,6 +44745,7 @@ func (o GetRedisComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRedisComponent) string { return v.Component }).(pulumi.StringOutput)
 }
 
+// (Required) Hostname or IP address of the server where to migrate data from
 func (o GetRedisComponentOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRedisComponent) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -40397,6 +44754,7 @@ func (o GetRedisComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput
 	return o.ApplyT(func(v GetRedisComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
 }
 
+// (Required) Port number of the server where to migrate data from
 func (o GetRedisComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRedisComponent) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -40405,6 +44763,7 @@ func (o GetRedisComponentOutput) Route() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRedisComponent) string { return v.Route }).(pulumi.StringOutput)
 }
 
+// The server where to migrate data from is secured with SSL
 func (o GetRedisComponentOutput) Ssl() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRedisComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
 }
@@ -40477,18 +44836,32 @@ func (o GetRedisRedisOutput) ToGetRedisRedisOutputWithContext(ctx context.Contex
 }
 
 type GetRedisRedisUserConfig struct {
-	IpFilters                 []string                              `pulumi:"ipFilters"`
-	Migration                 *GetRedisRedisUserConfigMigration     `pulumi:"migration"`
-	PrivateAccess             *GetRedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
-	PublicAccess              *GetRedisRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryBasebackupName    *string                               `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime         *string                               `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         *string                               `pulumi:"redisLfuLogFactor"`
-	RedisMaxmemoryPolicy      *string                               `pulumi:"redisMaxmemoryPolicy"`
-	RedisNotifyKeyspaceEvents *string                               `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  *string                               `pulumi:"redisSsl"`
-	RedisTimeout              *string                               `pulumi:"redisTimeout"`
-	ServiceToForkFrom         *string                               `pulumi:"serviceToForkFrom"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *GetRedisRedisUserConfigMigration `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetRedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetRedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	RedisLfuDecayTime      *string `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu
+	// maxmemory-policies
+	RedisLfuLogFactor *string `pulumi:"redisLfuLogFactor"`
+	// Redis maxmemory-policy
+	RedisMaxmemoryPolicy *string `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option
+	RedisNotifyKeyspaceEvents *string `pulumi:"redisNotifyKeyspaceEvents"`
+	// Require SSL to access Redis
+	RedisSsl *string `pulumi:"redisSsl"`
+	// Redis idle connection timeout
+	// * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
+	//   when a new service is being created.
+	RedisTimeout      *string `pulumi:"redisTimeout"`
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // GetRedisRedisUserConfigInput is an input type that accepts GetRedisRedisUserConfigArgs and GetRedisRedisUserConfigOutput values.
@@ -40503,18 +44876,32 @@ type GetRedisRedisUserConfigInput interface {
 }
 
 type GetRedisRedisUserConfigArgs struct {
-	IpFilters                 pulumi.StringArrayInput                      `pulumi:"ipFilters"`
-	Migration                 GetRedisRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
-	PrivateAccess             GetRedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	PublicAccess              GetRedisRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryBasebackupName    pulumi.StringPtrInput                        `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime         pulumi.StringPtrInput                        `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor         pulumi.StringPtrInput                        `pulumi:"redisLfuLogFactor"`
-	RedisMaxmemoryPolicy      pulumi.StringPtrInput                        `pulumi:"redisMaxmemoryPolicy"`
-	RedisNotifyKeyspaceEvents pulumi.StringPtrInput                        `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisSsl                  pulumi.StringPtrInput                        `pulumi:"redisSsl"`
-	RedisTimeout              pulumi.StringPtrInput                        `pulumi:"redisTimeout"`
-	ServiceToForkFrom         pulumi.StringPtrInput                        `pulumi:"serviceToForkFrom"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration GetRedisRedisUserConfigMigrationPtrInput `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetRedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetRedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	RedisLfuDecayTime      pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu
+	// maxmemory-policies
+	RedisLfuLogFactor pulumi.StringPtrInput `pulumi:"redisLfuLogFactor"`
+	// Redis maxmemory-policy
+	RedisMaxmemoryPolicy pulumi.StringPtrInput `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option
+	RedisNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"redisNotifyKeyspaceEvents"`
+	// Require SSL to access Redis
+	RedisSsl pulumi.StringPtrInput `pulumi:"redisSsl"`
+	// Redis idle connection timeout
+	// * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
+	//   when a new service is being created.
+	RedisTimeout      pulumi.StringPtrInput `pulumi:"redisTimeout"`
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (GetRedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -40543,22 +44930,28 @@ func (o GetRedisRedisUserConfigOutput) ToGetRedisRedisUserConfigOutputWithContex
 	return o
 }
 
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetRedisRedisUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o GetRedisRedisUserConfigOutput) Migration() GetRedisRedisUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigMigration { return v.Migration }).(GetRedisRedisUserConfigMigrationPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o GetRedisRedisUserConfigOutput) PrivateAccess() GetRedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigPrivateAccess { return v.PrivateAccess }).(GetRedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GetRedisRedisUserConfigOutput) PublicAccess() GetRedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigPublicAccess { return v.PublicAccess }).(GetRedisRedisUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
+// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
 func (o GetRedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
@@ -40567,22 +44960,30 @@ func (o GetRedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
 
+// Counter logarithm factor for volatile-lfu and allkeys-lfu
+// maxmemory-policies
 func (o GetRedisRedisUserConfigOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisLfuLogFactor }).(pulumi.StringPtrOutput)
 }
 
+// Redis maxmemory-policy
 func (o GetRedisRedisUserConfigOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisMaxmemoryPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Set notify-keyspace-events option
 func (o GetRedisRedisUserConfigOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
+// Require SSL to access Redis
 func (o GetRedisRedisUserConfigOutput) RedisSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisSsl }).(pulumi.StringPtrOutput)
 }
 
+// Redis idle connection timeout
+// * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
+//   when a new service is being created.
 func (o GetRedisRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
@@ -40592,11 +44993,17 @@ func (o GetRedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 }
 
 type GetRedisRedisUserConfigMigration struct {
-	Dbname   *string `pulumi:"dbname"`
-	Host     *string `pulumi:"host"`
+	// Database name for bootstrapping the initial connection
+	Dbname *string `pulumi:"dbname"`
+	// (Required) Hostname or IP address of the server where to migrate data from
+	Host *string `pulumi:"host"`
+	// Password for authentication with the server where to migrate data from
 	Password *string `pulumi:"password"`
-	Port     *string `pulumi:"port"`
-	Ssl      *string `pulumi:"ssl"`
+	// (Required) Port number of the server where to migrate data from
+	Port *string `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL
+	Ssl *string `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from
 	Username *string `pulumi:"username"`
 }
 
@@ -40612,11 +45019,17 @@ type GetRedisRedisUserConfigMigrationInput interface {
 }
 
 type GetRedisRedisUserConfigMigrationArgs struct {
-	Dbname   pulumi.StringPtrInput `pulumi:"dbname"`
-	Host     pulumi.StringPtrInput `pulumi:"host"`
+	// Database name for bootstrapping the initial connection
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// (Required) Hostname or IP address of the server where to migrate data from
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Password for authentication with the server where to migrate data from
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.StringPtrInput `pulumi:"port"`
-	Ssl      pulumi.StringPtrInput `pulumi:"ssl"`
+	// (Required) Port number of the server where to migrate data from
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL
+	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -40696,26 +45109,33 @@ func (o GetRedisRedisUserConfigMigrationOutput) ToGetRedisRedisUserConfigMigrati
 		return &v
 	}).(GetRedisRedisUserConfigMigrationPtrOutput)
 }
+
+// Database name for bootstrapping the initial connection
 func (o GetRedisRedisUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Hostname or IP address of the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// Password for authentication with the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// (Required) Port number of the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// The server where to migrate data from is secured with SSL
 func (o GetRedisRedisUserConfigMigrationOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+// User name for authentication with the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -40738,6 +45158,7 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Elem() GetRedisRedisUserConfi
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) GetRedisRedisUserConfigMigration { return *v }).(GetRedisRedisUserConfigMigrationOutput)
 }
 
+// Database name for bootstrapping the initial connection
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -40747,6 +45168,7 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Hostname or IP address of the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -40756,6 +45178,7 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Password for authentication with the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -40765,6 +45188,7 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Required) Port number of the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -40774,6 +45198,7 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Port() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The server where to migrate data from is secured with SSL
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -40783,6 +45208,7 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Ssl() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// User name for authentication with the server where to migrate data from
 func (o GetRedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
 		if v == nil {
@@ -40793,8 +45219,11 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOu
 }
 
 type GetRedisRedisUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis specific server provided values.
+	Redis *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPrivateAccessInput is an input type that accepts GetRedisRedisUserConfigPrivateAccessArgs and GetRedisRedisUserConfigPrivateAccessOutput values.
@@ -40809,8 +45238,11 @@ type GetRedisRedisUserConfigPrivateAccessInput interface {
 }
 
 type GetRedisRedisUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis specific server provided values.
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -40889,10 +45321,14 @@ func (o GetRedisRedisUserConfigPrivateAccessOutput) ToGetRedisRedisUserConfigPri
 		return &v
 	}).(GetRedisRedisUserConfigPrivateAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetRedisRedisUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis specific server provided values.
 func (o GetRedisRedisUserConfigPrivateAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -40915,6 +45351,8 @@ func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Elem() GetRedisRedisUserC
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) GetRedisRedisUserConfigPrivateAccess { return *v }).(GetRedisRedisUserConfigPrivateAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -40924,6 +45362,7 @@ func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis specific server provided values.
 func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -40934,8 +45373,11 @@ func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrO
 }
 
 type GetRedisRedisUserConfigPublicAccess struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis specific server provided values.
+	Redis *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPublicAccessInput is an input type that accepts GetRedisRedisUserConfigPublicAccessArgs and GetRedisRedisUserConfigPublicAccessOutput values.
@@ -40950,8 +45392,11 @@ type GetRedisRedisUserConfigPublicAccessInput interface {
 }
 
 type GetRedisRedisUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet
+	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis specific server provided values.
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -41030,10 +45475,14 @@ func (o GetRedisRedisUserConfigPublicAccessOutput) ToGetRedisRedisUserConfigPubl
 		return &v
 	}).(GetRedisRedisUserConfigPublicAccessPtrOutput)
 }
+
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetRedisRedisUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis specific server provided values.
 func (o GetRedisRedisUserConfigPublicAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -41056,6 +45505,8 @@ func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Elem() GetRedisRedisUserCo
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) GetRedisRedisUserConfigPublicAccess { return *v }).(GetRedisRedisUserConfigPublicAccessOutput)
 }
 
+// Allow clients to connect to prometheus from the public internet
+// for service nodes that are in a project VPC or another type of private network
 func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) *string {
 		if v == nil {
@@ -41065,6 +45516,7 @@ func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis specific server provided values.
 func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) *string {
 		if v == nil {

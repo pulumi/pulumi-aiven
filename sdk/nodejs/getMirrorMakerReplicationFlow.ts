@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # MirrorMaker 2 Replication Flow Data Source
+ *
+ * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2
+ * Replication Flow on Aiven Cloud.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const f1 = aiven.getMirrorMakerReplicationFlow({
+ *     project: aiven_project["kafka-mm-project1"].project,
+ *     serviceName: aiven_service.mm.service_name,
+ *     sourceCluster: aiven_service.source.service_name,
+ *     targetCluster: aiven_service.target.service_name,
+ * });
+ * ```
+ */
 export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetMirrorMakerReplicationFlowResult> {
     if (!opts) {
         opts = {}
@@ -29,12 +49,31 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
  * A collection of arguments for invoking getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowArgs {
+    /**
+     * enable of disable replication flows for a mirror maker service
+     */
     readonly enable?: boolean;
+    /**
+     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
+     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * is a source cluster alias.
+     */
     readonly sourceCluster: string;
+    /**
+     * is a target cluster alias.
+     */
     readonly targetCluster: string;
+    /**
+     * is a list of topics and/or regular expressions to replicate.
+     */
     readonly topics?: string[];
+    /**
+     * is a list of topics and/or regular expressions to not replicate.
+     */
     readonly topicsBlacklists?: string[];
 }
 
@@ -42,6 +81,9 @@ export interface GetMirrorMakerReplicationFlowArgs {
  * A collection of values returned by getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowResult {
+    /**
+     * enable of disable replication flows for a mirror maker service
+     */
     readonly enable?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -51,6 +93,12 @@ export interface GetMirrorMakerReplicationFlowResult {
     readonly serviceName: string;
     readonly sourceCluster: string;
     readonly targetCluster: string;
+    /**
+     * is a list of topics and/or regular expressions to replicate.
+     */
     readonly topics?: string[];
+    /**
+     * is a list of topics and/or regular expressions to not replicate.
+     */
     readonly topicsBlacklists?: string[];
 }

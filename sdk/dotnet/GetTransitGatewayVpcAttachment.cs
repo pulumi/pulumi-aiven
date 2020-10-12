@@ -11,6 +11,37 @@ namespace Pulumi.Aiven
 {
     public static class GetTransitGatewayVpcAttachment
     {
+        /// <summary>
+        /// ## # Transit Gateway VPC Attachment Data Source
+        /// 
+        /// The Transit Gateway VPC Attachment resource allows the creation and management Transit 
+        /// Gateway VPC Attachment VPC peering connection between Aiven and AWS.  
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var attachment = Output.Create(Aiven.GetTransitGatewayVpcAttachment.InvokeAsync(new Aiven.GetTransitGatewayVpcAttachmentArgs
+        ///         {
+        ///             VpcId = aiven_project_vpc.Bar.Id,
+        ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+        ///             PeerVpc = "google-project1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetTransitGatewayVpcAttachmentResult> InvokeAsync(GetTransitGatewayVpcAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentArgs(), options.WithVersion());
     }
@@ -18,12 +49,21 @@ namespace Pulumi.Aiven
 
     public sealed class GetTransitGatewayVpcAttachmentArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// AWS account ID of the peered VPC.
+        /// </summary>
         [Input("peerCloudAccount", required: true)]
         public string PeerCloudAccount { get; set; } = null!;
 
+        /// <summary>
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        /// </summary>
         [Input("peerRegion")]
         public string? PeerRegion { get; set; }
 
+        /// <summary>
+        /// Transit gateway ID
+        /// </summary>
         [Input("peerVpc", required: true)]
         public string PeerVpc { get; set; } = null!;
 
@@ -43,12 +83,19 @@ namespace Pulumi.Aiven
 
         [Input("userPeerNetworkCidrs")]
         private List<string>? _userPeerNetworkCidrs;
+
+        /// <summary>
+        /// List of private IPv4 ranges to route through the peering connection.
+        /// </summary>
         public List<string> UserPeerNetworkCidrs
         {
             get => _userPeerNetworkCidrs ?? (_userPeerNetworkCidrs = new List<string>());
             set => _userPeerNetworkCidrs = value;
         }
 
+        /// <summary>
+        /// is the Aiven VPC the peering connection is associated with.
+        /// </summary>
         [Input("vpcId", required: true)]
         public string VpcId { get; set; } = null!;
 
@@ -66,11 +113,17 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         public readonly string PeerCloudAccount;
+        /// <summary>
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        /// </summary>
         public readonly string? PeerRegion;
         public readonly string PeerVpc;
         public readonly string PeeringConnectionId;
         public readonly string State;
         public readonly ImmutableDictionary<string, object> StateInfo;
+        /// <summary>
+        /// List of private IPv4 ranges to route through the peering connection.
+        /// </summary>
         public readonly ImmutableArray<string> UserPeerNetworkCidrs;
         public readonly string VpcId;
 

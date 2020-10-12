@@ -7,6 +7,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Transit Gateway VPC Attachment Data Source
+//
+// The Transit Gateway VPC Attachment resource allows the creation and management Transit
+// Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupTransitGatewayVpcAttachment(ctx, &aiven.LookupTransitGatewayVpcAttachmentArgs{
+// 			VpcId:            aiven_project_vpc.Bar.Id,
+// 			PeerCloudAccount: "<PEER_ACCOUNT_ID>",
+// 			PeerVpc:          "google-project1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupTransitGatewayVpcAttachment(ctx *pulumi.Context, args *LookupTransitGatewayVpcAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupTransitGatewayVpcAttachmentResult, error) {
 	var rv LookupTransitGatewayVpcAttachmentResult
 	err := ctx.Invoke("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args, &rv, opts...)
@@ -18,26 +47,33 @@ func LookupTransitGatewayVpcAttachment(ctx *pulumi.Context, args *LookupTransitG
 
 // A collection of arguments for invoking getTransitGatewayVpcAttachment.
 type LookupTransitGatewayVpcAttachmentArgs struct {
-	PeerCloudAccount     string                 `pulumi:"peerCloudAccount"`
-	PeerRegion           *string                `pulumi:"peerRegion"`
-	PeerVpc              string                 `pulumi:"peerVpc"`
-	PeeringConnectionId  *string                `pulumi:"peeringConnectionId"`
-	State                *string                `pulumi:"state"`
-	StateInfo            map[string]interface{} `pulumi:"stateInfo"`
-	UserPeerNetworkCidrs []string               `pulumi:"userPeerNetworkCidrs"`
-	VpcId                string                 `pulumi:"vpcId"`
+	// AWS account ID of the peered VPC.
+	PeerCloudAccount string `pulumi:"peerCloudAccount"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+	PeerRegion *string `pulumi:"peerRegion"`
+	// Transit gateway ID
+	PeerVpc             string                 `pulumi:"peerVpc"`
+	PeeringConnectionId *string                `pulumi:"peeringConnectionId"`
+	State               *string                `pulumi:"state"`
+	StateInfo           map[string]interface{} `pulumi:"stateInfo"`
+	// List of private IPv4 ranges to route through the peering connection.
+	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
+	// is the Aiven VPC the peering connection is associated with.
+	VpcId string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getTransitGatewayVpcAttachment.
 type LookupTransitGatewayVpcAttachmentResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                   string                 `pulumi:"id"`
-	PeerCloudAccount     string                 `pulumi:"peerCloudAccount"`
-	PeerRegion           *string                `pulumi:"peerRegion"`
-	PeerVpc              string                 `pulumi:"peerVpc"`
-	PeeringConnectionId  string                 `pulumi:"peeringConnectionId"`
-	State                string                 `pulumi:"state"`
-	StateInfo            map[string]interface{} `pulumi:"stateInfo"`
-	UserPeerNetworkCidrs []string               `pulumi:"userPeerNetworkCidrs"`
-	VpcId                string                 `pulumi:"vpcId"`
+	Id               string `pulumi:"id"`
+	PeerCloudAccount string `pulumi:"peerCloudAccount"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+	PeerRegion          *string                `pulumi:"peerRegion"`
+	PeerVpc             string                 `pulumi:"peerVpc"`
+	PeeringConnectionId string                 `pulumi:"peeringConnectionId"`
+	State               string                 `pulumi:"state"`
+	StateInfo           map[string]interface{} `pulumi:"stateInfo"`
+	// List of private IPv4 ranges to route through the peering connection.
+	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
+	VpcId                string   `pulumi:"vpcId"`
 }

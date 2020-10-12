@@ -7,6 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Service Integration Endpoint Data Source
+//
+// The Service Integration Endpoint data source provides information about the existing
+// Aiven Service Integration Endpoint.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupServiceIntegrationEndpoint(ctx, &aiven.LookupServiceIntegrationEndpointArgs{
+// 			EndpointName: "<ENDPOINT_NAME>",
+// 			Project:      aiven_project.Myproject.Project,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *LookupServiceIntegrationEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceIntegrationEndpointResult, error) {
 	var rv LookupServiceIntegrationEndpointResult
 	err := ctx.Invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args, &rv, opts...)
@@ -18,26 +46,33 @@ func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *LookupServiceIn
 
 // A collection of arguments for invoking getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointArgs struct {
-	DatadogUserConfig                    *GetServiceIntegrationEndpointDatadogUserConfig                    `pulumi:"datadogUserConfig"`
-	EndpointConfig                       map[string]string                                                  `pulumi:"endpointConfig"`
-	EndpointName                         string                                                             `pulumi:"endpointName"`
+	DatadogUserConfig *GetServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
+	EndpointConfig    map[string]string                               `pulumi:"endpointConfig"`
+	// is the name of the endpoint. This value has no effect beyond being used
+	// to identify different integration endpoints.
+	EndpointName string `pulumi:"endpointName"`
+	// is the type of the external service this endpoint is associated with.
+	// By the time of writing the only available option is `datadog`.
 	EndpointType                         *string                                                            `pulumi:"endpointType"`
 	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
 	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	ExternalKafkaUserConfig              *GetServiceIntegrationEndpointExternalKafkaUserConfig              `pulumi:"externalKafkaUserConfig"`
 	JolokiaUserConfig                    *GetServiceIntegrationEndpointJolokiaUserConfig                    `pulumi:"jolokiaUserConfig"`
-	Project                              string                                                             `pulumi:"project"`
-	PrometheusUserConfig                 *GetServiceIntegrationEndpointPrometheusUserConfig                 `pulumi:"prometheusUserConfig"`
-	RsyslogUserConfig                    *GetServiceIntegrationEndpointRsyslogUserConfig                    `pulumi:"rsyslogUserConfig"`
-	SignalfxUserConfig                   *GetServiceIntegrationEndpointSignalfxUserConfig                   `pulumi:"signalfxUserConfig"`
+	// defines the project the endpoint is associated with.
+	Project              string                                             `pulumi:"project"`
+	PrometheusUserConfig *GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	RsyslogUserConfig    *GetServiceIntegrationEndpointRsyslogUserConfig    `pulumi:"rsyslogUserConfig"`
+	SignalfxUserConfig   *GetServiceIntegrationEndpointSignalfxUserConfig   `pulumi:"signalfxUserConfig"`
 }
 
 // A collection of values returned by getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointResult struct {
-	DatadogUserConfig                    *GetServiceIntegrationEndpointDatadogUserConfig                    `pulumi:"datadogUserConfig"`
-	EndpointConfig                       map[string]string                                                  `pulumi:"endpointConfig"`
-	EndpointName                         string                                                             `pulumi:"endpointName"`
+	DatadogUserConfig *GetServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
+	EndpointConfig    map[string]string                               `pulumi:"endpointConfig"`
+	EndpointName      string                                          `pulumi:"endpointName"`
+	// is the type of the external service this endpoint is associated with.
+	// By the time of writing the only available option is `datadog`.
 	EndpointType                         *string                                                            `pulumi:"endpointType"`
 	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`

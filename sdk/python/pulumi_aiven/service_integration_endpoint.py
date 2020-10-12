@@ -33,18 +33,38 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ServiceIntegrationEndpoint resource with the given unique name, props, and options.
+        ## # Service Integration Endpoint Resource
+
+        The Service Integration Endpoint resource allows the creation and management of an Aiven Service Integration Endpoint`s.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myendpoint = aiven.ServiceIntegrationEndpoint("myendpoint",
+            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
+                datadog_api_key="<DATADOG_API_KEY>",
+            ),
+            endpoint_name="<ENDPOINT_NAME>",
+            endpoint_type="datadog",
+            project=aiven_project["myproject"]["project"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog specific user configurable settings
-        :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
-        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint
+        :param pulumi.Input[str] endpoint_name: is the name of the endpoint. This value has no effect beyond being used
+               to identify different integration endpoints.
+        :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
+               By the time of writing the only available option is `datadog`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: external Google Cloud Logginig specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: external Kafka specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia specific user configurable settings
-        :param pulumi.Input[str] project: Project the service integration endpoint belongs to
+        :param pulumi.Input[str] project: defines the project the endpoint is associated with.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']] rsyslog_user_config: rsyslog specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointSignalfxUserConfigArgs']] signalfx_user_config: Signalfx specific user configurable settings
@@ -117,14 +137,16 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog specific user configurable settings
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoint_config: Integration endpoint specific backend configuration
-        :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
-        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint
+        :param pulumi.Input[str] endpoint_name: is the name of the endpoint. This value has no effect beyond being used
+               to identify different integration endpoints.
+        :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
+               By the time of writing the only available option is `datadog`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: external Google Cloud Logginig specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: external Kafka specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia specific user configurable settings
-        :param pulumi.Input[str] project: Project the service integration endpoint belongs to
+        :param pulumi.Input[str] project: defines the project the endpoint is associated with.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']] rsyslog_user_config: rsyslog specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointSignalfxUserConfigArgs']] signalfx_user_config: Signalfx specific user configurable settings
@@ -168,7 +190,8 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> pulumi.Output[str]:
         """
-        Name of the service integration endpoint
+        is the name of the endpoint. This value has no effect beyond being used
+        to identify different integration endpoints.
         """
         return pulumi.get(self, "endpoint_name")
 
@@ -176,7 +199,8 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[str]:
         """
-        Type of the service integration endpoint
+        is the type of the external service this endpoint is associated with.
+        By the time of writing the only available option is `datadog`.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -224,7 +248,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project the service integration endpoint belongs to
+        defines the project the endpoint is associated with.
         """
         return pulumi.get(self, "project")
 

@@ -14,12 +14,19 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("ipFilters")]
         private List<string>? _ipFilters;
+
+        /// <summary>
+        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public List<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new List<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Kafka Connect specific server provided values.
+        /// </summary>
         [Input("kafkaConnect")]
         public Inputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs? KafkaConnect { get; set; }
 

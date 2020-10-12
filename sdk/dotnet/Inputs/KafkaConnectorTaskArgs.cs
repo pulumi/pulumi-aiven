@@ -15,6 +15,10 @@ namespace Pulumi.Aiven.Inputs
         [Input("connector")]
         public Input<string>? Connector { get; set; }
 
+        /// <summary>
+        /// List of tasks of a connector, each element contains `connector` 
+        /// (Related connector name) and `task` (Task id / number).
+        /// </summary>
         [Input("task")]
         public Input<int>? Task { get; set; }
 

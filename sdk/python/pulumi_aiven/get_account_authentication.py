@@ -63,21 +63,33 @@ class GetAccountAuthenticationResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        is a unique account id.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="authenticationId")
     def authentication_id(self) -> str:
+        """
+        account authentication id.
+        """
         return pulumi.get(self, "authentication_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        time of creation.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        defines an authentication method enabled or not.
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -91,41 +103,65 @@ class GetAccountAuthenticationResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        is an account authentication name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="samlAcsUrl")
     def saml_acs_url(self) -> str:
+        """
+        is a SAML Assertion Consumer Service URL.
+        """
         return pulumi.get(self, "saml_acs_url")
 
     @property
     @pulumi.getter(name="samlCertificate")
     def saml_certificate(self) -> Optional[str]:
+        """
+        is a SAML Certificate.
+        """
         return pulumi.get(self, "saml_certificate")
 
     @property
     @pulumi.getter(name="samlEntityId")
     def saml_entity_id(self) -> Optional[str]:
+        """
+        is a SAML Entity ID.
+        """
         return pulumi.get(self, "saml_entity_id")
 
     @property
     @pulumi.getter(name="samlIdpUrl")
     def saml_idp_url(self) -> Optional[str]:
+        """
+        is a SAML Idp URL.
+        """
         return pulumi.get(self, "saml_idp_url")
 
     @property
     @pulumi.getter(name="samlMetadataUrl")
     def saml_metadata_url(self) -> str:
+        """
+        is a SAML Metadata URL.
+        """
         return pulumi.get(self, "saml_metadata_url")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        is an account authentication type, can be one of `internal` and `saml`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        time of last update.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -164,7 +200,23 @@ def get_account_authentication(account_id: Optional[str] = None,
                                update_time: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAuthenticationResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Account Authentication Data Source
+
+    The Account Authentication data source provides information about the existing Aiven Account Authentication.
+
+
+    :param str account_id: is a unique account id.
+    :param str authentication_id: account authentication id.
+    :param str create_time: time of creation.
+    :param bool enabled: defines an authentication method enabled or not.
+    :param str name: is an account authentication name.
+    :param str saml_acs_url: is a SAML Assertion Consumer Service URL.
+    :param str saml_certificate: is a SAML Certificate.
+    :param str saml_entity_id: is a SAML Entity ID.
+    :param str saml_idp_url: is a SAML Idp URL.
+    :param str saml_metadata_url: is a SAML Metadata URL.
+    :param str type: is an account authentication type, can be one of `internal` and `saml`.
+    :param str update_time: time of last update.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

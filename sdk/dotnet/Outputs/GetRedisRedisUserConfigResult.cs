@@ -13,16 +13,50 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetRedisRedisUserConfigResult
     {
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Migrate data from existing server
+        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigMigrationResult? Migration;
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivateAccessResult? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPublicAccessResult? PublicAccess;
+        /// <summary>
+        /// Name of the basebackup to restore in forked service
+        /// * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
+        /// </summary>
         public readonly string? RecoveryBasebackupName;
         public readonly string? RedisLfuDecayTime;
+        /// <summary>
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu 
+        /// maxmemory-policies
+        /// </summary>
         public readonly string? RedisLfuLogFactor;
+        /// <summary>
+        /// Redis maxmemory-policy
+        /// </summary>
         public readonly string? RedisMaxmemoryPolicy;
+        /// <summary>
+        /// Set notify-keyspace-events option
+        /// </summary>
         public readonly string? RedisNotifyKeyspaceEvents;
+        /// <summary>
+        /// Require SSL to access Redis
+        /// </summary>
         public readonly string? RedisSsl;
+        /// <summary>
+        /// Redis idle connection timeout
+        /// * `service_to_fork_from"` - Name of another service to fork from. This has effect only
+        /// when a new service is being created.
+        /// </summary>
         public readonly string? RedisTimeout;
         public readonly string? ServiceToForkFrom;
 

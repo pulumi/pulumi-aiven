@@ -4,6 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Team Resource
+ *
+ * The Account Team resource allows the creation and management of an Account Teams.
+ */
 export class AccountTeam extends pulumi.CustomResource {
     /**
      * Get an existing AccountTeam resource's state with the given name, ID, and optional extra
@@ -33,23 +38,23 @@ export class AccountTeam extends pulumi.CustomResource {
     }
 
     /**
-     * Account id
+     * is a unique account id.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Time of creation
+     * time of creation.
      */
     public readonly createTime!: pulumi.Output<string>;
     /**
-     * Account team name
+     * defines an account team name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Account team id
+     * is an auto-generated unique account team id.
      */
     public /*out*/ readonly teamId!: pulumi.Output<string>;
     /**
-     * Time of last update
+     * time of last update.
      */
     public readonly updateTime!: pulumi.Output<string>;
 
@@ -97,23 +102,23 @@ export class AccountTeam extends pulumi.CustomResource {
  */
 export interface AccountTeamState {
     /**
-     * Account id
+     * is a unique account id.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * Time of creation
+     * time of creation.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Account team name
+     * defines an account team name.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Account team id
+     * is an auto-generated unique account team id.
      */
     readonly teamId?: pulumi.Input<string>;
     /**
-     * Time of last update
+     * time of last update.
      */
     readonly updateTime?: pulumi.Input<string>;
 }
@@ -123,19 +128,19 @@ export interface AccountTeamState {
  */
 export interface AccountTeamArgs {
     /**
-     * Account id
+     * is a unique account id.
      */
     readonly accountId: pulumi.Input<string>;
     /**
-     * Time of creation
+     * time of creation.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Account team name
+     * defines an account team name.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Time of last update
+     * time of last update.
      */
     readonly updateTime?: pulumi.Input<string>;
 }

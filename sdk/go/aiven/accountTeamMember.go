@@ -10,20 +10,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Account Team Member Resource
+//
+// The Account Team Member resource allows the creation and management of an Aiven Account Team Members.
+//
+// During the creation of `AccountTeamMember` resource, an email invitation will be sent\
+// to a user using `userEmail` address. If the user accepts an invitation, he or she will become
+// a member of the account team. The deletion of `AccountTeamMember` will not only
+// delete invitation if one was sent but not yet accepted by the user, and it will also
+// eliminate an account team member if one has accepted an invitation previously.
 type AccountTeamMember struct {
 	pulumi.CustomResourceState
 
-	// Team member invitation status
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
-	// Account id
+	// is a unique account id.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Time of creation
+	// time of creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Team invited by user email
+	// team invited by user email.
 	InvitedByUserEmail pulumi.StringOutput `pulumi:"invitedByUserEmail"`
-	// Account team id
+	// is an account team id.
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
-	// Team invite user email
+	// is a user email address that first will be invited, and after accepting an invitation,
+	// he or she becomes a member of a team.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
 
@@ -64,32 +76,38 @@ func GetAccountTeamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountTeamMember resources.
 type accountTeamMemberState struct {
-	// Team member invitation status
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted *bool `pulumi:"accepted"`
-	// Account id
+	// is a unique account id.
 	AccountId *string `pulumi:"accountId"`
-	// Time of creation
+	// time of creation.
 	CreateTime *string `pulumi:"createTime"`
-	// Team invited by user email
+	// team invited by user email.
 	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
-	// Account team id
+	// is an account team id.
 	TeamId *string `pulumi:"teamId"`
-	// Team invite user email
+	// is a user email address that first will be invited, and after accepting an invitation,
+	// he or she becomes a member of a team.
 	UserEmail *string `pulumi:"userEmail"`
 }
 
 type AccountTeamMemberState struct {
-	// Team member invitation status
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted pulumi.BoolPtrInput
-	// Account id
+	// is a unique account id.
 	AccountId pulumi.StringPtrInput
-	// Time of creation
+	// time of creation.
 	CreateTime pulumi.StringPtrInput
-	// Team invited by user email
+	// team invited by user email.
 	InvitedByUserEmail pulumi.StringPtrInput
-	// Account team id
+	// is an account team id.
 	TeamId pulumi.StringPtrInput
-	// Team invite user email
+	// is a user email address that first will be invited, and after accepting an invitation,
+	// he or she becomes a member of a team.
 	UserEmail pulumi.StringPtrInput
 }
 
@@ -98,33 +116,39 @@ func (AccountTeamMemberState) ElementType() reflect.Type {
 }
 
 type accountTeamMemberArgs struct {
-	// Team member invitation status
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted *bool `pulumi:"accepted"`
-	// Account id
+	// is a unique account id.
 	AccountId string `pulumi:"accountId"`
-	// Time of creation
+	// time of creation.
 	CreateTime *string `pulumi:"createTime"`
-	// Team invited by user email
+	// team invited by user email.
 	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
-	// Account team id
+	// is an account team id.
 	TeamId string `pulumi:"teamId"`
-	// Team invite user email
+	// is a user email address that first will be invited, and after accepting an invitation,
+	// he or she becomes a member of a team.
 	UserEmail string `pulumi:"userEmail"`
 }
 
 // The set of arguments for constructing a AccountTeamMember resource.
 type AccountTeamMemberArgs struct {
-	// Team member invitation status
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted pulumi.BoolPtrInput
-	// Account id
+	// is a unique account id.
 	AccountId pulumi.StringInput
-	// Time of creation
+	// time of creation.
 	CreateTime pulumi.StringPtrInput
-	// Team invited by user email
+	// team invited by user email.
 	InvitedByUserEmail pulumi.StringPtrInput
-	// Account team id
+	// is an account team id.
 	TeamId pulumi.StringInput
-	// Team invite user email
+	// is a user email address that first will be invited, and after accepting an invitation,
+	// he or she becomes a member of a team.
 	UserEmail pulumi.StringInput
 }
 

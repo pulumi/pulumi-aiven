@@ -9,10 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Project Resource
+    /// 
+    /// The Project resource allows the creation and management of an Aiven Projects.
+    /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID
+        /// is an optional property to link a project to already an existing account by 
+        /// using account ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -30,19 +36,28 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Project root CA. This is used by some services like Kafka to sign service certificate
+        /// is a computed property that can be used to read the CA certificate of the
+        /// project. This is required for configuring clients that connect to certain services like
+        /// Kafka. This value cannot be set, only read.
         /// </summary>
         [Output("caCert")]
         public Output<string> CaCert { get; private set; } = null!;
 
         /// <summary>
-        /// Credit card ID
+        /// is either the full card UUID or the last 4 digits of the card. As the full
+        /// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+        /// the card. This can be omitted if `copy_from_project` is used to copy billing info from
+        /// another project.
         /// </summary>
         [Output("cardId")]
         public Output<string?> CardId { get; private set; } = null!;
 
         /// <summary>
-        /// Copy properties from another project. Only has effect when a new project is created.
+        /// is the name of another project used to copy billing information and
+        /// some other project attributes like technical contacts from. This is mostly relevant when
+        /// an existing project has billing type set to invoice and that needs to be copied over to a
+        /// new project. (Setting billing is otherwise not allowed over the API.) This only has
+        /// effect when the project is created.
         /// </summary>
         [Output("copyFromProject")]
         public Output<string?> CopyFromProject { get; private set; } = null!;
@@ -54,7 +69,9 @@ namespace Pulumi.Aiven
         public Output<string?> CountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// Project name
+        /// defines the name of the project. Name must be globally unique (between all
+        /// Aiven customers) and cannot be changed later without destroying and re-creating the
+        /// project, including all sub-resources.
         /// </summary>
         [Output("project")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -112,7 +129,8 @@ namespace Pulumi.Aiven
     public sealed class ProjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// is an optional property to link a project to already an existing account by 
+        /// using account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -136,19 +154,28 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Project root CA. This is used by some services like Kafka to sign service certificate
+        /// is a computed property that can be used to read the CA certificate of the
+        /// project. This is required for configuring clients that connect to certain services like
+        /// Kafka. This value cannot be set, only read.
         /// </summary>
         [Input("caCert")]
         public Input<string>? CaCert { get; set; }
 
         /// <summary>
-        /// Credit card ID
+        /// is either the full card UUID or the last 4 digits of the card. As the full
+        /// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+        /// the card. This can be omitted if `copy_from_project` is used to copy billing info from
+        /// another project.
         /// </summary>
         [Input("cardId")]
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// Copy properties from another project. Only has effect when a new project is created.
+        /// is the name of another project used to copy billing information and
+        /// some other project attributes like technical contacts from. This is mostly relevant when
+        /// an existing project has billing type set to invoice and that needs to be copied over to a
+        /// new project. (Setting billing is otherwise not allowed over the API.) This only has
+        /// effect when the project is created.
         /// </summary>
         [Input("copyFromProject")]
         public Input<string>? CopyFromProject { get; set; }
@@ -160,7 +187,9 @@ namespace Pulumi.Aiven
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Project name
+        /// defines the name of the project. Name must be globally unique (between all
+        /// Aiven customers) and cannot be changed later without destroying and re-creating the
+        /// project, including all sub-resources.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -185,7 +214,8 @@ namespace Pulumi.Aiven
     public sealed class ProjectState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// is an optional property to link a project to already an existing account by 
+        /// using account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -209,19 +239,28 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Project root CA. This is used by some services like Kafka to sign service certificate
+        /// is a computed property that can be used to read the CA certificate of the
+        /// project. This is required for configuring clients that connect to certain services like
+        /// Kafka. This value cannot be set, only read.
         /// </summary>
         [Input("caCert")]
         public Input<string>? CaCert { get; set; }
 
         /// <summary>
-        /// Credit card ID
+        /// is either the full card UUID or the last 4 digits of the card. As the full
+        /// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+        /// the card. This can be omitted if `copy_from_project` is used to copy billing info from
+        /// another project.
         /// </summary>
         [Input("cardId")]
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// Copy properties from another project. Only has effect when a new project is created.
+        /// is the name of another project used to copy billing information and
+        /// some other project attributes like technical contacts from. This is mostly relevant when
+        /// an existing project has billing type set to invoice and that needs to be copied over to a
+        /// new project. (Setting billing is otherwise not allowed over the API.) This only has
+        /// effect when the project is created.
         /// </summary>
         [Input("copyFromProject")]
         public Input<string>? CopyFromProject { get; set; }
@@ -233,7 +272,9 @@ namespace Pulumi.Aiven
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Project name
+        /// defines the name of the project. Name must be globally unique (between all
+        /// Aiven customers) and cannot be changed later without destroying and re-creating the
+        /// project, including all sub-resources.
         /// </summary>
         [Input("project")]
         public Input<string>? ProjectName { get; set; }

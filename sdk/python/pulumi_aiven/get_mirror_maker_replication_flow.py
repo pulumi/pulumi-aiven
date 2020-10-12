@@ -48,6 +48,9 @@ class GetMirrorMakerReplicationFlowResult:
     @property
     @pulumi.getter
     def enable(self) -> Optional[bool]:
+        """
+        enable of disable replication flows for a mirror maker service
+        """
         return pulumi.get(self, "enable")
 
     @property
@@ -81,11 +84,17 @@ class GetMirrorMakerReplicationFlowResult:
     @property
     @pulumi.getter
     def topics(self) -> Optional[List[str]]:
+        """
+        is a list of topics and/or regular expressions to replicate.
+        """
         return pulumi.get(self, "topics")
 
     @property
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> Optional[List[str]]:
+        """
+        is a list of topics and/or regular expressions to not replicate.
+        """
         return pulumi.get(self, "topics_blacklists")
 
 
@@ -114,7 +123,31 @@ def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
                                       topics_blacklists: Optional[List[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMirrorMakerReplicationFlowResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # MirrorMaker 2 Replication Flow Data Source
+
+    The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2
+    Replication Flow on Aiven Cloud.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
+        service_name=aiven_service["mm"]["service_name"],
+        source_cluster=aiven_service["source"]["service_name"],
+        target_cluster=aiven_service["target"]["service_name"])
+    ```
+
+
+    :param bool enable: enable of disable replication flows for a mirror maker service
+    :param str project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+           Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+    :param str source_cluster: is a source cluster alias.
+    :param str target_cluster: is a target cluster alias.
+    :param List[str] topics: is a list of topics and/or regular expressions to replicate.
+    :param List[str] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
     """
     __args__ = dict()
     __args__['enable'] = enable

@@ -39,6 +39,12 @@ class GetProjectUserResult:
     @property
     @pulumi.getter
     def accepted(self) -> bool:
+        """
+        is a computed property tells whether the user has accepted the request to join
+        the project; adding user to a project sends an invitation to the target user and the
+        actual membership is only created once the user accepts the invitation. This property
+        cannot be set, only read.
+        """
         return pulumi.get(self, "accepted")
 
     @property
@@ -57,6 +63,9 @@ class GetProjectUserResult:
     @property
     @pulumi.getter(name="memberType")
     def member_type(self) -> Optional[str]:
+        """
+        (Required) defines the access level the user has to the project.
+        """
         return pulumi.get(self, "member_type")
 
     @property
@@ -84,7 +93,28 @@ def get_project_user(accepted: Optional[bool] = None,
                      project: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectUserResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Project User Data Source
+
+    The Project User data source provides information about the existing Aiven Project User.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestuser = aiven.get_project_user(email="john.doe@example.com",
+        project=aiven_project["myproject"]["project"])
+    ```
+
+
+    :param bool accepted: is a computed property tells whether the user has accepted the request to join
+           the project; adding user to a project sends an invitation to the target user and the
+           actual membership is only created once the user accepts the invitation. This property
+           cannot be set, only read.
+    :param str email: identifies the email address of the user.
+    :param str member_type: (Required) defines the access level the user has to the project.
+    :param str project: defines the project the user is a member of.
     """
     __args__ = dict()
     __args__['accepted'] = accepted

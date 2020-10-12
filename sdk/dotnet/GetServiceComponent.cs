@@ -11,6 +11,44 @@ namespace Pulumi.Aiven
 {
     public static class GetServiceComponent
     {
+        /// <summary>
+        /// ## # Service Component Data Source
+        /// 
+        /// The Service Component data source provides information about the existing Aiven service Component.
+        /// 
+        /// Service components can be defined to get the connection info for specific service. 
+        /// Services may support multiple different access routes (VPC peering and public access), 
+        /// have additional components or support various authentication methods. Each of these 
+        /// may be represented by different DNS name or TCP port and the specific component to 
+        /// match can be selected by specifying appropriate filters as shown below.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sc1 = Output.Create(Aiven.GetServiceComponent.InvokeAsync(new Aiven.GetServiceComponentArgs
+        ///         {
+        ///             Project = aiven_kafka.Project1.Project,
+        ///             ServiceName = aiven_kafka.Service1.Service_name,
+        ///             Component = "kafka",
+        ///             Route = "dynamic",
+        ///             KafkaAuthenticationMethod = "certificate",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetServiceComponentResult> InvokeAsync(GetServiceComponentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentArgs(), options.WithVersion());
     }
@@ -18,24 +56,64 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceComponentArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is a service component name. Component may match the name of the service 
+        /// (`cassandra`, `elasticsearch`, `grafana`, `influxdb`, `kafka`, `kafka_connect`, `mysql`,
+        /// `pg` and `redis`), in which case the connection info of the service itself is returned.
+        /// Some service types support additional service specific components like `kibana` for
+        /// Elasticsearch, `kafka_connect`, `kafka_rest` and `schema_registry` for Kafka, and
+        /// `pgbouncer` for PostgreSQL. Most service types also support `prometheus`.
+        /// </summary>
         [Input("component", required: true)]
         public string Component { get; set; } = null!;
 
+        /// <summary>
+        /// is Kafka authentication method. This is a value specific 
+        /// to the 'kafka' service components. And has the following available options: `certificate`
+        /// and `sasl`. If not set by the user only entries with empty `kafka_authentication_method`
+        /// will be selected.
+        /// </summary>
         [Input("kafkaAuthenticationMethod")]
         public string? KafkaAuthenticationMethod { get; set; }
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the service component
+        /// belongs to.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// is network access route. The route may be one of `dynamic`, `public`, and `private`. 
+        /// Usually, you'll want to use `dynamic`, which for services that are not in a private network
+        /// identifies the regular public DNS name of the service and for services in a private network
+        /// the private DNS name. If the service is in a private network but has also public access
+        /// enabled the `public` route type can be used to get the public DNS name of the service. The
+        /// `private` option should typically not be used.
+        /// </summary>
         [Input("route")]
         public string? Route { get; set; }
 
         [Input("serviceName")]
         public string? ServiceName { get; set; }
 
+        /// <summary>
+        /// whether the endpoint is encrypted or accepts plaintext. By default endpoints are
+        /// always encrypted and this property is only included for service components they may
+        /// disable encryption. If not set by the user only entries with empty `ssl` or `ssl` set
+        /// to true will be selected.
+        /// </summary>
         [Input("ssl")]
         public bool? Ssl { get; set; }
 
+        /// <summary>
+        /// is DNS usage name, and can be one of `primary`, `replica` or `syncing`. `replica` 
+        /// is used by services that have separate master and standby roles for which it identifies
+        /// the `replica` DNS name. `syncing` is used by limited set of services to expose nodes
+        /// before they have finished restoring state but may already be partially available, for
+        /// example a PostgreSQL node that is streaming WAL segments from backup or current master
+        /// but hasn't yet fully caught up.
+        /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
 
@@ -49,17 +127,37 @@ namespace Pulumi.Aiven
     public sealed class GetServiceComponentResult
     {
         public readonly string Component;
+        /// <summary>
+        /// is DNS name for connecting to the service component.
+        /// </summary>
         public readonly string Host;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? KafkaAuthenticationMethod;
+        /// <summary>
+        /// is port number for connecting to the service component.
+        /// </summary>
         public readonly int Port;
         public readonly string Project;
         public readonly string? Route;
         public readonly string? ServiceName;
+        /// <summary>
+        /// whether the endpoint is encrypted or accepts plaintext. By default endpoints are
+        /// always encrypted and this property is only included for service components they may
+        /// disable encryption. If not set by the user only entries with empty `ssl` or `ssl` set
+        /// to true will be selected.
+        /// </summary>
         public readonly bool? Ssl;
+        /// <summary>
+        /// is DNS usage name, and can be one of `primary`, `replica` or `syncing`. `replica` 
+        /// is used by services that have separate master and standby roles for which it identifies
+        /// the `replica` DNS name. `syncing` is used by limited set of services to expose nodes
+        /// before they have finished restoring state but may already be partially available, for
+        /// example a PostgreSQL node that is streaming WAL segments from backup or current master
+        /// but hasn't yet fully caught up.
+        /// </summary>
         public readonly string? Usage;
 
         [OutputConstructor]

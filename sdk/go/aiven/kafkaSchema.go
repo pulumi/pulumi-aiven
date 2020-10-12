@@ -10,18 +10,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Kafka Schema Resource
+//
+// The Kafka Schema resource allows the creation and management of an Aiven Kafka Schemas.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewKafkaSchema(ctx, "kafka_schema1", &aiven.KafkaSchemaArgs{
+// 			Project:            pulumi.Any(aiven_project.Kafka - schemas - project1.Project),
+// 			ServiceName:        pulumi.Any(aiven_service.Kafka - service1.Service_name),
+// 			SubjectName:        pulumi.String("kafka-schema1"),
+// 			CompatibilityLevel: pulumi.String("FORWARD"),
+// 			Schema:             pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "       \"doc\": \"example\",\n", "       \"fields\": [{\n", "           \"default\": 5,\n", "           \"doc\": \"my test number\",\n", "           \"name\": \"test\",\n", "           \"namespace\": \"test\",\n", "           \"type\": \"int\"\n", "       }],\n", "       \"name\": \"example\",\n", "       \"namespace\": \"example\",\n", "       \"type\": \"record\"\n", "    }\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KafkaSchema struct {
 	pulumi.CustomResourceState
 
-	// Kafka Schemas compatibility level
+	// configuration compatibility level overrides specific subject
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
 	CompatibilityLevel pulumi.StringPtrOutput `pulumi:"compatibilityLevel"`
-	// Project to link the Kafka Schema to
+	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	// is Kafka Schema configuration should be a valid Avro Schema JSON format.
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// Service to link the Kafka Schema to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Kafka Schema Subject name
+	// is Kafka Schema subject name.
 	SubjectName pulumi.StringOutput `pulumi:"subjectName"`
 	// Kafka Schema configuration version
 	Version pulumi.IntOutput `pulumi:"version"`
@@ -67,30 +103,38 @@ func GetKafkaSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaSchema resources.
 type kafkaSchemaState struct {
-	// Kafka Schemas compatibility level
+	// configuration compatibility level overrides specific subject
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
-	// Project to link the Kafka Schema to
+	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project *string `pulumi:"project"`
-	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	// is Kafka Schema configuration should be a valid Avro Schema JSON format.
 	Schema *string `pulumi:"schema"`
 	// Service to link the Kafka Schema to
 	ServiceName *string `pulumi:"serviceName"`
-	// Kafka Schema Subject name
+	// is Kafka Schema subject name.
 	SubjectName *string `pulumi:"subjectName"`
 	// Kafka Schema configuration version
 	Version *int `pulumi:"version"`
 }
 
 type KafkaSchemaState struct {
-	// Kafka Schemas compatibility level
+	// configuration compatibility level overrides specific subject
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
 	CompatibilityLevel pulumi.StringPtrInput
-	// Project to link the Kafka Schema to
+	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringPtrInput
-	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	// is Kafka Schema configuration should be a valid Avro Schema JSON format.
 	Schema pulumi.StringPtrInput
 	// Service to link the Kafka Schema to
 	ServiceName pulumi.StringPtrInput
-	// Kafka Schema Subject name
+	// is Kafka Schema subject name.
 	SubjectName pulumi.StringPtrInput
 	// Kafka Schema configuration version
 	Version pulumi.IntPtrInput
@@ -101,29 +145,37 @@ func (KafkaSchemaState) ElementType() reflect.Type {
 }
 
 type kafkaSchemaArgs struct {
-	// Kafka Schemas compatibility level
+	// configuration compatibility level overrides specific subject
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
-	// Project to link the Kafka Schema to
+	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project string `pulumi:"project"`
-	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	// is Kafka Schema configuration should be a valid Avro Schema JSON format.
 	Schema string `pulumi:"schema"`
 	// Service to link the Kafka Schema to
 	ServiceName string `pulumi:"serviceName"`
-	// Kafka Schema Subject name
+	// is Kafka Schema subject name.
 	SubjectName string `pulumi:"subjectName"`
 }
 
 // The set of arguments for constructing a KafkaSchema resource.
 type KafkaSchemaArgs struct {
-	// Kafka Schemas compatibility level
+	// configuration compatibility level overrides specific subject
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
 	CompatibilityLevel pulumi.StringPtrInput
-	// Project to link the Kafka Schema to
+	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringInput
-	// Kafka Schema configuration should be a valid Avro Schema JSON format
+	// is Kafka Schema configuration should be a valid Avro Schema JSON format.
 	Schema pulumi.StringInput
 	// Service to link the Kafka Schema to
 	ServiceName pulumi.StringInput
-	// Kafka Schema Subject name
+	// is Kafka Schema subject name.
 	SubjectName pulumi.StringInput
 }
 

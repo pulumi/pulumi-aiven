@@ -57,6 +57,9 @@ class GetKafkaTopicResult:
     @property
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[str]:
+        """
+        Topic cleanup policy. Allowed values: delete, compact.
+        """
         return pulumi.get(self, "cleanup_policy")
 
     @property
@@ -70,11 +73,17 @@ class GetKafkaTopicResult:
     @property
     @pulumi.getter(name="minimumInSyncReplicas")
     def minimum_in_sync_replicas(self) -> Optional[float]:
+        """
+        Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        """
         return pulumi.get(self, "minimum_in_sync_replicas")
 
     @property
     @pulumi.getter
     def partitions(self) -> Optional[float]:
+        """
+        Number of partitions to create in the topic.
+        """
         return pulumi.get(self, "partitions")
 
     @property
@@ -85,16 +94,25 @@ class GetKafkaTopicResult:
     @property
     @pulumi.getter
     def replication(self) -> Optional[float]:
+        """
+        Replication factor for the topic.
+        """
         return pulumi.get(self, "replication")
 
     @property
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> Optional[float]:
+        """
+        Retention bytes.
+        """
         return pulumi.get(self, "retention_bytes")
 
     @property
     @pulumi.getter(name="retentionHours")
     def retention_hours(self) -> Optional[float]:
+        """
+        Retention period in hours, if -1 it is infinite.
+        """
         return pulumi.get(self, "retention_hours")
 
     @property
@@ -144,7 +162,35 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
                     topic_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Kafka Topic Data Source
+
+    The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        topic_name="<TOPIC_NAME>")
+    ```
+
+
+    :param str cleanup_policy: Topic cleanup policy. Allowed values: delete, compact.
+    :param float minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+    :param float partitions: Number of partitions to create in the topic.
+    :param str project: and `service_name` - (Required) define the project and service the topic belongs to.
+           They should be defined using reference as shown above to set up dependencies correctly.
+           These properties cannot be changed once the service is created. Doing so will result in
+           the topic being deleted and new one created instead.
+    :param float replication: Replication factor for the topic.
+    :param float retention_bytes: Retention bytes.
+    :param float retention_hours: Retention period in hours, if -1 it is infinite.
+    :param str topic_name: is the actual name of the topic account. This propery cannot be changed
+           once the service is created. Doing so will result in the topic being deleted and new one
+           created instead.
     """
     __args__ = dict()
     __args__['cleanupPolicy'] = cleanup_policy

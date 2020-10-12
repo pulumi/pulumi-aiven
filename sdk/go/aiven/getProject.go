@@ -7,6 +7,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Project Data Source
+//
+// The Project data source provides information about the existing Aiven Project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
+// 			Project: "<PROJECT_NAME>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("aiven:index/getProject:getProject", args, &rv, opts...)
@@ -18,26 +44,57 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
-	AccountId       *string  `pulumi:"accountId"`
-	BillingAddress  *string  `pulumi:"billingAddress"`
-	BillingEmails   []string `pulumi:"billingEmails"`
-	CaCert          *string  `pulumi:"caCert"`
-	CardId          *string  `pulumi:"cardId"`
-	CopyFromProject *string  `pulumi:"copyFromProject"`
-	CountryCode     *string  `pulumi:"countryCode"`
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
+	AccountId      *string  `pulumi:"accountId"`
+	BillingAddress *string  `pulumi:"billingAddress"`
+	BillingEmails  []string `pulumi:"billingEmails"`
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
+	CaCert *string `pulumi:"caCert"`
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
+	CardId *string `pulumi:"cardId"`
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
+	CopyFromProject *string `pulumi:"copyFromProject"`
+	CountryCode     *string `pulumi:"countryCode"`
+	// defines the name of the project. Name must be globally unique (between all
+	// Aiven customers) and cannot be changed later without destroying and re-creating the
+	// project, including all sub-resources.
 	Project         string   `pulumi:"project"`
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 }
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	AccountId       *string  `pulumi:"accountId"`
-	BillingAddress  *string  `pulumi:"billingAddress"`
-	BillingEmails   []string `pulumi:"billingEmails"`
-	CaCert          string   `pulumi:"caCert"`
-	CardId          *string  `pulumi:"cardId"`
-	CopyFromProject *string  `pulumi:"copyFromProject"`
-	CountryCode     *string  `pulumi:"countryCode"`
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
+	AccountId      *string  `pulumi:"accountId"`
+	BillingAddress *string  `pulumi:"billingAddress"`
+	BillingEmails  []string `pulumi:"billingEmails"`
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
+	CaCert string `pulumi:"caCert"`
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
+	CardId *string `pulumi:"cardId"`
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
+	CopyFromProject *string `pulumi:"copyFromProject"`
+	CountryCode     *string `pulumi:"countryCode"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string   `pulumi:"id"`
 	Project         string   `pulumi:"project"`

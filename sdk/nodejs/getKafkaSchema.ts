@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Kafka Schema Data Source
+ *
+ * The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka-schema1 = aiven.getKafkaSchema({
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     subjectName: "kafka-schema1",
+ * });
+ * ```
+ */
 export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaResult> {
     if (!opts) {
         opts = {}
@@ -28,10 +46,26 @@ export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getKafkaSchema.
  */
 export interface GetKafkaSchemaArgs {
+    /**
+     * configuration compatibility level overrides specific subject
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     */
     readonly compatibilityLevel?: string;
+    /**
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly project: string;
+    /**
+     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
+     */
     readonly schema?: string;
     readonly serviceName: string;
+    /**
+     * is Kafka Schema subject name.
+     */
     readonly subjectName: string;
     readonly version?: number;
 }
@@ -40,12 +74,21 @@ export interface GetKafkaSchemaArgs {
  * A collection of values returned by getKafkaSchema.
  */
 export interface GetKafkaSchemaResult {
+    /**
+     * configuration compatibility level overrides specific subject
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     */
     readonly compatibilityLevel?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly project: string;
+    /**
+     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
+     */
     readonly schema?: string;
     readonly serviceName: string;
     readonly subjectName: string;

@@ -11,6 +11,39 @@ namespace Pulumi.Aiven
 {
     public static class GetKafkaAcl
     {
+        /// <summary>
+        /// ## # Data Source Kafka ACL Data Source
+        /// 
+        /// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL 
+        /// for a Kafka service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytestacl = Output.Create(Aiven.GetKafkaAcl.InvokeAsync(new Aiven.GetKafkaAclArgs
+        ///         {
+        ///             Permission = "admin",
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///             Username = "&lt;USERNAME_PATTERN&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetKafkaAclResult> InvokeAsync(GetKafkaAclArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithVersion());
     }
@@ -18,18 +51,34 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaAclArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is the level of permission the matching users are given to the matching
+        /// topics (admin, read, readwrite, write).
+        /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the ACL belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// is a topic name pattern the ACL entry matches to.
+        /// </summary>
         [Input("topic", required: true)]
         public string Topic { get; set; } = null!;
 
+        /// <summary>
+        /// is a username pattern the ACL entry matches to.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 

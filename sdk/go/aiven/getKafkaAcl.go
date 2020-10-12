@@ -7,6 +7,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Data Source Kafka ACL Data Source
+//
+// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL
+// for a Kafka service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupKafkaAcl(ctx, &aiven.LookupKafkaAclArgs{
+// 			Permission:  "admin",
+// 			Project:     aiven_project.Myproject.Project,
+// 			ServiceName: aiven_service.Myservice.Service_name,
+// 			Topic:       "<TOPIC_NAME_PATTERN>",
+// 			Username:    "<USERNAME_PATTERN>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulumi.InvokeOption) (*LookupKafkaAclResult, error) {
 	var rv LookupKafkaAclResult
 	err := ctx.Invoke("aiven:index/getKafkaAcl:getKafkaAcl", args, &rv, opts...)
@@ -18,11 +49,19 @@ func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulum
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclArgs struct {
-	Permission  string `pulumi:"permission"`
+	// is the level of permission the matching users are given to the matching
+	// topics (admin, read, readwrite, write).
+	Permission string `pulumi:"permission"`
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	Topic       string `pulumi:"topic"`
-	Username    string `pulumi:"username"`
+	// is a topic name pattern the ACL entry matches to.
+	Topic string `pulumi:"topic"`
+	// is a username pattern the ACL entry matches to.
+	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getKafkaAcl.

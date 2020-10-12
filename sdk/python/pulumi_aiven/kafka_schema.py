@@ -24,14 +24,48 @@ class KafkaSchema(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a KafkaSchema resource with the given unique name, props, and options.
+        ## # Kafka Schema Resource
+
+        The Kafka Schema resource allows the creation and management of an Aiven Kafka Schemas.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_service["kafka-service1"]["service_name"],
+            subject_name="kafka-schema1",
+            compatibility_level="FORWARD",
+            schema=\"\"\"    {
+               "doc": "example",
+               "fields": [{
+                   "default": 5,
+                   "doc": "my test number",
+                   "name": "test",
+                   "namespace": "test",
+                   "type": "int"
+               }],
+               "name": "example",
+               "namespace": "example",
+               "type": "record"
+            }
+        \"\"\")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
-        :param pulumi.Input[str] project: Project to link the Kafka Schema to
-        :param pulumi.Input[str] schema: Kafka Schema configuration should be a valid Avro Schema JSON format
+        :param pulumi.Input[str] compatibility_level: configuration compatibility level overrides specific subject
+               resource. If the compatibility level not specified for the individual subject by default,
+               it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+               `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+               They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] schema: is Kafka Schema configuration should be a valid Avro Schema JSON format.
         :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
-        :param pulumi.Input[str] subject_name: Kafka Schema Subject name
+        :param pulumi.Input[str] subject_name: is Kafka Schema subject name.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,11 +121,15 @@ class KafkaSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
-        :param pulumi.Input[str] project: Project to link the Kafka Schema to
-        :param pulumi.Input[str] schema: Kafka Schema configuration should be a valid Avro Schema JSON format
+        :param pulumi.Input[str] compatibility_level: configuration compatibility level overrides specific subject
+               resource. If the compatibility level not specified for the individual subject by default,
+               it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+               `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+               They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] schema: is Kafka Schema configuration should be a valid Avro Schema JSON format.
         :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
-        :param pulumi.Input[str] subject_name: Kafka Schema Subject name
+        :param pulumi.Input[str] subject_name: is Kafka Schema subject name.
         :param pulumi.Input[float] version: Kafka Schema configuration version
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -110,7 +148,10 @@ class KafkaSchema(pulumi.CustomResource):
     @pulumi.getter(name="compatibilityLevel")
     def compatibility_level(self) -> pulumi.Output[Optional[str]]:
         """
-        Kafka Schemas compatibility level
+        configuration compatibility level overrides specific subject
+        resource. If the compatibility level not specified for the individual subject by default,
+        it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
         """
         return pulumi.get(self, "compatibility_level")
 
@@ -118,7 +159,8 @@ class KafkaSchema(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project to link the Kafka Schema to
+        and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+        They should be defined using reference as shown above to set up dependencies correctly.
         """
         return pulumi.get(self, "project")
 
@@ -126,7 +168,7 @@ class KafkaSchema(pulumi.CustomResource):
     @pulumi.getter
     def schema(self) -> pulumi.Output[str]:
         """
-        Kafka Schema configuration should be a valid Avro Schema JSON format
+        is Kafka Schema configuration should be a valid Avro Schema JSON format.
         """
         return pulumi.get(self, "schema")
 
@@ -142,7 +184,7 @@ class KafkaSchema(pulumi.CustomResource):
     @pulumi.getter(name="subjectName")
     def subject_name(self) -> pulumi.Output[str]:
         """
-        Kafka Schema Subject name
+        is Kafka Schema subject name.
         """
         return pulumi.get(self, "subject_name")
 

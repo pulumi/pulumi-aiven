@@ -11,6 +11,36 @@ namespace Pulumi.Aiven
 {
     public static class GetKafkaSchemaConfiguration
     {
+        /// <summary>
+        /// ## # Kafka Schema Configuration Data Source
+        /// 
+        /// The Kafka Schema Configuration data source provides information about the existing Aiven 
+        /// Kafka Schema Configuration.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = Output.Create(Aiven.GetKafkaSchemaConfiguration.InvokeAsync(new Aiven.GetKafkaSchemaConfigurationArgs
+        ///         {
+        ///             Project = aiven_project.Kafka_schemas_project1.Project,
+        ///             ServiceName = aiven_service.Kafka_service1.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetKafkaSchemaConfigurationResult> InvokeAsync(GetKafkaSchemaConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaConfigurationResult>("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args ?? new GetKafkaSchemaConfigurationArgs(), options.WithVersion());
     }
@@ -18,9 +48,21 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaSchemaConfigurationArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is the Global Kafka Schema configuration compatibility level when defined 
+        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+        /// resource. If the compatibility level not specified for the individual subject by default,
+        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// </summary>
         [Input("compatibilityLevel")]
         public string? CompatibilityLevel { get; set; }
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -45,6 +87,14 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetKafkaSchemaConfigurationResult
     {
+        /// <summary>
+        /// is the Global Kafka Schema configuration compatibility level when defined 
+        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+        /// resource. If the compatibility level not specified for the individual subject by default,
+        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// </summary>
         public readonly string? CompatibilityLevel;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

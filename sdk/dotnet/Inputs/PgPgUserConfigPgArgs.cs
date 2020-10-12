@@ -12,75 +12,178 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigPgArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies a fraction of the table size to add to 
+        /// autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2
+        /// (20% of table size).
+        /// </summary>
         [Input("autovacuumAnalyzeScaleFactor")]
         public Input<string>? AutovacuumAnalyzeScaleFactor { get; set; }
 
+        /// <summary>
+        /// specifies the minimum number of inserted, updated 
+        /// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        /// </summary>
         [Input("autovacuumAnalyzeThreshold")]
         public Input<string>? AutovacuumAnalyzeThreshold { get; set; }
 
+        /// <summary>
+        /// specifies the maximum age (in transactions) that a table's 
+        /// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+        /// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+        /// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        /// </summary>
         [Input("autovacuumFreezeMaxAge")]
         public Input<string>? AutovacuumFreezeMaxAge { get; set; }
 
+        /// <summary>
+        /// specifies the maximum number of autovacuum processes (other 
+        /// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+        /// can only be set at server start.
+        /// </summary>
         [Input("autovacuumMaxWorkers")]
         public Input<string>? AutovacuumMaxWorkers { get; set; }
 
+        /// <summary>
+        /// specifies the minimum delay between autovacuum runs on any 
+        /// given database. The delay is measured in seconds, and the default is one minute.
+        /// </summary>
         [Input("autovacuumNaptime")]
         public Input<string>? AutovacuumNaptime { get; set; }
 
+        /// <summary>
+        /// specifies the cost delay value that will be used 
+        /// in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be
+        /// used. The default value is 20 milliseconds.
+        /// </summary>
         [Input("autovacuumVacuumCostDelay")]
         public Input<string>? AutovacuumVacuumCostDelay { get; set; }
 
+        /// <summary>
+        /// specifies the cost limit value that will be used in 
+        /// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit
+        /// value will be used.
+        /// </summary>
         [Input("autovacuumVacuumCostLimit")]
         public Input<string>? AutovacuumVacuumCostLimit { get; set; }
 
+        /// <summary>
+        /// specifies a fraction of the table size to add to 
+        /// autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// </summary>
         [Input("autovacuumVacuumScaleFactor")]
         public Input<string>? AutovacuumVacuumScaleFactor { get; set; }
 
+        /// <summary>
+        /// specifies the minimum number of updated or deleted tuples 
+        /// needed to trigger a VACUUM in any one table. The default is 50 tuples
+        /// </summary>
         [Input("autovacuumVacuumThreshold")]
         public Input<string>? AutovacuumVacuumThreshold { get; set; }
 
+        /// <summary>
+        /// this is the amount of time, in milliseconds, to wait on a lock before 
+        /// checking to see if there is a deadlock condition.
+        /// </summary>
         [Input("deadlockTimeout")]
         public Input<string>? DeadlockTimeout { get; set; }
 
+        /// <summary>
+        /// Time out sessions with open transactions after 
+        /// this number of milliseconds.
+        /// </summary>
         [Input("idleInTransactionSessionTimeout")]
         public Input<string>? IdleInTransactionSessionTimeout { get; set; }
 
+        /// <summary>
+        /// Controls system-wide use of Just-in-Time Compilation (JIT).
+        /// </summary>
         [Input("jit")]
         public Input<string>? Jit { get; set; }
 
+        /// <summary>
+        /// Causes each action executed by autovacuum to be logged 
+        /// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+        /// actions. Minus-one (the default) disables logging autovacuum actions.
+        /// </summary>
         [Input("logAutovacuumMinDuration")]
         public Input<string>? LogAutovacuumMinDuration { get; set; }
 
+        /// <summary>
+        /// Controls the amount of detail written in the server log for 
+        /// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+        /// </summary>
         [Input("logErrorVerbosity")]
         public Input<string>? LogErrorVerbosity { get; set; }
 
+        /// <summary>
+        /// Log statements that take more than this number of 
+        /// milliseconds to run, -1 disables
+        /// </summary>
         [Input("logMinDurationStatement")]
         public Input<string>? LogMinDurationStatement { get; set; }
 
+        /// <summary>
+        /// PostgreSQL maximum locks per transaction
+        /// </summary>
         [Input("maxLocksPerTransaction")]
         public Input<string>? MaxLocksPerTransaction { get; set; }
 
+        /// <summary>
+        /// Sets the maximum number of workers that the system can 
+        /// support for parallel queries.
+        /// </summary>
         [Input("maxParallelWorkers")]
         public Input<string>? MaxParallelWorkers { get; set; }
 
+        /// <summary>
+        /// Sets the maximum number of workers that can be 
+        /// started by a single Gather or Gather Merge node.
+        /// </summary>
         [Input("maxParallelWorkersPerGather")]
         public Input<string>? MaxParallelWorkersPerGather { get; set; }
 
+        /// <summary>
+        /// PostgreSQL maximum predicate locks per transaction
+        /// </summary>
         [Input("maxPredLocksPerTransaction")]
         public Input<string>? MaxPredLocksPerTransaction { get; set; }
 
+        /// <summary>
+        /// PostgreSQL maximum prepared transactions
+        /// </summary>
         [Input("maxPreparedTransactions")]
         public Input<string>? MaxPreparedTransactions { get; set; }
 
+        /// <summary>
+        /// Maximum depth of the stack in bytes
+        /// </summary>
         [Input("maxStackDepth")]
         public Input<string>? MaxStackDepth { get; set; }
 
+        /// <summary>
+        /// Max standby archive delay in milliseconds
+        /// </summary>
         [Input("maxStandbyArchiveDelay")]
         public Input<string>? MaxStandbyArchiveDelay { get; set; }
 
+        /// <summary>
+        /// Max standby streaming delay in milliseconds
+        /// </summary>
         [Input("maxStandbyStreamingDelay")]
         public Input<string>? MaxStandbyStreamingDelay { get; set; }
 
+        /// <summary>
+        /// Sets the maximum number of background processes that the system
+        /// can support
+        /// * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+        /// * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+        /// background tasks.
+        /// * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+        /// to track top-level statements (those issued directly by clients), all to also track nested
+        /// statements (such as statements invoked within functions), or none to disable statement statistics
+        /// collection. The default value is top.
+        /// </summary>
         [Input("maxWorkerProcesses")]
         public Input<string>? MaxWorkerProcesses { get; set; }
 
@@ -93,24 +196,48 @@ namespace Pulumi.Aiven.Inputs
         [Input("pgStatStatementsDotTrack")]
         public Input<string>? PgStatStatementsDotTrack { get; set; }
 
+        /// <summary>
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited
+        /// </summary>
         [Input("tempFileLimit")]
         public Input<string>? TempFileLimit { get; set; }
 
+        /// <summary>
+        /// PostgreSQL service timezone
+        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
+        /// <summary>
+        /// Specifies the number of bytes reserved to track the currently 
+        /// executing command for each active session.
+        /// </summary>
         [Input("trackActivityQuerySize")]
         public Input<string>? TrackActivityQuerySize { get; set; }
 
+        /// <summary>
+        /// Record commit time of transactions
+        /// </summary>
         [Input("trackCommitTimestamp")]
         public Input<string>? TrackCommitTimestamp { get; set; }
 
+        /// <summary>
+        /// Enables tracking of function call counts and time used.
+        /// </summary>
         [Input("trackFunctions")]
         public Input<string>? TrackFunctions { get; set; }
 
+        /// <summary>
+        /// Terminate replication connections that are inactive for longer than 
+        /// this amount of time, in milliseconds.
+        /// </summary>
         [Input("walSenderTimeout")]
         public Input<string>? WalSenderTimeout { get; set; }
 
+        /// <summary>
+        /// WAL flush interval in milliseconds. Note that setting this value 
+        /// to lower than the default 200ms may negatively impact performance
+        /// </summary>
         [Input("walWriterDelay")]
         public Input<string>? WalWriterDelay { get; set; }
 

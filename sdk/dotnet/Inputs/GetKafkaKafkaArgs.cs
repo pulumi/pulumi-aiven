@@ -12,18 +12,33 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetKafkaKafkaArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Kafka client certificate
+        /// </summary>
         [Input("accessCert", required: true)]
         public string AccessCert { get; set; } = null!;
 
+        /// <summary>
+        /// The Kafka client certificate key
+        /// </summary>
         [Input("accessKey", required: true)]
         public string AccessKey { get; set; } = null!;
 
+        /// <summary>
+        /// The Kafka Connect URI, if any
+        /// </summary>
         [Input("connectUri", required: true)]
         public string ConnectUri { get; set; } = null!;
 
+        /// <summary>
+        /// The Kafka REST URI, if any
+        /// </summary>
         [Input("restUri", required: true)]
         public string RestUri { get; set; } = null!;
 
+        /// <summary>
+        /// The Schema Registry URI, if any
+        /// </summary>
         [Input("schemaRegistryUri", required: true)]
         public string SchemaRegistryUri { get; set; } = null!;
 

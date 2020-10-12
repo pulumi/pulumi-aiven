@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Kafka Schema Configuration Resource
+ *
+ * The Kafka Schema Configuration resource allows the creation and management of an Aiven Kafka Schema Configurations.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const config = new aiven.KafkaSchemaConfiguration("config", {
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     compatibilityLevel: "BACKWARD",
+ * });
+ * ```
+ */
 export class KafkaSchemaConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing KafkaSchemaConfiguration resource's state with the given name, ID, and optional extra
@@ -33,11 +51,17 @@ export class KafkaSchemaConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * Kafka Schemas compatibility level
+     * is the Global Kafka Schema configuration compatibility level when defined 
+     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
     public readonly compatibilityLevel!: pulumi.Output<string>;
     /**
-     * Project to link the Kafka Schemas Configuration to
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -91,11 +115,17 @@ export class KafkaSchemaConfiguration extends pulumi.CustomResource {
  */
 export interface KafkaSchemaConfigurationState {
     /**
-     * Kafka Schemas compatibility level
+     * is the Global Kafka Schema configuration compatibility level when defined 
+     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
     readonly compatibilityLevel?: pulumi.Input<string>;
     /**
-     * Project to link the Kafka Schemas Configuration to
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -109,11 +139,17 @@ export interface KafkaSchemaConfigurationState {
  */
 export interface KafkaSchemaConfigurationArgs {
     /**
-     * Kafka Schemas compatibility level
+     * is the Global Kafka Schema configuration compatibility level when defined 
+     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
     readonly compatibilityLevel: pulumi.Input<string>;
     /**
-     * Project to link the Kafka Schemas Configuration to
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
     /**

@@ -26,16 +26,41 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a MirrorMakerReplicationFlow resource with the given unique name, props, and options.
+        ## # MirrorMaker 2 Replication Flow Resource
+
+        The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
+        Replication Flow on Aiven Cloud.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        f1 = aiven.MirrorMakerReplicationFlow("f1",
+            project=aiven_project["kafka-mm-project1"]["project"],
+            service_name=aiven_service["mm"]["service_name"],
+            source_cluster=aiven_service["source"]["service_name"],
+            target_cluster=aiven_service["target"]["service_name"],
+            enable=True,
+            topics=[".*"],
+            topics_blacklists=[
+                ".*[\\-\\.]internal",
+                ".*\\.replica",
+                "__.*",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enable: Enable of disable replication flows for a service
-        :param pulumi.Input[str] project: Project to link the kafka topic to
+        :param pulumi.Input[bool] enable: enable of disable replication flows for a mirror maker service
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
-        :param pulumi.Input[str] source_cluster: Source cluster alias
-        :param pulumi.Input[str] target_cluster: Target cluster alias
-        :param pulumi.Input[List[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
-        :param pulumi.Input[List[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[str] source_cluster: is a source cluster alias.
+        :param pulumi.Input[str] target_cluster: is a target cluster alias.
+        :param pulumi.Input[List[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
+        :param pulumi.Input[List[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,13 +120,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enable: Enable of disable replication flows for a service
-        :param pulumi.Input[str] project: Project to link the kafka topic to
+        :param pulumi.Input[bool] enable: enable of disable replication flows for a mirror maker service
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
-        :param pulumi.Input[str] source_cluster: Source cluster alias
-        :param pulumi.Input[str] target_cluster: Target cluster alias
-        :param pulumi.Input[List[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
-        :param pulumi.Input[List[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[str] source_cluster: is a source cluster alias.
+        :param pulumi.Input[str] target_cluster: is a target cluster alias.
+        :param pulumi.Input[List[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
+        :param pulumi.Input[List[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -120,7 +146,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter
     def enable(self) -> pulumi.Output[bool]:
         """
-        Enable of disable replication flows for a service
+        enable of disable replication flows for a mirror maker service
         """
         return pulumi.get(self, "enable")
 
@@ -128,7 +154,8 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project to link the kafka topic to
+        and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         """
         return pulumi.get(self, "project")
 
@@ -144,7 +171,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> pulumi.Output[str]:
         """
-        Source cluster alias
+        is a source cluster alias.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -152,7 +179,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> pulumi.Output[str]:
         """
-        Target cluster alias
+        is a target cluster alias.
         """
         return pulumi.get(self, "target_cluster")
 
@@ -160,7 +187,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter
     def topics(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        List of topics and/or regular expressions to replicate
+        is a list of topics and/or regular expressions to replicate.
         """
         return pulumi.get(self, "topics")
 
@@ -168,7 +195,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        List of topics and/or regular expressions to not replicate.
+        is a list of topics and/or regular expressions to not replicate.
         """
         return pulumi.get(self, "topics_blacklists")
 

@@ -13,39 +13,166 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetPgPgUserConfigPgResult
     {
+        /// <summary>
+        /// Specifies a fraction of the table size to add to 
+        /// autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2
+        /// (20% of table size).
+        /// </summary>
         public readonly string? AutovacuumAnalyzeScaleFactor;
+        /// <summary>
+        /// specifies the minimum number of inserted, updated 
+        /// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        /// </summary>
         public readonly string? AutovacuumAnalyzeThreshold;
+        /// <summary>
+        /// specifies the maximum age (in transactions) that a table's 
+        /// pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+        /// wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+        /// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        /// </summary>
         public readonly string? AutovacuumFreezeMaxAge;
+        /// <summary>
+        /// specifies the maximum number of autovacuum processes (other 
+        /// than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+        /// can only be set at server start.
+        /// </summary>
         public readonly string? AutovacuumMaxWorkers;
+        /// <summary>
+        /// specifies the minimum delay between autovacuum runs on any 
+        /// given database. The delay is measured in seconds, and the default is one minute.
+        /// </summary>
         public readonly string? AutovacuumNaptime;
+        /// <summary>
+        /// specifies the cost delay value that will be used 
+        /// in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be
+        /// used. The default value is 20 milliseconds.
+        /// </summary>
         public readonly string? AutovacuumVacuumCostDelay;
+        /// <summary>
+        /// specifies the cost limit value that will be used in 
+        /// automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit
+        /// value will be used.
+        /// </summary>
         public readonly string? AutovacuumVacuumCostLimit;
+        /// <summary>
+        /// specifies a fraction of the table size to add to 
+        /// autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// </summary>
         public readonly string? AutovacuumVacuumScaleFactor;
+        /// <summary>
+        /// specifies the minimum number of updated or deleted tuples 
+        /// needed to trigger a VACUUM in any one table. The default is 50 tuples
+        /// </summary>
         public readonly string? AutovacuumVacuumThreshold;
+        /// <summary>
+        /// this is the amount of time, in milliseconds, to wait on a lock before 
+        /// checking to see if there is a deadlock condition.
+        /// </summary>
         public readonly string? DeadlockTimeout;
+        /// <summary>
+        /// Time out sessions with open transactions after 
+        /// this number of milliseconds.
+        /// </summary>
         public readonly string? IdleInTransactionSessionTimeout;
+        /// <summary>
+        /// Controls system-wide use of Just-in-Time Compilation (JIT).
+        /// </summary>
         public readonly string? Jit;
+        /// <summary>
+        /// Causes each action executed by autovacuum to be logged 
+        /// if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+        /// actions. Minus-one (the default) disables logging autovacuum actions.
+        /// </summary>
         public readonly string? LogAutovacuumMinDuration;
+        /// <summary>
+        /// Controls the amount of detail written in the server log for 
+        /// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+        /// </summary>
         public readonly string? LogErrorVerbosity;
+        /// <summary>
+        /// Log statements that take more than this number of 
+        /// milliseconds to run, -1 disables
+        /// </summary>
         public readonly string? LogMinDurationStatement;
+        /// <summary>
+        /// PostgreSQL maximum locks per transaction
+        /// </summary>
         public readonly string? MaxLocksPerTransaction;
+        /// <summary>
+        /// Sets the maximum number of workers that the system can 
+        /// support for parallel queries.
+        /// </summary>
         public readonly string? MaxParallelWorkers;
+        /// <summary>
+        /// Sets the maximum number of workers that can be 
+        /// started by a single Gather or Gather Merge node.
+        /// </summary>
         public readonly string? MaxParallelWorkersPerGather;
+        /// <summary>
+        /// PostgreSQL maximum predicate locks per transaction
+        /// </summary>
         public readonly string? MaxPredLocksPerTransaction;
+        /// <summary>
+        /// PostgreSQL maximum prepared transactions
+        /// </summary>
         public readonly string? MaxPreparedTransactions;
+        /// <summary>
+        /// Maximum depth of the stack in bytes
+        /// </summary>
         public readonly string? MaxStackDepth;
+        /// <summary>
+        /// Max standby archive delay in milliseconds
+        /// </summary>
         public readonly string? MaxStandbyArchiveDelay;
+        /// <summary>
+        /// Max standby streaming delay in milliseconds
+        /// </summary>
         public readonly string? MaxStandbyStreamingDelay;
+        /// <summary>
+        /// Sets the maximum number of background processes that the system
+        /// can support
+        /// * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+        /// * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+        /// background tasks.
+        /// * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+        /// to track top-level statements (those issued directly by clients), all to also track nested
+        /// statements (such as statements invoked within functions), or none to disable statement statistics
+        /// collection. The default value is top.
+        /// </summary>
         public readonly string? MaxWorkerProcesses;
         public readonly string? PgPartmanBgwDotInterval;
         public readonly string? PgPartmanBgwDotRole;
         public readonly string? PgStatStatementsDotTrack;
+        /// <summary>
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited
+        /// </summary>
         public readonly string? TempFileLimit;
+        /// <summary>
+        /// PostgreSQL service timezone
+        /// </summary>
         public readonly string? Timezone;
+        /// <summary>
+        /// Specifies the number of bytes reserved to track the currently 
+        /// executing command for each active session.
+        /// </summary>
         public readonly string? TrackActivityQuerySize;
+        /// <summary>
+        /// Record commit time of transactions
+        /// </summary>
         public readonly string? TrackCommitTimestamp;
+        /// <summary>
+        /// Enables tracking of function call counts and time used.
+        /// </summary>
         public readonly string? TrackFunctions;
+        /// <summary>
+        /// Terminate replication connections that are inactive for longer than 
+        /// this amount of time, in milliseconds.
+        /// </summary>
         public readonly string? WalSenderTimeout;
+        /// <summary>
+        /// WAL flush interval in milliseconds. Note that setting this value 
+        /// to lower than the default 200ms may negatively impact performance
+        /// </summary>
         public readonly string? WalWriterDelay;
 
         [OutputConstructor]

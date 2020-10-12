@@ -45,6 +45,11 @@ class GetAccountTeamMemberResult:
     @property
     @pulumi.getter
     def accepted(self) -> bool:
+        """
+        is a boolean flag that determines whether an invitation was accepted or not by the user. 
+        `false` value means that the invitation was sent to the user but not yet accepted.
+        `true` means that the user accepted the invitation and now a member of an account team.
+        """
         return pulumi.get(self, "accepted")
 
     @property
@@ -55,6 +60,9 @@ class GetAccountTeamMemberResult:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        time of creation.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -68,6 +76,9 @@ class GetAccountTeamMemberResult:
     @property
     @pulumi.getter(name="invitedByUserEmail")
     def invited_by_user_email(self) -> str:
+        """
+        team invited by user email.
+        """
         return pulumi.get(self, "invited_by_user_email")
 
     @property
@@ -104,7 +115,20 @@ def get_account_team_member(accepted: Optional[bool] = None,
                             user_email: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamMemberResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Account Team Member Data Source
+
+    The Account Team Member  data source provides information about the existing Aiven Account Team Member.
+
+
+    :param bool accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. 
+           `false` value means that the invitation was sent to the user but not yet accepted.
+           `true` means that the user accepted the invitation and now a member of an account team.
+    :param str account_id: is a unique account id.
+    :param str create_time: time of creation.
+    :param str invited_by_user_email: team invited by user email.
+    :param str team_id: is an account team id.
+    :param str user_email: is a user email address that first will be invited, and after accepting an invitation,
+           he or she becomes a member of a team.
     """
     __args__ = dict()
     __args__['accepted'] = accepted

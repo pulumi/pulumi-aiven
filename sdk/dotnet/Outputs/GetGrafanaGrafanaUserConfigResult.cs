@@ -13,33 +13,121 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigResult
     {
+        /// <summary>
+        /// Enable or disable Grafana alerting functionality
+        /// </summary>
         public readonly string? AlertingEnabled;
+        /// <summary>
+        /// Default error or timeout setting for new alerting rules
+        /// </summary>
         public readonly string? AlertingErrorOrTimeout;
+        /// <summary>
+        /// Default value for 'no data or null values' for
+        /// new alerting rules
+        /// </summary>
         public readonly string? AlertingNodataOrNullvalues;
+        /// <summary>
+        /// Allow embedding Grafana dashboards with iframe/frame/object/embed 
+        /// tags. Disabled by default to limit impact of clickjacking
+        /// </summary>
         public readonly string? AllowEmbedding;
+        /// <summary>
+        /// Enable or disable basic authentication form, used by Grafana 
+        /// built-in login.
+        /// </summary>
         public readonly string? AuthBasicEnabled;
+        /// <summary>
+        /// Generic OAuth integration.
+        /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGenericOauthResult? AuthGenericOauth;
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in
+        /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGithubResult? AuthGithub;
+        /// <summary>
+        /// GitLab Auth integration.
+        /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGitlabResult? AuthGitlab;
+        /// <summary>
+        /// Google Auth integration
+        /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGoogleResult? AuthGoogle;
+        /// <summary>
+        /// Cookie SameSite attribute: 'strict' prevents sending cookie for 
+        /// cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        /// </summary>
         public readonly string? CookieSamesite;
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// Dashboard versions to keep per dashboard.
+        /// </summary>
         public readonly string? DashboardsVersionsToKeep;
+        /// <summary>
+        /// Send 'X-Grafana-User' header to data source.
+        /// </summary>
         public readonly string? DataproxySendUserHeader;
+        /// <summary>
+        /// Timeout for data proxy requests in seconds.
+        /// </summary>
         public readonly string? DataproxyTimeout;
+        /// <summary>
+        /// Set to true to disable gravatar. Defaults to false 
+        /// (gravatar is enabled).
+        /// </summary>
         public readonly string? DisableGravatar;
+        /// <summary>
+        /// Editors can manage folders, teams and dashboards created by them.
+        /// </summary>
         public readonly string? EditorsCanAdmin;
+        /// <summary>
+        /// External image store settings
+        /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult? ExternalImageStorage;
+        /// <summary>
+        /// Google Analytics Universal Analytics ID for tracking Grafana usage
+        /// </summary>
         public readonly string? GoogleAnalyticsUaId;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Enable Grafana /metrics endpoint
+        /// </summary>
         public readonly string? MetricsEnabled;
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigPublicAccessResult? PublicAccess;
+        /// <summary>
+        /// Name of the basebackup to restore in forked service.
+        /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only 
+        /// when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// SMTP server settings.
+        /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigSmtpServerResult? SmtpServer;
+        /// <summary>
+        /// Auto-assign new users on signup to main organization. 
+        /// Defaults to false.
+        /// </summary>
         public readonly string? UserAutoAssignOrg;
+        /// <summary>
+        /// Set role for new signups. Defaults to Viewer.
+        /// </summary>
         public readonly string? UserAutoAssignOrgRole;
+        /// <summary>
+        /// Users with view-only permission can edit but not save dashboards.
+        /// </summary>
         public readonly string? ViewersCanEdit;
 
         [OutputConstructor]

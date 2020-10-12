@@ -9,28 +9,55 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Database Resource
+    /// 
+    /// The Database resource allows the creation and management of an Aiven Databases.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mydatabase = new Aiven.Database("mydatabase", new Aiven.DatabaseArgs
+    ///         {
+    ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
+    ///             Project = aiven_project.Myproject.Project,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
-        /// Service database name
+        /// is the actual name of the database.
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
         /// </summary>
         [Output("lcCollate")]
         public Output<string?> LcCollate { get; private set; } = null!;
 
         /// <summary>
-        /// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
         /// </summary>
         [Output("lcCtype")]
         public Output<string?> LcCtype { get; private set; } = null!;
 
         /// <summary>
-        /// Project to link the database to
+        /// and `service_name` - (Required) define the project and service the database belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -95,25 +122,26 @@ namespace Pulumi.Aiven
     public sealed class DatabaseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Service database name
+        /// is the actual name of the database.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
 
         /// <summary>
-        /// Project to link the database to
+        /// and `service_name` - (Required) define the project and service the database belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -139,25 +167,26 @@ namespace Pulumi.Aiven
     public sealed class DatabaseState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Service database name
+        /// is the actual name of the database.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
 
         /// <summary>
-        /// Project to link the database to
+        /// and `service_name` - (Required) define the project and service the database belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

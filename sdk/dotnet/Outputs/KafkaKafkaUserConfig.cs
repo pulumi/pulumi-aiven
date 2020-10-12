@@ -13,17 +13,56 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfig
     {
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Allow clients to connect to kafka from the public internet for service 
+        /// nodes that are in a project VPC or another type of private network
+        /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafka? Kafka;
+        /// <summary>
+        /// Kafka authentication methods
+        /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
+        /// <summary>
+        /// Allow clients to connect to kafka_connect from the public internet 
+        /// for service nodes that are in a project VPC or another type of private network
+        /// </summary>
         public readonly string? KafkaConnect;
+        /// <summary>
+        /// Kafka Connect configuration values
+        /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
+        /// <summary>
+        /// Allow clients to connect to kafka_rest from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         public readonly string? KafkaRest;
+        /// <summary>
+        /// Kafka-REST configuration
+        /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaRestConfig? KafkaRestConfig;
+        /// <summary>
+        /// Kafka major version
+        /// </summary>
         public readonly string? KafkaVersion;
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Enable Schema-Registry service
+        /// </summary>
         public readonly string? SchemaRegistry;
 
         [OutputConstructor]

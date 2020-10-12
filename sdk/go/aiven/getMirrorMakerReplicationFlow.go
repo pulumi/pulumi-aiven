@@ -7,6 +7,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # MirrorMaker 2 Replication Flow Data Source
+//
+// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2
+// Replication Flow on Aiven Cloud.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupMirrorMakerReplicationFlow(ctx, &aiven.LookupMirrorMakerReplicationFlowArgs{
+// 			Project:       aiven_project.Kafka - mm - project1.Project,
+// 			ServiceName:   aiven_service.Mm.Service_name,
+// 			SourceCluster: aiven_service.Source.Service_name,
+// 			TargetCluster: aiven_service.Target.Service_name,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupMirrorMakerReplicationFlow(ctx *pulumi.Context, args *LookupMirrorMakerReplicationFlowArgs, opts ...pulumi.InvokeOption) (*LookupMirrorMakerReplicationFlowResult, error) {
 	var rv LookupMirrorMakerReplicationFlowResult
 	err := ctx.Invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args, &rv, opts...)
@@ -18,24 +48,34 @@ func LookupMirrorMakerReplicationFlow(ctx *pulumi.Context, args *LookupMirrorMak
 
 // A collection of arguments for invoking getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowArgs struct {
-	Enable           *bool    `pulumi:"enable"`
-	Project          string   `pulumi:"project"`
-	ServiceName      string   `pulumi:"serviceName"`
-	SourceCluster    string   `pulumi:"sourceCluster"`
-	TargetCluster    string   `pulumi:"targetCluster"`
-	Topics           []string `pulumi:"topics"`
+	// enable of disable replication flows for a mirror maker service
+	Enable *bool `pulumi:"enable"`
+	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
+	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
+	// is a source cluster alias.
+	SourceCluster string `pulumi:"sourceCluster"`
+	// is a target cluster alias.
+	TargetCluster string `pulumi:"targetCluster"`
+	// is a list of topics and/or regular expressions to replicate.
+	Topics []string `pulumi:"topics"`
+	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
 }
 
 // A collection of values returned by getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowResult struct {
+	// enable of disable replication flows for a mirror maker service
 	Enable *bool `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string   `pulumi:"id"`
-	Project          string   `pulumi:"project"`
-	ServiceName      string   `pulumi:"serviceName"`
-	SourceCluster    string   `pulumi:"sourceCluster"`
-	TargetCluster    string   `pulumi:"targetCluster"`
-	Topics           []string `pulumi:"topics"`
+	Id            string `pulumi:"id"`
+	Project       string `pulumi:"project"`
+	ServiceName   string `pulumi:"serviceName"`
+	SourceCluster string `pulumi:"sourceCluster"`
+	TargetCluster string `pulumi:"targetCluster"`
+	// is a list of topics and/or regular expressions to replicate.
+	Topics []string `pulumi:"topics"`
+	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
 }

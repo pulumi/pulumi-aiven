@@ -12,6 +12,10 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigPglookoutArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of seconds of master unavailability before 
+        /// triggering database failover to standby
+        /// </summary>
         [Input("maxFailoverReplicationTimeLag")]
         public Input<string>? MaxFailoverReplicationTimeLag { get; set; }
 

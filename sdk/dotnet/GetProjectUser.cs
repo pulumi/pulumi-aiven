@@ -11,6 +11,35 @@ namespace Pulumi.Aiven
 {
     public static class GetProjectUser
     {
+        /// <summary>
+        /// ## # Project User Data Source
+        /// 
+        /// The Project User data source provides information about the existing Aiven Project User.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytestuser = Output.Create(Aiven.GetProjectUser.InvokeAsync(new Aiven.GetProjectUserArgs
+        ///         {
+        ///             Email = "john.doe@example.com",
+        ///             Project = aiven_project.Myproject.Project,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetProjectUserResult> InvokeAsync(GetProjectUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserArgs(), options.WithVersion());
     }
@@ -18,15 +47,30 @@ namespace Pulumi.Aiven
 
     public sealed class GetProjectUserArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is a computed property tells whether the user has accepted the request to join
+        /// the project; adding user to a project sends an invitation to the target user and the
+        /// actual membership is only created once the user accepts the invitation. This property
+        /// cannot be set, only read.
+        /// </summary>
         [Input("accepted")]
         public bool? Accepted { get; set; }
 
+        /// <summary>
+        /// identifies the email address of the user.
+        /// </summary>
         [Input("email", required: true)]
         public string Email { get; set; } = null!;
 
+        /// <summary>
+        /// (Required) defines the access level the user has to the project.
+        /// </summary>
         [Input("memberType")]
         public string? MemberType { get; set; }
 
+        /// <summary>
+        /// defines the project the user is a member of.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -39,12 +83,21 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetProjectUserResult
     {
+        /// <summary>
+        /// is a computed property tells whether the user has accepted the request to join
+        /// the project; adding user to a project sends an invitation to the target user and the
+        /// actual membership is only created once the user accepts the invitation. This property
+        /// cannot be set, only read.
+        /// </summary>
         public readonly bool Accepted;
         public readonly string Email;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Required) defines the access level the user has to the project.
+        /// </summary>
         public readonly string? MemberType;
         public readonly string Project;
 

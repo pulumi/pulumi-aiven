@@ -9,46 +9,82 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Kafka Topic Resource
+    /// 
+    /// The Kafka Topic resource allows the creation and management of an Aiven Kafka Topic`s.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mytesttopic = new Aiven.KafkaTopic("mytesttopic", new Aiven.KafkaTopicArgs
+    ///         {
+    ///             CleanupPolicy = "delete",
+    ///             MinimumInSyncReplicas = 2,
+    ///             Partitions = 5,
+    ///             Project = aiven_project.Myproject.Project,
+    ///             Replication = 3,
+    ///             RetentionBytes = -1,
+    ///             RetentionHours = 72,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             TerminationProtection = true,
+    ///             TopicName = "&lt;TOPIC_NAME&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class KafkaTopic : Pulumi.CustomResource
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact
+        /// Topic cleanup policy. Allowed values: delete, compact.
         /// </summary>
         [Output("cleanupPolicy")]
         public Output<string?> CleanupPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
         /// </summary>
         [Output("minimumInSyncReplicas")]
         public Output<int?> MinimumInSyncReplicas { get; private set; } = null!;
 
         /// <summary>
-        /// Number of partitions to create in the topic
+        /// Number of partitions to create in the topic.
         /// </summary>
         [Output("partitions")]
         public Output<int> Partitions { get; private set; } = null!;
 
         /// <summary>
-        /// Project to link the kafka topic to
+        /// and `service_name` - (Required) define the project and service the topic belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Replication factor for the topic
+        /// Replication factor for the topic.
         /// </summary>
         [Output("replication")]
         public Output<int> Replication { get; private set; } = null!;
 
         /// <summary>
-        /// Retention bytes
+        /// Retention bytes.
         /// </summary>
         [Output("retentionBytes")]
         public Output<int?> RetentionBytes { get; private set; } = null!;
 
         /// <summary>
-        /// Retention period (hours)
+        /// Retention period in hours, if -1 it is infinite.
         /// </summary>
         [Output("retentionHours")]
         public Output<int?> RetentionHours { get; private set; } = null!;
@@ -67,7 +103,9 @@ namespace Pulumi.Aiven
         public Output<bool?> TerminationProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Topic name
+        /// is the actual name of the topic account. This propery cannot be changed
+        /// once the service is created. Doing so will result in the topic being deleted and new one
+        /// created instead.
         /// </summary>
         [Output("topicName")]
         public Output<string> TopicName { get; private set; } = null!;
@@ -119,43 +157,46 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact
+        /// Topic cleanup policy. Allowed values: delete, compact.
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
 
         /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
         /// </summary>
         [Input("minimumInSyncReplicas")]
         public Input<int>? MinimumInSyncReplicas { get; set; }
 
         /// <summary>
-        /// Number of partitions to create in the topic
+        /// Number of partitions to create in the topic.
         /// </summary>
         [Input("partitions", required: true)]
         public Input<int> Partitions { get; set; } = null!;
 
         /// <summary>
-        /// Project to link the kafka topic to
+        /// and `service_name` - (Required) define the project and service the topic belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Replication factor for the topic
+        /// Replication factor for the topic.
         /// </summary>
         [Input("replication", required: true)]
         public Input<int> Replication { get; set; } = null!;
 
         /// <summary>
-        /// Retention bytes
+        /// Retention bytes.
         /// </summary>
         [Input("retentionBytes")]
         public Input<int>? RetentionBytes { get; set; }
 
         /// <summary>
-        /// Retention period (hours)
+        /// Retention period in hours, if -1 it is infinite.
         /// </summary>
         [Input("retentionHours")]
         public Input<int>? RetentionHours { get; set; }
@@ -174,7 +215,9 @@ namespace Pulumi.Aiven
         public Input<bool>? TerminationProtection { get; set; }
 
         /// <summary>
-        /// Topic name
+        /// is the actual name of the topic account. This propery cannot be changed
+        /// once the service is created. Doing so will result in the topic being deleted and new one
+        /// created instead.
         /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -187,43 +230,46 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact
+        /// Topic cleanup policy. Allowed values: delete, compact.
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
 
         /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
         /// </summary>
         [Input("minimumInSyncReplicas")]
         public Input<int>? MinimumInSyncReplicas { get; set; }
 
         /// <summary>
-        /// Number of partitions to create in the topic
+        /// Number of partitions to create in the topic.
         /// </summary>
         [Input("partitions")]
         public Input<int>? Partitions { get; set; }
 
         /// <summary>
-        /// Project to link the kafka topic to
+        /// and `service_name` - (Required) define the project and service the topic belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Replication factor for the topic
+        /// Replication factor for the topic.
         /// </summary>
         [Input("replication")]
         public Input<int>? Replication { get; set; }
 
         /// <summary>
-        /// Retention bytes
+        /// Retention bytes.
         /// </summary>
         [Input("retentionBytes")]
         public Input<int>? RetentionBytes { get; set; }
 
         /// <summary>
-        /// Retention period (hours)
+        /// Retention period in hours, if -1 it is infinite.
         /// </summary>
         [Input("retentionHours")]
         public Input<int>? RetentionHours { get; set; }
@@ -242,7 +288,9 @@ namespace Pulumi.Aiven
         public Input<bool>? TerminationProtection { get; set; }
 
         /// <summary>
-        /// Topic name
+        /// is the actual name of the topic account. This propery cannot be changed
+        /// once the service is created. Doing so will result in the topic being deleted and new one
+        /// created instead.
         /// </summary>
         [Input("topicName")]
         public Input<string>? TopicName { get; set; }

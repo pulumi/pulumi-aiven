@@ -22,11 +22,32 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a KafkaSchemaConfiguration resource with the given unique name, props, and options.
+        ## # Kafka Schema Configuration Resource
+
+        The Kafka Schema Configuration resource allows the creation and management of an Aiven Kafka Schema Configurations.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        config = aiven.KafkaSchemaConfiguration("config",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_service["kafka-service1"]["service_name"],
+            compatibility_level="BACKWARD")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
-        :param pulumi.Input[str] project: Project to link the Kafka Schemas Configuration to
+        :param pulumi.Input[str] compatibility_level: is the Global Kafka Schema configuration compatibility level when defined 
+               for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+               compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+               resource. If the compatibility level not specified for the individual subject by default,
+               it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+               `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+               They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the Kafka Schemas Configuration to
         """
         if __name__ is not None:
@@ -75,8 +96,14 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level
-        :param pulumi.Input[str] project: Project to link the Kafka Schemas Configuration to
+        :param pulumi.Input[str] compatibility_level: is the Global Kafka Schema configuration compatibility level when defined 
+               for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+               compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+               resource. If the compatibility level not specified for the individual subject by default,
+               it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+               `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+               They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the Kafka Schemas Configuration to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -92,7 +119,12 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="compatibilityLevel")
     def compatibility_level(self) -> pulumi.Output[str]:
         """
-        Kafka Schemas compatibility level
+        is the Global Kafka Schema configuration compatibility level when defined 
+        for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+        compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+        resource. If the compatibility level not specified for the individual subject by default,
+        it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
         """
         return pulumi.get(self, "compatibility_level")
 
@@ -100,7 +132,8 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project to link the Kafka Schemas Configuration to
+        and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+        They should be defined using reference as shown above to set up dependencies correctly.
         """
         return pulumi.get(self, "project")
 

@@ -4,6 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Project Resource
+ *
+ * The Project resource allows the creation and management of an Aiven Projects.
+ */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -33,7 +38,8 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * is an optional property to link a project to already an existing account by 
+     * using account ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -45,15 +51,24 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly billingEmails!: pulumi.Output<string[] | undefined>;
     /**
-     * Project root CA. This is used by some services like Kafka to sign service certificate
+     * is a computed property that can be used to read the CA certificate of the
+     * project. This is required for configuring clients that connect to certain services like
+     * Kafka. This value cannot be set, only read.
      */
     public readonly caCert!: pulumi.Output<string>;
     /**
-     * Credit card ID
+     * is either the full card UUID or the last 4 digits of the card. As the full
+     * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+     * the card. This can be omitted if `copyFromProject` is used to copy billing info from
+     * another project.
      */
     public readonly cardId!: pulumi.Output<string | undefined>;
     /**
-     * Copy properties from another project. Only has effect when a new project is created.
+     * is the name of another project used to copy billing information and
+     * some other project attributes like technical contacts from. This is mostly relevant when
+     * an existing project has billing type set to invoice and that needs to be copied over to a
+     * new project. (Setting billing is otherwise not allowed over the API.) This only has
+     * effect when the project is created.
      */
     public readonly copyFromProject!: pulumi.Output<string | undefined>;
     /**
@@ -61,7 +76,9 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
     /**
-     * Project name
+     * defines the name of the project. Name must be globally unique (between all
+     * Aiven customers) and cannot be changed later without destroying and re-creating the
+     * project, including all sub-resources.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -121,7 +138,8 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * Account ID
+     * is an optional property to link a project to already an existing account by 
+     * using account ID.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
@@ -133,15 +151,24 @@ export interface ProjectState {
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Project root CA. This is used by some services like Kafka to sign service certificate
+     * is a computed property that can be used to read the CA certificate of the
+     * project. This is required for configuring clients that connect to certain services like
+     * Kafka. This value cannot be set, only read.
      */
     readonly caCert?: pulumi.Input<string>;
     /**
-     * Credit card ID
+     * is either the full card UUID or the last 4 digits of the card. As the full
+     * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+     * the card. This can be omitted if `copyFromProject` is used to copy billing info from
+     * another project.
      */
     readonly cardId?: pulumi.Input<string>;
     /**
-     * Copy properties from another project. Only has effect when a new project is created.
+     * is the name of another project used to copy billing information and
+     * some other project attributes like technical contacts from. This is mostly relevant when
+     * an existing project has billing type set to invoice and that needs to be copied over to a
+     * new project. (Setting billing is otherwise not allowed over the API.) This only has
+     * effect when the project is created.
      */
     readonly copyFromProject?: pulumi.Input<string>;
     /**
@@ -149,7 +176,9 @@ export interface ProjectState {
      */
     readonly countryCode?: pulumi.Input<string>;
     /**
-     * Project name
+     * defines the name of the project. Name must be globally unique (between all
+     * Aiven customers) and cannot be changed later without destroying and re-creating the
+     * project, including all sub-resources.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -163,7 +192,8 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Account ID
+     * is an optional property to link a project to already an existing account by 
+     * using account ID.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
@@ -175,15 +205,24 @@ export interface ProjectArgs {
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Project root CA. This is used by some services like Kafka to sign service certificate
+     * is a computed property that can be used to read the CA certificate of the
+     * project. This is required for configuring clients that connect to certain services like
+     * Kafka. This value cannot be set, only read.
      */
     readonly caCert?: pulumi.Input<string>;
     /**
-     * Credit card ID
+     * is either the full card UUID or the last 4 digits of the card. As the full
+     * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+     * the card. This can be omitted if `copyFromProject` is used to copy billing info from
+     * another project.
      */
     readonly cardId?: pulumi.Input<string>;
     /**
-     * Copy properties from another project. Only has effect when a new project is created.
+     * is the name of another project used to copy billing information and
+     * some other project attributes like technical contacts from. This is mostly relevant when
+     * an existing project has billing type set to invoice and that needs to be copied over to a
+     * new project. (Setting billing is otherwise not allowed over the API.) This only has
+     * effect when the project is created.
      */
     readonly copyFromProject?: pulumi.Input<string>;
     /**
@@ -191,7 +230,9 @@ export interface ProjectArgs {
      */
     readonly countryCode?: pulumi.Input<string>;
     /**
-     * Project name
+     * defines the name of the project. Name must be globally unique (between all
+     * Aiven customers) and cannot be changed later without destroying and re-creating the
+     * project, including all sub-resources.
      */
     readonly project: pulumi.Input<string>;
     /**

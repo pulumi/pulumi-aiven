@@ -9,18 +9,43 @@ export interface CassandraCassandra {
 }
 
 export interface CassandraCassandraUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * sets the service into migration mode enabling the sstableloader 
+     * utility to be used to upload Cassandra data files. Available only on service create.
+     */
     migrateSstableloader?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.CassandraCassandraUserConfigPublicAccess;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface CassandraCassandraUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
 export interface CassandraCassandraUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
@@ -60,71 +85,268 @@ export interface ElasticSearchComponent {
 }
 
 export interface ElasticSearchElasticsearch {
+    /**
+     * URI for Kibana frontend.
+     */
     kibanaUri: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the 
+     * Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Disable automatic replication factor 
+     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
+     * virtual machine failure.
+     */
     disableReplicationFactorAdjustment?: string;
+    /**
+     * Allow clients to connect to elasticsearch from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     elasticsearch?: outputs.ElasticSearchElasticsearchUserConfigElasticsearch;
+    /**
+     * Elasticsearch major version.
+     */
     elasticsearchVersion?: string;
+    /**
+     * Glob pattern and number of indexes matching that pattern to 
+     * be kept.
+     */
     indexPatterns?: outputs.ElasticSearchElasticsearchUserConfigIndexPattern[];
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: outputs.ElasticSearchElasticsearchUserConfigKibana;
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: outputs.ElasticSearchElasticsearchUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigElasticsearch {
+    /**
+     * Explicitly allow or block automatic 
+     * creation of indices. Defaults to true
+     */
     actionAutoCreateIndexEnabled?: string;
+    /**
+     * Require explicit index names when deleting
+     */
     actionDestructiveRequiresName?: string;
+    /**
+     * Maximum content length for HTTP requests to 
+     * the Elasticsearch HTTP API, in bytes.
+     */
     httpMaxContentLength?: string;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
     httpMaxHeaderSize?: string;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
     httpMaxInitialLineLength?: string;
+    /**
+     * Relative amount. Maximum amount of 
+     * heap memory used for field data cache. This is an expert setting; decreasing the
+     * value too much will increase overhead of loading field data; too much memory used
+     * for field data cache will decrease amount of heap available for other operations.
+     */
     indicesFielddataCacheSize?: string;
+    /**
+     * Percentage value. Default is 10%. 
+     * Total amount of heap used for indexing buffer, before writing segments to disk.
+     * This is an expert setting. Too low value will slow down indexing; too high value
+     * will increase indexing performance but causes performance issues for query performance.
+     */
     indicesMemoryIndexBufferSize?: string;
+    /**
+     * Percentage value. Default is 10%. 
+     * Maximum amount of heap used for query cache. This is an expert setting.
+     * Too low value will decrease query performance and increase performance for other
+     * operations; too high value will cause issues with other Elasticsearch functionality.
+     */
     indicesQueriesCacheSize?: string;
+    /**
+     * Maximum number of clauses Lucene 
+     * BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+     * may cause performance issues. Investigate other approaches first before increasing this value.
+     */
     indicesQueryBoolMaxClauseCount?: string;
+    /**
+     * Whitelisted addresses for reindexing. 
+     * Changing this value will cause all Elasticsearch instances to restart.
+     */
     reindexRemoteWhitelists?: string[];
+    /**
+     * Maximum number of aggregation buckets allowed 
+     * in a single response. Elasticsearch default value is used when this is not defined.
+     */
     searchMaxBuckets?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolAnalyzeQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolAnalyzeSize?: string;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolForceMergeSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolGetQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolGetSize?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolIndexQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolIndexSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolSearchQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchSize?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolSearchThrottledQueueSize?: string;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchThrottledSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolWriteQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolWriteSize?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: string;
+    /**
+     * Must consist of alpha-numeric characters, dashes, underscores, 
+     * dots and glob characters (* and ?)
+     */
     pattern?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigKibana {
+    /**
+     * Timeout in milliseconds for requests 
+     * made by Kibana towards Elasticsearch.
+     */
     elasticsearchRequestTimeout?: string;
+    /**
+     * Enable or disable Kibana.
+     */
     enabled?: string;
+    /**
+     * Limits the maximum amount of memory (in MiB) the 
+     * Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+     * the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+     */
     maxOldSpaceSize?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to elasticsearch from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: string;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to elasticsearch from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: string;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
@@ -137,18 +359,43 @@ export interface GetCassandaCassandra {
 }
 
 export interface GetCassandaCassandraUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * sets the service into migration mode enabling the sstableloader 
+     * utility to be used to upload Cassandra data files. Available only on service create.
+     */
     migrateSstableloader?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetCassandaCassandraUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
 export interface GetCassandaCassandraUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
@@ -188,71 +435,265 @@ export interface GetElasticSearchComponent {
 }
 
 export interface GetElasticSearchElasticsearch {
+    /**
+     * URI for Kibana frontend.
+     */
     kibanaUri: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the 
+     * Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Disable automatic replication factor 
+     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
+     * virtual machine failure.
+     */
     disableReplicationFactorAdjustment?: string;
+    /**
+     * Elasticsearch specific server provided values.
+     */
     elasticsearch?: outputs.GetElasticSearchElasticsearchUserConfigElasticsearch;
+    /**
+     * Elasticsearch major version.
+     */
     elasticsearchVersion?: string;
+    /**
+     * Glob pattern and number of indexes matching that pattern to 
+     * be kept.
+     */
     indexPatterns?: outputs.GetElasticSearchElasticsearchUserConfigIndexPattern[];
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: outputs.GetElasticSearchElasticsearchUserConfigKibana;
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: outputs.GetElasticSearchElasticsearchUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
+    /**
+     * Explicitly allow or block automatic 
+     * creation of indices. Defaults to true
+     */
     actionAutoCreateIndexEnabled?: string;
+    /**
+     * Require explicit index names when deleting
+     */
     actionDestructiveRequiresName?: string;
+    /**
+     * Maximum content length for HTTP requests to 
+     * the Elasticsearch HTTP API, in bytes.
+     */
     httpMaxContentLength?: string;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
     httpMaxHeaderSize?: string;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
     httpMaxInitialLineLength?: string;
+    /**
+     * Relative amount. Maximum amount of 
+     * heap memory used for field data cache. This is an expert setting; decreasing the
+     * value too much will increase overhead of loading field data; too much memory used
+     * for field data cache will decrease amount of heap available for other operations.
+     */
     indicesFielddataCacheSize?: string;
+    /**
+     * Percentage value. Default is 10%. 
+     * Total amount of heap used for indexing buffer, before writing segments to disk.
+     * This is an expert setting. Too low value will slow down indexing; too high value
+     * will increase indexing performance but causes performance issues for query performance.
+     */
     indicesMemoryIndexBufferSize?: string;
+    /**
+     * Percentage value. Default is 10%. 
+     * Maximum amount of heap used for query cache. This is an expert setting.
+     * Too low value will decrease query performance and increase performance for other
+     * operations; too high value will cause issues with other Elasticsearch functionality.
+     */
     indicesQueriesCacheSize?: string;
+    /**
+     * Maximum number of clauses Lucene 
+     * BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+     * may cause performance issues. Investigate other approaches first before increasing this value.
+     */
     indicesQueryBoolMaxClauseCount?: string;
+    /**
+     * Whitelisted addresses for reindexing. 
+     * Changing this value will cause all Elasticsearch instances to restart.
+     */
     reindexRemoteWhitelists?: string[];
+    /**
+     * Maximum number of aggregation buckets allowed 
+     * in a single response. Elasticsearch default value is used when this is not defined.
+     */
     searchMaxBuckets?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolAnalyzeQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolAnalyzeSize?: string;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolForceMergeSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolGetQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolGetSize?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolIndexQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolIndexSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolSearchQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchSize?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolSearchThrottledQueueSize?: string;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchThrottledSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolWriteQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolWriteSize?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: string;
+    /**
+     * Must consist of alpha-numeric characters, dashes, underscores, 
+     * dots and glob characters (* and ?)
+     */
     pattern?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigKibana {
+    /**
+     * Timeout in milliseconds for requests 
+     * made by Kibana towards Elasticsearch.
+     */
     elasticsearchRequestTimeout?: string;
+    /**
+     * Enable or disable Kibana.
+     */
     enabled?: string;
+    /**
+     * Limits the maximum amount of memory (in MiB) the 
+     * Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+     * the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+     */
     maxOldSpaceSize?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPrivateAccess {
+    /**
+     * Elasticsearch specific server provided values.
+     */
     elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: string;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPublicAccess {
+    /**
+     * Elasticsearch specific server provided values.
+     */
     elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: string;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
@@ -263,8 +704,14 @@ export interface GetElasticSearchServiceIntegration {
 
 export interface GetGrafanaComponent {
     component: string;
+    /**
+     * (Required) Server hostname or IP
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * (Required) SMTP server port
+     */
     port: number;
     route: string;
     ssl: boolean;
@@ -275,96 +722,302 @@ export interface GetGrafanaGrafana {
 }
 
 export interface GetGrafanaGrafanaUserConfig {
+    /**
+     * Enable or disable Grafana alerting functionality
+     */
     alertingEnabled?: string;
+    /**
+     * Default error or timeout setting for new alerting rules
+     */
     alertingErrorOrTimeout?: string;
+    /**
+     * Default value for 'no data or null values' for
+     * new alerting rules
+     */
     alertingNodataOrNullvalues?: string;
+    /**
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
+     * tags. Disabled by default to limit impact of clickjacking
+     */
     allowEmbedding?: string;
+    /**
+     * Enable or disable basic authentication form, used by Grafana 
+     * built-in login.
+     */
     authBasicEnabled?: string;
+    /**
+     * Generic OAuth integration.
+     */
     authGenericOauth?: outputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     authGithub?: outputs.GetGrafanaGrafanaUserConfigAuthGithub;
+    /**
+     * GitLab Auth integration.
+     */
     authGitlab?: outputs.GetGrafanaGrafanaUserConfigAuthGitlab;
+    /**
+     * Google Auth integration
+     */
     authGoogle?: outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
+    /**
+     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
+     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     */
     cookieSamesite?: string;
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Dashboard versions to keep per dashboard.
+     */
     dashboardsVersionsToKeep?: string;
+    /**
+     * Send 'X-Grafana-User' header to data source.
+     */
     dataproxySendUserHeader?: string;
+    /**
+     * Timeout for data proxy requests in seconds.
+     */
     dataproxyTimeout?: string;
+    /**
+     * Set to true to disable gravatar. Defaults to false 
+     * (gravatar is enabled).
+     */
     disableGravatar?: string;
+    /**
+     * Editors can manage folders, teams and dashboards created by them.
+     */
     editorsCanAdmin?: string;
+    /**
+     * External image store settings
+     */
     externalImageStorage?: outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
+    /**
+     * Google Analytics Universal Analytics ID for tracking Grafana usage
+     */
     googleAnalyticsUaId?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: string[];
+    /**
+     * Enable Grafana /metrics endpoint
+     */
     metricsEnabled?: string;
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: outputs.GetGrafanaGrafanaUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * SMTP server settings.
+     */
     smtpServer?: outputs.GetGrafanaGrafanaUserConfigSmtpServer;
+    /**
+     * Auto-assign new users on signup to main organization. 
+     * Defaults to false.
+     */
     userAutoAssignOrg?: string;
+    /**
+     * Set role for new signups. Defaults to Viewer.
+     */
     userAutoAssignOrgRole?: string;
+    /**
+     * Users with view-only permission can edit but not save dashboards.
+     */
     viewersCanEdit?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: string[];
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: string[];
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: string;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: string;
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Name of the OAuth integration
+     */
     name?: string;
+    /**
+     * Scope must be non-empty string without whitespace
+     */
     scopes?: string[];
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGithub {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: string[];
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Require users to belong to one of given team IDs
+     */
     teamIds?: string[];
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGitlab {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * (Required) Require users to belong to one of given groups
+     */
     allowedGroups?: string[];
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: string;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: string;
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGoogle {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: string[];
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
+    /**
+     * (Required) S3 access key. Requires permissions to the S3 bucket for the 
+     * s3:PutObject and s3:PutObjectAcl actions
+     */
     accessKey?: string;
+    /**
+     * (Required) Bucket URL for S3
+     */
     bucketUrl?: string;
+    /**
+     * (Required) Provider type
+     */
     provider?: string;
+    /**
+     * (Required) S3 secret key
+     */
     secretKey?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivateAccess {
+    /**
+     * Grafana specific server provided values.
+     */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPublicAccess {
+    /**
+     * Grafana specific server provided values.
+     */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigSmtpServer {
+    /**
+     * (Required) Address used for sending emails
+     */
     fromAddress?: string;
+    /**
+     * Name used in outgoing emails, defaults to Grafana
+     */
     fromName?: string;
+    /**
+     * (Required) Server hostname or IP
+     */
     host?: string;
+    /**
+     * Password for SMTP authentication
+     */
     password?: string;
+    /**
+     * (Required) SMTP server port
+     */
     port?: string;
+    /**
+     * Skip verifying server certificate. Defaults to false
+     */
     skipVerify?: string;
+    /**
+     * Username for SMTP authentication
+     */
     username?: string;
 }
 
@@ -388,19 +1041,44 @@ export interface GetInfluxDbInfluxdb {
 }
 
 export interface GetInfluxDbInfluxdbUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     */
     customDomain?: string;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
+    /**
+     * InfluxDB specific server provided values.
+     */
     influxdb?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
+    /**
+     * InfluxDB specific server provided values.
+     */
     influxdb?: string;
 }
 
@@ -433,29 +1111,65 @@ export interface GetKafkaConnectKafkaConnect {
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Kafka Connect specific server provided values.
+     */
     kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
     privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
+    /**
+     * Defines what client configurations can be 
+     * overridden by the connector. Default is None.
+     */
     connectorClientConfigOverridePolicy?: string;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest.
+     */
     consumerAutoOffsetReset?: string;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     * * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
+     * of poll() when using consumer group management (defaults to 300000).
+     * * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
+     * * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
+     * (defaults to 60000).
+     * * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
+     * and partition offset data to be committed to offset storage before cancelling the process and restoring
+     * the offset data to be committed in a future attempt (defaults to 5000).
+     */
     consumerIsolationLevel?: string;
     consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    /**
+     * The timeout in milliseconds used to detect failures when using Kafka’s 
+     * group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
+    /**
+     * Kafka Connect specific server provided values.
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
+    /**
+     * Kafka Connect specific server provided values.
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
@@ -467,93 +1181,310 @@ export interface GetKafkaConnectServiceIntegration {
 
 export interface GetKafkaConnectorTask {
     connector: string;
+    /**
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
+     */
     task: number;
 }
 
 export interface GetKafkaKafka {
+    /**
+     * The Kafka client certificate
+     */
     accessCert: string;
+    /**
+     * The Kafka client certificate key
+     */
     accessKey: string;
+    /**
+     * The Kafka Connect URI, if any
+     */
     connectUri: string;
+    /**
+     * The Kafka REST URI, if any
+     */
     restUri: string;
+    /**
+     * The Schema Registry URI, if any
+     */
     schemaRegistryUri: string;
 }
 
 export interface GetKafkaKafkaUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
     ipFilters?: string[];
+    /**
+     * Kafka server provided values:
+     */
     kafka?: outputs.GetKafkaKafkaUserConfigKafka;
+    /**
+     * Kafka authentication methods
+     */
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: string;
+    /**
+     * Kafka Connect configuration values
+     */
     kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: string;
+    /**
+     * Kafka-REST configuration
+     */
     kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
+    /**
+     * Kafka major version
+     */
     kafkaVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.GetKafkaKafkaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafka {
+    /**
+     * Enable auto creation of topics
+     */
     autoCreateTopicsEnable?: string;
+    /**
+     * Specify the final compression type for a given topic. This 
+     * configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+     * It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+     * which means retain the original compression codec set by the producer.
+     */
     compressionType?: string;
+    /**
+     * Idle connections timeout: the server socket processor 
+     * threads close the connections that idle for longer than this.
+     */
     connectionsMaxIdleMs?: string;
+    /**
+     * Replication factor for autocreated topics
+     * * `groupMaxSessionTimeoutMs": {
+     * * `groupMinSessionTimeoutMs": {
+     */
     defaultReplicationFactor?: string;
     groupMaxSessionTimeoutMs?: string;
     groupMinSessionTimeoutMs?: string;
+    /**
+     * The maximum amount of time message will 
+     * remain uncompacted. Only applicable for logs that are being compacted
+     * * `logCleanerMinCleanableRatio": {
+     */
     logCleanerMaxCompactionLagMs?: string;
     logCleanerMinCleanableRatio?: string;
+    /**
+     * The minimum time a message will remain 
+     * uncompacted in the log. Only applicable for logs that are being compacted.
+     * * `logCleanupPolicy": {
+     */
     logCleanerMinCompactionLagMs?: string;
     logCleanupPolicy?: string;
+    /**
+     * The maximum difference allowed between 
+     * the timestamp when a broker receives a message and the timestamp specified in the message
+     */
     logMessageTimestampDifferenceMaxMs?: string;
+    /**
+     * Define whether the timestamp in the message is 
+     * message create time or log append time.
+     */
     logMessageTimestampType?: string;
+    /**
+     * The maximum size of the log before deleting messages
+     */
     logRetentionBytes?: string;
+    /**
+     * The number of hours to keep a log file before deleting it
+     */
     logRetentionHours?: string;
+    /**
+     * The maximum size of a single log file
+     */
     logSegmentBytes?: string;
+    /**
+     * The maximum number of connections allowed from each ip 
+     * address (defaults to 2147483647).
+     * * `maxIncrementalFetchSessionCacheSlots": {
+     * * `messageMaxBytes": {
+     */
     maxConnectionsPerIp?: string;
     maxIncrementalFetchSessionCacheSlots?: string;
     messageMaxBytes?: string;
+    /**
+     * Number of partitions for autocreated topics
+     * * `offsetsRetentionMinutes": {
+     */
     numPartitions?: string;
     offsetsRetentionMinutes?: string;
+    /**
+     * The purge interval (in number of 
+     * requests) of the producer request purgatory(defaults to 1000).
+     */
     producerPurgatoryPurgeIntervalRequests?: string;
+    /**
+     * The number of bytes of messages to attempt to fetch 
+     * for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+     * batch in the first non-empty partition of the fetch is larger than this value, the record batch
+     * will still be returned to ensure that progress can be made.
+     */
     replicaFetchMaxBytes?: string;
+    /**
+     * Maximum bytes expected for the entire fetch 
+     * response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+     * in the first non-empty partition of the fetch is larger than this value, the record batch will
+     * still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     */
     replicaFetchResponseMaxBytes?: string;
+    /**
+     * The maximum number of bytes in a socket request 
+     * (defaults to 104857600).
+     */
     socketRequestMaxBytes?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
+    /**
+     * Enable certificate/SSL authentication
+     */
     certificate?: string;
+    /**
+     * Enable SASL authentication
+     */
     sasl?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
+    /**
+     * Defines what client configurations can 
+     * be overridden by the connector. Default is None
+     */
     connectorClientConfigOverridePolicy?: string;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest
+     */
     consumerAutoOffsetReset?: string;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     */
     consumerIsolationLevel?: string;
+    /**
+     * The maximum delay in milliseconds between invocations 
+     * of poll() when using consumer group management (defaults to 300000).
+     */
     consumerMaxPollIntervalMs?: string;
+    /**
+     * The maximum number of records returned in a single call 
+     * to poll() (defaults to 500).
+     */
     consumerMaxPollRecords?: string;
+    /**
+     * The interval at which to try committing offsets for 
+     * tasks (defaults to 60000).
+     */
     offsetFlushIntervalMs?: string;
+    /**
+     * Maximum number of milliseconds to wait for records to 
+     * flush and partition offset data to be committed to offset storage before cancelling the process
+     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     */
     offsetFlushTimeoutMs?: string;
+    /**
+     * The timeout in milliseconds used to detect failures when 
+     * using Kafka’s group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaRestConfig {
+    /**
+     * If true the consumer's offset will be periodically 
+     * committed to Kafka in the background
+     */
     consumerEnableAutoCommit?: string;
+    /**
+     * Maximum number of bytes in unencoded message keys and 
+     * values by a single request
+     */
     consumerRequestMaxBytes?: string;
+    /**
+     * The maximum total time to wait for messages for a 
+     * request if the maximum number of messages has not yet been reached
+     */
     consumerRequestTimeoutMs?: string;
+    /**
+     * The number of acknowledgments the producer requires the leader to 
+     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+     * for the full set of in-sync replicas to acknowledge the record.
+     */
     producerAcks?: string;
+    /**
+     * Wait for up to the given delay to allow batching records together
+     */
     producerLingerMs?: string;
+    /**
+     * Maximum number of SimpleConsumers that can be 
+     * instantiated per broker.
+     */
     simpleconsumerPoolSizeMax?: string;
 }
 
 export interface GetKafkaKafkaUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetKafkaKafkaUserConfigPublicAccess {
+    /**
+     * Kafka server provided values:
+     */
     kafka?: string;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: string;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: string;
 }
 
@@ -571,14 +1502,32 @@ export interface GetKafkaMirrorMakerKafkaMirrormaker {
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Kafka Mirror Maker 2 specific server provided values.
+     */
     kafkaMirrormaker?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * Whether to periodically check for new consumer groups. 
+     * Defaults to 'true'.
+     */
     refreshGroupsEnabled?: string;
+    /**
+     * Whether to periodically check for new topics and 
+     * partitions. Defaults to 'true'.
+     */
     refreshGroupsIntervalSeconds?: string;
     refreshTopicsEnabled?: string;
+    /**
+     * Frequency of topic and partitions refresh in 
+     * seconds. Defaults to 600 seconds (10 minutes).
+     */
     refreshTopicsIntervalSeconds?: string;
 }
 
@@ -606,50 +1555,190 @@ export interface GetMySqlMysql {
 }
 
 export interface GetMySqlMysqlUserConfig {
+    /**
+     * Custom password for admin user. Defaults to random string. 
+     * This must be set only when a new service is being created.
+     */
     adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a 
+     * new service is being created.
+     */
     adminUsername?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * The minute of an hour when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: string[];
+    /**
+     * MySQL specific server provided values.
+     */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
+    /**
+     * MySQL major version
+     */
     mysqlVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.GetMySqlMysqlUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only when 
+     * a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMysql {
+    /**
+     * The number of seconds that the mysqld server waits for a 
+     * connect packet before responding with Bad handshake
+     */
     connectTimeout?: string;
+    /**
+     * Default server time zone as an offset from UTC 
+     * (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+     */
     defaultTimeZone?: string;
+    /**
+     * The maximum permitted result length in bytes for 
+     * the GROUP_CONCAT() function.
+     */
     groupConcatMaxLen?: string;
+    /**
+     * The time, in seconds, before cached 
+     * statistics expire
+     */
     informationSchemaStatsExpiry?: string;
+    /**
+     * Minimum length of words that are stored in 
+     * an InnoDB FULLTEXT index.
+     */
     innodbFtMinTokenSize?: string;
+    /**
+     * This option is used to specify your 
+     * own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     */
     innodbFtServerStopwordTable?: string;
+    /**
+     * The length of time in seconds an InnoDB 
+     * transaction waits for a row lock before giving up.
+     */
     innodbLockWaitTimeout?: string;
+    /**
+     * The size in bytes of the buffer that InnoDB 
+     * uses to write to the log files on disk.
+     */
     innodbLogBufferSize?: string;
+    /**
+     * The upper limit in bytes on the 
+     * size of the temporary log files used during online DDL operations for InnoDB tables.
+     */
     innodbOnlineAlterLogMaxSize?: string;
+    /**
+     * When enabled, information about all 
+     * deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+     */
     innodbPrintAllDeadlocks?: string;
+    /**
+     * When enabled a transaction timeout 
+     * causes InnoDB to abort and roll back the entire transaction.
+     */
     innodbRollbackOnTimeout?: string;
+    /**
+     * The number of seconds the server waits for 
+     * activity on an interactive connection before closing it.
+     */
     interactiveTimeout?: string;
+    /**
+     * Size of the largest message in bytes that can 
+     * be received by the server. Default is 67108864 (64M)
+     */
     maxAllowedPacket?: string;
+    /**
+     * Limits the size of internal in-memory tables. 
+     * Also set tmp_table_size. Default is 16777216 (16M)
+     */
     maxHeapTableSize?: string;
+    /**
+     * The number of seconds to wait for more data from 
+     * a connection before aborting the read.
+     */
     netReadTimeout?: string;
+    /**
+     * The number of seconds to wait for a block to be 
+     * written to a connection before aborting the write.
+     */
     netWriteTimeout?: string;
+    /**
+     * Sort buffer size in bytes for ORDER BY optimization. 
+     * Default is 262144 (256K)
+     */
     sortBufferSize?: string;
+    /**
+     * Global SQL mode. Set to empty to use MySQL server defaults. 
+     * When creating a new service and not setting this field Aiven default SQL mode (strict,
+     * SQL standard compliant) will be assigned.
+     */
     sqlMode?: string;
+    /**
+     * Require primary key to be defined for new 
+     * tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+     * to always have primary keys because various functionality may break if any large table
+     * is missing them.
+     */
     sqlRequirePrimaryKey?: string;
+    /**
+     * Limits the size of internal in-memory tables. Also set 
+     * max_heap_table_size. Default is 16777216 (16M)
+     */
     tmpTableSize?: string;
+    /**
+     * The number of seconds the server waits for activity on 
+     * a noninteractive connection before closing it.
+     */
     waitTimeout?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPrivateAccess {
+    /**
+     * MySQL specific server provided values.
+     */
     mysql?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
+    /**
+     * MySQL specific server provided values.
+     */
     mysql?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
@@ -660,117 +1749,409 @@ export interface GetMySqlServiceIntegration {
 
 export interface GetPgComponent {
     component: string;
+    /**
+     * PostgreSQL master node host IP or name
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * PostgreSQL port
+     */
     port: number;
     route: string;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl: boolean;
     usage: string;
 }
 
 export interface GetPgPg {
+    /**
+     * Primary PostgreSQL database name
+     */
     dbname: string;
+    /**
+     * PostgreSQL master node host IP or name
+     */
     host: string;
+    /**
+     * PostgreSQL admin user password
+     */
     password: string;
+    /**
+     * PostgreSQL port
+     */
     port: number;
+    /**
+     * PostgreSQL replica URI for services with a replica
+     */
     replicaUri: string;
+    /**
+     * PostgreSQL sslmode setting (currently always `require`)
+     */
     sslmode: string;
+    /**
+     * PostgreSQL master connection URI
+     */
     uri: string;
+    /**
+     * PostgreSQL admin user name
+     */
     user: string;
 }
 
 export interface GetPgPgUserConfig {
+    /**
+     * custom password for admin user. Defaults to random string. *This must
+     * be set only when a new service is being created.*
+     */
     adminPassword?: string;
+    /**
+     * custom username for admin user. *This must be set only when a new service
+     * is being created.*
+     */
     adminUsername?: string;
+    /**
+     * the hour of day (in UTC) when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * the minute of an hour when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * migrate data from existing server, has the following options:
+     */
     migration?: outputs.GetPgPgUserConfigMigration;
+    /**
+     * PostgreSQL specific server provided values.
+     */
     pg?: outputs.GetPgPgUserConfigPg;
+    /**
+     * This setting is deprecated. Use read-replica service integration instead.
+     */
     pgReadReplica?: string;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+     * This has effect only when a new service is being created.
+     */
     pgServiceToForkFrom?: string;
+    /**
+     * PostgreSQL major version.
+     */
     pgVersion?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: outputs.GetPgPgUserConfigPgbouncer;
+    /**
+     * PGLookout settings.
+     */
     pglookout?: outputs.GetPgPgUserConfigPglookout;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.GetPgPgUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.GetPgPgUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Percentage of total RAM that the database server uses for 
+     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
+     */
     sharedBuffersPercentage?: string;
+    /**
+     * Synchronous replication type. Note that the service plan 
+     * also needs to support synchronous replication.
+     */
     synchronousReplication?: string;
+    /**
+     * TimescaleDB extension configuration values.
+     */
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
+    /**
+     * Variant of the PostgreSQL service, may affect the features that are 
+     * exposed by default. Options: `aiven` or `timescale`.
+     */
     variant?: string;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such 
+     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+     * total RAM (up to 32MB).
+     */
     workMem?: string;
 }
 
 export interface GetPgPgUserConfigMigration {
+    /**
+     * Primary PostgreSQL database name
+     */
     dbname?: string;
+    /**
+     * PostgreSQL master node host IP or name
+     */
     host?: string;
+    /**
+     * PostgreSQL admin user password
+     */
     password?: string;
+    /**
+     * PostgreSQL port
+     */
     port?: string;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl?: string;
+    /**
+     * user name for authentication with the server where to migrate data from.
+     */
     username?: string;
 }
 
 export interface GetPgPgUserConfigPg {
+    /**
+     * Specifies a fraction of the table size to add to 
+     * autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+     * (20% of table size).
+     */
     autovacuumAnalyzeScaleFactor?: string;
+    /**
+     * specifies the minimum number of inserted, updated 
+     * or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
     autovacuumAnalyzeThreshold?: string;
+    /**
+     * specifies the maximum age (in transactions) that a table's 
+     * pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+     * wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+     * even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     */
     autovacuumFreezeMaxAge?: string;
+    /**
+     * specifies the maximum number of autovacuum processes (other 
+     * than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+     * can only be set at server start.
+     */
     autovacuumMaxWorkers?: string;
+    /**
+     * specifies the minimum delay between autovacuum runs on any 
+     * given database. The delay is measured in seconds, and the default is one minute.
+     */
     autovacuumNaptime?: string;
+    /**
+     * specifies the cost delay value that will be used 
+     * in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+     * used. The default value is 20 milliseconds.
+     */
     autovacuumVacuumCostDelay?: string;
+    /**
+     * specifies the cost limit value that will be used in 
+     * automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+     * value will be used.
+     */
     autovacuumVacuumCostLimit?: string;
+    /**
+     * specifies a fraction of the table size to add to 
+     * autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     */
     autovacuumVacuumScaleFactor?: string;
+    /**
+     * specifies the minimum number of updated or deleted tuples 
+     * needed to trigger a VACUUM in any one table. The default is 50 tuples
+     */
     autovacuumVacuumThreshold?: string;
+    /**
+     * this is the amount of time, in milliseconds, to wait on a lock before 
+     * checking to see if there is a deadlock condition.
+     */
     deadlockTimeout?: string;
+    /**
+     * Time out sessions with open transactions after 
+     * this number of milliseconds.
+     */
     idleInTransactionSessionTimeout?: string;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
     jit?: string;
+    /**
+     * Causes each action executed by autovacuum to be logged 
+     * if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+     * actions. Minus-one (the default) disables logging autovacuum actions.
+     */
     logAutovacuumMinDuration?: string;
+    /**
+     * Controls the amount of detail written in the server log for 
+     * each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+     */
     logErrorVerbosity?: string;
+    /**
+     * Log statements that take more than this number of 
+     * milliseconds to run, -1 disables
+     */
     logMinDurationStatement?: string;
+    /**
+     * PostgreSQL maximum locks per transaction
+     */
     maxLocksPerTransaction?: string;
+    /**
+     * Sets the maximum number of workers that the system can 
+     * support for parallel queries.
+     */
     maxParallelWorkers?: string;
+    /**
+     * Sets the maximum number of workers that can be 
+     * started by a single Gather or Gather Merge node.
+     */
     maxParallelWorkersPerGather?: string;
+    /**
+     * PostgreSQL maximum predicate locks per transaction
+     */
     maxPredLocksPerTransaction?: string;
+    /**
+     * PostgreSQL maximum prepared transactions
+     */
     maxPreparedTransactions?: string;
+    /**
+     * Maximum depth of the stack in bytes
+     */
     maxStackDepth?: string;
+    /**
+     * Max standby archive delay in milliseconds
+     */
     maxStandbyArchiveDelay?: string;
+    /**
+     * Max standby streaming delay in milliseconds
+     */
     maxStandbyStreamingDelay?: string;
+    /**
+     * Sets the maximum number of background processes that the system
+     * can support
+     * * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+     * * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+     * background tasks.
+     * * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+     * to track top-level statements (those issued directly by clients), all to also track nested
+     * statements (such as statements invoked within functions), or none to disable statement statistics
+     * collection. The default value is top.
+     */
     maxWorkerProcesses?: string;
     pgPartmanBgwDotInterval?: string;
     pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited
+     */
     tempFileLimit?: string;
+    /**
+     * PostgreSQL service timezone
+     */
     timezone?: string;
+    /**
+     * Specifies the number of bytes reserved to track the currently 
+     * executing command for each active session.
+     */
     trackActivityQuerySize?: string;
+    /**
+     * Record commit time of transactions
+     */
     trackCommitTimestamp?: string;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
     trackFunctions?: string;
+    /**
+     * Terminate replication connections that are inactive for longer than 
+     * this amount of time, in milliseconds.
+     */
     walSenderTimeout?: string;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value 
+     * to lower than the default 200ms may negatively impact performance
+     */
     walWriterDelay?: string;
 }
 
 export interface GetPgPgUserConfigPgbouncer {
+    /**
+     * Enum of parameters to ignore when given in startup packet.
+     */
     ignoreStartupParameters?: string[];
+    /**
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
+     */
     serverResetQueryAlways?: string;
 }
 
 export interface GetPgPgUserConfigPglookout {
+    /**
+     * Number of seconds of master unavailability before 
+     * triggering database failover to standby
+     */
     maxFailoverReplicationTimeLag?: string;
 }
 
 export interface GetPgPgUserConfigPrivateAccess {
+    /**
+     * PostgreSQL specific server provided values.
+     */
     pg?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
+    /**
+     * PostgreSQL specific server provided values.
+     */
     pg?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigTimescaledb {
+    /**
+     * The number of background workers for timescaledb 
+     * operations. You should configure this setting to the sum of your number of databases and the
+     * total number of concurrent background workers you want running at any given point in time.
+     */
     maxBackgroundWorkers?: string;
 }
 
@@ -781,10 +2162,19 @@ export interface GetPgServiceIntegration {
 
 export interface GetRedisComponent {
     component: string;
+    /**
+     * (Required) Hostname or IP address of the server where to migrate data from
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * (Required) Port number of the server where to migrate data from
+     */
     port: number;
     route: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl: boolean;
     usage: string;
 }
@@ -793,36 +2183,102 @@ export interface GetRedisRedis {
 }
 
 export interface GetRedisRedisUserConfig {
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
     migration?: outputs.GetRedisRedisUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+     */
     recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
+     * maxmemory-policies
+     */
     redisLfuLogFactor?: string;
+    /**
+     * Redis maxmemory-policy
+     */
     redisMaxmemoryPolicy?: string;
+    /**
+     * Set notify-keyspace-events option
+     */
     redisNotifyKeyspaceEvents?: string;
+    /**
+     * Require SSL to access Redis
+     */
     redisSsl?: string;
+    /**
+     * Redis idle connection timeout
+     * * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
+     * when a new service is being created.
+     */
     redisTimeout?: string;
     serviceToForkFrom?: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection
+     */
     dbname?: string;
+    /**
+     * (Required) Hostname or IP address of the server where to migrate data from
+     */
     host?: string;
+    /**
+     * Password for authentication with the server where to migrate data from
+     */
     password?: string;
+    /**
+     * (Required) Port number of the server where to migrate data from
+     */
     port?: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl?: string;
+    /**
+     * User name for authentication with the server where to migrate data from
+     */
     username?: string;
 }
 
 export interface GetRedisRedisUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Redis specific server provided values.
+     */
     redis?: string;
 }
 
 export interface GetRedisRedisUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Redis specific server provided values.
+     */
     redis?: string;
 }
 
@@ -1469,8 +2925,14 @@ export interface GetServiceServiceIntegration {
 
 export interface GrafanaComponent {
     component: string;
+    /**
+     * Server hostname or IP
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * SMTP server port
+     */
     port: number;
     route: string;
     ssl: boolean;
@@ -1481,96 +2943,304 @@ export interface GrafanaGrafana {
 }
 
 export interface GrafanaGrafanaUserConfig {
+    /**
+     * Enable or disable Grafana alerting functionality
+     */
     alertingEnabled?: string;
+    /**
+     * Default error or timeout setting for new alerting rules
+     */
     alertingErrorOrTimeout?: string;
+    /**
+     * Default value for 'no data or null values' for
+     * new alerting rules
+     */
     alertingNodataOrNullvalues?: string;
+    /**
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
+     * tags. Disabled by default to limit impact of clickjacking
+     */
     allowEmbedding?: string;
+    /**
+     * Enable or disable basic authentication form, used by Grafana 
+     * built-in login.
+     */
     authBasicEnabled?: string;
+    /**
+     * Generic OAuth integration.
+     */
     authGenericOauth?: outputs.GrafanaGrafanaUserConfigAuthGenericOauth;
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     authGithub?: outputs.GrafanaGrafanaUserConfigAuthGithub;
+    /**
+     * GitLab Auth integration.
+     */
     authGitlab?: outputs.GrafanaGrafanaUserConfigAuthGitlab;
+    /**
+     * Google Auth integration
+     */
     authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
+    /**
+     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
+     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     */
     cookieSamesite?: string;
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Dashboard versions to keep per dashboard.
+     */
     dashboardsVersionsToKeep?: string;
+    /**
+     * Send 'X-Grafana-User' header to data source.
+     */
     dataproxySendUserHeader?: string;
+    /**
+     * Timeout for data proxy requests in seconds.
+     */
     dataproxyTimeout?: string;
+    /**
+     * Set to true to disable gravatar. Defaults to false 
+     * (gravatar is enabled).
+     */
     disableGravatar?: string;
+    /**
+     * Editors can manage folders, teams and dashboards created by them.
+     */
     editorsCanAdmin?: string;
+    /**
+     * External image store settings
+     */
     externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
+    /**
+     * Google Analytics Universal Analytics ID for tracking Grafana usage
+     */
     googleAnalyticsUaId?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: string[];
+    /**
+     * Enable Grafana /metrics endpoint
+     */
     metricsEnabled?: string;
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: outputs.GrafanaGrafanaUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * SMTP server settings.
+     */
     smtpServer?: outputs.GrafanaGrafanaUserConfigSmtpServer;
+    /**
+     * Auto-assign new users on signup to main organization. 
+     * Defaults to false.
+     */
     userAutoAssignOrg?: string;
+    /**
+     * Set role for new signups. Defaults to Viewer.
+     */
     userAutoAssignOrgRole?: string;
+    /**
+     * Users with view-only permission can edit but not save dashboards.
+     */
     viewersCanEdit?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGenericOauth {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: string[];
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: string[];
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: string;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: string;
+    /**
+     * Client ID from provider
+     */
     clientId?: string;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Name of the OAuth integration
+     */
     name?: string;
+    /**
+     * Scope must be non-empty string without whitespace
+     */
     scopes?: string[];
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGithub {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: string[];
+    /**
+     * Client ID from provider
+     */
     clientId?: string;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Require users to belong to one of given team IDs
+     */
     teamIds?: string[];
 }
 
 export interface GrafanaGrafanaUserConfigAuthGitlab {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Require users to belong to one of given groups
+     */
     allowedGroups?: string[];
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: string;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: string;
+    /**
+     * Client ID from provider
+     */
     clientId?: string;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGoogle {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: string[];
+    /**
+     * Client ID from provider
+     */
     clientId?: string;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: string;
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
+    /**
+     * S3 access key. Requires permissions to the S3 bucket for the 
+     * s3:PutObject and s3:PutObjectAcl actions
+     */
     accessKey?: string;
+    /**
+     * Bucket URL for S3
+     */
     bucketUrl?: string;
+    /**
+     * Provider type
+     */
     provider?: string;
+    /**
+     * S3 secret key
+     */
     secretKey?: string;
 }
 
 export interface GrafanaGrafanaUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
+     */
     grafana?: string;
 }
 
 export interface GrafanaGrafanaUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
+     */
     grafana?: string;
 }
 
 export interface GrafanaGrafanaUserConfigSmtpServer {
+    /**
+     * Address used for sending emails
+     */
     fromAddress?: string;
+    /**
+     * Name used in outgoing emails, defaults to Grafana
+     */
     fromName?: string;
+    /**
+     * Server hostname or IP
+     */
     host?: string;
+    /**
+     * Password for SMTP authentication
+     */
     password?: string;
+    /**
+     * SMTP server port
+     */
     port?: string;
+    /**
+     * Skip verifying server certificate. Defaults to false
+     */
     skipVerify?: string;
+    /**
+     * Username for SMTP authentication
+     */
     username?: string;
 }
 
@@ -1594,19 +3264,46 @@ export interface InfluxDbInfluxdb {
 }
 
 export interface InfluxDbInfluxdbUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     */
     customDomain?: string;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to influxdb from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     influxdb?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to influxdb from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     influxdb?: string;
 }
 
@@ -1639,30 +3336,91 @@ export interface KafkaConnectKafkaConnect {
 }
 
 export interface KafkaConnectKafkaConnectUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
+    /**
+     * Defines what client configurations can be 
+     * overridden by the connector. Default is None.
+     */
     connectorClientConfigOverridePolicy?: string;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest.
+     */
     consumerAutoOffsetReset?: string;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     */
     consumerIsolationLevel?: string;
+    /**
+     * The maximum delay in milliseconds between invocations 
+     * of poll() when using consumer group management (defaults to 300000).
+     */
     consumerMaxPollIntervalMs?: string;
+    /**
+     * The maximum number of records returned by a single poll.
+     */
     consumerMaxPollRecords?: string;
+    /**
+     * The interval at which to try committing offsets for tasks 
+     * (defaults to 60000).
+     */
     offsetFlushIntervalMs?: string;
+    /**
+     * Maximum number of milliseconds to wait for records to flush 
+     * and partition offset data to be committed to offset storage before cancelling the process and restoring
+     * the offset data to be committed in a future attempt (defaults to 5000).
+     */
     offsetFlushTimeoutMs?: string;
+    /**
+     * The timeout in milliseconds used to detect failures when using Kafka’s 
+     * group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kafkaConnect?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service 
+     * nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kafkaConnect?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service 
+     * nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
@@ -1673,93 +3431,312 @@ export interface KafkaConnectServiceIntegration {
 
 export interface KafkaConnectorTask {
     connector: string;
+    /**
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
+     */
     task: number;
 }
 
 export interface KafkaKafka {
+    /**
+     * The Kafka client certificate
+     */
     accessCert: string;
+    /**
+     * The Kafka client certificate key
+     */
     accessKey: string;
+    /**
+     * The Kafka Connect URI, if any
+     */
     connectUri: string;
+    /**
+     * The Kafka REST URI, if any
+     */
     restUri: string;
+    /**
+     * The Schema Registry URI, if any
+     */
     schemaRegistryUri: string;
 }
 
 export interface KafkaKafkaUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
     ipFilters?: string[];
+    /**
+     * Allow clients to connect to kafka from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     kafka?: outputs.KafkaKafkaUserConfigKafka;
+    /**
+     * Kafka authentication methods
+     */
     kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: string;
+    /**
+     * Kafka Connect configuration values
+     */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: string;
+    /**
+     * Kafka-REST configuration
+     */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
+    /**
+     * Kafka major version
+     */
     kafkaVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.KafkaKafkaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.KafkaKafkaUserConfigPublicAccess;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: string;
 }
 
 export interface KafkaKafkaUserConfigKafka {
+    /**
+     * Enable auto creation of topics
+     */
     autoCreateTopicsEnable?: string;
+    /**
+     * Specify the final compression type for a given topic. This 
+     * configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+     * It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+     * which means retain the original compression codec set by the producer.
+     */
     compressionType?: string;
+    /**
+     * Idle connections timeout: the server socket processor 
+     * threads close the connections that idle for longer than this.
+     */
     connectionsMaxIdleMs?: string;
+    /**
+     * Replication factor for autocreated topics
+     * * `groupMaxSessionTimeoutMs": {
+     * * `groupMinSessionTimeoutMs": {
+     */
     defaultReplicationFactor?: string;
     groupMaxSessionTimeoutMs?: string;
     groupMinSessionTimeoutMs?: string;
+    /**
+     * The maximum amount of time message will 
+     * remain uncompacted. Only applicable for logs that are being compacted
+     * * `logCleanerMinCleanableRatio": {
+     */
     logCleanerMaxCompactionLagMs?: string;
     logCleanerMinCleanableRatio?: string;
+    /**
+     * The minimum time a message will remain 
+     * uncompacted in the log. Only applicable for logs that are being compacted.
+     * * `logCleanupPolicy": {
+     */
     logCleanerMinCompactionLagMs?: string;
     logCleanupPolicy?: string;
+    /**
+     * The maximum difference allowed between 
+     * the timestamp when a broker receives a message and the timestamp specified in the message
+     */
     logMessageTimestampDifferenceMaxMs?: string;
+    /**
+     * Define whether the timestamp in the message is 
+     * message create time or log append time.
+     */
     logMessageTimestampType?: string;
+    /**
+     * The maximum size of the log before deleting messages
+     */
     logRetentionBytes?: string;
+    /**
+     * The number of hours to keep a log file before deleting it
+     */
     logRetentionHours?: string;
+    /**
+     * The maximum size of a single log file
+     */
     logSegmentBytes?: string;
+    /**
+     * The maximum number of connections allowed from each ip 
+     * address (defaults to 2147483647).
+     * * `maxIncrementalFetchSessionCacheSlots": {
+     * * `messageMaxBytes": {
+     */
     maxConnectionsPerIp?: string;
     maxIncrementalFetchSessionCacheSlots?: string;
     messageMaxBytes?: string;
+    /**
+     * Number of partitions for autocreated topics
+     * * `offsetsRetentionMinutes": {
+     */
     numPartitions?: string;
     offsetsRetentionMinutes?: string;
+    /**
+     * The purge interval (in number of 
+     * requests) of the producer request purgatory(defaults to 1000).
+     */
     producerPurgatoryPurgeIntervalRequests?: string;
+    /**
+     * The number of bytes of messages to attempt to fetch 
+     * for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+     * batch in the first non-empty partition of the fetch is larger than this value, the record batch
+     * will still be returned to ensure that progress can be made.
+     */
     replicaFetchMaxBytes?: string;
+    /**
+     * Maximum bytes expected for the entire fetch 
+     * response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+     * in the first non-empty partition of the fetch is larger than this value, the record batch will
+     * still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     */
     replicaFetchResponseMaxBytes?: string;
+    /**
+     * The maximum number of bytes in a socket request 
+     * (defaults to 104857600).
+     */
     socketRequestMaxBytes?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
+    /**
+     * Enable certificate/SSL authentication
+     */
     certificate?: string;
+    /**
+     * Enable SASL authentication
+     */
     sasl?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
+    /**
+     * Defines what client configurations can 
+     * be overridden by the connector. Default is None
+     */
     connectorClientConfigOverridePolicy?: string;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest
+     */
     consumerAutoOffsetReset?: string;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     */
     consumerIsolationLevel?: string;
+    /**
+     * The maximum delay in milliseconds between invocations 
+     * of poll() when using consumer group management (defaults to 300000).
+     */
     consumerMaxPollIntervalMs?: string;
+    /**
+     * The maximum number of records returned in a single call 
+     * to poll() (defaults to 500).
+     */
     consumerMaxPollRecords?: string;
+    /**
+     * The interval at which to try committing offsets for 
+     * tasks (defaults to 60000).
+     */
     offsetFlushIntervalMs?: string;
+    /**
+     * Maximum number of milliseconds to wait for records to 
+     * flush and partition offset data to be committed to offset storage before cancelling the process
+     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     */
     offsetFlushTimeoutMs?: string;
+    /**
+     * The timeout in milliseconds used to detect failures when 
+     * using Kafka’s group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaRestConfig {
+    /**
+     * If true the consumer's offset will be periodically 
+     * committed to Kafka in the background
+     */
     consumerEnableAutoCommit?: string;
+    /**
+     * Maximum number of bytes in unencoded message keys and 
+     * values by a single request
+     */
     consumerRequestMaxBytes?: string;
+    /**
+     * The maximum total time to wait for messages for a 
+     * request if the maximum number of messages has not yet been reached
+     */
     consumerRequestTimeoutMs?: string;
+    /**
+     * The number of acknowledgments the producer requires the leader to 
+     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+     * for the full set of in-sync replicas to acknowledge the record.
+     */
     producerAcks?: string;
+    /**
+     * Wait for up to the given delay to allow batching records together
+     */
     producerLingerMs?: string;
+    /**
+     * Maximum number of SimpleConsumers that can be 
+     * instantiated per broker.
+     */
     simpleconsumerPoolSizeMax?: string;
 }
 
 export interface KafkaKafkaUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to kafka from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     kafka?: string;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: string;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: string;
 }
 
@@ -1777,14 +3754,32 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Kafka MirrorMaker configuration values
+     */
     kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * Whether to periodically check for new consumer groups. 
+     * Defaults to 'true'.
+     */
     refreshGroupsEnabled?: string;
+    /**
+     * Whether to periodically check for new topics and 
+     * partitions. Defaults to 'true'.
+     */
     refreshGroupsIntervalSeconds?: string;
     refreshTopicsEnabled?: string;
+    /**
+     * Frequency of topic and partitions refresh in 
+     * seconds. Defaults to 600 seconds (10 minutes).
+     */
     refreshTopicsIntervalSeconds?: string;
 }
 
@@ -1812,50 +3807,193 @@ export interface MySqlMysql {
 }
 
 export interface MySqlMysqlUserConfig {
+    /**
+     * Custom password for admin user. Defaults to random string. 
+     * This must be set only when a new service is being created.
+     */
     adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a 
+     * new service is being created.
+     */
     adminUsername?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * The minute of an hour when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: string[];
+    /**
+     * Allow clients to connect to mysql from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     mysql?: outputs.MySqlMysqlUserConfigMysql;
+    /**
+     * MySQL major version
+     */
     mysqlVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.MySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.MySqlMysqlUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only when 
+     * a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface MySqlMysqlUserConfigMysql {
+    /**
+     * The number of seconds that the mysqld server waits for a 
+     * connect packet before responding with Bad handshake
+     */
     connectTimeout?: string;
+    /**
+     * Default server time zone as an offset from UTC 
+     * (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+     */
     defaultTimeZone?: string;
+    /**
+     * The maximum permitted result length in bytes for 
+     * the GROUP_CONCAT() function.
+     */
     groupConcatMaxLen?: string;
+    /**
+     * The time, in seconds, before cached 
+     * statistics expire
+     */
     informationSchemaStatsExpiry?: string;
+    /**
+     * Minimum length of words that are stored in 
+     * an InnoDB FULLTEXT index.
+     */
     innodbFtMinTokenSize?: string;
+    /**
+     * This option is used to specify your 
+     * own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     */
     innodbFtServerStopwordTable?: string;
+    /**
+     * The length of time in seconds an InnoDB 
+     * transaction waits for a row lock before giving up.
+     */
     innodbLockWaitTimeout?: string;
+    /**
+     * The size in bytes of the buffer that InnoDB 
+     * uses to write to the log files on disk.
+     */
     innodbLogBufferSize?: string;
+    /**
+     * The upper limit in bytes on the 
+     * size of the temporary log files used during online DDL operations for InnoDB tables.
+     */
     innodbOnlineAlterLogMaxSize?: string;
+    /**
+     * When enabled, information about all 
+     * deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+     */
     innodbPrintAllDeadlocks?: string;
+    /**
+     * When enabled a transaction timeout 
+     * causes InnoDB to abort and roll back the entire transaction.
+     */
     innodbRollbackOnTimeout?: string;
+    /**
+     * The number of seconds the server waits for 
+     * activity on an interactive connection before closing it.
+     */
     interactiveTimeout?: string;
+    /**
+     * Size of the largest message in bytes that can 
+     * be received by the server. Default is 67108864 (64M)
+     */
     maxAllowedPacket?: string;
+    /**
+     * Limits the size of internal in-memory tables. 
+     * Also set tmp_table_size. Default is 16777216 (16M)
+     */
     maxHeapTableSize?: string;
+    /**
+     * The number of seconds to wait for more data from 
+     * a connection before aborting the read.
+     */
     netReadTimeout?: string;
+    /**
+     * The number of seconds to wait for a block to be 
+     * written to a connection before aborting the write.
+     */
     netWriteTimeout?: string;
+    /**
+     * Sort buffer size in bytes for ORDER BY optimization. 
+     * Default is 262144 (256K)
+     */
     sortBufferSize?: string;
+    /**
+     * Global SQL mode. Set to empty to use MySQL server defaults. 
+     * When creating a new service and not setting this field Aiven default SQL mode (strict,
+     * SQL standard compliant) will be assigned.
+     */
     sqlMode?: string;
+    /**
+     * Require primary key to be defined for new 
+     * tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+     * to always have primary keys because various functionality may break if any large table
+     * is missing them.
+     */
     sqlRequirePrimaryKey?: string;
+    /**
+     * Limits the size of internal in-memory tables. Also set 
+     * max_heap_table_size. Default is 16777216 (16M)
+     */
     tmpTableSize?: string;
+    /**
+     * The number of seconds the server waits for activity on 
+     * a noninteractive connection before closing it.
+     */
     waitTimeout?: string;
 }
 
 export interface MySqlMysqlUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to mysql from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     mysql?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to mysql from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     mysql?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
@@ -1866,117 +4004,412 @@ export interface MySqlServiceIntegration {
 
 export interface PgComponent {
     component: string;
+    /**
+     * hostname or IP address of the server where to migrate data from.
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * port number of the server where to migrate data from.
+     */
     port: number;
     route: string;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl: boolean;
     usage: string;
 }
 
 export interface PgPg {
+    /**
+     * database name for bootstrapping the initial connection.
+     */
     dbname: string;
+    /**
+     * hostname or IP address of the server where to migrate data from.
+     */
     host: string;
+    /**
+     * password for authentication with the server where to migrate data from.
+     */
     password: string;
+    /**
+     * port number of the server where to migrate data from.
+     */
     port: number;
+    /**
+     * PostgreSQL replica URI for services with a replica
+     */
     replicaUri: string;
+    /**
+     * PostgreSQL sslmode setting (currently always `require`)
+     */
     sslmode: string;
+    /**
+     * PostgreSQL master connection URI
+     */
     uri: string;
+    /**
+     * PostgreSQL admin user name
+     */
     user: string;
 }
 
 export interface PgPgUserConfig {
+    /**
+     * custom password for admin user. Defaults to random string. *This must
+     * be set only when a new service is being created.*
+     */
     adminPassword?: string;
+    /**
+     * custom username for admin user. *This must be set only when a new service
+     * is being created.*
+     */
     adminUsername?: string;
+    /**
+     * the hour of day (in UTC) when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * the minute of an hour when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * migrate data from existing server, has the following options:
+     */
     migration?: outputs.PgPgUserConfigMigration;
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes
+     * that are in a project VPC or another type of private network
+     */
     pg?: outputs.PgPgUserConfigPg;
+    /**
+     * This setting is deprecated. Use read-replica service integration instead.
+     */
     pgReadReplica?: string;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+     * This has effect only when a new service is being created.
+     */
     pgServiceToForkFrom?: string;
+    /**
+     * PostgreSQL major version.
+     */
     pgVersion?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: outputs.PgPgUserConfigPgbouncer;
+    /**
+     * PGLookout settings.
+     */
     pglookout?: outputs.PgPgUserConfigPglookout;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.PgPgUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.PgPgUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Percentage of total RAM that the database server uses for 
+     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
+     */
     sharedBuffersPercentage?: string;
+    /**
+     * Synchronous replication type. Note that the service plan 
+     * also needs to support synchronous replication.
+     */
     synchronousReplication?: string;
+    /**
+     * TimescaleDB extension configuration values.
+     */
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
+    /**
+     * Variant of the PostgreSQL service, may affect the features that are 
+     * exposed by default. Options: `aiven` or `timescale`.
+     */
     variant?: string;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such 
+     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+     * total RAM (up to 32MB).
+     */
     workMem?: string;
 }
 
 export interface PgPgUserConfigMigration {
+    /**
+     * database name for bootstrapping the initial connection.
+     */
     dbname?: string;
+    /**
+     * hostname or IP address of the server where to migrate data from.
+     */
     host?: string;
+    /**
+     * password for authentication with the server where to migrate data from.
+     */
     password?: string;
+    /**
+     * port number of the server where to migrate data from.
+     */
     port?: string;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl?: string;
+    /**
+     * user name for authentication with the server where to migrate data from.
+     */
     username?: string;
 }
 
 export interface PgPgUserConfigPg {
+    /**
+     * Specifies a fraction of the table size to add to 
+     * autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+     * (20% of table size).
+     */
     autovacuumAnalyzeScaleFactor?: string;
+    /**
+     * specifies the minimum number of inserted, updated 
+     * or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
     autovacuumAnalyzeThreshold?: string;
+    /**
+     * specifies the maximum age (in transactions) that a table's 
+     * pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+     * wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+     * even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     */
     autovacuumFreezeMaxAge?: string;
+    /**
+     * specifies the maximum number of autovacuum processes (other 
+     * than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+     * can only be set at server start.
+     */
     autovacuumMaxWorkers?: string;
+    /**
+     * specifies the minimum delay between autovacuum runs on any 
+     * given database. The delay is measured in seconds, and the default is one minute.
+     */
     autovacuumNaptime?: string;
+    /**
+     * specifies the cost delay value that will be used 
+     * in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+     * used. The default value is 20 milliseconds.
+     */
     autovacuumVacuumCostDelay?: string;
+    /**
+     * specifies the cost limit value that will be used in 
+     * automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+     * value will be used.
+     */
     autovacuumVacuumCostLimit?: string;
+    /**
+     * specifies a fraction of the table size to add to 
+     * autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     */
     autovacuumVacuumScaleFactor?: string;
+    /**
+     * specifies the minimum number of updated or deleted tuples 
+     * needed to trigger a VACUUM in any one table. The default is 50 tuples
+     */
     autovacuumVacuumThreshold?: string;
+    /**
+     * this is the amount of time, in milliseconds, to wait on a lock before 
+     * checking to see if there is a deadlock condition.
+     */
     deadlockTimeout?: string;
+    /**
+     * Time out sessions with open transactions after 
+     * this number of milliseconds.
+     */
     idleInTransactionSessionTimeout?: string;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
     jit?: string;
+    /**
+     * Causes each action executed by autovacuum to be logged 
+     * if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+     * actions. Minus-one (the default) disables logging autovacuum actions.
+     */
     logAutovacuumMinDuration?: string;
+    /**
+     * Controls the amount of detail written in the server log for 
+     * each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+     */
     logErrorVerbosity?: string;
+    /**
+     * Log statements that take more than this number of 
+     * milliseconds to run, -1 disables
+     */
     logMinDurationStatement?: string;
+    /**
+     * PostgreSQL maximum locks per transaction
+     */
     maxLocksPerTransaction?: string;
+    /**
+     * Sets the maximum number of workers that the system can 
+     * support for parallel queries.
+     */
     maxParallelWorkers?: string;
+    /**
+     * Sets the maximum number of workers that can be 
+     * started by a single Gather or Gather Merge node.
+     */
     maxParallelWorkersPerGather?: string;
+    /**
+     * PostgreSQL maximum predicate locks per transaction
+     */
     maxPredLocksPerTransaction?: string;
+    /**
+     * PostgreSQL maximum prepared transactions
+     */
     maxPreparedTransactions?: string;
+    /**
+     * Maximum depth of the stack in bytes
+     */
     maxStackDepth?: string;
+    /**
+     * Max standby archive delay in milliseconds
+     */
     maxStandbyArchiveDelay?: string;
+    /**
+     * Max standby streaming delay in milliseconds
+     */
     maxStandbyStreamingDelay?: string;
+    /**
+     * Sets the maximum number of background processes that the system
+     * can support
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+     * background tasks.
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+     * to track top-level statements (those issued directly by clients), all to also track nested
+     * statements (such as statements invoked within functions), or none to disable statement statistics
+     * collection. The default value is top.
+     */
     maxWorkerProcesses?: string;
     pgPartmanBgwDotInterval?: string;
     pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited
+     */
     tempFileLimit?: string;
+    /**
+     * PostgreSQL service timezone
+     */
     timezone?: string;
+    /**
+     * Specifies the number of bytes reserved to track the currently 
+     * executing command for each active session.
+     */
     trackActivityQuerySize?: string;
+    /**
+     * Record commit time of transactions
+     */
     trackCommitTimestamp?: string;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
     trackFunctions?: string;
+    /**
+     * Terminate replication connections that are inactive for longer than 
+     * this amount of time, in milliseconds.
+     */
     walSenderTimeout?: string;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value 
+     * to lower than the default 200ms may negatively impact performance
+     */
     walWriterDelay?: string;
 }
 
 export interface PgPgUserConfigPgbouncer {
+    /**
+     * Enum of parameters to ignore when given in startup packet.
+     */
     ignoreStartupParameters?: string[];
+    /**
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
+     */
     serverResetQueryAlways?: string;
 }
 
 export interface PgPgUserConfigPglookout {
+    /**
+     * Number of seconds of master unavailability before 
+     * triggering database failover to standby
+     */
     maxFailoverReplicationTimeLag?: string;
 }
 
 export interface PgPgUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes
+     * that are in a project VPC or another type of private network
+     */
     pg?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface PgPgUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes
+     * that are in a project VPC or another type of private network
+     */
     pg?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface PgPgUserConfigTimescaledb {
+    /**
+     * The number of background workers for timescaledb 
+     * operations. You should configure this setting to the sum of your number of databases and the
+     * total number of concurrent background workers you want running at any given point in time.
+     */
     maxBackgroundWorkers?: string;
 }
 
@@ -1987,10 +4420,19 @@ export interface PgServiceIntegration {
 
 export interface RedisComponent {
     component: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * Port number of the server where to migrate data from
+     */
     port: number;
     route: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl: boolean;
     usage: string;
 }
@@ -1999,36 +4441,104 @@ export interface RedisRedis {
 }
 
 export interface RedisRedisUserConfig {
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
     migration?: outputs.RedisRedisUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     * * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+     */
     recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
+     * maxmemory-policies
+     */
     redisLfuLogFactor?: string;
+    /**
+     * Redis maxmemory-policy
+     */
     redisMaxmemoryPolicy?: string;
+    /**
+     * Set notify-keyspace-events option
+     */
     redisNotifyKeyspaceEvents?: string;
+    /**
+     * Require SSL to access Redis
+     */
     redisSsl?: string;
+    /**
+     * Redis idle connection timeout
+     * * `serviceToForkFrom"` - (Optional) Name of another service to fork from. This has effect only
+     * when a new service is being created.
+     */
     redisTimeout?: string;
     serviceToForkFrom?: string;
 }
 
 export interface RedisRedisUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection
+     */
     dbname?: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
     host?: string;
+    /**
+     * Password for authentication with the server where to migrate data from
+     */
     password?: string;
+    /**
+     * Port number of the server where to migrate data from
+     */
     port?: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl?: string;
+    /**
+     * User name for authentication with the server where to migrate data from
+     */
     username?: string;
 }
 
 export interface RedisRedisUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Allow clients to connect to redis from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     redis?: string;
 }
 
 export interface RedisRedisUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Allow clients to connect to redis from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     redis?: string;
 }
 

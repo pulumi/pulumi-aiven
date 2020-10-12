@@ -10,14 +10,55 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Service Integration Resource
+//
+// The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+//
+// Service Integration defines an integration between two Aiven services or between Aiven
+// service and an external integration endpoint. Integration could be for example sending
+// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+// service to a Grafana service to show dashboards, sending logs from any service to
+// Elasticsearch, etc.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewServiceIntegration(ctx, "myintegration", &aiven.ServiceIntegrationArgs{
+// 			DestinationEndpointId:  pulumi.Any(aiven_service_integration_endpoint.Myendpoint.Id),
+// 			DestinationServiceName: pulumi.String(""),
+// 			IntegrationType:        pulumi.String("datadog"),
+// 			Project:                pulumi.Any(aiven_project.Myproject.Project),
+// 			SourceEndpointId:       pulumi.String(""),
+// 			SourceServiceName:      pulumi.Any(aiven_service.Testkafka.Service_name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ServiceIntegration struct {
 	pulumi.CustomResourceState
 
-	// Destination endpoint for the integration (if any)
+	// or `destinationServiceName` - (Required) identifies the target side of
+	// the integration. Only either endpoint identifier or service name must be specified. In
+	// either case the target needs to be defined using the reference syntax described above to
+	// set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
-	// Type of the service integration
+	// identifies the type of integration that is set up. Possible values
+	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
@@ -27,9 +68,12 @@ type ServiceIntegration struct {
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrOutput `pulumi:"logsUserConfig"`
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrOutput `pulumi:"mirrormakerUserConfig"`
-	// Project the integration belongs to
+	// defines the project the integration belongs to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Source endpoint for the integration (if any)
+	// or `sourceServiceName` - (Optional) identifies the source side of the
+	// integration. Only either endpoint identifier or service name must be specified. In either
+	// case the source needs to be defined using the reference syntax described above to set up
+	// the dependency correctly.
 	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrOutput `pulumi:"sourceServiceName"`
@@ -69,11 +113,15 @@ func GetServiceIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceIntegration resources.
 type serviceIntegrationState struct {
-	// Destination endpoint for the integration (if any)
+	// or `destinationServiceName` - (Required) identifies the target side of
+	// the integration. Only either endpoint identifier or service name must be specified. In
+	// either case the target needs to be defined using the reference syntax described above to
+	// set up the dependency correctly.
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
-	// Type of the service integration
+	// identifies the type of integration that is set up. Possible values
+	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType *string `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -83,20 +131,27 @@ type serviceIntegrationState struct {
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
-	// Project the integration belongs to
+	// defines the project the integration belongs to.
 	Project *string `pulumi:"project"`
-	// Source endpoint for the integration (if any)
+	// or `sourceServiceName` - (Optional) identifies the source side of the
+	// integration. Only either endpoint identifier or service name must be specified. In either
+	// case the source needs to be defined using the reference syntax described above to set up
+	// the dependency correctly.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
 }
 
 type ServiceIntegrationState struct {
-	// Destination endpoint for the integration (if any)
+	// or `destinationServiceName` - (Required) identifies the target side of
+	// the integration. Only either endpoint identifier or service name must be specified. In
+	// either case the target needs to be defined using the reference syntax described above to
+	// set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
-	// Type of the service integration
+	// identifies the type of integration that is set up. Possible values
+	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringPtrInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
@@ -106,9 +161,12 @@ type ServiceIntegrationState struct {
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
-	// Project the integration belongs to
+	// defines the project the integration belongs to.
 	Project pulumi.StringPtrInput
-	// Source endpoint for the integration (if any)
+	// or `sourceServiceName` - (Optional) identifies the source side of the
+	// integration. Only either endpoint identifier or service name must be specified. In either
+	// case the source needs to be defined using the reference syntax described above to set up
+	// the dependency correctly.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput
@@ -119,11 +177,15 @@ func (ServiceIntegrationState) ElementType() reflect.Type {
 }
 
 type serviceIntegrationArgs struct {
-	// Destination endpoint for the integration (if any)
+	// or `destinationServiceName` - (Required) identifies the target side of
+	// the integration. Only either endpoint identifier or service name must be specified. In
+	// either case the target needs to be defined using the reference syntax described above to
+	// set up the dependency correctly.
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
-	// Type of the service integration
+	// identifies the type of integration that is set up. Possible values
+	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType string `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -133,9 +195,12 @@ type serviceIntegrationArgs struct {
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
-	// Project the integration belongs to
+	// defines the project the integration belongs to.
 	Project string `pulumi:"project"`
-	// Source endpoint for the integration (if any)
+	// or `sourceServiceName` - (Optional) identifies the source side of the
+	// integration. Only either endpoint identifier or service name must be specified. In either
+	// case the source needs to be defined using the reference syntax described above to set up
+	// the dependency correctly.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
@@ -143,11 +208,15 @@ type serviceIntegrationArgs struct {
 
 // The set of arguments for constructing a ServiceIntegration resource.
 type ServiceIntegrationArgs struct {
-	// Destination endpoint for the integration (if any)
+	// or `destinationServiceName` - (Required) identifies the target side of
+	// the integration. Only either endpoint identifier or service name must be specified. In
+	// either case the target needs to be defined using the reference syntax described above to
+	// set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
-	// Type of the service integration
+	// identifies the type of integration that is set up. Possible values
+	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
@@ -157,9 +226,12 @@ type ServiceIntegrationArgs struct {
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
-	// Project the integration belongs to
+	// defines the project the integration belongs to.
 	Project pulumi.StringInput
-	// Source endpoint for the integration (if any)
+	// or `sourceServiceName` - (Optional) identifies the source side of the
+	// integration. Only either endpoint identifier or service name must be specified. In either
+	// case the source needs to be defined using the reference syntax described above to set up
+	// the dependency correctly.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput

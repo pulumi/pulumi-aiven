@@ -10,18 +10,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Resource Kafka ACL Resource
+//
+// The Resource Kafka ACL resource allows the creation and management of an Aiven Kafka ACL`s for a Kafka service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewKafkaAcl(ctx, "mytestacl", &aiven.KafkaAclArgs{
+// 			Permission:  pulumi.String("admin"),
+// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
+// 			ServiceName: pulumi.Any(aiven_service.Myservice.Service_name),
+// 			Topic:       pulumi.String("<TOPIC_NAME_PATTERN>"),
+// 			Username:    pulumi.String("<USERNAME_PATTERN>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KafkaAcl struct {
 	pulumi.CustomResourceState
 
-	// Kafka permission to grant (admin, read, readwrite, write)
+	// is the level of permission the matching users are given to the matching
+	// topics (admin, read, readwrite, write).
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// Project to link the Kafka ACL to
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service to link the Kafka ACL to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry
+	// is a topic name pattern the ACL entry matches to.
 	Topic pulumi.StringOutput `pulumi:"topic"`
-	// Username pattern for the ACL entry
+	// is a username pattern the ACL entry matches to.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -68,28 +102,36 @@ func GetKafkaAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaAcl resources.
 type kafkaAclState struct {
-	// Kafka permission to grant (admin, read, readwrite, write)
+	// is the level of permission the matching users are given to the matching
+	// topics (admin, read, readwrite, write).
 	Permission *string `pulumi:"permission"`
-	// Project to link the Kafka ACL to
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project *string `pulumi:"project"`
 	// Service to link the Kafka ACL to
 	ServiceName *string `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry
+	// is a topic name pattern the ACL entry matches to.
 	Topic *string `pulumi:"topic"`
-	// Username pattern for the ACL entry
+	// is a username pattern the ACL entry matches to.
 	Username *string `pulumi:"username"`
 }
 
 type KafkaAclState struct {
-	// Kafka permission to grant (admin, read, readwrite, write)
+	// is the level of permission the matching users are given to the matching
+	// topics (admin, read, readwrite, write).
 	Permission pulumi.StringPtrInput
-	// Project to link the Kafka ACL to
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project pulumi.StringPtrInput
 	// Service to link the Kafka ACL to
 	ServiceName pulumi.StringPtrInput
-	// Topic name pattern for the ACL entry
+	// is a topic name pattern the ACL entry matches to.
 	Topic pulumi.StringPtrInput
-	// Username pattern for the ACL entry
+	// is a username pattern the ACL entry matches to.
 	Username pulumi.StringPtrInput
 }
 
@@ -98,29 +140,37 @@ func (KafkaAclState) ElementType() reflect.Type {
 }
 
 type kafkaAclArgs struct {
-	// Kafka permission to grant (admin, read, readwrite, write)
+	// is the level of permission the matching users are given to the matching
+	// topics (admin, read, readwrite, write).
 	Permission string `pulumi:"permission"`
-	// Project to link the Kafka ACL to
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project string `pulumi:"project"`
 	// Service to link the Kafka ACL to
 	ServiceName string `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry
+	// is a topic name pattern the ACL entry matches to.
 	Topic string `pulumi:"topic"`
-	// Username pattern for the ACL entry
+	// is a username pattern the ACL entry matches to.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaAcl resource.
 type KafkaAclArgs struct {
-	// Kafka permission to grant (admin, read, readwrite, write)
+	// is the level of permission the matching users are given to the matching
+	// topics (admin, read, readwrite, write).
 	Permission pulumi.StringInput
-	// Project to link the Kafka ACL to
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project pulumi.StringInput
 	// Service to link the Kafka ACL to
 	ServiceName pulumi.StringInput
-	// Topic name pattern for the ACL entry
+	// is a topic name pattern the ACL entry matches to.
 	Topic pulumi.StringInput
-	// Username pattern for the ACL entry
+	// is a username pattern the ACL entry matches to.
 	Username pulumi.StringInput
 }
 

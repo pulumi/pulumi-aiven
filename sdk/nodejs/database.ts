@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Database Resource
+ *
+ * The Database resource allows the creation and management of an Aiven Databases.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mydatabase = new aiven.Database("mydatabase", {
+ *     databaseName: "<DATABASE_NAME>",
+ *     project: aiven_project_myproject.project,
+ *     serviceName: aiven_service_myservice.serviceName,
+ * });
+ * ```
+ */
 export class Database extends pulumi.CustomResource {
     /**
      * Get an existing Database resource's state with the given name, ID, and optional extra
@@ -33,19 +51,20 @@ export class Database extends pulumi.CustomResource {
     }
 
     /**
-     * Service database name
+     * is the actual name of the database.
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
      */
     public readonly lcCollate!: pulumi.Output<string | undefined>;
     /**
-     * Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
      */
     public readonly lcCtype!: pulumi.Output<string | undefined>;
     /**
-     * Project to link the database to
+     * and `serviceName` - (Required) define the project and service the database belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -110,19 +129,20 @@ export class Database extends pulumi.CustomResource {
  */
 export interface DatabaseState {
     /**
-     * Service database name
+     * is the actual name of the database.
      */
     readonly databaseName?: pulumi.Input<string>;
     /**
-     * Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
      */
     readonly lcCollate?: pulumi.Input<string>;
     /**
-     * Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
      */
     readonly lcCtype?: pulumi.Input<string>;
     /**
-     * Project to link the database to
+     * and `serviceName` - (Required) define the project and service the database belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -141,19 +161,20 @@ export interface DatabaseState {
  */
 export interface DatabaseArgs {
     /**
-     * Service database name
+     * is the actual name of the database.
      */
     readonly databaseName: pulumi.Input<string>;
     /**
-     * Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
      */
     readonly lcCollate?: pulumi.Input<string>;
     /**
-     * Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
      */
     readonly lcCtype?: pulumi.Input<string>;
     /**
-     * Project to link the database to
+     * and `serviceName` - (Required) define the project and service the database belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
     /**

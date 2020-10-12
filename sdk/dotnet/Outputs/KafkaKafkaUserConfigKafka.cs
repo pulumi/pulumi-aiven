@@ -13,29 +13,104 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigKafka
     {
+        /// <summary>
+        /// Enable auto creation of topics
+        /// </summary>
         public readonly string? AutoCreateTopicsEnable;
+        /// <summary>
+        /// Specify the final compression type for a given topic. This 
+        /// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+        /// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+        /// which means retain the original compression codec set by the producer.
+        /// </summary>
         public readonly string? CompressionType;
+        /// <summary>
+        /// Idle connections timeout: the server socket processor 
+        /// threads close the connections that idle for longer than this.
+        /// </summary>
         public readonly string? ConnectionsMaxIdleMs;
+        /// <summary>
+        /// Replication factor for autocreated topics
+        /// * `group_max_session_timeout_ms": {
+        /// * `group_min_session_timeout_ms": {
+        /// </summary>
         public readonly string? DefaultReplicationFactor;
         public readonly string? GroupMaxSessionTimeoutMs;
         public readonly string? GroupMinSessionTimeoutMs;
+        /// <summary>
+        /// The maximum amount of time message will 
+        /// remain uncompacted. Only applicable for logs that are being compacted
+        /// * `log_cleaner_min_cleanable_ratio": {
+        /// </summary>
         public readonly string? LogCleanerMaxCompactionLagMs;
         public readonly string? LogCleanerMinCleanableRatio;
+        /// <summary>
+        /// The minimum time a message will remain 
+        /// uncompacted in the log. Only applicable for logs that are being compacted.
+        /// * `log_cleanup_policy": {
+        /// </summary>
         public readonly string? LogCleanerMinCompactionLagMs;
         public readonly string? LogCleanupPolicy;
+        /// <summary>
+        /// The maximum difference allowed between 
+        /// the timestamp when a broker receives a message and the timestamp specified in the message
+        /// </summary>
         public readonly string? LogMessageTimestampDifferenceMaxMs;
+        /// <summary>
+        /// Define whether the timestamp in the message is 
+        /// message create time or log append time.
+        /// </summary>
         public readonly string? LogMessageTimestampType;
+        /// <summary>
+        /// The maximum size of the log before deleting messages
+        /// </summary>
         public readonly string? LogRetentionBytes;
+        /// <summary>
+        /// The number of hours to keep a log file before deleting it
+        /// </summary>
         public readonly string? LogRetentionHours;
+        /// <summary>
+        /// The maximum size of a single log file
+        /// </summary>
         public readonly string? LogSegmentBytes;
+        /// <summary>
+        /// The maximum number of connections allowed from each ip 
+        /// address (defaults to 2147483647).
+        /// * `max_incremental_fetch_session_cache_slots": {
+        /// * `message_max_bytes": {
+        /// </summary>
         public readonly string? MaxConnectionsPerIp;
         public readonly string? MaxIncrementalFetchSessionCacheSlots;
         public readonly string? MessageMaxBytes;
+        /// <summary>
+        /// Number of partitions for autocreated topics
+        /// * `offsets_retention_minutes": {
+        /// </summary>
         public readonly string? NumPartitions;
         public readonly string? OffsetsRetentionMinutes;
+        /// <summary>
+        /// The purge interval (in number of 
+        /// requests) of the producer request purgatory(defaults to 1000).
+        /// </summary>
         public readonly string? ProducerPurgatoryPurgeIntervalRequests;
+        /// <summary>
+        /// The number of bytes of messages to attempt to fetch 
+        /// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+        /// batch in the first non-empty partition of the fetch is larger than this value, the record batch
+        /// will still be returned to ensure that progress can be made.
+        /// </summary>
         public readonly string? ReplicaFetchMaxBytes;
+        /// <summary>
+        /// Maximum bytes expected for the entire fetch 
+        /// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+        /// in the first non-empty partition of the fetch is larger than this value, the record batch will
+        /// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        /// </summary>
         public readonly string? ReplicaFetchResponseMaxBytes;
+        /// <summary>
+        /// The maximum number of bytes in a socket request 
+        /// (defaults to 104857600).
+        /// </summary>
         public readonly string? SocketRequestMaxBytes;
 
         [OutputConstructor]

@@ -49,11 +49,19 @@ class GetElasticSearchAclResult:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        enables of disables Elasticsearch ACL's.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="extendedAcl")
     def extended_acl(self) -> Optional[bool]:
+        """
+        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+        (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+        these APIs as long as all operations only target indexes they have been granted access to.
+        """
         return pulumi.get(self, "extended_acl")
 
     @property
@@ -96,7 +104,28 @@ def get_elastic_search_acl(acls: Optional[List[pulumi.InputType['GetElasticSearc
                            service_name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticSearchAclResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Elasticsearch ACL Data Source
+
+    The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL
+    for Elasticsearch service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    es_acls = aiven.get_elastic_search_acl(project=aiven_project["es-project"]["project"],
+        service_name=aiven_service["es"]["service_name"])
+    ```
+
+
+    :param bool enabled: enables of disables Elasticsearch ACL's.
+    :param bool extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+           (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+           these APIs as long as all operations only target indexes they have been granted access to.
+    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to. 
+           They should be defined using reference as shown above to set up dependencies correctly.
     """
     __args__ = dict()
     __args__['acls'] = acls

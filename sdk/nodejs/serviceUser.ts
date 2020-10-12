@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Service User Resource
+ *
+ * The Service User resource allows the creation and management of an Aiven Service Users.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myserviceuser = new aiven.ServiceUser("myserviceuser", {
+ *     project: aiven_project_myproject.project,
+ *     serviceName: aiven_service_myservice.serviceName,
+ *     username: "<USERNAME>",
+ * });
+ * ```
+ */
 export class ServiceUser extends pulumi.CustomResource {
     /**
      * Get an existing ServiceUser resource's state with the given name, ID, and optional extra
@@ -33,19 +51,20 @@ export class ServiceUser extends pulumi.CustomResource {
     }
 
     /**
-     * Access certificate for the user if applicable for the service in question
+     * is the access certificate of the user (not applicable for all services).
      */
     public /*out*/ readonly accessCert!: pulumi.Output<string>;
     /**
-     * Access certificate key for the user if applicable for the service in question
+     * is the access key of the user (not applicable for all services).
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * Password of the user
+     * is the password of the user (not applicable for all services).
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
-     * Project to link the user to
+     * and `serviceName` - (Required) define the project and service the user belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -53,11 +72,11 @@ export class ServiceUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Type of the user account
+     * tells whether the user is primary account or regular account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * Name of the user account
+     * is the actual name of the user account.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -115,19 +134,20 @@ export class ServiceUser extends pulumi.CustomResource {
  */
 export interface ServiceUserState {
     /**
-     * Access certificate for the user if applicable for the service in question
+     * is the access certificate of the user (not applicable for all services).
      */
     readonly accessCert?: pulumi.Input<string>;
     /**
-     * Access certificate key for the user if applicable for the service in question
+     * is the access key of the user (not applicable for all services).
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * Password of the user
+     * is the password of the user (not applicable for all services).
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Project to link the user to
+     * and `serviceName` - (Required) define the project and service the user belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -135,11 +155,11 @@ export interface ServiceUserState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * Type of the user account
+     * tells whether the user is primary account or regular account.
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * Name of the user account
+     * is the actual name of the user account.
      */
     readonly username?: pulumi.Input<string>;
 }
@@ -149,7 +169,8 @@ export interface ServiceUserState {
  */
 export interface ServiceUserArgs {
     /**
-     * Project to link the user to
+     * and `serviceName` - (Required) define the project and service the user belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
     /**
@@ -157,7 +178,7 @@ export interface ServiceUserArgs {
      */
     readonly serviceName: pulumi.Input<string>;
     /**
-     * Name of the user account
+     * is the actual name of the user account.
      */
     readonly username: pulumi.Input<string>;
 }

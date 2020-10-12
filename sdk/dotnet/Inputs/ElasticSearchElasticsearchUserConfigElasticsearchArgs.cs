@@ -12,80 +12,188 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ElasticSearchElasticsearchUserConfigElasticsearchArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Explicitly allow or block automatic 
+        /// creation of indices. Defaults to true
+        /// </summary>
         [Input("actionAutoCreateIndexEnabled")]
         public Input<string>? ActionAutoCreateIndexEnabled { get; set; }
 
+        /// <summary>
+        /// Require explicit index names when deleting
+        /// </summary>
         [Input("actionDestructiveRequiresName")]
         public Input<string>? ActionDestructiveRequiresName { get; set; }
 
+        /// <summary>
+        /// Maximum content length for HTTP requests to 
+        /// the Elasticsearch HTTP API, in bytes.
+        /// </summary>
         [Input("httpMaxContentLength")]
         public Input<string>? HttpMaxContentLength { get; set; }
 
+        /// <summary>
+        /// The max size of allowed headers, in bytes.
+        /// </summary>
         [Input("httpMaxHeaderSize")]
         public Input<string>? HttpMaxHeaderSize { get; set; }
 
+        /// <summary>
+        /// The max length of an HTTP URL, in bytes.
+        /// </summary>
         [Input("httpMaxInitialLineLength")]
         public Input<string>? HttpMaxInitialLineLength { get; set; }
 
+        /// <summary>
+        /// Relative amount. Maximum amount of 
+        /// heap memory used for field data cache. This is an expert setting; decreasing the
+        /// value too much will increase overhead of loading field data; too much memory used
+        /// for field data cache will decrease amount of heap available for other operations.
+        /// </summary>
         [Input("indicesFielddataCacheSize")]
         public Input<string>? IndicesFielddataCacheSize { get; set; }
 
+        /// <summary>
+        /// Percentage value. Default is 10%. 
+        /// Total amount of heap used for indexing buffer, before writing segments to disk.
+        /// This is an expert setting. Too low value will slow down indexing; too high value
+        /// will increase indexing performance but causes performance issues for query performance.
+        /// </summary>
         [Input("indicesMemoryIndexBufferSize")]
         public Input<string>? IndicesMemoryIndexBufferSize { get; set; }
 
+        /// <summary>
+        /// Percentage value. Default is 10%. 
+        /// Maximum amount of heap used for query cache. This is an expert setting.
+        /// Too low value will decrease query performance and increase performance for other
+        /// operations; too high value will cause issues with other Elasticsearch functionality.
+        /// </summary>
         [Input("indicesQueriesCacheSize")]
         public Input<string>? IndicesQueriesCacheSize { get; set; }
 
+        /// <summary>
+        /// Maximum number of clauses Lucene 
+        /// BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+        /// may cause performance issues. Investigate other approaches first before increasing this value.
+        /// </summary>
         [Input("indicesQueryBoolMaxClauseCount")]
         public Input<string>? IndicesQueryBoolMaxClauseCount { get; set; }
 
         [Input("reindexRemoteWhitelists")]
         private InputList<string>? _reindexRemoteWhitelists;
+
+        /// <summary>
+        /// Whitelisted addresses for reindexing. 
+        /// Changing this value will cause all Elasticsearch instances to restart.
+        /// </summary>
         public InputList<string> ReindexRemoteWhitelists
         {
             get => _reindexRemoteWhitelists ?? (_reindexRemoteWhitelists = new InputList<string>());
             set => _reindexRemoteWhitelists = value;
         }
 
+        /// <summary>
+        /// Maximum number of aggregation buckets allowed 
+        /// in a single response. Elasticsearch default value is used when this is not defined.
+        /// </summary>
         [Input("searchMaxBuckets")]
         public Input<string>? SearchMaxBuckets { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool queue. 
+        /// See documentation for exact details.
+        /// </summary>
         [Input("threadPoolAnalyzeQueueSize")]
         public Input<string>? ThreadPoolAnalyzeQueueSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool. See documentation 
+        /// for exact details. Do note this may have maximum value depending on CPU count -
+        /// value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         [Input("threadPoolAnalyzeSize")]
         public Input<string>? ThreadPoolAnalyzeSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool. See 
+        /// documentation for exact details. Do note this may have maximum value depending on
+        /// CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         [Input("threadPoolForceMergeSize")]
         public Input<string>? ThreadPoolForceMergeSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool queue. See 
+        /// documentation for exact details.
+        /// </summary>
         [Input("threadPoolGetQueueSize")]
         public Input<string>? ThreadPoolGetQueueSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool. See documentation 
+        /// for exact details. Do note this may have maximum value depending on CPU count -
+        /// value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         [Input("threadPoolGetSize")]
         public Input<string>? ThreadPoolGetSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool queue. 
+        /// See documentation for exact details.
+        /// </summary>
         [Input("threadPoolIndexQueueSize")]
         public Input<string>? ThreadPoolIndexQueueSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool. See documentation 
+        /// for exact details. Do note this may have maximum value depending on CPU count -
+        /// value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         [Input("threadPoolIndexSize")]
         public Input<string>? ThreadPoolIndexSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool queue. See 
+        /// documentation for exact details.
+        /// </summary>
         [Input("threadPoolSearchQueueSize")]
         public Input<string>? ThreadPoolSearchQueueSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool. See documentation 
+        /// for exact details. Do note this may have maximum value depending on CPU count - value
+        /// is automatically lowered if set to higher than maximum value.
+        /// </summary>
         [Input("threadPoolSearchSize")]
         public Input<string>? ThreadPoolSearchSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool queue. 
+        /// See documentation for exact details.
+        /// </summary>
         [Input("threadPoolSearchThrottledQueueSize")]
         public Input<string>? ThreadPoolSearchThrottledQueueSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool. See 
+        /// documentation for exact details. Do note this may have maximum value depending on
+        /// CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         [Input("threadPoolSearchThrottledSize")]
         public Input<string>? ThreadPoolSearchThrottledSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool queue. See 
+        /// documentation for exact details.
+        /// </summary>
         [Input("threadPoolWriteQueueSize")]
         public Input<string>? ThreadPoolWriteQueueSize { get; set; }
 
+        /// <summary>
+        /// Size for the thread pool. See documentation 
+        /// for exact details. Do note this may have maximum value depending on CPU count - value
+        /// is automatically lowered if set to higher than maximum value.
+        /// </summary>
         [Input("threadPoolWriteSize")]
         public Input<string>? ThreadPoolWriteSize { get; set; }
 

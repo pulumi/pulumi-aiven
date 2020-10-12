@@ -10,29 +10,69 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Kafka Topic Resource
+//
+// The Kafka Topic resource allows the creation and management of an Aiven Kafka Topic`s.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewKafkaTopic(ctx, "mytesttopic", &aiven.KafkaTopicArgs{
+// 			CleanupPolicy:         pulumi.String("delete"),
+// 			MinimumInSyncReplicas: pulumi.Int(2),
+// 			Partitions:            pulumi.Int(5),
+// 			Project:               pulumi.Any(aiven_project.Myproject.Project),
+// 			Replication:           pulumi.Int(3),
+// 			RetentionBytes:        pulumi.Int(-1),
+// 			RetentionHours:        pulumi.Int(72),
+// 			ServiceName:           pulumi.Any(aiven_service.Myservice.Service_name),
+// 			TerminationProtection: pulumi.Bool(true),
+// 			TopicName:             pulumi.String("<TOPIC_NAME>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
-	// Topic cleanup policy. Allowed values: delete, compact
+	// Topic cleanup policy. Allowed values: delete, compact.
 	CleanupPolicy pulumi.StringPtrOutput `pulumi:"cleanupPolicy"`
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
 	MinimumInSyncReplicas pulumi.IntPtrOutput `pulumi:"minimumInSyncReplicas"`
-	// Number of partitions to create in the topic
+	// Number of partitions to create in the topic.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the topic belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Replication factor for the topic
+	// Replication factor for the topic.
 	Replication pulumi.IntOutput `pulumi:"replication"`
-	// Retention bytes
+	// Retention bytes.
 	RetentionBytes pulumi.IntPtrOutput `pulumi:"retentionBytes"`
-	// Retention period (hours)
+	// Retention period in hours, if -1 it is infinite.
 	RetentionHours pulumi.IntPtrOutput `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
-	// Topic name
+	// is the actual name of the topic account. This propery cannot be changed
+	// once the service is created. Doing so will result in the topic being deleted and new one
+	// created instead.
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
 
@@ -79,50 +119,60 @@ func GetKafkaTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaTopic resources.
 type kafkaTopicState struct {
-	// Topic cleanup policy. Allowed values: delete, compact
+	// Topic cleanup policy. Allowed values: delete, compact.
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
 	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
-	// Number of partitions to create in the topic
+	// Number of partitions to create in the topic.
 	Partitions *int `pulumi:"partitions"`
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the topic belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project *string `pulumi:"project"`
-	// Replication factor for the topic
+	// Replication factor for the topic.
 	Replication *int `pulumi:"replication"`
-	// Retention bytes
+	// Retention bytes.
 	RetentionBytes *int `pulumi:"retentionBytes"`
-	// Retention period (hours)
+	// Retention period in hours, if -1 it is infinite.
 	RetentionHours *int `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName *string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
-	// Topic name
+	// is the actual name of the topic account. This propery cannot be changed
+	// once the service is created. Doing so will result in the topic being deleted and new one
+	// created instead.
 	TopicName *string `pulumi:"topicName"`
 }
 
 type KafkaTopicState struct {
-	// Topic cleanup policy. Allowed values: delete, compact
+	// Topic cleanup policy. Allowed values: delete, compact.
 	CleanupPolicy pulumi.StringPtrInput
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
 	MinimumInSyncReplicas pulumi.IntPtrInput
-	// Number of partitions to create in the topic
+	// Number of partitions to create in the topic.
 	Partitions pulumi.IntPtrInput
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the topic belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project pulumi.StringPtrInput
-	// Replication factor for the topic
+	// Replication factor for the topic.
 	Replication pulumi.IntPtrInput
-	// Retention bytes
+	// Retention bytes.
 	RetentionBytes pulumi.IntPtrInput
-	// Retention period (hours)
+	// Retention period in hours, if -1 it is infinite.
 	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringPtrInput
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection pulumi.BoolPtrInput
-	// Topic name
+	// is the actual name of the topic account. This propery cannot be changed
+	// once the service is created. Doing so will result in the topic being deleted and new one
+	// created instead.
 	TopicName pulumi.StringPtrInput
 }
 
@@ -131,51 +181,61 @@ func (KafkaTopicState) ElementType() reflect.Type {
 }
 
 type kafkaTopicArgs struct {
-	// Topic cleanup policy. Allowed values: delete, compact
+	// Topic cleanup policy. Allowed values: delete, compact.
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
 	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
-	// Number of partitions to create in the topic
+	// Number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the topic belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project string `pulumi:"project"`
-	// Replication factor for the topic
+	// Replication factor for the topic.
 	Replication int `pulumi:"replication"`
-	// Retention bytes
+	// Retention bytes.
 	RetentionBytes *int `pulumi:"retentionBytes"`
-	// Retention period (hours)
+	// Retention period in hours, if -1 it is infinite.
 	RetentionHours *int `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
-	// Topic name
+	// is the actual name of the topic account. This propery cannot be changed
+	// once the service is created. Doing so will result in the topic being deleted and new one
+	// created instead.
 	TopicName string `pulumi:"topicName"`
 }
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
-	// Topic cleanup policy. Allowed values: delete, compact
+	// Topic cleanup policy. Allowed values: delete, compact.
 	CleanupPolicy pulumi.StringPtrInput
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
 	MinimumInSyncReplicas pulumi.IntPtrInput
-	// Number of partitions to create in the topic
+	// Number of partitions to create in the topic.
 	Partitions pulumi.IntInput
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the topic belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
 	Project pulumi.StringInput
-	// Replication factor for the topic
+	// Replication factor for the topic.
 	Replication pulumi.IntInput
-	// Retention bytes
+	// Retention bytes.
 	RetentionBytes pulumi.IntPtrInput
-	// Retention period (hours)
+	// Retention period in hours, if -1 it is infinite.
 	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringInput
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection pulumi.BoolPtrInput
-	// Topic name
+	// is the actual name of the topic account. This propery cannot be changed
+	// once the service is created. Doing so will result in the topic being deleted and new one
+	// created instead.
 	TopicName pulumi.StringInput
 }
 

@@ -146,7 +146,36 @@ def get_service_integration(destination_endpoint_id: Optional[str] = None,
                             source_service_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Service Integration Data Source
+
+    The Service Integration data source provides information about the existing Aiven Service Integration.
+
+    Service Integration defines an integration between two Aiven services or between Aiven
+    service and an external integration endpoint. Integration could be for example sending
+    metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+    service to a Grafana service to show dashboards, sending logs from any service to
+    Elasticsearch, etc.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myintegration = aiven.get_service_integration(destination_service_name="<DESTINATION_SERVICE_NAME>",
+        integration_type="datadog",
+        project=aiven_project["myproject"]["project"],
+        source_service_name="<SOURCE_SERVICE_NAME>")
+    ```
+
+
+    :param str destination_service_name: identifies the target side of
+           the integration.
+    :param str integration_type: identifies the type of integration that is set up. Possible values
+           include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+    :param str project: defines the project the integration belongs to.
+    :param str source_service_name: identifies the source side of the
+           integration.
     """
     __args__ = dict()
     __args__['destinationEndpointId'] = destination_endpoint_id

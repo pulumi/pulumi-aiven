@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # MirrorMaker 2 Replication Flow Resource
+ *
+ * The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
+ * Replication Flow on Aiven Cloud.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const f1 = new aiven.MirrorMakerReplicationFlow("f1", {
+ *     project: aiven_project["kafka-mm-project1"].project,
+ *     serviceName: aiven_service.mm.service_name,
+ *     sourceCluster: aiven_service.source.service_name,
+ *     targetCluster: aiven_service.target.service_name,
+ *     enable: true,
+ *     topics: [".*"],
+ *     topicsBlacklists: [
+ *         ".*[\\-\\.]internal",
+ *         ".*\\.replica",
+ *         "__.*",
+ *     ],
+ * });
+ * ```
+ */
 export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     /**
      * Get an existing MirrorMakerReplicationFlow resource's state with the given name, ID, and optional extra
@@ -33,11 +60,12 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     }
 
     /**
-     * Enable of disable replication flows for a service
+     * enable of disable replication flows for a mirror maker service
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
-     * Project to link the kafka topic to
+     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
+     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -45,19 +73,19 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Source cluster alias
+     * is a source cluster alias.
      */
     public readonly sourceCluster!: pulumi.Output<string>;
     /**
-     * Target cluster alias
+     * is a target cluster alias.
      */
     public readonly targetCluster!: pulumi.Output<string>;
     /**
-     * List of topics and/or regular expressions to replicate
+     * is a list of topics and/or regular expressions to replicate.
      */
     public readonly topics!: pulumi.Output<string[] | undefined>;
     /**
-     * List of topics and/or regular expressions to not replicate.
+     * is a list of topics and/or regular expressions to not replicate.
      */
     public readonly topicsBlacklists!: pulumi.Output<string[] | undefined>;
 
@@ -121,11 +149,12 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
  */
 export interface MirrorMakerReplicationFlowState {
     /**
-     * Enable of disable replication flows for a service
+     * enable of disable replication flows for a mirror maker service
      */
     readonly enable?: pulumi.Input<boolean>;
     /**
-     * Project to link the kafka topic to
+     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
+     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -133,19 +162,19 @@ export interface MirrorMakerReplicationFlowState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * Source cluster alias
+     * is a source cluster alias.
      */
     readonly sourceCluster?: pulumi.Input<string>;
     /**
-     * Target cluster alias
+     * is a target cluster alias.
      */
     readonly targetCluster?: pulumi.Input<string>;
     /**
-     * List of topics and/or regular expressions to replicate
+     * is a list of topics and/or regular expressions to replicate.
      */
     readonly topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of topics and/or regular expressions to not replicate.
+     * is a list of topics and/or regular expressions to not replicate.
      */
     readonly topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -155,11 +184,12 @@ export interface MirrorMakerReplicationFlowState {
  */
 export interface MirrorMakerReplicationFlowArgs {
     /**
-     * Enable of disable replication flows for a service
+     * enable of disable replication flows for a mirror maker service
      */
     readonly enable: pulumi.Input<boolean>;
     /**
-     * Project to link the kafka topic to
+     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
+     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
     /**
@@ -167,19 +197,19 @@ export interface MirrorMakerReplicationFlowArgs {
      */
     readonly serviceName: pulumi.Input<string>;
     /**
-     * Source cluster alias
+     * is a source cluster alias.
      */
     readonly sourceCluster: pulumi.Input<string>;
     /**
-     * Target cluster alias
+     * is a target cluster alias.
      */
     readonly targetCluster: pulumi.Input<string>;
     /**
-     * List of topics and/or regular expressions to replicate
+     * is a list of topics and/or regular expressions to replicate.
      */
     readonly topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of topics and/or regular expressions to not replicate.
+     * is a list of topics and/or regular expressions to not replicate.
      */
     readonly topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }

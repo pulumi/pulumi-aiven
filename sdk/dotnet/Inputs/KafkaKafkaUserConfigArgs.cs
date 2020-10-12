@@ -12,44 +12,84 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaUserConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Allow clients to connect to kafka from the public internet for service 
+        /// nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("kafka")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaArgs>? Kafka { get; set; }
 
+        /// <summary>
+        /// Kafka authentication methods
+        /// </summary>
         [Input("kafkaAuthenticationMethods")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs>? KafkaAuthenticationMethods { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to kafka_connect from the public internet 
+        /// for service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("kafkaConnect")]
         public Input<string>? KafkaConnect { get; set; }
 
+        /// <summary>
+        /// Kafka Connect configuration values
+        /// </summary>
         [Input("kafkaConnectConfig")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs>? KafkaConnectConfig { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to kafka_rest from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("kafkaRest")]
         public Input<string>? KafkaRest { get; set; }
 
+        /// <summary>
+        /// Kafka-REST configuration
+        /// </summary>
         [Input("kafkaRestConfig")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaRestConfigArgs>? KafkaRestConfig { get; set; }
 
+        /// <summary>
+        /// Kafka major version
+        /// </summary>
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.KafkaKafkaUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaKafkaUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Enable Schema-Registry service
+        /// </summary>
         [Input("schemaRegistry")]
         public Input<string>? SchemaRegistry { get; set; }
 

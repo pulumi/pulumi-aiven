@@ -12,21 +12,39 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigMigrationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// database name for bootstrapping the initial connection.
+        /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
+        /// <summary>
+        /// hostname or IP address of the server where to migrate data from.
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// password for authentication with the server where to migrate data from.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        /// <summary>
+        /// port number of the server where to migrate data from.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// the server where to migrate data from is secured with SSL.
+        /// </summary>
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }
 
+        /// <summary>
+        /// user name for authentication with the server where to migrate data from.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

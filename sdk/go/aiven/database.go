@@ -10,16 +10,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Database Resource
+//
+// The Database resource allows the creation and management of an Aiven Databases.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewDatabase(ctx, "mydatabase", &aiven.DatabaseArgs{
+// 			DatabaseName: pulumi.String("<DATABASE_NAME>"),
+// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
+// 			ServiceName:  pulumi.Any(aiven_service.Myservice.Service_name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Database struct {
 	pulumi.CustomResourceState
 
-	// Service database name
+	// is the actual name of the database.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
 	LcCollate pulumi.StringPtrOutput `pulumi:"lcCollate"`
-	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
 	LcCtype pulumi.StringPtrOutput `pulumi:"lcCtype"`
-	// Project to link the database to
+	// and `serviceName` - (Required) define the project and service the database belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service to link the database to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -65,13 +94,14 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
-	// Service database name
+	// is the actual name of the database.
 	DatabaseName *string `pulumi:"databaseName"`
-	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
 	LcCtype *string `pulumi:"lcCtype"`
-	// Project to link the database to
+	// and `serviceName` - (Required) define the project and service the database belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project *string `pulumi:"project"`
 	// Service to link the database to
 	ServiceName *string `pulumi:"serviceName"`
@@ -81,13 +111,14 @@ type databaseState struct {
 }
 
 type DatabaseState struct {
-	// Service database name
+	// is the actual name of the database.
 	DatabaseName pulumi.StringPtrInput
-	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
 	LcCtype pulumi.StringPtrInput
-	// Project to link the database to
+	// and `serviceName` - (Required) define the project and service the database belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringPtrInput
 	// Service to link the database to
 	ServiceName pulumi.StringPtrInput
@@ -101,13 +132,14 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// Service database name
+	// is the actual name of the database.
 	DatabaseName string `pulumi:"databaseName"`
-	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
 	LcCtype *string `pulumi:"lcCtype"`
-	// Project to link the database to
+	// and `serviceName` - (Required) define the project and service the database belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project string `pulumi:"project"`
 	// Service to link the database to
 	ServiceName string `pulumi:"serviceName"`
@@ -118,13 +150,14 @@ type databaseArgs struct {
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// Service database name
+	// is the actual name of the database.
 	DatabaseName pulumi.StringInput
-	// Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
 	LcCtype pulumi.StringPtrInput
-	// Project to link the database to
+	// and `serviceName` - (Required) define the project and service the database belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringInput
 	// Service to link the database to
 	ServiceName pulumi.StringInput

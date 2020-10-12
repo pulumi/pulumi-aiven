@@ -9,28 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Project User Resource
+    /// 
+    /// The Project User resource allows the creation and management of an Aiven Project Users.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mytestuser = new Aiven.ProjectUser("mytestuser", new Aiven.ProjectUserArgs
+    ///         {
+    ///             Email = "john.doe@example.com",
+    ///             MemberType = "admin",
+    ///             Project = aiven_project.Myproject.Project,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ProjectUser : Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the user has accepted project membership or not
+        /// is a computed property tells whether the user has accepted the request to join
+        /// the project; adding user to a project sends an invitation to the target user and the
+        /// actual membership is only created once the user accepts the invitation. This property
+        /// cannot be set, only read.
         /// </summary>
         [Output("accepted")]
         public Output<bool> Accepted { get; private set; } = null!;
 
         /// <summary>
-        /// Email address of the user
+        /// identifies the email address of the user.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Project membership type. One of: admin, developer, operator
+        /// defines the access level the user has to the project.
         /// </summary>
         [Output("memberType")]
         public Output<string> MemberType { get; private set; } = null!;
 
         /// <summary>
-        /// The project the user belongs to
+        /// defines the project the user is a member of.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -82,19 +111,19 @@ namespace Pulumi.Aiven
     public sealed class ProjectUserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Email address of the user
+        /// identifies the email address of the user.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Project membership type. One of: admin, developer, operator
+        /// defines the access level the user has to the project.
         /// </summary>
         [Input("memberType", required: true)]
         public Input<string> MemberType { get; set; } = null!;
 
         /// <summary>
-        /// The project the user belongs to
+        /// defines the project the user is a member of.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -107,25 +136,28 @@ namespace Pulumi.Aiven
     public sealed class ProjectUserState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the user has accepted project membership or not
+        /// is a computed property tells whether the user has accepted the request to join
+        /// the project; adding user to a project sends an invitation to the target user and the
+        /// actual membership is only created once the user accepts the invitation. This property
+        /// cannot be set, only read.
         /// </summary>
         [Input("accepted")]
         public Input<bool>? Accepted { get; set; }
 
         /// <summary>
-        /// Email address of the user
+        /// identifies the email address of the user.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Project membership type. One of: admin, developer, operator
+        /// defines the access level the user has to the project.
         /// </summary>
         [Input("memberType")]
         public Input<string>? MemberType { get; set; }
 
         /// <summary>
-        /// The project the user belongs to
+        /// defines the project the user is a member of.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

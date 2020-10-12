@@ -7,6 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Account Team Data Source
+//
+// The Account Team data source provides information about the existing Account Team.
 func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamResult, error) {
 	var rv LookupAccountTeamResult
 	err := ctx.Invoke("aiven:index/getAccountTeam:getAccountTeam", args, &rv, opts...)
@@ -18,20 +21,28 @@ func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ..
 
 // A collection of arguments for invoking getAccountTeam.
 type LookupAccountTeamArgs struct {
-	AccountId  string  `pulumi:"accountId"`
+	// is a unique account id.
+	AccountId string `pulumi:"accountId"`
+	// time of creation.
 	CreateTime *string `pulumi:"createTime"`
-	Name       string  `pulumi:"name"`
-	TeamId     *string `pulumi:"teamId"`
+	// defines an account team name.
+	Name string `pulumi:"name"`
+	// is an auto-generated unique account team id.
+	TeamId *string `pulumi:"teamId"`
+	// time of last update.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // A collection of values returned by getAccountTeam.
 type LookupAccountTeamResult struct {
-	AccountId  string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// time of creation.
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	Name       string `pulumi:"name"`
-	TeamId     string `pulumi:"teamId"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// is an auto-generated unique account team id.
+	TeamId string `pulumi:"teamId"`
+	// time of last update.
 	UpdateTime string `pulumi:"updateTime"`
 }

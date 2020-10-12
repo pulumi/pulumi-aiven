@@ -12,25 +12,42 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetGrafanaGrafanaUserConfigAuthGithubArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in
+        /// </summary>
         [Input("allowSignUp")]
         public string? AllowSignUp { get; set; }
 
         [Input("allowedOrganizations")]
         private List<string>? _allowedOrganizations;
+
+        /// <summary>
+        /// Must consist of alpha-numeric characters and dashes"
+        /// </summary>
         public List<string> AllowedOrganizations
         {
             get => _allowedOrganizations ?? (_allowedOrganizations = new List<string>());
             set => _allowedOrganizations = value;
         }
 
+        /// <summary>
+        /// (Required) Client ID from provider
+        /// </summary>
         [Input("clientId")]
         public string? ClientId { get; set; }
 
+        /// <summary>
+        /// (Required) Client secret from provider
+        /// </summary>
         [Input("clientSecret")]
         public string? ClientSecret { get; set; }
 
         [Input("teamIds")]
         private List<string>? _teamIds;
+
+        /// <summary>
+        /// Require users to belong to one of given team IDs
+        /// </summary>
         public List<string> TeamIds
         {
             get => _teamIds ?? (_teamIds = new List<string>());

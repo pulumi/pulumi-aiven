@@ -12,26 +12,46 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetInfluxDbInfluxdbUserConfigArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        /// </summary>
         [Input("customDomain")]
         public string? CustomDomain { get; set; }
 
         [Input("ipFilters")]
         private List<string>? _ipFilters;
+
+        /// <summary>
+        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public List<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new List<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Inputs.GetInfluxDbInfluxdbUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Inputs.GetInfluxDbInfluxdbUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Name of the basebackup to restore in forked service
+        /// </summary>
         [Input("recoveryBasebackupName")]
         public string? RecoveryBasebackupName { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect 
+        /// only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
 

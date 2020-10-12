@@ -13,11 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigMigration
     {
+        /// <summary>
+        /// database name for bootstrapping the initial connection.
+        /// </summary>
         public readonly string? Dbname;
+        /// <summary>
+        /// hostname or IP address of the server where to migrate data from.
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// password for authentication with the server where to migrate data from.
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// port number of the server where to migrate data from.
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// the server where to migrate data from is secured with SSL.
+        /// </summary>
         public readonly string? Ssl;
+        /// <summary>
+        /// user name for authentication with the server where to migrate data from.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

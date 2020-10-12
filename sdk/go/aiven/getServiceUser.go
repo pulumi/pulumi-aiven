@@ -7,6 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Service User Data Source
+//
+// The Service User data source provides information about the existing Aiven Service User.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupServiceUser(ctx, &aiven.LookupServiceUserArgs{
+// 			Project:     aiven_project.Myproject.Project,
+// 			ServiceName: aiven_service.Myservice.Service_name,
+// 			Username:    "<USERNAME>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupServiceUser(ctx *pulumi.Context, args *LookupServiceUserArgs, opts ...pulumi.InvokeOption) (*LookupServiceUserResult, error) {
 	var rv LookupServiceUserResult
 	err := ctx.Invoke("aiven:index/getServiceUser:getServiceUser", args, &rv, opts...)
@@ -18,24 +46,35 @@ func LookupServiceUser(ctx *pulumi.Context, args *LookupServiceUserArgs, opts ..
 
 // A collection of arguments for invoking getServiceUser.
 type LookupServiceUserArgs struct {
-	AccessCert  *string `pulumi:"accessCert"`
-	AccessKey   *string `pulumi:"accessKey"`
-	Password    *string `pulumi:"password"`
-	Project     string  `pulumi:"project"`
-	ServiceName string  `pulumi:"serviceName"`
-	Type        *string `pulumi:"type"`
-	Username    string  `pulumi:"username"`
+	// is the access certificate of the user (not applicable for all services).
+	AccessCert *string `pulumi:"accessCert"`
+	// is the access key of the user (not applicable for all services).
+	AccessKey *string `pulumi:"accessKey"`
+	// is the password of the user (not applicable for all services).
+	Password *string `pulumi:"password"`
+	// and `serviceName` - (Required) define the project and service the user belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
+	// tells whether the user is primary account or regular account.
+	Type *string `pulumi:"type"`
+	// is the actual name of the user account.
+	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getServiceUser.
 type LookupServiceUserResult struct {
+	// is the access certificate of the user (not applicable for all services).
 	AccessCert string `pulumi:"accessCert"`
-	AccessKey  string `pulumi:"accessKey"`
+	// is the access key of the user (not applicable for all services).
+	AccessKey string `pulumi:"accessKey"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// is the password of the user (not applicable for all services).
 	Password    string `pulumi:"password"`
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	Type        string `pulumi:"type"`
-	Username    string `pulumi:"username"`
+	// tells whether the user is primary account or regular account.
+	Type     string `pulumi:"type"`
+	Username string `pulumi:"username"`
 }

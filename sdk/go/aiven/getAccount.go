@@ -7,6 +7,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Account Data Source
+//
+// The Account data source provides information about the existing Aiven Account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupAccount(ctx, &aiven.LookupAccountArgs{
+// 			Name: "<ACCOUNT_NAME>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("aiven:index/getAccount:getAccount", args, &rv, opts...)
@@ -18,22 +44,33 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountArgs struct {
-	AccountId   *string `pulumi:"accountId"`
-	CreateTime  *string `pulumi:"createTime"`
-	Name        string  `pulumi:"name"`
+	// is an auto-generated unique account id.
+	AccountId *string `pulumi:"accountId"`
+	// time of creation.
+	CreateTime *string `pulumi:"createTime"`
+	// defines an account name.
+	Name string `pulumi:"name"`
+	// is an owner team id.
 	OwnerTeamId *string `pulumi:"ownerTeamId"`
-	TenantId    *string `pulumi:"tenantId"`
-	UpdateTime  *string `pulumi:"updateTime"`
+	// is a tenant id.
+	TenantId *string `pulumi:"tenantId"`
+	// time of last update.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // A collection of values returned by getAccount.
 type LookupAccountResult struct {
-	AccountId  string `pulumi:"accountId"`
+	// is an auto-generated unique account id.
+	AccountId string `pulumi:"accountId"`
+	// time of creation.
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// is an owner team id.
 	OwnerTeamId string `pulumi:"ownerTeamId"`
-	TenantId    string `pulumi:"tenantId"`
-	UpdateTime  string `pulumi:"updateTime"`
+	// is a tenant id.
+	TenantId string `pulumi:"tenantId"`
+	// time of last update.
+	UpdateTime string `pulumi:"updateTime"`
 }

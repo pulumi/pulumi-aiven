@@ -7,6 +7,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Service Integration Data Source
+//
+// The Service Integration data source provides information about the existing Aiven Service Integration.
+//
+// Service Integration defines an integration between two Aiven services or between Aiven
+// service and an external integration endpoint. Integration could be for example sending
+// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+// service to a Grafana service to show dashboards, sending logs from any service to
+// Elasticsearch, etc.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
+// 			DestinationServiceName: "<DESTINATION_SERVICE_NAME>",
+// 			IntegrationType:        "datadog",
+// 			Project:                aiven_project.Myproject.Project,
+// 			SourceServiceName:      "<SOURCE_SERVICE_NAME>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupServiceIntegration(ctx *pulumi.Context, args *LookupServiceIntegrationArgs, opts ...pulumi.InvokeOption) (*LookupServiceIntegrationResult, error) {
 	var rv LookupServiceIntegrationResult
 	err := ctx.Invoke("aiven:index/getServiceIntegration:getServiceIntegration", args, &rv, opts...)
@@ -18,16 +53,23 @@ func LookupServiceIntegration(ctx *pulumi.Context, args *LookupServiceIntegratio
 
 // A collection of arguments for invoking getServiceIntegration.
 type LookupServiceIntegrationArgs struct {
-	DestinationEndpointId      *string                                          `pulumi:"destinationEndpointId"`
-	DestinationServiceName     string                                           `pulumi:"destinationServiceName"`
+	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
+	// identifies the target side of
+	// the integration.
+	DestinationServiceName string `pulumi:"destinationServiceName"`
+	// identifies the type of integration that is set up. Possible values
+	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType            string                                           `pulumi:"integrationType"`
 	KafkaConnectUserConfig     *GetServiceIntegrationKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfig"`
 	KafkaMirrormakerUserConfig *GetServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	LogsUserConfig             *GetServiceIntegrationLogsUserConfig             `pulumi:"logsUserConfig"`
 	MirrormakerUserConfig      *GetServiceIntegrationMirrormakerUserConfig      `pulumi:"mirrormakerUserConfig"`
-	Project                    string                                           `pulumi:"project"`
-	SourceEndpointId           *string                                          `pulumi:"sourceEndpointId"`
-	SourceServiceName          string                                           `pulumi:"sourceServiceName"`
+	// defines the project the integration belongs to.
+	Project          string  `pulumi:"project"`
+	SourceEndpointId *string `pulumi:"sourceEndpointId"`
+	// identifies the source side of the
+	// integration.
+	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // A collection of values returned by getServiceIntegration.

@@ -62,6 +62,10 @@ class GetAccountTeamProjectResult:
     @property
     @pulumi.getter(name="teamType")
     def team_type(self) -> Optional[str]:
+        """
+        is an account team project type, can one of the following values: `admin`, 
+        `developer`, `operator` and `read_only`.
+        """
         return pulumi.get(self, "team_type")
 
 
@@ -84,7 +88,16 @@ def get_account_team_project(account_id: Optional[str] = None,
                              team_type: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamProjectResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Account Team Project Data Source
+
+    The Account Team Project data source provides information about the existing Account Team Project.
+
+
+    :param str account_id: is a unique account id.
+    :param str project_name: is a project name of already existing project.
+    :param str team_id: is an account team id.
+    :param str team_type: is an account team project type, can one of the following values: `admin`, 
+           `developer`, `operator` and `read_only`.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

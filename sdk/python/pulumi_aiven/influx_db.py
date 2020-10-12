@@ -32,20 +32,73 @@ class InfluxDb(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a InfluxDb resource with the given unique name, props, and options.
+        ## # InfluxDB Resource
+
+        The InfluxDB resource allows the creation and management of an Aiven InfluxDB services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        inf1 = aiven.InfluxDb("inf1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="my-inf1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            influxdb_user_config=aiven.InfluxDbInfluxdbUserConfigArgs(
+                public_access=aiven.InfluxDbInfluxdbUserConfigPublicAccessArgs(
+                    influxdb="true",
+                ),
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Cloud the service runs in
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: InfluxDB server provided values
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: InfluxDB user configurable settings
-        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: Subscription plan
-        :param pulumi.Input[str] project: Target project
-        :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
+        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
+               in. This can be changed freely after service is created. Changing the value will trigger
+               a potentially lenghty migration process for the service. Format is cloud provider name
+               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+               specific region name. These are documented on each Cloud provider's own support articles,
+               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: Allow clients to connect to influxdb from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: defines InfluxDB specific additional configuration options. The following 
+               configuration options available:
+        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
+               One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
+               UTC time in HH:mm:ss format.
+        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
+               be changed after creation, though there are some restrictions when going to a smaller
+               plan such as the new plan must have sufficient amount of disk space to store all current
+               data and switching to a plan with fewer nodes might not be supported. The basic plan
+               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+               (roughly) the amount of memory on each node (also other attributes like number of CPUs
+               and amount of disk space varies but naming is based on memory). The exact options can be
+               seen from the Aiven web console's Create Service dialog.
+        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
+               between the project and the service, refer to the project as shown in the above example.
+               Project cannot be changed later without destroying and re-creating the service.
+        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
+               is not set the service is not run inside a VPC. When set, the value should be given as a
+               reference as shown above to set up dependencies correctly and the VPC must be in the same
+               cloud and region as the service itself. Project can be freely moved to and from VPC after
+               creation but doing so triggers migration to new servers so the operation can take
+               significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InfluxDbServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
+        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
+               later without destroying and re-creating the service so name should be picked based on
+               intended service usage rather than current attributes.
+        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
+               set this to `true` for all production services to prevent unintentional service
+               deletions. This does not shield against deleting databases or topics but for services
+               with backups much of the content can at least be restored from backup in case accidental
+               deletion is done.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,25 +176,55 @@ class InfluxDb(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Cloud the service runs in
+        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
+               in. This can be changed freely after service is created. Changing the value will trigger
+               a potentially lenghty migration process for the service. Format is cloud provider name
+               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+               specific region name. These are documented on each Cloud provider's own support articles,
+               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InfluxDbComponentArgs']]]] components: Service component information objects
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: InfluxDB server provided values
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: InfluxDB user configurable settings
-        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: Subscription plan
-        :param pulumi.Input[str] project: Target project
-        :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input[str] service_host: Service hostname
+        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: Allow clients to connect to influxdb from the public internet for 
+               service nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: defines InfluxDB specific additional configuration options. The following 
+               configuration options available:
+        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
+               One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
+               UTC time in HH:mm:ss format.
+        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
+               be changed after creation, though there are some restrictions when going to a smaller
+               plan such as the new plan must have sufficient amount of disk space to store all current
+               data and switching to a plan with fewer nodes might not be supported. The basic plan
+               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+               (roughly) the amount of memory on each node (also other attributes like number of CPUs
+               and amount of disk space varies but naming is based on memory). The exact options can be
+               seen from the Aiven web console's Create Service dialog.
+        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
+               between the project and the service, refer to the project as shown in the above example.
+               Project cannot be changed later without destroying and re-creating the service.
+        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
+               is not set the service is not run inside a VPC. When set, the value should be given as a
+               reference as shown above to set up dependencies correctly and the VPC must be in the same
+               cloud and region as the service itself. Project can be freely moved to and from VPC after
+               creation but doing so triggers migration to new servers so the operation can take
+               significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] service_host: InfluxDB hostname.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InfluxDbServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
-        :param pulumi.Input[float] service_port: Service port
+        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
+               later without destroying and re-creating the service so name should be picked based on
+               intended service usage rather than current attributes.
+        :param pulumi.Input[str] service_password: Password used for connecting to the InfluxDB service, if applicable.
+        :param pulumi.Input[float] service_port: InfluxDB port.
         :param pulumi.Input[str] service_type: Aiven internal service type code
-        :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-        :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
-        :param pulumi.Input[str] state: Service state
-        :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
+        :param pulumi.Input[str] service_uri: URI for connecting to the InfluxDB service.
+        :param pulumi.Input[str] service_username: Username used for connecting to the InfluxDB service, if applicable.
+        :param pulumi.Input[str] state: Service state.
+        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
+               set this to `true` for all production services to prevent unintentional service
+               deletions. This does not shield against deleting databases or topics but for services
+               with backups much of the content can at least be restored from backup in case accidental
+               deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,7 +255,13 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Cloud the service runs in
+        defines where the cloud provider and region where the service is hosted
+        in. This can be changed freely after service is created. Changing the value will trigger
+        a potentially lenghty migration process for the service. Format is cloud provider name
+        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+        specific region name. These are documented on each Cloud provider's own support articles,
+        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -188,7 +277,8 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter
     def influxdb(self) -> pulumi.Output['outputs.InfluxDbInfluxdb']:
         """
-        InfluxDB server provided values
+        Allow clients to connect to influxdb from the public internet for 
+        service nodes that are in a project VPC or another type of private network
         """
         return pulumi.get(self, "influxdb")
 
@@ -196,7 +286,8 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="influxdbUserConfig")
     def influxdb_user_config(self) -> pulumi.Output[Optional['outputs.InfluxDbInfluxdbUserConfig']]:
         """
-        InfluxDB user configurable settings
+        defines InfluxDB specific additional configuration options. The following 
+        configuration options available:
         """
         return pulumi.get(self, "influxdb_user_config")
 
@@ -204,7 +295,8 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
-        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        day of week when maintenance operations should be performed. 
+        One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -212,7 +304,8 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> pulumi.Output[Optional[str]]:
         """
-        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        time of day when maintenance operations should be performed. 
+        UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
@@ -220,7 +313,14 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[Optional[str]]:
         """
-        Subscription plan
+        defines what kind of computing resources are allocated for the service. It can
+        be changed after creation, though there are some restrictions when going to a smaller
+        plan such as the new plan must have sufficient amount of disk space to store all current
+        data and switching to a plan with fewer nodes might not be supported. The basic plan
+        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+        (roughly) the amount of memory on each node (also other attributes like number of CPUs
+        and amount of disk space varies but naming is based on memory). The exact options can be
+        seen from the Aiven web console's Create Service dialog.
         """
         return pulumi.get(self, "plan")
 
@@ -228,7 +328,9 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Target project
+        identifies the project the service belongs to. To set up proper dependency
+        between the project and the service, refer to the project as shown in the above example.
+        Project cannot be changed later without destroying and re-creating the service.
         """
         return pulumi.get(self, "project")
 
@@ -236,7 +338,12 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Identifier of the VPC the service should be in, if any
+        optionally specifies the VPC the service should run in. If the value
+        is not set the service is not run inside a VPC. When set, the value should be given as a
+        reference as shown above to set up dependencies correctly and the VPC must be in the same
+        cloud and region as the service itself. Project can be freely moved to and from VPC after
+        creation but doing so triggers migration to new servers so the operation can take
+        significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -244,7 +351,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> pulumi.Output[str]:
         """
-        Service hostname
+        InfluxDB hostname.
         """
         return pulumi.get(self, "service_host")
 
@@ -260,7 +367,9 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name
+        specifies the actual name of the service. The name cannot be changed
+        later without destroying and re-creating the service so name should be picked based on
+        intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -268,7 +377,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> pulumi.Output[str]:
         """
-        Password used for connecting to the service, if applicable
+        Password used for connecting to the InfluxDB service, if applicable.
         """
         return pulumi.get(self, "service_password")
 
@@ -276,7 +385,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="servicePort")
     def service_port(self) -> pulumi.Output[float]:
         """
-        Service port
+        InfluxDB port.
         """
         return pulumi.get(self, "service_port")
 
@@ -292,7 +401,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> pulumi.Output[str]:
         """
-        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        URI for connecting to the InfluxDB service.
         """
         return pulumi.get(self, "service_uri")
 
@@ -300,7 +409,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> pulumi.Output[str]:
         """
-        Username used for connecting to the service, if applicable
+        Username used for connecting to the InfluxDB service, if applicable.
         """
         return pulumi.get(self, "service_username")
 
@@ -308,7 +417,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Service state
+        Service state.
         """
         return pulumi.get(self, "state")
 
@@ -316,7 +425,11 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Prevent service from being deleted. It is recommended to have this enabled for all services.
+        prevents the service from being deleted. It is recommended to
+        set this to `true` for all production services to prevent unintentional service
+        deletions. This does not shield against deleting databases or topics but for services
+        with backups much of the content can at least be restored from backup in case accidental
+        deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 

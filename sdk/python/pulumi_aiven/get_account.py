@@ -45,11 +45,17 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        is an auto-generated unique account id.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        time of creation.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -68,16 +74,25 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="ownerTeamId")
     def owner_team_id(self) -> str:
+        """
+        is an owner team id.
+        """
         return pulumi.get(self, "owner_team_id")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
+        """
+        is a tenant id.
+        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        time of last update.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -104,7 +119,26 @@ def get_account(account_id: Optional[str] = None,
                 update_time: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Account Data Source
+
+    The Account data source provides information about the existing Aiven Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    account1 = aiven.get_account(name="<ACCOUNT_NAME>")
+    ```
+
+
+    :param str account_id: is an auto-generated unique account id.
+    :param str create_time: time of creation.
+    :param str name: defines an account name.
+    :param str owner_team_id: is an owner team id.
+    :param str tenant_id: is a tenant id.
+    :param str update_time: time of last update.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

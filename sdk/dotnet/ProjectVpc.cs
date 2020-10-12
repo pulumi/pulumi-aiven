@@ -9,28 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Project VPC Resource
+    /// 
+    /// The Project VPC resource allows the creation and management of an Aiven Project VPCs.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myvpc = new Aiven.ProjectVpc("myvpc", new Aiven.ProjectVpcArgs
+    ///         {
+    ///             CloudName = "google-europe-west1",
+    ///             NetworkCidr = "192.168.0.1/24",
+    ///             Project = aiven_project.Myproject.Project,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ProjectVpc : Pulumi.CustomResource
     {
         /// <summary>
-        /// Cloud the VPC is in
+        /// defines where the cloud provider and region where the service is hosted
+        /// in. See the Service resource for additional information.
         /// </summary>
         [Output("cloudName")]
         public Output<string> CloudName { get; private set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
+        /// defines the network CIDR of the VPC.
         /// </summary>
         [Output("networkCidr")]
         public Output<string> NetworkCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The project the VPC belongs to
+        /// defines the project the VPC belongs to.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+        /// ia a computed property that tells the current state of the VPC. This property cannot be
+        /// set, only read.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -82,19 +110,20 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud the VPC is in
+        /// defines where the cloud provider and region where the service is hosted
+        /// in. See the Service resource for additional information.
         /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
+        /// defines the network CIDR of the VPC.
         /// </summary>
         [Input("networkCidr", required: true)]
         public Input<string> NetworkCidr { get; set; } = null!;
 
         /// <summary>
-        /// The project the VPC belongs to
+        /// defines the project the VPC belongs to.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -107,25 +136,27 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud the VPC is in
+        /// defines where the cloud provider and region where the service is hosted
+        /// in. See the Service resource for additional information.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
+        /// defines the network CIDR of the VPC.
         /// </summary>
         [Input("networkCidr")]
         public Input<string>? NetworkCidr { get; set; }
 
         /// <summary>
-        /// The project the VPC belongs to
+        /// defines the project the VPC belongs to.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+        /// ia a computed property that tells the current state of the VPC. This property cannot be
+        /// set, only read.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

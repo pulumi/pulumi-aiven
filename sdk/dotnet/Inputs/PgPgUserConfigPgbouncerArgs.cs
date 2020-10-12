@@ -14,12 +14,19 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("ignoreStartupParameters")]
         private InputList<string>? _ignoreStartupParameters;
+
+        /// <summary>
+        /// Enum of parameters to ignore when given in startup packet.
+        /// </summary>
         public InputList<string> IgnoreStartupParameters
         {
             get => _ignoreStartupParameters ?? (_ignoreStartupParameters = new InputList<string>());
             set => _ignoreStartupParameters = value;
         }
 
+        /// <summary>
+        /// Run server_reset_query (DISCARD ALL) in all pooling modes.
+        /// </summary>
         [Input("serverResetQueryAlways")]
         public Input<string>? ServerResetQueryAlways { get; set; }
 

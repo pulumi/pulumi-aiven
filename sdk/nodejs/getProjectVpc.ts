@@ -6,6 +6,23 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Project VPC Data Source
+ *
+ * The Project VPC data source provides information about the existing Aiven Project VPC.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myvpc = aiven_project_myproject.project.apply(project => aiven.getProjectVpc({
+ *     cloudName: "google-europe-west1",
+ *     project: project,
+ * }, { async: true }));
+ * ```
+ */
 export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {
     if (!opts) {
         opts = {}
@@ -26,9 +43,23 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getProjectVpc.
  */
 export interface GetProjectVpcArgs {
+    /**
+     * defines where the cloud provider and region where the service is hosted
+     * in. See the Service resource for additional information.
+     */
     readonly cloudName: string;
+    /**
+     * defines the network CIDR of the VPC.
+     */
     readonly networkCidr?: string;
+    /**
+     * defines the project the VPC belongs to.
+     */
     readonly project: string;
+    /**
+     * ia a computed property that tells the current state of the VPC. This property cannot be
+     * set, only read.
+     */
     readonly state?: string;
 }
 
@@ -41,7 +72,14 @@ export interface GetProjectVpcResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * defines the network CIDR of the VPC.
+     */
     readonly networkCidr?: string;
     readonly project: string;
+    /**
+     * ia a computed property that tells the current state of the VPC. This property cannot be
+     * set, only read.
+     */
     readonly state: string;
 }

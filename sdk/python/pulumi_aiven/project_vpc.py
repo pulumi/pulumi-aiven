@@ -22,12 +22,28 @@ class ProjectVpc(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ProjectVpc resource with the given unique name, props, and options.
+        ## # Project VPC Resource
+
+        The Project VPC resource allows the creation and management of an Aiven Project VPCs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myvpc = aiven.ProjectVpc("myvpc",
+            cloud_name="google-europe-west1",
+            network_cidr="192.168.0.1/24",
+            project=aiven_project["myproject"]["project"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Cloud the VPC is in
-        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
-        :param pulumi.Input[str] project: The project the VPC belongs to
+        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
+               in. See the Service resource for additional information.
+        :param pulumi.Input[str] network_cidr: defines the network CIDR of the VPC.
+        :param pulumi.Input[str] project: defines the project the VPC belongs to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,10 +93,12 @@ class ProjectVpc(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Cloud the VPC is in
-        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
-        :param pulumi.Input[str] project: The project the VPC belongs to
-        :param pulumi.Input[str] state: State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
+               in. See the Service resource for additional information.
+        :param pulumi.Input[str] network_cidr: defines the network CIDR of the VPC.
+        :param pulumi.Input[str] project: defines the project the VPC belongs to.
+        :param pulumi.Input[str] state: ia a computed property that tells the current state of the VPC. This property cannot be
+               set, only read.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -96,7 +114,8 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[str]:
         """
-        Cloud the VPC is in
+        defines where the cloud provider and region where the service is hosted
+        in. See the Service resource for additional information.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -104,7 +123,7 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Output[str]:
         """
-        Network address range used by the VPC like 192.168.0.0/24
+        defines the network CIDR of the VPC.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -112,7 +131,7 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project the VPC belongs to
+        defines the project the VPC belongs to.
         """
         return pulumi.get(self, "project")
 
@@ -120,7 +139,8 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        State of the VPC (APPROVED, ACTIVE, DELETING, DELETED)
+        ia a computed property that tells the current state of the VPC. This property cannot be
+        set, only read.
         """
         return pulumi.get(self, "state")
 
