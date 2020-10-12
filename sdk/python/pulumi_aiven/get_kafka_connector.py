@@ -80,31 +80,49 @@ class GetKafkaConnectorResult:
     @property
     @pulumi.getter(name="pluginAuthor")
     def plugin_author(self) -> str:
+        """
+        Kafka connector author.
+        """
         return pulumi.get(self, "plugin_author")
 
     @property
     @pulumi.getter(name="pluginClass")
     def plugin_class(self) -> str:
+        """
+        Kafka connector Java class.
+        """
         return pulumi.get(self, "plugin_class")
 
     @property
     @pulumi.getter(name="pluginDocUrl")
     def plugin_doc_url(self) -> str:
+        """
+        Kafka connector documentation URL.
+        """
         return pulumi.get(self, "plugin_doc_url")
 
     @property
     @pulumi.getter(name="pluginTitle")
     def plugin_title(self) -> str:
+        """
+        Kafka connector title.
+        """
         return pulumi.get(self, "plugin_title")
 
     @property
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> str:
+        """
+        Kafka connector type.
+        """
         return pulumi.get(self, "plugin_type")
 
     @property
     @pulumi.getter(name="pluginVersion")
     def plugin_version(self) -> str:
+        """
+        Kafka connector version.
+        """
         return pulumi.get(self, "plugin_version")
 
     @property
@@ -120,6 +138,10 @@ class GetKafkaConnectorResult:
     @property
     @pulumi.getter
     def tasks(self) -> List['outputs.GetKafkaConnectorTaskResult']:
+        """
+        List of tasks of a connector, each element contains `connector` 
+        (Related connector name) and `task` (Task id / number).
+        """
         return pulumi.get(self, "tasks")
 
 
@@ -156,7 +178,35 @@ def get_kafka_connector(config: Optional[Mapping[str, str]] = None,
                         tasks: Optional[List[pulumi.InputType['GetKafkaConnectorTaskArgs']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaConnectorResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Kafka connector Data Source
+
+    The Kafka connector data source provides information about the existing Aiven Kafka connector.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    kafka_es_con1 = aiven.get_kafka_connector(project=aiven_project["kafka-con-project1"]["project"],
+        service_name=aiven_service["kafka-service1"]["service_name"],
+        connector_name="kafka-es-con1")
+    ```
+
+    * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to.
+    They should be defined using reference as shown above to set up dependencies correctly.
+
+    * `connector_name`- (Required) is the Kafka connector name.
+
+
+    :param str plugin_author: Kafka connector author.
+    :param str plugin_class: Kafka connector Java class.
+    :param str plugin_doc_url: Kafka connector documentation URL.
+    :param str plugin_title: Kafka connector title.
+    :param str plugin_type: Kafka connector type.
+    :param str plugin_version: Kafka connector version.
+    :param List[pulumi.InputType['GetKafkaConnectorTaskArgs']] tasks: List of tasks of a connector, each element contains `connector` 
+           (Related connector name) and `task` (Task id / number).
     """
     __args__ = dict()
     __args__['config'] = config

@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Service Integration Endpoint Data Source
+ *
+ * The Service Integration Endpoint data source provides information about the existing
+ * Aiven Service Integration Endpoint.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myendpoint = aiven_project_myproject.project.apply(project => aiven.getServiceIntegrationEndpoint({
+ *     endpointName: "<ENDPOINT_NAME>",
+ *     project: project,
+ * }, { async: true }));
+ * ```
+ */
 export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {
     if (!opts) {
         opts = {}
@@ -37,13 +55,24 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
 export interface GetServiceIntegrationEndpointArgs {
     readonly datadogUserConfig?: inputs.GetServiceIntegrationEndpointDatadogUserConfig;
     readonly endpointConfig?: {[key: string]: string};
+    /**
+     * is the name of the endpoint. This value has no effect beyond being used
+     * to identify different integration endpoints.
+     */
     readonly endpointName: string;
+    /**
+     * is the type of the external service this endpoint is associated with.
+     * By the time of writing the only available option is `datadog`.
+     */
     readonly endpointType?: string;
     readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
     readonly externalKafkaUserConfig?: inputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
     readonly jolokiaUserConfig?: inputs.GetServiceIntegrationEndpointJolokiaUserConfig;
+    /**
+     * defines the project the endpoint is associated with.
+     */
     readonly project: string;
     readonly prometheusUserConfig?: inputs.GetServiceIntegrationEndpointPrometheusUserConfig;
     readonly rsyslogUserConfig?: inputs.GetServiceIntegrationEndpointRsyslogUserConfig;
@@ -57,6 +86,10 @@ export interface GetServiceIntegrationEndpointResult {
     readonly datadogUserConfig?: outputs.GetServiceIntegrationEndpointDatadogUserConfig;
     readonly endpointConfig: {[key: string]: string};
     readonly endpointName: string;
+    /**
+     * is the type of the external service this endpoint is associated with.
+     * By the time of writing the only available option is `datadog`.
+     */
     readonly endpointType?: string;
     readonly externalAwsCloudwatchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;

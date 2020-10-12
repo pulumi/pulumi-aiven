@@ -12,71 +12,150 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// custom password for admin user. Defaults to random string. *This must
+        /// be set only when a new service is being created.*
+        /// </summary>
         [Input("adminPassword")]
         public Input<string>? AdminPassword { get; set; }
 
+        /// <summary>
+        /// custom username for admin user. *This must be set only when a new service
+        /// is being created.*
+        /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
+        /// <summary>
+        /// the hour of day (in UTC) when backup for the service is started. New backup 
+        /// is only started if previous backup has already completed.
+        /// </summary>
         [Input("backupHour")]
         public Input<string>? BackupHour { get; set; }
 
+        /// <summary>
+        /// the minute of an hour when backup for the service is started. New backup 
+        /// is only started if previous backup has already completed.
+        /// </summary>
         [Input("backupMinute")]
         public Input<string>? BackupMinute { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// migrate data from existing server, has the following options:
+        /// </summary>
         [Input("migration")]
         public Input<Inputs.PgPgUserConfigMigrationGetArgs>? Migration { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to pg from the public internet for service nodes
+        /// that are in a project VPC or another type of private network
+        /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgUserConfigPgGetArgs>? Pg { get; set; }
 
+        /// <summary>
+        /// This setting is deprecated. Use read-replica service integration instead.
+        /// </summary>
         [Input("pgReadReplica")]
         public Input<string>? PgReadReplica { get; set; }
 
+        /// <summary>
+        /// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+        /// This has effect only when a new service is being created.
+        /// </summary>
         [Input("pgServiceToForkFrom")]
         public Input<string>? PgServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// PostgreSQL major version.
+        /// </summary>
         [Input("pgVersion")]
         public Input<string>? PgVersion { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to pgbouncer from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("pgbouncer")]
         public Input<Inputs.PgPgUserConfigPgbouncerGetArgs>? Pgbouncer { get; set; }
 
+        /// <summary>
+        /// PGLookout settings.
+        /// </summary>
         [Input("pglookout")]
         public Input<Inputs.PgPgUserConfigPglookoutGetArgs>? Pglookout { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.PgPgUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.PgPgUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Recovery target time when forking a service. This has effect 
+        /// only when a new service is being created.
+        /// </summary>
         [Input("recoveryTargetTime")]
         public Input<string>? RecoveryTargetTime { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only 
+        /// when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Percentage of total RAM that the database server uses for 
+        /// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+        /// the shared_buffers configuration value. The absolute maximum is 12 GB.
+        /// </summary>
         [Input("sharedBuffersPercentage")]
         public Input<string>? SharedBuffersPercentage { get; set; }
 
+        /// <summary>
+        /// Synchronous replication type. Note that the service plan 
+        /// also needs to support synchronous replication.
+        /// </summary>
         [Input("synchronousReplication")]
         public Input<string>? SynchronousReplication { get; set; }
 
+        /// <summary>
+        /// TimescaleDB extension configuration values.
+        /// </summary>
         [Input("timescaledb")]
         public Input<Inputs.PgPgUserConfigTimescaledbGetArgs>? Timescaledb { get; set; }
 
+        /// <summary>
+        /// Variant of the PostgreSQL service, may affect the features that are 
+        /// exposed by default. Options: `aiven` or `timescale`.
+        /// </summary>
         [Input("variant")]
         public Input<string>? Variant { get; set; }
 
+        /// <summary>
+        /// Sets the maximum amount of memory to be used by a query operation (such 
+        /// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+        /// total RAM (up to 32MB).
+        /// </summary>
         [Input("workMem")]
         public Input<string>? WorkMem { get; set; }
 

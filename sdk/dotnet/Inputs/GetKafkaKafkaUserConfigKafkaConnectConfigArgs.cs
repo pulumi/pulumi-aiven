@@ -12,27 +12,60 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetKafkaKafkaUserConfigKafkaConnectConfigArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Defines what client configurations can 
+        /// be overridden by the connector. Default is None
+        /// </summary>
         [Input("connectorClientConfigOverridePolicy")]
         public string? ConnectorClientConfigOverridePolicy { get; set; }
 
+        /// <summary>
+        /// What to do when there is no initial offset in Kafka or 
+        /// if the current offset does not exist any more on the server. Default is earliest
+        /// </summary>
         [Input("consumerAutoOffsetReset")]
         public string? ConsumerAutoOffsetReset { get; set; }
 
+        /// <summary>
+        /// Transaction read isolation level. read_uncommitted is 
+        /// the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        /// </summary>
         [Input("consumerIsolationLevel")]
         public string? ConsumerIsolationLevel { get; set; }
 
+        /// <summary>
+        /// The maximum delay in milliseconds between invocations 
+        /// of poll() when using consumer group management (defaults to 300000).
+        /// </summary>
         [Input("consumerMaxPollIntervalMs")]
         public string? ConsumerMaxPollIntervalMs { get; set; }
 
+        /// <summary>
+        /// The maximum number of records returned in a single call 
+        /// to poll() (defaults to 500).
+        /// </summary>
         [Input("consumerMaxPollRecords")]
         public string? ConsumerMaxPollRecords { get; set; }
 
+        /// <summary>
+        /// The interval at which to try committing offsets for 
+        /// tasks (defaults to 60000).
+        /// </summary>
         [Input("offsetFlushIntervalMs")]
         public string? OffsetFlushIntervalMs { get; set; }
 
+        /// <summary>
+        /// Maximum number of milliseconds to wait for records to 
+        /// flush and partition offset data to be committed to offset storage before cancelling the process
+        /// and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        /// </summary>
         [Input("offsetFlushTimeoutMs")]
         public string? OffsetFlushTimeoutMs { get; set; }
 
+        /// <summary>
+        /// The timeout in milliseconds used to detect failures when 
+        /// using Kafka’s group management facilities (defaults to 10000).
+        /// </summary>
         [Input("sessionTimeoutMs")]
         public string? SessionTimeoutMs { get; set; }
 

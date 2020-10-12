@@ -11,6 +11,36 @@ namespace Pulumi.Aiven
 {
     public static class GetKafkaTopic
     {
+        /// <summary>
+        /// ## # Kafka Topic Data Source
+        /// 
+        /// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytesttopic = Output.Create(Aiven.GetKafkaTopic.InvokeAsync(new Aiven.GetKafkaTopicArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             TopicName = "&lt;TOPIC_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetKafkaTopicResult> InvokeAsync(GetKafkaTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithVersion());
     }
@@ -18,24 +48,48 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaTopicArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Topic cleanup policy. Allowed values: delete, compact.
+        /// </summary>
         [Input("cleanupPolicy")]
         public string? CleanupPolicy { get; set; }
 
+        /// <summary>
+        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        /// </summary>
         [Input("minimumInSyncReplicas")]
         public int? MinimumInSyncReplicas { get; set; }
 
+        /// <summary>
+        /// Number of partitions to create in the topic.
+        /// </summary>
         [Input("partitions")]
         public int? Partitions { get; set; }
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the topic belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Replication factor for the topic.
+        /// </summary>
         [Input("replication")]
         public int? Replication { get; set; }
 
+        /// <summary>
+        /// Retention bytes.
+        /// </summary>
         [Input("retentionBytes")]
         public int? RetentionBytes { get; set; }
 
+        /// <summary>
+        /// Retention period in hours, if -1 it is infinite.
+        /// </summary>
         [Input("retentionHours")]
         public int? RetentionHours { get; set; }
 
@@ -45,6 +99,11 @@ namespace Pulumi.Aiven
         [Input("terminationProtection")]
         public bool? TerminationProtection { get; set; }
 
+        /// <summary>
+        /// is the actual name of the topic account. This propery cannot be changed
+        /// once the service is created. Doing so will result in the topic being deleted and new one
+        /// created instead.
+        /// </summary>
         [Input("topicName", required: true)]
         public string TopicName { get; set; } = null!;
 
@@ -57,16 +116,34 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetKafkaTopicResult
     {
+        /// <summary>
+        /// Topic cleanup policy. Allowed values: delete, compact.
+        /// </summary>
         public readonly string? CleanupPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        /// </summary>
         public readonly int? MinimumInSyncReplicas;
+        /// <summary>
+        /// Number of partitions to create in the topic.
+        /// </summary>
         public readonly int? Partitions;
         public readonly string Project;
+        /// <summary>
+        /// Replication factor for the topic.
+        /// </summary>
         public readonly int? Replication;
+        /// <summary>
+        /// Retention bytes.
+        /// </summary>
         public readonly int? RetentionBytes;
+        /// <summary>
+        /// Retention period in hours, if -1 it is infinite.
+        /// </summary>
         public readonly int? RetentionHours;
         public readonly string ServiceName;
         public readonly bool? TerminationProtection;

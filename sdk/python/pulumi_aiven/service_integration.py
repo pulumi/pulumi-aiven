@@ -31,18 +31,49 @@ class ServiceIntegration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ServiceIntegration resource with the given unique name, props, and options.
+        ## # Service Integration Resource
+
+        The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+
+        Service Integration defines an integration between two Aiven services or between Aiven
+        service and an external integration endpoint. Integration could be for example sending
+        metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+        service to a Grafana service to show dashboards, sending logs from any service to
+        Elasticsearch, etc.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myintegration = aiven.ServiceIntegration("myintegration",
+            destination_endpoint_id=aiven_service_integration_endpoint["myendpoint"]["id"],
+            destination_service_name="",
+            integration_type="datadog",
+            project=aiven_project["myproject"]["project"],
+            source_endpoint_id="",
+            source_service_name=aiven_service["testkafka"]["service_name"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
+        :param pulumi.Input[str] destination_endpoint_id: or `destination_service_name` - (Required) identifies the target side of
+               the integration. Only either endpoint identifier or service name must be specified. In
+               either case the target needs to be defined using the reference syntax described above to
+               set up the dependency correctly.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values
+               include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Log integration specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
-        :param pulumi.Input[str] project: Project the integration belongs to
-        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] project: defines the project the integration belongs to.
+        :param pulumi.Input[str] source_endpoint_id: or `source_service_name` - (Optional) identifies the source side of the
+               integration. Only either endpoint identifier or service name must be specified. In either
+               case the source needs to be defined using the reference syntax described above to set up
+               the dependency correctly.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         if __name__ is not None:
@@ -103,15 +134,22 @@ class ServiceIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
+        :param pulumi.Input[str] destination_endpoint_id: or `destination_service_name` - (Required) identifies the target side of
+               the integration. Only either endpoint identifier or service name must be specified. In
+               either case the target needs to be defined using the reference syntax described above to
+               set up the dependency correctly.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values
+               include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Log integration specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
-        :param pulumi.Input[str] project: Project the integration belongs to
-        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] project: defines the project the integration belongs to.
+        :param pulumi.Input[str] source_endpoint_id: or `source_service_name` - (Optional) identifies the source side of the
+               integration. Only either endpoint identifier or service name must be specified. In either
+               case the source needs to be defined using the reference syntax described above to set up
+               the dependency correctly.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -134,7 +172,10 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="destinationEndpointId")
     def destination_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Destination endpoint for the integration (if any)
+        or `destination_service_name` - (Required) identifies the target side of
+        the integration. Only either endpoint identifier or service name must be specified. In
+        either case the target needs to be defined using the reference syntax described above to
+        set up the dependency correctly.
         """
         return pulumi.get(self, "destination_endpoint_id")
 
@@ -150,7 +191,8 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Output[str]:
         """
-        Type of the service integration
+        identifies the type of integration that is set up. Possible values
+        include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -190,7 +232,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project the integration belongs to
+        defines the project the integration belongs to.
         """
         return pulumi.get(self, "project")
 
@@ -198,7 +240,10 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Source endpoint for the integration (if any)
+        or `source_service_name` - (Optional) identifies the source side of the
+        integration. Only either endpoint identifier or service name must be specified. In either
+        case the source needs to be defined using the reference syntax described above to set up
+        the dependency correctly.
         """
         return pulumi.get(self, "source_endpoint_id")
 

@@ -25,15 +25,27 @@ class AccountTeamMember(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a AccountTeamMember resource with the given unique name, props, and options.
+        ## # Account Team Member Resource
+
+        The Account Team Member resource allows the creation and management of an Aiven Account Team Members.
+
+        During the creation of `AccountTeamMember` resource, an email invitation will be sent\
+        to a user using `user_email` address. If the user accepts an invitation, he or she will become
+        a member of the account team. The deletion of `AccountTeamMember` will not only
+        delete invitation if one was sent but not yet accepted by the user, and it will also
+        eliminate an account team member if one has accepted an invitation previously.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] accepted: Team member invitation status
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] invited_by_user_email: Team invited by user email
-        :param pulumi.Input[str] team_id: Account team id
-        :param pulumi.Input[str] user_email: Team invite user email
+        :param pulumi.Input[bool] accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. 
+               `false` value means that the invitation was sent to the user but not yet accepted.
+               `true` means that the user accepted the invitation and now a member of an account team.
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[str] invited_by_user_email: team invited by user email.
+        :param pulumi.Input[str] team_id: is an account team id.
+        :param pulumi.Input[str] user_email: is a user email address that first will be invited, and after accepting an invitation,
+               he or she becomes a member of a team.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,12 +99,15 @@ class AccountTeamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] accepted: Team member invitation status
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] invited_by_user_email: Team invited by user email
-        :param pulumi.Input[str] team_id: Account team id
-        :param pulumi.Input[str] user_email: Team invite user email
+        :param pulumi.Input[bool] accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. 
+               `false` value means that the invitation was sent to the user but not yet accepted.
+               `true` means that the user accepted the invitation and now a member of an account team.
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[str] invited_by_user_email: team invited by user email.
+        :param pulumi.Input[str] team_id: is an account team id.
+        :param pulumi.Input[str] user_email: is a user email address that first will be invited, and after accepting an invitation,
+               he or she becomes a member of a team.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -110,7 +125,9 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter
     def accepted(self) -> pulumi.Output[bool]:
         """
-        Team member invitation status
+        is a boolean flag that determines whether an invitation was accepted or not by the user. 
+        `false` value means that the invitation was sent to the user but not yet accepted.
+        `true` means that the user accepted the invitation and now a member of an account team.
         """
         return pulumi.get(self, "accepted")
 
@@ -118,7 +135,7 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account id
+        is a unique account id.
         """
         return pulumi.get(self, "account_id")
 
@@ -126,7 +143,7 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time of creation
+        time of creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -134,7 +151,7 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="invitedByUserEmail")
     def invited_by_user_email(self) -> pulumi.Output[str]:
         """
-        Team invited by user email
+        team invited by user email.
         """
         return pulumi.get(self, "invited_by_user_email")
 
@@ -142,7 +159,7 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="teamId")
     def team_id(self) -> pulumi.Output[str]:
         """
-        Account team id
+        is an account team id.
         """
         return pulumi.get(self, "team_id")
 
@@ -150,7 +167,8 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="userEmail")
     def user_email(self) -> pulumi.Output[str]:
         """
-        Team invite user email
+        is a user email address that first will be invited, and after accepting an invitation,
+        he or she becomes a member of a team.
         """
         return pulumi.get(self, "user_email")
 

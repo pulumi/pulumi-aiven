@@ -58,11 +58,17 @@ class GetDatabaseResult:
     @property
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> Optional[str]:
+        """
+        default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        """
         return pulumi.get(self, "lc_collate")
 
     @property
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> Optional[str]:
+        """
+        default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        """
         return pulumi.get(self, "lc_ctype")
 
     @property
@@ -104,7 +110,27 @@ def get_database(database_name: Optional[str] = None,
                  termination_protection: Optional[bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Database Data Source
+
+    The Database data source provides information about the existing Aiven Database.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mydatabase = aiven.get_database(database_name="<DATABASE_NAME>",
+        project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"])
+    ```
+
+
+    :param str database_name: is the actual name of the database.
+    :param str lc_collate: default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+    :param str lc_ctype: default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+    :param str project: and `service_name` - (Required) define the project and service the database belongs to.
+           They should be defined using reference as shown above to set up dependencies correctly.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name

@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetElasticSearchElasticsearchResult
     {
+        /// <summary>
+        /// URI for Kibana frontend.
+        /// </summary>
         public readonly string KibanaUri;
 
         [OutputConstructor]

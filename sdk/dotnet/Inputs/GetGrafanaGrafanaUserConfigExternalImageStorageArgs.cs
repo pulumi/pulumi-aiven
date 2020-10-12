@@ -12,15 +12,28 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetGrafanaGrafanaUserConfigExternalImageStorageArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (Required) S3 access key. Requires permissions to the S3 bucket for the 
+        /// s3:PutObject and s3:PutObjectAcl actions
+        /// </summary>
         [Input("accessKey")]
         public string? AccessKey { get; set; }
 
+        /// <summary>
+        /// (Required) Bucket URL for S3
+        /// </summary>
         [Input("bucketUrl")]
         public string? BucketUrl { get; set; }
 
+        /// <summary>
+        /// (Required) Provider type
+        /// </summary>
         [Input("provider")]
         public string? Provider { get; set; }
 
+        /// <summary>
+        /// (Required) S3 secret key
+        /// </summary>
         [Input("secretKey")]
         public string? SecretKey { get; set; }
 

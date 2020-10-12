@@ -13,16 +13,55 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetMySqlMysqlUserConfigResult
     {
+        /// <summary>
+        /// Custom password for admin user. Defaults to random string. 
+        /// This must be set only when a new service is being created.
+        /// </summary>
         public readonly string? AdminPassword;
+        /// <summary>
+        /// Custom username for admin user. This must be set only when a 
+        /// new service is being created.
+        /// </summary>
         public readonly string? AdminUsername;
+        /// <summary>
+        /// The hour of day (in UTC) when backup for the service is started. 
+        /// New backup is only started if previous backup has already completed.
+        /// </summary>
         public readonly string? BackupHour;
+        /// <summary>
+        /// The minute of an hour when backup for the service is started. 
+        /// New backup is only started if previous backup has already completed.
+        /// </summary>
         public readonly string? BackupMinute;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// MySQL specific server provided values.
+        /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigMysqlResult? Mysql;
+        /// <summary>
+        /// MySQL major version
+        /// </summary>
         public readonly string? MysqlVersion;
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPrivateAccessResult? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPublicAccessResult? PublicAccess;
+        /// <summary>
+        /// Recovery target time when forking a service. This has effect 
+        /// only when a new service is being created.
+        /// </summary>
         public readonly string? RecoveryTargetTime;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when 
+        /// a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
 
         [OutputConstructor]

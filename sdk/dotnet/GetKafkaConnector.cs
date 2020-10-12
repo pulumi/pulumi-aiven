@@ -11,6 +11,42 @@ namespace Pulumi.Aiven
 {
     public static class GetKafkaConnector
     {
+        /// <summary>
+        /// ## # Kafka connector Data Source
+        /// 
+        /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kafka_es_con1 = Output.Create(Aiven.GetKafkaConnector.InvokeAsync(new Aiven.GetKafkaConnectorArgs
+        ///         {
+        ///             Project = aiven_project.Kafka_con_project1.Project,
+        ///             ServiceName = aiven_service.Kafka_service1.Service_name,
+        ///             ConnectorName = "kafka-es-con1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// 
+        /// * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to. 
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// 
+        /// * `connector_name`- (Required) is the Kafka connector name.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetKafkaConnectorResult> InvokeAsync(GetKafkaConnectorArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithVersion());
     }
@@ -29,21 +65,39 @@ namespace Pulumi.Aiven
         [Input("connectorName", required: true)]
         public string ConnectorName { get; set; } = null!;
 
+        /// <summary>
+        /// Kafka connector author.
+        /// </summary>
         [Input("pluginAuthor")]
         public string? PluginAuthor { get; set; }
 
+        /// <summary>
+        /// Kafka connector Java class.
+        /// </summary>
         [Input("pluginClass")]
         public string? PluginClass { get; set; }
 
+        /// <summary>
+        /// Kafka connector documentation URL.
+        /// </summary>
         [Input("pluginDocUrl")]
         public string? PluginDocUrl { get; set; }
 
+        /// <summary>
+        /// Kafka connector title.
+        /// </summary>
         [Input("pluginTitle")]
         public string? PluginTitle { get; set; }
 
+        /// <summary>
+        /// Kafka connector type.
+        /// </summary>
         [Input("pluginType")]
         public string? PluginType { get; set; }
 
+        /// <summary>
+        /// Kafka connector version.
+        /// </summary>
         [Input("pluginVersion")]
         public string? PluginVersion { get; set; }
 
@@ -55,6 +109,11 @@ namespace Pulumi.Aiven
 
         [Input("tasks")]
         private List<Inputs.GetKafkaConnectorTaskArgs>? _tasks;
+
+        /// <summary>
+        /// List of tasks of a connector, each element contains `connector` 
+        /// (Related connector name) and `task` (Task id / number).
+        /// </summary>
         public List<Inputs.GetKafkaConnectorTaskArgs> Tasks
         {
             get => _tasks ?? (_tasks = new List<Inputs.GetKafkaConnectorTaskArgs>());
@@ -76,14 +135,36 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Kafka connector author.
+        /// </summary>
         public readonly string PluginAuthor;
+        /// <summary>
+        /// Kafka connector Java class.
+        /// </summary>
         public readonly string PluginClass;
+        /// <summary>
+        /// Kafka connector documentation URL.
+        /// </summary>
         public readonly string PluginDocUrl;
+        /// <summary>
+        /// Kafka connector title.
+        /// </summary>
         public readonly string PluginTitle;
+        /// <summary>
+        /// Kafka connector type.
+        /// </summary>
         public readonly string PluginType;
+        /// <summary>
+        /// Kafka connector version.
+        /// </summary>
         public readonly string PluginVersion;
         public readonly string Project;
         public readonly string ServiceName;
+        /// <summary>
+        /// List of tasks of a connector, each element contains `connector` 
+        /// (Related connector name) and `task` (Task id / number).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaConnectorTaskResult> Tasks;
 
         [OutputConstructor]

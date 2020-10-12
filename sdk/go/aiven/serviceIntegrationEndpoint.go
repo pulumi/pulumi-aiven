@@ -10,6 +10,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Service Integration Endpoint Resource
+//
+// The Service Integration Endpoint resource allows the creation and management of an Aiven Service Integration Endpoint`s.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewServiceIntegrationEndpoint(ctx, "myendpoint", &aiven.ServiceIntegrationEndpointArgs{
+// 			DatadogUserConfig: &aiven.ServiceIntegrationEndpointDatadogUserConfigArgs{
+// 				DatadogApiKey: pulumi.String("<DATADOG_API_KEY>"),
+// 			},
+// 			EndpointName: pulumi.String("<ENDPOINT_NAME>"),
+// 			EndpointType: pulumi.String("datadog"),
+// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ServiceIntegrationEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -17,9 +48,11 @@ type ServiceIntegrationEndpoint struct {
 	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrOutput `pulumi:"datadogUserConfig"`
 	// Integration endpoint specific backend configuration
 	EndpointConfig pulumi.StringMapOutput `pulumi:"endpointConfig"`
-	// Name of the service integration endpoint
+	// is the name of the endpoint. This value has no effect beyond being used
+	// to identify different integration endpoints.
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
-	// Type of the service integration endpoint
+	// is the type of the external service this endpoint is associated with.
+	// By the time of writing the only available option is `datadog`.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -31,7 +64,7 @@ type ServiceIntegrationEndpoint struct {
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput `pulumi:"externalKafkaUserConfig"`
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrOutput `pulumi:"jolokiaUserConfig"`
-	// Project the service integration endpoint belongs to
+	// defines the project the endpoint is associated with.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
@@ -82,9 +115,11 @@ type serviceIntegrationEndpointState struct {
 	DatadogUserConfig *ServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
 	// Integration endpoint specific backend configuration
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
-	// Name of the service integration endpoint
+	// is the name of the endpoint. This value has no effect beyond being used
+	// to identify different integration endpoints.
 	EndpointName *string `pulumi:"endpointName"`
-	// Type of the service integration endpoint
+	// is the type of the external service this endpoint is associated with.
+	// By the time of writing the only available option is `datadog`.
 	EndpointType *string `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -96,7 +131,7 @@ type serviceIntegrationEndpointState struct {
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig *ServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfig"`
-	// Project the service integration endpoint belongs to
+	// defines the project the endpoint is associated with.
 	Project *string `pulumi:"project"`
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
@@ -111,9 +146,11 @@ type ServiceIntegrationEndpointState struct {
 	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrInput
 	// Integration endpoint specific backend configuration
 	EndpointConfig pulumi.StringMapInput
-	// Name of the service integration endpoint
+	// is the name of the endpoint. This value has no effect beyond being used
+	// to identify different integration endpoints.
 	EndpointName pulumi.StringPtrInput
-	// Type of the service integration endpoint
+	// is the type of the external service this endpoint is associated with.
+	// By the time of writing the only available option is `datadog`.
 	EndpointType pulumi.StringPtrInput
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
@@ -125,7 +162,7 @@ type ServiceIntegrationEndpointState struct {
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrInput
-	// Project the service integration endpoint belongs to
+	// defines the project the endpoint is associated with.
 	Project pulumi.StringPtrInput
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput
@@ -142,9 +179,11 @@ func (ServiceIntegrationEndpointState) ElementType() reflect.Type {
 type serviceIntegrationEndpointArgs struct {
 	// Datadog specific user configurable settings
 	DatadogUserConfig *ServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
-	// Name of the service integration endpoint
+	// is the name of the endpoint. This value has no effect beyond being used
+	// to identify different integration endpoints.
 	EndpointName string `pulumi:"endpointName"`
-	// Type of the service integration endpoint
+	// is the type of the external service this endpoint is associated with.
+	// By the time of writing the only available option is `datadog`.
 	EndpointType string `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -156,7 +195,7 @@ type serviceIntegrationEndpointArgs struct {
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig *ServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfig"`
-	// Project the service integration endpoint belongs to
+	// defines the project the endpoint is associated with.
 	Project string `pulumi:"project"`
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
@@ -170,9 +209,11 @@ type serviceIntegrationEndpointArgs struct {
 type ServiceIntegrationEndpointArgs struct {
 	// Datadog specific user configurable settings
 	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrInput
-	// Name of the service integration endpoint
+	// is the name of the endpoint. This value has no effect beyond being used
+	// to identify different integration endpoints.
 	EndpointName pulumi.StringInput
-	// Type of the service integration endpoint
+	// is the type of the external service this endpoint is associated with.
+	// By the time of writing the only available option is `datadog`.
 	EndpointType pulumi.StringInput
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
@@ -184,7 +225,7 @@ type ServiceIntegrationEndpointArgs struct {
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrInput
-	// Project the service integration endpoint belongs to
+	// defines the project the endpoint is associated with.
 	Project pulumi.StringInput
 	// Prometheus specific user configurable settings
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput

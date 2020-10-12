@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Kafka Schema Resource
+ *
+ * The Kafka Schema resource allows the creation and management of an Aiven Kafka Schemas.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka_schema1 = new aiven.KafkaSchema("kafka-schema1", {
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     subjectName: "kafka-schema1",
+ *     compatibilityLevel: "FORWARD",
+ *     schema: `    {
+ *        "doc": "example",
+ *        "fields": [{
+ *            "default": 5,
+ *            "doc": "my test number",
+ *            "name": "test",
+ *            "namespace": "test",
+ *            "type": "int"
+ *        }],
+ *        "name": "example",
+ *        "namespace": "example",
+ *        "type": "record"
+ *     }
+ * `,
+ * });
+ * ```
+ */
 export class KafkaSchema extends pulumi.CustomResource {
     /**
      * Get an existing KafkaSchema resource's state with the given name, ID, and optional extra
@@ -33,15 +66,19 @@ export class KafkaSchema extends pulumi.CustomResource {
     }
 
     /**
-     * Kafka Schemas compatibility level
+     * configuration compatibility level overrides specific subject
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
     public readonly compatibilityLevel!: pulumi.Output<string | undefined>;
     /**
-     * Project to link the Kafka Schema to
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Kafka Schema configuration should be a valid Avro Schema JSON format
+     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     public readonly schema!: pulumi.Output<string>;
     /**
@@ -49,7 +86,7 @@ export class KafkaSchema extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Kafka Schema Subject name
+     * is Kafka Schema subject name.
      */
     public readonly subjectName!: pulumi.Output<string>;
     /**
@@ -112,15 +149,19 @@ export class KafkaSchema extends pulumi.CustomResource {
  */
 export interface KafkaSchemaState {
     /**
-     * Kafka Schemas compatibility level
+     * configuration compatibility level overrides specific subject
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
     readonly compatibilityLevel?: pulumi.Input<string>;
     /**
-     * Project to link the Kafka Schema to
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Kafka Schema configuration should be a valid Avro Schema JSON format
+     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     readonly schema?: pulumi.Input<string>;
     /**
@@ -128,7 +169,7 @@ export interface KafkaSchemaState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * Kafka Schema Subject name
+     * is Kafka Schema subject name.
      */
     readonly subjectName?: pulumi.Input<string>;
     /**
@@ -142,15 +183,19 @@ export interface KafkaSchemaState {
  */
 export interface KafkaSchemaArgs {
     /**
-     * Kafka Schemas compatibility level
+     * configuration compatibility level overrides specific subject
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
     readonly compatibilityLevel?: pulumi.Input<string>;
     /**
-     * Project to link the Kafka Schema to
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
     /**
-     * Kafka Schema configuration should be a valid Avro Schema JSON format
+     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     readonly schema: pulumi.Input<string>;
     /**
@@ -158,7 +203,7 @@ export interface KafkaSchemaArgs {
      */
     readonly serviceName: pulumi.Input<string>;
     /**
-     * Kafka Schema Subject name
+     * is Kafka Schema subject name.
      */
     readonly subjectName: pulumi.Input<string>;
 }

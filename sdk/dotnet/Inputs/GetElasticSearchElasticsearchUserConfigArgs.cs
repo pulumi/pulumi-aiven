@@ -12,20 +12,41 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetElasticSearchElasticsearchUserConfigArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the 
+        /// Aiven DNS name.
+        /// </summary>
         [Input("customDomain")]
         public string? CustomDomain { get; set; }
 
+        /// <summary>
+        /// Disable automatic replication factor 
+        /// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+        /// least to two nodes. Note: setting this to true increases a risk of data loss in case of
+        /// virtual machine failure.
+        /// </summary>
         [Input("disableReplicationFactorAdjustment")]
         public string? DisableReplicationFactorAdjustment { get; set; }
 
+        /// <summary>
+        /// Elasticsearch specific server provided values.
+        /// </summary>
         [Input("elasticsearch")]
         public Inputs.GetElasticSearchElasticsearchUserConfigElasticsearchArgs? Elasticsearch { get; set; }
 
+        /// <summary>
+        /// Elasticsearch major version.
+        /// </summary>
         [Input("elasticsearchVersion")]
         public string? ElasticsearchVersion { get; set; }
 
         [Input("indexPatterns")]
         private List<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs>? _indexPatterns;
+
+        /// <summary>
+        /// Glob pattern and number of indexes matching that pattern to 
+        /// be kept.
+        /// </summary>
         public List<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs> IndexPatterns
         {
             get => _indexPatterns ?? (_indexPatterns = new List<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs>());
@@ -34,27 +55,51 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private List<string>? _ipFilters;
+
+        /// <summary>
+        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public List<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new List<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Allow clients to connect to kibana from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         [Input("kibana")]
         public Inputs.GetElasticSearchElasticsearchUserConfigKibanaArgs? Kibana { get; set; }
 
+        /// <summary>
+        /// Maximum number of indexes to keep before deleting the oldest one.
+        /// </summary>
         [Input("maxIndexCount")]
         public string? MaxIndexCount { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         [Input("privateAccess")]
         public Inputs.GetElasticSearchElasticsearchUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         [Input("publicAccess")]
         public Inputs.GetElasticSearchElasticsearchUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Name of the basebackup to restore in forked service.
+        /// </summary>
         [Input("recoveryBasebackupName")]
         public string? RecoveryBasebackupName { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect 
+        /// only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
 

@@ -12,15 +12,27 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to periodically check for new consumer groups. 
+        /// Defaults to 'true'.
+        /// </summary>
         [Input("refreshGroupsEnabled")]
         public string? RefreshGroupsEnabled { get; set; }
 
+        /// <summary>
+        /// Whether to periodically check for new topics and 
+        /// partitions. Defaults to 'true'.
+        /// </summary>
         [Input("refreshGroupsIntervalSeconds")]
         public string? RefreshGroupsIntervalSeconds { get; set; }
 
         [Input("refreshTopicsEnabled")]
         public string? RefreshTopicsEnabled { get; set; }
 
+        /// <summary>
+        /// Frequency of topic and partitions refresh in 
+        /// seconds. Defaults to 600 seconds (10 minutes).
+        /// </summary>
         [Input("refreshTopicsIntervalSeconds")]
         public string? RefreshTopicsIntervalSeconds { get; set; }
 

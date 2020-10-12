@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Team Member Data Source
+ *
+ * The Account Team Member  data source provides information about the existing Aiven Account Team Member.
+ */
 export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamMemberResult> {
     if (!opts) {
         opts = {}
@@ -28,11 +33,32 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
  * A collection of arguments for invoking getAccountTeamMember.
  */
 export interface GetAccountTeamMemberArgs {
+    /**
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
+     * `false` value means that the invitation was sent to the user but not yet accepted.
+     * `true` means that the user accepted the invitation and now a member of an account team.
+     */
     readonly accepted?: boolean;
+    /**
+     * is a unique account id.
+     */
     readonly accountId: string;
+    /**
+     * time of creation.
+     */
     readonly createTime?: string;
+    /**
+     * team invited by user email.
+     */
     readonly invitedByUserEmail?: string;
+    /**
+     * is an account team id.
+     */
     readonly teamId: string;
+    /**
+     * is a user email address that first will be invited, and after accepting an invitation,
+     * he or she becomes a member of a team.
+     */
     readonly userEmail: string;
 }
 
@@ -40,13 +66,24 @@ export interface GetAccountTeamMemberArgs {
  * A collection of values returned by getAccountTeamMember.
  */
 export interface GetAccountTeamMemberResult {
+    /**
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
+     * `false` value means that the invitation was sent to the user but not yet accepted.
+     * `true` means that the user accepted the invitation and now a member of an account team.
+     */
     readonly accepted: boolean;
     readonly accountId: string;
+    /**
+     * time of creation.
+     */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * team invited by user email.
+     */
     readonly invitedByUserEmail: string;
     readonly teamId: string;
     readonly userEmail: string;

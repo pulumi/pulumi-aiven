@@ -11,6 +11,35 @@ namespace Pulumi.Aiven
 {
     public static class GetKafka
     {
+        /// <summary>
+        /// ## # Kafka Data Source
+        /// 
+        /// The Kafka data source provides information about the existing Aiven Kafka services.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kafka1 = Output.Create(Aiven.GetKafka.InvokeAsync(new Aiven.GetKafkaArgs
+        ///         {
+        ///             Project = data.Aiven_project.Pr1.Project,
+        ///             ServiceName = "my-kafka1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetKafkaResult> InvokeAsync(GetKafkaArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaArgs(), options.WithVersion());
     }
@@ -18,6 +47,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// defines where the cloud provider and region where the service is hosted
+        /// in. This can be changed freely after service is created. Changing the value will trigger
+        /// a potentially lenghty migration process for the service. Format is cloud provider name
+        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+        /// specific region name. These are documented on each Cloud provider's own support articles,
+        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// </summary>
         [Input("cloudName")]
         public string? CloudName { get; set; }
 
@@ -32,27 +70,68 @@ namespace Pulumi.Aiven
         [Input("defaultAcl")]
         public bool? DefaultAcl { get; set; }
 
+        /// <summary>
+        /// Kafka server provided values:
+        /// </summary>
         [Input("kafka")]
         public Inputs.GetKafkaKafkaArgs? Kafka { get; set; }
 
+        /// <summary>
+        /// defines Kafka specific additional configuration options. The following 
+        /// configuration options available:
+        /// </summary>
         [Input("kafkaUserConfig")]
         public Inputs.GetKafkaKafkaUserConfigArgs? KafkaUserConfig { get; set; }
 
+        /// <summary>
+        /// day of week when maintenance operations should be performed. 
+        /// One monday, tuesday, wednesday, etc.
+        /// </summary>
         [Input("maintenanceWindowDow")]
         public string? MaintenanceWindowDow { get; set; }
 
+        /// <summary>
+        /// time of day when maintenance operations should be performed. 
+        /// UTC time in HH:mm:ss format.
+        /// </summary>
         [Input("maintenanceWindowTime")]
         public string? MaintenanceWindowTime { get; set; }
 
+        /// <summary>
+        /// defines what kind of computing resources are allocated for the service. It can
+        /// be changed after creation, though there are some restrictions when going to a smaller
+        /// plan such as the new plan must have sufficient amount of disk space to store all current
+        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
+        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+        /// and amount of disk space varies but naming is based on memory). The exact options can be
+        /// seen from the Aiven web console's Create Service dialog.
+        /// </summary>
         [Input("plan")]
         public string? Plan { get; set; }
 
+        /// <summary>
+        /// identifies the project the service belongs to. To set up proper dependency
+        /// between the project and the service, refer to the project as shown in the above example.
+        /// Project cannot be changed later without destroying and re-creating the service.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// optionally specifies the VPC the service should run in. If the value
+        /// is not set the service is not run inside a VPC. When set, the value should be given as a
+        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
+        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
+        /// creation but doing so triggers migration to new servers so the operation can take
+        /// significant amount of time to complete if the service has a lot of data.
+        /// </summary>
         [Input("projectVpcId")]
         public string? ProjectVpcId { get; set; }
 
+        /// <summary>
+        /// Kafka hostname.
+        /// </summary>
         [Input("serviceHost")]
         public string? ServiceHost { get; set; }
 
@@ -64,27 +143,54 @@ namespace Pulumi.Aiven
             set => _serviceIntegrations = value;
         }
 
+        /// <summary>
+        /// specifies the actual name of the service. The name cannot be changed
+        /// later without destroying and re-creating the service so name should be picked based on
+        /// intended service usage rather than current attributes.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Password used for connecting to the Kafka service, if applicable.
+        /// </summary>
         [Input("servicePassword")]
         public string? ServicePassword { get; set; }
 
+        /// <summary>
+        /// Kafka port.
+        /// </summary>
         [Input("servicePort")]
         public int? ServicePort { get; set; }
 
         [Input("serviceType")]
         public string? ServiceType { get; set; }
 
+        /// <summary>
+        /// URI for connecting to the Kafka service.
+        /// </summary>
         [Input("serviceUri")]
         public string? ServiceUri { get; set; }
 
+        /// <summary>
+        /// Username used for connecting to the Kafka service, if applicable.
+        /// </summary>
         [Input("serviceUsername")]
         public string? ServiceUsername { get; set; }
 
+        /// <summary>
+        /// Service state.
+        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
+        /// <summary>
+        /// prevents the service from being deleted. It is recommended to
+        /// set this to `true` for all production services to prevent unintentional service
+        /// deletions. This does not shield against deleting databases or topics but for services
+        /// with backups much of the content can at least be restored from backup in case accidental
+        /// deletion is done.
+        /// </summary>
         [Input("terminationProtection")]
         public bool? TerminationProtection { get; set; }
 
@@ -97,6 +203,15 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetKafkaResult
     {
+        /// <summary>
+        /// defines where the cloud provider and region where the service is hosted
+        /// in. This can be changed freely after service is created. Changing the value will trigger
+        /// a potentially lenghty migration process for the service. Format is cloud provider name
+        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+        /// specific region name. These are documented on each Cloud provider's own support articles,
+        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// </summary>
         public readonly string? CloudName;
         public readonly ImmutableArray<Outputs.GetKafkaComponentResult> Components;
         public readonly bool? DefaultAcl;
@@ -104,22 +219,80 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Kafka server provided values:
+        /// </summary>
         public readonly Outputs.GetKafkaKafkaResult Kafka;
+        /// <summary>
+        /// defines Kafka specific additional configuration options. The following 
+        /// configuration options available:
+        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigResult? KafkaUserConfig;
+        /// <summary>
+        /// day of week when maintenance operations should be performed. 
+        /// One monday, tuesday, wednesday, etc.
+        /// </summary>
         public readonly string? MaintenanceWindowDow;
+        /// <summary>
+        /// time of day when maintenance operations should be performed. 
+        /// UTC time in HH:mm:ss format.
+        /// </summary>
         public readonly string? MaintenanceWindowTime;
+        /// <summary>
+        /// defines what kind of computing resources are allocated for the service. It can
+        /// be changed after creation, though there are some restrictions when going to a smaller
+        /// plan such as the new plan must have sufficient amount of disk space to store all current
+        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
+        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+        /// and amount of disk space varies but naming is based on memory). The exact options can be
+        /// seen from the Aiven web console's Create Service dialog.
+        /// </summary>
         public readonly string? Plan;
         public readonly string Project;
+        /// <summary>
+        /// optionally specifies the VPC the service should run in. If the value
+        /// is not set the service is not run inside a VPC. When set, the value should be given as a
+        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
+        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
+        /// creation but doing so triggers migration to new servers so the operation can take
+        /// significant amount of time to complete if the service has a lot of data.
+        /// </summary>
         public readonly string? ProjectVpcId;
+        /// <summary>
+        /// Kafka hostname.
+        /// </summary>
         public readonly string ServiceHost;
         public readonly ImmutableArray<Outputs.GetKafkaServiceIntegrationResult> ServiceIntegrations;
         public readonly string ServiceName;
+        /// <summary>
+        /// Password used for connecting to the Kafka service, if applicable.
+        /// </summary>
         public readonly string ServicePassword;
+        /// <summary>
+        /// Kafka port.
+        /// </summary>
         public readonly int ServicePort;
         public readonly string ServiceType;
+        /// <summary>
+        /// URI for connecting to the Kafka service.
+        /// </summary>
         public readonly string ServiceUri;
+        /// <summary>
+        /// Username used for connecting to the Kafka service, if applicable.
+        /// </summary>
         public readonly string ServiceUsername;
+        /// <summary>
+        /// Service state.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// prevents the service from being deleted. It is recommended to
+        /// set this to `true` for all production services to prevent unintentional service
+        /// deletions. This does not shield against deleting databases or topics but for services
+        /// with backups much of the content can at least be restored from backup in case accidental
+        /// deletion is done.
+        /// </summary>
         public readonly bool? TerminationProtection;
 
         [OutputConstructor]

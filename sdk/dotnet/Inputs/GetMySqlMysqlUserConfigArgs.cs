@@ -12,41 +12,81 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetMySqlMysqlUserConfigArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Custom password for admin user. Defaults to random string. 
+        /// This must be set only when a new service is being created.
+        /// </summary>
         [Input("adminPassword")]
         public string? AdminPassword { get; set; }
 
+        /// <summary>
+        /// Custom username for admin user. This must be set only when a 
+        /// new service is being created.
+        /// </summary>
         [Input("adminUsername")]
         public string? AdminUsername { get; set; }
 
+        /// <summary>
+        /// The hour of day (in UTC) when backup for the service is started. 
+        /// New backup is only started if previous backup has already completed.
+        /// </summary>
         [Input("backupHour")]
         public string? BackupHour { get; set; }
 
+        /// <summary>
+        /// The minute of an hour when backup for the service is started. 
+        /// New backup is only started if previous backup has already completed.
+        /// </summary>
         [Input("backupMinute")]
         public string? BackupMinute { get; set; }
 
         [Input("ipFilters")]
         private List<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
         public List<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new List<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// MySQL specific server provided values.
+        /// </summary>
         [Input("mysql")]
         public Inputs.GetMySqlMysqlUserConfigMysqlArgs? Mysql { get; set; }
 
+        /// <summary>
+        /// MySQL major version
+        /// </summary>
         [Input("mysqlVersion")]
         public string? MysqlVersion { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Inputs.GetMySqlMysqlUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Inputs.GetMySqlMysqlUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Recovery target time when forking a service. This has effect 
+        /// only when a new service is being created.
+        /// </summary>
         [Input("recoveryTargetTime")]
         public string? RecoveryTargetTime { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when 
+        /// a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
 

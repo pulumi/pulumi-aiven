@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetInfluxDbInfluxdbUserConfigPublicAccessArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// InfluxDB specific server provided values.
+        /// </summary>
         [Input("influxdb")]
         public string? Influxdb { get; set; }
 

@@ -14,10 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetPgComponentResult
     {
         public readonly string Component;
+        /// <summary>
+        /// PostgreSQL master node host IP or name
+        /// </summary>
         public readonly string Host;
         public readonly string KafkaAuthenticationMethod;
+        /// <summary>
+        /// PostgreSQL port
+        /// </summary>
         public readonly int Port;
         public readonly string Route;
+        /// <summary>
+        /// the server where to migrate data from is secured with SSL.
+        /// </summary>
         public readonly bool Ssl;
         public readonly string Usage;
 

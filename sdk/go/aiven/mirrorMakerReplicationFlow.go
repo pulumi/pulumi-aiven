@@ -10,22 +10,62 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # MirrorMaker 2 Replication Flow Resource
+//
+// The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
+// Replication Flow on Aiven Cloud.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewMirrorMakerReplicationFlow(ctx, "f1", &aiven.MirrorMakerReplicationFlowArgs{
+// 			Project:       pulumi.Any(aiven_project.Kafka - mm - project1.Project),
+// 			ServiceName:   pulumi.Any(aiven_service.Mm.Service_name),
+// 			SourceCluster: pulumi.Any(aiven_service.Source.Service_name),
+// 			TargetCluster: pulumi.Any(aiven_service.Target.Service_name),
+// 			Enable:        pulumi.Bool(true),
+// 			Topics: pulumi.StringArray{
+// 				pulumi.String(".*"),
+// 			},
+// 			TopicsBlacklists: pulumi.StringArray{
+// 				pulumi.String(".*[\\-\\.]internal"),
+// 				pulumi.String(".*\\.replica"),
+// 				pulumi.String("__.*"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState
 
-	// Enable of disable replication flows for a service
+	// enable of disable replication flows for a mirror maker service
 	Enable pulumi.BoolOutput `pulumi:"enable"`
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
+	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Source cluster alias
+	// is a source cluster alias.
 	SourceCluster pulumi.StringOutput `pulumi:"sourceCluster"`
-	// Target cluster alias
+	// is a target cluster alias.
 	TargetCluster pulumi.StringOutput `pulumi:"targetCluster"`
-	// List of topics and/or regular expressions to replicate
+	// is a list of topics and/or regular expressions to replicate.
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
-	// List of topics and/or regular expressions to not replicate.
+	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists pulumi.StringArrayOutput `pulumi:"topicsBlacklists"`
 }
 
@@ -72,36 +112,38 @@ func GetMirrorMakerReplicationFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 type mirrorMakerReplicationFlowState struct {
-	// Enable of disable replication flows for a service
+	// enable of disable replication flows for a mirror maker service
 	Enable *bool `pulumi:"enable"`
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
+	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project *string `pulumi:"project"`
 	// Service to link the kafka topic to
 	ServiceName *string `pulumi:"serviceName"`
-	// Source cluster alias
+	// is a source cluster alias.
 	SourceCluster *string `pulumi:"sourceCluster"`
-	// Target cluster alias
+	// is a target cluster alias.
 	TargetCluster *string `pulumi:"targetCluster"`
-	// List of topics and/or regular expressions to replicate
+	// is a list of topics and/or regular expressions to replicate.
 	Topics []string `pulumi:"topics"`
-	// List of topics and/or regular expressions to not replicate.
+	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
 }
 
 type MirrorMakerReplicationFlowState struct {
-	// Enable of disable replication flows for a service
+	// enable of disable replication flows for a mirror maker service
 	Enable pulumi.BoolPtrInput
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
+	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringPtrInput
-	// Source cluster alias
+	// is a source cluster alias.
 	SourceCluster pulumi.StringPtrInput
-	// Target cluster alias
+	// is a target cluster alias.
 	TargetCluster pulumi.StringPtrInput
-	// List of topics and/or regular expressions to replicate
+	// is a list of topics and/or regular expressions to replicate.
 	Topics pulumi.StringArrayInput
-	// List of topics and/or regular expressions to not replicate.
+	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists pulumi.StringArrayInput
 }
 
@@ -110,37 +152,39 @@ func (MirrorMakerReplicationFlowState) ElementType() reflect.Type {
 }
 
 type mirrorMakerReplicationFlowArgs struct {
-	// Enable of disable replication flows for a service
+	// enable of disable replication flows for a mirror maker service
 	Enable bool `pulumi:"enable"`
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
+	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project string `pulumi:"project"`
 	// Service to link the kafka topic to
 	ServiceName string `pulumi:"serviceName"`
-	// Source cluster alias
+	// is a source cluster alias.
 	SourceCluster string `pulumi:"sourceCluster"`
-	// Target cluster alias
+	// is a target cluster alias.
 	TargetCluster string `pulumi:"targetCluster"`
-	// List of topics and/or regular expressions to replicate
+	// is a list of topics and/or regular expressions to replicate.
 	Topics []string `pulumi:"topics"`
-	// List of topics and/or regular expressions to not replicate.
+	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
 }
 
 // The set of arguments for constructing a MirrorMakerReplicationFlow resource.
 type MirrorMakerReplicationFlowArgs struct {
-	// Enable of disable replication flows for a service
+	// enable of disable replication flows for a mirror maker service
 	Enable pulumi.BoolInput
-	// Project to link the kafka topic to
+	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
+	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringInput
-	// Source cluster alias
+	// is a source cluster alias.
 	SourceCluster pulumi.StringInput
-	// Target cluster alias
+	// is a target cluster alias.
 	TargetCluster pulumi.StringInput
-	// List of topics and/or regular expressions to replicate
+	// is a list of topics and/or regular expressions to replicate.
 	Topics pulumi.StringArrayInput
-	// List of topics and/or regular expressions to not replicate.
+	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists pulumi.StringArrayInput
 }
 

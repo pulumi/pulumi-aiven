@@ -13,9 +13,21 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
     {
+        /// <summary>
+        /// Whether to periodically check for new consumer groups. 
+        /// Defaults to 'true'.
+        /// </summary>
         public readonly string? RefreshGroupsEnabled;
+        /// <summary>
+        /// Whether to periodically check for new topics and 
+        /// partitions. Defaults to 'true'.
+        /// </summary>
         public readonly string? RefreshGroupsIntervalSeconds;
         public readonly string? RefreshTopicsEnabled;
+        /// <summary>
+        /// Frequency of topic and partitions refresh in 
+        /// seconds. Defaults to 600 seconds (10 minutes).
+        /// </summary>
         public readonly string? RefreshTopicsIntervalSeconds;
 
         [OutputConstructor]

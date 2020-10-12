@@ -6,6 +6,23 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Project User Data Source
+ *
+ * The Project User data source provides information about the existing Aiven Project User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestuser = aiven_project_myproject.project.apply(project => aiven.getProjectUser({
+ *     email: "john.doe@example.com",
+ *     project: project,
+ * }, { async: true }));
+ * ```
+ */
 export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> {
     if (!opts) {
         opts = {}
@@ -26,9 +43,24 @@ export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getProjectUser.
  */
 export interface GetProjectUserArgs {
+    /**
+     * is a computed property tells whether the user has accepted the request to join
+     * the project; adding user to a project sends an invitation to the target user and the
+     * actual membership is only created once the user accepts the invitation. This property
+     * cannot be set, only read.
+     */
     readonly accepted?: boolean;
+    /**
+     * identifies the email address of the user.
+     */
     readonly email: string;
+    /**
+     * (Required) defines the access level the user has to the project.
+     */
     readonly memberType?: string;
+    /**
+     * defines the project the user is a member of.
+     */
     readonly project: string;
 }
 
@@ -36,12 +68,21 @@ export interface GetProjectUserArgs {
  * A collection of values returned by getProjectUser.
  */
 export interface GetProjectUserResult {
+    /**
+     * is a computed property tells whether the user has accepted the request to join
+     * the project; adding user to a project sends an invitation to the target user and the
+     * actual membership is only created once the user accepts the invitation. This property
+     * cannot be set, only read.
+     */
     readonly accepted: boolean;
     readonly email: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Required) defines the access level the user has to the project.
+     */
     readonly memberType?: string;
     readonly project: string;
 }

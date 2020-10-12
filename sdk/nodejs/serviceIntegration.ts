@@ -6,6 +6,33 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Service Integration Resource
+ *
+ * The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+ *
+ * Service Integration defines an integration between two Aiven services or between Aiven
+ * service and an external integration endpoint. Integration could be for example sending
+ * metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+ * service to a Grafana service to show dashboards, sending logs from any service to
+ * Elasticsearch, etc.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myintegration = new aiven.ServiceIntegration("myintegration", {
+ *     destinationEndpointId: aiven_service_integration_endpoint_myendpoint.id,
+ *     destinationServiceName: "",
+ *     integrationType: "datadog",
+ *     project: aiven_project_myproject.project,
+ *     sourceEndpointId: "",
+ *     sourceServiceName: aiven_service_testkafka.serviceName,
+ * });
+ * ```
+ */
 export class ServiceIntegration extends pulumi.CustomResource {
     /**
      * Get an existing ServiceIntegration resource's state with the given name, ID, and optional extra
@@ -35,7 +62,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * Destination endpoint for the integration (if any)
+     * or `destinationServiceName` - (Required) identifies the target side of
+     * the integration. Only either endpoint identifier or service name must be specified. In
+     * either case the target needs to be defined using the reference syntax described above to
+     * set up the dependency correctly.
      */
     public readonly destinationEndpointId!: pulumi.Output<string | undefined>;
     /**
@@ -43,7 +73,8 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly destinationServiceName!: pulumi.Output<string | undefined>;
     /**
-     * Type of the service integration
+     * identifies the type of integration that is set up. Possible values
+     * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
      */
     public readonly integrationType!: pulumi.Output<string>;
     /**
@@ -63,11 +94,14 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly mirrormakerUserConfig!: pulumi.Output<outputs.ServiceIntegrationMirrormakerUserConfig | undefined>;
     /**
-     * Project the integration belongs to
+     * defines the project the integration belongs to.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Source endpoint for the integration (if any)
+     * or `sourceServiceName` - (Optional) identifies the source side of the
+     * integration. Only either endpoint identifier or service name must be specified. In either
+     * case the source needs to be defined using the reference syntax described above to set up
+     * the dependency correctly.
      */
     public readonly sourceEndpointId!: pulumi.Output<string | undefined>;
     /**
@@ -132,7 +166,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
  */
 export interface ServiceIntegrationState {
     /**
-     * Destination endpoint for the integration (if any)
+     * or `destinationServiceName` - (Required) identifies the target side of
+     * the integration. Only either endpoint identifier or service name must be specified. In
+     * either case the target needs to be defined using the reference syntax described above to
+     * set up the dependency correctly.
      */
     readonly destinationEndpointId?: pulumi.Input<string>;
     /**
@@ -140,7 +177,8 @@ export interface ServiceIntegrationState {
      */
     readonly destinationServiceName?: pulumi.Input<string>;
     /**
-     * Type of the service integration
+     * identifies the type of integration that is set up. Possible values
+     * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
      */
     readonly integrationType?: pulumi.Input<string>;
     /**
@@ -160,11 +198,14 @@ export interface ServiceIntegrationState {
      */
     readonly mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**
-     * Project the integration belongs to
+     * defines the project the integration belongs to.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Source endpoint for the integration (if any)
+     * or `sourceServiceName` - (Optional) identifies the source side of the
+     * integration. Only either endpoint identifier or service name must be specified. In either
+     * case the source needs to be defined using the reference syntax described above to set up
+     * the dependency correctly.
      */
     readonly sourceEndpointId?: pulumi.Input<string>;
     /**
@@ -178,7 +219,10 @@ export interface ServiceIntegrationState {
  */
 export interface ServiceIntegrationArgs {
     /**
-     * Destination endpoint for the integration (if any)
+     * or `destinationServiceName` - (Required) identifies the target side of
+     * the integration. Only either endpoint identifier or service name must be specified. In
+     * either case the target needs to be defined using the reference syntax described above to
+     * set up the dependency correctly.
      */
     readonly destinationEndpointId?: pulumi.Input<string>;
     /**
@@ -186,7 +230,8 @@ export interface ServiceIntegrationArgs {
      */
     readonly destinationServiceName?: pulumi.Input<string>;
     /**
-     * Type of the service integration
+     * identifies the type of integration that is set up. Possible values
+     * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
      */
     readonly integrationType: pulumi.Input<string>;
     /**
@@ -206,11 +251,14 @@ export interface ServiceIntegrationArgs {
      */
     readonly mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**
-     * Project the integration belongs to
+     * defines the project the integration belongs to.
      */
     readonly project: pulumi.Input<string>;
     /**
-     * Source endpoint for the integration (if any)
+     * or `sourceServiceName` - (Optional) identifies the source side of the
+     * integration. Only either endpoint identifier or service name must be specified. In either
+     * case the source needs to be defined using the reference syntax described above to set up
+     * the dependency correctly.
      */
     readonly sourceEndpointId?: pulumi.Input<string>;
     /**

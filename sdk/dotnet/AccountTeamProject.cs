@@ -9,28 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Account Team Project Resource
+    /// 
+    /// The Account Team Project resource allows the creation and management of an Account Team Projects.
+    /// 
+    /// It is intended to link and existing project to the existing account team.
+    /// It is important to note that the project should have an `account_id` property set and equal to
+    /// account team you are trying to link this project.
+    /// </summary>
     public partial class AccountTeamProject : Pulumi.CustomResource
     {
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Account team project name
+        /// is a project name of already existing project.
         /// </summary>
         [Output("projectName")]
         public Output<string?> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Account team id
+        /// is an account team id.
         /// </summary>
         [Output("teamId")]
         public Output<string> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// Account team project type, can one of the following values: admin, developer, operator and read_only
+        /// is an account team project type, can one of the following values: `admin`, 
+        /// `developer`, `operator` and `read_only`.
         /// </summary>
         [Output("teamType")]
         public Output<string?> TeamType { get; private set; } = null!;
@@ -82,25 +92,26 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamProjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Account team project name
+        /// is a project name of already existing project.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Account team id
+        /// is an account team id.
         /// </summary>
         [Input("teamId", required: true)]
         public Input<string> TeamId { get; set; } = null!;
 
         /// <summary>
-        /// Account team project type, can one of the following values: admin, developer, operator and read_only
+        /// is an account team project type, can one of the following values: `admin`, 
+        /// `developer`, `operator` and `read_only`.
         /// </summary>
         [Input("teamType")]
         public Input<string>? TeamType { get; set; }
@@ -113,25 +124,26 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamProjectState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Account team project name
+        /// is a project name of already existing project.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Account team id
+        /// is an account team id.
         /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Account team project type, can one of the following values: admin, developer, operator and read_only
+        /// is an account team project type, can one of the following values: `admin`, 
+        /// `developer`, `operator` and `read_only`.
         /// </summary>
         [Input("teamType")]
         public Input<string>? TeamType { get; set; }

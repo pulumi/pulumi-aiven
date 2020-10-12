@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kafka Connect specific server provided values.
+        /// </summary>
         [Input("kafkaConnect")]
         public string? KafkaConnect { get; set; }
 

@@ -7,6 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Account Team Project Data Source
+//
+// The Account Team Project data source provides information about the existing Account Team Project.
 func LookupAccountTeamProject(ctx *pulumi.Context, args *LookupAccountTeamProjectArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamProjectResult, error) {
 	var rv LookupAccountTeamProjectResult
 	err := ctx.Invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", args, &rv, opts...)
@@ -18,18 +21,25 @@ func LookupAccountTeamProject(ctx *pulumi.Context, args *LookupAccountTeamProjec
 
 // A collection of arguments for invoking getAccountTeamProject.
 type LookupAccountTeamProjectArgs struct {
-	AccountId   string  `pulumi:"accountId"`
-	ProjectName string  `pulumi:"projectName"`
-	TeamId      string  `pulumi:"teamId"`
-	TeamType    *string `pulumi:"teamType"`
+	// is a unique account id.
+	AccountId string `pulumi:"accountId"`
+	// is a project name of already existing project.
+	ProjectName string `pulumi:"projectName"`
+	// is an account team id.
+	TeamId string `pulumi:"teamId"`
+	// is an account team project type, can one of the following values: `admin`,
+	// `developer`, `operator` and `readOnly`.
+	TeamType *string `pulumi:"teamType"`
 }
 
 // A collection of values returned by getAccountTeamProject.
 type LookupAccountTeamProjectResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
-	ProjectName string  `pulumi:"projectName"`
-	TeamId      string  `pulumi:"teamId"`
-	TeamType    *string `pulumi:"teamType"`
+	Id          string `pulumi:"id"`
+	ProjectName string `pulumi:"projectName"`
+	TeamId      string `pulumi:"teamId"`
+	// is an account team project type, can one of the following values: `admin`,
+	// `developer`, `operator` and `readOnly`.
+	TeamType *string `pulumi:"teamType"`
 }

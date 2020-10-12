@@ -22,12 +22,28 @@ class ServiceUser(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ServiceUser resource with the given unique name, props, and options.
+        ## # Service User Resource
+
+        The Service User resource allows the creation and management of an Aiven Service Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myserviceuser = aiven.ServiceUser("myserviceuser",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
+            username="<USERNAME>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] project: Project to link the user to
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the user to
-        :param pulumi.Input[str] username: Name of the user account
+        :param pulumi.Input[str] username: is the actual name of the user account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,13 +99,14 @@ class ServiceUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_cert: Access certificate for the user if applicable for the service in question
-        :param pulumi.Input[str] access_key: Access certificate key for the user if applicable for the service in question
-        :param pulumi.Input[str] password: Password of the user
-        :param pulumi.Input[str] project: Project to link the user to
+        :param pulumi.Input[str] access_cert: is the access certificate of the user (not applicable for all services).
+        :param pulumi.Input[str] access_key: is the access key of the user (not applicable for all services).
+        :param pulumi.Input[str] password: is the password of the user (not applicable for all services).
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the user to
-        :param pulumi.Input[str] type: Type of the user account
-        :param pulumi.Input[str] username: Name of the user account
+        :param pulumi.Input[str] type: tells whether the user is primary account or regular account.
+        :param pulumi.Input[str] username: is the actual name of the user account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -108,7 +125,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> pulumi.Output[str]:
         """
-        Access certificate for the user if applicable for the service in question
+        is the access certificate of the user (not applicable for all services).
         """
         return pulumi.get(self, "access_cert")
 
@@ -116,7 +133,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[str]:
         """
-        Access certificate key for the user if applicable for the service in question
+        is the access key of the user (not applicable for all services).
         """
         return pulumi.get(self, "access_key")
 
@@ -124,7 +141,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        Password of the user
+        is the password of the user (not applicable for all services).
         """
         return pulumi.get(self, "password")
 
@@ -132,7 +149,8 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project to link the user to
+        and `service_name` - (Required) define the project and service the user belongs to.
+        They should be defined using reference as shown above to set up dependencies correctly.
         """
         return pulumi.get(self, "project")
 
@@ -148,7 +166,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the user account
+        tells whether the user is primary account or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -156,7 +174,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        Name of the user account
+        is the actual name of the user account.
         """
         return pulumi.get(self, "username")
 

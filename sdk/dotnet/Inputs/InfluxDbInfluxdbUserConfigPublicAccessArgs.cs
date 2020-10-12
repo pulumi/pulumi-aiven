@@ -12,6 +12,10 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class InfluxDbInfluxdbUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow clients to connect to influxdb from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("influxdb")]
         public Input<string>? Influxdb { get; set; }
 

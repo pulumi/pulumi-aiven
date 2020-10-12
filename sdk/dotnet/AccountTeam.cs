@@ -9,34 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Account Team Resource
+    /// 
+    /// The Account Team resource allows the creation and management of an Account Teams.
+    /// </summary>
     public partial class AccountTeam : Pulumi.CustomResource
     {
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Account team name
+        /// defines an account team name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Account team id
+        /// is an auto-generated unique account team id.
         /// </summary>
         [Output("teamId")]
         public Output<string> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// Time of last update
+        /// time of last update.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -88,25 +93,25 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Account team name
+        /// defines an account team name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Time of last update
+        /// time of last update.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
@@ -119,31 +124,31 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Account team name
+        /// defines an account team name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Account team id
+        /// is an auto-generated unique account team id.
         /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Time of last update
+        /// time of last update.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

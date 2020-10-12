@@ -48,11 +48,17 @@ class GetServiceUserResult:
     @property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> str:
+        """
+        is the access certificate of the user (not applicable for all services).
+        """
         return pulumi.get(self, "access_cert")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
+        """
+        is the access key of the user (not applicable for all services).
+        """
         return pulumi.get(self, "access_key")
 
     @property
@@ -66,6 +72,9 @@ class GetServiceUserResult:
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        is the password of the user (not applicable for all services).
+        """
         return pulumi.get(self, "password")
 
     @property
@@ -81,6 +90,9 @@ class GetServiceUserResult:
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        tells whether the user is primary account or regular account.
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -114,7 +126,29 @@ def get_service_user(access_cert: Optional[str] = None,
                      username: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceUserResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Service User Data Source
+
+    The Service User data source provides information about the existing Aiven Service User.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myserviceuser = aiven.get_service_user(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        username="<USERNAME>")
+    ```
+
+
+    :param str access_cert: is the access certificate of the user (not applicable for all services).
+    :param str access_key: is the access key of the user (not applicable for all services).
+    :param str password: is the password of the user (not applicable for all services).
+    :param str project: and `service_name` - (Required) define the project and service the user belongs to.
+           They should be defined using reference as shown above to set up dependencies correctly.
+    :param str type: tells whether the user is primary account or regular account.
+    :param str username: is the actual name of the user account.
     """
     __args__ = dict()
     __args__['accessCert'] = access_cert

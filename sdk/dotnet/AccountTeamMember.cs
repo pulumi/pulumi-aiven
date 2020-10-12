@@ -9,40 +9,54 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Account Team Member Resource
+    /// 
+    /// The Account Team Member resource allows the creation and management of an Aiven Account Team Members.
+    /// 
+    /// During the creation of `aiven.AccountTeamMember` resource, an email invitation will be sent\
+    /// to a user using `user_email` address. If the user accepts an invitation, he or she will become
+    /// a member of the account team. The deletion of `aiven.AccountTeamMember` will not only
+    /// delete invitation if one was sent but not yet accepted by the user, and it will also
+    /// eliminate an account team member if one has accepted an invitation previously.
+    /// </summary>
     public partial class AccountTeamMember : Pulumi.CustomResource
     {
         /// <summary>
-        /// Team member invitation status
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
+        /// `false` value means that the invitation was sent to the user but not yet accepted.
+        /// `true` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         [Output("accepted")]
         public Output<bool> Accepted { get; private set; } = null!;
 
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Team invited by user email
+        /// team invited by user email.
         /// </summary>
         [Output("invitedByUserEmail")]
         public Output<string> InvitedByUserEmail { get; private set; } = null!;
 
         /// <summary>
-        /// Account team id
+        /// is an account team id.
         /// </summary>
         [Output("teamId")]
         public Output<string> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// Team invite user email
+        /// is a user email address that first will be invited, and after accepting an invitation,
+        /// he or she becomes a member of a team.
         /// </summary>
         [Output("userEmail")]
         public Output<string> UserEmail { get; private set; } = null!;
@@ -94,37 +108,40 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamMemberArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Team member invitation status
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
+        /// `false` value means that the invitation was sent to the user but not yet accepted.
+        /// `true` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         [Input("accepted")]
         public Input<bool>? Accepted { get; set; }
 
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Team invited by user email
+        /// team invited by user email.
         /// </summary>
         [Input("invitedByUserEmail")]
         public Input<string>? InvitedByUserEmail { get; set; }
 
         /// <summary>
-        /// Account team id
+        /// is an account team id.
         /// </summary>
         [Input("teamId", required: true)]
         public Input<string> TeamId { get; set; } = null!;
 
         /// <summary>
-        /// Team invite user email
+        /// is a user email address that first will be invited, and after accepting an invitation,
+        /// he or she becomes a member of a team.
         /// </summary>
         [Input("userEmail", required: true)]
         public Input<string> UserEmail { get; set; } = null!;
@@ -137,37 +154,40 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamMemberState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Team member invitation status
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
+        /// `false` value means that the invitation was sent to the user but not yet accepted.
+        /// `true` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         [Input("accepted")]
         public Input<bool>? Accepted { get; set; }
 
         /// <summary>
-        /// Account id
+        /// is a unique account id.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Team invited by user email
+        /// team invited by user email.
         /// </summary>
         [Input("invitedByUserEmail")]
         public Input<string>? InvitedByUserEmail { get; set; }
 
         /// <summary>
-        /// Account team id
+        /// is an account team id.
         /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Team invite user email
+        /// is a user email address that first will be invited, and after accepting an invitation,
+        /// he or she becomes a member of a team.
         /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }

@@ -9,16 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Resource Kafka ACL Resource
+    /// 
+    /// The Resource Kafka ACL resource allows the creation and management of an Aiven Kafka ACL`s for a Kafka service.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mytestacl = new Aiven.KafkaAcl("mytestacl", new Aiven.KafkaAclArgs
+    ///         {
+    ///             Permission = "admin",
+    ///             Project = aiven_project.Myproject.Project,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+    ///             Username = "&lt;USERNAME_PATTERN&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class KafkaAcl : Pulumi.CustomResource
     {
         /// <summary>
-        /// Kafka permission to grant (admin, read, readwrite, write)
+        /// is the level of permission the matching users are given to the matching
+        /// topics (admin, read, readwrite, write).
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
 
         /// <summary>
-        /// Project to link the Kafka ACL to
+        /// and `service_name` - (Required) define the project and service the ACL belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -30,13 +62,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry
+        /// is a topic name pattern the ACL entry matches to.
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry
+        /// is a username pattern the ACL entry matches to.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -88,13 +120,17 @@ namespace Pulumi.Aiven
     public sealed class KafkaAclArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka permission to grant (admin, read, readwrite, write)
+        /// is the level of permission the matching users are given to the matching
+        /// topics (admin, read, readwrite, write).
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// Project to link the Kafka ACL to
+        /// and `service_name` - (Required) define the project and service the ACL belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -106,13 +142,13 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry
+        /// is a topic name pattern the ACL entry matches to.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry
+        /// is a username pattern the ACL entry matches to.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -125,13 +161,17 @@ namespace Pulumi.Aiven
     public sealed class KafkaAclState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka permission to grant (admin, read, readwrite, write)
+        /// is the level of permission the matching users are given to the matching
+        /// topics (admin, read, readwrite, write).
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
 
         /// <summary>
-        /// Project to link the Kafka ACL to
+        /// and `service_name` - (Required) define the project and service the ACL belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -143,13 +183,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Topic name pattern for the ACL entry
+        /// is a topic name pattern the ACL entry matches to.
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }
 
         /// <summary>
-        /// Username pattern for the ACL entry
+        /// is a username pattern the ACL entry matches to.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

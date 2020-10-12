@@ -65,11 +65,17 @@ class GetVpcPeeringConnectionResult:
     @property
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> Optional[str]:
+        """
+        an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+        """
         return pulumi.get(self, "peer_azure_app_id")
 
     @property
     @pulumi.getter(name="peerAzureTenantId")
     def peer_azure_tenant_id(self) -> Optional[str]:
+        """
+        an Azure tenant id in UUID4 form.
+        """
         return pulumi.get(self, "peer_azure_tenant_id")
 
     @property
@@ -80,11 +86,17 @@ class GetVpcPeeringConnectionResult:
     @property
     @pulumi.getter(name="peerRegion")
     def peer_region(self) -> Optional[str]:
+        """
+        defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+        """
         return pulumi.get(self, "peer_region")
 
     @property
     @pulumi.getter(name="peerResourceGroup")
     def peer_resource_group(self) -> Optional[str]:
+        """
+        an Azure resource group name of the peered VPC.
+        """
         return pulumi.get(self, "peer_resource_group")
 
     @property
@@ -95,16 +107,28 @@ class GetVpcPeeringConnectionResult:
     @property
     @pulumi.getter(name="peeringConnectionId")
     def peering_connection_id(self) -> str:
+        """
+        a cloud provider identifier for the peering connection if available.
+        """
         return pulumi.get(self, "peering_connection_id")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        is the state of the peering connection. This property is computed by Aiven 
+        therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+        `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+        `INVALID_SPECIFICATION`.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> Mapping[str, Any]:
+        """
+        state-specific help or error information.
+        """
         return pulumi.get(self, "state_info")
 
     @property
@@ -144,7 +168,37 @@ def get_vpc_peering_connection(peer_azure_app_id: Optional[str] = None,
                                vpc_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcPeeringConnectionResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # VPC Peering Connection Data Source
+
+    The VPC Peering Connection data source provides information about the existing Aiven
+    VPC Peering Connection.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mypeeringconnection = aiven.get_vpc_peering_connection(peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="<PEER_VPC_ID/NAME>",
+        vpc_id=aiven_project_vpc["myvpc"]["id"])
+    ```
+
+
+    :param str peer_azure_app_id: an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+    :param str peer_azure_tenant_id: an Azure tenant id in UUID4 form.
+    :param str peer_cloud_account: defines the identifier of the cloud account the VPC is being
+           peered with.
+    :param str peer_region: defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+    :param str peer_resource_group: an Azure resource group name of the peered VPC.
+    :param str peer_vpc: defines the identifier or name of the remote VPC.
+    :param str peering_connection_id: a cloud provider identifier for the peering connection if available.
+    :param str state: is the state of the peering connection. This property is computed by Aiven 
+           therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+           `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+           `INVALID_SPECIFICATION`.
+    :param Mapping[str, Any] state_info: state-specific help or error information.
+    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
     """
     __args__ = dict()
     __args__['peerAzureAppId'] = peer_azure_app_id

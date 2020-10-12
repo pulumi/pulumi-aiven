@@ -6,6 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Data Source
+ *
+ * The Account data source provides information about the existing Aiven Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const account1 = pulumi.output(aiven.getAccount({
+ *     name: "<ACCOUNT_NAME>",
+ * }, { async: true }));
+ * ```
+ */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     if (!opts) {
         opts = {}
@@ -28,11 +44,29 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getAccount.
  */
 export interface GetAccountArgs {
+    /**
+     * is an auto-generated unique account id.
+     */
     readonly accountId?: string;
+    /**
+     * time of creation.
+     */
     readonly createTime?: string;
+    /**
+     * defines an account name.
+     */
     readonly name: string;
+    /**
+     * is an owner team id.
+     */
     readonly ownerTeamId?: string;
+    /**
+     * is a tenant id.
+     */
     readonly tenantId?: string;
+    /**
+     * time of last update.
+     */
     readonly updateTime?: string;
 }
 
@@ -40,14 +74,29 @@ export interface GetAccountArgs {
  * A collection of values returned by getAccount.
  */
 export interface GetAccountResult {
+    /**
+     * is an auto-generated unique account id.
+     */
     readonly accountId: string;
+    /**
+     * time of creation.
+     */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * is an owner team id.
+     */
     readonly ownerTeamId: string;
+    /**
+     * is a tenant id.
+     */
     readonly tenantId: string;
+    /**
+     * time of last update.
+     */
     readonly updateTime: string;
 }

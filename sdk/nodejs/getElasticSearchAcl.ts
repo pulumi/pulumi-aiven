@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Elasticsearch ACL Data Source
+ *
+ * The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL
+ * for Elasticsearch service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const es-acls = aiven.getElasticSearchAcl({
+ *     project: aiven_project["es-project"].project,
+ *     serviceName: aiven_service.es.service_name,
+ * });
+ * ```
+ */
 export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticSearchAclResult> {
     if (!opts) {
         opts = {}
@@ -28,8 +46,20 @@ export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi
  */
 export interface GetElasticSearchAclArgs {
     readonly acls?: inputs.GetElasticSearchAclAcl[];
+    /**
+     * enables of disables Elasticsearch ACL's.
+     */
     readonly enabled?: boolean;
+    /**
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+     * these APIs as long as all operations only target indexes they have been granted access to.
+     */
     readonly extendedAcl?: boolean;
+    /**
+     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly project: string;
     readonly serviceName: string;
 }
@@ -39,7 +69,15 @@ export interface GetElasticSearchAclArgs {
  */
 export interface GetElasticSearchAclResult {
     readonly acls?: outputs.GetElasticSearchAclAcl[];
+    /**
+     * enables of disables Elasticsearch ACL's.
+     */
     readonly enabled?: boolean;
+    /**
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+     * these APIs as long as all operations only target indexes they have been granted access to.
+     */
     readonly extendedAcl?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.

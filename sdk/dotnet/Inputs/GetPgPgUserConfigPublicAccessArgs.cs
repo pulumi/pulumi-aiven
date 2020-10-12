@@ -12,12 +12,23 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetPgPgUserConfigPublicAccessArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// PostgreSQL specific server provided values.
+        /// </summary>
         [Input("pg")]
         public string? Pg { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to pgbouncer from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("pgbouncer")]
         public string? Pgbouncer { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to prometheus from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("prometheus")]
         public string? Prometheus { get; set; }
 

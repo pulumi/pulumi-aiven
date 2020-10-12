@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Team Project Data Source
+ *
+ * The Account Team Project data source provides information about the existing Account Team Project.
+ */
 export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamProjectResult> {
     if (!opts) {
         opts = {}
@@ -26,9 +31,22 @@ export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pu
  * A collection of arguments for invoking getAccountTeamProject.
  */
 export interface GetAccountTeamProjectArgs {
+    /**
+     * is a unique account id.
+     */
     readonly accountId: string;
+    /**
+     * is a project name of already existing project.
+     */
     readonly projectName: string;
+    /**
+     * is an account team id.
+     */
     readonly teamId: string;
+    /**
+     * is an account team project type, can one of the following values: `admin`, 
+     * `developer`, `operator` and `readOnly`.
+     */
     readonly teamType?: string;
 }
 
@@ -43,5 +61,9 @@ export interface GetAccountTeamProjectResult {
     readonly id: string;
     readonly projectName: string;
     readonly teamId: string;
+    /**
+     * is an account team project type, can one of the following values: `admin`, 
+     * `developer`, `operator` and `readOnly`.
+     */
     readonly teamType?: string;
 }

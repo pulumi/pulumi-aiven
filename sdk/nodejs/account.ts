@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Resource
+ *
+ * The Account resource allows the creation and management of an Aiven Accounts.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const account1 = new aiven.Account("account1", {});
+ * ```
+ */
 export class Account extends pulumi.CustomResource {
     /**
      * Get an existing Account resource's state with the given name, ID, and optional extra
@@ -33,27 +47,27 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * Account id
+     * is an auto-generated unique account id.
      */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
     /**
-     * Time of creation
+     * time of creation.
      */
     public readonly createTime!: pulumi.Output<string>;
     /**
-     * Account name
+     * defines an account name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Owner team id
+     * is an owner team id.
      */
     public readonly ownerTeamId!: pulumi.Output<string>;
     /**
-     * Tenant id
+     * is a tenant id.
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
-     * Time of last update
+     * time of last update.
      */
     public readonly updateTime!: pulumi.Output<string>;
 
@@ -100,27 +114,27 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * Account id
+     * is an auto-generated unique account id.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * Time of creation
+     * time of creation.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Account name
+     * defines an account name.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Owner team id
+     * is an owner team id.
      */
     readonly ownerTeamId?: pulumi.Input<string>;
     /**
-     * Tenant id
+     * is a tenant id.
      */
     readonly tenantId?: pulumi.Input<string>;
     /**
-     * Time of last update
+     * time of last update.
      */
     readonly updateTime?: pulumi.Input<string>;
 }
@@ -130,23 +144,23 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * Time of creation
+     * time of creation.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Account name
+     * defines an account name.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Owner team id
+     * is an owner team id.
      */
     readonly ownerTeamId?: pulumi.Input<string>;
     /**
-     * Tenant id
+     * is a tenant id.
      */
     readonly tenantId?: pulumi.Input<string>;
     /**
-     * Time of last update
+     * time of last update.
      */
     readonly updateTime?: pulumi.Input<string>;
 }

@@ -9,40 +9,63 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Account Resource
+    /// 
+    /// The Account resource allows the creation and management of an Aiven Accounts.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var account1 = new Aiven.Account("account1", new Aiven.AccountArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>
-        /// Account id
+        /// is an auto-generated unique account id.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Account name
+        /// defines an account name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Owner team id
+        /// is an owner team id.
         /// </summary>
         [Output("ownerTeamId")]
         public Output<string> OwnerTeamId { get; private set; } = null!;
 
         /// <summary>
-        /// Tenant id
+        /// is a tenant id.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Time of last update
+        /// time of last update.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -94,31 +117,31 @@ namespace Pulumi.Aiven
     public sealed class AccountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Account name
+        /// defines an account name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Owner team id
+        /// is an owner team id.
         /// </summary>
         [Input("ownerTeamId")]
         public Input<string>? OwnerTeamId { get; set; }
 
         /// <summary>
-        /// Tenant id
+        /// is a tenant id.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Time of last update
+        /// time of last update.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
@@ -131,37 +154,37 @@ namespace Pulumi.Aiven
     public sealed class AccountState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account id
+        /// is an auto-generated unique account id.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Time of creation
+        /// time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Account name
+        /// defines an account name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Owner team id
+        /// is an owner team id.
         /// </summary>
         [Input("ownerTeamId")]
         public Input<string>? OwnerTeamId { get; set; }
 
         /// <summary>
-        /// Tenant id
+        /// is a tenant id.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Time of last update
+        /// time of last update.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

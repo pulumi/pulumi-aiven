@@ -10,18 +10,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Account Team Resource
+//
+// The Account Team resource allows the creation and management of an Account Teams.
 type AccountTeam struct {
 	pulumi.CustomResourceState
 
-	// Account id
+	// is a unique account id.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Time of creation
+	// time of creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Account team name
+	// defines an account team name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Account team id
+	// is an auto-generated unique account team id.
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
-	// Time of last update
+	// time of last update.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -56,28 +59,28 @@ func GetAccountTeam(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountTeam resources.
 type accountTeamState struct {
-	// Account id
+	// is a unique account id.
 	AccountId *string `pulumi:"accountId"`
-	// Time of creation
+	// time of creation.
 	CreateTime *string `pulumi:"createTime"`
-	// Account team name
+	// defines an account team name.
 	Name *string `pulumi:"name"`
-	// Account team id
+	// is an auto-generated unique account team id.
 	TeamId *string `pulumi:"teamId"`
-	// Time of last update
+	// time of last update.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AccountTeamState struct {
-	// Account id
+	// is a unique account id.
 	AccountId pulumi.StringPtrInput
-	// Time of creation
+	// time of creation.
 	CreateTime pulumi.StringPtrInput
-	// Account team name
+	// defines an account team name.
 	Name pulumi.StringPtrInput
-	// Account team id
+	// is an auto-generated unique account team id.
 	TeamId pulumi.StringPtrInput
-	// Time of last update
+	// time of last update.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -86,25 +89,25 @@ func (AccountTeamState) ElementType() reflect.Type {
 }
 
 type accountTeamArgs struct {
-	// Account id
+	// is a unique account id.
 	AccountId string `pulumi:"accountId"`
-	// Time of creation
+	// time of creation.
 	CreateTime *string `pulumi:"createTime"`
-	// Account team name
+	// defines an account team name.
 	Name *string `pulumi:"name"`
-	// Time of last update
+	// time of last update.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a AccountTeam resource.
 type AccountTeamArgs struct {
-	// Account id
+	// is a unique account id.
 	AccountId pulumi.StringInput
-	// Time of creation
+	// time of creation.
 	CreateTime pulumi.StringPtrInput
-	// Account team name
+	// defines an account team name.
 	Name pulumi.StringPtrInput
-	// Time of last update
+	// time of last update.
 	UpdateTime pulumi.StringPtrInput
 }
 

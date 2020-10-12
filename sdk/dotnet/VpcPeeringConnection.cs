@@ -9,64 +9,95 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # VPC Peering Connection Resource
+    /// 
+    /// The VPC Peering Connection resource allows the creation and management of an Aiven VPC Peering Connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mypeeringconnection = new Aiven.VpcPeeringConnection("mypeeringconnection", new Aiven.VpcPeeringConnectionArgs
+    ///         {
+    ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+    ///             PeerRegion = "&lt;PEER_REGION&gt;",
+    ///             PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
+    ///             VpcId = aiven_project_vpc.Myvpc.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class VpcPeeringConnection : Pulumi.CustomResource
     {
         /// <summary>
-        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+        /// an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
         /// </summary>
         [Output("peerAzureAppId")]
         public Output<string?> PeerAzureAppId { get; private set; } = null!;
 
         /// <summary>
-        /// Azure tenant id in UUID4 form
+        /// an Azure tenant id in UUID4 form.
         /// </summary>
         [Output("peerAzureTenantId")]
         public Output<string?> PeerAzureTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC
+        /// defines the identifier of the cloud account the VPC is being
+        /// peered with.
         /// </summary>
         [Output("peerCloudAccount")]
         public Output<string> PeerCloudAccount { get; private set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        /// defines the region of the remote VPC if it is not in the same region as Aiven VPC.
         /// </summary>
         [Output("peerRegion")]
         public Output<string?> PeerRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Azure resource group name of the peered VPC
+        /// an Azure resource group name of the peered VPC.
         /// </summary>
         [Output("peerResourceGroup")]
         public Output<string?> PeerResourceGroup { get; private set; } = null!;
 
         /// <summary>
-        /// AWS VPC ID or GCP VPC network name of the peered VPC
+        /// defines the identifier or name of the remote VPC.
         /// </summary>
         [Output("peerVpc")]
         public Output<string> PeerVpc { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud provider identifier for the peering connection if available
+        /// a cloud provider identifier for the peering connection if available.
         /// </summary>
         [Output("peeringConnectionId")]
         public Output<string> PeeringConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// State of the peering connection
+        /// is the state of the peering connection. This property is computed by Aiven 
+        /// therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+        /// `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+        /// `INVALID_SPECIFICATION`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// State-specific help or error information
+        /// state-specific help or error information.
         /// </summary>
         [Output("stateInfo")]
         public Output<ImmutableDictionary<string, object>> StateInfo { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC the peering connection belongs to
+        /// is the Aiven VPC the peering connection is associated with.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -118,43 +149,44 @@ namespace Pulumi.Aiven
     public sealed class VpcPeeringConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+        /// an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
         /// </summary>
         [Input("peerAzureAppId")]
         public Input<string>? PeerAzureAppId { get; set; }
 
         /// <summary>
-        /// Azure tenant id in UUID4 form
+        /// an Azure tenant id in UUID4 form.
         /// </summary>
         [Input("peerAzureTenantId")]
         public Input<string>? PeerAzureTenantId { get; set; }
 
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC
+        /// defines the identifier of the cloud account the VPC is being
+        /// peered with.
         /// </summary>
         [Input("peerCloudAccount", required: true)]
         public Input<string> PeerCloudAccount { get; set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        /// defines the region of the remote VPC if it is not in the same region as Aiven VPC.
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
 
         /// <summary>
-        /// Azure resource group name of the peered VPC
+        /// an Azure resource group name of the peered VPC.
         /// </summary>
         [Input("peerResourceGroup")]
         public Input<string>? PeerResourceGroup { get; set; }
 
         /// <summary>
-        /// AWS VPC ID or GCP VPC network name of the peered VPC
+        /// defines the identifier or name of the remote VPC.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
 
         /// <summary>
-        /// The VPC the peering connection belongs to
+        /// is the Aiven VPC the peering connection is associated with.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -167,49 +199,53 @@ namespace Pulumi.Aiven
     public sealed class VpcPeeringConnectionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet
+        /// an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
         /// </summary>
         [Input("peerAzureAppId")]
         public Input<string>? PeerAzureAppId { get; set; }
 
         /// <summary>
-        /// Azure tenant id in UUID4 form
+        /// an Azure tenant id in UUID4 form.
         /// </summary>
         [Input("peerAzureTenantId")]
         public Input<string>? PeerAzureTenantId { get; set; }
 
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC
+        /// defines the identifier of the cloud account the VPC is being
+        /// peered with.
         /// </summary>
         [Input("peerCloudAccount")]
         public Input<string>? PeerCloudAccount { get; set; }
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        /// defines the region of the remote VPC if it is not in the same region as Aiven VPC.
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
 
         /// <summary>
-        /// Azure resource group name of the peered VPC
+        /// an Azure resource group name of the peered VPC.
         /// </summary>
         [Input("peerResourceGroup")]
         public Input<string>? PeerResourceGroup { get; set; }
 
         /// <summary>
-        /// AWS VPC ID or GCP VPC network name of the peered VPC
+        /// defines the identifier or name of the remote VPC.
         /// </summary>
         [Input("peerVpc")]
         public Input<string>? PeerVpc { get; set; }
 
         /// <summary>
-        /// Cloud provider identifier for the peering connection if available
+        /// a cloud provider identifier for the peering connection if available.
         /// </summary>
         [Input("peeringConnectionId")]
         public Input<string>? PeeringConnectionId { get; set; }
 
         /// <summary>
-        /// State of the peering connection
+        /// is the state of the peering connection. This property is computed by Aiven 
+        /// therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+        /// `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+        /// `INVALID_SPECIFICATION`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -218,7 +254,7 @@ namespace Pulumi.Aiven
         private InputMap<object>? _stateInfo;
 
         /// <summary>
-        /// State-specific help or error information
+        /// state-specific help or error information.
         /// </summary>
         public InputMap<object> StateInfo
         {
@@ -227,7 +263,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The VPC the peering connection belongs to
+        /// is the Aiven VPC the peering connection is associated with.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

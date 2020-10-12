@@ -7,6 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Account Authentication Data Source
+//
+// The Account Authentication data source provides information about the existing Aiven Account Authentication.
 func LookupAccountAuthentication(ctx *pulumi.Context, args *LookupAccountAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupAccountAuthenticationResult, error) {
 	var rv LookupAccountAuthenticationResult
 	err := ctx.Invoke("aiven:index/getAccountAuthentication:getAccountAuthentication", args, &rv, opts...)
@@ -18,34 +21,58 @@ func LookupAccountAuthentication(ctx *pulumi.Context, args *LookupAccountAuthent
 
 // A collection of arguments for invoking getAccountAuthentication.
 type LookupAccountAuthenticationArgs struct {
-	AccountId        string  `pulumi:"accountId"`
+	// is a unique account id.
+	AccountId string `pulumi:"accountId"`
+	// account authentication id.
 	AuthenticationId *string `pulumi:"authenticationId"`
-	CreateTime       *string `pulumi:"createTime"`
-	Enabled          *bool   `pulumi:"enabled"`
-	Name             string  `pulumi:"name"`
-	SamlAcsUrl       *string `pulumi:"samlAcsUrl"`
-	SamlCertificate  *string `pulumi:"samlCertificate"`
-	SamlEntityId     *string `pulumi:"samlEntityId"`
-	SamlIdpUrl       *string `pulumi:"samlIdpUrl"`
-	SamlMetadataUrl  *string `pulumi:"samlMetadataUrl"`
-	Type             *string `pulumi:"type"`
-	UpdateTime       *string `pulumi:"updateTime"`
+	// time of creation.
+	CreateTime *string `pulumi:"createTime"`
+	// defines an authentication method enabled or not.
+	Enabled *bool `pulumi:"enabled"`
+	// is an account authentication name.
+	Name string `pulumi:"name"`
+	// is a SAML Assertion Consumer Service URL.
+	SamlAcsUrl *string `pulumi:"samlAcsUrl"`
+	// is a SAML Certificate.
+	SamlCertificate *string `pulumi:"samlCertificate"`
+	// is a SAML Entity ID.
+	SamlEntityId *string `pulumi:"samlEntityId"`
+	// is a SAML Idp URL.
+	SamlIdpUrl *string `pulumi:"samlIdpUrl"`
+	// is a SAML Metadata URL.
+	SamlMetadataUrl *string `pulumi:"samlMetadataUrl"`
+	// is an account authentication type, can be one of `internal` and `saml`.
+	Type *string `pulumi:"type"`
+	// time of last update.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // A collection of values returned by getAccountAuthentication.
 type LookupAccountAuthenticationResult struct {
-	AccountId        string `pulumi:"accountId"`
+	// is a unique account id.
+	AccountId string `pulumi:"accountId"`
+	// account authentication id.
 	AuthenticationId string `pulumi:"authenticationId"`
-	CreateTime       string `pulumi:"createTime"`
-	Enabled          *bool  `pulumi:"enabled"`
+	// time of creation.
+	CreateTime string `pulumi:"createTime"`
+	// defines an authentication method enabled or not.
+	Enabled *bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string  `pulumi:"id"`
-	Name            string  `pulumi:"name"`
-	SamlAcsUrl      string  `pulumi:"samlAcsUrl"`
+	Id string `pulumi:"id"`
+	// is an account authentication name.
+	Name string `pulumi:"name"`
+	// is a SAML Assertion Consumer Service URL.
+	SamlAcsUrl string `pulumi:"samlAcsUrl"`
+	// is a SAML Certificate.
 	SamlCertificate *string `pulumi:"samlCertificate"`
-	SamlEntityId    *string `pulumi:"samlEntityId"`
-	SamlIdpUrl      *string `pulumi:"samlIdpUrl"`
-	SamlMetadataUrl string  `pulumi:"samlMetadataUrl"`
-	Type            *string `pulumi:"type"`
-	UpdateTime      string  `pulumi:"updateTime"`
+	// is a SAML Entity ID.
+	SamlEntityId *string `pulumi:"samlEntityId"`
+	// is a SAML Idp URL.
+	SamlIdpUrl *string `pulumi:"samlIdpUrl"`
+	// is a SAML Metadata URL.
+	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
+	// is an account authentication type, can be one of `internal` and `saml`.
+	Type *string `pulumi:"type"`
+	// time of last update.
+	UpdateTime string `pulumi:"updateTime"`
 }

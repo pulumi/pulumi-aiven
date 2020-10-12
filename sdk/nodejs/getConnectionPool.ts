@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Connection Pool Data Source
+ *
+ * The Connection Pool data source provides information about the existing Aiven Connection Pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestpool = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getConnectionPool({
+ *     poolName: "mypool",
+ *     project: project,
+ *     serviceName: serviceName,
+ * }, { async: true }));
+ * ```
+ */
 export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> {
     if (!opts) {
         opts = {}
@@ -30,13 +48,42 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getConnectionPool.
  */
 export interface GetConnectionPoolArgs {
+    /**
+     * is a computed property that tells the URI for connecting to the pool.
+     * This value cannot be set, only read.
+     */
     readonly connectionUri?: string;
+    /**
+     * is the name of the database the pool connects to. This should be
+     * defined using reference as shown above to set up dependencies correctly.
+     */
     readonly databaseName?: string;
+    /**
+     * is the mode the pool operates in (session, transaction, statement).
+     */
     readonly poolMode?: string;
+    /**
+     * is the name of the pool.
+     */
     readonly poolName: string;
+    /**
+     * is the number of connections the pool may create towards the backend
+     * server. This does not affect the number of incoming connections, which is always a much
+     * larger number.
+     */
     readonly poolSize?: number;
+    /**
+     * and `serviceName` - (Required) define the project and service the connection pool
+     * belongs to. They should be defined using reference as shown above to set up dependencies
+     * correctly. These properties cannot be changed once the service is created. Doing so will
+     * result in the connection pool being deleted and new one created instead.
+     */
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * is the name of the service user used to connect to the database. This should
+     * be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly username?: string;
 }
 
@@ -44,16 +91,36 @@ export interface GetConnectionPoolArgs {
  * A collection of values returned by getConnectionPool.
  */
 export interface GetConnectionPoolResult {
+    /**
+     * is a computed property that tells the URI for connecting to the pool.
+     * This value cannot be set, only read.
+     */
     readonly connectionUri: string;
+    /**
+     * is the name of the database the pool connects to. This should be
+     * defined using reference as shown above to set up dependencies correctly.
+     */
     readonly databaseName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * is the mode the pool operates in (session, transaction, statement).
+     */
     readonly poolMode?: string;
     readonly poolName: string;
+    /**
+     * is the number of connections the pool may create towards the backend
+     * server. This does not affect the number of incoming connections, which is always a much
+     * larger number.
+     */
     readonly poolSize?: number;
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * is the name of the service user used to connect to the database. This should
+     * be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly username?: string;
 }

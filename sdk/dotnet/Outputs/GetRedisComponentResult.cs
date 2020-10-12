@@ -14,10 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetRedisComponentResult
     {
         public readonly string Component;
+        /// <summary>
+        /// (Required) Hostname or IP address of the server where to migrate data from
+        /// </summary>
         public readonly string Host;
         public readonly string KafkaAuthenticationMethod;
+        /// <summary>
+        /// (Required) Port number of the server where to migrate data from
+        /// </summary>
         public readonly int Port;
         public readonly string Route;
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL
+        /// </summary>
         public readonly bool Ssl;
         public readonly string Usage;
 

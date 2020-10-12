@@ -28,17 +28,32 @@ class Project(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Project resource with the given unique name, props, and options.
+        ## # Project Resource
+
+        The Project resource allows the creation and management of an Aiven Projects.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
+               using account ID.
         :param pulumi.Input[str] billing_address: Billing name and address of the project
         :param pulumi.Input[List[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
-        :param pulumi.Input[str] ca_cert: Project root CA. This is used by some services like Kafka to sign service certificate
-        :param pulumi.Input[str] card_id: Credit card ID
-        :param pulumi.Input[str] copy_from_project: Copy properties from another project. Only has effect when a new project is created.
+        :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
+               project. This is required for configuring clients that connect to certain services like
+               Kafka. This value cannot be set, only read.
+        :param pulumi.Input[str] card_id: is either the full card UUID or the last 4 digits of the card. As the full
+               UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+               the card. This can be omitted if `copy_from_project` is used to copy billing info from
+               another project.
+        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and
+               some other project attributes like technical contacts from. This is mostly relevant when
+               an existing project has billing type set to invoice and that needs to be copied over to a
+               new project. (Setting billing is otherwise not allowed over the API.) This only has
+               effect when the project is created.
         :param pulumi.Input[str] country_code: Billing country code of the project
-        :param pulumi.Input[str] project: Project name
+        :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
+               Aiven customers) and cannot be changed later without destroying and re-creating the
+               project, including all sub-resources.
         :param pulumi.Input[List[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
         """
         if __name__ is not None:
@@ -95,14 +110,26 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
+               using account ID.
         :param pulumi.Input[str] billing_address: Billing name and address of the project
         :param pulumi.Input[List[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
-        :param pulumi.Input[str] ca_cert: Project root CA. This is used by some services like Kafka to sign service certificate
-        :param pulumi.Input[str] card_id: Credit card ID
-        :param pulumi.Input[str] copy_from_project: Copy properties from another project. Only has effect when a new project is created.
+        :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
+               project. This is required for configuring clients that connect to certain services like
+               Kafka. This value cannot be set, only read.
+        :param pulumi.Input[str] card_id: is either the full card UUID or the last 4 digits of the card. As the full
+               UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+               the card. This can be omitted if `copy_from_project` is used to copy billing info from
+               another project.
+        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and
+               some other project attributes like technical contacts from. This is mostly relevant when
+               an existing project has billing type set to invoice and that needs to be copied over to a
+               new project. (Setting billing is otherwise not allowed over the API.) This only has
+               effect when the project is created.
         :param pulumi.Input[str] country_code: Billing country code of the project
-        :param pulumi.Input[str] project: Project name
+        :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
+               Aiven customers) and cannot be changed later without destroying and re-creating the
+               project, including all sub-resources.
         :param pulumi.Input[List[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -124,7 +151,8 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Account ID
+        is an optional property to link a project to already an existing account by 
+        using account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -148,7 +176,9 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> pulumi.Output[str]:
         """
-        Project root CA. This is used by some services like Kafka to sign service certificate
+        is a computed property that can be used to read the CA certificate of the
+        project. This is required for configuring clients that connect to certain services like
+        Kafka. This value cannot be set, only read.
         """
         return pulumi.get(self, "ca_cert")
 
@@ -156,7 +186,10 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="cardId")
     def card_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Credit card ID
+        is either the full card UUID or the last 4 digits of the card. As the full
+        UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+        the card. This can be omitted if `copy_from_project` is used to copy billing info from
+        another project.
         """
         return pulumi.get(self, "card_id")
 
@@ -164,7 +197,11 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> pulumi.Output[Optional[str]]:
         """
-        Copy properties from another project. Only has effect when a new project is created.
+        is the name of another project used to copy billing information and
+        some other project attributes like technical contacts from. This is mostly relevant when
+        an existing project has billing type set to invoice and that needs to be copied over to a
+        new project. (Setting billing is otherwise not allowed over the API.) This only has
+        effect when the project is created.
         """
         return pulumi.get(self, "copy_from_project")
 
@@ -180,7 +217,9 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project name
+        defines the name of the project. Name must be globally unique (between all
+        Aiven customers) and cannot be changed later without destroying and re-creating the
+        project, including all sub-resources.
         """
         return pulumi.get(self, "project")
 

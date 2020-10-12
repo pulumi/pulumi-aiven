@@ -13,11 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class RedisRedisUserConfigMigration
     {
+        /// <summary>
+        /// Database name for bootstrapping the initial connection
+        /// </summary>
         public readonly string? Dbname;
+        /// <summary>
+        /// Hostname or IP address of the server where to migrate data from
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// Password for authentication with the server where to migrate data from
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// Port number of the server where to migrate data from
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL
+        /// </summary>
         public readonly string? Ssl;
+        /// <summary>
+        /// User name for authentication with the server where to migrate data from
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

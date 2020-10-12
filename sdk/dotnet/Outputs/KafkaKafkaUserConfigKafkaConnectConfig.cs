@@ -13,13 +13,46 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigKafkaConnectConfig
     {
+        /// <summary>
+        /// Defines what client configurations can 
+        /// be overridden by the connector. Default is None
+        /// </summary>
         public readonly string? ConnectorClientConfigOverridePolicy;
+        /// <summary>
+        /// What to do when there is no initial offset in Kafka or 
+        /// if the current offset does not exist any more on the server. Default is earliest
+        /// </summary>
         public readonly string? ConsumerAutoOffsetReset;
+        /// <summary>
+        /// Transaction read isolation level. read_uncommitted is 
+        /// the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        /// </summary>
         public readonly string? ConsumerIsolationLevel;
+        /// <summary>
+        /// The maximum delay in milliseconds between invocations 
+        /// of poll() when using consumer group management (defaults to 300000).
+        /// </summary>
         public readonly string? ConsumerMaxPollIntervalMs;
+        /// <summary>
+        /// The maximum number of records returned in a single call 
+        /// to poll() (defaults to 500).
+        /// </summary>
         public readonly string? ConsumerMaxPollRecords;
+        /// <summary>
+        /// The interval at which to try committing offsets for 
+        /// tasks (defaults to 60000).
+        /// </summary>
         public readonly string? OffsetFlushIntervalMs;
+        /// <summary>
+        /// Maximum number of milliseconds to wait for records to 
+        /// flush and partition offset data to be committed to offset storage before cancelling the process
+        /// and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        /// </summary>
         public readonly string? OffsetFlushTimeoutMs;
+        /// <summary>
+        /// The timeout in milliseconds used to detect failures when 
+        /// using Kafka’s group management facilities (defaults to 10000).
+        /// </summary>
         public readonly string? SessionTimeoutMs;
 
         [OutputConstructor]

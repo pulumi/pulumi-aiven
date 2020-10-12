@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Kafka Schema Configuration Data Source
+ *
+ * The Kafka Schema Configuration data source provides information about the existing Aiven
+ * Kafka Schema Configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const config = aiven.getKafkaSchemaConfiguration({
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_service["kafka-service1"].service_name,
+ * });
+ * ```
+ */
 export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaConfigurationResult> {
     if (!opts) {
         opts = {}
@@ -28,7 +46,19 @@ export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArg
  * A collection of arguments for invoking getKafkaSchemaConfiguration.
  */
 export interface GetKafkaSchemaConfigurationArgs {
+    /**
+     * is the Global Kafka Schema configuration compatibility level when defined 
+     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     */
     readonly compatibilityLevel?: string;
+    /**
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
     readonly project: string;
     readonly schema?: string;
     readonly serviceName: string;
@@ -40,6 +70,14 @@ export interface GetKafkaSchemaConfigurationArgs {
  * A collection of values returned by getKafkaSchemaConfiguration.
  */
 export interface GetKafkaSchemaConfigurationResult {
+    /**
+     * is the Global Kafka Schema configuration compatibility level when defined 
+     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     */
     readonly compatibilityLevel?: string;
     /**
      * The provider-assigned unique ID for this managed resource.

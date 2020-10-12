@@ -11,6 +11,34 @@ namespace Pulumi.Aiven
 {
     public static class GetAccount
     {
+        /// <summary>
+        /// ## # Account Data Source
+        /// 
+        /// The Account data source provides information about the existing Aiven Account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var account1 = Output.Create(Aiven.GetAccount.InvokeAsync(new Aiven.GetAccountArgs
+        ///         {
+        ///             Name = "&lt;ACCOUNT_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("aiven:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithVersion());
     }
@@ -18,21 +46,39 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is an auto-generated unique account id.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
+        /// <summary>
+        /// time of creation.
+        /// </summary>
         [Input("createTime")]
         public string? CreateTime { get; set; }
 
+        /// <summary>
+        /// defines an account name.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// is an owner team id.
+        /// </summary>
         [Input("ownerTeamId")]
         public string? OwnerTeamId { get; set; }
 
+        /// <summary>
+        /// is a tenant id.
+        /// </summary>
         [Input("tenantId")]
         public string? TenantId { get; set; }
 
+        /// <summary>
+        /// time of last update.
+        /// </summary>
         [Input("updateTime")]
         public string? UpdateTime { get; set; }
 
@@ -45,15 +91,30 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAccountResult
     {
+        /// <summary>
+        /// is an auto-generated unique account id.
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// time of creation.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// is an owner team id.
+        /// </summary>
         public readonly string OwnerTeamId;
+        /// <summary>
+        /// is a tenant id.
+        /// </summary>
         public readonly string TenantId;
+        /// <summary>
+        /// time of last update.
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

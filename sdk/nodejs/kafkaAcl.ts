@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Resource Kafka ACL Resource
+ *
+ * The Resource Kafka ACL resource allows the creation and management of an Aiven Kafka ACL`s for a Kafka service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestacl = new aiven.KafkaAcl("mytestacl", {
+ *     permission: "admin",
+ *     project: aiven_project_myproject.project,
+ *     serviceName: aiven_service_myservice.serviceName,
+ *     topic: "<TOPIC_NAME_PATTERN>",
+ *     username: "<USERNAME_PATTERN>",
+ * });
+ * ```
+ */
 export class KafkaAcl extends pulumi.CustomResource {
     /**
      * Get an existing KafkaAcl resource's state with the given name, ID, and optional extra
@@ -33,11 +53,15 @@ export class KafkaAcl extends pulumi.CustomResource {
     }
 
     /**
-     * Kafka permission to grant (admin, read, readwrite, write)
+     * is the level of permission the matching users are given to the matching
+     * topics (admin, read, readwrite, write).
      */
     public readonly permission!: pulumi.Output<string>;
     /**
-     * Project to link the Kafka ACL to
+     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     * These properties cannot be changed once the service is created. Doing so will result in
+     * the topic being deleted and new one created instead.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -45,11 +69,11 @@ export class KafkaAcl extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Topic name pattern for the ACL entry
+     * is a topic name pattern the ACL entry matches to.
      */
     public readonly topic!: pulumi.Output<string>;
     /**
-     * Username pattern for the ACL entry
+     * is a username pattern the ACL entry matches to.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -109,11 +133,15 @@ export class KafkaAcl extends pulumi.CustomResource {
  */
 export interface KafkaAclState {
     /**
-     * Kafka permission to grant (admin, read, readwrite, write)
+     * is the level of permission the matching users are given to the matching
+     * topics (admin, read, readwrite, write).
      */
     readonly permission?: pulumi.Input<string>;
     /**
-     * Project to link the Kafka ACL to
+     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     * These properties cannot be changed once the service is created. Doing so will result in
+     * the topic being deleted and new one created instead.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -121,11 +149,11 @@ export interface KafkaAclState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * Topic name pattern for the ACL entry
+     * is a topic name pattern the ACL entry matches to.
      */
     readonly topic?: pulumi.Input<string>;
     /**
-     * Username pattern for the ACL entry
+     * is a username pattern the ACL entry matches to.
      */
     readonly username?: pulumi.Input<string>;
 }
@@ -135,11 +163,15 @@ export interface KafkaAclState {
  */
 export interface KafkaAclArgs {
     /**
-     * Kafka permission to grant (admin, read, readwrite, write)
+     * is the level of permission the matching users are given to the matching
+     * topics (admin, read, readwrite, write).
      */
     readonly permission: pulumi.Input<string>;
     /**
-     * Project to link the Kafka ACL to
+     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     * These properties cannot be changed once the service is created. Doing so will result in
+     * the topic being deleted and new one created instead.
      */
     readonly project: pulumi.Input<string>;
     /**
@@ -147,11 +179,11 @@ export interface KafkaAclArgs {
      */
     readonly serviceName: pulumi.Input<string>;
     /**
-     * Topic name pattern for the ACL entry
+     * is a topic name pattern the ACL entry matches to.
      */
     readonly topic: pulumi.Input<string>;
     /**
-     * Username pattern for the ACL entry
+     * is a username pattern the ACL entry matches to.
      */
     readonly username: pulumi.Input<string>;
 }

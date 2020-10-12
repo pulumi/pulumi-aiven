@@ -12,21 +12,39 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetRedisRedisUserConfigMigrationArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Database name for bootstrapping the initial connection
+        /// </summary>
         [Input("dbname")]
         public string? Dbname { get; set; }
 
+        /// <summary>
+        /// (Required) Hostname or IP address of the server where to migrate data from
+        /// </summary>
         [Input("host")]
         public string? Host { get; set; }
 
+        /// <summary>
+        /// Password for authentication with the server where to migrate data from
+        /// </summary>
         [Input("password")]
         public string? Password { get; set; }
 
+        /// <summary>
+        /// (Required) Port number of the server where to migrate data from
+        /// </summary>
         [Input("port")]
         public string? Port { get; set; }
 
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL
+        /// </summary>
         [Input("ssl")]
         public string? Ssl { get; set; }
 
+        /// <summary>
+        /// User name for authentication with the server where to migrate data from
+        /// </summary>
         [Input("username")]
         public string? Username { get; set; }
 

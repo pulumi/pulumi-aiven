@@ -15,18 +15,27 @@ namespace Pulumi.Aiven.Inputs
         [Input("component", required: true)]
         public string Component { get; set; } = null!;
 
+        /// <summary>
+        /// PostgreSQL master node host IP or name
+        /// </summary>
         [Input("host", required: true)]
         public string Host { get; set; } = null!;
 
         [Input("kafkaAuthenticationMethod", required: true)]
         public string KafkaAuthenticationMethod { get; set; } = null!;
 
+        /// <summary>
+        /// PostgreSQL port
+        /// </summary>
         [Input("port", required: true)]
         public int Port { get; set; }
 
         [Input("route", required: true)]
         public string Route { get; set; } = null!;
 
+        /// <summary>
+        /// the server where to migrate data from is secured with SSL.
+        /// </summary>
         [Input("ssl", required: true)]
         public bool Ssl { get; set; }
 

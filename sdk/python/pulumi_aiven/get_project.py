@@ -54,6 +54,10 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[str]:
+        """
+        is an optional property to link a project to already an existing account by 
+        using account ID.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -69,16 +73,34 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> str:
+        """
+        is a computed property that can be used to read the CA certificate of the
+        project. This is required for configuring clients that connect to certain services like
+        Kafka. This value cannot be set, only read.
+        """
         return pulumi.get(self, "ca_cert")
 
     @property
     @pulumi.getter(name="cardId")
     def card_id(self) -> Optional[str]:
+        """
+        is either the full card UUID or the last 4 digits of the card. As the full
+        UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+        the card. This can be omitted if `copy_from_project` is used to copy billing info from
+        another project.
+        """
         return pulumi.get(self, "card_id")
 
     @property
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> Optional[str]:
+        """
+        is the name of another project used to copy billing information and
+        some other project attributes like technical contacts from. This is mostly relevant when
+        an existing project has billing type set to invoice and that needs to be copied over to a
+        new project. (Setting billing is otherwise not allowed over the API.) This only has
+        effect when the project is created.
+        """
         return pulumi.get(self, "copy_from_project")
 
     @property
@@ -134,7 +156,37 @@ def get_project(account_id: Optional[str] = None,
                 technical_emails: Optional[List[str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Project Data Source
+
+    The Project data source provides information about the existing Aiven Project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myproject = aiven.get_project(project="<PROJECT_NAME>")
+    ```
+
+
+    :param str account_id: is an optional property to link a project to already an existing account by 
+           using account ID.
+    :param str ca_cert: is a computed property that can be used to read the CA certificate of the
+           project. This is required for configuring clients that connect to certain services like
+           Kafka. This value cannot be set, only read.
+    :param str card_id: is either the full card UUID or the last 4 digits of the card. As the full
+           UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+           the card. This can be omitted if `copy_from_project` is used to copy billing info from
+           another project.
+    :param str copy_from_project: is the name of another project used to copy billing information and
+           some other project attributes like technical contacts from. This is mostly relevant when
+           an existing project has billing type set to invoice and that needs to be copied over to a
+           new project. (Setting billing is otherwise not allowed over the API.) This only has
+           effect when the project is created.
+    :param str project: defines the name of the project. Name must be globally unique (between all
+           Aiven customers) and cannot be changed later without destroying and re-creating the
+           project, including all sub-resources.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

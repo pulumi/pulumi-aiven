@@ -10,24 +10,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Project Resource
+//
+// The Project resource allows the creation and management of an Aiven Projects.
 type Project struct {
 	pulumi.CustomResourceState
 
-	// Account ID
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Billing name and address of the project
 	BillingAddress pulumi.StringPtrOutput `pulumi:"billingAddress"`
 	// Billing contact emails of the project
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
-	// Project root CA. This is used by some services like Kafka to sign service certificate
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
-	// Credit card ID
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
 	CardId pulumi.StringPtrOutput `pulumi:"cardId"`
-	// Copy properties from another project. Only has effect when a new project is created.
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrOutput `pulumi:"copyFromProject"`
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
-	// Project name
+	// defines the name of the project. Name must be globally unique (between all
+	// Aiven customers) and cannot be changed later without destroying and re-creating the
+	// project, including all sub-resources.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
@@ -64,42 +79,66 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// Account ID
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
 	AccountId *string `pulumi:"accountId"`
 	// Billing name and address of the project
 	BillingAddress *string `pulumi:"billingAddress"`
 	// Billing contact emails of the project
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Project root CA. This is used by some services like Kafka to sign service certificate
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
 	CaCert *string `pulumi:"caCert"`
-	// Credit card ID
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
 	CardId *string `pulumi:"cardId"`
-	// Copy properties from another project. Only has effect when a new project is created.
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Billing country code of the project
 	CountryCode *string `pulumi:"countryCode"`
-	// Project name
+	// defines the name of the project. Name must be globally unique (between all
+	// Aiven customers) and cannot be changed later without destroying and re-creating the
+	// project, including all sub-resources.
 	Project *string `pulumi:"project"`
 	// Technical contact emails of the project
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 }
 
 type ProjectState struct {
-	// Account ID
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
 	AccountId pulumi.StringPtrInput
 	// Billing name and address of the project
 	BillingAddress pulumi.StringPtrInput
 	// Billing contact emails of the project
 	BillingEmails pulumi.StringArrayInput
-	// Project root CA. This is used by some services like Kafka to sign service certificate
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
 	CaCert pulumi.StringPtrInput
-	// Credit card ID
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
 	CardId pulumi.StringPtrInput
-	// Copy properties from another project. Only has effect when a new project is created.
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrInput
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrInput
-	// Project name
+	// defines the name of the project. Name must be globally unique (between all
+	// Aiven customers) and cannot be changed later without destroying and re-creating the
+	// project, including all sub-resources.
 	Project pulumi.StringPtrInput
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayInput
@@ -110,21 +149,33 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Account ID
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
 	AccountId *string `pulumi:"accountId"`
 	// Billing name and address of the project
 	BillingAddress *string `pulumi:"billingAddress"`
 	// Billing contact emails of the project
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Project root CA. This is used by some services like Kafka to sign service certificate
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
 	CaCert *string `pulumi:"caCert"`
-	// Credit card ID
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
 	CardId *string `pulumi:"cardId"`
-	// Copy properties from another project. Only has effect when a new project is created.
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Billing country code of the project
 	CountryCode *string `pulumi:"countryCode"`
-	// Project name
+	// defines the name of the project. Name must be globally unique (between all
+	// Aiven customers) and cannot be changed later without destroying and re-creating the
+	// project, including all sub-resources.
 	Project string `pulumi:"project"`
 	// Technical contact emails of the project
 	TechnicalEmails []string `pulumi:"technicalEmails"`
@@ -132,21 +183,33 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Account ID
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
 	AccountId pulumi.StringPtrInput
 	// Billing name and address of the project
 	BillingAddress pulumi.StringPtrInput
 	// Billing contact emails of the project
 	BillingEmails pulumi.StringArrayInput
-	// Project root CA. This is used by some services like Kafka to sign service certificate
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
 	CaCert pulumi.StringPtrInput
-	// Credit card ID
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
 	CardId pulumi.StringPtrInput
-	// Copy properties from another project. Only has effect when a new project is created.
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrInput
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrInput
-	// Project name
+	// defines the name of the project. Name must be globally unique (between all
+	// Aiven customers) and cannot be changed later without destroying and re-creating the
+	// project, including all sub-resources.
 	Project pulumi.StringInput
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayInput

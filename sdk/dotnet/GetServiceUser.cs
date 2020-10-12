@@ -11,6 +11,36 @@ namespace Pulumi.Aiven
 {
     public static class GetServiceUser
     {
+        /// <summary>
+        /// ## # Service User Data Source
+        /// 
+        /// The Service User data source provides information about the existing Aiven Service User.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myserviceuser = Output.Create(Aiven.GetServiceUser.InvokeAsync(new Aiven.GetServiceUserArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             Username = "&lt;USERNAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetServiceUserResult> InvokeAsync(GetServiceUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserArgs(), options.WithVersion());
     }
@@ -18,24 +48,43 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceUserArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is the access certificate of the user (not applicable for all services).
+        /// </summary>
         [Input("accessCert")]
         public string? AccessCert { get; set; }
 
+        /// <summary>
+        /// is the access key of the user (not applicable for all services).
+        /// </summary>
         [Input("accessKey")]
         public string? AccessKey { get; set; }
 
+        /// <summary>
+        /// is the password of the user (not applicable for all services).
+        /// </summary>
         [Input("password")]
         public string? Password { get; set; }
 
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the user belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// tells whether the user is primary account or regular account.
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// is the actual name of the user account.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
@@ -48,15 +97,27 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceUserResult
     {
+        /// <summary>
+        /// is the access certificate of the user (not applicable for all services).
+        /// </summary>
         public readonly string AccessCert;
+        /// <summary>
+        /// is the access key of the user (not applicable for all services).
+        /// </summary>
         public readonly string AccessKey;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// is the password of the user (not applicable for all services).
+        /// </summary>
         public readonly string Password;
         public readonly string Project;
         public readonly string ServiceName;
+        /// <summary>
+        /// tells whether the user is primary account or regular account.
+        /// </summary>
         public readonly string Type;
         public readonly string Username;
 

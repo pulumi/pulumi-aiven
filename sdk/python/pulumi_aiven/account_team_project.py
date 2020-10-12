@@ -23,13 +23,21 @@ class AccountTeamProject(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a AccountTeamProject resource with the given unique name, props, and options.
+        ## # Account Team Project Resource
+
+        The Account Team Project resource allows the creation and management of an Account Team Projects.
+
+        It is intended to link and existing project to the existing account team.
+        It is important to note that the project should have an `account_id` property set and equal to
+        account team you are trying to link this project.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] project_name: Account team project name
-        :param pulumi.Input[str] team_id: Account team id
-        :param pulumi.Input[str] team_type: Account team project type, can one of the following values: admin, developer, operator and read_only
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] project_name: is a project name of already existing project.
+        :param pulumi.Input[str] team_id: is an account team id.
+        :param pulumi.Input[str] team_type: is an account team project type, can one of the following values: `admin`, 
+               `developer`, `operator` and `read_only`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,10 +85,11 @@ class AccountTeamProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] project_name: Account team project name
-        :param pulumi.Input[str] team_id: Account team id
-        :param pulumi.Input[str] team_type: Account team project type, can one of the following values: admin, developer, operator and read_only
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] project_name: is a project name of already existing project.
+        :param pulumi.Input[str] team_id: is an account team id.
+        :param pulumi.Input[str] team_type: is an account team project type, can one of the following values: `admin`, 
+               `developer`, `operator` and `read_only`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -96,7 +105,7 @@ class AccountTeamProject(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account id
+        is a unique account id.
         """
         return pulumi.get(self, "account_id")
 
@@ -104,7 +113,7 @@ class AccountTeamProject(pulumi.CustomResource):
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Account team project name
+        is a project name of already existing project.
         """
         return pulumi.get(self, "project_name")
 
@@ -112,7 +121,7 @@ class AccountTeamProject(pulumi.CustomResource):
     @pulumi.getter(name="teamId")
     def team_id(self) -> pulumi.Output[str]:
         """
-        Account team id
+        is an account team id.
         """
         return pulumi.get(self, "team_id")
 
@@ -120,7 +129,8 @@ class AccountTeamProject(pulumi.CustomResource):
     @pulumi.getter(name="teamType")
     def team_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Account team project type, can one of the following values: admin, developer, operator and read_only
+        is an account team project type, can one of the following values: `admin`, 
+        `developer`, `operator` and `read_only`.
         """
         return pulumi.get(self, "team_type")
 

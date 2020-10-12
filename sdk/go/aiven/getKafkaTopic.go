@@ -7,6 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Kafka Topic Data Source
+//
+// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupKafkaTopic(ctx, &aiven.LookupKafkaTopicArgs{
+// 			Project:     aiven_project.Myproject.Project,
+// 			ServiceName: aiven_service.Myservice.Service_name,
+// 			TopicName:   "<TOPIC_NAME>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...pulumi.InvokeOption) (*LookupKafkaTopicResult, error) {
 	var rv LookupKafkaTopicResult
 	err := ctx.Invoke("aiven:index/getKafkaTopic:getKafkaTopic", args, &rv, opts...)
@@ -18,28 +46,47 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...p
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicArgs struct {
-	CleanupPolicy         *string `pulumi:"cleanupPolicy"`
-	MinimumInSyncReplicas *int    `pulumi:"minimumInSyncReplicas"`
-	Partitions            *int    `pulumi:"partitions"`
-	Project               string  `pulumi:"project"`
-	Replication           *int    `pulumi:"replication"`
-	RetentionBytes        *int    `pulumi:"retentionBytes"`
-	RetentionHours        *int    `pulumi:"retentionHours"`
-	ServiceName           string  `pulumi:"serviceName"`
-	TerminationProtection *bool   `pulumi:"terminationProtection"`
-	TopicName             string  `pulumi:"topicName"`
+	// Topic cleanup policy. Allowed values: delete, compact.
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
+	// Number of partitions to create in the topic.
+	Partitions *int `pulumi:"partitions"`
+	// and `serviceName` - (Required) define the project and service the topic belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
+	Project string `pulumi:"project"`
+	// Replication factor for the topic.
+	Replication *int `pulumi:"replication"`
+	// Retention bytes.
+	RetentionBytes *int `pulumi:"retentionBytes"`
+	// Retention period in hours, if -1 it is infinite.
+	RetentionHours        *int   `pulumi:"retentionHours"`
+	ServiceName           string `pulumi:"serviceName"`
+	TerminationProtection *bool  `pulumi:"terminationProtection"`
+	// is the actual name of the topic account. This propery cannot be changed
+	// once the service is created. Doing so will result in the topic being deleted and new one
+	// created instead.
+	TopicName string `pulumi:"topicName"`
 }
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
+	// Topic cleanup policy. Allowed values: delete, compact.
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string `pulumi:"id"`
-	MinimumInSyncReplicas *int   `pulumi:"minimumInSyncReplicas"`
-	Partitions            *int   `pulumi:"partitions"`
-	Project               string `pulumi:"project"`
-	Replication           *int   `pulumi:"replication"`
-	RetentionBytes        *int   `pulumi:"retentionBytes"`
+	Id string `pulumi:"id"`
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
+	// Number of partitions to create in the topic.
+	Partitions *int   `pulumi:"partitions"`
+	Project    string `pulumi:"project"`
+	// Replication factor for the topic.
+	Replication *int `pulumi:"replication"`
+	// Retention bytes.
+	RetentionBytes *int `pulumi:"retentionBytes"`
+	// Retention period in hours, if -1 it is infinite.
 	RetentionHours        *int   `pulumi:"retentionHours"`
 	ServiceName           string `pulumi:"serviceName"`
 	TerminationProtection *bool  `pulumi:"terminationProtection"`

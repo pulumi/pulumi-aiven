@@ -9,18 +9,43 @@ export interface CassandraCassandra {
 }
 
 export interface CassandraCassandraUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * sets the service into migration mode enabling the sstableloader 
+     * utility to be used to upload Cassandra data files. Available only on service create.
+     */
     migrateSstableloader?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPublicAccess>;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface CassandraCassandraUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: pulumi.Input<string>;
 }
 
 export interface CassandraCassandraUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: pulumi.Input<string>;
 }
 
@@ -60,71 +85,268 @@ export interface ElasticSearchComponent {
 }
 
 export interface ElasticSearchElasticsearch {
+    /**
+     * URI for Kibana frontend.
+     */
     kibanaUri?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the 
+     * Aiven DNS name.
+     */
     customDomain?: pulumi.Input<string>;
+    /**
+     * Disable automatic replication factor 
+     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
+     * virtual machine failure.
+     */
     disableReplicationFactorAdjustment?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to elasticsearch from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     elasticsearch?: pulumi.Input<inputs.ElasticSearchElasticsearchUserConfigElasticsearch>;
+    /**
+     * Elasticsearch major version.
+     */
     elasticsearchVersion?: pulumi.Input<string>;
+    /**
+     * Glob pattern and number of indexes matching that pattern to 
+     * be kept.
+     */
     indexPatterns?: pulumi.Input<pulumi.Input<inputs.ElasticSearchElasticsearchUserConfigIndexPattern>[]>;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: pulumi.Input<inputs.ElasticSearchElasticsearchUserConfigKibana>;
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: pulumi.Input<inputs.ElasticSearchElasticsearchUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: pulumi.Input<inputs.ElasticSearchElasticsearchUserConfigPublicAccess>;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfigElasticsearch {
+    /**
+     * Explicitly allow or block automatic 
+     * creation of indices. Defaults to true
+     */
     actionAutoCreateIndexEnabled?: pulumi.Input<string>;
+    /**
+     * Require explicit index names when deleting
+     */
     actionDestructiveRequiresName?: pulumi.Input<string>;
+    /**
+     * Maximum content length for HTTP requests to 
+     * the Elasticsearch HTTP API, in bytes.
+     */
     httpMaxContentLength?: pulumi.Input<string>;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
     httpMaxHeaderSize?: pulumi.Input<string>;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
     httpMaxInitialLineLength?: pulumi.Input<string>;
+    /**
+     * Relative amount. Maximum amount of 
+     * heap memory used for field data cache. This is an expert setting; decreasing the
+     * value too much will increase overhead of loading field data; too much memory used
+     * for field data cache will decrease amount of heap available for other operations.
+     */
     indicesFielddataCacheSize?: pulumi.Input<string>;
+    /**
+     * Percentage value. Default is 10%. 
+     * Total amount of heap used for indexing buffer, before writing segments to disk.
+     * This is an expert setting. Too low value will slow down indexing; too high value
+     * will increase indexing performance but causes performance issues for query performance.
+     */
     indicesMemoryIndexBufferSize?: pulumi.Input<string>;
+    /**
+     * Percentage value. Default is 10%. 
+     * Maximum amount of heap used for query cache. This is an expert setting.
+     * Too low value will decrease query performance and increase performance for other
+     * operations; too high value will cause issues with other Elasticsearch functionality.
+     */
     indicesQueriesCacheSize?: pulumi.Input<string>;
+    /**
+     * Maximum number of clauses Lucene 
+     * BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+     * may cause performance issues. Investigate other approaches first before increasing this value.
+     */
     indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
+    /**
+     * Whitelisted addresses for reindexing. 
+     * Changing this value will cause all Elasticsearch instances to restart.
+     */
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Maximum number of aggregation buckets allowed 
+     * in a single response. Elasticsearch default value is used when this is not defined.
+     */
     searchMaxBuckets?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolAnalyzeSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolForceMergeSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolGetQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolGetSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolIndexQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolIndexSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolSearchQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolSearchThrottledQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchThrottledSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolWriteQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolWriteSize?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfigIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: pulumi.Input<string>;
+    /**
+     * Must consist of alpha-numeric characters, dashes, underscores, 
+     * dots and glob characters (* and ?)
+     */
     pattern?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfigKibana {
+    /**
+     * Timeout in milliseconds for requests 
+     * made by Kibana towards Elasticsearch.
+     */
     elasticsearchRequestTimeout?: pulumi.Input<string>;
+    /**
+     * Enable or disable Kibana.
+     */
     enabled?: pulumi.Input<string>;
+    /**
+     * Limits the maximum amount of memory (in MiB) the 
+     * Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+     * the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+     */
     maxOldSpaceSize?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to elasticsearch from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     elasticsearch?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to elasticsearch from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     elasticsearch?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: pulumi.Input<string>;
 }
 
@@ -137,18 +359,43 @@ export interface GetCassandaCassandra {
 }
 
 export interface GetCassandaCassandraUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * sets the service into migration mode enabling the sstableloader 
+     * utility to be used to upload Cassandra data files. Available only on service create.
+     */
     migrateSstableloader?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: inputs.GetCassandaCassandraUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: inputs.GetCassandaCassandraUserConfigPublicAccess;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetCassandaCassandraUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
 export interface GetCassandaCassandraUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
@@ -188,71 +435,265 @@ export interface GetElasticSearchComponent {
 }
 
 export interface GetElasticSearchElasticsearch {
+    /**
+     * URI for Kibana frontend.
+     */
     kibanaUri?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the 
+     * Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Disable automatic replication factor 
+     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
+     * virtual machine failure.
+     */
     disableReplicationFactorAdjustment?: string;
+    /**
+     * Elasticsearch specific server provided values.
+     */
     elasticsearch?: inputs.GetElasticSearchElasticsearchUserConfigElasticsearch;
+    /**
+     * Elasticsearch major version.
+     */
     elasticsearchVersion?: string;
+    /**
+     * Glob pattern and number of indexes matching that pattern to 
+     * be kept.
+     */
     indexPatterns?: inputs.GetElasticSearchElasticsearchUserConfigIndexPattern[];
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: inputs.GetElasticSearchElasticsearchUserConfigKibana;
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: inputs.GetElasticSearchElasticsearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: inputs.GetElasticSearchElasticsearchUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
+    /**
+     * Explicitly allow or block automatic 
+     * creation of indices. Defaults to true
+     */
     actionAutoCreateIndexEnabled?: string;
+    /**
+     * Require explicit index names when deleting
+     */
     actionDestructiveRequiresName?: string;
+    /**
+     * Maximum content length for HTTP requests to 
+     * the Elasticsearch HTTP API, in bytes.
+     */
     httpMaxContentLength?: string;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
     httpMaxHeaderSize?: string;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
     httpMaxInitialLineLength?: string;
+    /**
+     * Relative amount. Maximum amount of 
+     * heap memory used for field data cache. This is an expert setting; decreasing the
+     * value too much will increase overhead of loading field data; too much memory used
+     * for field data cache will decrease amount of heap available for other operations.
+     */
     indicesFielddataCacheSize?: string;
+    /**
+     * Percentage value. Default is 10%. 
+     * Total amount of heap used for indexing buffer, before writing segments to disk.
+     * This is an expert setting. Too low value will slow down indexing; too high value
+     * will increase indexing performance but causes performance issues for query performance.
+     */
     indicesMemoryIndexBufferSize?: string;
+    /**
+     * Percentage value. Default is 10%. 
+     * Maximum amount of heap used for query cache. This is an expert setting.
+     * Too low value will decrease query performance and increase performance for other
+     * operations; too high value will cause issues with other Elasticsearch functionality.
+     */
     indicesQueriesCacheSize?: string;
+    /**
+     * Maximum number of clauses Lucene 
+     * BooleanQuery can have. The default value (1024) is relatively high, and increasing it
+     * may cause performance issues. Investigate other approaches first before increasing this value.
+     */
     indicesQueryBoolMaxClauseCount?: string;
+    /**
+     * Whitelisted addresses for reindexing. 
+     * Changing this value will cause all Elasticsearch instances to restart.
+     */
     reindexRemoteWhitelists?: string[];
+    /**
+     * Maximum number of aggregation buckets allowed 
+     * in a single response. Elasticsearch default value is used when this is not defined.
+     */
     searchMaxBuckets?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolAnalyzeQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolAnalyzeSize?: string;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolForceMergeSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolGetQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolGetSize?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolIndexQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count -
+     * value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolIndexSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolSearchQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchSize?: string;
+    /**
+     * Size for the thread pool queue. 
+     * See documentation for exact details.
+     */
     threadPoolSearchThrottledQueueSize?: string;
+    /**
+     * Size for the thread pool. See 
+     * documentation for exact details. Do note this may have maximum value depending on
+     * CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchThrottledSize?: string;
+    /**
+     * Size for the thread pool queue. See 
+     * documentation for exact details.
+     */
     threadPoolWriteQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation 
+     * for exact details. Do note this may have maximum value depending on CPU count - value
+     * is automatically lowered if set to higher than maximum value.
+     */
     threadPoolWriteSize?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
     maxIndexCount?: string;
+    /**
+     * Must consist of alpha-numeric characters, dashes, underscores, 
+     * dots and glob characters (* and ?)
+     */
     pattern?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigKibana {
+    /**
+     * Timeout in milliseconds for requests 
+     * made by Kibana towards Elasticsearch.
+     */
     elasticsearchRequestTimeout?: string;
+    /**
+     * Enable or disable Kibana.
+     */
     enabled?: string;
+    /**
+     * Limits the maximum amount of memory (in MiB) the 
+     * Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
+     * the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+     */
     maxOldSpaceSize?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPrivateAccess {
+    /**
+     * Elasticsearch specific server provided values.
+     */
     elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: string;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPublicAccess {
+    /**
+     * Elasticsearch specific server provided values.
+     */
     elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kibana?: string;
+    /**
+     * Allow clients to connect to prometheus from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: string;
 }
 
@@ -263,8 +704,14 @@ export interface GetElasticSearchServiceIntegration {
 
 export interface GetGrafanaComponent {
     component?: string;
+    /**
+     * (Required) Server hostname or IP
+     */
     host?: string;
     kafkaAuthenticationMethod?: string;
+    /**
+     * (Required) SMTP server port
+     */
     port?: number;
     route?: string;
     ssl?: boolean;
@@ -275,96 +722,302 @@ export interface GetGrafanaGrafana {
 }
 
 export interface GetGrafanaGrafanaUserConfig {
+    /**
+     * Enable or disable Grafana alerting functionality
+     */
     alertingEnabled?: string;
+    /**
+     * Default error or timeout setting for new alerting rules
+     */
     alertingErrorOrTimeout?: string;
+    /**
+     * Default value for 'no data or null values' for
+     * new alerting rules
+     */
     alertingNodataOrNullvalues?: string;
+    /**
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
+     * tags. Disabled by default to limit impact of clickjacking
+     */
     allowEmbedding?: string;
+    /**
+     * Enable or disable basic authentication form, used by Grafana 
+     * built-in login.
+     */
     authBasicEnabled?: string;
+    /**
+     * Generic OAuth integration.
+     */
     authGenericOauth?: inputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     authGithub?: inputs.GetGrafanaGrafanaUserConfigAuthGithub;
+    /**
+     * GitLab Auth integration.
+     */
     authGitlab?: inputs.GetGrafanaGrafanaUserConfigAuthGitlab;
+    /**
+     * Google Auth integration
+     */
     authGoogle?: inputs.GetGrafanaGrafanaUserConfigAuthGoogle;
+    /**
+     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
+     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     */
     cookieSamesite?: string;
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Dashboard versions to keep per dashboard.
+     */
     dashboardsVersionsToKeep?: string;
+    /**
+     * Send 'X-Grafana-User' header to data source.
+     */
     dataproxySendUserHeader?: string;
+    /**
+     * Timeout for data proxy requests in seconds.
+     */
     dataproxyTimeout?: string;
+    /**
+     * Set to true to disable gravatar. Defaults to false 
+     * (gravatar is enabled).
+     */
     disableGravatar?: string;
+    /**
+     * Editors can manage folders, teams and dashboards created by them.
+     */
     editorsCanAdmin?: string;
+    /**
+     * External image store settings
+     */
     externalImageStorage?: inputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
+    /**
+     * Google Analytics Universal Analytics ID for tracking Grafana usage
+     */
     googleAnalyticsUaId?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: string[];
+    /**
+     * Enable Grafana /metrics endpoint
+     */
     metricsEnabled?: string;
     privateAccess?: inputs.GetGrafanaGrafanaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: inputs.GetGrafanaGrafanaUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * SMTP server settings.
+     */
     smtpServer?: inputs.GetGrafanaGrafanaUserConfigSmtpServer;
+    /**
+     * Auto-assign new users on signup to main organization. 
+     * Defaults to false.
+     */
     userAutoAssignOrg?: string;
+    /**
+     * Set role for new signups. Defaults to Viewer.
+     */
     userAutoAssignOrgRole?: string;
+    /**
+     * Users with view-only permission can edit but not save dashboards.
+     */
     viewersCanEdit?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: string[];
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: string[];
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: string;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: string;
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Name of the OAuth integration
+     */
     name?: string;
+    /**
+     * Scope must be non-empty string without whitespace
+     */
     scopes?: string[];
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGithub {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: string[];
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Require users to belong to one of given team IDs
+     */
     teamIds?: string[];
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGitlab {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * (Required) Require users to belong to one of given groups
+     */
     allowedGroups?: string[];
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: string;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: string;
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGoogle {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: string[];
+    /**
+     * (Required) Client ID from provider
+     */
     clientId?: string;
+    /**
+     * (Required) Client secret from provider
+     */
     clientSecret?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
+    /**
+     * (Required) S3 access key. Requires permissions to the S3 bucket for the 
+     * s3:PutObject and s3:PutObjectAcl actions
+     */
     accessKey?: string;
+    /**
+     * (Required) Bucket URL for S3
+     */
     bucketUrl?: string;
+    /**
+     * (Required) Provider type
+     */
     provider?: string;
+    /**
+     * (Required) S3 secret key
+     */
     secretKey?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivateAccess {
+    /**
+     * Grafana specific server provided values.
+     */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPublicAccess {
+    /**
+     * Grafana specific server provided values.
+     */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigSmtpServer {
+    /**
+     * (Required) Address used for sending emails
+     */
     fromAddress?: string;
+    /**
+     * Name used in outgoing emails, defaults to Grafana
+     */
     fromName?: string;
+    /**
+     * (Required) Server hostname or IP
+     */
     host?: string;
+    /**
+     * Password for SMTP authentication
+     */
     password?: string;
+    /**
+     * (Required) SMTP server port
+     */
     port?: string;
+    /**
+     * Skip verifying server certificate. Defaults to false
+     */
     skipVerify?: string;
+    /**
+     * Username for SMTP authentication
+     */
     username?: string;
 }
 
@@ -388,19 +1041,44 @@ export interface GetInfluxDbInfluxdb {
 }
 
 export interface GetInfluxDbInfluxdbUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     */
     customDomain?: string;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: inputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: inputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
+    /**
+     * InfluxDB specific server provided values.
+     */
     influxdb?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
+    /**
+     * InfluxDB specific server provided values.
+     */
     influxdb?: string;
 }
 
@@ -433,29 +1111,65 @@ export interface GetKafkaConnectKafkaConnect {
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Kafka Connect specific server provided values.
+     */
     kafkaConnect?: inputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
     privateAccess?: inputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
     publicAccess?: inputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
+    /**
+     * Defines what client configurations can be 
+     * overridden by the connector. Default is None.
+     */
     connectorClientConfigOverridePolicy?: string;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest.
+     */
     consumerAutoOffsetReset?: string;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     * * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
+     * of poll() when using consumer group management (defaults to 300000).
+     * * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
+     * * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
+     * (defaults to 60000).
+     * * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
+     * and partition offset data to be committed to offset storage before cancelling the process and restoring
+     * the offset data to be committed in a future attempt (defaults to 5000).
+     */
     consumerIsolationLevel?: string;
     consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    /**
+     * The timeout in milliseconds used to detect failures when using Kafka’s 
+     * group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
+    /**
+     * Kafka Connect specific server provided values.
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
+    /**
+     * Kafka Connect specific server provided values.
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
@@ -467,93 +1181,310 @@ export interface GetKafkaConnectServiceIntegration {
 
 export interface GetKafkaConnectorTask {
     connector?: string;
+    /**
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
+     */
     task?: number;
 }
 
 export interface GetKafkaKafka {
+    /**
+     * The Kafka client certificate
+     */
     accessCert?: string;
+    /**
+     * The Kafka client certificate key
+     */
     accessKey?: string;
+    /**
+     * The Kafka Connect URI, if any
+     */
     connectUri?: string;
+    /**
+     * The Kafka REST URI, if any
+     */
     restUri?: string;
+    /**
+     * The Schema Registry URI, if any
+     */
     schemaRegistryUri?: string;
 }
 
 export interface GetKafkaKafkaUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
     ipFilters?: string[];
+    /**
+     * Kafka server provided values:
+     */
     kafka?: inputs.GetKafkaKafkaUserConfigKafka;
+    /**
+     * Kafka authentication methods
+     */
     kafkaAuthenticationMethods?: inputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: string;
+    /**
+     * Kafka Connect configuration values
+     */
     kafkaConnectConfig?: inputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: string;
+    /**
+     * Kafka-REST configuration
+     */
     kafkaRestConfig?: inputs.GetKafkaKafkaUserConfigKafkaRestConfig;
+    /**
+     * Kafka major version
+     */
     kafkaVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: inputs.GetKafkaKafkaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: inputs.GetKafkaKafkaUserConfigPublicAccess;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafka {
+    /**
+     * Enable auto creation of topics
+     */
     autoCreateTopicsEnable?: string;
+    /**
+     * Specify the final compression type for a given topic. This 
+     * configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+     * It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+     * which means retain the original compression codec set by the producer.
+     */
     compressionType?: string;
+    /**
+     * Idle connections timeout: the server socket processor 
+     * threads close the connections that idle for longer than this.
+     */
     connectionsMaxIdleMs?: string;
+    /**
+     * Replication factor for autocreated topics
+     * * `groupMaxSessionTimeoutMs": {
+     * * `groupMinSessionTimeoutMs": {
+     */
     defaultReplicationFactor?: string;
     groupMaxSessionTimeoutMs?: string;
     groupMinSessionTimeoutMs?: string;
+    /**
+     * The maximum amount of time message will 
+     * remain uncompacted. Only applicable for logs that are being compacted
+     * * `logCleanerMinCleanableRatio": {
+     */
     logCleanerMaxCompactionLagMs?: string;
     logCleanerMinCleanableRatio?: string;
+    /**
+     * The minimum time a message will remain 
+     * uncompacted in the log. Only applicable for logs that are being compacted.
+     * * `logCleanupPolicy": {
+     */
     logCleanerMinCompactionLagMs?: string;
     logCleanupPolicy?: string;
+    /**
+     * The maximum difference allowed between 
+     * the timestamp when a broker receives a message and the timestamp specified in the message
+     */
     logMessageTimestampDifferenceMaxMs?: string;
+    /**
+     * Define whether the timestamp in the message is 
+     * message create time or log append time.
+     */
     logMessageTimestampType?: string;
+    /**
+     * The maximum size of the log before deleting messages
+     */
     logRetentionBytes?: string;
+    /**
+     * The number of hours to keep a log file before deleting it
+     */
     logRetentionHours?: string;
+    /**
+     * The maximum size of a single log file
+     */
     logSegmentBytes?: string;
+    /**
+     * The maximum number of connections allowed from each ip 
+     * address (defaults to 2147483647).
+     * * `maxIncrementalFetchSessionCacheSlots": {
+     * * `messageMaxBytes": {
+     */
     maxConnectionsPerIp?: string;
     maxIncrementalFetchSessionCacheSlots?: string;
     messageMaxBytes?: string;
+    /**
+     * Number of partitions for autocreated topics
+     * * `offsetsRetentionMinutes": {
+     */
     numPartitions?: string;
     offsetsRetentionMinutes?: string;
+    /**
+     * The purge interval (in number of 
+     * requests) of the producer request purgatory(defaults to 1000).
+     */
     producerPurgatoryPurgeIntervalRequests?: string;
+    /**
+     * The number of bytes of messages to attempt to fetch 
+     * for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+     * batch in the first non-empty partition of the fetch is larger than this value, the record batch
+     * will still be returned to ensure that progress can be made.
+     */
     replicaFetchMaxBytes?: string;
+    /**
+     * Maximum bytes expected for the entire fetch 
+     * response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+     * in the first non-empty partition of the fetch is larger than this value, the record batch will
+     * still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     */
     replicaFetchResponseMaxBytes?: string;
+    /**
+     * The maximum number of bytes in a socket request 
+     * (defaults to 104857600).
+     */
     socketRequestMaxBytes?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
+    /**
+     * Enable certificate/SSL authentication
+     */
     certificate?: string;
+    /**
+     * Enable SASL authentication
+     */
     sasl?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
+    /**
+     * Defines what client configurations can 
+     * be overridden by the connector. Default is None
+     */
     connectorClientConfigOverridePolicy?: string;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest
+     */
     consumerAutoOffsetReset?: string;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     */
     consumerIsolationLevel?: string;
+    /**
+     * The maximum delay in milliseconds between invocations 
+     * of poll() when using consumer group management (defaults to 300000).
+     */
     consumerMaxPollIntervalMs?: string;
+    /**
+     * The maximum number of records returned in a single call 
+     * to poll() (defaults to 500).
+     */
     consumerMaxPollRecords?: string;
+    /**
+     * The interval at which to try committing offsets for 
+     * tasks (defaults to 60000).
+     */
     offsetFlushIntervalMs?: string;
+    /**
+     * Maximum number of milliseconds to wait for records to 
+     * flush and partition offset data to be committed to offset storage before cancelling the process
+     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     */
     offsetFlushTimeoutMs?: string;
+    /**
+     * The timeout in milliseconds used to detect failures when 
+     * using Kafka’s group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaRestConfig {
+    /**
+     * If true the consumer's offset will be periodically 
+     * committed to Kafka in the background
+     */
     consumerEnableAutoCommit?: string;
+    /**
+     * Maximum number of bytes in unencoded message keys and 
+     * values by a single request
+     */
     consumerRequestMaxBytes?: string;
+    /**
+     * The maximum total time to wait for messages for a 
+     * request if the maximum number of messages has not yet been reached
+     */
     consumerRequestTimeoutMs?: string;
+    /**
+     * The number of acknowledgments the producer requires the leader to 
+     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+     * for the full set of in-sync replicas to acknowledge the record.
+     */
     producerAcks?: string;
+    /**
+     * Wait for up to the given delay to allow batching records together
+     */
     producerLingerMs?: string;
+    /**
+     * Maximum number of SimpleConsumers that can be 
+     * instantiated per broker.
+     */
     simpleconsumerPoolSizeMax?: string;
 }
 
 export interface GetKafkaKafkaUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetKafkaKafkaUserConfigPublicAccess {
+    /**
+     * Kafka server provided values:
+     */
     kafka?: string;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: string;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: string;
 }
 
@@ -571,14 +1502,32 @@ export interface GetKafkaMirrorMakerKafkaMirrormaker {
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Kafka Mirror Maker 2 specific server provided values.
+     */
     kafkaMirrormaker?: inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * Whether to periodically check for new consumer groups. 
+     * Defaults to 'true'.
+     */
     refreshGroupsEnabled?: string;
+    /**
+     * Whether to periodically check for new topics and 
+     * partitions. Defaults to 'true'.
+     */
     refreshGroupsIntervalSeconds?: string;
     refreshTopicsEnabled?: string;
+    /**
+     * Frequency of topic and partitions refresh in 
+     * seconds. Defaults to 600 seconds (10 minutes).
+     */
     refreshTopicsIntervalSeconds?: string;
 }
 
@@ -606,50 +1555,190 @@ export interface GetMySqlMysql {
 }
 
 export interface GetMySqlMysqlUserConfig {
+    /**
+     * Custom password for admin user. Defaults to random string. 
+     * This must be set only when a new service is being created.
+     */
     adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a 
+     * new service is being created.
+     */
     adminUsername?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * The minute of an hour when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: string[];
+    /**
+     * MySQL specific server provided values.
+     */
     mysql?: inputs.GetMySqlMysqlUserConfigMysql;
+    /**
+     * MySQL major version
+     */
     mysqlVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: inputs.GetMySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: inputs.GetMySqlMysqlUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only when 
+     * a new service is being created.
+     */
     serviceToForkFrom?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMysql {
+    /**
+     * The number of seconds that the mysqld server waits for a 
+     * connect packet before responding with Bad handshake
+     */
     connectTimeout?: string;
+    /**
+     * Default server time zone as an offset from UTC 
+     * (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+     */
     defaultTimeZone?: string;
+    /**
+     * The maximum permitted result length in bytes for 
+     * the GROUP_CONCAT() function.
+     */
     groupConcatMaxLen?: string;
+    /**
+     * The time, in seconds, before cached 
+     * statistics expire
+     */
     informationSchemaStatsExpiry?: string;
+    /**
+     * Minimum length of words that are stored in 
+     * an InnoDB FULLTEXT index.
+     */
     innodbFtMinTokenSize?: string;
+    /**
+     * This option is used to specify your 
+     * own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     */
     innodbFtServerStopwordTable?: string;
+    /**
+     * The length of time in seconds an InnoDB 
+     * transaction waits for a row lock before giving up.
+     */
     innodbLockWaitTimeout?: string;
+    /**
+     * The size in bytes of the buffer that InnoDB 
+     * uses to write to the log files on disk.
+     */
     innodbLogBufferSize?: string;
+    /**
+     * The upper limit in bytes on the 
+     * size of the temporary log files used during online DDL operations for InnoDB tables.
+     */
     innodbOnlineAlterLogMaxSize?: string;
+    /**
+     * When enabled, information about all 
+     * deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+     */
     innodbPrintAllDeadlocks?: string;
+    /**
+     * When enabled a transaction timeout 
+     * causes InnoDB to abort and roll back the entire transaction.
+     */
     innodbRollbackOnTimeout?: string;
+    /**
+     * The number of seconds the server waits for 
+     * activity on an interactive connection before closing it.
+     */
     interactiveTimeout?: string;
+    /**
+     * Size of the largest message in bytes that can 
+     * be received by the server. Default is 67108864 (64M)
+     */
     maxAllowedPacket?: string;
+    /**
+     * Limits the size of internal in-memory tables. 
+     * Also set tmp_table_size. Default is 16777216 (16M)
+     */
     maxHeapTableSize?: string;
+    /**
+     * The number of seconds to wait for more data from 
+     * a connection before aborting the read.
+     */
     netReadTimeout?: string;
+    /**
+     * The number of seconds to wait for a block to be 
+     * written to a connection before aborting the write.
+     */
     netWriteTimeout?: string;
+    /**
+     * Sort buffer size in bytes for ORDER BY optimization. 
+     * Default is 262144 (256K)
+     */
     sortBufferSize?: string;
+    /**
+     * Global SQL mode. Set to empty to use MySQL server defaults. 
+     * When creating a new service and not setting this field Aiven default SQL mode (strict,
+     * SQL standard compliant) will be assigned.
+     */
     sqlMode?: string;
+    /**
+     * Require primary key to be defined for new 
+     * tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+     * to always have primary keys because various functionality may break if any large table
+     * is missing them.
+     */
     sqlRequirePrimaryKey?: string;
+    /**
+     * Limits the size of internal in-memory tables. Also set 
+     * max_heap_table_size. Default is 16777216 (16M)
+     */
     tmpTableSize?: string;
+    /**
+     * The number of seconds the server waits for activity on 
+     * a noninteractive connection before closing it.
+     */
     waitTimeout?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPrivateAccess {
+    /**
+     * MySQL specific server provided values.
+     */
     mysql?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
+    /**
+     * MySQL specific server provided values.
+     */
     mysql?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
@@ -660,117 +1749,409 @@ export interface GetMySqlServiceIntegration {
 
 export interface GetPgComponent {
     component?: string;
+    /**
+     * PostgreSQL master node host IP or name
+     */
     host?: string;
     kafkaAuthenticationMethod?: string;
+    /**
+     * PostgreSQL port
+     */
     port?: number;
     route?: string;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl?: boolean;
     usage?: string;
 }
 
 export interface GetPgPg {
+    /**
+     * Primary PostgreSQL database name
+     */
     dbname?: string;
+    /**
+     * PostgreSQL master node host IP or name
+     */
     host?: string;
+    /**
+     * PostgreSQL admin user password
+     */
     password?: string;
+    /**
+     * PostgreSQL port
+     */
     port?: number;
+    /**
+     * PostgreSQL replica URI for services with a replica
+     */
     replicaUri?: string;
+    /**
+     * PostgreSQL sslmode setting (currently always `require`)
+     */
     sslmode?: string;
+    /**
+     * PostgreSQL master connection URI
+     */
     uri?: string;
+    /**
+     * PostgreSQL admin user name
+     */
     user?: string;
 }
 
 export interface GetPgPgUserConfig {
+    /**
+     * custom password for admin user. Defaults to random string. *This must
+     * be set only when a new service is being created.*
+     */
     adminPassword?: string;
+    /**
+     * custom username for admin user. *This must be set only when a new service
+     * is being created.*
+     */
     adminUsername?: string;
+    /**
+     * the hour of day (in UTC) when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * the minute of an hour when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * migrate data from existing server, has the following options:
+     */
     migration?: inputs.GetPgPgUserConfigMigration;
+    /**
+     * PostgreSQL specific server provided values.
+     */
     pg?: inputs.GetPgPgUserConfigPg;
+    /**
+     * This setting is deprecated. Use read-replica service integration instead.
+     */
     pgReadReplica?: string;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+     * This has effect only when a new service is being created.
+     */
     pgServiceToForkFrom?: string;
+    /**
+     * PostgreSQL major version.
+     */
     pgVersion?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: inputs.GetPgPgUserConfigPgbouncer;
+    /**
+     * PGLookout settings.
+     */
     pglookout?: inputs.GetPgPgUserConfigPglookout;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: inputs.GetPgPgUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: inputs.GetPgPgUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Percentage of total RAM that the database server uses for 
+     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
+     */
     sharedBuffersPercentage?: string;
+    /**
+     * Synchronous replication type. Note that the service plan 
+     * also needs to support synchronous replication.
+     */
     synchronousReplication?: string;
+    /**
+     * TimescaleDB extension configuration values.
+     */
     timescaledb?: inputs.GetPgPgUserConfigTimescaledb;
+    /**
+     * Variant of the PostgreSQL service, may affect the features that are 
+     * exposed by default. Options: `aiven` or `timescale`.
+     */
     variant?: string;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such 
+     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+     * total RAM (up to 32MB).
+     */
     workMem?: string;
 }
 
 export interface GetPgPgUserConfigMigration {
+    /**
+     * Primary PostgreSQL database name
+     */
     dbname?: string;
+    /**
+     * PostgreSQL master node host IP or name
+     */
     host?: string;
+    /**
+     * PostgreSQL admin user password
+     */
     password?: string;
+    /**
+     * PostgreSQL port
+     */
     port?: string;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl?: string;
+    /**
+     * user name for authentication with the server where to migrate data from.
+     */
     username?: string;
 }
 
 export interface GetPgPgUserConfigPg {
+    /**
+     * Specifies a fraction of the table size to add to 
+     * autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+     * (20% of table size).
+     */
     autovacuumAnalyzeScaleFactor?: string;
+    /**
+     * specifies the minimum number of inserted, updated 
+     * or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
     autovacuumAnalyzeThreshold?: string;
+    /**
+     * specifies the maximum age (in transactions) that a table's 
+     * pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+     * wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+     * even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     */
     autovacuumFreezeMaxAge?: string;
+    /**
+     * specifies the maximum number of autovacuum processes (other 
+     * than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+     * can only be set at server start.
+     */
     autovacuumMaxWorkers?: string;
+    /**
+     * specifies the minimum delay between autovacuum runs on any 
+     * given database. The delay is measured in seconds, and the default is one minute.
+     */
     autovacuumNaptime?: string;
+    /**
+     * specifies the cost delay value that will be used 
+     * in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+     * used. The default value is 20 milliseconds.
+     */
     autovacuumVacuumCostDelay?: string;
+    /**
+     * specifies the cost limit value that will be used in 
+     * automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+     * value will be used.
+     */
     autovacuumVacuumCostLimit?: string;
+    /**
+     * specifies a fraction of the table size to add to 
+     * autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     */
     autovacuumVacuumScaleFactor?: string;
+    /**
+     * specifies the minimum number of updated or deleted tuples 
+     * needed to trigger a VACUUM in any one table. The default is 50 tuples
+     */
     autovacuumVacuumThreshold?: string;
+    /**
+     * this is the amount of time, in milliseconds, to wait on a lock before 
+     * checking to see if there is a deadlock condition.
+     */
     deadlockTimeout?: string;
+    /**
+     * Time out sessions with open transactions after 
+     * this number of milliseconds.
+     */
     idleInTransactionSessionTimeout?: string;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
     jit?: string;
+    /**
+     * Causes each action executed by autovacuum to be logged 
+     * if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+     * actions. Minus-one (the default) disables logging autovacuum actions.
+     */
     logAutovacuumMinDuration?: string;
+    /**
+     * Controls the amount of detail written in the server log for 
+     * each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+     */
     logErrorVerbosity?: string;
+    /**
+     * Log statements that take more than this number of 
+     * milliseconds to run, -1 disables
+     */
     logMinDurationStatement?: string;
+    /**
+     * PostgreSQL maximum locks per transaction
+     */
     maxLocksPerTransaction?: string;
+    /**
+     * Sets the maximum number of workers that the system can 
+     * support for parallel queries.
+     */
     maxParallelWorkers?: string;
+    /**
+     * Sets the maximum number of workers that can be 
+     * started by a single Gather or Gather Merge node.
+     */
     maxParallelWorkersPerGather?: string;
+    /**
+     * PostgreSQL maximum predicate locks per transaction
+     */
     maxPredLocksPerTransaction?: string;
+    /**
+     * PostgreSQL maximum prepared transactions
+     */
     maxPreparedTransactions?: string;
+    /**
+     * Maximum depth of the stack in bytes
+     */
     maxStackDepth?: string;
+    /**
+     * Max standby archive delay in milliseconds
+     */
     maxStandbyArchiveDelay?: string;
+    /**
+     * Max standby streaming delay in milliseconds
+     */
     maxStandbyStreamingDelay?: string;
+    /**
+     * Sets the maximum number of background processes that the system
+     * can support
+     * * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
+     * * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
+     * background tasks.
+     * * `pg_stat_statements.track` - Controls which statements are counted. Specify top
+     * to track top-level statements (those issued directly by clients), all to also track nested
+     * statements (such as statements invoked within functions), or none to disable statement statistics
+     * collection. The default value is top.
+     */
     maxWorkerProcesses?: string;
     pgPartmanBgwDotInterval?: string;
     pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited
+     */
     tempFileLimit?: string;
+    /**
+     * PostgreSQL service timezone
+     */
     timezone?: string;
+    /**
+     * Specifies the number of bytes reserved to track the currently 
+     * executing command for each active session.
+     */
     trackActivityQuerySize?: string;
+    /**
+     * Record commit time of transactions
+     */
     trackCommitTimestamp?: string;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
     trackFunctions?: string;
+    /**
+     * Terminate replication connections that are inactive for longer than 
+     * this amount of time, in milliseconds.
+     */
     walSenderTimeout?: string;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value 
+     * to lower than the default 200ms may negatively impact performance
+     */
     walWriterDelay?: string;
 }
 
 export interface GetPgPgUserConfigPgbouncer {
+    /**
+     * Enum of parameters to ignore when given in startup packet.
+     */
     ignoreStartupParameters?: string[];
+    /**
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
+     */
     serverResetQueryAlways?: string;
 }
 
 export interface GetPgPgUserConfigPglookout {
+    /**
+     * Number of seconds of master unavailability before 
+     * triggering database failover to standby
+     */
     maxFailoverReplicationTimeLag?: string;
 }
 
 export interface GetPgPgUserConfigPrivateAccess {
+    /**
+     * PostgreSQL specific server provided values.
+     */
     pg?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
+    /**
+     * PostgreSQL specific server provided values.
+     */
     pg?: string;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigTimescaledb {
+    /**
+     * The number of background workers for timescaledb 
+     * operations. You should configure this setting to the sum of your number of databases and the
+     * total number of concurrent background workers you want running at any given point in time.
+     */
     maxBackgroundWorkers?: string;
 }
 
@@ -781,10 +2162,19 @@ export interface GetPgServiceIntegration {
 
 export interface GetRedisComponent {
     component?: string;
+    /**
+     * (Required) Hostname or IP address of the server where to migrate data from
+     */
     host?: string;
     kafkaAuthenticationMethod?: string;
+    /**
+     * (Required) Port number of the server where to migrate data from
+     */
     port?: number;
     route?: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl?: boolean;
     usage?: string;
 }
@@ -793,36 +2183,102 @@ export interface GetRedisRedis {
 }
 
 export interface GetRedisRedisUserConfig {
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
     migration?: inputs.GetRedisRedisUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: inputs.GetRedisRedisUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: inputs.GetRedisRedisUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+     */
     recoveryBasebackupName?: string;
     redisLfuDecayTime?: string;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
+     * maxmemory-policies
+     */
     redisLfuLogFactor?: string;
+    /**
+     * Redis maxmemory-policy
+     */
     redisMaxmemoryPolicy?: string;
+    /**
+     * Set notify-keyspace-events option
+     */
     redisNotifyKeyspaceEvents?: string;
+    /**
+     * Require SSL to access Redis
+     */
     redisSsl?: string;
+    /**
+     * Redis idle connection timeout
+     * * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
+     * when a new service is being created.
+     */
     redisTimeout?: string;
     serviceToForkFrom?: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection
+     */
     dbname?: string;
+    /**
+     * (Required) Hostname or IP address of the server where to migrate data from
+     */
     host?: string;
+    /**
+     * Password for authentication with the server where to migrate data from
+     */
     password?: string;
+    /**
+     * (Required) Port number of the server where to migrate data from
+     */
     port?: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl?: string;
+    /**
+     * User name for authentication with the server where to migrate data from
+     */
     username?: string;
 }
 
 export interface GetRedisRedisUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Redis specific server provided values.
+     */
     redis?: string;
 }
 
 export interface GetRedisRedisUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: string;
+    /**
+     * Redis specific server provided values.
+     */
     redis?: string;
 }
 
@@ -1469,8 +2925,14 @@ export interface GetServiceServiceIntegration {
 
 export interface GrafanaComponent {
     component?: pulumi.Input<string>;
+    /**
+     * Server hostname or IP
+     */
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * SMTP server port
+     */
     port?: pulumi.Input<number>;
     route?: pulumi.Input<string>;
     ssl?: pulumi.Input<boolean>;
@@ -1481,96 +2943,304 @@ export interface GrafanaGrafana {
 }
 
 export interface GrafanaGrafanaUserConfig {
+    /**
+     * Enable or disable Grafana alerting functionality
+     */
     alertingEnabled?: pulumi.Input<string>;
+    /**
+     * Default error or timeout setting for new alerting rules
+     */
     alertingErrorOrTimeout?: pulumi.Input<string>;
+    /**
+     * Default value for 'no data or null values' for
+     * new alerting rules
+     */
     alertingNodataOrNullvalues?: pulumi.Input<string>;
+    /**
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
+     * tags. Disabled by default to limit impact of clickjacking
+     */
     allowEmbedding?: pulumi.Input<string>;
+    /**
+     * Enable or disable basic authentication form, used by Grafana 
+     * built-in login.
+     */
     authBasicEnabled?: pulumi.Input<string>;
+    /**
+     * Generic OAuth integration.
+     */
     authGenericOauth?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGenericOauth>;
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     authGithub?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGithub>;
+    /**
+     * GitLab Auth integration.
+     */
     authGitlab?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGitlab>;
+    /**
+     * Google Auth integration
+     */
     authGoogle?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGoogle>;
+    /**
+     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
+     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     */
     cookieSamesite?: pulumi.Input<string>;
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: pulumi.Input<string>;
+    /**
+     * Dashboard versions to keep per dashboard.
+     */
     dashboardsVersionsToKeep?: pulumi.Input<string>;
+    /**
+     * Send 'X-Grafana-User' header to data source.
+     */
     dataproxySendUserHeader?: pulumi.Input<string>;
+    /**
+     * Timeout for data proxy requests in seconds.
+     */
     dataproxyTimeout?: pulumi.Input<string>;
+    /**
+     * Set to true to disable gravatar. Defaults to false 
+     * (gravatar is enabled).
+     */
     disableGravatar?: pulumi.Input<string>;
+    /**
+     * Editors can manage folders, teams and dashboards created by them.
+     */
     editorsCanAdmin?: pulumi.Input<string>;
+    /**
+     * External image store settings
+     */
     externalImageStorage?: pulumi.Input<inputs.GrafanaGrafanaUserConfigExternalImageStorage>;
+    /**
+     * Google Analytics Universal Analytics ID for tracking Grafana usage
+     */
     googleAnalyticsUaId?: pulumi.Input<string>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable Grafana /metrics endpoint
+     */
     metricsEnabled?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPublicAccess>;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
     recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: pulumi.Input<string>;
+    /**
+     * SMTP server settings.
+     */
     smtpServer?: pulumi.Input<inputs.GrafanaGrafanaUserConfigSmtpServer>;
+    /**
+     * Auto-assign new users on signup to main organization. 
+     * Defaults to false.
+     */
     userAutoAssignOrg?: pulumi.Input<string>;
+    /**
+     * Set role for new signups. Defaults to Viewer.
+     */
     userAutoAssignOrgRole?: pulumi.Input<string>;
+    /**
+     * Users with view-only permission can edit but not save dashboards.
+     */
     viewersCanEdit?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGenericOauth {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: pulumi.Input<string>;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: pulumi.Input<string>;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: pulumi.Input<string>;
+    /**
+     * Client ID from provider
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * Name of the OAuth integration
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Scope must be non-empty string without whitespace
+     */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGithub {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: pulumi.Input<string>;
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Client ID from provider
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * Require users to belong to one of given team IDs
+     */
     teamIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGitlab {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: pulumi.Input<string>;
+    /**
+     * Require users to belong to one of given groups
+     */
     allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
     apiUrl?: pulumi.Input<string>;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
     authUrl?: pulumi.Input<string>;
+    /**
+     * Client ID from provider
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
     tokenUrl?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGoogle {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
     allowSignUp?: pulumi.Input<string>;
+    /**
+     * Allowed domain
+     */
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Client ID from provider
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * Client secret from provider
+     */
     clientSecret?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
+    /**
+     * S3 access key. Requires permissions to the S3 bucket for the 
+     * s3:PutObject and s3:PutObjectAcl actions
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Bucket URL for S3
+     */
     bucketUrl?: pulumi.Input<string>;
+    /**
+     * Provider type
+     */
     provider?: pulumi.Input<string>;
+    /**
+     * S3 secret key
+     */
     secretKey?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
+     */
     grafana?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
+     */
     grafana?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigSmtpServer {
+    /**
+     * Address used for sending emails
+     */
     fromAddress?: pulumi.Input<string>;
+    /**
+     * Name used in outgoing emails, defaults to Grafana
+     */
     fromName?: pulumi.Input<string>;
+    /**
+     * Server hostname or IP
+     */
     host?: pulumi.Input<string>;
+    /**
+     * Password for SMTP authentication
+     */
     password?: pulumi.Input<string>;
+    /**
+     * SMTP server port
+     */
     port?: pulumi.Input<string>;
+    /**
+     * Skip verifying server certificate. Defaults to false
+     */
     skipVerify?: pulumi.Input<string>;
+    /**
+     * Username for SMTP authentication
+     */
     username?: pulumi.Input<string>;
 }
 
@@ -1594,19 +3264,46 @@ export interface InfluxDbInfluxdb {
 }
 
 export interface InfluxDbInfluxdbUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     */
     customDomain?: pulumi.Input<string>;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPublicAccess>;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to influxdb from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     influxdb?: pulumi.Input<string>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to influxdb from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     influxdb?: pulumi.Input<string>;
 }
 
@@ -1639,30 +3336,91 @@ export interface KafkaConnectKafkaConnect {
 }
 
 export interface KafkaConnectKafkaConnectUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kafkaConnect?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigKafkaConnect>;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
     publicAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPublicAccess>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
+    /**
+     * Defines what client configurations can be 
+     * overridden by the connector. Default is None.
+     */
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest.
+     */
     consumerAutoOffsetReset?: pulumi.Input<string>;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     */
     consumerIsolationLevel?: pulumi.Input<string>;
+    /**
+     * The maximum delay in milliseconds between invocations 
+     * of poll() when using consumer group management (defaults to 300000).
+     */
     consumerMaxPollIntervalMs?: pulumi.Input<string>;
+    /**
+     * The maximum number of records returned by a single poll.
+     */
     consumerMaxPollRecords?: pulumi.Input<string>;
+    /**
+     * The interval at which to try committing offsets for tasks 
+     * (defaults to 60000).
+     */
     offsetFlushIntervalMs?: pulumi.Input<string>;
+    /**
+     * Maximum number of milliseconds to wait for records to flush 
+     * and partition offset data to be committed to offset storage before cancelling the process and restoring
+     * the offset data to be committed in a future attempt (defaults to 5000).
+     */
     offsetFlushTimeoutMs?: pulumi.Input<string>;
+    /**
+     * The timeout in milliseconds used to detect failures when using Kafka’s 
+     * group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: pulumi.Input<string>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kafkaConnect?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service 
+     * nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: pulumi.Input<string>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
     kafkaConnect?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service 
+     * nodes that are in a project VPC or another type of private network.
+     */
     prometheus?: pulumi.Input<string>;
 }
 
@@ -1673,93 +3431,312 @@ export interface KafkaConnectServiceIntegration {
 
 export interface KafkaConnectorTask {
     connector?: pulumi.Input<string>;
+    /**
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
+     */
     task?: pulumi.Input<number>;
 }
 
 export interface KafkaKafka {
+    /**
+     * The Kafka client certificate
+     */
     accessCert?: pulumi.Input<string>;
+    /**
+     * The Kafka client certificate key
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * The Kafka Connect URI, if any
+     */
     connectUri?: pulumi.Input<string>;
+    /**
+     * The Kafka REST URI, if any
+     */
     restUri?: pulumi.Input<string>;
+    /**
+     * The Schema Registry URI, if any
+     */
     schemaRegistryUri?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
     customDomain?: pulumi.Input<string>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow clients to connect to kafka from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     kafka?: pulumi.Input<inputs.KafkaKafkaUserConfigKafka>;
+    /**
+     * Kafka authentication methods
+     */
     kafkaAuthenticationMethods?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaAuthenticationMethods>;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: pulumi.Input<string>;
+    /**
+     * Kafka Connect configuration values
+     */
     kafkaConnectConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectConfig>;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: pulumi.Input<string>;
+    /**
+     * Kafka-REST configuration
+     */
     kafkaRestConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaRestConfig>;
+    /**
+     * Kafka major version
+     */
     kafkaVersion?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPublicAccess>;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafka {
+    /**
+     * Enable auto creation of topics
+     */
     autoCreateTopicsEnable?: pulumi.Input<string>;
+    /**
+     * Specify the final compression type for a given topic. This 
+     * configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
+     * It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
+     * which means retain the original compression codec set by the producer.
+     */
     compressionType?: pulumi.Input<string>;
+    /**
+     * Idle connections timeout: the server socket processor 
+     * threads close the connections that idle for longer than this.
+     */
     connectionsMaxIdleMs?: pulumi.Input<string>;
+    /**
+     * Replication factor for autocreated topics
+     * * `groupMaxSessionTimeoutMs": {
+     * * `groupMinSessionTimeoutMs": {
+     */
     defaultReplicationFactor?: pulumi.Input<string>;
     groupMaxSessionTimeoutMs?: pulumi.Input<string>;
     groupMinSessionTimeoutMs?: pulumi.Input<string>;
+    /**
+     * The maximum amount of time message will 
+     * remain uncompacted. Only applicable for logs that are being compacted
+     * * `logCleanerMinCleanableRatio": {
+     */
     logCleanerMaxCompactionLagMs?: pulumi.Input<string>;
     logCleanerMinCleanableRatio?: pulumi.Input<string>;
+    /**
+     * The minimum time a message will remain 
+     * uncompacted in the log. Only applicable for logs that are being compacted.
+     * * `logCleanupPolicy": {
+     */
     logCleanerMinCompactionLagMs?: pulumi.Input<string>;
     logCleanupPolicy?: pulumi.Input<string>;
+    /**
+     * The maximum difference allowed between 
+     * the timestamp when a broker receives a message and the timestamp specified in the message
+     */
     logMessageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    /**
+     * Define whether the timestamp in the message is 
+     * message create time or log append time.
+     */
     logMessageTimestampType?: pulumi.Input<string>;
+    /**
+     * The maximum size of the log before deleting messages
+     */
     logRetentionBytes?: pulumi.Input<string>;
+    /**
+     * The number of hours to keep a log file before deleting it
+     */
     logRetentionHours?: pulumi.Input<string>;
+    /**
+     * The maximum size of a single log file
+     */
     logSegmentBytes?: pulumi.Input<string>;
+    /**
+     * The maximum number of connections allowed from each ip 
+     * address (defaults to 2147483647).
+     * * `maxIncrementalFetchSessionCacheSlots": {
+     * * `messageMaxBytes": {
+     */
     maxConnectionsPerIp?: pulumi.Input<string>;
     maxIncrementalFetchSessionCacheSlots?: pulumi.Input<string>;
     messageMaxBytes?: pulumi.Input<string>;
+    /**
+     * Number of partitions for autocreated topics
+     * * `offsetsRetentionMinutes": {
+     */
     numPartitions?: pulumi.Input<string>;
     offsetsRetentionMinutes?: pulumi.Input<string>;
+    /**
+     * The purge interval (in number of 
+     * requests) of the producer request purgatory(defaults to 1000).
+     */
     producerPurgatoryPurgeIntervalRequests?: pulumi.Input<string>;
+    /**
+     * The number of bytes of messages to attempt to fetch 
+     * for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
+     * batch in the first non-empty partition of the fetch is larger than this value, the record batch
+     * will still be returned to ensure that progress can be made.
+     */
     replicaFetchMaxBytes?: pulumi.Input<string>;
+    /**
+     * Maximum bytes expected for the entire fetch 
+     * response (defaults to 10485760). Records are fetched in batches, and if the first record batch
+     * in the first non-empty partition of the fetch is larger than this value, the record batch will
+     * still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     */
     replicaFetchResponseMaxBytes?: pulumi.Input<string>;
+    /**
+     * The maximum number of bytes in a socket request 
+     * (defaults to 104857600).
+     */
     socketRequestMaxBytes?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
+    /**
+     * Enable certificate/SSL authentication
+     */
     certificate?: pulumi.Input<string>;
+    /**
+     * Enable SASL authentication
+     */
     sasl?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
+    /**
+     * Defines what client configurations can 
+     * be overridden by the connector. Default is None
+     */
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
+    /**
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest
+     */
     consumerAutoOffsetReset?: pulumi.Input<string>;
+    /**
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     */
     consumerIsolationLevel?: pulumi.Input<string>;
+    /**
+     * The maximum delay in milliseconds between invocations 
+     * of poll() when using consumer group management (defaults to 300000).
+     */
     consumerMaxPollIntervalMs?: pulumi.Input<string>;
+    /**
+     * The maximum number of records returned in a single call 
+     * to poll() (defaults to 500).
+     */
     consumerMaxPollRecords?: pulumi.Input<string>;
+    /**
+     * The interval at which to try committing offsets for 
+     * tasks (defaults to 60000).
+     */
     offsetFlushIntervalMs?: pulumi.Input<string>;
+    /**
+     * Maximum number of milliseconds to wait for records to 
+     * flush and partition offset data to be committed to offset storage before cancelling the process
+     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     */
     offsetFlushTimeoutMs?: pulumi.Input<string>;
+    /**
+     * The timeout in milliseconds used to detect failures when 
+     * using Kafka’s group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafkaRestConfig {
+    /**
+     * If true the consumer's offset will be periodically 
+     * committed to Kafka in the background
+     */
     consumerEnableAutoCommit?: pulumi.Input<string>;
+    /**
+     * Maximum number of bytes in unencoded message keys and 
+     * values by a single request
+     */
     consumerRequestMaxBytes?: pulumi.Input<string>;
+    /**
+     * The maximum total time to wait for messages for a 
+     * request if the maximum number of messages has not yet been reached
+     */
     consumerRequestTimeoutMs?: pulumi.Input<string>;
+    /**
+     * The number of acknowledgments the producer requires the leader to 
+     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+     * for the full set of in-sync replicas to acknowledge the record.
+     */
     producerAcks?: pulumi.Input<string>;
+    /**
+     * Wait for up to the given delay to allow batching records together
+     */
     producerLingerMs?: pulumi.Input<string>;
+    /**
+     * Maximum number of SimpleConsumers that can be 
+     * instantiated per broker.
+     */
     simpleconsumerPoolSizeMax?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to kafka from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     kafka?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     kafkaConnect?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to kafkaRest from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     kafkaRest?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: pulumi.Input<string>;
 }
 
@@ -1777,14 +3754,32 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Kafka MirrorMaker configuration values
+     */
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker>;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * Whether to periodically check for new consumer groups. 
+     * Defaults to 'true'.
+     */
     refreshGroupsEnabled?: pulumi.Input<string>;
+    /**
+     * Whether to periodically check for new topics and 
+     * partitions. Defaults to 'true'.
+     */
     refreshGroupsIntervalSeconds?: pulumi.Input<string>;
     refreshTopicsEnabled?: pulumi.Input<string>;
+    /**
+     * Frequency of topic and partitions refresh in 
+     * seconds. Defaults to 600 seconds (10 minutes).
+     */
     refreshTopicsIntervalSeconds?: pulumi.Input<string>;
 }
 
@@ -1812,50 +3807,193 @@ export interface MySqlMysql {
 }
 
 export interface MySqlMysqlUserConfig {
+    /**
+     * Custom password for admin user. Defaults to random string. 
+     * This must be set only when a new service is being created.
+     */
     adminPassword?: pulumi.Input<string>;
+    /**
+     * Custom username for admin user. This must be set only when a 
+     * new service is being created.
+     */
     adminUsername?: pulumi.Input<string>;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupHour?: pulumi.Input<string>;
+    /**
+     * The minute of an hour when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
     backupMinute?: pulumi.Input<string>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow clients to connect to mysql from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     mysql?: pulumi.Input<inputs.MySqlMysqlUserConfigMysql>;
+    /**
+     * MySQL major version
+     */
     mysqlVersion?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPublicAccess>;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: pulumi.Input<string>;
+    /**
+     * Name of another service to fork from. This has effect only when 
+     * a new service is being created.
+     */
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigMysql {
+    /**
+     * The number of seconds that the mysqld server waits for a 
+     * connect packet before responding with Bad handshake
+     */
     connectTimeout?: pulumi.Input<string>;
+    /**
+     * Default server time zone as an offset from UTC 
+     * (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+     */
     defaultTimeZone?: pulumi.Input<string>;
+    /**
+     * The maximum permitted result length in bytes for 
+     * the GROUP_CONCAT() function.
+     */
     groupConcatMaxLen?: pulumi.Input<string>;
+    /**
+     * The time, in seconds, before cached 
+     * statistics expire
+     */
     informationSchemaStatsExpiry?: pulumi.Input<string>;
+    /**
+     * Minimum length of words that are stored in 
+     * an InnoDB FULLTEXT index.
+     */
     innodbFtMinTokenSize?: pulumi.Input<string>;
+    /**
+     * This option is used to specify your 
+     * own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     */
     innodbFtServerStopwordTable?: pulumi.Input<string>;
+    /**
+     * The length of time in seconds an InnoDB 
+     * transaction waits for a row lock before giving up.
+     */
     innodbLockWaitTimeout?: pulumi.Input<string>;
+    /**
+     * The size in bytes of the buffer that InnoDB 
+     * uses to write to the log files on disk.
+     */
     innodbLogBufferSize?: pulumi.Input<string>;
+    /**
+     * The upper limit in bytes on the 
+     * size of the temporary log files used during online DDL operations for InnoDB tables.
+     */
     innodbOnlineAlterLogMaxSize?: pulumi.Input<string>;
+    /**
+     * When enabled, information about all 
+     * deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+     */
     innodbPrintAllDeadlocks?: pulumi.Input<string>;
+    /**
+     * When enabled a transaction timeout 
+     * causes InnoDB to abort and roll back the entire transaction.
+     */
     innodbRollbackOnTimeout?: pulumi.Input<string>;
+    /**
+     * The number of seconds the server waits for 
+     * activity on an interactive connection before closing it.
+     */
     interactiveTimeout?: pulumi.Input<string>;
+    /**
+     * Size of the largest message in bytes that can 
+     * be received by the server. Default is 67108864 (64M)
+     */
     maxAllowedPacket?: pulumi.Input<string>;
+    /**
+     * Limits the size of internal in-memory tables. 
+     * Also set tmp_table_size. Default is 16777216 (16M)
+     */
     maxHeapTableSize?: pulumi.Input<string>;
+    /**
+     * The number of seconds to wait for more data from 
+     * a connection before aborting the read.
+     */
     netReadTimeout?: pulumi.Input<string>;
+    /**
+     * The number of seconds to wait for a block to be 
+     * written to a connection before aborting the write.
+     */
     netWriteTimeout?: pulumi.Input<string>;
+    /**
+     * Sort buffer size in bytes for ORDER BY optimization. 
+     * Default is 262144 (256K)
+     */
     sortBufferSize?: pulumi.Input<string>;
+    /**
+     * Global SQL mode. Set to empty to use MySQL server defaults. 
+     * When creating a new service and not setting this field Aiven default SQL mode (strict,
+     * SQL standard compliant) will be assigned.
+     */
     sqlMode?: pulumi.Input<string>;
+    /**
+     * Require primary key to be defined for new 
+     * tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
+     * to always have primary keys because various functionality may break if any large table
+     * is missing them.
+     */
     sqlRequirePrimaryKey?: pulumi.Input<string>;
+    /**
+     * Limits the size of internal in-memory tables. Also set 
+     * max_heap_table_size. Default is 16777216 (16M)
+     */
     tmpTableSize?: pulumi.Input<string>;
+    /**
+     * The number of seconds the server waits for activity on 
+     * a noninteractive connection before closing it.
+     */
     waitTimeout?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to mysql from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     mysql?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to mysql from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     mysql?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
 }
 
@@ -1866,117 +4004,412 @@ export interface MySqlServiceIntegration {
 
 export interface PgComponent {
     component?: pulumi.Input<string>;
+    /**
+     * hostname or IP address of the server where to migrate data from.
+     */
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * port number of the server where to migrate data from.
+     */
     port?: pulumi.Input<number>;
     route?: pulumi.Input<string>;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl?: pulumi.Input<boolean>;
     usage?: pulumi.Input<string>;
 }
 
 export interface PgPg {
+    /**
+     * database name for bootstrapping the initial connection.
+     */
     dbname?: pulumi.Input<string>;
+    /**
+     * hostname or IP address of the server where to migrate data from.
+     */
     host?: pulumi.Input<string>;
+    /**
+     * password for authentication with the server where to migrate data from.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * port number of the server where to migrate data from.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * PostgreSQL replica URI for services with a replica
+     */
     replicaUri?: pulumi.Input<string>;
+    /**
+     * PostgreSQL sslmode setting (currently always `require`)
+     */
     sslmode?: pulumi.Input<string>;
+    /**
+     * PostgreSQL master connection URI
+     */
     uri?: pulumi.Input<string>;
+    /**
+     * PostgreSQL admin user name
+     */
     user?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfig {
+    /**
+     * custom password for admin user. Defaults to random string. *This must
+     * be set only when a new service is being created.*
+     */
     adminPassword?: pulumi.Input<string>;
+    /**
+     * custom username for admin user. *This must be set only when a new service
+     * is being created.*
+     */
     adminUsername?: pulumi.Input<string>;
+    /**
+     * the hour of day (in UTC) when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupHour?: pulumi.Input<string>;
+    /**
+     * the minute of an hour when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
+     */
     backupMinute?: pulumi.Input<string>;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * migrate data from existing server, has the following options:
+     */
     migration?: pulumi.Input<inputs.PgPgUserConfigMigration>;
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes
+     * that are in a project VPC or another type of private network
+     */
     pg?: pulumi.Input<inputs.PgPgUserConfigPg>;
+    /**
+     * This setting is deprecated. Use read-replica service integration instead.
+     */
     pgReadReplica?: pulumi.Input<string>;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+     * This has effect only when a new service is being created.
+     */
     pgServiceToForkFrom?: pulumi.Input<string>;
+    /**
+     * PostgreSQL major version.
+     */
     pgVersion?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: pulumi.Input<inputs.PgPgUserConfigPgbouncer>;
+    /**
+     * PGLookout settings.
+     */
     pglookout?: pulumi.Input<inputs.PgPgUserConfigPglookout>;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: pulumi.Input<inputs.PgPgUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: pulumi.Input<inputs.PgPgUserConfigPublicAccess>;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
     recoveryTargetTime?: pulumi.Input<string>;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
     serviceToForkFrom?: pulumi.Input<string>;
+    /**
+     * Percentage of total RAM that the database server uses for 
+     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
+     */
     sharedBuffersPercentage?: pulumi.Input<string>;
+    /**
+     * Synchronous replication type. Note that the service plan 
+     * also needs to support synchronous replication.
+     */
     synchronousReplication?: pulumi.Input<string>;
+    /**
+     * TimescaleDB extension configuration values.
+     */
     timescaledb?: pulumi.Input<inputs.PgPgUserConfigTimescaledb>;
+    /**
+     * Variant of the PostgreSQL service, may affect the features that are 
+     * exposed by default. Options: `aiven` or `timescale`.
+     */
     variant?: pulumi.Input<string>;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such 
+     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+     * total RAM (up to 32MB).
+     */
     workMem?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigMigration {
+    /**
+     * database name for bootstrapping the initial connection.
+     */
     dbname?: pulumi.Input<string>;
+    /**
+     * hostname or IP address of the server where to migrate data from.
+     */
     host?: pulumi.Input<string>;
+    /**
+     * password for authentication with the server where to migrate data from.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * port number of the server where to migrate data from.
+     */
     port?: pulumi.Input<string>;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
     ssl?: pulumi.Input<string>;
+    /**
+     * user name for authentication with the server where to migrate data from.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPg {
+    /**
+     * Specifies a fraction of the table size to add to 
+     * autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
+     * (20% of table size).
+     */
     autovacuumAnalyzeScaleFactor?: pulumi.Input<string>;
+    /**
+     * specifies the minimum number of inserted, updated 
+     * or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
     autovacuumAnalyzeThreshold?: pulumi.Input<string>;
+    /**
+     * specifies the maximum age (in transactions) that a table's 
+     * pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
+     * wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
+     * even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     */
     autovacuumFreezeMaxAge?: pulumi.Input<string>;
+    /**
+     * specifies the maximum number of autovacuum processes (other 
+     * than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
+     * can only be set at server start.
+     */
     autovacuumMaxWorkers?: pulumi.Input<string>;
+    /**
+     * specifies the minimum delay between autovacuum runs on any 
+     * given database. The delay is measured in seconds, and the default is one minute.
+     */
     autovacuumNaptime?: pulumi.Input<string>;
+    /**
+     * specifies the cost delay value that will be used 
+     * in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
+     * used. The default value is 20 milliseconds.
+     */
     autovacuumVacuumCostDelay?: pulumi.Input<string>;
+    /**
+     * specifies the cost limit value that will be used in 
+     * automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
+     * value will be used.
+     */
     autovacuumVacuumCostLimit?: pulumi.Input<string>;
+    /**
+     * specifies a fraction of the table size to add to 
+     * autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     */
     autovacuumVacuumScaleFactor?: pulumi.Input<string>;
+    /**
+     * specifies the minimum number of updated or deleted tuples 
+     * needed to trigger a VACUUM in any one table. The default is 50 tuples
+     */
     autovacuumVacuumThreshold?: pulumi.Input<string>;
+    /**
+     * this is the amount of time, in milliseconds, to wait on a lock before 
+     * checking to see if there is a deadlock condition.
+     */
     deadlockTimeout?: pulumi.Input<string>;
+    /**
+     * Time out sessions with open transactions after 
+     * this number of milliseconds.
+     */
     idleInTransactionSessionTimeout?: pulumi.Input<string>;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
     jit?: pulumi.Input<string>;
+    /**
+     * Causes each action executed by autovacuum to be logged 
+     * if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
+     * actions. Minus-one (the default) disables logging autovacuum actions.
+     */
     logAutovacuumMinDuration?: pulumi.Input<string>;
+    /**
+     * Controls the amount of detail written in the server log for 
+     * each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+     */
     logErrorVerbosity?: pulumi.Input<string>;
+    /**
+     * Log statements that take more than this number of 
+     * milliseconds to run, -1 disables
+     */
     logMinDurationStatement?: pulumi.Input<string>;
+    /**
+     * PostgreSQL maximum locks per transaction
+     */
     maxLocksPerTransaction?: pulumi.Input<string>;
+    /**
+     * Sets the maximum number of workers that the system can 
+     * support for parallel queries.
+     */
     maxParallelWorkers?: pulumi.Input<string>;
+    /**
+     * Sets the maximum number of workers that can be 
+     * started by a single Gather or Gather Merge node.
+     */
     maxParallelWorkersPerGather?: pulumi.Input<string>;
+    /**
+     * PostgreSQL maximum predicate locks per transaction
+     */
     maxPredLocksPerTransaction?: pulumi.Input<string>;
+    /**
+     * PostgreSQL maximum prepared transactions
+     */
     maxPreparedTransactions?: pulumi.Input<string>;
+    /**
+     * Maximum depth of the stack in bytes
+     */
     maxStackDepth?: pulumi.Input<string>;
+    /**
+     * Max standby archive delay in milliseconds
+     */
     maxStandbyArchiveDelay?: pulumi.Input<string>;
+    /**
+     * Max standby streaming delay in milliseconds
+     */
     maxStandbyStreamingDelay?: pulumi.Input<string>;
+    /**
+     * Sets the maximum number of background processes that the system
+     * can support
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
+     * background tasks.
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
+     * to track top-level statements (those issued directly by clients), all to also track nested
+     * statements (such as statements invoked within functions), or none to disable statement statistics
+     * collection. The default value is top.
+     */
     maxWorkerProcesses?: pulumi.Input<string>;
     pgPartmanBgwDotInterval?: pulumi.Input<string>;
     pgPartmanBgwDotRole?: pulumi.Input<string>;
     pgStatStatementsDotTrack?: pulumi.Input<string>;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited
+     */
     tempFileLimit?: pulumi.Input<string>;
+    /**
+     * PostgreSQL service timezone
+     */
     timezone?: pulumi.Input<string>;
+    /**
+     * Specifies the number of bytes reserved to track the currently 
+     * executing command for each active session.
+     */
     trackActivityQuerySize?: pulumi.Input<string>;
+    /**
+     * Record commit time of transactions
+     */
     trackCommitTimestamp?: pulumi.Input<string>;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
     trackFunctions?: pulumi.Input<string>;
+    /**
+     * Terminate replication connections that are inactive for longer than 
+     * this amount of time, in milliseconds.
+     */
     walSenderTimeout?: pulumi.Input<string>;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value 
+     * to lower than the default 200ms may negatively impact performance
+     */
     walWriterDelay?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPgbouncer {
+    /**
+     * Enum of parameters to ignore when given in startup packet.
+     */
     ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
+     */
     serverResetQueryAlways?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPglookout {
+    /**
+     * Number of seconds of master unavailability before 
+     * triggering database failover to standby
+     */
     maxFailoverReplicationTimeLag?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes
+     * that are in a project VPC or another type of private network
+     */
     pg?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes
+     * that are in a project VPC or another type of private network
+     */
     pg?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     pgbouncer?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigTimescaledb {
+    /**
+     * The number of background workers for timescaledb 
+     * operations. You should configure this setting to the sum of your number of databases and the
+     * total number of concurrent background workers you want running at any given point in time.
+     */
     maxBackgroundWorkers?: pulumi.Input<string>;
 }
 
@@ -1987,10 +4420,19 @@ export interface PgServiceIntegration {
 
 export interface RedisComponent {
     component?: pulumi.Input<string>;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Port number of the server where to migrate data from
+     */
     port?: pulumi.Input<number>;
     route?: pulumi.Input<string>;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl?: pulumi.Input<boolean>;
     usage?: pulumi.Input<string>;
 }
@@ -1999,36 +4441,104 @@ export interface RedisRedis {
 }
 
 export interface RedisRedisUserConfig {
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Migrate data from existing server
+     */
     migration?: pulumi.Input<inputs.RedisRedisUserConfigMigration>;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: pulumi.Input<inputs.RedisRedisUserConfigPublicAccess>;
+    /**
+     * Name of the basebackup to restore in forked service
+     * * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+     */
     recoveryBasebackupName?: pulumi.Input<string>;
     redisLfuDecayTime?: pulumi.Input<string>;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
+     * maxmemory-policies
+     */
     redisLfuLogFactor?: pulumi.Input<string>;
+    /**
+     * Redis maxmemory-policy
+     */
     redisMaxmemoryPolicy?: pulumi.Input<string>;
+    /**
+     * Set notify-keyspace-events option
+     */
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
+    /**
+     * Require SSL to access Redis
+     */
     redisSsl?: pulumi.Input<string>;
+    /**
+     * Redis idle connection timeout
+     * * `serviceToForkFrom"` - (Optional) Name of another service to fork from. This has effect only
+     * when a new service is being created.
+     */
     redisTimeout?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection
+     */
     dbname?: pulumi.Input<string>;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
     host?: pulumi.Input<string>;
+    /**
+     * Password for authentication with the server where to migrate data from
+     */
     password?: pulumi.Input<string>;
+    /**
+     * Port number of the server where to migrate data from
+     */
     port?: pulumi.Input<string>;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl?: pulumi.Input<string>;
+    /**
+     * User name for authentication with the server where to migrate data from
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to redis from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     redis?: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
     prometheus?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to redis from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
     redis?: pulumi.Input<string>;
 }
 

@@ -12,6 +12,10 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetKafkaKafkaUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Allow clients to connect to prometheus from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("prometheus")]
         public string? Prometheus { get; set; }
 

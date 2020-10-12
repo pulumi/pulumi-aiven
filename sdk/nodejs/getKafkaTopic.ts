@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Kafka Topic Data Source
+ *
+ * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytesttopic = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getKafkaTopic({
+ *     project: project,
+ *     serviceName: serviceName,
+ *     topicName: "<TOPIC_NAME>",
+ * }, { async: true }));
+ * ```
+ */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
     if (!opts) {
         opts = {}
@@ -32,15 +50,44 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getKafkaTopic.
  */
 export interface GetKafkaTopicArgs {
+    /**
+     * Topic cleanup policy. Allowed values: delete, compact.
+     */
     readonly cleanupPolicy?: string;
+    /**
+     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+     */
     readonly minimumInSyncReplicas?: number;
+    /**
+     * Number of partitions to create in the topic.
+     */
     readonly partitions?: number;
+    /**
+     * and `serviceName` - (Required) define the project and service the topic belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     * These properties cannot be changed once the service is created. Doing so will result in
+     * the topic being deleted and new one created instead.
+     */
     readonly project: string;
+    /**
+     * Replication factor for the topic.
+     */
     readonly replication?: number;
+    /**
+     * Retention bytes.
+     */
     readonly retentionBytes?: number;
+    /**
+     * Retention period in hours, if -1 it is infinite.
+     */
     readonly retentionHours?: number;
     readonly serviceName: string;
     readonly terminationProtection?: boolean;
+    /**
+     * is the actual name of the topic account. This propery cannot be changed
+     * once the service is created. Doing so will result in the topic being deleted and new one
+     * created instead.
+     */
     readonly topicName: string;
 }
 
@@ -48,16 +95,34 @@ export interface GetKafkaTopicArgs {
  * A collection of values returned by getKafkaTopic.
  */
 export interface GetKafkaTopicResult {
+    /**
+     * Topic cleanup policy. Allowed values: delete, compact.
+     */
     readonly cleanupPolicy?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+     */
     readonly minimumInSyncReplicas?: number;
+    /**
+     * Number of partitions to create in the topic.
+     */
     readonly partitions?: number;
     readonly project: string;
+    /**
+     * Replication factor for the topic.
+     */
     readonly replication?: number;
+    /**
+     * Retention bytes.
+     */
     readonly retentionBytes?: number;
+    /**
+     * Retention period in hours, if -1 it is infinite.
+     */
     readonly retentionHours?: number;
     readonly serviceName: string;
     readonly terminationProtection?: boolean;

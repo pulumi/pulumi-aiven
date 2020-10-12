@@ -6,6 +6,29 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Kafka connector Data Source
+ *
+ * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka-es-con1 = aiven.getKafkaConnector({
+ *     project: aiven_project["kafka-con-project1"].project,
+ *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     connectorName: "kafka-es-con1",
+ * });
+ * ```
+ *
+ * * `project` and `serviceName`- (Required) define the project and service the Kafka Connectors belongs to.
+ * They should be defined using reference as shown above to set up dependencies correctly.
+ *
+ * * `connectorName`- (Required) is the Kafka connector name.
+ */
 export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectorResult> {
     if (!opts) {
         opts = {}
@@ -35,14 +58,36 @@ export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.Inv
 export interface GetKafkaConnectorArgs {
     readonly config?: {[key: string]: string};
     readonly connectorName: string;
+    /**
+     * Kafka connector author.
+     */
     readonly pluginAuthor?: string;
+    /**
+     * Kafka connector Java class.
+     */
     readonly pluginClass?: string;
+    /**
+     * Kafka connector documentation URL.
+     */
     readonly pluginDocUrl?: string;
+    /**
+     * Kafka connector title.
+     */
     readonly pluginTitle?: string;
+    /**
+     * Kafka connector type.
+     */
     readonly pluginType?: string;
+    /**
+     * Kafka connector version.
+     */
     readonly pluginVersion?: string;
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
+     */
     readonly tasks?: inputs.GetKafkaConnectorTask[];
 }
 
@@ -56,13 +101,35 @@ export interface GetKafkaConnectorResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Kafka connector author.
+     */
     readonly pluginAuthor: string;
+    /**
+     * Kafka connector Java class.
+     */
     readonly pluginClass: string;
+    /**
+     * Kafka connector documentation URL.
+     */
     readonly pluginDocUrl: string;
+    /**
+     * Kafka connector title.
+     */
     readonly pluginTitle: string;
+    /**
+     * Kafka connector type.
+     */
     readonly pluginType: string;
+    /**
+     * Kafka connector version.
+     */
     readonly pluginVersion: string;
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
+     */
     readonly tasks: outputs.GetKafkaConnectorTask[];
 }

@@ -29,20 +29,47 @@ class KafkaTopic(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a KafkaTopic resource with the given unique name, props, and options.
+        ## # Kafka Topic Resource
+
+        The Kafka Topic resource allows the creation and management of an Aiven Kafka Topic`s.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytesttopic = aiven.KafkaTopic("mytesttopic",
+            cleanup_policy="delete",
+            minimum_in_sync_replicas=2,
+            partitions=5,
+            project=aiven_project["myproject"]["project"],
+            replication=3,
+            retention_bytes=-1,
+            retention_hours=72,
+            service_name=aiven_service["myservice"]["service_name"],
+            termination_protection=True,
+            topic_name="<TOPIC_NAME>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact
-        :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition
-        :param pulumi.Input[float] partitions: Number of partitions to create in the topic
-        :param pulumi.Input[str] project: Project to link the kafka topic to
-        :param pulumi.Input[float] replication: Replication factor for the topic
-        :param pulumi.Input[float] retention_bytes: Retention bytes
-        :param pulumi.Input[float] retention_hours: Retention period (hours)
+        :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact.
+        :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        :param pulumi.Input[float] partitions: Number of partitions to create in the topic.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the topic belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
+               These properties cannot be changed once the service is created. Doing so will result in
+               the topic being deleted and new one created instead.
+        :param pulumi.Input[float] replication: Replication factor for the topic.
+        :param pulumi.Input[float] retention_bytes: Retention bytes.
+        :param pulumi.Input[float] retention_hours: Retention period in hours, if -1 it is infinite.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
-        :param pulumi.Input[str] topic_name: Topic name
+        :param pulumi.Input[str] topic_name: is the actual name of the topic account. This propery cannot be changed
+               once the service is created. Doing so will result in the topic being deleted and new one
+               created instead.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -108,17 +135,22 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact
-        :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition
-        :param pulumi.Input[float] partitions: Number of partitions to create in the topic
-        :param pulumi.Input[str] project: Project to link the kafka topic to
-        :param pulumi.Input[float] replication: Replication factor for the topic
-        :param pulumi.Input[float] retention_bytes: Retention bytes
-        :param pulumi.Input[float] retention_hours: Retention period (hours)
+        :param pulumi.Input[str] cleanup_policy: Topic cleanup policy. Allowed values: delete, compact.
+        :param pulumi.Input[float] minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        :param pulumi.Input[float] partitions: Number of partitions to create in the topic.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the topic belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
+               These properties cannot be changed once the service is created. Doing so will result in
+               the topic being deleted and new one created instead.
+        :param pulumi.Input[float] replication: Replication factor for the topic.
+        :param pulumi.Input[float] retention_bytes: Retention bytes.
+        :param pulumi.Input[float] retention_hours: Retention period in hours, if -1 it is infinite.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
-        :param pulumi.Input[str] topic_name: Topic name
+        :param pulumi.Input[str] topic_name: is the actual name of the topic account. This propery cannot be changed
+               once the service is created. Doing so will result in the topic being deleted and new one
+               created instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,7 +172,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Topic cleanup policy. Allowed values: delete, compact
+        Topic cleanup policy. Allowed values: delete, compact.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -148,7 +180,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="minimumInSyncReplicas")
     def minimum_in_sync_replicas(self) -> pulumi.Output[Optional[float]]:
         """
-        Minimum required nodes in-sync replicas (ISR) to produce to a partition
+        Minimum required nodes in-sync replicas (ISR) to produce to a partition.
         """
         return pulumi.get(self, "minimum_in_sync_replicas")
 
@@ -156,7 +188,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def partitions(self) -> pulumi.Output[float]:
         """
-        Number of partitions to create in the topic
+        Number of partitions to create in the topic.
         """
         return pulumi.get(self, "partitions")
 
@@ -164,7 +196,10 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project to link the kafka topic to
+        and `service_name` - (Required) define the project and service the topic belongs to.
+        They should be defined using reference as shown above to set up dependencies correctly.
+        These properties cannot be changed once the service is created. Doing so will result in
+        the topic being deleted and new one created instead.
         """
         return pulumi.get(self, "project")
 
@@ -172,7 +207,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def replication(self) -> pulumi.Output[float]:
         """
-        Replication factor for the topic
+        Replication factor for the topic.
         """
         return pulumi.get(self, "replication")
 
@@ -180,7 +215,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> pulumi.Output[Optional[float]]:
         """
-        Retention bytes
+        Retention bytes.
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -188,7 +223,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="retentionHours")
     def retention_hours(self) -> pulumi.Output[Optional[float]]:
         """
-        Retention period (hours)
+        Retention period in hours, if -1 it is infinite.
         """
         return pulumi.get(self, "retention_hours")
 
@@ -213,7 +248,9 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Output[str]:
         """
-        Topic name
+        is the actual name of the topic account. This propery cannot be changed
+        once the service is created. Doing so will result in the topic being deleted and new one
+        created instead.
         """
         return pulumi.get(self, "topic_name")
 

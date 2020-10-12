@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigPgbouncer
     {
+        /// <summary>
+        /// Enum of parameters to ignore when given in startup packet.
+        /// </summary>
         public readonly ImmutableArray<string> IgnoreStartupParameters;
+        /// <summary>
+        /// Run server_reset_query (DISCARD ALL) in all pooling modes.
+        /// </summary>
         public readonly string? ServerResetQueryAlways;
 
         [OutputConstructor]

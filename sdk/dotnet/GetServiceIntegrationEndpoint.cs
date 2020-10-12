@@ -11,6 +11,36 @@ namespace Pulumi.Aiven
 {
     public static class GetServiceIntegrationEndpoint
     {
+        /// <summary>
+        /// ## # Service Integration Endpoint Data Source
+        /// 
+        /// The Service Integration Endpoint data source provides information about the existing 
+        /// Aiven Service Integration Endpoint.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myendpoint = Output.Create(Aiven.GetServiceIntegrationEndpoint.InvokeAsync(new Aiven.GetServiceIntegrationEndpointArgs
+        ///         {
+        ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
+        ///             Project = aiven_project.Myproject.Project,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetServiceIntegrationEndpointResult> InvokeAsync(GetServiceIntegrationEndpointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointArgs(), options.WithVersion());
     }
@@ -29,9 +59,17 @@ namespace Pulumi.Aiven
             set => _endpointConfig = value;
         }
 
+        /// <summary>
+        /// is the name of the endpoint. This value has no effect beyond being used
+        /// to identify different integration endpoints.
+        /// </summary>
         [Input("endpointName", required: true)]
         public string EndpointName { get; set; } = null!;
 
+        /// <summary>
+        /// is the type of the external service this endpoint is associated with.
+        /// By the time of writing the only available option is `datadog`.
+        /// </summary>
         [Input("endpointType")]
         public string? EndpointType { get; set; }
 
@@ -50,6 +88,9 @@ namespace Pulumi.Aiven
         [Input("jolokiaUserConfig")]
         public Inputs.GetServiceIntegrationEndpointJolokiaUserConfigArgs? JolokiaUserConfig { get; set; }
 
+        /// <summary>
+        /// defines the project the endpoint is associated with.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -74,6 +115,10 @@ namespace Pulumi.Aiven
         public readonly Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult? DatadogUserConfig;
         public readonly ImmutableDictionary<string, string> EndpointConfig;
         public readonly string EndpointName;
+        /// <summary>
+        /// is the type of the external service this endpoint is associated with.
+        /// By the time of writing the only available option is `datadog`.
+        /// </summary>
         public readonly string? EndpointType;
         public readonly Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult? ExternalAwsCloudwatchLogsUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;

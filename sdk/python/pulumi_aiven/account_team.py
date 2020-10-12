@@ -23,13 +23,16 @@ class AccountTeam(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a AccountTeam resource with the given unique name, props, and options.
+        ## # Account Team Resource
+
+        The Account Team resource allows the creation and management of an Account Teams.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] name: Account team name
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[str] name: defines an account team name.
+        :param pulumi.Input[str] update_time: time of last update.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,11 +80,11 @@ class AccountTeam(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] name: Account team name
-        :param pulumi.Input[str] team_id: Account team id
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[str] name: defines an account team name.
+        :param pulumi.Input[str] team_id: is an auto-generated unique account team id.
+        :param pulumi.Input[str] update_time: time of last update.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -98,7 +101,7 @@ class AccountTeam(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account id
+        is a unique account id.
         """
         return pulumi.get(self, "account_id")
 
@@ -106,7 +109,7 @@ class AccountTeam(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time of creation
+        time of creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -114,7 +117,7 @@ class AccountTeam(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Account team name
+        defines an account team name.
         """
         return pulumi.get(self, "name")
 
@@ -122,7 +125,7 @@ class AccountTeam(pulumi.CustomResource):
     @pulumi.getter(name="teamId")
     def team_id(self) -> pulumi.Output[str]:
         """
-        Account team id
+        is an auto-generated unique account team id.
         """
         return pulumi.get(self, "team_id")
 
@@ -130,7 +133,7 @@ class AccountTeam(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time of last update
+        time of last update.
         """
         return pulumi.get(self, "update_time")
 

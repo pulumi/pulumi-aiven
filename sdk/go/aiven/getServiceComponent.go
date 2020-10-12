@@ -7,6 +7,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Service Component Data Source
+//
+// The Service Component data source provides information about the existing Aiven service Component.
+//
+// Service components can be defined to get the connection info for specific service.
+// Services may support multiple different access routes (VPC peering and public access),
+// have additional components or support various authentication methods. Each of these
+// may be represented by different DNS name or TCP port and the specific component to
+// match can be selected by specifying appropriate filters as shown below.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := aiven_kafka.Service1.Service_name
+// 		opt1 := "dynamic"
+// 		opt2 := "certificate"
+// 		_, err := aiven.GetServiceComponent(ctx, &aiven.GetServiceComponentArgs{
+// 			Project:                   aiven_kafka.Project1.Project,
+// 			ServiceName:               &opt0,
+// 			Component:                 "kafka",
+// 			Route:                     &opt1,
+// 			KafkaAuthenticationMethod: &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetServiceComponent(ctx *pulumi.Context, args *GetServiceComponentArgs, opts ...pulumi.InvokeOption) (*GetServiceComponentResult, error) {
 	var rv GetServiceComponentResult
 	err := ctx.Invoke("aiven:index/getServiceComponent:getServiceComponent", args, &rv, opts...)
@@ -18,26 +57,66 @@ func GetServiceComponent(ctx *pulumi.Context, args *GetServiceComponentArgs, opt
 
 // A collection of arguments for invoking getServiceComponent.
 type GetServiceComponentArgs struct {
-	Component                 string  `pulumi:"component"`
+	// is a service component name. Component may match the name of the service
+	// (`cassandra`, `elasticsearch`, `grafana`, `influxdb`, `kafka`, `kafkaConnect`, `mysql`,
+	// `pg` and `redis`), in which case the connection info of the service itself is returned.
+	// Some service types support additional service specific components like `kibana` for
+	// Elasticsearch, `kafkaConnect`, `kafkaRest` and `schemaRegistry` for Kafka, and
+	// `pgbouncer` for PostgreSQL. Most service types also support `prometheus`.
+	Component string `pulumi:"component"`
+	// is Kafka authentication method. This is a value specific
+	// to the 'kafka' service components. And has the following available options: `certificate`
+	// and `sasl`. If not set by the user only entries with empty `kafkaAuthenticationMethod`
+	// will be selected.
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
-	Project                   string  `pulumi:"project"`
-	Route                     *string `pulumi:"route"`
-	ServiceName               *string `pulumi:"serviceName"`
-	Ssl                       *bool   `pulumi:"ssl"`
-	Usage                     *string `pulumi:"usage"`
+	// and `serviceName` - (Required) define the project and service the service component
+	// belongs to.
+	Project string `pulumi:"project"`
+	// is network access route. The route may be one of `dynamic`, `public`, and `private`.
+	// Usually, you'll want to use `dynamic`, which for services that are not in a private network
+	// identifies the regular public DNS name of the service and for services in a private network
+	// the private DNS name. If the service is in a private network but has also public access
+	// enabled the `public` route type can be used to get the public DNS name of the service. The
+	// `private` option should typically not be used.
+	Route       *string `pulumi:"route"`
+	ServiceName *string `pulumi:"serviceName"`
+	// whether the endpoint is encrypted or accepts plaintext. By default endpoints are
+	// always encrypted and this property is only included for service components they may
+	// disable encryption. If not set by the user only entries with empty `ssl` or `ssl` set
+	// to true will be selected.
+	Ssl *bool `pulumi:"ssl"`
+	// is DNS usage name, and can be one of `primary`, `replica` or `syncing`. `replica`
+	// is used by services that have separate master and standby roles for which it identifies
+	// the `replica` DNS name. `syncing` is used by limited set of services to expose nodes
+	// before they have finished restoring state but may already be partially available, for
+	// example a PostgreSQL node that is streaming WAL segments from backup or current master
+	// but hasn't yet fully caught up.
+	Usage *string `pulumi:"usage"`
 }
 
 // A collection of values returned by getServiceComponent.
 type GetServiceComponentResult struct {
 	Component string `pulumi:"component"`
-	Host      string `pulumi:"host"`
+	// is DNS name for connecting to the service component.
+	Host string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                        string  `pulumi:"id"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
-	Port                      int     `pulumi:"port"`
-	Project                   string  `pulumi:"project"`
-	Route                     *string `pulumi:"route"`
-	ServiceName               *string `pulumi:"serviceName"`
-	Ssl                       *bool   `pulumi:"ssl"`
-	Usage                     *string `pulumi:"usage"`
+	// is port number for connecting to the service component.
+	Port        int     `pulumi:"port"`
+	Project     string  `pulumi:"project"`
+	Route       *string `pulumi:"route"`
+	ServiceName *string `pulumi:"serviceName"`
+	// whether the endpoint is encrypted or accepts plaintext. By default endpoints are
+	// always encrypted and this property is only included for service components they may
+	// disable encryption. If not set by the user only entries with empty `ssl` or `ssl` set
+	// to true will be selected.
+	Ssl *bool `pulumi:"ssl"`
+	// is DNS usage name, and can be one of `primary`, `replica` or `syncing`. `replica`
+	// is used by services that have separate master and standby roles for which it identifies
+	// the `replica` DNS name. `syncing` is used by limited set of services to expose nodes
+	// before they have finished restoring state but may already be partially available, for
+	// example a PostgreSQL node that is streaming WAL segments from backup or current master
+	// but hasn't yet fully caught up.
+	Usage *string `pulumi:"usage"`
 }

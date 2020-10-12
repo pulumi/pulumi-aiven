@@ -9,10 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Service Integration Resource
+    /// 
+    /// The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+    /// 
+    /// Service Integration defines an integration between two Aiven services or between Aiven
+    /// service and an external integration endpoint. Integration could be for example sending
+    /// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
+    /// service to a Grafana service to show dashboards, sending logs from any service to
+    /// Elasticsearch, etc.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myintegration = new Aiven.ServiceIntegration("myintegration", new Aiven.ServiceIntegrationArgs
+    ///         {
+    ///             DestinationEndpointId = aiven_service_integration_endpoint.Myendpoint.Id,
+    ///             DestinationServiceName = "",
+    ///             IntegrationType = "datadog",
+    ///             Project = aiven_project.Myproject.Project,
+    ///             SourceEndpointId = "",
+    ///             SourceServiceName = aiven_service.Testkafka.Service_name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ServiceIntegration : Pulumi.CustomResource
     {
         /// <summary>
-        /// Destination endpoint for the integration (if any)
+        /// or `destination_service_name` - (Required) identifies the target side of
+        /// the integration. Only either endpoint identifier or service name must be specified. In
+        /// either case the target needs to be defined using the reference syntax described above to
+        /// set up the dependency correctly.
         /// </summary>
         [Output("destinationEndpointId")]
         public Output<string?> DestinationEndpointId { get; private set; } = null!;
@@ -24,7 +62,8 @@ namespace Pulumi.Aiven
         public Output<string?> DestinationServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the service integration
+        /// identifies the type of integration that is set up. Possible values
+        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
@@ -54,13 +93,16 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationMirrormakerUserConfig?> MirrormakerUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Project the integration belongs to
+        /// defines the project the integration belongs to.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Source endpoint for the integration (if any)
+        /// or `source_service_name` - (Optional) identifies the source side of the
+        /// integration. Only either endpoint identifier or service name must be specified. In either
+        /// case the source needs to be defined using the reference syntax described above to set up
+        /// the dependency correctly.
         /// </summary>
         [Output("sourceEndpointId")]
         public Output<string?> SourceEndpointId { get; private set; } = null!;
@@ -118,7 +160,10 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Destination endpoint for the integration (if any)
+        /// or `destination_service_name` - (Required) identifies the target side of
+        /// the integration. Only either endpoint identifier or service name must be specified. In
+        /// either case the target needs to be defined using the reference syntax described above to
+        /// set up the dependency correctly.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -130,7 +175,8 @@ namespace Pulumi.Aiven
         public Input<string>? DestinationServiceName { get; set; }
 
         /// <summary>
-        /// Type of the service integration
+        /// identifies the type of integration that is set up. Possible values
+        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -160,13 +206,16 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationMirrormakerUserConfigArgs>? MirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// Project the integration belongs to
+        /// defines the project the integration belongs to.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Source endpoint for the integration (if any)
+        /// or `source_service_name` - (Optional) identifies the source side of the
+        /// integration. Only either endpoint identifier or service name must be specified. In either
+        /// case the source needs to be defined using the reference syntax described above to set up
+        /// the dependency correctly.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }
@@ -185,7 +234,10 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Destination endpoint for the integration (if any)
+        /// or `destination_service_name` - (Required) identifies the target side of
+        /// the integration. Only either endpoint identifier or service name must be specified. In
+        /// either case the target needs to be defined using the reference syntax described above to
+        /// set up the dependency correctly.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -197,7 +249,8 @@ namespace Pulumi.Aiven
         public Input<string>? DestinationServiceName { get; set; }
 
         /// <summary>
-        /// Type of the service integration
+        /// identifies the type of integration that is set up. Possible values
+        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }
@@ -227,13 +280,16 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationMirrormakerUserConfigGetArgs>? MirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// Project the integration belongs to
+        /// defines the project the integration belongs to.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Source endpoint for the integration (if any)
+        /// or `source_service_name` - (Optional) identifies the source side of the
+        /// integration. Only either endpoint identifier or service name must be specified. In either
+        /// case the source needs to be defined using the reference syntax described above to set up
+        /// the dependency correctly.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }

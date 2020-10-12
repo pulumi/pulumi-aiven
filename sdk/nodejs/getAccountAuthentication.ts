@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Authentication Data Source
+ *
+ * The Account Authentication data source provides information about the existing Aiven Account Authentication.
+ */
 export function getAccountAuthentication(args: GetAccountAuthenticationArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAuthenticationResult> {
     if (!opts) {
         opts = {}
@@ -34,17 +39,53 @@ export function getAccountAuthentication(args: GetAccountAuthenticationArgs, opt
  * A collection of arguments for invoking getAccountAuthentication.
  */
 export interface GetAccountAuthenticationArgs {
+    /**
+     * is a unique account id.
+     */
     readonly accountId: string;
+    /**
+     * account authentication id.
+     */
     readonly authenticationId?: string;
+    /**
+     * time of creation.
+     */
     readonly createTime?: string;
+    /**
+     * defines an authentication method enabled or not.
+     */
     readonly enabled?: boolean;
+    /**
+     * is an account authentication name.
+     */
     readonly name: string;
+    /**
+     * is a SAML Assertion Consumer Service URL.
+     */
     readonly samlAcsUrl?: string;
+    /**
+     * is a SAML Certificate.
+     */
     readonly samlCertificate?: string;
+    /**
+     * is a SAML Entity ID.
+     */
     readonly samlEntityId?: string;
+    /**
+     * is a SAML Idp URL.
+     */
     readonly samlIdpUrl?: string;
+    /**
+     * is a SAML Metadata URL.
+     */
     readonly samlMetadataUrl?: string;
+    /**
+     * is an account authentication type, can be one of `internal` and `saml`.
+     */
     readonly type?: string;
+    /**
+     * time of last update.
+     */
     readonly updateTime?: string;
 }
 
@@ -52,20 +93,56 @@ export interface GetAccountAuthenticationArgs {
  * A collection of values returned by getAccountAuthentication.
  */
 export interface GetAccountAuthenticationResult {
+    /**
+     * is a unique account id.
+     */
     readonly accountId: string;
+    /**
+     * account authentication id.
+     */
     readonly authenticationId: string;
+    /**
+     * time of creation.
+     */
     readonly createTime: string;
+    /**
+     * defines an authentication method enabled or not.
+     */
     readonly enabled?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * is an account authentication name.
+     */
     readonly name: string;
+    /**
+     * is a SAML Assertion Consumer Service URL.
+     */
     readonly samlAcsUrl: string;
+    /**
+     * is a SAML Certificate.
+     */
     readonly samlCertificate?: string;
+    /**
+     * is a SAML Entity ID.
+     */
     readonly samlEntityId?: string;
+    /**
+     * is a SAML Idp URL.
+     */
     readonly samlIdpUrl?: string;
+    /**
+     * is a SAML Metadata URL.
+     */
     readonly samlMetadataUrl: string;
+    /**
+     * is an account authentication type, can be one of `internal` and `saml`.
+     */
     readonly type?: string;
+    /**
+     * time of last update.
+     */
     readonly updateTime: string;
 }

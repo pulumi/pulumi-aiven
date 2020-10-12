@@ -12,24 +12,45 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetGrafanaGrafanaUserConfigSmtpServerArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (Required) Address used for sending emails
+        /// </summary>
         [Input("fromAddress")]
         public string? FromAddress { get; set; }
 
+        /// <summary>
+        /// Name used in outgoing emails, defaults to Grafana
+        /// </summary>
         [Input("fromName")]
         public string? FromName { get; set; }
 
+        /// <summary>
+        /// (Required) Server hostname or IP
+        /// </summary>
         [Input("host")]
         public string? Host { get; set; }
 
+        /// <summary>
+        /// Password for SMTP authentication
+        /// </summary>
         [Input("password")]
         public string? Password { get; set; }
 
+        /// <summary>
+        /// (Required) SMTP server port
+        /// </summary>
         [Input("port")]
         public string? Port { get; set; }
 
+        /// <summary>
+        /// Skip verifying server certificate. Defaults to false
+        /// </summary>
         [Input("skipVerify")]
         public string? SkipVerify { get; set; }
 
+        /// <summary>
+        /// Username for SMTP authentication
+        /// </summary>
         [Input("username")]
         public string? Username { get; set; }
 

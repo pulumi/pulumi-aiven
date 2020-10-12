@@ -25,13 +25,29 @@ class Database(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        ## # Database Resource
+
+        The Database resource allows the creation and management of an Aiven Databases.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mydatabase = aiven.Database("mydatabase",
+            database_name="<DATABASE_NAME>",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: Service database name
-        :param pulumi.Input[str] lc_collate: Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
-        :param pulumi.Input[str] lc_ctype: Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
-        :param pulumi.Input[str] project: Project to link the database to
+        :param pulumi.Input[str] database_name: is the actual name of the database.
+        :param pulumi.Input[str] lc_collate: default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        :param pulumi.Input[str] lc_ctype: default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the database belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the database to
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data.
@@ -88,10 +104,11 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: Service database name
-        :param pulumi.Input[str] lc_collate: Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
-        :param pulumi.Input[str] lc_ctype: Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
-        :param pulumi.Input[str] project: Project to link the database to
+        :param pulumi.Input[str] database_name: is the actual name of the database.
+        :param pulumi.Input[str] lc_collate: default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        :param pulumi.Input[str] lc_ctype: default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the database belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the database to
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data.
@@ -112,7 +129,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[str]:
         """
-        Service database name
+        is the actual name of the database.
         """
         return pulumi.get(self, "database_name")
 
@@ -120,7 +137,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> pulumi.Output[Optional[str]]:
         """
-        Default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8
+        default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -128,7 +145,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> pulumi.Output[Optional[str]]:
         """
-        Default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8
+        default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -136,7 +153,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project to link the database to
+        and `service_name` - (Required) define the project and service the database belongs to.
+        They should be defined using reference as shown above to set up dependencies correctly.
         """
         return pulumi.get(self, "project")
 

@@ -31,21 +31,24 @@ class AccountAuthentication(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a AccountAuthentication resource with the given unique name, props, and options.
+        ## # Account Authentication Resource
+
+        The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] authentication_id: Account authentication id
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[bool] enabled: Status of account authentication method
-        :param pulumi.Input[str] name: Account team name
-        :param pulumi.Input[str] saml_acs_url: SAML Assertion Consumer Service URL
-        :param pulumi.Input[str] saml_certificate: SAML Certificate
-        :param pulumi.Input[str] saml_entity_id: SAML Entity id
-        :param pulumi.Input[str] saml_idp_url: SAML Idp URL
-        :param pulumi.Input[str] saml_metadata_url: SAML Metadata URL
-        :param pulumi.Input[str] type: Account authentication id
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] authentication_id: account authentication id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[bool] enabled: defines an authentication method enabled or not.
+        :param pulumi.Input[str] name: is an account authentication name.
+        :param pulumi.Input[str] saml_acs_url: is a SAML Assertion Consumer Service URL.
+        :param pulumi.Input[str] saml_certificate: is a SAML Certificate.
+        :param pulumi.Input[str] saml_entity_id: is a SAML Entity ID.
+        :param pulumi.Input[str] saml_idp_url: is a SAML Idp URL.
+        :param pulumi.Input[str] saml_metadata_url: is a SAML Metadata URL.
+        :param pulumi.Input[str] type: is an account authentication type, can be one of `internal` and `saml`.
+        :param pulumi.Input[str] update_time: time of last update.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,18 +112,18 @@ class AccountAuthentication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[str] authentication_id: Account authentication id
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[bool] enabled: Status of account authentication method
-        :param pulumi.Input[str] name: Account team name
-        :param pulumi.Input[str] saml_acs_url: SAML Assertion Consumer Service URL
-        :param pulumi.Input[str] saml_certificate: SAML Certificate
-        :param pulumi.Input[str] saml_entity_id: SAML Entity id
-        :param pulumi.Input[str] saml_idp_url: SAML Idp URL
-        :param pulumi.Input[str] saml_metadata_url: SAML Metadata URL
-        :param pulumi.Input[str] type: Account authentication id
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] authentication_id: account authentication id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[bool] enabled: defines an authentication method enabled or not.
+        :param pulumi.Input[str] name: is an account authentication name.
+        :param pulumi.Input[str] saml_acs_url: is a SAML Assertion Consumer Service URL.
+        :param pulumi.Input[str] saml_certificate: is a SAML Certificate.
+        :param pulumi.Input[str] saml_entity_id: is a SAML Entity ID.
+        :param pulumi.Input[str] saml_idp_url: is a SAML Idp URL.
+        :param pulumi.Input[str] saml_metadata_url: is a SAML Metadata URL.
+        :param pulumi.Input[str] type: is an account authentication type, can be one of `internal` and `saml`.
+        :param pulumi.Input[str] update_time: time of last update.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -144,7 +147,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account id
+        is a unique account id.
         """
         return pulumi.get(self, "account_id")
 
@@ -152,7 +155,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="authenticationId")
     def authentication_id(self) -> pulumi.Output[str]:
         """
-        Account authentication id
+        account authentication id.
         """
         return pulumi.get(self, "authentication_id")
 
@@ -160,7 +163,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time of creation
+        time of creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -168,7 +171,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Status of account authentication method
+        defines an authentication method enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -176,7 +179,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Account team name
+        is an account authentication name.
         """
         return pulumi.get(self, "name")
 
@@ -184,7 +187,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="samlAcsUrl")
     def saml_acs_url(self) -> pulumi.Output[str]:
         """
-        SAML Assertion Consumer Service URL
+        is a SAML Assertion Consumer Service URL.
         """
         return pulumi.get(self, "saml_acs_url")
 
@@ -192,7 +195,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="samlCertificate")
     def saml_certificate(self) -> pulumi.Output[Optional[str]]:
         """
-        SAML Certificate
+        is a SAML Certificate.
         """
         return pulumi.get(self, "saml_certificate")
 
@@ -200,7 +203,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="samlEntityId")
     def saml_entity_id(self) -> pulumi.Output[Optional[str]]:
         """
-        SAML Entity id
+        is a SAML Entity ID.
         """
         return pulumi.get(self, "saml_entity_id")
 
@@ -208,7 +211,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="samlIdpUrl")
     def saml_idp_url(self) -> pulumi.Output[Optional[str]]:
         """
-        SAML Idp URL
+        is a SAML Idp URL.
         """
         return pulumi.get(self, "saml_idp_url")
 
@@ -216,7 +219,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="samlMetadataUrl")
     def saml_metadata_url(self) -> pulumi.Output[str]:
         """
-        SAML Metadata URL
+        is a SAML Metadata URL.
         """
         return pulumi.get(self, "saml_metadata_url")
 
@@ -224,7 +227,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Account authentication id
+        is an account authentication type, can be one of `internal` and `saml`.
         """
         return pulumi.get(self, "type")
 
@@ -232,7 +235,7 @@ class AccountAuthentication(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time of last update
+        time of last update.
         """
         return pulumi.get(self, "update_time")
 

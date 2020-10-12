@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Project User Resource
+ *
+ * The Project User resource allows the creation and management of an Aiven Project Users.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestuser = new aiven.ProjectUser("mytestuser", {
+ *     email: "john.doe@example.com",
+ *     memberType: "admin",
+ *     project: aiven_project_myproject.project,
+ * });
+ * ```
+ */
 export class ProjectUser extends pulumi.CustomResource {
     /**
      * Get an existing ProjectUser resource's state with the given name, ID, and optional extra
@@ -33,19 +51,22 @@ export class ProjectUser extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the user has accepted project membership or not
+     * is a computed property tells whether the user has accepted the request to join
+     * the project; adding user to a project sends an invitation to the target user and the
+     * actual membership is only created once the user accepts the invitation. This property
+     * cannot be set, only read.
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
-     * Email address of the user
+     * identifies the email address of the user.
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * Project membership type. One of: admin, developer, operator
+     * defines the access level the user has to the project.
      */
     public readonly memberType!: pulumi.Output<string>;
     /**
-     * The project the user belongs to
+     * defines the project the user is a member of.
      */
     public readonly project!: pulumi.Output<string>;
 
@@ -97,19 +118,22 @@ export class ProjectUser extends pulumi.CustomResource {
  */
 export interface ProjectUserState {
     /**
-     * Whether the user has accepted project membership or not
+     * is a computed property tells whether the user has accepted the request to join
+     * the project; adding user to a project sends an invitation to the target user and the
+     * actual membership is only created once the user accepts the invitation. This property
+     * cannot be set, only read.
      */
     readonly accepted?: pulumi.Input<boolean>;
     /**
-     * Email address of the user
+     * identifies the email address of the user.
      */
     readonly email?: pulumi.Input<string>;
     /**
-     * Project membership type. One of: admin, developer, operator
+     * defines the access level the user has to the project.
      */
     readonly memberType?: pulumi.Input<string>;
     /**
-     * The project the user belongs to
+     * defines the project the user is a member of.
      */
     readonly project?: pulumi.Input<string>;
 }
@@ -119,15 +143,15 @@ export interface ProjectUserState {
  */
 export interface ProjectUserArgs {
     /**
-     * Email address of the user
+     * identifies the email address of the user.
      */
     readonly email: pulumi.Input<string>;
     /**
-     * Project membership type. One of: admin, developer, operator
+     * defines the access level the user has to the project.
      */
     readonly memberType: pulumi.Input<string>;
     /**
-     * The project the user belongs to
+     * defines the project the user is a member of.
      */
     readonly project: pulumi.Input<string>;
 }

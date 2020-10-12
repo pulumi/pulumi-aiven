@@ -13,9 +13,21 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthGoogleResult
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in
+        /// </summary>
         public readonly string? AllowSignUp;
+        /// <summary>
+        /// Allowed domain
+        /// </summary>
         public readonly ImmutableArray<string> AllowedDomains;
+        /// <summary>
+        /// (Required) Client ID from provider
+        /// </summary>
         public readonly string? ClientId;
+        /// <summary>
+        /// (Required) Client secret from provider
+        /// </summary>
         public readonly string? ClientSecret;
 
         [OutputConstructor]

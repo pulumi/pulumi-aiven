@@ -10,12 +10,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Transit Gateway VPC Attachment Resource
+//
+// The Transit Gateway VPC Attachment resource allows the creation and management Transit
+// Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewTransitGatewayVpcAttachment(ctx, "attachment", &aiven.TransitGatewayVpcAttachmentArgs{
+// 			VpcId:            pulumi.Any(aiven_project_vpc.Bar.Id),
+// 			PeerCloudAccount: pulumi.String("<PEER_ACCOUNT_ID>"),
+// 			PeerVpc:          pulumi.String("google-project1"),
+// 			PeerRegion:       pulumi.String("aws-eu-west-1"),
+// 			UserPeerNetworkCidrs: pulumi.StringArray{
+// 				pulumi.String("10.0.0.0/24"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type TransitGatewayVpcAttachment struct {
 	pulumi.CustomResourceState
 
-	// AWS account ID or GCP project ID of the peered VPC
+	// AWS account ID of the peered VPC.
 	PeerCloudAccount pulumi.StringOutput `pulumi:"peerCloudAccount"`
-	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
 	PeerRegion pulumi.StringOutput `pulumi:"peerRegion"`
 	// Transit gateway ID
 	PeerVpc pulumi.StringOutput `pulumi:"peerVpc"`
@@ -25,9 +58,9 @@ type TransitGatewayVpcAttachment struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// State-specific help or error information
 	StateInfo pulumi.MapOutput `pulumi:"stateInfo"`
-	// List of private IPv4 ranges to route through the peering connection
+	// List of private IPv4 ranges to route through the peering connection.
 	UserPeerNetworkCidrs pulumi.StringArrayOutput `pulumi:"userPeerNetworkCidrs"`
-	// The VPC the peering connection belongs to
+	// is the Aiven VPC the peering connection is associated with.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -74,9 +107,9 @@ func GetTransitGatewayVpcAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitGatewayVpcAttachment resources.
 type transitGatewayVpcAttachmentState struct {
-	// AWS account ID or GCP project ID of the peered VPC
+	// AWS account ID of the peered VPC.
 	PeerCloudAccount *string `pulumi:"peerCloudAccount"`
-	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
 	PeerRegion *string `pulumi:"peerRegion"`
 	// Transit gateway ID
 	PeerVpc *string `pulumi:"peerVpc"`
@@ -86,16 +119,16 @@ type transitGatewayVpcAttachmentState struct {
 	State *string `pulumi:"state"`
 	// State-specific help or error information
 	StateInfo map[string]interface{} `pulumi:"stateInfo"`
-	// List of private IPv4 ranges to route through the peering connection
+	// List of private IPv4 ranges to route through the peering connection.
 	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
-	// The VPC the peering connection belongs to
+	// is the Aiven VPC the peering connection is associated with.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type TransitGatewayVpcAttachmentState struct {
-	// AWS account ID or GCP project ID of the peered VPC
+	// AWS account ID of the peered VPC.
 	PeerCloudAccount pulumi.StringPtrInput
-	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
 	PeerRegion pulumi.StringPtrInput
 	// Transit gateway ID
 	PeerVpc pulumi.StringPtrInput
@@ -105,9 +138,9 @@ type TransitGatewayVpcAttachmentState struct {
 	State pulumi.StringPtrInput
 	// State-specific help or error information
 	StateInfo pulumi.MapInput
-	// List of private IPv4 ranges to route through the peering connection
+	// List of private IPv4 ranges to route through the peering connection.
 	UserPeerNetworkCidrs pulumi.StringArrayInput
-	// The VPC the peering connection belongs to
+	// is the Aiven VPC the peering connection is associated with.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -116,29 +149,29 @@ func (TransitGatewayVpcAttachmentState) ElementType() reflect.Type {
 }
 
 type transitGatewayVpcAttachmentArgs struct {
-	// AWS account ID or GCP project ID of the peered VPC
+	// AWS account ID of the peered VPC.
 	PeerCloudAccount string `pulumi:"peerCloudAccount"`
-	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
 	PeerRegion string `pulumi:"peerRegion"`
 	// Transit gateway ID
 	PeerVpc string `pulumi:"peerVpc"`
-	// List of private IPv4 ranges to route through the peering connection
+	// List of private IPv4 ranges to route through the peering connection.
 	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
-	// The VPC the peering connection belongs to
+	// is the Aiven VPC the peering connection is associated with.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a TransitGatewayVpcAttachment resource.
 type TransitGatewayVpcAttachmentArgs struct {
-	// AWS account ID or GCP project ID of the peered VPC
+	// AWS account ID of the peered VPC.
 	PeerCloudAccount pulumi.StringInput
-	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
 	PeerRegion pulumi.StringInput
 	// Transit gateway ID
 	PeerVpc pulumi.StringInput
-	// List of private IPv4 ranges to route through the peering connection
+	// List of private IPv4 ranges to route through the peering connection.
 	UserPeerNetworkCidrs pulumi.StringArrayInput
-	// The VPC the peering connection belongs to
+	// is the Aiven VPC the peering connection is associated with.
 	VpcId pulumi.StringInput
 }
 

@@ -7,6 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Database Data Source
+//
+// The Database data source provides information about the existing Aiven Database.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupDatabase(ctx, &aiven.LookupDatabaseArgs{
+// 			DatabaseName: "<DATABASE_NAME>",
+// 			Project:      aiven_project.Myproject.Project,
+// 			ServiceName:  aiven_service.Myservice.Service_name,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("aiven:index/getDatabase:getDatabase", args, &rv, opts...)
@@ -18,20 +46,27 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 
 // A collection of arguments for invoking getDatabase.
 type LookupDatabaseArgs struct {
-	DatabaseName          string  `pulumi:"databaseName"`
-	LcCollate             *string `pulumi:"lcCollate"`
-	LcCtype               *string `pulumi:"lcCtype"`
-	Project               string  `pulumi:"project"`
-	ServiceName           string  `pulumi:"serviceName"`
-	TerminationProtection *bool   `pulumi:"terminationProtection"`
+	// is the actual name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	LcCollate *string `pulumi:"lcCollate"`
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+	LcCtype *string `pulumi:"lcCtype"`
+	// and `serviceName` - (Required) define the project and service the database belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	Project               string `pulumi:"project"`
+	ServiceName           string `pulumi:"serviceName"`
+	TerminationProtection *bool  `pulumi:"terminationProtection"`
 }
 
 // A collection of values returned by getDatabase.
 type LookupDatabaseResult struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string  `pulumi:"id"`
-	LcCollate             *string `pulumi:"lcCollate"`
+	Id string `pulumi:"id"`
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	LcCollate *string `pulumi:"lcCollate"`
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
 	LcCtype               *string `pulumi:"lcCtype"`
 	Project               string  `pulumi:"project"`
 	ServiceName           string  `pulumi:"serviceName"`

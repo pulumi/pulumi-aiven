@@ -94,7 +94,33 @@ def get_kafka_acl(permission: Optional[str] = None,
                   username: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaAclResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Data Source Kafka ACL Data Source
+
+    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL
+    for a Kafka service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestacl = aiven.get_kafka_acl(permission="admin",
+        project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        topic="<TOPIC_NAME_PATTERN>",
+        username="<USERNAME_PATTERN>")
+    ```
+
+
+    :param str permission: is the level of permission the matching users are given to the matching
+           topics (admin, read, readwrite, write).
+    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to.
+           They should be defined using reference as shown above to set up dependencies correctly.
+           These properties cannot be changed once the service is created. Doing so will result in
+           the topic being deleted and new one created instead.
+    :param str topic: is a topic name pattern the ACL entry matches to.
+    :param str username: is a username pattern the ACL entry matches to.
     """
     __args__ = dict()
     __args__['permission'] = permission

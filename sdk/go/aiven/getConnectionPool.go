@@ -7,6 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Connection Pool Data Source
+//
+// The Connection Pool data source provides information about the existing Aiven Connection Pool.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
+// 			PoolName:    "mypool",
+// 			Project:     aiven_project.Myproject.Project,
+// 			ServiceName: aiven_service.Myservice.Service_name,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, opts ...pulumi.InvokeOption) (*LookupConnectionPoolResult, error) {
 	var rv LookupConnectionPoolResult
 	err := ctx.Invoke("aiven:index/getConnectionPool:getConnectionPool", args, &rv, opts...)
@@ -18,26 +46,51 @@ func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, o
 
 // A collection of arguments for invoking getConnectionPool.
 type LookupConnectionPoolArgs struct {
+	// is a computed property that tells the URI for connecting to the pool.
+	// This value cannot be set, only read.
 	ConnectionUri *string `pulumi:"connectionUri"`
-	DatabaseName  *string `pulumi:"databaseName"`
-	PoolMode      *string `pulumi:"poolMode"`
-	PoolName      string  `pulumi:"poolName"`
-	PoolSize      *int    `pulumi:"poolSize"`
-	Project       string  `pulumi:"project"`
-	ServiceName   string  `pulumi:"serviceName"`
-	Username      *string `pulumi:"username"`
+	// is the name of the database the pool connects to. This should be
+	// defined using reference as shown above to set up dependencies correctly.
+	DatabaseName *string `pulumi:"databaseName"`
+	// is the mode the pool operates in (session, transaction, statement).
+	PoolMode *string `pulumi:"poolMode"`
+	// is the name of the pool.
+	PoolName string `pulumi:"poolName"`
+	// is the number of connections the pool may create towards the backend
+	// server. This does not affect the number of incoming connections, which is always a much
+	// larger number.
+	PoolSize *int `pulumi:"poolSize"`
+	// and `serviceName` - (Required) define the project and service the connection pool
+	// belongs to. They should be defined using reference as shown above to set up dependencies
+	// correctly. These properties cannot be changed once the service is created. Doing so will
+	// result in the connection pool being deleted and new one created instead.
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
+	// is the name of the service user used to connect to the database. This should
+	// be defined using reference as shown above to set up dependencies correctly.
+	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getConnectionPool.
 type LookupConnectionPoolResult struct {
-	ConnectionUri string  `pulumi:"connectionUri"`
-	DatabaseName  *string `pulumi:"databaseName"`
+	// is a computed property that tells the URI for connecting to the pool.
+	// This value cannot be set, only read.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// is the name of the database the pool connects to. This should be
+	// defined using reference as shown above to set up dependencies correctly.
+	DatabaseName *string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
-	PoolMode    *string `pulumi:"poolMode"`
-	PoolName    string  `pulumi:"poolName"`
-	PoolSize    *int    `pulumi:"poolSize"`
-	Project     string  `pulumi:"project"`
-	ServiceName string  `pulumi:"serviceName"`
-	Username    *string `pulumi:"username"`
+	Id string `pulumi:"id"`
+	// is the mode the pool operates in (session, transaction, statement).
+	PoolMode *string `pulumi:"poolMode"`
+	PoolName string  `pulumi:"poolName"`
+	// is the number of connections the pool may create towards the backend
+	// server. This does not affect the number of incoming connections, which is always a much
+	// larger number.
+	PoolSize    *int   `pulumi:"poolSize"`
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
+	// is the name of the service user used to connect to the database. This should
+	// be defined using reference as shown above to set up dependencies correctly.
+	Username *string `pulumi:"username"`
 }

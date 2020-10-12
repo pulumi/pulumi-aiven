@@ -9,16 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # MirrorMaker 2 Replication Flow Resource
+    /// 
+    /// The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
+    /// Replication Flow on Aiven Cloud.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var f1 = new Aiven.MirrorMakerReplicationFlow("f1", new Aiven.MirrorMakerReplicationFlowArgs
+    ///         {
+    ///             Project = aiven_project.Kafka_mm_project1.Project,
+    ///             ServiceName = aiven_service.Mm.Service_name,
+    ///             SourceCluster = aiven_service.Source.Service_name,
+    ///             TargetCluster = aiven_service.Target.Service_name,
+    ///             Enable = true,
+    ///             Topics = 
+    ///             {
+    ///                 ".*",
+    ///             },
+    ///             TopicsBlacklists = 
+    ///             {
+    ///                 ".*[\\-\\.]internal",
+    ///                 ".*\\.replica",
+    ///                 "__.*",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class MirrorMakerReplicationFlow : Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable of disable replication flows for a service
+        /// enable of disable replication flows for a mirror maker service
         /// </summary>
         [Output("enable")]
         public Output<bool> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// Project to link the kafka topic to
+        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -30,25 +70,25 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Source cluster alias
+        /// is a source cluster alias.
         /// </summary>
         [Output("sourceCluster")]
         public Output<string> SourceCluster { get; private set; } = null!;
 
         /// <summary>
-        /// Target cluster alias
+        /// is a target cluster alias.
         /// </summary>
         [Output("targetCluster")]
         public Output<string> TargetCluster { get; private set; } = null!;
 
         /// <summary>
-        /// List of topics and/or regular expressions to replicate
+        /// is a list of topics and/or regular expressions to replicate.
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// List of topics and/or regular expressions to not replicate.
+        /// is a list of topics and/or regular expressions to not replicate.
         /// </summary>
         [Output("topicsBlacklists")]
         public Output<ImmutableArray<string>> TopicsBlacklists { get; private set; } = null!;
@@ -100,13 +140,14 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable of disable replication flows for a service
+        /// enable of disable replication flows for a mirror maker service
         /// </summary>
         [Input("enable", required: true)]
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
-        /// Project to link the kafka topic to
+        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -118,13 +159,13 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Source cluster alias
+        /// is a source cluster alias.
         /// </summary>
         [Input("sourceCluster", required: true)]
         public Input<string> SourceCluster { get; set; } = null!;
 
         /// <summary>
-        /// Target cluster alias
+        /// is a target cluster alias.
         /// </summary>
         [Input("targetCluster", required: true)]
         public Input<string> TargetCluster { get; set; } = null!;
@@ -133,7 +174,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topics;
 
         /// <summary>
-        /// List of topics and/or regular expressions to replicate
+        /// is a list of topics and/or regular expressions to replicate.
         /// </summary>
         public InputList<string> Topics
         {
@@ -145,7 +186,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topicsBlacklists;
 
         /// <summary>
-        /// List of topics and/or regular expressions to not replicate.
+        /// is a list of topics and/or regular expressions to not replicate.
         /// </summary>
         public InputList<string> TopicsBlacklists
         {
@@ -161,13 +202,14 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable of disable replication flows for a service
+        /// enable of disable replication flows for a mirror maker service
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Project to link the kafka topic to
+        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -179,13 +221,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Source cluster alias
+        /// is a source cluster alias.
         /// </summary>
         [Input("sourceCluster")]
         public Input<string>? SourceCluster { get; set; }
 
         /// <summary>
-        /// Target cluster alias
+        /// is a target cluster alias.
         /// </summary>
         [Input("targetCluster")]
         public Input<string>? TargetCluster { get; set; }
@@ -194,7 +236,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topics;
 
         /// <summary>
-        /// List of topics and/or regular expressions to replicate
+        /// is a list of topics and/or regular expressions to replicate.
         /// </summary>
         public InputList<string> Topics
         {
@@ -206,7 +248,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topicsBlacklists;
 
         /// <summary>
-        /// List of topics and/or regular expressions to not replicate.
+        /// is a list of topics and/or regular expressions to not replicate.
         /// </summary>
         public InputList<string> TopicsBlacklists
         {

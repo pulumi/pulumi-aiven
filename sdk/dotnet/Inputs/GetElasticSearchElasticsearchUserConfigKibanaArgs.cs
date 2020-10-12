@@ -12,12 +12,24 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetElasticSearchElasticsearchUserConfigKibanaArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Timeout in milliseconds for requests 
+        /// made by Kibana towards Elasticsearch.
+        /// </summary>
         [Input("elasticsearchRequestTimeout")]
         public string? ElasticsearchRequestTimeout { get; set; }
 
+        /// <summary>
+        /// Enable or disable Kibana.
+        /// </summary>
         [Input("enabled")]
         public string? Enabled { get; set; }
 
+        /// <summary>
+        /// Limits the maximum amount of memory (in MiB) the 
+        /// Kibana process can use. This sets the max_old_space_size option of the nodejs running
+        /// the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
+        /// </summary>
         [Input("maxOldSpaceSize")]
         public string? MaxOldSpaceSize { get; set; }
 

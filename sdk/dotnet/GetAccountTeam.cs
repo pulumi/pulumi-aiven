@@ -11,6 +11,11 @@ namespace Pulumi.Aiven
 {
     public static class GetAccountTeam
     {
+        /// <summary>
+        /// ## # Account Team Data Source
+        /// 
+        /// The Account Team data source provides information about the existing Account Team.
+        /// </summary>
         public static Task<GetAccountTeamResult> InvokeAsync(GetAccountTeamArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamArgs(), options.WithVersion());
     }
@@ -18,18 +23,33 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountTeamArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// is a unique account id.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// time of creation.
+        /// </summary>
         [Input("createTime")]
         public string? CreateTime { get; set; }
 
+        /// <summary>
+        /// defines an account team name.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// is an auto-generated unique account team id.
+        /// </summary>
         [Input("teamId")]
         public string? TeamId { get; set; }
 
+        /// <summary>
+        /// time of last update.
+        /// </summary>
         [Input("updateTime")]
         public string? UpdateTime { get; set; }
 
@@ -43,13 +63,22 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamResult
     {
         public readonly string AccountId;
+        /// <summary>
+        /// time of creation.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// is an auto-generated unique account team id.
+        /// </summary>
         public readonly string TeamId;
+        /// <summary>
+        /// time of last update.
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

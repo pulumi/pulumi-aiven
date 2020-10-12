@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfig
     {
+        /// <summary>
+        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka MirrorMaker configuration values
+        /// </summary>
         public readonly Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
 
         [OutputConstructor]

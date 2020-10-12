@@ -6,6 +6,27 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Data Source Kafka ACL Data Source
+ *
+ * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL
+ * for a Kafka service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestacl = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getKafkaAcl({
+ *     permission: "admin",
+ *     project: project,
+ *     serviceName: serviceName,
+ *     topic: "<TOPIC_NAME_PATTERN>",
+ *     username: "<USERNAME_PATTERN>",
+ * }, { async: true }));
+ * ```
+ */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
     if (!opts) {
         opts = {}
@@ -27,10 +48,26 @@ export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getKafkaAcl.
  */
 export interface GetKafkaAclArgs {
+    /**
+     * is the level of permission the matching users are given to the matching
+     * topics (admin, read, readwrite, write).
+     */
     readonly permission: string;
+    /**
+     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     * These properties cannot be changed once the service is created. Doing so will result in
+     * the topic being deleted and new one created instead.
+     */
     readonly project: string;
     readonly serviceName: string;
+    /**
+     * is a topic name pattern the ACL entry matches to.
+     */
     readonly topic: string;
+    /**
+     * is a username pattern the ACL entry matches to.
+     */
     readonly username: string;
 }
 

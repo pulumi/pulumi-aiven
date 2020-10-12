@@ -83,6 +83,10 @@ class GetServiceIntegrationEndpointResult:
     @property
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[str]:
+        """
+        is the type of the external service this endpoint is associated with.
+        By the time of writing the only available option is `datadog`.
+        """
         return pulumi.get(self, "endpoint_type")
 
     @property
@@ -176,7 +180,27 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
                                      signalfx_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointSignalfxUserConfigArgs']] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationEndpointResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Service Integration Endpoint Data Source
+
+    The Service Integration Endpoint data source provides information about the existing
+    Aiven Service Integration Endpoint.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myendpoint = aiven.get_service_integration_endpoint(endpoint_name="<ENDPOINT_NAME>",
+        project=aiven_project["myproject"]["project"])
+    ```
+
+
+    :param str endpoint_name: is the name of the endpoint. This value has no effect beyond being used
+           to identify different integration endpoints.
+    :param str endpoint_type: is the type of the external service this endpoint is associated with.
+           By the time of writing the only available option is `datadog`.
+    :param str project: defines the project the endpoint is associated with.
     """
     __args__ = dict()
     __args__['datadogUserConfig'] = datadog_user_config

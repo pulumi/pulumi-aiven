@@ -12,18 +12,36 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetKafkaKafkaUserConfigPublicAccessArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kafka server provided values:
+        /// </summary>
         [Input("kafka")]
         public string? Kafka { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to kafka_connect from the public internet 
+        /// for service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("kafkaConnect")]
         public string? KafkaConnect { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to kafka_rest from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("kafkaRest")]
         public string? KafkaRest { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to prometheus from the public internet for 
+        /// service nodes that are in a project VPC or another type of private network
+        /// </summary>
         [Input("prometheus")]
         public string? Prometheus { get; set; }
 
+        /// <summary>
+        /// Enable Schema-Registry service
+        /// </summary>
         [Input("schemaRegistry")]
         public string? SchemaRegistry { get; set; }
 

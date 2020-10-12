@@ -45,6 +45,12 @@ class GetKafkaSchemaResult:
     @property
     @pulumi.getter(name="compatibilityLevel")
     def compatibility_level(self) -> Optional[str]:
+        """
+        configuration compatibility level overrides specific subject
+        resource. If the compatibility level not specified for the individual subject by default,
+        it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        """
         return pulumi.get(self, "compatibility_level")
 
     @property
@@ -63,6 +69,9 @@ class GetKafkaSchemaResult:
     @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
+        """
+        is Kafka Schema configuration should be a valid Avro Schema JSON format.
+        """
         return pulumi.get(self, "schema")
 
     @property
@@ -104,7 +113,30 @@ def get_kafka_schema(compatibility_level: Optional[str] = None,
                      version: Optional[float] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaSchemaResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Kafka Schema Data Source
+
+    The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    kafka_schema1 = aiven.get_kafka_schema(project=aiven_project["kafka-schemas-project1"]["project"],
+        service_name=aiven_service["kafka-service1"]["service_name"],
+        subject_name="kafka-schema1")
+    ```
+
+
+    :param str compatibility_level: configuration compatibility level overrides specific subject
+           resource. If the compatibility level not specified for the individual subject by default,
+           it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+           `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+    :param str project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+           They should be defined using reference as shown above to set up dependencies correctly.
+    :param str schema: is Kafka Schema configuration should be a valid Avro Schema JSON format.
+    :param str subject_name: is Kafka Schema subject name.
     """
     __args__ = dict()
     __args__['compatibilityLevel'] = compatibility_level

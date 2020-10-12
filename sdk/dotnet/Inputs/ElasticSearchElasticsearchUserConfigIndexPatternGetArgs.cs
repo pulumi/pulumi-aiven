@@ -12,9 +12,16 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ElasticSearchElasticsearchUserConfigIndexPatternGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of indexes to keep before deleting the oldest one.
+        /// </summary>
         [Input("maxIndexCount")]
         public Input<string>? MaxIndexCount { get; set; }
 
+        /// <summary>
+        /// Must consist of alpha-numeric characters, dashes, underscores, 
+        /// dots and glob characters (* and ?)
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 

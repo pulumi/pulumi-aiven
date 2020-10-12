@@ -13,10 +13,25 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigAuthGithub
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in
+        /// </summary>
         public readonly string? AllowSignUp;
+        /// <summary>
+        /// Must consist of alpha-numeric characters and dashes"
+        /// </summary>
         public readonly ImmutableArray<string> AllowedOrganizations;
+        /// <summary>
+        /// Client ID from provider
+        /// </summary>
         public readonly string? ClientId;
+        /// <summary>
+        /// Client secret from provider
+        /// </summary>
         public readonly string? ClientSecret;
+        /// <summary>
+        /// Require users to belong to one of given team IDs
+        /// </summary>
         public readonly ImmutableArray<string> TeamIds;
 
         [OutputConstructor]

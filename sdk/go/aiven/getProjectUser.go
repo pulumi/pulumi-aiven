@@ -7,6 +7,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Project User Data Source
+//
+// The Project User data source provides information about the existing Aiven Project User.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupProjectUser(ctx, &aiven.LookupProjectUserArgs{
+// 			Email:   "john.doe@example.com",
+// 			Project: aiven_project.Myproject.Project,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProjectUser(ctx *pulumi.Context, args *LookupProjectUserArgs, opts ...pulumi.InvokeOption) (*LookupProjectUserResult, error) {
 	var rv LookupProjectUserResult
 	err := ctx.Invoke("aiven:index/getProjectUser:getProjectUser", args, &rv, opts...)
@@ -18,18 +45,30 @@ func LookupProjectUser(ctx *pulumi.Context, args *LookupProjectUserArgs, opts ..
 
 // A collection of arguments for invoking getProjectUser.
 type LookupProjectUserArgs struct {
-	Accepted   *bool   `pulumi:"accepted"`
-	Email      string  `pulumi:"email"`
+	// is a computed property tells whether the user has accepted the request to join
+	// the project; adding user to a project sends an invitation to the target user and the
+	// actual membership is only created once the user accepts the invitation. This property
+	// cannot be set, only read.
+	Accepted *bool `pulumi:"accepted"`
+	// identifies the email address of the user.
+	Email string `pulumi:"email"`
+	// (Required) defines the access level the user has to the project.
 	MemberType *string `pulumi:"memberType"`
-	Project    string  `pulumi:"project"`
+	// defines the project the user is a member of.
+	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getProjectUser.
 type LookupProjectUserResult struct {
+	// is a computed property tells whether the user has accepted the request to join
+	// the project; adding user to a project sends an invitation to the target user and the
+	// actual membership is only created once the user accepts the invitation. This property
+	// cannot be set, only read.
 	Accepted bool   `pulumi:"accepted"`
 	Email    string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Required) defines the access level the user has to the project.
 	MemberType *string `pulumi:"memberType"`
 	Project    string  `pulumi:"project"`
 }

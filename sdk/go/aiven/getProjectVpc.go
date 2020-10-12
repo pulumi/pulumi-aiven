@@ -7,6 +7,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Project VPC Data Source
+//
+// The Project VPC data source provides information about the existing Aiven Project VPC.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
+// 			CloudName: "google-europe-west1",
+// 			Project:   aiven_project.Myproject.Project,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...pulumi.InvokeOption) (*LookupProjectVpcResult, error) {
 	var rv LookupProjectVpcResult
 	err := ctx.Invoke("aiven:index/getProjectVpc:getProjectVpc", args, &rv, opts...)
@@ -18,18 +45,27 @@ func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...p
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcArgs struct {
-	CloudName   string  `pulumi:"cloudName"`
+	// defines where the cloud provider and region where the service is hosted
+	// in. See the Service resource for additional information.
+	CloudName string `pulumi:"cloudName"`
+	// defines the network CIDR of the VPC.
 	NetworkCidr *string `pulumi:"networkCidr"`
-	Project     string  `pulumi:"project"`
-	State       *string `pulumi:"state"`
+	// defines the project the VPC belongs to.
+	Project string `pulumi:"project"`
+	// ia a computed property that tells the current state of the VPC. This property cannot be
+	// set, only read.
+	State *string `pulumi:"state"`
 }
 
 // A collection of values returned by getProjectVpc.
 type LookupProjectVpcResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// defines the network CIDR of the VPC.
 	NetworkCidr *string `pulumi:"networkCidr"`
 	Project     string  `pulumi:"project"`
-	State       string  `pulumi:"state"`
+	// ia a computed property that tells the current state of the VPC. This property cannot be
+	// set, only read.
+	State string `pulumi:"state"`
 }

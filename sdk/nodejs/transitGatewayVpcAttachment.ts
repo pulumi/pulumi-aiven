@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Transit Gateway VPC Attachment Resource
+ *
+ * The Transit Gateway VPC Attachment resource allows the creation and management Transit
+ * Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const attachment = new aiven.TransitGatewayVpcAttachment("attachment", {
+ *     vpcId: aiven_project_vpc.bar.id,
+ *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
+ *     peerVpc: "google-project1",
+ *     peerRegion: "aws-eu-west-1",
+ *     userPeerNetworkCidrs: ["10.0.0.0/24"],
+ * });
+ * ```
+ */
 export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     /**
      * Get an existing TransitGatewayVpcAttachment resource's state with the given name, ID, and optional extra
@@ -33,11 +54,11 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC
+     * AWS account ID of the peered VPC.
      */
     public readonly peerCloudAccount!: pulumi.Output<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC).
      */
     public readonly peerRegion!: pulumi.Output<string>;
     /**
@@ -57,11 +78,11 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: any}>;
     /**
-     * List of private IPv4 ranges to route through the peering connection
+     * List of private IPv4 ranges to route through the peering connection.
      */
     public readonly userPeerNetworkCidrs!: pulumi.Output<string[]>;
     /**
-     * The VPC the peering connection belongs to
+     * is the Aiven VPC the peering connection is associated with.
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -127,11 +148,11 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
  */
 export interface TransitGatewayVpcAttachmentState {
     /**
-     * AWS account ID or GCP project ID of the peered VPC
+     * AWS account ID of the peered VPC.
      */
     readonly peerCloudAccount?: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC).
      */
     readonly peerRegion?: pulumi.Input<string>;
     /**
@@ -151,11 +172,11 @@ export interface TransitGatewayVpcAttachmentState {
      */
     readonly stateInfo?: pulumi.Input<{[key: string]: any}>;
     /**
-     * List of private IPv4 ranges to route through the peering connection
+     * List of private IPv4 ranges to route through the peering connection.
      */
     readonly userPeerNetworkCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The VPC the peering connection belongs to
+     * is the Aiven VPC the peering connection is associated with.
      */
     readonly vpcId?: pulumi.Input<string>;
 }
@@ -165,11 +186,11 @@ export interface TransitGatewayVpcAttachmentState {
  */
 export interface TransitGatewayVpcAttachmentArgs {
     /**
-     * AWS account ID or GCP project ID of the peered VPC
+     * AWS account ID of the peered VPC.
      */
     readonly peerCloudAccount: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC).
      */
     readonly peerRegion: pulumi.Input<string>;
     /**
@@ -177,11 +198,11 @@ export interface TransitGatewayVpcAttachmentArgs {
      */
     readonly peerVpc: pulumi.Input<string>;
     /**
-     * List of private IPv4 ranges to route through the peering connection
+     * List of private IPv4 ranges to route through the peering connection.
      */
     readonly userPeerNetworkCidrs: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The VPC the peering connection belongs to
+     * is the Aiven VPC the peering connection is associated with.
      */
     readonly vpcId: pulumi.Input<string>;
 }

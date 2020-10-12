@@ -12,18 +12,33 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Kafka client certificate
+        /// </summary>
         [Input("accessCert")]
         public Input<string>? AccessCert { get; set; }
 
+        /// <summary>
+        /// The Kafka client certificate key
+        /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
+        /// <summary>
+        /// The Kafka Connect URI, if any
+        /// </summary>
         [Input("connectUri")]
         public Input<string>? ConnectUri { get; set; }
 
+        /// <summary>
+        /// The Kafka REST URI, if any
+        /// </summary>
         [Input("restUri")]
         public Input<string>? RestUri { get; set; }
 
+        /// <summary>
+        /// The Schema Registry URI, if any
+        /// </summary>
         [Input("schemaRegistryUri")]
         public Input<string>? SchemaRegistryUri { get; set; }
 

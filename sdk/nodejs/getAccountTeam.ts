@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Account Team Data Source
+ *
+ * The Account Team data source provides information about the existing Account Team.
+ */
 export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamResult> {
     if (!opts) {
         opts = {}
@@ -27,10 +32,25 @@ export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getAccountTeam.
  */
 export interface GetAccountTeamArgs {
+    /**
+     * is a unique account id.
+     */
     readonly accountId: string;
+    /**
+     * time of creation.
+     */
     readonly createTime?: string;
+    /**
+     * defines an account team name.
+     */
     readonly name: string;
+    /**
+     * is an auto-generated unique account team id.
+     */
     readonly teamId?: string;
+    /**
+     * time of last update.
+     */
     readonly updateTime?: string;
 }
 
@@ -39,12 +59,21 @@ export interface GetAccountTeamArgs {
  */
 export interface GetAccountTeamResult {
     readonly accountId: string;
+    /**
+     * time of creation.
+     */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * is an auto-generated unique account team id.
+     */
     readonly teamId: string;
+    /**
+     * time of last update.
+     */
     readonly updateTime: string;
 }

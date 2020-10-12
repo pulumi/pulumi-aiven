@@ -89,6 +89,15 @@ class GetKafkaResult:
     @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[str]:
+        """
+        defines where the cloud provider and region where the service is hosted
+        in. This can be changed freely after service is created. Changing the value will trigger
+        a potentially lenghty migration process for the service. Format is cloud provider name
+        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+        specific region name. These are documented on each Cloud provider's own support articles,
+        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        """
         return pulumi.get(self, "cloud_name")
 
     @property
@@ -112,26 +121,51 @@ class GetKafkaResult:
     @property
     @pulumi.getter
     def kafka(self) -> 'outputs.GetKafkaKafkaResult':
+        """
+        Kafka server provided values:
+        """
         return pulumi.get(self, "kafka")
 
     @property
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> Optional['outputs.GetKafkaKafkaUserConfigResult']:
+        """
+        defines Kafka specific additional configuration options. The following 
+        configuration options available:
+        """
         return pulumi.get(self, "kafka_user_config")
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[str]:
+        """
+        day of week when maintenance operations should be performed. 
+        One monday, tuesday, wednesday, etc.
+        """
         return pulumi.get(self, "maintenance_window_dow")
 
     @property
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[str]:
+        """
+        time of day when maintenance operations should be performed. 
+        UTC time in HH:mm:ss format.
+        """
         return pulumi.get(self, "maintenance_window_time")
 
     @property
     @pulumi.getter
     def plan(self) -> Optional[str]:
+        """
+        defines what kind of computing resources are allocated for the service. It can
+        be changed after creation, though there are some restrictions when going to a smaller
+        plan such as the new plan must have sufficient amount of disk space to store all current
+        data and switching to a plan with fewer nodes might not be supported. The basic plan
+        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+        (roughly) the amount of memory on each node (also other attributes like number of CPUs
+        and amount of disk space varies but naming is based on memory). The exact options can be
+        seen from the Aiven web console's Create Service dialog.
+        """
         return pulumi.get(self, "plan")
 
     @property
@@ -142,11 +176,22 @@ class GetKafkaResult:
     @property
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[str]:
+        """
+        optionally specifies the VPC the service should run in. If the value
+        is not set the service is not run inside a VPC. When set, the value should be given as a
+        reference as shown above to set up dependencies correctly and the VPC must be in the same
+        cloud and region as the service itself. Project can be freely moved to and from VPC after
+        creation but doing so triggers migration to new servers so the operation can take
+        significant amount of time to complete if the service has a lot of data.
+        """
         return pulumi.get(self, "project_vpc_id")
 
     @property
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> str:
+        """
+        Kafka hostname.
+        """
         return pulumi.get(self, "service_host")
 
     @property
@@ -162,11 +207,17 @@ class GetKafkaResult:
     @property
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> str:
+        """
+        Password used for connecting to the Kafka service, if applicable.
+        """
         return pulumi.get(self, "service_password")
 
     @property
     @pulumi.getter(name="servicePort")
     def service_port(self) -> float:
+        """
+        Kafka port.
+        """
         return pulumi.get(self, "service_port")
 
     @property
@@ -177,21 +228,37 @@ class GetKafkaResult:
     @property
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> str:
+        """
+        URI for connecting to the Kafka service.
+        """
         return pulumi.get(self, "service_uri")
 
     @property
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> str:
+        """
+        Username used for connecting to the Kafka service, if applicable.
+        """
         return pulumi.get(self, "service_username")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Service state.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[bool]:
+        """
+        prevents the service from being deleted. It is recommended to
+        set this to `true` for all production services to prevent unintentional service
+        deletions. This does not shield against deleting databases or topics but for services
+        with backups much of the content can at least be restored from backup in case accidental
+        deletion is done.
+        """
         return pulumi.get(self, "termination_protection")
 
 
@@ -246,7 +313,66 @@ def get_kafka(cloud_name: Optional[str] = None,
               termination_protection: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaResult:
     """
-    Use this data source to access information about an existing resource.
+    ## # Kafka Data Source
+
+    The Kafka data source provides information about the existing Aiven Kafka services.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    kafka1 = aiven.get_kafka(project=data["aiven_project"]["pr1"]["project"],
+        service_name="my-kafka1")
+    ```
+
+
+    :param str cloud_name: defines where the cloud provider and region where the service is hosted
+           in. This can be changed freely after service is created. Changing the value will trigger
+           a potentially lenghty migration process for the service. Format is cloud provider name
+           (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+           specific region name. These are documented on each Cloud provider's own support articles,
+           like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+           [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+    :param pulumi.InputType['GetKafkaKafkaArgs'] kafka: Kafka server provided values:
+    :param pulumi.InputType['GetKafkaKafkaUserConfigArgs'] kafka_user_config: defines Kafka specific additional configuration options. The following 
+           configuration options available:
+    :param str maintenance_window_dow: day of week when maintenance operations should be performed. 
+           One monday, tuesday, wednesday, etc.
+    :param str maintenance_window_time: time of day when maintenance operations should be performed. 
+           UTC time in HH:mm:ss format.
+    :param str plan: defines what kind of computing resources are allocated for the service. It can
+           be changed after creation, though there are some restrictions when going to a smaller
+           plan such as the new plan must have sufficient amount of disk space to store all current
+           data and switching to a plan with fewer nodes might not be supported. The basic plan
+           names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+           (roughly) the amount of memory on each node (also other attributes like number of CPUs
+           and amount of disk space varies but naming is based on memory). The exact options can be
+           seen from the Aiven web console's Create Service dialog.
+    :param str project: identifies the project the service belongs to. To set up proper dependency
+           between the project and the service, refer to the project as shown in the above example.
+           Project cannot be changed later without destroying and re-creating the service.
+    :param str project_vpc_id: optionally specifies the VPC the service should run in. If the value
+           is not set the service is not run inside a VPC. When set, the value should be given as a
+           reference as shown above to set up dependencies correctly and the VPC must be in the same
+           cloud and region as the service itself. Project can be freely moved to and from VPC after
+           creation but doing so triggers migration to new servers so the operation can take
+           significant amount of time to complete if the service has a lot of data.
+    :param str service_host: Kafka hostname.
+    :param str service_name: specifies the actual name of the service. The name cannot be changed
+           later without destroying and re-creating the service so name should be picked based on
+           intended service usage rather than current attributes.
+    :param str service_password: Password used for connecting to the Kafka service, if applicable.
+    :param float service_port: Kafka port.
+    :param str service_uri: URI for connecting to the Kafka service.
+    :param str service_username: Username used for connecting to the Kafka service, if applicable.
+    :param str state: Service state.
+    :param bool termination_protection: prevents the service from being deleted. It is recommended to
+           set this to `true` for all production services to prevent unintentional service
+           deletions. This does not shield against deleting databases or topics but for services
+           with backups much of the content can at least be restored from backup in case accidental
+           deletion is done.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name

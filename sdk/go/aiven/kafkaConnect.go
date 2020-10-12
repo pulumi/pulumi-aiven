@@ -10,46 +10,115 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # Kafka Connect Resource
+//
+// The Kafka Connect resource allows the creation and management of an Aiven Kafka Connect services.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewKafkaConnect(ctx, "kc1", &aiven.KafkaConnectArgs{
+// 			Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
+// 			CloudName:             pulumi.String("google-europe-west1"),
+// 			Plan:                  pulumi.String("startup-4"),
+// 			ServiceName:           pulumi.String("my-kc1"),
+// 			MaintenanceWindowDow:  pulumi.String("monday"),
+// 			MaintenanceWindowTime: pulumi.String("10:00:00"),
+// 			KafkaConnectUserConfig: &aiven.KafkaConnectKafkaConnectUserConfigArgs{
+// 				KafkaConnect: &aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{
+// 					ConsumerIsolationLevel: pulumi.String("read_committed"),
+// 				},
+// 				PublicAccess: &aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs{
+// 					KafkaConnect: pulumi.String("true"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KafkaConnect struct {
 	pulumi.CustomResourceState
 
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components KafkaConnectComponentArrayOutput `pulumi:"components"`
-	// Kafka Connect server provided values
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect KafkaConnectKafkaConnectOutput `pulumi:"kafkaConnect"`
-	// Kafka Connect user configurable settings
+	// defines kafka Connect specific additional configuration options.
+	// The following configuration options available:
 	KafkaConnectUserConfig KafkaConnectKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan pulumi.StringPtrOutput `pulumi:"plan"`
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
-	// Service hostname
+	// Kafka Connect hostname.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations KafkaConnectServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Password used for connecting to the service, if applicable
+	// Password used for connecting to the Kafka Connect service, if applicable.
 	ServicePassword pulumi.StringOutput `pulumi:"servicePassword"`
-	// Service port
+	// Kafka Connect port.
 	ServicePort pulumi.IntOutput `pulumi:"servicePort"`
 	// Aiven internal service type code
 	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	// URI for connecting to the Kafka Connect service.
 	ServiceUri pulumi.StringOutput `pulumi:"serviceUri"`
-	// Username used for connecting to the service, if applicable
+	// Username used for connecting to the Kafka Connect service, if applicable.
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
-	// Service state
+	// Service state.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -87,84 +156,144 @@ func GetKafkaConnect(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaConnect resources.
 type kafkaConnectState struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []KafkaConnectComponent `pulumi:"components"`
-	// Kafka Connect server provided values
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect *KafkaConnectKafkaConnect `pulumi:"kafkaConnect"`
-	// Kafka Connect user configurable settings
+	// defines kafka Connect specific additional configuration options.
+	// The following configuration options available:
 	KafkaConnectUserConfig *KafkaConnectKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan *string `pulumi:"plan"`
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project *string `pulumi:"project"`
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Service hostname
+	// Kafka Connect hostname.
 	ServiceHost *string `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []KafkaConnectServiceIntegration `pulumi:"serviceIntegrations"`
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
-	// Password used for connecting to the service, if applicable
+	// Password used for connecting to the Kafka Connect service, if applicable.
 	ServicePassword *string `pulumi:"servicePassword"`
-	// Service port
+	// Kafka Connect port.
 	ServicePort *int `pulumi:"servicePort"`
 	// Aiven internal service type code
 	ServiceType *string `pulumi:"serviceType"`
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	// URI for connecting to the Kafka Connect service.
 	ServiceUri *string `pulumi:"serviceUri"`
-	// Username used for connecting to the service, if applicable
+	// Username used for connecting to the Kafka Connect service, if applicable.
 	ServiceUsername *string `pulumi:"serviceUsername"`
-	// Service state
+	// Service state.
 	State *string `pulumi:"state"`
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type KafkaConnectState struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components KafkaConnectComponentArrayInput
-	// Kafka Connect server provided values
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect KafkaConnectKafkaConnectPtrInput
-	// Kafka Connect user configurable settings
+	// defines kafka Connect specific additional configuration options.
+	// The following configuration options available:
 	KafkaConnectUserConfig KafkaConnectKafkaConnectUserConfigPtrInput
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan pulumi.StringPtrInput
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project pulumi.StringPtrInput
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
-	// Service hostname
+	// Kafka Connect hostname.
 	ServiceHost pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations KafkaConnectServiceIntegrationArrayInput
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
-	// Password used for connecting to the service, if applicable
+	// Password used for connecting to the Kafka Connect service, if applicable.
 	ServicePassword pulumi.StringPtrInput
-	// Service port
+	// Kafka Connect port.
 	ServicePort pulumi.IntPtrInput
 	// Aiven internal service type code
 	ServiceType pulumi.StringPtrInput
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	// URI for connecting to the Kafka Connect service.
 	ServiceUri pulumi.StringPtrInput
-	// Username used for connecting to the service, if applicable
+	// Username used for connecting to the Kafka Connect service, if applicable.
 	ServiceUsername pulumi.StringPtrInput
-	// Service state
+	// Service state.
 	State pulumi.StringPtrInput
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -173,53 +302,113 @@ func (KafkaConnectState) ElementType() reflect.Type {
 }
 
 type kafkaConnectArgs struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// Kafka Connect server provided values
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect *KafkaConnectKafkaConnect `pulumi:"kafkaConnect"`
-	// Kafka Connect user configurable settings
+	// defines kafka Connect specific additional configuration options.
+	// The following configuration options available:
 	KafkaConnectUserConfig *KafkaConnectKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan *string `pulumi:"plan"`
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project string `pulumi:"project"`
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []KafkaConnectServiceIntegration `pulumi:"serviceIntegrations"`
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a KafkaConnect resource.
 type KafkaConnectArgs struct {
-	// Cloud the service runs in
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// Kafka Connect server provided values
+	// Allow clients to connect to kafkaConnect from the public internet for
+	// service nodes that are in a project VPC or another type of private network.
 	KafkaConnect KafkaConnectKafkaConnectPtrInput
-	// Kafka Connect user configurable settings
+	// defines kafka Connect specific additional configuration options.
+	// The following configuration options available:
 	KafkaConnectUserConfig KafkaConnectKafkaConnectUserConfigPtrInput
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	// day of week when maintenance operations should be performed.
+	// One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Subscription plan
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The exact options can be
+	// seen from the Aiven web console's Create Service dialog.
 	Plan pulumi.StringPtrInput
-	// Target project
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
 	Project pulumi.StringInput
-	// Identifier of the VPC the service should be in, if any
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations KafkaConnectServiceIntegrationArrayInput
-	// Service name
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletions. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 

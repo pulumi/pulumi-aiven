@@ -14,39 +14,74 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Migrate data from existing server
+        /// </summary>
         [Input("migration")]
         public Input<Inputs.RedisRedisUserConfigMigrationGetArgs>? Migration { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.RedisRedisUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.RedisRedisUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Name of the basebackup to restore in forked service
+        /// * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+        /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
         [Input("redisLfuDecayTime")]
         public Input<string>? RedisLfuDecayTime { get; set; }
 
+        /// <summary>
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu 
+        /// maxmemory-policies
+        /// </summary>
         [Input("redisLfuLogFactor")]
         public Input<string>? RedisLfuLogFactor { get; set; }
 
+        /// <summary>
+        /// Redis maxmemory-policy
+        /// </summary>
         [Input("redisMaxmemoryPolicy")]
         public Input<string>? RedisMaxmemoryPolicy { get; set; }
 
+        /// <summary>
+        /// Set notify-keyspace-events option
+        /// </summary>
         [Input("redisNotifyKeyspaceEvents")]
         public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
+        /// <summary>
+        /// Require SSL to access Redis
+        /// </summary>
         [Input("redisSsl")]
         public Input<string>? RedisSsl { get; set; }
 
+        /// <summary>
+        /// Redis idle connection timeout
+        /// * `service_to_fork_from"` - (Optional) Name of another service to fork from. This has effect only
+        /// when a new service is being created.
+        /// </summary>
         [Input("redisTimeout")]
         public Input<string>? RedisTimeout { get; set; }
 
