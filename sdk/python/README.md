@@ -8,7 +8,7 @@
 
 # Aiven Resource Provider
 
-The Aiven resource provider for Pulumi lets you manage Okta resources in your cloud programs. To use
+The Aiven resource provider for Pulumi lets you manage Aiven resources in your cloud programs. To use
 this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
 ## Installing
