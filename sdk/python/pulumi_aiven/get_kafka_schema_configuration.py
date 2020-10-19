@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -38,8 +38,8 @@ class GetKafkaSchemaConfigurationResult:
         if subject_name and not isinstance(subject_name, str):
             raise TypeError("Expected argument 'subject_name' to be a str")
         pulumi.set(__self__, "subject_name", subject_name)
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
+        if version and not isinstance(version, int):
+            raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
 
     @property
@@ -85,7 +85,7 @@ class GetKafkaSchemaConfigurationResult:
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> int:
         return pulumi.get(self, "version")
 
 
@@ -109,7 +109,7 @@ def get_kafka_schema_configuration(compatibility_level: Optional[str] = None,
                                    schema: Optional[str] = None,
                                    service_name: Optional[str] = None,
                                    subject_name: Optional[str] = None,
-                                   version: Optional[float] = None,
+                                   version: Optional[int] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaSchemaConfigurationResult:
     """
     ## # Kafka Schema Configuration Data Source

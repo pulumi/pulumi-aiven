@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['KafkaSchema']
@@ -113,7 +113,7 @@ class KafkaSchema(pulumi.CustomResource):
             schema: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             subject_name: Optional[pulumi.Input[str]] = None,
-            version: Optional[pulumi.Input[float]] = None) -> 'KafkaSchema':
+            version: Optional[pulumi.Input[int]] = None) -> 'KafkaSchema':
         """
         Get an existing KafkaSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -130,7 +130,7 @@ class KafkaSchema(pulumi.CustomResource):
         :param pulumi.Input[str] schema: is Kafka Schema configuration should be a valid Avro Schema JSON format.
         :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
         :param pulumi.Input[str] subject_name: is Kafka Schema subject name.
-        :param pulumi.Input[float] version: Kafka Schema configuration version
+        :param pulumi.Input[int] version: Kafka Schema configuration version
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -190,7 +190,7 @@ class KafkaSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Output[float]:
+    def version(self) -> pulumi.Output[int]:
         """
         Kafka Schema configuration version
         """

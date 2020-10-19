@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -118,8 +118,8 @@ class GetServiceResult:
         if service_password and not isinstance(service_password, str):
             raise TypeError("Expected argument 'service_password' to be a str")
         pulumi.set(__self__, "service_password", service_password)
-        if service_port and not isinstance(service_port, float):
-            raise TypeError("Expected argument 'service_port' to be a float")
+        if service_port and not isinstance(service_port, int):
+            raise TypeError("Expected argument 'service_port' to be a int")
         pulumi.set(__self__, "service_port", service_port)
         if service_type and not isinstance(service_type, str):
             raise TypeError("Expected argument 'service_type' to be a str")
@@ -154,7 +154,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter
-    def components(self) -> List['outputs.GetServiceComponentResult']:
+    def components(self) -> Sequence['outputs.GetServiceComponentResult']:
         return pulumi.get(self, "components")
 
     @property
@@ -287,7 +287,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[List['outputs.GetServiceServiceIntegrationResult']]:
+    def service_integrations(self) -> Optional[Sequence['outputs.GetServiceServiceIntegrationResult']]:
         return pulumi.get(self, "service_integrations")
 
     @property
@@ -302,7 +302,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> float:
+    def service_port(self) -> int:
         return pulumi.get(self, "service_port")
 
     @property
@@ -380,7 +380,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']] = None,
                 cassandra_user_config: Optional[pulumi.InputType['GetServiceCassandraUserConfigArgs']] = None,
                 cloud_name: Optional[str] = None,
-                components: Optional[List[pulumi.InputType['GetServiceComponentArgs']]] = None,
+                components: Optional[Sequence[pulumi.InputType['GetServiceComponentArgs']]] = None,
                 elasticsearch: Optional[pulumi.InputType['GetServiceElasticsearchArgs']] = None,
                 elasticsearch_user_config: Optional[pulumi.InputType['GetServiceElasticsearchUserConfigArgs']] = None,
                 grafana: Optional[pulumi.InputType['GetServiceGrafanaArgs']] = None,
@@ -405,10 +405,10 @@ def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']]
                 redis: Optional[pulumi.InputType['GetServiceRedisArgs']] = None,
                 redis_user_config: Optional[pulumi.InputType['GetServiceRedisUserConfigArgs']] = None,
                 service_host: Optional[str] = None,
-                service_integrations: Optional[List[pulumi.InputType['GetServiceServiceIntegrationArgs']]] = None,
+                service_integrations: Optional[Sequence[pulumi.InputType['GetServiceServiceIntegrationArgs']]] = None,
                 service_name: Optional[str] = None,
                 service_password: Optional[str] = None,
-                service_port: Optional[float] = None,
+                service_port: Optional[int] = None,
                 service_type: Optional[str] = None,
                 service_uri: Optional[str] = None,
                 service_username: Optional[str] = None,

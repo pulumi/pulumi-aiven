@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -26,23 +26,23 @@ class GetKafkaTopicResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if minimum_in_sync_replicas and not isinstance(minimum_in_sync_replicas, float):
-            raise TypeError("Expected argument 'minimum_in_sync_replicas' to be a float")
+        if minimum_in_sync_replicas and not isinstance(minimum_in_sync_replicas, int):
+            raise TypeError("Expected argument 'minimum_in_sync_replicas' to be a int")
         pulumi.set(__self__, "minimum_in_sync_replicas", minimum_in_sync_replicas)
-        if partitions and not isinstance(partitions, float):
-            raise TypeError("Expected argument 'partitions' to be a float")
+        if partitions and not isinstance(partitions, int):
+            raise TypeError("Expected argument 'partitions' to be a int")
         pulumi.set(__self__, "partitions", partitions)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if replication and not isinstance(replication, float):
-            raise TypeError("Expected argument 'replication' to be a float")
+        if replication and not isinstance(replication, int):
+            raise TypeError("Expected argument 'replication' to be a int")
         pulumi.set(__self__, "replication", replication)
-        if retention_bytes and not isinstance(retention_bytes, float):
-            raise TypeError("Expected argument 'retention_bytes' to be a float")
+        if retention_bytes and not isinstance(retention_bytes, int):
+            raise TypeError("Expected argument 'retention_bytes' to be a int")
         pulumi.set(__self__, "retention_bytes", retention_bytes)
-        if retention_hours and not isinstance(retention_hours, float):
-            raise TypeError("Expected argument 'retention_hours' to be a float")
+        if retention_hours and not isinstance(retention_hours, int):
+            raise TypeError("Expected argument 'retention_hours' to be a int")
         pulumi.set(__self__, "retention_hours", retention_hours)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
@@ -72,7 +72,7 @@ class GetKafkaTopicResult:
 
     @property
     @pulumi.getter(name="minimumInSyncReplicas")
-    def minimum_in_sync_replicas(self) -> Optional[float]:
+    def minimum_in_sync_replicas(self) -> Optional[int]:
         """
         Minimum required nodes in-sync replicas (ISR) to produce to a partition.
         """
@@ -80,7 +80,7 @@ class GetKafkaTopicResult:
 
     @property
     @pulumi.getter
-    def partitions(self) -> Optional[float]:
+    def partitions(self) -> Optional[int]:
         """
         Number of partitions to create in the topic.
         """
@@ -93,7 +93,7 @@ class GetKafkaTopicResult:
 
     @property
     @pulumi.getter
-    def replication(self) -> Optional[float]:
+    def replication(self) -> Optional[int]:
         """
         Replication factor for the topic.
         """
@@ -101,7 +101,7 @@ class GetKafkaTopicResult:
 
     @property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[float]:
+    def retention_bytes(self) -> Optional[int]:
         """
         Retention bytes.
         """
@@ -109,7 +109,7 @@ class GetKafkaTopicResult:
 
     @property
     @pulumi.getter(name="retentionHours")
-    def retention_hours(self) -> Optional[float]:
+    def retention_hours(self) -> Optional[int]:
         """
         Retention period in hours, if -1 it is infinite.
         """
@@ -151,12 +151,12 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
 
 
 def get_kafka_topic(cleanup_policy: Optional[str] = None,
-                    minimum_in_sync_replicas: Optional[float] = None,
-                    partitions: Optional[float] = None,
+                    minimum_in_sync_replicas: Optional[int] = None,
+                    partitions: Optional[int] = None,
                     project: Optional[str] = None,
-                    replication: Optional[float] = None,
-                    retention_bytes: Optional[float] = None,
-                    retention_hours: Optional[float] = None,
+                    replication: Optional[int] = None,
+                    retention_bytes: Optional[int] = None,
+                    retention_hours: Optional[int] = None,
                     service_name: Optional[str] = None,
                     termination_protection: Optional[bool] = None,
                     topic_name: Optional[str] = None,
@@ -179,15 +179,15 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
 
 
     :param str cleanup_policy: Topic cleanup policy. Allowed values: delete, compact.
-    :param float minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-    :param float partitions: Number of partitions to create in the topic.
+    :param int minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+    :param int partitions: Number of partitions to create in the topic.
     :param str project: and `service_name` - (Required) define the project and service the topic belongs to.
            They should be defined using reference as shown above to set up dependencies correctly.
            These properties cannot be changed once the service is created. Doing so will result in
            the topic being deleted and new one created instead.
-    :param float replication: Replication factor for the topic.
-    :param float retention_bytes: Retention bytes.
-    :param float retention_hours: Retention period in hours, if -1 it is infinite.
+    :param int replication: Replication factor for the topic.
+    :param int retention_bytes: Retention bytes.
+    :param int retention_hours: Retention period in hours, if -1 it is infinite.
     :param str topic_name: is the actual name of the topic account. This propery cannot be changed
            once the service is created. Doing so will result in the topic being deleted and new one
            created instead.

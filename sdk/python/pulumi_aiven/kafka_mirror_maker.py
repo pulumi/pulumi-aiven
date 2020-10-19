@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -25,7 +25,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -90,7 +90,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                cloud and region as the service itself. Project can be freely moved to and from VPC after
                creation but doing so triggers migration to new servers so the operation can take
                significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
                later without destroying and re-creating the service so name should be picked based on
                intended service usage rather than current attributes.
@@ -151,7 +151,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
-            components: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaMirrorMakerComponentArgs']]]]] = None,
+            components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaMirrorMakerComponentArgs']]]]] = None,
             kafka_mirrormaker: Optional[pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerArgs']]] = None,
             kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
@@ -160,10 +160,10 @@ class KafkaMirrorMaker(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             project_vpc_id: Optional[pulumi.Input[str]] = None,
             service_host: Optional[pulumi.Input[str]] = None,
-            service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]]] = None,
+            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             service_password: Optional[pulumi.Input[str]] = None,
-            service_port: Optional[pulumi.Input[float]] = None,
+            service_port: Optional[pulumi.Input[int]] = None,
             service_type: Optional[pulumi.Input[str]] = None,
             service_uri: Optional[pulumi.Input[str]] = None,
             service_username: Optional[pulumi.Input[str]] = None,
@@ -183,7 +183,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                specific region name. These are documented on each Cloud provider's own support articles,
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaMirrorMakerComponentArgs']]]] components: Service component information objects
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaMirrorMakerComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerArgs']] kafka_mirrormaker: Kafka MirrorMaker configuration values
         :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: defines Kafka Mirror Maker 2 specific additional configuration options. 
                The following configuration options available:
@@ -209,12 +209,12 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                creation but doing so triggers migration to new servers so the operation can take
                significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: Kafka Mirror Maker 2 hostname.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaMirrorMakerServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
                later without destroying and re-creating the service so name should be picked based on
                intended service usage rather than current attributes.
         :param pulumi.Input[str] service_password: Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
-        :param pulumi.Input[float] service_port: Kafka Mirror Maker 2 port.
+        :param pulumi.Input[int] service_port: Kafka Mirror Maker 2 port.
         :param pulumi.Input[str] service_type: Aiven internal service type code
         :param pulumi.Input[str] service_uri: URI for connecting to the Kafka Mirror Maker 2 service.
         :param pulumi.Input[str] service_username: Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
@@ -266,7 +266,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> pulumi.Output[List['outputs.KafkaMirrorMakerComponent']]:
+    def components(self) -> pulumi.Output[Sequence['outputs.KafkaMirrorMakerComponent']]:
         """
         Service component information objects
         """
@@ -355,7 +355,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> pulumi.Output[Optional[List['outputs.KafkaMirrorMakerServiceIntegration']]]:
+    def service_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.KafkaMirrorMakerServiceIntegration']]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
@@ -381,7 +381,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> pulumi.Output[float]:
+    def service_port(self) -> pulumi.Output[int]:
         """
         Kafka Mirror Maker 2 port.
         """

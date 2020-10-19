@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -119,7 +119,7 @@ class KafkaConnector(pulumi.CustomResource):
             plugin_version: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
-            tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]]] = None) -> 'KafkaConnector':
+            tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]]] = None) -> 'KafkaConnector':
         """
         Get an existing KafkaConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -137,7 +137,7 @@ class KafkaConnector(pulumi.CustomResource):
         :param pulumi.Input[str] plugin_version: Kafka connector version.
         :param pulumi.Input[str] project: Project to link the kafka connector to
         :param pulumi.Input[str] service_name: Service to link the kafka connector to
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]] tasks: List of tasks of a connector, each element contains `connector` 
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]] tasks: List of tasks of a connector, each element contains `connector` 
                (Related connector name) and `task` (Task id / number).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -239,7 +239,7 @@ class KafkaConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tasks(self) -> pulumi.Output[List['outputs.KafkaConnectorTask']]:
+    def tasks(self) -> pulumi.Output[Sequence['outputs.KafkaConnectorTask']]:
         """
         List of tasks of a connector, each element contains `connector` 
         (Related connector name) and `task` (Task id / number).

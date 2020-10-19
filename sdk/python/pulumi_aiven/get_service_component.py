@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -32,8 +32,8 @@ class GetServiceComponentResult:
         if kafka_authentication_method and not isinstance(kafka_authentication_method, str):
             raise TypeError("Expected argument 'kafka_authentication_method' to be a str")
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
@@ -79,7 +79,7 @@ class GetServiceComponentResult:
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         is port number for connecting to the service component.
         """

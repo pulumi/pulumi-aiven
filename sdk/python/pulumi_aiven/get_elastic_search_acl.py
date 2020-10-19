@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -43,7 +43,7 @@ class GetElasticSearchAclResult:
 
     @property
     @pulumi.getter
-    def acls(self) -> Optional[List['outputs.GetElasticSearchAclAclResult']]:
+    def acls(self) -> Optional[Sequence['outputs.GetElasticSearchAclAclResult']]:
         return pulumi.get(self, "acls")
 
     @property
@@ -97,7 +97,7 @@ class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
             service_name=self.service_name)
 
 
-def get_elastic_search_acl(acls: Optional[List[pulumi.InputType['GetElasticSearchAclAclArgs']]] = None,
+def get_elastic_search_acl(acls: Optional[Sequence[pulumi.InputType['GetElasticSearchAclAclArgs']]] = None,
                            enabled: Optional[bool] = None,
                            extended_acl: Optional[bool] = None,
                            project: Optional[str] = None,

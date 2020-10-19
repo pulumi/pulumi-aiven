@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -43,7 +43,7 @@ class Service(pulumi.CustomResource):
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  redis: Optional[pulumi.Input[pulumi.InputType['ServiceRedisArgs']]] = None,
                  redis_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']]] = None,
-                 service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  service_type: Optional[pulumi.Input[str]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
@@ -80,7 +80,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
         :param pulumi.Input[pulumi.InputType['ServiceRedisArgs']] redis: Redis specific server provided values
         :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis specific user configurable settings
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] service_type: Service type code
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
@@ -158,7 +158,7 @@ class Service(pulumi.CustomResource):
             cassandra: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]] = None,
             cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
-            components: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]]] = None,
+            components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]]] = None,
             elasticsearch: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]] = None,
             elasticsearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']]] = None,
             grafana: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]] = None,
@@ -183,10 +183,10 @@ class Service(pulumi.CustomResource):
             redis: Optional[pulumi.Input[pulumi.InputType['ServiceRedisArgs']]] = None,
             redis_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']]] = None,
             service_host: Optional[pulumi.Input[str]] = None,
-            service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
+            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             service_password: Optional[pulumi.Input[str]] = None,
-            service_port: Optional[pulumi.Input[float]] = None,
+            service_port: Optional[pulumi.Input[int]] = None,
             service_type: Optional[pulumi.Input[str]] = None,
             service_uri: Optional[pulumi.Input[str]] = None,
             service_username: Optional[pulumi.Input[str]] = None,
@@ -202,7 +202,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceCassandraArgs']] cassandra: Cassandra specific server provided values
         :param pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']] cassandra_user_config: Cassandra specific user configurable settings
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]] components: Service component information objects
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']] elasticsearch: Elasticsearch specific server provided values
         :param pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']] elasticsearch_user_config: Elasticsearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']] grafana: Grafana specific server provided values
@@ -227,10 +227,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceRedisArgs']] redis: Redis specific server provided values
         :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis specific user configurable settings
         :param pulumi.Input[str] service_host: Service hostname
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
-        :param pulumi.Input[float] service_port: Service port
+        :param pulumi.Input[int] service_port: Service port
         :param pulumi.Input[str] service_type: Service type code
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
@@ -306,7 +306,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> pulumi.Output[List['outputs.ServiceComponent']]:
+    def components(self) -> pulumi.Output[Sequence['outputs.ServiceComponent']]:
         """
         Service component information objects
         """
@@ -506,7 +506,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> pulumi.Output[Optional[List['outputs.ServiceServiceIntegration']]]:
+    def service_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceServiceIntegration']]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
@@ -530,7 +530,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> pulumi.Output[float]:
+    def service_port(self) -> pulumi.Output[int]:
         """
         Service port
         """

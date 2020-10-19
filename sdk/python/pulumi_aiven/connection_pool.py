@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ConnectionPool']
@@ -18,7 +18,7 @@ class ConnectionPool(pulumi.CustomResource):
                  database_name: Optional[pulumi.Input[str]] = None,
                  pool_mode: Optional[pulumi.Input[str]] = None,
                  pool_name: Optional[pulumi.Input[str]] = None,
-                 pool_size: Optional[pulumi.Input[float]] = None,
+                 pool_size: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -52,7 +52,7 @@ class ConnectionPool(pulumi.CustomResource):
                defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] pool_mode: is the mode the pool operates in (session, transaction, statement).
         :param pulumi.Input[str] pool_name: is the name of the pool.
-        :param pulumi.Input[float] pool_size: is the number of connections the pool may create towards the backend
+        :param pulumi.Input[int] pool_size: is the number of connections the pool may create towards the backend
                server. This does not affect the number of incoming connections, which is always a much
                larger number.
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the connection pool
@@ -112,7 +112,7 @@ class ConnectionPool(pulumi.CustomResource):
             database_name: Optional[pulumi.Input[str]] = None,
             pool_mode: Optional[pulumi.Input[str]] = None,
             pool_name: Optional[pulumi.Input[str]] = None,
-            pool_size: Optional[pulumi.Input[float]] = None,
+            pool_size: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'ConnectionPool':
@@ -129,7 +129,7 @@ class ConnectionPool(pulumi.CustomResource):
                defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] pool_mode: is the mode the pool operates in (session, transaction, statement).
         :param pulumi.Input[str] pool_name: is the name of the pool.
-        :param pulumi.Input[float] pool_size: is the number of connections the pool may create towards the backend
+        :param pulumi.Input[int] pool_size: is the number of connections the pool may create towards the backend
                server. This does not affect the number of incoming connections, which is always a much
                larger number.
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the connection pool
@@ -190,7 +190,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> pulumi.Output[Optional[float]]:
+    def pool_size(self) -> pulumi.Output[Optional[int]]:
         """
         is the number of connections the pool may create towards the backend
         server. This does not affect the number of incoming connections, which is always a much

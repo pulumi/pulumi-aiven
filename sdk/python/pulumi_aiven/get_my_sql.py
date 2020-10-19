@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -64,8 +64,8 @@ class GetMySqlResult:
         if service_password and not isinstance(service_password, str):
             raise TypeError("Expected argument 'service_password' to be a str")
         pulumi.set(__self__, "service_password", service_password)
-        if service_port and not isinstance(service_port, float):
-            raise TypeError("Expected argument 'service_port' to be a float")
+        if service_port and not isinstance(service_port, int):
+            raise TypeError("Expected argument 'service_port' to be a int")
         pulumi.set(__self__, "service_port", service_port)
         if service_type and not isinstance(service_type, str):
             raise TypeError("Expected argument 'service_type' to be a str")
@@ -99,7 +99,7 @@ class GetMySqlResult:
 
     @property
     @pulumi.getter
-    def components(self) -> List['outputs.GetMySqlComponentResult']:
+    def components(self) -> Sequence['outputs.GetMySqlComponentResult']:
         return pulumi.get(self, "components")
 
     @property
@@ -188,7 +188,7 @@ class GetMySqlResult:
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[List['outputs.GetMySqlServiceIntegrationResult']]:
+    def service_integrations(self) -> Optional[Sequence['outputs.GetMySqlServiceIntegrationResult']]:
         return pulumi.get(self, "service_integrations")
 
     @property
@@ -206,7 +206,7 @@ class GetMySqlResult:
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> float:
+    def service_port(self) -> int:
         """
         MySQL port.
         """
@@ -283,7 +283,7 @@ class AwaitableGetMySqlResult(GetMySqlResult):
 
 
 def get_my_sql(cloud_name: Optional[str] = None,
-               components: Optional[List[pulumi.InputType['GetMySqlComponentArgs']]] = None,
+               components: Optional[Sequence[pulumi.InputType['GetMySqlComponentArgs']]] = None,
                maintenance_window_dow: Optional[str] = None,
                maintenance_window_time: Optional[str] = None,
                mysql: Optional[pulumi.InputType['GetMySqlMysqlArgs']] = None,
@@ -292,10 +292,10 @@ def get_my_sql(cloud_name: Optional[str] = None,
                project: Optional[str] = None,
                project_vpc_id: Optional[str] = None,
                service_host: Optional[str] = None,
-               service_integrations: Optional[List[pulumi.InputType['GetMySqlServiceIntegrationArgs']]] = None,
+               service_integrations: Optional[Sequence[pulumi.InputType['GetMySqlServiceIntegrationArgs']]] = None,
                service_name: Optional[str] = None,
                service_password: Optional[str] = None,
-               service_port: Optional[float] = None,
+               service_port: Optional[int] = None,
                service_type: Optional[str] = None,
                service_uri: Optional[str] = None,
                service_username: Optional[str] = None,
@@ -354,7 +354,7 @@ def get_my_sql(cloud_name: Optional[str] = None,
            later without destroying and re-creating the service so name should be picked based on
            intended service usage rather than current attributes.
     :param str service_password: Password used for connecting to the MySQL service, if applicable.
-    :param float service_port: MySQL port.
+    :param int service_port: MySQL port.
     :param str service_uri: URI for connecting to the MySQL service.
     :param str service_username: Username used for connecting to the MySQL service, if applicable.
     :param str state: Service state.

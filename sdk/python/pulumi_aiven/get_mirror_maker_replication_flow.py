@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -83,7 +83,7 @@ class GetMirrorMakerReplicationFlowResult:
 
     @property
     @pulumi.getter
-    def topics(self) -> Optional[List[str]]:
+    def topics(self) -> Optional[Sequence[str]]:
         """
         is a list of topics and/or regular expressions to replicate.
         """
@@ -91,7 +91,7 @@ class GetMirrorMakerReplicationFlowResult:
 
     @property
     @pulumi.getter(name="topicsBlacklists")
-    def topics_blacklists(self) -> Optional[List[str]]:
+    def topics_blacklists(self) -> Optional[Sequence[str]]:
         """
         is a list of topics and/or regular expressions to not replicate.
         """
@@ -119,8 +119,8 @@ def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
                                       service_name: Optional[str] = None,
                                       source_cluster: Optional[str] = None,
                                       target_cluster: Optional[str] = None,
-                                      topics: Optional[List[str]] = None,
-                                      topics_blacklists: Optional[List[str]] = None,
+                                      topics: Optional[Sequence[str]] = None,
+                                      topics_blacklists: Optional[Sequence[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMirrorMakerReplicationFlowResult:
     """
     ## # MirrorMaker 2 Replication Flow Data Source
@@ -146,8 +146,8 @@ def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
            Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
     :param str source_cluster: is a source cluster alias.
     :param str target_cluster: is a target cluster alias.
-    :param List[str] topics: is a list of topics and/or regular expressions to replicate.
-    :param List[str] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+    :param Sequence[str] topics: is a list of topics and/or regular expressions to replicate.
+    :param Sequence[str] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
     """
     __args__ = dict()
     __args__['enable'] = enable
