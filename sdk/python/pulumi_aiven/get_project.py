@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -67,7 +67,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[List[str]]:
+    def billing_emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "billing_emails")
 
     @property
@@ -123,7 +123,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> Optional[List[str]]:
+    def technical_emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "technical_emails")
 
 
@@ -147,13 +147,13 @@ class AwaitableGetProjectResult(GetProjectResult):
 
 def get_project(account_id: Optional[str] = None,
                 billing_address: Optional[str] = None,
-                billing_emails: Optional[List[str]] = None,
+                billing_emails: Optional[Sequence[str]] = None,
                 ca_cert: Optional[str] = None,
                 card_id: Optional[str] = None,
                 copy_from_project: Optional[str] = None,
                 country_code: Optional[str] = None,
                 project: Optional[str] = None,
-                technical_emails: Optional[List[str]] = None,
+                technical_emails: Optional[Sequence[str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     ## # Project Data Source

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Project']
@@ -17,13 +17,13 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  billing_address: Optional[pulumi.Input[str]] = None,
-                 billing_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ca_cert: Optional[pulumi.Input[str]] = None,
                  card_id: Optional[pulumi.Input[str]] = None,
                  copy_from_project: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 technical_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -37,7 +37,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
                using account ID.
         :param pulumi.Input[str] billing_address: Billing name and address of the project
-        :param pulumi.Input[List[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
         :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
                project. This is required for configuring clients that connect to certain services like
                Kafka. This value cannot be set, only read.
@@ -54,7 +54,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
                Aiven customers) and cannot be changed later without destroying and re-creating the
                project, including all sub-resources.
-        :param pulumi.Input[List[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,13 +96,13 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             billing_address: Optional[pulumi.Input[str]] = None,
-            billing_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ca_cert: Optional[pulumi.Input[str]] = None,
             card_id: Optional[pulumi.Input[str]] = None,
             copy_from_project: Optional[pulumi.Input[str]] = None,
             country_code: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            technical_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Project':
+            technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,7 +113,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
                using account ID.
         :param pulumi.Input[str] billing_address: Billing name and address of the project
-        :param pulumi.Input[List[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
         :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
                project. This is required for configuring clients that connect to certain services like
                Kafka. This value cannot be set, only read.
@@ -130,7 +130,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
                Aiven customers) and cannot be changed later without destroying and re-creating the
                project, including all sub-resources.
-        :param pulumi.Input[List[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -166,7 +166,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> pulumi.Output[Optional[List[str]]]:
+    def billing_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Billing contact emails of the project
         """
@@ -225,7 +225,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> pulumi.Output[Optional[List[str]]]:
+    def technical_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Technical contact emails of the project
         """

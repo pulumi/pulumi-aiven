@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -137,7 +137,7 @@ class GetKafkaConnectorResult:
 
     @property
     @pulumi.getter
-    def tasks(self) -> List['outputs.GetKafkaConnectorTaskResult']:
+    def tasks(self) -> Sequence['outputs.GetKafkaConnectorTaskResult']:
         """
         List of tasks of a connector, each element contains `connector` 
         (Related connector name) and `task` (Task id / number).
@@ -175,7 +175,7 @@ def get_kafka_connector(config: Optional[Mapping[str, str]] = None,
                         plugin_version: Optional[str] = None,
                         project: Optional[str] = None,
                         service_name: Optional[str] = None,
-                        tasks: Optional[List[pulumi.InputType['GetKafkaConnectorTaskArgs']]] = None,
+                        tasks: Optional[Sequence[pulumi.InputType['GetKafkaConnectorTaskArgs']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaConnectorResult:
     """
     ## # Kafka connector Data Source
@@ -205,7 +205,7 @@ def get_kafka_connector(config: Optional[Mapping[str, str]] = None,
     :param str plugin_title: Kafka connector title.
     :param str plugin_type: Kafka connector type.
     :param str plugin_version: Kafka connector version.
-    :param List[pulumi.InputType['GetKafkaConnectorTaskArgs']] tasks: List of tasks of a connector, each element contains `connector` 
+    :param Sequence[pulumi.InputType['GetKafkaConnectorTaskArgs']] tasks: List of tasks of a connector, each element contains `connector` 
            (Related connector name) and `task` (Task id / number).
     """
     __args__ = dict()

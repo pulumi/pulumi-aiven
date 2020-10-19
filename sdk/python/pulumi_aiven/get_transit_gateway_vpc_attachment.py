@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -91,7 +91,7 @@ class GetTransitGatewayVpcAttachmentResult:
 
     @property
     @pulumi.getter(name="userPeerNetworkCidrs")
-    def user_peer_network_cidrs(self) -> Optional[List[str]]:
+    def user_peer_network_cidrs(self) -> Optional[Sequence[str]]:
         """
         List of private IPv4 ranges to route through the peering connection.
         """
@@ -126,7 +126,7 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
                                        peering_connection_id: Optional[str] = None,
                                        state: Optional[str] = None,
                                        state_info: Optional[Mapping[str, Any]] = None,
-                                       user_peer_network_cidrs: Optional[List[str]] = None,
+                                       user_peer_network_cidrs: Optional[Sequence[str]] = None,
                                        vpc_id: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitGatewayVpcAttachmentResult:
     """
@@ -150,7 +150,7 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
     :param str peer_cloud_account: AWS account ID of the peered VPC.
     :param str peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC).
     :param str peer_vpc: Transit gateway ID
-    :param List[str] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
+    :param Sequence[str] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
     :param str vpc_id: is the Aiven VPC the peering connection is associated with.
     """
     __args__ = dict()

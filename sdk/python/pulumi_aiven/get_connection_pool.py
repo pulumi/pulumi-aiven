@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -35,8 +35,8 @@ class GetConnectionPoolResult:
         if pool_name and not isinstance(pool_name, str):
             raise TypeError("Expected argument 'pool_name' to be a str")
         pulumi.set(__self__, "pool_name", pool_name)
-        if pool_size and not isinstance(pool_size, float):
-            raise TypeError("Expected argument 'pool_size' to be a float")
+        if pool_size and not isinstance(pool_size, int):
+            raise TypeError("Expected argument 'pool_size' to be a int")
         pulumi.set(__self__, "pool_size", pool_size)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
@@ -89,7 +89,7 @@ class GetConnectionPoolResult:
 
     @property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> Optional[float]:
+    def pool_size(self) -> Optional[int]:
         """
         is the number of connections the pool may create towards the backend
         server. This does not affect the number of incoming connections, which is always a much
@@ -138,7 +138,7 @@ def get_connection_pool(connection_uri: Optional[str] = None,
                         database_name: Optional[str] = None,
                         pool_mode: Optional[str] = None,
                         pool_name: Optional[str] = None,
-                        pool_size: Optional[float] = None,
+                        pool_size: Optional[int] = None,
                         project: Optional[str] = None,
                         service_name: Optional[str] = None,
                         username: Optional[str] = None,
@@ -166,7 +166,7 @@ def get_connection_pool(connection_uri: Optional[str] = None,
            defined using reference as shown above to set up dependencies correctly.
     :param str pool_mode: is the mode the pool operates in (session, transaction, statement).
     :param str pool_name: is the name of the pool.
-    :param float pool_size: is the number of connections the pool may create towards the backend
+    :param int pool_size: is the number of connections the pool may create towards the backend
            server. This does not affect the number of incoming connections, which is always a much
            larger number.
     :param str project: and `service_name` - (Required) define the project and service the connection pool

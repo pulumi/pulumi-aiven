@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]]] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  extended_acl: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -74,7 +74,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]] acls: List of Elasticsearch ACLs
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]] acls: List of Elasticsearch ACLs
         :param pulumi.Input[bool] enabled: enables of disables Elasticsearch ACL's.
         :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
                (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
@@ -119,7 +119,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]]] = None,
+            acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             extended_acl: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]] acls: List of Elasticsearch ACLs
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]] acls: List of Elasticsearch ACLs
         :param pulumi.Input[bool] enabled: enables of disables Elasticsearch ACL's.
         :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
                (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
@@ -153,7 +153,7 @@ class ElasticSearchAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acls(self) -> pulumi.Output[Optional[List['outputs.ElasticSearchAclAcl']]]:
+    def acls(self) -> pulumi.Output[Optional[Sequence['outputs.ElasticSearchAclAcl']]]:
         """
         List of Elasticsearch ACLs
         """

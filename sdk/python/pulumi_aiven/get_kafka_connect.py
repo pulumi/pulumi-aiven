@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -64,8 +64,8 @@ class GetKafkaConnectResult:
         if service_password and not isinstance(service_password, str):
             raise TypeError("Expected argument 'service_password' to be a str")
         pulumi.set(__self__, "service_password", service_password)
-        if service_port and not isinstance(service_port, float):
-            raise TypeError("Expected argument 'service_port' to be a float")
+        if service_port and not isinstance(service_port, int):
+            raise TypeError("Expected argument 'service_port' to be a int")
         pulumi.set(__self__, "service_port", service_port)
         if service_type and not isinstance(service_type, str):
             raise TypeError("Expected argument 'service_type' to be a str")
@@ -99,7 +99,7 @@ class GetKafkaConnectResult:
 
     @property
     @pulumi.getter
-    def components(self) -> List['outputs.GetKafkaConnectComponentResult']:
+    def components(self) -> Sequence['outputs.GetKafkaConnectComponentResult']:
         return pulumi.get(self, "components")
 
     @property
@@ -188,7 +188,7 @@ class GetKafkaConnectResult:
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[List['outputs.GetKafkaConnectServiceIntegrationResult']]:
+    def service_integrations(self) -> Optional[Sequence['outputs.GetKafkaConnectServiceIntegrationResult']]:
         return pulumi.get(self, "service_integrations")
 
     @property
@@ -206,7 +206,7 @@ class GetKafkaConnectResult:
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> float:
+    def service_port(self) -> int:
         """
         Kafka Connect port.
         """
@@ -283,7 +283,7 @@ class AwaitableGetKafkaConnectResult(GetKafkaConnectResult):
 
 
 def get_kafka_connect(cloud_name: Optional[str] = None,
-                      components: Optional[List[pulumi.InputType['GetKafkaConnectComponentArgs']]] = None,
+                      components: Optional[Sequence[pulumi.InputType['GetKafkaConnectComponentArgs']]] = None,
                       kafka_connect: Optional[pulumi.InputType['GetKafkaConnectKafkaConnectArgs']] = None,
                       kafka_connect_user_config: Optional[pulumi.InputType['GetKafkaConnectKafkaConnectUserConfigArgs']] = None,
                       maintenance_window_dow: Optional[str] = None,
@@ -292,10 +292,10 @@ def get_kafka_connect(cloud_name: Optional[str] = None,
                       project: Optional[str] = None,
                       project_vpc_id: Optional[str] = None,
                       service_host: Optional[str] = None,
-                      service_integrations: Optional[List[pulumi.InputType['GetKafkaConnectServiceIntegrationArgs']]] = None,
+                      service_integrations: Optional[Sequence[pulumi.InputType['GetKafkaConnectServiceIntegrationArgs']]] = None,
                       service_name: Optional[str] = None,
                       service_password: Optional[str] = None,
-                      service_port: Optional[float] = None,
+                      service_port: Optional[int] = None,
                       service_type: Optional[str] = None,
                       service_uri: Optional[str] = None,
                       service_username: Optional[str] = None,
@@ -354,7 +354,7 @@ def get_kafka_connect(cloud_name: Optional[str] = None,
            later without destroying and re-creating the service so name should be picked based on
            intended service usage rather than current attributes.
     :param str service_password: Password used for connecting to the Kafka Connect service, if applicable.
-    :param float service_port: Kafka Connect port.
+    :param int service_port: Kafka Connect port.
     :param str service_uri: URI for connecting to the Kafka Connect service.
     :param str service_username: Username used for connecting to the Kafka Connect service, if applicable.
     :param str state: Service state.

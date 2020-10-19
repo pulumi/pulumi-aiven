@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -26,7 +26,7 @@ class Kafka(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -101,7 +101,7 @@ class Kafka(pulumi.CustomResource):
                cloud and region as the service itself. Project can be freely moved to and from VPC after
                creation but doing so triggers migration to new servers so the operation can take
                significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
                later without destroying and re-creating the service so name should be picked based on
                intended service usage rather than current attributes.
@@ -163,7 +163,7 @@ class Kafka(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
-            components: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaComponentArgs']]]]] = None,
+            components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaComponentArgs']]]]] = None,
             default_acl: Optional[pulumi.Input[bool]] = None,
             kafka: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]] = None,
             kafka_user_config: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']]] = None,
@@ -173,10 +173,10 @@ class Kafka(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             project_vpc_id: Optional[pulumi.Input[str]] = None,
             service_host: Optional[pulumi.Input[str]] = None,
-            service_integrations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]]] = None,
+            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             service_password: Optional[pulumi.Input[str]] = None,
-            service_port: Optional[pulumi.Input[float]] = None,
+            service_port: Optional[pulumi.Input[int]] = None,
             service_type: Optional[pulumi.Input[str]] = None,
             service_uri: Optional[pulumi.Input[str]] = None,
             service_username: Optional[pulumi.Input[str]] = None,
@@ -196,7 +196,7 @@ class Kafka(pulumi.CustomResource):
                specific region name. These are documented on each Cloud provider's own support articles,
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaComponentArgs']]]] components: Service component information objects
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[bool] default_acl: Create default wildcard Kafka ACL
         :param pulumi.Input[pulumi.InputType['KafkaKafkaArgs']] kafka: Allow clients to connect to kafka from the public internet for service 
                nodes that are in a project VPC or another type of private network
@@ -224,12 +224,12 @@ class Kafka(pulumi.CustomResource):
                creation but doing so triggers migration to new servers so the operation can take
                significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: Kafka hostname.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
                later without destroying and re-creating the service so name should be picked based on
                intended service usage rather than current attributes.
         :param pulumi.Input[str] service_password: Password used for connecting to the Kafka service, if applicable.
-        :param pulumi.Input[float] service_port: Kafka port.
+        :param pulumi.Input[int] service_port: Kafka port.
         :param pulumi.Input[str] service_type: Aiven internal service type code
         :param pulumi.Input[str] service_uri: URI for connecting to the Kafka service.
         :param pulumi.Input[str] service_username: Username used for connecting to the Kafka service, if applicable.
@@ -282,7 +282,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> pulumi.Output[List['outputs.KafkaComponent']]:
+    def components(self) -> pulumi.Output[Sequence['outputs.KafkaComponent']]:
         """
         Service component information objects
         """
@@ -380,7 +380,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> pulumi.Output[Optional[List['outputs.KafkaServiceIntegration']]]:
+    def service_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.KafkaServiceIntegration']]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
@@ -406,7 +406,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> pulumi.Output[float]:
+    def service_port(self) -> pulumi.Output[int]:
         """
         Kafka port.
         """
