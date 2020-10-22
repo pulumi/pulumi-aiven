@@ -705,12 +705,12 @@ export interface GetElasticSearchServiceIntegration {
 export interface GetGrafanaComponent {
     component?: string;
     /**
-     * (Required) Server hostname or IP
+     * Server hostname or IP
      */
     host?: string;
     kafkaAuthenticationMethod?: string;
     /**
-     * (Required) SMTP server port
+     * SMTP server port
      */
     port?: number;
     route?: string;
@@ -862,11 +862,11 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
      */
     authUrl?: string;
     /**
-     * (Required) Client ID from provider
+     * Client ID from provider
      */
     clientId?: string;
     /**
-     * (Required) Client secret from provider
+     * Client secret from provider
      */
     clientSecret?: string;
     /**
@@ -893,11 +893,11 @@ export interface GetGrafanaGrafanaUserConfigAuthGithub {
      */
     allowedOrganizations?: string[];
     /**
-     * (Required) Client ID from provider
+     * Client ID from provider
      */
     clientId?: string;
     /**
-     * (Required) Client secret from provider
+     * Client secret from provider
      */
     clientSecret?: string;
     /**
@@ -912,7 +912,7 @@ export interface GetGrafanaGrafanaUserConfigAuthGitlab {
      */
     allowSignUp?: string;
     /**
-     * (Required) Require users to belong to one of given groups
+     * Require users to belong to one of given groups
      */
     allowedGroups?: string[];
     /**
@@ -924,11 +924,11 @@ export interface GetGrafanaGrafanaUserConfigAuthGitlab {
      */
     authUrl?: string;
     /**
-     * (Required) Client ID from provider
+     * Client ID from provider
      */
     clientId?: string;
     /**
-     * (Required) Client secret from provider
+     * Client secret from provider
      */
     clientSecret?: string;
     /**
@@ -947,31 +947,31 @@ export interface GetGrafanaGrafanaUserConfigAuthGoogle {
      */
     allowedDomains?: string[];
     /**
-     * (Required) Client ID from provider
+     * Client ID from provider
      */
     clientId?: string;
     /**
-     * (Required) Client secret from provider
+     * Client secret from provider
      */
     clientSecret?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
     /**
-     * (Required) S3 access key. Requires permissions to the S3 bucket for the 
+     * S3 access key. Requires permissions to the S3 bucket for the 
      * s3:PutObject and s3:PutObjectAcl actions
      */
     accessKey?: string;
     /**
-     * (Required) Bucket URL for S3
+     * Bucket URL for S3
      */
     bucketUrl?: string;
     /**
-     * (Required) Provider type
+     * Provider type
      */
     provider?: string;
     /**
-     * (Required) S3 secret key
+     * S3 secret key
      */
     secretKey?: string;
 }
@@ -992,7 +992,7 @@ export interface GetGrafanaGrafanaUserConfigPublicAccess {
 
 export interface GetGrafanaGrafanaUserConfigSmtpServer {
     /**
-     * (Required) Address used for sending emails
+     * Address used for sending emails
      */
     fromAddress?: string;
     /**
@@ -1000,7 +1000,7 @@ export interface GetGrafanaGrafanaUserConfigSmtpServer {
      */
     fromName?: string;
     /**
-     * (Required) Server hostname or IP
+     * Server hostname or IP
      */
     host?: string;
     /**
@@ -1008,13 +1008,18 @@ export interface GetGrafanaGrafanaUserConfigSmtpServer {
      */
     password?: string;
     /**
-     * (Required) SMTP server port
+     * SMTP server port
      */
     port?: string;
     /**
      * Skip verifying server certificate. Defaults to false
      */
     skipVerify?: string;
+    /**
+     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+     * Default is OpportunisticStartTLS.
+     */
+    starttlsPolicy?: string;
     /**
      * Username for SMTP authentication
      */
@@ -1046,6 +1051,10 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     customDomain?: string;
     /**
+     * InfluxDB specific server provided values.
+     */
+    influxdb?: inputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
+    /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilters?: string[];
@@ -1066,6 +1075,35 @@ export interface GetInfluxDbInfluxdbUserConfig {
      * only when a new service is being created.
      */
     serviceToForkFrom?: string;
+}
+
+export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
+    /**
+     * The maximum duration in seconds before a query is 
+     * logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+     */
+    logQueriesAfter?: string;
+    /**
+     * The maximum number of rows returned in a non-chunked query. 
+     * Setting this to 0 (the default) allows an unlimited number to be returned.
+     */
+    maxRowLimit?: string;
+    /**
+     * The maximum number of `GROUP BY time()` buckets that 
+     * can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+     * be processed.
+     */
+    maxSelectBuckets?: string;
+    /**
+     * The maximum number of points that can be processed in a 
+     * SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+     */
+    maxSelectPoint?: string;
+    /**
+     * The maximum duration in seconds before a query is killed. 
+     * Setting this to 0 (the default) will never kill slow queries.
+     */
+    queryTimeout?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
@@ -1541,6 +1579,105 @@ export interface GetKafkaServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetKafkaTopicConfig {
+    /**
+     * cleanup.policy value
+     */
+    cleanupPolicy?: string;
+    /**
+     * compression.type value
+     */
+    compressionType?: string;
+    /**
+     * delete.retention.ms value
+     */
+    deleteRetentionMs?: string;
+    /**
+     * file.delete.delay.ms value
+     */
+    fileDeleteDelayMs?: string;
+    /**
+     * flush.messages value
+     */
+    flushMessages?: string;
+    /**
+     * flush.ms value
+     */
+    flushMs?: string;
+    /**
+     * index.interval.bytes value
+     */
+    indexIntervalBytes?: string;
+    /**
+     * max.compaction.lag.ms value
+     */
+    maxCompactionLagMs?: string;
+    /**
+     * max.message.bytes value
+     */
+    maxMessageBytes?: string;
+    /**
+     * message.downconversion.enable value
+     */
+    messageDownconversionEnable?: string;
+    /**
+     * message.format.version value
+     */
+    messageFormatVersion?: string;
+    /**
+     * message.timestamp.difference.max.ms value
+     */
+    messageTimestampDifferenceMaxMs?: string;
+    /**
+     * message.timestamp.type value
+     */
+    messageTimestampType?: string;
+    /**
+     * min.cleanable.dirty.ratio value
+     */
+    minCleanableDirtyRatio?: string;
+    /**
+     * min.compaction.lag.ms value
+     */
+    minCompactionLagMs?: string;
+    /**
+     * min.insync.replicas value
+     */
+    minInsyncReplicas?: string;
+    /**
+     * preallocate value
+     */
+    preallocate?: string;
+    /**
+     * retention.bytes value
+     */
+    retentionBytes?: string;
+    /**
+     * retention.ms value
+     */
+    retentionMs?: string;
+    /**
+     * segment.bytes value
+     */
+    segmentBytes?: string;
+    /**
+     * segment.index.bytes value
+     */
+    segmentIndexBytes?: string;
+    /**
+     * segment.jitter.ms value
+     */
+    segmentJitterMs?: string;
+    /**
+     * segment.ms value
+     */
+    segmentMs?: string;
+    /**
+     * unclean.leader.election.enable value
+     */
+    uncleanLeaderElectionEnable?: string;
+}
+
 export interface GetMySqlComponent {
     component?: string;
     host?: string;
@@ -2012,9 +2149,18 @@ export interface GetPgPgUserConfigPg {
      */
     logMinDurationStatement?: string;
     /**
+     * PostgreSQL maximum number of files that can be open per process
+     */
+    maxFilesPerProcess?: string;
+    /**
      * PostgreSQL maximum locks per transaction
      */
     maxLocksPerTransaction?: string;
+    /**
+     * PostgreSQL maximum logical replication workers 
+     * (taken from the pool of max_parallel_workers)
+     */
+    maxLogicalReplicationWorkers?: string;
     /**
      * Sets the maximum number of workers that the system can 
      * support for parallel queries.
@@ -2034,6 +2180,10 @@ export interface GetPgPgUserConfigPg {
      */
     maxPreparedTransactions?: string;
     /**
+     * PostgreSQL maximum replication slots
+     */
+    maxReplicationSlots?: string;
+    /**
      * Maximum depth of the stack in bytes
      */
     maxStackDepth?: string;
@@ -2045,6 +2195,10 @@ export interface GetPgPgUserConfigPg {
      * Max standby streaming delay in milliseconds
      */
     maxStandbyStreamingDelay?: string;
+    /**
+     * PostgreSQL maximum WAL senders
+     */
+    maxWalSenders?: string;
     /**
      * Sets the maximum number of background processes that the system
      * can support
@@ -2479,6 +2633,7 @@ export interface GetServiceGrafanaUserConfigSmtpServer {
     password?: string;
     port?: string;
     skipVerify?: string;
+    starttlsPolicy?: string;
     username?: string;
 }
 
@@ -2488,11 +2643,20 @@ export interface GetServiceInfluxdb {
 
 export interface GetServiceInfluxdbUserConfig {
     customDomain?: string;
+    influxdb?: inputs.GetServiceInfluxdbUserConfigInfluxdb;
     ipFilters?: string[];
     privateAccess?: inputs.GetServiceInfluxdbUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
+}
+
+export interface GetServiceInfluxdbUserConfigInfluxdb {
+    logQueriesAfter?: string;
+    maxRowLimit?: string;
+    maxSelectBuckets?: string;
+    maxSelectPoint?: string;
+    queryTimeout?: string;
 }
 
 export interface GetServiceInfluxdbUserConfigPrivateAccess {
@@ -2835,14 +2999,18 @@ export interface GetServicePgUserConfigPg {
     logAutovacuumMinDuration?: string;
     logErrorVerbosity?: string;
     logMinDurationStatement?: string;
+    maxFilesPerProcess?: string;
     maxLocksPerTransaction?: string;
+    maxLogicalReplicationWorkers?: string;
     maxParallelWorkers?: string;
     maxParallelWorkersPerGather?: string;
     maxPredLocksPerTransaction?: string;
     maxPreparedTransactions?: string;
+    maxReplicationSlots?: string;
     maxStackDepth?: string;
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
+    maxWalSenders?: string;
     maxWorkerProcesses?: string;
     pgPartmanBgwDotInterval?: string;
     pgPartmanBgwDotRole?: string;
@@ -3239,6 +3407,11 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     skipVerify?: pulumi.Input<string>;
     /**
+     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+     * Default is OpportunisticStartTLS.
+     */
+    starttlsPolicy?: pulumi.Input<string>;
+    /**
      * Username for SMTP authentication
      */
     username?: pulumi.Input<string>;
@@ -3269,6 +3442,10 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
+     * influxdb.conf configuration values
+     */
+    influxdb?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigInfluxdb>;
+    /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3291,18 +3468,45 @@ export interface InfluxDbInfluxdbUserConfig {
     serviceToForkFrom?: pulumi.Input<string>;
 }
 
+export interface InfluxDbInfluxdbUserConfigInfluxdb {
+    /**
+     * The maximum duration in seconds before a query is 
+     * logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+     */
+    logQueriesAfter?: pulumi.Input<string>;
+    /**
+     * The maximum number of rows returned in a non-chunked query. 
+     * Setting this to 0 (the default) allows an unlimited number to be returned.
+     */
+    maxRowLimit?: pulumi.Input<string>;
+    /**
+     * The maximum number of `GROUP BY time()` buckets that 
+     * can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+     * be processed.
+     */
+    maxSelectBuckets?: pulumi.Input<string>;
+    /**
+     * The maximum number of points that can be processed in a 
+     * SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+     */
+    maxSelectPoint?: pulumi.Input<string>;
+    /**
+     * The maximum duration in seconds before a query is killed. 
+     * Setting this to 0 (the default) will never kill slow queries.
+     */
+    queryTimeout?: pulumi.Input<string>;
+}
+
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to influxdb from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * influxdb.conf configuration values
      */
     influxdb?: pulumi.Input<string>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
-     * Allow clients to connect to influxdb from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * influxdb.conf configuration values
      */
     influxdb?: pulumi.Input<string>;
 }
@@ -3793,6 +3997,105 @@ export interface KafkaServiceIntegration {
     sourceServiceName: pulumi.Input<string>;
 }
 
+export interface KafkaTopicConfig {
+    /**
+     * cleanup.policy value
+     */
+    cleanupPolicy?: pulumi.Input<string>;
+    /**
+     * compression.type value
+     */
+    compressionType?: pulumi.Input<string>;
+    /**
+     * delete.retention.ms value
+     */
+    deleteRetentionMs?: pulumi.Input<string>;
+    /**
+     * file.delete.delay.ms value
+     */
+    fileDeleteDelayMs?: pulumi.Input<string>;
+    /**
+     * flush.messages value
+     */
+    flushMessages?: pulumi.Input<string>;
+    /**
+     * flush.ms value
+     */
+    flushMs?: pulumi.Input<string>;
+    /**
+     * index.interval.bytes value
+     */
+    indexIntervalBytes?: pulumi.Input<string>;
+    /**
+     * max.compaction.lag.ms value
+     */
+    maxCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * max.message.bytes value
+     */
+    maxMessageBytes?: pulumi.Input<string>;
+    /**
+     * message.downconversion.enable value
+     */
+    messageDownconversionEnable?: pulumi.Input<string>;
+    /**
+     * message.format.version value
+     */
+    messageFormatVersion?: pulumi.Input<string>;
+    /**
+     * message.timestamp.difference.max.ms value
+     */
+    messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    /**
+     * message.timestamp.type value
+     */
+    messageTimestampType?: pulumi.Input<string>;
+    /**
+     * min.cleanable.dirty.ratio value
+     */
+    minCleanableDirtyRatio?: pulumi.Input<string>;
+    /**
+     * min.compaction.lag.ms value
+     */
+    minCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * min.insync.replicas value
+     */
+    minInsyncReplicas?: pulumi.Input<string>;
+    /**
+     * preallocate value
+     */
+    preallocate?: pulumi.Input<string>;
+    /**
+     * retention.bytes value
+     */
+    retentionBytes?: pulumi.Input<string>;
+    /**
+     * retention.ms value
+     */
+    retentionMs?: pulumi.Input<string>;
+    /**
+     * segment.bytes value
+     */
+    segmentBytes?: pulumi.Input<string>;
+    /**
+     * segment.index.bytes value
+     */
+    segmentIndexBytes?: pulumi.Input<string>;
+    /**
+     * segment.jitter.ms value
+     */
+    segmentJitterMs?: pulumi.Input<string>;
+    /**
+     * segment.ms value
+     */
+    segmentMs?: pulumi.Input<string>;
+    /**
+     * unclean.leader.election.enable value
+     */
+    uncleanLeaderElectionEnable?: pulumi.Input<string>;
+}
+
 export interface MySqlComponent {
     component?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
@@ -4268,9 +4571,18 @@ export interface PgPgUserConfigPg {
      */
     logMinDurationStatement?: pulumi.Input<string>;
     /**
+     * PostgreSQL maximum number of files that can be open per process
+     */
+    maxFilesPerProcess?: pulumi.Input<string>;
+    /**
      * PostgreSQL maximum locks per transaction
      */
     maxLocksPerTransaction?: pulumi.Input<string>;
+    /**
+     * PostgreSQL maximum logical replication workers 
+     * (taken from the pool of max_parallel_workers)
+     */
+    maxLogicalReplicationWorkers?: pulumi.Input<string>;
     /**
      * Sets the maximum number of workers that the system can 
      * support for parallel queries.
@@ -4290,6 +4602,10 @@ export interface PgPgUserConfigPg {
      */
     maxPreparedTransactions?: pulumi.Input<string>;
     /**
+     * PostgreSQL maximum replication slots
+     */
+    maxReplicationSlots?: pulumi.Input<string>;
+    /**
      * Maximum depth of the stack in bytes
      */
     maxStackDepth?: pulumi.Input<string>;
@@ -4301,6 +4617,10 @@ export interface PgPgUserConfigPg {
      * Max standby streaming delay in milliseconds
      */
     maxStandbyStreamingDelay?: pulumi.Input<string>;
+    /**
+     * PostgreSQL maximum WAL senders
+     */
+    maxWalSenders?: pulumi.Input<string>;
     /**
      * Sets the maximum number of background processes that the system
      * can support
@@ -4739,6 +5059,7 @@ export interface ServiceGrafanaUserConfigSmtpServer {
     password?: pulumi.Input<string>;
     port?: pulumi.Input<string>;
     skipVerify?: pulumi.Input<string>;
+    starttlsPolicy?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
 
@@ -4748,11 +5069,20 @@ export interface ServiceInfluxdb {
 
 export interface ServiceInfluxdbUserConfig {
     customDomain?: pulumi.Input<string>;
+    influxdb?: pulumi.Input<inputs.ServiceInfluxdbUserConfigInfluxdb>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     privateAccess?: pulumi.Input<inputs.ServiceInfluxdbUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceInfluxdbUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+}
+
+export interface ServiceInfluxdbUserConfigInfluxdb {
+    logQueriesAfter?: pulumi.Input<string>;
+    maxRowLimit?: pulumi.Input<string>;
+    maxSelectBuckets?: pulumi.Input<string>;
+    maxSelectPoint?: pulumi.Input<string>;
+    queryTimeout?: pulumi.Input<string>;
 }
 
 export interface ServiceInfluxdbUserConfigPrivateAccess {
@@ -5095,14 +5425,18 @@ export interface ServicePgUserConfigPg {
     logAutovacuumMinDuration?: pulumi.Input<string>;
     logErrorVerbosity?: pulumi.Input<string>;
     logMinDurationStatement?: pulumi.Input<string>;
+    maxFilesPerProcess?: pulumi.Input<string>;
     maxLocksPerTransaction?: pulumi.Input<string>;
+    maxLogicalReplicationWorkers?: pulumi.Input<string>;
     maxParallelWorkers?: pulumi.Input<string>;
     maxParallelWorkersPerGather?: pulumi.Input<string>;
     maxPredLocksPerTransaction?: pulumi.Input<string>;
     maxPreparedTransactions?: pulumi.Input<string>;
+    maxReplicationSlots?: pulumi.Input<string>;
     maxStackDepth?: pulumi.Input<string>;
     maxStandbyArchiveDelay?: pulumi.Input<string>;
     maxStandbyStreamingDelay?: pulumi.Input<string>;
+    maxWalSenders?: pulumi.Input<string>;
     maxWorkerProcesses?: pulumi.Input<string>;
     pgPartmanBgwDotInterval?: pulumi.Input<string>;
     pgPartmanBgwDotRole?: pulumi.Input<string>;

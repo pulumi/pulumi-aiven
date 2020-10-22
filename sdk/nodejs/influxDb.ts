@@ -75,8 +75,7 @@ export class InfluxDb extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.InfluxDbComponent[]>;
     /**
-     * Allow clients to connect to influxdb from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * influxdb.conf configuration values
      */
     public readonly influxdb!: pulumi.Output<outputs.InfluxDbInfluxdb>;
     /**
@@ -256,8 +255,7 @@ export interface InfluxDbState {
      */
     readonly components?: pulumi.Input<pulumi.Input<inputs.InfluxDbComponent>[]>;
     /**
-     * Allow clients to connect to influxdb from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * influxdb.conf configuration values
      */
     readonly influxdb?: pulumi.Input<inputs.InfluxDbInfluxdb>;
     /**
@@ -364,8 +362,7 @@ export interface InfluxDbArgs {
      */
     readonly cloudName?: pulumi.Input<string>;
     /**
-     * Allow clients to connect to influxdb from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * influxdb.conf configuration values
      */
     readonly influxdb?: pulumi.Input<inputs.InfluxDbInfluxdb>;
     /**

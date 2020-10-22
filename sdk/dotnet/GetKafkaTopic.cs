@@ -30,7 +30,15 @@ namespace Pulumi.Aiven
         ///     {
         ///         var mytesttopic = Output.Create(Aiven.GetKafkaTopic.InvokeAsync(new Aiven.GetKafkaTopicArgs
         ///         {
+        ///             Config = new Aiven.Inputs.GetKafkaTopicConfigArgs
+        ///             {
+        ///                 CleanupPolicy = "compact",
+        ///                 FlushMs = "10",
+        ///                 UncleanLeaderElectionEnable = "true",
+        ///             },
+        ///             Partitions = 3,
         ///             Project = aiven_project.Myproject.Project,
+        ///             Replication = 1,
         ///             ServiceName = aiven_service.Myservice.Service_name,
         ///             TopicName = "&lt;TOPIC_NAME&gt;",
         ///         }));
@@ -49,10 +57,16 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact.
+        /// cleanup.policy value
         /// </summary>
         [Input("cleanupPolicy")]
         public string? CleanupPolicy { get; set; }
+
+        /// <summary>
+        /// Kafka topic configuration
+        /// </summary>
+        [Input("config")]
+        public Inputs.GetKafkaTopicConfigArgs? Config { get; set; }
 
         /// <summary>
         /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
@@ -82,7 +96,7 @@ namespace Pulumi.Aiven
         public int? Replication { get; set; }
 
         /// <summary>
-        /// Retention bytes.
+        /// retention.bytes value
         /// </summary>
         [Input("retentionBytes")]
         public int? RetentionBytes { get; set; }
@@ -117,9 +131,13 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact.
+        /// cleanup.policy value
         /// </summary>
         public readonly string? CleanupPolicy;
+        /// <summary>
+        /// Kafka topic configuration
+        /// </summary>
+        public readonly Outputs.GetKafkaTopicConfigResult? Config;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -138,7 +156,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int? Replication;
         /// <summary>
-        /// Retention bytes.
+        /// retention.bytes value
         /// </summary>
         public readonly int? RetentionBytes;
         /// <summary>
@@ -152,6 +170,8 @@ namespace Pulumi.Aiven
         [OutputConstructor]
         private GetKafkaTopicResult(
             string? cleanupPolicy,
+
+            Outputs.GetKafkaTopicConfigResult? config,
 
             string id,
 
@@ -174,6 +194,7 @@ namespace Pulumi.Aiven
             string topicName)
         {
             CleanupPolicy = cleanupPolicy;
+            Config = config;
             Id = id;
             MinimumInSyncReplicas = minimumInSyncReplicas;
             Partitions = partitions;

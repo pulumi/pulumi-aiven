@@ -18,7 +18,14 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytesttopic = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getKafkaTopic({
+ *     config: {
+ *         cleanupPolicy: "compact",
+ *         flushMs: "10",
+ *         uncleanLeaderElectionEnable: "true",
+ *     },
+ *     partitions: 3,
  *     project: project,
+ *     replication: 1,
  *     serviceName: serviceName,
  *     topicName: "<TOPIC_NAME>",
  * }, { async: true }));
@@ -34,6 +41,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
     }
     return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
         "cleanupPolicy": args.cleanupPolicy,
+        "config": args.config,
         "minimumInSyncReplicas": args.minimumInSyncReplicas,
         "partitions": args.partitions,
         "project": args.project,
@@ -51,9 +59,13 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetKafkaTopicArgs {
     /**
-     * Topic cleanup policy. Allowed values: delete, compact.
+     * cleanup.policy value
      */
     readonly cleanupPolicy?: string;
+    /**
+     * Kafka topic configuration
+     */
+    readonly config?: inputs.GetKafkaTopicConfig;
     /**
      * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
      */
@@ -74,7 +86,7 @@ export interface GetKafkaTopicArgs {
      */
     readonly replication?: number;
     /**
-     * Retention bytes.
+     * retention.bytes value
      */
     readonly retentionBytes?: number;
     /**
@@ -96,9 +108,13 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     /**
-     * Topic cleanup policy. Allowed values: delete, compact.
+     * cleanup.policy value
      */
     readonly cleanupPolicy?: string;
+    /**
+     * Kafka topic configuration
+     */
+    readonly config?: outputs.GetKafkaTopicConfig;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -117,7 +133,7 @@ export interface GetKafkaTopicResult {
      */
     readonly replication?: number;
     /**
-     * Retention bytes.
+     * retention.bytes value
      */
     readonly retentionBytes?: number;
     /**

@@ -28,14 +28,18 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? LogAutovacuumMinDuration;
         public readonly string? LogErrorVerbosity;
         public readonly string? LogMinDurationStatement;
+        public readonly string? MaxFilesPerProcess;
         public readonly string? MaxLocksPerTransaction;
+        public readonly string? MaxLogicalReplicationWorkers;
         public readonly string? MaxParallelWorkers;
         public readonly string? MaxParallelWorkersPerGather;
         public readonly string? MaxPredLocksPerTransaction;
         public readonly string? MaxPreparedTransactions;
+        public readonly string? MaxReplicationSlots;
         public readonly string? MaxStackDepth;
         public readonly string? MaxStandbyArchiveDelay;
         public readonly string? MaxStandbyStreamingDelay;
+        public readonly string? MaxWalSenders;
         public readonly string? MaxWorkerProcesses;
         public readonly string? PgPartmanBgwDotInterval;
         public readonly string? PgPartmanBgwDotRole;
@@ -80,7 +84,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? logMinDurationStatement,
 
+            string? maxFilesPerProcess,
+
             string? maxLocksPerTransaction,
+
+            string? maxLogicalReplicationWorkers,
 
             string? maxParallelWorkers,
 
@@ -90,11 +98,15 @@ namespace Pulumi.Aiven.Outputs
 
             string? maxPreparedTransactions,
 
+            string? maxReplicationSlots,
+
             string? maxStackDepth,
 
             string? maxStandbyArchiveDelay,
 
             string? maxStandbyStreamingDelay,
+
+            string? maxWalSenders,
 
             string? maxWorkerProcesses,
 
@@ -133,14 +145,18 @@ namespace Pulumi.Aiven.Outputs
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
             LogErrorVerbosity = logErrorVerbosity;
             LogMinDurationStatement = logMinDurationStatement;
+            MaxFilesPerProcess = maxFilesPerProcess;
             MaxLocksPerTransaction = maxLocksPerTransaction;
+            MaxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
             MaxParallelWorkers = maxParallelWorkers;
             MaxParallelWorkersPerGather = maxParallelWorkersPerGather;
             MaxPredLocksPerTransaction = maxPredLocksPerTransaction;
             MaxPreparedTransactions = maxPreparedTransactions;
+            MaxReplicationSlots = maxReplicationSlots;
             MaxStackDepth = maxStackDepth;
             MaxStandbyArchiveDelay = maxStandbyArchiveDelay;
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;
+            MaxWalSenders = maxWalSenders;
             MaxWorkerProcesses = maxWorkerProcesses;
             PgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             PgPartmanBgwDotRole = pgPartmanBgwDotRole;

@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         public string Component { get; set; } = null!;
 
         /// <summary>
-        /// (Required) Server hostname or IP
+        /// Server hostname or IP
         /// </summary>
         [Input("host", required: true)]
         public string Host { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public string KafkaAuthenticationMethod { get; set; } = null!;
 
         /// <summary>
-        /// (Required) SMTP server port
+        /// SMTP server port
         /// </summary>
         [Input("port", required: true)]
         public int Port { get; set; }

@@ -1585,6 +1585,15 @@
                         }
                     }
                 },
+                "starttlsPolicy": {
+                    "type": "string",
+                    "description": "Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. \nDefault is OpportunisticStartTLS.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "username": {
                     "type": "string",
                     "description": "Username for SMTP authentication\n",
@@ -1727,6 +1736,15 @@
                         }
                     }
                 },
+                "influxdb": {
+                    "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfigInfluxdb:InfluxDbInfluxdbUserConfigInfluxdb",
+                    "description": "influxdb.conf configuration values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -1778,11 +1796,61 @@
             },
             "type": "object"
         },
+        "aiven:index/InfluxDbInfluxdbUserConfigInfluxdb:InfluxDbInfluxdbUserConfigInfluxdb": {
+            "properties": {
+                "logQueriesAfter": {
+                    "type": "string",
+                    "description": "The maximum duration in seconds before a query is \nlogged as a slow query. Setting this to 0 (the default) will never log slow queries.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxRowLimit": {
+                    "type": "string",
+                    "description": "The maximum number of rows returned in a non-chunked query. \nSetting this to 0 (the default) allows an unlimited number to be returned.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectBuckets": {
+                    "type": "string",
+                    "description": "The maximum number of `GROUP BY time()` buckets that \ncan be processed in a query. Setting this to 0 (the default) allows an unlimited number to\nbe processed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectPoint": {
+                    "type": "string",
+                    "description": "The maximum number of points that can be processed in a \nSELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryTimeout": {
+                    "type": "string",
+                    "description": "The maximum duration in seconds before a query is killed. \nSetting this to 0 (the default) will never kill slow queries.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/InfluxDbInfluxdbUserConfigPrivateAccess:InfluxDbInfluxdbUserConfigPrivateAccess": {
             "properties": {
                 "influxdb": {
                     "type": "string",
-                    "description": "Allow clients to connect to influxdb from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "influxdb.conf configuration values\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1796,7 +1864,7 @@
             "properties": {
                 "influxdb": {
                     "type": "string",
-                    "description": "Allow clients to connect to influxdb from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "influxdb.conf configuration values\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3011,6 +3079,227 @@
                 "sourceServiceName"
             ]
         },
+        "aiven:index/KafkaTopicConfig:KafkaTopicConfig": {
+            "properties": {
+                "cleanupPolicy": {
+                    "type": "string",
+                    "description": "cleanup.policy value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "compressionType": {
+                    "type": "string",
+                    "description": "compression.type value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deleteRetentionMs": {
+                    "type": "string",
+                    "description": "delete.retention.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fileDeleteDelayMs": {
+                    "type": "string",
+                    "description": "file.delete.delay.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "flushMessages": {
+                    "type": "string",
+                    "description": "flush.messages value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "flushMs": {
+                    "type": "string",
+                    "description": "flush.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "indexIntervalBytes": {
+                    "type": "string",
+                    "description": "index.interval.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxCompactionLagMs": {
+                    "type": "string",
+                    "description": "max.compaction.lag.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxMessageBytes": {
+                    "type": "string",
+                    "description": "max.message.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageDownconversionEnable": {
+                    "type": "string",
+                    "description": "message.downconversion.enable value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageFormatVersion": {
+                    "type": "string",
+                    "description": "message.format.version value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageTimestampDifferenceMaxMs": {
+                    "type": "string",
+                    "description": "message.timestamp.difference.max.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageTimestampType": {
+                    "type": "string",
+                    "description": "message.timestamp.type value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minCleanableDirtyRatio": {
+                    "type": "string",
+                    "description": "min.cleanable.dirty.ratio value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minCompactionLagMs": {
+                    "type": "string",
+                    "description": "min.compaction.lag.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minInsyncReplicas": {
+                    "type": "string",
+                    "description": "min.insync.replicas value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preallocate": {
+                    "type": "string",
+                    "description": "preallocate value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionBytes": {
+                    "type": "string",
+                    "description": "retention.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionMs": {
+                    "type": "string",
+                    "description": "retention.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentBytes": {
+                    "type": "string",
+                    "description": "segment.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentIndexBytes": {
+                    "type": "string",
+                    "description": "segment.index.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentJitterMs": {
+                    "type": "string",
+                    "description": "segment.jitter.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentMs": {
+                    "type": "string",
+                    "description": "segment.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uncleanLeaderElectionEnable": {
+                    "type": "string",
+                    "description": "unclean.leader.election.enable value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/MySqlComponent:MySqlComponent": {
             "properties": {
                 "component": {
@@ -4021,9 +4310,27 @@
                         }
                     }
                 },
+                "maxFilesPerProcess": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum number of files that can be open per process\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxLocksPerTransaction": {
                     "type": "string",
                     "description": "PostgreSQL maximum locks per transaction\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxLogicalReplicationWorkers": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum logical replication workers \n(taken from the pool of max_parallel_workers)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4066,6 +4373,15 @@
                         }
                     }
                 },
+                "maxReplicationSlots": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum replication slots\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxStackDepth": {
                     "type": "string",
                     "description": "Maximum depth of the stack in bytes\n",
@@ -4087,6 +4403,15 @@
                 "maxStandbyStreamingDelay": {
                     "type": "string",
                     "description": "Max standby streaming delay in milliseconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxWalSenders": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum WAL senders\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5842,6 +6167,14 @@
                         }
                     }
                 },
+                "starttlsPolicy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "username": {
                     "type": "string",
                     "language": {
@@ -5877,6 +6210,14 @@
             "properties": {
                 "customDomain": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "influxdb": {
+                    "$ref": "#/types/aiven:index/ServiceInfluxdbUserConfigInfluxdb:ServiceInfluxdbUserConfigInfluxdb",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5919,6 +6260,51 @@
                     }
                 },
                 "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceInfluxdbUserConfigInfluxdb:ServiceInfluxdbUserConfigInfluxdb": {
+            "properties": {
+                "logQueriesAfter": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxRowLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectBuckets": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectPoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryTimeout": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7920,7 +8306,23 @@
                         }
                     }
                 },
+                "maxFilesPerProcess": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxLocksPerTransaction": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxLogicalReplicationWorkers": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7960,6 +8362,14 @@
                         }
                     }
                 },
+                "maxReplicationSlots": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxStackDepth": {
                     "type": "string",
                     "language": {
@@ -7977,6 +8387,14 @@
                     }
                 },
                 "maxStandbyStreamingDelay": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxWalSenders": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9243,7 +9661,7 @@
                 },
                 "host": {
                     "type": "string",
-                    "description": "(Required) Server hostname or IP\n",
+                    "description": "Server hostname or IP\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9260,7 +9678,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "(Required) SMTP server port\n",
+                    "description": "SMTP server port\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9625,7 +10043,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "(Required) Client ID from provider\n",
+                    "description": "Client ID from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9634,7 +10052,7 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "(Required) Client secret from provider\n",
+                    "description": "Client secret from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9699,7 +10117,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "(Required) Client ID from provider\n",
+                    "description": "Client ID from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9708,7 +10126,7 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "(Required) Client secret from provider\n",
+                    "description": "Client secret from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9746,7 +10164,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "(Required) Require users to belong to one of given groups\n",
+                    "description": "Require users to belong to one of given groups\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9773,7 +10191,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "(Required) Client ID from provider\n",
+                    "description": "Client ID from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9782,7 +10200,7 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "(Required) Client secret from provider\n",
+                    "description": "Client secret from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9826,7 +10244,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "(Required) Client ID from provider\n",
+                    "description": "Client ID from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9835,7 +10253,7 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "(Required) Client secret from provider\n",
+                    "description": "Client secret from provider\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9849,7 +10267,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "(Required) S3 access key. Requires permissions to the S3 bucket for the \ns3:PutObject and s3:PutObjectAcl actions\n",
+                    "description": "S3 access key. Requires permissions to the S3 bucket for the \ns3:PutObject and s3:PutObjectAcl actions\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9858,7 +10276,7 @@
                 },
                 "bucketUrl": {
                     "type": "string",
-                    "description": "(Required) Bucket URL for S3\n",
+                    "description": "Bucket URL for S3\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9867,7 +10285,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "(Required) Provider type\n",
+                    "description": "Provider type\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9876,7 +10294,7 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "(Required) S3 secret key\n",
+                    "description": "S3 secret key\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9918,7 +10336,7 @@
             "properties": {
                 "fromAddress": {
                     "type": "string",
-                    "description": "(Required) Address used for sending emails\n",
+                    "description": "Address used for sending emails\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9936,7 +10354,7 @@
                 },
                 "host": {
                     "type": "string",
-                    "description": "(Required) Server hostname or IP\n",
+                    "description": "Server hostname or IP\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9954,7 +10372,7 @@
                 },
                 "port": {
                     "type": "string",
-                    "description": "(Required) SMTP server port\n",
+                    "description": "SMTP server port\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9964,6 +10382,15 @@
                 "skipVerify": {
                     "type": "string",
                     "description": "Skip verifying server certificate. Defaults to false\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "starttlsPolicy": {
+                    "type": "string",
+                    "description": "Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. \nDefault is OpportunisticStartTLS.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10114,6 +10541,15 @@
                         }
                     }
                 },
+                "influxdb": {
+                    "$ref": "#/types/aiven:index/getInfluxDbInfluxdbUserConfigInfluxdb:getInfluxDbInfluxdbUserConfigInfluxdb",
+                    "description": "InfluxDB specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -10156,6 +10592,56 @@
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect \nonly when a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getInfluxDbInfluxdbUserConfigInfluxdb:getInfluxDbInfluxdbUserConfigInfluxdb": {
+            "properties": {
+                "logQueriesAfter": {
+                    "type": "string",
+                    "description": "The maximum duration in seconds before a query is \nlogged as a slow query. Setting this to 0 (the default) will never log slow queries.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxRowLimit": {
+                    "type": "string",
+                    "description": "The maximum number of rows returned in a non-chunked query. \nSetting this to 0 (the default) allows an unlimited number to be returned.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectBuckets": {
+                    "type": "string",
+                    "description": "The maximum number of `GROUP BY time()` buckets that \ncan be processed in a query. Setting this to 0 (the default) allows an unlimited number to\nbe processed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectPoint": {
+                    "type": "string",
+                    "description": "The maximum number of points that can be processed in a \nSELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryTimeout": {
+                    "type": "string",
+                    "description": "The maximum duration in seconds before a query is killed. \nSetting this to 0 (the default) will never kill slow queries.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11395,6 +11881,227 @@
                 "sourceServiceName"
             ]
         },
+        "aiven:index/getKafkaTopicConfig:getKafkaTopicConfig": {
+            "properties": {
+                "cleanupPolicy": {
+                    "type": "string",
+                    "description": "cleanup.policy value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "compressionType": {
+                    "type": "string",
+                    "description": "compression.type value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deleteRetentionMs": {
+                    "type": "string",
+                    "description": "delete.retention.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fileDeleteDelayMs": {
+                    "type": "string",
+                    "description": "file.delete.delay.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "flushMessages": {
+                    "type": "string",
+                    "description": "flush.messages value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "flushMs": {
+                    "type": "string",
+                    "description": "flush.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "indexIntervalBytes": {
+                    "type": "string",
+                    "description": "index.interval.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxCompactionLagMs": {
+                    "type": "string",
+                    "description": "max.compaction.lag.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxMessageBytes": {
+                    "type": "string",
+                    "description": "max.message.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageDownconversionEnable": {
+                    "type": "string",
+                    "description": "message.downconversion.enable value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageFormatVersion": {
+                    "type": "string",
+                    "description": "message.format.version value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageTimestampDifferenceMaxMs": {
+                    "type": "string",
+                    "description": "message.timestamp.difference.max.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageTimestampType": {
+                    "type": "string",
+                    "description": "message.timestamp.type value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minCleanableDirtyRatio": {
+                    "type": "string",
+                    "description": "min.cleanable.dirty.ratio value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minCompactionLagMs": {
+                    "type": "string",
+                    "description": "min.compaction.lag.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minInsyncReplicas": {
+                    "type": "string",
+                    "description": "min.insync.replicas value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preallocate": {
+                    "type": "string",
+                    "description": "preallocate value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionBytes": {
+                    "type": "string",
+                    "description": "retention.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionMs": {
+                    "type": "string",
+                    "description": "retention.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentBytes": {
+                    "type": "string",
+                    "description": "segment.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentIndexBytes": {
+                    "type": "string",
+                    "description": "segment.index.bytes value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentJitterMs": {
+                    "type": "string",
+                    "description": "segment.jitter.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentMs": {
+                    "type": "string",
+                    "description": "segment.ms value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uncleanLeaderElectionEnable": {
+                    "type": "string",
+                    "description": "unclean.leader.election.enable value\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getMySqlComponent:getMySqlComponent": {
             "properties": {
                 "component": {
@@ -12408,9 +13115,27 @@
                         }
                     }
                 },
+                "maxFilesPerProcess": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum number of files that can be open per process\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxLocksPerTransaction": {
                     "type": "string",
                     "description": "PostgreSQL maximum locks per transaction\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxLogicalReplicationWorkers": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum logical replication workers \n(taken from the pool of max_parallel_workers)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12453,6 +13178,15 @@
                         }
                     }
                 },
+                "maxReplicationSlots": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum replication slots\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxStackDepth": {
                     "type": "string",
                     "description": "Maximum depth of the stack in bytes\n",
@@ -12474,6 +13208,15 @@
                 "maxStandbyStreamingDelay": {
                     "type": "string",
                     "description": "Max standby streaming delay in milliseconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxWalSenders": {
+                    "type": "string",
+                    "description": "PostgreSQL maximum WAL senders\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14232,6 +14975,14 @@
                         }
                     }
                 },
+                "starttlsPolicy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "username": {
                     "type": "string",
                     "language": {
@@ -14274,6 +15025,14 @@
                         }
                     }
                 },
+                "influxdb": {
+                    "$ref": "#/types/aiven:index/getServiceInfluxdbUserConfigInfluxdb:getServiceInfluxdbUserConfigInfluxdb",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -14310,6 +15069,51 @@
                     }
                 },
                 "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceInfluxdbUserConfigInfluxdb:getServiceInfluxdbUserConfigInfluxdb": {
+            "properties": {
+                "logQueriesAfter": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxRowLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectBuckets": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSelectPoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryTimeout": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16313,7 +17117,23 @@
                         }
                     }
                 },
+                "maxFilesPerProcess": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxLocksPerTransaction": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxLogicalReplicationWorkers": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16353,6 +17173,14 @@
                         }
                     }
                 },
+                "maxReplicationSlots": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxStackDepth": {
                     "type": "string",
                     "language": {
@@ -16370,6 +17198,14 @@
                     }
                 },
                 "maxStandbyStreamingDelay": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxWalSenders": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -18399,7 +19235,7 @@
                 },
                 "influxdb": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb",
-                    "description": "Allow clients to connect to influxdb from the public internet for \nservice nodes that are in a project VPC or another type of private network\n"
+                    "description": "influxdb.conf configuration values\n"
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
@@ -18489,7 +19325,7 @@
                 },
                 "influxdb": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb",
-                    "description": "Allow clients to connect to influxdb from the public internet for \nservice nodes that are in a project VPC or another type of private network\n"
+                    "description": "influxdb.conf configuration values\n"
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
@@ -18551,7 +19387,7 @@
                     },
                     "influxdb": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb",
-                        "description": "Allow clients to connect to influxdb from the public internet for \nservice nodes that are in a project VPC or another type of private network\n"
+                        "description": "influxdb.conf configuration values\n"
                     },
                     "influxdbUserConfig": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
@@ -19785,11 +20621,17 @@
             "properties": {
                 "cleanupPolicy": {
                     "type": "string",
-                    "description": "Topic cleanup policy. Allowed values: delete, compact.\n"
+                    "description": "cleanup.policy value\n",
+                    "deprecationMessage": "use config.cleanup_policy instead"
+                },
+                "config": {
+                    "$ref": "#/types/aiven:index/KafkaTopicConfig:KafkaTopicConfig",
+                    "description": "Kafka topic configuration\n"
                 },
                 "minimumInSyncReplicas": {
                     "type": "integer",
-                    "description": "Minimum required nodes in-sync replicas (ISR) to produce to a partition.\n"
+                    "description": "Minimum required nodes in-sync replicas \n(ISR) to produce to a partition.\n",
+                    "deprecationMessage": "use config.min_insync_replicas instead"
                 },
                 "partitions": {
                     "type": "integer",
@@ -19805,11 +20647,13 @@
                 },
                 "retentionBytes": {
                     "type": "integer",
-                    "description": "Retention bytes.\n"
+                    "description": "retention.bytes value\n",
+                    "deprecationMessage": "use config.retention_bytes instead"
                 },
                 "retentionHours": {
                     "type": "integer",
-                    "description": "Retention period in hours, if -1 it is infinite.\n"
+                    "description": "Retention period in hours, if -1 it is infinite.\n",
+                    "deprecationMessage": "use config.retention_ms instead"
                 },
                 "serviceName": {
                     "type": "string",
@@ -19834,11 +20678,17 @@
             "inputProperties": {
                 "cleanupPolicy": {
                     "type": "string",
-                    "description": "Topic cleanup policy. Allowed values: delete, compact.\n"
+                    "description": "cleanup.policy value\n",
+                    "deprecationMessage": "use config.cleanup_policy instead"
+                },
+                "config": {
+                    "$ref": "#/types/aiven:index/KafkaTopicConfig:KafkaTopicConfig",
+                    "description": "Kafka topic configuration\n"
                 },
                 "minimumInSyncReplicas": {
                     "type": "integer",
-                    "description": "Minimum required nodes in-sync replicas (ISR) to produce to a partition.\n"
+                    "description": "Minimum required nodes in-sync replicas \n(ISR) to produce to a partition.\n",
+                    "deprecationMessage": "use config.min_insync_replicas instead"
                 },
                 "partitions": {
                     "type": "integer",
@@ -19854,11 +20704,13 @@
                 },
                 "retentionBytes": {
                     "type": "integer",
-                    "description": "Retention bytes.\n"
+                    "description": "retention.bytes value\n",
+                    "deprecationMessage": "use config.retention_bytes instead"
                 },
                 "retentionHours": {
                     "type": "integer",
-                    "description": "Retention period in hours, if -1 it is infinite.\n"
+                    "description": "Retention period in hours, if -1 it is infinite.\n",
+                    "deprecationMessage": "use config.retention_ms instead"
                 },
                 "serviceName": {
                     "type": "string",
@@ -19885,11 +20737,17 @@
                 "properties": {
                     "cleanupPolicy": {
                         "type": "string",
-                        "description": "Topic cleanup policy. Allowed values: delete, compact.\n"
+                        "description": "cleanup.policy value\n",
+                        "deprecationMessage": "use config.cleanup_policy instead"
+                    },
+                    "config": {
+                        "$ref": "#/types/aiven:index/KafkaTopicConfig:KafkaTopicConfig",
+                        "description": "Kafka topic configuration\n"
                     },
                     "minimumInSyncReplicas": {
                         "type": "integer",
-                        "description": "Minimum required nodes in-sync replicas (ISR) to produce to a partition.\n"
+                        "description": "Minimum required nodes in-sync replicas \n(ISR) to produce to a partition.\n",
+                        "deprecationMessage": "use config.min_insync_replicas instead"
                     },
                     "partitions": {
                         "type": "integer",
@@ -19905,11 +20763,13 @@
                     },
                     "retentionBytes": {
                         "type": "integer",
-                        "description": "Retention bytes.\n"
+                        "description": "retention.bytes value\n",
+                        "deprecationMessage": "use config.retention_bytes instead"
                     },
                     "retentionHours": {
                         "type": "integer",
-                        "description": "Retention period in hours, if -1 it is infinite.\n"
+                        "description": "Retention period in hours, if -1 it is infinite.\n",
+                        "deprecationMessage": "use config.retention_ms instead"
                     },
                     "serviceName": {
                         "type": "string",
@@ -24606,13 +25466,17 @@
             }
         },
         "aiven:index/getKafkaTopic:getKafkaTopic": {
-            "description": "## # Kafka Topic Data Source\n\nThe Kafka Topic data source provides information about the existing Aiven Kafka Topic.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mytesttopic = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) =\u003e aiven.getKafkaTopic({\n    project: project,\n    serviceName: serviceName,\n    topicName: \"\u003cTOPIC_NAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmytesttopic = aiven.get_kafka_topic(project=aiven_project[\"myproject\"][\"project\"],\n    service_name=aiven_service[\"myservice\"][\"service_name\"],\n    topic_name=\"\u003cTOPIC_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mytesttopic = Output.Create(Aiven.GetKafkaTopic.InvokeAsync(new Aiven.GetKafkaTopicArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            ServiceName = aiven_service.Myservice.Service_name,\n            TopicName = \"\u003cTOPIC_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupKafkaTopic(ctx, \u0026aiven.LookupKafkaTopicArgs{\n\t\t\tProject:     aiven_project.Myproject.Project,\n\t\t\tServiceName: aiven_service.Myservice.Service_name,\n\t\t\tTopicName:   \"\u003cTOPIC_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Kafka Topic Data Source\n\nThe Kafka Topic data source provides information about the existing Aiven Kafka Topic.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mytesttopic = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) =\u003e aiven.getKafkaTopic({\n    config: {\n        cleanupPolicy: \"compact\",\n        flushMs: \"10\",\n        uncleanLeaderElectionEnable: \"true\",\n    },\n    partitions: 3,\n    project: project,\n    replication: 1,\n    serviceName: serviceName,\n    topicName: \"\u003cTOPIC_NAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmytesttopic = aiven.get_kafka_topic(config=aiven.GetKafkaTopicConfigArgs(\n        cleanup_policy=\"compact\",\n        flush_ms=\"10\",\n        unclean_leader_election_enable=\"true\",\n    ),\n    partitions=3,\n    project=aiven_project[\"myproject\"][\"project\"],\n    replication=1,\n    service_name=aiven_service[\"myservice\"][\"service_name\"],\n    topic_name=\"\u003cTOPIC_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mytesttopic = Output.Create(Aiven.GetKafkaTopic.InvokeAsync(new Aiven.GetKafkaTopicArgs\n        {\n            Config = new Aiven.Inputs.GetKafkaTopicConfigArgs\n            {\n                CleanupPolicy = \"compact\",\n                FlushMs = \"10\",\n                UncleanLeaderElectionEnable = \"true\",\n            },\n            Partitions = 3,\n            Project = aiven_project.Myproject.Project,\n            Replication = 1,\n            ServiceName = aiven_service.Myservice.Service_name,\n            TopicName = \"\u003cTOPIC_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := 3\n\t\topt1 := 1\n\t\t_, err := aiven.LookupKafkaTopic(ctx, \u0026aiven.LookupKafkaTopicArgs{\n\t\t\tConfig: aiven.GetKafkaTopicConfig{\n\t\t\t\tCleanupPolicy:               \"compact\",\n\t\t\t\tFlushMs:                     \"10\",\n\t\t\t\tUncleanLeaderElectionEnable: \"true\",\n\t\t\t},\n\t\t\tPartitions:  \u0026opt0,\n\t\t\tProject:     aiven_project.Myproject.Project,\n\t\t\tReplication: \u0026opt1,\n\t\t\tServiceName: aiven_service.Myservice.Service_name,\n\t\t\tTopicName:   \"\u003cTOPIC_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getKafkaTopic.\n",
                 "properties": {
                     "cleanupPolicy": {
                         "type": "string",
-                        "description": "Topic cleanup policy. Allowed values: delete, compact.\n"
+                        "description": "cleanup.policy value\n"
+                    },
+                    "config": {
+                        "$ref": "#/types/aiven:index/getKafkaTopicConfig:getKafkaTopicConfig",
+                        "description": "Kafka topic configuration\n"
                     },
                     "minimumInSyncReplicas": {
                         "type": "integer",
@@ -24632,7 +25496,7 @@
                     },
                     "retentionBytes": {
                         "type": "integer",
-                        "description": "Retention bytes.\n"
+                        "description": "retention.bytes value\n"
                     },
                     "retentionHours": {
                         "type": "integer",
@@ -24661,7 +25525,11 @@
                 "properties": {
                     "cleanupPolicy": {
                         "type": "string",
-                        "description": "Topic cleanup policy. Allowed values: delete, compact.\n"
+                        "description": "cleanup.policy value\n"
+                    },
+                    "config": {
+                        "$ref": "#/types/aiven:index/getKafkaTopicConfig:getKafkaTopicConfig",
+                        "description": "Kafka topic configuration\n"
                     },
                     "id": {
                         "type": "string",
@@ -24684,7 +25552,7 @@
                     },
                     "retentionBytes": {
                         "type": "integer",
-                        "description": "Retention bytes.\n"
+                        "description": "retention.bytes value\n"
                     },
                     "retentionHours": {
                         "type": "integer",

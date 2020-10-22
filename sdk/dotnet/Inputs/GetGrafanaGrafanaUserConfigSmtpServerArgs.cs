@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetGrafanaGrafanaUserConfigSmtpServerArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (Required) Address used for sending emails
+        /// Address used for sending emails
         /// </summary>
         [Input("fromAddress")]
         public string? FromAddress { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public string? FromName { get; set; }
 
         /// <summary>
-        /// (Required) Server hostname or IP
+        /// Server hostname or IP
         /// </summary>
         [Input("host")]
         public string? Host { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public string? Password { get; set; }
 
         /// <summary>
-        /// (Required) SMTP server port
+        /// SMTP server port
         /// </summary>
         [Input("port")]
         public string? Port { get; set; }
@@ -47,6 +47,13 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("skipVerify")]
         public string? SkipVerify { get; set; }
+
+        /// <summary>
+        /// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+        /// Default is OpportunisticStartTLS.
+        /// </summary>
+        [Input("starttlsPolicy")]
+        public string? StarttlsPolicy { get; set; }
 
         /// <summary>
         /// Username for SMTP authentication

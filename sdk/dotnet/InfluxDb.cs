@@ -66,8 +66,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.InfluxDbComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Allow clients to connect to influxdb from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// influxdb.conf configuration values
         /// </summary>
         [Output("influxdb")]
         public Output<Outputs.InfluxDbInfluxdb> Influxdb { get; private set; } = null!;
@@ -250,8 +249,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to influxdb from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// influxdb.conf configuration values
         /// </summary>
         [Input("influxdb")]
         public Input<Inputs.InfluxDbInfluxdbArgs>? Influxdb { get; set; }
@@ -371,8 +369,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Allow clients to connect to influxdb from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// influxdb.conf configuration values
         /// </summary>
         [Input("influxdb")]
         public Input<Inputs.InfluxDbInfluxdbGetArgs>? Influxdb { get; set; }

@@ -45,13 +45,20 @@ namespace Pulumi.Aiven
     public partial class KafkaTopic : Pulumi.CustomResource
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact.
+        /// cleanup.policy value
         /// </summary>
         [Output("cleanupPolicy")]
         public Output<string?> CleanupPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        /// Kafka topic configuration
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.KafkaTopicConfig?> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum required nodes in-sync replicas 
+        /// (ISR) to produce to a partition.
         /// </summary>
         [Output("minimumInSyncReplicas")]
         public Output<int?> MinimumInSyncReplicas { get; private set; } = null!;
@@ -78,7 +85,7 @@ namespace Pulumi.Aiven
         public Output<int> Replication { get; private set; } = null!;
 
         /// <summary>
-        /// Retention bytes.
+        /// retention.bytes value
         /// </summary>
         [Output("retentionBytes")]
         public Output<int?> RetentionBytes { get; private set; } = null!;
@@ -157,13 +164,20 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact.
+        /// cleanup.policy value
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
 
         /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        /// Kafka topic configuration
+        /// </summary>
+        [Input("config")]
+        public Input<Inputs.KafkaTopicConfigArgs>? Config { get; set; }
+
+        /// <summary>
+        /// Minimum required nodes in-sync replicas 
+        /// (ISR) to produce to a partition.
         /// </summary>
         [Input("minimumInSyncReplicas")]
         public Input<int>? MinimumInSyncReplicas { get; set; }
@@ -190,7 +204,7 @@ namespace Pulumi.Aiven
         public Input<int> Replication { get; set; } = null!;
 
         /// <summary>
-        /// Retention bytes.
+        /// retention.bytes value
         /// </summary>
         [Input("retentionBytes")]
         public Input<int>? RetentionBytes { get; set; }
@@ -230,13 +244,20 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Topic cleanup policy. Allowed values: delete, compact.
+        /// cleanup.policy value
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
 
         /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        /// Kafka topic configuration
+        /// </summary>
+        [Input("config")]
+        public Input<Inputs.KafkaTopicConfigGetArgs>? Config { get; set; }
+
+        /// <summary>
+        /// Minimum required nodes in-sync replicas 
+        /// (ISR) to produce to a partition.
         /// </summary>
         [Input("minimumInSyncReplicas")]
         public Input<int>? MinimumInSyncReplicas { get; set; }
@@ -263,7 +284,7 @@ namespace Pulumi.Aiven
         public Input<int>? Replication { get; set; }
 
         /// <summary>
-        /// Retention bytes.
+        /// retention.bytes value
         /// </summary>
         [Input("retentionBytes")]
         public Input<int>? RetentionBytes { get; set; }

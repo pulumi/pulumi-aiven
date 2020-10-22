@@ -124,10 +124,23 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? LogMinDurationStatement { get; set; }
 
         /// <summary>
+        /// PostgreSQL maximum number of files that can be open per process
+        /// </summary>
+        [Input("maxFilesPerProcess")]
+        public Input<string>? MaxFilesPerProcess { get; set; }
+
+        /// <summary>
         /// PostgreSQL maximum locks per transaction
         /// </summary>
         [Input("maxLocksPerTransaction")]
         public Input<string>? MaxLocksPerTransaction { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum logical replication workers 
+        /// (taken from the pool of max_parallel_workers)
+        /// </summary>
+        [Input("maxLogicalReplicationWorkers")]
+        public Input<string>? MaxLogicalReplicationWorkers { get; set; }
 
         /// <summary>
         /// Sets the maximum number of workers that the system can 
@@ -156,6 +169,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? MaxPreparedTransactions { get; set; }
 
         /// <summary>
+        /// PostgreSQL maximum replication slots
+        /// </summary>
+        [Input("maxReplicationSlots")]
+        public Input<string>? MaxReplicationSlots { get; set; }
+
+        /// <summary>
         /// Maximum depth of the stack in bytes
         /// </summary>
         [Input("maxStackDepth")]
@@ -172,6 +191,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("maxStandbyStreamingDelay")]
         public Input<string>? MaxStandbyStreamingDelay { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum WAL senders
+        /// </summary>
+        [Input("maxWalSenders")]
+        public Input<string>? MaxWalSenders { get; set; }
 
         /// <summary>
         /// Sets the maximum number of background processes that the system

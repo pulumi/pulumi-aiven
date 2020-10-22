@@ -48,9 +48,16 @@ import (
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
-	// Topic cleanup policy. Allowed values: delete, compact.
+	// cleanup.policy value
+	//
+	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy pulumi.StringPtrOutput `pulumi:"cleanupPolicy"`
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	// Kafka topic configuration
+	Config KafkaTopicConfigPtrOutput `pulumi:"config"`
+	// Minimum required nodes in-sync replicas
+	// (ISR) to produce to a partition.
+	//
+	// Deprecated: use config.min_insync_replicas instead
 	MinimumInSyncReplicas pulumi.IntPtrOutput `pulumi:"minimumInSyncReplicas"`
 	// Number of partitions to create in the topic.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
@@ -61,9 +68,13 @@ type KafkaTopic struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Replication factor for the topic.
 	Replication pulumi.IntOutput `pulumi:"replication"`
-	// Retention bytes.
+	// retention.bytes value
+	//
+	// Deprecated: use config.retention_bytes instead
 	RetentionBytes pulumi.IntPtrOutput `pulumi:"retentionBytes"`
 	// Retention period in hours, if -1 it is infinite.
+	//
+	// Deprecated: use config.retention_ms instead
 	RetentionHours pulumi.IntPtrOutput `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -119,9 +130,16 @@ func GetKafkaTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaTopic resources.
 type kafkaTopicState struct {
-	// Topic cleanup policy. Allowed values: delete, compact.
+	// cleanup.policy value
+	//
+	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	// Kafka topic configuration
+	Config *KafkaTopicConfig `pulumi:"config"`
+	// Minimum required nodes in-sync replicas
+	// (ISR) to produce to a partition.
+	//
+	// Deprecated: use config.min_insync_replicas instead
 	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
 	// Number of partitions to create in the topic.
 	Partitions *int `pulumi:"partitions"`
@@ -132,9 +150,13 @@ type kafkaTopicState struct {
 	Project *string `pulumi:"project"`
 	// Replication factor for the topic.
 	Replication *int `pulumi:"replication"`
-	// Retention bytes.
+	// retention.bytes value
+	//
+	// Deprecated: use config.retention_bytes instead
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Retention period in hours, if -1 it is infinite.
+	//
+	// Deprecated: use config.retention_ms instead
 	RetentionHours *int `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName *string `pulumi:"serviceName"`
@@ -148,9 +170,16 @@ type kafkaTopicState struct {
 }
 
 type KafkaTopicState struct {
-	// Topic cleanup policy. Allowed values: delete, compact.
+	// cleanup.policy value
+	//
+	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy pulumi.StringPtrInput
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	// Kafka topic configuration
+	Config KafkaTopicConfigPtrInput
+	// Minimum required nodes in-sync replicas
+	// (ISR) to produce to a partition.
+	//
+	// Deprecated: use config.min_insync_replicas instead
 	MinimumInSyncReplicas pulumi.IntPtrInput
 	// Number of partitions to create in the topic.
 	Partitions pulumi.IntPtrInput
@@ -161,9 +190,13 @@ type KafkaTopicState struct {
 	Project pulumi.StringPtrInput
 	// Replication factor for the topic.
 	Replication pulumi.IntPtrInput
-	// Retention bytes.
+	// retention.bytes value
+	//
+	// Deprecated: use config.retention_bytes instead
 	RetentionBytes pulumi.IntPtrInput
 	// Retention period in hours, if -1 it is infinite.
+	//
+	// Deprecated: use config.retention_ms instead
 	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringPtrInput
@@ -181,9 +214,16 @@ func (KafkaTopicState) ElementType() reflect.Type {
 }
 
 type kafkaTopicArgs struct {
-	// Topic cleanup policy. Allowed values: delete, compact.
+	// cleanup.policy value
+	//
+	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	// Kafka topic configuration
+	Config *KafkaTopicConfig `pulumi:"config"`
+	// Minimum required nodes in-sync replicas
+	// (ISR) to produce to a partition.
+	//
+	// Deprecated: use config.min_insync_replicas instead
 	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
 	// Number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
@@ -194,9 +234,13 @@ type kafkaTopicArgs struct {
 	Project string `pulumi:"project"`
 	// Replication factor for the topic.
 	Replication int `pulumi:"replication"`
-	// Retention bytes.
+	// retention.bytes value
+	//
+	// Deprecated: use config.retention_bytes instead
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Retention period in hours, if -1 it is infinite.
+	//
+	// Deprecated: use config.retention_ms instead
 	RetentionHours *int `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName string `pulumi:"serviceName"`
@@ -211,9 +255,16 @@ type kafkaTopicArgs struct {
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
-	// Topic cleanup policy. Allowed values: delete, compact.
+	// cleanup.policy value
+	//
+	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy pulumi.StringPtrInput
-	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	// Kafka topic configuration
+	Config KafkaTopicConfigPtrInput
+	// Minimum required nodes in-sync replicas
+	// (ISR) to produce to a partition.
+	//
+	// Deprecated: use config.min_insync_replicas instead
 	MinimumInSyncReplicas pulumi.IntPtrInput
 	// Number of partitions to create in the topic.
 	Partitions pulumi.IntInput
@@ -224,9 +275,13 @@ type KafkaTopicArgs struct {
 	Project pulumi.StringInput
 	// Replication factor for the topic.
 	Replication pulumi.IntInput
-	// Retention bytes.
+	// retention.bytes value
+	//
+	// Deprecated: use config.retention_bytes instead
 	RetentionBytes pulumi.IntPtrInput
 	// Retention period in hours, if -1 it is infinite.
+	//
+	// Deprecated: use config.retention_ms instead
 	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringInput

@@ -49,6 +49,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SkipVerify { get; set; }
 
         /// <summary>
+        /// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+        /// Default is OpportunisticStartTLS.
+        /// </summary>
+        [Input("starttlsPolicy")]
+        public Input<string>? StarttlsPolicy { get; set; }
+
+        /// <summary>
         /// Username for SMTP authentication
         /// </summary>
         [Input("username")]

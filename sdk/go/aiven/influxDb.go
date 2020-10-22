@@ -59,8 +59,7 @@ type InfluxDb struct {
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components InfluxDbComponentArrayOutput `pulumi:"components"`
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb InfluxDbInfluxdbOutput `pulumi:"influxdb"`
 	// defines InfluxDB specific additional configuration options. The following
 	// configuration options available:
@@ -163,8 +162,7 @@ type influxDbState struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []InfluxDbComponent `pulumi:"components"`
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb *InfluxDbInfluxdb `pulumi:"influxdb"`
 	// defines InfluxDB specific additional configuration options. The following
 	// configuration options available:
@@ -234,8 +232,7 @@ type InfluxDbState struct {
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components InfluxDbComponentArrayInput
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb InfluxDbInfluxdbPtrInput
 	// defines InfluxDB specific additional configuration options. The following
 	// configuration options available:
@@ -307,8 +304,7 @@ type influxDbArgs struct {
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
 	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb *InfluxDbInfluxdb `pulumi:"influxdb"`
 	// defines InfluxDB specific additional configuration options. The following
 	// configuration options available:
@@ -363,8 +359,7 @@ type InfluxDbArgs struct {
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
 	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb InfluxDbInfluxdbPtrInput
 	// defines InfluxDB specific additional configuration options. The following
 	// configuration options available:

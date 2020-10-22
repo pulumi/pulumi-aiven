@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AllowSignUp;
         /// <summary>
-        /// (Required) Require users to belong to one of given groups
+        /// Require users to belong to one of given groups
         /// </summary>
         public readonly ImmutableArray<string> AllowedGroups;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AuthUrl;
         /// <summary>
-        /// (Required) Client ID from provider
+        /// Client ID from provider
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// (Required) Client secret from provider
+        /// Client secret from provider
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>

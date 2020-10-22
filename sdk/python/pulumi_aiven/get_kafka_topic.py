@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetKafkaTopicResult',
@@ -19,10 +21,13 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, cleanup_policy=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
+    def __init__(__self__, cleanup_policy=None, config=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
         if cleanup_policy and not isinstance(cleanup_policy, str):
             raise TypeError("Expected argument 'cleanup_policy' to be a str")
         pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if config and not isinstance(config, dict):
+            raise TypeError("Expected argument 'config' to be a dict")
+        pulumi.set(__self__, "config", config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -58,9 +63,17 @@ class GetKafkaTopicResult:
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[str]:
         """
-        Topic cleanup policy. Allowed values: delete, compact.
+        cleanup.policy value
         """
         return pulumi.get(self, "cleanup_policy")
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional['outputs.GetKafkaTopicConfigResult']:
+        """
+        Kafka topic configuration
+        """
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter
@@ -103,7 +116,7 @@ class GetKafkaTopicResult:
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> Optional[int]:
         """
-        Retention bytes.
+        retention.bytes value
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -138,6 +151,7 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             yield self
         return GetKafkaTopicResult(
             cleanup_policy=self.cleanup_policy,
+            config=self.config,
             id=self.id,
             minimum_in_sync_replicas=self.minimum_in_sync_replicas,
             partitions=self.partitions,
@@ -151,6 +165,7 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
 
 
 def get_kafka_topic(cleanup_policy: Optional[str] = None,
+                    config: Optional[pulumi.InputType['GetKafkaTopicConfigArgs']] = None,
                     minimum_in_sync_replicas: Optional[int] = None,
                     partitions: Optional[int] = None,
                     project: Optional[str] = None,
@@ -172,13 +187,21 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
+    mytesttopic = aiven.get_kafka_topic(config=aiven.GetKafkaTopicConfigArgs(
+            cleanup_policy="compact",
+            flush_ms="10",
+            unclean_leader_election_enable="true",
+        ),
+        partitions=3,
+        project=aiven_project["myproject"]["project"],
+        replication=1,
         service_name=aiven_service["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
 
 
-    :param str cleanup_policy: Topic cleanup policy. Allowed values: delete, compact.
+    :param str cleanup_policy: cleanup.policy value
+    :param pulumi.InputType['GetKafkaTopicConfigArgs'] config: Kafka topic configuration
     :param int minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
     :param int partitions: Number of partitions to create in the topic.
     :param str project: and `service_name` - (Required) define the project and service the topic belongs to.
@@ -186,7 +209,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
            These properties cannot be changed once the service is created. Doing so will result in
            the topic being deleted and new one created instead.
     :param int replication: Replication factor for the topic.
-    :param int retention_bytes: Retention bytes.
+    :param int retention_bytes: retention.bytes value
     :param int retention_hours: Retention period in hours, if -1 it is infinite.
     :param str topic_name: is the actual name of the topic account. This propery cannot be changed
            once the service is created. Doing so will result in the topic being deleted and new one
@@ -194,6 +217,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
     """
     __args__ = dict()
     __args__['cleanupPolicy'] = cleanup_policy
+    __args__['config'] = config
     __args__['minimumInSyncReplicas'] = minimum_in_sync_replicas
     __args__['partitions'] = partitions
     __args__['project'] = project
@@ -211,6 +235,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
 
     return AwaitableGetKafkaTopicResult(
         cleanup_policy=__ret__.cleanup_policy,
+        config=__ret__.config,
         id=__ret__.id,
         minimum_in_sync_replicas=__ret__.minimum_in_sync_replicas,
         partitions=__ret__.partitions,
