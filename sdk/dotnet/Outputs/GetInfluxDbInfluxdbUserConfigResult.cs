@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
+        /// InfluxDB specific server provided values.
+        /// </summary>
+        public readonly Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? Influxdb;
+        /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
@@ -43,6 +47,8 @@ namespace Pulumi.Aiven.Outputs
         private GetInfluxDbInfluxdbUserConfigResult(
             string? customDomain,
 
+            Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? influxdb,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? privateAccess,
@@ -54,6 +60,7 @@ namespace Pulumi.Aiven.Outputs
             string? serviceToForkFrom)
         {
             CustomDomain = customDomain;
+            Influxdb = influxdb;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;

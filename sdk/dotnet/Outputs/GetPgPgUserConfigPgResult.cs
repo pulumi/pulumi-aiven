@@ -95,9 +95,18 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogMinDurationStatement;
         /// <summary>
+        /// PostgreSQL maximum number of files that can be open per process
+        /// </summary>
+        public readonly string? MaxFilesPerProcess;
+        /// <summary>
         /// PostgreSQL maximum locks per transaction
         /// </summary>
         public readonly string? MaxLocksPerTransaction;
+        /// <summary>
+        /// PostgreSQL maximum logical replication workers 
+        /// (taken from the pool of max_parallel_workers)
+        /// </summary>
+        public readonly string? MaxLogicalReplicationWorkers;
         /// <summary>
         /// Sets the maximum number of workers that the system can 
         /// support for parallel queries.
@@ -117,6 +126,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? MaxPreparedTransactions;
         /// <summary>
+        /// PostgreSQL maximum replication slots
+        /// </summary>
+        public readonly string? MaxReplicationSlots;
+        /// <summary>
         /// Maximum depth of the stack in bytes
         /// </summary>
         public readonly string? MaxStackDepth;
@@ -128,6 +141,10 @@ namespace Pulumi.Aiven.Outputs
         /// Max standby streaming delay in milliseconds
         /// </summary>
         public readonly string? MaxStandbyStreamingDelay;
+        /// <summary>
+        /// PostgreSQL maximum WAL senders
+        /// </summary>
+        public readonly string? MaxWalSenders;
         /// <summary>
         /// Sets the maximum number of background processes that the system
         /// can support
@@ -207,7 +224,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? logMinDurationStatement,
 
+            string? maxFilesPerProcess,
+
             string? maxLocksPerTransaction,
+
+            string? maxLogicalReplicationWorkers,
 
             string? maxParallelWorkers,
 
@@ -217,11 +238,15 @@ namespace Pulumi.Aiven.Outputs
 
             string? maxPreparedTransactions,
 
+            string? maxReplicationSlots,
+
             string? maxStackDepth,
 
             string? maxStandbyArchiveDelay,
 
             string? maxStandbyStreamingDelay,
+
+            string? maxWalSenders,
 
             string? maxWorkerProcesses,
 
@@ -260,14 +285,18 @@ namespace Pulumi.Aiven.Outputs
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
             LogErrorVerbosity = logErrorVerbosity;
             LogMinDurationStatement = logMinDurationStatement;
+            MaxFilesPerProcess = maxFilesPerProcess;
             MaxLocksPerTransaction = maxLocksPerTransaction;
+            MaxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
             MaxParallelWorkers = maxParallelWorkers;
             MaxParallelWorkersPerGather = maxParallelWorkersPerGather;
             MaxPredLocksPerTransaction = maxPredLocksPerTransaction;
             MaxPreparedTransactions = maxPreparedTransactions;
+            MaxReplicationSlots = maxReplicationSlots;
             MaxStackDepth = maxStackDepth;
             MaxStandbyArchiveDelay = maxStandbyArchiveDelay;
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;
+            MaxWalSenders = maxWalSenders;
             MaxWorkerProcesses = maxWorkerProcesses;
             PgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             PgPartmanBgwDotRole = pgPartmanBgwDotRole;

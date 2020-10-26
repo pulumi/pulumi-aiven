@@ -23,8 +23,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := 3
+// 		opt1 := 1
 // 		_, err := aiven.LookupKafkaTopic(ctx, &aiven.LookupKafkaTopicArgs{
+// 			Config: aiven.GetKafkaTopicConfig{
+// 				CleanupPolicy:               "compact",
+// 				FlushMs:                     "10",
+// 				UncleanLeaderElectionEnable: "true",
+// 			},
+// 			Partitions:  &opt0,
 // 			Project:     aiven_project.Myproject.Project,
+// 			Replication: &opt1,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			TopicName:   "<TOPIC_NAME>",
 // 		}, nil)
@@ -46,8 +55,10 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...p
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicArgs struct {
-	// Topic cleanup policy. Allowed values: delete, compact.
+	// cleanup.policy value
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Kafka topic configuration
+	Config *GetKafkaTopicConfig `pulumi:"config"`
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
 	MinimumInSyncReplicas *int `pulumi:"minimumInSyncReplicas"`
 	// Number of partitions to create in the topic.
@@ -59,7 +70,7 @@ type LookupKafkaTopicArgs struct {
 	Project string `pulumi:"project"`
 	// Replication factor for the topic.
 	Replication *int `pulumi:"replication"`
-	// Retention bytes.
+	// retention.bytes value
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Retention period in hours, if -1 it is infinite.
 	RetentionHours        *int   `pulumi:"retentionHours"`
@@ -73,8 +84,10 @@ type LookupKafkaTopicArgs struct {
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
-	// Topic cleanup policy. Allowed values: delete, compact.
+	// cleanup.policy value
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Kafka topic configuration
+	Config *GetKafkaTopicConfig `pulumi:"config"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
@@ -84,7 +97,7 @@ type LookupKafkaTopicResult struct {
 	Project    string `pulumi:"project"`
 	// Replication factor for the topic.
 	Replication *int `pulumi:"replication"`
-	// Retention bytes.
+	// retention.bytes value
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Retention period in hours, if -1 it is infinite.
 	RetentionHours        *int   `pulumi:"retentionHours"`

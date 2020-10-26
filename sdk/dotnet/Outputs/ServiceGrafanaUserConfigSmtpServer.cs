@@ -19,6 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? Password;
         public readonly string? Port;
         public readonly string? SkipVerify;
+        public readonly string? StarttlsPolicy;
         public readonly string? Username;
 
         [OutputConstructor]
@@ -35,6 +36,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? skipVerify,
 
+            string? starttlsPolicy,
+
             string? username)
         {
             FromAddress = fromAddress;
@@ -43,6 +46,7 @@ namespace Pulumi.Aiven.Outputs
             Password = password;
             Port = port;
             SkipVerify = skipVerify;
+            StarttlsPolicy = starttlsPolicy;
             Username = username;
         }
     }

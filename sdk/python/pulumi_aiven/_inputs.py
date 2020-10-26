@@ -41,6 +41,7 @@ __all__ = [
     'InfluxDbComponentArgs',
     'InfluxDbInfluxdbArgs',
     'InfluxDbInfluxdbUserConfigArgs',
+    'InfluxDbInfluxdbUserConfigInfluxdbArgs',
     'InfluxDbInfluxdbUserConfigPrivateAccessArgs',
     'InfluxDbInfluxdbUserConfigPublicAccessArgs',
     'InfluxDbServiceIntegrationArgs',
@@ -67,6 +68,7 @@ __all__ = [
     'KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs',
     'KafkaMirrorMakerServiceIntegrationArgs',
     'KafkaServiceIntegrationArgs',
+    'KafkaTopicConfigArgs',
     'MySqlComponentArgs',
     'MySqlMysqlArgs',
     'MySqlMysqlUserConfigArgs',
@@ -116,6 +118,7 @@ __all__ = [
     'ServiceGrafanaUserConfigSmtpServerArgs',
     'ServiceInfluxdbArgs',
     'ServiceInfluxdbUserConfigArgs',
+    'ServiceInfluxdbUserConfigInfluxdbArgs',
     'ServiceInfluxdbUserConfigPrivateAccessArgs',
     'ServiceInfluxdbUserConfigPublicAccessArgs',
     'ServiceIntegrationEndpointDatadogUserConfigArgs',
@@ -200,6 +203,7 @@ __all__ = [
     'GetInfluxDbComponentArgs',
     'GetInfluxDbInfluxdbArgs',
     'GetInfluxDbInfluxdbUserConfigArgs',
+    'GetInfluxDbInfluxdbUserConfigInfluxdbArgs',
     'GetInfluxDbInfluxdbUserConfigPrivateAccessArgs',
     'GetInfluxDbInfluxdbUserConfigPublicAccessArgs',
     'GetInfluxDbServiceIntegrationArgs',
@@ -226,6 +230,7 @@ __all__ = [
     'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs',
     'GetKafkaMirrorMakerServiceIntegrationArgs',
     'GetKafkaServiceIntegrationArgs',
+    'GetKafkaTopicConfigArgs',
     'GetMySqlComponentArgs',
     'GetMySqlMysqlArgs',
     'GetMySqlMysqlUserConfigArgs',
@@ -275,6 +280,7 @@ __all__ = [
     'GetServiceGrafanaUserConfigSmtpServerArgs',
     'GetServiceInfluxdbArgs',
     'GetServiceInfluxdbUserConfigArgs',
+    'GetServiceInfluxdbUserConfigInfluxdbArgs',
     'GetServiceInfluxdbUserConfigPrivateAccessArgs',
     'GetServiceInfluxdbUserConfigPublicAccessArgs',
     'GetServiceIntegrationEndpointDatadogUserConfigArgs',
@@ -2831,6 +2837,7 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  skip_verify: Optional[pulumi.Input[str]] = None,
+                 starttls_policy: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] from_address: Address used for sending emails
@@ -2839,6 +2846,8 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
         :param pulumi.Input[str] password: Password for SMTP authentication
         :param pulumi.Input[str] port: SMTP server port
         :param pulumi.Input[str] skip_verify: Skip verifying server certificate. Defaults to false
+        :param pulumi.Input[str] starttls_policy: Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+               Default is OpportunisticStartTLS.
         :param pulumi.Input[str] username: Username for SMTP authentication
         """
         if from_address is not None:
@@ -2853,6 +2862,8 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
             pulumi.set(__self__, "port", port)
         if skip_verify is not None:
             pulumi.set(__self__, "skip_verify", skip_verify)
+        if starttls_policy is not None:
+            pulumi.set(__self__, "starttls_policy", starttls_policy)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -2927,6 +2938,19 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
     @skip_verify.setter
     def skip_verify(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "skip_verify", value)
+
+    @property
+    @pulumi.getter(name="starttlsPolicy")
+    def starttls_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+        Default is OpportunisticStartTLS.
+        """
+        return pulumi.get(self, "starttls_policy")
+
+    @starttls_policy.setter
+    def starttls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "starttls_policy", value)
 
     @property
     @pulumi.getter
@@ -3078,6 +3102,7 @@ class InfluxDbInfluxdbArgs:
 class InfluxDbInfluxdbUserConfigArgs:
     def __init__(__self__, *,
                  custom_domain: Optional[pulumi.Input[str]] = None,
+                 influxdb: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']] = None,
@@ -3085,6 +3110,7 @@ class InfluxDbInfluxdbUserConfigArgs:
                  service_to_fork_from: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        :param pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs'] influxdb: influxdb.conf configuration values
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
@@ -3094,6 +3120,8 @@ class InfluxDbInfluxdbUserConfigArgs:
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if influxdb is not None:
+            pulumi.set(__self__, "influxdb", influxdb)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -3116,6 +3144,18 @@ class InfluxDbInfluxdbUserConfigArgs:
     @custom_domain.setter
     def custom_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_domain", value)
+
+    @property
+    @pulumi.getter
+    def influxdb(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']]:
+        """
+        influxdb.conf configuration values
+        """
+        return pulumi.get(self, "influxdb")
+
+    @influxdb.setter
+    def influxdb(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']]):
+        pulumi.set(self, "influxdb", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -3180,12 +3220,110 @@ class InfluxDbInfluxdbUserConfigArgs:
 
 
 @pulumi.input_type
+class InfluxDbInfluxdbUserConfigInfluxdbArgs:
+    def __init__(__self__, *,
+                 log_queries_after: Optional[pulumi.Input[str]] = None,
+                 max_row_limit: Optional[pulumi.Input[str]] = None,
+                 max_select_buckets: Optional[pulumi.Input[str]] = None,
+                 max_select_point: Optional[pulumi.Input[str]] = None,
+                 query_timeout: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] log_queries_after: The maximum duration in seconds before a query is 
+               logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+        :param pulumi.Input[str] max_row_limit: The maximum number of rows returned in a non-chunked query. 
+               Setting this to 0 (the default) allows an unlimited number to be returned.
+        :param pulumi.Input[str] max_select_buckets: The maximum number of `GROUP BY time()` buckets that 
+               can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+               be processed.
+        :param pulumi.Input[str] max_select_point: The maximum number of points that can be processed in a 
+               SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+        :param pulumi.Input[str] query_timeout: The maximum duration in seconds before a query is killed. 
+               Setting this to 0 (the default) will never kill slow queries.
+        """
+        if log_queries_after is not None:
+            pulumi.set(__self__, "log_queries_after", log_queries_after)
+        if max_row_limit is not None:
+            pulumi.set(__self__, "max_row_limit", max_row_limit)
+        if max_select_buckets is not None:
+            pulumi.set(__self__, "max_select_buckets", max_select_buckets)
+        if max_select_point is not None:
+            pulumi.set(__self__, "max_select_point", max_select_point)
+        if query_timeout is not None:
+            pulumi.set(__self__, "query_timeout", query_timeout)
+
+    @property
+    @pulumi.getter(name="logQueriesAfter")
+    def log_queries_after(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum duration in seconds before a query is 
+        logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+        """
+        return pulumi.get(self, "log_queries_after")
+
+    @log_queries_after.setter
+    def log_queries_after(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_queries_after", value)
+
+    @property
+    @pulumi.getter(name="maxRowLimit")
+    def max_row_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of rows returned in a non-chunked query. 
+        Setting this to 0 (the default) allows an unlimited number to be returned.
+        """
+        return pulumi.get(self, "max_row_limit")
+
+    @max_row_limit.setter
+    def max_row_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_row_limit", value)
+
+    @property
+    @pulumi.getter(name="maxSelectBuckets")
+    def max_select_buckets(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of `GROUP BY time()` buckets that 
+        can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+        be processed.
+        """
+        return pulumi.get(self, "max_select_buckets")
+
+    @max_select_buckets.setter
+    def max_select_buckets(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_select_buckets", value)
+
+    @property
+    @pulumi.getter(name="maxSelectPoint")
+    def max_select_point(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of points that can be processed in a 
+        SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+        """
+        return pulumi.get(self, "max_select_point")
+
+    @max_select_point.setter
+    def max_select_point(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_select_point", value)
+
+    @property
+    @pulumi.getter(name="queryTimeout")
+    def query_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum duration in seconds before a query is killed. 
+        Setting this to 0 (the default) will never kill slow queries.
+        """
+        return pulumi.get(self, "query_timeout")
+
+    @query_timeout.setter
+    def query_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_timeout", value)
+
+
+@pulumi.input_type
 class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
                  influxdb: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] influxdb: Allow clients to connect to influxdb from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[str] influxdb: influxdb.conf configuration values
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
@@ -3194,8 +3332,7 @@ class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
     @pulumi.getter
     def influxdb(self) -> Optional[pulumi.Input[str]]:
         """
-        Allow clients to connect to influxdb from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        influxdb.conf configuration values
         """
         return pulumi.get(self, "influxdb")
 
@@ -3209,8 +3346,7 @@ class InfluxDbInfluxdbUserConfigPublicAccessArgs:
     def __init__(__self__, *,
                  influxdb: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] influxdb: Allow clients to connect to influxdb from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[str] influxdb: influxdb.conf configuration values
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
@@ -3219,8 +3355,7 @@ class InfluxDbInfluxdbUserConfigPublicAccessArgs:
     @pulumi.getter
     def influxdb(self) -> Optional[pulumi.Input[str]]:
         """
-        Allow clients to connect to influxdb from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        influxdb.conf configuration values
         """
         return pulumi.get(self, "influxdb")
 
@@ -5206,6 +5341,397 @@ class KafkaServiceIntegrationArgs:
 
 
 @pulumi.input_type
+class KafkaTopicConfigArgs:
+    def __init__(__self__, *,
+                 cleanup_policy: Optional[pulumi.Input[str]] = None,
+                 compression_type: Optional[pulumi.Input[str]] = None,
+                 delete_retention_ms: Optional[pulumi.Input[str]] = None,
+                 file_delete_delay_ms: Optional[pulumi.Input[str]] = None,
+                 flush_messages: Optional[pulumi.Input[str]] = None,
+                 flush_ms: Optional[pulumi.Input[str]] = None,
+                 index_interval_bytes: Optional[pulumi.Input[str]] = None,
+                 max_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
+                 max_message_bytes: Optional[pulumi.Input[str]] = None,
+                 message_downconversion_enable: Optional[pulumi.Input[str]] = None,
+                 message_format_version: Optional[pulumi.Input[str]] = None,
+                 message_timestamp_difference_max_ms: Optional[pulumi.Input[str]] = None,
+                 message_timestamp_type: Optional[pulumi.Input[str]] = None,
+                 min_cleanable_dirty_ratio: Optional[pulumi.Input[str]] = None,
+                 min_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
+                 min_insync_replicas: Optional[pulumi.Input[str]] = None,
+                 preallocate: Optional[pulumi.Input[str]] = None,
+                 retention_bytes: Optional[pulumi.Input[str]] = None,
+                 retention_ms: Optional[pulumi.Input[str]] = None,
+                 segment_bytes: Optional[pulumi.Input[str]] = None,
+                 segment_index_bytes: Optional[pulumi.Input[str]] = None,
+                 segment_jitter_ms: Optional[pulumi.Input[str]] = None,
+                 segment_ms: Optional[pulumi.Input[str]] = None,
+                 unclean_leader_election_enable: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cleanup_policy: cleanup.policy value
+        :param pulumi.Input[str] compression_type: compression.type value
+        :param pulumi.Input[str] delete_retention_ms: delete.retention.ms value
+        :param pulumi.Input[str] file_delete_delay_ms: file.delete.delay.ms value
+        :param pulumi.Input[str] flush_messages: flush.messages value
+        :param pulumi.Input[str] flush_ms: flush.ms value
+        :param pulumi.Input[str] index_interval_bytes: index.interval.bytes value
+        :param pulumi.Input[str] max_compaction_lag_ms: max.compaction.lag.ms value
+        :param pulumi.Input[str] max_message_bytes: max.message.bytes value
+        :param pulumi.Input[str] message_downconversion_enable: message.downconversion.enable value
+        :param pulumi.Input[str] message_format_version: message.format.version value
+        :param pulumi.Input[str] message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
+        :param pulumi.Input[str] message_timestamp_type: message.timestamp.type value
+        :param pulumi.Input[str] min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
+        :param pulumi.Input[str] min_compaction_lag_ms: min.compaction.lag.ms value
+        :param pulumi.Input[str] min_insync_replicas: min.insync.replicas value
+        :param pulumi.Input[str] preallocate: preallocate value
+        :param pulumi.Input[str] retention_bytes: retention.bytes value
+        :param pulumi.Input[str] retention_ms: retention.ms value
+        :param pulumi.Input[str] segment_bytes: segment.bytes value
+        :param pulumi.Input[str] segment_index_bytes: segment.index.bytes value
+        :param pulumi.Input[str] segment_jitter_ms: segment.jitter.ms value
+        :param pulumi.Input[str] segment_ms: segment.ms value
+        :param pulumi.Input[str] unclean_leader_election_enable: unclean.leader.election.enable value
+        """
+        if cleanup_policy is not None:
+            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if compression_type is not None:
+            pulumi.set(__self__, "compression_type", compression_type)
+        if delete_retention_ms is not None:
+            pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        if file_delete_delay_ms is not None:
+            pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
+        if flush_messages is not None:
+            pulumi.set(__self__, "flush_messages", flush_messages)
+        if flush_ms is not None:
+            pulumi.set(__self__, "flush_ms", flush_ms)
+        if index_interval_bytes is not None:
+            pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if max_compaction_lag_ms is not None:
+            pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
+        if max_message_bytes is not None:
+            pulumi.set(__self__, "max_message_bytes", max_message_bytes)
+        if message_downconversion_enable is not None:
+            pulumi.set(__self__, "message_downconversion_enable", message_downconversion_enable)
+        if message_format_version is not None:
+            pulumi.set(__self__, "message_format_version", message_format_version)
+        if message_timestamp_difference_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
+        if message_timestamp_type is not None:
+            pulumi.set(__self__, "message_timestamp_type", message_timestamp_type)
+        if min_cleanable_dirty_ratio is not None:
+            pulumi.set(__self__, "min_cleanable_dirty_ratio", min_cleanable_dirty_ratio)
+        if min_compaction_lag_ms is not None:
+            pulumi.set(__self__, "min_compaction_lag_ms", min_compaction_lag_ms)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
+        if preallocate is not None:
+            pulumi.set(__self__, "preallocate", preallocate)
+        if retention_bytes is not None:
+            pulumi.set(__self__, "retention_bytes", retention_bytes)
+        if retention_ms is not None:
+            pulumi.set(__self__, "retention_ms", retention_ms)
+        if segment_bytes is not None:
+            pulumi.set(__self__, "segment_bytes", segment_bytes)
+        if segment_index_bytes is not None:
+            pulumi.set(__self__, "segment_index_bytes", segment_index_bytes)
+        if segment_jitter_ms is not None:
+            pulumi.set(__self__, "segment_jitter_ms", segment_jitter_ms)
+        if segment_ms is not None:
+            pulumi.set(__self__, "segment_ms", segment_ms)
+        if unclean_leader_election_enable is not None:
+            pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
+
+    @property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        cleanup.policy value
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @cleanup_policy.setter
+    def cleanup_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cleanup_policy", value)
+
+    @property
+    @pulumi.getter(name="compressionType")
+    def compression_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        compression.type value
+        """
+        return pulumi.get(self, "compression_type")
+
+    @compression_type.setter
+    def compression_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compression_type", value)
+
+    @property
+    @pulumi.getter(name="deleteRetentionMs")
+    def delete_retention_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        delete.retention.ms value
+        """
+        return pulumi.get(self, "delete_retention_ms")
+
+    @delete_retention_ms.setter
+    def delete_retention_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_retention_ms", value)
+
+    @property
+    @pulumi.getter(name="fileDeleteDelayMs")
+    def file_delete_delay_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        file.delete.delay.ms value
+        """
+        return pulumi.get(self, "file_delete_delay_ms")
+
+    @file_delete_delay_ms.setter
+    def file_delete_delay_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_delete_delay_ms", value)
+
+    @property
+    @pulumi.getter(name="flushMessages")
+    def flush_messages(self) -> Optional[pulumi.Input[str]]:
+        """
+        flush.messages value
+        """
+        return pulumi.get(self, "flush_messages")
+
+    @flush_messages.setter
+    def flush_messages(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flush_messages", value)
+
+    @property
+    @pulumi.getter(name="flushMs")
+    def flush_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        flush.ms value
+        """
+        return pulumi.get(self, "flush_ms")
+
+    @flush_ms.setter
+    def flush_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flush_ms", value)
+
+    @property
+    @pulumi.getter(name="indexIntervalBytes")
+    def index_interval_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        index.interval.bytes value
+        """
+        return pulumi.get(self, "index_interval_bytes")
+
+    @index_interval_bytes.setter
+    def index_interval_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_interval_bytes", value)
+
+    @property
+    @pulumi.getter(name="maxCompactionLagMs")
+    def max_compaction_lag_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        max.compaction.lag.ms value
+        """
+        return pulumi.get(self, "max_compaction_lag_ms")
+
+    @max_compaction_lag_ms.setter
+    def max_compaction_lag_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_compaction_lag_ms", value)
+
+    @property
+    @pulumi.getter(name="maxMessageBytes")
+    def max_message_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        max.message.bytes value
+        """
+        return pulumi.get(self, "max_message_bytes")
+
+    @max_message_bytes.setter
+    def max_message_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_message_bytes", value)
+
+    @property
+    @pulumi.getter(name="messageDownconversionEnable")
+    def message_downconversion_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        message.downconversion.enable value
+        """
+        return pulumi.get(self, "message_downconversion_enable")
+
+    @message_downconversion_enable.setter
+    def message_downconversion_enable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_downconversion_enable", value)
+
+    @property
+    @pulumi.getter(name="messageFormatVersion")
+    def message_format_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        message.format.version value
+        """
+        return pulumi.get(self, "message_format_version")
+
+    @message_format_version.setter
+    def message_format_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_format_version", value)
+
+    @property
+    @pulumi.getter(name="messageTimestampDifferenceMaxMs")
+    def message_timestamp_difference_max_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        message.timestamp.difference.max.ms value
+        """
+        return pulumi.get(self, "message_timestamp_difference_max_ms")
+
+    @message_timestamp_difference_max_ms.setter
+    def message_timestamp_difference_max_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_timestamp_difference_max_ms", value)
+
+    @property
+    @pulumi.getter(name="messageTimestampType")
+    def message_timestamp_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        message.timestamp.type value
+        """
+        return pulumi.get(self, "message_timestamp_type")
+
+    @message_timestamp_type.setter
+    def message_timestamp_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_timestamp_type", value)
+
+    @property
+    @pulumi.getter(name="minCleanableDirtyRatio")
+    def min_cleanable_dirty_ratio(self) -> Optional[pulumi.Input[str]]:
+        """
+        min.cleanable.dirty.ratio value
+        """
+        return pulumi.get(self, "min_cleanable_dirty_ratio")
+
+    @min_cleanable_dirty_ratio.setter
+    def min_cleanable_dirty_ratio(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cleanable_dirty_ratio", value)
+
+    @property
+    @pulumi.getter(name="minCompactionLagMs")
+    def min_compaction_lag_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        min.compaction.lag.ms value
+        """
+        return pulumi.get(self, "min_compaction_lag_ms")
+
+    @min_compaction_lag_ms.setter
+    def min_compaction_lag_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_compaction_lag_ms", value)
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[pulumi.Input[str]]:
+        """
+        min.insync.replicas value
+        """
+        return pulumi.get(self, "min_insync_replicas")
+
+    @min_insync_replicas.setter
+    def min_insync_replicas(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_insync_replicas", value)
+
+    @property
+    @pulumi.getter
+    def preallocate(self) -> Optional[pulumi.Input[str]]:
+        """
+        preallocate value
+        """
+        return pulumi.get(self, "preallocate")
+
+    @preallocate.setter
+    def preallocate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preallocate", value)
+
+    @property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        retention.bytes value
+        """
+        return pulumi.get(self, "retention_bytes")
+
+    @retention_bytes.setter
+    def retention_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_bytes", value)
+
+    @property
+    @pulumi.getter(name="retentionMs")
+    def retention_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        retention.ms value
+        """
+        return pulumi.get(self, "retention_ms")
+
+    @retention_ms.setter
+    def retention_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_ms", value)
+
+    @property
+    @pulumi.getter(name="segmentBytes")
+    def segment_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        segment.bytes value
+        """
+        return pulumi.get(self, "segment_bytes")
+
+    @segment_bytes.setter
+    def segment_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "segment_bytes", value)
+
+    @property
+    @pulumi.getter(name="segmentIndexBytes")
+    def segment_index_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        segment.index.bytes value
+        """
+        return pulumi.get(self, "segment_index_bytes")
+
+    @segment_index_bytes.setter
+    def segment_index_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "segment_index_bytes", value)
+
+    @property
+    @pulumi.getter(name="segmentJitterMs")
+    def segment_jitter_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        segment.jitter.ms value
+        """
+        return pulumi.get(self, "segment_jitter_ms")
+
+    @segment_jitter_ms.setter
+    def segment_jitter_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "segment_jitter_ms", value)
+
+    @property
+    @pulumi.getter(name="segmentMs")
+    def segment_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        segment.ms value
+        """
+        return pulumi.get(self, "segment_ms")
+
+    @segment_ms.setter
+    def segment_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "segment_ms", value)
+
+    @property
+    @pulumi.getter(name="uncleanLeaderElectionEnable")
+    def unclean_leader_election_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        unclean.leader.election.enable value
+        """
+        return pulumi.get(self, "unclean_leader_election_enable")
+
+    @unclean_leader_election_enable.setter
+    def unclean_leader_election_enable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unclean_leader_election_enable", value)
+
+
+@pulumi.input_type
 class MySqlComponentArgs:
     def __init__(__self__, *,
                  component: Optional[pulumi.Input[str]] = None,
@@ -6733,14 +7259,18 @@ class PgPgUserConfigPgArgs:
                  log_autovacuum_min_duration: Optional[pulumi.Input[str]] = None,
                  log_error_verbosity: Optional[pulumi.Input[str]] = None,
                  log_min_duration_statement: Optional[pulumi.Input[str]] = None,
+                 max_files_per_process: Optional[pulumi.Input[str]] = None,
                  max_locks_per_transaction: Optional[pulumi.Input[str]] = None,
+                 max_logical_replication_workers: Optional[pulumi.Input[str]] = None,
                  max_parallel_workers: Optional[pulumi.Input[str]] = None,
                  max_parallel_workers_per_gather: Optional[pulumi.Input[str]] = None,
                  max_pred_locks_per_transaction: Optional[pulumi.Input[str]] = None,
                  max_prepared_transactions: Optional[pulumi.Input[str]] = None,
+                 max_replication_slots: Optional[pulumi.Input[str]] = None,
                  max_stack_depth: Optional[pulumi.Input[str]] = None,
                  max_standby_archive_delay: Optional[pulumi.Input[str]] = None,
                  max_standby_streaming_delay: Optional[pulumi.Input[str]] = None,
+                 max_wal_senders: Optional[pulumi.Input[str]] = None,
                  max_worker_processes: Optional[pulumi.Input[str]] = None,
                  pg_partman_bgw_dot_interval: Optional[pulumi.Input[str]] = None,
                  pg_partman_bgw_dot_role: Optional[pulumi.Input[str]] = None,
@@ -6789,16 +7319,21 @@ class PgPgUserConfigPgArgs:
                each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
         :param pulumi.Input[str] log_min_duration_statement: Log statements that take more than this number of 
                milliseconds to run, -1 disables
+        :param pulumi.Input[str] max_files_per_process: PostgreSQL maximum number of files that can be open per process
         :param pulumi.Input[str] max_locks_per_transaction: PostgreSQL maximum locks per transaction
+        :param pulumi.Input[str] max_logical_replication_workers: PostgreSQL maximum logical replication workers 
+               (taken from the pool of max_parallel_workers)
         :param pulumi.Input[str] max_parallel_workers: Sets the maximum number of workers that the system can 
                support for parallel queries.
         :param pulumi.Input[str] max_parallel_workers_per_gather: Sets the maximum number of workers that can be 
                started by a single Gather or Gather Merge node.
         :param pulumi.Input[str] max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction
         :param pulumi.Input[str] max_prepared_transactions: PostgreSQL maximum prepared transactions
+        :param pulumi.Input[str] max_replication_slots: PostgreSQL maximum replication slots
         :param pulumi.Input[str] max_stack_depth: Maximum depth of the stack in bytes
         :param pulumi.Input[str] max_standby_archive_delay: Max standby archive delay in milliseconds
         :param pulumi.Input[str] max_standby_streaming_delay: Max standby streaming delay in milliseconds
+        :param pulumi.Input[str] max_wal_senders: PostgreSQL maximum WAL senders
         :param pulumi.Input[str] max_worker_processes: Sets the maximum number of background processes that the system
                can support
                * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
@@ -6849,8 +7384,12 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
+        if max_files_per_process is not None:
+            pulumi.set(__self__, "max_files_per_process", max_files_per_process)
         if max_locks_per_transaction is not None:
             pulumi.set(__self__, "max_locks_per_transaction", max_locks_per_transaction)
+        if max_logical_replication_workers is not None:
+            pulumi.set(__self__, "max_logical_replication_workers", max_logical_replication_workers)
         if max_parallel_workers is not None:
             pulumi.set(__self__, "max_parallel_workers", max_parallel_workers)
         if max_parallel_workers_per_gather is not None:
@@ -6859,12 +7398,16 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "max_pred_locks_per_transaction", max_pred_locks_per_transaction)
         if max_prepared_transactions is not None:
             pulumi.set(__self__, "max_prepared_transactions", max_prepared_transactions)
+        if max_replication_slots is not None:
+            pulumi.set(__self__, "max_replication_slots", max_replication_slots)
         if max_stack_depth is not None:
             pulumi.set(__self__, "max_stack_depth", max_stack_depth)
         if max_standby_archive_delay is not None:
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_wal_senders is not None:
+            pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
         if pg_partman_bgw_dot_interval is not None:
@@ -7090,6 +7633,18 @@ class PgPgUserConfigPgArgs:
         pulumi.set(self, "log_min_duration_statement", value)
 
     @property
+    @pulumi.getter(name="maxFilesPerProcess")
+    def max_files_per_process(self) -> Optional[pulumi.Input[str]]:
+        """
+        PostgreSQL maximum number of files that can be open per process
+        """
+        return pulumi.get(self, "max_files_per_process")
+
+    @max_files_per_process.setter
+    def max_files_per_process(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_files_per_process", value)
+
+    @property
     @pulumi.getter(name="maxLocksPerTransaction")
     def max_locks_per_transaction(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7100,6 +7655,19 @@ class PgPgUserConfigPgArgs:
     @max_locks_per_transaction.setter
     def max_locks_per_transaction(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="maxLogicalReplicationWorkers")
+    def max_logical_replication_workers(self) -> Optional[pulumi.Input[str]]:
+        """
+        PostgreSQL maximum logical replication workers 
+        (taken from the pool of max_parallel_workers)
+        """
+        return pulumi.get(self, "max_logical_replication_workers")
+
+    @max_logical_replication_workers.setter
+    def max_logical_replication_workers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_logical_replication_workers", value)
 
     @property
     @pulumi.getter(name="maxParallelWorkers")
@@ -7152,6 +7720,18 @@ class PgPgUserConfigPgArgs:
         pulumi.set(self, "max_prepared_transactions", value)
 
     @property
+    @pulumi.getter(name="maxReplicationSlots")
+    def max_replication_slots(self) -> Optional[pulumi.Input[str]]:
+        """
+        PostgreSQL maximum replication slots
+        """
+        return pulumi.get(self, "max_replication_slots")
+
+    @max_replication_slots.setter
+    def max_replication_slots(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_replication_slots", value)
+
+    @property
     @pulumi.getter(name="maxStackDepth")
     def max_stack_depth(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7186,6 +7766,18 @@ class PgPgUserConfigPgArgs:
     @max_standby_streaming_delay.setter
     def max_standby_streaming_delay(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_standby_streaming_delay", value)
+
+    @property
+    @pulumi.getter(name="maxWalSenders")
+    def max_wal_senders(self) -> Optional[pulumi.Input[str]]:
+        """
+        PostgreSQL maximum WAL senders
+        """
+        return pulumi.get(self, "max_wal_senders")
+
+    @max_wal_senders.setter
+    def max_wal_senders(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_wal_senders", value)
 
     @property
     @pulumi.getter(name="maxWorkerProcesses")
@@ -9666,6 +10258,7 @@ class ServiceGrafanaUserConfigSmtpServerArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  skip_verify: Optional[pulumi.Input[str]] = None,
+                 starttls_policy: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         if from_address is not None:
             pulumi.set(__self__, "from_address", from_address)
@@ -9679,6 +10272,8 @@ class ServiceGrafanaUserConfigSmtpServerArgs:
             pulumi.set(__self__, "port", port)
         if skip_verify is not None:
             pulumi.set(__self__, "skip_verify", skip_verify)
+        if starttls_policy is not None:
+            pulumi.set(__self__, "starttls_policy", starttls_policy)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -9737,6 +10332,15 @@ class ServiceGrafanaUserConfigSmtpServerArgs:
         pulumi.set(self, "skip_verify", value)
 
     @property
+    @pulumi.getter(name="starttlsPolicy")
+    def starttls_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "starttls_policy")
+
+    @starttls_policy.setter
+    def starttls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "starttls_policy", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -9767,6 +10371,7 @@ class ServiceInfluxdbArgs:
 class ServiceInfluxdbUserConfigArgs:
     def __init__(__self__, *,
                  custom_domain: Optional[pulumi.Input[str]] = None,
+                 influxdb: Optional[pulumi.Input['ServiceInfluxdbUserConfigInfluxdbArgs']] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_access: Optional[pulumi.Input['ServiceInfluxdbUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['ServiceInfluxdbUserConfigPublicAccessArgs']] = None,
@@ -9774,6 +10379,8 @@ class ServiceInfluxdbUserConfigArgs:
                  service_to_fork_from: Optional[pulumi.Input[str]] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if influxdb is not None:
+            pulumi.set(__self__, "influxdb", influxdb)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -9793,6 +10400,15 @@ class ServiceInfluxdbUserConfigArgs:
     @custom_domain.setter
     def custom_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_domain", value)
+
+    @property
+    @pulumi.getter
+    def influxdb(self) -> Optional[pulumi.Input['ServiceInfluxdbUserConfigInfluxdbArgs']]:
+        return pulumi.get(self, "influxdb")
+
+    @influxdb.setter
+    def influxdb(self, value: Optional[pulumi.Input['ServiceInfluxdbUserConfigInfluxdbArgs']]):
+        pulumi.set(self, "influxdb", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -9838,6 +10454,71 @@ class ServiceInfluxdbUserConfigArgs:
     @service_to_fork_from.setter
     def service_to_fork_from(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_to_fork_from", value)
+
+
+@pulumi.input_type
+class ServiceInfluxdbUserConfigInfluxdbArgs:
+    def __init__(__self__, *,
+                 log_queries_after: Optional[pulumi.Input[str]] = None,
+                 max_row_limit: Optional[pulumi.Input[str]] = None,
+                 max_select_buckets: Optional[pulumi.Input[str]] = None,
+                 max_select_point: Optional[pulumi.Input[str]] = None,
+                 query_timeout: Optional[pulumi.Input[str]] = None):
+        if log_queries_after is not None:
+            pulumi.set(__self__, "log_queries_after", log_queries_after)
+        if max_row_limit is not None:
+            pulumi.set(__self__, "max_row_limit", max_row_limit)
+        if max_select_buckets is not None:
+            pulumi.set(__self__, "max_select_buckets", max_select_buckets)
+        if max_select_point is not None:
+            pulumi.set(__self__, "max_select_point", max_select_point)
+        if query_timeout is not None:
+            pulumi.set(__self__, "query_timeout", query_timeout)
+
+    @property
+    @pulumi.getter(name="logQueriesAfter")
+    def log_queries_after(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_queries_after")
+
+    @log_queries_after.setter
+    def log_queries_after(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_queries_after", value)
+
+    @property
+    @pulumi.getter(name="maxRowLimit")
+    def max_row_limit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_row_limit")
+
+    @max_row_limit.setter
+    def max_row_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_row_limit", value)
+
+    @property
+    @pulumi.getter(name="maxSelectBuckets")
+    def max_select_buckets(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_select_buckets")
+
+    @max_select_buckets.setter
+    def max_select_buckets(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_select_buckets", value)
+
+    @property
+    @pulumi.getter(name="maxSelectPoint")
+    def max_select_point(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_select_point")
+
+    @max_select_point.setter
+    def max_select_point(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_select_point", value)
+
+    @property
+    @pulumi.getter(name="queryTimeout")
+    def query_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "query_timeout")
+
+    @query_timeout.setter
+    def query_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_timeout", value)
 
 
 @pulumi.input_type
@@ -12509,14 +13190,18 @@ class ServicePgUserConfigPgArgs:
                  log_autovacuum_min_duration: Optional[pulumi.Input[str]] = None,
                  log_error_verbosity: Optional[pulumi.Input[str]] = None,
                  log_min_duration_statement: Optional[pulumi.Input[str]] = None,
+                 max_files_per_process: Optional[pulumi.Input[str]] = None,
                  max_locks_per_transaction: Optional[pulumi.Input[str]] = None,
+                 max_logical_replication_workers: Optional[pulumi.Input[str]] = None,
                  max_parallel_workers: Optional[pulumi.Input[str]] = None,
                  max_parallel_workers_per_gather: Optional[pulumi.Input[str]] = None,
                  max_pred_locks_per_transaction: Optional[pulumi.Input[str]] = None,
                  max_prepared_transactions: Optional[pulumi.Input[str]] = None,
+                 max_replication_slots: Optional[pulumi.Input[str]] = None,
                  max_stack_depth: Optional[pulumi.Input[str]] = None,
                  max_standby_archive_delay: Optional[pulumi.Input[str]] = None,
                  max_standby_streaming_delay: Optional[pulumi.Input[str]] = None,
+                 max_wal_senders: Optional[pulumi.Input[str]] = None,
                  max_worker_processes: Optional[pulumi.Input[str]] = None,
                  pg_partman_bgw_dot_interval: Optional[pulumi.Input[str]] = None,
                  pg_partman_bgw_dot_role: Optional[pulumi.Input[str]] = None,
@@ -12558,8 +13243,12 @@ class ServicePgUserConfigPgArgs:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
+        if max_files_per_process is not None:
+            pulumi.set(__self__, "max_files_per_process", max_files_per_process)
         if max_locks_per_transaction is not None:
             pulumi.set(__self__, "max_locks_per_transaction", max_locks_per_transaction)
+        if max_logical_replication_workers is not None:
+            pulumi.set(__self__, "max_logical_replication_workers", max_logical_replication_workers)
         if max_parallel_workers is not None:
             pulumi.set(__self__, "max_parallel_workers", max_parallel_workers)
         if max_parallel_workers_per_gather is not None:
@@ -12568,12 +13257,16 @@ class ServicePgUserConfigPgArgs:
             pulumi.set(__self__, "max_pred_locks_per_transaction", max_pred_locks_per_transaction)
         if max_prepared_transactions is not None:
             pulumi.set(__self__, "max_prepared_transactions", max_prepared_transactions)
+        if max_replication_slots is not None:
+            pulumi.set(__self__, "max_replication_slots", max_replication_slots)
         if max_stack_depth is not None:
             pulumi.set(__self__, "max_stack_depth", max_stack_depth)
         if max_standby_archive_delay is not None:
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_wal_senders is not None:
+            pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
         if pg_partman_bgw_dot_interval is not None:
@@ -12733,6 +13426,15 @@ class ServicePgUserConfigPgArgs:
         pulumi.set(self, "log_min_duration_statement", value)
 
     @property
+    @pulumi.getter(name="maxFilesPerProcess")
+    def max_files_per_process(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_files_per_process")
+
+    @max_files_per_process.setter
+    def max_files_per_process(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_files_per_process", value)
+
+    @property
     @pulumi.getter(name="maxLocksPerTransaction")
     def max_locks_per_transaction(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "max_locks_per_transaction")
@@ -12740,6 +13442,15 @@ class ServicePgUserConfigPgArgs:
     @max_locks_per_transaction.setter
     def max_locks_per_transaction(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="maxLogicalReplicationWorkers")
+    def max_logical_replication_workers(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_logical_replication_workers")
+
+    @max_logical_replication_workers.setter
+    def max_logical_replication_workers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_logical_replication_workers", value)
 
     @property
     @pulumi.getter(name="maxParallelWorkers")
@@ -12778,6 +13489,15 @@ class ServicePgUserConfigPgArgs:
         pulumi.set(self, "max_prepared_transactions", value)
 
     @property
+    @pulumi.getter(name="maxReplicationSlots")
+    def max_replication_slots(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_replication_slots")
+
+    @max_replication_slots.setter
+    def max_replication_slots(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_replication_slots", value)
+
+    @property
     @pulumi.getter(name="maxStackDepth")
     def max_stack_depth(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "max_stack_depth")
@@ -12803,6 +13523,15 @@ class ServicePgUserConfigPgArgs:
     @max_standby_streaming_delay.setter
     def max_standby_streaming_delay(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_standby_streaming_delay", value)
+
+    @property
+    @pulumi.getter(name="maxWalSenders")
+    def max_wal_senders(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_wal_senders")
+
+    @max_wal_senders.setter
+    def max_wal_senders(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_wal_senders", value)
 
     @property
     @pulumi.getter(name="maxWorkerProcesses")
@@ -14712,8 +15441,8 @@ class GetGrafanaComponentArgs:
                  ssl: bool,
                  usage: str):
         """
-        :param str host: (Required) Server hostname or IP
-        :param int port: (Required) SMTP server port
+        :param str host: Server hostname or IP
+        :param int port: SMTP server port
         """
         pulumi.set(__self__, "component", component)
         pulumi.set(__self__, "host", host)
@@ -14736,7 +15465,7 @@ class GetGrafanaComponentArgs:
     @pulumi.getter
     def host(self) -> str:
         """
-        (Required) Server hostname or IP
+        Server hostname or IP
         """
         return pulumi.get(self, "host")
 
@@ -14757,7 +15486,7 @@ class GetGrafanaComponentArgs:
     @pulumi.getter
     def port(self) -> int:
         """
-        (Required) SMTP server port
+        SMTP server port
         """
         return pulumi.get(self, "port")
 
@@ -15283,8 +16012,8 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthArgs:
         :param Sequence[str] allowed_organizations: Must consist of alpha-numeric characters and dashes"
         :param str api_url: API URL. This only needs to be set when using self hosted GitLab
         :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab
-        :param str client_id: (Required) Client ID from provider
-        :param str client_secret: (Required) Client secret from provider
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
         :param str name: Name of the OAuth integration
         :param Sequence[str] scopes: Scope must be non-empty string without whitespace
         :param str token_url: Token URL. This only needs to be set when using self hosted GitLab
@@ -15374,7 +16103,7 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        (Required) Client ID from provider
+        Client ID from provider
         """
         return pulumi.get(self, "client_id")
 
@@ -15386,7 +16115,7 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
         """
-        (Required) Client secret from provider
+        Client secret from provider
         """
         return pulumi.get(self, "client_secret")
 
@@ -15442,8 +16171,8 @@ class GetGrafanaGrafanaUserConfigAuthGithubArgs:
         """
         :param str allow_sign_up: Automatically sign-up users on successful sign-in
         :param Sequence[str] allowed_organizations: Must consist of alpha-numeric characters and dashes"
-        :param str client_id: (Required) Client ID from provider
-        :param str client_secret: (Required) Client secret from provider
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
         :param Sequence[str] team_ids: Require users to belong to one of given team IDs
         """
         if allow_sign_up is not None:
@@ -15485,7 +16214,7 @@ class GetGrafanaGrafanaUserConfigAuthGithubArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        (Required) Client ID from provider
+        Client ID from provider
         """
         return pulumi.get(self, "client_id")
 
@@ -15497,7 +16226,7 @@ class GetGrafanaGrafanaUserConfigAuthGithubArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
         """
-        (Required) Client secret from provider
+        Client secret from provider
         """
         return pulumi.get(self, "client_secret")
 
@@ -15530,11 +16259,11 @@ class GetGrafanaGrafanaUserConfigAuthGitlabArgs:
                  token_url: Optional[str] = None):
         """
         :param str allow_sign_up: Automatically sign-up users on successful sign-in
-        :param Sequence[str] allowed_groups: (Required) Require users to belong to one of given groups
+        :param Sequence[str] allowed_groups: Require users to belong to one of given groups
         :param str api_url: API URL. This only needs to be set when using self hosted GitLab
         :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab
-        :param str client_id: (Required) Client ID from provider
-        :param str client_secret: (Required) Client secret from provider
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
         :param str token_url: Token URL. This only needs to be set when using self hosted GitLab
         """
         if allow_sign_up is not None:
@@ -15568,7 +16297,7 @@ class GetGrafanaGrafanaUserConfigAuthGitlabArgs:
     @pulumi.getter(name="allowedGroups")
     def allowed_groups(self) -> Optional[Sequence[str]]:
         """
-        (Required) Require users to belong to one of given groups
+        Require users to belong to one of given groups
         """
         return pulumi.get(self, "allowed_groups")
 
@@ -15604,7 +16333,7 @@ class GetGrafanaGrafanaUserConfigAuthGitlabArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        (Required) Client ID from provider
+        Client ID from provider
         """
         return pulumi.get(self, "client_id")
 
@@ -15616,7 +16345,7 @@ class GetGrafanaGrafanaUserConfigAuthGitlabArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
         """
-        (Required) Client secret from provider
+        Client secret from provider
         """
         return pulumi.get(self, "client_secret")
 
@@ -15647,8 +16376,8 @@ class GetGrafanaGrafanaUserConfigAuthGoogleArgs:
         """
         :param str allow_sign_up: Automatically sign-up users on successful sign-in
         :param Sequence[str] allowed_domains: Allowed domain
-        :param str client_id: (Required) Client ID from provider
-        :param str client_secret: (Required) Client secret from provider
+        :param str client_id: Client ID from provider
+        :param str client_secret: Client secret from provider
         """
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
@@ -15687,7 +16416,7 @@ class GetGrafanaGrafanaUserConfigAuthGoogleArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        (Required) Client ID from provider
+        Client ID from provider
         """
         return pulumi.get(self, "client_id")
 
@@ -15699,7 +16428,7 @@ class GetGrafanaGrafanaUserConfigAuthGoogleArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
         """
-        (Required) Client secret from provider
+        Client secret from provider
         """
         return pulumi.get(self, "client_secret")
 
@@ -15716,11 +16445,11 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageArgs:
                  provider: Optional[str] = None,
                  secret_key: Optional[str] = None):
         """
-        :param str access_key: (Required) S3 access key. Requires permissions to the S3 bucket for the 
+        :param str access_key: S3 access key. Requires permissions to the S3 bucket for the 
                s3:PutObject and s3:PutObjectAcl actions
-        :param str bucket_url: (Required) Bucket URL for S3
-        :param str provider: (Required) Provider type
-        :param str secret_key: (Required) S3 secret key
+        :param str bucket_url: Bucket URL for S3
+        :param str provider: Provider type
+        :param str secret_key: S3 secret key
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -15735,7 +16464,7 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         """
-        (Required) S3 access key. Requires permissions to the S3 bucket for the 
+        S3 access key. Requires permissions to the S3 bucket for the 
         s3:PutObject and s3:PutObjectAcl actions
         """
         return pulumi.get(self, "access_key")
@@ -15748,7 +16477,7 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageArgs:
     @pulumi.getter(name="bucketUrl")
     def bucket_url(self) -> Optional[str]:
         """
-        (Required) Bucket URL for S3
+        Bucket URL for S3
         """
         return pulumi.get(self, "bucket_url")
 
@@ -15760,7 +16489,7 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageArgs:
     @pulumi.getter
     def provider(self) -> Optional[str]:
         """
-        (Required) Provider type
+        Provider type
         """
         return pulumi.get(self, "provider")
 
@@ -15772,7 +16501,7 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageArgs:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
         """
-        (Required) S3 secret key
+        S3 secret key
         """
         return pulumi.get(self, "secret_key")
 
@@ -15836,14 +16565,17 @@ class GetGrafanaGrafanaUserConfigSmtpServerArgs:
                  password: Optional[str] = None,
                  port: Optional[str] = None,
                  skip_verify: Optional[str] = None,
+                 starttls_policy: Optional[str] = None,
                  username: Optional[str] = None):
         """
-        :param str from_address: (Required) Address used for sending emails
+        :param str from_address: Address used for sending emails
         :param str from_name: Name used in outgoing emails, defaults to Grafana
-        :param str host: (Required) Server hostname or IP
+        :param str host: Server hostname or IP
         :param str password: Password for SMTP authentication
-        :param str port: (Required) SMTP server port
+        :param str port: SMTP server port
         :param str skip_verify: Skip verifying server certificate. Defaults to false
+        :param str starttls_policy: Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+               Default is OpportunisticStartTLS.
         :param str username: Username for SMTP authentication
         """
         if from_address is not None:
@@ -15858,6 +16590,8 @@ class GetGrafanaGrafanaUserConfigSmtpServerArgs:
             pulumi.set(__self__, "port", port)
         if skip_verify is not None:
             pulumi.set(__self__, "skip_verify", skip_verify)
+        if starttls_policy is not None:
+            pulumi.set(__self__, "starttls_policy", starttls_policy)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -15865,7 +16599,7 @@ class GetGrafanaGrafanaUserConfigSmtpServerArgs:
     @pulumi.getter(name="fromAddress")
     def from_address(self) -> Optional[str]:
         """
-        (Required) Address used for sending emails
+        Address used for sending emails
         """
         return pulumi.get(self, "from_address")
 
@@ -15889,7 +16623,7 @@ class GetGrafanaGrafanaUserConfigSmtpServerArgs:
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        (Required) Server hostname or IP
+        Server hostname or IP
         """
         return pulumi.get(self, "host")
 
@@ -15913,7 +16647,7 @@ class GetGrafanaGrafanaUserConfigSmtpServerArgs:
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        (Required) SMTP server port
+        SMTP server port
         """
         return pulumi.get(self, "port")
 
@@ -15932,6 +16666,19 @@ class GetGrafanaGrafanaUserConfigSmtpServerArgs:
     @skip_verify.setter
     def skip_verify(self, value: Optional[str]):
         pulumi.set(self, "skip_verify", value)
+
+    @property
+    @pulumi.getter(name="starttlsPolicy")
+    def starttls_policy(self) -> Optional[str]:
+        """
+        Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+        Default is OpportunisticStartTLS.
+        """
+        return pulumi.get(self, "starttls_policy")
+
+    @starttls_policy.setter
+    def starttls_policy(self, value: Optional[str]):
+        pulumi.set(self, "starttls_policy", value)
 
     @property
     @pulumi.getter
@@ -16075,6 +16822,7 @@ class GetInfluxDbInfluxdbArgs:
 class GetInfluxDbInfluxdbUserConfigArgs:
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
+                 influxdb: Optional['GetInfluxDbInfluxdbUserConfigInfluxdbArgs'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['GetInfluxDbInfluxdbUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetInfluxDbInfluxdbUserConfigPublicAccessArgs'] = None,
@@ -16082,6 +16830,7 @@ class GetInfluxDbInfluxdbUserConfigArgs:
                  service_to_fork_from: Optional[str] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        :param 'GetInfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: InfluxDB specific server provided values.
         :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'GetInfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetInfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -16091,6 +16840,8 @@ class GetInfluxDbInfluxdbUserConfigArgs:
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if influxdb is not None:
+            pulumi.set(__self__, "influxdb", influxdb)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -16113,6 +16864,18 @@ class GetInfluxDbInfluxdbUserConfigArgs:
     @custom_domain.setter
     def custom_domain(self, value: Optional[str]):
         pulumi.set(self, "custom_domain", value)
+
+    @property
+    @pulumi.getter
+    def influxdb(self) -> Optional['GetInfluxDbInfluxdbUserConfigInfluxdbArgs']:
+        """
+        InfluxDB specific server provided values.
+        """
+        return pulumi.get(self, "influxdb")
+
+    @influxdb.setter
+    def influxdb(self, value: Optional['GetInfluxDbInfluxdbUserConfigInfluxdbArgs']):
+        pulumi.set(self, "influxdb", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -16174,6 +16937,105 @@ class GetInfluxDbInfluxdbUserConfigArgs:
     @service_to_fork_from.setter
     def service_to_fork_from(self, value: Optional[str]):
         pulumi.set(self, "service_to_fork_from", value)
+
+
+@pulumi.input_type
+class GetInfluxDbInfluxdbUserConfigInfluxdbArgs:
+    def __init__(__self__, *,
+                 log_queries_after: Optional[str] = None,
+                 max_row_limit: Optional[str] = None,
+                 max_select_buckets: Optional[str] = None,
+                 max_select_point: Optional[str] = None,
+                 query_timeout: Optional[str] = None):
+        """
+        :param str log_queries_after: The maximum duration in seconds before a query is 
+               logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+        :param str max_row_limit: The maximum number of rows returned in a non-chunked query. 
+               Setting this to 0 (the default) allows an unlimited number to be returned.
+        :param str max_select_buckets: The maximum number of `GROUP BY time()` buckets that 
+               can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+               be processed.
+        :param str max_select_point: The maximum number of points that can be processed in a 
+               SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+        :param str query_timeout: The maximum duration in seconds before a query is killed. 
+               Setting this to 0 (the default) will never kill slow queries.
+        """
+        if log_queries_after is not None:
+            pulumi.set(__self__, "log_queries_after", log_queries_after)
+        if max_row_limit is not None:
+            pulumi.set(__self__, "max_row_limit", max_row_limit)
+        if max_select_buckets is not None:
+            pulumi.set(__self__, "max_select_buckets", max_select_buckets)
+        if max_select_point is not None:
+            pulumi.set(__self__, "max_select_point", max_select_point)
+        if query_timeout is not None:
+            pulumi.set(__self__, "query_timeout", query_timeout)
+
+    @property
+    @pulumi.getter(name="logQueriesAfter")
+    def log_queries_after(self) -> Optional[str]:
+        """
+        The maximum duration in seconds before a query is 
+        logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+        """
+        return pulumi.get(self, "log_queries_after")
+
+    @log_queries_after.setter
+    def log_queries_after(self, value: Optional[str]):
+        pulumi.set(self, "log_queries_after", value)
+
+    @property
+    @pulumi.getter(name="maxRowLimit")
+    def max_row_limit(self) -> Optional[str]:
+        """
+        The maximum number of rows returned in a non-chunked query. 
+        Setting this to 0 (the default) allows an unlimited number to be returned.
+        """
+        return pulumi.get(self, "max_row_limit")
+
+    @max_row_limit.setter
+    def max_row_limit(self, value: Optional[str]):
+        pulumi.set(self, "max_row_limit", value)
+
+    @property
+    @pulumi.getter(name="maxSelectBuckets")
+    def max_select_buckets(self) -> Optional[str]:
+        """
+        The maximum number of `GROUP BY time()` buckets that 
+        can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+        be processed.
+        """
+        return pulumi.get(self, "max_select_buckets")
+
+    @max_select_buckets.setter
+    def max_select_buckets(self, value: Optional[str]):
+        pulumi.set(self, "max_select_buckets", value)
+
+    @property
+    @pulumi.getter(name="maxSelectPoint")
+    def max_select_point(self) -> Optional[str]:
+        """
+        The maximum number of points that can be processed in a 
+        SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+        """
+        return pulumi.get(self, "max_select_point")
+
+    @max_select_point.setter
+    def max_select_point(self, value: Optional[str]):
+        pulumi.set(self, "max_select_point", value)
+
+    @property
+    @pulumi.getter(name="queryTimeout")
+    def query_timeout(self) -> Optional[str]:
+        """
+        The maximum duration in seconds before a query is killed. 
+        Setting this to 0 (the default) will never kill slow queries.
+        """
+        return pulumi.get(self, "query_timeout")
+
+    @query_timeout.setter
+    def query_timeout(self, value: Optional[str]):
+        pulumi.set(self, "query_timeout", value)
 
 
 @pulumi.input_type
@@ -18133,6 +18995,397 @@ class GetKafkaServiceIntegrationArgs:
 
 
 @pulumi.input_type
+class GetKafkaTopicConfigArgs:
+    def __init__(__self__, *,
+                 cleanup_policy: Optional[str] = None,
+                 compression_type: Optional[str] = None,
+                 delete_retention_ms: Optional[str] = None,
+                 file_delete_delay_ms: Optional[str] = None,
+                 flush_messages: Optional[str] = None,
+                 flush_ms: Optional[str] = None,
+                 index_interval_bytes: Optional[str] = None,
+                 max_compaction_lag_ms: Optional[str] = None,
+                 max_message_bytes: Optional[str] = None,
+                 message_downconversion_enable: Optional[str] = None,
+                 message_format_version: Optional[str] = None,
+                 message_timestamp_difference_max_ms: Optional[str] = None,
+                 message_timestamp_type: Optional[str] = None,
+                 min_cleanable_dirty_ratio: Optional[str] = None,
+                 min_compaction_lag_ms: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
+                 preallocate: Optional[str] = None,
+                 retention_bytes: Optional[str] = None,
+                 retention_ms: Optional[str] = None,
+                 segment_bytes: Optional[str] = None,
+                 segment_index_bytes: Optional[str] = None,
+                 segment_jitter_ms: Optional[str] = None,
+                 segment_ms: Optional[str] = None,
+                 unclean_leader_election_enable: Optional[str] = None):
+        """
+        :param str cleanup_policy: cleanup.policy value
+        :param str compression_type: compression.type value
+        :param str delete_retention_ms: delete.retention.ms value
+        :param str file_delete_delay_ms: file.delete.delay.ms value
+        :param str flush_messages: flush.messages value
+        :param str flush_ms: flush.ms value
+        :param str index_interval_bytes: index.interval.bytes value
+        :param str max_compaction_lag_ms: max.compaction.lag.ms value
+        :param str max_message_bytes: max.message.bytes value
+        :param str message_downconversion_enable: message.downconversion.enable value
+        :param str message_format_version: message.format.version value
+        :param str message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
+        :param str message_timestamp_type: message.timestamp.type value
+        :param str min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
+        :param str min_compaction_lag_ms: min.compaction.lag.ms value
+        :param str min_insync_replicas: min.insync.replicas value
+        :param str preallocate: preallocate value
+        :param str retention_bytes: retention.bytes value
+        :param str retention_ms: retention.ms value
+        :param str segment_bytes: segment.bytes value
+        :param str segment_index_bytes: segment.index.bytes value
+        :param str segment_jitter_ms: segment.jitter.ms value
+        :param str segment_ms: segment.ms value
+        :param str unclean_leader_election_enable: unclean.leader.election.enable value
+        """
+        if cleanup_policy is not None:
+            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if compression_type is not None:
+            pulumi.set(__self__, "compression_type", compression_type)
+        if delete_retention_ms is not None:
+            pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        if file_delete_delay_ms is not None:
+            pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
+        if flush_messages is not None:
+            pulumi.set(__self__, "flush_messages", flush_messages)
+        if flush_ms is not None:
+            pulumi.set(__self__, "flush_ms", flush_ms)
+        if index_interval_bytes is not None:
+            pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if max_compaction_lag_ms is not None:
+            pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
+        if max_message_bytes is not None:
+            pulumi.set(__self__, "max_message_bytes", max_message_bytes)
+        if message_downconversion_enable is not None:
+            pulumi.set(__self__, "message_downconversion_enable", message_downconversion_enable)
+        if message_format_version is not None:
+            pulumi.set(__self__, "message_format_version", message_format_version)
+        if message_timestamp_difference_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
+        if message_timestamp_type is not None:
+            pulumi.set(__self__, "message_timestamp_type", message_timestamp_type)
+        if min_cleanable_dirty_ratio is not None:
+            pulumi.set(__self__, "min_cleanable_dirty_ratio", min_cleanable_dirty_ratio)
+        if min_compaction_lag_ms is not None:
+            pulumi.set(__self__, "min_compaction_lag_ms", min_compaction_lag_ms)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
+        if preallocate is not None:
+            pulumi.set(__self__, "preallocate", preallocate)
+        if retention_bytes is not None:
+            pulumi.set(__self__, "retention_bytes", retention_bytes)
+        if retention_ms is not None:
+            pulumi.set(__self__, "retention_ms", retention_ms)
+        if segment_bytes is not None:
+            pulumi.set(__self__, "segment_bytes", segment_bytes)
+        if segment_index_bytes is not None:
+            pulumi.set(__self__, "segment_index_bytes", segment_index_bytes)
+        if segment_jitter_ms is not None:
+            pulumi.set(__self__, "segment_jitter_ms", segment_jitter_ms)
+        if segment_ms is not None:
+            pulumi.set(__self__, "segment_ms", segment_ms)
+        if unclean_leader_election_enable is not None:
+            pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
+
+    @property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[str]:
+        """
+        cleanup.policy value
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @cleanup_policy.setter
+    def cleanup_policy(self, value: Optional[str]):
+        pulumi.set(self, "cleanup_policy", value)
+
+    @property
+    @pulumi.getter(name="compressionType")
+    def compression_type(self) -> Optional[str]:
+        """
+        compression.type value
+        """
+        return pulumi.get(self, "compression_type")
+
+    @compression_type.setter
+    def compression_type(self, value: Optional[str]):
+        pulumi.set(self, "compression_type", value)
+
+    @property
+    @pulumi.getter(name="deleteRetentionMs")
+    def delete_retention_ms(self) -> Optional[str]:
+        """
+        delete.retention.ms value
+        """
+        return pulumi.get(self, "delete_retention_ms")
+
+    @delete_retention_ms.setter
+    def delete_retention_ms(self, value: Optional[str]):
+        pulumi.set(self, "delete_retention_ms", value)
+
+    @property
+    @pulumi.getter(name="fileDeleteDelayMs")
+    def file_delete_delay_ms(self) -> Optional[str]:
+        """
+        file.delete.delay.ms value
+        """
+        return pulumi.get(self, "file_delete_delay_ms")
+
+    @file_delete_delay_ms.setter
+    def file_delete_delay_ms(self, value: Optional[str]):
+        pulumi.set(self, "file_delete_delay_ms", value)
+
+    @property
+    @pulumi.getter(name="flushMessages")
+    def flush_messages(self) -> Optional[str]:
+        """
+        flush.messages value
+        """
+        return pulumi.get(self, "flush_messages")
+
+    @flush_messages.setter
+    def flush_messages(self, value: Optional[str]):
+        pulumi.set(self, "flush_messages", value)
+
+    @property
+    @pulumi.getter(name="flushMs")
+    def flush_ms(self) -> Optional[str]:
+        """
+        flush.ms value
+        """
+        return pulumi.get(self, "flush_ms")
+
+    @flush_ms.setter
+    def flush_ms(self, value: Optional[str]):
+        pulumi.set(self, "flush_ms", value)
+
+    @property
+    @pulumi.getter(name="indexIntervalBytes")
+    def index_interval_bytes(self) -> Optional[str]:
+        """
+        index.interval.bytes value
+        """
+        return pulumi.get(self, "index_interval_bytes")
+
+    @index_interval_bytes.setter
+    def index_interval_bytes(self, value: Optional[str]):
+        pulumi.set(self, "index_interval_bytes", value)
+
+    @property
+    @pulumi.getter(name="maxCompactionLagMs")
+    def max_compaction_lag_ms(self) -> Optional[str]:
+        """
+        max.compaction.lag.ms value
+        """
+        return pulumi.get(self, "max_compaction_lag_ms")
+
+    @max_compaction_lag_ms.setter
+    def max_compaction_lag_ms(self, value: Optional[str]):
+        pulumi.set(self, "max_compaction_lag_ms", value)
+
+    @property
+    @pulumi.getter(name="maxMessageBytes")
+    def max_message_bytes(self) -> Optional[str]:
+        """
+        max.message.bytes value
+        """
+        return pulumi.get(self, "max_message_bytes")
+
+    @max_message_bytes.setter
+    def max_message_bytes(self, value: Optional[str]):
+        pulumi.set(self, "max_message_bytes", value)
+
+    @property
+    @pulumi.getter(name="messageDownconversionEnable")
+    def message_downconversion_enable(self) -> Optional[str]:
+        """
+        message.downconversion.enable value
+        """
+        return pulumi.get(self, "message_downconversion_enable")
+
+    @message_downconversion_enable.setter
+    def message_downconversion_enable(self, value: Optional[str]):
+        pulumi.set(self, "message_downconversion_enable", value)
+
+    @property
+    @pulumi.getter(name="messageFormatVersion")
+    def message_format_version(self) -> Optional[str]:
+        """
+        message.format.version value
+        """
+        return pulumi.get(self, "message_format_version")
+
+    @message_format_version.setter
+    def message_format_version(self, value: Optional[str]):
+        pulumi.set(self, "message_format_version", value)
+
+    @property
+    @pulumi.getter(name="messageTimestampDifferenceMaxMs")
+    def message_timestamp_difference_max_ms(self) -> Optional[str]:
+        """
+        message.timestamp.difference.max.ms value
+        """
+        return pulumi.get(self, "message_timestamp_difference_max_ms")
+
+    @message_timestamp_difference_max_ms.setter
+    def message_timestamp_difference_max_ms(self, value: Optional[str]):
+        pulumi.set(self, "message_timestamp_difference_max_ms", value)
+
+    @property
+    @pulumi.getter(name="messageTimestampType")
+    def message_timestamp_type(self) -> Optional[str]:
+        """
+        message.timestamp.type value
+        """
+        return pulumi.get(self, "message_timestamp_type")
+
+    @message_timestamp_type.setter
+    def message_timestamp_type(self, value: Optional[str]):
+        pulumi.set(self, "message_timestamp_type", value)
+
+    @property
+    @pulumi.getter(name="minCleanableDirtyRatio")
+    def min_cleanable_dirty_ratio(self) -> Optional[str]:
+        """
+        min.cleanable.dirty.ratio value
+        """
+        return pulumi.get(self, "min_cleanable_dirty_ratio")
+
+    @min_cleanable_dirty_ratio.setter
+    def min_cleanable_dirty_ratio(self, value: Optional[str]):
+        pulumi.set(self, "min_cleanable_dirty_ratio", value)
+
+    @property
+    @pulumi.getter(name="minCompactionLagMs")
+    def min_compaction_lag_ms(self) -> Optional[str]:
+        """
+        min.compaction.lag.ms value
+        """
+        return pulumi.get(self, "min_compaction_lag_ms")
+
+    @min_compaction_lag_ms.setter
+    def min_compaction_lag_ms(self, value: Optional[str]):
+        pulumi.set(self, "min_compaction_lag_ms", value)
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[str]:
+        """
+        min.insync.replicas value
+        """
+        return pulumi.get(self, "min_insync_replicas")
+
+    @min_insync_replicas.setter
+    def min_insync_replicas(self, value: Optional[str]):
+        pulumi.set(self, "min_insync_replicas", value)
+
+    @property
+    @pulumi.getter
+    def preallocate(self) -> Optional[str]:
+        """
+        preallocate value
+        """
+        return pulumi.get(self, "preallocate")
+
+    @preallocate.setter
+    def preallocate(self, value: Optional[str]):
+        pulumi.set(self, "preallocate", value)
+
+    @property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> Optional[str]:
+        """
+        retention.bytes value
+        """
+        return pulumi.get(self, "retention_bytes")
+
+    @retention_bytes.setter
+    def retention_bytes(self, value: Optional[str]):
+        pulumi.set(self, "retention_bytes", value)
+
+    @property
+    @pulumi.getter(name="retentionMs")
+    def retention_ms(self) -> Optional[str]:
+        """
+        retention.ms value
+        """
+        return pulumi.get(self, "retention_ms")
+
+    @retention_ms.setter
+    def retention_ms(self, value: Optional[str]):
+        pulumi.set(self, "retention_ms", value)
+
+    @property
+    @pulumi.getter(name="segmentBytes")
+    def segment_bytes(self) -> Optional[str]:
+        """
+        segment.bytes value
+        """
+        return pulumi.get(self, "segment_bytes")
+
+    @segment_bytes.setter
+    def segment_bytes(self, value: Optional[str]):
+        pulumi.set(self, "segment_bytes", value)
+
+    @property
+    @pulumi.getter(name="segmentIndexBytes")
+    def segment_index_bytes(self) -> Optional[str]:
+        """
+        segment.index.bytes value
+        """
+        return pulumi.get(self, "segment_index_bytes")
+
+    @segment_index_bytes.setter
+    def segment_index_bytes(self, value: Optional[str]):
+        pulumi.set(self, "segment_index_bytes", value)
+
+    @property
+    @pulumi.getter(name="segmentJitterMs")
+    def segment_jitter_ms(self) -> Optional[str]:
+        """
+        segment.jitter.ms value
+        """
+        return pulumi.get(self, "segment_jitter_ms")
+
+    @segment_jitter_ms.setter
+    def segment_jitter_ms(self, value: Optional[str]):
+        pulumi.set(self, "segment_jitter_ms", value)
+
+    @property
+    @pulumi.getter(name="segmentMs")
+    def segment_ms(self) -> Optional[str]:
+        """
+        segment.ms value
+        """
+        return pulumi.get(self, "segment_ms")
+
+    @segment_ms.setter
+    def segment_ms(self, value: Optional[str]):
+        pulumi.set(self, "segment_ms", value)
+
+    @property
+    @pulumi.getter(name="uncleanLeaderElectionEnable")
+    def unclean_leader_election_enable(self) -> Optional[str]:
+        """
+        unclean.leader.election.enable value
+        """
+        return pulumi.get(self, "unclean_leader_election_enable")
+
+    @unclean_leader_election_enable.setter
+    def unclean_leader_election_enable(self, value: Optional[str]):
+        pulumi.set(self, "unclean_leader_election_enable", value)
+
+
+@pulumi.input_type
 class GetMySqlComponentArgs:
     def __init__(__self__, *,
                  component: str,
@@ -19630,14 +20883,18 @@ class GetPgPgUserConfigPgArgs:
                  log_autovacuum_min_duration: Optional[str] = None,
                  log_error_verbosity: Optional[str] = None,
                  log_min_duration_statement: Optional[str] = None,
+                 max_files_per_process: Optional[str] = None,
                  max_locks_per_transaction: Optional[str] = None,
+                 max_logical_replication_workers: Optional[str] = None,
                  max_parallel_workers: Optional[str] = None,
                  max_parallel_workers_per_gather: Optional[str] = None,
                  max_pred_locks_per_transaction: Optional[str] = None,
                  max_prepared_transactions: Optional[str] = None,
+                 max_replication_slots: Optional[str] = None,
                  max_stack_depth: Optional[str] = None,
                  max_standby_archive_delay: Optional[str] = None,
                  max_standby_streaming_delay: Optional[str] = None,
+                 max_wal_senders: Optional[str] = None,
                  max_worker_processes: Optional[str] = None,
                  pg_partman_bgw_dot_interval: Optional[str] = None,
                  pg_partman_bgw_dot_role: Optional[str] = None,
@@ -19686,16 +20943,21 @@ class GetPgPgUserConfigPgArgs:
                each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
         :param str log_min_duration_statement: Log statements that take more than this number of 
                milliseconds to run, -1 disables
+        :param str max_files_per_process: PostgreSQL maximum number of files that can be open per process
         :param str max_locks_per_transaction: PostgreSQL maximum locks per transaction
+        :param str max_logical_replication_workers: PostgreSQL maximum logical replication workers 
+               (taken from the pool of max_parallel_workers)
         :param str max_parallel_workers: Sets the maximum number of workers that the system can 
                support for parallel queries.
         :param str max_parallel_workers_per_gather: Sets the maximum number of workers that can be 
                started by a single Gather or Gather Merge node.
         :param str max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction
         :param str max_prepared_transactions: PostgreSQL maximum prepared transactions
+        :param str max_replication_slots: PostgreSQL maximum replication slots
         :param str max_stack_depth: Maximum depth of the stack in bytes
         :param str max_standby_archive_delay: Max standby archive delay in milliseconds
         :param str max_standby_streaming_delay: Max standby streaming delay in milliseconds
+        :param str max_wal_senders: PostgreSQL maximum WAL senders
         :param str max_worker_processes: Sets the maximum number of background processes that the system
                can support
                * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
@@ -19746,8 +21008,12 @@ class GetPgPgUserConfigPgArgs:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
+        if max_files_per_process is not None:
+            pulumi.set(__self__, "max_files_per_process", max_files_per_process)
         if max_locks_per_transaction is not None:
             pulumi.set(__self__, "max_locks_per_transaction", max_locks_per_transaction)
+        if max_logical_replication_workers is not None:
+            pulumi.set(__self__, "max_logical_replication_workers", max_logical_replication_workers)
         if max_parallel_workers is not None:
             pulumi.set(__self__, "max_parallel_workers", max_parallel_workers)
         if max_parallel_workers_per_gather is not None:
@@ -19756,12 +21022,16 @@ class GetPgPgUserConfigPgArgs:
             pulumi.set(__self__, "max_pred_locks_per_transaction", max_pred_locks_per_transaction)
         if max_prepared_transactions is not None:
             pulumi.set(__self__, "max_prepared_transactions", max_prepared_transactions)
+        if max_replication_slots is not None:
+            pulumi.set(__self__, "max_replication_slots", max_replication_slots)
         if max_stack_depth is not None:
             pulumi.set(__self__, "max_stack_depth", max_stack_depth)
         if max_standby_archive_delay is not None:
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_wal_senders is not None:
+            pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
         if pg_partman_bgw_dot_interval is not None:
@@ -19987,6 +21257,18 @@ class GetPgPgUserConfigPgArgs:
         pulumi.set(self, "log_min_duration_statement", value)
 
     @property
+    @pulumi.getter(name="maxFilesPerProcess")
+    def max_files_per_process(self) -> Optional[str]:
+        """
+        PostgreSQL maximum number of files that can be open per process
+        """
+        return pulumi.get(self, "max_files_per_process")
+
+    @max_files_per_process.setter
+    def max_files_per_process(self, value: Optional[str]):
+        pulumi.set(self, "max_files_per_process", value)
+
+    @property
     @pulumi.getter(name="maxLocksPerTransaction")
     def max_locks_per_transaction(self) -> Optional[str]:
         """
@@ -19997,6 +21279,19 @@ class GetPgPgUserConfigPgArgs:
     @max_locks_per_transaction.setter
     def max_locks_per_transaction(self, value: Optional[str]):
         pulumi.set(self, "max_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="maxLogicalReplicationWorkers")
+    def max_logical_replication_workers(self) -> Optional[str]:
+        """
+        PostgreSQL maximum logical replication workers 
+        (taken from the pool of max_parallel_workers)
+        """
+        return pulumi.get(self, "max_logical_replication_workers")
+
+    @max_logical_replication_workers.setter
+    def max_logical_replication_workers(self, value: Optional[str]):
+        pulumi.set(self, "max_logical_replication_workers", value)
 
     @property
     @pulumi.getter(name="maxParallelWorkers")
@@ -20049,6 +21344,18 @@ class GetPgPgUserConfigPgArgs:
         pulumi.set(self, "max_prepared_transactions", value)
 
     @property
+    @pulumi.getter(name="maxReplicationSlots")
+    def max_replication_slots(self) -> Optional[str]:
+        """
+        PostgreSQL maximum replication slots
+        """
+        return pulumi.get(self, "max_replication_slots")
+
+    @max_replication_slots.setter
+    def max_replication_slots(self, value: Optional[str]):
+        pulumi.set(self, "max_replication_slots", value)
+
+    @property
     @pulumi.getter(name="maxStackDepth")
     def max_stack_depth(self) -> Optional[str]:
         """
@@ -20083,6 +21390,18 @@ class GetPgPgUserConfigPgArgs:
     @max_standby_streaming_delay.setter
     def max_standby_streaming_delay(self, value: Optional[str]):
         pulumi.set(self, "max_standby_streaming_delay", value)
+
+    @property
+    @pulumi.getter(name="maxWalSenders")
+    def max_wal_senders(self) -> Optional[str]:
+        """
+        PostgreSQL maximum WAL senders
+        """
+        return pulumi.get(self, "max_wal_senders")
+
+    @max_wal_senders.setter
+    def max_wal_senders(self, value: Optional[str]):
+        pulumi.set(self, "max_wal_senders", value)
 
     @property
     @pulumi.getter(name="maxWorkerProcesses")
@@ -22540,6 +23859,7 @@ class GetServiceGrafanaUserConfigSmtpServerArgs:
                  password: Optional[str] = None,
                  port: Optional[str] = None,
                  skip_verify: Optional[str] = None,
+                 starttls_policy: Optional[str] = None,
                  username: Optional[str] = None):
         if from_address is not None:
             pulumi.set(__self__, "from_address", from_address)
@@ -22553,6 +23873,8 @@ class GetServiceGrafanaUserConfigSmtpServerArgs:
             pulumi.set(__self__, "port", port)
         if skip_verify is not None:
             pulumi.set(__self__, "skip_verify", skip_verify)
+        if starttls_policy is not None:
+            pulumi.set(__self__, "starttls_policy", starttls_policy)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -22611,6 +23933,15 @@ class GetServiceGrafanaUserConfigSmtpServerArgs:
         pulumi.set(self, "skip_verify", value)
 
     @property
+    @pulumi.getter(name="starttlsPolicy")
+    def starttls_policy(self) -> Optional[str]:
+        return pulumi.get(self, "starttls_policy")
+
+    @starttls_policy.setter
+    def starttls_policy(self, value: Optional[str]):
+        pulumi.set(self, "starttls_policy", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
@@ -22640,6 +23971,7 @@ class GetServiceInfluxdbArgs:
 class GetServiceInfluxdbUserConfigArgs:
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
+                 influxdb: Optional['GetServiceInfluxdbUserConfigInfluxdbArgs'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['GetServiceInfluxdbUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetServiceInfluxdbUserConfigPublicAccessArgs'] = None,
@@ -22647,6 +23979,8 @@ class GetServiceInfluxdbUserConfigArgs:
                  service_to_fork_from: Optional[str] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if influxdb is not None:
+            pulumi.set(__self__, "influxdb", influxdb)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -22666,6 +24000,15 @@ class GetServiceInfluxdbUserConfigArgs:
     @custom_domain.setter
     def custom_domain(self, value: Optional[str]):
         pulumi.set(self, "custom_domain", value)
+
+    @property
+    @pulumi.getter
+    def influxdb(self) -> Optional['GetServiceInfluxdbUserConfigInfluxdbArgs']:
+        return pulumi.get(self, "influxdb")
+
+    @influxdb.setter
+    def influxdb(self, value: Optional['GetServiceInfluxdbUserConfigInfluxdbArgs']):
+        pulumi.set(self, "influxdb", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -22711,6 +24054,71 @@ class GetServiceInfluxdbUserConfigArgs:
     @service_to_fork_from.setter
     def service_to_fork_from(self, value: Optional[str]):
         pulumi.set(self, "service_to_fork_from", value)
+
+
+@pulumi.input_type
+class GetServiceInfluxdbUserConfigInfluxdbArgs:
+    def __init__(__self__, *,
+                 log_queries_after: Optional[str] = None,
+                 max_row_limit: Optional[str] = None,
+                 max_select_buckets: Optional[str] = None,
+                 max_select_point: Optional[str] = None,
+                 query_timeout: Optional[str] = None):
+        if log_queries_after is not None:
+            pulumi.set(__self__, "log_queries_after", log_queries_after)
+        if max_row_limit is not None:
+            pulumi.set(__self__, "max_row_limit", max_row_limit)
+        if max_select_buckets is not None:
+            pulumi.set(__self__, "max_select_buckets", max_select_buckets)
+        if max_select_point is not None:
+            pulumi.set(__self__, "max_select_point", max_select_point)
+        if query_timeout is not None:
+            pulumi.set(__self__, "query_timeout", query_timeout)
+
+    @property
+    @pulumi.getter(name="logQueriesAfter")
+    def log_queries_after(self) -> Optional[str]:
+        return pulumi.get(self, "log_queries_after")
+
+    @log_queries_after.setter
+    def log_queries_after(self, value: Optional[str]):
+        pulumi.set(self, "log_queries_after", value)
+
+    @property
+    @pulumi.getter(name="maxRowLimit")
+    def max_row_limit(self) -> Optional[str]:
+        return pulumi.get(self, "max_row_limit")
+
+    @max_row_limit.setter
+    def max_row_limit(self, value: Optional[str]):
+        pulumi.set(self, "max_row_limit", value)
+
+    @property
+    @pulumi.getter(name="maxSelectBuckets")
+    def max_select_buckets(self) -> Optional[str]:
+        return pulumi.get(self, "max_select_buckets")
+
+    @max_select_buckets.setter
+    def max_select_buckets(self, value: Optional[str]):
+        pulumi.set(self, "max_select_buckets", value)
+
+    @property
+    @pulumi.getter(name="maxSelectPoint")
+    def max_select_point(self) -> Optional[str]:
+        return pulumi.get(self, "max_select_point")
+
+    @max_select_point.setter
+    def max_select_point(self, value: Optional[str]):
+        pulumi.set(self, "max_select_point", value)
+
+    @property
+    @pulumi.getter(name="queryTimeout")
+    def query_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "query_timeout")
+
+    @query_timeout.setter
+    def query_timeout(self, value: Optional[str]):
+        pulumi.set(self, "query_timeout", value)
 
 
 @pulumi.input_type
@@ -25369,14 +26777,18 @@ class GetServicePgUserConfigPgArgs:
                  log_autovacuum_min_duration: Optional[str] = None,
                  log_error_verbosity: Optional[str] = None,
                  log_min_duration_statement: Optional[str] = None,
+                 max_files_per_process: Optional[str] = None,
                  max_locks_per_transaction: Optional[str] = None,
+                 max_logical_replication_workers: Optional[str] = None,
                  max_parallel_workers: Optional[str] = None,
                  max_parallel_workers_per_gather: Optional[str] = None,
                  max_pred_locks_per_transaction: Optional[str] = None,
                  max_prepared_transactions: Optional[str] = None,
+                 max_replication_slots: Optional[str] = None,
                  max_stack_depth: Optional[str] = None,
                  max_standby_archive_delay: Optional[str] = None,
                  max_standby_streaming_delay: Optional[str] = None,
+                 max_wal_senders: Optional[str] = None,
                  max_worker_processes: Optional[str] = None,
                  pg_partman_bgw_dot_interval: Optional[str] = None,
                  pg_partman_bgw_dot_role: Optional[str] = None,
@@ -25418,8 +26830,12 @@ class GetServicePgUserConfigPgArgs:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
+        if max_files_per_process is not None:
+            pulumi.set(__self__, "max_files_per_process", max_files_per_process)
         if max_locks_per_transaction is not None:
             pulumi.set(__self__, "max_locks_per_transaction", max_locks_per_transaction)
+        if max_logical_replication_workers is not None:
+            pulumi.set(__self__, "max_logical_replication_workers", max_logical_replication_workers)
         if max_parallel_workers is not None:
             pulumi.set(__self__, "max_parallel_workers", max_parallel_workers)
         if max_parallel_workers_per_gather is not None:
@@ -25428,12 +26844,16 @@ class GetServicePgUserConfigPgArgs:
             pulumi.set(__self__, "max_pred_locks_per_transaction", max_pred_locks_per_transaction)
         if max_prepared_transactions is not None:
             pulumi.set(__self__, "max_prepared_transactions", max_prepared_transactions)
+        if max_replication_slots is not None:
+            pulumi.set(__self__, "max_replication_slots", max_replication_slots)
         if max_stack_depth is not None:
             pulumi.set(__self__, "max_stack_depth", max_stack_depth)
         if max_standby_archive_delay is not None:
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_wal_senders is not None:
+            pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
         if pg_partman_bgw_dot_interval is not None:
@@ -25593,6 +27013,15 @@ class GetServicePgUserConfigPgArgs:
         pulumi.set(self, "log_min_duration_statement", value)
 
     @property
+    @pulumi.getter(name="maxFilesPerProcess")
+    def max_files_per_process(self) -> Optional[str]:
+        return pulumi.get(self, "max_files_per_process")
+
+    @max_files_per_process.setter
+    def max_files_per_process(self, value: Optional[str]):
+        pulumi.set(self, "max_files_per_process", value)
+
+    @property
     @pulumi.getter(name="maxLocksPerTransaction")
     def max_locks_per_transaction(self) -> Optional[str]:
         return pulumi.get(self, "max_locks_per_transaction")
@@ -25600,6 +27029,15 @@ class GetServicePgUserConfigPgArgs:
     @max_locks_per_transaction.setter
     def max_locks_per_transaction(self, value: Optional[str]):
         pulumi.set(self, "max_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="maxLogicalReplicationWorkers")
+    def max_logical_replication_workers(self) -> Optional[str]:
+        return pulumi.get(self, "max_logical_replication_workers")
+
+    @max_logical_replication_workers.setter
+    def max_logical_replication_workers(self, value: Optional[str]):
+        pulumi.set(self, "max_logical_replication_workers", value)
 
     @property
     @pulumi.getter(name="maxParallelWorkers")
@@ -25638,6 +27076,15 @@ class GetServicePgUserConfigPgArgs:
         pulumi.set(self, "max_prepared_transactions", value)
 
     @property
+    @pulumi.getter(name="maxReplicationSlots")
+    def max_replication_slots(self) -> Optional[str]:
+        return pulumi.get(self, "max_replication_slots")
+
+    @max_replication_slots.setter
+    def max_replication_slots(self, value: Optional[str]):
+        pulumi.set(self, "max_replication_slots", value)
+
+    @property
     @pulumi.getter(name="maxStackDepth")
     def max_stack_depth(self) -> Optional[str]:
         return pulumi.get(self, "max_stack_depth")
@@ -25663,6 +27110,15 @@ class GetServicePgUserConfigPgArgs:
     @max_standby_streaming_delay.setter
     def max_standby_streaming_delay(self, value: Optional[str]):
         pulumi.set(self, "max_standby_streaming_delay", value)
+
+    @property
+    @pulumi.getter(name="maxWalSenders")
+    def max_wal_senders(self) -> Optional[str]:
+        return pulumi.get(self, "max_wal_senders")
+
+    @max_wal_senders.setter
+    def max_wal_senders(self, value: Optional[str]):
+        pulumi.set(self, "max_wal_senders", value)
 
     @property
     @pulumi.getter(name="maxWorkerProcesses")

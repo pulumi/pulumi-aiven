@@ -38,6 +38,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SkipVerify;
         /// <summary>
+        /// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+        /// Default is OpportunisticStartTLS.
+        /// </summary>
+        public readonly string? StarttlsPolicy;
+        /// <summary>
         /// Username for SMTP authentication
         /// </summary>
         public readonly string? Username;
@@ -56,6 +61,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? skipVerify,
 
+            string? starttlsPolicy,
+
             string? username)
         {
             FromAddress = fromAddress;
@@ -64,6 +71,7 @@ namespace Pulumi.Aiven.Outputs
             Password = password;
             Port = port;
             SkipVerify = skipVerify;
+            StarttlsPolicy = starttlsPolicy;
             Username = username;
         }
     }

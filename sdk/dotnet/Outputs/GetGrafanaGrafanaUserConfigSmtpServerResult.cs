@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetGrafanaGrafanaUserConfigSmtpServerResult
     {
         /// <summary>
-        /// (Required) Address used for sending emails
+        /// Address used for sending emails
         /// </summary>
         public readonly string? FromAddress;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? FromName;
         /// <summary>
-        /// (Required) Server hostname or IP
+        /// Server hostname or IP
         /// </summary>
         public readonly string? Host;
         /// <summary>
@@ -30,13 +30,18 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// (Required) SMTP server port
+        /// SMTP server port
         /// </summary>
         public readonly string? Port;
         /// <summary>
         /// Skip verifying server certificate. Defaults to false
         /// </summary>
         public readonly string? SkipVerify;
+        /// <summary>
+        /// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
+        /// Default is OpportunisticStartTLS.
+        /// </summary>
+        public readonly string? StarttlsPolicy;
         /// <summary>
         /// Username for SMTP authentication
         /// </summary>
@@ -56,6 +61,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? skipVerify,
 
+            string? starttlsPolicy,
+
             string? username)
         {
             FromAddress = fromAddress;
@@ -64,6 +71,7 @@ namespace Pulumi.Aiven.Outputs
             Password = password;
             Port = port;
             SkipVerify = skipVerify;
+            StarttlsPolicy = starttlsPolicy;
             Username = username;
         }
     }

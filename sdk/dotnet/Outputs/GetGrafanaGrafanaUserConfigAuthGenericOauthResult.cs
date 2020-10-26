@@ -34,11 +34,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AuthUrl;
         /// <summary>
-        /// (Required) Client ID from provider
+        /// Client ID from provider
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// (Required) Client secret from provider
+        /// Client secret from provider
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>

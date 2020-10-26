@@ -30,6 +30,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("skipVerify")]
         public Input<string>? SkipVerify { get; set; }
 
+        [Input("starttlsPolicy")]
+        public Input<string>? StarttlsPolicy { get; set; }
+
         [Input("username")]
         public Input<string>? Username { get; set; }
 

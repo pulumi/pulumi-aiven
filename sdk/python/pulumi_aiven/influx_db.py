@@ -65,8 +65,7 @@ class InfluxDb(pulumi.CustomResource):
                specific region name. These are documented on each Cloud provider's own support articles,
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: Allow clients to connect to influxdb from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: influxdb.conf configuration values
         :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: defines InfluxDB specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
@@ -184,8 +183,7 @@ class InfluxDb(pulumi.CustomResource):
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbComponentArgs']]]] components: Service component information objects
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: Allow clients to connect to influxdb from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']] influxdb: influxdb.conf configuration values
         :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: defines InfluxDB specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
@@ -277,8 +275,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter
     def influxdb(self) -> pulumi.Output['outputs.InfluxDbInfluxdb']:
         """
-        Allow clients to connect to influxdb from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        influxdb.conf configuration values
         """
         return pulumi.get(self, "influxdb")
 

@@ -15,6 +15,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("customDomain")]
         public string? CustomDomain { get; set; }
 
+        [Input("influxdb")]
+        public Inputs.GetServiceInfluxdbUserConfigInfluxdbArgs? Influxdb { get; set; }
+
         [Input("ipFilters")]
         private List<string>? _ipFilters;
         public List<string> IpFilters

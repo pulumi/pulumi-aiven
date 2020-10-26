@@ -55,13 +55,13 @@ namespace Pulumi.Aiven.Inputs
         public string? AuthUrl { get; set; }
 
         /// <summary>
-        /// (Required) Client ID from provider
+        /// Client ID from provider
         /// </summary>
         [Input("clientId")]
         public string? ClientId { get; set; }
 
         /// <summary>
-        /// (Required) Client secret from provider
+        /// Client secret from provider
         /// </summary>
         [Input("clientSecret")]
         public string? ClientSecret { get; set; }

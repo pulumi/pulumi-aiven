@@ -57,8 +57,14 @@ namespace Pulumi.Aiven.Inputs
         [Input("logMinDurationStatement")]
         public Input<string>? LogMinDurationStatement { get; set; }
 
+        [Input("maxFilesPerProcess")]
+        public Input<string>? MaxFilesPerProcess { get; set; }
+
         [Input("maxLocksPerTransaction")]
         public Input<string>? MaxLocksPerTransaction { get; set; }
+
+        [Input("maxLogicalReplicationWorkers")]
+        public Input<string>? MaxLogicalReplicationWorkers { get; set; }
 
         [Input("maxParallelWorkers")]
         public Input<string>? MaxParallelWorkers { get; set; }
@@ -72,6 +78,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("maxPreparedTransactions")]
         public Input<string>? MaxPreparedTransactions { get; set; }
 
+        [Input("maxReplicationSlots")]
+        public Input<string>? MaxReplicationSlots { get; set; }
+
         [Input("maxStackDepth")]
         public Input<string>? MaxStackDepth { get; set; }
 
@@ -80,6 +89,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("maxStandbyStreamingDelay")]
         public Input<string>? MaxStandbyStreamingDelay { get; set; }
+
+        [Input("maxWalSenders")]
+        public Input<string>? MaxWalSenders { get; set; }
 
         [Input("maxWorkerProcesses")]
         public Input<string>? MaxWorkerProcesses { get; set; }

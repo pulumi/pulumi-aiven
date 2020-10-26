@@ -5501,6 +5501,9 @@ type GrafanaGrafanaUserConfigSmtpServer struct {
 	Port *string `pulumi:"port"`
 	// Skip verifying server certificate. Defaults to false
 	SkipVerify *string `pulumi:"skipVerify"`
+	// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+	// Default is OpportunisticStartTLS.
+	StarttlsPolicy *string `pulumi:"starttlsPolicy"`
 	// Username for SMTP authentication
 	Username *string `pulumi:"username"`
 }
@@ -5529,6 +5532,9 @@ type GrafanaGrafanaUserConfigSmtpServerArgs struct {
 	Port pulumi.StringPtrInput `pulumi:"port"`
 	// Skip verifying server certificate. Defaults to false
 	SkipVerify pulumi.StringPtrInput `pulumi:"skipVerify"`
+	// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+	// Default is OpportunisticStartTLS.
+	StarttlsPolicy pulumi.StringPtrInput `pulumi:"starttlsPolicy"`
 	// Username for SMTP authentication
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -5640,6 +5646,12 @@ func (o GrafanaGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringPtrO
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
 }
 
+// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+// Default is OpportunisticStartTLS.
+func (o GrafanaGrafanaUserConfigSmtpServerOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.StarttlsPolicy }).(pulumi.StringPtrOutput)
+}
+
 // Username for SMTP authentication
 func (o GrafanaGrafanaUserConfigSmtpServerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigSmtpServer) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -5720,6 +5732,17 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringP
 			return nil
 		}
 		return v.SkipVerify
+	}).(pulumi.StringPtrOutput)
+}
+
+// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+// Default is OpportunisticStartTLS.
+func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StarttlsPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6092,6 +6115,8 @@ func (o InfluxDbInfluxdbPtrOutput) DatabaseName() pulumi.StringPtrOutput {
 type InfluxDbInfluxdbUserConfig struct {
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
 	CustomDomain *string `pulumi:"customDomain"`
+	// influxdb.conf configuration values
+	Influxdb *InfluxDbInfluxdbUserConfigInfluxdb `pulumi:"influxdb"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters []string `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
@@ -6119,6 +6144,8 @@ type InfluxDbInfluxdbUserConfigInput interface {
 type InfluxDbInfluxdbUserConfigArgs struct {
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// influxdb.conf configuration values
+	Influxdb InfluxDbInfluxdbUserConfigInfluxdbPtrInput `pulumi:"influxdb"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
@@ -6214,6 +6241,11 @@ func (o InfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// influxdb.conf configuration values
+func (o InfluxDbInfluxdbUserConfigOutput) Influxdb() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigInfluxdb { return v.Influxdb }).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
 // allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o InfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
@@ -6268,6 +6300,16 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// influxdb.conf configuration values
+func (o InfluxDbInfluxdbUserConfigPtrOutput) Influxdb() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigInfluxdb {
+		if v == nil {
+			return nil
+		}
+		return v.Influxdb
+	}).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
 // allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) []string {
@@ -6319,9 +6361,239 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type InfluxDbInfluxdbUserConfigInfluxdb struct {
+	// The maximum duration in seconds before a query is
+	// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+	LogQueriesAfter *string `pulumi:"logQueriesAfter"`
+	// The maximum number of rows returned in a non-chunked query.
+	// Setting this to 0 (the default) allows an unlimited number to be returned.
+	MaxRowLimit *string `pulumi:"maxRowLimit"`
+	// The maximum number of `GROUP BY time()` buckets that
+	// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+	// be processed.
+	MaxSelectBuckets *string `pulumi:"maxSelectBuckets"`
+	// The maximum number of points that can be processed in a
+	// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+	MaxSelectPoint *string `pulumi:"maxSelectPoint"`
+	// The maximum duration in seconds before a query is killed.
+	// Setting this to 0 (the default) will never kill slow queries.
+	QueryTimeout *string `pulumi:"queryTimeout"`
+}
+
+// InfluxDbInfluxdbUserConfigInfluxdbInput is an input type that accepts InfluxDbInfluxdbUserConfigInfluxdbArgs and InfluxDbInfluxdbUserConfigInfluxdbOutput values.
+// You can construct a concrete instance of `InfluxDbInfluxdbUserConfigInfluxdbInput` via:
+//
+//          InfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+type InfluxDbInfluxdbUserConfigInfluxdbInput interface {
+	pulumi.Input
+
+	ToInfluxDbInfluxdbUserConfigInfluxdbOutput() InfluxDbInfluxdbUserConfigInfluxdbOutput
+	ToInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(context.Context) InfluxDbInfluxdbUserConfigInfluxdbOutput
+}
+
+type InfluxDbInfluxdbUserConfigInfluxdbArgs struct {
+	// The maximum duration in seconds before a query is
+	// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+	LogQueriesAfter pulumi.StringPtrInput `pulumi:"logQueriesAfter"`
+	// The maximum number of rows returned in a non-chunked query.
+	// Setting this to 0 (the default) allows an unlimited number to be returned.
+	MaxRowLimit pulumi.StringPtrInput `pulumi:"maxRowLimit"`
+	// The maximum number of `GROUP BY time()` buckets that
+	// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+	// be processed.
+	MaxSelectBuckets pulumi.StringPtrInput `pulumi:"maxSelectBuckets"`
+	// The maximum number of points that can be processed in a
+	// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+	MaxSelectPoint pulumi.StringPtrInput `pulumi:"maxSelectPoint"`
+	// The maximum duration in seconds before a query is killed.
+	// Setting this to 0 (the default) will never kill slow queries.
+	QueryTimeout pulumi.StringPtrInput `pulumi:"queryTimeout"`
+}
+
+func (InfluxDbInfluxdbUserConfigInfluxdbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i InfluxDbInfluxdbUserConfigInfluxdbArgs) ToInfluxDbInfluxdbUserConfigInfluxdbOutput() InfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return i.ToInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(context.Background())
+}
+
+func (i InfluxDbInfluxdbUserConfigInfluxdbArgs) ToInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) InfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbInfluxdbUserConfigInfluxdbOutput)
+}
+
+func (i InfluxDbInfluxdbUserConfigInfluxdbArgs) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i InfluxDbInfluxdbUserConfigInfluxdbArgs) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbInfluxdbUserConfigInfluxdbOutput).ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx)
+}
+
+// InfluxDbInfluxdbUserConfigInfluxdbPtrInput is an input type that accepts InfluxDbInfluxdbUserConfigInfluxdbArgs, InfluxDbInfluxdbUserConfigInfluxdbPtr and InfluxDbInfluxdbUserConfigInfluxdbPtrOutput values.
+// You can construct a concrete instance of `InfluxDbInfluxdbUserConfigInfluxdbPtrInput` via:
+//
+//          InfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+//
+//  or:
+//
+//          nil
+type InfluxDbInfluxdbUserConfigInfluxdbPtrInput interface {
+	pulumi.Input
+
+	ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput
+	ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Context) InfluxDbInfluxdbUserConfigInfluxdbPtrOutput
+}
+
+type influxDbInfluxdbUserConfigInfluxdbPtrType InfluxDbInfluxdbUserConfigInfluxdbArgs
+
+func InfluxDbInfluxdbUserConfigInfluxdbPtr(v *InfluxDbInfluxdbUserConfigInfluxdbArgs) InfluxDbInfluxdbUserConfigInfluxdbPtrInput {
+	return (*influxDbInfluxdbUserConfigInfluxdbPtrType)(v)
+}
+
+func (*influxDbInfluxdbUserConfigInfluxdbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i *influxDbInfluxdbUserConfigInfluxdbPtrType) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i *influxDbInfluxdbUserConfigInfluxdbPtrType) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
+type InfluxDbInfluxdbUserConfigInfluxdbOutput struct{ *pulumi.OutputState }
+
+func (InfluxDbInfluxdbUserConfigInfluxdbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) ToInfluxDbInfluxdbUserConfigInfluxdbOutput() InfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) ToInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) InfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *InfluxDbInfluxdbUserConfigInfluxdb {
+		return &v
+	}).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
+// The maximum duration in seconds before a query is
+// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *string { return v.LogQueriesAfter }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of rows returned in a non-chunked query.
+// Setting this to 0 (the default) allows an unlimited number to be returned.
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *string { return v.MaxRowLimit }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of `GROUP BY time()` buckets that
+// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+// be processed.
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectBuckets }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of points that can be processed in a
+// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectPoint }).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration in seconds before a query is killed.
+// Setting this to 0 (the default) will never kill slow queries.
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *string { return v.QueryTimeout }).(pulumi.StringPtrOutput)
+}
+
+type InfluxDbInfluxdbUserConfigInfluxdbPtrOutput struct{ *pulumi.OutputState }
+
+func (InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) ToInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) Elem() InfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigInfluxdb) InfluxDbInfluxdbUserConfigInfluxdb { return *v }).(InfluxDbInfluxdbUserConfigInfluxdbOutput)
+}
+
+// The maximum duration in seconds before a query is
+// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogQueriesAfter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of rows returned in a non-chunked query.
+// Setting this to 0 (the default) allows an unlimited number to be returned.
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRowLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of `GROUP BY time()` buckets that
+// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+// be processed.
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectBuckets
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of points that can be processed in a
+// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration in seconds before a query is killed.
+// Setting this to 0 (the default) will never kill slow queries.
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 type InfluxDbInfluxdbUserConfigPrivateAccess struct {
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -6337,8 +6609,7 @@ type InfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPrivateAccessArgs struct {
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -6419,8 +6690,7 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) ToInfluxDbInfluxdbUserCon
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow clients to connect to influxdb from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -6443,8 +6713,7 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Elem() InfluxDbInfluxd
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivateAccess) InfluxDbInfluxdbUserConfigPrivateAccess { return *v }).(InfluxDbInfluxdbUserConfigPrivateAccessOutput)
 }
 
-// Allow clients to connect to influxdb from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -6455,8 +6724,7 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.Stri
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccess struct {
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -6472,8 +6740,7 @@ type InfluxDbInfluxdbUserConfigPublicAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccessArgs struct {
-	// Allow clients to connect to influxdb from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// influxdb.conf configuration values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -6554,8 +6821,7 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) ToInfluxDbInfluxdbUserConf
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
-// Allow clients to connect to influxdb from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -6578,8 +6844,7 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Elem() InfluxDbInfluxdb
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPublicAccess) InfluxDbInfluxdbUserConfigPublicAccess { return *v }).(InfluxDbInfluxdbUserConfigPublicAccessOutput)
 }
 
-// Allow clients to connect to influxdb from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPublicAccess) *string {
 		if v == nil {
@@ -11144,6 +11409,574 @@ func (o KafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) KafkaServic
 	}).(KafkaServiceIntegrationOutput)
 }
 
+type KafkaTopicConfig struct {
+	// cleanup.policy value
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// compression.type value
+	CompressionType *string `pulumi:"compressionType"`
+	// delete.retention.ms value
+	DeleteRetentionMs *string `pulumi:"deleteRetentionMs"`
+	// file.delete.delay.ms value
+	FileDeleteDelayMs *string `pulumi:"fileDeleteDelayMs"`
+	// flush.messages value
+	FlushMessages *string `pulumi:"flushMessages"`
+	// flush.ms value
+	FlushMs *string `pulumi:"flushMs"`
+	// index.interval.bytes value
+	IndexIntervalBytes *string `pulumi:"indexIntervalBytes"`
+	// max.compaction.lag.ms value
+	MaxCompactionLagMs *string `pulumi:"maxCompactionLagMs"`
+	// max.message.bytes value
+	MaxMessageBytes *string `pulumi:"maxMessageBytes"`
+	// message.downconversion.enable value
+	MessageDownconversionEnable *string `pulumi:"messageDownconversionEnable"`
+	// message.format.version value
+	MessageFormatVersion *string `pulumi:"messageFormatVersion"`
+	// message.timestamp.difference.max.ms value
+	MessageTimestampDifferenceMaxMs *string `pulumi:"messageTimestampDifferenceMaxMs"`
+	// message.timestamp.type value
+	MessageTimestampType *string `pulumi:"messageTimestampType"`
+	// min.cleanable.dirty.ratio value
+	MinCleanableDirtyRatio *string `pulumi:"minCleanableDirtyRatio"`
+	// min.compaction.lag.ms value
+	MinCompactionLagMs *string `pulumi:"minCompactionLagMs"`
+	// min.insync.replicas value
+	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
+	// preallocate value
+	Preallocate *string `pulumi:"preallocate"`
+	// retention.bytes value
+	RetentionBytes *string `pulumi:"retentionBytes"`
+	// retention.ms value
+	RetentionMs *string `pulumi:"retentionMs"`
+	// segment.bytes value
+	SegmentBytes *string `pulumi:"segmentBytes"`
+	// segment.index.bytes value
+	SegmentIndexBytes *string `pulumi:"segmentIndexBytes"`
+	// segment.jitter.ms value
+	SegmentJitterMs *string `pulumi:"segmentJitterMs"`
+	// segment.ms value
+	SegmentMs *string `pulumi:"segmentMs"`
+	// unclean.leader.election.enable value
+	UncleanLeaderElectionEnable *string `pulumi:"uncleanLeaderElectionEnable"`
+}
+
+// KafkaTopicConfigInput is an input type that accepts KafkaTopicConfigArgs and KafkaTopicConfigOutput values.
+// You can construct a concrete instance of `KafkaTopicConfigInput` via:
+//
+//          KafkaTopicConfigArgs{...}
+type KafkaTopicConfigInput interface {
+	pulumi.Input
+
+	ToKafkaTopicConfigOutput() KafkaTopicConfigOutput
+	ToKafkaTopicConfigOutputWithContext(context.Context) KafkaTopicConfigOutput
+}
+
+type KafkaTopicConfigArgs struct {
+	// cleanup.policy value
+	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
+	// compression.type value
+	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
+	// delete.retention.ms value
+	DeleteRetentionMs pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
+	// file.delete.delay.ms value
+	FileDeleteDelayMs pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
+	// flush.messages value
+	FlushMessages pulumi.StringPtrInput `pulumi:"flushMessages"`
+	// flush.ms value
+	FlushMs pulumi.StringPtrInput `pulumi:"flushMs"`
+	// index.interval.bytes value
+	IndexIntervalBytes pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
+	// max.compaction.lag.ms value
+	MaxCompactionLagMs pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
+	// max.message.bytes value
+	MaxMessageBytes pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
+	// message.downconversion.enable value
+	MessageDownconversionEnable pulumi.StringPtrInput `pulumi:"messageDownconversionEnable"`
+	// message.format.version value
+	MessageFormatVersion pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
+	// message.timestamp.difference.max.ms value
+	MessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"messageTimestampDifferenceMaxMs"`
+	// message.timestamp.type value
+	MessageTimestampType pulumi.StringPtrInput `pulumi:"messageTimestampType"`
+	// min.cleanable.dirty.ratio value
+	MinCleanableDirtyRatio pulumi.StringPtrInput `pulumi:"minCleanableDirtyRatio"`
+	// min.compaction.lag.ms value
+	MinCompactionLagMs pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
+	// min.insync.replicas value
+	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
+	// preallocate value
+	Preallocate pulumi.StringPtrInput `pulumi:"preallocate"`
+	// retention.bytes value
+	RetentionBytes pulumi.StringPtrInput `pulumi:"retentionBytes"`
+	// retention.ms value
+	RetentionMs pulumi.StringPtrInput `pulumi:"retentionMs"`
+	// segment.bytes value
+	SegmentBytes pulumi.StringPtrInput `pulumi:"segmentBytes"`
+	// segment.index.bytes value
+	SegmentIndexBytes pulumi.StringPtrInput `pulumi:"segmentIndexBytes"`
+	// segment.jitter.ms value
+	SegmentJitterMs pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
+	// segment.ms value
+	SegmentMs pulumi.StringPtrInput `pulumi:"segmentMs"`
+	// unclean.leader.election.enable value
+	UncleanLeaderElectionEnable pulumi.StringPtrInput `pulumi:"uncleanLeaderElectionEnable"`
+}
+
+func (KafkaTopicConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTopicConfig)(nil)).Elem()
+}
+
+func (i KafkaTopicConfigArgs) ToKafkaTopicConfigOutput() KafkaTopicConfigOutput {
+	return i.ToKafkaTopicConfigOutputWithContext(context.Background())
+}
+
+func (i KafkaTopicConfigArgs) ToKafkaTopicConfigOutputWithContext(ctx context.Context) KafkaTopicConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicConfigOutput)
+}
+
+func (i KafkaTopicConfigArgs) ToKafkaTopicConfigPtrOutput() KafkaTopicConfigPtrOutput {
+	return i.ToKafkaTopicConfigPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaTopicConfigArgs) ToKafkaTopicConfigPtrOutputWithContext(ctx context.Context) KafkaTopicConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicConfigOutput).ToKafkaTopicConfigPtrOutputWithContext(ctx)
+}
+
+// KafkaTopicConfigPtrInput is an input type that accepts KafkaTopicConfigArgs, KafkaTopicConfigPtr and KafkaTopicConfigPtrOutput values.
+// You can construct a concrete instance of `KafkaTopicConfigPtrInput` via:
+//
+//          KafkaTopicConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type KafkaTopicConfigPtrInput interface {
+	pulumi.Input
+
+	ToKafkaTopicConfigPtrOutput() KafkaTopicConfigPtrOutput
+	ToKafkaTopicConfigPtrOutputWithContext(context.Context) KafkaTopicConfigPtrOutput
+}
+
+type kafkaTopicConfigPtrType KafkaTopicConfigArgs
+
+func KafkaTopicConfigPtr(v *KafkaTopicConfigArgs) KafkaTopicConfigPtrInput {
+	return (*kafkaTopicConfigPtrType)(v)
+}
+
+func (*kafkaTopicConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaTopicConfig)(nil)).Elem()
+}
+
+func (i *kafkaTopicConfigPtrType) ToKafkaTopicConfigPtrOutput() KafkaTopicConfigPtrOutput {
+	return i.ToKafkaTopicConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaTopicConfigPtrType) ToKafkaTopicConfigPtrOutputWithContext(ctx context.Context) KafkaTopicConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicConfigPtrOutput)
+}
+
+type KafkaTopicConfigOutput struct{ *pulumi.OutputState }
+
+func (KafkaTopicConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTopicConfig)(nil)).Elem()
+}
+
+func (o KafkaTopicConfigOutput) ToKafkaTopicConfigOutput() KafkaTopicConfigOutput {
+	return o
+}
+
+func (o KafkaTopicConfigOutput) ToKafkaTopicConfigOutputWithContext(ctx context.Context) KafkaTopicConfigOutput {
+	return o
+}
+
+func (o KafkaTopicConfigOutput) ToKafkaTopicConfigPtrOutput() KafkaTopicConfigPtrOutput {
+	return o.ToKafkaTopicConfigPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaTopicConfigOutput) ToKafkaTopicConfigPtrOutputWithContext(ctx context.Context) KafkaTopicConfigPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *KafkaTopicConfig {
+		return &v
+	}).(KafkaTopicConfigPtrOutput)
+}
+
+// cleanup.policy value
+func (o KafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// compression.type value
+func (o KafkaTopicConfigOutput) CompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
+}
+
+// delete.retention.ms value
+func (o KafkaTopicConfigOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.DeleteRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// file.delete.delay.ms value
+func (o KafkaTopicConfigOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FileDeleteDelayMs }).(pulumi.StringPtrOutput)
+}
+
+// flush.messages value
+func (o KafkaTopicConfigOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FlushMessages }).(pulumi.StringPtrOutput)
+}
+
+// flush.ms value
+func (o KafkaTopicConfigOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FlushMs }).(pulumi.StringPtrOutput)
+}
+
+// index.interval.bytes value
+func (o KafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
+}
+
+// max.compaction.lag.ms value
+func (o KafkaTopicConfigOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MaxCompactionLagMs }).(pulumi.StringPtrOutput)
+}
+
+// max.message.bytes value
+func (o KafkaTopicConfigOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MaxMessageBytes }).(pulumi.StringPtrOutput)
+}
+
+// message.downconversion.enable value
+func (o KafkaTopicConfigOutput) MessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageDownconversionEnable }).(pulumi.StringPtrOutput)
+}
+
+// message.format.version value
+func (o KafkaTopicConfigOutput) MessageFormatVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageFormatVersion }).(pulumi.StringPtrOutput)
+}
+
+// message.timestamp.difference.max.ms value
+func (o KafkaTopicConfigOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
+}
+
+// message.timestamp.type value
+func (o KafkaTopicConfigOutput) MessageTimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageTimestampType }).(pulumi.StringPtrOutput)
+}
+
+// min.cleanable.dirty.ratio value
+func (o KafkaTopicConfigOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinCleanableDirtyRatio }).(pulumi.StringPtrOutput)
+}
+
+// min.compaction.lag.ms value
+func (o KafkaTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
+}
+
+// min.insync.replicas value
+func (o KafkaTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
+}
+
+// preallocate value
+func (o KafkaTopicConfigOutput) Preallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.Preallocate }).(pulumi.StringPtrOutput)
+}
+
+// retention.bytes value
+func (o KafkaTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.RetentionBytes }).(pulumi.StringPtrOutput)
+}
+
+// retention.ms value
+func (o KafkaTopicConfigOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.RetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// segment.bytes value
+func (o KafkaTopicConfigOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentBytes }).(pulumi.StringPtrOutput)
+}
+
+// segment.index.bytes value
+func (o KafkaTopicConfigOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentIndexBytes }).(pulumi.StringPtrOutput)
+}
+
+// segment.jitter.ms value
+func (o KafkaTopicConfigOutput) SegmentJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentJitterMs }).(pulumi.StringPtrOutput)
+}
+
+// segment.ms value
+func (o KafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
+}
+
+// unclean.leader.election.enable value
+func (o KafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.UncleanLeaderElectionEnable }).(pulumi.StringPtrOutput)
+}
+
+type KafkaTopicConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaTopicConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaTopicConfig)(nil)).Elem()
+}
+
+func (o KafkaTopicConfigPtrOutput) ToKafkaTopicConfigPtrOutput() KafkaTopicConfigPtrOutput {
+	return o
+}
+
+func (o KafkaTopicConfigPtrOutput) ToKafkaTopicConfigPtrOutputWithContext(ctx context.Context) KafkaTopicConfigPtrOutput {
+	return o
+}
+
+func (o KafkaTopicConfigPtrOutput) Elem() KafkaTopicConfigOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) KafkaTopicConfig { return *v }).(KafkaTopicConfigOutput)
+}
+
+// cleanup.policy value
+func (o KafkaTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CleanupPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// compression.type value
+func (o KafkaTopicConfigPtrOutput) CompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// delete.retention.ms value
+func (o KafkaTopicConfigPtrOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// file.delete.delay.ms value
+func (o KafkaTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileDeleteDelayMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// flush.messages value
+func (o KafkaTopicConfigPtrOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushMessages
+	}).(pulumi.StringPtrOutput)
+}
+
+// flush.ms value
+func (o KafkaTopicConfigPtrOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// index.interval.bytes value
+func (o KafkaTopicConfigPtrOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexIntervalBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// max.compaction.lag.ms value
+func (o KafkaTopicConfigPtrOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCompactionLagMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// max.message.bytes value
+func (o KafkaTopicConfigPtrOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMessageBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// message.downconversion.enable value
+func (o KafkaTopicConfigPtrOutput) MessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageDownconversionEnable
+	}).(pulumi.StringPtrOutput)
+}
+
+// message.format.version value
+func (o KafkaTopicConfigPtrOutput) MessageFormatVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageFormatVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// message.timestamp.difference.max.ms value
+func (o KafkaTopicConfigPtrOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageTimestampDifferenceMaxMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// message.timestamp.type value
+func (o KafkaTopicConfigPtrOutput) MessageTimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageTimestampType
+	}).(pulumi.StringPtrOutput)
+}
+
+// min.cleanable.dirty.ratio value
+func (o KafkaTopicConfigPtrOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCleanableDirtyRatio
+	}).(pulumi.StringPtrOutput)
+}
+
+// min.compaction.lag.ms value
+func (o KafkaTopicConfigPtrOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCompactionLagMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// min.insync.replicas value
+func (o KafkaTopicConfigPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinInsyncReplicas
+	}).(pulumi.StringPtrOutput)
+}
+
+// preallocate value
+func (o KafkaTopicConfigPtrOutput) Preallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Preallocate
+	}).(pulumi.StringPtrOutput)
+}
+
+// retention.bytes value
+func (o KafkaTopicConfigPtrOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// retention.ms value
+func (o KafkaTopicConfigPtrOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// segment.bytes value
+func (o KafkaTopicConfigPtrOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// segment.index.bytes value
+func (o KafkaTopicConfigPtrOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentIndexBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// segment.jitter.ms value
+func (o KafkaTopicConfigPtrOutput) SegmentJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentJitterMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// segment.ms value
+func (o KafkaTopicConfigPtrOutput) SegmentMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// unclean.leader.election.enable value
+func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UncleanLeaderElectionEnable
+	}).(pulumi.StringPtrOutput)
+}
+
 type MySqlComponent struct {
 	Component                 *string `pulumi:"component"`
 	Host                      *string `pulumi:"host"`
@@ -14010,8 +14843,13 @@ type PgPgUserConfigPg struct {
 	// Log statements that take more than this number of
 	// milliseconds to run, -1 disables
 	LogMinDurationStatement *string `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum number of files that can be open per process
+	MaxFilesPerProcess *string `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction
 	MaxLocksPerTransaction *string `pulumi:"maxLocksPerTransaction"`
+	// PostgreSQL maximum logical replication workers
+	// (taken from the pool of max_parallel_workers)
+	MaxLogicalReplicationWorkers *string `pulumi:"maxLogicalReplicationWorkers"`
 	// Sets the maximum number of workers that the system can
 	// support for parallel queries.
 	MaxParallelWorkers *string `pulumi:"maxParallelWorkers"`
@@ -14022,12 +14860,16 @@ type PgPgUserConfigPg struct {
 	MaxPredLocksPerTransaction *string `pulumi:"maxPredLocksPerTransaction"`
 	// PostgreSQL maximum prepared transactions
 	MaxPreparedTransactions *string `pulumi:"maxPreparedTransactions"`
+	// PostgreSQL maximum replication slots
+	MaxReplicationSlots *string `pulumi:"maxReplicationSlots"`
 	// Maximum depth of the stack in bytes
 	MaxStackDepth *string `pulumi:"maxStackDepth"`
 	// Max standby archive delay in milliseconds
 	MaxStandbyArchiveDelay *string `pulumi:"maxStandbyArchiveDelay"`
 	// Max standby streaming delay in milliseconds
 	MaxStandbyStreamingDelay *string `pulumi:"maxStandbyStreamingDelay"`
+	// PostgreSQL maximum WAL senders
+	MaxWalSenders *string `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system
 	// can support
 	// * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
@@ -14123,8 +14965,13 @@ type PgPgUserConfigPgArgs struct {
 	// Log statements that take more than this number of
 	// milliseconds to run, -1 disables
 	LogMinDurationStatement pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum number of files that can be open per process
+	MaxFilesPerProcess pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction
 	MaxLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	// PostgreSQL maximum logical replication workers
+	// (taken from the pool of max_parallel_workers)
+	MaxLogicalReplicationWorkers pulumi.StringPtrInput `pulumi:"maxLogicalReplicationWorkers"`
 	// Sets the maximum number of workers that the system can
 	// support for parallel queries.
 	MaxParallelWorkers pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
@@ -14135,12 +14982,16 @@ type PgPgUserConfigPgArgs struct {
 	MaxPredLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
 	// PostgreSQL maximum prepared transactions
 	MaxPreparedTransactions pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	// PostgreSQL maximum replication slots
+	MaxReplicationSlots pulumi.StringPtrInput `pulumi:"maxReplicationSlots"`
 	// Maximum depth of the stack in bytes
 	MaxStackDepth pulumi.StringPtrInput `pulumi:"maxStackDepth"`
 	// Max standby archive delay in milliseconds
 	MaxStandbyArchiveDelay pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	// Max standby streaming delay in milliseconds
 	MaxStandbyStreamingDelay pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	// PostgreSQL maximum WAL senders
+	MaxWalSenders pulumi.StringPtrInput `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system
 	// can support
 	// * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
@@ -14346,9 +15197,20 @@ func (o PgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum number of files that can be open per process
+func (o PgPgUserConfigPgOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxFilesPerProcess }).(pulumi.StringPtrOutput)
+}
+
 // PostgreSQL maximum locks per transaction
 func (o PgPgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum logical replication workers
+// (taken from the pool of max_parallel_workers)
+func (o PgPgUserConfigPgOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxLogicalReplicationWorkers }).(pulumi.StringPtrOutput)
 }
 
 // Sets the maximum number of workers that the system can
@@ -14373,6 +15235,11 @@ func (o PgPgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringPtrOutput
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum replication slots
+func (o PgPgUserConfigPgOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxReplicationSlots }).(pulumi.StringPtrOutput)
+}
+
 // Maximum depth of the stack in bytes
 func (o PgPgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
@@ -14386,6 +15253,11 @@ func (o PgPgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutput 
 // Max standby streaming delay in milliseconds
 func (o PgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum WAL senders
+func (o PgPgUserConfigPgOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.MaxWalSenders }).(pulumi.StringPtrOutput)
 }
 
 // Sets the maximum number of background processes that the system
@@ -14640,6 +15512,16 @@ func (o PgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum number of files that can be open per process
+func (o PgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFilesPerProcess
+	}).(pulumi.StringPtrOutput)
+}
+
 // PostgreSQL maximum locks per transaction
 func (o PgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
@@ -14647,6 +15529,17 @@ func (o PgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.MaxLocksPerTransaction
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum logical replication workers
+// (taken from the pool of max_parallel_workers)
+func (o PgPgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLogicalReplicationWorkers
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14692,6 +15585,16 @@ func (o PgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum replication slots
+func (o PgPgUserConfigPgPtrOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicationSlots
+	}).(pulumi.StringPtrOutput)
+}
+
 // Maximum depth of the stack in bytes
 func (o PgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
@@ -14719,6 +15622,16 @@ func (o PgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOu
 			return nil
 		}
 		return v.MaxStandbyStreamingDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum WAL senders
+func (o PgPgUserConfigPgPtrOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWalSenders
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21024,13 +21937,14 @@ func (o ServiceGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPt
 }
 
 type ServiceGrafanaUserConfigSmtpServer struct {
-	FromAddress *string `pulumi:"fromAddress"`
-	FromName    *string `pulumi:"fromName"`
-	Host        *string `pulumi:"host"`
-	Password    *string `pulumi:"password"`
-	Port        *string `pulumi:"port"`
-	SkipVerify  *string `pulumi:"skipVerify"`
-	Username    *string `pulumi:"username"`
+	FromAddress    *string `pulumi:"fromAddress"`
+	FromName       *string `pulumi:"fromName"`
+	Host           *string `pulumi:"host"`
+	Password       *string `pulumi:"password"`
+	Port           *string `pulumi:"port"`
+	SkipVerify     *string `pulumi:"skipVerify"`
+	StarttlsPolicy *string `pulumi:"starttlsPolicy"`
+	Username       *string `pulumi:"username"`
 }
 
 // ServiceGrafanaUserConfigSmtpServerInput is an input type that accepts ServiceGrafanaUserConfigSmtpServerArgs and ServiceGrafanaUserConfigSmtpServerOutput values.
@@ -21045,13 +21959,14 @@ type ServiceGrafanaUserConfigSmtpServerInput interface {
 }
 
 type ServiceGrafanaUserConfigSmtpServerArgs struct {
-	FromAddress pulumi.StringPtrInput `pulumi:"fromAddress"`
-	FromName    pulumi.StringPtrInput `pulumi:"fromName"`
-	Host        pulumi.StringPtrInput `pulumi:"host"`
-	Password    pulumi.StringPtrInput `pulumi:"password"`
-	Port        pulumi.StringPtrInput `pulumi:"port"`
-	SkipVerify  pulumi.StringPtrInput `pulumi:"skipVerify"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	FromAddress    pulumi.StringPtrInput `pulumi:"fromAddress"`
+	FromName       pulumi.StringPtrInput `pulumi:"fromName"`
+	Host           pulumi.StringPtrInput `pulumi:"host"`
+	Password       pulumi.StringPtrInput `pulumi:"password"`
+	Port           pulumi.StringPtrInput `pulumi:"port"`
+	SkipVerify     pulumi.StringPtrInput `pulumi:"skipVerify"`
+	StarttlsPolicy pulumi.StringPtrInput `pulumi:"starttlsPolicy"`
+	Username       pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ServiceGrafanaUserConfigSmtpServerArgs) ElementType() reflect.Type {
@@ -21154,6 +22069,10 @@ func (o ServiceGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringPtrO
 	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceGrafanaUserConfigSmtpServerOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.StarttlsPolicy }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceGrafanaUserConfigSmtpServerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGrafanaUserConfigSmtpServer) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -21227,6 +22146,15 @@ func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.StringP
 			return nil
 		}
 		return v.SkipVerify
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceGrafanaUserConfigSmtpServerPtrOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StarttlsPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21367,6 +22295,7 @@ func (o ServiceInfluxdbPtrOutput) DatabaseName() pulumi.StringPtrOutput {
 
 type ServiceInfluxdbUserConfig struct {
 	CustomDomain           *string                                 `pulumi:"customDomain"`
+	Influxdb               *ServiceInfluxdbUserConfigInfluxdb      `pulumi:"influxdb"`
 	IpFilters              []string                                `pulumi:"ipFilters"`
 	PrivateAccess          *ServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess           *ServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
@@ -21387,6 +22316,7 @@ type ServiceInfluxdbUserConfigInput interface {
 
 type ServiceInfluxdbUserConfigArgs struct {
 	CustomDomain           pulumi.StringPtrInput                          `pulumi:"customDomain"`
+	Influxdb               ServiceInfluxdbUserConfigInfluxdbPtrInput      `pulumi:"influxdb"`
 	IpFilters              pulumi.StringArrayInput                        `pulumi:"ipFilters"`
 	PrivateAccess          ServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess           ServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
@@ -21474,6 +22404,10 @@ func (o ServiceInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceInfluxdbUserConfigOutput) Influxdb() ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigInfluxdb { return v.Influxdb }).(ServiceInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
 func (o ServiceInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -21521,6 +22455,15 @@ func (o ServiceInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceInfluxdbUserConfigPtrOutput) Influxdb() ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigInfluxdb {
+		if v == nil {
+			return nil
+		}
+		return v.Influxdb
+	}).(ServiceInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
 func (o ServiceInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) []string {
 		if v == nil {
@@ -21563,6 +22506,192 @@ func (o ServiceInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtr
 			return nil
 		}
 		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceInfluxdbUserConfigInfluxdb struct {
+	LogQueriesAfter  *string `pulumi:"logQueriesAfter"`
+	MaxRowLimit      *string `pulumi:"maxRowLimit"`
+	MaxSelectBuckets *string `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint   *string `pulumi:"maxSelectPoint"`
+	QueryTimeout     *string `pulumi:"queryTimeout"`
+}
+
+// ServiceInfluxdbUserConfigInfluxdbInput is an input type that accepts ServiceInfluxdbUserConfigInfluxdbArgs and ServiceInfluxdbUserConfigInfluxdbOutput values.
+// You can construct a concrete instance of `ServiceInfluxdbUserConfigInfluxdbInput` via:
+//
+//          ServiceInfluxdbUserConfigInfluxdbArgs{...}
+type ServiceInfluxdbUserConfigInfluxdbInput interface {
+	pulumi.Input
+
+	ToServiceInfluxdbUserConfigInfluxdbOutput() ServiceInfluxdbUserConfigInfluxdbOutput
+	ToServiceInfluxdbUserConfigInfluxdbOutputWithContext(context.Context) ServiceInfluxdbUserConfigInfluxdbOutput
+}
+
+type ServiceInfluxdbUserConfigInfluxdbArgs struct {
+	LogQueriesAfter  pulumi.StringPtrInput `pulumi:"logQueriesAfter"`
+	MaxRowLimit      pulumi.StringPtrInput `pulumi:"maxRowLimit"`
+	MaxSelectBuckets pulumi.StringPtrInput `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint   pulumi.StringPtrInput `pulumi:"maxSelectPoint"`
+	QueryTimeout     pulumi.StringPtrInput `pulumi:"queryTimeout"`
+}
+
+func (ServiceInfluxdbUserConfigInfluxdbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i ServiceInfluxdbUserConfigInfluxdbArgs) ToServiceInfluxdbUserConfigInfluxdbOutput() ServiceInfluxdbUserConfigInfluxdbOutput {
+	return i.ToServiceInfluxdbUserConfigInfluxdbOutputWithContext(context.Background())
+}
+
+func (i ServiceInfluxdbUserConfigInfluxdbArgs) ToServiceInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) ServiceInfluxdbUserConfigInfluxdbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceInfluxdbUserConfigInfluxdbOutput)
+}
+
+func (i ServiceInfluxdbUserConfigInfluxdbArgs) ToServiceInfluxdbUserConfigInfluxdbPtrOutput() ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceInfluxdbUserConfigInfluxdbArgs) ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceInfluxdbUserConfigInfluxdbOutput).ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx)
+}
+
+// ServiceInfluxdbUserConfigInfluxdbPtrInput is an input type that accepts ServiceInfluxdbUserConfigInfluxdbArgs, ServiceInfluxdbUserConfigInfluxdbPtr and ServiceInfluxdbUserConfigInfluxdbPtrOutput values.
+// You can construct a concrete instance of `ServiceInfluxdbUserConfigInfluxdbPtrInput` via:
+//
+//          ServiceInfluxdbUserConfigInfluxdbArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceInfluxdbUserConfigInfluxdbPtrInput interface {
+	pulumi.Input
+
+	ToServiceInfluxdbUserConfigInfluxdbPtrOutput() ServiceInfluxdbUserConfigInfluxdbPtrOutput
+	ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Context) ServiceInfluxdbUserConfigInfluxdbPtrOutput
+}
+
+type serviceInfluxdbUserConfigInfluxdbPtrType ServiceInfluxdbUserConfigInfluxdbArgs
+
+func ServiceInfluxdbUserConfigInfluxdbPtr(v *ServiceInfluxdbUserConfigInfluxdbArgs) ServiceInfluxdbUserConfigInfluxdbPtrInput {
+	return (*serviceInfluxdbUserConfigInfluxdbPtrType)(v)
+}
+
+func (*serviceInfluxdbUserConfigInfluxdbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i *serviceInfluxdbUserConfigInfluxdbPtrType) ToServiceInfluxdbUserConfigInfluxdbPtrOutput() ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceInfluxdbUserConfigInfluxdbPtrType) ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
+type ServiceInfluxdbUserConfigInfluxdbOutput struct{ *pulumi.OutputState }
+
+func (ServiceInfluxdbUserConfigInfluxdbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) ToServiceInfluxdbUserConfigInfluxdbOutput() ServiceInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) ToServiceInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) ServiceInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) ToServiceInfluxdbUserConfigInfluxdbPtrOutput() ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfigInfluxdb) *ServiceInfluxdbUserConfigInfluxdb {
+		return &v
+	}).(ServiceInfluxdbUserConfigInfluxdbPtrOutput)
+}
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfigInfluxdb) *string { return v.LogQueriesAfter }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfigInfluxdb) *string { return v.MaxRowLimit }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectBuckets }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectPoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfigInfluxdb) *string { return v.QueryTimeout }).(pulumi.StringPtrOutput)
+}
+
+type ServiceInfluxdbUserConfigInfluxdbPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceInfluxdbUserConfigInfluxdbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) ToServiceInfluxdbUserConfigInfluxdbPtrOutput() ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) ToServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) ServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) Elem() ServiceInfluxdbUserConfigInfluxdbOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigInfluxdb) ServiceInfluxdbUserConfigInfluxdb { return *v }).(ServiceInfluxdbUserConfigInfluxdbOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogQueriesAfter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRowLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectBuckets
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTimeout
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29137,14 +30266,18 @@ type ServicePgUserConfigPg struct {
 	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
 	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
+	MaxFilesPerProcess              *string `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
+	MaxLogicalReplicationWorkers    *string `pulumi:"maxLogicalReplicationWorkers"`
 	MaxParallelWorkers              *string `pulumi:"maxParallelWorkers"`
 	MaxParallelWorkersPerGather     *string `pulumi:"maxParallelWorkersPerGather"`
 	MaxPredLocksPerTransaction      *string `pulumi:"maxPredLocksPerTransaction"`
 	MaxPreparedTransactions         *string `pulumi:"maxPreparedTransactions"`
+	MaxReplicationSlots             *string `pulumi:"maxReplicationSlots"`
 	MaxStackDepth                   *string `pulumi:"maxStackDepth"`
 	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
+	MaxWalSenders                   *string `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
 	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
 	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
@@ -29185,14 +30318,18 @@ type ServicePgUserConfigPgArgs struct {
 	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
 	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	MaxFilesPerProcess              pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	MaxLogicalReplicationWorkers    pulumi.StringPtrInput `pulumi:"maxLogicalReplicationWorkers"`
 	MaxParallelWorkers              pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
 	MaxParallelWorkersPerGather     pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
 	MaxPredLocksPerTransaction      pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
 	MaxPreparedTransactions         pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	MaxReplicationSlots             pulumi.StringPtrInput `pulumi:"maxReplicationSlots"`
 	MaxStackDepth                   pulumi.StringPtrInput `pulumi:"maxStackDepth"`
 	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	MaxWalSenders                   pulumi.StringPtrInput `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
 	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
 	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
@@ -29342,8 +30479,16 @@ func (o ServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrO
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigPgOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxFilesPerProcess }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxLogicalReplicationWorkers }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
@@ -29362,6 +30507,10 @@ func (o ServicePgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringPtrO
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigPgOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxReplicationSlots }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
 }
@@ -29372,6 +30521,10 @@ func (o ServicePgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOu
 
 func (o ServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxWalSenders }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
@@ -29571,12 +30724,30 @@ func (o ServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFilesPerProcess
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxLocksPerTransaction
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLogicalReplicationWorkers
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29616,6 +30787,15 @@ func (o ServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigPgPtrOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicationSlots
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
@@ -29640,6 +30820,15 @@ func (o ServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.String
 			return nil
 		}
 		return v.MaxStandbyStreamingDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWalSenders
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34132,10 +35321,10 @@ func (o GetElasticSearchServiceIntegrationArrayOutput) Index(i pulumi.IntInput) 
 
 type GetGrafanaComponent struct {
 	Component string `pulumi:"component"`
-	// (Required) Server hostname or IP
+	// Server hostname or IP
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
-	// (Required) SMTP server port
+	// SMTP server port
 	Port  int    `pulumi:"port"`
 	Route string `pulumi:"route"`
 	Ssl   bool   `pulumi:"ssl"`
@@ -34155,10 +35344,10 @@ type GetGrafanaComponentInput interface {
 
 type GetGrafanaComponentArgs struct {
 	Component pulumi.StringInput `pulumi:"component"`
-	// (Required) Server hostname or IP
+	// Server hostname or IP
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
-	// (Required) SMTP server port
+	// SMTP server port
 	Port  pulumi.IntInput    `pulumi:"port"`
 	Route pulumi.StringInput `pulumi:"route"`
 	Ssl   pulumi.BoolInput   `pulumi:"ssl"`
@@ -34220,7 +35409,7 @@ func (o GetGrafanaComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGrafanaComponent) string { return v.Component }).(pulumi.StringOutput)
 }
 
-// (Required) Server hostname or IP
+// Server hostname or IP
 func (o GetGrafanaComponentOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGrafanaComponent) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -34229,7 +35418,7 @@ func (o GetGrafanaComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutp
 	return o.ApplyT(func(v GetGrafanaComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
 }
 
-// (Required) SMTP server port
+// SMTP server port
 func (o GetGrafanaComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGrafanaComponent) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -34637,9 +35826,9 @@ type GetGrafanaGrafanaUserConfigAuthGenericOauth struct {
 	ApiUrl *string `pulumi:"apiUrl"`
 	// Authorization URL. This only needs to be set when using self hosted GitLab
 	AuthUrl *string `pulumi:"authUrl"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId *string `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Name of the OAuth integration
 	Name *string `pulumi:"name"`
@@ -34671,9 +35860,9 @@ type GetGrafanaGrafanaUserConfigAuthGenericOauthArgs struct {
 	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
 	// Authorization URL. This only needs to be set when using self hosted GitLab
 	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Name of the OAuth integration
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -34785,12 +35974,12 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) AuthUrl() pulumi.Stri
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -34880,7 +36069,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -34890,7 +36079,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *string {
 		if v == nil {
@@ -34935,9 +36124,9 @@ type GetGrafanaGrafanaUserConfigAuthGithub struct {
 	AllowSignUp *string `pulumi:"allowSignUp"`
 	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId *string `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Require users to belong to one of given team IDs
 	TeamIds []string `pulumi:"teamIds"`
@@ -34959,9 +36148,9 @@ type GetGrafanaGrafanaUserConfigAuthGithubArgs struct {
 	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
 	// Must consist of alpha-numeric characters and dashes"
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Require users to belong to one of given team IDs
 	TeamIds pulumi.StringArrayInput `pulumi:"teamIds"`
@@ -35054,12 +36243,12 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) AllowedOrganizations() pulu
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -35107,7 +36296,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() p
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -35117,7 +36306,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) *string {
 		if v == nil {
@@ -35140,15 +36329,15 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.StringA
 type GetGrafanaGrafanaUserConfigAuthGitlab struct {
 	// Automatically sign-up users on successful sign-in
 	AllowSignUp *string `pulumi:"allowSignUp"`
-	// (Required) Require users to belong to one of given groups
+	// Require users to belong to one of given groups
 	AllowedGroups []string `pulumi:"allowedGroups"`
 	// API URL. This only needs to be set when using self hosted GitLab
 	ApiUrl *string `pulumi:"apiUrl"`
 	// Authorization URL. This only needs to be set when using self hosted GitLab
 	AuthUrl *string `pulumi:"authUrl"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId *string `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Token URL. This only needs to be set when using self hosted GitLab
 	TokenUrl *string `pulumi:"tokenUrl"`
@@ -35168,15 +36357,15 @@ type GetGrafanaGrafanaUserConfigAuthGitlabInput interface {
 type GetGrafanaGrafanaUserConfigAuthGitlabArgs struct {
 	// Automatically sign-up users on successful sign-in
 	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
-	// (Required) Require users to belong to one of given groups
+	// Require users to belong to one of given groups
 	AllowedGroups pulumi.StringArrayInput `pulumi:"allowedGroups"`
 	// API URL. This only needs to be set when using self hosted GitLab
 	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
 	// Authorization URL. This only needs to be set when using self hosted GitLab
 	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Token URL. This only needs to be set when using self hosted GitLab
 	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
@@ -35264,7 +36453,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) AllowSignUp() pulumi.String
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.AllowSignUp }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Require users to belong to one of given groups
+// Require users to belong to one of given groups
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) AllowedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) []string { return v.AllowedGroups }).(pulumi.StringArrayOutput)
 }
@@ -35279,12 +36468,12 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) AuthUrl() pulumi.StringPtrO
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGitlab) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -35322,7 +36511,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowSignUp() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Require users to belong to one of given groups
+// Require users to belong to one of given groups
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AllowedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) []string {
 		if v == nil {
@@ -35352,7 +36541,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) AuthUrl() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -35362,7 +36551,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGitlab) *string {
 		if v == nil {
@@ -35387,9 +36576,9 @@ type GetGrafanaGrafanaUserConfigAuthGoogle struct {
 	AllowSignUp *string `pulumi:"allowSignUp"`
 	// Allowed domain
 	AllowedDomains []string `pulumi:"allowedDomains"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId *string `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret *string `pulumi:"clientSecret"`
 }
 
@@ -35409,9 +36598,9 @@ type GetGrafanaGrafanaUserConfigAuthGoogleArgs struct {
 	AllowSignUp pulumi.StringPtrInput `pulumi:"allowSignUp"`
 	// Allowed domain
 	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
-	// (Required) Client ID from provider
+	// Client ID from provider
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// (Required) Client secret from provider
+	// Client secret from provider
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 }
 
@@ -35502,12 +36691,12 @@ func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) AllowedDomains() pulumi.Str
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGoogle) []string { return v.AllowedDomains }).(pulumi.StringArrayOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGoogle) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGoogleOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGoogle) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -35550,7 +36739,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) AllowedDomains() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Required) Client ID from provider
+// Client ID from provider
 func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -35560,7 +36749,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Client secret from provider
+// Client secret from provider
 func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGoogle) *string {
 		if v == nil {
@@ -35571,14 +36760,14 @@ func (o GetGrafanaGrafanaUserConfigAuthGooglePtrOutput) ClientSecret() pulumi.St
 }
 
 type GetGrafanaGrafanaUserConfigExternalImageStorage struct {
-	// (Required) S3 access key. Requires permissions to the S3 bucket for the
+	// S3 access key. Requires permissions to the S3 bucket for the
 	// s3:PutObject and s3:PutObjectAcl actions
 	AccessKey *string `pulumi:"accessKey"`
-	// (Required) Bucket URL for S3
+	// Bucket URL for S3
 	BucketUrl *string `pulumi:"bucketUrl"`
-	// (Required) Provider type
+	// Provider type
 	Provider *string `pulumi:"provider"`
-	// (Required) S3 secret key
+	// S3 secret key
 	SecretKey *string `pulumi:"secretKey"`
 }
 
@@ -35594,14 +36783,14 @@ type GetGrafanaGrafanaUserConfigExternalImageStorageInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigExternalImageStorageArgs struct {
-	// (Required) S3 access key. Requires permissions to the S3 bucket for the
+	// S3 access key. Requires permissions to the S3 bucket for the
 	// s3:PutObject and s3:PutObjectAcl actions
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	// (Required) Bucket URL for S3
+	// Bucket URL for S3
 	BucketUrl pulumi.StringPtrInput `pulumi:"bucketUrl"`
-	// (Required) Provider type
+	// Provider type
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
-	// (Required) S3 secret key
+	// S3 secret key
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
@@ -35682,23 +36871,23 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) ToGetGrafanaGrafa
 	}).(GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
-// (Required) S3 access key. Requires permissions to the S3 bucket for the
+// S3 access key. Requires permissions to the S3 bucket for the
 // s3:PutObject and s3:PutObjectAcl actions
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Bucket URL for S3
+// Bucket URL for S3
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) BucketUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.BucketUrl }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Provider type
+// Provider type
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
-// (Required) S3 secret key
+// S3 secret key
 func (o GetGrafanaGrafanaUserConfigExternalImageStorageOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigExternalImageStorage) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -35723,7 +36912,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Elem() GetGraf
 	}).(GetGrafanaGrafanaUserConfigExternalImageStorageOutput)
 }
 
-// (Required) S3 access key. Requires permissions to the S3 bucket for the
+// S3 access key. Requires permissions to the S3 bucket for the
 // s3:PutObject and s3:PutObjectAcl actions
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
@@ -35734,7 +36923,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) AccessKey() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Bucket URL for S3
+// Bucket URL for S3
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -35744,7 +36933,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) BucketUrl() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Provider type
+// Provider type
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -35754,7 +36943,7 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) Provider() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) S3 secret key
+// S3 secret key
 func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigExternalImageStorage) *string {
 		if v == nil {
@@ -36027,18 +37216,21 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.Strin
 }
 
 type GetGrafanaGrafanaUserConfigSmtpServer struct {
-	// (Required) Address used for sending emails
+	// Address used for sending emails
 	FromAddress *string `pulumi:"fromAddress"`
 	// Name used in outgoing emails, defaults to Grafana
 	FromName *string `pulumi:"fromName"`
-	// (Required) Server hostname or IP
+	// Server hostname or IP
 	Host *string `pulumi:"host"`
 	// Password for SMTP authentication
 	Password *string `pulumi:"password"`
-	// (Required) SMTP server port
+	// SMTP server port
 	Port *string `pulumi:"port"`
 	// Skip verifying server certificate. Defaults to false
 	SkipVerify *string `pulumi:"skipVerify"`
+	// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+	// Default is OpportunisticStartTLS.
+	StarttlsPolicy *string `pulumi:"starttlsPolicy"`
 	// Username for SMTP authentication
 	Username *string `pulumi:"username"`
 }
@@ -36055,18 +37247,21 @@ type GetGrafanaGrafanaUserConfigSmtpServerInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigSmtpServerArgs struct {
-	// (Required) Address used for sending emails
+	// Address used for sending emails
 	FromAddress pulumi.StringPtrInput `pulumi:"fromAddress"`
 	// Name used in outgoing emails, defaults to Grafana
 	FromName pulumi.StringPtrInput `pulumi:"fromName"`
-	// (Required) Server hostname or IP
+	// Server hostname or IP
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Password for SMTP authentication
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// (Required) SMTP server port
+	// SMTP server port
 	Port pulumi.StringPtrInput `pulumi:"port"`
 	// Skip verifying server certificate. Defaults to false
 	SkipVerify pulumi.StringPtrInput `pulumi:"skipVerify"`
+	// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+	// Default is OpportunisticStartTLS.
+	StarttlsPolicy pulumi.StringPtrInput `pulumi:"starttlsPolicy"`
 	// Username for SMTP authentication
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -36148,7 +37343,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) ToGetGrafanaGrafanaUserConf
 	}).(GetGrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
-// (Required) Address used for sending emails
+// Address used for sending emails
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) FromAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.FromAddress }).(pulumi.StringPtrOutput)
 }
@@ -36158,7 +37353,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) FromName() pulumi.StringPtr
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.FromName }).(pulumi.StringPtrOutput)
 }
 
-// (Required) Server hostname or IP
+// Server hostname or IP
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -36168,7 +37363,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Password() pulumi.StringPtr
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// (Required) SMTP server port
+// SMTP server port
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
@@ -36176,6 +37371,12 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) Port() pulumi.StringPtrOutp
 // Skip verifying server certificate. Defaults to false
 func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
+}
+
+// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+// Default is OpportunisticStartTLS.
+func (o GetGrafanaGrafanaUserConfigSmtpServerOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigSmtpServer) *string { return v.StarttlsPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Username for SMTP authentication
@@ -36201,7 +37402,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Elem() GetGrafanaGrafana
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) GetGrafanaGrafanaUserConfigSmtpServer { return *v }).(GetGrafanaGrafanaUserConfigSmtpServerOutput)
 }
 
-// (Required) Address used for sending emails
+// Address used for sending emails
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) FromAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -36221,7 +37422,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) FromName() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) Server hostname or IP
+// Server hostname or IP
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -36241,7 +37442,7 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Password() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Required) SMTP server port
+// SMTP server port
 func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -36258,6 +37459,17 @@ func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.Stri
 			return nil
 		}
 		return v.SkipVerify
+	}).(pulumi.StringPtrOutput)
+}
+
+// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS.
+// Default is OpportunisticStartTLS.
+func (o GetGrafanaGrafanaUserConfigSmtpServerPtrOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StarttlsPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -36553,6 +37765,8 @@ func (o GetInfluxDbInfluxdbOutput) DatabaseName() pulumi.StringOutput {
 type GetInfluxDbInfluxdbUserConfig struct {
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
 	CustomDomain *string `pulumi:"customDomain"`
+	// InfluxDB specific server provided values.
+	Influxdb *GetInfluxDbInfluxdbUserConfigInfluxdb `pulumi:"influxdb"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters []string `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
@@ -36580,6 +37794,8 @@ type GetInfluxDbInfluxdbUserConfigInput interface {
 type GetInfluxDbInfluxdbUserConfigArgs struct {
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// InfluxDB specific server provided values.
+	Influxdb GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput `pulumi:"influxdb"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
@@ -36624,6 +37840,11 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// InfluxDB specific server provided values.
+func (o GetInfluxDbInfluxdbUserConfigOutput) Influxdb() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *GetInfluxDbInfluxdbUserConfigInfluxdb { return v.Influxdb }).(GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
 // allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o GetInfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
@@ -36652,6 +37873,237 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.Str
 // only when a new service is being created.
 func (o GetInfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+type GetInfluxDbInfluxdbUserConfigInfluxdb struct {
+	// The maximum duration in seconds before a query is
+	// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+	LogQueriesAfter *string `pulumi:"logQueriesAfter"`
+	// The maximum number of rows returned in a non-chunked query.
+	// Setting this to 0 (the default) allows an unlimited number to be returned.
+	MaxRowLimit *string `pulumi:"maxRowLimit"`
+	// The maximum number of `GROUP BY time()` buckets that
+	// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+	// be processed.
+	MaxSelectBuckets *string `pulumi:"maxSelectBuckets"`
+	// The maximum number of points that can be processed in a
+	// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+	MaxSelectPoint *string `pulumi:"maxSelectPoint"`
+	// The maximum duration in seconds before a query is killed.
+	// Setting this to 0 (the default) will never kill slow queries.
+	QueryTimeout *string `pulumi:"queryTimeout"`
+}
+
+// GetInfluxDbInfluxdbUserConfigInfluxdbInput is an input type that accepts GetInfluxDbInfluxdbUserConfigInfluxdbArgs and GetInfluxDbInfluxdbUserConfigInfluxdbOutput values.
+// You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigInfluxdbInput` via:
+//
+//          GetInfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+type GetInfluxDbInfluxdbUserConfigInfluxdbInput interface {
+	pulumi.Input
+
+	ToGetInfluxDbInfluxdbUserConfigInfluxdbOutput() GetInfluxDbInfluxdbUserConfigInfluxdbOutput
+	ToGetInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbOutput
+}
+
+type GetInfluxDbInfluxdbUserConfigInfluxdbArgs struct {
+	// The maximum duration in seconds before a query is
+	// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+	LogQueriesAfter pulumi.StringPtrInput `pulumi:"logQueriesAfter"`
+	// The maximum number of rows returned in a non-chunked query.
+	// Setting this to 0 (the default) allows an unlimited number to be returned.
+	MaxRowLimit pulumi.StringPtrInput `pulumi:"maxRowLimit"`
+	// The maximum number of `GROUP BY time()` buckets that
+	// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+	// be processed.
+	MaxSelectBuckets pulumi.StringPtrInput `pulumi:"maxSelectBuckets"`
+	// The maximum number of points that can be processed in a
+	// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+	MaxSelectPoint pulumi.StringPtrInput `pulumi:"maxSelectPoint"`
+	// The maximum duration in seconds before a query is killed.
+	// Setting this to 0 (the default) will never kill slow queries.
+	QueryTimeout pulumi.StringPtrInput `pulumi:"queryTimeout"`
+}
+
+func (GetInfluxDbInfluxdbUserConfigInfluxdbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i GetInfluxDbInfluxdbUserConfigInfluxdbArgs) ToGetInfluxDbInfluxdbUserConfigInfluxdbOutput() GetInfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return i.ToGetInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(context.Background())
+}
+
+func (i GetInfluxDbInfluxdbUserConfigInfluxdbArgs) ToGetInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfluxDbInfluxdbUserConfigInfluxdbOutput)
+}
+
+func (i GetInfluxDbInfluxdbUserConfigInfluxdbArgs) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i GetInfluxDbInfluxdbUserConfigInfluxdbArgs) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfluxDbInfluxdbUserConfigInfluxdbOutput).ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx)
+}
+
+// GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput is an input type that accepts GetInfluxDbInfluxdbUserConfigInfluxdbArgs, GetInfluxDbInfluxdbUserConfigInfluxdbPtr and GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput values.
+// You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput` via:
+//
+//          GetInfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+//
+//  or:
+//
+//          nil
+type GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput interface {
+	pulumi.Input
+
+	ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput
+	ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput
+}
+
+type getInfluxDbInfluxdbUserConfigInfluxdbPtrType GetInfluxDbInfluxdbUserConfigInfluxdbArgs
+
+func GetInfluxDbInfluxdbUserConfigInfluxdbPtr(v *GetInfluxDbInfluxdbUserConfigInfluxdbArgs) GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput {
+	return (*getInfluxDbInfluxdbUserConfigInfluxdbPtrType)(v)
+}
+
+func (*getInfluxDbInfluxdbUserConfigInfluxdbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i *getInfluxDbInfluxdbUserConfigInfluxdbPtrType) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i *getInfluxDbInfluxdbUserConfigInfluxdbPtrType) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
+type GetInfluxDbInfluxdbUserConfigInfluxdbOutput struct{ *pulumi.OutputState }
+
+func (GetInfluxDbInfluxdbUserConfigInfluxdbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) ToGetInfluxDbInfluxdbUserConfigInfluxdbOutput() GetInfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) ToGetInfluxDbInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *GetInfluxDbInfluxdbUserConfigInfluxdb {
+		return &v
+	}).(GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
+// The maximum duration in seconds before a query is
+// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *string { return v.LogQueriesAfter }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of rows returned in a non-chunked query.
+// Setting this to 0 (the default) allows an unlimited number to be returned.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *string { return v.MaxRowLimit }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of `GROUP BY time()` buckets that
+// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+// be processed.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectBuckets }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of points that can be processed in a
+// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectPoint }).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration in seconds before a query is killed.
+// Setting this to 0 (the default) will never kill slow queries.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *string { return v.QueryTimeout }).(pulumi.StringPtrOutput)
+}
+
+type GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfluxDbInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) ToGetInfluxDbInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) Elem() GetInfluxDbInfluxdbUserConfigInfluxdbOutput {
+	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigInfluxdb) GetInfluxDbInfluxdbUserConfigInfluxdb { return *v }).(GetInfluxDbInfluxdbUserConfigInfluxdbOutput)
+}
+
+// The maximum duration in seconds before a query is
+// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogQueriesAfter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of rows returned in a non-chunked query.
+// Setting this to 0 (the default) allows an unlimited number to be returned.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRowLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of `GROUP BY time()` buckets that
+// can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
+// be processed.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectBuckets
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of points that can be processed in a
+// SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration in seconds before a query is killed.
+// Setting this to 0 (the default) will never kill slow queries.
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivateAccess struct {
@@ -40791,6 +42243,265 @@ func (o GetKafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetKafka
 	}).(GetKafkaServiceIntegrationOutput)
 }
 
+type GetKafkaTopicConfig struct {
+	// cleanup.policy value
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// compression.type value
+	CompressionType *string `pulumi:"compressionType"`
+	// delete.retention.ms value
+	DeleteRetentionMs *string `pulumi:"deleteRetentionMs"`
+	// file.delete.delay.ms value
+	FileDeleteDelayMs *string `pulumi:"fileDeleteDelayMs"`
+	// flush.messages value
+	FlushMessages *string `pulumi:"flushMessages"`
+	// flush.ms value
+	FlushMs *string `pulumi:"flushMs"`
+	// index.interval.bytes value
+	IndexIntervalBytes *string `pulumi:"indexIntervalBytes"`
+	// max.compaction.lag.ms value
+	MaxCompactionLagMs *string `pulumi:"maxCompactionLagMs"`
+	// max.message.bytes value
+	MaxMessageBytes *string `pulumi:"maxMessageBytes"`
+	// message.downconversion.enable value
+	MessageDownconversionEnable *string `pulumi:"messageDownconversionEnable"`
+	// message.format.version value
+	MessageFormatVersion *string `pulumi:"messageFormatVersion"`
+	// message.timestamp.difference.max.ms value
+	MessageTimestampDifferenceMaxMs *string `pulumi:"messageTimestampDifferenceMaxMs"`
+	// message.timestamp.type value
+	MessageTimestampType *string `pulumi:"messageTimestampType"`
+	// min.cleanable.dirty.ratio value
+	MinCleanableDirtyRatio *string `pulumi:"minCleanableDirtyRatio"`
+	// min.compaction.lag.ms value
+	MinCompactionLagMs *string `pulumi:"minCompactionLagMs"`
+	// min.insync.replicas value
+	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
+	// preallocate value
+	Preallocate *string `pulumi:"preallocate"`
+	// retention.bytes value
+	RetentionBytes *string `pulumi:"retentionBytes"`
+	// retention.ms value
+	RetentionMs *string `pulumi:"retentionMs"`
+	// segment.bytes value
+	SegmentBytes *string `pulumi:"segmentBytes"`
+	// segment.index.bytes value
+	SegmentIndexBytes *string `pulumi:"segmentIndexBytes"`
+	// segment.jitter.ms value
+	SegmentJitterMs *string `pulumi:"segmentJitterMs"`
+	// segment.ms value
+	SegmentMs *string `pulumi:"segmentMs"`
+	// unclean.leader.election.enable value
+	UncleanLeaderElectionEnable *string `pulumi:"uncleanLeaderElectionEnable"`
+}
+
+// GetKafkaTopicConfigInput is an input type that accepts GetKafkaTopicConfigArgs and GetKafkaTopicConfigOutput values.
+// You can construct a concrete instance of `GetKafkaTopicConfigInput` via:
+//
+//          GetKafkaTopicConfigArgs{...}
+type GetKafkaTopicConfigInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicConfigOutput() GetKafkaTopicConfigOutput
+	ToGetKafkaTopicConfigOutputWithContext(context.Context) GetKafkaTopicConfigOutput
+}
+
+type GetKafkaTopicConfigArgs struct {
+	// cleanup.policy value
+	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
+	// compression.type value
+	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
+	// delete.retention.ms value
+	DeleteRetentionMs pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
+	// file.delete.delay.ms value
+	FileDeleteDelayMs pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
+	// flush.messages value
+	FlushMessages pulumi.StringPtrInput `pulumi:"flushMessages"`
+	// flush.ms value
+	FlushMs pulumi.StringPtrInput `pulumi:"flushMs"`
+	// index.interval.bytes value
+	IndexIntervalBytes pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
+	// max.compaction.lag.ms value
+	MaxCompactionLagMs pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
+	// max.message.bytes value
+	MaxMessageBytes pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
+	// message.downconversion.enable value
+	MessageDownconversionEnable pulumi.StringPtrInput `pulumi:"messageDownconversionEnable"`
+	// message.format.version value
+	MessageFormatVersion pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
+	// message.timestamp.difference.max.ms value
+	MessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"messageTimestampDifferenceMaxMs"`
+	// message.timestamp.type value
+	MessageTimestampType pulumi.StringPtrInput `pulumi:"messageTimestampType"`
+	// min.cleanable.dirty.ratio value
+	MinCleanableDirtyRatio pulumi.StringPtrInput `pulumi:"minCleanableDirtyRatio"`
+	// min.compaction.lag.ms value
+	MinCompactionLagMs pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
+	// min.insync.replicas value
+	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
+	// preallocate value
+	Preallocate pulumi.StringPtrInput `pulumi:"preallocate"`
+	// retention.bytes value
+	RetentionBytes pulumi.StringPtrInput `pulumi:"retentionBytes"`
+	// retention.ms value
+	RetentionMs pulumi.StringPtrInput `pulumi:"retentionMs"`
+	// segment.bytes value
+	SegmentBytes pulumi.StringPtrInput `pulumi:"segmentBytes"`
+	// segment.index.bytes value
+	SegmentIndexBytes pulumi.StringPtrInput `pulumi:"segmentIndexBytes"`
+	// segment.jitter.ms value
+	SegmentJitterMs pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
+	// segment.ms value
+	SegmentMs pulumi.StringPtrInput `pulumi:"segmentMs"`
+	// unclean.leader.election.enable value
+	UncleanLeaderElectionEnable pulumi.StringPtrInput `pulumi:"uncleanLeaderElectionEnable"`
+}
+
+func (GetKafkaTopicConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicConfig)(nil)).Elem()
+}
+
+func (i GetKafkaTopicConfigArgs) ToGetKafkaTopicConfigOutput() GetKafkaTopicConfigOutput {
+	return i.ToGetKafkaTopicConfigOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicConfigArgs) ToGetKafkaTopicConfigOutputWithContext(ctx context.Context) GetKafkaTopicConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicConfigOutput)
+}
+
+type GetKafkaTopicConfigOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicConfig)(nil)).Elem()
+}
+
+func (o GetKafkaTopicConfigOutput) ToGetKafkaTopicConfigOutput() GetKafkaTopicConfigOutput {
+	return o
+}
+
+func (o GetKafkaTopicConfigOutput) ToGetKafkaTopicConfigOutputWithContext(ctx context.Context) GetKafkaTopicConfigOutput {
+	return o
+}
+
+// cleanup.policy value
+func (o GetKafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// compression.type value
+func (o GetKafkaTopicConfigOutput) CompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
+}
+
+// delete.retention.ms value
+func (o GetKafkaTopicConfigOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.DeleteRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// file.delete.delay.ms value
+func (o GetKafkaTopicConfigOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.FileDeleteDelayMs }).(pulumi.StringPtrOutput)
+}
+
+// flush.messages value
+func (o GetKafkaTopicConfigOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.FlushMessages }).(pulumi.StringPtrOutput)
+}
+
+// flush.ms value
+func (o GetKafkaTopicConfigOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.FlushMs }).(pulumi.StringPtrOutput)
+}
+
+// index.interval.bytes value
+func (o GetKafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
+}
+
+// max.compaction.lag.ms value
+func (o GetKafkaTopicConfigOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MaxCompactionLagMs }).(pulumi.StringPtrOutput)
+}
+
+// max.message.bytes value
+func (o GetKafkaTopicConfigOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MaxMessageBytes }).(pulumi.StringPtrOutput)
+}
+
+// message.downconversion.enable value
+func (o GetKafkaTopicConfigOutput) MessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MessageDownconversionEnable }).(pulumi.StringPtrOutput)
+}
+
+// message.format.version value
+func (o GetKafkaTopicConfigOutput) MessageFormatVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MessageFormatVersion }).(pulumi.StringPtrOutput)
+}
+
+// message.timestamp.difference.max.ms value
+func (o GetKafkaTopicConfigOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
+}
+
+// message.timestamp.type value
+func (o GetKafkaTopicConfigOutput) MessageTimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MessageTimestampType }).(pulumi.StringPtrOutput)
+}
+
+// min.cleanable.dirty.ratio value
+func (o GetKafkaTopicConfigOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MinCleanableDirtyRatio }).(pulumi.StringPtrOutput)
+}
+
+// min.compaction.lag.ms value
+func (o GetKafkaTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
+}
+
+// min.insync.replicas value
+func (o GetKafkaTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
+}
+
+// preallocate value
+func (o GetKafkaTopicConfigOutput) Preallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.Preallocate }).(pulumi.StringPtrOutput)
+}
+
+// retention.bytes value
+func (o GetKafkaTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.RetentionBytes }).(pulumi.StringPtrOutput)
+}
+
+// retention.ms value
+func (o GetKafkaTopicConfigOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.RetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// segment.bytes value
+func (o GetKafkaTopicConfigOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentBytes }).(pulumi.StringPtrOutput)
+}
+
+// segment.index.bytes value
+func (o GetKafkaTopicConfigOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentIndexBytes }).(pulumi.StringPtrOutput)
+}
+
+// segment.jitter.ms value
+func (o GetKafkaTopicConfigOutput) SegmentJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentJitterMs }).(pulumi.StringPtrOutput)
+}
+
+// segment.ms value
+func (o GetKafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
+}
+
+// unclean.leader.election.enable value
+func (o GetKafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.UncleanLeaderElectionEnable }).(pulumi.StringPtrOutput)
+}
+
 type GetMySqlComponent struct {
 	Component                 string `pulumi:"component"`
 	Host                      string `pulumi:"host"`
@@ -42945,8 +44656,13 @@ type GetPgPgUserConfigPg struct {
 	// Log statements that take more than this number of
 	// milliseconds to run, -1 disables
 	LogMinDurationStatement *string `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum number of files that can be open per process
+	MaxFilesPerProcess *string `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction
 	MaxLocksPerTransaction *string `pulumi:"maxLocksPerTransaction"`
+	// PostgreSQL maximum logical replication workers
+	// (taken from the pool of max_parallel_workers)
+	MaxLogicalReplicationWorkers *string `pulumi:"maxLogicalReplicationWorkers"`
 	// Sets the maximum number of workers that the system can
 	// support for parallel queries.
 	MaxParallelWorkers *string `pulumi:"maxParallelWorkers"`
@@ -42957,12 +44673,16 @@ type GetPgPgUserConfigPg struct {
 	MaxPredLocksPerTransaction *string `pulumi:"maxPredLocksPerTransaction"`
 	// PostgreSQL maximum prepared transactions
 	MaxPreparedTransactions *string `pulumi:"maxPreparedTransactions"`
+	// PostgreSQL maximum replication slots
+	MaxReplicationSlots *string `pulumi:"maxReplicationSlots"`
 	// Maximum depth of the stack in bytes
 	MaxStackDepth *string `pulumi:"maxStackDepth"`
 	// Max standby archive delay in milliseconds
 	MaxStandbyArchiveDelay *string `pulumi:"maxStandbyArchiveDelay"`
 	// Max standby streaming delay in milliseconds
 	MaxStandbyStreamingDelay *string `pulumi:"maxStandbyStreamingDelay"`
+	// PostgreSQL maximum WAL senders
+	MaxWalSenders *string `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system
 	// can support
 	// * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
@@ -43058,8 +44778,13 @@ type GetPgPgUserConfigPgArgs struct {
 	// Log statements that take more than this number of
 	// milliseconds to run, -1 disables
 	LogMinDurationStatement pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	// PostgreSQL maximum number of files that can be open per process
+	MaxFilesPerProcess pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction
 	MaxLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	// PostgreSQL maximum logical replication workers
+	// (taken from the pool of max_parallel_workers)
+	MaxLogicalReplicationWorkers pulumi.StringPtrInput `pulumi:"maxLogicalReplicationWorkers"`
 	// Sets the maximum number of workers that the system can
 	// support for parallel queries.
 	MaxParallelWorkers pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
@@ -43070,12 +44795,16 @@ type GetPgPgUserConfigPgArgs struct {
 	MaxPredLocksPerTransaction pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
 	// PostgreSQL maximum prepared transactions
 	MaxPreparedTransactions pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	// PostgreSQL maximum replication slots
+	MaxReplicationSlots pulumi.StringPtrInput `pulumi:"maxReplicationSlots"`
 	// Maximum depth of the stack in bytes
 	MaxStackDepth pulumi.StringPtrInput `pulumi:"maxStackDepth"`
 	// Max standby archive delay in milliseconds
 	MaxStandbyArchiveDelay pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	// Max standby streaming delay in milliseconds
 	MaxStandbyStreamingDelay pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	// PostgreSQL maximum WAL senders
+	MaxWalSenders pulumi.StringPtrInput `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system
 	// can support
 	// * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
@@ -43281,9 +45010,20 @@ func (o GetPgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum number of files that can be open per process
+func (o GetPgPgUserConfigPgOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxFilesPerProcess }).(pulumi.StringPtrOutput)
+}
+
 // PostgreSQL maximum locks per transaction
 func (o GetPgPgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum logical replication workers
+// (taken from the pool of max_parallel_workers)
+func (o GetPgPgUserConfigPgOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxLogicalReplicationWorkers }).(pulumi.StringPtrOutput)
 }
 
 // Sets the maximum number of workers that the system can
@@ -43308,6 +45048,11 @@ func (o GetPgPgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum replication slots
+func (o GetPgPgUserConfigPgOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxReplicationSlots }).(pulumi.StringPtrOutput)
+}
+
 // Maximum depth of the stack in bytes
 func (o GetPgPgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
@@ -43321,6 +45066,11 @@ func (o GetPgPgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPtrOutp
 // Max standby streaming delay in milliseconds
 func (o GetPgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum WAL senders
+func (o GetPgPgUserConfigPgOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.MaxWalSenders }).(pulumi.StringPtrOutput)
 }
 
 // Sets the maximum number of background processes that the system
@@ -43575,6 +45325,16 @@ func (o GetPgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum number of files that can be open per process
+func (o GetPgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFilesPerProcess
+	}).(pulumi.StringPtrOutput)
+}
+
 // PostgreSQL maximum locks per transaction
 func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
@@ -43582,6 +45342,17 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrO
 			return nil
 		}
 		return v.MaxLocksPerTransaction
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum logical replication workers
+// (taken from the pool of max_parallel_workers)
+func (o GetPgPgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLogicalReplicationWorkers
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43627,6 +45398,16 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL maximum replication slots
+func (o GetPgPgUserConfigPgPtrOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicationSlots
+	}).(pulumi.StringPtrOutput)
+}
+
 // Maximum depth of the stack in bytes
 func (o GetPgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
@@ -43654,6 +45435,16 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.StringPt
 			return nil
 		}
 		return v.MaxStandbyStreamingDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL maximum WAL senders
+func (o GetPgPgUserConfigPgPtrOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWalSenders
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -48873,13 +50664,14 @@ func (o GetServiceGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.Strin
 }
 
 type GetServiceGrafanaUserConfigSmtpServer struct {
-	FromAddress *string `pulumi:"fromAddress"`
-	FromName    *string `pulumi:"fromName"`
-	Host        *string `pulumi:"host"`
-	Password    *string `pulumi:"password"`
-	Port        *string `pulumi:"port"`
-	SkipVerify  *string `pulumi:"skipVerify"`
-	Username    *string `pulumi:"username"`
+	FromAddress    *string `pulumi:"fromAddress"`
+	FromName       *string `pulumi:"fromName"`
+	Host           *string `pulumi:"host"`
+	Password       *string `pulumi:"password"`
+	Port           *string `pulumi:"port"`
+	SkipVerify     *string `pulumi:"skipVerify"`
+	StarttlsPolicy *string `pulumi:"starttlsPolicy"`
+	Username       *string `pulumi:"username"`
 }
 
 // GetServiceGrafanaUserConfigSmtpServerInput is an input type that accepts GetServiceGrafanaUserConfigSmtpServerArgs and GetServiceGrafanaUserConfigSmtpServerOutput values.
@@ -48894,13 +50686,14 @@ type GetServiceGrafanaUserConfigSmtpServerInput interface {
 }
 
 type GetServiceGrafanaUserConfigSmtpServerArgs struct {
-	FromAddress pulumi.StringPtrInput `pulumi:"fromAddress"`
-	FromName    pulumi.StringPtrInput `pulumi:"fromName"`
-	Host        pulumi.StringPtrInput `pulumi:"host"`
-	Password    pulumi.StringPtrInput `pulumi:"password"`
-	Port        pulumi.StringPtrInput `pulumi:"port"`
-	SkipVerify  pulumi.StringPtrInput `pulumi:"skipVerify"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	FromAddress    pulumi.StringPtrInput `pulumi:"fromAddress"`
+	FromName       pulumi.StringPtrInput `pulumi:"fromName"`
+	Host           pulumi.StringPtrInput `pulumi:"host"`
+	Password       pulumi.StringPtrInput `pulumi:"password"`
+	Port           pulumi.StringPtrInput `pulumi:"port"`
+	SkipVerify     pulumi.StringPtrInput `pulumi:"skipVerify"`
+	StarttlsPolicy pulumi.StringPtrInput `pulumi:"starttlsPolicy"`
+	Username       pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetServiceGrafanaUserConfigSmtpServerArgs) ElementType() reflect.Type {
@@ -49003,6 +50796,10 @@ func (o GetServiceGrafanaUserConfigSmtpServerOutput) SkipVerify() pulumi.StringP
 	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.SkipVerify }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceGrafanaUserConfigSmtpServerOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.StarttlsPolicy }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceGrafanaUserConfigSmtpServerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGrafanaUserConfigSmtpServer) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -49079,6 +50876,15 @@ func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) SkipVerify() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) StarttlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StarttlsPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceGrafanaUserConfigSmtpServerPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServiceGrafanaUserConfigSmtpServer) *string {
 		if v == nil {
@@ -49139,6 +50945,7 @@ func (o GetServiceInfluxdbOutput) DatabaseName() pulumi.StringOutput {
 
 type GetServiceInfluxdbUserConfig struct {
 	CustomDomain           *string                                    `pulumi:"customDomain"`
+	Influxdb               *GetServiceInfluxdbUserConfigInfluxdb      `pulumi:"influxdb"`
 	IpFilters              []string                                   `pulumi:"ipFilters"`
 	PrivateAccess          *GetServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess           *GetServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
@@ -49159,6 +50966,7 @@ type GetServiceInfluxdbUserConfigInput interface {
 
 type GetServiceInfluxdbUserConfigArgs struct {
 	CustomDomain           pulumi.StringPtrInput                             `pulumi:"customDomain"`
+	Influxdb               GetServiceInfluxdbUserConfigInfluxdbPtrInput      `pulumi:"influxdb"`
 	IpFilters              pulumi.StringArrayInput                           `pulumi:"ipFilters"`
 	PrivateAccess          GetServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess           GetServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
@@ -49196,6 +51004,10 @@ func (o GetServiceInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceInfluxdbUserConfigOutput) Influxdb() GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) *GetServiceInfluxdbUserConfigInfluxdb { return v.Influxdb }).(GetServiceInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
 func (o GetServiceInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -49216,6 +51028,192 @@ func (o GetServiceInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.Stri
 
 func (o GetServiceInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceInfluxdbUserConfigInfluxdb struct {
+	LogQueriesAfter  *string `pulumi:"logQueriesAfter"`
+	MaxRowLimit      *string `pulumi:"maxRowLimit"`
+	MaxSelectBuckets *string `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint   *string `pulumi:"maxSelectPoint"`
+	QueryTimeout     *string `pulumi:"queryTimeout"`
+}
+
+// GetServiceInfluxdbUserConfigInfluxdbInput is an input type that accepts GetServiceInfluxdbUserConfigInfluxdbArgs and GetServiceInfluxdbUserConfigInfluxdbOutput values.
+// You can construct a concrete instance of `GetServiceInfluxdbUserConfigInfluxdbInput` via:
+//
+//          GetServiceInfluxdbUserConfigInfluxdbArgs{...}
+type GetServiceInfluxdbUserConfigInfluxdbInput interface {
+	pulumi.Input
+
+	ToGetServiceInfluxdbUserConfigInfluxdbOutput() GetServiceInfluxdbUserConfigInfluxdbOutput
+	ToGetServiceInfluxdbUserConfigInfluxdbOutputWithContext(context.Context) GetServiceInfluxdbUserConfigInfluxdbOutput
+}
+
+type GetServiceInfluxdbUserConfigInfluxdbArgs struct {
+	LogQueriesAfter  pulumi.StringPtrInput `pulumi:"logQueriesAfter"`
+	MaxRowLimit      pulumi.StringPtrInput `pulumi:"maxRowLimit"`
+	MaxSelectBuckets pulumi.StringPtrInput `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint   pulumi.StringPtrInput `pulumi:"maxSelectPoint"`
+	QueryTimeout     pulumi.StringPtrInput `pulumi:"queryTimeout"`
+}
+
+func (GetServiceInfluxdbUserConfigInfluxdbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i GetServiceInfluxdbUserConfigInfluxdbArgs) ToGetServiceInfluxdbUserConfigInfluxdbOutput() GetServiceInfluxdbUserConfigInfluxdbOutput {
+	return i.ToGetServiceInfluxdbUserConfigInfluxdbOutputWithContext(context.Background())
+}
+
+func (i GetServiceInfluxdbUserConfigInfluxdbArgs) ToGetServiceInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) GetServiceInfluxdbUserConfigInfluxdbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceInfluxdbUserConfigInfluxdbOutput)
+}
+
+func (i GetServiceInfluxdbUserConfigInfluxdbArgs) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutput() GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceInfluxdbUserConfigInfluxdbArgs) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceInfluxdbUserConfigInfluxdbOutput).ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx)
+}
+
+// GetServiceInfluxdbUserConfigInfluxdbPtrInput is an input type that accepts GetServiceInfluxdbUserConfigInfluxdbArgs, GetServiceInfluxdbUserConfigInfluxdbPtr and GetServiceInfluxdbUserConfigInfluxdbPtrOutput values.
+// You can construct a concrete instance of `GetServiceInfluxdbUserConfigInfluxdbPtrInput` via:
+//
+//          GetServiceInfluxdbUserConfigInfluxdbArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceInfluxdbUserConfigInfluxdbPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceInfluxdbUserConfigInfluxdbPtrOutput() GetServiceInfluxdbUserConfigInfluxdbPtrOutput
+	ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Context) GetServiceInfluxdbUserConfigInfluxdbPtrOutput
+}
+
+type getServiceInfluxdbUserConfigInfluxdbPtrType GetServiceInfluxdbUserConfigInfluxdbArgs
+
+func GetServiceInfluxdbUserConfigInfluxdbPtr(v *GetServiceInfluxdbUserConfigInfluxdbArgs) GetServiceInfluxdbUserConfigInfluxdbPtrInput {
+	return (*getServiceInfluxdbUserConfigInfluxdbPtrType)(v)
+}
+
+func (*getServiceInfluxdbUserConfigInfluxdbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (i *getServiceInfluxdbUserConfigInfluxdbPtrType) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutput() GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return i.ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceInfluxdbUserConfigInfluxdbPtrType) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceInfluxdbUserConfigInfluxdbPtrOutput)
+}
+
+type GetServiceInfluxdbUserConfigInfluxdbOutput struct{ *pulumi.OutputState }
+
+func (GetServiceInfluxdbUserConfigInfluxdbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) ToGetServiceInfluxdbUserConfigInfluxdbOutput() GetServiceInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) ToGetServiceInfluxdbUserConfigInfluxdbOutputWithContext(ctx context.Context) GetServiceInfluxdbUserConfigInfluxdbOutput {
+	return o
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutput() GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfigInfluxdb) *GetServiceInfluxdbUserConfigInfluxdb {
+		return &v
+	}).(GetServiceInfluxdbUserConfigInfluxdbPtrOutput)
+}
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfigInfluxdb) *string { return v.LogQueriesAfter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfigInfluxdb) *string { return v.MaxRowLimit }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectBuckets }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfigInfluxdb) *string { return v.MaxSelectPoint }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfigInfluxdb) *string { return v.QueryTimeout }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceInfluxdbUserConfigInfluxdbPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceInfluxdbUserConfigInfluxdbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceInfluxdbUserConfigInfluxdb)(nil)).Elem()
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutput() GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) ToGetServiceInfluxdbUserConfigInfluxdbPtrOutputWithContext(ctx context.Context) GetServiceInfluxdbUserConfigInfluxdbPtrOutput {
+	return o
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) Elem() GetServiceInfluxdbUserConfigInfluxdbOutput {
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigInfluxdb) GetServiceInfluxdbUserConfigInfluxdb { return *v }).(GetServiceInfluxdbUserConfigInfluxdbOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) LogQueriesAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogQueriesAfter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) MaxRowLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRowLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectBuckets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectBuckets
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSelectPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceInfluxdbUserConfigInfluxdb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceInfluxdbUserConfigPrivateAccess struct {
@@ -54269,14 +56267,18 @@ type GetServicePgUserConfigPg struct {
 	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
 	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
+	MaxFilesPerProcess              *string `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
+	MaxLogicalReplicationWorkers    *string `pulumi:"maxLogicalReplicationWorkers"`
 	MaxParallelWorkers              *string `pulumi:"maxParallelWorkers"`
 	MaxParallelWorkersPerGather     *string `pulumi:"maxParallelWorkersPerGather"`
 	MaxPredLocksPerTransaction      *string `pulumi:"maxPredLocksPerTransaction"`
 	MaxPreparedTransactions         *string `pulumi:"maxPreparedTransactions"`
+	MaxReplicationSlots             *string `pulumi:"maxReplicationSlots"`
 	MaxStackDepth                   *string `pulumi:"maxStackDepth"`
 	MaxStandbyArchiveDelay          *string `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
+	MaxWalSenders                   *string `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
 	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
 	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
@@ -54317,14 +56319,18 @@ type GetServicePgUserConfigPgArgs struct {
 	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
 	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	MaxFilesPerProcess              pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
+	MaxLogicalReplicationWorkers    pulumi.StringPtrInput `pulumi:"maxLogicalReplicationWorkers"`
 	MaxParallelWorkers              pulumi.StringPtrInput `pulumi:"maxParallelWorkers"`
 	MaxParallelWorkersPerGather     pulumi.StringPtrInput `pulumi:"maxParallelWorkersPerGather"`
 	MaxPredLocksPerTransaction      pulumi.StringPtrInput `pulumi:"maxPredLocksPerTransaction"`
 	MaxPreparedTransactions         pulumi.StringPtrInput `pulumi:"maxPreparedTransactions"`
+	MaxReplicationSlots             pulumi.StringPtrInput `pulumi:"maxReplicationSlots"`
 	MaxStackDepth                   pulumi.StringPtrInput `pulumi:"maxStackDepth"`
 	MaxStandbyArchiveDelay          pulumi.StringPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	MaxWalSenders                   pulumi.StringPtrInput `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
 	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
 	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
@@ -54474,8 +56480,16 @@ func (o GetServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringP
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicePgUserConfigPgOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxFilesPerProcess }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxLocksPerTransaction }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxLogicalReplicationWorkers }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) MaxParallelWorkers() pulumi.StringPtrOutput {
@@ -54494,6 +56508,10 @@ func (o GetServicePgUserConfigPgOutput) MaxPreparedTransactions() pulumi.StringP
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxPreparedTransactions }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicePgUserConfigPgOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxReplicationSlots }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxStackDepth }).(pulumi.StringPtrOutput)
 }
@@ -54504,6 +56522,10 @@ func (o GetServicePgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.StringPt
 
 func (o GetServicePgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxStandbyStreamingDelay }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxWalSenders }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput {
@@ -54703,12 +56725,30 @@ func (o GetServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicePgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFilesPerProcess
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxLocksPerTransaction
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLogicalReplicationWorkers
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54748,6 +56788,15 @@ func (o GetServicePgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicePgUserConfigPgPtrOutput) MaxReplicationSlots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicationSlots
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgPtrOutput) MaxStackDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
@@ -54772,6 +56821,15 @@ func (o GetServicePgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.Str
 			return nil
 		}
 		return v.MaxStandbyStreamingDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) MaxWalSenders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWalSenders
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56385,6 +58443,8 @@ func init() {
 	pulumi.RegisterOutputType(InfluxDbInfluxdbPtrOutput{})
 	pulumi.RegisterOutputType(InfluxDbInfluxdbUserConfigOutput{})
 	pulumi.RegisterOutputType(InfluxDbInfluxdbUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(InfluxDbInfluxdbUserConfigInfluxdbOutput{})
+	pulumi.RegisterOutputType(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput{})
 	pulumi.RegisterOutputType(InfluxDbInfluxdbUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(InfluxDbInfluxdbUserConfigPublicAccessOutput{})
@@ -56437,6 +58497,8 @@ func init() {
 	pulumi.RegisterOutputType(KafkaMirrorMakerServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(KafkaServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(KafkaServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(KafkaTopicConfigOutput{})
+	pulumi.RegisterOutputType(KafkaTopicConfigPtrOutput{})
 	pulumi.RegisterOutputType(MySqlComponentOutput{})
 	pulumi.RegisterOutputType(MySqlComponentArrayOutput{})
 	pulumi.RegisterOutputType(MySqlMysqlOutput{})
@@ -56535,6 +58597,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceInfluxdbPtrOutput{})
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigInfluxdbOutput{})
+	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigInfluxdbPtrOutput{})
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPublicAccessOutput{})
@@ -56695,6 +58759,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInfluxDbComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbInfluxdbOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbInfluxdbUserConfigOutput{})
+	pulumi.RegisterOutputType(GetInfluxDbInfluxdbUserConfigInfluxdbOutput{})
+	pulumi.RegisterOutputType(GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbInfluxdbUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbInfluxdbUserConfigPublicAccessOutput{})
@@ -56741,6 +58807,7 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(GetMySqlComponentOutput{})
 	pulumi.RegisterOutputType(GetMySqlComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlOutput{})
@@ -56825,6 +58892,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceGrafanaUserConfigSmtpServerPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigInfluxdbOutput{})
+	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigInfluxdbPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPublicAccessOutput{})

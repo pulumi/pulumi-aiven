@@ -14,6 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceInfluxdbUserConfig
     {
         public readonly string? CustomDomain;
+        public readonly Outputs.ServiceInfluxdbUserConfigInfluxdb? Influxdb;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.ServiceInfluxdbUserConfigPrivateAccess? PrivateAccess;
         public readonly Outputs.ServiceInfluxdbUserConfigPublicAccess? PublicAccess;
@@ -23,6 +24,8 @@ namespace Pulumi.Aiven.Outputs
         [OutputConstructor]
         private ServiceInfluxdbUserConfig(
             string? customDomain,
+
+            Outputs.ServiceInfluxdbUserConfigInfluxdb? influxdb,
 
             ImmutableArray<string> ipFilters,
 
@@ -35,6 +38,7 @@ namespace Pulumi.Aiven.Outputs
             string? serviceToForkFrom)
         {
             CustomDomain = customDomain;
+            Influxdb = influxdb;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;

@@ -18,6 +18,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("customDomain")]
         public string? CustomDomain { get; set; }
 
+        /// <summary>
+        /// InfluxDB specific server provided values.
+        /// </summary>
+        [Input("influxdb")]
+        public Inputs.GetInfluxDbInfluxdbUserConfigInfluxdbArgs? Influxdb { get; set; }
+
         [Input("ipFilters")]
         private List<string>? _ipFilters;
 

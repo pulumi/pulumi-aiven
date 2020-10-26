@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -61,11 +63,20 @@ export class KafkaTopic extends pulumi.CustomResource {
     }
 
     /**
-     * Topic cleanup policy. Allowed values: delete, compact.
+     * cleanup.policy value
+     *
+     * @deprecated use config.cleanup_policy instead
      */
     public readonly cleanupPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+     * Kafka topic configuration
+     */
+    public readonly config!: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
+    /**
+     * Minimum required nodes in-sync replicas 
+     * (ISR) to produce to a partition.
+     *
+     * @deprecated use config.min_insync_replicas instead
      */
     public readonly minimumInSyncReplicas!: pulumi.Output<number | undefined>;
     /**
@@ -84,11 +95,15 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly replication!: pulumi.Output<number>;
     /**
-     * Retention bytes.
+     * retention.bytes value
+     *
+     * @deprecated use config.retention_bytes instead
      */
     public readonly retentionBytes!: pulumi.Output<number | undefined>;
     /**
      * Retention period in hours, if -1 it is infinite.
+     *
+     * @deprecated use config.retention_ms instead
      */
     public readonly retentionHours!: pulumi.Output<number | undefined>;
     /**
@@ -120,6 +135,7 @@ export class KafkaTopic extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as KafkaTopicState | undefined;
             inputs["cleanupPolicy"] = state ? state.cleanupPolicy : undefined;
+            inputs["config"] = state ? state.config : undefined;
             inputs["minimumInSyncReplicas"] = state ? state.minimumInSyncReplicas : undefined;
             inputs["partitions"] = state ? state.partitions : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -147,6 +163,7 @@ export class KafkaTopic extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topicName'");
             }
             inputs["cleanupPolicy"] = args ? args.cleanupPolicy : undefined;
+            inputs["config"] = args ? args.config : undefined;
             inputs["minimumInSyncReplicas"] = args ? args.minimumInSyncReplicas : undefined;
             inputs["partitions"] = args ? args.partitions : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -173,11 +190,20 @@ export class KafkaTopic extends pulumi.CustomResource {
  */
 export interface KafkaTopicState {
     /**
-     * Topic cleanup policy. Allowed values: delete, compact.
+     * cleanup.policy value
+     *
+     * @deprecated use config.cleanup_policy instead
      */
     readonly cleanupPolicy?: pulumi.Input<string>;
     /**
-     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+     * Kafka topic configuration
+     */
+    readonly config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    /**
+     * Minimum required nodes in-sync replicas 
+     * (ISR) to produce to a partition.
+     *
+     * @deprecated use config.min_insync_replicas instead
      */
     readonly minimumInSyncReplicas?: pulumi.Input<number>;
     /**
@@ -196,11 +222,15 @@ export interface KafkaTopicState {
      */
     readonly replication?: pulumi.Input<number>;
     /**
-     * Retention bytes.
+     * retention.bytes value
+     *
+     * @deprecated use config.retention_bytes instead
      */
     readonly retentionBytes?: pulumi.Input<number>;
     /**
      * Retention period in hours, if -1 it is infinite.
+     *
+     * @deprecated use config.retention_ms instead
      */
     readonly retentionHours?: pulumi.Input<number>;
     /**
@@ -225,11 +255,20 @@ export interface KafkaTopicState {
  */
 export interface KafkaTopicArgs {
     /**
-     * Topic cleanup policy. Allowed values: delete, compact.
+     * cleanup.policy value
+     *
+     * @deprecated use config.cleanup_policy instead
      */
     readonly cleanupPolicy?: pulumi.Input<string>;
     /**
-     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+     * Kafka topic configuration
+     */
+    readonly config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    /**
+     * Minimum required nodes in-sync replicas 
+     * (ISR) to produce to a partition.
+     *
+     * @deprecated use config.min_insync_replicas instead
      */
     readonly minimumInSyncReplicas?: pulumi.Input<number>;
     /**
@@ -248,11 +287,15 @@ export interface KafkaTopicArgs {
      */
     readonly replication: pulumi.Input<number>;
     /**
-     * Retention bytes.
+     * retention.bytes value
+     *
+     * @deprecated use config.retention_bytes instead
      */
     readonly retentionBytes?: pulumi.Input<number>;
     /**
      * Retention period in hours, if -1 it is infinite.
+     *
+     * @deprecated use config.retention_ms instead
      */
     readonly retentionHours?: pulumi.Input<number>;
     /**
