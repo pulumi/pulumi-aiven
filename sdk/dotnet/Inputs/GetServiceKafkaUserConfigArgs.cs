@@ -53,6 +53,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("schemaRegistry")]
         public string? SchemaRegistry { get; set; }
 
+        [Input("schemaRegistryConfig")]
+        public Inputs.GetServiceKafkaUserConfigSchemaRegistryConfigArgs? SchemaRegistryConfig { get; set; }
+
         public GetServiceKafkaUserConfigArgs()
         {
         }

@@ -161,6 +161,11 @@ export interface ElasticSearchElasticsearchUserConfigElasticsearch {
      */
     actionDestructiveRequiresName?: pulumi.Input<string>;
     /**
+     * Controls the number of shards allowed in the 
+     * cluster per data node
+     */
+    clusterMaxShardsPerNode?: pulumi.Input<string>;
+    /**
      * Maximum content length for HTTP requests to 
      * the Elasticsearch HTTP API, in bytes.
      */
@@ -509,6 +514,11 @@ export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
      * Require explicit index names when deleting
      */
     actionDestructiveRequiresName?: string;
+    /**
+     * Controls the number of shards allowed in the 
+     * cluster per data node
+     */
+    clusterMaxShardsPerNode?: string;
     /**
      * Maximum content length for HTTP requests to 
      * the Elasticsearch HTTP API, in bytes.
@@ -1173,22 +1183,46 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerAutoOffsetReset?: string;
     /**
+     * Records are fetched in batches by the consumer, and if 
+     * the first record batch in the first non-empty partition of the fetch is larger than this value,
+     * the record batch will still be returned to ensure that the consumer can make progress. As such,
+     * this is not a absolute maximum.
+     */
+    consumerFetchMaxBytes?: string;
+    /**
      * Transaction read isolation level. readUncommitted is 
      * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-     * * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
+     */
+    consumerIsolationLevel?: string;
+    /**
+     * Records are fetched in batches by the consumer.If 
+     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
+     * the batch will still be returned to ensure that the consumer can make progress.
+     */
+    consumerMaxPartitionFetchBytes?: string;
+    /**
+     * The maximum delay in milliseconds between invocations 
      * of poll() when using consumer group management (defaults to 300000).
      * * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
-     * * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
+     */
+    consumerMaxPollIntervalMs?: string;
+    consumerMaxPollRecords?: string;
+    /**
+     * The interval at which to try committing offsets for tasks 
      * (defaults to 60000).
-     * * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
+     */
+    offsetFlushIntervalMs?: string;
+    /**
+     * Maximum number of milliseconds to wait for records to flush 
      * and partition offset data to be committed to offset storage before cancelling the process and restoring
      * the offset data to be committed in a future attempt (defaults to 5000).
      */
-    consumerIsolationLevel?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    /**
+     * This setting will limit the number of record batches the 
+     * producer will send in a single request to avoid sending huge requests.
+     */
+    producerMaxRequestSize?: string;
     /**
      * The timeout in milliseconds used to detect failures when using Kafka’s 
      * group management facilities (defaults to 10000).
@@ -1300,6 +1334,10 @@ export interface GetKafkaKafkaUserConfig {
      * Enable Schema-Registry service
      */
     schemaRegistry?: string;
+    /**
+     * Schema Registry configuration
+     */
+    schemaRegistryConfig?: inputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
 }
 
 export interface GetKafkaKafkaUserConfigKafka {
@@ -1321,26 +1359,65 @@ export interface GetKafkaKafkaUserConfigKafka {
     connectionsMaxIdleMs?: string;
     /**
      * Replication factor for autocreated topics
-     * * `groupMaxSessionTimeoutMs": {
-     * * `groupMinSessionTimeoutMs": {
      */
     defaultReplicationFactor?: string;
+    /**
+     * The maximum allowed session timeout for registered 
+     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+     * at the cost of a longer time to detect failures.
+     */
     groupMaxSessionTimeoutMs?: string;
+    /**
+     * The minimum allowed session timeout for registered 
+     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+     * at the cost of a longer time to detect failures.
+     */
     groupMinSessionTimeoutMs?: string;
+    logCleanerDeleteRetentionMs?: string;
     /**
      * The maximum amount of time message will 
      * remain uncompacted. Only applicable for logs that are being compacted
-     * * `logCleanerMinCleanableRatio": {
      */
     logCleanerMaxCompactionLagMs?: string;
+    /**
+     * Controls log compactor frequency. Larger 
+     * value means more frequent compactions but also more space wasted for logs. Consider setting
+     * log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+     * high value for this option.
+     */
     logCleanerMinCleanableRatio?: string;
     /**
      * The minimum time a message will remain 
      * uncompacted in the log. Only applicable for logs that are being compacted.
-     * * `logCleanupPolicy": {
      */
     logCleanerMinCompactionLagMs?: string;
+    /**
+     * The default cleanup policy for segments beyond the retention window.
+     */
     logCleanupPolicy?: string;
+    /**
+     * The number of messages accumulated on a log partition 
+     * before messages are flushed to disk.
+     */
+    logFlushIntervalMessages?: string;
+    /**
+     * The maximum time in ms that a message in any topic is kept 
+     * in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+     */
+    logFlushIntervalMs?: string;
+    /**
+     * The interval with which Kafka adds an entry to the offset index.
+     */
+    logIndexIntervalBytes?: string;
+    /**
+     * The maximum size in bytes of the offset index.
+     */
+    logIndexSizeMaxBytes?: string;
+    /**
+     * This configuration controls whether down-conversion 
+     * of message formats is enabled to satisfy consume requests.
+     */
+    logMessageDownconversionEnable?: string;
     /**
      * The maximum difference allowed between 
      * the timestamp when a broker receives a message and the timestamp specified in the message
@@ -1352,31 +1429,68 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logMessageTimestampType?: string;
     /**
+     * Should pre allocate file when create new segment?
+     */
+    logPreallocate?: string;
+    /**
      * The maximum size of the log before deleting messages
      */
     logRetentionBytes?: string;
     /**
-     * The number of hours to keep a log file before deleting it
+     * The number of hours to keep a log file before deleting it.
      */
     logRetentionHours?: string;
+    /**
+     * The number of milliseconds to keep a log file before deleting it 
+     * (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+     * time limit is applied.
+     */
+    logRetentionMs?: string;
+    /**
+     * The maximum jitter to subtract from logRollTimeMillis 
+     * (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+     */
+    logRollJitterMs?: string;
+    /**
+     * The maximum time before a new log segment is rolled out (in milliseconds).
+     */
+    logRollMs?: string;
     /**
      * The maximum size of a single log file
      */
     logSegmentBytes?: string;
     /**
+     * The amount of time to wait before deleting a file 
+     * from the filesystem.
+     */
+    logSegmentDeleteDelayMs?: string;
+    /**
      * The maximum number of connections allowed from each ip 
      * address (defaults to 2147483647).
-     * * `maxIncrementalFetchSessionCacheSlots": {
-     * * `messageMaxBytes": {
      */
     maxConnectionsPerIp?: string;
+    /**
+     * The maximum number of incremental fetch 
+     * sessions that the broker will maintain.
+     */
     maxIncrementalFetchSessionCacheSlots?: string;
+    /**
+     * The maximum size of message that the server can receive.
+     */
     messageMaxBytes?: string;
     /**
+     * When a producer sets acks to 'all' (or '-1'), 
+     * min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+     * the write to be considered successful.
+     */
+    minInsyncReplicas?: string;
+    /**
      * Number of partitions for autocreated topics
-     * * `offsetsRetentionMinutes": {
      */
     numPartitions?: string;
+    /**
+     * Log retention window in minutes for offsets topic.
+     */
     offsetsRetentionMinutes?: string;
     /**
      * The purge interval (in number of 
@@ -1423,14 +1537,27 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     connectorClientConfigOverridePolicy?: string;
     /**
      * What to do when there is no initial offset in Kafka or 
-     * if the current offset does not exist any more on the server. Default is earliest
+     * if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: string;
+    /**
+     * Records are fetched in batches by the consumer, and 
+     * if the first record batch in the first non-empty partition of the fetch is larger than this value,
+     * the record batch will still be returned to ensure that the consumer can make progress. As such,
+     * this is not a absolute maximum.
+     */
+    consumerFetchMaxBytes?: string;
     /**
      * Transaction read isolation level. readUncommitted is 
      * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: string;
+    /**
+     * Records are fetched in batches by the consumer.If 
+     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
+     * the batch will still be returned to ensure that the consumer can make progress.
+     */
+    consumerMaxPartitionFetchBytes?: string;
     /**
      * The maximum delay in milliseconds between invocations 
      * of poll() when using consumer group management (defaults to 300000).
@@ -1452,6 +1579,11 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      * and restoring the offset data to be committed in a future attempt (defaults to 5000).
      */
     offsetFlushTimeoutMs?: string;
+    /**
+     * This setting will limit the number of record batches 
+     * the producer will send in a single request to avoid sending huge requests.
+     */
+    producerMaxRequestSize?: string;
     /**
      * The timeout in milliseconds used to detect failures when 
      * using Kafka’s group management facilities (defaults to 10000).
@@ -1524,6 +1656,25 @@ export interface GetKafkaKafkaUserConfigPublicAccess {
      * Enable Schema-Registry service
      */
     schemaRegistry?: string;
+}
+
+export interface GetKafkaKafkaUserConfigSchemaRegistryConfig {
+    /**
+     * If true, Karapace / Schema Registry on the service nodes can 
+     * participate in leader election. It might be needed to disable this when the schemas topic is replicated
+     * to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+     * Defaults to 'true'.
+     */
+    leaderEligibility?: string;
+    /**
+     * The durable single partition topic that acts as the durable log for the 
+     * data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+     * changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+     * schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+     * put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+     * Defaults to '_schemas'.
+     */
+    topicName?: string;
 }
 
 export interface GetKafkaMirrorMakerComponent {
@@ -1676,6 +1827,187 @@ export interface GetKafkaTopicConfig {
      * unclean.leader.election.enable value
      */
     uncleanLeaderElectionEnable?: string;
+}
+
+export interface GetM3AggregatorComponent {
+    component?: string;
+    host?: string;
+    kafkaAuthenticationMethod?: string;
+    port?: number;
+    route?: string;
+    ssl?: boolean;
+    usage?: string;
+}
+
+export interface GetM3AggregatorM3aggregator {
+}
+
+export interface GetM3AggregatorM3aggregatorUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilters?: string[];
+    /**
+     * M3 major version
+     */
+    m3Version?: string;
+}
+
+export interface GetM3AggregatorServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetM3DbComponent {
+    component?: string;
+    host?: string;
+    kafkaAuthenticationMethod?: string;
+    port?: number;
+    route?: string;
+    ssl?: boolean;
+    usage?: string;
+}
+
+export interface GetM3DbM3db {
+}
+
+export interface GetM3DbM3dbUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilters?: string[];
+    /**
+     * M3 limits
+     */
+    limits?: inputs.GetM3DbM3dbUserConfigLimits;
+    /**
+     * M3 major version
+     */
+    m3Version?: string;
+    /**
+     * List of M3 namespaces
+     */
+    namespaces?: inputs.GetM3DbM3dbUserConfigNamespace[];
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: inputs.GetM3DbM3dbUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: inputs.GetM3DbM3dbUserConfigPublicAccess;
+}
+
+export interface GetM3DbM3dbUserConfigLimits {
+    /**
+     * The maximum number of data points fetched during request
+     */
+    globalDatapoints?: string;
+    /**
+     * The maximum number of data points fetched in single query
+     */
+    queryDatapoints?: string;
+    /**
+     * When query limits are exceeded, whether to return error 
+     * (if True) or return partial results (False)
+     */
+    queryRequireExhaustive?: string;
+    /**
+     * The maximum number of series fetched in single query
+     */
+    querySeries?: string;
+}
+
+export interface GetM3DbM3dbUserConfigNamespace {
+    /**
+     * The name of the namespace
+     */
+    name?: string;
+    /**
+     * Namespace options
+     */
+    options?: inputs.GetM3DbM3dbUserConfigNamespaceOptions;
+    /**
+     * The resolution for an aggregated namespace
+     */
+    resolution?: string;
+    /**
+     * The type of aggregation (aggregated/unaggregated)
+     */
+    type?: string;
+}
+
+export interface GetM3DbM3dbUserConfigNamespaceOptions {
+    /**
+     * Retention options
+     */
+    retentionOptions?: inputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
+    /**
+     * Controls whether M3DB will create snapshot files for 
+     * this namespace
+     */
+    snapshotEnabled?: string;
+    /**
+     * Controls whether M3DB will include writes to this 
+     * namespace in the commitlog.
+     */
+    writesToCommitlog?: string;
+}
+
+export interface GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+    /**
+     * Controls how long we wait before expiring stale data
+     */
+    blockDataExpiryDuration?: string;
+    /**
+     * Controls how long to keep a block in memory before 
+     * flushing to a fileset on disk
+     */
+    blocksizeDuration?: string;
+    /**
+     * Controls how far into the future writes to 
+     * the namespace will be accepted
+     */
+    bufferFutureDuration?: string;
+    /**
+     * Controls how far into the past writes to the 
+     * namespace will be accepted
+     */
+    bufferPastDuration?: string;
+    /**
+     * Controls the duration of time that M3DB will 
+     * retain data for the namespace
+     */
+    retentionPeriodDuration?: string;
+}
+
+export interface GetM3DbM3dbUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to m3coordinator from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    m3coordinator?: string;
+}
+
+export interface GetM3DbM3dbUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to m3coordinator from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    m3coordinator?: string;
+}
+
+export interface GetM3DbServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface GetMySqlComponent {
@@ -2492,6 +2824,7 @@ export interface GetServiceElasticsearchUserConfig {
 export interface GetServiceElasticsearchUserConfigElasticsearch {
     actionAutoCreateIndexEnabled?: string;
     actionDestructiveRequiresName?: string;
+    clusterMaxShardsPerNode?: string;
     httpMaxContentLength?: string;
     httpMaxHeaderSize?: string;
     httpMaxInitialLineLength?: string;
@@ -2776,11 +3109,14 @@ export interface GetServiceKafkaConnectUserConfig {
 export interface GetServiceKafkaConnectUserConfigKafkaConnect {
     connectorClientConfigOverridePolicy?: string;
     consumerAutoOffsetReset?: string;
+    consumerFetchMaxBytes?: string;
     consumerIsolationLevel?: string;
+    consumerMaxPartitionFetchBytes?: string;
     consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    producerMaxRequestSize?: string;
     sessionTimeoutMs?: string;
 }
 
@@ -2822,6 +3158,7 @@ export interface GetServiceKafkaUserConfig {
     privateAccess?: inputs.GetServiceKafkaUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceKafkaUserConfigPublicAccess;
     schemaRegistry?: string;
+    schemaRegistryConfig?: inputs.GetServiceKafkaUserConfigSchemaRegistryConfig;
 }
 
 export interface GetServiceKafkaUserConfigKafka {
@@ -2831,18 +3168,30 @@ export interface GetServiceKafkaUserConfigKafka {
     defaultReplicationFactor?: string;
     groupMaxSessionTimeoutMs?: string;
     groupMinSessionTimeoutMs?: string;
+    logCleanerDeleteRetentionMs?: string;
     logCleanerMaxCompactionLagMs?: string;
     logCleanerMinCleanableRatio?: string;
     logCleanerMinCompactionLagMs?: string;
     logCleanupPolicy?: string;
+    logFlushIntervalMessages?: string;
+    logFlushIntervalMs?: string;
+    logIndexIntervalBytes?: string;
+    logIndexSizeMaxBytes?: string;
+    logMessageDownconversionEnable?: string;
     logMessageTimestampDifferenceMaxMs?: string;
     logMessageTimestampType?: string;
+    logPreallocate?: string;
     logRetentionBytes?: string;
     logRetentionHours?: string;
+    logRetentionMs?: string;
+    logRollJitterMs?: string;
+    logRollMs?: string;
     logSegmentBytes?: string;
+    logSegmentDeleteDelayMs?: string;
     maxConnectionsPerIp?: string;
     maxIncrementalFetchSessionCacheSlots?: string;
     messageMaxBytes?: string;
+    minInsyncReplicas?: string;
     numPartitions?: string;
     offsetsRetentionMinutes?: string;
     producerPurgatoryPurgeIntervalRequests?: string;
@@ -2859,11 +3208,14 @@ export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
 export interface GetServiceKafkaUserConfigKafkaConnectConfig {
     connectorClientConfigOverridePolicy?: string;
     consumerAutoOffsetReset?: string;
+    consumerFetchMaxBytes?: string;
     consumerIsolationLevel?: string;
+    consumerMaxPartitionFetchBytes?: string;
     consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    producerMaxRequestSize?: string;
     sessionTimeoutMs?: string;
 }
 
@@ -2886,6 +3238,11 @@ export interface GetServiceKafkaUserConfigPublicAccess {
     kafkaRest?: string;
     prometheus?: string;
     schemaRegistry?: string;
+}
+
+export interface GetServiceKafkaUserConfigSchemaRegistryConfig {
+    leaderEligibility?: string;
+    topicName?: string;
 }
 
 export interface GetServiceMysql {
@@ -3571,10 +3928,23 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
+     * Records are fetched in batches by the consumer, and if 
+     * the first record batch in the first non-empty partition of the fetch is larger than this value,
+     * the record batch will still be returned to ensure that the consumer can make progress. As such,
+     * this is not a absolute maximum.
+     */
+    consumerFetchMaxBytes?: pulumi.Input<string>;
+    /**
      * Transaction read isolation level. readUncommitted is 
      * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: pulumi.Input<string>;
+    /**
+     * Records are fetched in batches by the consumer.If 
+     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
+     * the batch will still be returned to ensure that the consumer can make progress.
+     */
+    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
     /**
      * The maximum delay in milliseconds between invocations 
      * of poll() when using consumer group management (defaults to 300000).
@@ -3595,6 +3965,11 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      * the offset data to be committed in a future attempt (defaults to 5000).
      */
     offsetFlushTimeoutMs?: pulumi.Input<string>;
+    /**
+     * This setting will limit the number of record batches the 
+     * producer will send in a single request to avoid sending huge requests.
+     */
+    producerMaxRequestSize?: pulumi.Input<string>;
     /**
      * The timeout in milliseconds used to detect failures when using Kafka’s 
      * group management facilities (defaults to 10000).
@@ -3717,6 +4092,10 @@ export interface KafkaKafkaUserConfig {
      * Enable Schema-Registry service
      */
     schemaRegistry?: pulumi.Input<string>;
+    /**
+     * Schema Registry configuration
+     */
+    schemaRegistryConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigSchemaRegistryConfig>;
 }
 
 export interface KafkaKafkaUserConfigKafka {
@@ -3738,26 +4117,65 @@ export interface KafkaKafkaUserConfigKafka {
     connectionsMaxIdleMs?: pulumi.Input<string>;
     /**
      * Replication factor for autocreated topics
-     * * `groupMaxSessionTimeoutMs": {
-     * * `groupMinSessionTimeoutMs": {
      */
     defaultReplicationFactor?: pulumi.Input<string>;
+    /**
+     * The maximum allowed session timeout for registered 
+     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+     * at the cost of a longer time to detect failures.
+     */
     groupMaxSessionTimeoutMs?: pulumi.Input<string>;
+    /**
+     * The minimum allowed session timeout for registered 
+     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+     * at the cost of a longer time to detect failures.
+     */
     groupMinSessionTimeoutMs?: pulumi.Input<string>;
+    logCleanerDeleteRetentionMs?: pulumi.Input<string>;
     /**
      * The maximum amount of time message will 
      * remain uncompacted. Only applicable for logs that are being compacted
-     * * `logCleanerMinCleanableRatio": {
      */
     logCleanerMaxCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * Controls log compactor frequency. Larger 
+     * value means more frequent compactions but also more space wasted for logs. Consider setting
+     * log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+     * high value for this option.
+     */
     logCleanerMinCleanableRatio?: pulumi.Input<string>;
     /**
      * The minimum time a message will remain 
      * uncompacted in the log. Only applicable for logs that are being compacted.
-     * * `logCleanupPolicy": {
      */
     logCleanerMinCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * The default cleanup policy for segments beyond the retention window.
+     */
     logCleanupPolicy?: pulumi.Input<string>;
+    /**
+     * The number of messages accumulated on a log partition 
+     * before messages are flushed to disk.
+     */
+    logFlushIntervalMessages?: pulumi.Input<string>;
+    /**
+     * The maximum time in ms that a message in any topic is kept 
+     * in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+     */
+    logFlushIntervalMs?: pulumi.Input<string>;
+    /**
+     * The interval with which Kafka adds an entry to the offset index.
+     */
+    logIndexIntervalBytes?: pulumi.Input<string>;
+    /**
+     * The maximum size in bytes of the offset index.
+     */
+    logIndexSizeMaxBytes?: pulumi.Input<string>;
+    /**
+     * This configuration controls whether down-conversion 
+     * of message formats is enabled to satisfy consume requests.
+     */
+    logMessageDownconversionEnable?: pulumi.Input<string>;
     /**
      * The maximum difference allowed between 
      * the timestamp when a broker receives a message and the timestamp specified in the message
@@ -3769,31 +4187,68 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logMessageTimestampType?: pulumi.Input<string>;
     /**
+     * Should pre allocate file when create new segment?
+     */
+    logPreallocate?: pulumi.Input<string>;
+    /**
      * The maximum size of the log before deleting messages
      */
     logRetentionBytes?: pulumi.Input<string>;
     /**
-     * The number of hours to keep a log file before deleting it
+     * The number of hours to keep a log file before deleting it.
      */
     logRetentionHours?: pulumi.Input<string>;
+    /**
+     * The number of milliseconds to keep a log file before deleting it 
+     * (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+     * time limit is applied.
+     */
+    logRetentionMs?: pulumi.Input<string>;
+    /**
+     * The maximum jitter to subtract from logRollTimeMillis 
+     * (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+     */
+    logRollJitterMs?: pulumi.Input<string>;
+    /**
+     * The maximum time before a new log segment is rolled out (in milliseconds).
+     */
+    logRollMs?: pulumi.Input<string>;
     /**
      * The maximum size of a single log file
      */
     logSegmentBytes?: pulumi.Input<string>;
     /**
+     * The amount of time to wait before deleting a file 
+     * from the filesystem.
+     */
+    logSegmentDeleteDelayMs?: pulumi.Input<string>;
+    /**
      * The maximum number of connections allowed from each ip 
      * address (defaults to 2147483647).
-     * * `maxIncrementalFetchSessionCacheSlots": {
-     * * `messageMaxBytes": {
      */
     maxConnectionsPerIp?: pulumi.Input<string>;
+    /**
+     * The maximum number of incremental fetch 
+     * sessions that the broker will maintain.
+     */
     maxIncrementalFetchSessionCacheSlots?: pulumi.Input<string>;
+    /**
+     * The maximum size of message that the server can receive.
+     */
     messageMaxBytes?: pulumi.Input<string>;
     /**
+     * When a producer sets acks to 'all' (or '-1'), 
+     * min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+     * the write to be considered successful.
+     */
+    minInsyncReplicas?: pulumi.Input<string>;
+    /**
      * Number of partitions for autocreated topics
-     * * `offsetsRetentionMinutes": {
      */
     numPartitions?: pulumi.Input<string>;
+    /**
+     * Log retention window in minutes for offsets topic.
+     */
     offsetsRetentionMinutes?: pulumi.Input<string>;
     /**
      * The purge interval (in number of 
@@ -3840,14 +4295,27 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     /**
      * What to do when there is no initial offset in Kafka or 
-     * if the current offset does not exist any more on the server. Default is earliest
+     * if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
+    /**
+     * Records are fetched in batches by the consumer, and 
+     * if the first record batch in the first non-empty partition of the fetch is larger than this value,
+     * the record batch will still be returned to ensure that the consumer can make progress. As such,
+     * this is not a absolute maximum.
+     */
+    consumerFetchMaxBytes?: pulumi.Input<string>;
     /**
      * Transaction read isolation level. readUncommitted is 
      * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: pulumi.Input<string>;
+    /**
+     * Records are fetched in batches by the consumer.If 
+     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
+     * the batch will still be returned to ensure that the consumer can make progress.
+     */
+    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
     /**
      * The maximum delay in milliseconds between invocations 
      * of poll() when using consumer group management (defaults to 300000).
@@ -3869,6 +4337,11 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      * and restoring the offset data to be committed in a future attempt (defaults to 5000).
      */
     offsetFlushTimeoutMs?: pulumi.Input<string>;
+    /**
+     * This setting will limit the number of record batches 
+     * the producer will send in a single request to avoid sending huge requests.
+     */
+    producerMaxRequestSize?: pulumi.Input<string>;
     /**
      * The timeout in milliseconds used to detect failures when 
      * using Kafka’s group management facilities (defaults to 10000).
@@ -3942,6 +4415,25 @@ export interface KafkaKafkaUserConfigPublicAccess {
      * Enable Schema-Registry service
      */
     schemaRegistry?: pulumi.Input<string>;
+}
+
+export interface KafkaKafkaUserConfigSchemaRegistryConfig {
+    /**
+     * If true, Karapace / Schema Registry on the service nodes can 
+     * participate in leader election. It might be needed to disable this when the schemas topic is replicated
+     * to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+     * Defaults to 'true'.
+     */
+    leaderEligibility?: pulumi.Input<string>;
+    /**
+     * The durable single partition topic that acts as the durable log for the 
+     * data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+     * changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+     * schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+     * put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+     * Defaults to '_schemas'.
+     */
+    topicName?: pulumi.Input<string>;
 }
 
 export interface KafkaMirrorMakerComponent {
@@ -4094,6 +4586,187 @@ export interface KafkaTopicConfig {
      * unclean.leader.election.enable value
      */
     uncleanLeaderElectionEnable?: pulumi.Input<string>;
+}
+
+export interface M3AggregatorComponent {
+    component?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    route?: pulumi.Input<string>;
+    ssl?: pulumi.Input<boolean>;
+    usage?: pulumi.Input<string>;
+}
+
+export interface M3AggregatorM3aggregator {
+}
+
+export interface M3AggregatorM3aggregatorUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: pulumi.Input<string>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * M3 major version
+     */
+    m3Version?: pulumi.Input<string>;
+}
+
+export interface M3AggregatorServiceIntegration {
+    integrationType: pulumi.Input<string>;
+    sourceServiceName: pulumi.Input<string>;
+}
+
+export interface M3DbComponent {
+    component?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    route?: pulumi.Input<string>;
+    ssl?: pulumi.Input<boolean>;
+    usage?: pulumi.Input<string>;
+}
+
+export interface M3DbM3db {
+}
+
+export interface M3DbM3dbUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: pulumi.Input<string>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * M3 limits
+     */
+    limits?: pulumi.Input<inputs.M3DbM3dbUserConfigLimits>;
+    /**
+     * M3 major version
+     */
+    m3Version?: pulumi.Input<string>;
+    /**
+     * List of M3 namespaces
+     */
+    namespaces?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigNamespace>[]>;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPublicAccess>;
+}
+
+export interface M3DbM3dbUserConfigLimits {
+    /**
+     * The maximum number of data points fetched during request
+     */
+    globalDatapoints?: pulumi.Input<string>;
+    /**
+     * The maximum number of data points fetched in single query
+     */
+    queryDatapoints?: pulumi.Input<string>;
+    /**
+     * When query limits are exceeded, whether to return error 
+     * (if True) or return partial results (False)
+     */
+    queryRequireExhaustive?: pulumi.Input<string>;
+    /**
+     * The maximum number of series fetched in single query
+     */
+    querySeries?: pulumi.Input<string>;
+}
+
+export interface M3DbM3dbUserConfigNamespace {
+    /**
+     * The name of the namespace
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace options
+     */
+    options?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptions>;
+    /**
+     * The resolution for an aggregated namespace
+     */
+    resolution?: pulumi.Input<string>;
+    /**
+     * The type of aggregation (aggregated/unaggregated)
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface M3DbM3dbUserConfigNamespaceOptions {
+    /**
+     * Retention options
+     */
+    retentionOptions?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions>;
+    /**
+     * Controls whether M3DB will create snapshot files for 
+     * this namespace
+     */
+    snapshotEnabled?: pulumi.Input<string>;
+    /**
+     * Controls whether M3DB will include writes to this 
+     * namespace in the commitlog.
+     */
+    writesToCommitlog?: pulumi.Input<string>;
+}
+
+export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+    /**
+     * Controls how long we wait before expiring stale data
+     */
+    blockDataExpiryDuration?: pulumi.Input<string>;
+    /**
+     * Controls how long to keep a block in memory before 
+     * flushing to a fileset on disk
+     */
+    blocksizeDuration?: pulumi.Input<string>;
+    /**
+     * Controls how far into the future writes to 
+     * the namespace will be accepted
+     */
+    bufferFutureDuration?: pulumi.Input<string>;
+    /**
+     * Controls how far into the past writes to the 
+     * namespace will be accepted
+     */
+    bufferPastDuration?: pulumi.Input<string>;
+    /**
+     * Controls the duration of time that M3DB will 
+     * retain data for the namespace
+     */
+    retentionPeriodDuration?: pulumi.Input<string>;
+}
+
+export interface M3DbM3dbUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to m3coordinator from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    m3coordinator?: pulumi.Input<string>;
+}
+
+export interface M3DbM3dbUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to m3coordinator from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    m3coordinator?: pulumi.Input<string>;
+}
+
+export interface M3DbServiceIntegration {
+    integrationType: pulumi.Input<string>;
+    sourceServiceName: pulumi.Input<string>;
 }
 
 export interface MySqlComponent {
@@ -4918,6 +5591,7 @@ export interface ServiceElasticsearchUserConfig {
 export interface ServiceElasticsearchUserConfigElasticsearch {
     actionAutoCreateIndexEnabled?: pulumi.Input<string>;
     actionDestructiveRequiresName?: pulumi.Input<string>;
+    clusterMaxShardsPerNode?: pulumi.Input<string>;
     httpMaxContentLength?: pulumi.Input<string>;
     httpMaxHeaderSize?: pulumi.Input<string>;
     httpMaxInitialLineLength?: pulumi.Input<string>;
@@ -5202,11 +5876,14 @@ export interface ServiceKafkaConnectUserConfig {
 export interface ServiceKafkaConnectUserConfigKafkaConnect {
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     consumerAutoOffsetReset?: pulumi.Input<string>;
+    consumerFetchMaxBytes?: pulumi.Input<string>;
     consumerIsolationLevel?: pulumi.Input<string>;
+    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
     consumerMaxPollIntervalMs?: pulumi.Input<string>;
     consumerMaxPollRecords?: pulumi.Input<string>;
     offsetFlushIntervalMs?: pulumi.Input<string>;
     offsetFlushTimeoutMs?: pulumi.Input<string>;
+    producerMaxRequestSize?: pulumi.Input<string>;
     sessionTimeoutMs?: pulumi.Input<string>;
 }
 
@@ -5248,6 +5925,7 @@ export interface ServiceKafkaUserConfig {
     privateAccess?: pulumi.Input<inputs.ServiceKafkaUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceKafkaUserConfigPublicAccess>;
     schemaRegistry?: pulumi.Input<string>;
+    schemaRegistryConfig?: pulumi.Input<inputs.ServiceKafkaUserConfigSchemaRegistryConfig>;
 }
 
 export interface ServiceKafkaUserConfigKafka {
@@ -5257,18 +5935,30 @@ export interface ServiceKafkaUserConfigKafka {
     defaultReplicationFactor?: pulumi.Input<string>;
     groupMaxSessionTimeoutMs?: pulumi.Input<string>;
     groupMinSessionTimeoutMs?: pulumi.Input<string>;
+    logCleanerDeleteRetentionMs?: pulumi.Input<string>;
     logCleanerMaxCompactionLagMs?: pulumi.Input<string>;
     logCleanerMinCleanableRatio?: pulumi.Input<string>;
     logCleanerMinCompactionLagMs?: pulumi.Input<string>;
     logCleanupPolicy?: pulumi.Input<string>;
+    logFlushIntervalMessages?: pulumi.Input<string>;
+    logFlushIntervalMs?: pulumi.Input<string>;
+    logIndexIntervalBytes?: pulumi.Input<string>;
+    logIndexSizeMaxBytes?: pulumi.Input<string>;
+    logMessageDownconversionEnable?: pulumi.Input<string>;
     logMessageTimestampDifferenceMaxMs?: pulumi.Input<string>;
     logMessageTimestampType?: pulumi.Input<string>;
+    logPreallocate?: pulumi.Input<string>;
     logRetentionBytes?: pulumi.Input<string>;
     logRetentionHours?: pulumi.Input<string>;
+    logRetentionMs?: pulumi.Input<string>;
+    logRollJitterMs?: pulumi.Input<string>;
+    logRollMs?: pulumi.Input<string>;
     logSegmentBytes?: pulumi.Input<string>;
+    logSegmentDeleteDelayMs?: pulumi.Input<string>;
     maxConnectionsPerIp?: pulumi.Input<string>;
     maxIncrementalFetchSessionCacheSlots?: pulumi.Input<string>;
     messageMaxBytes?: pulumi.Input<string>;
+    minInsyncReplicas?: pulumi.Input<string>;
     numPartitions?: pulumi.Input<string>;
     offsetsRetentionMinutes?: pulumi.Input<string>;
     producerPurgatoryPurgeIntervalRequests?: pulumi.Input<string>;
@@ -5285,11 +5975,14 @@ export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
 export interface ServiceKafkaUserConfigKafkaConnectConfig {
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     consumerAutoOffsetReset?: pulumi.Input<string>;
+    consumerFetchMaxBytes?: pulumi.Input<string>;
     consumerIsolationLevel?: pulumi.Input<string>;
+    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
     consumerMaxPollIntervalMs?: pulumi.Input<string>;
     consumerMaxPollRecords?: pulumi.Input<string>;
     offsetFlushIntervalMs?: pulumi.Input<string>;
     offsetFlushTimeoutMs?: pulumi.Input<string>;
+    producerMaxRequestSize?: pulumi.Input<string>;
     sessionTimeoutMs?: pulumi.Input<string>;
 }
 
@@ -5312,6 +6005,11 @@ export interface ServiceKafkaUserConfigPublicAccess {
     kafkaRest?: pulumi.Input<string>;
     prometheus?: pulumi.Input<string>;
     schemaRegistry?: pulumi.Input<string>;
+}
+
+export interface ServiceKafkaUserConfigSchemaRegistryConfig {
+    leaderEligibility?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string>;
 }
 
 export interface ServiceMysql {

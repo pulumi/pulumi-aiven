@@ -63,6 +63,7 @@ __all__ = [
     'KafkaKafkaUserConfigKafkaRestConfig',
     'KafkaKafkaUserConfigPrivateAccess',
     'KafkaKafkaUserConfigPublicAccess',
+    'KafkaKafkaUserConfigSchemaRegistryConfig',
     'KafkaMirrorMakerComponent',
     'KafkaMirrorMakerKafkaMirrormaker',
     'KafkaMirrorMakerKafkaMirrormakerUserConfig',
@@ -70,6 +71,20 @@ __all__ = [
     'KafkaMirrorMakerServiceIntegration',
     'KafkaServiceIntegration',
     'KafkaTopicConfig',
+    'M3AggregatorComponent',
+    'M3AggregatorM3aggregator',
+    'M3AggregatorM3aggregatorUserConfig',
+    'M3AggregatorServiceIntegration',
+    'M3DbComponent',
+    'M3DbM3db',
+    'M3DbM3dbUserConfig',
+    'M3DbM3dbUserConfigLimits',
+    'M3DbM3dbUserConfigNamespace',
+    'M3DbM3dbUserConfigNamespaceOptions',
+    'M3DbM3dbUserConfigNamespaceOptionsRetentionOptions',
+    'M3DbM3dbUserConfigPrivateAccess',
+    'M3DbM3dbUserConfigPublicAccess',
+    'M3DbServiceIntegration',
     'MySqlComponent',
     'MySqlMysql',
     'MySqlMysqlUserConfig',
@@ -152,6 +167,7 @@ __all__ = [
     'ServiceKafkaUserConfigKafkaRestConfig',
     'ServiceKafkaUserConfigPrivateAccess',
     'ServiceKafkaUserConfigPublicAccess',
+    'ServiceKafkaUserConfigSchemaRegistryConfig',
     'ServiceMysql',
     'ServiceMysqlUserConfig',
     'ServiceMysqlUserConfigMysql',
@@ -225,6 +241,7 @@ __all__ = [
     'GetKafkaKafkaUserConfigKafkaRestConfigResult',
     'GetKafkaKafkaUserConfigPrivateAccessResult',
     'GetKafkaKafkaUserConfigPublicAccessResult',
+    'GetKafkaKafkaUserConfigSchemaRegistryConfigResult',
     'GetKafkaMirrorMakerComponentResult',
     'GetKafkaMirrorMakerKafkaMirrormakerResult',
     'GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult',
@@ -232,6 +249,20 @@ __all__ = [
     'GetKafkaMirrorMakerServiceIntegrationResult',
     'GetKafkaServiceIntegrationResult',
     'GetKafkaTopicConfigResult',
+    'GetM3AggregatorComponentResult',
+    'GetM3AggregatorM3aggregatorResult',
+    'GetM3AggregatorM3aggregatorUserConfigResult',
+    'GetM3AggregatorServiceIntegrationResult',
+    'GetM3DbComponentResult',
+    'GetM3DbM3dbResult',
+    'GetM3DbM3dbUserConfigResult',
+    'GetM3DbM3dbUserConfigLimitsResult',
+    'GetM3DbM3dbUserConfigNamespaceResult',
+    'GetM3DbM3dbUserConfigNamespaceOptionsResult',
+    'GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult',
+    'GetM3DbM3dbUserConfigPrivateAccessResult',
+    'GetM3DbM3dbUserConfigPublicAccessResult',
+    'GetM3DbServiceIntegrationResult',
     'GetMySqlComponentResult',
     'GetMySqlMysqlResult',
     'GetMySqlMysqlUserConfigResult',
@@ -314,6 +345,7 @@ __all__ = [
     'GetServiceKafkaUserConfigKafkaRestConfigResult',
     'GetServiceKafkaUserConfigPrivateAccessResult',
     'GetServiceKafkaUserConfigPublicAccessResult',
+    'GetServiceKafkaUserConfigSchemaRegistryConfigResult',
     'GetServiceMysqlResult',
     'GetServiceMysqlUserConfigResult',
     'GetServiceMysqlUserConfigMysqlResult',
@@ -858,6 +890,7 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
     def __init__(__self__, *,
                  action_auto_create_index_enabled: Optional[str] = None,
                  action_destructive_requires_name: Optional[str] = None,
+                 cluster_max_shards_per_node: Optional[str] = None,
                  http_max_content_length: Optional[str] = None,
                  http_max_header_size: Optional[str] = None,
                  http_max_initial_line_length: Optional[str] = None,
@@ -884,6 +917,8 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
         :param str action_auto_create_index_enabled: Explicitly allow or block automatic 
                creation of indices. Defaults to true
         :param str action_destructive_requires_name: Require explicit index names when deleting
+        :param str cluster_max_shards_per_node: Controls the number of shards allowed in the 
+               cluster per data node
         :param str http_max_content_length: Maximum content length for HTTP requests to 
                the Elasticsearch HTTP API, in bytes.
         :param str http_max_header_size: The max size of allowed headers, in bytes.
@@ -945,6 +980,8 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
             pulumi.set(__self__, "action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
             pulumi.set(__self__, "action_destructive_requires_name", action_destructive_requires_name)
+        if cluster_max_shards_per_node is not None:
+            pulumi.set(__self__, "cluster_max_shards_per_node", cluster_max_shards_per_node)
         if http_max_content_length is not None:
             pulumi.set(__self__, "http_max_content_length", http_max_content_length)
         if http_max_header_size is not None:
@@ -1006,6 +1043,15 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
         Require explicit index names when deleting
         """
         return pulumi.get(self, "action_destructive_requires_name")
+
+    @property
+    @pulumi.getter(name="clusterMaxShardsPerNode")
+    def cluster_max_shards_per_node(self) -> Optional[str]:
+        """
+        Controls the number of shards allowed in the 
+        cluster per data node
+        """
+        return pulumi.get(self, "cluster_max_shards_per_node")
 
     @property
     @pulumi.getter(name="httpMaxContentLength")
@@ -2990,19 +3036,29 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         """
         :param str connector_client_config_override_policy: Defines what client configurations can be 
                overridden by the connector. Default is None.
         :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
                if the current offset does not exist any more on the server. Default is earliest.
+        :param str consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if 
+               the first record batch in the first non-empty partition of the fetch is larger than this value,
+               the record batch will still be returned to ensure that the consumer can make progress. As such,
+               this is not a absolute maximum.
         :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
                the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If 
+               the first record batch in the first non-empty partition of the fetch is larger than this limit,
+               the batch will still be returned to ensure that the consumer can make progress.
         :param str consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations 
                of poll() when using consumer group management (defaults to 300000).
         :param str consumer_max_poll_records: The maximum number of records returned by a single poll.
@@ -3011,6 +3067,8 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         :param str offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush 
                and partition offset data to be committed to offset storage before cancelling the process and restoring
                the offset data to be committed in a future attempt (defaults to 5000).
+        :param str producer_max_request_size: This setting will limit the number of record batches the 
+               producer will send in a single request to avoid sending huge requests.
         :param str session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s 
                group management facilities (defaults to 10000).
         """
@@ -3018,8 +3076,12 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -3028,6 +3090,8 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -3050,6 +3114,17 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer, and if 
+        the first record batch in the first non-empty partition of the fetch is larger than this value,
+        the record batch will still be returned to ensure that the consumer can make progress. As such,
+        this is not a absolute maximum.
+        """
+        return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         """
@@ -3057,6 +3132,16 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         the default, but read_committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
+
+    @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer.If 
+        the first record batch in the first non-empty partition of the fetch is larger than this limit,
+        the batch will still be returned to ensure that the consumer can make progress.
+        """
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
@@ -3093,6 +3178,15 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         the offset data to be committed in a future attempt (defaults to 5000).
         """
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        """
+        This setting will limit the number of record batches the 
+        producer will send in a single request to avoid sending huge requests.
+        """
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -3321,7 +3415,8 @@ class KafkaKafkaUserConfig(dict):
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.KafkaKafkaUserConfigPrivateAccess'] = None,
                  public_access: Optional['outputs.KafkaKafkaUserConfigPublicAccess'] = None,
-                 schema_registry: Optional[str] = None):
+                 schema_registry: Optional[str] = None,
+                 schema_registry_config: Optional['outputs.KafkaKafkaUserConfigSchemaRegistryConfig'] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -3338,6 +3433,7 @@ class KafkaKafkaUserConfig(dict):
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str schema_registry: Enable Schema-Registry service
+        :param 'KafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -3363,6 +3459,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+        if schema_registry_config is not None:
+            pulumi.set(__self__, "schema_registry_config", schema_registry_config)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -3463,6 +3561,14 @@ class KafkaKafkaUserConfig(dict):
         """
         return pulumi.get(self, "schema_registry")
 
+    @property
+    @pulumi.getter(name="schemaRegistryConfig")
+    def schema_registry_config(self) -> Optional['outputs.KafkaKafkaUserConfigSchemaRegistryConfig']:
+        """
+        Schema Registry configuration
+        """
+        return pulumi.get(self, "schema_registry_config")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -3476,18 +3582,30 @@ class KafkaKafkaUserConfigKafka(dict):
                  default_replication_factor: Optional[str] = None,
                  group_max_session_timeout_ms: Optional[str] = None,
                  group_min_session_timeout_ms: Optional[str] = None,
+                 log_cleaner_delete_retention_ms: Optional[str] = None,
                  log_cleaner_max_compaction_lag_ms: Optional[str] = None,
                  log_cleaner_min_cleanable_ratio: Optional[str] = None,
                  log_cleaner_min_compaction_lag_ms: Optional[str] = None,
                  log_cleanup_policy: Optional[str] = None,
+                 log_flush_interval_messages: Optional[str] = None,
+                 log_flush_interval_ms: Optional[str] = None,
+                 log_index_interval_bytes: Optional[str] = None,
+                 log_index_size_max_bytes: Optional[str] = None,
+                 log_message_downconversion_enable: Optional[str] = None,
                  log_message_timestamp_difference_max_ms: Optional[str] = None,
                  log_message_timestamp_type: Optional[str] = None,
+                 log_preallocate: Optional[str] = None,
                  log_retention_bytes: Optional[str] = None,
                  log_retention_hours: Optional[str] = None,
+                 log_retention_ms: Optional[str] = None,
+                 log_roll_jitter_ms: Optional[str] = None,
+                 log_roll_ms: Optional[str] = None,
                  log_segment_bytes: Optional[str] = None,
+                 log_segment_delete_delay_ms: Optional[str] = None,
                  max_connections_per_ip: Optional[str] = None,
                  max_incremental_fetch_session_cache_slots: Optional[str] = None,
                  message_max_bytes: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
                  num_partitions: Optional[str] = None,
                  offsets_retention_minutes: Optional[str] = None,
                  producer_purgatory_purge_interval_requests: Optional[str] = None,
@@ -3503,27 +3621,55 @@ class KafkaKafkaUserConfigKafka(dict):
         :param str connections_max_idle_ms: Idle connections timeout: the server socket processor 
                threads close the connections that idle for longer than this.
         :param str default_replication_factor: Replication factor for autocreated topics
-               * `group_max_session_timeout_ms": {
-               * `group_min_session_timeout_ms": {
+        :param str group_max_session_timeout_ms: The maximum allowed session timeout for registered 
+               consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+               at the cost of a longer time to detect failures.
+        :param str group_min_session_timeout_ms: The minimum allowed session timeout for registered 
+               consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+               at the cost of a longer time to detect failures.
         :param str log_cleaner_max_compaction_lag_ms: The maximum amount of time message will 
                remain uncompacted. Only applicable for logs that are being compacted
-               * `log_cleaner_min_cleanable_ratio": {
+        :param str log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger 
+               value means more frequent compactions but also more space wasted for logs. Consider setting
+               log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+               high value for this option.
         :param str log_cleaner_min_compaction_lag_ms: The minimum time a message will remain 
                uncompacted in the log. Only applicable for logs that are being compacted.
-               * `log_cleanup_policy": {
+        :param str log_cleanup_policy: The default cleanup policy for segments beyond the retention window.
+        :param str log_flush_interval_messages: The number of messages accumulated on a log partition 
+               before messages are flushed to disk.
+        :param str log_flush_interval_ms: The maximum time in ms that a message in any topic is kept 
+               in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        :param str log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index.
+        :param str log_index_size_max_bytes: The maximum size in bytes of the offset index.
+        :param str log_message_downconversion_enable: This configuration controls whether down-conversion 
+               of message formats is enabled to satisfy consume requests.
         :param str log_message_timestamp_difference_max_ms: The maximum difference allowed between 
                the timestamp when a broker receives a message and the timestamp specified in the message
         :param str log_message_timestamp_type: Define whether the timestamp in the message is 
                message create time or log append time.
+        :param str log_preallocate: Should pre allocate file when create new segment?
         :param str log_retention_bytes: The maximum size of the log before deleting messages
-        :param str log_retention_hours: The number of hours to keep a log file before deleting it
+        :param str log_retention_hours: The number of hours to keep a log file before deleting it.
+        :param str log_retention_ms: The number of milliseconds to keep a log file before deleting it 
+               (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+               time limit is applied.
+        :param str log_roll_jitter_ms: The maximum jitter to subtract from logRollTimeMillis 
+               (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        :param str log_roll_ms: The maximum time before a new log segment is rolled out (in milliseconds).
         :param str log_segment_bytes: The maximum size of a single log file
+        :param str log_segment_delete_delay_ms: The amount of time to wait before deleting a file 
+               from the filesystem.
         :param str max_connections_per_ip: The maximum number of connections allowed from each ip 
                address (defaults to 2147483647).
-               * `max_incremental_fetch_session_cache_slots": {
-               * `message_max_bytes": {
+        :param str max_incremental_fetch_session_cache_slots: The maximum number of incremental fetch 
+               sessions that the broker will maintain.
+        :param str message_max_bytes: The maximum size of message that the server can receive.
+        :param str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), 
+               min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+               the write to be considered successful.
         :param str num_partitions: Number of partitions for autocreated topics
-               * `offsets_retention_minutes": {
+        :param str offsets_retention_minutes: Log retention window in minutes for offsets topic.
         :param str producer_purgatory_purge_interval_requests: The purge interval (in number of 
                requests) of the producer request purgatory(defaults to 1000).
         :param str replica_fetch_max_bytes: The number of bytes of messages to attempt to fetch 
@@ -3549,6 +3695,8 @@ class KafkaKafkaUserConfigKafka(dict):
             pulumi.set(__self__, "group_max_session_timeout_ms", group_max_session_timeout_ms)
         if group_min_session_timeout_ms is not None:
             pulumi.set(__self__, "group_min_session_timeout_ms", group_min_session_timeout_ms)
+        if log_cleaner_delete_retention_ms is not None:
+            pulumi.set(__self__, "log_cleaner_delete_retention_ms", log_cleaner_delete_retention_ms)
         if log_cleaner_max_compaction_lag_ms is not None:
             pulumi.set(__self__, "log_cleaner_max_compaction_lag_ms", log_cleaner_max_compaction_lag_ms)
         if log_cleaner_min_cleanable_ratio is not None:
@@ -3557,22 +3705,44 @@ class KafkaKafkaUserConfigKafka(dict):
             pulumi.set(__self__, "log_cleaner_min_compaction_lag_ms", log_cleaner_min_compaction_lag_ms)
         if log_cleanup_policy is not None:
             pulumi.set(__self__, "log_cleanup_policy", log_cleanup_policy)
+        if log_flush_interval_messages is not None:
+            pulumi.set(__self__, "log_flush_interval_messages", log_flush_interval_messages)
+        if log_flush_interval_ms is not None:
+            pulumi.set(__self__, "log_flush_interval_ms", log_flush_interval_ms)
+        if log_index_interval_bytes is not None:
+            pulumi.set(__self__, "log_index_interval_bytes", log_index_interval_bytes)
+        if log_index_size_max_bytes is not None:
+            pulumi.set(__self__, "log_index_size_max_bytes", log_index_size_max_bytes)
+        if log_message_downconversion_enable is not None:
+            pulumi.set(__self__, "log_message_downconversion_enable", log_message_downconversion_enable)
         if log_message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "log_message_timestamp_difference_max_ms", log_message_timestamp_difference_max_ms)
         if log_message_timestamp_type is not None:
             pulumi.set(__self__, "log_message_timestamp_type", log_message_timestamp_type)
+        if log_preallocate is not None:
+            pulumi.set(__self__, "log_preallocate", log_preallocate)
         if log_retention_bytes is not None:
             pulumi.set(__self__, "log_retention_bytes", log_retention_bytes)
         if log_retention_hours is not None:
             pulumi.set(__self__, "log_retention_hours", log_retention_hours)
+        if log_retention_ms is not None:
+            pulumi.set(__self__, "log_retention_ms", log_retention_ms)
+        if log_roll_jitter_ms is not None:
+            pulumi.set(__self__, "log_roll_jitter_ms", log_roll_jitter_ms)
+        if log_roll_ms is not None:
+            pulumi.set(__self__, "log_roll_ms", log_roll_ms)
         if log_segment_bytes is not None:
             pulumi.set(__self__, "log_segment_bytes", log_segment_bytes)
+        if log_segment_delete_delay_ms is not None:
+            pulumi.set(__self__, "log_segment_delete_delay_ms", log_segment_delete_delay_ms)
         if max_connections_per_ip is not None:
             pulumi.set(__self__, "max_connections_per_ip", max_connections_per_ip)
         if max_incremental_fetch_session_cache_slots is not None:
             pulumi.set(__self__, "max_incremental_fetch_session_cache_slots", max_incremental_fetch_session_cache_slots)
         if message_max_bytes is not None:
             pulumi.set(__self__, "message_max_bytes", message_max_bytes)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
         if num_partitions is not None:
             pulumi.set(__self__, "num_partitions", num_partitions)
         if offsets_retention_minutes is not None:
@@ -3619,20 +3789,33 @@ class KafkaKafkaUserConfigKafka(dict):
     def default_replication_factor(self) -> Optional[str]:
         """
         Replication factor for autocreated topics
-        * `group_max_session_timeout_ms": {
-        * `group_min_session_timeout_ms": {
         """
         return pulumi.get(self, "default_replication_factor")
 
     @property
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
     def group_max_session_timeout_ms(self) -> Optional[str]:
+        """
+        The maximum allowed session timeout for registered 
+        consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        at the cost of a longer time to detect failures.
+        """
         return pulumi.get(self, "group_max_session_timeout_ms")
 
     @property
     @pulumi.getter(name="groupMinSessionTimeoutMs")
     def group_min_session_timeout_ms(self) -> Optional[str]:
+        """
+        The minimum allowed session timeout for registered 
+        consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        at the cost of a longer time to detect failures.
+        """
         return pulumi.get(self, "group_min_session_timeout_ms")
+
+    @property
+    @pulumi.getter(name="logCleanerDeleteRetentionMs")
+    def log_cleaner_delete_retention_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
     @property
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
@@ -3640,13 +3823,18 @@ class KafkaKafkaUserConfigKafka(dict):
         """
         The maximum amount of time message will 
         remain uncompacted. Only applicable for logs that are being compacted
-        * `log_cleaner_min_cleanable_ratio": {
         """
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
 
     @property
     @pulumi.getter(name="logCleanerMinCleanableRatio")
     def log_cleaner_min_cleanable_ratio(self) -> Optional[str]:
+        """
+        Controls log compactor frequency. Larger 
+        value means more frequent compactions but also more space wasted for logs. Consider setting
+        log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+        high value for this option.
+        """
         return pulumi.get(self, "log_cleaner_min_cleanable_ratio")
 
     @property
@@ -3655,14 +3843,59 @@ class KafkaKafkaUserConfigKafka(dict):
         """
         The minimum time a message will remain 
         uncompacted in the log. Only applicable for logs that are being compacted.
-        * `log_cleanup_policy": {
         """
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
     @property
     @pulumi.getter(name="logCleanupPolicy")
     def log_cleanup_policy(self) -> Optional[str]:
+        """
+        The default cleanup policy for segments beyond the retention window.
+        """
         return pulumi.get(self, "log_cleanup_policy")
+
+    @property
+    @pulumi.getter(name="logFlushIntervalMessages")
+    def log_flush_interval_messages(self) -> Optional[str]:
+        """
+        The number of messages accumulated on a log partition 
+        before messages are flushed to disk.
+        """
+        return pulumi.get(self, "log_flush_interval_messages")
+
+    @property
+    @pulumi.getter(name="logFlushIntervalMs")
+    def log_flush_interval_ms(self) -> Optional[str]:
+        """
+        The maximum time in ms that a message in any topic is kept 
+        in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        """
+        return pulumi.get(self, "log_flush_interval_ms")
+
+    @property
+    @pulumi.getter(name="logIndexIntervalBytes")
+    def log_index_interval_bytes(self) -> Optional[str]:
+        """
+        The interval with which Kafka adds an entry to the offset index.
+        """
+        return pulumi.get(self, "log_index_interval_bytes")
+
+    @property
+    @pulumi.getter(name="logIndexSizeMaxBytes")
+    def log_index_size_max_bytes(self) -> Optional[str]:
+        """
+        The maximum size in bytes of the offset index.
+        """
+        return pulumi.get(self, "log_index_size_max_bytes")
+
+    @property
+    @pulumi.getter(name="logMessageDownconversionEnable")
+    def log_message_downconversion_enable(self) -> Optional[str]:
+        """
+        This configuration controls whether down-conversion 
+        of message formats is enabled to satisfy consume requests.
+        """
+        return pulumi.get(self, "log_message_downconversion_enable")
 
     @property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
@@ -3683,6 +3916,14 @@ class KafkaKafkaUserConfigKafka(dict):
         return pulumi.get(self, "log_message_timestamp_type")
 
     @property
+    @pulumi.getter(name="logPreallocate")
+    def log_preallocate(self) -> Optional[str]:
+        """
+        Should pre allocate file when create new segment?
+        """
+        return pulumi.get(self, "log_preallocate")
+
+    @property
     @pulumi.getter(name="logRetentionBytes")
     def log_retention_bytes(self) -> Optional[str]:
         """
@@ -3694,9 +3935,36 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logRetentionHours")
     def log_retention_hours(self) -> Optional[str]:
         """
-        The number of hours to keep a log file before deleting it
+        The number of hours to keep a log file before deleting it.
         """
         return pulumi.get(self, "log_retention_hours")
+
+    @property
+    @pulumi.getter(name="logRetentionMs")
+    def log_retention_ms(self) -> Optional[str]:
+        """
+        The number of milliseconds to keep a log file before deleting it 
+        (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+        time limit is applied.
+        """
+        return pulumi.get(self, "log_retention_ms")
+
+    @property
+    @pulumi.getter(name="logRollJitterMs")
+    def log_roll_jitter_ms(self) -> Optional[str]:
+        """
+        The maximum jitter to subtract from logRollTimeMillis 
+        (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        """
+        return pulumi.get(self, "log_roll_jitter_ms")
+
+    @property
+    @pulumi.getter(name="logRollMs")
+    def log_roll_ms(self) -> Optional[str]:
+        """
+        The maximum time before a new log segment is rolled out (in milliseconds).
+        """
+        return pulumi.get(self, "log_roll_ms")
 
     @property
     @pulumi.getter(name="logSegmentBytes")
@@ -3707,38 +3975,64 @@ class KafkaKafkaUserConfigKafka(dict):
         return pulumi.get(self, "log_segment_bytes")
 
     @property
+    @pulumi.getter(name="logSegmentDeleteDelayMs")
+    def log_segment_delete_delay_ms(self) -> Optional[str]:
+        """
+        The amount of time to wait before deleting a file 
+        from the filesystem.
+        """
+        return pulumi.get(self, "log_segment_delete_delay_ms")
+
+    @property
     @pulumi.getter(name="maxConnectionsPerIp")
     def max_connections_per_ip(self) -> Optional[str]:
         """
         The maximum number of connections allowed from each ip 
         address (defaults to 2147483647).
-        * `max_incremental_fetch_session_cache_slots": {
-        * `message_max_bytes": {
         """
         return pulumi.get(self, "max_connections_per_ip")
 
     @property
     @pulumi.getter(name="maxIncrementalFetchSessionCacheSlots")
     def max_incremental_fetch_session_cache_slots(self) -> Optional[str]:
+        """
+        The maximum number of incremental fetch 
+        sessions that the broker will maintain.
+        """
         return pulumi.get(self, "max_incremental_fetch_session_cache_slots")
 
     @property
     @pulumi.getter(name="messageMaxBytes")
     def message_max_bytes(self) -> Optional[str]:
+        """
+        The maximum size of message that the server can receive.
+        """
         return pulumi.get(self, "message_max_bytes")
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[str]:
+        """
+        When a producer sets acks to 'all' (or '-1'), 
+        min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+        the write to be considered successful.
+        """
+        return pulumi.get(self, "min_insync_replicas")
 
     @property
     @pulumi.getter(name="numPartitions")
     def num_partitions(self) -> Optional[str]:
         """
         Number of partitions for autocreated topics
-        * `offsets_retention_minutes": {
         """
         return pulumi.get(self, "num_partitions")
 
     @property
     @pulumi.getter(name="offsetsRetentionMinutes")
     def offsets_retention_minutes(self) -> Optional[str]:
+        """
+        Log retention window in minutes for offsets topic.
+        """
         return pulumi.get(self, "offsets_retention_minutes")
 
     @property
@@ -3824,19 +4118,29 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         """
         :param str connector_client_config_override_policy: Defines what client configurations can 
                be overridden by the connector. Default is None
         :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
-               if the current offset does not exist any more on the server. Default is earliest
+               if the current offset does not exist any more on the server. Default is earliest.
+        :param str consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and 
+               if the first record batch in the first non-empty partition of the fetch is larger than this value,
+               the record batch will still be returned to ensure that the consumer can make progress. As such,
+               this is not a absolute maximum.
         :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
                the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If 
+               the first record batch in the first non-empty partition of the fetch is larger than this limit,
+               the batch will still be returned to ensure that the consumer can make progress.
         :param str consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations 
                of poll() when using consumer group management (defaults to 300000).
         :param str consumer_max_poll_records: The maximum number of records returned in a single call 
@@ -3846,6 +4150,8 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         :param str offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to 
                flush and partition offset data to be committed to offset storage before cancelling the process
                and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        :param str producer_max_request_size: This setting will limit the number of record batches 
+               the producer will send in a single request to avoid sending huge requests.
         :param str session_timeout_ms: The timeout in milliseconds used to detect failures when 
                using Kafka’s group management facilities (defaults to 10000).
         """
@@ -3853,8 +4159,12 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -3863,6 +4173,8 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -3880,9 +4192,20 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     def consumer_auto_offset_reset(self) -> Optional[str]:
         """
         What to do when there is no initial offset in Kafka or 
-        if the current offset does not exist any more on the server. Default is earliest
+        if the current offset does not exist any more on the server. Default is earliest.
         """
         return pulumi.get(self, "consumer_auto_offset_reset")
+
+    @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer, and 
+        if the first record batch in the first non-empty partition of the fetch is larger than this value,
+        the record batch will still be returned to ensure that the consumer can make progress. As such,
+        this is not a absolute maximum.
+        """
+        return pulumi.get(self, "consumer_fetch_max_bytes")
 
     @property
     @pulumi.getter(name="consumerIsolationLevel")
@@ -3892,6 +4215,16 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         the default, but read_committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
+
+    @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer.If 
+        the first record batch in the first non-empty partition of the fetch is larger than this limit,
+        the batch will still be returned to ensure that the consumer can make progress.
+        """
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
@@ -3929,6 +4262,15 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         and restoring the offset data to be committed in a future attempt (defaults to 5000).
         """
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        """
+        This setting will limit the number of record batches 
+        the producer will send in a single request to avoid sending huge requests.
+        """
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -4134,6 +4476,56 @@ class KafkaKafkaUserConfigPublicAccess(dict):
         Enable Schema-Registry service
         """
         return pulumi.get(self, "schema_registry")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
+    def __init__(__self__, *,
+                 leader_eligibility: Optional[str] = None,
+                 topic_name: Optional[str] = None):
+        """
+        :param str leader_eligibility: If true, Karapace / Schema Registry on the service nodes can 
+               participate in leader election. It might be needed to disable this when the schemas topic is replicated
+               to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+               Defaults to 'true'.
+        :param str topic_name: The durable single partition topic that acts as the durable log for the 
+               data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+               changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+               schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+               put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+               Defaults to '_schemas'.
+        """
+        if leader_eligibility is not None:
+            pulumi.set(__self__, "leader_eligibility", leader_eligibility)
+        if topic_name is not None:
+            pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="leaderEligibility")
+    def leader_eligibility(self) -> Optional[str]:
+        """
+        If true, Karapace / Schema Registry on the service nodes can 
+        participate in leader election. It might be needed to disable this when the schemas topic is replicated
+        to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+        Defaults to 'true'.
+        """
+        return pulumi.get(self, "leader_eligibility")
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> Optional[str]:
+        """
+        The durable single partition topic that acts as the durable log for the 
+        data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+        changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+        schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+        put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+        Defaults to '_schemas'.
+        """
+        return pulumi.get(self, "topic_name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -4643,6 +5035,630 @@ class KafkaTopicConfig(dict):
         unclean.leader.election.enable value
         """
         return pulumi.get(self, "unclean_leader_election_enable")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3AggregatorComponent(dict):
+    def __init__(__self__, *,
+                 component: Optional[str] = None,
+                 host: Optional[str] = None,
+                 kafka_authentication_method: Optional[str] = None,
+                 port: Optional[int] = None,
+                 route: Optional[str] = None,
+                 ssl: Optional[bool] = None,
+                 usage: Optional[str] = None):
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if kafka_authentication_method is not None:
+            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route is not None:
+            pulumi.set(__self__, "route", route)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if usage is not None:
+            pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional[str]:
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="kafkaAuthenticationMethod")
+    def kafka_authentication_method(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_authentication_method")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def route(self) -> Optional[str]:
+        return pulumi.get(self, "route")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[bool]:
+        return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> Optional[str]:
+        return pulumi.get(self, "usage")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3AggregatorM3aggregator(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3AggregatorM3aggregatorUserConfig(dict):
+    def __init__(__self__, *,
+                 custom_domain: Optional[str] = None,
+                 ip_filters: Optional[Sequence[str]] = None,
+                 m3_version: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param str m3_version: M3 major version
+        """
+        if custom_domain is not None:
+            pulumi.set(__self__, "custom_domain", custom_domain)
+        if ip_filters is not None:
+            pulumi.set(__self__, "ip_filters", ip_filters)
+        if m3_version is not None:
+            pulumi.set(__self__, "m3_version", m3_version)
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
+        return pulumi.get(self, "custom_domain")
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @property
+    @pulumi.getter(name="m3Version")
+    def m3_version(self) -> Optional[str]:
+        """
+        M3 major version
+        """
+        return pulumi.get(self, "m3_version")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3AggregatorServiceIntegration(dict):
+    def __init__(__self__, *,
+                 integration_type: str,
+                 source_service_name: str):
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        return pulumi.get(self, "integration_type")
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> str:
+        return pulumi.get(self, "source_service_name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbComponent(dict):
+    def __init__(__self__, *,
+                 component: Optional[str] = None,
+                 host: Optional[str] = None,
+                 kafka_authentication_method: Optional[str] = None,
+                 port: Optional[int] = None,
+                 route: Optional[str] = None,
+                 ssl: Optional[bool] = None,
+                 usage: Optional[str] = None):
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if kafka_authentication_method is not None:
+            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route is not None:
+            pulumi.set(__self__, "route", route)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if usage is not None:
+            pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional[str]:
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="kafkaAuthenticationMethod")
+    def kafka_authentication_method(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_authentication_method")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def route(self) -> Optional[str]:
+        return pulumi.get(self, "route")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[bool]:
+        return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> Optional[str]:
+        return pulumi.get(self, "usage")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3db(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfig(dict):
+    def __init__(__self__, *,
+                 custom_domain: Optional[str] = None,
+                 ip_filters: Optional[Sequence[str]] = None,
+                 limits: Optional['outputs.M3DbM3dbUserConfigLimits'] = None,
+                 m3_version: Optional[str] = None,
+                 namespaces: Optional[Sequence['outputs.M3DbM3dbUserConfigNamespace']] = None,
+                 private_access: Optional['outputs.M3DbM3dbUserConfigPrivateAccess'] = None,
+                 public_access: Optional['outputs.M3DbM3dbUserConfigPublicAccess'] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param 'M3DbM3dbUserConfigLimitsArgs' limits: M3 limits
+        :param str m3_version: M3 major version
+        :param Sequence['M3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
+        :param 'M3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'M3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        """
+        if custom_domain is not None:
+            pulumi.set(__self__, "custom_domain", custom_domain)
+        if ip_filters is not None:
+            pulumi.set(__self__, "ip_filters", ip_filters)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if m3_version is not None:
+            pulumi.set(__self__, "m3_version", m3_version)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
+        return pulumi.get(self, "custom_domain")
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional['outputs.M3DbM3dbUserConfigLimits']:
+        """
+        M3 limits
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="m3Version")
+    def m3_version(self) -> Optional[str]:
+        """
+        M3 major version
+        """
+        return pulumi.get(self, "m3_version")
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigNamespace']]:
+        """
+        List of M3 namespaces
+        """
+        return pulumi.get(self, "namespaces")
+
+    @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional['outputs.M3DbM3dbUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks.
+        """
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional['outputs.M3DbM3dbUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
+        return pulumi.get(self, "public_access")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigLimits(dict):
+    def __init__(__self__, *,
+                 global_datapoints: Optional[str] = None,
+                 query_datapoints: Optional[str] = None,
+                 query_require_exhaustive: Optional[str] = None,
+                 query_series: Optional[str] = None):
+        """
+        :param str global_datapoints: The maximum number of data points fetched during request
+        :param str query_datapoints: The maximum number of data points fetched in single query
+        :param str query_require_exhaustive: When query limits are exceeded, whether to return error 
+               (if True) or return partial results (False)
+        :param str query_series: The maximum number of series fetched in single query
+        """
+        if global_datapoints is not None:
+            pulumi.set(__self__, "global_datapoints", global_datapoints)
+        if query_datapoints is not None:
+            pulumi.set(__self__, "query_datapoints", query_datapoints)
+        if query_require_exhaustive is not None:
+            pulumi.set(__self__, "query_require_exhaustive", query_require_exhaustive)
+        if query_series is not None:
+            pulumi.set(__self__, "query_series", query_series)
+
+    @property
+    @pulumi.getter(name="globalDatapoints")
+    def global_datapoints(self) -> Optional[str]:
+        """
+        The maximum number of data points fetched during request
+        """
+        return pulumi.get(self, "global_datapoints")
+
+    @property
+    @pulumi.getter(name="queryDatapoints")
+    def query_datapoints(self) -> Optional[str]:
+        """
+        The maximum number of data points fetched in single query
+        """
+        return pulumi.get(self, "query_datapoints")
+
+    @property
+    @pulumi.getter(name="queryRequireExhaustive")
+    def query_require_exhaustive(self) -> Optional[str]:
+        """
+        When query limits are exceeded, whether to return error 
+        (if True) or return partial results (False)
+        """
+        return pulumi.get(self, "query_require_exhaustive")
+
+    @property
+    @pulumi.getter(name="querySeries")
+    def query_series(self) -> Optional[str]:
+        """
+        The maximum number of series fetched in single query
+        """
+        return pulumi.get(self, "query_series")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigNamespace(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 options: Optional['outputs.M3DbM3dbUserConfigNamespaceOptions'] = None,
+                 resolution: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str name: The name of the namespace
+        :param 'M3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options
+        :param str resolution: The resolution for an aggregated namespace
+        :param str type: The type of aggregation (aggregated/unaggregated)
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if resolution is not None:
+            pulumi.set(__self__, "resolution", resolution)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the namespace
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional['outputs.M3DbM3dbUserConfigNamespaceOptions']:
+        """
+        Namespace options
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def resolution(self) -> Optional[str]:
+        """
+        The resolution for an aggregated namespace
+        """
+        return pulumi.get(self, "resolution")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of aggregation (aggregated/unaggregated)
+        """
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigNamespaceOptions(dict):
+    def __init__(__self__, *,
+                 retention_options: Optional['outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions'] = None,
+                 snapshot_enabled: Optional[str] = None,
+                 writes_to_commitlog: Optional[str] = None):
+        """
+        :param 'M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs' retention_options: Retention options
+        :param str snapshot_enabled: Controls whether M3DB will create snapshot files for 
+               this namespace
+        :param str writes_to_commitlog: Controls whether M3DB will include writes to this 
+               namespace in the commitlog.
+        """
+        if retention_options is not None:
+            pulumi.set(__self__, "retention_options", retention_options)
+        if snapshot_enabled is not None:
+            pulumi.set(__self__, "snapshot_enabled", snapshot_enabled)
+        if writes_to_commitlog is not None:
+            pulumi.set(__self__, "writes_to_commitlog", writes_to_commitlog)
+
+    @property
+    @pulumi.getter(name="retentionOptions")
+    def retention_options(self) -> Optional['outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions']:
+        """
+        Retention options
+        """
+        return pulumi.get(self, "retention_options")
+
+    @property
+    @pulumi.getter(name="snapshotEnabled")
+    def snapshot_enabled(self) -> Optional[str]:
+        """
+        Controls whether M3DB will create snapshot files for 
+        this namespace
+        """
+        return pulumi.get(self, "snapshot_enabled")
+
+    @property
+    @pulumi.getter(name="writesToCommitlog")
+    def writes_to_commitlog(self) -> Optional[str]:
+        """
+        Controls whether M3DB will include writes to this 
+        namespace in the commitlog.
+        """
+        return pulumi.get(self, "writes_to_commitlog")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigNamespaceOptionsRetentionOptions(dict):
+    def __init__(__self__, *,
+                 block_data_expiry_duration: Optional[str] = None,
+                 blocksize_duration: Optional[str] = None,
+                 buffer_future_duration: Optional[str] = None,
+                 buffer_past_duration: Optional[str] = None,
+                 retention_period_duration: Optional[str] = None):
+        """
+        :param str block_data_expiry_duration: Controls how long we wait before expiring stale data
+        :param str blocksize_duration: Controls how long to keep a block in memory before 
+               flushing to a fileset on disk
+        :param str buffer_future_duration: Controls how far into the future writes to 
+               the namespace will be accepted
+        :param str buffer_past_duration: Controls how far into the past writes to the 
+               namespace will be accepted
+        :param str retention_period_duration: Controls the duration of time that M3DB will 
+               retain data for the namespace
+        """
+        if block_data_expiry_duration is not None:
+            pulumi.set(__self__, "block_data_expiry_duration", block_data_expiry_duration)
+        if blocksize_duration is not None:
+            pulumi.set(__self__, "blocksize_duration", blocksize_duration)
+        if buffer_future_duration is not None:
+            pulumi.set(__self__, "buffer_future_duration", buffer_future_duration)
+        if buffer_past_duration is not None:
+            pulumi.set(__self__, "buffer_past_duration", buffer_past_duration)
+        if retention_period_duration is not None:
+            pulumi.set(__self__, "retention_period_duration", retention_period_duration)
+
+    @property
+    @pulumi.getter(name="blockDataExpiryDuration")
+    def block_data_expiry_duration(self) -> Optional[str]:
+        """
+        Controls how long we wait before expiring stale data
+        """
+        return pulumi.get(self, "block_data_expiry_duration")
+
+    @property
+    @pulumi.getter(name="blocksizeDuration")
+    def blocksize_duration(self) -> Optional[str]:
+        """
+        Controls how long to keep a block in memory before 
+        flushing to a fileset on disk
+        """
+        return pulumi.get(self, "blocksize_duration")
+
+    @property
+    @pulumi.getter(name="bufferFutureDuration")
+    def buffer_future_duration(self) -> Optional[str]:
+        """
+        Controls how far into the future writes to 
+        the namespace will be accepted
+        """
+        return pulumi.get(self, "buffer_future_duration")
+
+    @property
+    @pulumi.getter(name="bufferPastDuration")
+    def buffer_past_duration(self) -> Optional[str]:
+        """
+        Controls how far into the past writes to the 
+        namespace will be accepted
+        """
+        return pulumi.get(self, "buffer_past_duration")
+
+    @property
+    @pulumi.getter(name="retentionPeriodDuration")
+    def retention_period_duration(self) -> Optional[str]:
+        """
+        Controls the duration of time that M3DB will 
+        retain data for the namespace
+        """
+        return pulumi.get(self, "retention_period_duration")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigPrivateAccess(dict):
+    def __init__(__self__, *,
+                 m3coordinator: Optional[str] = None):
+        """
+        :param str m3coordinator: Allow clients to connect to m3coordinator from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
+        if m3coordinator is not None:
+            pulumi.set(__self__, "m3coordinator", m3coordinator)
+
+    @property
+    @pulumi.getter
+    def m3coordinator(self) -> Optional[str]:
+        """
+        Allow clients to connect to m3coordinator from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "m3coordinator")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigPublicAccess(dict):
+    def __init__(__self__, *,
+                 m3coordinator: Optional[str] = None):
+        """
+        :param str m3coordinator: Allow clients to connect to m3coordinator from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
+        if m3coordinator is not None:
+            pulumi.set(__self__, "m3coordinator", m3coordinator)
+
+    @property
+    @pulumi.getter
+    def m3coordinator(self) -> Optional[str]:
+        """
+        Allow clients to connect to m3coordinator from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "m3coordinator")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class M3DbServiceIntegration(dict):
+    def __init__(__self__, *,
+                 integration_type: str,
+                 source_service_name: str):
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        return pulumi.get(self, "integration_type")
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> str:
+        return pulumi.get(self, "source_service_name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -7276,6 +8292,7 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
     def __init__(__self__, *,
                  action_auto_create_index_enabled: Optional[str] = None,
                  action_destructive_requires_name: Optional[str] = None,
+                 cluster_max_shards_per_node: Optional[str] = None,
                  http_max_content_length: Optional[str] = None,
                  http_max_header_size: Optional[str] = None,
                  http_max_initial_line_length: Optional[str] = None,
@@ -7302,6 +8319,8 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
             pulumi.set(__self__, "action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
             pulumi.set(__self__, "action_destructive_requires_name", action_destructive_requires_name)
+        if cluster_max_shards_per_node is not None:
+            pulumi.set(__self__, "cluster_max_shards_per_node", cluster_max_shards_per_node)
         if http_max_content_length is not None:
             pulumi.set(__self__, "http_max_content_length", http_max_content_length)
         if http_max_header_size is not None:
@@ -7356,6 +8375,11 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
     @pulumi.getter(name="actionDestructiveRequiresName")
     def action_destructive_requires_name(self) -> Optional[str]:
         return pulumi.get(self, "action_destructive_requires_name")
+
+    @property
+    @pulumi.getter(name="clusterMaxShardsPerNode")
+    def cluster_max_shards_per_node(self) -> Optional[str]:
+        return pulumi.get(self, "cluster_max_shards_per_node")
 
     @property
     @pulumi.getter(name="httpMaxContentLength")
@@ -8958,18 +9982,25 @@ class ServiceKafkaConnectUserConfigKafkaConnect(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -8978,6 +10009,8 @@ class ServiceKafkaConnectUserConfigKafkaConnect(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -8992,9 +10025,19 @@ class ServiceKafkaConnectUserConfigKafkaConnect(dict):
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         return pulumi.get(self, "consumer_isolation_level")
+
+    @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
@@ -9015,6 +10058,11 @@ class ServiceKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -9160,7 +10208,8 @@ class ServiceKafkaUserConfig(dict):
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.ServiceKafkaUserConfigPrivateAccess'] = None,
                  public_access: Optional['outputs.ServiceKafkaUserConfigPublicAccess'] = None,
-                 schema_registry: Optional[str] = None):
+                 schema_registry: Optional[str] = None,
+                 schema_registry_config: Optional['outputs.ServiceKafkaUserConfigSchemaRegistryConfig'] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filters is not None:
@@ -9185,6 +10234,8 @@ class ServiceKafkaUserConfig(dict):
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+        if schema_registry_config is not None:
+            pulumi.set(__self__, "schema_registry_config", schema_registry_config)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -9246,6 +10297,11 @@ class ServiceKafkaUserConfig(dict):
     def schema_registry(self) -> Optional[str]:
         return pulumi.get(self, "schema_registry")
 
+    @property
+    @pulumi.getter(name="schemaRegistryConfig")
+    def schema_registry_config(self) -> Optional['outputs.ServiceKafkaUserConfigSchemaRegistryConfig']:
+        return pulumi.get(self, "schema_registry_config")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -9259,18 +10315,30 @@ class ServiceKafkaUserConfigKafka(dict):
                  default_replication_factor: Optional[str] = None,
                  group_max_session_timeout_ms: Optional[str] = None,
                  group_min_session_timeout_ms: Optional[str] = None,
+                 log_cleaner_delete_retention_ms: Optional[str] = None,
                  log_cleaner_max_compaction_lag_ms: Optional[str] = None,
                  log_cleaner_min_cleanable_ratio: Optional[str] = None,
                  log_cleaner_min_compaction_lag_ms: Optional[str] = None,
                  log_cleanup_policy: Optional[str] = None,
+                 log_flush_interval_messages: Optional[str] = None,
+                 log_flush_interval_ms: Optional[str] = None,
+                 log_index_interval_bytes: Optional[str] = None,
+                 log_index_size_max_bytes: Optional[str] = None,
+                 log_message_downconversion_enable: Optional[str] = None,
                  log_message_timestamp_difference_max_ms: Optional[str] = None,
                  log_message_timestamp_type: Optional[str] = None,
+                 log_preallocate: Optional[str] = None,
                  log_retention_bytes: Optional[str] = None,
                  log_retention_hours: Optional[str] = None,
+                 log_retention_ms: Optional[str] = None,
+                 log_roll_jitter_ms: Optional[str] = None,
+                 log_roll_ms: Optional[str] = None,
                  log_segment_bytes: Optional[str] = None,
+                 log_segment_delete_delay_ms: Optional[str] = None,
                  max_connections_per_ip: Optional[str] = None,
                  max_incremental_fetch_session_cache_slots: Optional[str] = None,
                  message_max_bytes: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
                  num_partitions: Optional[str] = None,
                  offsets_retention_minutes: Optional[str] = None,
                  producer_purgatory_purge_interval_requests: Optional[str] = None,
@@ -9289,6 +10357,8 @@ class ServiceKafkaUserConfigKafka(dict):
             pulumi.set(__self__, "group_max_session_timeout_ms", group_max_session_timeout_ms)
         if group_min_session_timeout_ms is not None:
             pulumi.set(__self__, "group_min_session_timeout_ms", group_min_session_timeout_ms)
+        if log_cleaner_delete_retention_ms is not None:
+            pulumi.set(__self__, "log_cleaner_delete_retention_ms", log_cleaner_delete_retention_ms)
         if log_cleaner_max_compaction_lag_ms is not None:
             pulumi.set(__self__, "log_cleaner_max_compaction_lag_ms", log_cleaner_max_compaction_lag_ms)
         if log_cleaner_min_cleanable_ratio is not None:
@@ -9297,22 +10367,44 @@ class ServiceKafkaUserConfigKafka(dict):
             pulumi.set(__self__, "log_cleaner_min_compaction_lag_ms", log_cleaner_min_compaction_lag_ms)
         if log_cleanup_policy is not None:
             pulumi.set(__self__, "log_cleanup_policy", log_cleanup_policy)
+        if log_flush_interval_messages is not None:
+            pulumi.set(__self__, "log_flush_interval_messages", log_flush_interval_messages)
+        if log_flush_interval_ms is not None:
+            pulumi.set(__self__, "log_flush_interval_ms", log_flush_interval_ms)
+        if log_index_interval_bytes is not None:
+            pulumi.set(__self__, "log_index_interval_bytes", log_index_interval_bytes)
+        if log_index_size_max_bytes is not None:
+            pulumi.set(__self__, "log_index_size_max_bytes", log_index_size_max_bytes)
+        if log_message_downconversion_enable is not None:
+            pulumi.set(__self__, "log_message_downconversion_enable", log_message_downconversion_enable)
         if log_message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "log_message_timestamp_difference_max_ms", log_message_timestamp_difference_max_ms)
         if log_message_timestamp_type is not None:
             pulumi.set(__self__, "log_message_timestamp_type", log_message_timestamp_type)
+        if log_preallocate is not None:
+            pulumi.set(__self__, "log_preallocate", log_preallocate)
         if log_retention_bytes is not None:
             pulumi.set(__self__, "log_retention_bytes", log_retention_bytes)
         if log_retention_hours is not None:
             pulumi.set(__self__, "log_retention_hours", log_retention_hours)
+        if log_retention_ms is not None:
+            pulumi.set(__self__, "log_retention_ms", log_retention_ms)
+        if log_roll_jitter_ms is not None:
+            pulumi.set(__self__, "log_roll_jitter_ms", log_roll_jitter_ms)
+        if log_roll_ms is not None:
+            pulumi.set(__self__, "log_roll_ms", log_roll_ms)
         if log_segment_bytes is not None:
             pulumi.set(__self__, "log_segment_bytes", log_segment_bytes)
+        if log_segment_delete_delay_ms is not None:
+            pulumi.set(__self__, "log_segment_delete_delay_ms", log_segment_delete_delay_ms)
         if max_connections_per_ip is not None:
             pulumi.set(__self__, "max_connections_per_ip", max_connections_per_ip)
         if max_incremental_fetch_session_cache_slots is not None:
             pulumi.set(__self__, "max_incremental_fetch_session_cache_slots", max_incremental_fetch_session_cache_slots)
         if message_max_bytes is not None:
             pulumi.set(__self__, "message_max_bytes", message_max_bytes)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
         if num_partitions is not None:
             pulumi.set(__self__, "num_partitions", num_partitions)
         if offsets_retention_minutes is not None:
@@ -9357,6 +10449,11 @@ class ServiceKafkaUserConfigKafka(dict):
         return pulumi.get(self, "group_min_session_timeout_ms")
 
     @property
+    @pulumi.getter(name="logCleanerDeleteRetentionMs")
+    def log_cleaner_delete_retention_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_cleaner_delete_retention_ms")
+
+    @property
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
     def log_cleaner_max_compaction_lag_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
@@ -9377,6 +10474,31 @@ class ServiceKafkaUserConfigKafka(dict):
         return pulumi.get(self, "log_cleanup_policy")
 
     @property
+    @pulumi.getter(name="logFlushIntervalMessages")
+    def log_flush_interval_messages(self) -> Optional[str]:
+        return pulumi.get(self, "log_flush_interval_messages")
+
+    @property
+    @pulumi.getter(name="logFlushIntervalMs")
+    def log_flush_interval_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_flush_interval_ms")
+
+    @property
+    @pulumi.getter(name="logIndexIntervalBytes")
+    def log_index_interval_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "log_index_interval_bytes")
+
+    @property
+    @pulumi.getter(name="logIndexSizeMaxBytes")
+    def log_index_size_max_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "log_index_size_max_bytes")
+
+    @property
+    @pulumi.getter(name="logMessageDownconversionEnable")
+    def log_message_downconversion_enable(self) -> Optional[str]:
+        return pulumi.get(self, "log_message_downconversion_enable")
+
+    @property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
     def log_message_timestamp_difference_max_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
@@ -9385,6 +10507,11 @@ class ServiceKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logMessageTimestampType")
     def log_message_timestamp_type(self) -> Optional[str]:
         return pulumi.get(self, "log_message_timestamp_type")
+
+    @property
+    @pulumi.getter(name="logPreallocate")
+    def log_preallocate(self) -> Optional[str]:
+        return pulumi.get(self, "log_preallocate")
 
     @property
     @pulumi.getter(name="logRetentionBytes")
@@ -9397,9 +10524,29 @@ class ServiceKafkaUserConfigKafka(dict):
         return pulumi.get(self, "log_retention_hours")
 
     @property
+    @pulumi.getter(name="logRetentionMs")
+    def log_retention_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_retention_ms")
+
+    @property
+    @pulumi.getter(name="logRollJitterMs")
+    def log_roll_jitter_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_roll_jitter_ms")
+
+    @property
+    @pulumi.getter(name="logRollMs")
+    def log_roll_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_roll_ms")
+
+    @property
     @pulumi.getter(name="logSegmentBytes")
     def log_segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_segment_bytes")
+
+    @property
+    @pulumi.getter(name="logSegmentDeleteDelayMs")
+    def log_segment_delete_delay_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_segment_delete_delay_ms")
 
     @property
     @pulumi.getter(name="maxConnectionsPerIp")
@@ -9415,6 +10562,11 @@ class ServiceKafkaUserConfigKafka(dict):
     @pulumi.getter(name="messageMaxBytes")
     def message_max_bytes(self) -> Optional[str]:
         return pulumi.get(self, "message_max_bytes")
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[str]:
+        return pulumi.get(self, "min_insync_replicas")
 
     @property
     @pulumi.getter(name="numPartitions")
@@ -9479,18 +10631,25 @@ class ServiceKafkaUserConfigKafkaConnectConfig(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -9499,6 +10658,8 @@ class ServiceKafkaUserConfigKafkaConnectConfig(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -9513,9 +10674,19 @@ class ServiceKafkaUserConfigKafkaConnectConfig(dict):
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         return pulumi.get(self, "consumer_isolation_level")
+
+    @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
@@ -9536,6 +10707,11 @@ class ServiceKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -9661,6 +10837,30 @@ class ServiceKafkaUserConfigPublicAccess(dict):
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
         return pulumi.get(self, "schema_registry")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceKafkaUserConfigSchemaRegistryConfig(dict):
+    def __init__(__self__, *,
+                 leader_eligibility: Optional[str] = None,
+                 topic_name: Optional[str] = None):
+        if leader_eligibility is not None:
+            pulumi.set(__self__, "leader_eligibility", leader_eligibility)
+        if topic_name is not None:
+            pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="leaderEligibility")
+    def leader_eligibility(self) -> Optional[str]:
+        return pulumi.get(self, "leader_eligibility")
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> Optional[str]:
+        return pulumi.get(self, "topic_name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -11442,6 +12642,7 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
     def __init__(__self__, *,
                  action_auto_create_index_enabled: Optional[str] = None,
                  action_destructive_requires_name: Optional[str] = None,
+                 cluster_max_shards_per_node: Optional[str] = None,
                  http_max_content_length: Optional[str] = None,
                  http_max_header_size: Optional[str] = None,
                  http_max_initial_line_length: Optional[str] = None,
@@ -11468,6 +12669,8 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
         :param str action_auto_create_index_enabled: Explicitly allow or block automatic 
                creation of indices. Defaults to true
         :param str action_destructive_requires_name: Require explicit index names when deleting
+        :param str cluster_max_shards_per_node: Controls the number of shards allowed in the 
+               cluster per data node
         :param str http_max_content_length: Maximum content length for HTTP requests to 
                the Elasticsearch HTTP API, in bytes.
         :param str http_max_header_size: The max size of allowed headers, in bytes.
@@ -11529,6 +12732,8 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
             pulumi.set(__self__, "action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
             pulumi.set(__self__, "action_destructive_requires_name", action_destructive_requires_name)
+        if cluster_max_shards_per_node is not None:
+            pulumi.set(__self__, "cluster_max_shards_per_node", cluster_max_shards_per_node)
         if http_max_content_length is not None:
             pulumi.set(__self__, "http_max_content_length", http_max_content_length)
         if http_max_header_size is not None:
@@ -11590,6 +12795,15 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
         Require explicit index names when deleting
         """
         return pulumi.get(self, "action_destructive_requires_name")
+
+    @property
+    @pulumi.getter(name="clusterMaxShardsPerNode")
+    def cluster_max_shards_per_node(self) -> Optional[str]:
+        """
+        Controls the number of shards allowed in the 
+        cluster per data node
+        """
+        return pulumi.get(self, "cluster_max_shards_per_node")
 
     @property
     @pulumi.getter(name="httpMaxContentLength")
@@ -13440,27 +14654,39 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         """
         :param str connector_client_config_override_policy: Defines what client configurations can be 
                overridden by the connector. Default is None.
         :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
                if the current offset does not exist any more on the server. Default is earliest.
+        :param str consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if 
+               the first record batch in the first non-empty partition of the fetch is larger than this value,
+               the record batch will still be returned to ensure that the consumer can make progress. As such,
+               this is not a absolute maximum.
         :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
                the default, but read_committed can be used if consume-exactly-once behavior is desired.
-               * `consumer_max_poll_interval_ms`- The maximum delay in milliseconds between invocations
+        :param str consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If 
+               the first record batch in the first non-empty partition of the fetch is larger than this limit,
+               the batch will still be returned to ensure that the consumer can make progress.
+        :param str consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations 
                of poll() when using consumer group management (defaults to 300000).
                * `consumer_max_poll_records` The maximum number of records returned by a single poll.
-               * `offset_flush_interval_ms`- The interval at which to try committing offsets for tasks
+        :param str offset_flush_interval_ms: The interval at which to try committing offsets for tasks 
                (defaults to 60000).
-               * `offset_flush_timeout_ms`- Maximum number of milliseconds to wait for records to flush
+        :param str offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush 
                and partition offset data to be committed to offset storage before cancelling the process and restoring
                the offset data to be committed in a future attempt (defaults to 5000).
+        :param str producer_max_request_size: This setting will limit the number of record batches the 
+               producer will send in a single request to avoid sending huge requests.
         :param str session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s 
                group management facilities (defaults to 10000).
         """
@@ -13468,8 +14694,12 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -13478,6 +14708,8 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -13500,25 +14732,43 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer, and if 
+        the first record batch in the first non-empty partition of the fetch is larger than this value,
+        the record batch will still be returned to ensure that the consumer can make progress. As such,
+        this is not a absolute maximum.
+        """
+        return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         """
         Transaction read isolation level. read_uncommitted is 
         the default, but read_committed can be used if consume-exactly-once behavior is desired.
-        * `consumer_max_poll_interval_ms`- The maximum delay in milliseconds between invocations
-        of poll() when using consumer group management (defaults to 300000).
-        * `consumer_max_poll_records` The maximum number of records returned by a single poll.
-        * `offset_flush_interval_ms`- The interval at which to try committing offsets for tasks
-        (defaults to 60000).
-        * `offset_flush_timeout_ms`- Maximum number of milliseconds to wait for records to flush
-        and partition offset data to be committed to offset storage before cancelling the process and restoring
-        the offset data to be committed in a future attempt (defaults to 5000).
         """
         return pulumi.get(self, "consumer_isolation_level")
 
     @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer.If 
+        the first record batch in the first non-empty partition of the fetch is larger than this limit,
+        the batch will still be returned to ensure that the consumer can make progress.
+        """
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
+
+    @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
     def consumer_max_poll_interval_ms(self) -> Optional[str]:
+        """
+        The maximum delay in milliseconds between invocations 
+        of poll() when using consumer group management (defaults to 300000).
+        * `consumer_max_poll_records` The maximum number of records returned by a single poll.
+        """
         return pulumi.get(self, "consumer_max_poll_interval_ms")
 
     @property
@@ -13529,12 +14779,30 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @property
     @pulumi.getter(name="offsetFlushIntervalMs")
     def offset_flush_interval_ms(self) -> Optional[str]:
+        """
+        The interval at which to try committing offsets for tasks 
+        (defaults to 60000).
+        """
         return pulumi.get(self, "offset_flush_interval_ms")
 
     @property
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
+        """
+        Maximum number of milliseconds to wait for records to flush 
+        and partition offset data to be committed to offset storage before cancelling the process and restoring
+        the offset data to be committed in a future attempt (defaults to 5000).
+        """
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        """
+        This setting will limit the number of record batches the 
+        producer will send in a single request to avoid sending huge requests.
+        """
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -13722,7 +14990,8 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult'] = None,
-                 schema_registry: Optional[str] = None):
+                 schema_registry: Optional[str] = None,
+                 schema_registry_config: Optional['outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult'] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -13738,6 +15007,7 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str schema_registry: Enable Schema-Registry service
+        :param 'GetKafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -13763,6 +15033,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+        if schema_registry_config is not None:
+            pulumi.set(__self__, "schema_registry_config", schema_registry_config)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -13862,6 +15134,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         """
         return pulumi.get(self, "schema_registry")
 
+    @property
+    @pulumi.getter(name="schemaRegistryConfig")
+    def schema_registry_config(self) -> Optional['outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult']:
+        """
+        Schema Registry configuration
+        """
+        return pulumi.get(self, "schema_registry_config")
+
 
 @pulumi.output_type
 class GetKafkaKafkaUserConfigKafkaResult(dict):
@@ -13872,18 +15152,30 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
                  default_replication_factor: Optional[str] = None,
                  group_max_session_timeout_ms: Optional[str] = None,
                  group_min_session_timeout_ms: Optional[str] = None,
+                 log_cleaner_delete_retention_ms: Optional[str] = None,
                  log_cleaner_max_compaction_lag_ms: Optional[str] = None,
                  log_cleaner_min_cleanable_ratio: Optional[str] = None,
                  log_cleaner_min_compaction_lag_ms: Optional[str] = None,
                  log_cleanup_policy: Optional[str] = None,
+                 log_flush_interval_messages: Optional[str] = None,
+                 log_flush_interval_ms: Optional[str] = None,
+                 log_index_interval_bytes: Optional[str] = None,
+                 log_index_size_max_bytes: Optional[str] = None,
+                 log_message_downconversion_enable: Optional[str] = None,
                  log_message_timestamp_difference_max_ms: Optional[str] = None,
                  log_message_timestamp_type: Optional[str] = None,
+                 log_preallocate: Optional[str] = None,
                  log_retention_bytes: Optional[str] = None,
                  log_retention_hours: Optional[str] = None,
+                 log_retention_ms: Optional[str] = None,
+                 log_roll_jitter_ms: Optional[str] = None,
+                 log_roll_ms: Optional[str] = None,
                  log_segment_bytes: Optional[str] = None,
+                 log_segment_delete_delay_ms: Optional[str] = None,
                  max_connections_per_ip: Optional[str] = None,
                  max_incremental_fetch_session_cache_slots: Optional[str] = None,
                  message_max_bytes: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
                  num_partitions: Optional[str] = None,
                  offsets_retention_minutes: Optional[str] = None,
                  producer_purgatory_purge_interval_requests: Optional[str] = None,
@@ -13899,27 +15191,55 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param str connections_max_idle_ms: Idle connections timeout: the server socket processor 
                threads close the connections that idle for longer than this.
         :param str default_replication_factor: Replication factor for autocreated topics
-               * `group_max_session_timeout_ms": {
-               * `group_min_session_timeout_ms": {
+        :param str group_max_session_timeout_ms: The maximum allowed session timeout for registered 
+               consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+               at the cost of a longer time to detect failures.
+        :param str group_min_session_timeout_ms: The minimum allowed session timeout for registered 
+               consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+               at the cost of a longer time to detect failures.
         :param str log_cleaner_max_compaction_lag_ms: The maximum amount of time message will 
                remain uncompacted. Only applicable for logs that are being compacted
-               * `log_cleaner_min_cleanable_ratio": {
+        :param str log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger 
+               value means more frequent compactions but also more space wasted for logs. Consider setting
+               log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+               high value for this option.
         :param str log_cleaner_min_compaction_lag_ms: The minimum time a message will remain 
                uncompacted in the log. Only applicable for logs that are being compacted.
-               * `log_cleanup_policy": {
+        :param str log_cleanup_policy: The default cleanup policy for segments beyond the retention window.
+        :param str log_flush_interval_messages: The number of messages accumulated on a log partition 
+               before messages are flushed to disk.
+        :param str log_flush_interval_ms: The maximum time in ms that a message in any topic is kept 
+               in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        :param str log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index.
+        :param str log_index_size_max_bytes: The maximum size in bytes of the offset index.
+        :param str log_message_downconversion_enable: This configuration controls whether down-conversion 
+               of message formats is enabled to satisfy consume requests.
         :param str log_message_timestamp_difference_max_ms: The maximum difference allowed between 
                the timestamp when a broker receives a message and the timestamp specified in the message
         :param str log_message_timestamp_type: Define whether the timestamp in the message is 
                message create time or log append time.
+        :param str log_preallocate: Should pre allocate file when create new segment?
         :param str log_retention_bytes: The maximum size of the log before deleting messages
-        :param str log_retention_hours: The number of hours to keep a log file before deleting it
+        :param str log_retention_hours: The number of hours to keep a log file before deleting it.
+        :param str log_retention_ms: The number of milliseconds to keep a log file before deleting it 
+               (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+               time limit is applied.
+        :param str log_roll_jitter_ms: The maximum jitter to subtract from logRollTimeMillis 
+               (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        :param str log_roll_ms: The maximum time before a new log segment is rolled out (in milliseconds).
         :param str log_segment_bytes: The maximum size of a single log file
+        :param str log_segment_delete_delay_ms: The amount of time to wait before deleting a file 
+               from the filesystem.
         :param str max_connections_per_ip: The maximum number of connections allowed from each ip 
                address (defaults to 2147483647).
-               * `max_incremental_fetch_session_cache_slots": {
-               * `message_max_bytes": {
+        :param str max_incremental_fetch_session_cache_slots: The maximum number of incremental fetch 
+               sessions that the broker will maintain.
+        :param str message_max_bytes: The maximum size of message that the server can receive.
+        :param str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), 
+               min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+               the write to be considered successful.
         :param str num_partitions: Number of partitions for autocreated topics
-               * `offsets_retention_minutes": {
+        :param str offsets_retention_minutes: Log retention window in minutes for offsets topic.
         :param str producer_purgatory_purge_interval_requests: The purge interval (in number of 
                requests) of the producer request purgatory(defaults to 1000).
         :param str replica_fetch_max_bytes: The number of bytes of messages to attempt to fetch 
@@ -13945,6 +15265,8 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
             pulumi.set(__self__, "group_max_session_timeout_ms", group_max_session_timeout_ms)
         if group_min_session_timeout_ms is not None:
             pulumi.set(__self__, "group_min_session_timeout_ms", group_min_session_timeout_ms)
+        if log_cleaner_delete_retention_ms is not None:
+            pulumi.set(__self__, "log_cleaner_delete_retention_ms", log_cleaner_delete_retention_ms)
         if log_cleaner_max_compaction_lag_ms is not None:
             pulumi.set(__self__, "log_cleaner_max_compaction_lag_ms", log_cleaner_max_compaction_lag_ms)
         if log_cleaner_min_cleanable_ratio is not None:
@@ -13953,22 +15275,44 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
             pulumi.set(__self__, "log_cleaner_min_compaction_lag_ms", log_cleaner_min_compaction_lag_ms)
         if log_cleanup_policy is not None:
             pulumi.set(__self__, "log_cleanup_policy", log_cleanup_policy)
+        if log_flush_interval_messages is not None:
+            pulumi.set(__self__, "log_flush_interval_messages", log_flush_interval_messages)
+        if log_flush_interval_ms is not None:
+            pulumi.set(__self__, "log_flush_interval_ms", log_flush_interval_ms)
+        if log_index_interval_bytes is not None:
+            pulumi.set(__self__, "log_index_interval_bytes", log_index_interval_bytes)
+        if log_index_size_max_bytes is not None:
+            pulumi.set(__self__, "log_index_size_max_bytes", log_index_size_max_bytes)
+        if log_message_downconversion_enable is not None:
+            pulumi.set(__self__, "log_message_downconversion_enable", log_message_downconversion_enable)
         if log_message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "log_message_timestamp_difference_max_ms", log_message_timestamp_difference_max_ms)
         if log_message_timestamp_type is not None:
             pulumi.set(__self__, "log_message_timestamp_type", log_message_timestamp_type)
+        if log_preallocate is not None:
+            pulumi.set(__self__, "log_preallocate", log_preallocate)
         if log_retention_bytes is not None:
             pulumi.set(__self__, "log_retention_bytes", log_retention_bytes)
         if log_retention_hours is not None:
             pulumi.set(__self__, "log_retention_hours", log_retention_hours)
+        if log_retention_ms is not None:
+            pulumi.set(__self__, "log_retention_ms", log_retention_ms)
+        if log_roll_jitter_ms is not None:
+            pulumi.set(__self__, "log_roll_jitter_ms", log_roll_jitter_ms)
+        if log_roll_ms is not None:
+            pulumi.set(__self__, "log_roll_ms", log_roll_ms)
         if log_segment_bytes is not None:
             pulumi.set(__self__, "log_segment_bytes", log_segment_bytes)
+        if log_segment_delete_delay_ms is not None:
+            pulumi.set(__self__, "log_segment_delete_delay_ms", log_segment_delete_delay_ms)
         if max_connections_per_ip is not None:
             pulumi.set(__self__, "max_connections_per_ip", max_connections_per_ip)
         if max_incremental_fetch_session_cache_slots is not None:
             pulumi.set(__self__, "max_incremental_fetch_session_cache_slots", max_incremental_fetch_session_cache_slots)
         if message_max_bytes is not None:
             pulumi.set(__self__, "message_max_bytes", message_max_bytes)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
         if num_partitions is not None:
             pulumi.set(__self__, "num_partitions", num_partitions)
         if offsets_retention_minutes is not None:
@@ -14015,20 +15359,33 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     def default_replication_factor(self) -> Optional[str]:
         """
         Replication factor for autocreated topics
-        * `group_max_session_timeout_ms": {
-        * `group_min_session_timeout_ms": {
         """
         return pulumi.get(self, "default_replication_factor")
 
     @property
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
     def group_max_session_timeout_ms(self) -> Optional[str]:
+        """
+        The maximum allowed session timeout for registered 
+        consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        at the cost of a longer time to detect failures.
+        """
         return pulumi.get(self, "group_max_session_timeout_ms")
 
     @property
     @pulumi.getter(name="groupMinSessionTimeoutMs")
     def group_min_session_timeout_ms(self) -> Optional[str]:
+        """
+        The minimum allowed session timeout for registered 
+        consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        at the cost of a longer time to detect failures.
+        """
         return pulumi.get(self, "group_min_session_timeout_ms")
+
+    @property
+    @pulumi.getter(name="logCleanerDeleteRetentionMs")
+    def log_cleaner_delete_retention_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
     @property
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
@@ -14036,13 +15393,18 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         """
         The maximum amount of time message will 
         remain uncompacted. Only applicable for logs that are being compacted
-        * `log_cleaner_min_cleanable_ratio": {
         """
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
 
     @property
     @pulumi.getter(name="logCleanerMinCleanableRatio")
     def log_cleaner_min_cleanable_ratio(self) -> Optional[str]:
+        """
+        Controls log compactor frequency. Larger 
+        value means more frequent compactions but also more space wasted for logs. Consider setting
+        log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+        high value for this option.
+        """
         return pulumi.get(self, "log_cleaner_min_cleanable_ratio")
 
     @property
@@ -14051,14 +15413,59 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         """
         The minimum time a message will remain 
         uncompacted in the log. Only applicable for logs that are being compacted.
-        * `log_cleanup_policy": {
         """
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
     @property
     @pulumi.getter(name="logCleanupPolicy")
     def log_cleanup_policy(self) -> Optional[str]:
+        """
+        The default cleanup policy for segments beyond the retention window.
+        """
         return pulumi.get(self, "log_cleanup_policy")
+
+    @property
+    @pulumi.getter(name="logFlushIntervalMessages")
+    def log_flush_interval_messages(self) -> Optional[str]:
+        """
+        The number of messages accumulated on a log partition 
+        before messages are flushed to disk.
+        """
+        return pulumi.get(self, "log_flush_interval_messages")
+
+    @property
+    @pulumi.getter(name="logFlushIntervalMs")
+    def log_flush_interval_ms(self) -> Optional[str]:
+        """
+        The maximum time in ms that a message in any topic is kept 
+        in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        """
+        return pulumi.get(self, "log_flush_interval_ms")
+
+    @property
+    @pulumi.getter(name="logIndexIntervalBytes")
+    def log_index_interval_bytes(self) -> Optional[str]:
+        """
+        The interval with which Kafka adds an entry to the offset index.
+        """
+        return pulumi.get(self, "log_index_interval_bytes")
+
+    @property
+    @pulumi.getter(name="logIndexSizeMaxBytes")
+    def log_index_size_max_bytes(self) -> Optional[str]:
+        """
+        The maximum size in bytes of the offset index.
+        """
+        return pulumi.get(self, "log_index_size_max_bytes")
+
+    @property
+    @pulumi.getter(name="logMessageDownconversionEnable")
+    def log_message_downconversion_enable(self) -> Optional[str]:
+        """
+        This configuration controls whether down-conversion 
+        of message formats is enabled to satisfy consume requests.
+        """
+        return pulumi.get(self, "log_message_downconversion_enable")
 
     @property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
@@ -14079,6 +15486,14 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         return pulumi.get(self, "log_message_timestamp_type")
 
     @property
+    @pulumi.getter(name="logPreallocate")
+    def log_preallocate(self) -> Optional[str]:
+        """
+        Should pre allocate file when create new segment?
+        """
+        return pulumi.get(self, "log_preallocate")
+
+    @property
     @pulumi.getter(name="logRetentionBytes")
     def log_retention_bytes(self) -> Optional[str]:
         """
@@ -14090,9 +15505,36 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logRetentionHours")
     def log_retention_hours(self) -> Optional[str]:
         """
-        The number of hours to keep a log file before deleting it
+        The number of hours to keep a log file before deleting it.
         """
         return pulumi.get(self, "log_retention_hours")
+
+    @property
+    @pulumi.getter(name="logRetentionMs")
+    def log_retention_ms(self) -> Optional[str]:
+        """
+        The number of milliseconds to keep a log file before deleting it 
+        (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+        time limit is applied.
+        """
+        return pulumi.get(self, "log_retention_ms")
+
+    @property
+    @pulumi.getter(name="logRollJitterMs")
+    def log_roll_jitter_ms(self) -> Optional[str]:
+        """
+        The maximum jitter to subtract from logRollTimeMillis 
+        (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        """
+        return pulumi.get(self, "log_roll_jitter_ms")
+
+    @property
+    @pulumi.getter(name="logRollMs")
+    def log_roll_ms(self) -> Optional[str]:
+        """
+        The maximum time before a new log segment is rolled out (in milliseconds).
+        """
+        return pulumi.get(self, "log_roll_ms")
 
     @property
     @pulumi.getter(name="logSegmentBytes")
@@ -14103,38 +15545,64 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         return pulumi.get(self, "log_segment_bytes")
 
     @property
+    @pulumi.getter(name="logSegmentDeleteDelayMs")
+    def log_segment_delete_delay_ms(self) -> Optional[str]:
+        """
+        The amount of time to wait before deleting a file 
+        from the filesystem.
+        """
+        return pulumi.get(self, "log_segment_delete_delay_ms")
+
+    @property
     @pulumi.getter(name="maxConnectionsPerIp")
     def max_connections_per_ip(self) -> Optional[str]:
         """
         The maximum number of connections allowed from each ip 
         address (defaults to 2147483647).
-        * `max_incremental_fetch_session_cache_slots": {
-        * `message_max_bytes": {
         """
         return pulumi.get(self, "max_connections_per_ip")
 
     @property
     @pulumi.getter(name="maxIncrementalFetchSessionCacheSlots")
     def max_incremental_fetch_session_cache_slots(self) -> Optional[str]:
+        """
+        The maximum number of incremental fetch 
+        sessions that the broker will maintain.
+        """
         return pulumi.get(self, "max_incremental_fetch_session_cache_slots")
 
     @property
     @pulumi.getter(name="messageMaxBytes")
     def message_max_bytes(self) -> Optional[str]:
+        """
+        The maximum size of message that the server can receive.
+        """
         return pulumi.get(self, "message_max_bytes")
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[str]:
+        """
+        When a producer sets acks to 'all' (or '-1'), 
+        min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+        the write to be considered successful.
+        """
+        return pulumi.get(self, "min_insync_replicas")
 
     @property
     @pulumi.getter(name="numPartitions")
     def num_partitions(self) -> Optional[str]:
         """
         Number of partitions for autocreated topics
-        * `offsets_retention_minutes": {
         """
         return pulumi.get(self, "num_partitions")
 
     @property
     @pulumi.getter(name="offsetsRetentionMinutes")
     def offsets_retention_minutes(self) -> Optional[str]:
+        """
+        Log retention window in minutes for offsets topic.
+        """
         return pulumi.get(self, "offsets_retention_minutes")
 
     @property
@@ -14214,19 +15682,29 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         """
         :param str connector_client_config_override_policy: Defines what client configurations can 
                be overridden by the connector. Default is None
         :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or 
-               if the current offset does not exist any more on the server. Default is earliest
+               if the current offset does not exist any more on the server. Default is earliest.
+        :param str consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and 
+               if the first record batch in the first non-empty partition of the fetch is larger than this value,
+               the record batch will still be returned to ensure that the consumer can make progress. As such,
+               this is not a absolute maximum.
         :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is 
                the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If 
+               the first record batch in the first non-empty partition of the fetch is larger than this limit,
+               the batch will still be returned to ensure that the consumer can make progress.
         :param str consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations 
                of poll() when using consumer group management (defaults to 300000).
         :param str consumer_max_poll_records: The maximum number of records returned in a single call 
@@ -14236,6 +15714,8 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         :param str offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to 
                flush and partition offset data to be committed to offset storage before cancelling the process
                and restoring the offset data to be committed in a future attempt (defaults to 5000).
+        :param str producer_max_request_size: This setting will limit the number of record batches 
+               the producer will send in a single request to avoid sending huge requests.
         :param str session_timeout_ms: The timeout in milliseconds used to detect failures when 
                using Kafka’s group management facilities (defaults to 10000).
         """
@@ -14243,8 +15723,12 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -14253,6 +15737,8 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -14270,9 +15756,20 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     def consumer_auto_offset_reset(self) -> Optional[str]:
         """
         What to do when there is no initial offset in Kafka or 
-        if the current offset does not exist any more on the server. Default is earliest
+        if the current offset does not exist any more on the server. Default is earliest.
         """
         return pulumi.get(self, "consumer_auto_offset_reset")
+
+    @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer, and 
+        if the first record batch in the first non-empty partition of the fetch is larger than this value,
+        the record batch will still be returned to ensure that the consumer can make progress. As such,
+        this is not a absolute maximum.
+        """
+        return pulumi.get(self, "consumer_fetch_max_bytes")
 
     @property
     @pulumi.getter(name="consumerIsolationLevel")
@@ -14282,6 +15779,16 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         the default, but read_committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
+
+    @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        """
+        Records are fetched in batches by the consumer.If 
+        the first record batch in the first non-empty partition of the fetch is larger than this limit,
+        the batch will still be returned to ensure that the consumer can make progress.
+        """
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
@@ -14319,6 +15826,15 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         and restoring the offset data to be committed in a future attempt (defaults to 5000).
         """
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        """
+        This setting will limit the number of record batches 
+        the producer will send in a single request to avoid sending huge requests.
+        """
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -14513,6 +16029,53 @@ class GetKafkaKafkaUserConfigPublicAccessResult(dict):
         Enable Schema-Registry service
         """
         return pulumi.get(self, "schema_registry")
+
+
+@pulumi.output_type
+class GetKafkaKafkaUserConfigSchemaRegistryConfigResult(dict):
+    def __init__(__self__, *,
+                 leader_eligibility: Optional[str] = None,
+                 topic_name: Optional[str] = None):
+        """
+        :param str leader_eligibility: If true, Karapace / Schema Registry on the service nodes can 
+               participate in leader election. It might be needed to disable this when the schemas topic is replicated
+               to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+               Defaults to 'true'.
+        :param str topic_name: The durable single partition topic that acts as the durable log for the 
+               data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+               changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+               schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+               put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+               Defaults to '_schemas'.
+        """
+        if leader_eligibility is not None:
+            pulumi.set(__self__, "leader_eligibility", leader_eligibility)
+        if topic_name is not None:
+            pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="leaderEligibility")
+    def leader_eligibility(self) -> Optional[str]:
+        """
+        If true, Karapace / Schema Registry on the service nodes can 
+        participate in leader election. It might be needed to disable this when the schemas topic is replicated
+        to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+        Defaults to 'true'.
+        """
+        return pulumi.get(self, "leader_eligibility")
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> Optional[str]:
+        """
+        The durable single partition topic that acts as the durable log for the 
+        data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+        changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+        schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+        put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+        Defaults to '_schemas'.
+        """
+        return pulumi.get(self, "topic_name")
 
 
 @pulumi.output_type
@@ -14994,6 +16557,574 @@ class GetKafkaTopicConfigResult(dict):
         unclean.leader.election.enable value
         """
         return pulumi.get(self, "unclean_leader_election_enable")
+
+
+@pulumi.output_type
+class GetM3AggregatorComponentResult(dict):
+    def __init__(__self__, *,
+                 component: str,
+                 host: str,
+                 kafka_authentication_method: str,
+                 port: int,
+                 route: str,
+                 ssl: bool,
+                 usage: str):
+        pulumi.set(__self__, "component", component)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "route", route)
+        pulumi.set(__self__, "ssl", ssl)
+        pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def component(self) -> str:
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="kafkaAuthenticationMethod")
+    def kafka_authentication_method(self) -> str:
+        return pulumi.get(self, "kafka_authentication_method")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def route(self) -> str:
+        return pulumi.get(self, "route")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> bool:
+        return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> str:
+        return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class GetM3AggregatorM3aggregatorResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetM3AggregatorM3aggregatorUserConfigResult(dict):
+    def __init__(__self__, *,
+                 custom_domain: Optional[str] = None,
+                 ip_filters: Optional[Sequence[str]] = None,
+                 m3_version: Optional[str] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param str m3_version: M3 major version
+        """
+        if custom_domain is not None:
+            pulumi.set(__self__, "custom_domain", custom_domain)
+        if ip_filters is not None:
+            pulumi.set(__self__, "ip_filters", ip_filters)
+        if m3_version is not None:
+            pulumi.set(__self__, "m3_version", m3_version)
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
+        return pulumi.get(self, "custom_domain")
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @property
+    @pulumi.getter(name="m3Version")
+    def m3_version(self) -> Optional[str]:
+        """
+        M3 major version
+        """
+        return pulumi.get(self, "m3_version")
+
+
+@pulumi.output_type
+class GetM3AggregatorServiceIntegrationResult(dict):
+    def __init__(__self__, *,
+                 integration_type: str,
+                 source_service_name: str):
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        return pulumi.get(self, "integration_type")
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> str:
+        return pulumi.get(self, "source_service_name")
+
+
+@pulumi.output_type
+class GetM3DbComponentResult(dict):
+    def __init__(__self__, *,
+                 component: str,
+                 host: str,
+                 kafka_authentication_method: str,
+                 port: int,
+                 route: str,
+                 ssl: bool,
+                 usage: str):
+        pulumi.set(__self__, "component", component)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "route", route)
+        pulumi.set(__self__, "ssl", ssl)
+        pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def component(self) -> str:
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="kafkaAuthenticationMethod")
+    def kafka_authentication_method(self) -> str:
+        return pulumi.get(self, "kafka_authentication_method")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def route(self) -> str:
+        return pulumi.get(self, "route")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> bool:
+        return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> str:
+        return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class GetM3DbM3dbResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigResult(dict):
+    def __init__(__self__, *,
+                 custom_domain: Optional[str] = None,
+                 ip_filters: Optional[Sequence[str]] = None,
+                 limits: Optional['outputs.GetM3DbM3dbUserConfigLimitsResult'] = None,
+                 m3_version: Optional[str] = None,
+                 namespaces: Optional[Sequence['outputs.GetM3DbM3dbUserConfigNamespaceResult']] = None,
+                 private_access: Optional['outputs.GetM3DbM3dbUserConfigPrivateAccessResult'] = None,
+                 public_access: Optional['outputs.GetM3DbM3dbUserConfigPublicAccessResult'] = None):
+        """
+        :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param 'GetM3DbM3dbUserConfigLimitsArgs' limits: M3 limits
+        :param str m3_version: M3 major version
+        :param Sequence['GetM3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
+        :param 'GetM3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'GetM3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        """
+        if custom_domain is not None:
+            pulumi.set(__self__, "custom_domain", custom_domain)
+        if ip_filters is not None:
+            pulumi.set(__self__, "ip_filters", ip_filters)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if m3_version is not None:
+            pulumi.set(__self__, "m3_version", m3_version)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> Optional[str]:
+        """
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        """
+        return pulumi.get(self, "custom_domain")
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional['outputs.GetM3DbM3dbUserConfigLimitsResult']:
+        """
+        M3 limits
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="m3Version")
+    def m3_version(self) -> Optional[str]:
+        """
+        M3 major version
+        """
+        return pulumi.get(self, "m3_version")
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigNamespaceResult']]:
+        """
+        List of M3 namespaces
+        """
+        return pulumi.get(self, "namespaces")
+
+    @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional['outputs.GetM3DbM3dbUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks.
+        """
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional['outputs.GetM3DbM3dbUserConfigPublicAccessResult']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
+        return pulumi.get(self, "public_access")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigLimitsResult(dict):
+    def __init__(__self__, *,
+                 global_datapoints: Optional[str] = None,
+                 query_datapoints: Optional[str] = None,
+                 query_require_exhaustive: Optional[str] = None,
+                 query_series: Optional[str] = None):
+        """
+        :param str global_datapoints: The maximum number of data points fetched during request
+        :param str query_datapoints: The maximum number of data points fetched in single query
+        :param str query_require_exhaustive: When query limits are exceeded, whether to return error 
+               (if True) or return partial results (False)
+        :param str query_series: The maximum number of series fetched in single query
+        """
+        if global_datapoints is not None:
+            pulumi.set(__self__, "global_datapoints", global_datapoints)
+        if query_datapoints is not None:
+            pulumi.set(__self__, "query_datapoints", query_datapoints)
+        if query_require_exhaustive is not None:
+            pulumi.set(__self__, "query_require_exhaustive", query_require_exhaustive)
+        if query_series is not None:
+            pulumi.set(__self__, "query_series", query_series)
+
+    @property
+    @pulumi.getter(name="globalDatapoints")
+    def global_datapoints(self) -> Optional[str]:
+        """
+        The maximum number of data points fetched during request
+        """
+        return pulumi.get(self, "global_datapoints")
+
+    @property
+    @pulumi.getter(name="queryDatapoints")
+    def query_datapoints(self) -> Optional[str]:
+        """
+        The maximum number of data points fetched in single query
+        """
+        return pulumi.get(self, "query_datapoints")
+
+    @property
+    @pulumi.getter(name="queryRequireExhaustive")
+    def query_require_exhaustive(self) -> Optional[str]:
+        """
+        When query limits are exceeded, whether to return error 
+        (if True) or return partial results (False)
+        """
+        return pulumi.get(self, "query_require_exhaustive")
+
+    @property
+    @pulumi.getter(name="querySeries")
+    def query_series(self) -> Optional[str]:
+        """
+        The maximum number of series fetched in single query
+        """
+        return pulumi.get(self, "query_series")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigNamespaceResult(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 options: Optional['outputs.GetM3DbM3dbUserConfigNamespaceOptionsResult'] = None,
+                 resolution: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str name: The name of the namespace
+        :param 'GetM3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options
+        :param str resolution: The resolution for an aggregated namespace
+        :param str type: The type of aggregation (aggregated/unaggregated)
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if resolution is not None:
+            pulumi.set(__self__, "resolution", resolution)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the namespace
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional['outputs.GetM3DbM3dbUserConfigNamespaceOptionsResult']:
+        """
+        Namespace options
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def resolution(self) -> Optional[str]:
+        """
+        The resolution for an aggregated namespace
+        """
+        return pulumi.get(self, "resolution")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of aggregation (aggregated/unaggregated)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigNamespaceOptionsResult(dict):
+    def __init__(__self__, *,
+                 retention_options: Optional['outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult'] = None,
+                 snapshot_enabled: Optional[str] = None,
+                 writes_to_commitlog: Optional[str] = None):
+        """
+        :param 'GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs' retention_options: Retention options
+        :param str snapshot_enabled: Controls whether M3DB will create snapshot files for 
+               this namespace
+        :param str writes_to_commitlog: Controls whether M3DB will include writes to this 
+               namespace in the commitlog.
+        """
+        if retention_options is not None:
+            pulumi.set(__self__, "retention_options", retention_options)
+        if snapshot_enabled is not None:
+            pulumi.set(__self__, "snapshot_enabled", snapshot_enabled)
+        if writes_to_commitlog is not None:
+            pulumi.set(__self__, "writes_to_commitlog", writes_to_commitlog)
+
+    @property
+    @pulumi.getter(name="retentionOptions")
+    def retention_options(self) -> Optional['outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult']:
+        """
+        Retention options
+        """
+        return pulumi.get(self, "retention_options")
+
+    @property
+    @pulumi.getter(name="snapshotEnabled")
+    def snapshot_enabled(self) -> Optional[str]:
+        """
+        Controls whether M3DB will create snapshot files for 
+        this namespace
+        """
+        return pulumi.get(self, "snapshot_enabled")
+
+    @property
+    @pulumi.getter(name="writesToCommitlog")
+    def writes_to_commitlog(self) -> Optional[str]:
+        """
+        Controls whether M3DB will include writes to this 
+        namespace in the commitlog.
+        """
+        return pulumi.get(self, "writes_to_commitlog")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult(dict):
+    def __init__(__self__, *,
+                 block_data_expiry_duration: Optional[str] = None,
+                 blocksize_duration: Optional[str] = None,
+                 buffer_future_duration: Optional[str] = None,
+                 buffer_past_duration: Optional[str] = None,
+                 retention_period_duration: Optional[str] = None):
+        """
+        :param str block_data_expiry_duration: Controls how long we wait before expiring stale data
+        :param str blocksize_duration: Controls how long to keep a block in memory before 
+               flushing to a fileset on disk
+        :param str buffer_future_duration: Controls how far into the future writes to 
+               the namespace will be accepted
+        :param str buffer_past_duration: Controls how far into the past writes to the 
+               namespace will be accepted
+        :param str retention_period_duration: Controls the duration of time that M3DB will 
+               retain data for the namespace
+        """
+        if block_data_expiry_duration is not None:
+            pulumi.set(__self__, "block_data_expiry_duration", block_data_expiry_duration)
+        if blocksize_duration is not None:
+            pulumi.set(__self__, "blocksize_duration", blocksize_duration)
+        if buffer_future_duration is not None:
+            pulumi.set(__self__, "buffer_future_duration", buffer_future_duration)
+        if buffer_past_duration is not None:
+            pulumi.set(__self__, "buffer_past_duration", buffer_past_duration)
+        if retention_period_duration is not None:
+            pulumi.set(__self__, "retention_period_duration", retention_period_duration)
+
+    @property
+    @pulumi.getter(name="blockDataExpiryDuration")
+    def block_data_expiry_duration(self) -> Optional[str]:
+        """
+        Controls how long we wait before expiring stale data
+        """
+        return pulumi.get(self, "block_data_expiry_duration")
+
+    @property
+    @pulumi.getter(name="blocksizeDuration")
+    def blocksize_duration(self) -> Optional[str]:
+        """
+        Controls how long to keep a block in memory before 
+        flushing to a fileset on disk
+        """
+        return pulumi.get(self, "blocksize_duration")
+
+    @property
+    @pulumi.getter(name="bufferFutureDuration")
+    def buffer_future_duration(self) -> Optional[str]:
+        """
+        Controls how far into the future writes to 
+        the namespace will be accepted
+        """
+        return pulumi.get(self, "buffer_future_duration")
+
+    @property
+    @pulumi.getter(name="bufferPastDuration")
+    def buffer_past_duration(self) -> Optional[str]:
+        """
+        Controls how far into the past writes to the 
+        namespace will be accepted
+        """
+        return pulumi.get(self, "buffer_past_duration")
+
+    @property
+    @pulumi.getter(name="retentionPeriodDuration")
+    def retention_period_duration(self) -> Optional[str]:
+        """
+        Controls the duration of time that M3DB will 
+        retain data for the namespace
+        """
+        return pulumi.get(self, "retention_period_duration")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigPrivateAccessResult(dict):
+    def __init__(__self__, *,
+                 m3coordinator: Optional[str] = None):
+        """
+        :param str m3coordinator: Allow clients to connect to m3coordinator from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
+        if m3coordinator is not None:
+            pulumi.set(__self__, "m3coordinator", m3coordinator)
+
+    @property
+    @pulumi.getter
+    def m3coordinator(self) -> Optional[str]:
+        """
+        Allow clients to connect to m3coordinator from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "m3coordinator")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigPublicAccessResult(dict):
+    def __init__(__self__, *,
+                 m3coordinator: Optional[str] = None):
+        """
+        :param str m3coordinator: Allow clients to connect to m3coordinator from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
+        if m3coordinator is not None:
+            pulumi.set(__self__, "m3coordinator", m3coordinator)
+
+    @property
+    @pulumi.getter
+    def m3coordinator(self) -> Optional[str]:
+        """
+        Allow clients to connect to m3coordinator from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "m3coordinator")
+
+
+@pulumi.output_type
+class GetM3DbServiceIntegrationResult(dict):
+    def __init__(__self__, *,
+                 integration_type: str,
+                 source_service_name: str):
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        return pulumi.get(self, "integration_type")
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> str:
+        return pulumi.get(self, "source_service_name")
 
 
 @pulumi.output_type
@@ -17475,6 +19606,7 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
     def __init__(__self__, *,
                  action_auto_create_index_enabled: Optional[str] = None,
                  action_destructive_requires_name: Optional[str] = None,
+                 cluster_max_shards_per_node: Optional[str] = None,
                  http_max_content_length: Optional[str] = None,
                  http_max_header_size: Optional[str] = None,
                  http_max_initial_line_length: Optional[str] = None,
@@ -17501,6 +19633,8 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
             pulumi.set(__self__, "action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
             pulumi.set(__self__, "action_destructive_requires_name", action_destructive_requires_name)
+        if cluster_max_shards_per_node is not None:
+            pulumi.set(__self__, "cluster_max_shards_per_node", cluster_max_shards_per_node)
         if http_max_content_length is not None:
             pulumi.set(__self__, "http_max_content_length", http_max_content_length)
         if http_max_header_size is not None:
@@ -17555,6 +19689,11 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
     @pulumi.getter(name="actionDestructiveRequiresName")
     def action_destructive_requires_name(self) -> Optional[str]:
         return pulumi.get(self, "action_destructive_requires_name")
+
+    @property
+    @pulumi.getter(name="clusterMaxShardsPerNode")
+    def cluster_max_shards_per_node(self) -> Optional[str]:
+        return pulumi.get(self, "cluster_max_shards_per_node")
 
     @property
     @pulumi.getter(name="httpMaxContentLength")
@@ -19040,18 +21179,25 @@ class GetServiceKafkaConnectUserConfigKafkaConnectResult(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -19060,6 +21206,8 @@ class GetServiceKafkaConnectUserConfigKafkaConnectResult(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -19074,9 +21222,19 @@ class GetServiceKafkaConnectUserConfigKafkaConnectResult(dict):
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         return pulumi.get(self, "consumer_isolation_level")
+
+    @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
@@ -19097,6 +21255,11 @@ class GetServiceKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -19224,7 +21387,8 @@ class GetServiceKafkaUserConfigResult(dict):
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.GetServiceKafkaUserConfigPrivateAccessResult'] = None,
                  public_access: Optional['outputs.GetServiceKafkaUserConfigPublicAccessResult'] = None,
-                 schema_registry: Optional[str] = None):
+                 schema_registry: Optional[str] = None,
+                 schema_registry_config: Optional['outputs.GetServiceKafkaUserConfigSchemaRegistryConfigResult'] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filters is not None:
@@ -19249,6 +21413,8 @@ class GetServiceKafkaUserConfigResult(dict):
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+        if schema_registry_config is not None:
+            pulumi.set(__self__, "schema_registry_config", schema_registry_config)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -19310,6 +21476,11 @@ class GetServiceKafkaUserConfigResult(dict):
     def schema_registry(self) -> Optional[str]:
         return pulumi.get(self, "schema_registry")
 
+    @property
+    @pulumi.getter(name="schemaRegistryConfig")
+    def schema_registry_config(self) -> Optional['outputs.GetServiceKafkaUserConfigSchemaRegistryConfigResult']:
+        return pulumi.get(self, "schema_registry_config")
+
 
 @pulumi.output_type
 class GetServiceKafkaUserConfigKafkaResult(dict):
@@ -19320,18 +21491,30 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
                  default_replication_factor: Optional[str] = None,
                  group_max_session_timeout_ms: Optional[str] = None,
                  group_min_session_timeout_ms: Optional[str] = None,
+                 log_cleaner_delete_retention_ms: Optional[str] = None,
                  log_cleaner_max_compaction_lag_ms: Optional[str] = None,
                  log_cleaner_min_cleanable_ratio: Optional[str] = None,
                  log_cleaner_min_compaction_lag_ms: Optional[str] = None,
                  log_cleanup_policy: Optional[str] = None,
+                 log_flush_interval_messages: Optional[str] = None,
+                 log_flush_interval_ms: Optional[str] = None,
+                 log_index_interval_bytes: Optional[str] = None,
+                 log_index_size_max_bytes: Optional[str] = None,
+                 log_message_downconversion_enable: Optional[str] = None,
                  log_message_timestamp_difference_max_ms: Optional[str] = None,
                  log_message_timestamp_type: Optional[str] = None,
+                 log_preallocate: Optional[str] = None,
                  log_retention_bytes: Optional[str] = None,
                  log_retention_hours: Optional[str] = None,
+                 log_retention_ms: Optional[str] = None,
+                 log_roll_jitter_ms: Optional[str] = None,
+                 log_roll_ms: Optional[str] = None,
                  log_segment_bytes: Optional[str] = None,
+                 log_segment_delete_delay_ms: Optional[str] = None,
                  max_connections_per_ip: Optional[str] = None,
                  max_incremental_fetch_session_cache_slots: Optional[str] = None,
                  message_max_bytes: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
                  num_partitions: Optional[str] = None,
                  offsets_retention_minutes: Optional[str] = None,
                  producer_purgatory_purge_interval_requests: Optional[str] = None,
@@ -19350,6 +21533,8 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
             pulumi.set(__self__, "group_max_session_timeout_ms", group_max_session_timeout_ms)
         if group_min_session_timeout_ms is not None:
             pulumi.set(__self__, "group_min_session_timeout_ms", group_min_session_timeout_ms)
+        if log_cleaner_delete_retention_ms is not None:
+            pulumi.set(__self__, "log_cleaner_delete_retention_ms", log_cleaner_delete_retention_ms)
         if log_cleaner_max_compaction_lag_ms is not None:
             pulumi.set(__self__, "log_cleaner_max_compaction_lag_ms", log_cleaner_max_compaction_lag_ms)
         if log_cleaner_min_cleanable_ratio is not None:
@@ -19358,22 +21543,44 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
             pulumi.set(__self__, "log_cleaner_min_compaction_lag_ms", log_cleaner_min_compaction_lag_ms)
         if log_cleanup_policy is not None:
             pulumi.set(__self__, "log_cleanup_policy", log_cleanup_policy)
+        if log_flush_interval_messages is not None:
+            pulumi.set(__self__, "log_flush_interval_messages", log_flush_interval_messages)
+        if log_flush_interval_ms is not None:
+            pulumi.set(__self__, "log_flush_interval_ms", log_flush_interval_ms)
+        if log_index_interval_bytes is not None:
+            pulumi.set(__self__, "log_index_interval_bytes", log_index_interval_bytes)
+        if log_index_size_max_bytes is not None:
+            pulumi.set(__self__, "log_index_size_max_bytes", log_index_size_max_bytes)
+        if log_message_downconversion_enable is not None:
+            pulumi.set(__self__, "log_message_downconversion_enable", log_message_downconversion_enable)
         if log_message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "log_message_timestamp_difference_max_ms", log_message_timestamp_difference_max_ms)
         if log_message_timestamp_type is not None:
             pulumi.set(__self__, "log_message_timestamp_type", log_message_timestamp_type)
+        if log_preallocate is not None:
+            pulumi.set(__self__, "log_preallocate", log_preallocate)
         if log_retention_bytes is not None:
             pulumi.set(__self__, "log_retention_bytes", log_retention_bytes)
         if log_retention_hours is not None:
             pulumi.set(__self__, "log_retention_hours", log_retention_hours)
+        if log_retention_ms is not None:
+            pulumi.set(__self__, "log_retention_ms", log_retention_ms)
+        if log_roll_jitter_ms is not None:
+            pulumi.set(__self__, "log_roll_jitter_ms", log_roll_jitter_ms)
+        if log_roll_ms is not None:
+            pulumi.set(__self__, "log_roll_ms", log_roll_ms)
         if log_segment_bytes is not None:
             pulumi.set(__self__, "log_segment_bytes", log_segment_bytes)
+        if log_segment_delete_delay_ms is not None:
+            pulumi.set(__self__, "log_segment_delete_delay_ms", log_segment_delete_delay_ms)
         if max_connections_per_ip is not None:
             pulumi.set(__self__, "max_connections_per_ip", max_connections_per_ip)
         if max_incremental_fetch_session_cache_slots is not None:
             pulumi.set(__self__, "max_incremental_fetch_session_cache_slots", max_incremental_fetch_session_cache_slots)
         if message_max_bytes is not None:
             pulumi.set(__self__, "message_max_bytes", message_max_bytes)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
         if num_partitions is not None:
             pulumi.set(__self__, "num_partitions", num_partitions)
         if offsets_retention_minutes is not None:
@@ -19418,6 +21625,11 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
         return pulumi.get(self, "group_min_session_timeout_ms")
 
     @property
+    @pulumi.getter(name="logCleanerDeleteRetentionMs")
+    def log_cleaner_delete_retention_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_cleaner_delete_retention_ms")
+
+    @property
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
     def log_cleaner_max_compaction_lag_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
@@ -19438,6 +21650,31 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
         return pulumi.get(self, "log_cleanup_policy")
 
     @property
+    @pulumi.getter(name="logFlushIntervalMessages")
+    def log_flush_interval_messages(self) -> Optional[str]:
+        return pulumi.get(self, "log_flush_interval_messages")
+
+    @property
+    @pulumi.getter(name="logFlushIntervalMs")
+    def log_flush_interval_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_flush_interval_ms")
+
+    @property
+    @pulumi.getter(name="logIndexIntervalBytes")
+    def log_index_interval_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "log_index_interval_bytes")
+
+    @property
+    @pulumi.getter(name="logIndexSizeMaxBytes")
+    def log_index_size_max_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "log_index_size_max_bytes")
+
+    @property
+    @pulumi.getter(name="logMessageDownconversionEnable")
+    def log_message_downconversion_enable(self) -> Optional[str]:
+        return pulumi.get(self, "log_message_downconversion_enable")
+
+    @property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
     def log_message_timestamp_difference_max_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
@@ -19446,6 +21683,11 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logMessageTimestampType")
     def log_message_timestamp_type(self) -> Optional[str]:
         return pulumi.get(self, "log_message_timestamp_type")
+
+    @property
+    @pulumi.getter(name="logPreallocate")
+    def log_preallocate(self) -> Optional[str]:
+        return pulumi.get(self, "log_preallocate")
 
     @property
     @pulumi.getter(name="logRetentionBytes")
@@ -19458,9 +21700,29 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
         return pulumi.get(self, "log_retention_hours")
 
     @property
+    @pulumi.getter(name="logRetentionMs")
+    def log_retention_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_retention_ms")
+
+    @property
+    @pulumi.getter(name="logRollJitterMs")
+    def log_roll_jitter_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_roll_jitter_ms")
+
+    @property
+    @pulumi.getter(name="logRollMs")
+    def log_roll_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_roll_ms")
+
+    @property
     @pulumi.getter(name="logSegmentBytes")
     def log_segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_segment_bytes")
+
+    @property
+    @pulumi.getter(name="logSegmentDeleteDelayMs")
+    def log_segment_delete_delay_ms(self) -> Optional[str]:
+        return pulumi.get(self, "log_segment_delete_delay_ms")
 
     @property
     @pulumi.getter(name="maxConnectionsPerIp")
@@ -19476,6 +21738,11 @@ class GetServiceKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="messageMaxBytes")
     def message_max_bytes(self) -> Optional[str]:
         return pulumi.get(self, "message_max_bytes")
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[str]:
+        return pulumi.get(self, "min_insync_replicas")
 
     @property
     @pulumi.getter(name="numPartitions")
@@ -19534,18 +21801,25 @@ class GetServiceKafkaUserConfigKafkaConnectConfigResult(dict):
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
+                 consumer_fetch_max_bytes: Optional[str] = None,
                  consumer_isolation_level: Optional[str] = None,
+                 consumer_max_partition_fetch_bytes: Optional[str] = None,
                  consumer_max_poll_interval_ms: Optional[str] = None,
                  consumer_max_poll_records: Optional[str] = None,
                  offset_flush_interval_ms: Optional[str] = None,
                  offset_flush_timeout_ms: Optional[str] = None,
+                 producer_max_request_size: Optional[str] = None,
                  session_timeout_ms: Optional[str] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
+        if consumer_fetch_max_bytes is not None:
+            pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
         if consumer_isolation_level is not None:
             pulumi.set(__self__, "consumer_isolation_level", consumer_isolation_level)
+        if consumer_max_partition_fetch_bytes is not None:
+            pulumi.set(__self__, "consumer_max_partition_fetch_bytes", consumer_max_partition_fetch_bytes)
         if consumer_max_poll_interval_ms is not None:
             pulumi.set(__self__, "consumer_max_poll_interval_ms", consumer_max_poll_interval_ms)
         if consumer_max_poll_records is not None:
@@ -19554,6 +21828,8 @@ class GetServiceKafkaUserConfigKafkaConnectConfigResult(dict):
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -19568,9 +21844,19 @@ class GetServiceKafkaUserConfigKafkaConnectConfigResult(dict):
         return pulumi.get(self, "consumer_auto_offset_reset")
 
     @property
+    @pulumi.getter(name="consumerFetchMaxBytes")
+    def consumer_fetch_max_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @property
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         return pulumi.get(self, "consumer_isolation_level")
+
+    @property
+    @pulumi.getter(name="consumerMaxPartitionFetchBytes")
+    def consumer_max_partition_fetch_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
@@ -19591,6 +21877,11 @@ class GetServiceKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="offsetFlushTimeoutMs")
     def offset_flush_timeout_ms(self) -> Optional[str]:
         return pulumi.get(self, "offset_flush_timeout_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[str]:
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -19707,6 +21998,27 @@ class GetServiceKafkaUserConfigPublicAccessResult(dict):
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
         return pulumi.get(self, "schema_registry")
+
+
+@pulumi.output_type
+class GetServiceKafkaUserConfigSchemaRegistryConfigResult(dict):
+    def __init__(__self__, *,
+                 leader_eligibility: Optional[str] = None,
+                 topic_name: Optional[str] = None):
+        if leader_eligibility is not None:
+            pulumi.set(__self__, "leader_eligibility", leader_eligibility)
+        if topic_name is not None:
+            pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="leaderEligibility")
+    def leader_eligibility(self) -> Optional[str]:
+        return pulumi.get(self, "leader_eligibility")
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> Optional[str]:
+        return pulumi.get(self, "topic_name")
 
 
 @pulumi.output_type

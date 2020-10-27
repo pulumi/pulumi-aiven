@@ -15,11 +15,14 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? ConnectorClientConfigOverridePolicy;
         public readonly string? ConsumerAutoOffsetReset;
+        public readonly string? ConsumerFetchMaxBytes;
         public readonly string? ConsumerIsolationLevel;
+        public readonly string? ConsumerMaxPartitionFetchBytes;
         public readonly string? ConsumerMaxPollIntervalMs;
         public readonly string? ConsumerMaxPollRecords;
         public readonly string? OffsetFlushIntervalMs;
         public readonly string? OffsetFlushTimeoutMs;
+        public readonly string? ProducerMaxRequestSize;
         public readonly string? SessionTimeoutMs;
 
         [OutputConstructor]
@@ -28,7 +31,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? consumerAutoOffsetReset,
 
+            string? consumerFetchMaxBytes,
+
             string? consumerIsolationLevel,
+
+            string? consumerMaxPartitionFetchBytes,
 
             string? consumerMaxPollIntervalMs,
 
@@ -38,15 +45,20 @@ namespace Pulumi.Aiven.Outputs
 
             string? offsetFlushTimeoutMs,
 
+            string? producerMaxRequestSize,
+
             string? sessionTimeoutMs)
         {
             ConnectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
             ConsumerAutoOffsetReset = consumerAutoOffsetReset;
+            ConsumerFetchMaxBytes = consumerFetchMaxBytes;
             ConsumerIsolationLevel = consumerIsolationLevel;
+            ConsumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             ConsumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
             ConsumerMaxPollRecords = consumerMaxPollRecords;
             OffsetFlushIntervalMs = offsetFlushIntervalMs;
             OffsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            ProducerMaxRequestSize = producerMaxRequestSize;
             SessionTimeoutMs = sessionTimeoutMs;
         }
     }

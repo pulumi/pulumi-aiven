@@ -26,6 +26,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ActionDestructiveRequiresName { get; set; }
 
         /// <summary>
+        /// Controls the number of shards allowed in the 
+        /// cluster per data node
+        /// </summary>
+        [Input("clusterMaxShardsPerNode")]
+        public Input<string>? ClusterMaxShardsPerNode { get; set; }
+
+        /// <summary>
         /// Maximum content length for HTTP requests to 
         /// the Elasticsearch HTTP API, in bytes.
         /// </summary>

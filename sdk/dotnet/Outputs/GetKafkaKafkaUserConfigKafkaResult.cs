@@ -31,26 +31,65 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ConnectionsMaxIdleMs;
         /// <summary>
         /// Replication factor for autocreated topics
-        /// * `group_max_session_timeout_ms": {
-        /// * `group_min_session_timeout_ms": {
         /// </summary>
         public readonly string? DefaultReplicationFactor;
+        /// <summary>
+        /// The maximum allowed session timeout for registered 
+        /// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        /// at the cost of a longer time to detect failures.
+        /// </summary>
         public readonly string? GroupMaxSessionTimeoutMs;
+        /// <summary>
+        /// The minimum allowed session timeout for registered 
+        /// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        /// at the cost of a longer time to detect failures.
+        /// </summary>
         public readonly string? GroupMinSessionTimeoutMs;
+        public readonly string? LogCleanerDeleteRetentionMs;
         /// <summary>
         /// The maximum amount of time message will 
         /// remain uncompacted. Only applicable for logs that are being compacted
-        /// * `log_cleaner_min_cleanable_ratio": {
         /// </summary>
         public readonly string? LogCleanerMaxCompactionLagMs;
+        /// <summary>
+        /// Controls log compactor frequency. Larger 
+        /// value means more frequent compactions but also more space wasted for logs. Consider setting
+        /// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+        /// high value for this option.
+        /// </summary>
         public readonly string? LogCleanerMinCleanableRatio;
         /// <summary>
         /// The minimum time a message will remain 
         /// uncompacted in the log. Only applicable for logs that are being compacted.
-        /// * `log_cleanup_policy": {
         /// </summary>
         public readonly string? LogCleanerMinCompactionLagMs;
+        /// <summary>
+        /// The default cleanup policy for segments beyond the retention window.
+        /// </summary>
         public readonly string? LogCleanupPolicy;
+        /// <summary>
+        /// The number of messages accumulated on a log partition 
+        /// before messages are flushed to disk.
+        /// </summary>
+        public readonly string? LogFlushIntervalMessages;
+        /// <summary>
+        /// The maximum time in ms that a message in any topic is kept 
+        /// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        /// </summary>
+        public readonly string? LogFlushIntervalMs;
+        /// <summary>
+        /// The interval with which Kafka adds an entry to the offset index.
+        /// </summary>
+        public readonly string? LogIndexIntervalBytes;
+        /// <summary>
+        /// The maximum size in bytes of the offset index.
+        /// </summary>
+        public readonly string? LogIndexSizeMaxBytes;
+        /// <summary>
+        /// This configuration controls whether down-conversion 
+        /// of message formats is enabled to satisfy consume requests.
+        /// </summary>
+        public readonly string? LogMessageDownconversionEnable;
         /// <summary>
         /// The maximum difference allowed between 
         /// the timestamp when a broker receives a message and the timestamp specified in the message
@@ -62,31 +101,68 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogMessageTimestampType;
         /// <summary>
+        /// Should pre allocate file when create new segment?
+        /// </summary>
+        public readonly string? LogPreallocate;
+        /// <summary>
         /// The maximum size of the log before deleting messages
         /// </summary>
         public readonly string? LogRetentionBytes;
         /// <summary>
-        /// The number of hours to keep a log file before deleting it
+        /// The number of hours to keep a log file before deleting it.
         /// </summary>
         public readonly string? LogRetentionHours;
+        /// <summary>
+        /// The number of milliseconds to keep a log file before deleting it 
+        /// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+        /// time limit is applied.
+        /// </summary>
+        public readonly string? LogRetentionMs;
+        /// <summary>
+        /// The maximum jitter to subtract from logRollTimeMillis 
+        /// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        /// </summary>
+        public readonly string? LogRollJitterMs;
+        /// <summary>
+        /// The maximum time before a new log segment is rolled out (in milliseconds).
+        /// </summary>
+        public readonly string? LogRollMs;
         /// <summary>
         /// The maximum size of a single log file
         /// </summary>
         public readonly string? LogSegmentBytes;
         /// <summary>
+        /// The amount of time to wait before deleting a file 
+        /// from the filesystem.
+        /// </summary>
+        public readonly string? LogSegmentDeleteDelayMs;
+        /// <summary>
         /// The maximum number of connections allowed from each ip 
         /// address (defaults to 2147483647).
-        /// * `max_incremental_fetch_session_cache_slots": {
-        /// * `message_max_bytes": {
         /// </summary>
         public readonly string? MaxConnectionsPerIp;
+        /// <summary>
+        /// The maximum number of incremental fetch 
+        /// sessions that the broker will maintain.
+        /// </summary>
         public readonly string? MaxIncrementalFetchSessionCacheSlots;
+        /// <summary>
+        /// The maximum size of message that the server can receive.
+        /// </summary>
         public readonly string? MessageMaxBytes;
         /// <summary>
+        /// When a producer sets acks to 'all' (or '-1'), 
+        /// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+        /// the write to be considered successful.
+        /// </summary>
+        public readonly string? MinInsyncReplicas;
+        /// <summary>
         /// Number of partitions for autocreated topics
-        /// * `offsets_retention_minutes": {
         /// </summary>
         public readonly string? NumPartitions;
+        /// <summary>
+        /// Log retention window in minutes for offsets topic.
+        /// </summary>
         public readonly string? OffsetsRetentionMinutes;
         /// <summary>
         /// The purge interval (in number of 
@@ -127,6 +203,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? groupMinSessionTimeoutMs,
 
+            string? logCleanerDeleteRetentionMs,
+
             string? logCleanerMaxCompactionLagMs,
 
             string? logCleanerMinCleanableRatio,
@@ -135,21 +213,43 @@ namespace Pulumi.Aiven.Outputs
 
             string? logCleanupPolicy,
 
+            string? logFlushIntervalMessages,
+
+            string? logFlushIntervalMs,
+
+            string? logIndexIntervalBytes,
+
+            string? logIndexSizeMaxBytes,
+
+            string? logMessageDownconversionEnable,
+
             string? logMessageTimestampDifferenceMaxMs,
 
             string? logMessageTimestampType,
+
+            string? logPreallocate,
 
             string? logRetentionBytes,
 
             string? logRetentionHours,
 
+            string? logRetentionMs,
+
+            string? logRollJitterMs,
+
+            string? logRollMs,
+
             string? logSegmentBytes,
+
+            string? logSegmentDeleteDelayMs,
 
             string? maxConnectionsPerIp,
 
             string? maxIncrementalFetchSessionCacheSlots,
 
             string? messageMaxBytes,
+
+            string? minInsyncReplicas,
 
             string? numPartitions,
 
@@ -169,18 +269,30 @@ namespace Pulumi.Aiven.Outputs
             DefaultReplicationFactor = defaultReplicationFactor;
             GroupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             GroupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
+            LogCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;
             LogCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             LogCleanerMinCleanableRatio = logCleanerMinCleanableRatio;
             LogCleanerMinCompactionLagMs = logCleanerMinCompactionLagMs;
             LogCleanupPolicy = logCleanupPolicy;
+            LogFlushIntervalMessages = logFlushIntervalMessages;
+            LogFlushIntervalMs = logFlushIntervalMs;
+            LogIndexIntervalBytes = logIndexIntervalBytes;
+            LogIndexSizeMaxBytes = logIndexSizeMaxBytes;
+            LogMessageDownconversionEnable = logMessageDownconversionEnable;
             LogMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             LogMessageTimestampType = logMessageTimestampType;
+            LogPreallocate = logPreallocate;
             LogRetentionBytes = logRetentionBytes;
             LogRetentionHours = logRetentionHours;
+            LogRetentionMs = logRetentionMs;
+            LogRollJitterMs = logRollJitterMs;
+            LogRollMs = logRollMs;
             LogSegmentBytes = logSegmentBytes;
+            LogSegmentDeleteDelayMs = logSegmentDeleteDelayMs;
             MaxConnectionsPerIp = maxConnectionsPerIp;
             MaxIncrementalFetchSessionCacheSlots = maxIncrementalFetchSessionCacheSlots;
             MessageMaxBytes = messageMaxBytes;
+            MinInsyncReplicas = minInsyncReplicas;
             NumPartitions = numPartitions;
             OffsetsRetentionMinutes = offsetsRetentionMinutes;
             ProducerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;

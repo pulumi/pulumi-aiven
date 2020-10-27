@@ -19,18 +19,30 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? DefaultReplicationFactor;
         public readonly string? GroupMaxSessionTimeoutMs;
         public readonly string? GroupMinSessionTimeoutMs;
+        public readonly string? LogCleanerDeleteRetentionMs;
         public readonly string? LogCleanerMaxCompactionLagMs;
         public readonly string? LogCleanerMinCleanableRatio;
         public readonly string? LogCleanerMinCompactionLagMs;
         public readonly string? LogCleanupPolicy;
+        public readonly string? LogFlushIntervalMessages;
+        public readonly string? LogFlushIntervalMs;
+        public readonly string? LogIndexIntervalBytes;
+        public readonly string? LogIndexSizeMaxBytes;
+        public readonly string? LogMessageDownconversionEnable;
         public readonly string? LogMessageTimestampDifferenceMaxMs;
         public readonly string? LogMessageTimestampType;
+        public readonly string? LogPreallocate;
         public readonly string? LogRetentionBytes;
         public readonly string? LogRetentionHours;
+        public readonly string? LogRetentionMs;
+        public readonly string? LogRollJitterMs;
+        public readonly string? LogRollMs;
         public readonly string? LogSegmentBytes;
+        public readonly string? LogSegmentDeleteDelayMs;
         public readonly string? MaxConnectionsPerIp;
         public readonly string? MaxIncrementalFetchSessionCacheSlots;
         public readonly string? MessageMaxBytes;
+        public readonly string? MinInsyncReplicas;
         public readonly string? NumPartitions;
         public readonly string? OffsetsRetentionMinutes;
         public readonly string? ProducerPurgatoryPurgeIntervalRequests;
@@ -52,6 +64,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? groupMinSessionTimeoutMs,
 
+            string? logCleanerDeleteRetentionMs,
+
             string? logCleanerMaxCompactionLagMs,
 
             string? logCleanerMinCleanableRatio,
@@ -60,21 +74,43 @@ namespace Pulumi.Aiven.Outputs
 
             string? logCleanupPolicy,
 
+            string? logFlushIntervalMessages,
+
+            string? logFlushIntervalMs,
+
+            string? logIndexIntervalBytes,
+
+            string? logIndexSizeMaxBytes,
+
+            string? logMessageDownconversionEnable,
+
             string? logMessageTimestampDifferenceMaxMs,
 
             string? logMessageTimestampType,
+
+            string? logPreallocate,
 
             string? logRetentionBytes,
 
             string? logRetentionHours,
 
+            string? logRetentionMs,
+
+            string? logRollJitterMs,
+
+            string? logRollMs,
+
             string? logSegmentBytes,
+
+            string? logSegmentDeleteDelayMs,
 
             string? maxConnectionsPerIp,
 
             string? maxIncrementalFetchSessionCacheSlots,
 
             string? messageMaxBytes,
+
+            string? minInsyncReplicas,
 
             string? numPartitions,
 
@@ -94,18 +130,30 @@ namespace Pulumi.Aiven.Outputs
             DefaultReplicationFactor = defaultReplicationFactor;
             GroupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             GroupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
+            LogCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;
             LogCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             LogCleanerMinCleanableRatio = logCleanerMinCleanableRatio;
             LogCleanerMinCompactionLagMs = logCleanerMinCompactionLagMs;
             LogCleanupPolicy = logCleanupPolicy;
+            LogFlushIntervalMessages = logFlushIntervalMessages;
+            LogFlushIntervalMs = logFlushIntervalMs;
+            LogIndexIntervalBytes = logIndexIntervalBytes;
+            LogIndexSizeMaxBytes = logIndexSizeMaxBytes;
+            LogMessageDownconversionEnable = logMessageDownconversionEnable;
             LogMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             LogMessageTimestampType = logMessageTimestampType;
+            LogPreallocate = logPreallocate;
             LogRetentionBytes = logRetentionBytes;
             LogRetentionHours = logRetentionHours;
+            LogRetentionMs = logRetentionMs;
+            LogRollJitterMs = logRollJitterMs;
+            LogRollMs = logRollMs;
             LogSegmentBytes = logSegmentBytes;
+            LogSegmentDeleteDelayMs = logSegmentDeleteDelayMs;
             MaxConnectionsPerIp = maxConnectionsPerIp;
             MaxIncrementalFetchSessionCacheSlots = maxIncrementalFetchSessionCacheSlots;
             MessageMaxBytes = messageMaxBytes;
+            MinInsyncReplicas = minInsyncReplicas;
             NumPartitions = numPartitions;
             OffsetsRetentionMinutes = offsetsRetentionMinutes;
             ProducerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;

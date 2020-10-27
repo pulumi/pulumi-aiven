@@ -30,6 +30,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("groupMinSessionTimeoutMs")]
         public Input<string>? GroupMinSessionTimeoutMs { get; set; }
 
+        [Input("logCleanerDeleteRetentionMs")]
+        public Input<string>? LogCleanerDeleteRetentionMs { get; set; }
+
         [Input("logCleanerMaxCompactionLagMs")]
         public Input<string>? LogCleanerMaxCompactionLagMs { get; set; }
 
@@ -42,11 +45,29 @@ namespace Pulumi.Aiven.Inputs
         [Input("logCleanupPolicy")]
         public Input<string>? LogCleanupPolicy { get; set; }
 
+        [Input("logFlushIntervalMessages")]
+        public Input<string>? LogFlushIntervalMessages { get; set; }
+
+        [Input("logFlushIntervalMs")]
+        public Input<string>? LogFlushIntervalMs { get; set; }
+
+        [Input("logIndexIntervalBytes")]
+        public Input<string>? LogIndexIntervalBytes { get; set; }
+
+        [Input("logIndexSizeMaxBytes")]
+        public Input<string>? LogIndexSizeMaxBytes { get; set; }
+
+        [Input("logMessageDownconversionEnable")]
+        public Input<string>? LogMessageDownconversionEnable { get; set; }
+
         [Input("logMessageTimestampDifferenceMaxMs")]
         public Input<string>? LogMessageTimestampDifferenceMaxMs { get; set; }
 
         [Input("logMessageTimestampType")]
         public Input<string>? LogMessageTimestampType { get; set; }
+
+        [Input("logPreallocate")]
+        public Input<string>? LogPreallocate { get; set; }
 
         [Input("logRetentionBytes")]
         public Input<string>? LogRetentionBytes { get; set; }
@@ -54,8 +75,20 @@ namespace Pulumi.Aiven.Inputs
         [Input("logRetentionHours")]
         public Input<string>? LogRetentionHours { get; set; }
 
+        [Input("logRetentionMs")]
+        public Input<string>? LogRetentionMs { get; set; }
+
+        [Input("logRollJitterMs")]
+        public Input<string>? LogRollJitterMs { get; set; }
+
+        [Input("logRollMs")]
+        public Input<string>? LogRollMs { get; set; }
+
         [Input("logSegmentBytes")]
         public Input<string>? LogSegmentBytes { get; set; }
+
+        [Input("logSegmentDeleteDelayMs")]
+        public Input<string>? LogSegmentDeleteDelayMs { get; set; }
 
         [Input("maxConnectionsPerIp")]
         public Input<string>? MaxConnectionsPerIp { get; set; }
@@ -65,6 +98,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("messageMaxBytes")]
         public Input<string>? MessageMaxBytes { get; set; }
+
+        [Input("minInsyncReplicas")]
+        public Input<string>? MinInsyncReplicas { get; set; }
 
         [Input("numPartitions")]
         public Input<string>? NumPartitions { get; set; }

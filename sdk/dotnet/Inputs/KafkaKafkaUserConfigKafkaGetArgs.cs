@@ -36,39 +36,90 @@ namespace Pulumi.Aiven.Inputs
 
         /// <summary>
         /// Replication factor for autocreated topics
-        /// * `group_max_session_timeout_ms": {
-        /// * `group_min_session_timeout_ms": {
         /// </summary>
         [Input("defaultReplicationFactor")]
         public Input<string>? DefaultReplicationFactor { get; set; }
 
+        /// <summary>
+        /// The maximum allowed session timeout for registered 
+        /// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        /// at the cost of a longer time to detect failures.
+        /// </summary>
         [Input("groupMaxSessionTimeoutMs")]
         public Input<string>? GroupMaxSessionTimeoutMs { get; set; }
 
+        /// <summary>
+        /// The minimum allowed session timeout for registered 
+        /// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+        /// at the cost of a longer time to detect failures.
+        /// </summary>
         [Input("groupMinSessionTimeoutMs")]
         public Input<string>? GroupMinSessionTimeoutMs { get; set; }
+
+        [Input("logCleanerDeleteRetentionMs")]
+        public Input<string>? LogCleanerDeleteRetentionMs { get; set; }
 
         /// <summary>
         /// The maximum amount of time message will 
         /// remain uncompacted. Only applicable for logs that are being compacted
-        /// * `log_cleaner_min_cleanable_ratio": {
         /// </summary>
         [Input("logCleanerMaxCompactionLagMs")]
         public Input<string>? LogCleanerMaxCompactionLagMs { get; set; }
 
+        /// <summary>
+        /// Controls log compactor frequency. Larger 
+        /// value means more frequent compactions but also more space wasted for logs. Consider setting
+        /// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+        /// high value for this option.
+        /// </summary>
         [Input("logCleanerMinCleanableRatio")]
         public Input<string>? LogCleanerMinCleanableRatio { get; set; }
 
         /// <summary>
         /// The minimum time a message will remain 
         /// uncompacted in the log. Only applicable for logs that are being compacted.
-        /// * `log_cleanup_policy": {
         /// </summary>
         [Input("logCleanerMinCompactionLagMs")]
         public Input<string>? LogCleanerMinCompactionLagMs { get; set; }
 
+        /// <summary>
+        /// The default cleanup policy for segments beyond the retention window.
+        /// </summary>
         [Input("logCleanupPolicy")]
         public Input<string>? LogCleanupPolicy { get; set; }
+
+        /// <summary>
+        /// The number of messages accumulated on a log partition 
+        /// before messages are flushed to disk.
+        /// </summary>
+        [Input("logFlushIntervalMessages")]
+        public Input<string>? LogFlushIntervalMessages { get; set; }
+
+        /// <summary>
+        /// The maximum time in ms that a message in any topic is kept 
+        /// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        /// </summary>
+        [Input("logFlushIntervalMs")]
+        public Input<string>? LogFlushIntervalMs { get; set; }
+
+        /// <summary>
+        /// The interval with which Kafka adds an entry to the offset index.
+        /// </summary>
+        [Input("logIndexIntervalBytes")]
+        public Input<string>? LogIndexIntervalBytes { get; set; }
+
+        /// <summary>
+        /// The maximum size in bytes of the offset index.
+        /// </summary>
+        [Input("logIndexSizeMaxBytes")]
+        public Input<string>? LogIndexSizeMaxBytes { get; set; }
+
+        /// <summary>
+        /// This configuration controls whether down-conversion 
+        /// of message formats is enabled to satisfy consume requests.
+        /// </summary>
+        [Input("logMessageDownconversionEnable")]
+        public Input<string>? LogMessageDownconversionEnable { get; set; }
 
         /// <summary>
         /// The maximum difference allowed between 
@@ -85,16 +136,43 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? LogMessageTimestampType { get; set; }
 
         /// <summary>
+        /// Should pre allocate file when create new segment?
+        /// </summary>
+        [Input("logPreallocate")]
+        public Input<string>? LogPreallocate { get; set; }
+
+        /// <summary>
         /// The maximum size of the log before deleting messages
         /// </summary>
         [Input("logRetentionBytes")]
         public Input<string>? LogRetentionBytes { get; set; }
 
         /// <summary>
-        /// The number of hours to keep a log file before deleting it
+        /// The number of hours to keep a log file before deleting it.
         /// </summary>
         [Input("logRetentionHours")]
         public Input<string>? LogRetentionHours { get; set; }
+
+        /// <summary>
+        /// The number of milliseconds to keep a log file before deleting it 
+        /// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+        /// time limit is applied.
+        /// </summary>
+        [Input("logRetentionMs")]
+        public Input<string>? LogRetentionMs { get; set; }
+
+        /// <summary>
+        /// The maximum jitter to subtract from logRollTimeMillis 
+        /// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        /// </summary>
+        [Input("logRollJitterMs")]
+        public Input<string>? LogRollJitterMs { get; set; }
+
+        /// <summary>
+        /// The maximum time before a new log segment is rolled out (in milliseconds).
+        /// </summary>
+        [Input("logRollMs")]
+        public Input<string>? LogRollMs { get; set; }
 
         /// <summary>
         /// The maximum size of a single log file
@@ -103,27 +181,49 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? LogSegmentBytes { get; set; }
 
         /// <summary>
+        /// The amount of time to wait before deleting a file 
+        /// from the filesystem.
+        /// </summary>
+        [Input("logSegmentDeleteDelayMs")]
+        public Input<string>? LogSegmentDeleteDelayMs { get; set; }
+
+        /// <summary>
         /// The maximum number of connections allowed from each ip 
         /// address (defaults to 2147483647).
-        /// * `max_incremental_fetch_session_cache_slots": {
-        /// * `message_max_bytes": {
         /// </summary>
         [Input("maxConnectionsPerIp")]
         public Input<string>? MaxConnectionsPerIp { get; set; }
 
+        /// <summary>
+        /// The maximum number of incremental fetch 
+        /// sessions that the broker will maintain.
+        /// </summary>
         [Input("maxIncrementalFetchSessionCacheSlots")]
         public Input<string>? MaxIncrementalFetchSessionCacheSlots { get; set; }
 
+        /// <summary>
+        /// The maximum size of message that the server can receive.
+        /// </summary>
         [Input("messageMaxBytes")]
         public Input<string>? MessageMaxBytes { get; set; }
 
         /// <summary>
+        /// When a producer sets acks to 'all' (or '-1'), 
+        /// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+        /// the write to be considered successful.
+        /// </summary>
+        [Input("minInsyncReplicas")]
+        public Input<string>? MinInsyncReplicas { get; set; }
+
+        /// <summary>
         /// Number of partitions for autocreated topics
-        /// * `offsets_retention_minutes": {
         /// </summary>
         [Input("numPartitions")]
         public Input<string>? NumPartitions { get; set; }
 
+        /// <summary>
+        /// Log retention window in minutes for offsets topic.
+        /// </summary>
         [Input("offsetsRetentionMinutes")]
         public Input<string>? OffsetsRetentionMinutes { get; set; }
 

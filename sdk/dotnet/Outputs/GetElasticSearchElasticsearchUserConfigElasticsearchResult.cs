@@ -23,6 +23,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ActionDestructiveRequiresName;
         /// <summary>
+        /// Controls the number of shards allowed in the 
+        /// cluster per data node
+        /// </summary>
+        public readonly string? ClusterMaxShardsPerNode;
+        /// <summary>
         /// Maximum content length for HTTP requests to 
         /// the Elasticsearch HTTP API, in bytes.
         /// </summary>
@@ -151,6 +156,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? actionDestructiveRequiresName,
 
+            string? clusterMaxShardsPerNode,
+
             string? httpMaxContentLength,
 
             string? httpMaxHeaderSize,
@@ -197,6 +204,7 @@ namespace Pulumi.Aiven.Outputs
         {
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
+            ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
             HttpMaxInitialLineLength = httpMaxInitialLineLength;

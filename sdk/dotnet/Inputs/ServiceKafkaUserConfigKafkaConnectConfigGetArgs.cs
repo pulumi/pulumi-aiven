@@ -18,8 +18,14 @@ namespace Pulumi.Aiven.Inputs
         [Input("consumerAutoOffsetReset")]
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
+        [Input("consumerFetchMaxBytes")]
+        public Input<string>? ConsumerFetchMaxBytes { get; set; }
+
         [Input("consumerIsolationLevel")]
         public Input<string>? ConsumerIsolationLevel { get; set; }
+
+        [Input("consumerMaxPartitionFetchBytes")]
+        public Input<string>? ConsumerMaxPartitionFetchBytes { get; set; }
 
         [Input("consumerMaxPollIntervalMs")]
         public Input<string>? ConsumerMaxPollIntervalMs { get; set; }
@@ -32,6 +38,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("offsetFlushTimeoutMs")]
         public Input<string>? OffsetFlushTimeoutMs { get; set; }
+
+        [Input("producerMaxRequestSize")]
+        public Input<string>? ProducerMaxRequestSize { get; set; }
 
         [Input("sessionTimeoutMs")]
         public Input<string>? SessionTimeoutMs { get; set; }

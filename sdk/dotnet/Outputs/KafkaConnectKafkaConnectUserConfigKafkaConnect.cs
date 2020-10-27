@@ -24,10 +24,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ConsumerAutoOffsetReset;
         /// <summary>
+        /// Records are fetched in batches by the consumer, and if 
+        /// the first record batch in the first non-empty partition of the fetch is larger than this value,
+        /// the record batch will still be returned to ensure that the consumer can make progress. As such,
+        /// this is not a absolute maximum.
+        /// </summary>
+        public readonly string? ConsumerFetchMaxBytes;
+        /// <summary>
         /// Transaction read isolation level. read_uncommitted is 
         /// the default, but read_committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         public readonly string? ConsumerIsolationLevel;
+        /// <summary>
+        /// Records are fetched in batches by the consumer.If 
+        /// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+        /// the batch will still be returned to ensure that the consumer can make progress.
+        /// </summary>
+        public readonly string? ConsumerMaxPartitionFetchBytes;
         /// <summary>
         /// The maximum delay in milliseconds between invocations 
         /// of poll() when using consumer group management (defaults to 300000).
@@ -49,6 +62,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? OffsetFlushTimeoutMs;
         /// <summary>
+        /// This setting will limit the number of record batches the 
+        /// producer will send in a single request to avoid sending huge requests.
+        /// </summary>
+        public readonly string? ProducerMaxRequestSize;
+        /// <summary>
         /// The timeout in milliseconds used to detect failures when using Kafka’s 
         /// group management facilities (defaults to 10000).
         /// </summary>
@@ -60,7 +78,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? consumerAutoOffsetReset,
 
+            string? consumerFetchMaxBytes,
+
             string? consumerIsolationLevel,
+
+            string? consumerMaxPartitionFetchBytes,
 
             string? consumerMaxPollIntervalMs,
 
@@ -70,15 +92,20 @@ namespace Pulumi.Aiven.Outputs
 
             string? offsetFlushTimeoutMs,
 
+            string? producerMaxRequestSize,
+
             string? sessionTimeoutMs)
         {
             ConnectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
             ConsumerAutoOffsetReset = consumerAutoOffsetReset;
+            ConsumerFetchMaxBytes = consumerFetchMaxBytes;
             ConsumerIsolationLevel = consumerIsolationLevel;
+            ConsumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             ConsumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
             ConsumerMaxPollRecords = consumerMaxPollRecords;
             OffsetFlushIntervalMs = offsetFlushIntervalMs;
             OffsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            ProducerMaxRequestSize = producerMaxRequestSize;
             SessionTimeoutMs = sessionTimeoutMs;
         }
     }

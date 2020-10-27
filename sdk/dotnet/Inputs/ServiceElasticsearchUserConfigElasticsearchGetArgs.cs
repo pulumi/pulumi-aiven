@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("actionDestructiveRequiresName")]
         public Input<string>? ActionDestructiveRequiresName { get; set; }
 
+        [Input("clusterMaxShardsPerNode")]
+        public Input<string>? ClusterMaxShardsPerNode { get; set; }
+
         [Input("httpMaxContentLength")]
         public Input<string>? HttpMaxContentLength { get; set; }
 

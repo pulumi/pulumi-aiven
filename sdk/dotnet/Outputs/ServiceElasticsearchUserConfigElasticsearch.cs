@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? ActionAutoCreateIndexEnabled;
         public readonly string? ActionDestructiveRequiresName;
+        public readonly string? ClusterMaxShardsPerNode;
         public readonly string? HttpMaxContentLength;
         public readonly string? HttpMaxHeaderSize;
         public readonly string? HttpMaxInitialLineLength;
@@ -43,6 +44,8 @@ namespace Pulumi.Aiven.Outputs
             string? actionAutoCreateIndexEnabled,
 
             string? actionDestructiveRequiresName,
+
+            string? clusterMaxShardsPerNode,
 
             string? httpMaxContentLength,
 
@@ -90,6 +93,7 @@ namespace Pulumi.Aiven.Outputs
         {
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
+            ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
             HttpMaxInitialLineLength = httpMaxInitialLineLength;

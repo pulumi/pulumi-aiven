@@ -33,6 +33,8 @@ from .get_kafka_mirror_maker import *
 from .get_kafka_schema import *
 from .get_kafka_schema_configuration import *
 from .get_kafka_topic import *
+from .get_m3_aggregator import *
+from .get_m3_db import *
 from .get_mirror_maker_replication_flow import *
 from .get_my_sql import *
 from .get_pg import *
@@ -57,6 +59,8 @@ from .kafka_mirror_maker import *
 from .kafka_schema import *
 from .kafka_schema_configuration import *
 from .kafka_topic import *
+from .m3_aggregator import *
+from .m3_db import *
 from .mirror_maker_replication_flow import *
 from .my_sql import *
 from .pg import *

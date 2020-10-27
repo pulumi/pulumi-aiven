@@ -27,11 +27,28 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
         /// <summary>
+        /// Records are fetched in batches by the consumer, and if 
+        /// the first record batch in the first non-empty partition of the fetch is larger than this value,
+        /// the record batch will still be returned to ensure that the consumer can make progress. As such,
+        /// this is not a absolute maximum.
+        /// </summary>
+        [Input("consumerFetchMaxBytes")]
+        public Input<string>? ConsumerFetchMaxBytes { get; set; }
+
+        /// <summary>
         /// Transaction read isolation level. read_uncommitted is 
         /// the default, but read_committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         [Input("consumerIsolationLevel")]
         public Input<string>? ConsumerIsolationLevel { get; set; }
+
+        /// <summary>
+        /// Records are fetched in batches by the consumer.If 
+        /// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+        /// the batch will still be returned to ensure that the consumer can make progress.
+        /// </summary>
+        [Input("consumerMaxPartitionFetchBytes")]
+        public Input<string>? ConsumerMaxPartitionFetchBytes { get; set; }
 
         /// <summary>
         /// The maximum delay in milliseconds between invocations 
@@ -60,6 +77,13 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("offsetFlushTimeoutMs")]
         public Input<string>? OffsetFlushTimeoutMs { get; set; }
+
+        /// <summary>
+        /// This setting will limit the number of record batches the 
+        /// producer will send in a single request to avoid sending huge requests.
+        /// </summary>
+        [Input("producerMaxRequestSize")]
+        public Input<string>? ProducerMaxRequestSize { get; set; }
 
         /// <summary>
         /// The timeout in milliseconds used to detect failures when using Kafka’s 

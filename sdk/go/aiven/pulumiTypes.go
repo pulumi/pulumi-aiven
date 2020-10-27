@@ -1690,6 +1690,9 @@ type ElasticSearchElasticsearchUserConfigElasticsearch struct {
 	ActionAutoCreateIndexEnabled *string `pulumi:"actionAutoCreateIndexEnabled"`
 	// Require explicit index names when deleting
 	ActionDestructiveRequiresName *string `pulumi:"actionDestructiveRequiresName"`
+	// Controls the number of shards allowed in the
+	// cluster per data node
+	ClusterMaxShardsPerNode *string `pulumi:"clusterMaxShardsPerNode"`
 	// Maximum content length for HTTP requests to
 	// the Elasticsearch HTTP API, in bytes.
 	HttpMaxContentLength *string `pulumi:"httpMaxContentLength"`
@@ -1787,6 +1790,9 @@ type ElasticSearchElasticsearchUserConfigElasticsearchArgs struct {
 	ActionAutoCreateIndexEnabled pulumi.StringPtrInput `pulumi:"actionAutoCreateIndexEnabled"`
 	// Require explicit index names when deleting
 	ActionDestructiveRequiresName pulumi.StringPtrInput `pulumi:"actionDestructiveRequiresName"`
+	// Controls the number of shards allowed in the
+	// cluster per data node
+	ClusterMaxShardsPerNode pulumi.StringPtrInput `pulumi:"clusterMaxShardsPerNode"`
 	// Maximum content length for HTTP requests to
 	// the Elasticsearch HTTP API, in bytes.
 	HttpMaxContentLength pulumi.StringPtrInput `pulumi:"httpMaxContentLength"`
@@ -1957,6 +1963,12 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ActionDestructi
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ActionDestructiveRequiresName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the number of shards allowed in the
+// cluster per data node
+func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ClusterMaxShardsPerNode }).(pulumi.StringPtrOutput)
 }
 
 // Maximum content length for HTTP requests to
@@ -2149,6 +2161,17 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionDestru
 			return nil
 		}
 		return v.ActionDestructiveRequiresName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the number of shards allowed in the
+// cluster per data node
+func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterMaxShardsPerNode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7531,9 +7554,18 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnect struct {
 	// What to do when there is no initial offset in Kafka or
 	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and if
+	// the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes *string `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes *string `pulumi:"consumerMaxPartitionFetchBytes"`
 	// The maximum delay in milliseconds between invocations
 	// of poll() when using consumer group management (defaults to 300000).
 	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
@@ -7546,6 +7578,9 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnect struct {
 	// and partition offset data to be committed to offset storage before cancelling the process and restoring
 	// the offset data to be committed in a future attempt (defaults to 5000).
 	OffsetFlushTimeoutMs *string `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches the
+	// producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize *string `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when using Kafka’s
 	// group management facilities (defaults to 10000).
 	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
@@ -7569,9 +7604,18 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnectArgs struct {
 	// What to do when there is no initial offset in Kafka or
 	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and if
+	// the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
 	// The maximum delay in milliseconds between invocations
 	// of poll() when using consumer group management (defaults to 300000).
 	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
@@ -7584,6 +7628,9 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnectArgs struct {
 	// and partition offset data to be committed to offset storage before cancelling the process and restoring
 	// the offset data to be committed in a future attempt (defaults to 5000).
 	OffsetFlushTimeoutMs pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches the
+	// producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when using Kafka’s
 	// group management facilities (defaults to 10000).
 	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
@@ -7680,10 +7727,27 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerAutoOffset
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+// Records are fetched in batches by the consumer, and if
+// the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
+}
+
 // Transaction read isolation level. readUncommitted is
 // the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		return v.ConsumerMaxPartitionFetchBytes
+	}).(pulumi.StringPtrOutput)
 }
 
 // The maximum delay in milliseconds between invocations
@@ -7708,6 +7772,12 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushInterva
 // the offset data to be committed in a future attempt (defaults to 5000).
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches the
+// producer will send in a single request to avoid sending huge requests.
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 // The timeout in milliseconds used to detect failures when using Kafka’s
@@ -7758,6 +7828,19 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAutoOff
 	}).(pulumi.StringPtrOutput)
 }
 
+// Records are fetched in batches by the consumer, and if
+// the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
 // Transaction read isolation level. readUncommitted is
 // the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
@@ -7766,6 +7849,18 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolati
 			return nil
 		}
 		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7810,6 +7905,17 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushTime
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches the
+// producer will send in a single request to avoid sending huge requests.
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8585,6 +8691,8 @@ type KafkaKafkaUserConfig struct {
 	PublicAccess *KafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Enable Schema-Registry service
 	SchemaRegistry *string `pulumi:"schemaRegistry"`
+	// Schema Registry configuration
+	SchemaRegistryConfig *KafkaKafkaUserConfigSchemaRegistryConfig `pulumi:"schemaRegistryConfig"`
 }
 
 // KafkaKafkaUserConfigInput is an input type that accepts KafkaKafkaUserConfigArgs and KafkaKafkaUserConfigOutput values.
@@ -8626,6 +8734,8 @@ type KafkaKafkaUserConfigArgs struct {
 	PublicAccess KafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Enable Schema-Registry service
 	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
+	// Schema Registry configuration
+	SchemaRegistryConfig KafkaKafkaUserConfigSchemaRegistryConfigPtrInput `pulumi:"schemaRegistryConfig"`
 }
 
 func (KafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -8770,6 +8880,11 @@ func (o KafkaKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry configuration
+func (o KafkaKafkaUserConfigOutput) SchemaRegistryConfig() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigSchemaRegistryConfig { return v.SchemaRegistryConfig }).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
 type KafkaKafkaUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaKafkaUserConfigPtrOutput) ElementType() reflect.Type {
@@ -8911,6 +9026,16 @@ func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry configuration
+func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistryConfig() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigSchemaRegistryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistryConfig
+	}).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
 type KafkaKafkaUserConfigKafka struct {
 	// Enable auto creation of topics
 	AutoCreateTopicsEnable *string `pulumi:"autoCreateTopicsEnable"`
@@ -8923,43 +9048,83 @@ type KafkaKafkaUserConfigKafka struct {
 	// threads close the connections that idle for longer than this.
 	ConnectionsMaxIdleMs *string `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for autocreated topics
-	// * `groupMaxSessionTimeoutMs": {
-	// * `groupMinSessionTimeoutMs": {
 	DefaultReplicationFactor *string `pulumi:"defaultReplicationFactor"`
+	// The maximum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
 	GroupMaxSessionTimeoutMs *string `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs *string `pulumi:"groupMinSessionTimeoutMs"`
+	// The minimum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
+	GroupMinSessionTimeoutMs    *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs *string `pulumi:"logCleanerDeleteRetentionMs"`
 	// The maximum amount of time message will
 	// remain uncompacted. Only applicable for logs that are being compacted
-	// * `logCleanerMinCleanableRatio": {
 	LogCleanerMaxCompactionLagMs *string `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio  *string `pulumi:"logCleanerMinCleanableRatio"`
+	// Controls log compactor frequency. Larger
+	// value means more frequent compactions but also more space wasted for logs. Consider setting
+	// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+	// high value for this option.
+	LogCleanerMinCleanableRatio *string `pulumi:"logCleanerMinCleanableRatio"`
 	// The minimum time a message will remain
 	// uncompacted in the log. Only applicable for logs that are being compacted.
-	// * `logCleanupPolicy": {
 	LogCleanerMinCompactionLagMs *string `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy             *string `pulumi:"logCleanupPolicy"`
+	// The default cleanup policy for segments beyond the retention window.
+	LogCleanupPolicy *string `pulumi:"logCleanupPolicy"`
+	// The number of messages accumulated on a log partition
+	// before messages are flushed to disk.
+	LogFlushIntervalMessages *string `pulumi:"logFlushIntervalMessages"`
+	// The maximum time in ms that a message in any topic is kept
+	// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+	LogFlushIntervalMs *string `pulumi:"logFlushIntervalMs"`
+	// The interval with which Kafka adds an entry to the offset index.
+	LogIndexIntervalBytes *string `pulumi:"logIndexIntervalBytes"`
+	// The maximum size in bytes of the offset index.
+	LogIndexSizeMaxBytes *string `pulumi:"logIndexSizeMaxBytes"`
+	// This configuration controls whether down-conversion
+	// of message formats is enabled to satisfy consume requests.
+	LogMessageDownconversionEnable *string `pulumi:"logMessageDownconversionEnable"`
 	// The maximum difference allowed between
 	// the timestamp when a broker receives a message and the timestamp specified in the message
 	LogMessageTimestampDifferenceMaxMs *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	// Define whether the timestamp in the message is
 	// message create time or log append time.
 	LogMessageTimestampType *string `pulumi:"logMessageTimestampType"`
+	// Should pre allocate file when create new segment?
+	LogPreallocate *string `pulumi:"logPreallocate"`
 	// The maximum size of the log before deleting messages
 	LogRetentionBytes *string `pulumi:"logRetentionBytes"`
-	// The number of hours to keep a log file before deleting it
+	// The number of hours to keep a log file before deleting it.
 	LogRetentionHours *string `pulumi:"logRetentionHours"`
+	// The number of milliseconds to keep a log file before deleting it
+	// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+	// time limit is applied.
+	LogRetentionMs *string `pulumi:"logRetentionMs"`
+	// The maximum jitter to subtract from logRollTimeMillis
+	// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+	LogRollJitterMs *string `pulumi:"logRollJitterMs"`
+	// The maximum time before a new log segment is rolled out (in milliseconds).
+	LogRollMs *string `pulumi:"logRollMs"`
 	// The maximum size of a single log file
 	LogSegmentBytes *string `pulumi:"logSegmentBytes"`
+	// The amount of time to wait before deleting a file
+	// from the filesystem.
+	LogSegmentDeleteDelayMs *string `pulumi:"logSegmentDeleteDelayMs"`
 	// The maximum number of connections allowed from each ip
 	// address (defaults to 2147483647).
-	// * `maxIncrementalFetchSessionCacheSlots": {
-	// * `messageMaxBytes": {
-	MaxConnectionsPerIp                  *string `pulumi:"maxConnectionsPerIp"`
+	MaxConnectionsPerIp *string `pulumi:"maxConnectionsPerIp"`
+	// The maximum number of incremental fetch
+	// sessions that the broker will maintain.
 	MaxIncrementalFetchSessionCacheSlots *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                      *string `pulumi:"messageMaxBytes"`
+	// The maximum size of message that the server can receive.
+	MessageMaxBytes *string `pulumi:"messageMaxBytes"`
+	// When a producer sets acks to 'all' (or '-1'),
+	// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+	// the write to be considered successful.
+	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
 	// Number of partitions for autocreated topics
-	// * `offsetsRetentionMinutes": {
-	NumPartitions           *string `pulumi:"numPartitions"`
+	NumPartitions *string `pulumi:"numPartitions"`
+	// Log retention window in minutes for offsets topic.
 	OffsetsRetentionMinutes *string `pulumi:"offsetsRetentionMinutes"`
 	// The purge interval (in number of
 	// requests) of the producer request purgatory(defaults to 1000).
@@ -9002,43 +9167,83 @@ type KafkaKafkaUserConfigKafkaArgs struct {
 	// threads close the connections that idle for longer than this.
 	ConnectionsMaxIdleMs pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for autocreated topics
-	// * `groupMaxSessionTimeoutMs": {
-	// * `groupMinSessionTimeoutMs": {
 	DefaultReplicationFactor pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	// The maximum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
 	GroupMaxSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	// The minimum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
+	GroupMinSessionTimeoutMs    pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
 	// The maximum amount of time message will
 	// remain uncompacted. Only applicable for logs that are being compacted
-	// * `logCleanerMinCleanableRatio": {
 	LogCleanerMaxCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio  pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	// Controls log compactor frequency. Larger
+	// value means more frequent compactions but also more space wasted for logs. Consider setting
+	// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+	// high value for this option.
+	LogCleanerMinCleanableRatio pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
 	// The minimum time a message will remain
 	// uncompacted in the log. Only applicable for logs that are being compacted.
-	// * `logCleanupPolicy": {
 	LogCleanerMinCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy             pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	// The default cleanup policy for segments beyond the retention window.
+	LogCleanupPolicy pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	// The number of messages accumulated on a log partition
+	// before messages are flushed to disk.
+	LogFlushIntervalMessages pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	// The maximum time in ms that a message in any topic is kept
+	// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+	LogFlushIntervalMs pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	// The interval with which Kafka adds an entry to the offset index.
+	LogIndexIntervalBytes pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
+	// The maximum size in bytes of the offset index.
+	LogIndexSizeMaxBytes pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
+	// This configuration controls whether down-conversion
+	// of message formats is enabled to satisfy consume requests.
+	LogMessageDownconversionEnable pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
 	// The maximum difference allowed between
 	// the timestamp when a broker receives a message and the timestamp specified in the message
 	LogMessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	// Define whether the timestamp in the message is
 	// message create time or log append time.
 	LogMessageTimestampType pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	// Should pre allocate file when create new segment?
+	LogPreallocate pulumi.StringPtrInput `pulumi:"logPreallocate"`
 	// The maximum size of the log before deleting messages
 	LogRetentionBytes pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
-	// The number of hours to keep a log file before deleting it
+	// The number of hours to keep a log file before deleting it.
 	LogRetentionHours pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	// The number of milliseconds to keep a log file before deleting it
+	// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+	// time limit is applied.
+	LogRetentionMs pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	// The maximum jitter to subtract from logRollTimeMillis
+	// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+	LogRollJitterMs pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
+	// The maximum time before a new log segment is rolled out (in milliseconds).
+	LogRollMs pulumi.StringPtrInput `pulumi:"logRollMs"`
 	// The maximum size of a single log file
 	LogSegmentBytes pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	// The amount of time to wait before deleting a file
+	// from the filesystem.
+	LogSegmentDeleteDelayMs pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
 	// The maximum number of connections allowed from each ip
 	// address (defaults to 2147483647).
-	// * `maxIncrementalFetchSessionCacheSlots": {
-	// * `messageMaxBytes": {
-	MaxConnectionsPerIp                  pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxConnectionsPerIp pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	// The maximum number of incremental fetch
+	// sessions that the broker will maintain.
 	MaxIncrementalFetchSessionCacheSlots pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                      pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	// The maximum size of message that the server can receive.
+	MessageMaxBytes pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	// When a producer sets acks to 'all' (or '-1'),
+	// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+	// the write to be considered successful.
+	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
 	// Number of partitions for autocreated topics
-	// * `offsetsRetentionMinutes": {
-	NumPartitions           pulumi.StringPtrInput `pulumi:"numPartitions"`
+	NumPartitions pulumi.StringPtrInput `pulumi:"numPartitions"`
+	// Log retention window in minutes for offsets topic.
 	OffsetsRetentionMinutes pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
 	// The purge interval (in number of
 	// requests) of the producer request purgatory(defaults to 1000).
@@ -9155,40 +9360,79 @@ func (o KafkaKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.StringPtr
 }
 
 // Replication factor for autocreated topics
-// * `groupMaxSessionTimeoutMs": {
-// * `groupMinSessionTimeoutMs": {
 func (o KafkaKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
+// The maximum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o KafkaKafkaUserConfigKafkaOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.GroupMaxSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The minimum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o KafkaKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+func (o KafkaKafkaUserConfigKafkaOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanerDeleteRetentionMs }).(pulumi.StringPtrOutput)
+}
+
 // The maximum amount of time message will
 // remain uncompacted. Only applicable for logs that are being compacted
-// * `logCleanerMinCleanableRatio": {
 func (o KafkaKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
+// Controls log compactor frequency. Larger
+// value means more frequent compactions but also more space wasted for logs. Consider setting
+// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+// high value for this option.
 func (o KafkaKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCleanableRatio }).(pulumi.StringPtrOutput)
 }
 
 // The minimum time a message will remain
 // uncompacted in the log. Only applicable for logs that are being compacted.
-// * `logCleanupPolicy": {
 func (o KafkaKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
+// The default cleanup policy for segments beyond the retention window.
 func (o KafkaKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The number of messages accumulated on a log partition
+// before messages are flushed to disk.
+func (o KafkaKafkaUserConfigKafkaOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogFlushIntervalMessages }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in ms that a message in any topic is kept
+// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+func (o KafkaKafkaUserConfigKafkaOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogFlushIntervalMs }).(pulumi.StringPtrOutput)
+}
+
+// The interval with which Kafka adds an entry to the offset index.
+func (o KafkaKafkaUserConfigKafkaOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogIndexIntervalBytes }).(pulumi.StringPtrOutput)
+}
+
+// The maximum size in bytes of the offset index.
+func (o KafkaKafkaUserConfigKafkaOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogIndexSizeMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls whether down-conversion
+// of message formats is enabled to satisfy consume requests.
+func (o KafkaKafkaUserConfigKafkaOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogMessageDownconversionEnable }).(pulumi.StringPtrOutput)
 }
 
 // The maximum difference allowed between
@@ -9203,14 +9447,37 @@ func (o KafkaKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.String
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
+// Should pre allocate file when create new segment?
+func (o KafkaKafkaUserConfigKafkaOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogPreallocate }).(pulumi.StringPtrOutput)
+}
+
 // The maximum size of the log before deleting messages
 func (o KafkaKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-// The number of hours to keep a log file before deleting it
+// The number of hours to keep a log file before deleting it.
 func (o KafkaKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
+}
+
+// The number of milliseconds to keep a log file before deleting it
+// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+// time limit is applied.
+func (o KafkaKafkaUserConfigKafkaOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// The maximum jitter to subtract from logRollTimeMillis
+// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+func (o KafkaKafkaUserConfigKafkaOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogRollJitterMs }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time before a new log segment is rolled out (in milliseconds).
+func (o KafkaKafkaUserConfigKafkaOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogRollMs }).(pulumi.StringPtrOutput)
 }
 
 // The maximum size of a single log file
@@ -9218,28 +9485,42 @@ func (o KafkaKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
+// The amount of time to wait before deleting a file
+// from the filesystem.
+func (o KafkaKafkaUserConfigKafkaOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.LogSegmentDeleteDelayMs }).(pulumi.StringPtrOutput)
+}
+
 // The maximum number of connections allowed from each ip
 // address (defaults to 2147483647).
-// * `maxIncrementalFetchSessionCacheSlots": {
-// * `messageMaxBytes": {
 func (o KafkaKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of incremental fetch
+// sessions that the broker will maintain.
 func (o KafkaKafkaUserConfigKafkaOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.MaxIncrementalFetchSessionCacheSlots }).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of message that the server can receive.
 func (o KafkaKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// When a producer sets acks to 'all' (or '-1'),
+// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+// the write to be considered successful.
+func (o KafkaKafkaUserConfigKafkaOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
+}
+
 // Number of partitions for autocreated topics
-// * `offsetsRetentionMinutes": {
 func (o KafkaKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
 
+// Log retention window in minutes for offsets topic.
 func (o KafkaKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.OffsetsRetentionMinutes }).(pulumi.StringPtrOutput)
 }
@@ -9325,8 +9606,6 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.String
 }
 
 // Replication factor for autocreated topics
-// * `groupMaxSessionTimeoutMs": {
-// * `groupMinSessionTimeoutMs": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9336,6 +9615,9 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9345,6 +9627,9 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minimum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9354,9 +9639,17 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerDeleteRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
 // The maximum amount of time message will
 // remain uncompacted. Only applicable for logs that are being compacted
-// * `logCleanerMinCleanableRatio": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9366,6 +9659,10 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls log compactor frequency. Larger
+// value means more frequent compactions but also more space wasted for logs. Consider setting
+// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+// high value for this option.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9377,7 +9674,6 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi
 
 // The minimum time a message will remain
 // uncompacted in the log. Only applicable for logs that are being compacted.
-// * `logCleanupPolicy": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9387,12 +9683,66 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The default cleanup policy for segments beyond the retention window.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanupPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of messages accumulated on a log partition
+// before messages are flushed to disk.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMessages
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in ms that a message in any topic is kept
+// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval with which Kafka adds an entry to the offset index.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexIntervalBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum size in bytes of the offset index.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexSizeMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls whether down-conversion
+// of message formats is enabled to satisfy consume requests.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageDownconversionEnable
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9418,6 +9768,16 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Should pre allocate file when create new segment?
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogPreallocate
+	}).(pulumi.StringPtrOutput)
+}
+
 // The maximum size of the log before deleting messages
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
@@ -9428,13 +9788,46 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of hours to keep a log file before deleting it
+// The number of hours to keep a log file before deleting it.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionHours
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of milliseconds to keep a log file before deleting it
+// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+// time limit is applied.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum jitter to subtract from logRollTimeMillis
+// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollJitterMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time before a new log segment is rolled out (in milliseconds).
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollMs
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9448,10 +9841,19 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The amount of time to wait before deleting a file
+// from the filesystem.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogSegmentDeleteDelayMs
+	}).(pulumi.StringPtrOutput)
+}
+
 // The maximum number of connections allowed from each ip
 // address (defaults to 2147483647).
-// * `maxIncrementalFetchSessionCacheSlots": {
-// * `messageMaxBytes": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9461,6 +9863,8 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of incremental fetch
+// sessions that the broker will maintain.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9470,6 +9874,7 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) MaxIncrementalFetchSessionCacheSlots
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of message that the server can receive.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9479,8 +9884,19 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// When a producer sets acks to 'all' (or '-1'),
+// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+// the write to be considered successful.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinInsyncReplicas
+	}).(pulumi.StringPtrOutput)
+}
+
 // Number of partitions for autocreated topics
-// * `offsetsRetentionMinutes": {
 func (o KafkaKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9490,6 +9906,7 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Log retention window in minutes for offsets topic.
 func (o KafkaKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -9704,11 +10121,20 @@ type KafkaKafkaUserConfigKafkaConnectConfig struct {
 	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
 	// What to do when there is no initial offset in Kafka or
-	// if the current offset does not exist any more on the server. Default is earliest
+	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and
+	// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes *string `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes *string `pulumi:"consumerMaxPartitionFetchBytes"`
 	// The maximum delay in milliseconds between invocations
 	// of poll() when using consumer group management (defaults to 300000).
 	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
@@ -9722,6 +10148,9 @@ type KafkaKafkaUserConfigKafkaConnectConfig struct {
 	// flush and partition offset data to be committed to offset storage before cancelling the process
 	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 	OffsetFlushTimeoutMs *string `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches
+	// the producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize *string `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when
 	// using Kafka’s group management facilities (defaults to 10000).
 	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
@@ -9743,11 +10172,20 @@ type KafkaKafkaUserConfigKafkaConnectConfigArgs struct {
 	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
 	// What to do when there is no initial offset in Kafka or
-	// if the current offset does not exist any more on the server. Default is earliest
+	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and
+	// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
 	// The maximum delay in milliseconds between invocations
 	// of poll() when using consumer group management (defaults to 300000).
 	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
@@ -9761,6 +10199,9 @@ type KafkaKafkaUserConfigKafkaConnectConfigArgs struct {
 	// flush and partition offset data to be committed to offset storage before cancelling the process
 	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 	OffsetFlushTimeoutMs pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches
+	// the producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when
 	// using Kafka’s group management facilities (defaults to 10000).
 	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
@@ -9850,15 +10291,30 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConnectorClientConfigOverr
 }
 
 // What to do when there is no initial offset in Kafka or
-// if the current offset does not exist any more on the server. Default is earliest
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer, and
+// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
 }
 
 // Transaction read isolation level. readUncommitted is
 // the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPartitionFetchBytes }).(pulumi.StringPtrOutput)
 }
 
 // The maximum delay in milliseconds between invocations
@@ -9884,6 +10340,12 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() pu
 // and restoring the offset data to be committed in a future attempt (defaults to 5000).
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches
+// the producer will send in a single request to avoid sending huge requests.
+func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 // The timeout in milliseconds used to detect failures when
@@ -9922,13 +10384,26 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConnectorClientConfigOv
 }
 
 // What to do when there is no initial offset in Kafka or
-// if the current offset does not exist any more on the server. Default is earliest
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerAutoOffsetReset
+	}).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer, and
+// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9940,6 +10415,18 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel(
 			return nil
 		}
 		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9985,6 +10472,17 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeoutMs() 
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches
+// the producer will send in a single request to avoid sending huge requests.
+func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10604,6 +11102,188 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.Strin
 			return nil
 		}
 		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
+}
+
+type KafkaKafkaUserConfigSchemaRegistryConfig struct {
+	// If true, Karapace / Schema Registry on the service nodes can
+	// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+	// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+	// Defaults to 'true'.
+	LeaderEligibility *string `pulumi:"leaderEligibility"`
+	// The durable single partition topic that acts as the durable log for the
+	// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+	// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+	// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+	// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+	// Defaults to '_schemas'.
+	TopicName *string `pulumi:"topicName"`
+}
+
+// KafkaKafkaUserConfigSchemaRegistryConfigInput is an input type that accepts KafkaKafkaUserConfigSchemaRegistryConfigArgs and KafkaKafkaUserConfigSchemaRegistryConfigOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigSchemaRegistryConfigInput` via:
+//
+//          KafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+type KafkaKafkaUserConfigSchemaRegistryConfigInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigSchemaRegistryConfigOutput() KafkaKafkaUserConfigSchemaRegistryConfigOutput
+	ToKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Context) KafkaKafkaUserConfigSchemaRegistryConfigOutput
+}
+
+type KafkaKafkaUserConfigSchemaRegistryConfigArgs struct {
+	// If true, Karapace / Schema Registry on the service nodes can
+	// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+	// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+	// Defaults to 'true'.
+	LeaderEligibility pulumi.StringPtrInput `pulumi:"leaderEligibility"`
+	// The durable single partition topic that acts as the durable log for the
+	// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+	// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+	// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+	// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+	// Defaults to '_schemas'.
+	TopicName pulumi.StringPtrInput `pulumi:"topicName"`
+}
+
+func (KafkaKafkaUserConfigSchemaRegistryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i KafkaKafkaUserConfigSchemaRegistryConfigArgs) ToKafkaKafkaUserConfigSchemaRegistryConfigOutput() KafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return i.ToKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigSchemaRegistryConfigArgs) ToKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) KafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+func (i KafkaKafkaUserConfigSchemaRegistryConfigArgs) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigSchemaRegistryConfigArgs) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigSchemaRegistryConfigOutput).ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx)
+}
+
+// KafkaKafkaUserConfigSchemaRegistryConfigPtrInput is an input type that accepts KafkaKafkaUserConfigSchemaRegistryConfigArgs, KafkaKafkaUserConfigSchemaRegistryConfigPtr and KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigSchemaRegistryConfigPtrInput` via:
+//
+//          KafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type KafkaKafkaUserConfigSchemaRegistryConfigPtrInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput
+	ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Context) KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput
+}
+
+type kafkaKafkaUserConfigSchemaRegistryConfigPtrType KafkaKafkaUserConfigSchemaRegistryConfigArgs
+
+func KafkaKafkaUserConfigSchemaRegistryConfigPtr(v *KafkaKafkaUserConfigSchemaRegistryConfigArgs) KafkaKafkaUserConfigSchemaRegistryConfigPtrInput {
+	return (*kafkaKafkaUserConfigSchemaRegistryConfigPtrType)(v)
+}
+
+func (*kafkaKafkaUserConfigSchemaRegistryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i *kafkaKafkaUserConfigSchemaRegistryConfigPtrType) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaKafkaUserConfigSchemaRegistryConfigPtrType) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+type KafkaKafkaUserConfigSchemaRegistryConfigOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigSchemaRegistryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) ToKafkaKafkaUserConfigSchemaRegistryConfigOutput() KafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) ToKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) KafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *KafkaKafkaUserConfigSchemaRegistryConfig {
+		return &v
+	}).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+// If true, Karapace / Schema Registry on the service nodes can
+// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+// Defaults to 'true'.
+func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.LeaderEligibility }).(pulumi.StringPtrOutput)
+}
+
+// The durable single partition topic that acts as the durable log for the
+// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+// Defaults to '_schemas'.
+func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ToKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) Elem() KafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigSchemaRegistryConfig) KafkaKafkaUserConfigSchemaRegistryConfig { return *v }).(KafkaKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+// If true, Karapace / Schema Registry on the service nodes can
+// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+// Defaults to 'true'.
+func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeaderEligibility
+	}).(pulumi.StringPtrOutput)
+}
+
+// The durable single partition topic that acts as the durable log for the
+// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+// Defaults to '_schemas'.
+func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11975,6 +12655,2094 @@ func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.StringPt
 		}
 		return v.UncleanLeaderElectionEnable
 	}).(pulumi.StringPtrOutput)
+}
+
+type M3AggregatorComponent struct {
+	Component                 *string `pulumi:"component"`
+	Host                      *string `pulumi:"host"`
+	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
+	Port                      *int    `pulumi:"port"`
+	Route                     *string `pulumi:"route"`
+	Ssl                       *bool   `pulumi:"ssl"`
+	Usage                     *string `pulumi:"usage"`
+}
+
+// M3AggregatorComponentInput is an input type that accepts M3AggregatorComponentArgs and M3AggregatorComponentOutput values.
+// You can construct a concrete instance of `M3AggregatorComponentInput` via:
+//
+//          M3AggregatorComponentArgs{...}
+type M3AggregatorComponentInput interface {
+	pulumi.Input
+
+	ToM3AggregatorComponentOutput() M3AggregatorComponentOutput
+	ToM3AggregatorComponentOutputWithContext(context.Context) M3AggregatorComponentOutput
+}
+
+type M3AggregatorComponentArgs struct {
+	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	Host                      pulumi.StringPtrInput `pulumi:"host"`
+	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
+	Port                      pulumi.IntPtrInput    `pulumi:"port"`
+	Route                     pulumi.StringPtrInput `pulumi:"route"`
+	Ssl                       pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Usage                     pulumi.StringPtrInput `pulumi:"usage"`
+}
+
+func (M3AggregatorComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorComponent)(nil)).Elem()
+}
+
+func (i M3AggregatorComponentArgs) ToM3AggregatorComponentOutput() M3AggregatorComponentOutput {
+	return i.ToM3AggregatorComponentOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorComponentArgs) ToM3AggregatorComponentOutputWithContext(ctx context.Context) M3AggregatorComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorComponentOutput)
+}
+
+// M3AggregatorComponentArrayInput is an input type that accepts M3AggregatorComponentArray and M3AggregatorComponentArrayOutput values.
+// You can construct a concrete instance of `M3AggregatorComponentArrayInput` via:
+//
+//          M3AggregatorComponentArray{ M3AggregatorComponentArgs{...} }
+type M3AggregatorComponentArrayInput interface {
+	pulumi.Input
+
+	ToM3AggregatorComponentArrayOutput() M3AggregatorComponentArrayOutput
+	ToM3AggregatorComponentArrayOutputWithContext(context.Context) M3AggregatorComponentArrayOutput
+}
+
+type M3AggregatorComponentArray []M3AggregatorComponentInput
+
+func (M3AggregatorComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3AggregatorComponent)(nil)).Elem()
+}
+
+func (i M3AggregatorComponentArray) ToM3AggregatorComponentArrayOutput() M3AggregatorComponentArrayOutput {
+	return i.ToM3AggregatorComponentArrayOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorComponentArray) ToM3AggregatorComponentArrayOutputWithContext(ctx context.Context) M3AggregatorComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorComponentArrayOutput)
+}
+
+type M3AggregatorComponentOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorComponent)(nil)).Elem()
+}
+
+func (o M3AggregatorComponentOutput) ToM3AggregatorComponentOutput() M3AggregatorComponentOutput {
+	return o
+}
+
+func (o M3AggregatorComponentOutput) ToM3AggregatorComponentOutputWithContext(ctx context.Context) M3AggregatorComponentOutput {
+	return o
+}
+
+func (o M3AggregatorComponentOutput) Component() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o M3AggregatorComponentOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o M3AggregatorComponentOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+func (o M3AggregatorComponentOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o M3AggregatorComponentOutput) Route() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *string { return v.Route }).(pulumi.StringPtrOutput)
+}
+
+func (o M3AggregatorComponentOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+}
+
+func (o M3AggregatorComponentOutput) Usage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *string { return v.Usage }).(pulumi.StringPtrOutput)
+}
+
+type M3AggregatorComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3AggregatorComponent)(nil)).Elem()
+}
+
+func (o M3AggregatorComponentArrayOutput) ToM3AggregatorComponentArrayOutput() M3AggregatorComponentArrayOutput {
+	return o
+}
+
+func (o M3AggregatorComponentArrayOutput) ToM3AggregatorComponentArrayOutputWithContext(ctx context.Context) M3AggregatorComponentArrayOutput {
+	return o
+}
+
+func (o M3AggregatorComponentArrayOutput) Index(i pulumi.IntInput) M3AggregatorComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3AggregatorComponent {
+		return vs[0].([]M3AggregatorComponent)[vs[1].(int)]
+	}).(M3AggregatorComponentOutput)
+}
+
+type M3AggregatorM3aggregator struct {
+}
+
+// M3AggregatorM3aggregatorInput is an input type that accepts M3AggregatorM3aggregatorArgs and M3AggregatorM3aggregatorOutput values.
+// You can construct a concrete instance of `M3AggregatorM3aggregatorInput` via:
+//
+//          M3AggregatorM3aggregatorArgs{...}
+type M3AggregatorM3aggregatorInput interface {
+	pulumi.Input
+
+	ToM3AggregatorM3aggregatorOutput() M3AggregatorM3aggregatorOutput
+	ToM3AggregatorM3aggregatorOutputWithContext(context.Context) M3AggregatorM3aggregatorOutput
+}
+
+type M3AggregatorM3aggregatorArgs struct {
+}
+
+func (M3AggregatorM3aggregatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (i M3AggregatorM3aggregatorArgs) ToM3AggregatorM3aggregatorOutput() M3AggregatorM3aggregatorOutput {
+	return i.ToM3AggregatorM3aggregatorOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorM3aggregatorArgs) ToM3AggregatorM3aggregatorOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorM3aggregatorOutput)
+}
+
+func (i M3AggregatorM3aggregatorArgs) ToM3AggregatorM3aggregatorPtrOutput() M3AggregatorM3aggregatorPtrOutput {
+	return i.ToM3AggregatorM3aggregatorPtrOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorM3aggregatorArgs) ToM3AggregatorM3aggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorM3aggregatorOutput).ToM3AggregatorM3aggregatorPtrOutputWithContext(ctx)
+}
+
+// M3AggregatorM3aggregatorPtrInput is an input type that accepts M3AggregatorM3aggregatorArgs, M3AggregatorM3aggregatorPtr and M3AggregatorM3aggregatorPtrOutput values.
+// You can construct a concrete instance of `M3AggregatorM3aggregatorPtrInput` via:
+//
+//          M3AggregatorM3aggregatorArgs{...}
+//
+//  or:
+//
+//          nil
+type M3AggregatorM3aggregatorPtrInput interface {
+	pulumi.Input
+
+	ToM3AggregatorM3aggregatorPtrOutput() M3AggregatorM3aggregatorPtrOutput
+	ToM3AggregatorM3aggregatorPtrOutputWithContext(context.Context) M3AggregatorM3aggregatorPtrOutput
+}
+
+type m3aggregatorM3aggregatorPtrType M3AggregatorM3aggregatorArgs
+
+func M3AggregatorM3aggregatorPtr(v *M3AggregatorM3aggregatorArgs) M3AggregatorM3aggregatorPtrInput {
+	return (*m3aggregatorM3aggregatorPtrType)(v)
+}
+
+func (*m3aggregatorM3aggregatorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (i *m3aggregatorM3aggregatorPtrType) ToM3AggregatorM3aggregatorPtrOutput() M3AggregatorM3aggregatorPtrOutput {
+	return i.ToM3AggregatorM3aggregatorPtrOutputWithContext(context.Background())
+}
+
+func (i *m3aggregatorM3aggregatorPtrType) ToM3AggregatorM3aggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorM3aggregatorPtrOutput)
+}
+
+type M3AggregatorM3aggregatorOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorM3aggregatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (o M3AggregatorM3aggregatorOutput) ToM3AggregatorM3aggregatorOutput() M3AggregatorM3aggregatorOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorOutput) ToM3AggregatorM3aggregatorOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorOutput) ToM3AggregatorM3aggregatorPtrOutput() M3AggregatorM3aggregatorPtrOutput {
+	return o.ToM3AggregatorM3aggregatorPtrOutputWithContext(context.Background())
+}
+
+func (o M3AggregatorM3aggregatorOutput) ToM3AggregatorM3aggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorPtrOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregator) *M3AggregatorM3aggregator {
+		return &v
+	}).(M3AggregatorM3aggregatorPtrOutput)
+}
+
+type M3AggregatorM3aggregatorPtrOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorM3aggregatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (o M3AggregatorM3aggregatorPtrOutput) ToM3AggregatorM3aggregatorPtrOutput() M3AggregatorM3aggregatorPtrOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorPtrOutput) ToM3AggregatorM3aggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorPtrOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorPtrOutput) Elem() M3AggregatorM3aggregatorOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregator) M3AggregatorM3aggregator { return *v }).(M3AggregatorM3aggregatorOutput)
+}
+
+type M3AggregatorM3aggregatorUserConfig struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 major version
+	M3Version *string `pulumi:"m3Version"`
+}
+
+// M3AggregatorM3aggregatorUserConfigInput is an input type that accepts M3AggregatorM3aggregatorUserConfigArgs and M3AggregatorM3aggregatorUserConfigOutput values.
+// You can construct a concrete instance of `M3AggregatorM3aggregatorUserConfigInput` via:
+//
+//          M3AggregatorM3aggregatorUserConfigArgs{...}
+type M3AggregatorM3aggregatorUserConfigInput interface {
+	pulumi.Input
+
+	ToM3AggregatorM3aggregatorUserConfigOutput() M3AggregatorM3aggregatorUserConfigOutput
+	ToM3AggregatorM3aggregatorUserConfigOutputWithContext(context.Context) M3AggregatorM3aggregatorUserConfigOutput
+}
+
+type M3AggregatorM3aggregatorUserConfigArgs struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 major version
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+}
+
+func (M3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i M3AggregatorM3aggregatorUserConfigArgs) ToM3AggregatorM3aggregatorUserConfigOutput() M3AggregatorM3aggregatorUserConfigOutput {
+	return i.ToM3AggregatorM3aggregatorUserConfigOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorM3aggregatorUserConfigArgs) ToM3AggregatorM3aggregatorUserConfigOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorM3aggregatorUserConfigOutput)
+}
+
+func (i M3AggregatorM3aggregatorUserConfigArgs) ToM3AggregatorM3aggregatorUserConfigPtrOutput() M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return i.ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorM3aggregatorUserConfigArgs) ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorM3aggregatorUserConfigOutput).ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(ctx)
+}
+
+// M3AggregatorM3aggregatorUserConfigPtrInput is an input type that accepts M3AggregatorM3aggregatorUserConfigArgs, M3AggregatorM3aggregatorUserConfigPtr and M3AggregatorM3aggregatorUserConfigPtrOutput values.
+// You can construct a concrete instance of `M3AggregatorM3aggregatorUserConfigPtrInput` via:
+//
+//          M3AggregatorM3aggregatorUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type M3AggregatorM3aggregatorUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToM3AggregatorM3aggregatorUserConfigPtrOutput() M3AggregatorM3aggregatorUserConfigPtrOutput
+	ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(context.Context) M3AggregatorM3aggregatorUserConfigPtrOutput
+}
+
+type m3aggregatorM3aggregatorUserConfigPtrType M3AggregatorM3aggregatorUserConfigArgs
+
+func M3AggregatorM3aggregatorUserConfigPtr(v *M3AggregatorM3aggregatorUserConfigArgs) M3AggregatorM3aggregatorUserConfigPtrInput {
+	return (*m3aggregatorM3aggregatorUserConfigPtrType)(v)
+}
+
+func (*m3aggregatorM3aggregatorUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i *m3aggregatorM3aggregatorUserConfigPtrType) ToM3AggregatorM3aggregatorUserConfigPtrOutput() M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return i.ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *m3aggregatorM3aggregatorUserConfigPtrType) ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorM3aggregatorUserConfigPtrOutput)
+}
+
+type M3AggregatorM3aggregatorUserConfigOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorM3aggregatorUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o M3AggregatorM3aggregatorUserConfigOutput) ToM3AggregatorM3aggregatorUserConfigOutput() M3AggregatorM3aggregatorUserConfigOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorUserConfigOutput) ToM3AggregatorM3aggregatorUserConfigOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorUserConfigOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorUserConfigOutput) ToM3AggregatorM3aggregatorUserConfigPtrOutput() M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return o.ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o M3AggregatorM3aggregatorUserConfigOutput) ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *M3AggregatorM3aggregatorUserConfig {
+		return &v
+	}).(M3AggregatorM3aggregatorUserConfigPtrOutput)
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+func (o M3AggregatorM3aggregatorUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+func (o M3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// M3 major version
+func (o M3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+type M3AggregatorM3aggregatorUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorM3aggregatorUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) ToM3AggregatorM3aggregatorUserConfigPtrOutput() M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) ToM3AggregatorM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) M3AggregatorM3aggregatorUserConfigPtrOutput {
+	return o
+}
+
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) Elem() M3AggregatorM3aggregatorUserConfigOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) M3AggregatorM3aggregatorUserConfig { return *v }).(M3AggregatorM3aggregatorUserConfigOutput)
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
+}
+
+// M3 major version
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type M3AggregatorServiceIntegration struct {
+	IntegrationType   string `pulumi:"integrationType"`
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// M3AggregatorServiceIntegrationInput is an input type that accepts M3AggregatorServiceIntegrationArgs and M3AggregatorServiceIntegrationOutput values.
+// You can construct a concrete instance of `M3AggregatorServiceIntegrationInput` via:
+//
+//          M3AggregatorServiceIntegrationArgs{...}
+type M3AggregatorServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToM3AggregatorServiceIntegrationOutput() M3AggregatorServiceIntegrationOutput
+	ToM3AggregatorServiceIntegrationOutputWithContext(context.Context) M3AggregatorServiceIntegrationOutput
+}
+
+type M3AggregatorServiceIntegrationArgs struct {
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (M3AggregatorServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (i M3AggregatorServiceIntegrationArgs) ToM3AggregatorServiceIntegrationOutput() M3AggregatorServiceIntegrationOutput {
+	return i.ToM3AggregatorServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorServiceIntegrationArgs) ToM3AggregatorServiceIntegrationOutputWithContext(ctx context.Context) M3AggregatorServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorServiceIntegrationOutput)
+}
+
+// M3AggregatorServiceIntegrationArrayInput is an input type that accepts M3AggregatorServiceIntegrationArray and M3AggregatorServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `M3AggregatorServiceIntegrationArrayInput` via:
+//
+//          M3AggregatorServiceIntegrationArray{ M3AggregatorServiceIntegrationArgs{...} }
+type M3AggregatorServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToM3AggregatorServiceIntegrationArrayOutput() M3AggregatorServiceIntegrationArrayOutput
+	ToM3AggregatorServiceIntegrationArrayOutputWithContext(context.Context) M3AggregatorServiceIntegrationArrayOutput
+}
+
+type M3AggregatorServiceIntegrationArray []M3AggregatorServiceIntegrationInput
+
+func (M3AggregatorServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (i M3AggregatorServiceIntegrationArray) ToM3AggregatorServiceIntegrationArrayOutput() M3AggregatorServiceIntegrationArrayOutput {
+	return i.ToM3AggregatorServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorServiceIntegrationArray) ToM3AggregatorServiceIntegrationArrayOutputWithContext(ctx context.Context) M3AggregatorServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorServiceIntegrationArrayOutput)
+}
+
+type M3AggregatorServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (o M3AggregatorServiceIntegrationOutput) ToM3AggregatorServiceIntegrationOutput() M3AggregatorServiceIntegrationOutput {
+	return o
+}
+
+func (o M3AggregatorServiceIntegrationOutput) ToM3AggregatorServiceIntegrationOutputWithContext(ctx context.Context) M3AggregatorServiceIntegrationOutput {
+	return o
+}
+
+func (o M3AggregatorServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v M3AggregatorServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+func (o M3AggregatorServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v M3AggregatorServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type M3AggregatorServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (o M3AggregatorServiceIntegrationArrayOutput) ToM3AggregatorServiceIntegrationArrayOutput() M3AggregatorServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o M3AggregatorServiceIntegrationArrayOutput) ToM3AggregatorServiceIntegrationArrayOutputWithContext(ctx context.Context) M3AggregatorServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o M3AggregatorServiceIntegrationArrayOutput) Index(i pulumi.IntInput) M3AggregatorServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3AggregatorServiceIntegration {
+		return vs[0].([]M3AggregatorServiceIntegration)[vs[1].(int)]
+	}).(M3AggregatorServiceIntegrationOutput)
+}
+
+type M3DbComponent struct {
+	Component                 *string `pulumi:"component"`
+	Host                      *string `pulumi:"host"`
+	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
+	Port                      *int    `pulumi:"port"`
+	Route                     *string `pulumi:"route"`
+	Ssl                       *bool   `pulumi:"ssl"`
+	Usage                     *string `pulumi:"usage"`
+}
+
+// M3DbComponentInput is an input type that accepts M3DbComponentArgs and M3DbComponentOutput values.
+// You can construct a concrete instance of `M3DbComponentInput` via:
+//
+//          M3DbComponentArgs{...}
+type M3DbComponentInput interface {
+	pulumi.Input
+
+	ToM3DbComponentOutput() M3DbComponentOutput
+	ToM3DbComponentOutputWithContext(context.Context) M3DbComponentOutput
+}
+
+type M3DbComponentArgs struct {
+	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	Host                      pulumi.StringPtrInput `pulumi:"host"`
+	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
+	Port                      pulumi.IntPtrInput    `pulumi:"port"`
+	Route                     pulumi.StringPtrInput `pulumi:"route"`
+	Ssl                       pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Usage                     pulumi.StringPtrInput `pulumi:"usage"`
+}
+
+func (M3DbComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbComponent)(nil)).Elem()
+}
+
+func (i M3DbComponentArgs) ToM3DbComponentOutput() M3DbComponentOutput {
+	return i.ToM3DbComponentOutputWithContext(context.Background())
+}
+
+func (i M3DbComponentArgs) ToM3DbComponentOutputWithContext(ctx context.Context) M3DbComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbComponentOutput)
+}
+
+// M3DbComponentArrayInput is an input type that accepts M3DbComponentArray and M3DbComponentArrayOutput values.
+// You can construct a concrete instance of `M3DbComponentArrayInput` via:
+//
+//          M3DbComponentArray{ M3DbComponentArgs{...} }
+type M3DbComponentArrayInput interface {
+	pulumi.Input
+
+	ToM3DbComponentArrayOutput() M3DbComponentArrayOutput
+	ToM3DbComponentArrayOutputWithContext(context.Context) M3DbComponentArrayOutput
+}
+
+type M3DbComponentArray []M3DbComponentInput
+
+func (M3DbComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbComponent)(nil)).Elem()
+}
+
+func (i M3DbComponentArray) ToM3DbComponentArrayOutput() M3DbComponentArrayOutput {
+	return i.ToM3DbComponentArrayOutputWithContext(context.Background())
+}
+
+func (i M3DbComponentArray) ToM3DbComponentArrayOutputWithContext(ctx context.Context) M3DbComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbComponentArrayOutput)
+}
+
+type M3DbComponentOutput struct{ *pulumi.OutputState }
+
+func (M3DbComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbComponent)(nil)).Elem()
+}
+
+func (o M3DbComponentOutput) ToM3DbComponentOutput() M3DbComponentOutput {
+	return o
+}
+
+func (o M3DbComponentOutput) ToM3DbComponentOutputWithContext(ctx context.Context) M3DbComponentOutput {
+	return o
+}
+
+func (o M3DbComponentOutput) Component() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o M3DbComponentOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o M3DbComponentOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+func (o M3DbComponentOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o M3DbComponentOutput) Route() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *string { return v.Route }).(pulumi.StringPtrOutput)
+}
+
+func (o M3DbComponentOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+}
+
+func (o M3DbComponentOutput) Usage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *string { return v.Usage }).(pulumi.StringPtrOutput)
+}
+
+type M3DbComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (M3DbComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbComponent)(nil)).Elem()
+}
+
+func (o M3DbComponentArrayOutput) ToM3DbComponentArrayOutput() M3DbComponentArrayOutput {
+	return o
+}
+
+func (o M3DbComponentArrayOutput) ToM3DbComponentArrayOutputWithContext(ctx context.Context) M3DbComponentArrayOutput {
+	return o
+}
+
+func (o M3DbComponentArrayOutput) Index(i pulumi.IntInput) M3DbComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3DbComponent {
+		return vs[0].([]M3DbComponent)[vs[1].(int)]
+	}).(M3DbComponentOutput)
+}
+
+type M3DbM3db struct {
+}
+
+// M3DbM3dbInput is an input type that accepts M3DbM3dbArgs and M3DbM3dbOutput values.
+// You can construct a concrete instance of `M3DbM3dbInput` via:
+//
+//          M3DbM3dbArgs{...}
+type M3DbM3dbInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbOutput() M3DbM3dbOutput
+	ToM3DbM3dbOutputWithContext(context.Context) M3DbM3dbOutput
+}
+
+type M3DbM3dbArgs struct {
+}
+
+func (M3DbM3dbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3db)(nil)).Elem()
+}
+
+func (i M3DbM3dbArgs) ToM3DbM3dbOutput() M3DbM3dbOutput {
+	return i.ToM3DbM3dbOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbArgs) ToM3DbM3dbOutputWithContext(ctx context.Context) M3DbM3dbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbOutput)
+}
+
+func (i M3DbM3dbArgs) ToM3DbM3dbPtrOutput() M3DbM3dbPtrOutput {
+	return i.ToM3DbM3dbPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbArgs) ToM3DbM3dbPtrOutputWithContext(ctx context.Context) M3DbM3dbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbOutput).ToM3DbM3dbPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbPtrInput is an input type that accepts M3DbM3dbArgs, M3DbM3dbPtr and M3DbM3dbPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbPtrInput` via:
+//
+//          M3DbM3dbArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbPtrOutput() M3DbM3dbPtrOutput
+	ToM3DbM3dbPtrOutputWithContext(context.Context) M3DbM3dbPtrOutput
+}
+
+type m3dbM3dbPtrType M3DbM3dbArgs
+
+func M3DbM3dbPtr(v *M3DbM3dbArgs) M3DbM3dbPtrInput {
+	return (*m3dbM3dbPtrType)(v)
+}
+
+func (*m3dbM3dbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3db)(nil)).Elem()
+}
+
+func (i *m3dbM3dbPtrType) ToM3DbM3dbPtrOutput() M3DbM3dbPtrOutput {
+	return i.ToM3DbM3dbPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbPtrType) ToM3DbM3dbPtrOutputWithContext(ctx context.Context) M3DbM3dbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbPtrOutput)
+}
+
+type M3DbM3dbOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3db)(nil)).Elem()
+}
+
+func (o M3DbM3dbOutput) ToM3DbM3dbOutput() M3DbM3dbOutput {
+	return o
+}
+
+func (o M3DbM3dbOutput) ToM3DbM3dbOutputWithContext(ctx context.Context) M3DbM3dbOutput {
+	return o
+}
+
+func (o M3DbM3dbOutput) ToM3DbM3dbPtrOutput() M3DbM3dbPtrOutput {
+	return o.ToM3DbM3dbPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbOutput) ToM3DbM3dbPtrOutputWithContext(ctx context.Context) M3DbM3dbPtrOutput {
+	return o.ApplyT(func(v M3DbM3db) *M3DbM3db {
+		return &v
+	}).(M3DbM3dbPtrOutput)
+}
+
+type M3DbM3dbPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3db)(nil)).Elem()
+}
+
+func (o M3DbM3dbPtrOutput) ToM3DbM3dbPtrOutput() M3DbM3dbPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbPtrOutput) ToM3DbM3dbPtrOutputWithContext(ctx context.Context) M3DbM3dbPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbPtrOutput) Elem() M3DbM3dbOutput {
+	return o.ApplyT(func(v *M3DbM3db) M3DbM3db { return *v }).(M3DbM3dbOutput)
+}
+
+type M3DbM3dbUserConfig struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 limits
+	Limits *M3DbM3dbUserConfigLimits `pulumi:"limits"`
+	// M3 major version
+	M3Version *string `pulumi:"m3Version"`
+	// List of M3 namespaces
+	Namespaces []M3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *M3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+}
+
+// M3DbM3dbUserConfigInput is an input type that accepts M3DbM3dbUserConfigArgs and M3DbM3dbUserConfigOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigInput` via:
+//
+//          M3DbM3dbUserConfigArgs{...}
+type M3DbM3dbUserConfigInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigOutput() M3DbM3dbUserConfigOutput
+	ToM3DbM3dbUserConfigOutputWithContext(context.Context) M3DbM3dbUserConfigOutput
+}
+
+type M3DbM3dbUserConfigArgs struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 limits
+	Limits M3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	// M3 major version
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// List of M3 namespaces
+	Namespaces M3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess M3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+}
+
+func (M3DbM3dbUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigArgs) ToM3DbM3dbUserConfigOutput() M3DbM3dbUserConfigOutput {
+	return i.ToM3DbM3dbUserConfigOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigArgs) ToM3DbM3dbUserConfigOutputWithContext(ctx context.Context) M3DbM3dbUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigOutput)
+}
+
+func (i M3DbM3dbUserConfigArgs) ToM3DbM3dbUserConfigPtrOutput() M3DbM3dbUserConfigPtrOutput {
+	return i.ToM3DbM3dbUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigArgs) ToM3DbM3dbUserConfigPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigOutput).ToM3DbM3dbUserConfigPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigPtrInput is an input type that accepts M3DbM3dbUserConfigArgs, M3DbM3dbUserConfigPtr and M3DbM3dbUserConfigPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigPtrInput` via:
+//
+//          M3DbM3dbUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigPtrOutput() M3DbM3dbUserConfigPtrOutput
+	ToM3DbM3dbUserConfigPtrOutputWithContext(context.Context) M3DbM3dbUserConfigPtrOutput
+}
+
+type m3dbM3dbUserConfigPtrType M3DbM3dbUserConfigArgs
+
+func M3DbM3dbUserConfigPtr(v *M3DbM3dbUserConfigArgs) M3DbM3dbUserConfigPtrInput {
+	return (*m3dbM3dbUserConfigPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigPtrType) ToM3DbM3dbUserConfigPtrOutput() M3DbM3dbUserConfigPtrOutput {
+	return i.ToM3DbM3dbUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigPtrType) ToM3DbM3dbUserConfigPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigPtrOutput)
+}
+
+type M3DbM3dbUserConfigOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigOutput) ToM3DbM3dbUserConfigOutput() M3DbM3dbUserConfigOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigOutput) ToM3DbM3dbUserConfigOutputWithContext(ctx context.Context) M3DbM3dbUserConfigOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigOutput) ToM3DbM3dbUserConfigPtrOutput() M3DbM3dbUserConfigPtrOutput {
+	return o.ToM3DbM3dbUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigOutput) ToM3DbM3dbUserConfigPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfig {
+		return &v
+	}).(M3DbM3dbUserConfigPtrOutput)
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+func (o M3DbM3dbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+func (o M3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// M3 limits
+func (o M3DbM3dbUserConfigOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits { return v.Limits }).(M3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// M3 major version
+func (o M3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+// List of M3 namespaces
+func (o M3DbM3dbUserConfigOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace { return v.Namespaces }).(M3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+// Allow access to selected service ports from private networks.
+func (o M3DbM3dbUserConfigOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet.
+func (o M3DbM3dbUserConfigOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(M3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+type M3DbM3dbUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigPtrOutput) ToM3DbM3dbUserConfigPtrOutput() M3DbM3dbUserConfigPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPtrOutput) ToM3DbM3dbUserConfigPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPtrOutput) Elem() M3DbM3dbUserConfigOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) M3DbM3dbUserConfig { return *v }).(M3DbM3dbUserConfigOutput)
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+func (o M3DbM3dbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+func (o M3DbM3dbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
+}
+
+// M3 limits
+func (o M3DbM3dbUserConfigPtrOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(M3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// M3 major version
+func (o M3DbM3dbUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of M3 namespaces
+func (o M3DbM3dbUserConfigPtrOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace {
+		if v == nil {
+			return nil
+		}
+		return v.Namespaces
+	}).(M3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+// Allow access to selected service ports from private networks.
+func (o M3DbM3dbUserConfigPtrOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet.
+func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(M3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+type M3DbM3dbUserConfigLimits struct {
+	// The maximum number of data points fetched during request
+	GlobalDatapoints *string `pulumi:"globalDatapoints"`
+	// The maximum number of data points fetched in single query
+	QueryDatapoints *string `pulumi:"queryDatapoints"`
+	// When query limits are exceeded, whether to return error
+	// (if True) or return partial results (False)
+	QueryRequireExhaustive *string `pulumi:"queryRequireExhaustive"`
+	// The maximum number of series fetched in single query
+	QuerySeries *string `pulumi:"querySeries"`
+}
+
+// M3DbM3dbUserConfigLimitsInput is an input type that accepts M3DbM3dbUserConfigLimitsArgs and M3DbM3dbUserConfigLimitsOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigLimitsInput` via:
+//
+//          M3DbM3dbUserConfigLimitsArgs{...}
+type M3DbM3dbUserConfigLimitsInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigLimitsOutput() M3DbM3dbUserConfigLimitsOutput
+	ToM3DbM3dbUserConfigLimitsOutputWithContext(context.Context) M3DbM3dbUserConfigLimitsOutput
+}
+
+type M3DbM3dbUserConfigLimitsArgs struct {
+	// The maximum number of data points fetched during request
+	GlobalDatapoints pulumi.StringPtrInput `pulumi:"globalDatapoints"`
+	// The maximum number of data points fetched in single query
+	QueryDatapoints pulumi.StringPtrInput `pulumi:"queryDatapoints"`
+	// When query limits are exceeded, whether to return error
+	// (if True) or return partial results (False)
+	QueryRequireExhaustive pulumi.StringPtrInput `pulumi:"queryRequireExhaustive"`
+	// The maximum number of series fetched in single query
+	QuerySeries pulumi.StringPtrInput `pulumi:"querySeries"`
+}
+
+func (M3DbM3dbUserConfigLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigLimitsArgs) ToM3DbM3dbUserConfigLimitsOutput() M3DbM3dbUserConfigLimitsOutput {
+	return i.ToM3DbM3dbUserConfigLimitsOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigLimitsArgs) ToM3DbM3dbUserConfigLimitsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigLimitsOutput)
+}
+
+func (i M3DbM3dbUserConfigLimitsArgs) ToM3DbM3dbUserConfigLimitsPtrOutput() M3DbM3dbUserConfigLimitsPtrOutput {
+	return i.ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigLimitsArgs) ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigLimitsOutput).ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigLimitsPtrInput is an input type that accepts M3DbM3dbUserConfigLimitsArgs, M3DbM3dbUserConfigLimitsPtr and M3DbM3dbUserConfigLimitsPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigLimitsPtrInput` via:
+//
+//          M3DbM3dbUserConfigLimitsArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbUserConfigLimitsPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigLimitsPtrOutput() M3DbM3dbUserConfigLimitsPtrOutput
+	ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Context) M3DbM3dbUserConfigLimitsPtrOutput
+}
+
+type m3dbM3dbUserConfigLimitsPtrType M3DbM3dbUserConfigLimitsArgs
+
+func M3DbM3dbUserConfigLimitsPtr(v *M3DbM3dbUserConfigLimitsArgs) M3DbM3dbUserConfigLimitsPtrInput {
+	return (*m3dbM3dbUserConfigLimitsPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigLimitsPtrType) ToM3DbM3dbUserConfigLimitsPtrOutput() M3DbM3dbUserConfigLimitsPtrOutput {
+	return i.ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigLimitsPtrType) ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+type M3DbM3dbUserConfigLimitsOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigLimitsOutput) ToM3DbM3dbUserConfigLimitsOutput() M3DbM3dbUserConfigLimitsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigLimitsOutput) ToM3DbM3dbUserConfigLimitsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigLimitsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigLimitsOutput) ToM3DbM3dbUserConfigLimitsPtrOutput() M3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigLimitsOutput) ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigLimits) *M3DbM3dbUserConfigLimits {
+		return &v
+	}).(M3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// The maximum number of data points fetched during request
+func (o M3DbM3dbUserConfigLimitsOutput) GlobalDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigLimits) *string { return v.GlobalDatapoints }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of data points fetched in single query
+func (o M3DbM3dbUserConfigLimitsOutput) QueryDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigLimits) *string { return v.QueryDatapoints }).(pulumi.StringPtrOutput)
+}
+
+// When query limits are exceeded, whether to return error
+// (if True) or return partial results (False)
+func (o M3DbM3dbUserConfigLimitsOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigLimits) *string { return v.QueryRequireExhaustive }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of series fetched in single query
+func (o M3DbM3dbUserConfigLimitsOutput) QuerySeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigLimits) *string { return v.QuerySeries }).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigLimitsPtrOutput) ToM3DbM3dbUserConfigLimitsPtrOutput() M3DbM3dbUserConfigLimitsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigLimitsPtrOutput) ToM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigLimitsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigLimitsPtrOutput) Elem() M3DbM3dbUserConfigLimitsOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigLimits) M3DbM3dbUserConfigLimits { return *v }).(M3DbM3dbUserConfigLimitsOutput)
+}
+
+// The maximum number of data points fetched during request
+func (o M3DbM3dbUserConfigLimitsPtrOutput) GlobalDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalDatapoints
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of data points fetched in single query
+func (o M3DbM3dbUserConfigLimitsPtrOutput) QueryDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryDatapoints
+	}).(pulumi.StringPtrOutput)
+}
+
+// When query limits are exceeded, whether to return error
+// (if True) or return partial results (False)
+func (o M3DbM3dbUserConfigLimitsPtrOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryRequireExhaustive
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of series fetched in single query
+func (o M3DbM3dbUserConfigLimitsPtrOutput) QuerySeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QuerySeries
+	}).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigNamespace struct {
+	// The name of the namespace
+	Name *string `pulumi:"name"`
+	// Namespace options
+	Options *M3DbM3dbUserConfigNamespaceOptions `pulumi:"options"`
+	// The resolution for an aggregated namespace
+	Resolution *string `pulumi:"resolution"`
+	// The type of aggregation (aggregated/unaggregated)
+	Type *string `pulumi:"type"`
+}
+
+// M3DbM3dbUserConfigNamespaceInput is an input type that accepts M3DbM3dbUserConfigNamespaceArgs and M3DbM3dbUserConfigNamespaceOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceInput` via:
+//
+//          M3DbM3dbUserConfigNamespaceArgs{...}
+type M3DbM3dbUserConfigNamespaceInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigNamespaceOutput() M3DbM3dbUserConfigNamespaceOutput
+	ToM3DbM3dbUserConfigNamespaceOutputWithContext(context.Context) M3DbM3dbUserConfigNamespaceOutput
+}
+
+type M3DbM3dbUserConfigNamespaceArgs struct {
+	// The name of the namespace
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Namespace options
+	Options M3DbM3dbUserConfigNamespaceOptionsPtrInput `pulumi:"options"`
+	// The resolution for an aggregated namespace
+	Resolution pulumi.StringPtrInput `pulumi:"resolution"`
+	// The type of aggregation (aggregated/unaggregated)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (M3DbM3dbUserConfigNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigNamespaceArgs) ToM3DbM3dbUserConfigNamespaceOutput() M3DbM3dbUserConfigNamespaceOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigNamespaceArgs) ToM3DbM3dbUserConfigNamespaceOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceOutput)
+}
+
+// M3DbM3dbUserConfigNamespaceArrayInput is an input type that accepts M3DbM3dbUserConfigNamespaceArray and M3DbM3dbUserConfigNamespaceArrayOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceArrayInput` via:
+//
+//          M3DbM3dbUserConfigNamespaceArray{ M3DbM3dbUserConfigNamespaceArgs{...} }
+type M3DbM3dbUserConfigNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigNamespaceArrayOutput() M3DbM3dbUserConfigNamespaceArrayOutput
+	ToM3DbM3dbUserConfigNamespaceArrayOutputWithContext(context.Context) M3DbM3dbUserConfigNamespaceArrayOutput
+}
+
+type M3DbM3dbUserConfigNamespaceArray []M3DbM3dbUserConfigNamespaceInput
+
+func (M3DbM3dbUserConfigNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigNamespaceArray) ToM3DbM3dbUserConfigNamespaceArrayOutput() M3DbM3dbUserConfigNamespaceArrayOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigNamespaceArray) ToM3DbM3dbUserConfigNamespaceArrayOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigNamespaceOutput) ToM3DbM3dbUserConfigNamespaceOutput() M3DbM3dbUserConfigNamespaceOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOutput) ToM3DbM3dbUserConfigNamespaceOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOutput {
+	return o
+}
+
+// The name of the namespace
+func (o M3DbM3dbUserConfigNamespaceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespace) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Namespace options
+func (o M3DbM3dbUserConfigNamespaceOutput) Options() M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespace) *M3DbM3dbUserConfigNamespaceOptions { return v.Options }).(M3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+// The resolution for an aggregated namespace
+func (o M3DbM3dbUserConfigNamespaceOutput) Resolution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespace) *string { return v.Resolution }).(pulumi.StringPtrOutput)
+}
+
+// The type of aggregation (aggregated/unaggregated)
+func (o M3DbM3dbUserConfigNamespaceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespace) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigNamespaceArrayOutput) ToM3DbM3dbUserConfigNamespaceArrayOutput() M3DbM3dbUserConfigNamespaceArrayOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceArrayOutput) ToM3DbM3dbUserConfigNamespaceArrayOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceArrayOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceArrayOutput) Index(i pulumi.IntInput) M3DbM3dbUserConfigNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3DbM3dbUserConfigNamespace {
+		return vs[0].([]M3DbM3dbUserConfigNamespace)[vs[1].(int)]
+	}).(M3DbM3dbUserConfigNamespaceOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceOptions struct {
+	// Retention options
+	RetentionOptions *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions `pulumi:"retentionOptions"`
+	// Controls whether M3DB will create snapshot files for
+	// this namespace
+	SnapshotEnabled *string `pulumi:"snapshotEnabled"`
+	// Controls whether M3DB will include writes to this
+	// namespace in the commitlog.
+	WritesToCommitlog *string `pulumi:"writesToCommitlog"`
+}
+
+// M3DbM3dbUserConfigNamespaceOptionsInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsArgs and M3DbM3dbUserConfigNamespaceOptionsOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsInput` via:
+//
+//          M3DbM3dbUserConfigNamespaceOptionsArgs{...}
+type M3DbM3dbUserConfigNamespaceOptionsInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigNamespaceOptionsOutput() M3DbM3dbUserConfigNamespaceOptionsOutput
+	ToM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(context.Context) M3DbM3dbUserConfigNamespaceOptionsOutput
+}
+
+type M3DbM3dbUserConfigNamespaceOptionsArgs struct {
+	// Retention options
+	RetentionOptions M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput `pulumi:"retentionOptions"`
+	// Controls whether M3DB will create snapshot files for
+	// this namespace
+	SnapshotEnabled pulumi.StringPtrInput `pulumi:"snapshotEnabled"`
+	// Controls whether M3DB will include writes to this
+	// namespace in the commitlog.
+	WritesToCommitlog pulumi.StringPtrInput `pulumi:"writesToCommitlog"`
+}
+
+func (M3DbM3dbUserConfigNamespaceOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsOutput() M3DbM3dbUserConfigNamespaceOptionsOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceOptionsOutput)
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceOptionsOutput).ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigNamespaceOptionsPtrInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsArgs, M3DbM3dbUserConfigNamespaceOptionsPtr and M3DbM3dbUserConfigNamespaceOptionsPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsPtrInput` via:
+//
+//          M3DbM3dbUserConfigNamespaceOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbUserConfigNamespaceOptionsPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigNamespaceOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsPtrOutput
+	ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Context) M3DbM3dbUserConfigNamespaceOptionsPtrOutput
+}
+
+type m3dbM3dbUserConfigNamespaceOptionsPtrType M3DbM3dbUserConfigNamespaceOptionsArgs
+
+func M3DbM3dbUserConfigNamespaceOptionsPtr(v *M3DbM3dbUserConfigNamespaceOptionsArgs) M3DbM3dbUserConfigNamespaceOptionsPtrInput {
+	return (*m3dbM3dbUserConfigNamespaceOptionsPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigNamespaceOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigNamespaceOptionsPtrType) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigNamespaceOptionsPtrType) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceOptionsOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigNamespaceOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsOutput() M3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptions) *M3DbM3dbUserConfigNamespaceOptions {
+		return &v
+	}).(M3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+// Retention options
+func (o M3DbM3dbUserConfigNamespaceOptionsOutput) RetentionOptions() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptions) *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return v.RetentionOptions
+	}).(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls whether M3DB will create snapshot files for
+// this namespace
+func (o M3DbM3dbUserConfigNamespaceOptionsOutput) SnapshotEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptions) *string { return v.SnapshotEnabled }).(pulumi.StringPtrOutput)
+}
+
+// Controls whether M3DB will include writes to this
+// namespace in the commitlog.
+func (o M3DbM3dbUserConfigNamespaceOptionsOutput) WritesToCommitlog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptions) *string { return v.WritesToCommitlog }).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigNamespaceOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsPtrOutput) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsPtrOutput) ToM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsPtrOutput) Elem() M3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptions) M3DbM3dbUserConfigNamespaceOptions { return *v }).(M3DbM3dbUserConfigNamespaceOptionsOutput)
+}
+
+// Retention options
+func (o M3DbM3dbUserConfigNamespaceOptionsPtrOutput) RetentionOptions() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptions) *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionOptions
+	}).(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls whether M3DB will create snapshot files for
+// this namespace
+func (o M3DbM3dbUserConfigNamespaceOptionsPtrOutput) SnapshotEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether M3DB will include writes to this
+// namespace in the commitlog.
+func (o M3DbM3dbUserConfigNamespaceOptionsPtrOutput) WritesToCommitlog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WritesToCommitlog
+	}).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceOptionsRetentionOptions struct {
+	// Controls how long we wait before expiring stale data
+	BlockDataExpiryDuration *string `pulumi:"blockDataExpiryDuration"`
+	// Controls how long to keep a block in memory before
+	// flushing to a fileset on disk
+	BlocksizeDuration *string `pulumi:"blocksizeDuration"`
+	// Controls how far into the future writes to
+	// the namespace will be accepted
+	BufferFutureDuration *string `pulumi:"bufferFutureDuration"`
+	// Controls how far into the past writes to the
+	// namespace will be accepted
+	BufferPastDuration *string `pulumi:"bufferPastDuration"`
+	// Controls the duration of time that M3DB will
+	// retain data for the namespace
+	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
+}
+
+// M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs and M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput` via:
+//
+//          M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+type M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput
+	ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput
+}
+
+type M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs struct {
+	// Controls how long we wait before expiring stale data
+	BlockDataExpiryDuration pulumi.StringPtrInput `pulumi:"blockDataExpiryDuration"`
+	// Controls how long to keep a block in memory before
+	// flushing to a fileset on disk
+	BlocksizeDuration pulumi.StringPtrInput `pulumi:"blocksizeDuration"`
+	// Controls how far into the future writes to
+	// the namespace will be accepted
+	BufferFutureDuration pulumi.StringPtrInput `pulumi:"bufferFutureDuration"`
+	// Controls how far into the past writes to the
+	// namespace will be accepted
+	BufferPastDuration pulumi.StringPtrInput `pulumi:"bufferPastDuration"`
+	// Controls the duration of time that M3DB will
+	// retain data for the namespace
+	RetentionPeriodDuration pulumi.StringPtrInput `pulumi:"retentionPeriodDuration"`
+}
+
+func (M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput)
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput).ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs, M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr and M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput` via:
+//
+//          M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput
+	ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput
+}
+
+type m3dbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs
+
+func M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr(v *M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput {
+	return (*m3dbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return i.ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return &v
+	}).(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls how long we wait before expiring stale data
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BlockDataExpiryDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BlockDataExpiryDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls how long to keep a block in memory before
+// flushing to a fileset on disk
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BlocksizeDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BlocksizeDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the future writes to
+// the namespace will be accepted
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BufferFutureDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BufferFutureDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the past writes to the
+// namespace will be accepted
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BufferPastDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BufferPastDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls the duration of time that M3DB will
+// retain data for the namespace
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) RetentionPeriodDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.RetentionPeriodDuration }).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ToM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) Elem() M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return *v
+	}).(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput)
+}
+
+// Controls how long we wait before expiring stale data
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BlockDataExpiryDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockDataExpiryDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how long to keep a block in memory before
+// flushing to a fileset on disk
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BlocksizeDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlocksizeDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the future writes to
+// the namespace will be accepted
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BufferFutureDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BufferFutureDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the past writes to the
+// namespace will be accepted
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BufferPastDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BufferPastDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the duration of time that M3DB will
+// retain data for the namespace
+func (o M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) RetentionPeriodDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigPrivateAccess struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator *string `pulumi:"m3coordinator"`
+}
+
+// M3DbM3dbUserConfigPrivateAccessInput is an input type that accepts M3DbM3dbUserConfigPrivateAccessArgs and M3DbM3dbUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigPrivateAccessInput` via:
+//
+//          M3DbM3dbUserConfigPrivateAccessArgs{...}
+type M3DbM3dbUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigPrivateAccessOutput() M3DbM3dbUserConfigPrivateAccessOutput
+	ToM3DbM3dbUserConfigPrivateAccessOutputWithContext(context.Context) M3DbM3dbUserConfigPrivateAccessOutput
+}
+
+type M3DbM3dbUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator pulumi.StringPtrInput `pulumi:"m3coordinator"`
+}
+
+func (M3DbM3dbUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigPrivateAccessArgs) ToM3DbM3dbUserConfigPrivateAccessOutput() M3DbM3dbUserConfigPrivateAccessOutput {
+	return i.ToM3DbM3dbUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigPrivateAccessArgs) ToM3DbM3dbUserConfigPrivateAccessOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigPrivateAccessOutput)
+}
+
+func (i M3DbM3dbUserConfigPrivateAccessArgs) ToM3DbM3dbUserConfigPrivateAccessPtrOutput() M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return i.ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigPrivateAccessArgs) ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigPrivateAccessOutput).ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigPrivateAccessPtrInput is an input type that accepts M3DbM3dbUserConfigPrivateAccessArgs, M3DbM3dbUserConfigPrivateAccessPtr and M3DbM3dbUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigPrivateAccessPtrInput` via:
+//
+//          M3DbM3dbUserConfigPrivateAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigPrivateAccessPtrOutput() M3DbM3dbUserConfigPrivateAccessPtrOutput
+	ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Context) M3DbM3dbUserConfigPrivateAccessPtrOutput
+}
+
+type m3dbM3dbUserConfigPrivateAccessPtrType M3DbM3dbUserConfigPrivateAccessArgs
+
+func M3DbM3dbUserConfigPrivateAccessPtr(v *M3DbM3dbUserConfigPrivateAccessArgs) M3DbM3dbUserConfigPrivateAccessPtrInput {
+	return (*m3dbM3dbUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigPrivateAccessPtrType) ToM3DbM3dbUserConfigPrivateAccessPtrOutput() M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return i.ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigPrivateAccessPtrType) ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+type M3DbM3dbUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigPrivateAccessOutput) ToM3DbM3dbUserConfigPrivateAccessOutput() M3DbM3dbUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPrivateAccessOutput) ToM3DbM3dbUserConfigPrivateAccessOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPrivateAccessOutput) ToM3DbM3dbUserConfigPrivateAccessPtrOutput() M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigPrivateAccessOutput) ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigPrivateAccess) *M3DbM3dbUserConfigPrivateAccess {
+		return &v
+	}).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o M3DbM3dbUserConfigPrivateAccessOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigPrivateAccess) *string { return v.M3coordinator }).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigPrivateAccessPtrOutput) ToM3DbM3dbUserConfigPrivateAccessPtrOutput() M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPrivateAccessPtrOutput) ToM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPrivateAccessPtrOutput) Elem() M3DbM3dbUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigPrivateAccess) M3DbM3dbUserConfigPrivateAccess { return *v }).(M3DbM3dbUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o M3DbM3dbUserConfigPrivateAccessPtrOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3coordinator
+	}).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigPublicAccess struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator *string `pulumi:"m3coordinator"`
+}
+
+// M3DbM3dbUserConfigPublicAccessInput is an input type that accepts M3DbM3dbUserConfigPublicAccessArgs and M3DbM3dbUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigPublicAccessInput` via:
+//
+//          M3DbM3dbUserConfigPublicAccessArgs{...}
+type M3DbM3dbUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigPublicAccessOutput() M3DbM3dbUserConfigPublicAccessOutput
+	ToM3DbM3dbUserConfigPublicAccessOutputWithContext(context.Context) M3DbM3dbUserConfigPublicAccessOutput
+}
+
+type M3DbM3dbUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator pulumi.StringPtrInput `pulumi:"m3coordinator"`
+}
+
+func (M3DbM3dbUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigPublicAccessArgs) ToM3DbM3dbUserConfigPublicAccessOutput() M3DbM3dbUserConfigPublicAccessOutput {
+	return i.ToM3DbM3dbUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigPublicAccessArgs) ToM3DbM3dbUserConfigPublicAccessOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigPublicAccessOutput)
+}
+
+func (i M3DbM3dbUserConfigPublicAccessArgs) ToM3DbM3dbUserConfigPublicAccessPtrOutput() M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return i.ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigPublicAccessArgs) ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigPublicAccessOutput).ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigPublicAccessPtrInput is an input type that accepts M3DbM3dbUserConfigPublicAccessArgs, M3DbM3dbUserConfigPublicAccessPtr and M3DbM3dbUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigPublicAccessPtrInput` via:
+//
+//          M3DbM3dbUserConfigPublicAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigPublicAccessPtrOutput() M3DbM3dbUserConfigPublicAccessPtrOutput
+	ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Context) M3DbM3dbUserConfigPublicAccessPtrOutput
+}
+
+type m3dbM3dbUserConfigPublicAccessPtrType M3DbM3dbUserConfigPublicAccessArgs
+
+func M3DbM3dbUserConfigPublicAccessPtr(v *M3DbM3dbUserConfigPublicAccessArgs) M3DbM3dbUserConfigPublicAccessPtrInput {
+	return (*m3dbM3dbUserConfigPublicAccessPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigPublicAccessPtrType) ToM3DbM3dbUserConfigPublicAccessPtrOutput() M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return i.ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigPublicAccessPtrType) ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+type M3DbM3dbUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigPublicAccessOutput) ToM3DbM3dbUserConfigPublicAccessOutput() M3DbM3dbUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPublicAccessOutput) ToM3DbM3dbUserConfigPublicAccessOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPublicAccessOutput) ToM3DbM3dbUserConfigPublicAccessPtrOutput() M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigPublicAccessOutput) ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigPublicAccess) *M3DbM3dbUserConfigPublicAccess {
+		return &v
+	}).(M3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o M3DbM3dbUserConfigPublicAccessOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigPublicAccess) *string { return v.M3coordinator }).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigPublicAccessPtrOutput) ToM3DbM3dbUserConfigPublicAccessPtrOutput() M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPublicAccessPtrOutput) ToM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigPublicAccessPtrOutput) Elem() M3DbM3dbUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigPublicAccess) M3DbM3dbUserConfigPublicAccess { return *v }).(M3DbM3dbUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o M3DbM3dbUserConfigPublicAccessPtrOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3coordinator
+	}).(pulumi.StringPtrOutput)
+}
+
+type M3DbServiceIntegration struct {
+	IntegrationType   string `pulumi:"integrationType"`
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// M3DbServiceIntegrationInput is an input type that accepts M3DbServiceIntegrationArgs and M3DbServiceIntegrationOutput values.
+// You can construct a concrete instance of `M3DbServiceIntegrationInput` via:
+//
+//          M3DbServiceIntegrationArgs{...}
+type M3DbServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToM3DbServiceIntegrationOutput() M3DbServiceIntegrationOutput
+	ToM3DbServiceIntegrationOutputWithContext(context.Context) M3DbServiceIntegrationOutput
+}
+
+type M3DbServiceIntegrationArgs struct {
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (M3DbServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbServiceIntegration)(nil)).Elem()
+}
+
+func (i M3DbServiceIntegrationArgs) ToM3DbServiceIntegrationOutput() M3DbServiceIntegrationOutput {
+	return i.ToM3DbServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i M3DbServiceIntegrationArgs) ToM3DbServiceIntegrationOutputWithContext(ctx context.Context) M3DbServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbServiceIntegrationOutput)
+}
+
+// M3DbServiceIntegrationArrayInput is an input type that accepts M3DbServiceIntegrationArray and M3DbServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `M3DbServiceIntegrationArrayInput` via:
+//
+//          M3DbServiceIntegrationArray{ M3DbServiceIntegrationArgs{...} }
+type M3DbServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToM3DbServiceIntegrationArrayOutput() M3DbServiceIntegrationArrayOutput
+	ToM3DbServiceIntegrationArrayOutputWithContext(context.Context) M3DbServiceIntegrationArrayOutput
+}
+
+type M3DbServiceIntegrationArray []M3DbServiceIntegrationInput
+
+func (M3DbServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbServiceIntegration)(nil)).Elem()
+}
+
+func (i M3DbServiceIntegrationArray) ToM3DbServiceIntegrationArrayOutput() M3DbServiceIntegrationArrayOutput {
+	return i.ToM3DbServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i M3DbServiceIntegrationArray) ToM3DbServiceIntegrationArrayOutputWithContext(ctx context.Context) M3DbServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbServiceIntegrationArrayOutput)
+}
+
+type M3DbServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (M3DbServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbServiceIntegration)(nil)).Elem()
+}
+
+func (o M3DbServiceIntegrationOutput) ToM3DbServiceIntegrationOutput() M3DbServiceIntegrationOutput {
+	return o
+}
+
+func (o M3DbServiceIntegrationOutput) ToM3DbServiceIntegrationOutputWithContext(ctx context.Context) M3DbServiceIntegrationOutput {
+	return o
+}
+
+func (o M3DbServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v M3DbServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+func (o M3DbServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v M3DbServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type M3DbServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (M3DbServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbServiceIntegration)(nil)).Elem()
+}
+
+func (o M3DbServiceIntegrationArrayOutput) ToM3DbServiceIntegrationArrayOutput() M3DbServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o M3DbServiceIntegrationArrayOutput) ToM3DbServiceIntegrationArrayOutputWithContext(ctx context.Context) M3DbServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o M3DbServiceIntegrationArrayOutput) Index(i pulumi.IntInput) M3DbServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3DbServiceIntegration {
+		return vs[0].([]M3DbServiceIntegration)[vs[1].(int)]
+	}).(M3DbServiceIntegrationOutput)
 }
 
 type MySqlComponent struct {
@@ -18988,6 +21756,7 @@ func (o ServiceElasticsearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.Stri
 type ServiceElasticsearchUserConfigElasticsearch struct {
 	ActionAutoCreateIndexEnabled       *string  `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      *string  `pulumi:"actionDestructiveRequiresName"`
+	ClusterMaxShardsPerNode            *string  `pulumi:"clusterMaxShardsPerNode"`
 	HttpMaxContentLength               *string  `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                  *string  `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength           *string  `pulumi:"httpMaxInitialLineLength"`
@@ -19026,6 +21795,7 @@ type ServiceElasticsearchUserConfigElasticsearchInput interface {
 type ServiceElasticsearchUserConfigElasticsearchArgs struct {
 	ActionAutoCreateIndexEnabled       pulumi.StringPtrInput   `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
+	ClusterMaxShardsPerNode            pulumi.StringPtrInput   `pulumi:"clusterMaxShardsPerNode"`
 	HttpMaxContentLength               pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                  pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength           pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
@@ -19132,6 +21902,10 @@ func (o ServiceElasticsearchUserConfigElasticsearchOutput) ActionAutoCreateIndex
 
 func (o ServiceElasticsearchUserConfigElasticsearchOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionDestructiveRequiresName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigElasticsearch) *string { return v.ClusterMaxShardsPerNode }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
@@ -19259,6 +22033,15 @@ func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructiveR
 			return nil
 		}
 		return v.ActionDestructiveRequiresName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigElasticsearchPtrOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterMaxShardsPerNode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25695,11 +28478,14 @@ func (o ServiceKafkaConnectUserConfigPtrOutput) PublicAccess() ServiceKafkaConne
 type ServiceKafkaConnectUserConfigKafkaConnect struct {
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               *string `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      *string `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              *string `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
 }
 
@@ -25717,11 +28503,14 @@ type ServiceKafkaConnectUserConfigKafkaConnectInput interface {
 type ServiceKafkaConnectUserConfigKafkaConnectArgs struct {
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
@@ -25811,8 +28600,16 @@ func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerAutoOffsetReset
 	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPartitionFetchBytes }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
@@ -25829,6 +28626,10 @@ func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalMs()
 
 func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaConnectUserConfigKafkaConnectOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
@@ -25873,12 +28674,30 @@ func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAutoOffsetRe
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25915,6 +28734,15 @@ func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushTimeoutMs
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26658,6 +29486,7 @@ type ServiceKafkaUserConfig struct {
 	PrivateAccess              *ServiceKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
 	PublicAccess               *ServiceKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
 	SchemaRegistry             *string                                           `pulumi:"schemaRegistry"`
+	SchemaRegistryConfig       *ServiceKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
 }
 
 // ServiceKafkaUserConfigInput is an input type that accepts ServiceKafkaUserConfigArgs and ServiceKafkaUserConfigOutput values.
@@ -26684,6 +29513,7 @@ type ServiceKafkaUserConfigArgs struct {
 	PrivateAccess              ServiceKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
 	PublicAccess               ServiceKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
 	SchemaRegistry             pulumi.StringPtrInput                                    `pulumi:"schemaRegistry"`
+	SchemaRegistryConfig       ServiceKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
 }
 
 func (ServiceKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -26812,6 +29642,12 @@ func (o ServiceKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigOutput) SchemaRegistryConfig() ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigSchemaRegistryConfig {
+		return v.SchemaRegistryConfig
+	}).(ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
 type ServiceKafkaUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceKafkaUserConfigPtrOutput) ElementType() reflect.Type {
@@ -26938,6 +29774,15 @@ func (o ServiceKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigPtrOutput) SchemaRegistryConfig() ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigSchemaRegistryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistryConfig
+	}).(ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
 type ServiceKafkaUserConfigKafka struct {
 	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
 	CompressionType                        *string `pulumi:"compressionType"`
@@ -26945,18 +29790,30 @@ type ServiceKafkaUserConfigKafka struct {
 	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
 	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
 	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs            *string `pulumi:"logCleanerDeleteRetentionMs"`
 	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
 	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
 	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
 	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages               *string `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                     *string `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                  *string `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                   *string `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable         *string `pulumi:"logMessageDownconversionEnable"`
 	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
+	LogPreallocate                         *string `pulumi:"logPreallocate"`
 	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
 	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
+	LogRetentionMs                         *string `pulumi:"logRetentionMs"`
+	LogRollJitterMs                        *string `pulumi:"logRollJitterMs"`
+	LogRollMs                              *string `pulumi:"logRollMs"`
 	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                *string `pulumi:"logSegmentDeleteDelayMs"`
 	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
 	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                      *string `pulumi:"minInsyncReplicas"`
 	NumPartitions                          *string `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
 	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
@@ -26983,18 +29840,30 @@ type ServiceKafkaUserConfigKafkaArgs struct {
 	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
 	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
 	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs            pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
 	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
 	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
 	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
 	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages               pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                     pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                  pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                   pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable         pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
 	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	LogPreallocate                         pulumi.StringPtrInput `pulumi:"logPreallocate"`
 	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
 	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogRetentionMs                         pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	LogRollJitterMs                        pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
+	LogRollMs                              pulumi.StringPtrInput `pulumi:"logRollMs"`
 	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
 	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
 	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                      pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
 	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
 	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
@@ -27103,6 +29972,10 @@ func (o ServiceKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.Str
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanerDeleteRetentionMs }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
@@ -27119,12 +29992,36 @@ func (o ServiceKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPtrOu
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogFlushIntervalMessages }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogFlushIntervalMs }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogIndexIntervalBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogIndexSizeMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogMessageDownconversionEnable }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogPreallocate }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
@@ -27135,8 +30032,24 @@ func (o ServiceKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringPtrO
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogRollJitterMs }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogRollMs }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.LogSegmentDeleteDelayMs }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
@@ -27149,6 +30062,10 @@ func (o ServiceKafkaUserConfigKafkaOutput) MaxIncrementalFetchSessionCacheSlots(
 
 func (o ServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
@@ -27247,6 +30164,15 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerDeleteRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -27283,6 +30209,51 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMessages
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexIntervalBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexSizeMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageDownconversionEnable
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -27298,6 +30269,15 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.S
 			return nil
 		}
 		return v.LogMessageTimestampType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogPreallocate
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27319,12 +30299,48 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollJitterMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollMs
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogSegmentBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogSegmentDeleteDelayMs
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27352,6 +30368,15 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPtr
 			return nil
 		}
 		return v.MessageMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinInsyncReplicas
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27555,11 +30580,14 @@ func (o ServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pulumi
 type ServiceKafkaUserConfigKafkaConnectConfig struct {
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               *string `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      *string `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              *string `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
 }
 
@@ -27577,11 +30605,14 @@ type ServiceKafkaUserConfigKafkaConnectConfigInput interface {
 type ServiceKafkaUserConfigKafkaConnectConfigArgs struct {
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
@@ -27669,8 +30700,16 @@ func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerAutoOffsetReset(
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPartitionFetchBytes }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
@@ -27687,6 +30726,10 @@ func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs() 
 
 func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigKafkaConnectConfigOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
@@ -27729,12 +30772,30 @@ func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffsetRes
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27771,6 +30832,15 @@ func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeoutMs(
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28293,6 +31363,149 @@ func (o ServiceKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.Str
 			return nil
 		}
 		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceKafkaUserConfigSchemaRegistryConfig struct {
+	LeaderEligibility *string `pulumi:"leaderEligibility"`
+	TopicName         *string `pulumi:"topicName"`
+}
+
+// ServiceKafkaUserConfigSchemaRegistryConfigInput is an input type that accepts ServiceKafkaUserConfigSchemaRegistryConfigArgs and ServiceKafkaUserConfigSchemaRegistryConfigOutput values.
+// You can construct a concrete instance of `ServiceKafkaUserConfigSchemaRegistryConfigInput` via:
+//
+//          ServiceKafkaUserConfigSchemaRegistryConfigArgs{...}
+type ServiceKafkaUserConfigSchemaRegistryConfigInput interface {
+	pulumi.Input
+
+	ToServiceKafkaUserConfigSchemaRegistryConfigOutput() ServiceKafkaUserConfigSchemaRegistryConfigOutput
+	ToServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Context) ServiceKafkaUserConfigSchemaRegistryConfigOutput
+}
+
+type ServiceKafkaUserConfigSchemaRegistryConfigArgs struct {
+	LeaderEligibility pulumi.StringPtrInput `pulumi:"leaderEligibility"`
+	TopicName         pulumi.StringPtrInput `pulumi:"topicName"`
+}
+
+func (ServiceKafkaUserConfigSchemaRegistryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i ServiceKafkaUserConfigSchemaRegistryConfigArgs) ToServiceKafkaUserConfigSchemaRegistryConfigOutput() ServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return i.ToServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaUserConfigSchemaRegistryConfigArgs) ToServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) ServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+func (i ServiceKafkaUserConfigSchemaRegistryConfigArgs) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaUserConfigSchemaRegistryConfigArgs) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaUserConfigSchemaRegistryConfigOutput).ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceKafkaUserConfigSchemaRegistryConfigPtrInput is an input type that accepts ServiceKafkaUserConfigSchemaRegistryConfigArgs, ServiceKafkaUserConfigSchemaRegistryConfigPtr and ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceKafkaUserConfigSchemaRegistryConfigPtrInput` via:
+//
+//          ServiceKafkaUserConfigSchemaRegistryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceKafkaUserConfigSchemaRegistryConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput
+	ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Context) ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput
+}
+
+type serviceKafkaUserConfigSchemaRegistryConfigPtrType ServiceKafkaUserConfigSchemaRegistryConfigArgs
+
+func ServiceKafkaUserConfigSchemaRegistryConfigPtr(v *ServiceKafkaUserConfigSchemaRegistryConfigArgs) ServiceKafkaUserConfigSchemaRegistryConfigPtrInput {
+	return (*serviceKafkaUserConfigSchemaRegistryConfigPtrType)(v)
+}
+
+func (*serviceKafkaUserConfigSchemaRegistryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i *serviceKafkaUserConfigSchemaRegistryConfigPtrType) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceKafkaUserConfigSchemaRegistryConfigPtrType) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+type ServiceKafkaUserConfigSchemaRegistryConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaUserConfigSchemaRegistryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigOutput) ToServiceKafkaUserConfigSchemaRegistryConfigOutput() ServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigOutput) ToServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) ServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigOutput) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigOutput) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigSchemaRegistryConfig) *ServiceKafkaUserConfigSchemaRegistryConfig {
+		return &v
+	}).(ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+func (o ServiceKafkaUserConfigSchemaRegistryConfigOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigSchemaRegistryConfig) *string { return v.LeaderEligibility }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigSchemaRegistryConfig) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) ToServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) Elem() ServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigSchemaRegistryConfig) ServiceKafkaUserConfigSchemaRegistryConfig {
+		return *v
+	}).(ServiceKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeaderEligibility
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33837,6 +37050,9 @@ type GetElasticSearchElasticsearchUserConfigElasticsearch struct {
 	ActionAutoCreateIndexEnabled *string `pulumi:"actionAutoCreateIndexEnabled"`
 	// Require explicit index names when deleting
 	ActionDestructiveRequiresName *string `pulumi:"actionDestructiveRequiresName"`
+	// Controls the number of shards allowed in the
+	// cluster per data node
+	ClusterMaxShardsPerNode *string `pulumi:"clusterMaxShardsPerNode"`
 	// Maximum content length for HTTP requests to
 	// the Elasticsearch HTTP API, in bytes.
 	HttpMaxContentLength *string `pulumi:"httpMaxContentLength"`
@@ -33934,6 +37150,9 @@ type GetElasticSearchElasticsearchUserConfigElasticsearchArgs struct {
 	ActionAutoCreateIndexEnabled pulumi.StringPtrInput `pulumi:"actionAutoCreateIndexEnabled"`
 	// Require explicit index names when deleting
 	ActionDestructiveRequiresName pulumi.StringPtrInput `pulumi:"actionDestructiveRequiresName"`
+	// Controls the number of shards allowed in the
+	// cluster per data node
+	ClusterMaxShardsPerNode pulumi.StringPtrInput `pulumi:"clusterMaxShardsPerNode"`
 	// Maximum content length for HTTP requests to
 	// the Elasticsearch HTTP API, in bytes.
 	HttpMaxContentLength pulumi.StringPtrInput `pulumi:"httpMaxContentLength"`
@@ -34104,6 +37323,12 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ActionDestru
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		return v.ActionDestructiveRequiresName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the number of shards allowed in the
+// cluster per data node
+func (o GetElasticSearchElasticsearchUserConfigElasticsearchOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ClusterMaxShardsPerNode }).(pulumi.StringPtrOutput)
 }
 
 // Maximum content length for HTTP requests to
@@ -34312,6 +37537,17 @@ func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionDes
 			return nil
 		}
 		return v.ActionDestructiveRequiresName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the number of shards allowed in the
+// cluster per data node
+func (o GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterMaxShardsPerNode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38861,21 +42097,33 @@ type GetKafkaConnectKafkaConnectUserConfigKafkaConnect struct {
 	// What to do when there is no initial offset in Kafka or
 	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and if
+	// the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes *string `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-	// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
-	//   of poll() when using consumer group management (defaults to 300000).
+	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes *string `pulumi:"consumerMaxPartitionFetchBytes"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
 	// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
-	// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
-	//   (defaults to 60000).
-	// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
-	//   and partition offset data to be committed to offset storage before cancelling the process and restoring
-	//   the offset data to be committed in a future attempt (defaults to 5000).
-	ConsumerIsolationLevel    *string `pulumi:"consumerIsolationLevel"`
 	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords    *string `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs     *string `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs      *string `pulumi:"offsetFlushTimeoutMs"`
+	// The interval at which to try committing offsets for tasks
+	// (defaults to 60000).
+	OffsetFlushIntervalMs *string `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to flush
+	// and partition offset data to be committed to offset storage before cancelling the process and restoring
+	// the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs *string `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches the
+	// producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize *string `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when using Kafka’s
 	// group management facilities (defaults to 10000).
 	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
@@ -38899,21 +42147,33 @@ type GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs struct {
 	// What to do when there is no initial offset in Kafka or
 	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and if
+	// the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-	// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
-	//   of poll() when using consumer group management (defaults to 300000).
+	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
+	// The maximum delay in milliseconds between invocations
+	// of poll() when using consumer group management (defaults to 300000).
 	// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
-	// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
-	//   (defaults to 60000).
-	// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
-	//   and partition offset data to be committed to offset storage before cancelling the process and restoring
-	//   the offset data to be committed in a future attempt (defaults to 5000).
-	ConsumerIsolationLevel    pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
 	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords    pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
-	OffsetFlushIntervalMs     pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
-	OffsetFlushTimeoutMs      pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// The interval at which to try committing offsets for tasks
+	// (defaults to 60000).
+	OffsetFlushIntervalMs pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
+	// Maximum number of milliseconds to wait for records to flush
+	// and partition offset data to be committed to offset storage before cancelling the process and restoring
+	// the offset data to be committed in a future attempt (defaults to 5000).
+	OffsetFlushTimeoutMs pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches the
+	// producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when using Kafka’s
 	// group management facilities (defaults to 10000).
 	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
@@ -39010,20 +42270,32 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerAutoOff
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+// Records are fetched in batches by the consumer, and if
+// the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
+}
+
 // Transaction read isolation level. readUncommitted is
 // the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
-//   of poll() when using consumer group management (defaults to 300000).
-// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
-// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
-//   (defaults to 60000).
-// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
-//   and partition offset data to be committed to offset storage before cancelling the process and restoring
-//   the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
 }
 
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		return v.ConsumerMaxPartitionFetchBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
+// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPollIntervalMs }).(pulumi.StringPtrOutput)
 }
@@ -39032,12 +42304,23 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPoll
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPollRecords }).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for tasks
+// (defaults to 60000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to flush
+// and partition offset data to be committed to offset storage before cancelling the process and restoring
+// the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches the
+// producer will send in a single request to avoid sending huge requests.
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 // The timeout in milliseconds used to detect failures when using Kafka’s
@@ -39088,16 +42371,21 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAuto
 	}).(pulumi.StringPtrOutput)
 }
 
+// Records are fetched in batches by the consumer, and if
+// the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
 // Transaction read isolation level. readUncommitted is
 // the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-// * `consumerMaxPollIntervalMs`- The maximum delay in milliseconds between invocations
-//   of poll() when using consumer group management (defaults to 300000).
-// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
-// * `offsetFlushIntervalMs`- The interval at which to try committing offsets for tasks
-//   (defaults to 60000).
-// * `offsetFlushTimeoutMs`- Maximum number of milliseconds to wait for records to flush
-//   and partition offset data to be committed to offset storage before cancelling the process and restoring
-//   the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -39107,6 +42395,21 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsol
 	}).(pulumi.StringPtrOutput)
 }
 
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum delay in milliseconds between invocations
+// of poll() when using consumer group management (defaults to 300000).
+// * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -39125,6 +42428,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The interval at which to try committing offsets for tasks
+// (defaults to 60000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
@@ -39134,12 +42439,26 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushI
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of milliseconds to wait for records to flush
+// and partition offset data to be committed to offset storage before cancelling the process and restoring
+// the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches the
+// producer will send in a single request to avoid sending huge requests.
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39771,6 +43090,8 @@ type GetKafkaKafkaUserConfig struct {
 	PublicAccess *GetKafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Enable Schema-Registry service
 	SchemaRegistry *string `pulumi:"schemaRegistry"`
+	// Schema Registry configuration
+	SchemaRegistryConfig *GetKafkaKafkaUserConfigSchemaRegistryConfig `pulumi:"schemaRegistryConfig"`
 }
 
 // GetKafkaKafkaUserConfigInput is an input type that accepts GetKafkaKafkaUserConfigArgs and GetKafkaKafkaUserConfigOutput values.
@@ -39811,6 +43132,8 @@ type GetKafkaKafkaUserConfigArgs struct {
 	PublicAccess GetKafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Enable Schema-Registry service
 	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
+	// Schema Registry configuration
+	SchemaRegistryConfig GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput `pulumi:"schemaRegistryConfig"`
 }
 
 func (GetKafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -39905,6 +43228,13 @@ func (o GetKafkaKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry configuration
+func (o GetKafkaKafkaUserConfigOutput) SchemaRegistryConfig() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigSchemaRegistryConfig {
+		return v.SchemaRegistryConfig
+	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
 type GetKafkaKafkaUserConfigKafka struct {
 	// Enable auto creation of topics
 	AutoCreateTopicsEnable *string `pulumi:"autoCreateTopicsEnable"`
@@ -39917,43 +43247,83 @@ type GetKafkaKafkaUserConfigKafka struct {
 	// threads close the connections that idle for longer than this.
 	ConnectionsMaxIdleMs *string `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for autocreated topics
-	// * `groupMaxSessionTimeoutMs": {
-	// * `groupMinSessionTimeoutMs": {
 	DefaultReplicationFactor *string `pulumi:"defaultReplicationFactor"`
+	// The maximum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
 	GroupMaxSessionTimeoutMs *string `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs *string `pulumi:"groupMinSessionTimeoutMs"`
+	// The minimum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
+	GroupMinSessionTimeoutMs    *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs *string `pulumi:"logCleanerDeleteRetentionMs"`
 	// The maximum amount of time message will
 	// remain uncompacted. Only applicable for logs that are being compacted
-	// * `logCleanerMinCleanableRatio": {
 	LogCleanerMaxCompactionLagMs *string `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio  *string `pulumi:"logCleanerMinCleanableRatio"`
+	// Controls log compactor frequency. Larger
+	// value means more frequent compactions but also more space wasted for logs. Consider setting
+	// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+	// high value for this option.
+	LogCleanerMinCleanableRatio *string `pulumi:"logCleanerMinCleanableRatio"`
 	// The minimum time a message will remain
 	// uncompacted in the log. Only applicable for logs that are being compacted.
-	// * `logCleanupPolicy": {
 	LogCleanerMinCompactionLagMs *string `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy             *string `pulumi:"logCleanupPolicy"`
+	// The default cleanup policy for segments beyond the retention window.
+	LogCleanupPolicy *string `pulumi:"logCleanupPolicy"`
+	// The number of messages accumulated on a log partition
+	// before messages are flushed to disk.
+	LogFlushIntervalMessages *string `pulumi:"logFlushIntervalMessages"`
+	// The maximum time in ms that a message in any topic is kept
+	// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+	LogFlushIntervalMs *string `pulumi:"logFlushIntervalMs"`
+	// The interval with which Kafka adds an entry to the offset index.
+	LogIndexIntervalBytes *string `pulumi:"logIndexIntervalBytes"`
+	// The maximum size in bytes of the offset index.
+	LogIndexSizeMaxBytes *string `pulumi:"logIndexSizeMaxBytes"`
+	// This configuration controls whether down-conversion
+	// of message formats is enabled to satisfy consume requests.
+	LogMessageDownconversionEnable *string `pulumi:"logMessageDownconversionEnable"`
 	// The maximum difference allowed between
 	// the timestamp when a broker receives a message and the timestamp specified in the message
 	LogMessageTimestampDifferenceMaxMs *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	// Define whether the timestamp in the message is
 	// message create time or log append time.
 	LogMessageTimestampType *string `pulumi:"logMessageTimestampType"`
+	// Should pre allocate file when create new segment?
+	LogPreallocate *string `pulumi:"logPreallocate"`
 	// The maximum size of the log before deleting messages
 	LogRetentionBytes *string `pulumi:"logRetentionBytes"`
-	// The number of hours to keep a log file before deleting it
+	// The number of hours to keep a log file before deleting it.
 	LogRetentionHours *string `pulumi:"logRetentionHours"`
+	// The number of milliseconds to keep a log file before deleting it
+	// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+	// time limit is applied.
+	LogRetentionMs *string `pulumi:"logRetentionMs"`
+	// The maximum jitter to subtract from logRollTimeMillis
+	// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+	LogRollJitterMs *string `pulumi:"logRollJitterMs"`
+	// The maximum time before a new log segment is rolled out (in milliseconds).
+	LogRollMs *string `pulumi:"logRollMs"`
 	// The maximum size of a single log file
 	LogSegmentBytes *string `pulumi:"logSegmentBytes"`
+	// The amount of time to wait before deleting a file
+	// from the filesystem.
+	LogSegmentDeleteDelayMs *string `pulumi:"logSegmentDeleteDelayMs"`
 	// The maximum number of connections allowed from each ip
 	// address (defaults to 2147483647).
-	// * `maxIncrementalFetchSessionCacheSlots": {
-	// * `messageMaxBytes": {
-	MaxConnectionsPerIp                  *string `pulumi:"maxConnectionsPerIp"`
+	MaxConnectionsPerIp *string `pulumi:"maxConnectionsPerIp"`
+	// The maximum number of incremental fetch
+	// sessions that the broker will maintain.
 	MaxIncrementalFetchSessionCacheSlots *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                      *string `pulumi:"messageMaxBytes"`
+	// The maximum size of message that the server can receive.
+	MessageMaxBytes *string `pulumi:"messageMaxBytes"`
+	// When a producer sets acks to 'all' (or '-1'),
+	// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+	// the write to be considered successful.
+	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
 	// Number of partitions for autocreated topics
-	// * `offsetsRetentionMinutes": {
-	NumPartitions           *string `pulumi:"numPartitions"`
+	NumPartitions *string `pulumi:"numPartitions"`
+	// Log retention window in minutes for offsets topic.
 	OffsetsRetentionMinutes *string `pulumi:"offsetsRetentionMinutes"`
 	// The purge interval (in number of
 	// requests) of the producer request purgatory(defaults to 1000).
@@ -39996,43 +43366,83 @@ type GetKafkaKafkaUserConfigKafkaArgs struct {
 	// threads close the connections that idle for longer than this.
 	ConnectionsMaxIdleMs pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for autocreated topics
-	// * `groupMaxSessionTimeoutMs": {
-	// * `groupMinSessionTimeoutMs": {
 	DefaultReplicationFactor pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	// The maximum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
 	GroupMaxSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	// The minimum allowed session timeout for registered
+	// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+	// at the cost of a longer time to detect failures.
+	GroupMinSessionTimeoutMs    pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
 	// The maximum amount of time message will
 	// remain uncompacted. Only applicable for logs that are being compacted
-	// * `logCleanerMinCleanableRatio": {
 	LogCleanerMaxCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio  pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	// Controls log compactor frequency. Larger
+	// value means more frequent compactions but also more space wasted for logs. Consider setting
+	// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+	// high value for this option.
+	LogCleanerMinCleanableRatio pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
 	// The minimum time a message will remain
 	// uncompacted in the log. Only applicable for logs that are being compacted.
-	// * `logCleanupPolicy": {
 	LogCleanerMinCompactionLagMs pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy             pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	// The default cleanup policy for segments beyond the retention window.
+	LogCleanupPolicy pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	// The number of messages accumulated on a log partition
+	// before messages are flushed to disk.
+	LogFlushIntervalMessages pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	// The maximum time in ms that a message in any topic is kept
+	// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+	LogFlushIntervalMs pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	// The interval with which Kafka adds an entry to the offset index.
+	LogIndexIntervalBytes pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
+	// The maximum size in bytes of the offset index.
+	LogIndexSizeMaxBytes pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
+	// This configuration controls whether down-conversion
+	// of message formats is enabled to satisfy consume requests.
+	LogMessageDownconversionEnable pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
 	// The maximum difference allowed between
 	// the timestamp when a broker receives a message and the timestamp specified in the message
 	LogMessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	// Define whether the timestamp in the message is
 	// message create time or log append time.
 	LogMessageTimestampType pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	// Should pre allocate file when create new segment?
+	LogPreallocate pulumi.StringPtrInput `pulumi:"logPreallocate"`
 	// The maximum size of the log before deleting messages
 	LogRetentionBytes pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
-	// The number of hours to keep a log file before deleting it
+	// The number of hours to keep a log file before deleting it.
 	LogRetentionHours pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	// The number of milliseconds to keep a log file before deleting it
+	// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+	// time limit is applied.
+	LogRetentionMs pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	// The maximum jitter to subtract from logRollTimeMillis
+	// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+	LogRollJitterMs pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
+	// The maximum time before a new log segment is rolled out (in milliseconds).
+	LogRollMs pulumi.StringPtrInput `pulumi:"logRollMs"`
 	// The maximum size of a single log file
 	LogSegmentBytes pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	// The amount of time to wait before deleting a file
+	// from the filesystem.
+	LogSegmentDeleteDelayMs pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
 	// The maximum number of connections allowed from each ip
 	// address (defaults to 2147483647).
-	// * `maxIncrementalFetchSessionCacheSlots": {
-	// * `messageMaxBytes": {
-	MaxConnectionsPerIp                  pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxConnectionsPerIp pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	// The maximum number of incremental fetch
+	// sessions that the broker will maintain.
 	MaxIncrementalFetchSessionCacheSlots pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                      pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	// The maximum size of message that the server can receive.
+	MessageMaxBytes pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	// When a producer sets acks to 'all' (or '-1'),
+	// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+	// the write to be considered successful.
+	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
 	// Number of partitions for autocreated topics
-	// * `offsetsRetentionMinutes": {
-	NumPartitions           pulumi.StringPtrInput `pulumi:"numPartitions"`
+	NumPartitions pulumi.StringPtrInput `pulumi:"numPartitions"`
+	// Log retention window in minutes for offsets topic.
 	OffsetsRetentionMinutes pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
 	// The purge interval (in number of
 	// requests) of the producer request purgatory(defaults to 1000).
@@ -40149,40 +43559,79 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.String
 }
 
 // Replication factor for autocreated topics
-// * `groupMaxSessionTimeoutMs": {
-// * `groupMinSessionTimeoutMs": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
+// The maximum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o GetKafkaKafkaUserConfigKafkaOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.GroupMaxSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// The minimum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o GetKafkaKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanerDeleteRetentionMs }).(pulumi.StringPtrOutput)
+}
+
 // The maximum amount of time message will
 // remain uncompacted. Only applicable for logs that are being compacted
-// * `logCleanerMinCleanableRatio": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
+// Controls log compactor frequency. Larger
+// value means more frequent compactions but also more space wasted for logs. Consider setting
+// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+// high value for this option.
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCleanableRatio }).(pulumi.StringPtrOutput)
 }
 
 // The minimum time a message will remain
 // uncompacted in the log. Only applicable for logs that are being compacted.
-// * `logCleanupPolicy": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanerMinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
+// The default cleanup policy for segments beyond the retention window.
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The number of messages accumulated on a log partition
+// before messages are flushed to disk.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogFlushIntervalMessages }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in ms that a message in any topic is kept
+// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogFlushIntervalMs }).(pulumi.StringPtrOutput)
+}
+
+// The interval with which Kafka adds an entry to the offset index.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogIndexIntervalBytes }).(pulumi.StringPtrOutput)
+}
+
+// The maximum size in bytes of the offset index.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogIndexSizeMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls whether down-conversion
+// of message formats is enabled to satisfy consume requests.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogMessageDownconversionEnable }).(pulumi.StringPtrOutput)
 }
 
 // The maximum difference allowed between
@@ -40197,14 +43646,37 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.Str
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
+// Should pre allocate file when create new segment?
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogPreallocate }).(pulumi.StringPtrOutput)
+}
+
 // The maximum size of the log before deleting messages
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-// The number of hours to keep a log file before deleting it
+// The number of hours to keep a log file before deleting it.
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
+}
+
+// The number of milliseconds to keep a log file before deleting it
+// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+// time limit is applied.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// The maximum jitter to subtract from logRollTimeMillis
+// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogRollJitterMs }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time before a new log segment is rolled out (in milliseconds).
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogRollMs }).(pulumi.StringPtrOutput)
 }
 
 // The maximum size of a single log file
@@ -40212,28 +43684,42 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
+// The amount of time to wait before deleting a file
+// from the filesystem.
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.LogSegmentDeleteDelayMs }).(pulumi.StringPtrOutput)
+}
+
 // The maximum number of connections allowed from each ip
 // address (defaults to 2147483647).
-// * `maxIncrementalFetchSessionCacheSlots": {
-// * `messageMaxBytes": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.MaxConnectionsPerIp }).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of incremental fetch
+// sessions that the broker will maintain.
 func (o GetKafkaKafkaUserConfigKafkaOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.MaxIncrementalFetchSessionCacheSlots }).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of message that the server can receive.
 func (o GetKafkaKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
 }
 
+// When a producer sets acks to 'all' (or '-1'),
+// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+// the write to be considered successful.
+func (o GetKafkaKafkaUserConfigKafkaOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
+}
+
 // Number of partitions for autocreated topics
-// * `offsetsRetentionMinutes": {
 func (o GetKafkaKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
 
+// Log retention window in minutes for offsets topic.
 func (o GetKafkaKafkaUserConfigKafkaOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.OffsetsRetentionMinutes }).(pulumi.StringPtrOutput)
 }
@@ -40319,8 +43805,6 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ConnectionsMaxIdleMs() pulumi.Str
 }
 
 // Replication factor for autocreated topics
-// * `groupMaxSessionTimeoutMs": {
-// * `groupMinSessionTimeoutMs": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40330,6 +43814,9 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40339,6 +43826,9 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupMaxSessionTimeoutMs() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minimum allowed session timeout for registered
+// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
+// at the cost of a longer time to detect failures.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40348,9 +43838,17 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerDeleteRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
 // The maximum amount of time message will
 // remain uncompacted. Only applicable for logs that are being compacted
-// * `logCleanerMinCleanableRatio": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40360,6 +43858,10 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls log compactor frequency. Larger
+// value means more frequent compactions but also more space wasted for logs. Consider setting
+// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
+// high value for this option.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40371,7 +43873,6 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCleanableRatio() pul
 
 // The minimum time a message will remain
 // uncompacted in the log. Only applicable for logs that are being compacted.
-// * `logCleanupPolicy": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40381,12 +43882,66 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanerMinCompactionLagMs() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The default cleanup policy for segments beyond the retention window.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogCleanupPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of messages accumulated on a log partition
+// before messages are flushed to disk.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMessages
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in ms that a message in any topic is kept
+// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval with which Kafka adds an entry to the offset index.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexIntervalBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum size in bytes of the offset index.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexSizeMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls whether down-conversion
+// of message formats is enabled to satisfy consume requests.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageDownconversionEnable
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40412,6 +43967,16 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Should pre allocate file when create new segment?
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogPreallocate
+	}).(pulumi.StringPtrOutput)
+}
+
 // The maximum size of the log before deleting messages
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
@@ -40422,13 +43987,46 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionBytes() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of hours to keep a log file before deleting it
+// The number of hours to keep a log file before deleting it.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionHours
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of milliseconds to keep a log file before deleting it
+// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
+// time limit is applied.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum jitter to subtract from logRollTimeMillis
+// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollJitterMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time before a new log segment is rolled out (in milliseconds).
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollMs
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40442,10 +44040,19 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// The amount of time to wait before deleting a file
+// from the filesystem.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogSegmentDeleteDelayMs
+	}).(pulumi.StringPtrOutput)
+}
+
 // The maximum number of connections allowed from each ip
 // address (defaults to 2147483647).
-// * `maxIncrementalFetchSessionCacheSlots": {
-// * `messageMaxBytes": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40455,6 +44062,8 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MaxConnectionsPerIp() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum number of incremental fetch
+// sessions that the broker will maintain.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MaxIncrementalFetchSessionCacheSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40464,6 +44073,7 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MaxIncrementalFetchSessionCacheSl
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum size of message that the server can receive.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40473,8 +44083,19 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// When a producer sets acks to 'all' (or '-1'),
+// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
+// the write to be considered successful.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinInsyncReplicas
+	}).(pulumi.StringPtrOutput)
+}
+
 // Number of partitions for autocreated topics
-// * `offsetsRetentionMinutes": {
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40484,6 +44105,7 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) NumPartitions() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Log retention window in minutes for offsets topic.
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) OffsetsRetentionMinutes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -40698,11 +44320,20 @@ type GetKafkaKafkaUserConfigKafkaConnectConfig struct {
 	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
 	// What to do when there is no initial offset in Kafka or
-	// if the current offset does not exist any more on the server. Default is earliest
+	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and
+	// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes *string `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 	ConsumerIsolationLevel *string `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes *string `pulumi:"consumerMaxPartitionFetchBytes"`
 	// The maximum delay in milliseconds between invocations
 	// of poll() when using consumer group management (defaults to 300000).
 	ConsumerMaxPollIntervalMs *string `pulumi:"consumerMaxPollIntervalMs"`
@@ -40716,6 +44347,9 @@ type GetKafkaKafkaUserConfigKafkaConnectConfig struct {
 	// flush and partition offset data to be committed to offset storage before cancelling the process
 	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 	OffsetFlushTimeoutMs *string `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches
+	// the producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize *string `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when
 	// using Kafka’s group management facilities (defaults to 10000).
 	SessionTimeoutMs *string `pulumi:"sessionTimeoutMs"`
@@ -40737,11 +44371,20 @@ type GetKafkaKafkaUserConfigKafkaConnectConfigArgs struct {
 	// be overridden by the connector. Default is None
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
 	// What to do when there is no initial offset in Kafka or
-	// if the current offset does not exist any more on the server. Default is earliest
+	// if the current offset does not exist any more on the server. Default is earliest.
 	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// Records are fetched in batches by the consumer, and
+	// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+	// the record batch will still be returned to ensure that the consumer can make progress. As such,
+	// this is not a absolute maximum.
+	ConsumerFetchMaxBytes pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	// Transaction read isolation level. readUncommitted is
 	// the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 	ConsumerIsolationLevel pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	// Records are fetched in batches by the consumer.If
+	// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+	// the batch will still be returned to ensure that the consumer can make progress.
+	ConsumerMaxPartitionFetchBytes pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
 	// The maximum delay in milliseconds between invocations
 	// of poll() when using consumer group management (defaults to 300000).
 	ConsumerMaxPollIntervalMs pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
@@ -40755,6 +44398,9 @@ type GetKafkaKafkaUserConfigKafkaConnectConfigArgs struct {
 	// flush and partition offset data to be committed to offset storage before cancelling the process
 	// and restoring the offset data to be committed in a future attempt (defaults to 5000).
 	OffsetFlushTimeoutMs pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	// This setting will limit the number of record batches
+	// the producer will send in a single request to avoid sending huge requests.
+	ProducerMaxRequestSize pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	// The timeout in milliseconds used to detect failures when
 	// using Kafka’s group management facilities (defaults to 10000).
 	SessionTimeoutMs pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
@@ -40846,15 +44492,30 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConnectorClientConfigOv
 }
 
 // What to do when there is no initial offset in Kafka or
-// if the current offset does not exist any more on the server. Default is earliest
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer, and
+// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
 }
 
 // Transaction read isolation level. readUncommitted is
 // the default, but readCommitted can be used if consume-exactly-once behavior is desired.
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPartitionFetchBytes }).(pulumi.StringPtrOutput)
 }
 
 // The maximum delay in milliseconds between invocations
@@ -40880,6 +44541,12 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs()
 // and restoring the offset data to be committed in a future attempt (defaults to 5000).
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches
+// the producer will send in a single request to avoid sending huge requests.
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 // The timeout in milliseconds used to detect failures when
@@ -40920,13 +44587,26 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConnectorClientConfi
 }
 
 // What to do when there is no initial offset in Kafka or
-// if the current offset does not exist any more on the server. Default is earliest
+// if the current offset does not exist any more on the server. Default is earliest.
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerAutoOffsetReset
+	}).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer, and
+// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+// the record batch will still be returned to ensure that the consumer can make progress. As such,
+// this is not a absolute maximum.
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40938,6 +44618,18 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLev
 			return nil
 		}
 		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Records are fetched in batches by the consumer.If
+// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+// the batch will still be returned to ensure that the consumer can make progress.
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40983,6 +44675,17 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeoutMs
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// This setting will limit the number of record batches
+// the producer will send in a single request to avoid sending huge requests.
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41598,6 +45301,190 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.St
 			return nil
 		}
 		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfig struct {
+	// If true, Karapace / Schema Registry on the service nodes can
+	// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+	// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+	// Defaults to 'true'.
+	LeaderEligibility *string `pulumi:"leaderEligibility"`
+	// The durable single partition topic that acts as the durable log for the
+	// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+	// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+	// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+	// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+	// Defaults to '_schemas'.
+	TopicName *string `pulumi:"topicName"`
+}
+
+// GetKafkaKafkaUserConfigSchemaRegistryConfigInput is an input type that accepts GetKafkaKafkaUserConfigSchemaRegistryConfigArgs and GetKafkaKafkaUserConfigSchemaRegistryConfigOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigSchemaRegistryConfigInput` via:
+//
+//          GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+type GetKafkaKafkaUserConfigSchemaRegistryConfigInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigOutput
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfigArgs struct {
+	// If true, Karapace / Schema Registry on the service nodes can
+	// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+	// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+	// Defaults to 'true'.
+	LeaderEligibility pulumi.StringPtrInput `pulumi:"leaderEligibility"`
+	// The durable single partition topic that acts as the durable log for the
+	// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+	// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+	// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+	// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+	// Defaults to '_schemas'.
+	TopicName pulumi.StringPtrInput `pulumi:"topicName"`
+}
+
+func (GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return i.ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput).ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput is an input type that accepts GetKafkaKafkaUserConfigSchemaRegistryConfigArgs, GetKafkaKafkaUserConfigSchemaRegistryConfigPtr and GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput` via:
+//
+//          GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput
+}
+
+type getKafkaKafkaUserConfigSchemaRegistryConfigPtrType GetKafkaKafkaUserConfigSchemaRegistryConfigArgs
+
+func GetKafkaKafkaUserConfigSchemaRegistryConfigPtr(v *GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput {
+	return (*getKafkaKafkaUserConfigSchemaRegistryConfigPtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigSchemaRegistryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigSchemaRegistryConfigPtrType) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigSchemaRegistryConfigPtrType) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *GetKafkaKafkaUserConfigSchemaRegistryConfig {
+		return &v
+	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+// If true, Karapace / Schema Registry on the service nodes can
+// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+// Defaults to 'true'.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.LeaderEligibility }).(pulumi.StringPtrOutput)
+}
+
+// The durable single partition topic that acts as the durable log for the
+// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+// Defaults to '_schemas'.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) Elem() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) GetKafkaKafkaUserConfigSchemaRegistryConfig {
+		return *v
+	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+// If true, Karapace / Schema Registry on the service nodes can
+// participate in leader election. It might be needed to disable this when the schemas topic is replicated
+// to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
+// Defaults to 'true'.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeaderEligibility
+	}).(pulumi.StringPtrOutput)
+}
+
+// The durable single partition topic that acts as the durable log for the
+// data. This topic must be compacted to avoid losing data due to retention policy. Please note that
+// changing this configuration in an existing Schema Registry / Karapace setup leads to previous
+// schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
+// put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
+// Defaults to '_schemas'.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -42500,6 +46387,1722 @@ func (o GetKafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
 // unclean.leader.election.enable value
 func (o GetKafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.UncleanLeaderElectionEnable }).(pulumi.StringPtrOutput)
+}
+
+type GetM3AggregatorComponent struct {
+	Component                 string `pulumi:"component"`
+	Host                      string `pulumi:"host"`
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	Port                      int    `pulumi:"port"`
+	Route                     string `pulumi:"route"`
+	Ssl                       bool   `pulumi:"ssl"`
+	Usage                     string `pulumi:"usage"`
+}
+
+// GetM3AggregatorComponentInput is an input type that accepts GetM3AggregatorComponentArgs and GetM3AggregatorComponentOutput values.
+// You can construct a concrete instance of `GetM3AggregatorComponentInput` via:
+//
+//          GetM3AggregatorComponentArgs{...}
+type GetM3AggregatorComponentInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorComponentOutput() GetM3AggregatorComponentOutput
+	ToGetM3AggregatorComponentOutputWithContext(context.Context) GetM3AggregatorComponentOutput
+}
+
+type GetM3AggregatorComponentArgs struct {
+	Component                 pulumi.StringInput `pulumi:"component"`
+	Host                      pulumi.StringInput `pulumi:"host"`
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	Port                      pulumi.IntInput    `pulumi:"port"`
+	Route                     pulumi.StringInput `pulumi:"route"`
+	Ssl                       pulumi.BoolInput   `pulumi:"ssl"`
+	Usage                     pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetM3AggregatorComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (i GetM3AggregatorComponentArgs) ToGetM3AggregatorComponentOutput() GetM3AggregatorComponentOutput {
+	return i.ToGetM3AggregatorComponentOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorComponentArgs) ToGetM3AggregatorComponentOutputWithContext(ctx context.Context) GetM3AggregatorComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorComponentOutput)
+}
+
+// GetM3AggregatorComponentArrayInput is an input type that accepts GetM3AggregatorComponentArray and GetM3AggregatorComponentArrayOutput values.
+// You can construct a concrete instance of `GetM3AggregatorComponentArrayInput` via:
+//
+//          GetM3AggregatorComponentArray{ GetM3AggregatorComponentArgs{...} }
+type GetM3AggregatorComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorComponentArrayOutput() GetM3AggregatorComponentArrayOutput
+	ToGetM3AggregatorComponentArrayOutputWithContext(context.Context) GetM3AggregatorComponentArrayOutput
+}
+
+type GetM3AggregatorComponentArray []GetM3AggregatorComponentInput
+
+func (GetM3AggregatorComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (i GetM3AggregatorComponentArray) ToGetM3AggregatorComponentArrayOutput() GetM3AggregatorComponentArrayOutput {
+	return i.ToGetM3AggregatorComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorComponentArray) ToGetM3AggregatorComponentArrayOutputWithContext(ctx context.Context) GetM3AggregatorComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorComponentArrayOutput)
+}
+
+type GetM3AggregatorComponentOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (o GetM3AggregatorComponentOutput) ToGetM3AggregatorComponentOutput() GetM3AggregatorComponentOutput {
+	return o
+}
+
+func (o GetM3AggregatorComponentOutput) ToGetM3AggregatorComponentOutputWithContext(ctx context.Context) GetM3AggregatorComponentOutput {
+	return o
+}
+
+func (o GetM3AggregatorComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetM3AggregatorComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetM3AggregatorComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+func (o GetM3AggregatorComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetM3AggregatorComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+func (o GetM3AggregatorComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+func (o GetM3AggregatorComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetM3AggregatorComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (o GetM3AggregatorComponentArrayOutput) ToGetM3AggregatorComponentArrayOutput() GetM3AggregatorComponentArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorComponentArrayOutput) ToGetM3AggregatorComponentArrayOutputWithContext(ctx context.Context) GetM3AggregatorComponentArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorComponentArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3AggregatorComponent {
+		return vs[0].([]GetM3AggregatorComponent)[vs[1].(int)]
+	}).(GetM3AggregatorComponentOutput)
+}
+
+type GetM3AggregatorM3aggregator struct {
+}
+
+// GetM3AggregatorM3aggregatorInput is an input type that accepts GetM3AggregatorM3aggregatorArgs and GetM3AggregatorM3aggregatorOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorInput` via:
+//
+//          GetM3AggregatorM3aggregatorArgs{...}
+type GetM3AggregatorM3aggregatorInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorOutput() GetM3AggregatorM3aggregatorOutput
+	ToGetM3AggregatorM3aggregatorOutputWithContext(context.Context) GetM3AggregatorM3aggregatorOutput
+}
+
+type GetM3AggregatorM3aggregatorArgs struct {
+}
+
+func (GetM3AggregatorM3aggregatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorArgs) ToGetM3AggregatorM3aggregatorOutput() GetM3AggregatorM3aggregatorOutput {
+	return i.ToGetM3AggregatorM3aggregatorOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorArgs) ToGetM3AggregatorM3aggregatorOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorOutput)
+}
+
+type GetM3AggregatorM3aggregatorOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorOutput) ToGetM3AggregatorM3aggregatorOutput() GetM3AggregatorM3aggregatorOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorOutput) ToGetM3AggregatorM3aggregatorOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorOutput {
+	return o
+}
+
+type GetM3AggregatorM3aggregatorUserConfig struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 major version
+	M3Version *string `pulumi:"m3Version"`
+}
+
+// GetM3AggregatorM3aggregatorUserConfigInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigArgs and GetM3AggregatorM3aggregatorUserConfigOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorUserConfigInput` via:
+//
+//          GetM3AggregatorM3aggregatorUserConfigArgs{...}
+type GetM3AggregatorM3aggregatorUserConfigInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorUserConfigOutput() GetM3AggregatorM3aggregatorUserConfigOutput
+	ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(context.Context) GetM3AggregatorM3aggregatorUserConfigOutput
+}
+
+type GetM3AggregatorM3aggregatorUserConfigArgs struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 major version
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+}
+
+func (GetM3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigArgs) ToGetM3AggregatorM3aggregatorUserConfigOutput() GetM3AggregatorM3aggregatorUserConfigOutput {
+	return i.ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigArgs) ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorUserConfigOutput)
+}
+
+type GetM3AggregatorM3aggregatorUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) ToGetM3AggregatorM3aggregatorUserConfigOutput() GetM3AggregatorM3aggregatorUserConfigOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigOutput {
+	return o
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// M3 major version
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+type GetM3AggregatorServiceIntegration struct {
+	IntegrationType   string `pulumi:"integrationType"`
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetM3AggregatorServiceIntegrationInput is an input type that accepts GetM3AggregatorServiceIntegrationArgs and GetM3AggregatorServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetM3AggregatorServiceIntegrationInput` via:
+//
+//          GetM3AggregatorServiceIntegrationArgs{...}
+type GetM3AggregatorServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorServiceIntegrationOutput() GetM3AggregatorServiceIntegrationOutput
+	ToGetM3AggregatorServiceIntegrationOutputWithContext(context.Context) GetM3AggregatorServiceIntegrationOutput
+}
+
+type GetM3AggregatorServiceIntegrationArgs struct {
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetM3AggregatorServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (i GetM3AggregatorServiceIntegrationArgs) ToGetM3AggregatorServiceIntegrationOutput() GetM3AggregatorServiceIntegrationOutput {
+	return i.ToGetM3AggregatorServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorServiceIntegrationArgs) ToGetM3AggregatorServiceIntegrationOutputWithContext(ctx context.Context) GetM3AggregatorServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorServiceIntegrationOutput)
+}
+
+// GetM3AggregatorServiceIntegrationArrayInput is an input type that accepts GetM3AggregatorServiceIntegrationArray and GetM3AggregatorServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetM3AggregatorServiceIntegrationArrayInput` via:
+//
+//          GetM3AggregatorServiceIntegrationArray{ GetM3AggregatorServiceIntegrationArgs{...} }
+type GetM3AggregatorServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorServiceIntegrationArrayOutput() GetM3AggregatorServiceIntegrationArrayOutput
+	ToGetM3AggregatorServiceIntegrationArrayOutputWithContext(context.Context) GetM3AggregatorServiceIntegrationArrayOutput
+}
+
+type GetM3AggregatorServiceIntegrationArray []GetM3AggregatorServiceIntegrationInput
+
+func (GetM3AggregatorServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (i GetM3AggregatorServiceIntegrationArray) ToGetM3AggregatorServiceIntegrationArrayOutput() GetM3AggregatorServiceIntegrationArrayOutput {
+	return i.ToGetM3AggregatorServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorServiceIntegrationArray) ToGetM3AggregatorServiceIntegrationArrayOutputWithContext(ctx context.Context) GetM3AggregatorServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorServiceIntegrationArrayOutput)
+}
+
+type GetM3AggregatorServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (o GetM3AggregatorServiceIntegrationOutput) ToGetM3AggregatorServiceIntegrationOutput() GetM3AggregatorServiceIntegrationOutput {
+	return o
+}
+
+func (o GetM3AggregatorServiceIntegrationOutput) ToGetM3AggregatorServiceIntegrationOutputWithContext(ctx context.Context) GetM3AggregatorServiceIntegrationOutput {
+	return o
+}
+
+func (o GetM3AggregatorServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+func (o GetM3AggregatorServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetM3AggregatorServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorServiceIntegration)(nil)).Elem()
+}
+
+func (o GetM3AggregatorServiceIntegrationArrayOutput) ToGetM3AggregatorServiceIntegrationArrayOutput() GetM3AggregatorServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorServiceIntegrationArrayOutput) ToGetM3AggregatorServiceIntegrationArrayOutputWithContext(ctx context.Context) GetM3AggregatorServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3AggregatorServiceIntegration {
+		return vs[0].([]GetM3AggregatorServiceIntegration)[vs[1].(int)]
+	}).(GetM3AggregatorServiceIntegrationOutput)
+}
+
+type GetM3DbComponent struct {
+	Component                 string `pulumi:"component"`
+	Host                      string `pulumi:"host"`
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	Port                      int    `pulumi:"port"`
+	Route                     string `pulumi:"route"`
+	Ssl                       bool   `pulumi:"ssl"`
+	Usage                     string `pulumi:"usage"`
+}
+
+// GetM3DbComponentInput is an input type that accepts GetM3DbComponentArgs and GetM3DbComponentOutput values.
+// You can construct a concrete instance of `GetM3DbComponentInput` via:
+//
+//          GetM3DbComponentArgs{...}
+type GetM3DbComponentInput interface {
+	pulumi.Input
+
+	ToGetM3DbComponentOutput() GetM3DbComponentOutput
+	ToGetM3DbComponentOutputWithContext(context.Context) GetM3DbComponentOutput
+}
+
+type GetM3DbComponentArgs struct {
+	Component                 pulumi.StringInput `pulumi:"component"`
+	Host                      pulumi.StringInput `pulumi:"host"`
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	Port                      pulumi.IntInput    `pulumi:"port"`
+	Route                     pulumi.StringInput `pulumi:"route"`
+	Ssl                       pulumi.BoolInput   `pulumi:"ssl"`
+	Usage                     pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetM3DbComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbComponent)(nil)).Elem()
+}
+
+func (i GetM3DbComponentArgs) ToGetM3DbComponentOutput() GetM3DbComponentOutput {
+	return i.ToGetM3DbComponentOutputWithContext(context.Background())
+}
+
+func (i GetM3DbComponentArgs) ToGetM3DbComponentOutputWithContext(ctx context.Context) GetM3DbComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbComponentOutput)
+}
+
+// GetM3DbComponentArrayInput is an input type that accepts GetM3DbComponentArray and GetM3DbComponentArrayOutput values.
+// You can construct a concrete instance of `GetM3DbComponentArrayInput` via:
+//
+//          GetM3DbComponentArray{ GetM3DbComponentArgs{...} }
+type GetM3DbComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbComponentArrayOutput() GetM3DbComponentArrayOutput
+	ToGetM3DbComponentArrayOutputWithContext(context.Context) GetM3DbComponentArrayOutput
+}
+
+type GetM3DbComponentArray []GetM3DbComponentInput
+
+func (GetM3DbComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbComponent)(nil)).Elem()
+}
+
+func (i GetM3DbComponentArray) ToGetM3DbComponentArrayOutput() GetM3DbComponentArrayOutput {
+	return i.ToGetM3DbComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbComponentArray) ToGetM3DbComponentArrayOutputWithContext(ctx context.Context) GetM3DbComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbComponentArrayOutput)
+}
+
+type GetM3DbComponentOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbComponent)(nil)).Elem()
+}
+
+func (o GetM3DbComponentOutput) ToGetM3DbComponentOutput() GetM3DbComponentOutput {
+	return o
+}
+
+func (o GetM3DbComponentOutput) ToGetM3DbComponentOutputWithContext(ctx context.Context) GetM3DbComponentOutput {
+	return o
+}
+
+func (o GetM3DbComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetM3DbComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetM3DbComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+func (o GetM3DbComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetM3DbComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetM3DbComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+func (o GetM3DbComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetM3DbComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+func (o GetM3DbComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetM3DbComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbComponent)(nil)).Elem()
+}
+
+func (o GetM3DbComponentArrayOutput) ToGetM3DbComponentArrayOutput() GetM3DbComponentArrayOutput {
+	return o
+}
+
+func (o GetM3DbComponentArrayOutput) ToGetM3DbComponentArrayOutputWithContext(ctx context.Context) GetM3DbComponentArrayOutput {
+	return o
+}
+
+func (o GetM3DbComponentArrayOutput) Index(i pulumi.IntInput) GetM3DbComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbComponent {
+		return vs[0].([]GetM3DbComponent)[vs[1].(int)]
+	}).(GetM3DbComponentOutput)
+}
+
+type GetM3DbM3db struct {
+}
+
+// GetM3DbM3dbInput is an input type that accepts GetM3DbM3dbArgs and GetM3DbM3dbOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbInput` via:
+//
+//          GetM3DbM3dbArgs{...}
+type GetM3DbM3dbInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbOutput() GetM3DbM3dbOutput
+	ToGetM3DbM3dbOutputWithContext(context.Context) GetM3DbM3dbOutput
+}
+
+type GetM3DbM3dbArgs struct {
+}
+
+func (GetM3DbM3dbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3db)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbArgs) ToGetM3DbM3dbOutput() GetM3DbM3dbOutput {
+	return i.ToGetM3DbM3dbOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbArgs) ToGetM3DbM3dbOutputWithContext(ctx context.Context) GetM3DbM3dbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbOutput)
+}
+
+type GetM3DbM3dbOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3db)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbOutput) ToGetM3DbM3dbOutput() GetM3DbM3dbOutput {
+	return o
+}
+
+func (o GetM3DbM3dbOutput) ToGetM3DbM3dbOutputWithContext(ctx context.Context) GetM3DbM3dbOutput {
+	return o
+}
+
+type GetM3DbM3dbUserConfig struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 limits
+	Limits *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
+	// M3 major version
+	M3Version *string `pulumi:"m3Version"`
+	// List of M3 namespaces
+	Namespaces []GetM3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *GetM3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *GetM3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+}
+
+// GetM3DbM3dbUserConfigInput is an input type that accepts GetM3DbM3dbUserConfigArgs and GetM3DbM3dbUserConfigOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigInput` via:
+//
+//          GetM3DbM3dbUserConfigArgs{...}
+type GetM3DbM3dbUserConfigInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput
+	ToGetM3DbM3dbUserConfigOutputWithContext(context.Context) GetM3DbM3dbUserConfigOutput
+}
+
+type GetM3DbM3dbUserConfigArgs struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 limits
+	Limits GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	// M3 major version
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// List of M3 namespaces
+	Namespaces GetM3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess GetM3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess GetM3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+}
+
+func (GetM3DbM3dbUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
+	return i.ToGetM3DbM3dbUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigOutput)
+}
+
+type GetM3DbM3dbUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
+	return o
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+func (o GetM3DbM3dbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+func (o GetM3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// M3 limits
+func (o GetM3DbM3dbUserConfigOutput) Limits() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigLimits { return v.Limits }).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// M3 major version
+func (o GetM3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+// List of M3 namespaces
+func (o GetM3DbM3dbUserConfigOutput) Namespaces() GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigNamespace { return v.Namespaces }).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+// Allow access to selected service ports from private networks.
+func (o GetM3DbM3dbUserConfigOutput) PrivateAccess() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet.
+func (o GetM3DbM3dbUserConfigOutput) PublicAccess() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigLimits struct {
+	// The maximum number of data points fetched during request
+	GlobalDatapoints *string `pulumi:"globalDatapoints"`
+	// The maximum number of data points fetched in single query
+	QueryDatapoints *string `pulumi:"queryDatapoints"`
+	// When query limits are exceeded, whether to return error
+	// (if True) or return partial results (False)
+	QueryRequireExhaustive *string `pulumi:"queryRequireExhaustive"`
+	// The maximum number of series fetched in single query
+	QuerySeries *string `pulumi:"querySeries"`
+}
+
+// GetM3DbM3dbUserConfigLimitsInput is an input type that accepts GetM3DbM3dbUserConfigLimitsArgs and GetM3DbM3dbUserConfigLimitsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigLimitsInput` via:
+//
+//          GetM3DbM3dbUserConfigLimitsArgs{...}
+type GetM3DbM3dbUserConfigLimitsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigLimitsOutput() GetM3DbM3dbUserConfigLimitsOutput
+	ToGetM3DbM3dbUserConfigLimitsOutputWithContext(context.Context) GetM3DbM3dbUserConfigLimitsOutput
+}
+
+type GetM3DbM3dbUserConfigLimitsArgs struct {
+	// The maximum number of data points fetched during request
+	GlobalDatapoints pulumi.StringPtrInput `pulumi:"globalDatapoints"`
+	// The maximum number of data points fetched in single query
+	QueryDatapoints pulumi.StringPtrInput `pulumi:"queryDatapoints"`
+	// When query limits are exceeded, whether to return error
+	// (if True) or return partial results (False)
+	QueryRequireExhaustive pulumi.StringPtrInput `pulumi:"queryRequireExhaustive"`
+	// The maximum number of series fetched in single query
+	QuerySeries pulumi.StringPtrInput `pulumi:"querySeries"`
+}
+
+func (GetM3DbM3dbUserConfigLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsOutput() GetM3DbM3dbUserConfigLimitsOutput {
+	return i.ToGetM3DbM3dbUserConfigLimitsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigLimitsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigLimitsOutput).ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigLimitsPtrInput is an input type that accepts GetM3DbM3dbUserConfigLimitsArgs, GetM3DbM3dbUserConfigLimitsPtr and GetM3DbM3dbUserConfigLimitsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigLimitsPtrInput` via:
+//
+//          GetM3DbM3dbUserConfigLimitsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetM3DbM3dbUserConfigLimitsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput
+	ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput
+}
+
+type getM3DbM3dbUserConfigLimitsPtrType GetM3DbM3dbUserConfigLimitsArgs
+
+func GetM3DbM3dbUserConfigLimitsPtr(v *GetM3DbM3dbUserConfigLimitsArgs) GetM3DbM3dbUserConfigLimitsPtrInput {
+	return (*getM3DbM3dbUserConfigLimitsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigLimitsPtrType) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigLimitsPtrType) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigLimitsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsOutput() GetM3DbM3dbUserConfigLimitsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *GetM3DbM3dbUserConfigLimits {
+		return &v
+	}).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// The maximum number of data points fetched during request
+func (o GetM3DbM3dbUserConfigLimitsOutput) GlobalDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *string { return v.GlobalDatapoints }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of data points fetched in single query
+func (o GetM3DbM3dbUserConfigLimitsOutput) QueryDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *string { return v.QueryDatapoints }).(pulumi.StringPtrOutput)
+}
+
+// When query limits are exceeded, whether to return error
+// (if True) or return partial results (False)
+func (o GetM3DbM3dbUserConfigLimitsOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *string { return v.QueryRequireExhaustive }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of series fetched in single query
+func (o GetM3DbM3dbUserConfigLimitsOutput) QuerySeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *string { return v.QuerySeries }).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) Elem() GetM3DbM3dbUserConfigLimitsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) GetM3DbM3dbUserConfigLimits { return *v }).(GetM3DbM3dbUserConfigLimitsOutput)
+}
+
+// The maximum number of data points fetched during request
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) GlobalDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalDatapoints
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of data points fetched in single query
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QueryDatapoints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryDatapoints
+	}).(pulumi.StringPtrOutput)
+}
+
+// When query limits are exceeded, whether to return error
+// (if True) or return partial results (False)
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryRequireExhaustive
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of series fetched in single query
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QuerySeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QuerySeries
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespace struct {
+	// The name of the namespace
+	Name *string `pulumi:"name"`
+	// Namespace options
+	Options *GetM3DbM3dbUserConfigNamespaceOptions `pulumi:"options"`
+	// The resolution for an aggregated namespace
+	Resolution *string `pulumi:"resolution"`
+	// The type of aggregation (aggregated/unaggregated)
+	Type *string `pulumi:"type"`
+}
+
+// GetM3DbM3dbUserConfigNamespaceInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceArgs and GetM3DbM3dbUserConfigNamespaceOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceInput` via:
+//
+//          GetM3DbM3dbUserConfigNamespaceArgs{...}
+type GetM3DbM3dbUserConfigNamespaceInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOutput() GetM3DbM3dbUserConfigNamespaceOutput
+	ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceArgs struct {
+	// The name of the namespace
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Namespace options
+	Options GetM3DbM3dbUserConfigNamespaceOptionsPtrInput `pulumi:"options"`
+	// The resolution for an aggregated namespace
+	Resolution pulumi.StringPtrInput `pulumi:"resolution"`
+	// The type of aggregation (aggregated/unaggregated)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetM3DbM3dbUserConfigNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArgs) ToGetM3DbM3dbUserConfigNamespaceOutput() GetM3DbM3dbUserConfigNamespaceOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArgs) ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOutput)
+}
+
+// GetM3DbM3dbUserConfigNamespaceArrayInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceArray and GetM3DbM3dbUserConfigNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceArrayInput` via:
+//
+//          GetM3DbM3dbUserConfigNamespaceArray{ GetM3DbM3dbUserConfigNamespaceArgs{...} }
+type GetM3DbM3dbUserConfigNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceArrayOutput() GetM3DbM3dbUserConfigNamespaceArrayOutput
+	ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceArrayOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceArray []GetM3DbM3dbUserConfigNamespaceInput
+
+func (GetM3DbM3dbUserConfigNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArray) ToGetM3DbM3dbUserConfigNamespaceArrayOutput() GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArray) ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOutput) ToGetM3DbM3dbUserConfigNamespaceOutput() GetM3DbM3dbUserConfigNamespaceOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOutput) ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOutput {
+	return o
+}
+
+// The name of the namespace
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Namespace options
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Options() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) *GetM3DbM3dbUserConfigNamespaceOptions { return v.Options }).(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+// The resolution for an aggregated namespace
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Resolution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) *string { return v.Resolution }).(pulumi.StringPtrOutput)
+}
+
+// The type of aggregation (aggregated/unaggregated)
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceArrayOutput) ToGetM3DbM3dbUserConfigNamespaceArrayOutput() GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceArrayOutput) ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigNamespace {
+		return vs[0].([]GetM3DbM3dbUserConfigNamespace)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigNamespaceOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptions struct {
+	// Retention options
+	RetentionOptions *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions `pulumi:"retentionOptions"`
+	// Controls whether M3DB will create snapshot files for
+	// this namespace
+	SnapshotEnabled *string `pulumi:"snapshotEnabled"`
+	// Controls whether M3DB will include writes to this
+	// namespace in the commitlog.
+	WritesToCommitlog *string `pulumi:"writesToCommitlog"`
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsArgs and GetM3DbM3dbUserConfigNamespaceOptionsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsInput` via:
+//
+//          GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
+type GetM3DbM3dbUserConfigNamespaceOptionsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsArgs struct {
+	// Retention options
+	RetentionOptions GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput `pulumi:"retentionOptions"`
+	// Controls whether M3DB will create snapshot files for
+	// this namespace
+	SnapshotEnabled pulumi.StringPtrInput `pulumi:"snapshotEnabled"`
+	// Controls whether M3DB will include writes to this
+	// namespace in the commitlog.
+	WritesToCommitlog pulumi.StringPtrInput `pulumi:"writesToCommitlog"`
+}
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsOutput).ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsArgs, GetM3DbM3dbUserConfigNamespaceOptionsPtr and GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsPtrInput` via:
+//
+//          GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetM3DbM3dbUserConfigNamespaceOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput
+}
+
+type getM3DbM3dbUserConfigNamespaceOptionsPtrType GetM3DbM3dbUserConfigNamespaceOptionsArgs
+
+func GetM3DbM3dbUserConfigNamespaceOptionsPtr(v *GetM3DbM3dbUserConfigNamespaceOptionsArgs) GetM3DbM3dbUserConfigNamespaceOptionsPtrInput {
+	return (*getM3DbM3dbUserConfigNamespaceOptionsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigNamespaceOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptions) *GetM3DbM3dbUserConfigNamespaceOptions {
+		return &v
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+// Retention options
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) RetentionOptions() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptions) *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return v.RetentionOptions
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls whether M3DB will create snapshot files for
+// this namespace
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) SnapshotEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptions) *string { return v.SnapshotEnabled }).(pulumi.StringPtrOutput)
+}
+
+// Controls whether M3DB will include writes to this
+// namespace in the commitlog.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) WritesToCommitlog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptions) *string { return v.WritesToCommitlog }).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) Elem() GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) GetM3DbM3dbUserConfigNamespaceOptions { return *v }).(GetM3DbM3dbUserConfigNamespaceOptionsOutput)
+}
+
+// Retention options
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) RetentionOptions() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionOptions
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls whether M3DB will create snapshot files for
+// this namespace
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) SnapshotEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether M3DB will include writes to this
+// namespace in the commitlog.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) WritesToCommitlog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WritesToCommitlog
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions struct {
+	// Controls how long we wait before expiring stale data
+	BlockDataExpiryDuration *string `pulumi:"blockDataExpiryDuration"`
+	// Controls how long to keep a block in memory before
+	// flushing to a fileset on disk
+	BlocksizeDuration *string `pulumi:"blocksizeDuration"`
+	// Controls how far into the future writes to
+	// the namespace will be accepted
+	BufferFutureDuration *string `pulumi:"bufferFutureDuration"`
+	// Controls how far into the past writes to the
+	// namespace will be accepted
+	BufferPastDuration *string `pulumi:"bufferPastDuration"`
+	// Controls the duration of time that M3DB will
+	// retain data for the namespace
+	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs and GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput` via:
+//
+//          GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs struct {
+	// Controls how long we wait before expiring stale data
+	BlockDataExpiryDuration pulumi.StringPtrInput `pulumi:"blockDataExpiryDuration"`
+	// Controls how long to keep a block in memory before
+	// flushing to a fileset on disk
+	BlocksizeDuration pulumi.StringPtrInput `pulumi:"blocksizeDuration"`
+	// Controls how far into the future writes to
+	// the namespace will be accepted
+	BufferFutureDuration pulumi.StringPtrInput `pulumi:"bufferFutureDuration"`
+	// Controls how far into the past writes to the
+	// namespace will be accepted
+	BufferPastDuration pulumi.StringPtrInput `pulumi:"bufferPastDuration"`
+	// Controls the duration of time that M3DB will
+	// retain data for the namespace
+	RetentionPeriodDuration pulumi.StringPtrInput `pulumi:"retentionPeriodDuration"`
+}
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput).ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs, GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr and GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput` via:
+//
+//          GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput
+}
+
+type getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs
+
+func GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput {
+	return (*getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return &v
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls how long we wait before expiring stale data
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BlockDataExpiryDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		return v.BlockDataExpiryDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how long to keep a block in memory before
+// flushing to a fileset on disk
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BlocksizeDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BlocksizeDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the future writes to
+// the namespace will be accepted
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BufferFutureDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BufferFutureDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the past writes to the
+// namespace will be accepted
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BufferPastDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BufferPastDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls the duration of time that M3DB will
+// retain data for the namespace
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) RetentionPeriodDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		return v.RetentionPeriodDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) Elem() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return *v
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput)
+}
+
+// Controls how long we wait before expiring stale data
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BlockDataExpiryDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockDataExpiryDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how long to keep a block in memory before
+// flushing to a fileset on disk
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BlocksizeDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlocksizeDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the future writes to
+// the namespace will be accepted
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BufferFutureDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BufferFutureDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the past writes to the
+// namespace will be accepted
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BufferPastDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BufferPastDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the duration of time that M3DB will
+// retain data for the namespace
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) RetentionPeriodDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPrivateAccess struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator *string `pulumi:"m3coordinator"`
+}
+
+// GetM3DbM3dbUserConfigPrivateAccessInput is an input type that accepts GetM3DbM3dbUserConfigPrivateAccessArgs and GetM3DbM3dbUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPrivateAccessInput` via:
+//
+//          GetM3DbM3dbUserConfigPrivateAccessArgs{...}
+type GetM3DbM3dbUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPrivateAccessOutput() GetM3DbM3dbUserConfigPrivateAccessOutput
+	ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(context.Context) GetM3DbM3dbUserConfigPrivateAccessOutput
+}
+
+type GetM3DbM3dbUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator pulumi.StringPtrInput `pulumi:"m3coordinator"`
+}
+
+func (GetM3DbM3dbUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessOutput() GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return i.ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPrivateAccessOutput)
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPrivateAccessOutput).ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigPrivateAccessPtrInput is an input type that accepts GetM3DbM3dbUserConfigPrivateAccessArgs, GetM3DbM3dbUserConfigPrivateAccessPtr and GetM3DbM3dbUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPrivateAccessPtrInput` via:
+//
+//          GetM3DbM3dbUserConfigPrivateAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type GetM3DbM3dbUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput
+	ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput
+}
+
+type getM3DbM3dbUserConfigPrivateAccessPtrType GetM3DbM3dbUserConfigPrivateAccessArgs
+
+func GetM3DbM3dbUserConfigPrivateAccessPtr(v *GetM3DbM3dbUserConfigPrivateAccessArgs) GetM3DbM3dbUserConfigPrivateAccessPtrInput {
+	return (*getM3DbM3dbUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigPrivateAccessPtrType) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigPrivateAccessPtrType) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessOutput() GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigPrivateAccess) *GetM3DbM3dbUserConfigPrivateAccess {
+		return &v
+	}).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigPrivateAccess) *string { return v.M3coordinator }).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) Elem() GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPrivateAccess) GetM3DbM3dbUserConfigPrivateAccess { return *v }).(GetM3DbM3dbUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3coordinator
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPublicAccess struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator *string `pulumi:"m3coordinator"`
+}
+
+// GetM3DbM3dbUserConfigPublicAccessInput is an input type that accepts GetM3DbM3dbUserConfigPublicAccessArgs and GetM3DbM3dbUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPublicAccessInput` via:
+//
+//          GetM3DbM3dbUserConfigPublicAccessArgs{...}
+type GetM3DbM3dbUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPublicAccessOutput() GetM3DbM3dbUserConfigPublicAccessOutput
+	ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(context.Context) GetM3DbM3dbUserConfigPublicAccessOutput
+}
+
+type GetM3DbM3dbUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to m3coordinator from the public internet
+	// for service nodes that are in a project VPC or another type of private network.
+	M3coordinator pulumi.StringPtrInput `pulumi:"m3coordinator"`
+}
+
+func (GetM3DbM3dbUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessOutput() GetM3DbM3dbUserConfigPublicAccessOutput {
+	return i.ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPublicAccessOutput)
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPublicAccessOutput).ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigPublicAccessPtrInput is an input type that accepts GetM3DbM3dbUserConfigPublicAccessArgs, GetM3DbM3dbUserConfigPublicAccessPtr and GetM3DbM3dbUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPublicAccessPtrInput` via:
+//
+//          GetM3DbM3dbUserConfigPublicAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type GetM3DbM3dbUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput
+	ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput
+}
+
+type getM3DbM3dbUserConfigPublicAccessPtrType GetM3DbM3dbUserConfigPublicAccessArgs
+
+func GetM3DbM3dbUserConfigPublicAccessPtr(v *GetM3DbM3dbUserConfigPublicAccessArgs) GetM3DbM3dbUserConfigPublicAccessPtrInput {
+	return (*getM3DbM3dbUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigPublicAccessPtrType) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigPublicAccessPtrType) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessOutput() GetM3DbM3dbUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigPublicAccess) *GetM3DbM3dbUserConfigPublicAccess {
+		return &v
+	}).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigPublicAccess) *string { return v.M3coordinator }).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) Elem() GetM3DbM3dbUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPublicAccess) GetM3DbM3dbUserConfigPublicAccess { return *v }).(GetM3DbM3dbUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet
+// for service nodes that are in a project VPC or another type of private network.
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) M3coordinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3coordinator
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbServiceIntegration struct {
+	IntegrationType   string `pulumi:"integrationType"`
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetM3DbServiceIntegrationInput is an input type that accepts GetM3DbServiceIntegrationArgs and GetM3DbServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetM3DbServiceIntegrationInput` via:
+//
+//          GetM3DbServiceIntegrationArgs{...}
+type GetM3DbServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetM3DbServiceIntegrationOutput() GetM3DbServiceIntegrationOutput
+	ToGetM3DbServiceIntegrationOutputWithContext(context.Context) GetM3DbServiceIntegrationOutput
+}
+
+type GetM3DbServiceIntegrationArgs struct {
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetM3DbServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (i GetM3DbServiceIntegrationArgs) ToGetM3DbServiceIntegrationOutput() GetM3DbServiceIntegrationOutput {
+	return i.ToGetM3DbServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetM3DbServiceIntegrationArgs) ToGetM3DbServiceIntegrationOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbServiceIntegrationOutput)
+}
+
+// GetM3DbServiceIntegrationArrayInput is an input type that accepts GetM3DbServiceIntegrationArray and GetM3DbServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetM3DbServiceIntegrationArrayInput` via:
+//
+//          GetM3DbServiceIntegrationArray{ GetM3DbServiceIntegrationArgs{...} }
+type GetM3DbServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbServiceIntegrationArrayOutput() GetM3DbServiceIntegrationArrayOutput
+	ToGetM3DbServiceIntegrationArrayOutputWithContext(context.Context) GetM3DbServiceIntegrationArrayOutput
+}
+
+type GetM3DbServiceIntegrationArray []GetM3DbServiceIntegrationInput
+
+func (GetM3DbServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (i GetM3DbServiceIntegrationArray) ToGetM3DbServiceIntegrationArrayOutput() GetM3DbServiceIntegrationArrayOutput {
+	return i.ToGetM3DbServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbServiceIntegrationArray) ToGetM3DbServiceIntegrationArrayOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbServiceIntegrationArrayOutput)
+}
+
+type GetM3DbServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (o GetM3DbServiceIntegrationOutput) ToGetM3DbServiceIntegrationOutput() GetM3DbServiceIntegrationOutput {
+	return o
+}
+
+func (o GetM3DbServiceIntegrationOutput) ToGetM3DbServiceIntegrationOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationOutput {
+	return o
+}
+
+func (o GetM3DbServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+func (o GetM3DbServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetM3DbServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (o GetM3DbServiceIntegrationArrayOutput) ToGetM3DbServiceIntegrationArrayOutput() GetM3DbServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetM3DbServiceIntegrationArrayOutput) ToGetM3DbServiceIntegrationArrayOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetM3DbServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetM3DbServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbServiceIntegration {
+		return vs[0].([]GetM3DbServiceIntegration)[vs[1].(int)]
+	}).(GetM3DbServiceIntegrationOutput)
 }
 
 type GetMySqlComponent struct {
@@ -48098,6 +53701,7 @@ func (o GetServiceElasticsearchUserConfigOutput) ServiceToForkFrom() pulumi.Stri
 type GetServiceElasticsearchUserConfigElasticsearch struct {
 	ActionAutoCreateIndexEnabled       *string  `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      *string  `pulumi:"actionDestructiveRequiresName"`
+	ClusterMaxShardsPerNode            *string  `pulumi:"clusterMaxShardsPerNode"`
 	HttpMaxContentLength               *string  `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                  *string  `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength           *string  `pulumi:"httpMaxInitialLineLength"`
@@ -48136,6 +53740,7 @@ type GetServiceElasticsearchUserConfigElasticsearchInput interface {
 type GetServiceElasticsearchUserConfigElasticsearchArgs struct {
 	ActionAutoCreateIndexEnabled       pulumi.StringPtrInput   `pulumi:"actionAutoCreateIndexEnabled"`
 	ActionDestructiveRequiresName      pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
+	ClusterMaxShardsPerNode            pulumi.StringPtrInput   `pulumi:"clusterMaxShardsPerNode"`
 	HttpMaxContentLength               pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                  pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength           pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
@@ -48242,6 +53847,10 @@ func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ActionAutoCreateIn
 
 func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ActionDestructiveRequiresName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ActionDestructiveRequiresName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigElasticsearch) *string { return v.ClusterMaxShardsPerNode }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigElasticsearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
@@ -48371,6 +53980,15 @@ func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ActionDestructi
 			return nil
 		}
 		return v.ActionDestructiveRequiresName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigElasticsearchPtrOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigElasticsearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterMaxShardsPerNode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -52654,11 +58272,14 @@ func (o GetServiceKafkaConnectUserConfigOutput) PublicAccess() GetServiceKafkaCo
 type GetServiceKafkaConnectUserConfigKafkaConnect struct {
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               *string `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      *string `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              *string `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
 }
 
@@ -52676,11 +58297,14 @@ type GetServiceKafkaConnectUserConfigKafkaConnectInput interface {
 type GetServiceKafkaConnectUserConfigKafkaConnectArgs struct {
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
@@ -52770,8 +58394,16 @@ func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerAutoOffsetRe
 	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ConsumerMaxPartitionFetchBytes }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
@@ -52788,6 +58420,10 @@ func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushIntervalM
 
 func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaConnectUserConfigKafkaConnect) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaConnectUserConfigKafkaConnectOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
@@ -52832,12 +58468,30 @@ func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerAutoOffse
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -52874,6 +58528,15 @@ func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetFlushTimeou
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaConnectUserConfigKafkaConnectPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -53462,6 +59125,7 @@ type GetServiceKafkaUserConfig struct {
 	PrivateAccess              *GetServiceKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
 	PublicAccess               *GetServiceKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
 	SchemaRegistry             *string                                              `pulumi:"schemaRegistry"`
+	SchemaRegistryConfig       *GetServiceKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
 }
 
 // GetServiceKafkaUserConfigInput is an input type that accepts GetServiceKafkaUserConfigArgs and GetServiceKafkaUserConfigOutput values.
@@ -53488,6 +59152,7 @@ type GetServiceKafkaUserConfigArgs struct {
 	PrivateAccess              GetServiceKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
 	PublicAccess               GetServiceKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
 	SchemaRegistry             pulumi.StringPtrInput                                       `pulumi:"schemaRegistry"`
+	SchemaRegistryConfig       GetServiceKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
 }
 
 func (GetServiceKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -53568,6 +59233,12 @@ func (o GetServiceKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetServiceKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigOutput) SchemaRegistryConfig() GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfig) *GetServiceKafkaUserConfigSchemaRegistryConfig {
+		return v.SchemaRegistryConfig
+	}).(GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
 type GetServiceKafkaUserConfigKafka struct {
 	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
 	CompressionType                        *string `pulumi:"compressionType"`
@@ -53575,18 +59246,30 @@ type GetServiceKafkaUserConfigKafka struct {
 	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
 	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
 	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs            *string `pulumi:"logCleanerDeleteRetentionMs"`
 	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
 	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
 	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
 	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages               *string `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                     *string `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                  *string `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                   *string `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable         *string `pulumi:"logMessageDownconversionEnable"`
 	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
+	LogPreallocate                         *string `pulumi:"logPreallocate"`
 	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
 	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
+	LogRetentionMs                         *string `pulumi:"logRetentionMs"`
+	LogRollJitterMs                        *string `pulumi:"logRollJitterMs"`
+	LogRollMs                              *string `pulumi:"logRollMs"`
 	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                *string `pulumi:"logSegmentDeleteDelayMs"`
 	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
 	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                      *string `pulumi:"minInsyncReplicas"`
 	NumPartitions                          *string `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
 	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
@@ -53613,18 +59296,30 @@ type GetServiceKafkaUserConfigKafkaArgs struct {
 	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
 	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
 	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs            pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
 	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
 	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
 	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
 	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages               pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                     pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                  pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                   pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable         pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
 	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	LogPreallocate                         pulumi.StringPtrInput `pulumi:"logPreallocate"`
 	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
 	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogRetentionMs                         pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	LogRollJitterMs                        pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
+	LogRollMs                              pulumi.StringPtrInput `pulumi:"logRollMs"`
 	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
 	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
 	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
 	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                      pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
 	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
 	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
 	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
@@ -53733,6 +59428,10 @@ func (o GetServiceKafkaUserConfigKafkaOutput) GroupMinSessionTimeoutMs() pulumi.
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.GroupMinSessionTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanerDeleteRetentionMs }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanerMaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
@@ -53749,12 +59448,36 @@ func (o GetServiceKafkaUserConfigKafkaOutput) LogCleanupPolicy() pulumi.StringPt
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogCleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogFlushIntervalMessages }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogFlushIntervalMs }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogIndexIntervalBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogIndexSizeMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogMessageDownconversionEnable }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaOutput) LogMessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogMessageTimestampType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogPreallocate }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaOutput) LogRetentionBytes() pulumi.StringPtrOutput {
@@ -53765,8 +59488,24 @@ func (o GetServiceKafkaUserConfigKafkaOutput) LogRetentionHours() pulumi.StringP
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogRollJitterMs }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogRollMs }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.LogSegmentDeleteDelayMs }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaOutput) MaxConnectionsPerIp() pulumi.StringPtrOutput {
@@ -53779,6 +59518,10 @@ func (o GetServiceKafkaUserConfigKafkaOutput) MaxIncrementalFetchSessionCacheSlo
 
 func (o GetServiceKafkaUserConfigKafkaOutput) MessageMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.MessageMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaOutput) NumPartitions() pulumi.StringPtrOutput {
@@ -53877,6 +59620,15 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) GroupMinSessionTimeoutMs() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerDeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogCleanerDeleteRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanerMaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -53913,6 +59665,51 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogCleanupPolicy() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMessages
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFlushIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogIndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexIntervalBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogIndexSizeMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogIndexSizeMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageDownconversionEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogMessageDownconversionEnable
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
@@ -53928,6 +59725,15 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogMessageTimestampType() pulum
 			return nil
 		}
 		return v.LogMessageTimestampType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogPreallocate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogPreallocate
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -53949,12 +59755,48 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionHours() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRollJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollJitterMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogRollMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogRollMs
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogSegmentBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) LogSegmentDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogSegmentDeleteDelayMs
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -53982,6 +59824,15 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) MessageMaxBytes() pulumi.String
 			return nil
 		}
 		return v.MessageMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinInsyncReplicas
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54185,11 +60036,14 @@ func (o GetServiceKafkaUserConfigKafkaAuthenticationMethodsPtrOutput) Sasl() pul
 type GetServiceKafkaUserConfigKafkaConnectConfig struct {
 	ConnectorClientConfigOverridePolicy *string `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             *string `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               *string `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              *string `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      *string `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           *string `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              *string `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               *string `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                *string `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              *string `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    *string `pulumi:"sessionTimeoutMs"`
 }
 
@@ -54207,11 +60061,14 @@ type GetServiceKafkaUserConfigKafkaConnectConfigInput interface {
 type GetServiceKafkaUserConfigKafkaConnectConfigArgs struct {
 	ConnectorClientConfigOverridePolicy pulumi.StringPtrInput `pulumi:"connectorClientConfigOverridePolicy"`
 	ConsumerAutoOffsetReset             pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	ConsumerFetchMaxBytes               pulumi.StringPtrInput `pulumi:"consumerFetchMaxBytes"`
 	ConsumerIsolationLevel              pulumi.StringPtrInput `pulumi:"consumerIsolationLevel"`
+	ConsumerMaxPartitionFetchBytes      pulumi.StringPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
 	ConsumerMaxPollIntervalMs           pulumi.StringPtrInput `pulumi:"consumerMaxPollIntervalMs"`
 	ConsumerMaxPollRecords              pulumi.StringPtrInput `pulumi:"consumerMaxPollRecords"`
 	OffsetFlushIntervalMs               pulumi.StringPtrInput `pulumi:"offsetFlushIntervalMs"`
 	OffsetFlushTimeoutMs                pulumi.StringPtrInput `pulumi:"offsetFlushTimeoutMs"`
+	ProducerMaxRequestSize              pulumi.StringPtrInput `pulumi:"producerMaxRequestSize"`
 	SessionTimeoutMs                    pulumi.StringPtrInput `pulumi:"sessionTimeoutMs"`
 }
 
@@ -54301,8 +60158,16 @@ func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerAutoOffsetRes
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerAutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerFetchMaxBytes }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerIsolationLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ConsumerMaxPartitionFetchBytes }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ConsumerMaxPollIntervalMs() pulumi.StringPtrOutput {
@@ -54319,6 +60184,10 @@ func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushIntervalMs
 
 func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) OffsetFlushTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.OffsetFlushTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafkaConnectConfig) *string { return v.ProducerMaxRequestSize }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigKafkaConnectConfigOutput) SessionTimeoutMs() pulumi.StringPtrOutput {
@@ -54363,12 +60232,30 @@ func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerAutoOffset
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerFetchMaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerIsolationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumerIsolationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54405,6 +60292,15 @@ func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) OffsetFlushTimeout
 			return nil
 		}
 		return v.OffsetFlushTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaConnectConfigPtrOutput) ProducerMaxRequestSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafkaConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54927,6 +60823,149 @@ func (o GetServiceKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.
 			return nil
 		}
 		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceKafkaUserConfigSchemaRegistryConfig struct {
+	LeaderEligibility *string `pulumi:"leaderEligibility"`
+	TopicName         *string `pulumi:"topicName"`
+}
+
+// GetServiceKafkaUserConfigSchemaRegistryConfigInput is an input type that accepts GetServiceKafkaUserConfigSchemaRegistryConfigArgs and GetServiceKafkaUserConfigSchemaRegistryConfigOutput values.
+// You can construct a concrete instance of `GetServiceKafkaUserConfigSchemaRegistryConfigInput` via:
+//
+//          GetServiceKafkaUserConfigSchemaRegistryConfigArgs{...}
+type GetServiceKafkaUserConfigSchemaRegistryConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaUserConfigSchemaRegistryConfigOutput() GetServiceKafkaUserConfigSchemaRegistryConfigOutput
+	ToGetServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigOutput
+}
+
+type GetServiceKafkaUserConfigSchemaRegistryConfigArgs struct {
+	LeaderEligibility pulumi.StringPtrInput `pulumi:"leaderEligibility"`
+	TopicName         pulumi.StringPtrInput `pulumi:"topicName"`
+}
+
+func (GetServiceKafkaUserConfigSchemaRegistryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i GetServiceKafkaUserConfigSchemaRegistryConfigArgs) ToGetServiceKafkaUserConfigSchemaRegistryConfigOutput() GetServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return i.ToGetServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaUserConfigSchemaRegistryConfigArgs) ToGetServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+func (i GetServiceKafkaUserConfigSchemaRegistryConfigArgs) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaUserConfigSchemaRegistryConfigArgs) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaUserConfigSchemaRegistryConfigOutput).ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx)
+}
+
+// GetServiceKafkaUserConfigSchemaRegistryConfigPtrInput is an input type that accepts GetServiceKafkaUserConfigSchemaRegistryConfigArgs, GetServiceKafkaUserConfigSchemaRegistryConfigPtr and GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput values.
+// You can construct a concrete instance of `GetServiceKafkaUserConfigSchemaRegistryConfigPtrInput` via:
+//
+//          GetServiceKafkaUserConfigSchemaRegistryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceKafkaUserConfigSchemaRegistryConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput
+	ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput
+}
+
+type getServiceKafkaUserConfigSchemaRegistryConfigPtrType GetServiceKafkaUserConfigSchemaRegistryConfigArgs
+
+func GetServiceKafkaUserConfigSchemaRegistryConfigPtr(v *GetServiceKafkaUserConfigSchemaRegistryConfigArgs) GetServiceKafkaUserConfigSchemaRegistryConfigPtrInput {
+	return (*getServiceKafkaUserConfigSchemaRegistryConfigPtrType)(v)
+}
+
+func (*getServiceKafkaUserConfigSchemaRegistryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i *getServiceKafkaUserConfigSchemaRegistryConfigPtrType) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceKafkaUserConfigSchemaRegistryConfigPtrType) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+type GetServiceKafkaUserConfigSchemaRegistryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaUserConfigSchemaRegistryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigOutput) ToGetServiceKafkaUserConfigSchemaRegistryConfigOutput() GetServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigOutput) ToGetServiceKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigOutput) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigOutput) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigSchemaRegistryConfig) *GetServiceKafkaUserConfigSchemaRegistryConfig {
+		return &v
+	}).(GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigSchemaRegistryConfig) *string { return v.LeaderEligibility }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigSchemaRegistryConfig) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput() GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) ToGetServiceKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) Elem() GetServiceKafkaUserConfigSchemaRegistryConfigOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigSchemaRegistryConfig) GetServiceKafkaUserConfigSchemaRegistryConfig {
+		return *v
+	}).(GetServiceKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) LeaderEligibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeaderEligibility
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58485,6 +64524,8 @@ func init() {
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigSchemaRegistryConfigOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerComponentOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerComponentArrayOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerKafkaMirrormakerOutput{})
@@ -58499,6 +64540,34 @@ func init() {
 	pulumi.RegisterOutputType(KafkaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(KafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(KafkaTopicConfigPtrOutput{})
+	pulumi.RegisterOutputType(M3AggregatorComponentOutput{})
+	pulumi.RegisterOutputType(M3AggregatorComponentArrayOutput{})
+	pulumi.RegisterOutputType(M3AggregatorM3aggregatorOutput{})
+	pulumi.RegisterOutputType(M3AggregatorM3aggregatorPtrOutput{})
+	pulumi.RegisterOutputType(M3AggregatorM3aggregatorUserConfigOutput{})
+	pulumi.RegisterOutputType(M3AggregatorM3aggregatorUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(M3AggregatorServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(M3AggregatorServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(M3DbComponentOutput{})
+	pulumi.RegisterOutputType(M3DbComponentArrayOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigLimitsOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigLimitsPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceOptionsOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceOptionsPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(M3DbServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(M3DbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(MySqlComponentOutput{})
 	pulumi.RegisterOutputType(MySqlComponentArrayOutput{})
 	pulumi.RegisterOutputType(MySqlMysqlOutput{})
@@ -58663,6 +64732,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaUserConfigSchemaRegistryConfigOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaUserConfigSchemaRegistryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMysqlOutput{})
 	pulumi.RegisterOutputType(ServiceMysqlPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMysqlUserConfigOutput{})
@@ -58797,6 +64868,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerComponentOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerOutput{})
@@ -58808,6 +64881,30 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicConfigOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorComponentOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorUserConfigOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbComponentOutput{})
+	pulumi.RegisterOutputType(GetM3DbComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetM3DbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlComponentOutput{})
 	pulumi.RegisterOutputType(GetMySqlComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlOutput{})
@@ -58939,6 +65036,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaUserConfigSchemaRegistryConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaUserConfigSchemaRegistryConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceMysqlOutput{})
 	pulumi.RegisterOutputType(GetServiceMysqlUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceMysqlUserConfigMysqlOutput{})

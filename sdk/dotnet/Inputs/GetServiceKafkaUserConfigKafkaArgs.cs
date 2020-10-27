@@ -30,6 +30,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("groupMinSessionTimeoutMs")]
         public string? GroupMinSessionTimeoutMs { get; set; }
 
+        [Input("logCleanerDeleteRetentionMs")]
+        public string? LogCleanerDeleteRetentionMs { get; set; }
+
         [Input("logCleanerMaxCompactionLagMs")]
         public string? LogCleanerMaxCompactionLagMs { get; set; }
 
@@ -42,11 +45,29 @@ namespace Pulumi.Aiven.Inputs
         [Input("logCleanupPolicy")]
         public string? LogCleanupPolicy { get; set; }
 
+        [Input("logFlushIntervalMessages")]
+        public string? LogFlushIntervalMessages { get; set; }
+
+        [Input("logFlushIntervalMs")]
+        public string? LogFlushIntervalMs { get; set; }
+
+        [Input("logIndexIntervalBytes")]
+        public string? LogIndexIntervalBytes { get; set; }
+
+        [Input("logIndexSizeMaxBytes")]
+        public string? LogIndexSizeMaxBytes { get; set; }
+
+        [Input("logMessageDownconversionEnable")]
+        public string? LogMessageDownconversionEnable { get; set; }
+
         [Input("logMessageTimestampDifferenceMaxMs")]
         public string? LogMessageTimestampDifferenceMaxMs { get; set; }
 
         [Input("logMessageTimestampType")]
         public string? LogMessageTimestampType { get; set; }
+
+        [Input("logPreallocate")]
+        public string? LogPreallocate { get; set; }
 
         [Input("logRetentionBytes")]
         public string? LogRetentionBytes { get; set; }
@@ -54,8 +75,20 @@ namespace Pulumi.Aiven.Inputs
         [Input("logRetentionHours")]
         public string? LogRetentionHours { get; set; }
 
+        [Input("logRetentionMs")]
+        public string? LogRetentionMs { get; set; }
+
+        [Input("logRollJitterMs")]
+        public string? LogRollJitterMs { get; set; }
+
+        [Input("logRollMs")]
+        public string? LogRollMs { get; set; }
+
         [Input("logSegmentBytes")]
         public string? LogSegmentBytes { get; set; }
+
+        [Input("logSegmentDeleteDelayMs")]
+        public string? LogSegmentDeleteDelayMs { get; set; }
 
         [Input("maxConnectionsPerIp")]
         public string? MaxConnectionsPerIp { get; set; }
@@ -65,6 +98,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("messageMaxBytes")]
         public string? MessageMaxBytes { get; set; }
+
+        [Input("minInsyncReplicas")]
+        public string? MinInsyncReplicas { get; set; }
 
         [Input("numPartitions")]
         public string? NumPartitions { get; set; }

@@ -554,8 +554,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.2.1/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2
 github.com/pulumi/pulumi/sdk/v2 v2.11.3-0.20201009201355-249140242ebb/go.mod h1:WQ4WaHMA7mduVHAJi87iIqbWvqsuBUYccBiKK+FrayI=
 github.com/pulumi/pulumi/sdk/v2 v2.12.0 h1:d2BQnOvRWCbxDG5DO0bz5FkhFbymABmOxlsx0h2Yhm8=
 github.com/pulumi/pulumi/sdk/v2 v2.12.0/go.mod h1:WQ4WaHMA7mduVHAJi87iIqbWvqsuBUYccBiKK+FrayI=
-github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201023102531-2d2a67feb64a h1:UTg8Wd4CDQbPmN+hjqOhRPsFO1e1B3kLYzaZpcX0ao0=
-github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201023102531-2d2a67feb64a/go.mod h1:Dvau4PDdx1JXfzBA9xGNX2l9xrlhJXlTcno0UBoChBE=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201027155235-d96175a22e8f h1:g3uNa76cvT9W8LDg7t7NBqK7BMAt4aBuWqHauYSzdgI=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201027155235-d96175a22e8f/go.mod h1:Dvau4PDdx1JXfzBA9xGNX2l9xrlhJXlTcno0UBoChBE=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0 h1:RR9dF3JtopPvtkroDZuVD7qquD0bnHlKSqaQhgwt8yk=
