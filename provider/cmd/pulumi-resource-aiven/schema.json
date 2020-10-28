@@ -499,6 +499,15 @@
                         }
                     }
                 },
+                "clusterMaxShardsPerNode": {
+                    "type": "string",
+                    "description": "Controls the number of shards allowed in the \ncluster per data node\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "httpMaxContentLength": {
                     "type": "string",
                     "description": "Maximum content length for HTTP requests to \nthe Elasticsearch HTTP API, in bytes.\n",
@@ -2114,9 +2123,27 @@
                         }
                     }
                 },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer, and if \nthe first record batch in the first non-empty partition of the fetch is larger than this value,\nthe record batch will still be returned to ensure that the consumer can make progress. As such,\nthis is not a absolute maximum.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "consumerIsolationLevel": {
                     "type": "string",
                     "description": "Transaction read isolation level. read_uncommitted is \nthe default, but read_committed can be used if consume-exactly-once behavior is desired.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer.If \nthe first record batch in the first non-empty partition of the fetch is larger than this limit,\nthe batch will still be returned to ensure that the consumer can make progress.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2153,6 +2180,15 @@
                 "offsetFlushTimeoutMs": {
                     "type": "string",
                     "description": "Maximum number of milliseconds to wait for records to flush \nand partition offset data to be committed to offset storage before cancelling the process and restoring\nthe offset data to be committed in a future attempt (defaults to 5000).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
+                    "type": "string",
+                    "description": "This setting will limit the number of record batches the \nproducer will send in a single request to avoid sending huge requests.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2445,6 +2481,15 @@
                             "mapCase": false
                         }
                     }
+                },
+                "schemaRegistryConfig": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigSchemaRegistryConfig:KafkaKafkaUserConfigSchemaRegistryConfig",
+                    "description": "Schema Registry configuration\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -2480,7 +2525,7 @@
                 },
                 "defaultReplicationFactor": {
                     "type": "string",
-                    "description": "Replication factor for autocreated topics\n* `group_max_session_timeout_ms\": {\n* `group_min_session_timeout_ms\": {\n",
+                    "description": "Replication factor for autocreated topics\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2489,6 +2534,7 @@
                 },
                 "groupMaxSessionTimeoutMs": {
                     "type": "string",
+                    "description": "The maximum allowed session timeout for registered \nconsumers. Longer timeouts give consumers more time to process messages in between heartbeats\nat the cost of a longer time to detect failures.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2496,6 +2542,15 @@
                     }
                 },
                 "groupMinSessionTimeoutMs": {
+                    "type": "string",
+                    "description": "The minimum allowed session timeout for registered \nconsumers. Longer timeouts give consumers more time to process messages in between heartbeats\nat the cost of a longer time to detect failures.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logCleanerDeleteRetentionMs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -2505,7 +2560,7 @@
                 },
                 "logCleanerMaxCompactionLagMs": {
                     "type": "string",
-                    "description": "The maximum amount of time message will \nremain uncompacted. Only applicable for logs that are being compacted\n* `log_cleaner_min_cleanable_ratio\": {\n",
+                    "description": "The maximum amount of time message will \nremain uncompacted. Only applicable for logs that are being compacted\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2514,6 +2569,7 @@
                 },
                 "logCleanerMinCleanableRatio": {
                     "type": "string",
+                    "description": "Controls log compactor frequency. Larger \nvalue means more frequent compactions but also more space wasted for logs. Consider setting\nlog.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very\nhigh value for this option.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2522,7 +2578,7 @@
                 },
                 "logCleanerMinCompactionLagMs": {
                     "type": "string",
-                    "description": "The minimum time a message will remain \nuncompacted in the log. Only applicable for logs that are being compacted.\n* `log_cleanup_policy\": {\n",
+                    "description": "The minimum time a message will remain \nuncompacted in the log. Only applicable for logs that are being compacted.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2531,6 +2587,52 @@
                 },
                 "logCleanupPolicy": {
                     "type": "string",
+                    "description": "The default cleanup policy for segments beyond the retention window.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logFlushIntervalMessages": {
+                    "type": "string",
+                    "description": "The number of messages accumulated on a log partition \nbefore messages are flushed to disk.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logFlushIntervalMs": {
+                    "type": "string",
+                    "description": "The maximum time in ms that a message in any topic is kept \nin memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexIntervalBytes": {
+                    "type": "string",
+                    "description": "The interval with which Kafka adds an entry to the offset index.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexSizeMaxBytes": {
+                    "type": "string",
+                    "description": "The maximum size in bytes of the offset index.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logMessageDownconversionEnable": {
+                    "type": "string",
+                    "description": "This configuration controls whether down-conversion \nof message formats is enabled to satisfy consume requests.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2555,6 +2657,15 @@
                         }
                     }
                 },
+                "logPreallocate": {
+                    "type": "string",
+                    "description": "Should pre allocate file when create new segment?\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logRetentionBytes": {
                     "type": "string",
                     "description": "The maximum size of the log before deleting messages\n",
@@ -2566,7 +2677,34 @@
                 },
                 "logRetentionHours": {
                     "type": "string",
-                    "description": "The number of hours to keep a log file before deleting it\n",
+                    "description": "The number of hours to keep a log file before deleting it.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRetentionMs": {
+                    "type": "string",
+                    "description": "The number of milliseconds to keep a log file before deleting it \n(in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no\ntime limit is applied.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollJitterMs": {
+                    "type": "string",
+                    "description": "The maximum jitter to subtract from logRollTimeMillis \n(in milliseconds). If not set, the value in log.roll.jitter.hours is used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollMs": {
+                    "type": "string",
+                    "description": "The maximum time before a new log segment is rolled out (in milliseconds).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2582,9 +2720,18 @@
                         }
                     }
                 },
+                "logSegmentDeleteDelayMs": {
+                    "type": "string",
+                    "description": "The amount of time to wait before deleting a file \nfrom the filesystem.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxConnectionsPerIp": {
                     "type": "string",
-                    "description": "The maximum number of connections allowed from each ip \naddress (defaults to 2147483647).\n* `max_incremental_fetch_session_cache_slots\": {\n* `message_max_bytes\": {\n",
+                    "description": "The maximum number of connections allowed from each ip \naddress (defaults to 2147483647).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2593,6 +2740,7 @@
                 },
                 "maxIncrementalFetchSessionCacheSlots": {
                     "type": "string",
+                    "description": "The maximum number of incremental fetch \nsessions that the broker will maintain.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2601,6 +2749,16 @@
                 },
                 "messageMaxBytes": {
                     "type": "string",
+                    "description": "The maximum size of message that the server can receive.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minInsyncReplicas": {
+                    "type": "string",
+                    "description": "When a producer sets acks to 'all' (or '-1'), \nmin.insync.replicas specifies the minimum number of replicas that must acknowledge a write for\nthe write to be considered successful.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2609,7 +2767,7 @@
                 },
                 "numPartitions": {
                     "type": "string",
-                    "description": "Number of partitions for autocreated topics\n* `offsets_retention_minutes\": {\n",
+                    "description": "Number of partitions for autocreated topics\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2618,6 +2776,7 @@
                 },
                 "offsetsRetentionMinutes": {
                     "type": "string",
+                    "description": "Log retention window in minutes for offsets topic.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2699,7 +2858,16 @@
                 },
                 "consumerAutoOffsetReset": {
                     "type": "string",
-                    "description": "What to do when there is no initial offset in Kafka or \nif the current offset does not exist any more on the server. Default is earliest\n",
+                    "description": "What to do when there is no initial offset in Kafka or \nif the current offset does not exist any more on the server. Default is earliest.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer, and \nif the first record batch in the first non-empty partition of the fetch is larger than this value,\nthe record batch will still be returned to ensure that the consumer can make progress. As such,\nthis is not a absolute maximum.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2709,6 +2877,15 @@
                 "consumerIsolationLevel": {
                     "type": "string",
                     "description": "Transaction read isolation level. read_uncommitted is \nthe default, but read_committed can be used if consume-exactly-once behavior is desired.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer.If \nthe first record batch in the first non-empty partition of the fetch is larger than this limit,\nthe batch will still be returned to ensure that the consumer can make progress.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2745,6 +2922,15 @@
                 "offsetFlushTimeoutMs": {
                     "type": "string",
                     "description": "Maximum number of milliseconds to wait for records to \nflush and partition offset data to be committed to offset storage before cancelling the process\nand restoring the offset data to be committed in a future attempt (defaults to 5000).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
+                    "type": "string",
+                    "description": "This setting will limit the number of record batches \nthe producer will send in a single request to avoid sending huge requests.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2877,6 +3063,29 @@
                 "schemaRegistry": {
                     "type": "string",
                     "description": "Enable Schema-Registry service\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/KafkaKafkaUserConfigSchemaRegistryConfig:KafkaKafkaUserConfigSchemaRegistryConfig": {
+            "properties": {
+                "leaderEligibility": {
+                    "type": "string",
+                    "description": "If true, Karapace / Schema Registry on the service nodes can \nparticipate in leader election. It might be needed to disable this when the schemas topic is replicated\nto a secondary cluster and Karapace / Schema Registry there must not participate in leader election.\nDefaults to 'true'.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "topicName": {
+                    "type": "string",
+                    "description": "The durable single partition topic that acts as the durable log for the \ndata. This topic must be compacted to avoid losing data due to retention policy. Please note that\nchanging this configuration in an existing Schema Registry / Karapace setup leads to previous\nschemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence\nput out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.\nDefaults to '_schemas'.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3299,6 +3508,511 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/M3AggregatorComponent:M3AggregatorComponent": {
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaAuthenticationMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "route": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "component",
+                        "host",
+                        "kafkaAuthenticationMethod",
+                        "port",
+                        "route",
+                        "ssl",
+                        "usage"
+                    ]
+                }
+            }
+        },
+        "aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator": {
+            "type": "object"
+        },
+        "aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig": {
+            "properties": {
+                "customDomain": {
+                    "type": "string",
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3Version": {
+                    "type": "string",
+                    "description": "M3 major version\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3AggregatorServiceIntegration:M3AggregatorServiceIntegration": {
+            "properties": {
+                "integrationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceServiceName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "integrationType",
+                "sourceServiceName"
+            ]
+        },
+        "aiven:index/M3DbComponent:M3DbComponent": {
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaAuthenticationMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "route": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "component",
+                        "host",
+                        "kafkaAuthenticationMethod",
+                        "port",
+                        "route",
+                        "ssl",
+                        "usage"
+                    ]
+                }
+            }
+        },
+        "aiven:index/M3DbM3db:M3DbM3db": {
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig": {
+            "properties": {
+                "customDomain": {
+                    "type": "string",
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "limits": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfigLimits:M3DbM3dbUserConfigLimits",
+                    "description": "M3 limits\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3Version": {
+                    "type": "string",
+                    "description": "M3 major version\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbM3dbUserConfigNamespace:M3DbM3dbUserConfigNamespace"
+                    },
+                    "description": "List of M3 namespaces\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateAccess": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfigPrivateAccess:M3DbM3dbUserConfigPrivateAccess",
+                    "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfigPublicAccess:M3DbM3dbUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigLimits:M3DbM3dbUserConfigLimits": {
+            "properties": {
+                "globalDatapoints": {
+                    "type": "string",
+                    "description": "The maximum number of data points fetched during request\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryDatapoints": {
+                    "type": "string",
+                    "description": "The maximum number of data points fetched in single query\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryRequireExhaustive": {
+                    "type": "string",
+                    "description": "When query limits are exceeded, whether to return error \n(if True) or return partial results (False)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "querySeries": {
+                    "type": "string",
+                    "description": "The maximum number of series fetched in single query\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigNamespace:M3DbM3dbUserConfigNamespace": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "options": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfigNamespaceOptions:M3DbM3dbUserConfigNamespaceOptions",
+                    "description": "Namespace options\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resolution": {
+                    "type": "string",
+                    "description": "The resolution for an aggregated namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of aggregation (aggregated/unaggregated)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigNamespaceOptions:M3DbM3dbUserConfigNamespaceOptions": {
+            "properties": {
+                "retentionOptions": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfigNamespaceOptionsRetentionOptions:M3DbM3dbUserConfigNamespaceOptionsRetentionOptions",
+                    "description": "Retention options\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snapshotEnabled": {
+                    "type": "string",
+                    "description": "Controls whether M3DB will create snapshot files for \nthis namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "writesToCommitlog": {
+                    "type": "string",
+                    "description": "Controls whether M3DB will include writes to this \nnamespace in the commitlog.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigNamespaceOptionsRetentionOptions:M3DbM3dbUserConfigNamespaceOptionsRetentionOptions": {
+            "properties": {
+                "blockDataExpiryDuration": {
+                    "type": "string",
+                    "description": "Controls how long we wait before expiring stale data\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "blocksizeDuration": {
+                    "type": "string",
+                    "description": "Controls how long to keep a block in memory before \nflushing to a fileset on disk\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bufferFutureDuration": {
+                    "type": "string",
+                    "description": "Controls how far into the future writes to \nthe namespace will be accepted\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bufferPastDuration": {
+                    "type": "string",
+                    "description": "Controls how far into the past writes to the \nnamespace will be accepted\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionPeriodDuration": {
+                    "type": "string",
+                    "description": "Controls the duration of time that M3DB will \nretain data for the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigPrivateAccess:M3DbM3dbUserConfigPrivateAccess": {
+            "properties": {
+                "m3coordinator": {
+                    "type": "string",
+                    "description": "Allow clients to connect to m3coordinator from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigPublicAccess:M3DbM3dbUserConfigPublicAccess": {
+            "properties": {
+                "m3coordinator": {
+                    "type": "string",
+                    "description": "Allow clients to connect to m3coordinator from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbServiceIntegration:M3DbServiceIntegration": {
+            "properties": {
+                "integrationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceServiceName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "integrationType",
+                "sourceServiceName"
+            ]
         },
         "aiven:index/MySqlComponent:MySqlComponent": {
             "properties": {
@@ -5280,6 +5994,14 @@
                         }
                     }
                 },
+                "clusterMaxShardsPerNode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "httpMaxContentLength": {
                     "type": "string",
                     "language": {
@@ -6899,7 +7621,23 @@
                         }
                     }
                 },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "consumerIsolationLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -6932,6 +7670,14 @@
                     }
                 },
                 "offsetFlushTimeoutMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7156,6 +7902,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "schemaRegistryConfig": {
+                    "$ref": "#/types/aiven:index/ServiceKafkaUserConfigSchemaRegistryConfig:ServiceKafkaUserConfigSchemaRegistryConfig",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -7210,6 +7964,14 @@
                         }
                     }
                 },
+                "logCleanerDeleteRetentionMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logCleanerMaxCompactionLagMs": {
                     "type": "string",
                     "language": {
@@ -7242,6 +8004,46 @@
                         }
                     }
                 },
+                "logFlushIntervalMessages": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logFlushIntervalMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexIntervalBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexSizeMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logMessageDownconversionEnable": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logMessageTimestampDifferenceMaxMs": {
                     "type": "string",
                     "language": {
@@ -7251,6 +8053,14 @@
                     }
                 },
                 "logMessageTimestampType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logPreallocate": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7274,7 +8084,39 @@
                         }
                     }
                 },
+                "logRetentionMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollJitterMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logSegmentBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logSegmentDeleteDelayMs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7299,6 +8141,14 @@
                     }
                 },
                 "messageMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minInsyncReplicas": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7396,7 +8246,23 @@
                         }
                     }
                 },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "consumerIsolationLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7429,6 +8295,14 @@
                     }
                 },
                 "offsetFlushTimeoutMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7548,6 +8422,27 @@
                     }
                 },
                 "schemaRegistry": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceKafkaUserConfigSchemaRegistryConfig:ServiceKafkaUserConfigSchemaRegistryConfig": {
+            "properties": {
+                "leaderEligibility": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "topicName": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9301,6 +10196,15 @@
                         }
                     }
                 },
+                "clusterMaxShardsPerNode": {
+                    "type": "string",
+                    "description": "Controls the number of shards allowed in the \ncluster per data node\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "httpMaxContentLength": {
                     "type": "string",
                     "description": "Maximum content length for HTTP requests to \nthe Elasticsearch HTTP API, in bytes.\n",
@@ -10919,9 +11823,27 @@
                         }
                     }
                 },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer, and if \nthe first record batch in the first non-empty partition of the fetch is larger than this value,\nthe record batch will still be returned to ensure that the consumer can make progress. As such,\nthis is not a absolute maximum.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "consumerIsolationLevel": {
                     "type": "string",
-                    "description": "Transaction read isolation level. read_uncommitted is \nthe default, but read_committed can be used if consume-exactly-once behavior is desired.\n* `consumer_max_poll_interval_ms`- The maximum delay in milliseconds between invocations\nof poll() when using consumer group management (defaults to 300000).\n* `consumer_max_poll_records` The maximum number of records returned by a single poll.\n* `offset_flush_interval_ms`- The interval at which to try committing offsets for tasks\n(defaults to 60000).\n* `offset_flush_timeout_ms`- Maximum number of milliseconds to wait for records to flush\nand partition offset data to be committed to offset storage before cancelling the process and restoring\nthe offset data to be committed in a future attempt (defaults to 5000).\n",
+                    "description": "Transaction read isolation level. read_uncommitted is \nthe default, but read_committed can be used if consume-exactly-once behavior is desired.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer.If \nthe first record batch in the first non-empty partition of the fetch is larger than this limit,\nthe batch will still be returned to ensure that the consumer can make progress.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10930,6 +11852,7 @@
                 },
                 "consumerMaxPollIntervalMs": {
                     "type": "string",
+                    "description": "The maximum delay in milliseconds between invocations \nof poll() when using consumer group management (defaults to 300000).\n* `consumer_max_poll_records` The maximum number of records returned by a single poll.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10946,6 +11869,7 @@
                 },
                 "offsetFlushIntervalMs": {
                     "type": "string",
+                    "description": "The interval at which to try committing offsets for tasks \n(defaults to 60000).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10954,6 +11878,16 @@
                 },
                 "offsetFlushTimeoutMs": {
                     "type": "string",
+                    "description": "Maximum number of milliseconds to wait for records to flush \nand partition offset data to be committed to offset storage before cancelling the process and restoring\nthe offset data to be committed in a future attempt (defaults to 5000).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
+                    "type": "string",
+                    "description": "This setting will limit the number of record batches the \nproducer will send in a single request to avoid sending huge requests.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11246,6 +12180,15 @@
                             "mapCase": false
                         }
                     }
+                },
+                "schemaRegistryConfig": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigSchemaRegistryConfig:getKafkaKafkaUserConfigSchemaRegistryConfig",
+                    "description": "Schema Registry configuration\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -11281,7 +12224,7 @@
                 },
                 "defaultReplicationFactor": {
                     "type": "string",
-                    "description": "Replication factor for autocreated topics\n* `group_max_session_timeout_ms\": {\n* `group_min_session_timeout_ms\": {\n",
+                    "description": "Replication factor for autocreated topics\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11290,6 +12233,7 @@
                 },
                 "groupMaxSessionTimeoutMs": {
                     "type": "string",
+                    "description": "The maximum allowed session timeout for registered \nconsumers. Longer timeouts give consumers more time to process messages in between heartbeats\nat the cost of a longer time to detect failures.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11297,6 +12241,15 @@
                     }
                 },
                 "groupMinSessionTimeoutMs": {
+                    "type": "string",
+                    "description": "The minimum allowed session timeout for registered \nconsumers. Longer timeouts give consumers more time to process messages in between heartbeats\nat the cost of a longer time to detect failures.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logCleanerDeleteRetentionMs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -11306,7 +12259,7 @@
                 },
                 "logCleanerMaxCompactionLagMs": {
                     "type": "string",
-                    "description": "The maximum amount of time message will \nremain uncompacted. Only applicable for logs that are being compacted\n* `log_cleaner_min_cleanable_ratio\": {\n",
+                    "description": "The maximum amount of time message will \nremain uncompacted. Only applicable for logs that are being compacted\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11315,6 +12268,7 @@
                 },
                 "logCleanerMinCleanableRatio": {
                     "type": "string",
+                    "description": "Controls log compactor frequency. Larger \nvalue means more frequent compactions but also more space wasted for logs. Consider setting\nlog.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very\nhigh value for this option.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11323,7 +12277,7 @@
                 },
                 "logCleanerMinCompactionLagMs": {
                     "type": "string",
-                    "description": "The minimum time a message will remain \nuncompacted in the log. Only applicable for logs that are being compacted.\n* `log_cleanup_policy\": {\n",
+                    "description": "The minimum time a message will remain \nuncompacted in the log. Only applicable for logs that are being compacted.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11332,6 +12286,52 @@
                 },
                 "logCleanupPolicy": {
                     "type": "string",
+                    "description": "The default cleanup policy for segments beyond the retention window.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logFlushIntervalMessages": {
+                    "type": "string",
+                    "description": "The number of messages accumulated on a log partition \nbefore messages are flushed to disk.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logFlushIntervalMs": {
+                    "type": "string",
+                    "description": "The maximum time in ms that a message in any topic is kept \nin memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexIntervalBytes": {
+                    "type": "string",
+                    "description": "The interval with which Kafka adds an entry to the offset index.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexSizeMaxBytes": {
+                    "type": "string",
+                    "description": "The maximum size in bytes of the offset index.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logMessageDownconversionEnable": {
+                    "type": "string",
+                    "description": "This configuration controls whether down-conversion \nof message formats is enabled to satisfy consume requests.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11356,6 +12356,15 @@
                         }
                     }
                 },
+                "logPreallocate": {
+                    "type": "string",
+                    "description": "Should pre allocate file when create new segment?\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logRetentionBytes": {
                     "type": "string",
                     "description": "The maximum size of the log before deleting messages\n",
@@ -11367,7 +12376,34 @@
                 },
                 "logRetentionHours": {
                     "type": "string",
-                    "description": "The number of hours to keep a log file before deleting it\n",
+                    "description": "The number of hours to keep a log file before deleting it.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRetentionMs": {
+                    "type": "string",
+                    "description": "The number of milliseconds to keep a log file before deleting it \n(in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no\ntime limit is applied.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollJitterMs": {
+                    "type": "string",
+                    "description": "The maximum jitter to subtract from logRollTimeMillis \n(in milliseconds). If not set, the value in log.roll.jitter.hours is used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollMs": {
+                    "type": "string",
+                    "description": "The maximum time before a new log segment is rolled out (in milliseconds).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11383,9 +12419,18 @@
                         }
                     }
                 },
+                "logSegmentDeleteDelayMs": {
+                    "type": "string",
+                    "description": "The amount of time to wait before deleting a file \nfrom the filesystem.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxConnectionsPerIp": {
                     "type": "string",
-                    "description": "The maximum number of connections allowed from each ip \naddress (defaults to 2147483647).\n* `max_incremental_fetch_session_cache_slots\": {\n* `message_max_bytes\": {\n",
+                    "description": "The maximum number of connections allowed from each ip \naddress (defaults to 2147483647).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11394,6 +12439,7 @@
                 },
                 "maxIncrementalFetchSessionCacheSlots": {
                     "type": "string",
+                    "description": "The maximum number of incremental fetch \nsessions that the broker will maintain.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11402,6 +12448,16 @@
                 },
                 "messageMaxBytes": {
                     "type": "string",
+                    "description": "The maximum size of message that the server can receive.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minInsyncReplicas": {
+                    "type": "string",
+                    "description": "When a producer sets acks to 'all' (or '-1'), \nmin.insync.replicas specifies the minimum number of replicas that must acknowledge a write for\nthe write to be considered successful.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11410,7 +12466,7 @@
                 },
                 "numPartitions": {
                     "type": "string",
-                    "description": "Number of partitions for autocreated topics\n* `offsets_retention_minutes\": {\n",
+                    "description": "Number of partitions for autocreated topics\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11419,6 +12475,7 @@
                 },
                 "offsetsRetentionMinutes": {
                     "type": "string",
+                    "description": "Log retention window in minutes for offsets topic.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11500,7 +12557,16 @@
                 },
                 "consumerAutoOffsetReset": {
                     "type": "string",
-                    "description": "What to do when there is no initial offset in Kafka or \nif the current offset does not exist any more on the server. Default is earliest\n",
+                    "description": "What to do when there is no initial offset in Kafka or \nif the current offset does not exist any more on the server. Default is earliest.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer, and \nif the first record batch in the first non-empty partition of the fetch is larger than this value,\nthe record batch will still be returned to ensure that the consumer can make progress. As such,\nthis is not a absolute maximum.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11510,6 +12576,15 @@
                 "consumerIsolationLevel": {
                     "type": "string",
                     "description": "Transaction read isolation level. read_uncommitted is \nthe default, but read_committed can be used if consume-exactly-once behavior is desired.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
+                    "type": "string",
+                    "description": "Records are fetched in batches by the consumer.If \nthe first record batch in the first non-empty partition of the fetch is larger than this limit,\nthe batch will still be returned to ensure that the consumer can make progress.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11546,6 +12621,15 @@
                 "offsetFlushTimeoutMs": {
                     "type": "string",
                     "description": "Maximum number of milliseconds to wait for records to \nflush and partition offset data to be committed to offset storage before cancelling the process\nand restoring the offset data to be committed in a future attempt (defaults to 5000).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
+                    "type": "string",
+                    "description": "This setting will limit the number of record batches \nthe producer will send in a single request to avoid sending huge requests.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11678,6 +12762,29 @@
                 "schemaRegistry": {
                     "type": "string",
                     "description": "Enable Schema-Registry service\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getKafkaKafkaUserConfigSchemaRegistryConfig:getKafkaKafkaUserConfigSchemaRegistryConfig": {
+            "properties": {
+                "leaderEligibility": {
+                    "type": "string",
+                    "description": "If true, Karapace / Schema Registry on the service nodes can \nparticipate in leader election. It might be needed to disable this when the schemas topic is replicated\nto a secondary cluster and Karapace / Schema Registry there must not participate in leader election.\nDefaults to 'true'.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "topicName": {
+                    "type": "string",
+                    "description": "The durable single partition topic that acts as the durable log for the \ndata. This topic must be compacted to avoid losing data due to retention policy. Please note that\nchanging this configuration in an existing Schema Registry / Karapace setup leads to previous\nschemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence\nput out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.\nDefaults to '_schemas'.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12101,6 +13208,513 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/getM3AggregatorComponent:getM3AggregatorComponent": {
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaAuthenticationMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "route": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "component",
+                "host",
+                "kafkaAuthenticationMethod",
+                "port",
+                "route",
+                "ssl",
+                "usage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getM3AggregatorM3aggregator:getM3AggregatorM3aggregator": {
+            "type": "object"
+        },
+        "aiven:index/getM3AggregatorM3aggregatorUserConfig:getM3AggregatorM3aggregatorUserConfig": {
+            "properties": {
+                "customDomain": {
+                    "type": "string",
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3Version": {
+                    "type": "string",
+                    "description": "M3 major version\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3AggregatorServiceIntegration:getM3AggregatorServiceIntegration": {
+            "properties": {
+                "integrationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceServiceName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "integrationType",
+                "sourceServiceName"
+            ]
+        },
+        "aiven:index/getM3DbComponent:getM3DbComponent": {
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaAuthenticationMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "route": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "component",
+                "host",
+                "kafkaAuthenticationMethod",
+                "port",
+                "route",
+                "ssl",
+                "usage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getM3DbM3db:getM3DbM3db": {
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfig:getM3DbM3dbUserConfig": {
+            "properties": {
+                "customDomain": {
+                    "type": "string",
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "limits": {
+                    "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigLimits:getM3DbM3dbUserConfigLimits",
+                    "description": "M3 limits\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3Version": {
+                    "type": "string",
+                    "description": "M3 major version\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigNamespace:getM3DbM3dbUserConfigNamespace"
+                    },
+                    "description": "List of M3 namespaces\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateAccess": {
+                    "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigPrivateAccess:getM3DbM3dbUserConfigPrivateAccess",
+                    "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigPublicAccess:getM3DbM3dbUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigLimits:getM3DbM3dbUserConfigLimits": {
+            "properties": {
+                "globalDatapoints": {
+                    "type": "string",
+                    "description": "The maximum number of data points fetched during request\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryDatapoints": {
+                    "type": "string",
+                    "description": "The maximum number of data points fetched in single query\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryRequireExhaustive": {
+                    "type": "string",
+                    "description": "When query limits are exceeded, whether to return error \n(if True) or return partial results (False)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "querySeries": {
+                    "type": "string",
+                    "description": "The maximum number of series fetched in single query\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigNamespace:getM3DbM3dbUserConfigNamespace": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "options": {
+                    "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigNamespaceOptions:getM3DbM3dbUserConfigNamespaceOptions",
+                    "description": "Namespace options\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resolution": {
+                    "type": "string",
+                    "description": "The resolution for an aggregated namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of aggregation (aggregated/unaggregated)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigNamespaceOptions:getM3DbM3dbUserConfigNamespaceOptions": {
+            "properties": {
+                "retentionOptions": {
+                    "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigNamespaceOptionsRetentionOptions:getM3DbM3dbUserConfigNamespaceOptionsRetentionOptions",
+                    "description": "Retention options\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snapshotEnabled": {
+                    "type": "string",
+                    "description": "Controls whether M3DB will create snapshot files for \nthis namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "writesToCommitlog": {
+                    "type": "string",
+                    "description": "Controls whether M3DB will include writes to this \nnamespace in the commitlog.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigNamespaceOptionsRetentionOptions:getM3DbM3dbUserConfigNamespaceOptionsRetentionOptions": {
+            "properties": {
+                "blockDataExpiryDuration": {
+                    "type": "string",
+                    "description": "Controls how long we wait before expiring stale data\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "blocksizeDuration": {
+                    "type": "string",
+                    "description": "Controls how long to keep a block in memory before \nflushing to a fileset on disk\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bufferFutureDuration": {
+                    "type": "string",
+                    "description": "Controls how far into the future writes to \nthe namespace will be accepted\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bufferPastDuration": {
+                    "type": "string",
+                    "description": "Controls how far into the past writes to the \nnamespace will be accepted\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionPeriodDuration": {
+                    "type": "string",
+                    "description": "Controls the duration of time that M3DB will \nretain data for the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigPrivateAccess:getM3DbM3dbUserConfigPrivateAccess": {
+            "properties": {
+                "m3coordinator": {
+                    "type": "string",
+                    "description": "Allow clients to connect to m3coordinator from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigPublicAccess:getM3DbM3dbUserConfigPublicAccess": {
+            "properties": {
+                "m3coordinator": {
+                    "type": "string",
+                    "description": "Allow clients to connect to m3coordinator from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbServiceIntegration:getM3DbServiceIntegration": {
+            "properties": {
+                "integrationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceServiceName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "integrationType",
+                "sourceServiceName"
+            ]
         },
         "aiven:index/getMySqlComponent:getMySqlComponent": {
             "properties": {
@@ -14088,6 +15702,14 @@
                         }
                     }
                 },
+                "clusterMaxShardsPerNode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "httpMaxContentLength": {
                     "type": "string",
                     "language": {
@@ -15709,7 +17331,23 @@
                         }
                     }
                 },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "consumerIsolationLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -15742,6 +17380,14 @@
                     }
                 },
                 "offsetFlushTimeoutMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -15966,6 +17612,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "schemaRegistryConfig": {
+                    "$ref": "#/types/aiven:index/getServiceKafkaUserConfigSchemaRegistryConfig:getServiceKafkaUserConfigSchemaRegistryConfig",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -16020,6 +17674,14 @@
                         }
                     }
                 },
+                "logCleanerDeleteRetentionMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logCleanerMaxCompactionLagMs": {
                     "type": "string",
                     "language": {
@@ -16052,6 +17714,46 @@
                         }
                     }
                 },
+                "logFlushIntervalMessages": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logFlushIntervalMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexIntervalBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logIndexSizeMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logMessageDownconversionEnable": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logMessageTimestampDifferenceMaxMs": {
                     "type": "string",
                     "language": {
@@ -16061,6 +17763,14 @@
                     }
                 },
                 "logMessageTimestampType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logPreallocate": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16084,7 +17794,39 @@
                         }
                     }
                 },
+                "logRetentionMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollJitterMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logRollMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logSegmentBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logSegmentDeleteDelayMs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16109,6 +17851,14 @@
                     }
                 },
                 "messageMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minInsyncReplicas": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16206,7 +17956,23 @@
                         }
                     }
                 },
+                "consumerFetchMaxBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "consumerIsolationLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "consumerMaxPartitionFetchBytes": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16239,6 +18005,14 @@
                     }
                 },
                 "offsetFlushTimeoutMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "producerMaxRequestSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16358,6 +18132,27 @@
                     }
                 },
                 "schemaRegistry": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceKafkaUserConfigSchemaRegistryConfig:getServiceKafkaUserConfigSchemaRegistryConfig": {
+            "properties": {
+                "leaderEligibility": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "topicName": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20782,6 +22577,488 @@
                     "topicName": {
                         "type": "string",
                         "description": "is the actual name of the topic account. This propery cannot be changed\nonce the service is created. Doing so will result in the topic being deleted and new one\ncreated instead.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/m3Aggregator:M3Aggregator": {
+            "description": "## # M3 Aggregator Resource\n\nThe M3 Aggregator resource allows the creation and management of an Aiven Aggregator services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3a = new aiven.M3Aggregator(\"m3a\", {\n    project: data.aiven_project.foo.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"business-8\",\n    serviceName: \"my-m3a\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    m3aggregatorUserConfig: {\n        m3Version: 0.15,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3a = aiven.M3Aggregator(\"m3a\",\n    project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"business-8\",\n    service_name=\"my-m3a\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    m3aggregator_user_config=aiven.M3AggregatorM3aggregatorUserConfigArgs(\n        m3_version=\"0.15\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3a = new Aiven.M3Aggregator(\"m3a\", new Aiven.M3AggregatorArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"business-8\",\n            ServiceName = \"my-m3a\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            M3aggregatorUserConfig = new Aiven.Inputs.M3AggregatorM3aggregatorUserConfigArgs\n            {\n                M3Version = \"0.15\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3Aggregator(ctx, \"m3a\", \u0026aiven.M3AggregatorArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Foo.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"business-8\"),\n\t\t\tServiceName:           pulumi.String(\"my-m3a\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tM3aggregatorUserConfig: \u0026aiven.M3AggregatorM3aggregatorUserConfigArgs{\n\t\t\t\tM3Version: pulumi.String(\"0.15\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "cloudName": {
+                    "type": "string",
+                    "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                },
+                "components": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3AggregatorComponent:M3AggregatorComponent"
+                    },
+                    "description": "Service component information objects\n"
+                },
+                "m3aggregator": {
+                    "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
+                    "description": "M3 Aggregator specific server provided values.\n"
+                },
+                "m3aggregatorUserConfig": {
+                    "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
+                    "description": "defines M3 Aggregator specific additional configuration options. \nThe following configuration options available:\n"
+                },
+                "maintenanceWindowDow": {
+                    "type": "string",
+                    "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                },
+                "maintenanceWindowTime": {
+                    "type": "string",
+                    "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                },
+                "projectVpcId": {
+                    "type": "string",
+                    "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                },
+                "serviceHost": {
+                    "type": "string",
+                    "description": "M3 Aggregator hostname.\n"
+                },
+                "serviceIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3AggregatorServiceIntegration:M3AggregatorServiceIntegration"
+                    },
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                },
+                "servicePassword": {
+                    "type": "string",
+                    "description": "Password used for connecting to the M3 Aggregator service, if applicable.\n"
+                },
+                "servicePort": {
+                    "type": "integer",
+                    "description": "M3 Aggregator port.\n"
+                },
+                "serviceType": {
+                    "type": "string",
+                    "description": "Aiven internal service type code\n"
+                },
+                "serviceUri": {
+                    "type": "string",
+                    "description": "URI for connecting to the M3 Aggregator service.\n"
+                },
+                "serviceUsername": {
+                    "type": "string",
+                    "description": "Username used for connecting to the M3 Aggregator service, if applicable.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Service state.\n"
+                },
+                "terminationProtection": {
+                    "type": "boolean",
+                    "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                }
+            },
+            "required": [
+                "components",
+                "m3aggregator",
+                "project",
+                "serviceHost",
+                "serviceName",
+                "servicePassword",
+                "servicePort",
+                "serviceType",
+                "serviceUri",
+                "serviceUsername",
+                "state"
+            ],
+            "inputProperties": {
+                "cloudName": {
+                    "type": "string",
+                    "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                },
+                "m3aggregator": {
+                    "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
+                    "description": "M3 Aggregator specific server provided values.\n"
+                },
+                "m3aggregatorUserConfig": {
+                    "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
+                    "description": "defines M3 Aggregator specific additional configuration options. \nThe following configuration options available:\n"
+                },
+                "maintenanceWindowDow": {
+                    "type": "string",
+                    "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                },
+                "maintenanceWindowTime": {
+                    "type": "string",
+                    "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                },
+                "projectVpcId": {
+                    "type": "string",
+                    "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                },
+                "serviceIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3AggregatorServiceIntegration:M3AggregatorServiceIntegration"
+                    },
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                },
+                "terminationProtection": {
+                    "type": "boolean",
+                    "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering M3Aggregator resources.\n",
+                "properties": {
+                    "cloudName": {
+                        "type": "string",
+                        "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/M3AggregatorComponent:M3AggregatorComponent"
+                        },
+                        "description": "Service component information objects\n"
+                    },
+                    "m3aggregator": {
+                        "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
+                        "description": "M3 Aggregator specific server provided values.\n"
+                    },
+                    "m3aggregatorUserConfig": {
+                        "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
+                        "description": "defines M3 Aggregator specific additional configuration options. \nThe following configuration options available:\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string",
+                        "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string",
+                        "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                    },
+                    "projectVpcId": {
+                        "type": "string",
+                        "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "serviceHost": {
+                        "type": "string",
+                        "description": "M3 Aggregator hostname.\n"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/M3AggregatorServiceIntegration:M3AggregatorServiceIntegration"
+                        },
+                        "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                    },
+                    "servicePassword": {
+                        "type": "string",
+                        "description": "Password used for connecting to the M3 Aggregator service, if applicable.\n"
+                    },
+                    "servicePort": {
+                        "type": "integer",
+                        "description": "M3 Aggregator port.\n"
+                    },
+                    "serviceType": {
+                        "type": "string",
+                        "description": "Aiven internal service type code\n"
+                    },
+                    "serviceUri": {
+                        "type": "string",
+                        "description": "URI for connecting to the M3 Aggregator service.\n"
+                    },
+                    "serviceUsername": {
+                        "type": "string",
+                        "description": "Username used for connecting to the M3 Aggregator service, if applicable.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Service state.\n"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean",
+                        "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/m3Db:M3Db": {
+            "description": "## # M3 DB Resource\n\nThe M3 DB resource allows the creation and management of an Aiven M3 services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3 = new aiven.M3Db(\"m3\", {\n    project: data.aiven_project.foo.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"business-8\",\n    serviceName: \"my-m3db\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    m3dbUserConfig: {\n        m3Version: 0.15,\n        namespaces: [{\n            name: \"my-ns1\",\n            type: \"unaggregated\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3 = aiven.M3Db(\"m3\",\n    project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"business-8\",\n    service_name=\"my-m3db\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    m3db_user_config=aiven.M3DbM3dbUserConfigArgs(\n        m3_version=\"0.15\",\n        namespaces=[aiven.M3DbM3dbUserConfigNamespaceArgs(\n            name=\"my-ns1\",\n            type=\"unaggregated\",\n        )],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3 = new Aiven.M3Db(\"m3\", new Aiven.M3DbArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"business-8\",\n            ServiceName = \"my-m3db\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            M3dbUserConfig = new Aiven.Inputs.M3DbM3dbUserConfigArgs\n            {\n                M3Version = \"0.15\",\n                Namespaces = \n                {\n                    new Aiven.Inputs.M3DbM3dbUserConfigNamespaceArgs\n                    {\n                        Name = \"my-ns1\",\n                        Type = \"unaggregated\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3Db(ctx, \"m3\", \u0026aiven.M3DbArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Foo.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"business-8\"),\n\t\t\tServiceName:           pulumi.String(\"my-m3db\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tM3dbUserConfig: \u0026aiven.M3DbM3dbUserConfigArgs{\n\t\t\t\tM3Version: pulumi.String(\"0.15\"),\n\t\t\t\tNamespaces: aiven.M3DbM3dbUserConfigNamespaceArray{\n\t\t\t\t\t\u0026aiven.M3DbM3dbUserConfigNamespaceArgs{\n\t\t\t\t\t\tName: pulumi.String(\"my-ns1\"),\n\t\t\t\t\t\tType: pulumi.String(\"unaggregated\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "cloudName": {
+                    "type": "string",
+                    "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                },
+                "components": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbComponent:M3DbComponent"
+                    },
+                    "description": "Service component information objects\n"
+                },
+                "m3db": {
+                    "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
+                    "description": "M3 specific server provided values.\n"
+                },
+                "m3dbUserConfig": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
+                    "description": "defines M3 specific additional configuration options. The following \nconfiguration options available:\n"
+                },
+                "maintenanceWindowDow": {
+                    "type": "string",
+                    "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                },
+                "maintenanceWindowTime": {
+                    "type": "string",
+                    "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                },
+                "projectVpcId": {
+                    "type": "string",
+                    "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                },
+                "serviceHost": {
+                    "type": "string",
+                    "description": "M3 hostname.\n"
+                },
+                "serviceIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbServiceIntegration:M3DbServiceIntegration"
+                    },
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                },
+                "servicePassword": {
+                    "type": "string",
+                    "description": "Password used for connecting to the M3 service, if applicable.\n"
+                },
+                "servicePort": {
+                    "type": "integer",
+                    "description": "M3 port.\n"
+                },
+                "serviceType": {
+                    "type": "string",
+                    "description": "Aiven internal service type code\n"
+                },
+                "serviceUri": {
+                    "type": "string",
+                    "description": "URI for connecting to the M3 service.\n"
+                },
+                "serviceUsername": {
+                    "type": "string",
+                    "description": "Username used for connecting to the M3 service, if applicable.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Service state.\n"
+                },
+                "terminationProtection": {
+                    "type": "boolean",
+                    "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                }
+            },
+            "required": [
+                "components",
+                "m3db",
+                "project",
+                "serviceHost",
+                "serviceName",
+                "servicePassword",
+                "servicePort",
+                "serviceType",
+                "serviceUri",
+                "serviceUsername",
+                "state"
+            ],
+            "inputProperties": {
+                "cloudName": {
+                    "type": "string",
+                    "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                },
+                "m3db": {
+                    "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
+                    "description": "M3 specific server provided values.\n"
+                },
+                "m3dbUserConfig": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
+                    "description": "defines M3 specific additional configuration options. The following \nconfiguration options available:\n"
+                },
+                "maintenanceWindowDow": {
+                    "type": "string",
+                    "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                },
+                "maintenanceWindowTime": {
+                    "type": "string",
+                    "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                },
+                "projectVpcId": {
+                    "type": "string",
+                    "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                },
+                "serviceIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbServiceIntegration:M3DbServiceIntegration"
+                    },
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                },
+                "terminationProtection": {
+                    "type": "boolean",
+                    "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering M3Db resources.\n",
+                "properties": {
+                    "cloudName": {
+                        "type": "string",
+                        "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/M3DbComponent:M3DbComponent"
+                        },
+                        "description": "Service component information objects\n"
+                    },
+                    "m3db": {
+                        "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
+                        "description": "M3 specific server provided values.\n"
+                    },
+                    "m3dbUserConfig": {
+                        "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
+                        "description": "defines M3 specific additional configuration options. The following \nconfiguration options available:\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string",
+                        "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string",
+                        "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                    },
+                    "projectVpcId": {
+                        "type": "string",
+                        "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "serviceHost": {
+                        "type": "string",
+                        "description": "M3 hostname.\n"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/M3DbServiceIntegration:M3DbServiceIntegration"
+                        },
+                        "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                    },
+                    "servicePassword": {
+                        "type": "string",
+                        "description": "Password used for connecting to the M3 service, if applicable.\n"
+                    },
+                    "servicePort": {
+                        "type": "integer",
+                        "description": "M3 port.\n"
+                    },
+                    "serviceType": {
+                        "type": "string",
+                        "description": "Aiven internal service type code\n"
+                    },
+                    "serviceUri": {
+                        "type": "string",
+                        "description": "URI for connecting to the M3 service.\n"
+                    },
+                    "serviceUsername": {
+                        "type": "string",
+                        "description": "Username used for connecting to the M3 service, if applicable.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Service state.\n"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean",
+                        "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
                     }
                 },
                 "type": "object"
@@ -25573,6 +27850,392 @@
                     "project",
                     "serviceName",
                     "topicName",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getM3Aggregator:getM3Aggregator": {
+            "description": "## # M3 Aggregator Data Source\n\nThe M3 Aggregator data source provides information about the existing Aiven M3 Aggregator services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3a = aiven.getM3Aggregator({\n    project: data.aiven_project.foo.project,\n    serviceName: \"my-m3a\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3a = aiven.get_m3_aggregator(project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    service_name=\"my-m3a\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3a = Output.Create(Aiven.GetM3Aggregator.InvokeAsync(new Aiven.GetM3AggregatorArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            ServiceName = \"my-m3a\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupM3Aggregator(ctx, \u0026aiven.LookupM3AggregatorArgs{\n\t\t\tProject:     data.Aiven_project.Foo.Project,\n\t\t\tServiceName: \"my-m3a\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getM3Aggregator.\n",
+                "properties": {
+                    "cloudName": {
+                        "type": "string",
+                        "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3AggregatorComponent:getM3AggregatorComponent"
+                        }
+                    },
+                    "m3aggregator": {
+                        "$ref": "#/types/aiven:index/getM3AggregatorM3aggregator:getM3AggregatorM3aggregator",
+                        "description": "M3 Aggregator specific server provided values.\n"
+                    },
+                    "m3aggregatorUserConfig": {
+                        "$ref": "#/types/aiven:index/getM3AggregatorM3aggregatorUserConfig:getM3AggregatorM3aggregatorUserConfig",
+                        "description": "defines M3 Aggregator specific additional configuration options. \nThe following configuration options available:\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string",
+                        "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string",
+                        "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                    },
+                    "projectVpcId": {
+                        "type": "string",
+                        "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "serviceHost": {
+                        "type": "string",
+                        "description": "M3 Aggregator hostname.\n"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3AggregatorServiceIntegration:getM3AggregatorServiceIntegration"
+                        }
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                    },
+                    "servicePassword": {
+                        "type": "string",
+                        "description": "Password used for connecting to the M3 Aggregator service, if applicable.\n"
+                    },
+                    "servicePort": {
+                        "type": "integer",
+                        "description": "M3 Aggregator port.\n"
+                    },
+                    "serviceType": {
+                        "type": "string"
+                    },
+                    "serviceUri": {
+                        "type": "string",
+                        "description": "URI for connecting to the M3 Aggregator service.\n"
+                    },
+                    "serviceUsername": {
+                        "type": "string",
+                        "description": "Username used for connecting to the M3 Aggregator service, if applicable.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Service state.\n"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean",
+                        "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getM3Aggregator.\n",
+                "properties": {
+                    "cloudName": {
+                        "type": "string",
+                        "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3AggregatorComponent:getM3AggregatorComponent"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "m3aggregator": {
+                        "$ref": "#/types/aiven:index/getM3AggregatorM3aggregator:getM3AggregatorM3aggregator",
+                        "description": "M3 Aggregator specific server provided values.\n"
+                    },
+                    "m3aggregatorUserConfig": {
+                        "$ref": "#/types/aiven:index/getM3AggregatorM3aggregatorUserConfig:getM3AggregatorM3aggregatorUserConfig",
+                        "description": "defines M3 Aggregator specific additional configuration options. \nThe following configuration options available:\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string",
+                        "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string",
+                        "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "projectVpcId": {
+                        "type": "string",
+                        "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "serviceHost": {
+                        "type": "string",
+                        "description": "M3 Aggregator hostname.\n"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3AggregatorServiceIntegration:getM3AggregatorServiceIntegration"
+                        }
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "servicePassword": {
+                        "type": "string",
+                        "description": "Password used for connecting to the M3 Aggregator service, if applicable.\n"
+                    },
+                    "servicePort": {
+                        "type": "integer",
+                        "description": "M3 Aggregator port.\n"
+                    },
+                    "serviceType": {
+                        "type": "string"
+                    },
+                    "serviceUri": {
+                        "type": "string",
+                        "description": "URI for connecting to the M3 Aggregator service.\n"
+                    },
+                    "serviceUsername": {
+                        "type": "string",
+                        "description": "Username used for connecting to the M3 Aggregator service, if applicable.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Service state.\n"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean",
+                        "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "components",
+                    "m3aggregator",
+                    "project",
+                    "serviceHost",
+                    "serviceName",
+                    "servicePassword",
+                    "servicePort",
+                    "serviceType",
+                    "serviceUri",
+                    "serviceUsername",
+                    "state",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getM3Db:getM3Db": {
+            "description": "## # M3 DB Data Source\n\nThe M3 DB data source provides information about the existing Aiven M3 services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3 = aiven.getM3Db({\n    project: data.aiven_project.foo.project,\n    serviceName: \"my-m3db\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3 = aiven.get_m3_db(project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    service_name=\"my-m3db\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3 = Output.Create(Aiven.GetM3Db.InvokeAsync(new Aiven.GetM3DbArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            ServiceName = \"my-m3db\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupM3Db(ctx, \u0026aiven.LookupM3DbArgs{\n\t\t\tProject:     data.Aiven_project.Foo.Project,\n\t\t\tServiceName: \"my-m3db\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getM3Db.\n",
+                "properties": {
+                    "cloudName": {
+                        "type": "string",
+                        "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3DbComponent:getM3DbComponent"
+                        }
+                    },
+                    "m3db": {
+                        "$ref": "#/types/aiven:index/getM3DbM3db:getM3DbM3db",
+                        "description": "M3 specific server provided values.\n"
+                    },
+                    "m3dbUserConfig": {
+                        "$ref": "#/types/aiven:index/getM3DbM3dbUserConfig:getM3DbM3dbUserConfig",
+                        "description": "defines M3 specific additional configuration options. The following \nconfiguration options available:\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string",
+                        "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string",
+                        "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "identifies the project the service belongs to. To set up proper dependency\nbetween the project and the service, refer to the project as shown in the above example.\nProject cannot be changed later without destroying and re-creating the service.\n"
+                    },
+                    "projectVpcId": {
+                        "type": "string",
+                        "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "serviceHost": {
+                        "type": "string",
+                        "description": "M3 hostname.\n"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3DbServiceIntegration:getM3DbServiceIntegration"
+                        }
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "specifies the actual name of the service. The name cannot be changed\nlater without destroying and re-creating the service so name should be picked based on\nintended service usage rather than current attributes.\n"
+                    },
+                    "servicePassword": {
+                        "type": "string",
+                        "description": "Password used for connecting to the M3 service, if applicable.\n"
+                    },
+                    "servicePort": {
+                        "type": "integer",
+                        "description": "M3 port.\n"
+                    },
+                    "serviceType": {
+                        "type": "string"
+                    },
+                    "serviceUri": {
+                        "type": "string",
+                        "description": "URI for connecting to the M3 service.\n"
+                    },
+                    "serviceUsername": {
+                        "type": "string",
+                        "description": "Username used for connecting to the M3 service, if applicable.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Service state.\n"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean",
+                        "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getM3Db.\n",
+                "properties": {
+                    "cloudName": {
+                        "type": "string",
+                        "description": "defines where the cloud provider and region where the service is hosted\nin. This can be changed freely after service is created. Changing the value will trigger\na potentially lenghty migration process for the service. Format is cloud provider name\n(`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider\nspecific region name. These are documented on each Cloud provider's own support articles,\nlike [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and\n[here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3DbComponent:getM3DbComponent"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "m3db": {
+                        "$ref": "#/types/aiven:index/getM3DbM3db:getM3DbM3db",
+                        "description": "M3 specific server provided values.\n"
+                    },
+                    "m3dbUserConfig": {
+                        "$ref": "#/types/aiven:index/getM3DbM3dbUserConfig:getM3DbM3dbUserConfig",
+                        "description": "defines M3 specific additional configuration options. The following \nconfiguration options available:\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string",
+                        "description": "day of week when maintenance operations should be performed. \nOne monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string",
+                        "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "projectVpcId": {
+                        "type": "string",
+                        "description": "optionally specifies the VPC the service should run in. If the value\nis not set the service is not run inside a VPC. When set, the value should be given as a\nreference as shown above to set up dependencies correctly and the VPC must be in the same\ncloud and region as the service itself. Project can be freely moved to and from VPC after\ncreation but doing so triggers migration to new servers so the operation can take\nsignificant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "serviceHost": {
+                        "type": "string",
+                        "description": "M3 hostname.\n"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3DbServiceIntegration:getM3DbServiceIntegration"
+                        }
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "servicePassword": {
+                        "type": "string",
+                        "description": "Password used for connecting to the M3 service, if applicable.\n"
+                    },
+                    "servicePort": {
+                        "type": "integer",
+                        "description": "M3 port.\n"
+                    },
+                    "serviceType": {
+                        "type": "string"
+                    },
+                    "serviceUri": {
+                        "type": "string",
+                        "description": "URI for connecting to the M3 service.\n"
+                    },
+                    "serviceUsername": {
+                        "type": "string",
+                        "description": "Username used for connecting to the M3 service, if applicable.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Service state.\n"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean",
+                        "description": "prevents the service from being deleted. It is recommended to\nset this to `true` for all production services to prevent unintentional service\ndeletions. This does not shield against deleting databases or topics but for services\nwith backups much of the content can at least be restored from backup in case accidental\ndeletion is done.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "components",
+                    "m3db",
+                    "project",
+                    "serviceHost",
+                    "serviceName",
+                    "servicePassword",
+                    "servicePort",
+                    "serviceType",
+                    "serviceUri",
+                    "serviceUsername",
+                    "state",
                     "id"
                 ]
             }

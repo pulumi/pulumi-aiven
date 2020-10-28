@@ -21,10 +21,19 @@ namespace Pulumi.Aiven.Inputs
 
         /// <summary>
         /// What to do when there is no initial offset in Kafka or 
-        /// if the current offset does not exist any more on the server. Default is earliest
+        /// if the current offset does not exist any more on the server. Default is earliest.
         /// </summary>
         [Input("consumerAutoOffsetReset")]
         public string? ConsumerAutoOffsetReset { get; set; }
+
+        /// <summary>
+        /// Records are fetched in batches by the consumer, and 
+        /// if the first record batch in the first non-empty partition of the fetch is larger than this value,
+        /// the record batch will still be returned to ensure that the consumer can make progress. As such,
+        /// this is not a absolute maximum.
+        /// </summary>
+        [Input("consumerFetchMaxBytes")]
+        public string? ConsumerFetchMaxBytes { get; set; }
 
         /// <summary>
         /// Transaction read isolation level. read_uncommitted is 
@@ -32,6 +41,14 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("consumerIsolationLevel")]
         public string? ConsumerIsolationLevel { get; set; }
+
+        /// <summary>
+        /// Records are fetched in batches by the consumer.If 
+        /// the first record batch in the first non-empty partition of the fetch is larger than this limit,
+        /// the batch will still be returned to ensure that the consumer can make progress.
+        /// </summary>
+        [Input("consumerMaxPartitionFetchBytes")]
+        public string? ConsumerMaxPartitionFetchBytes { get; set; }
 
         /// <summary>
         /// The maximum delay in milliseconds between invocations 
@@ -61,6 +78,13 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("offsetFlushTimeoutMs")]
         public string? OffsetFlushTimeoutMs { get; set; }
+
+        /// <summary>
+        /// This setting will limit the number of record batches 
+        /// the producer will send in a single request to avoid sending huge requests.
+        /// </summary>
+        [Input("producerMaxRequestSize")]
+        public string? ProducerMaxRequestSize { get; set; }
 
         /// <summary>
         /// The timeout in milliseconds used to detect failures when 
