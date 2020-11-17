@@ -35,7 +35,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         """
         ## # Service Integration Endpoint Resource
 
-        The Service Integration Endpoint resource allows the creation and management of an Aiven Service Integration Endpoint`s.
+        The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
 
         ## Example Usage
 

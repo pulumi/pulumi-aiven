@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// ## # Account Resource
     /// 
-    /// The Account resource allows the creation and management of an Aiven Accounts.
+    /// The Account resource allows the creation and management of an Aiven Account.
     /// 
     /// ## Example Usage
     /// 

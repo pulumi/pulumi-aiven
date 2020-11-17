@@ -46,7 +46,7 @@ export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi
 export interface GetElasticSearchAclArgs {
     readonly acls?: inputs.GetElasticSearchAclAcl[];
     /**
-     * enables of disables Elasticsearch ACL's.
+     * enables or disables Elasticsearch ACLs.
      */
     readonly enabled?: boolean;
     /**
@@ -69,7 +69,7 @@ export interface GetElasticSearchAclArgs {
 export interface GetElasticSearchAclResult {
     readonly acls?: outputs.GetElasticSearchAclAcl[];
     /**
-     * enables of disables Elasticsearch ACL's.
+     * enables or disables Elasticsearch ACLs.
      */
     readonly enabled?: boolean;
     /**

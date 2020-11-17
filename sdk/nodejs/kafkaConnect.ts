@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Kafka Connect Resource
  *
- * The Kafka Connect resource allows the creation and management of an Aiven Kafka Connect services.
+ * The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
  *
  * ## Example Usage
  *
@@ -65,7 +65,7 @@ export class KafkaConnect extends pulumi.CustomResource {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -88,7 +88,7 @@ export class KafkaConnect extends pulumi.CustomResource {
     public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.KafkaConnectKafkaConnectUserConfig | undefined>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
     /**
@@ -163,7 +163,7 @@ export class KafkaConnect extends pulumi.CustomResource {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -246,7 +246,7 @@ export interface KafkaConnectState {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -269,7 +269,7 @@ export interface KafkaConnectState {
     readonly kafkaConnectUserConfig?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -344,7 +344,7 @@ export interface KafkaConnectState {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -358,7 +358,7 @@ export interface KafkaConnectArgs {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -377,7 +377,7 @@ export interface KafkaConnectArgs {
     readonly kafkaConnectUserConfig?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -424,7 +424,7 @@ export interface KafkaConnectArgs {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */

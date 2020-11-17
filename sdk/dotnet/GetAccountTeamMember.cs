@@ -14,7 +14,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// ## # Account Team Member Data Source
         /// 
-        /// The Account Team Member  data source provides information about the existing Aiven Account Team Member.
+        /// The Account Team Member data source provides information about the existing Aiven Account Team Member.
         /// </summary>
         public static Task<GetAccountTeamMemberResult> InvokeAsync(GetAccountTeamMemberArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamMemberResult>("aiven:index/getAccountTeamMember:getAccountTeamMember", args ?? new GetAccountTeamMemberArgs(), options.WithVersion());
@@ -26,7 +26,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
         /// `false` value means that the invitation was sent to the user but not yet accepted.
-        /// `true` means that the user accepted the invitation and now a member of an account team.
+        /// `true` means that the user accepted the invitation and is now a member of an account team.
         /// </summary>
         [Input("accepted")]
         public bool? Accepted { get; set; }
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
         /// `false` value means that the invitation was sent to the user but not yet accepted.
-        /// `true` means that the user accepted the invitation and now a member of an account team.
+        /// `true` means that the user accepted the invitation and is now a member of an account team.
         /// </summary>
         public readonly bool Accepted;
         public readonly string AccountId;

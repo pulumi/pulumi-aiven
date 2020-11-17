@@ -49,7 +49,7 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
  */
 export interface GetMirrorMakerReplicationFlowArgs {
     /**
-     * enable of disable replication flows for a mirror maker service
+     * enable of disable replication flows for a MirrorMaker service
      */
     readonly enable?: boolean;
     /**
@@ -81,7 +81,7 @@ export interface GetMirrorMakerReplicationFlowArgs {
  */
 export interface GetMirrorMakerReplicationFlowResult {
     /**
-     * enable of disable replication flows for a mirror maker service
+     * enable of disable replication flows for a MirrorMaker service
      */
     readonly enable?: boolean;
     /**

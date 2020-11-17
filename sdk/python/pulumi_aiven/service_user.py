@@ -24,7 +24,7 @@ class ServiceUser(pulumi.CustomResource):
         """
         ## # Service User Resource
 
-        The Service User resource allows the creation and management of an Aiven Service Users.
+        The Service User resource allows the creation and management of Aiven Service Users.
 
         ## Example Usage
 

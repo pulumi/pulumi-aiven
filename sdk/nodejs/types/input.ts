@@ -1695,7 +1695,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     ipFilters?: string[];
     /**
-     * Kafka Mirror Maker 2 specific server provided values.
+     * Kafka MirrorMaker 2 specific server provided values.
      */
     kafkaMirrormaker?: inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
@@ -1731,7 +1731,7 @@ export interface GetKafkaServiceIntegration {
 
 export interface GetKafkaTopicConfig {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      */
     cleanupPolicy?: string;
     /**
@@ -4490,7 +4490,7 @@ export interface KafkaServiceIntegration {
 
 export interface KafkaTopicConfig {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      */
     cleanupPolicy?: pulumi.Input<string>;
     /**

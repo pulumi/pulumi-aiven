@@ -25,7 +25,7 @@ class AccountTeam(pulumi.CustomResource):
         """
         ## # Account Team Resource
 
-        The Account Team resource allows the creation and management of an Account Teams.
+        The Account Team resource allows the creation and management of an Account Team.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

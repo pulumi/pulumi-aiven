@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Kafka Mirror Maker 2 specific server provided values.
+        /// Kafka MirrorMaker 2 specific server provided values.
         /// </summary>
         [Input("kafkaMirrormaker")]
         public Inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs? KafkaMirrormaker { get; set; }

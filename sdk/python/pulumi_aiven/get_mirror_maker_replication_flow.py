@@ -49,7 +49,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        enable of disable replication flows for a mirror maker service
+        enable of disable replication flows for a MirrorMaker service
         """
         return pulumi.get(self, "enable")
 
@@ -141,7 +141,7 @@ def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
     ```
 
 
-    :param bool enable: enable of disable replication flows for a mirror maker service
+    :param bool enable: enable of disable replication flows for a MirrorMaker service
     :param str project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
            Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
     :param str source_cluster: is a source cluster alias.

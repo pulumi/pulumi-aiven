@@ -14,7 +14,7 @@ import (
 // ## # MirrorMaker 2 Replication Flow Resource
 //
 // The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
-// Replication Flow on Aiven Cloud.
+// Replication Flows on Aiven Cloud.
 //
 // ## Example Usage
 //
@@ -53,7 +53,7 @@ import (
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState
 
-	// enable of disable replication flows for a mirror maker service
+	// enable of disable replication flows for a MirrorMaker service
 	Enable pulumi.BoolOutput `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
@@ -113,7 +113,7 @@ func GetMirrorMakerReplicationFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 type mirrorMakerReplicationFlowState struct {
-	// enable of disable replication flows for a mirror maker service
+	// enable of disable replication flows for a MirrorMaker service
 	Enable *bool `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
@@ -131,7 +131,7 @@ type mirrorMakerReplicationFlowState struct {
 }
 
 type MirrorMakerReplicationFlowState struct {
-	// enable of disable replication flows for a mirror maker service
+	// enable of disable replication flows for a MirrorMaker service
 	Enable pulumi.BoolPtrInput
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
@@ -153,7 +153,7 @@ func (MirrorMakerReplicationFlowState) ElementType() reflect.Type {
 }
 
 type mirrorMakerReplicationFlowArgs struct {
-	// enable of disable replication flows for a mirror maker service
+	// enable of disable replication flows for a MirrorMaker service
 	Enable bool `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
@@ -172,7 +172,7 @@ type mirrorMakerReplicationFlowArgs struct {
 
 // The set of arguments for constructing a MirrorMakerReplicationFlow resource.
 type MirrorMakerReplicationFlowArgs struct {
-	// enable of disable replication flows for a mirror maker service
+	// enable of disable replication flows for a MirrorMaker service
 	Enable pulumi.BoolInput
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.

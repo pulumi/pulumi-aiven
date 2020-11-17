@@ -18,9 +18,8 @@ import (
 	"unicode"
 
 	"github.com/aiven/terraform-provider-aiven/aiven"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 )
 
@@ -63,7 +62,7 @@ func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProvider
 }
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(aiven.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(aiven.Provider())
 
 	prov := tfbridge.ProviderInfo{
 		P:                 p,

@@ -30,7 +30,7 @@ class Project(pulumi.CustomResource):
         """
         ## # Project Resource
 
-        The Project resource allows the creation and management of an Aiven Projects.
+        The Project resource allows the creation and management of Aiven Projects.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Project Resource
  *
- * The Project resource allows the creation and management of an Aiven Projects.
+ * The Project resource allows the creation and management of Aiven Projects.
  */
 export class Project extends pulumi.CustomResource {
     /**

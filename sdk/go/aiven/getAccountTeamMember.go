@@ -9,7 +9,7 @@ import (
 
 // ## # Account Team Member Data Source
 //
-// The Account Team Member  data source provides information about the existing Aiven Account Team Member.
+// The Account Team Member data source provides information about the existing Aiven Account Team Member.
 func LookupAccountTeamMember(ctx *pulumi.Context, args *LookupAccountTeamMemberArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamMemberResult, error) {
 	var rv LookupAccountTeamMemberResult
 	err := ctx.Invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", args, &rv, opts...)
@@ -23,7 +23,7 @@ func LookupAccountTeamMember(ctx *pulumi.Context, args *LookupAccountTeamMemberA
 type LookupAccountTeamMemberArgs struct {
 	// is a boolean flag that determines whether an invitation was accepted or not by the user.
 	// `false` value means that the invitation was sent to the user but not yet accepted.
-	// `true` means that the user accepted the invitation and now a member of an account team.
+	// `true` means that the user accepted the invitation and is now a member of an account team.
 	Accepted *bool `pulumi:"accepted"`
 	// is a unique account id.
 	AccountId string `pulumi:"accountId"`
@@ -42,7 +42,7 @@ type LookupAccountTeamMemberArgs struct {
 type LookupAccountTeamMemberResult struct {
 	// is a boolean flag that determines whether an invitation was accepted or not by the user.
 	// `false` value means that the invitation was sent to the user but not yet accepted.
-	// `true` means that the user accepted the invitation and now a member of an account team.
+	// `true` means that the user accepted the invitation and is now a member of an account team.
 	Accepted  bool   `pulumi:"accepted"`
 	AccountId string `pulumi:"accountId"`
 	// time of creation.

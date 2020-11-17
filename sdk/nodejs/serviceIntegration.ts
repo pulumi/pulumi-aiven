@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Service Integration Resource
  *
- * The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+ * The Service Integration resource allows the creation and management of Aiven Service Integrations.
  *
  * Service Integration defines an integration between two Aiven services or between Aiven
  * service and an external integration endpoint. Integration could be for example sending

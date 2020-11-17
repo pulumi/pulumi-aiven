@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
  * ## # MirrorMaker 2 Replication Flow Resource
  *
  * The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
- * Replication Flow on Aiven Cloud.
+ * Replication Flows on Aiven Cloud.
  *
  * ## Example Usage
  *
@@ -60,7 +60,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     }
 
     /**
-     * enable of disable replication flows for a mirror maker service
+     * enable of disable replication flows for a MirrorMaker service
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
@@ -149,7 +149,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
  */
 export interface MirrorMakerReplicationFlowState {
     /**
-     * enable of disable replication flows for a mirror maker service
+     * enable of disable replication flows for a MirrorMaker service
      */
     readonly enable?: pulumi.Input<boolean>;
     /**
@@ -184,7 +184,7 @@ export interface MirrorMakerReplicationFlowState {
  */
 export interface MirrorMakerReplicationFlowArgs {
     /**
-     * enable of disable replication flows for a mirror maker service
+     * enable of disable replication flows for a MirrorMaker service
      */
     readonly enable: pulumi.Input<boolean>;
     /**

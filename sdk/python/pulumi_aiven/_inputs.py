@@ -5845,7 +5845,7 @@ class KafkaTopicConfigArgs:
                  segment_ms: Optional[pulumi.Input[str]] = None,
                  unclean_leader_election_enable: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cleanup_policy: cleanup.policy value
+        :param pulumi.Input[str] cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
         :param pulumi.Input[str] compression_type: compression.type value
         :param pulumi.Input[str] delete_retention_ms: delete.retention.ms value
         :param pulumi.Input[str] file_delete_delay_ms: file.delete.delay.ms value
@@ -5923,7 +5923,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        cleanup.policy value
+        cleanup.policy value, can be `create`, `delete` or `compact,delete`
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -20798,7 +20798,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
                  kafka_mirrormaker: Optional['GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs'] = None):
         """
         :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        :param 'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka Mirror Maker 2 specific server provided values.
+        :param 'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values.
         """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
@@ -20821,7 +20821,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
     @pulumi.getter(name="kafkaMirrormaker")
     def kafka_mirrormaker(self) -> Optional['GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs']:
         """
-        Kafka Mirror Maker 2 specific server provided values.
+        Kafka MirrorMaker 2 specific server provided values.
         """
         return pulumi.get(self, "kafka_mirrormaker")
 
@@ -20985,7 +20985,7 @@ class GetKafkaTopicConfigArgs:
                  segment_ms: Optional[str] = None,
                  unclean_leader_election_enable: Optional[str] = None):
         """
-        :param str cleanup_policy: cleanup.policy value
+        :param str cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
         :param str compression_type: compression.type value
         :param str delete_retention_ms: delete.retention.ms value
         :param str file_delete_delay_ms: file.delete.delay.ms value
@@ -21063,7 +21063,7 @@ class GetKafkaTopicConfigArgs:
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[str]:
         """
-        cleanup.policy value
+        cleanup.policy value, can be `create`, `delete` or `compact,delete`
         """
         return pulumi.get(self, "cleanup_policy")
 

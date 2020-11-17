@@ -24,7 +24,7 @@ class ProjectVpc(pulumi.CustomResource):
         """
         ## # Project VPC Resource
 
-        The Project VPC resource allows the creation and management of an Aiven Project VPCs.
+        The Project VPC resource allows the creation and management of Aiven Project VPCs.
 
         ## Example Usage
 

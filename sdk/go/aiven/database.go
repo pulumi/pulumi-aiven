@@ -13,7 +13,7 @@ import (
 
 // ## # Database Resource
 //
-// The Database resource allows the creation and management of an Aiven Databases.
+// The Database resource allows the creation and management of Aiven Databases.
 //
 // ## Example Usage
 //

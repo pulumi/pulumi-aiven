@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Kafka Mirror Maker Resource
+    /// ## # Kafka MirrorMaker Resource
     /// 
-    /// The Kafka Mirror Maker resource allows the creation and management of an Aiven Kafka Mirror Maker 2 services.
+    /// The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
     /// 
     /// ## Example Usage
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// defines where the cloud provider and region where the service is hosted
         /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lenghty migration process for the service. Format is cloud provider name
+        /// a potentially lengthy migration process for the service. Format is cloud provider name
         /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
         /// specific region name. These are documented on each Cloud provider's own support articles,
         /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.KafkaMirrorMakerKafkaMirrormaker> KafkaMirrormaker { get; private set; } = null!;
 
         /// <summary>
-        /// defines Kafka Mirror Maker 2 specific additional configuration options. 
+        /// defines Kafka MirrorMaker 2 specific additional configuration options. 
         /// The following configuration options available:
         /// </summary>
         [Output("kafkaMirrormakerUserConfig")]
@@ -84,7 +84,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// day of week when maintenance operations should be performed. 
-        /// One monday, tuesday, wednesday, etc.
+        /// On monday, tuesday, wednesday, etc.
         /// </summary>
         [Output("maintenanceWindowDow")]
         public Output<string?> MaintenanceWindowDow { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Aiven
         public Output<string?> ProjectVpcId { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Mirror Maker 2 hostname.
+        /// Kafka MirrorMaker 2 hostname.
         /// </summary>
         [Output("serviceHost")]
         public Output<string> ServiceHost { get; private set; } = null!;
@@ -149,13 +149,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+        /// Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
         /// </summary>
         [Output("servicePassword")]
         public Output<string> ServicePassword { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Mirror Maker 2 port.
+        /// Kafka MirrorMaker 2 port.
         /// </summary>
         [Output("servicePort")]
         public Output<int> ServicePort { get; private set; } = null!;
@@ -167,13 +167,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceType { get; private set; } = null!;
 
         /// <summary>
-        /// URI for connecting to the Kafka Mirror Maker 2 service.
+        /// URI for connecting to the Kafka MirrorMaker 2 service.
         /// </summary>
         [Output("serviceUri")]
         public Output<string> ServiceUri { get; private set; } = null!;
 
         /// <summary>
-        /// Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+        /// Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
         /// </summary>
         [Output("serviceUsername")]
         public Output<string> ServiceUsername { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// prevents the service from being deleted. It is recommended to
         /// set this to `true` for all production services to prevent unintentional service
-        /// deletions. This does not shield against deleting databases or topics but for services
+        /// deletion. This does not shield against deleting databases or topics but for services
         /// with backups much of the content can at least be restored from backup in case accidental
         /// deletion is done.
         /// </summary>
@@ -243,7 +243,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// defines where the cloud provider and region where the service is hosted
         /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lenghty migration process for the service. Format is cloud provider name
+        /// a potentially lengthy migration process for the service. Format is cloud provider name
         /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
         /// specific region name. These are documented on each Cloud provider's own support articles,
         /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -259,7 +259,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
 
         /// <summary>
-        /// defines Kafka Mirror Maker 2 specific additional configuration options. 
+        /// defines Kafka MirrorMaker 2 specific additional configuration options. 
         /// The following configuration options available:
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
@@ -267,7 +267,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// day of week when maintenance operations should be performed. 
-        /// One monday, tuesday, wednesday, etc.
+        /// On monday, tuesday, wednesday, etc.
         /// </summary>
         [Input("maintenanceWindowDow")]
         public Input<string>? MaintenanceWindowDow { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// prevents the service from being deleted. It is recommended to
         /// set this to `true` for all production services to prevent unintentional service
-        /// deletions. This does not shield against deleting databases or topics but for services
+        /// deletion. This does not shield against deleting databases or topics but for services
         /// with backups much of the content can at least be restored from backup in case accidental
         /// deletion is done.
         /// </summary>
@@ -351,7 +351,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// defines where the cloud provider and region where the service is hosted
         /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lenghty migration process for the service. Format is cloud provider name
+        /// a potentially lengthy migration process for the service. Format is cloud provider name
         /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
         /// specific region name. These are documented on each Cloud provider's own support articles,
         /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -379,7 +379,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerGetArgs>? KafkaMirrormaker { get; set; }
 
         /// <summary>
-        /// defines Kafka Mirror Maker 2 specific additional configuration options. 
+        /// defines Kafka MirrorMaker 2 specific additional configuration options. 
         /// The following configuration options available:
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
@@ -387,7 +387,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// day of week when maintenance operations should be performed. 
-        /// One monday, tuesday, wednesday, etc.
+        /// On monday, tuesday, wednesday, etc.
         /// </summary>
         [Input("maintenanceWindowDow")]
         public Input<string>? MaintenanceWindowDow { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.Aiven
         public Input<string>? ProjectVpcId { get; set; }
 
         /// <summary>
-        /// Kafka Mirror Maker 2 hostname.
+        /// Kafka MirrorMaker 2 hostname.
         /// </summary>
         [Input("serviceHost")]
         public Input<string>? ServiceHost { get; set; }
@@ -458,13 +458,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+        /// Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
         /// </summary>
         [Input("servicePassword")]
         public Input<string>? ServicePassword { get; set; }
 
         /// <summary>
-        /// Kafka Mirror Maker 2 port.
+        /// Kafka MirrorMaker 2 port.
         /// </summary>
         [Input("servicePort")]
         public Input<int>? ServicePort { get; set; }
@@ -476,13 +476,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceType { get; set; }
 
         /// <summary>
-        /// URI for connecting to the Kafka Mirror Maker 2 service.
+        /// URI for connecting to the Kafka MirrorMaker 2 service.
         /// </summary>
         [Input("serviceUri")]
         public Input<string>? ServiceUri { get; set; }
 
         /// <summary>
-        /// Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+        /// Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
         /// </summary>
         [Input("serviceUsername")]
         public Input<string>? ServiceUsername { get; set; }
@@ -496,7 +496,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// prevents the service from being deleted. It is recommended to
         /// set this to `true` for all production services to prevent unintentional service
-        /// deletions. This does not shield against deleting databases or topics but for services
+        /// deletion. This does not shield against deleting databases or topics but for services
         /// with backups much of the content can at least be restored from backup in case accidental
         /// deletion is done.
         /// </summary>

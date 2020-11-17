@@ -8,8 +8,8 @@ import * as utilities from "./utilities";
 /**
  * ## # Elasticsearch ACL Resource
  *
- * The Elasticsearch ACL resource allows the creation and management of an Aiven Elasticsearch ACLs
- * for Elasticsearch service.
+ * The Elasticsearch ACL resource allows the creation and management of ACLs
+ * for an Aiven Elasticsearch service.
  *
  * ## Example Usage
  *

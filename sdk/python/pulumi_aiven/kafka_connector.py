@@ -27,7 +27,7 @@ class KafkaConnector(pulumi.CustomResource):
         """
         ## # Kafka connectors Resource
 
-        The Kafka connectors resource allows the creation and management of an Aiven Kafka connectors.
+        The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
 
         ## Example Usage
 

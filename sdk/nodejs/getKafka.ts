@@ -61,7 +61,7 @@ export interface GetKafkaArgs {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -81,7 +81,7 @@ export interface GetKafkaArgs {
     readonly kafkaUserConfig?: inputs.GetKafkaKafkaUserConfig;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: string;
     /**
@@ -150,7 +150,7 @@ export interface GetKafkaArgs {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -164,7 +164,7 @@ export interface GetKafkaResult {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -188,7 +188,7 @@ export interface GetKafkaResult {
     readonly kafkaUserConfig?: outputs.GetKafkaKafkaUserConfig;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: string;
     /**
@@ -247,7 +247,7 @@ export interface GetKafkaResult {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */

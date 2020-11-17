@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// ## # Project Resource
     /// 
-    /// The Project resource allows the creation and management of an Aiven Projects.
+    /// The Project resource allows the creation and management of Aiven Projects.
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {

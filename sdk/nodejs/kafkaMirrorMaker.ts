@@ -6,9 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Kafka Mirror Maker Resource
+ * ## # Kafka MirrorMaker Resource
  *
- * The Kafka Mirror Maker resource allows the creation and management of an Aiven Kafka Mirror Maker 2 services.
+ * The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
  *
  * ## Example Usage
  *
@@ -63,7 +63,7 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -79,13 +79,13 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly kafkaMirrormaker!: pulumi.Output<outputs.KafkaMirrorMakerKafkaMirrormaker>;
     /**
-     * defines Kafka Mirror Maker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options. 
      * The following configuration options available:
      */
     public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.KafkaMirrorMakerKafkaMirrormakerUserConfig | undefined>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
     /**
@@ -120,7 +120,7 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly projectVpcId!: pulumi.Output<string | undefined>;
     /**
-     * Kafka Mirror Maker 2 hostname.
+     * Kafka MirrorMaker 2 hostname.
      */
     public /*out*/ readonly serviceHost!: pulumi.Output<string>;
     /**
@@ -134,11 +134,11 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     public /*out*/ readonly servicePassword!: pulumi.Output<string>;
     /**
-     * Kafka Mirror Maker 2 port.
+     * Kafka MirrorMaker 2 port.
      */
     public /*out*/ readonly servicePort!: pulumi.Output<number>;
     /**
@@ -146,11 +146,11 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceType!: pulumi.Output<string>;
     /**
-     * URI for connecting to the Kafka Mirror Maker 2 service.
+     * URI for connecting to the Kafka MirrorMaker 2 service.
      */
     public /*out*/ readonly serviceUri!: pulumi.Output<string>;
     /**
-     * Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     public /*out*/ readonly serviceUsername!: pulumi.Output<string>;
     /**
@@ -160,7 +160,7 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -243,7 +243,7 @@ export interface KafkaMirrorMakerState {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -259,13 +259,13 @@ export interface KafkaMirrorMakerState {
      */
     readonly kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormaker>;
     /**
-     * defines Kafka Mirror Maker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options. 
      * The following configuration options available:
      */
     readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -300,7 +300,7 @@ export interface KafkaMirrorMakerState {
      */
     readonly projectVpcId?: pulumi.Input<string>;
     /**
-     * Kafka Mirror Maker 2 hostname.
+     * Kafka MirrorMaker 2 hostname.
      */
     readonly serviceHost?: pulumi.Input<string>;
     /**
@@ -314,11 +314,11 @@ export interface KafkaMirrorMakerState {
      */
     readonly serviceName?: pulumi.Input<string>;
     /**
-     * Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     readonly servicePassword?: pulumi.Input<string>;
     /**
-     * Kafka Mirror Maker 2 port.
+     * Kafka MirrorMaker 2 port.
      */
     readonly servicePort?: pulumi.Input<number>;
     /**
@@ -326,11 +326,11 @@ export interface KafkaMirrorMakerState {
      */
     readonly serviceType?: pulumi.Input<string>;
     /**
-     * URI for connecting to the Kafka Mirror Maker 2 service.
+     * URI for connecting to the Kafka MirrorMaker 2 service.
      */
     readonly serviceUri?: pulumi.Input<string>;
     /**
-     * Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     readonly serviceUsername?: pulumi.Input<string>;
     /**
@@ -340,7 +340,7 @@ export interface KafkaMirrorMakerState {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -354,7 +354,7 @@ export interface KafkaMirrorMakerArgs {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -366,13 +366,13 @@ export interface KafkaMirrorMakerArgs {
      */
     readonly kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormaker>;
     /**
-     * defines Kafka Mirror Maker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options. 
      * The following configuration options available:
      */
     readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -419,7 +419,7 @@ export interface KafkaMirrorMakerArgs {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */

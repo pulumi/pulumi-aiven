@@ -63,7 +63,7 @@ class GetKafkaTopicResult:
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[str]:
         """
-        cleanup.policy value
+        cleanup.policy value, can be `create`, `delete` or `compact,delete`
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -200,7 +200,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
     ```
 
 
-    :param str cleanup_policy: cleanup.policy value
+    :param str cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
     :param pulumi.InputType['GetKafkaTopicConfigArgs'] config: Kafka topic configuration
     :param int minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
     :param int partitions: Number of partitions to create in the topic.

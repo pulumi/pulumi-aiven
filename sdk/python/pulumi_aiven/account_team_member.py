@@ -27,12 +27,12 @@ class AccountTeamMember(pulumi.CustomResource):
         """
         ## # Account Team Member Resource
 
-        The Account Team Member resource allows the creation and management of an Aiven Account Team Members.
+        The Account Team Member resource allows the creation and management of an Aiven Account Team Member.
 
         During the creation of `AccountTeamMember` resource, an email invitation will be sent\
         to a user using `user_email` address. If the user accepts an invitation, he or she will become
         a member of the account team. The deletion of `AccountTeamMember` will not only
-        delete invitation if one was sent but not yet accepted by the user, and it will also
+        delete the invitation if one was sent but not yet accepted by the user, it will also
         eliminate an account team member if one has accepted an invitation previously.
 
         :param str resource_name: The name of the resource.

@@ -12090,7 +12090,7 @@ func (o KafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) KafkaServic
 }
 
 type KafkaTopicConfig struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType *string `pulumi:"compressionType"`
@@ -12152,7 +12152,7 @@ type KafkaTopicConfigInput interface {
 }
 
 type KafkaTopicConfigArgs struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
@@ -12279,7 +12279,7 @@ func (o KafkaTopicConfigOutput) ToKafkaTopicConfigPtrOutputWithContext(ctx conte
 	}).(KafkaTopicConfigPtrOutput)
 }
 
-// cleanup.policy value
+// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 func (o KafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
@@ -12417,7 +12417,7 @@ func (o KafkaTopicConfigPtrOutput) Elem() KafkaTopicConfigOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) KafkaTopicConfig { return *v }).(KafkaTopicConfigOutput)
 }
 
-// cleanup.policy value
+// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 func (o KafkaTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -45664,7 +45664,7 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerOutput) ToGetKafkaMirrorMakerKafkaMir
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters []string `pulumi:"ipFilters"`
-	// Kafka Mirror Maker 2 specific server provided values.
+	// Kafka MirrorMaker 2 specific server provided values.
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
 }
 
@@ -45682,7 +45682,7 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka Mirror Maker 2 specific server provided values.
+	// Kafka MirrorMaker 2 specific server provided values.
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
 }
 
@@ -45717,7 +45717,7 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka Mirror Maker 2 specific server provided values.
+// Kafka MirrorMaker 2 specific server provided values.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
@@ -46131,7 +46131,7 @@ func (o GetKafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetKafka
 }
 
 type GetKafkaTopicConfig struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType *string `pulumi:"compressionType"`
@@ -46193,7 +46193,7 @@ type GetKafkaTopicConfigInput interface {
 }
 
 type GetKafkaTopicConfigArgs struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
@@ -46269,7 +46269,7 @@ func (o GetKafkaTopicConfigOutput) ToGetKafkaTopicConfigOutputWithContext(ctx co
 	return o
 }
 
-// cleanup.policy value
+// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 func (o GetKafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }

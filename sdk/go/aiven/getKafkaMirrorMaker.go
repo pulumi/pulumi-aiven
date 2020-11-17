@@ -7,9 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## # Kafka Mirror Maker Data Source
+// ## # Kafka MirrorMaker Data Source
 //
-// The Kafka Mirror Maker data source provides information about the existing Aiven Kafka Mirror Maker 2 service.
+// The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
 //
 // ## Example Usage
 //
@@ -47,20 +47,20 @@ func LookupKafkaMirrorMaker(ctx *pulumi.Context, args *LookupKafkaMirrorMakerArg
 type LookupKafkaMirrorMakerArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
 	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName  *string                        `pulumi:"cloudName"`
 	Components []GetKafkaMirrorMakerComponent `pulumi:"components"`
-	// Kafka Mirror Maker 2 specific server provided values.
+	// Kafka MirrorMaker 2 specific server provided values.
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	// defines Kafka Mirror Maker 2 specific additional configuration options.
+	// defines Kafka MirrorMaker 2 specific additional configuration options.
 	// The following configuration options available:
 	KafkaMirrormakerUserConfig *GetKafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -85,27 +85,27 @@ type LookupKafkaMirrorMakerArgs struct {
 	// creation but doing so triggers migration to new servers so the operation can take
 	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Kafka Mirror Maker 2 hostname.
+	// Kafka MirrorMaker 2 hostname.
 	ServiceHost         *string                                 `pulumi:"serviceHost"`
 	ServiceIntegrations []GetKafkaMirrorMakerServiceIntegration `pulumi:"serviceIntegrations"`
 	// specifies the actual name of the service. The name cannot be changed
 	// later without destroying and re-creating the service so name should be picked based on
 	// intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+	// Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
 	ServicePassword *string `pulumi:"servicePassword"`
-	// Kafka Mirror Maker 2 port.
+	// Kafka MirrorMaker 2 port.
 	ServicePort *int    `pulumi:"servicePort"`
 	ServiceType *string `pulumi:"serviceType"`
-	// URI for connecting to the Kafka Mirror Maker 2 service.
+	// URI for connecting to the Kafka MirrorMaker 2 service.
 	ServiceUri *string `pulumi:"serviceUri"`
-	// Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+	// Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state.
 	State *string `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -115,7 +115,7 @@ type LookupKafkaMirrorMakerArgs struct {
 type LookupKafkaMirrorMakerResult struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -124,13 +124,13 @@ type LookupKafkaMirrorMakerResult struct {
 	Components []GetKafkaMirrorMakerComponent `pulumi:"components"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Kafka Mirror Maker 2 specific server provided values.
+	// Kafka MirrorMaker 2 specific server provided values.
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	// defines Kafka Mirror Maker 2 specific additional configuration options.
+	// defines Kafka MirrorMaker 2 specific additional configuration options.
 	// The following configuration options available:
 	KafkaMirrormakerUserConfig *GetKafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -152,24 +152,24 @@ type LookupKafkaMirrorMakerResult struct {
 	// creation but doing so triggers migration to new servers so the operation can take
 	// significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Kafka Mirror Maker 2 hostname.
+	// Kafka MirrorMaker 2 hostname.
 	ServiceHost         string                                  `pulumi:"serviceHost"`
 	ServiceIntegrations []GetKafkaMirrorMakerServiceIntegration `pulumi:"serviceIntegrations"`
 	ServiceName         string                                  `pulumi:"serviceName"`
-	// Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+	// Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
 	ServicePassword string `pulumi:"servicePassword"`
-	// Kafka Mirror Maker 2 port.
+	// Kafka MirrorMaker 2 port.
 	ServicePort int    `pulumi:"servicePort"`
 	ServiceType string `pulumi:"serviceType"`
-	// URI for connecting to the Kafka Mirror Maker 2 service.
+	// URI for connecting to the Kafka MirrorMaker 2 service.
 	ServiceUri string `pulumi:"serviceUri"`
-	// Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+	// Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
 	ServiceUsername string `pulumi:"serviceUsername"`
 	// Service state.
 	State string `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`

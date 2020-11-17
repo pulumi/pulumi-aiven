@@ -13,7 +13,7 @@ import (
 
 // ## # Kafka Schema Resource
 //
-// The Kafka Schema resource allows the creation and management of an Aiven Kafka Schemas.
+// The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
 //
 // ## Example Usage
 //

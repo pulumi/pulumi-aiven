@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// cleanup.policy value
+        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
         /// </summary>
         [Input("cleanupPolicy")]
         public string? CleanupPolicy { get; set; }
@@ -131,7 +131,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         /// <summary>
-        /// cleanup.policy value
+        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
         /// </summary>
         public readonly string? CleanupPolicy;
         /// <summary>

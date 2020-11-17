@@ -13,7 +13,7 @@ namespace Pulumi.Aiven
     /// ## # MirrorMaker 2 Replication Flow Resource
     /// 
     /// The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
-    /// Replication Flow on Aiven Cloud.
+    /// Replication Flows on Aiven Cloud.
     /// 
     /// ## Example Usage
     /// 
@@ -51,7 +51,7 @@ namespace Pulumi.Aiven
     public partial class MirrorMakerReplicationFlow : Pulumi.CustomResource
     {
         /// <summary>
-        /// enable of disable replication flows for a mirror maker service
+        /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         [Output("enable")]
         public Output<bool> Enable { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable of disable replication flows for a mirror maker service
+        /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         [Input("enable", required: true)]
         public Input<bool> Enable { get; set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable of disable replication flows for a mirror maker service
+        /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

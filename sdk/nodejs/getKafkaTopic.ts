@@ -58,7 +58,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetKafkaTopicArgs {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      */
     readonly cleanupPolicy?: string;
     /**
@@ -107,7 +107,7 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      */
     readonly cleanupPolicy?: string;
     /**

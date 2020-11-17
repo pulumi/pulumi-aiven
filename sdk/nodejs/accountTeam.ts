@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Account Team Resource
  *
- * The Account Team resource allows the creation and management of an Account Teams.
+ * The Account Team resource allows the creation and management of an Account Team.
  */
 export class AccountTeam extends pulumi.CustomResource {
     /**

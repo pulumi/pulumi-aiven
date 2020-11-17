@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// enables of disables Elasticsearch ACL's.
+        /// enables or disables Elasticsearch ACLs.
         /// </summary>
         [Input("enabled")]
         public bool? Enabled { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.Aiven
     {
         public readonly ImmutableArray<Outputs.GetElasticSearchAclAclResult> Acls;
         /// <summary>
-        /// enables of disables Elasticsearch ACL's.
+        /// enables or disables Elasticsearch ACLs.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
