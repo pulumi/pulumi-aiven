@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -431,4 +432,43 @@ type MySqlArgs struct {
 
 func (MySqlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mySqlArgs)(nil)).Elem()
+}
+
+type MySqlInput interface {
+	pulumi.Input
+
+	ToMySqlOutput() MySqlOutput
+	ToMySqlOutputWithContext(ctx context.Context) MySqlOutput
+}
+
+func (MySql) ElementType() reflect.Type {
+	return reflect.TypeOf((*MySql)(nil)).Elem()
+}
+
+func (i MySql) ToMySqlOutput() MySqlOutput {
+	return i.ToMySqlOutputWithContext(context.Background())
+}
+
+func (i MySql) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlOutput)
+}
+
+type MySqlOutput struct {
+	*pulumi.OutputState
+}
+
+func (MySqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MySqlOutput)(nil)).Elem()
+}
+
+func (o MySqlOutput) ToMySqlOutput() MySqlOutput {
+	return o
+}
+
+func (o MySqlOutput) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MySqlOutput{})
 }

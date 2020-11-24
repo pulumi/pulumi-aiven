@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -412,4 +413,43 @@ type GrafanaArgs struct {
 
 func (GrafanaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*grafanaArgs)(nil)).Elem()
+}
+
+type GrafanaInput interface {
+	pulumi.Input
+
+	ToGrafanaOutput() GrafanaOutput
+	ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput
+}
+
+func (Grafana) ElementType() reflect.Type {
+	return reflect.TypeOf((*Grafana)(nil)).Elem()
+}
+
+func (i Grafana) ToGrafanaOutput() GrafanaOutput {
+	return i.ToGrafanaOutputWithContext(context.Background())
+}
+
+func (i Grafana) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaOutput)
+}
+
+type GrafanaOutput struct {
+	*pulumi.OutputState
+}
+
+func (GrafanaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafanaOutput)(nil)).Elem()
+}
+
+func (o GrafanaOutput) ToGrafanaOutput() GrafanaOutput {
+	return o
+}
+
+func (o GrafanaOutput) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GrafanaOutput{})
 }

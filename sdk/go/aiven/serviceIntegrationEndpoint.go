@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -237,4 +238,43 @@ type ServiceIntegrationEndpointArgs struct {
 
 func (ServiceIntegrationEndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIntegrationEndpointArgs)(nil)).Elem()
+}
+
+type ServiceIntegrationEndpointInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointOutput() ServiceIntegrationEndpointOutput
+	ToServiceIntegrationEndpointOutputWithContext(ctx context.Context) ServiceIntegrationEndpointOutput
+}
+
+func (ServiceIntegrationEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpoint)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutput() ServiceIntegrationEndpointOutput {
+	return i.ToServiceIntegrationEndpointOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutputWithContext(ctx context.Context) ServiceIntegrationEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointOutput)
+}
+
+type ServiceIntegrationEndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceIntegrationEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointOutput)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointOutput() ServiceIntegrationEndpointOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointOutputWithContext(ctx context.Context) ServiceIntegrationEndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointOutput{})
 }

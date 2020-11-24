@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -239,4 +240,43 @@ type ServiceIntegrationArgs struct {
 
 func (ServiceIntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIntegrationArgs)(nil)).Elem()
+}
+
+type ServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationOutput() ServiceIntegrationOutput
+	ToServiceIntegrationOutputWithContext(ctx context.Context) ServiceIntegrationOutput
+}
+
+func (ServiceIntegration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegration)(nil)).Elem()
+}
+
+func (i ServiceIntegration) ToServiceIntegrationOutput() ServiceIntegrationOutput {
+	return i.ToServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegration) ToServiceIntegrationOutputWithContext(ctx context.Context) ServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationOutput)
+}
+
+type ServiceIntegrationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationOutput)(nil)).Elem()
+}
+
+func (o ServiceIntegrationOutput) ToServiceIntegrationOutput() ServiceIntegrationOutput {
+	return o
+}
+
+func (o ServiceIntegrationOutput) ToServiceIntegrationOutputWithContext(ctx context.Context) ServiceIntegrationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceIntegrationOutput{})
 }

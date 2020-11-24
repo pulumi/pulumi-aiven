@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -406,4 +407,43 @@ type InfluxDbArgs struct {
 
 func (InfluxDbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*influxDbArgs)(nil)).Elem()
+}
+
+type InfluxDbInput interface {
+	pulumi.Input
+
+	ToInfluxDbOutput() InfluxDbOutput
+	ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput
+}
+
+func (InfluxDb) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfluxDb)(nil)).Elem()
+}
+
+func (i InfluxDb) ToInfluxDbOutput() InfluxDbOutput {
+	return i.ToInfluxDbOutputWithContext(context.Background())
+}
+
+func (i InfluxDb) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbOutput)
+}
+
+type InfluxDbOutput struct {
+	*pulumi.OutputState
+}
+
+func (InfluxDbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfluxDbOutput)(nil)).Elem()
+}
+
+func (o InfluxDbOutput) ToInfluxDbOutput() InfluxDbOutput {
+	return o
+}
+
+func (o InfluxDbOutput) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InfluxDbOutput{})
 }

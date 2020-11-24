@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -190,4 +191,43 @@ type AccountAuthenticationArgs struct {
 
 func (AccountAuthenticationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountAuthenticationArgs)(nil)).Elem()
+}
+
+type AccountAuthenticationInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationOutput() AccountAuthenticationOutput
+	ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput
+}
+
+func (AccountAuthentication) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAuthentication)(nil)).Elem()
+}
+
+func (i AccountAuthentication) ToAccountAuthenticationOutput() AccountAuthenticationOutput {
+	return i.ToAccountAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AccountAuthentication) ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationOutput)
+}
+
+type AccountAuthenticationOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAuthenticationOutput)(nil)).Elem()
+}
+
+func (o AccountAuthenticationOutput) ToAccountAuthenticationOutput() AccountAuthenticationOutput {
+	return o
+}
+
+func (o AccountAuthenticationOutput) ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountAuthenticationOutput{})
 }

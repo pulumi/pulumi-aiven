@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -177,4 +178,43 @@ type TransitGatewayVpcAttachmentArgs struct {
 
 func (TransitGatewayVpcAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitGatewayVpcAttachmentArgs)(nil)).Elem()
+}
+
+type TransitGatewayVpcAttachmentInput interface {
+	pulumi.Input
+
+	ToTransitGatewayVpcAttachmentOutput() TransitGatewayVpcAttachmentOutput
+	ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput
+}
+
+func (TransitGatewayVpcAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayVpcAttachment)(nil)).Elem()
+}
+
+func (i TransitGatewayVpcAttachment) ToTransitGatewayVpcAttachmentOutput() TransitGatewayVpcAttachmentOutput {
+	return i.ToTransitGatewayVpcAttachmentOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayVpcAttachment) ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentOutput)
+}
+
+type TransitGatewayVpcAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransitGatewayVpcAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayVpcAttachmentOutput)(nil)).Elem()
+}
+
+func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentOutput() TransitGatewayVpcAttachmentOutput {
+	return o
+}
+
+func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TransitGatewayVpcAttachmentOutput{})
 }

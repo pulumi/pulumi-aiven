@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -409,4 +410,43 @@ type KafkaMirrorMakerArgs struct {
 
 func (KafkaMirrorMakerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaMirrorMakerArgs)(nil)).Elem()
+}
+
+type KafkaMirrorMakerInput interface {
+	pulumi.Input
+
+	ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutput
+	ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput
+}
+
+func (KafkaMirrorMaker) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaMirrorMaker)(nil)).Elem()
+}
+
+func (i KafkaMirrorMaker) ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutput {
+	return i.ToKafkaMirrorMakerOutputWithContext(context.Background())
+}
+
+func (i KafkaMirrorMaker) ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerOutput)
+}
+
+type KafkaMirrorMakerOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaMirrorMakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaMirrorMakerOutput)(nil)).Elem()
+}
+
+func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutput {
+	return o
+}
+
+func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KafkaMirrorMakerOutput{})
 }

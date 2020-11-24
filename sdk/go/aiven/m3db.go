@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -410,4 +411,43 @@ type M3DbArgs struct {
 
 func (M3DbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*m3dbArgs)(nil)).Elem()
+}
+
+type M3DbInput interface {
+	pulumi.Input
+
+	ToM3DbOutput() M3DbOutput
+	ToM3DbOutputWithContext(ctx context.Context) M3DbOutput
+}
+
+func (M3Db) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3Db)(nil)).Elem()
+}
+
+func (i M3Db) ToM3DbOutput() M3DbOutput {
+	return i.ToM3DbOutputWithContext(context.Background())
+}
+
+func (i M3Db) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbOutput)
+}
+
+type M3DbOutput struct {
+	*pulumi.OutputState
+}
+
+func (M3DbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbOutput)(nil)).Elem()
+}
+
+func (o M3DbOutput) ToM3DbOutput() M3DbOutput {
+	return o
+}
+
+func (o M3DbOutput) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(M3DbOutput{})
 }

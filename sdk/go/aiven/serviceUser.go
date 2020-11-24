@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type ServiceUserArgs struct {
 
 func (ServiceUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceUserArgs)(nil)).Elem()
+}
+
+type ServiceUserInput interface {
+	pulumi.Input
+
+	ToServiceUserOutput() ServiceUserOutput
+	ToServiceUserOutputWithContext(ctx context.Context) ServiceUserOutput
+}
+
+func (ServiceUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceUser)(nil)).Elem()
+}
+
+func (i ServiceUser) ToServiceUserOutput() ServiceUserOutput {
+	return i.ToServiceUserOutputWithContext(context.Background())
+}
+
+func (i ServiceUser) ToServiceUserOutputWithContext(ctx context.Context) ServiceUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserOutput)
+}
+
+type ServiceUserOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceUserOutput)(nil)).Elem()
+}
+
+func (o ServiceUserOutput) ToServiceUserOutput() ServiceUserOutput {
+	return o
+}
+
+func (o ServiceUserOutput) ToServiceUserOutputWithContext(ctx context.Context) ServiceUserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceUserOutput{})
 }

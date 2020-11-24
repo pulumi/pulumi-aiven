@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -158,4 +159,43 @@ type KafkaSchemaConfigurationArgs struct {
 
 func (KafkaSchemaConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaSchemaConfigurationArgs)(nil)).Elem()
+}
+
+type KafkaSchemaConfigurationInput interface {
+	pulumi.Input
+
+	ToKafkaSchemaConfigurationOutput() KafkaSchemaConfigurationOutput
+	ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput
+}
+
+func (KafkaSchemaConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaSchemaConfiguration)(nil)).Elem()
+}
+
+func (i KafkaSchemaConfiguration) ToKafkaSchemaConfigurationOutput() KafkaSchemaConfigurationOutput {
+	return i.ToKafkaSchemaConfigurationOutputWithContext(context.Background())
+}
+
+func (i KafkaSchemaConfiguration) ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaConfigurationOutput)
+}
+
+type KafkaSchemaConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaSchemaConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaSchemaConfigurationOutput)(nil)).Elem()
+}
+
+func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationOutput() KafkaSchemaConfigurationOutput {
+	return o
+}
+
+func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KafkaSchemaConfigurationOutput{})
 }

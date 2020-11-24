@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -222,4 +223,43 @@ type ConnectionPoolArgs struct {
 
 func (ConnectionPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionPoolArgs)(nil)).Elem()
+}
+
+type ConnectionPoolInput interface {
+	pulumi.Input
+
+	ToConnectionPoolOutput() ConnectionPoolOutput
+	ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput
+}
+
+func (ConnectionPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPool)(nil)).Elem()
+}
+
+func (i ConnectionPool) ToConnectionPoolOutput() ConnectionPoolOutput {
+	return i.ToConnectionPoolOutputWithContext(context.Background())
+}
+
+func (i ConnectionPool) ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolOutput)
+}
+
+type ConnectionPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPoolOutput)(nil)).Elem()
+}
+
+func (o ConnectionPoolOutput) ToConnectionPoolOutput() ConnectionPoolOutput {
+	return o
+}
+
+func (o ConnectionPoolOutput) ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionPoolOutput{})
 }
