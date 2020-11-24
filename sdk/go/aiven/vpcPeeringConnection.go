@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -201,4 +202,43 @@ type VpcPeeringConnectionArgs struct {
 
 func (VpcPeeringConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcPeeringConnectionArgs)(nil)).Elem()
+}
+
+type VpcPeeringConnectionInput interface {
+	pulumi.Input
+
+	ToVpcPeeringConnectionOutput() VpcPeeringConnectionOutput
+	ToVpcPeeringConnectionOutputWithContext(ctx context.Context) VpcPeeringConnectionOutput
+}
+
+func (VpcPeeringConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConnection)(nil)).Elem()
+}
+
+func (i VpcPeeringConnection) ToVpcPeeringConnectionOutput() VpcPeeringConnectionOutput {
+	return i.ToVpcPeeringConnectionOutputWithContext(context.Background())
+}
+
+func (i VpcPeeringConnection) ToVpcPeeringConnectionOutputWithContext(ctx context.Context) VpcPeeringConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionOutput)
+}
+
+type VpcPeeringConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcPeeringConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConnectionOutput)(nil)).Elem()
+}
+
+func (o VpcPeeringConnectionOutput) ToVpcPeeringConnectionOutput() VpcPeeringConnectionOutput {
+	return o
+}
+
+func (o VpcPeeringConnectionOutput) ToVpcPeeringConnectionOutputWithContext(ctx context.Context) VpcPeeringConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcPeeringConnectionOutput{})
 }

@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -409,4 +410,43 @@ type CassandraArgs struct {
 
 func (CassandraArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cassandraArgs)(nil)).Elem()
+}
+
+type CassandraInput interface {
+	pulumi.Input
+
+	ToCassandraOutput() CassandraOutput
+	ToCassandraOutputWithContext(ctx context.Context) CassandraOutput
+}
+
+func (Cassandra) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cassandra)(nil)).Elem()
+}
+
+func (i Cassandra) ToCassandraOutput() CassandraOutput {
+	return i.ToCassandraOutputWithContext(context.Background())
+}
+
+func (i Cassandra) ToCassandraOutputWithContext(ctx context.Context) CassandraOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraOutput)
+}
+
+type CassandraOutput struct {
+	*pulumi.OutputState
+}
+
+func (CassandraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraOutput)(nil)).Elem()
+}
+
+func (o CassandraOutput) ToCassandraOutput() CassandraOutput {
+	return o
+}
+
+func (o CassandraOutput) ToCassandraOutputWithContext(ctx context.Context) CassandraOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CassandraOutput{})
 }

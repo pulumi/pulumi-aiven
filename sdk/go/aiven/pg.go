@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -378,4 +379,43 @@ type PgArgs struct {
 
 func (PgArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pgArgs)(nil)).Elem()
+}
+
+type PgInput interface {
+	pulumi.Input
+
+	ToPgOutput() PgOutput
+	ToPgOutputWithContext(ctx context.Context) PgOutput
+}
+
+func (Pg) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pg)(nil)).Elem()
+}
+
+func (i Pg) ToPgOutput() PgOutput {
+	return i.ToPgOutputWithContext(context.Background())
+}
+
+func (i Pg) ToPgOutputWithContext(ctx context.Context) PgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgOutput)
+}
+
+type PgOutput struct {
+	*pulumi.OutputState
+}
+
+func (PgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgOutput)(nil)).Elem()
+}
+
+func (o PgOutput) ToPgOutput() PgOutput {
+	return o
+}
+
+func (o PgOutput) ToPgOutputWithContext(ctx context.Context) PgOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PgOutput{})
 }

@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -143,4 +144,43 @@ type ProjectUserArgs struct {
 
 func (ProjectUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectUserArgs)(nil)).Elem()
+}
+
+type ProjectUserInput interface {
+	pulumi.Input
+
+	ToProjectUserOutput() ProjectUserOutput
+	ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput
+}
+
+func (ProjectUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectUser)(nil)).Elem()
+}
+
+func (i ProjectUser) ToProjectUserOutput() ProjectUserOutput {
+	return i.ToProjectUserOutputWithContext(context.Background())
+}
+
+func (i ProjectUser) ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserOutput)
+}
+
+type ProjectUserOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectUserOutput)(nil)).Elem()
+}
+
+func (o ProjectUserOutput) ToProjectUserOutput() ProjectUserOutput {
+	return o
+}
+
+func (o ProjectUserOutput) ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectUserOutput{})
 }

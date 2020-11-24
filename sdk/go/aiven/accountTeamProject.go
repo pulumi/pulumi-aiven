@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -119,4 +120,43 @@ type AccountTeamProjectArgs struct {
 
 func (AccountTeamProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountTeamProjectArgs)(nil)).Elem()
+}
+
+type AccountTeamProjectInput interface {
+	pulumi.Input
+
+	ToAccountTeamProjectOutput() AccountTeamProjectOutput
+	ToAccountTeamProjectOutputWithContext(ctx context.Context) AccountTeamProjectOutput
+}
+
+func (AccountTeamProject) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountTeamProject)(nil)).Elem()
+}
+
+func (i AccountTeamProject) ToAccountTeamProjectOutput() AccountTeamProjectOutput {
+	return i.ToAccountTeamProjectOutputWithContext(context.Background())
+}
+
+func (i AccountTeamProject) ToAccountTeamProjectOutputWithContext(ctx context.Context) AccountTeamProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamProjectOutput)
+}
+
+type AccountTeamProjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountTeamProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountTeamProjectOutput)(nil)).Elem()
+}
+
+func (o AccountTeamProjectOutput) ToAccountTeamProjectOutput() AccountTeamProjectOutput {
+	return o
+}
+
+func (o AccountTeamProjectOutput) ToAccountTeamProjectOutputWithContext(ctx context.Context) AccountTeamProjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountTeamProjectOutput{})
 }

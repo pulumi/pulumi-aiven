@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -190,4 +191,43 @@ type MirrorMakerReplicationFlowArgs struct {
 
 func (MirrorMakerReplicationFlowArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mirrorMakerReplicationFlowArgs)(nil)).Elem()
+}
+
+type MirrorMakerReplicationFlowInput interface {
+	pulumi.Input
+
+	ToMirrorMakerReplicationFlowOutput() MirrorMakerReplicationFlowOutput
+	ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput
+}
+
+func (MirrorMakerReplicationFlow) ElementType() reflect.Type {
+	return reflect.TypeOf((*MirrorMakerReplicationFlow)(nil)).Elem()
+}
+
+func (i MirrorMakerReplicationFlow) ToMirrorMakerReplicationFlowOutput() MirrorMakerReplicationFlowOutput {
+	return i.ToMirrorMakerReplicationFlowOutputWithContext(context.Background())
+}
+
+func (i MirrorMakerReplicationFlow) ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MirrorMakerReplicationFlowOutput)
+}
+
+type MirrorMakerReplicationFlowOutput struct {
+	*pulumi.OutputState
+}
+
+func (MirrorMakerReplicationFlowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MirrorMakerReplicationFlowOutput)(nil)).Elem()
+}
+
+func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutput() MirrorMakerReplicationFlowOutput {
+	return o
+}
+
+func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MirrorMakerReplicationFlowOutput{})
 }

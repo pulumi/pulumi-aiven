@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -430,4 +431,43 @@ type KafkaArgs struct {
 
 func (KafkaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaArgs)(nil)).Elem()
+}
+
+type KafkaInput interface {
+	pulumi.Input
+
+	ToKafkaOutput() KafkaOutput
+	ToKafkaOutputWithContext(ctx context.Context) KafkaOutput
+}
+
+func (Kafka) ElementType() reflect.Type {
+	return reflect.TypeOf((*Kafka)(nil)).Elem()
+}
+
+func (i Kafka) ToKafkaOutput() KafkaOutput {
+	return i.ToKafkaOutputWithContext(context.Background())
+}
+
+func (i Kafka) ToKafkaOutputWithContext(ctx context.Context) KafkaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaOutput)
+}
+
+type KafkaOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaOutput)(nil)).Elem()
+}
+
+func (o KafkaOutput) ToKafkaOutput() KafkaOutput {
+	return o
+}
+
+func (o KafkaOutput) ToKafkaOutputWithContext(ctx context.Context) KafkaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KafkaOutput{})
 }

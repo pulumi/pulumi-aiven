@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -404,4 +405,43 @@ type M3AggregatorArgs struct {
 
 func (M3AggregatorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*m3aggregatorArgs)(nil)).Elem()
+}
+
+type M3AggregatorInput interface {
+	pulumi.Input
+
+	ToM3AggregatorOutput() M3AggregatorOutput
+	ToM3AggregatorOutputWithContext(ctx context.Context) M3AggregatorOutput
+}
+
+func (M3Aggregator) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3Aggregator)(nil)).Elem()
+}
+
+func (i M3Aggregator) ToM3AggregatorOutput() M3AggregatorOutput {
+	return i.ToM3AggregatorOutputWithContext(context.Background())
+}
+
+func (i M3Aggregator) ToM3AggregatorOutputWithContext(ctx context.Context) M3AggregatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorOutput)
+}
+
+type M3AggregatorOutput struct {
+	*pulumi.OutputState
+}
+
+func (M3AggregatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorOutput)(nil)).Elem()
+}
+
+func (o M3AggregatorOutput) ToM3AggregatorOutput() M3AggregatorOutput {
+	return o
+}
+
+func (o M3AggregatorOutput) ToM3AggregatorOutputWithContext(ctx context.Context) M3AggregatorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(M3AggregatorOutput{})
 }

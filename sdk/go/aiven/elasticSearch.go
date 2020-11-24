@@ -4,6 +4,7 @@
 package aiven
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -417,4 +418,43 @@ type ElasticSearchArgs struct {
 
 func (ElasticSearchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*elasticSearchArgs)(nil)).Elem()
+}
+
+type ElasticSearchInput interface {
+	pulumi.Input
+
+	ToElasticSearchOutput() ElasticSearchOutput
+	ToElasticSearchOutputWithContext(ctx context.Context) ElasticSearchOutput
+}
+
+func (ElasticSearch) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSearch)(nil)).Elem()
+}
+
+func (i ElasticSearch) ToElasticSearchOutput() ElasticSearchOutput {
+	return i.ToElasticSearchOutputWithContext(context.Background())
+}
+
+func (i ElasticSearch) ToElasticSearchOutputWithContext(ctx context.Context) ElasticSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchOutput)
+}
+
+type ElasticSearchOutput struct {
+	*pulumi.OutputState
+}
+
+func (ElasticSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSearchOutput)(nil)).Elem()
+}
+
+func (o ElasticSearchOutput) ToElasticSearchOutput() ElasticSearchOutput {
+	return o
+}
+
+func (o ElasticSearchOutput) ToElasticSearchOutputWithContext(ctx context.Context) ElasticSearchOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ElasticSearchOutput{})
 }
