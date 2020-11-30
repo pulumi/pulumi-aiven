@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceRedisUserConfigPrivateAccess? PrivateAccess;
         public readonly Outputs.ServiceRedisUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryBasebackupName;
+        public readonly string? RedisIoThreads;
         public readonly string? RedisLfuDecayTime;
         public readonly string? RedisLfuLogFactor;
         public readonly string? RedisMaxmemoryPolicy;
@@ -38,6 +39,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            string? redisIoThreads,
+
             string? redisLfuDecayTime,
 
             string? redisLfuLogFactor,
@@ -57,6 +60,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            RedisIoThreads = redisIoThreads;
             RedisLfuDecayTime = redisLfuDecayTime;
             RedisLfuLogFactor = redisLfuLogFactor;
             RedisMaxmemoryPolicy = redisMaxmemoryPolicy;

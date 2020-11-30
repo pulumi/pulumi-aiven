@@ -188,6 +188,18 @@ namespace Pulumi.Aiven.Outputs
         /// (defaults to 104857600).
         /// </summary>
         public readonly string? SocketRequestMaxBytes;
+        /// <summary>
+        /// The interval at which 
+        /// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+        /// to 3600000 (1 hour)).
+        /// </summary>
+        public readonly string? TransactionRemoveExpiredTransactionCleanupIntervalMs;
+        /// <summary>
+        /// The transaction topic segment bytes should 
+        /// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+        /// to 104857600 (100 mebibytes)).
+        /// </summary>
+        public readonly string? TransactionStateLogSegmentBytes;
 
         [OutputConstructor]
         private GetKafkaKafkaUserConfigKafkaResult(
@@ -261,7 +273,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? replicaFetchResponseMaxBytes,
 
-            string? socketRequestMaxBytes)
+            string? socketRequestMaxBytes,
+
+            string? transactionRemoveExpiredTransactionCleanupIntervalMs,
+
+            string? transactionStateLogSegmentBytes)
         {
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;
@@ -299,6 +315,8 @@ namespace Pulumi.Aiven.Outputs
             ReplicaFetchMaxBytes = replicaFetchMaxBytes;
             ReplicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
             SocketRequestMaxBytes = socketRequestMaxBytes;
+            TransactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
+            TransactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
         }
     }
 }

@@ -24,16 +24,34 @@ namespace Pulumi.Aiven
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Available credits
+        /// </summary>
+        [Output("availableCredits")]
+        public Output<string> AvailableCredits { get; private set; } = null!;
+
+        /// <summary>
         /// Billing name and address of the project
         /// </summary>
         [Output("billingAddress")]
         public Output<string?> BillingAddress { get; private set; } = null!;
 
         /// <summary>
+        /// Billing currency
+        /// </summary>
+        [Output("billingCurrency")]
+        public Output<string?> BillingCurrency { get; private set; } = null!;
+
+        /// <summary>
         /// Billing contact emails of the project
         /// </summary>
         [Output("billingEmails")]
         public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
+
+        /// <summary>
+        /// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        /// </summary>
+        [Output("billingExtraText")]
+        public Output<string?> BillingExtraText { get; private set; } = null!;
 
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
@@ -63,10 +81,34 @@ namespace Pulumi.Aiven
         public Output<string?> CopyFromProject { get; private set; } = null!;
 
         /// <summary>
+        /// Billing country
+        /// </summary>
+        [Output("country")]
+        public Output<string> Country { get; private set; } = null!;
+
+        /// <summary>
         /// Billing country code of the project
         /// </summary>
         [Output("countryCode")]
         public Output<string?> CountryCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Default cloud for new services
+        /// </summary>
+        [Output("defaultCloud")]
+        public Output<string?> DefaultCloud { get; private set; } = null!;
+
+        /// <summary>
+        /// Estimated balance
+        /// </summary>
+        [Output("estimatedBalance")]
+        public Output<string> EstimatedBalance { get; private set; } = null!;
+
+        /// <summary>
+        /// Payment method
+        /// </summary>
+        [Output("paymentMethod")]
+        public Output<string> PaymentMethod { get; private set; } = null!;
 
         /// <summary>
         /// defines the name of the project. Name must be globally unique (between all
@@ -81,6 +123,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("technicalEmails")]
         public Output<ImmutableArray<string>> TechnicalEmails { get; private set; } = null!;
+
+        /// <summary>
+        /// EU VAT Identification Number
+        /// </summary>
+        [Output("vatId")]
+        public Output<string?> VatId { get; private set; } = null!;
 
 
         /// <summary>
@@ -136,10 +184,22 @@ namespace Pulumi.Aiven
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Available credits
+        /// </summary>
+        [Input("availableCredits")]
+        public Input<string>? AvailableCredits { get; set; }
+
+        /// <summary>
         /// Billing name and address of the project
         /// </summary>
         [Input("billingAddress")]
         public Input<string>? BillingAddress { get; set; }
+
+        /// <summary>
+        /// Billing currency
+        /// </summary>
+        [Input("billingCurrency")]
+        public Input<string>? BillingCurrency { get; set; }
 
         [Input("billingEmails")]
         private InputList<string>? _billingEmails;
@@ -152,6 +212,12 @@ namespace Pulumi.Aiven
             get => _billingEmails ?? (_billingEmails = new InputList<string>());
             set => _billingEmails = value;
         }
+
+        /// <summary>
+        /// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        /// </summary>
+        [Input("billingExtraText")]
+        public Input<string>? BillingExtraText { get; set; }
 
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
@@ -185,6 +251,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
+
+        /// <summary>
+        /// Default cloud for new services
+        /// </summary>
+        [Input("defaultCloud")]
+        public Input<string>? DefaultCloud { get; set; }
 
         /// <summary>
         /// defines the name of the project. Name must be globally unique (between all
@@ -206,6 +278,12 @@ namespace Pulumi.Aiven
             set => _technicalEmails = value;
         }
 
+        /// <summary>
+        /// EU VAT Identification Number
+        /// </summary>
+        [Input("vatId")]
+        public Input<string>? VatId { get; set; }
+
         public ProjectArgs()
         {
         }
@@ -221,10 +299,22 @@ namespace Pulumi.Aiven
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Available credits
+        /// </summary>
+        [Input("availableCredits")]
+        public Input<string>? AvailableCredits { get; set; }
+
+        /// <summary>
         /// Billing name and address of the project
         /// </summary>
         [Input("billingAddress")]
         public Input<string>? BillingAddress { get; set; }
+
+        /// <summary>
+        /// Billing currency
+        /// </summary>
+        [Input("billingCurrency")]
+        public Input<string>? BillingCurrency { get; set; }
 
         [Input("billingEmails")]
         private InputList<string>? _billingEmails;
@@ -237,6 +327,12 @@ namespace Pulumi.Aiven
             get => _billingEmails ?? (_billingEmails = new InputList<string>());
             set => _billingEmails = value;
         }
+
+        /// <summary>
+        /// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        /// </summary>
+        [Input("billingExtraText")]
+        public Input<string>? BillingExtraText { get; set; }
 
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
@@ -266,10 +362,34 @@ namespace Pulumi.Aiven
         public Input<string>? CopyFromProject { get; set; }
 
         /// <summary>
+        /// Billing country
+        /// </summary>
+        [Input("country")]
+        public Input<string>? Country { get; set; }
+
+        /// <summary>
         /// Billing country code of the project
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
+
+        /// <summary>
+        /// Default cloud for new services
+        /// </summary>
+        [Input("defaultCloud")]
+        public Input<string>? DefaultCloud { get; set; }
+
+        /// <summary>
+        /// Estimated balance
+        /// </summary>
+        [Input("estimatedBalance")]
+        public Input<string>? EstimatedBalance { get; set; }
+
+        /// <summary>
+        /// Payment method
+        /// </summary>
+        [Input("paymentMethod")]
+        public Input<string>? PaymentMethod { get; set; }
 
         /// <summary>
         /// defines the name of the project. Name must be globally unique (between all
@@ -290,6 +410,12 @@ namespace Pulumi.Aiven
             get => _technicalEmails ?? (_technicalEmails = new InputList<string>());
             set => _technicalEmails = value;
         }
+
+        /// <summary>
+        /// EU VAT Identification Number
+        /// </summary>
+        [Input("vatId")]
+        public Input<string>? VatId { get; set; }
 
         public ProjectState()
         {

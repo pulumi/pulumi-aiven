@@ -32,6 +32,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("recoveryBasebackupName")]
         public string? RecoveryBasebackupName { get; set; }
 
+        [Input("redisIoThreads")]
+        public string? RedisIoThreads { get; set; }
+
         [Input("redisLfuDecayTime")]
         public string? RedisLfuDecayTime { get; set; }
 

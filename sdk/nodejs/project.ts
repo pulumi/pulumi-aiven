@@ -43,13 +43,25 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
+     * Available credits
+     */
+    public readonly availableCredits!: pulumi.Output<string>;
+    /**
      * Billing name and address of the project
      */
     public readonly billingAddress!: pulumi.Output<string | undefined>;
     /**
+     * Billing currency
+     */
+    public readonly billingCurrency!: pulumi.Output<string | undefined>;
+    /**
      * Billing contact emails of the project
      */
     public readonly billingEmails!: pulumi.Output<string[] | undefined>;
+    /**
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number
+     */
+    public readonly billingExtraText!: pulumi.Output<string | undefined>;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
@@ -72,9 +84,25 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly copyFromProject!: pulumi.Output<string | undefined>;
     /**
+     * Billing country
+     */
+    public /*out*/ readonly country!: pulumi.Output<string>;
+    /**
      * Billing country code of the project
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
+    /**
+     * Default cloud for new services
+     */
+    public readonly defaultCloud!: pulumi.Output<string | undefined>;
+    /**
+     * Estimated balance
+     */
+    public /*out*/ readonly estimatedBalance!: pulumi.Output<string>;
+    /**
+     * Payment method
+     */
+    public /*out*/ readonly paymentMethod!: pulumi.Output<string>;
     /**
      * defines the name of the project. Name must be globally unique (between all
      * Aiven customers) and cannot be changed later without destroying and re-creating the
@@ -85,6 +113,10 @@ export class Project extends pulumi.CustomResource {
      * Technical contact emails of the project
      */
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
+    /**
+     * EU VAT Identification Number
+     */
+    public readonly vatId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -99,28 +131,44 @@ export class Project extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ProjectState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
+            inputs["availableCredits"] = state ? state.availableCredits : undefined;
             inputs["billingAddress"] = state ? state.billingAddress : undefined;
+            inputs["billingCurrency"] = state ? state.billingCurrency : undefined;
             inputs["billingEmails"] = state ? state.billingEmails : undefined;
+            inputs["billingExtraText"] = state ? state.billingExtraText : undefined;
             inputs["caCert"] = state ? state.caCert : undefined;
             inputs["cardId"] = state ? state.cardId : undefined;
             inputs["copyFromProject"] = state ? state.copyFromProject : undefined;
+            inputs["country"] = state ? state.country : undefined;
             inputs["countryCode"] = state ? state.countryCode : undefined;
+            inputs["defaultCloud"] = state ? state.defaultCloud : undefined;
+            inputs["estimatedBalance"] = state ? state.estimatedBalance : undefined;
+            inputs["paymentMethod"] = state ? state.paymentMethod : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["technicalEmails"] = state ? state.technicalEmails : undefined;
+            inputs["vatId"] = state ? state.vatId : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if (!args || args.project === undefined) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["availableCredits"] = args ? args.availableCredits : undefined;
             inputs["billingAddress"] = args ? args.billingAddress : undefined;
+            inputs["billingCurrency"] = args ? args.billingCurrency : undefined;
             inputs["billingEmails"] = args ? args.billingEmails : undefined;
+            inputs["billingExtraText"] = args ? args.billingExtraText : undefined;
             inputs["caCert"] = args ? args.caCert : undefined;
             inputs["cardId"] = args ? args.cardId : undefined;
             inputs["copyFromProject"] = args ? args.copyFromProject : undefined;
             inputs["countryCode"] = args ? args.countryCode : undefined;
+            inputs["defaultCloud"] = args ? args.defaultCloud : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["technicalEmails"] = args ? args.technicalEmails : undefined;
+            inputs["vatId"] = args ? args.vatId : undefined;
+            inputs["country"] = undefined /*out*/;
+            inputs["estimatedBalance"] = undefined /*out*/;
+            inputs["paymentMethod"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -143,13 +191,25 @@ export interface ProjectState {
      */
     readonly accountId?: pulumi.Input<string>;
     /**
+     * Available credits
+     */
+    readonly availableCredits?: pulumi.Input<string>;
+    /**
      * Billing name and address of the project
      */
     readonly billingAddress?: pulumi.Input<string>;
     /**
+     * Billing currency
+     */
+    readonly billingCurrency?: pulumi.Input<string>;
+    /**
      * Billing contact emails of the project
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number
+     */
+    readonly billingExtraText?: pulumi.Input<string>;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
@@ -172,9 +232,25 @@ export interface ProjectState {
      */
     readonly copyFromProject?: pulumi.Input<string>;
     /**
+     * Billing country
+     */
+    readonly country?: pulumi.Input<string>;
+    /**
      * Billing country code of the project
      */
     readonly countryCode?: pulumi.Input<string>;
+    /**
+     * Default cloud for new services
+     */
+    readonly defaultCloud?: pulumi.Input<string>;
+    /**
+     * Estimated balance
+     */
+    readonly estimatedBalance?: pulumi.Input<string>;
+    /**
+     * Payment method
+     */
+    readonly paymentMethod?: pulumi.Input<string>;
     /**
      * defines the name of the project. Name must be globally unique (between all
      * Aiven customers) and cannot be changed later without destroying and re-creating the
@@ -185,6 +261,10 @@ export interface ProjectState {
      * Technical contact emails of the project
      */
     readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * EU VAT Identification Number
+     */
+    readonly vatId?: pulumi.Input<string>;
 }
 
 /**
@@ -197,13 +277,25 @@ export interface ProjectArgs {
      */
     readonly accountId?: pulumi.Input<string>;
     /**
+     * Available credits
+     */
+    readonly availableCredits?: pulumi.Input<string>;
+    /**
      * Billing name and address of the project
      */
     readonly billingAddress?: pulumi.Input<string>;
     /**
+     * Billing currency
+     */
+    readonly billingCurrency?: pulumi.Input<string>;
+    /**
      * Billing contact emails of the project
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number
+     */
+    readonly billingExtraText?: pulumi.Input<string>;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
@@ -230,6 +322,10 @@ export interface ProjectArgs {
      */
     readonly countryCode?: pulumi.Input<string>;
     /**
+     * Default cloud for new services
+     */
+    readonly defaultCloud?: pulumi.Input<string>;
+    /**
      * defines the name of the project. Name must be globally unique (between all
      * Aiven customers) and cannot be changed later without destroying and re-creating the
      * project, including all sub-resources.
@@ -239,4 +335,8 @@ export interface ProjectArgs {
      * Technical contact emails of the project
      */
     readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * EU VAT Identification Number
+     */
+    readonly vatId?: pulumi.Input<string>;
 }

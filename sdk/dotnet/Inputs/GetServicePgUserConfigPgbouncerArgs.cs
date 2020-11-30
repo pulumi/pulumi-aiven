@@ -12,6 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetServicePgUserConfigPgbouncerArgs : Pulumi.InvokeArgs
     {
+        [Input("autodbIdleTimeout")]
+        public string? AutodbIdleTimeout { get; set; }
+
+        [Input("autodbMaxDbConnections")]
+        public string? AutodbMaxDbConnections { get; set; }
+
+        [Input("autodbPoolMode")]
+        public string? AutodbPoolMode { get; set; }
+
+        [Input("autodbPoolSize")]
+        public string? AutodbPoolSize { get; set; }
+
         [Input("ignoreStartupParameters")]
         private List<string>? _ignoreStartupParameters;
         public List<string> IgnoreStartupParameters
@@ -19,6 +31,15 @@ namespace Pulumi.Aiven.Inputs
             get => _ignoreStartupParameters ?? (_ignoreStartupParameters = new List<string>());
             set => _ignoreStartupParameters = value;
         }
+
+        [Input("minPoolSize")]
+        public string? MinPoolSize { get; set; }
+
+        [Input("serverIdleTimeout")]
+        public string? ServerIdleTimeout { get; set; }
+
+        [Input("serverLifetime")]
+        public string? ServerLifetime { get; set; }
 
         [Input("serverResetQueryAlways")]
         public string? ServerResetQueryAlways { get; set; }

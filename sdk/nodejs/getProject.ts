@@ -31,14 +31,22 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
     }
     return pulumi.runtime.invoke("aiven:index/getProject:getProject", {
         "accountId": args.accountId,
+        "availableCredits": args.availableCredits,
         "billingAddress": args.billingAddress,
+        "billingCurrency": args.billingCurrency,
         "billingEmails": args.billingEmails,
+        "billingExtraText": args.billingExtraText,
         "caCert": args.caCert,
         "cardId": args.cardId,
         "copyFromProject": args.copyFromProject,
+        "country": args.country,
         "countryCode": args.countryCode,
+        "defaultCloud": args.defaultCloud,
+        "estimatedBalance": args.estimatedBalance,
+        "paymentMethod": args.paymentMethod,
         "project": args.project,
         "technicalEmails": args.technicalEmails,
+        "vatId": args.vatId,
     }, opts);
 }
 
@@ -51,8 +59,11 @@ export interface GetProjectArgs {
      * using account ID.
      */
     readonly accountId?: string;
+    readonly availableCredits?: string;
     readonly billingAddress?: string;
+    readonly billingCurrency?: string;
     readonly billingEmails?: string[];
+    readonly billingExtraText?: string;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
@@ -74,7 +85,11 @@ export interface GetProjectArgs {
      * effect when the project is created.
      */
     readonly copyFromProject?: string;
+    readonly country?: string;
     readonly countryCode?: string;
+    readonly defaultCloud?: string;
+    readonly estimatedBalance?: string;
+    readonly paymentMethod?: string;
     /**
      * defines the name of the project. Name must be globally unique (between all
      * Aiven customers) and cannot be changed later without destroying and re-creating the
@@ -82,6 +97,7 @@ export interface GetProjectArgs {
      */
     readonly project: string;
     readonly technicalEmails?: string[];
+    readonly vatId?: string;
 }
 
 /**
@@ -93,8 +109,11 @@ export interface GetProjectResult {
      * using account ID.
      */
     readonly accountId?: string;
+    readonly availableCredits: string;
     readonly billingAddress?: string;
+    readonly billingCurrency?: string;
     readonly billingEmails?: string[];
+    readonly billingExtraText?: string;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
@@ -116,11 +135,16 @@ export interface GetProjectResult {
      * effect when the project is created.
      */
     readonly copyFromProject?: string;
+    readonly country: string;
     readonly countryCode?: string;
+    readonly defaultCloud?: string;
+    readonly estimatedBalance: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly paymentMethod: string;
     readonly project: string;
     readonly technicalEmails?: string[];
+    readonly vatId?: string;
 }

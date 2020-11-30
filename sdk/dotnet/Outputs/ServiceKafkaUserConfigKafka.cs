@@ -49,6 +49,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ReplicaFetchMaxBytes;
         public readonly string? ReplicaFetchResponseMaxBytes;
         public readonly string? SocketRequestMaxBytes;
+        public readonly string? TransactionRemoveExpiredTransactionCleanupIntervalMs;
+        public readonly string? TransactionStateLogSegmentBytes;
 
         [OutputConstructor]
         private ServiceKafkaUserConfigKafka(
@@ -122,7 +124,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? replicaFetchResponseMaxBytes,
 
-            string? socketRequestMaxBytes)
+            string? socketRequestMaxBytes,
+
+            string? transactionRemoveExpiredTransactionCleanupIntervalMs,
+
+            string? transactionStateLogSegmentBytes)
         {
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;
@@ -160,6 +166,8 @@ namespace Pulumi.Aiven.Outputs
             ReplicaFetchMaxBytes = replicaFetchMaxBytes;
             ReplicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
             SocketRequestMaxBytes = socketRequestMaxBytes;
+            TransactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
+            TransactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
         }
     }
 }

@@ -259,6 +259,22 @@ namespace Pulumi.Aiven.Inputs
         [Input("socketRequestMaxBytes")]
         public string? SocketRequestMaxBytes { get; set; }
 
+        /// <summary>
+        /// The interval at which 
+        /// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+        /// to 3600000 (1 hour)).
+        /// </summary>
+        [Input("transactionRemoveExpiredTransactionCleanupIntervalMs")]
+        public string? TransactionRemoveExpiredTransactionCleanupIntervalMs { get; set; }
+
+        /// <summary>
+        /// The transaction topic segment bytes should 
+        /// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+        /// to 104857600 (100 mebibytes)).
+        /// </summary>
+        [Input("transactionStateLogSegmentBytes")]
+        public string? TransactionStateLogSegmentBytes { get; set; }
+
         public GetKafkaKafkaUserConfigKafkaArgs()
         {
         }

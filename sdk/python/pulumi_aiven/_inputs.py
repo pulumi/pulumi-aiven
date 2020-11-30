@@ -4405,7 +4405,9 @@ class KafkaKafkaUserConfigKafkaArgs:
                  producer_purgatory_purge_interval_requests: Optional[pulumi.Input[str]] = None,
                  replica_fetch_max_bytes: Optional[pulumi.Input[str]] = None,
                  replica_fetch_response_max_bytes: Optional[pulumi.Input[str]] = None,
-                 socket_request_max_bytes: Optional[pulumi.Input[str]] = None):
+                 socket_request_max_bytes: Optional[pulumi.Input[str]] = None,
+                 transaction_remove_expired_transaction_cleanup_interval_ms: Optional[pulumi.Input[str]] = None,
+                 transaction_state_log_segment_bytes: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auto_create_topics_enable: Enable auto creation of topics
         :param pulumi.Input[str] compression_type: Specify the final compression type for a given topic. This 
@@ -4476,6 +4478,12 @@ class KafkaKafkaUserConfigKafkaArgs:
                still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
         :param pulumi.Input[str] socket_request_max_bytes: The maximum number of bytes in a socket request 
                (defaults to 104857600).
+        :param pulumi.Input[str] transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which 
+               to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+               to 3600000 (1 hour)).
+        :param pulumi.Input[str] transaction_state_log_segment_bytes: The transaction topic segment bytes should 
+               be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+               to 104857600 (100 mebibytes)).
         """
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
@@ -4549,6 +4557,10 @@ class KafkaKafkaUserConfigKafkaArgs:
             pulumi.set(__self__, "replica_fetch_response_max_bytes", replica_fetch_response_max_bytes)
         if socket_request_max_bytes is not None:
             pulumi.set(__self__, "socket_request_max_bytes", socket_request_max_bytes)
+        if transaction_remove_expired_transaction_cleanup_interval_ms is not None:
+            pulumi.set(__self__, "transaction_remove_expired_transaction_cleanup_interval_ms", transaction_remove_expired_transaction_cleanup_interval_ms)
+        if transaction_state_log_segment_bytes is not None:
+            pulumi.set(__self__, "transaction_state_log_segment_bytes", transaction_state_log_segment_bytes)
 
     @property
     @pulumi.getter(name="autoCreateTopicsEnable")
@@ -5012,6 +5024,34 @@ class KafkaKafkaUserConfigKafkaArgs:
     @socket_request_max_bytes.setter
     def socket_request_max_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "socket_request_max_bytes", value)
+
+    @property
+    @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        The interval at which 
+        to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+        to 3600000 (1 hour)).
+        """
+        return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
+
+    @transaction_remove_expired_transaction_cleanup_interval_ms.setter
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transaction_remove_expired_transaction_cleanup_interval_ms", value)
+
+    @property
+    @pulumi.getter(name="transactionStateLogSegmentBytes")
+    def transaction_state_log_segment_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        The transaction topic segment bytes should 
+        be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+        to 104857600 (100 mebibytes)).
+        """
+        return pulumi.get(self, "transaction_state_log_segment_bytes")
+
+    @transaction_state_log_segment_bytes.setter
+    def transaction_state_log_segment_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transaction_state_log_segment_bytes", value)
 
 
 @pulumi.input_type
@@ -9160,16 +9200,102 @@ class PgPgUserConfigPgArgs:
 @pulumi.input_type
 class PgPgUserConfigPgbouncerArgs:
     def __init__(__self__, *,
+                 autodb_idle_timeout: Optional[pulumi.Input[str]] = None,
+                 autodb_max_db_connections: Optional[pulumi.Input[str]] = None,
+                 autodb_pool_mode: Optional[pulumi.Input[str]] = None,
+                 autodb_pool_size: Optional[pulumi.Input[str]] = None,
                  ignore_startup_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 min_pool_size: Optional[pulumi.Input[str]] = None,
+                 server_idle_timeout: Optional[pulumi.Input[str]] = None,
+                 server_lifetime: Optional[pulumi.Input[str]] = None,
                  server_reset_query_always: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] autodb_idle_timeout: If the automatically created database pools have been unused this 
+               many seconds, they are freed. If 0 then timeout is disabled.
+        :param pulumi.Input[str] autodb_max_db_connections: Do not allow more than this many server connections per database 
+               (regardless of user). Setting it to 0 means unlimited.
+        :param pulumi.Input[str] autodb_pool_mode: PGBouncer pool mode
+        :param pulumi.Input[str] autodb_pool_size: If non-zero then create automatically a pool of that size per user 
+               when a pool doesn't exist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_startup_parameters: Enum of parameters to ignore when given in startup packet.
+        :param pulumi.Input[str] min_pool_size: Add more server connections to pool if below this number. Improves 
+               behavior when usual load comes suddenly back after period of total inactivity. The value is
+               effectively capped at the pool size.
+        :param pulumi.Input[str] server_idle_timeout: If a server connection has been idle more than this many seconds 
+               it will be dropped. If 0 then timeout is disabled.
+        :param pulumi.Input[str] server_lifetime: The pooler will close an unused server connection that has been connected 
+               longer than this.
         :param pulumi.Input[str] server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes.
         """
+        if autodb_idle_timeout is not None:
+            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
+        if autodb_max_db_connections is not None:
+            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
+        if autodb_pool_mode is not None:
+            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
+        if autodb_pool_size is not None:
+            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
         if ignore_startup_parameters is not None:
             pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if min_pool_size is not None:
+            pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_idle_timeout is not None:
+            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
+        if server_lifetime is not None:
+            pulumi.set(__self__, "server_lifetime", server_lifetime)
         if server_reset_query_always is not None:
             pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
+
+    @property
+    @pulumi.getter(name="autodbIdleTimeout")
+    def autodb_idle_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the automatically created database pools have been unused this 
+        many seconds, they are freed. If 0 then timeout is disabled.
+        """
+        return pulumi.get(self, "autodb_idle_timeout")
+
+    @autodb_idle_timeout.setter
+    def autodb_idle_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="autodbMaxDbConnections")
+    def autodb_max_db_connections(self) -> Optional[pulumi.Input[str]]:
+        """
+        Do not allow more than this many server connections per database 
+        (regardless of user). Setting it to 0 means unlimited.
+        """
+        return pulumi.get(self, "autodb_max_db_connections")
+
+    @autodb_max_db_connections.setter
+    def autodb_max_db_connections(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_max_db_connections", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolMode")
+    def autodb_pool_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        PGBouncer pool mode
+        """
+        return pulumi.get(self, "autodb_pool_mode")
+
+    @autodb_pool_mode.setter
+    def autodb_pool_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_pool_mode", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolSize")
+    def autodb_pool_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        If non-zero then create automatically a pool of that size per user 
+        when a pool doesn't exist.
+        """
+        return pulumi.get(self, "autodb_pool_size")
+
+    @autodb_pool_size.setter
+    def autodb_pool_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_pool_size", value)
 
     @property
     @pulumi.getter(name="ignoreStartupParameters")
@@ -9182,6 +9308,46 @@ class PgPgUserConfigPgbouncerArgs:
     @ignore_startup_parameters.setter
     def ignore_startup_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ignore_startup_parameters", value)
+
+    @property
+    @pulumi.getter(name="minPoolSize")
+    def min_pool_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Add more server connections to pool if below this number. Improves 
+        behavior when usual load comes suddenly back after period of total inactivity. The value is
+        effectively capped at the pool size.
+        """
+        return pulumi.get(self, "min_pool_size")
+
+    @min_pool_size.setter
+    def min_pool_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_pool_size", value)
+
+    @property
+    @pulumi.getter(name="serverIdleTimeout")
+    def server_idle_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a server connection has been idle more than this many seconds 
+        it will be dropped. If 0 then timeout is disabled.
+        """
+        return pulumi.get(self, "server_idle_timeout")
+
+    @server_idle_timeout.setter
+    def server_idle_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="serverLifetime")
+    def server_lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pooler will close an unused server connection that has been connected 
+        longer than this.
+        """
+        return pulumi.get(self, "server_lifetime")
+
+    @server_lifetime.setter
+    def server_lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_lifetime", value)
 
     @property
     @pulumi.getter(name="serverResetQueryAlways")
@@ -9514,6 +9680,7 @@ class RedisRedisUserConfigArgs:
                  private_access: Optional[pulumi.Input['RedisRedisUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['RedisRedisUserConfigPublicAccessArgs']] = None,
                  recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
+                 redis_io_threads: Optional[pulumi.Input[str]] = None,
                  redis_lfu_decay_time: Optional[pulumi.Input[str]] = None,
                  redis_lfu_log_factor: Optional[pulumi.Input[str]] = None,
                  redis_maxmemory_policy: Optional[pulumi.Input[str]] = None,
@@ -9527,6 +9694,7 @@ class RedisRedisUserConfigArgs:
         :param pulumi.Input['RedisRedisUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['RedisRedisUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
         :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service
+        :param pulumi.Input[str] redis_io_threads: Redis IO thread count
                * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
         :param pulumi.Input[str] redis_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu 
                maxmemory-policies
@@ -9547,6 +9715,8 @@ class RedisRedisUserConfigArgs:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if redis_io_threads is not None:
+            pulumi.set(__self__, "redis_io_threads", redis_io_threads)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -9615,13 +9785,25 @@ class RedisRedisUserConfigArgs:
     def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the basebackup to restore in forked service
-        * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
         """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @recovery_basebackup_name.setter
     def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="redisIoThreads")
+    def redis_io_threads(self) -> Optional[pulumi.Input[str]]:
+        """
+        Redis IO thread count
+        * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+        """
+        return pulumi.get(self, "redis_io_threads")
+
+    @redis_io_threads.setter
+    def redis_io_threads(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redis_io_threads", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
@@ -13038,7 +13220,9 @@ class ServiceKafkaUserConfigKafkaArgs:
                  producer_purgatory_purge_interval_requests: Optional[pulumi.Input[str]] = None,
                  replica_fetch_max_bytes: Optional[pulumi.Input[str]] = None,
                  replica_fetch_response_max_bytes: Optional[pulumi.Input[str]] = None,
-                 socket_request_max_bytes: Optional[pulumi.Input[str]] = None):
+                 socket_request_max_bytes: Optional[pulumi.Input[str]] = None,
+                 transaction_remove_expired_transaction_cleanup_interval_ms: Optional[pulumi.Input[str]] = None,
+                 transaction_state_log_segment_bytes: Optional[pulumi.Input[str]] = None):
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -13111,6 +13295,10 @@ class ServiceKafkaUserConfigKafkaArgs:
             pulumi.set(__self__, "replica_fetch_response_max_bytes", replica_fetch_response_max_bytes)
         if socket_request_max_bytes is not None:
             pulumi.set(__self__, "socket_request_max_bytes", socket_request_max_bytes)
+        if transaction_remove_expired_transaction_cleanup_interval_ms is not None:
+            pulumi.set(__self__, "transaction_remove_expired_transaction_cleanup_interval_ms", transaction_remove_expired_transaction_cleanup_interval_ms)
+        if transaction_state_log_segment_bytes is not None:
+            pulumi.set(__self__, "transaction_state_log_segment_bytes", transaction_state_log_segment_bytes)
 
     @property
     @pulumi.getter(name="autoCreateTopicsEnable")
@@ -13435,6 +13623,24 @@ class ServiceKafkaUserConfigKafkaArgs:
     @socket_request_max_bytes.setter
     def socket_request_max_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "socket_request_max_bytes", value)
+
+    @property
+    @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
+
+    @transaction_remove_expired_transaction_cleanup_interval_ms.setter
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transaction_remove_expired_transaction_cleanup_interval_ms", value)
+
+    @property
+    @pulumi.getter(name="transactionStateLogSegmentBytes")
+    def transaction_state_log_segment_bytes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "transaction_state_log_segment_bytes")
+
+    @transaction_state_log_segment_bytes.setter
+    def transaction_state_log_segment_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transaction_state_log_segment_bytes", value)
 
 
 @pulumi.input_type
@@ -15148,12 +15354,69 @@ class ServicePgUserConfigPgArgs:
 @pulumi.input_type
 class ServicePgUserConfigPgbouncerArgs:
     def __init__(__self__, *,
+                 autodb_idle_timeout: Optional[pulumi.Input[str]] = None,
+                 autodb_max_db_connections: Optional[pulumi.Input[str]] = None,
+                 autodb_pool_mode: Optional[pulumi.Input[str]] = None,
+                 autodb_pool_size: Optional[pulumi.Input[str]] = None,
                  ignore_startup_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 min_pool_size: Optional[pulumi.Input[str]] = None,
+                 server_idle_timeout: Optional[pulumi.Input[str]] = None,
+                 server_lifetime: Optional[pulumi.Input[str]] = None,
                  server_reset_query_always: Optional[pulumi.Input[str]] = None):
+        if autodb_idle_timeout is not None:
+            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
+        if autodb_max_db_connections is not None:
+            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
+        if autodb_pool_mode is not None:
+            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
+        if autodb_pool_size is not None:
+            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
         if ignore_startup_parameters is not None:
             pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if min_pool_size is not None:
+            pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_idle_timeout is not None:
+            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
+        if server_lifetime is not None:
+            pulumi.set(__self__, "server_lifetime", server_lifetime)
         if server_reset_query_always is not None:
             pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
+
+    @property
+    @pulumi.getter(name="autodbIdleTimeout")
+    def autodb_idle_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "autodb_idle_timeout")
+
+    @autodb_idle_timeout.setter
+    def autodb_idle_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="autodbMaxDbConnections")
+    def autodb_max_db_connections(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "autodb_max_db_connections")
+
+    @autodb_max_db_connections.setter
+    def autodb_max_db_connections(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_max_db_connections", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolMode")
+    def autodb_pool_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "autodb_pool_mode")
+
+    @autodb_pool_mode.setter
+    def autodb_pool_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_pool_mode", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolSize")
+    def autodb_pool_size(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "autodb_pool_size")
+
+    @autodb_pool_size.setter
+    def autodb_pool_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_pool_size", value)
 
     @property
     @pulumi.getter(name="ignoreStartupParameters")
@@ -15163,6 +15426,33 @@ class ServicePgUserConfigPgbouncerArgs:
     @ignore_startup_parameters.setter
     def ignore_startup_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ignore_startup_parameters", value)
+
+    @property
+    @pulumi.getter(name="minPoolSize")
+    def min_pool_size(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "min_pool_size")
+
+    @min_pool_size.setter
+    def min_pool_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_pool_size", value)
+
+    @property
+    @pulumi.getter(name="serverIdleTimeout")
+    def server_idle_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server_idle_timeout")
+
+    @server_idle_timeout.setter
+    def server_idle_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="serverLifetime")
+    def server_lifetime(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server_lifetime")
+
+    @server_lifetime.setter
+    def server_lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_lifetime", value)
 
     @property
     @pulumi.getter(name="serverResetQueryAlways")
@@ -15304,6 +15594,7 @@ class ServiceRedisUserConfigArgs:
                  private_access: Optional[pulumi.Input['ServiceRedisUserConfigPrivateAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['ServiceRedisUserConfigPublicAccessArgs']] = None,
                  recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
+                 redis_io_threads: Optional[pulumi.Input[str]] = None,
                  redis_lfu_decay_time: Optional[pulumi.Input[str]] = None,
                  redis_lfu_log_factor: Optional[pulumi.Input[str]] = None,
                  redis_maxmemory_policy: Optional[pulumi.Input[str]] = None,
@@ -15321,6 +15612,8 @@ class ServiceRedisUserConfigArgs:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if redis_io_threads is not None:
+            pulumi.set(__self__, "redis_io_threads", redis_io_threads)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -15380,6 +15673,15 @@ class ServiceRedisUserConfigArgs:
     @recovery_basebackup_name.setter
     def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="redisIoThreads")
+    def redis_io_threads(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "redis_io_threads")
+
+    @redis_io_threads.setter
+    def redis_io_threads(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redis_io_threads", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
@@ -19554,7 +19856,9 @@ class GetKafkaKafkaUserConfigKafkaArgs:
                  producer_purgatory_purge_interval_requests: Optional[str] = None,
                  replica_fetch_max_bytes: Optional[str] = None,
                  replica_fetch_response_max_bytes: Optional[str] = None,
-                 socket_request_max_bytes: Optional[str] = None):
+                 socket_request_max_bytes: Optional[str] = None,
+                 transaction_remove_expired_transaction_cleanup_interval_ms: Optional[str] = None,
+                 transaction_state_log_segment_bytes: Optional[str] = None):
         """
         :param str auto_create_topics_enable: Enable auto creation of topics
         :param str compression_type: Specify the final compression type for a given topic. This 
@@ -19625,6 +19929,12 @@ class GetKafkaKafkaUserConfigKafkaArgs:
                still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
         :param str socket_request_max_bytes: The maximum number of bytes in a socket request 
                (defaults to 104857600).
+        :param str transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which 
+               to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+               to 3600000 (1 hour)).
+        :param str transaction_state_log_segment_bytes: The transaction topic segment bytes should 
+               be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+               to 104857600 (100 mebibytes)).
         """
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
@@ -19698,6 +20008,10 @@ class GetKafkaKafkaUserConfigKafkaArgs:
             pulumi.set(__self__, "replica_fetch_response_max_bytes", replica_fetch_response_max_bytes)
         if socket_request_max_bytes is not None:
             pulumi.set(__self__, "socket_request_max_bytes", socket_request_max_bytes)
+        if transaction_remove_expired_transaction_cleanup_interval_ms is not None:
+            pulumi.set(__self__, "transaction_remove_expired_transaction_cleanup_interval_ms", transaction_remove_expired_transaction_cleanup_interval_ms)
+        if transaction_state_log_segment_bytes is not None:
+            pulumi.set(__self__, "transaction_state_log_segment_bytes", transaction_state_log_segment_bytes)
 
     @property
     @pulumi.getter(name="autoCreateTopicsEnable")
@@ -20161,6 +20475,34 @@ class GetKafkaKafkaUserConfigKafkaArgs:
     @socket_request_max_bytes.setter
     def socket_request_max_bytes(self, value: Optional[str]):
         pulumi.set(self, "socket_request_max_bytes", value)
+
+    @property
+    @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[str]:
+        """
+        The interval at which 
+        to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+        to 3600000 (1 hour)).
+        """
+        return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
+
+    @transaction_remove_expired_transaction_cleanup_interval_ms.setter
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self, value: Optional[str]):
+        pulumi.set(self, "transaction_remove_expired_transaction_cleanup_interval_ms", value)
+
+    @property
+    @pulumi.getter(name="transactionStateLogSegmentBytes")
+    def transaction_state_log_segment_bytes(self) -> Optional[str]:
+        """
+        The transaction topic segment bytes should 
+        be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+        to 104857600 (100 mebibytes)).
+        """
+        return pulumi.get(self, "transaction_state_log_segment_bytes")
+
+    @transaction_state_log_segment_bytes.setter
+    def transaction_state_log_segment_bytes(self, value: Optional[str]):
+        pulumi.set(self, "transaction_state_log_segment_bytes", value)
 
 
 @pulumi.input_type
@@ -24256,16 +24598,102 @@ class GetPgPgUserConfigPgArgs:
 @pulumi.input_type
 class GetPgPgUserConfigPgbouncerArgs:
     def __init__(__self__, *,
+                 autodb_idle_timeout: Optional[str] = None,
+                 autodb_max_db_connections: Optional[str] = None,
+                 autodb_pool_mode: Optional[str] = None,
+                 autodb_pool_size: Optional[str] = None,
                  ignore_startup_parameters: Optional[Sequence[str]] = None,
+                 min_pool_size: Optional[str] = None,
+                 server_idle_timeout: Optional[str] = None,
+                 server_lifetime: Optional[str] = None,
                  server_reset_query_always: Optional[str] = None):
         """
+        :param str autodb_idle_timeout: If the automatically created database pools have been unused this 
+               many seconds, they are freed. If 0 then timeout is disabled.
+        :param str autodb_max_db_connections: Do not allow more than this many server connections per database 
+               (regardless of user). Setting it to 0 means unlimited.
+        :param str autodb_pool_mode: PGBouncer pool mode
+        :param str autodb_pool_size: If non-zero then create automatically a pool of that size per user 
+               when a pool doesn't exist.
         :param Sequence[str] ignore_startup_parameters: Enum of parameters to ignore when given in startup packet.
+        :param str min_pool_size: Add more server connections to pool if below this number. Improves 
+               behavior when usual load comes suddenly back after period of total inactivity. The value is
+               effectively capped at the pool size.
+        :param str server_idle_timeout: If a server connection has been idle more than this many seconds 
+               it will be dropped. If 0 then timeout is disabled.
+        :param str server_lifetime: The pooler will close an unused server connection that has been connected 
+               longer than this.
         :param str server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes.
         """
+        if autodb_idle_timeout is not None:
+            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
+        if autodb_max_db_connections is not None:
+            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
+        if autodb_pool_mode is not None:
+            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
+        if autodb_pool_size is not None:
+            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
         if ignore_startup_parameters is not None:
             pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if min_pool_size is not None:
+            pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_idle_timeout is not None:
+            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
+        if server_lifetime is not None:
+            pulumi.set(__self__, "server_lifetime", server_lifetime)
         if server_reset_query_always is not None:
             pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
+
+    @property
+    @pulumi.getter(name="autodbIdleTimeout")
+    def autodb_idle_timeout(self) -> Optional[str]:
+        """
+        If the automatically created database pools have been unused this 
+        many seconds, they are freed. If 0 then timeout is disabled.
+        """
+        return pulumi.get(self, "autodb_idle_timeout")
+
+    @autodb_idle_timeout.setter
+    def autodb_idle_timeout(self, value: Optional[str]):
+        pulumi.set(self, "autodb_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="autodbMaxDbConnections")
+    def autodb_max_db_connections(self) -> Optional[str]:
+        """
+        Do not allow more than this many server connections per database 
+        (regardless of user). Setting it to 0 means unlimited.
+        """
+        return pulumi.get(self, "autodb_max_db_connections")
+
+    @autodb_max_db_connections.setter
+    def autodb_max_db_connections(self, value: Optional[str]):
+        pulumi.set(self, "autodb_max_db_connections", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolMode")
+    def autodb_pool_mode(self) -> Optional[str]:
+        """
+        PGBouncer pool mode
+        """
+        return pulumi.get(self, "autodb_pool_mode")
+
+    @autodb_pool_mode.setter
+    def autodb_pool_mode(self, value: Optional[str]):
+        pulumi.set(self, "autodb_pool_mode", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolSize")
+    def autodb_pool_size(self) -> Optional[str]:
+        """
+        If non-zero then create automatically a pool of that size per user 
+        when a pool doesn't exist.
+        """
+        return pulumi.get(self, "autodb_pool_size")
+
+    @autodb_pool_size.setter
+    def autodb_pool_size(self, value: Optional[str]):
+        pulumi.set(self, "autodb_pool_size", value)
 
     @property
     @pulumi.getter(name="ignoreStartupParameters")
@@ -24278,6 +24706,46 @@ class GetPgPgUserConfigPgbouncerArgs:
     @ignore_startup_parameters.setter
     def ignore_startup_parameters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "ignore_startup_parameters", value)
+
+    @property
+    @pulumi.getter(name="minPoolSize")
+    def min_pool_size(self) -> Optional[str]:
+        """
+        Add more server connections to pool if below this number. Improves 
+        behavior when usual load comes suddenly back after period of total inactivity. The value is
+        effectively capped at the pool size.
+        """
+        return pulumi.get(self, "min_pool_size")
+
+    @min_pool_size.setter
+    def min_pool_size(self, value: Optional[str]):
+        pulumi.set(self, "min_pool_size", value)
+
+    @property
+    @pulumi.getter(name="serverIdleTimeout")
+    def server_idle_timeout(self) -> Optional[str]:
+        """
+        If a server connection has been idle more than this many seconds 
+        it will be dropped. If 0 then timeout is disabled.
+        """
+        return pulumi.get(self, "server_idle_timeout")
+
+    @server_idle_timeout.setter
+    def server_idle_timeout(self, value: Optional[str]):
+        pulumi.set(self, "server_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="serverLifetime")
+    def server_lifetime(self) -> Optional[str]:
+        """
+        The pooler will close an unused server connection that has been connected 
+        longer than this.
+        """
+        return pulumi.get(self, "server_lifetime")
+
+    @server_lifetime.setter
+    def server_lifetime(self, value: Optional[str]):
+        pulumi.set(self, "server_lifetime", value)
 
     @property
     @pulumi.getter(name="serverResetQueryAlways")
@@ -24599,6 +25067,7 @@ class GetRedisRedisUserConfigArgs:
                  private_access: Optional['GetRedisRedisUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetRedisRedisUserConfigPublicAccessArgs'] = None,
                  recovery_basebackup_name: Optional[str] = None,
+                 redis_io_threads: Optional[str] = None,
                  redis_lfu_decay_time: Optional[str] = None,
                  redis_lfu_log_factor: Optional[str] = None,
                  redis_maxmemory_policy: Optional[str] = None,
@@ -24612,6 +25081,7 @@ class GetRedisRedisUserConfigArgs:
         :param 'GetRedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetRedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
+        :param str redis_io_threads: Redis IO thread count
                * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
         :param str redis_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu 
                maxmemory-policies
@@ -24632,6 +25102,8 @@ class GetRedisRedisUserConfigArgs:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if redis_io_threads is not None:
+            pulumi.set(__self__, "redis_io_threads", redis_io_threads)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -24700,13 +25172,25 @@ class GetRedisRedisUserConfigArgs:
     def recovery_basebackup_name(self) -> Optional[str]:
         """
         Name of the basebackup to restore in forked service
-        * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
         """
         return pulumi.get(self, "recovery_basebackup_name")
 
     @recovery_basebackup_name.setter
     def recovery_basebackup_name(self, value: Optional[str]):
         pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="redisIoThreads")
+    def redis_io_threads(self) -> Optional[str]:
+        """
+        Redis IO thread count
+        * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
+        """
+        return pulumi.get(self, "redis_io_threads")
+
+    @redis_io_threads.setter
+    def redis_io_threads(self, value: Optional[str]):
+        pulumi.set(self, "redis_io_threads", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
@@ -28105,7 +28589,9 @@ class GetServiceKafkaUserConfigKafkaArgs:
                  producer_purgatory_purge_interval_requests: Optional[str] = None,
                  replica_fetch_max_bytes: Optional[str] = None,
                  replica_fetch_response_max_bytes: Optional[str] = None,
-                 socket_request_max_bytes: Optional[str] = None):
+                 socket_request_max_bytes: Optional[str] = None,
+                 transaction_remove_expired_transaction_cleanup_interval_ms: Optional[str] = None,
+                 transaction_state_log_segment_bytes: Optional[str] = None):
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -28178,6 +28664,10 @@ class GetServiceKafkaUserConfigKafkaArgs:
             pulumi.set(__self__, "replica_fetch_response_max_bytes", replica_fetch_response_max_bytes)
         if socket_request_max_bytes is not None:
             pulumi.set(__self__, "socket_request_max_bytes", socket_request_max_bytes)
+        if transaction_remove_expired_transaction_cleanup_interval_ms is not None:
+            pulumi.set(__self__, "transaction_remove_expired_transaction_cleanup_interval_ms", transaction_remove_expired_transaction_cleanup_interval_ms)
+        if transaction_state_log_segment_bytes is not None:
+            pulumi.set(__self__, "transaction_state_log_segment_bytes", transaction_state_log_segment_bytes)
 
     @property
     @pulumi.getter(name="autoCreateTopicsEnable")
@@ -28502,6 +28992,24 @@ class GetServiceKafkaUserConfigKafkaArgs:
     @socket_request_max_bytes.setter
     def socket_request_max_bytes(self, value: Optional[str]):
         pulumi.set(self, "socket_request_max_bytes", value)
+
+    @property
+    @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[str]:
+        return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
+
+    @transaction_remove_expired_transaction_cleanup_interval_ms.setter
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self, value: Optional[str]):
+        pulumi.set(self, "transaction_remove_expired_transaction_cleanup_interval_ms", value)
+
+    @property
+    @pulumi.getter(name="transactionStateLogSegmentBytes")
+    def transaction_state_log_segment_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "transaction_state_log_segment_bytes")
+
+    @transaction_state_log_segment_bytes.setter
+    def transaction_state_log_segment_bytes(self, value: Optional[str]):
+        pulumi.set(self, "transaction_state_log_segment_bytes", value)
 
 
 @pulumi.input_type
@@ -30207,12 +30715,69 @@ class GetServicePgUserConfigPgArgs:
 @pulumi.input_type
 class GetServicePgUserConfigPgbouncerArgs:
     def __init__(__self__, *,
+                 autodb_idle_timeout: Optional[str] = None,
+                 autodb_max_db_connections: Optional[str] = None,
+                 autodb_pool_mode: Optional[str] = None,
+                 autodb_pool_size: Optional[str] = None,
                  ignore_startup_parameters: Optional[Sequence[str]] = None,
+                 min_pool_size: Optional[str] = None,
+                 server_idle_timeout: Optional[str] = None,
+                 server_lifetime: Optional[str] = None,
                  server_reset_query_always: Optional[str] = None):
+        if autodb_idle_timeout is not None:
+            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
+        if autodb_max_db_connections is not None:
+            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
+        if autodb_pool_mode is not None:
+            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
+        if autodb_pool_size is not None:
+            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
         if ignore_startup_parameters is not None:
             pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if min_pool_size is not None:
+            pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_idle_timeout is not None:
+            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
+        if server_lifetime is not None:
+            pulumi.set(__self__, "server_lifetime", server_lifetime)
         if server_reset_query_always is not None:
             pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
+
+    @property
+    @pulumi.getter(name="autodbIdleTimeout")
+    def autodb_idle_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "autodb_idle_timeout")
+
+    @autodb_idle_timeout.setter
+    def autodb_idle_timeout(self, value: Optional[str]):
+        pulumi.set(self, "autodb_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="autodbMaxDbConnections")
+    def autodb_max_db_connections(self) -> Optional[str]:
+        return pulumi.get(self, "autodb_max_db_connections")
+
+    @autodb_max_db_connections.setter
+    def autodb_max_db_connections(self, value: Optional[str]):
+        pulumi.set(self, "autodb_max_db_connections", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolMode")
+    def autodb_pool_mode(self) -> Optional[str]:
+        return pulumi.get(self, "autodb_pool_mode")
+
+    @autodb_pool_mode.setter
+    def autodb_pool_mode(self, value: Optional[str]):
+        pulumi.set(self, "autodb_pool_mode", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolSize")
+    def autodb_pool_size(self) -> Optional[str]:
+        return pulumi.get(self, "autodb_pool_size")
+
+    @autodb_pool_size.setter
+    def autodb_pool_size(self, value: Optional[str]):
+        pulumi.set(self, "autodb_pool_size", value)
 
     @property
     @pulumi.getter(name="ignoreStartupParameters")
@@ -30222,6 +30787,33 @@ class GetServicePgUserConfigPgbouncerArgs:
     @ignore_startup_parameters.setter
     def ignore_startup_parameters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "ignore_startup_parameters", value)
+
+    @property
+    @pulumi.getter(name="minPoolSize")
+    def min_pool_size(self) -> Optional[str]:
+        return pulumi.get(self, "min_pool_size")
+
+    @min_pool_size.setter
+    def min_pool_size(self, value: Optional[str]):
+        pulumi.set(self, "min_pool_size", value)
+
+    @property
+    @pulumi.getter(name="serverIdleTimeout")
+    def server_idle_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "server_idle_timeout")
+
+    @server_idle_timeout.setter
+    def server_idle_timeout(self, value: Optional[str]):
+        pulumi.set(self, "server_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="serverLifetime")
+    def server_lifetime(self) -> Optional[str]:
+        return pulumi.get(self, "server_lifetime")
+
+    @server_lifetime.setter
+    def server_lifetime(self, value: Optional[str]):
+        pulumi.set(self, "server_lifetime", value)
 
     @property
     @pulumi.getter(name="serverResetQueryAlways")
@@ -30363,6 +30955,7 @@ class GetServiceRedisUserConfigArgs:
                  private_access: Optional['GetServiceRedisUserConfigPrivateAccessArgs'] = None,
                  public_access: Optional['GetServiceRedisUserConfigPublicAccessArgs'] = None,
                  recovery_basebackup_name: Optional[str] = None,
+                 redis_io_threads: Optional[str] = None,
                  redis_lfu_decay_time: Optional[str] = None,
                  redis_lfu_log_factor: Optional[str] = None,
                  redis_maxmemory_policy: Optional[str] = None,
@@ -30380,6 +30973,8 @@ class GetServiceRedisUserConfigArgs:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if redis_io_threads is not None:
+            pulumi.set(__self__, "redis_io_threads", redis_io_threads)
         if redis_lfu_decay_time is not None:
             pulumi.set(__self__, "redis_lfu_decay_time", redis_lfu_decay_time)
         if redis_lfu_log_factor is not None:
@@ -30439,6 +31034,15 @@ class GetServiceRedisUserConfigArgs:
     @recovery_basebackup_name.setter
     def recovery_basebackup_name(self, value: Optional[str]):
         pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="redisIoThreads")
+    def redis_io_threads(self) -> Optional[str]:
+        return pulumi.get(self, "redis_io_threads")
+
+    @redis_io_threads.setter
+    def redis_io_threads(self, value: Optional[str]):
+        pulumi.set(self, "redis_io_threads", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")

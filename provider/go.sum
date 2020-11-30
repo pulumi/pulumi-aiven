@@ -93,8 +93,8 @@ github.com/agext/levenshtein v1.2.1/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki
 github.com/agext/levenshtein v1.2.2 h1:0S/Yg6LYmFJ5stwQeRp6EeOcCbj7xiqQSdNelsXvaqE=
 github.com/agext/levenshtein v1.2.2/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki2W0IB5558=
 github.com/agl/ed25519 v0.0.0-20170116200512-5312a6153412/go.mod h1:WPjqKcmVOxf0XSf3YxCJs6N6AOSrOx3obionmG7T0y0=
-github.com/aiven/aiven-go-client v1.5.11-0.20201111091154-faa77d1280fe h1:IPQXdVq9p3kKxgBLK7/dulAapJR5M/EwFYN6Qvp9dL0=
-github.com/aiven/aiven-go-client v1.5.11-0.20201111091154-faa77d1280fe/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
+github.com/aiven/aiven-go-client v1.5.11-0.20201125082324-fce96a17a14e h1:5QUqv9t40hM35DTYvic47n5zIJ8MhFDTgqEqsRefQWY=
+github.com/aiven/aiven-go-client v1.5.11-0.20201125082324-fce96a17a14e/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
@@ -549,8 +549,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.13.3-0.20201109230029-a6f8b9b205cd h1:acvoTtW
 github.com/pulumi/pulumi/sdk/v2 v2.13.3-0.20201109230029-a6f8b9b205cd/go.mod h1:Z9ifPo/Q0+hUpAyguVx2gp5Sx+CBumnWvYQDhrM8l3E=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df h1:kXSvfAz43o0D0gfxUqVCOP3NrfnGbptJBshVsqZlBqA=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df/go.mod h1:pVZLnLuSe/yv0XqTHFPb8xRGWPwgANT77jHeHqjXS5o=
-github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201117171102-0a82505b90de h1:2qmh9Vv93WG/cTFxEOJd68NeNnmL3SFrLFcXkqv+i6I=
-github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201117171102-0a82505b90de/go.mod h1:jP4AfzSK38+XT/GDmuvajaOw/xfrH7VeNoRX5mYOHaU=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201130123429-a8b4f4e5af57 h1:IiMG2c756jN8PyT7y+7zwue8o7wek4r9Rj2rot5e+xk=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20201130123429-a8b4f4e5af57/go.mod h1:9hefMedxRVxpp1d8aIag2q9mNaroajUbD2G8CMNUXuQ=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0 h1:RR9dF3JtopPvtkroDZuVD7qquD0bnHlKSqaQhgwt8yk=

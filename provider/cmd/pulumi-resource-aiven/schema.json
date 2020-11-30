@@ -2818,6 +2818,24 @@
                             "mapCase": false
                         }
                     }
+                },
+                "transactionRemoveExpiredTransactionCleanupIntervalMs": {
+                    "type": "string",
+                    "description": "The interval at which \nto remove transactions that have expired due to transactional.id.expiration.ms passing (defaults\nto 3600000 (1 hour)).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "transactionStateLogSegmentBytes": {
+                    "type": "string",
+                    "description": "The transaction topic segment bytes should \nbe kept relatively small in order to facilitate faster log compaction and cache loads (defaults\nto 104857600 (100 mebibytes)).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -5233,12 +5251,75 @@
         },
         "aiven:index/PgPgUserConfigPgbouncer:PgPgUserConfigPgbouncer": {
             "properties": {
+                "autodbIdleTimeout": {
+                    "type": "string",
+                    "description": "If the automatically created database pools have been unused this \nmany seconds, they are freed. If 0 then timeout is disabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbMaxDbConnections": {
+                    "type": "string",
+                    "description": "Do not allow more than this many server connections per database \n(regardless of user). Setting it to 0 means unlimited.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolMode": {
+                    "type": "string",
+                    "description": "PGBouncer pool mode\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolSize": {
+                    "type": "string",
+                    "description": "If non-zero then create automatically a pool of that size per user \nwhen a pool doesn't exist.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ignoreStartupParameters": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "Enum of parameters to ignore when given in startup packet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minPoolSize": {
+                    "type": "string",
+                    "description": "Add more server connections to pool if below this number. Improves \nbehavior when usual load comes suddenly back after period of total inactivity. The value is\neffectively capped at the pool size.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverIdleTimeout": {
+                    "type": "string",
+                    "description": "If a server connection has been idle more than this many seconds \nit will be dropped. If 0 then timeout is disabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverLifetime": {
+                    "type": "string",
+                    "description": "The pooler will close an unused server connection that has been connected \nlonger than this.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5497,7 +5578,16 @@
                 },
                 "recoveryBasebackupName": {
                     "type": "string",
-                    "description": "Name of the basebackup to restore in forked service\n* `redis_lfu_decay_time\"` - (Optional) LFU maxmemory-policy counter decay time in minutes\n",
+                    "description": "Name of the basebackup to restore in forked service\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "redisIoThreads": {
+                    "type": "string",
+                    "description": "Redis IO thread count\n* `redis_lfu_decay_time\"` - (Optional) LFU maxmemory-policy counter decay time in minutes\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8203,6 +8293,22 @@
                             "mapCase": false
                         }
                     }
+                },
+                "transactionRemoveExpiredTransactionCleanupIntervalMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "transactionStateLogSegmentBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -9390,11 +9496,67 @@
         },
         "aiven:index/ServicePgUserConfigPgbouncer:ServicePgUserConfigPgbouncer": {
             "properties": {
+                "autodbIdleTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbMaxDbConnections": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolSize": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ignoreStartupParameters": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minPoolSize": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverIdleTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverLifetime": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9537,6 +9699,14 @@
                     }
                 },
                 "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "redisIoThreads": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -12517,6 +12687,24 @@
                             "mapCase": false
                         }
                     }
+                },
+                "transactionRemoveExpiredTransactionCleanupIntervalMs": {
+                    "type": "string",
+                    "description": "The interval at which \nto remove transactions that have expired due to transactional.id.expiration.ms passing (defaults\nto 3600000 (1 hour)).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "transactionStateLogSegmentBytes": {
+                    "type": "string",
+                    "description": "The transaction topic segment bytes should \nbe kept relatively small in order to facilitate faster log compaction and cache loads (defaults\nto 104857600 (100 mebibytes)).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -14938,12 +15126,75 @@
         },
         "aiven:index/getPgPgUserConfigPgbouncer:getPgPgUserConfigPgbouncer": {
             "properties": {
+                "autodbIdleTimeout": {
+                    "type": "string",
+                    "description": "If the automatically created database pools have been unused this \nmany seconds, they are freed. If 0 then timeout is disabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbMaxDbConnections": {
+                    "type": "string",
+                    "description": "Do not allow more than this many server connections per database \n(regardless of user). Setting it to 0 means unlimited.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolMode": {
+                    "type": "string",
+                    "description": "PGBouncer pool mode\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolSize": {
+                    "type": "string",
+                    "description": "If non-zero then create automatically a pool of that size per user \nwhen a pool doesn't exist.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ignoreStartupParameters": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "Enum of parameters to ignore when given in startup packet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minPoolSize": {
+                    "type": "string",
+                    "description": "Add more server connections to pool if below this number. Improves \nbehavior when usual load comes suddenly back after period of total inactivity. The value is\neffectively capped at the pool size.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverIdleTimeout": {
+                    "type": "string",
+                    "description": "If a server connection has been idle more than this many seconds \nit will be dropped. If 0 then timeout is disabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverLifetime": {
+                    "type": "string",
+                    "description": "The pooler will close an unused server connection that has been connected \nlonger than this.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15203,7 +15454,16 @@
                 },
                 "recoveryBasebackupName": {
                     "type": "string",
-                    "description": "Name of the basebackup to restore in forked service\n* `redis_lfu_decay_time\"` - LFU maxmemory-policy counter decay time in minutes\n",
+                    "description": "Name of the basebackup to restore in forked service\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "redisIoThreads": {
+                    "type": "string",
+                    "description": "Redis IO thread count\n* `redis_lfu_decay_time\"` - LFU maxmemory-policy counter decay time in minutes\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17913,6 +18173,22 @@
                             "mapCase": false
                         }
                     }
+                },
+                "transactionRemoveExpiredTransactionCleanupIntervalMs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "transactionStateLogSegmentBytes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -19101,11 +19377,67 @@
         },
         "aiven:index/getServicePgUserConfigPgbouncer:getServicePgUserConfigPgbouncer": {
             "properties": {
+                "autodbIdleTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbMaxDbConnections": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autodbPoolSize": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ignoreStartupParameters": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minPoolSize": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverIdleTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverLifetime": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19248,6 +19580,14 @@
                     }
                 },
                 "recoveryBasebackupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "redisIoThreads": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -23697,9 +24037,17 @@
                     "type": "string",
                     "description": "is an optional property to link a project to already an existing account by \nusing account ID.\n"
                 },
+                "availableCredits": {
+                    "type": "string",
+                    "description": "Available credits\n"
+                },
                 "billingAddress": {
                     "type": "string",
                     "description": "Billing name and address of the project\n"
+                },
+                "billingCurrency": {
+                    "type": "string",
+                    "description": "Billing currency\n"
                 },
                 "billingEmails": {
                     "type": "array",
@@ -23707,6 +24055,10 @@
                         "type": "string"
                     },
                     "description": "Billing contact emails of the project\n"
+                },
+                "billingExtraText": {
+                    "type": "string",
+                    "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
                 },
                 "caCert": {
                     "type": "string",
@@ -23720,9 +24072,25 @@
                     "type": "string",
                     "description": "is the name of another project used to copy billing information and\nsome other project attributes like technical contacts from. This is mostly relevant when\nan existing project has billing type set to invoice and that needs to be copied over to a\nnew project. (Setting billing is otherwise not allowed over the API.) This only has\neffect when the project is created.\n"
                 },
+                "country": {
+                    "type": "string",
+                    "description": "Billing country\n"
+                },
                 "countryCode": {
                     "type": "string",
                     "description": "Billing country code of the project\n"
+                },
+                "defaultCloud": {
+                    "type": "string",
+                    "description": "Default cloud for new services\n"
+                },
+                "estimatedBalance": {
+                    "type": "string",
+                    "description": "Estimated balance\n"
+                },
+                "paymentMethod": {
+                    "type": "string",
+                    "description": "Payment method\n"
                 },
                 "project": {
                     "type": "string",
@@ -23739,10 +24107,18 @@
                         "type": "string"
                     },
                     "description": "Technical contact emails of the project\n"
+                },
+                "vatId": {
+                    "type": "string",
+                    "description": "EU VAT Identification Number\n"
                 }
             },
             "required": [
+                "availableCredits",
                 "caCert",
+                "country",
+                "estimatedBalance",
+                "paymentMethod",
                 "project"
             ],
             "inputProperties": {
@@ -23750,9 +24126,17 @@
                     "type": "string",
                     "description": "is an optional property to link a project to already an existing account by \nusing account ID.\n"
                 },
+                "availableCredits": {
+                    "type": "string",
+                    "description": "Available credits\n"
+                },
                 "billingAddress": {
                     "type": "string",
                     "description": "Billing name and address of the project\n"
+                },
+                "billingCurrency": {
+                    "type": "string",
+                    "description": "Billing currency\n"
                 },
                 "billingEmails": {
                     "type": "array",
@@ -23760,6 +24144,10 @@
                         "type": "string"
                     },
                     "description": "Billing contact emails of the project\n"
+                },
+                "billingExtraText": {
+                    "type": "string",
+                    "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
                 },
                 "caCert": {
                     "type": "string",
@@ -23777,6 +24165,10 @@
                     "type": "string",
                     "description": "Billing country code of the project\n"
                 },
+                "defaultCloud": {
+                    "type": "string",
+                    "description": "Default cloud for new services\n"
+                },
                 "project": {
                     "type": "string",
                     "description": "defines the name of the project. Name must be globally unique (between all\nAiven customers) and cannot be changed later without destroying and re-creating the\nproject, including all sub-resources.\n",
@@ -23792,6 +24184,10 @@
                         "type": "string"
                     },
                     "description": "Technical contact emails of the project\n"
+                },
+                "vatId": {
+                    "type": "string",
+                    "description": "EU VAT Identification Number\n"
                 }
             },
             "requiredInputs": [
@@ -23804,9 +24200,17 @@
                         "type": "string",
                         "description": "is an optional property to link a project to already an existing account by \nusing account ID.\n"
                     },
+                    "availableCredits": {
+                        "type": "string",
+                        "description": "Available credits\n"
+                    },
                     "billingAddress": {
                         "type": "string",
                         "description": "Billing name and address of the project\n"
+                    },
+                    "billingCurrency": {
+                        "type": "string",
+                        "description": "Billing currency\n"
                     },
                     "billingEmails": {
                         "type": "array",
@@ -23814,6 +24218,10 @@
                             "type": "string"
                         },
                         "description": "Billing contact emails of the project\n"
+                    },
+                    "billingExtraText": {
+                        "type": "string",
+                        "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
                     },
                     "caCert": {
                         "type": "string",
@@ -23827,9 +24235,25 @@
                         "type": "string",
                         "description": "is the name of another project used to copy billing information and\nsome other project attributes like technical contacts from. This is mostly relevant when\nan existing project has billing type set to invoice and that needs to be copied over to a\nnew project. (Setting billing is otherwise not allowed over the API.) This only has\neffect when the project is created.\n"
                     },
+                    "country": {
+                        "type": "string",
+                        "description": "Billing country\n"
+                    },
                     "countryCode": {
                         "type": "string",
                         "description": "Billing country code of the project\n"
+                    },
+                    "defaultCloud": {
+                        "type": "string",
+                        "description": "Default cloud for new services\n"
+                    },
+                    "estimatedBalance": {
+                        "type": "string",
+                        "description": "Estimated balance\n"
+                    },
+                    "paymentMethod": {
+                        "type": "string",
+                        "description": "Payment method\n"
                     },
                     "project": {
                         "type": "string",
@@ -23846,6 +24270,10 @@
                             "type": "string"
                         },
                         "description": "Technical contact emails of the project\n"
+                    },
+                    "vatId": {
+                        "type": "string",
+                        "description": "EU VAT Identification Number\n"
                     }
                 },
                 "type": "object"
@@ -24714,11 +25142,11 @@
             }
         },
         "aiven:index/serviceIntegration:ServiceIntegration": {
-            "description": "## # Service Integration Resource\n\nThe Service Integration resource allows the creation and management of Aiven Service Integrations.\n\nService Integration defines an integration between two Aiven services or between Aiven\nservice and an external integration endpoint. Integration could be for example sending\nmetrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB\nservice to a Grafana service to show dashboards, sending logs from any service to\nElasticsearch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myintegration = new aiven.ServiceIntegration(\"myintegration\", {\n    destinationEndpointId: aiven_service_integration_endpoint_myendpoint.id,\n    destinationServiceName: \"\",\n    integrationType: \"datadog\",\n    project: aiven_project_myproject.project,\n    sourceEndpointId: \"\",\n    sourceServiceName: aiven_service_testkafka.serviceName,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyintegration = aiven.ServiceIntegration(\"myintegration\",\n    destination_endpoint_id=aiven_service_integration_endpoint[\"myendpoint\"][\"id\"],\n    destination_service_name=\"\",\n    integration_type=\"datadog\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    source_endpoint_id=\"\",\n    source_service_name=aiven_service[\"testkafka\"][\"service_name\"])\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myintegration = new Aiven.ServiceIntegration(\"myintegration\", new Aiven.ServiceIntegrationArgs\n        {\n            DestinationEndpointId = aiven_service_integration_endpoint.Myendpoint.Id,\n            DestinationServiceName = \"\",\n            IntegrationType = \"datadog\",\n            Project = aiven_project.Myproject.Project,\n            SourceEndpointId = \"\",\n            SourceServiceName = aiven_service.Testkafka.Service_name,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceIntegration(ctx, \"myintegration\", \u0026aiven.ServiceIntegrationArgs{\n\t\t\tDestinationEndpointId:  pulumi.Any(aiven_service_integration_endpoint.Myendpoint.Id),\n\t\t\tDestinationServiceName: pulumi.String(\"\"),\n\t\t\tIntegrationType:        pulumi.String(\"datadog\"),\n\t\t\tProject:                pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tSourceEndpointId:       pulumi.String(\"\"),\n\t\t\tSourceServiceName:      pulumi.Any(aiven_service.Testkafka.Service_name),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Service Integration Resource\n\nThe Service Integration resource allows the creation and management of Aiven Service Integrations.\n\nService Integration defines an integration between two Aiven services or between Aiven\nservice and an external integration endpoint. Integration could be for example sending\nmetrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB\nservice to a Grafana service to show dashboards, sending logs from any service to\nElasticsearch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myintegration = new aiven.ServiceIntegration(\"myintegration\", {\n    project: aiven_project.myproject.project,\n    destinationEndpointId: aiven_service_integration_endpoint.XX.id,\n    integrationType: \"datadog\",\n    sourceServiceName: aiven_kafka.XXX.service_name,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyintegration = aiven.ServiceIntegration(\"myintegration\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    destination_endpoint_id=aiven_service_integration_endpoint[\"XX\"][\"id\"],\n    integration_type=\"datadog\",\n    source_service_name=aiven_kafka[\"XXX\"][\"service_name\"])\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myintegration = new Aiven.ServiceIntegration(\"myintegration\", new Aiven.ServiceIntegrationArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            DestinationEndpointId = aiven_service_integration_endpoint.XX.Id,\n            IntegrationType = \"datadog\",\n            SourceServiceName = aiven_kafka.XXX.Service_name,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceIntegration(ctx, \"myintegration\", \u0026aiven.ServiceIntegrationArgs{\n\t\t\tProject:               pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tDestinationEndpointId: pulumi.Any(aiven_service_integration_endpoint.XX.Id),\n\t\t\tIntegrationType:       pulumi.String(\"datadog\"),\n\t\t\tSourceServiceName:     pulumi.Any(aiven_kafka.XXX.Service_name),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "destinationEndpointId": {
                     "type": "string",
-                    "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier or service name must be specified. In\neither case the target needs to be defined using the reference syntax described above to\nset up the dependency correctly.\n"
+                    "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs\nto be defined using the reference syntax described above to set up the dependency correctly.\n"
                 },
                 "destinationServiceName": {
                     "type": "string",
@@ -24750,7 +25178,7 @@
                 },
                 "sourceEndpointId": {
                     "type": "string",
-                    "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier or service name must be specified. In either\ncase the source needs to be defined using the reference syntax described above to set up\nthe dependency correctly.\n"
+                    "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source\nneeds to be defined using the reference syntax described above to set up the dependency correctly.\n"
                 },
                 "sourceServiceName": {
                     "type": "string",
@@ -24764,7 +25192,7 @@
             "inputProperties": {
                 "destinationEndpointId": {
                     "type": "string",
-                    "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier or service name must be specified. In\neither case the target needs to be defined using the reference syntax described above to\nset up the dependency correctly.\n"
+                    "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs\nto be defined using the reference syntax described above to set up the dependency correctly.\n"
                 },
                 "destinationServiceName": {
                     "type": "string",
@@ -24796,7 +25224,7 @@
                 },
                 "sourceEndpointId": {
                     "type": "string",
-                    "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier or service name must be specified. In either\ncase the source needs to be defined using the reference syntax described above to set up\nthe dependency correctly.\n"
+                    "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source\nneeds to be defined using the reference syntax described above to set up the dependency correctly.\n"
                 },
                 "sourceServiceName": {
                     "type": "string",
@@ -24812,7 +25240,7 @@
                 "properties": {
                     "destinationEndpointId": {
                         "type": "string",
-                        "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier or service name must be specified. In\neither case the target needs to be defined using the reference syntax described above to\nset up the dependency correctly.\n"
+                        "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs\nto be defined using the reference syntax described above to set up the dependency correctly.\n"
                     },
                     "destinationServiceName": {
                         "type": "string",
@@ -24844,7 +25272,7 @@
                     },
                     "sourceEndpointId": {
                         "type": "string",
-                        "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier or service name must be specified. In either\ncase the source needs to be defined using the reference syntax described above to set up\nthe dependency correctly.\n"
+                        "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source\nneeds to be defined using the reference syntax described above to set up the dependency correctly.\n"
                     },
                     "sourceServiceName": {
                         "type": "string",
@@ -28730,7 +29158,13 @@
                         "type": "string",
                         "description": "is an optional property to link a project to already an existing account by \nusing account ID.\n"
                     },
+                    "availableCredits": {
+                        "type": "string"
+                    },
                     "billingAddress": {
+                        "type": "string"
+                    },
+                    "billingCurrency": {
                         "type": "string"
                     },
                     "billingEmails": {
@@ -28738,6 +29172,9 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "billingExtraText": {
+                        "type": "string"
                     },
                     "caCert": {
                         "type": "string",
@@ -28751,7 +29188,19 @@
                         "type": "string",
                         "description": "is the name of another project used to copy billing information and\nsome other project attributes like technical contacts from. This is mostly relevant when\nan existing project has billing type set to invoice and that needs to be copied over to a\nnew project. (Setting billing is otherwise not allowed over the API.) This only has\neffect when the project is created.\n"
                     },
+                    "country": {
+                        "type": "string"
+                    },
                     "countryCode": {
+                        "type": "string"
+                    },
+                    "defaultCloud": {
+                        "type": "string"
+                    },
+                    "estimatedBalance": {
+                        "type": "string"
+                    },
+                    "paymentMethod": {
                         "type": "string"
                     },
                     "project": {
@@ -28763,6 +29212,9 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "vatId": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -28777,7 +29229,13 @@
                         "type": "string",
                         "description": "is an optional property to link a project to already an existing account by \nusing account ID.\n"
                     },
+                    "availableCredits": {
+                        "type": "string"
+                    },
                     "billingAddress": {
+                        "type": "string"
+                    },
+                    "billingCurrency": {
                         "type": "string"
                     },
                     "billingEmails": {
@@ -28785,6 +29243,9 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "billingExtraText": {
+                        "type": "string"
                     },
                     "caCert": {
                         "type": "string",
@@ -28798,12 +29259,24 @@
                         "type": "string",
                         "description": "is the name of another project used to copy billing information and\nsome other project attributes like technical contacts from. This is mostly relevant when\nan existing project has billing type set to invoice and that needs to be copied over to a\nnew project. (Setting billing is otherwise not allowed over the API.) This only has\neffect when the project is created.\n"
                     },
+                    "country": {
+                        "type": "string"
+                    },
                     "countryCode": {
+                        "type": "string"
+                    },
+                    "defaultCloud": {
+                        "type": "string"
+                    },
+                    "estimatedBalance": {
                         "type": "string"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "paymentMethod": {
+                        "type": "string"
                     },
                     "project": {
                         "type": "string"
@@ -28813,11 +29286,18 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "vatId": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "availableCredits",
                     "caCert",
+                    "country",
+                    "estimatedBalance",
+                    "paymentMethod",
                     "project",
                     "id"
                 ]

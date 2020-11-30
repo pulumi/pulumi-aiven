@@ -120,6 +120,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("socketRequestMaxBytes")]
         public Input<string>? SocketRequestMaxBytes { get; set; }
 
+        [Input("transactionRemoveExpiredTransactionCleanupIntervalMs")]
+        public Input<string>? TransactionRemoveExpiredTransactionCleanupIntervalMs { get; set; }
+
+        [Input("transactionStateLogSegmentBytes")]
+        public Input<string>? TransactionStateLogSegmentBytes { get; set; }
+
         public ServiceKafkaUserConfigKafkaArgs()
         {
         }

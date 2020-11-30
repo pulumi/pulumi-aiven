@@ -53,8 +53,14 @@ namespace Pulumi.Aiven
         [Input("accountId")]
         public string? AccountId { get; set; }
 
+        [Input("availableCredits")]
+        public string? AvailableCredits { get; set; }
+
         [Input("billingAddress")]
         public string? BillingAddress { get; set; }
+
+        [Input("billingCurrency")]
+        public string? BillingCurrency { get; set; }
 
         [Input("billingEmails")]
         private List<string>? _billingEmails;
@@ -63,6 +69,9 @@ namespace Pulumi.Aiven
             get => _billingEmails ?? (_billingEmails = new List<string>());
             set => _billingEmails = value;
         }
+
+        [Input("billingExtraText")]
+        public string? BillingExtraText { get; set; }
 
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
@@ -91,8 +100,20 @@ namespace Pulumi.Aiven
         [Input("copyFromProject")]
         public string? CopyFromProject { get; set; }
 
+        [Input("country")]
+        public string? Country { get; set; }
+
         [Input("countryCode")]
         public string? CountryCode { get; set; }
+
+        [Input("defaultCloud")]
+        public string? DefaultCloud { get; set; }
+
+        [Input("estimatedBalance")]
+        public string? EstimatedBalance { get; set; }
+
+        [Input("paymentMethod")]
+        public string? PaymentMethod { get; set; }
 
         /// <summary>
         /// defines the name of the project. Name must be globally unique (between all
@@ -110,6 +131,9 @@ namespace Pulumi.Aiven
             set => _technicalEmails = value;
         }
 
+        [Input("vatId")]
+        public string? VatId { get; set; }
+
         public GetProjectArgs()
         {
         }
@@ -124,8 +148,11 @@ namespace Pulumi.Aiven
         /// using account ID.
         /// </summary>
         public readonly string? AccountId;
+        public readonly string AvailableCredits;
         public readonly string? BillingAddress;
+        public readonly string? BillingCurrency;
         public readonly ImmutableArray<string> BillingEmails;
+        public readonly string? BillingExtraText;
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
         /// project. This is required for configuring clients that connect to certain services like
@@ -147,21 +174,32 @@ namespace Pulumi.Aiven
         /// effect when the project is created.
         /// </summary>
         public readonly string? CopyFromProject;
+        public readonly string Country;
         public readonly string? CountryCode;
+        public readonly string? DefaultCloud;
+        public readonly string EstimatedBalance;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string PaymentMethod;
         public readonly string Project;
         public readonly ImmutableArray<string> TechnicalEmails;
+        public readonly string? VatId;
 
         [OutputConstructor]
         private GetProjectResult(
             string? accountId,
 
+            string availableCredits,
+
             string? billingAddress,
 
+            string? billingCurrency,
+
             ImmutableArray<string> billingEmails,
+
+            string? billingExtraText,
 
             string caCert,
 
@@ -169,24 +207,42 @@ namespace Pulumi.Aiven
 
             string? copyFromProject,
 
+            string country,
+
             string? countryCode,
+
+            string? defaultCloud,
+
+            string estimatedBalance,
 
             string id,
 
+            string paymentMethod,
+
             string project,
 
-            ImmutableArray<string> technicalEmails)
+            ImmutableArray<string> technicalEmails,
+
+            string? vatId)
         {
             AccountId = accountId;
+            AvailableCredits = availableCredits;
             BillingAddress = billingAddress;
+            BillingCurrency = billingCurrency;
             BillingEmails = billingEmails;
+            BillingExtraText = billingExtraText;
             CaCert = caCert;
             CardId = cardId;
             CopyFromProject = copyFromProject;
+            Country = country;
             CountryCode = countryCode;
+            DefaultCloud = defaultCloud;
+            EstimatedBalance = estimatedBalance;
             Id = id;
+            PaymentMethod = paymentMethod;
             Project = project;
             TechnicalEmails = technicalEmails;
+            VatId = vatId;
         }
     }
 }

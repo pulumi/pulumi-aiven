@@ -16,14 +16,19 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 available_credits: Optional[pulumi.Input[str]] = None,
                  billing_address: Optional[pulumi.Input[str]] = None,
+                 billing_currency: Optional[pulumi.Input[str]] = None,
                  billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 billing_extra_text: Optional[pulumi.Input[str]] = None,
                  ca_cert: Optional[pulumi.Input[str]] = None,
                  card_id: Optional[pulumi.Input[str]] = None,
                  copy_from_project: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
+                 default_cloud: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vat_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,8 +41,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
                using account ID.
+        :param pulumi.Input[str] available_credits: Available credits
         :param pulumi.Input[str] billing_address: Billing name and address of the project
+        :param pulumi.Input[str] billing_currency: Billing currency
         :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number
         :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
                project. This is required for configuring clients that connect to certain services like
                Kafka. This value cannot be set, only read.
@@ -51,10 +59,12 @@ class Project(pulumi.CustomResource):
                new project. (Setting billing is otherwise not allowed over the API.) This only has
                effect when the project is created.
         :param pulumi.Input[str] country_code: Billing country code of the project
+        :param pulumi.Input[str] default_cloud: Default cloud for new services
         :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
                Aiven customers) and cannot be changed later without destroying and re-creating the
                project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,16 +84,24 @@ class Project(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['account_id'] = account_id
+            __props__['available_credits'] = available_credits
             __props__['billing_address'] = billing_address
+            __props__['billing_currency'] = billing_currency
             __props__['billing_emails'] = billing_emails
+            __props__['billing_extra_text'] = billing_extra_text
             __props__['ca_cert'] = ca_cert
             __props__['card_id'] = card_id
             __props__['copy_from_project'] = copy_from_project
             __props__['country_code'] = country_code
+            __props__['default_cloud'] = default_cloud
             if project is None:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['technical_emails'] = technical_emails
+            __props__['vat_id'] = vat_id
+            __props__['country'] = None
+            __props__['estimated_balance'] = None
+            __props__['payment_method'] = None
         super(Project, __self__).__init__(
             'aiven:index/project:Project',
             resource_name,
@@ -95,14 +113,22 @@ class Project(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            available_credits: Optional[pulumi.Input[str]] = None,
             billing_address: Optional[pulumi.Input[str]] = None,
+            billing_currency: Optional[pulumi.Input[str]] = None,
             billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            billing_extra_text: Optional[pulumi.Input[str]] = None,
             ca_cert: Optional[pulumi.Input[str]] = None,
             card_id: Optional[pulumi.Input[str]] = None,
             copy_from_project: Optional[pulumi.Input[str]] = None,
+            country: Optional[pulumi.Input[str]] = None,
             country_code: Optional[pulumi.Input[str]] = None,
+            default_cloud: Optional[pulumi.Input[str]] = None,
+            estimated_balance: Optional[pulumi.Input[str]] = None,
+            payment_method: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Project':
+            technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vat_id: Optional[pulumi.Input[str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -112,8 +138,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
                using account ID.
+        :param pulumi.Input[str] available_credits: Available credits
         :param pulumi.Input[str] billing_address: Billing name and address of the project
+        :param pulumi.Input[str] billing_currency: Billing currency
         :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number
         :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
                project. This is required for configuring clients that connect to certain services like
                Kafka. This value cannot be set, only read.
@@ -126,25 +155,38 @@ class Project(pulumi.CustomResource):
                an existing project has billing type set to invoice and that needs to be copied over to a
                new project. (Setting billing is otherwise not allowed over the API.) This only has
                effect when the project is created.
+        :param pulumi.Input[str] country: Billing country
         :param pulumi.Input[str] country_code: Billing country code of the project
+        :param pulumi.Input[str] default_cloud: Default cloud for new services
+        :param pulumi.Input[str] estimated_balance: Estimated balance
+        :param pulumi.Input[str] payment_method: Payment method
         :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
                Aiven customers) and cannot be changed later without destroying and re-creating the
                project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["account_id"] = account_id
+        __props__["available_credits"] = available_credits
         __props__["billing_address"] = billing_address
+        __props__["billing_currency"] = billing_currency
         __props__["billing_emails"] = billing_emails
+        __props__["billing_extra_text"] = billing_extra_text
         __props__["ca_cert"] = ca_cert
         __props__["card_id"] = card_id
         __props__["copy_from_project"] = copy_from_project
+        __props__["country"] = country
         __props__["country_code"] = country_code
+        __props__["default_cloud"] = default_cloud
+        __props__["estimated_balance"] = estimated_balance
+        __props__["payment_method"] = payment_method
         __props__["project"] = project
         __props__["technical_emails"] = technical_emails
+        __props__["vat_id"] = vat_id
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -157,6 +199,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="availableCredits")
+    def available_credits(self) -> pulumi.Output[str]:
+        """
+        Available credits
+        """
+        return pulumi.get(self, "available_credits")
+
+    @property
     @pulumi.getter(name="billingAddress")
     def billing_address(self) -> pulumi.Output[Optional[str]]:
         """
@@ -165,12 +215,28 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "billing_address")
 
     @property
+    @pulumi.getter(name="billingCurrency")
+    def billing_currency(self) -> pulumi.Output[Optional[str]]:
+        """
+        Billing currency
+        """
+        return pulumi.get(self, "billing_currency")
+
+    @property
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Billing contact emails of the project
         """
         return pulumi.get(self, "billing_emails")
+
+    @property
+    @pulumi.getter(name="billingExtraText")
+    def billing_extra_text(self) -> pulumi.Output[Optional[str]]:
+        """
+        Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        """
+        return pulumi.get(self, "billing_extra_text")
 
     @property
     @pulumi.getter(name="caCert")
@@ -206,12 +272,44 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "copy_from_project")
 
     @property
+    @pulumi.getter
+    def country(self) -> pulumi.Output[str]:
+        """
+        Billing country
+        """
+        return pulumi.get(self, "country")
+
+    @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[str]]:
         """
         Billing country code of the project
         """
         return pulumi.get(self, "country_code")
+
+    @property
+    @pulumi.getter(name="defaultCloud")
+    def default_cloud(self) -> pulumi.Output[Optional[str]]:
+        """
+        Default cloud for new services
+        """
+        return pulumi.get(self, "default_cloud")
+
+    @property
+    @pulumi.getter(name="estimatedBalance")
+    def estimated_balance(self) -> pulumi.Output[str]:
+        """
+        Estimated balance
+        """
+        return pulumi.get(self, "estimated_balance")
+
+    @property
+    @pulumi.getter(name="paymentMethod")
+    def payment_method(self) -> pulumi.Output[str]:
+        """
+        Payment method
+        """
+        return pulumi.get(self, "payment_method")
 
     @property
     @pulumi.getter
@@ -230,6 +328,14 @@ class Project(pulumi.CustomResource):
         Technical contact emails of the project
         """
         return pulumi.get(self, "technical_emails")
+
+    @property
+    @pulumi.getter(name="vatId")
+    def vat_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        EU VAT Identification Number
+        """
+        return pulumi.get(self, "vat_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
