@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.3.0 (2020-12-04)
 * Upgrade to pulumi-terraform-bridge v2.13.2  
   * This adds support for import specific examples in documentation
 * Upgrade to v2.1.1 of the Aiven Terraform Provider
-
----
 
 ## 3.2.1 (2020-10-28)
 * Upgrade to v2.0.11 of the Aiven Terraform Provider
