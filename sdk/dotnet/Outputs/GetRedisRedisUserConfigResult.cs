@@ -31,9 +31,13 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetRedisRedisUserConfigPublicAccessResult? PublicAccess;
         /// <summary>
         /// Name of the basebackup to restore in forked service
-        /// * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
         /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// Redis IO thread count
+        /// * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
+        /// </summary>
+        public readonly string? RedisIoThreads;
         public readonly string? RedisLfuDecayTime;
         /// <summary>
         /// Counter logarithm factor for volatile-lfu and allkeys-lfu 
@@ -72,6 +76,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            string? redisIoThreads,
+
             string? redisLfuDecayTime,
 
             string? redisLfuLogFactor,
@@ -91,6 +97,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            RedisIoThreads = redisIoThreads;
             RedisLfuDecayTime = redisLfuDecayTime;
             RedisLfuLogFactor = redisLfuLogFactor;
             RedisMaxmemoryPolicy = redisMaxmemoryPolicy;

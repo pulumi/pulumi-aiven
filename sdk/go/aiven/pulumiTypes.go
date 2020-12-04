@@ -9142,6 +9142,14 @@ type KafkaKafkaUserConfigKafka struct {
 	// The maximum number of bytes in a socket request
 	// (defaults to 104857600).
 	SocketRequestMaxBytes *string `pulumi:"socketRequestMaxBytes"`
+	// The interval at which
+	// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+	// to 3600000 (1 hour)).
+	TransactionRemoveExpiredTransactionCleanupIntervalMs *string `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	// The transaction topic segment bytes should
+	// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+	// to 104857600 (100 mebibytes)).
+	TransactionStateLogSegmentBytes *string `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 // KafkaKafkaUserConfigKafkaInput is an input type that accepts KafkaKafkaUserConfigKafkaArgs and KafkaKafkaUserConfigKafkaOutput values.
@@ -9261,6 +9269,14 @@ type KafkaKafkaUserConfigKafkaArgs struct {
 	// The maximum number of bytes in a socket request
 	// (defaults to 104857600).
 	SocketRequestMaxBytes pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	// The interval at which
+	// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+	// to 3600000 (1 hour)).
+	TransactionRemoveExpiredTransactionCleanupIntervalMs pulumi.StringPtrInput `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	// The transaction topic segment bytes should
+	// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+	// to 104857600 (100 mebibytes)).
+	TransactionStateLogSegmentBytes pulumi.StringPtrInput `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 func (KafkaKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -9551,6 +9567,22 @@ func (o KafkaKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.S
 // (defaults to 104857600).
 func (o KafkaKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+// The interval at which
+// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+// to 3600000 (1 hour)).
+func (o KafkaKafkaUserConfigKafkaOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string {
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The transaction topic segment bytes should
+// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+// to 104857600 (100 mebibytes)).
+func (o KafkaKafkaUserConfigKafkaOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.TransactionStateLogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
 type KafkaKafkaUserConfigKafkaPtrOutput struct{ *pulumi.OutputState }
@@ -9961,6 +9993,30 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.Strin
 			return nil
 		}
 		return v.SocketRequestMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval at which
+// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+// to 3600000 (1 hour)).
+func (o KafkaKafkaUserConfigKafkaPtrOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The transaction topic segment bytes should
+// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+// to 104857600 (100 mebibytes)).
+func (o KafkaKafkaUserConfigKafkaPtrOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionStateLogSegmentBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12090,7 +12146,7 @@ func (o KafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) KafkaServic
 }
 
 type KafkaTopicConfig struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType *string `pulumi:"compressionType"`
@@ -12152,7 +12208,7 @@ type KafkaTopicConfigInput interface {
 }
 
 type KafkaTopicConfigArgs struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
@@ -12279,7 +12335,7 @@ func (o KafkaTopicConfigOutput) ToKafkaTopicConfigPtrOutputWithContext(ctx conte
 	}).(KafkaTopicConfigPtrOutput)
 }
 
-// cleanup.policy value
+// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 func (o KafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
@@ -12417,7 +12473,7 @@ func (o KafkaTopicConfigPtrOutput) Elem() KafkaTopicConfigOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) KafkaTopicConfig { return *v }).(KafkaTopicConfigOutput)
 }
 
-// cleanup.policy value
+// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 func (o KafkaTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -18522,8 +18578,29 @@ func (o PgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
 }
 
 type PgPgUserConfigPgbouncer struct {
+	// If the automatically created database pools have been unused this
+	// many seconds, they are freed. If 0 then timeout is disabled.
+	AutodbIdleTimeout *string `pulumi:"autodbIdleTimeout"`
+	// Do not allow more than this many server connections per database
+	// (regardless of user). Setting it to 0 means unlimited.
+	AutodbMaxDbConnections *string `pulumi:"autodbMaxDbConnections"`
+	// PGBouncer pool mode
+	AutodbPoolMode *string `pulumi:"autodbPoolMode"`
+	// If non-zero then create automatically a pool of that size per user
+	// when a pool doesn't exist.
+	AutodbPoolSize *string `pulumi:"autodbPoolSize"`
 	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	// Add more server connections to pool if below this number. Improves
+	// behavior when usual load comes suddenly back after period of total inactivity. The value is
+	// effectively capped at the pool size.
+	MinPoolSize *string `pulumi:"minPoolSize"`
+	// If a server connection has been idle more than this many seconds
+	// it will be dropped. If 0 then timeout is disabled.
+	ServerIdleTimeout *string `pulumi:"serverIdleTimeout"`
+	// The pooler will close an unused server connection that has been connected
+	// longer than this.
+	ServerLifetime *string `pulumi:"serverLifetime"`
 	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 	ServerResetQueryAlways *string `pulumi:"serverResetQueryAlways"`
 }
@@ -18540,8 +18617,29 @@ type PgPgUserConfigPgbouncerInput interface {
 }
 
 type PgPgUserConfigPgbouncerArgs struct {
+	// If the automatically created database pools have been unused this
+	// many seconds, they are freed. If 0 then timeout is disabled.
+	AutodbIdleTimeout pulumi.StringPtrInput `pulumi:"autodbIdleTimeout"`
+	// Do not allow more than this many server connections per database
+	// (regardless of user). Setting it to 0 means unlimited.
+	AutodbMaxDbConnections pulumi.StringPtrInput `pulumi:"autodbMaxDbConnections"`
+	// PGBouncer pool mode
+	AutodbPoolMode pulumi.StringPtrInput `pulumi:"autodbPoolMode"`
+	// If non-zero then create automatically a pool of that size per user
+	// when a pool doesn't exist.
+	AutodbPoolSize pulumi.StringPtrInput `pulumi:"autodbPoolSize"`
 	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	// Add more server connections to pool if below this number. Improves
+	// behavior when usual load comes suddenly back after period of total inactivity. The value is
+	// effectively capped at the pool size.
+	MinPoolSize pulumi.StringPtrInput `pulumi:"minPoolSize"`
+	// If a server connection has been idle more than this many seconds
+	// it will be dropped. If 0 then timeout is disabled.
+	ServerIdleTimeout pulumi.StringPtrInput `pulumi:"serverIdleTimeout"`
+	// The pooler will close an unused server connection that has been connected
+	// longer than this.
+	ServerLifetime pulumi.StringPtrInput `pulumi:"serverLifetime"`
 	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 	ServerResetQueryAlways pulumi.StringPtrInput `pulumi:"serverResetQueryAlways"`
 }
@@ -18623,9 +18721,51 @@ func (o PgPgUserConfigPgbouncerOutput) ToPgPgUserConfigPgbouncerPtrOutputWithCon
 	}).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
+// If the automatically created database pools have been unused this
+// many seconds, they are freed. If 0 then timeout is disabled.
+func (o PgPgUserConfigPgbouncerOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.AutodbIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Do not allow more than this many server connections per database
+// (regardless of user). Setting it to 0 means unlimited.
+func (o PgPgUserConfigPgbouncerOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.AutodbMaxDbConnections }).(pulumi.StringPtrOutput)
+}
+
+// PGBouncer pool mode
+func (o PgPgUserConfigPgbouncerOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.AutodbPoolMode }).(pulumi.StringPtrOutput)
+}
+
+// If non-zero then create automatically a pool of that size per user
+// when a pool doesn't exist.
+func (o PgPgUserConfigPgbouncerOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.AutodbPoolSize }).(pulumi.StringPtrOutput)
+}
+
 // Enum of parameters to ignore when given in startup packet.
 func (o PgPgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PgPgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+// Add more server connections to pool if below this number. Improves
+// behavior when usual load comes suddenly back after period of total inactivity. The value is
+// effectively capped at the pool size.
+func (o PgPgUserConfigPgbouncerOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.MinPoolSize }).(pulumi.StringPtrOutput)
+}
+
+// If a server connection has been idle more than this many seconds
+// it will be dropped. If 0 then timeout is disabled.
+func (o PgPgUserConfigPgbouncerOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.ServerIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// The pooler will close an unused server connection that has been connected
+// longer than this.
+func (o PgPgUserConfigPgbouncerOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgbouncer) *string { return v.ServerLifetime }).(pulumi.StringPtrOutput)
 }
 
 // Run serverResetQuery (DISCARD ALL) in all pooling modes.
@@ -18651,6 +18791,49 @@ func (o PgPgUserConfigPgbouncerPtrOutput) Elem() PgPgUserConfigPgbouncerOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) PgPgUserConfigPgbouncer { return *v }).(PgPgUserConfigPgbouncerOutput)
 }
 
+// If the automatically created database pools have been unused this
+// many seconds, they are freed. If 0 then timeout is disabled.
+func (o PgPgUserConfigPgbouncerPtrOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Do not allow more than this many server connections per database
+// (regardless of user). Setting it to 0 means unlimited.
+func (o PgPgUserConfigPgbouncerPtrOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbMaxDbConnections
+	}).(pulumi.StringPtrOutput)
+}
+
+// PGBouncer pool mode
+func (o PgPgUserConfigPgbouncerPtrOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If non-zero then create automatically a pool of that size per user
+// when a pool doesn't exist.
+func (o PgPgUserConfigPgbouncerPtrOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Enum of parameters to ignore when given in startup packet.
 func (o PgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) []string {
@@ -18659,6 +18842,40 @@ func (o PgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.Strin
 		}
 		return v.IgnoreStartupParameters
 	}).(pulumi.StringArrayOutput)
+}
+
+// Add more server connections to pool if below this number. Improves
+// behavior when usual load comes suddenly back after period of total inactivity. The value is
+// effectively capped at the pool size.
+func (o PgPgUserConfigPgbouncerPtrOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// If a server connection has been idle more than this many seconds
+// it will be dropped. If 0 then timeout is disabled.
+func (o PgPgUserConfigPgbouncerPtrOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pooler will close an unused server connection that has been connected
+// longer than this.
+func (o PgPgUserConfigPgbouncerPtrOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerLifetime
+	}).(pulumi.StringPtrOutput)
 }
 
 // Run serverResetQuery (DISCARD ALL) in all pooling modes.
@@ -19668,9 +19885,11 @@ type RedisRedisUserConfig struct {
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *RedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
-	// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
 	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime      *string `pulumi:"redisLfuDecayTime"`
+	// Redis IO thread count
+	// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+	RedisIoThreads    *string `pulumi:"redisIoThreads"`
+	RedisLfuDecayTime *string `pulumi:"redisLfuDecayTime"`
 	// Counter logarithm factor for volatile-lfu and allkeys-lfu
 	// maxmemory-policies
 	RedisLfuLogFactor *string `pulumi:"redisLfuLogFactor"`
@@ -19708,9 +19927,11 @@ type RedisRedisUserConfigArgs struct {
 	// Allow access to selected service ports from the public Internet
 	PublicAccess RedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
-	// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
 	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime      pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
+	// Redis IO thread count
+	// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+	RedisIoThreads    pulumi.StringPtrInput `pulumi:"redisIoThreads"`
+	RedisLfuDecayTime pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
 	// Counter logarithm factor for volatile-lfu and allkeys-lfu
 	// maxmemory-policies
 	RedisLfuLogFactor pulumi.StringPtrInput `pulumi:"redisLfuLogFactor"`
@@ -19825,9 +20046,14 @@ func (o RedisRedisUserConfigOutput) PublicAccess() RedisRedisUserConfigPublicAcc
 }
 
 // Name of the basebackup to restore in forked service
-// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+// Redis IO thread count
+// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+func (o RedisRedisUserConfigOutput) RedisIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisIoThreads }).(pulumi.StringPtrOutput)
 }
 
 func (o RedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
@@ -19925,13 +20151,23 @@ func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublic
 }
 
 // Name of the basebackup to restore in forked service
-// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redis IO thread count
+// * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+func (o RedisRedisUserConfigPtrOutput) RedisIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisIoThreads
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29784,42 +30020,44 @@ func (o ServiceKafkaUserConfigPtrOutput) SchemaRegistryConfig() ServiceKafkaUser
 }
 
 type ServiceKafkaUserConfigKafka struct {
-	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        *string `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   *string `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerDeleteRetentionMs            *string `pulumi:"logCleanerDeleteRetentionMs"`
-	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
-	LogFlushIntervalMessages               *string `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs                     *string `pulumi:"logFlushIntervalMs"`
-	LogIndexIntervalBytes                  *string `pulumi:"logIndexIntervalBytes"`
-	LogIndexSizeMaxBytes                   *string `pulumi:"logIndexSizeMaxBytes"`
-	LogMessageDownconversionEnable         *string `pulumi:"logMessageDownconversionEnable"`
-	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
-	LogPreallocate                         *string `pulumi:"logPreallocate"`
-	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
-	LogRetentionMs                         *string `pulumi:"logRetentionMs"`
-	LogRollJitterMs                        *string `pulumi:"logRollJitterMs"`
-	LogRollMs                              *string `pulumi:"logRollMs"`
-	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
-	LogSegmentDeleteDelayMs                *string `pulumi:"logSegmentDeleteDelayMs"`
-	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
-	MinInsyncReplicas                      *string `pulumi:"minInsyncReplicas"`
-	NumPartitions                          *string `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   *string `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           *string `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  *string `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                               *string `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                                      *string `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                                 *string `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor                             *string `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs                             *string `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs                             *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs                          *string `pulumi:"logCleanerDeleteRetentionMs"`
+	LogCleanerMaxCompactionLagMs                         *string `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio                          *string `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs                         *string `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                                     *string `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages                             *string `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                                   *string `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                                *string `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                                 *string `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable                       *string `pulumi:"logMessageDownconversionEnable"`
+	LogMessageTimestampDifferenceMaxMs                   *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                              *string `pulumi:"logMessageTimestampType"`
+	LogPreallocate                                       *string `pulumi:"logPreallocate"`
+	LogRetentionBytes                                    *string `pulumi:"logRetentionBytes"`
+	LogRetentionHours                                    *string `pulumi:"logRetentionHours"`
+	LogRetentionMs                                       *string `pulumi:"logRetentionMs"`
+	LogRollJitterMs                                      *string `pulumi:"logRollJitterMs"`
+	LogRollMs                                            *string `pulumi:"logRollMs"`
+	LogSegmentBytes                                      *string `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                              *string `pulumi:"logSegmentDeleteDelayMs"`
+	MaxConnectionsPerIp                                  *string `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots                 *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                                      *string `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                                    *string `pulumi:"minInsyncReplicas"`
+	NumPartitions                                        *string `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                              *string `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests               *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                                 *string `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes                         *string `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                                *string `pulumi:"socketRequestMaxBytes"`
+	TransactionRemoveExpiredTransactionCleanupIntervalMs *string `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	TransactionStateLogSegmentBytes                      *string `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 // ServiceKafkaUserConfigKafkaInput is an input type that accepts ServiceKafkaUserConfigKafkaArgs and ServiceKafkaUserConfigKafkaOutput values.
@@ -29834,42 +30072,44 @@ type ServiceKafkaUserConfigKafkaInput interface {
 }
 
 type ServiceKafkaUserConfigKafkaArgs struct {
-	AutoCreateTopicsEnable                 pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        pulumi.StringPtrInput `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerDeleteRetentionMs            pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
-	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
-	LogFlushIntervalMessages               pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs                     pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
-	LogIndexIntervalBytes                  pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
-	LogIndexSizeMaxBytes                   pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
-	LogMessageDownconversionEnable         pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
-	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
-	LogPreallocate                         pulumi.StringPtrInput `pulumi:"logPreallocate"`
-	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
-	LogRetentionMs                         pulumi.StringPtrInput `pulumi:"logRetentionMs"`
-	LogRollJitterMs                        pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
-	LogRollMs                              pulumi.StringPtrInput `pulumi:"logRollMs"`
-	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
-	LogSegmentDeleteDelayMs                pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
-	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
-	MinInsyncReplicas                      pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
-	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                               pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                                      pulumi.StringPtrInput `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                                 pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor                             pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs                             pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs                             pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs                          pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
+	LogCleanerMaxCompactionLagMs                         pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio                          pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs                         pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                                     pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages                             pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                                   pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                                pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                                 pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable                       pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
+	LogMessageTimestampDifferenceMaxMs                   pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                              pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	LogPreallocate                                       pulumi.StringPtrInput `pulumi:"logPreallocate"`
+	LogRetentionBytes                                    pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	LogRetentionHours                                    pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogRetentionMs                                       pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	LogRollJitterMs                                      pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
+	LogRollMs                                            pulumi.StringPtrInput `pulumi:"logRollMs"`
+	LogSegmentBytes                                      pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                              pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
+	MaxConnectionsPerIp                                  pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots                 pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                                      pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                                    pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
+	NumPartitions                                        pulumi.StringPtrInput `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                              pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests               pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                                 pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes                         pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                                pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	TransactionRemoveExpiredTransactionCleanupIntervalMs pulumi.StringPtrInput `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	TransactionStateLogSegmentBytes                      pulumi.StringPtrInput `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 func (ServiceKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -30090,6 +30330,16 @@ func (o ServiceKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi
 
 func (o ServiceKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string {
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigKafka) *string { return v.TransactionStateLogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
 type ServiceKafkaUserConfigKafkaPtrOutput struct{ *pulumi.OutputState }
@@ -30431,6 +30681,24 @@ func (o ServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.Str
 			return nil
 		}
 		return v.SocketRequestMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigKafkaPtrOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionStateLogSegmentBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34145,7 +34413,14 @@ func (o ServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput 
 }
 
 type ServicePgUserConfigPgbouncer struct {
+	AutodbIdleTimeout       *string  `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  *string  `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          *string  `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          *string  `pulumi:"autodbPoolSize"`
 	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             *string  `pulumi:"minPoolSize"`
+	ServerIdleTimeout       *string  `pulumi:"serverIdleTimeout"`
+	ServerLifetime          *string  `pulumi:"serverLifetime"`
 	ServerResetQueryAlways  *string  `pulumi:"serverResetQueryAlways"`
 }
 
@@ -34161,7 +34436,14 @@ type ServicePgUserConfigPgbouncerInput interface {
 }
 
 type ServicePgUserConfigPgbouncerArgs struct {
+	AutodbIdleTimeout       pulumi.StringPtrInput   `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  pulumi.StringPtrInput   `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          pulumi.StringPtrInput   `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          pulumi.StringPtrInput   `pulumi:"autodbPoolSize"`
 	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             pulumi.StringPtrInput   `pulumi:"minPoolSize"`
+	ServerIdleTimeout       pulumi.StringPtrInput   `pulumi:"serverIdleTimeout"`
+	ServerLifetime          pulumi.StringPtrInput   `pulumi:"serverLifetime"`
 	ServerResetQueryAlways  pulumi.StringPtrInput   `pulumi:"serverResetQueryAlways"`
 }
 
@@ -34241,8 +34523,36 @@ func (o ServicePgUserConfigPgbouncerOutput) ToServicePgUserConfigPgbouncerPtrOut
 		return &v
 	}).(ServicePgUserConfigPgbouncerPtrOutput)
 }
+func (o ServicePgUserConfigPgbouncerOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.AutodbIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.AutodbMaxDbConnections }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.AutodbPoolMode }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.AutodbPoolSize }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.MinPoolSize }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.ServerIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPgbouncer) *string { return v.ServerLifetime }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
@@ -34267,6 +34577,42 @@ func (o ServicePgUserConfigPgbouncerPtrOutput) Elem() ServicePgUserConfigPgbounc
 	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) ServicePgUserConfigPgbouncer { return *v }).(ServicePgUserConfigPgbouncerOutput)
 }
 
+func (o ServicePgUserConfigPgbouncerPtrOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerPtrOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbMaxDbConnections
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerPtrOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerPtrOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) []string {
 		if v == nil {
@@ -34274,6 +34620,33 @@ func (o ServicePgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.
 		}
 		return v.IgnoreStartupParameters
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerPtrOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerPtrOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgbouncerPtrOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerLifetime
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
@@ -34967,6 +35340,7 @@ type ServiceRedisUserConfig struct {
 	PrivateAccess             *ServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *ServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    *string                              `pulumi:"recoveryBasebackupName"`
+	RedisIoThreads            *string                              `pulumi:"redisIoThreads"`
 	RedisLfuDecayTime         *string                              `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         *string                              `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                              `pulumi:"redisMaxmemoryPolicy"`
@@ -34993,6 +35367,7 @@ type ServiceRedisUserConfigArgs struct {
 	PrivateAccess             ServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              ServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    pulumi.StringPtrInput                       `pulumi:"recoveryBasebackupName"`
+	RedisIoThreads            pulumi.StringPtrInput                       `pulumi:"redisIoThreads"`
 	RedisLfuDecayTime         pulumi.StringPtrInput                       `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         pulumi.StringPtrInput                       `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                       `pulumi:"redisMaxmemoryPolicy"`
@@ -35098,6 +35473,10 @@ func (o ServiceRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrO
 	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceRedisUserConfigOutput) RedisIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisIoThreads }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
@@ -35186,6 +35565,15 @@ func (o ServiceRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringP
 			return nil
 		}
 		return v.RecoveryBasebackupName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceRedisUserConfigPtrOutput) RedisIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisIoThreads
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43341,6 +43729,14 @@ type GetKafkaKafkaUserConfigKafka struct {
 	// The maximum number of bytes in a socket request
 	// (defaults to 104857600).
 	SocketRequestMaxBytes *string `pulumi:"socketRequestMaxBytes"`
+	// The interval at which
+	// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+	// to 3600000 (1 hour)).
+	TransactionRemoveExpiredTransactionCleanupIntervalMs *string `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	// The transaction topic segment bytes should
+	// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+	// to 104857600 (100 mebibytes)).
+	TransactionStateLogSegmentBytes *string `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 // GetKafkaKafkaUserConfigKafkaInput is an input type that accepts GetKafkaKafkaUserConfigKafkaArgs and GetKafkaKafkaUserConfigKafkaOutput values.
@@ -43460,6 +43856,14 @@ type GetKafkaKafkaUserConfigKafkaArgs struct {
 	// The maximum number of bytes in a socket request
 	// (defaults to 104857600).
 	SocketRequestMaxBytes pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	// The interval at which
+	// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+	// to 3600000 (1 hour)).
+	TransactionRemoveExpiredTransactionCleanupIntervalMs pulumi.StringPtrInput `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	// The transaction topic segment bytes should
+	// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+	// to 104857600 (100 mebibytes)).
+	TransactionStateLogSegmentBytes pulumi.StringPtrInput `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 func (GetKafkaKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -43750,6 +44154,22 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulum
 // (defaults to 104857600).
 func (o GetKafkaKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+// The interval at which
+// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+// to 3600000 (1 hour)).
+func (o GetKafkaKafkaUserConfigKafkaOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string {
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The transaction topic segment bytes should
+// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+// to 104857600 (100 mebibytes)).
+func (o GetKafkaKafkaUserConfigKafkaOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.TransactionStateLogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
 type GetKafkaKafkaUserConfigKafkaPtrOutput struct{ *pulumi.OutputState }
@@ -44160,6 +44580,30 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.St
 			return nil
 		}
 		return v.SocketRequestMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval at which
+// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+// to 3600000 (1 hour)).
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The transaction topic segment bytes should
+// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+// to 104857600 (100 mebibytes)).
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionStateLogSegmentBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -45664,7 +46108,7 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerOutput) ToGetKafkaMirrorMakerKafkaMir
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters []string `pulumi:"ipFilters"`
-	// Kafka Mirror Maker 2 specific server provided values.
+	// Kafka MirrorMaker 2 specific server provided values.
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
 }
 
@@ -45682,7 +46126,7 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka Mirror Maker 2 specific server provided values.
+	// Kafka MirrorMaker 2 specific server provided values.
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
 }
 
@@ -45717,7 +46161,7 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka Mirror Maker 2 specific server provided values.
+// Kafka MirrorMaker 2 specific server provided values.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
@@ -46131,7 +46575,7 @@ func (o GetKafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetKafka
 }
 
 type GetKafkaTopicConfig struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType *string `pulumi:"compressionType"`
@@ -46193,7 +46637,7 @@ type GetKafkaTopicConfigInput interface {
 }
 
 type GetKafkaTopicConfigArgs struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
 	// compression.type value
 	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
@@ -46269,7 +46713,7 @@ func (o GetKafkaTopicConfigOutput) ToGetKafkaTopicConfigOutputWithContext(ctx co
 	return o
 }
 
-// cleanup.policy value
+// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 func (o GetKafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
@@ -51170,8 +51614,29 @@ func (o GetPgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutput {
 }
 
 type GetPgPgUserConfigPgbouncer struct {
+	// If the automatically created database pools have been unused this
+	// many seconds, they are freed. If 0 then timeout is disabled.
+	AutodbIdleTimeout *string `pulumi:"autodbIdleTimeout"`
+	// Do not allow more than this many server connections per database
+	// (regardless of user). Setting it to 0 means unlimited.
+	AutodbMaxDbConnections *string `pulumi:"autodbMaxDbConnections"`
+	// PGBouncer pool mode
+	AutodbPoolMode *string `pulumi:"autodbPoolMode"`
+	// If non-zero then create automatically a pool of that size per user
+	// when a pool doesn't exist.
+	AutodbPoolSize *string `pulumi:"autodbPoolSize"`
 	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	// Add more server connections to pool if below this number. Improves
+	// behavior when usual load comes suddenly back after period of total inactivity. The value is
+	// effectively capped at the pool size.
+	MinPoolSize *string `pulumi:"minPoolSize"`
+	// If a server connection has been idle more than this many seconds
+	// it will be dropped. If 0 then timeout is disabled.
+	ServerIdleTimeout *string `pulumi:"serverIdleTimeout"`
+	// The pooler will close an unused server connection that has been connected
+	// longer than this.
+	ServerLifetime *string `pulumi:"serverLifetime"`
 	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 	ServerResetQueryAlways *string `pulumi:"serverResetQueryAlways"`
 }
@@ -51188,8 +51653,29 @@ type GetPgPgUserConfigPgbouncerInput interface {
 }
 
 type GetPgPgUserConfigPgbouncerArgs struct {
+	// If the automatically created database pools have been unused this
+	// many seconds, they are freed. If 0 then timeout is disabled.
+	AutodbIdleTimeout pulumi.StringPtrInput `pulumi:"autodbIdleTimeout"`
+	// Do not allow more than this many server connections per database
+	// (regardless of user). Setting it to 0 means unlimited.
+	AutodbMaxDbConnections pulumi.StringPtrInput `pulumi:"autodbMaxDbConnections"`
+	// PGBouncer pool mode
+	AutodbPoolMode pulumi.StringPtrInput `pulumi:"autodbPoolMode"`
+	// If non-zero then create automatically a pool of that size per user
+	// when a pool doesn't exist.
+	AutodbPoolSize pulumi.StringPtrInput `pulumi:"autodbPoolSize"`
 	// Enum of parameters to ignore when given in startup packet.
 	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	// Add more server connections to pool if below this number. Improves
+	// behavior when usual load comes suddenly back after period of total inactivity. The value is
+	// effectively capped at the pool size.
+	MinPoolSize pulumi.StringPtrInput `pulumi:"minPoolSize"`
+	// If a server connection has been idle more than this many seconds
+	// it will be dropped. If 0 then timeout is disabled.
+	ServerIdleTimeout pulumi.StringPtrInput `pulumi:"serverIdleTimeout"`
+	// The pooler will close an unused server connection that has been connected
+	// longer than this.
+	ServerLifetime pulumi.StringPtrInput `pulumi:"serverLifetime"`
 	// Run serverResetQuery (DISCARD ALL) in all pooling modes.
 	ServerResetQueryAlways pulumi.StringPtrInput `pulumi:"serverResetQueryAlways"`
 }
@@ -51271,9 +51757,51 @@ func (o GetPgPgUserConfigPgbouncerOutput) ToGetPgPgUserConfigPgbouncerPtrOutputW
 	}).(GetPgPgUserConfigPgbouncerPtrOutput)
 }
 
+// If the automatically created database pools have been unused this
+// many seconds, they are freed. If 0 then timeout is disabled.
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.AutodbIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Do not allow more than this many server connections per database
+// (regardless of user). Setting it to 0 means unlimited.
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.AutodbMaxDbConnections }).(pulumi.StringPtrOutput)
+}
+
+// PGBouncer pool mode
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.AutodbPoolMode }).(pulumi.StringPtrOutput)
+}
+
+// If non-zero then create automatically a pool of that size per user
+// when a pool doesn't exist.
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.AutodbPoolSize }).(pulumi.StringPtrOutput)
+}
+
 // Enum of parameters to ignore when given in startup packet.
 func (o GetPgPgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+// Add more server connections to pool if below this number. Improves
+// behavior when usual load comes suddenly back after period of total inactivity. The value is
+// effectively capped at the pool size.
+func (o GetPgPgUserConfigPgbouncerOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.MinPoolSize }).(pulumi.StringPtrOutput)
+}
+
+// If a server connection has been idle more than this many seconds
+// it will be dropped. If 0 then timeout is disabled.
+func (o GetPgPgUserConfigPgbouncerOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.ServerIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// The pooler will close an unused server connection that has been connected
+// longer than this.
+func (o GetPgPgUserConfigPgbouncerOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.ServerLifetime }).(pulumi.StringPtrOutput)
 }
 
 // Run serverResetQuery (DISCARD ALL) in all pooling modes.
@@ -51299,6 +51827,49 @@ func (o GetPgPgUserConfigPgbouncerPtrOutput) Elem() GetPgPgUserConfigPgbouncerOu
 	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) GetPgPgUserConfigPgbouncer { return *v }).(GetPgPgUserConfigPgbouncerOutput)
 }
 
+// If the automatically created database pools have been unused this
+// many seconds, they are freed. If 0 then timeout is disabled.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Do not allow more than this many server connections per database
+// (regardless of user). Setting it to 0 means unlimited.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbMaxDbConnections
+	}).(pulumi.StringPtrOutput)
+}
+
+// PGBouncer pool mode
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If non-zero then create automatically a pool of that size per user
+// when a pool doesn't exist.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Enum of parameters to ignore when given in startup packet.
 func (o GetPgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) []string {
@@ -51307,6 +51878,40 @@ func (o GetPgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.St
 		}
 		return v.IgnoreStartupParameters
 	}).(pulumi.StringArrayOutput)
+}
+
+// Add more server connections to pool if below this number. Improves
+// behavior when usual load comes suddenly back after period of total inactivity. The value is
+// effectively capped at the pool size.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// If a server connection has been idle more than this many seconds
+// it will be dropped. If 0 then timeout is disabled.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pooler will close an unused server connection that has been connected
+// longer than this.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerLifetime
+	}).(pulumi.StringPtrOutput)
 }
 
 // Run serverResetQuery (DISCARD ALL) in all pooling modes.
@@ -52239,9 +52844,11 @@ type GetRedisRedisUserConfig struct {
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetRedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
-	// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
 	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime      *string `pulumi:"redisLfuDecayTime"`
+	// Redis IO thread count
+	// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+	RedisIoThreads    *string `pulumi:"redisIoThreads"`
+	RedisLfuDecayTime *string `pulumi:"redisLfuDecayTime"`
 	// Counter logarithm factor for volatile-lfu and allkeys-lfu
 	// maxmemory-policies
 	RedisLfuLogFactor *string `pulumi:"redisLfuLogFactor"`
@@ -52279,9 +52886,11 @@ type GetRedisRedisUserConfigArgs struct {
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetRedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
-	// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
 	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
-	RedisLfuDecayTime      pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
+	// Redis IO thread count
+	// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+	RedisIoThreads    pulumi.StringPtrInput `pulumi:"redisIoThreads"`
+	RedisLfuDecayTime pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
 	// Counter logarithm factor for volatile-lfu and allkeys-lfu
 	// maxmemory-policies
 	RedisLfuLogFactor pulumi.StringPtrInput `pulumi:"redisLfuLogFactor"`
@@ -52345,9 +52954,14 @@ func (o GetRedisRedisUserConfigOutput) PublicAccess() GetRedisRedisUserConfigPub
 }
 
 // Name of the basebackup to restore in forked service
-// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
 func (o GetRedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+// Redis IO thread count
+// * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+func (o GetRedisRedisUserConfigOutput) RedisIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisIoThreads }).(pulumi.StringPtrOutput)
 }
 
 func (o GetRedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
@@ -59240,42 +59854,44 @@ func (o GetServiceKafkaUserConfigOutput) SchemaRegistryConfig() GetServiceKafkaU
 }
 
 type GetServiceKafkaUserConfigKafka struct {
-	AutoCreateTopicsEnable                 *string `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        *string `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   *string `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               *string `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               *string `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               *string `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerDeleteRetentionMs            *string `pulumi:"logCleanerDeleteRetentionMs"`
-	LogCleanerMaxCompactionLagMs           *string `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            *string `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           *string `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       *string `pulumi:"logCleanupPolicy"`
-	LogFlushIntervalMessages               *string `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs                     *string `pulumi:"logFlushIntervalMs"`
-	LogIndexIntervalBytes                  *string `pulumi:"logIndexIntervalBytes"`
-	LogIndexSizeMaxBytes                   *string `pulumi:"logIndexSizeMaxBytes"`
-	LogMessageDownconversionEnable         *string `pulumi:"logMessageDownconversionEnable"`
-	LogMessageTimestampDifferenceMaxMs     *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                *string `pulumi:"logMessageTimestampType"`
-	LogPreallocate                         *string `pulumi:"logPreallocate"`
-	LogRetentionBytes                      *string `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      *string `pulumi:"logRetentionHours"`
-	LogRetentionMs                         *string `pulumi:"logRetentionMs"`
-	LogRollJitterMs                        *string `pulumi:"logRollJitterMs"`
-	LogRollMs                              *string `pulumi:"logRollMs"`
-	LogSegmentBytes                        *string `pulumi:"logSegmentBytes"`
-	LogSegmentDeleteDelayMs                *string `pulumi:"logSegmentDeleteDelayMs"`
-	MaxConnectionsPerIp                    *string `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        *string `pulumi:"messageMaxBytes"`
-	MinInsyncReplicas                      *string `pulumi:"minInsyncReplicas"`
-	NumPartitions                          *string `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                *string `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   *string `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           *string `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  *string `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                               *string `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                                      *string `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                                 *string `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor                             *string `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs                             *string `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs                             *string `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs                          *string `pulumi:"logCleanerDeleteRetentionMs"`
+	LogCleanerMaxCompactionLagMs                         *string `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio                          *string `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs                         *string `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                                     *string `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages                             *string `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                                   *string `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                                *string `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                                 *string `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable                       *string `pulumi:"logMessageDownconversionEnable"`
+	LogMessageTimestampDifferenceMaxMs                   *string `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                              *string `pulumi:"logMessageTimestampType"`
+	LogPreallocate                                       *string `pulumi:"logPreallocate"`
+	LogRetentionBytes                                    *string `pulumi:"logRetentionBytes"`
+	LogRetentionHours                                    *string `pulumi:"logRetentionHours"`
+	LogRetentionMs                                       *string `pulumi:"logRetentionMs"`
+	LogRollJitterMs                                      *string `pulumi:"logRollJitterMs"`
+	LogRollMs                                            *string `pulumi:"logRollMs"`
+	LogSegmentBytes                                      *string `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                              *string `pulumi:"logSegmentDeleteDelayMs"`
+	MaxConnectionsPerIp                                  *string `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots                 *string `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                                      *string `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                                    *string `pulumi:"minInsyncReplicas"`
+	NumPartitions                                        *string `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                              *string `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests               *string `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                                 *string `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes                         *string `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                                *string `pulumi:"socketRequestMaxBytes"`
+	TransactionRemoveExpiredTransactionCleanupIntervalMs *string `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	TransactionStateLogSegmentBytes                      *string `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 // GetServiceKafkaUserConfigKafkaInput is an input type that accepts GetServiceKafkaUserConfigKafkaArgs and GetServiceKafkaUserConfigKafkaOutput values.
@@ -59290,42 +59906,44 @@ type GetServiceKafkaUserConfigKafkaInput interface {
 }
 
 type GetServiceKafkaUserConfigKafkaArgs struct {
-	AutoCreateTopicsEnable                 pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
-	CompressionType                        pulumi.StringPtrInput `pulumi:"compressionType"`
-	ConnectionsMaxIdleMs                   pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
-	DefaultReplicationFactor               pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
-	GroupMaxSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
-	GroupMinSessionTimeoutMs               pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
-	LogCleanerDeleteRetentionMs            pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
-	LogCleanerMaxCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
-	LogCleanerMinCleanableRatio            pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
-	LogCleanerMinCompactionLagMs           pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
-	LogCleanupPolicy                       pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
-	LogFlushIntervalMessages               pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs                     pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
-	LogIndexIntervalBytes                  pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
-	LogIndexSizeMaxBytes                   pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
-	LogMessageDownconversionEnable         pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
-	LogMessageTimestampDifferenceMaxMs     pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
-	LogMessageTimestampType                pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
-	LogPreallocate                         pulumi.StringPtrInput `pulumi:"logPreallocate"`
-	LogRetentionBytes                      pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
-	LogRetentionHours                      pulumi.StringPtrInput `pulumi:"logRetentionHours"`
-	LogRetentionMs                         pulumi.StringPtrInput `pulumi:"logRetentionMs"`
-	LogRollJitterMs                        pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
-	LogRollMs                              pulumi.StringPtrInput `pulumi:"logRollMs"`
-	LogSegmentBytes                        pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
-	LogSegmentDeleteDelayMs                pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
-	MaxConnectionsPerIp                    pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
-	MaxIncrementalFetchSessionCacheSlots   pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
-	MessageMaxBytes                        pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
-	MinInsyncReplicas                      pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
-	NumPartitions                          pulumi.StringPtrInput `pulumi:"numPartitions"`
-	OffsetsRetentionMinutes                pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
-	ProducerPurgatoryPurgeIntervalRequests pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
-	ReplicaFetchMaxBytes                   pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
-	ReplicaFetchResponseMaxBytes           pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
-	SocketRequestMaxBytes                  pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	AutoCreateTopicsEnable                               pulumi.StringPtrInput `pulumi:"autoCreateTopicsEnable"`
+	CompressionType                                      pulumi.StringPtrInput `pulumi:"compressionType"`
+	ConnectionsMaxIdleMs                                 pulumi.StringPtrInput `pulumi:"connectionsMaxIdleMs"`
+	DefaultReplicationFactor                             pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	GroupMaxSessionTimeoutMs                             pulumi.StringPtrInput `pulumi:"groupMaxSessionTimeoutMs"`
+	GroupMinSessionTimeoutMs                             pulumi.StringPtrInput `pulumi:"groupMinSessionTimeoutMs"`
+	LogCleanerDeleteRetentionMs                          pulumi.StringPtrInput `pulumi:"logCleanerDeleteRetentionMs"`
+	LogCleanerMaxCompactionLagMs                         pulumi.StringPtrInput `pulumi:"logCleanerMaxCompactionLagMs"`
+	LogCleanerMinCleanableRatio                          pulumi.StringPtrInput `pulumi:"logCleanerMinCleanableRatio"`
+	LogCleanerMinCompactionLagMs                         pulumi.StringPtrInput `pulumi:"logCleanerMinCompactionLagMs"`
+	LogCleanupPolicy                                     pulumi.StringPtrInput `pulumi:"logCleanupPolicy"`
+	LogFlushIntervalMessages                             pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs                                   pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	LogIndexIntervalBytes                                pulumi.StringPtrInput `pulumi:"logIndexIntervalBytes"`
+	LogIndexSizeMaxBytes                                 pulumi.StringPtrInput `pulumi:"logIndexSizeMaxBytes"`
+	LogMessageDownconversionEnable                       pulumi.StringPtrInput `pulumi:"logMessageDownconversionEnable"`
+	LogMessageTimestampDifferenceMaxMs                   pulumi.StringPtrInput `pulumi:"logMessageTimestampDifferenceMaxMs"`
+	LogMessageTimestampType                              pulumi.StringPtrInput `pulumi:"logMessageTimestampType"`
+	LogPreallocate                                       pulumi.StringPtrInput `pulumi:"logPreallocate"`
+	LogRetentionBytes                                    pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	LogRetentionHours                                    pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogRetentionMs                                       pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	LogRollJitterMs                                      pulumi.StringPtrInput `pulumi:"logRollJitterMs"`
+	LogRollMs                                            pulumi.StringPtrInput `pulumi:"logRollMs"`
+	LogSegmentBytes                                      pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	LogSegmentDeleteDelayMs                              pulumi.StringPtrInput `pulumi:"logSegmentDeleteDelayMs"`
+	MaxConnectionsPerIp                                  pulumi.StringPtrInput `pulumi:"maxConnectionsPerIp"`
+	MaxIncrementalFetchSessionCacheSlots                 pulumi.StringPtrInput `pulumi:"maxIncrementalFetchSessionCacheSlots"`
+	MessageMaxBytes                                      pulumi.StringPtrInput `pulumi:"messageMaxBytes"`
+	MinInsyncReplicas                                    pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
+	NumPartitions                                        pulumi.StringPtrInput `pulumi:"numPartitions"`
+	OffsetsRetentionMinutes                              pulumi.StringPtrInput `pulumi:"offsetsRetentionMinutes"`
+	ProducerPurgatoryPurgeIntervalRequests               pulumi.StringPtrInput `pulumi:"producerPurgatoryPurgeIntervalRequests"`
+	ReplicaFetchMaxBytes                                 pulumi.StringPtrInput `pulumi:"replicaFetchMaxBytes"`
+	ReplicaFetchResponseMaxBytes                         pulumi.StringPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
+	SocketRequestMaxBytes                                pulumi.StringPtrInput `pulumi:"socketRequestMaxBytes"`
+	TransactionRemoveExpiredTransactionCleanupIntervalMs pulumi.StringPtrInput `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
+	TransactionStateLogSegmentBytes                      pulumi.StringPtrInput `pulumi:"transactionStateLogSegmentBytes"`
 }
 
 func (GetServiceKafkaUserConfigKafkaArgs) ElementType() reflect.Type {
@@ -59546,6 +60164,16 @@ func (o GetServiceKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pul
 
 func (o GetServiceKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.SocketRequestMaxBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string {
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigKafka) *string { return v.TransactionStateLogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceKafkaUserConfigKafkaPtrOutput struct{ *pulumi.OutputState }
@@ -59887,6 +60515,24 @@ func (o GetServiceKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.
 			return nil
 		}
 		return v.SocketRequestMaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionRemoveExpiredTransactionCleanupIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigKafkaPtrOutput) TransactionStateLogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionStateLogSegmentBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -62972,7 +63618,14 @@ func (o GetServicePgUserConfigPgPtrOutput) WalWriterDelay() pulumi.StringPtrOutp
 }
 
 type GetServicePgUserConfigPgbouncer struct {
+	AutodbIdleTimeout       *string  `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  *string  `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          *string  `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          *string  `pulumi:"autodbPoolSize"`
 	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             *string  `pulumi:"minPoolSize"`
+	ServerIdleTimeout       *string  `pulumi:"serverIdleTimeout"`
+	ServerLifetime          *string  `pulumi:"serverLifetime"`
 	ServerResetQueryAlways  *string  `pulumi:"serverResetQueryAlways"`
 }
 
@@ -62988,7 +63641,14 @@ type GetServicePgUserConfigPgbouncerInput interface {
 }
 
 type GetServicePgUserConfigPgbouncerArgs struct {
+	AutodbIdleTimeout       pulumi.StringPtrInput   `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  pulumi.StringPtrInput   `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          pulumi.StringPtrInput   `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          pulumi.StringPtrInput   `pulumi:"autodbPoolSize"`
 	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             pulumi.StringPtrInput   `pulumi:"minPoolSize"`
+	ServerIdleTimeout       pulumi.StringPtrInput   `pulumi:"serverIdleTimeout"`
+	ServerLifetime          pulumi.StringPtrInput   `pulumi:"serverLifetime"`
 	ServerResetQueryAlways  pulumi.StringPtrInput   `pulumi:"serverResetQueryAlways"`
 }
 
@@ -63068,8 +63728,36 @@ func (o GetServicePgUserConfigPgbouncerOutput) ToGetServicePgUserConfigPgbouncer
 		return &v
 	}).(GetServicePgUserConfigPgbouncerPtrOutput)
 }
+func (o GetServicePgUserConfigPgbouncerOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.AutodbIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.AutodbMaxDbConnections }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.AutodbPoolMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.AutodbPoolSize }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.MinPoolSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.ServerIdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPgbouncer) *string { return v.ServerLifetime }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
@@ -63094,6 +63782,42 @@ func (o GetServicePgUserConfigPgbouncerPtrOutput) Elem() GetServicePgUserConfigP
 	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) GetServicePgUserConfigPgbouncer { return *v }).(GetServicePgUserConfigPgbouncerOutput)
 }
 
+func (o GetServicePgUserConfigPgbouncerPtrOutput) AutodbIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerPtrOutput) AutodbMaxDbConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbMaxDbConnections
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerPtrOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerPtrOutput) AutodbPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) []string {
 		if v == nil {
@@ -63101,6 +63825,33 @@ func (o GetServicePgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulu
 		}
 		return v.IgnoreStartupParameters
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerPtrOutput) MinPoolSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinPoolSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerPtrOutput) ServerIdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerIdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgbouncerPtrOutput) ServerLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerLifetime
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.StringPtrOutput {
@@ -63725,6 +64476,7 @@ type GetServiceRedisUserConfig struct {
 	PrivateAccess             *GetServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
 	PublicAccess              *GetServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    *string                                 `pulumi:"recoveryBasebackupName"`
+	RedisIoThreads            *string                                 `pulumi:"redisIoThreads"`
 	RedisLfuDecayTime         *string                                 `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         *string                                 `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      *string                                 `pulumi:"redisMaxmemoryPolicy"`
@@ -63751,6 +64503,7 @@ type GetServiceRedisUserConfigArgs struct {
 	PrivateAccess             GetServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	PublicAccess              GetServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    pulumi.StringPtrInput                          `pulumi:"recoveryBasebackupName"`
+	RedisIoThreads            pulumi.StringPtrInput                          `pulumi:"redisIoThreads"`
 	RedisLfuDecayTime         pulumi.StringPtrInput                          `pulumi:"redisLfuDecayTime"`
 	RedisLfuLogFactor         pulumi.StringPtrInput                          `pulumi:"redisLfuLogFactor"`
 	RedisMaxmemoryPolicy      pulumi.StringPtrInput                          `pulumi:"redisMaxmemoryPolicy"`
@@ -63804,6 +64557,10 @@ func (o GetServiceRedisUserConfigOutput) PublicAccess() GetServiceRedisUserConfi
 
 func (o GetServiceRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceRedisUserConfigOutput) RedisIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.RedisIoThreads }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {

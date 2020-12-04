@@ -89,7 +89,7 @@ class GetMySqlResult:
         """
         defines where the cloud provider and region where the service is hosted
         in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lenghty migration process for the service. Format is cloud provider name
+        a potentially lengthy migration process for the service. Format is cloud provider name
         (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
         specific region name. These are documented on each Cloud provider's own support articles,
         like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -115,7 +115,7 @@ class GetMySqlResult:
     def maintenance_window_dow(self) -> Optional[str]:
         """
         day of week when maintenance operations should be performed. 
-        One monday, tuesday, wednesday, etc.
+        On monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -247,7 +247,7 @@ class GetMySqlResult:
         """
         prevents the service from being deleted. It is recommended to
         set this to `true` for all production services to prevent unintentional service
-        deletions. This does not shield against deleting databases or topics but for services
+        deletion. This does not shield against deleting databases or topics but for services
         with backups much of the content can at least be restored from backup in case accidental
         deletion is done.
         """
@@ -320,13 +320,13 @@ def get_my_sql(cloud_name: Optional[str] = None,
 
     :param str cloud_name: defines where the cloud provider and region where the service is hosted
            in. This can be changed freely after service is created. Changing the value will trigger
-           a potentially lenghty migration process for the service. Format is cloud provider name
+           a potentially lengthy migration process for the service. Format is cloud provider name
            (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
            specific region name. These are documented on each Cloud provider's own support articles,
            like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
            [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
     :param str maintenance_window_dow: day of week when maintenance operations should be performed. 
-           One monday, tuesday, wednesday, etc.
+           On monday, tuesday, wednesday, etc.
     :param str maintenance_window_time: time of day when maintenance operations should be performed. 
            UTC time in HH:mm:ss format.
     :param pulumi.InputType['GetMySqlMysqlArgs'] mysql: MySQL specific server provided values.
@@ -360,7 +360,7 @@ def get_my_sql(cloud_name: Optional[str] = None,
     :param str state: Service state.
     :param bool termination_protection: prevents the service from being deleted. It is recommended to
            set this to `true` for all production services to prevent unintentional service
-           deletions. This does not shield against deleting databases or topics but for services
+           deletion. This does not shield against deleting databases or topics but for services
            with backups much of the content can at least be restored from backup in case accidental
            deletion is done.
     """

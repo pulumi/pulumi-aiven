@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## # PG Resource
+// ## # Cassandra Resource
 //
-// The Cassandra resource allows the creation and management of an Aiven Cassandra services.
+// The Cassandra resource allows the creation and management of Aiven Cassandra services.
 //
 // ## Example Usage
 //
@@ -60,7 +60,7 @@ type Cassandra struct {
 	CassandraUserConfig CassandraCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -69,7 +69,7 @@ type Cassandra struct {
 	// Service component information objects
 	Components CassandraComponentArrayOutput `pulumi:"components"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -116,7 +116,7 @@ type Cassandra struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
@@ -163,7 +163,7 @@ type cassandraState struct {
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -172,7 +172,7 @@ type cassandraState struct {
 	// Service component information objects
 	Components []CassandraComponent `pulumi:"components"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -219,7 +219,7 @@ type cassandraState struct {
 	State *string `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -233,7 +233,7 @@ type CassandraState struct {
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -242,7 +242,7 @@ type CassandraState struct {
 	// Service component information objects
 	Components CassandraComponentArrayInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -289,7 +289,7 @@ type CassandraState struct {
 	State pulumi.StringPtrInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
@@ -307,14 +307,14 @@ type cassandraArgs struct {
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
 	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -347,7 +347,7 @@ type cassandraArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -362,14 +362,14 @@ type CassandraArgs struct {
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
 	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -402,7 +402,7 @@ type CassandraArgs struct {
 	ServiceName pulumi.StringInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput

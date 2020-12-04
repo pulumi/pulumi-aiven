@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Service Integration Resource
  *
- * The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+ * The Service Integration resource allows the creation and management of Aiven Service Integrations.
  *
  * Service Integration defines an integration between two Aiven services or between Aiven
  * service and an external integration endpoint. Integration could be for example sending
@@ -23,12 +23,10 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const myintegration = new aiven.ServiceIntegration("myintegration", {
- *     destinationEndpointId: aiven_service_integration_endpoint_myendpoint.id,
- *     destinationServiceName: "",
+ *     project: aiven_project.myproject.project,
+ *     destinationEndpointId: aiven_service_integration_endpoint.XX.id,
  *     integrationType: "datadog",
- *     project: aiven_project_myproject.project,
- *     sourceEndpointId: "",
- *     sourceServiceName: aiven_service_testkafka.serviceName,
+ *     sourceServiceName: aiven_kafka.XXX.service_name,
  * });
  * ```
  */
@@ -62,9 +60,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
 
     /**
      * or `destinationServiceName` - (Required) identifies the target side of
-     * the integration. Only either endpoint identifier or service name must be specified. In
-     * either case the target needs to be defined using the reference syntax described above to
-     * set up the dependency correctly.
+     * the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+     * service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+     * to be defined using the reference syntax described above to set up the dependency correctly.
      */
     public readonly destinationEndpointId!: pulumi.Output<string | undefined>;
     /**
@@ -98,9 +96,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * or `sourceServiceName` - (Optional) identifies the source side of the
-     * integration. Only either endpoint identifier or service name must be specified. In either
-     * case the source needs to be defined using the reference syntax described above to set up
-     * the dependency correctly.
+     * integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+     * service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+     * needs to be defined using the reference syntax described above to set up the dependency correctly.
      */
     public readonly sourceEndpointId!: pulumi.Output<string | undefined>;
     /**
@@ -166,9 +164,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
 export interface ServiceIntegrationState {
     /**
      * or `destinationServiceName` - (Required) identifies the target side of
-     * the integration. Only either endpoint identifier or service name must be specified. In
-     * either case the target needs to be defined using the reference syntax described above to
-     * set up the dependency correctly.
+     * the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+     * service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+     * to be defined using the reference syntax described above to set up the dependency correctly.
      */
     readonly destinationEndpointId?: pulumi.Input<string>;
     /**
@@ -202,9 +200,9 @@ export interface ServiceIntegrationState {
     readonly project?: pulumi.Input<string>;
     /**
      * or `sourceServiceName` - (Optional) identifies the source side of the
-     * integration. Only either endpoint identifier or service name must be specified. In either
-     * case the source needs to be defined using the reference syntax described above to set up
-     * the dependency correctly.
+     * integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+     * service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+     * needs to be defined using the reference syntax described above to set up the dependency correctly.
      */
     readonly sourceEndpointId?: pulumi.Input<string>;
     /**
@@ -219,9 +217,9 @@ export interface ServiceIntegrationState {
 export interface ServiceIntegrationArgs {
     /**
      * or `destinationServiceName` - (Required) identifies the target side of
-     * the integration. Only either endpoint identifier or service name must be specified. In
-     * either case the target needs to be defined using the reference syntax described above to
-     * set up the dependency correctly.
+     * the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+     * service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+     * to be defined using the reference syntax described above to set up the dependency correctly.
      */
     readonly destinationEndpointId?: pulumi.Input<string>;
     /**
@@ -255,9 +253,9 @@ export interface ServiceIntegrationArgs {
     readonly project: pulumi.Input<string>;
     /**
      * or `sourceServiceName` - (Optional) identifies the source side of the
-     * integration. Only either endpoint identifier or service name must be specified. In either
-     * case the source needs to be defined using the reference syntax described above to set up
-     * the dependency correctly.
+     * integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+     * service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+     * needs to be defined using the reference syntax described above to set up the dependency correctly.
      */
     readonly sourceEndpointId?: pulumi.Input<string>;
     /**

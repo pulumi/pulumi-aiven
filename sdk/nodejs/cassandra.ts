@@ -6,9 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # PG Resource
+ * ## # Cassandra Resource
  *
- * The Cassandra resource allows the creation and management of an Aiven Cassandra services.
+ * The Cassandra resource allows the creation and management of Aiven Cassandra services.
  *
  * ## Example Usage
  *
@@ -72,7 +72,7 @@ export class Cassandra extends pulumi.CustomResource {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -85,7 +85,7 @@ export class Cassandra extends pulumi.CustomResource {
     public /*out*/ readonly components!: pulumi.Output<outputs.CassandraComponent[]>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
     /**
@@ -160,7 +160,7 @@ export class Cassandra extends pulumi.CustomResource {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -252,7 +252,7 @@ export interface CassandraState {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -265,7 +265,7 @@ export interface CassandraState {
     readonly components?: pulumi.Input<pulumi.Input<inputs.CassandraComponent>[]>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -340,7 +340,7 @@ export interface CassandraState {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -363,7 +363,7 @@ export interface CassandraArgs {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -372,7 +372,7 @@ export interface CassandraArgs {
     readonly cloudName?: pulumi.Input<string>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -419,7 +419,7 @@ export interface CassandraArgs {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */

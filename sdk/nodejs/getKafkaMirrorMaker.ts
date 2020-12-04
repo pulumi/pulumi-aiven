@@ -6,9 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Kafka Mirror Maker Data Source
+ * ## # Kafka MirrorMaker Data Source
  *
- * The Kafka Mirror Maker data source provides information about the existing Aiven Kafka Mirror Maker 2 service.
+ * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
  *
  * ## Example Usage
  *
@@ -60,7 +60,7 @@ export interface GetKafkaMirrorMakerArgs {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -69,17 +69,17 @@ export interface GetKafkaMirrorMakerArgs {
     readonly cloudName?: string;
     readonly components?: inputs.GetKafkaMirrorMakerComponent[];
     /**
-     * Kafka Mirror Maker 2 specific server provided values.
+     * Kafka MirrorMaker 2 specific server provided values.
      */
     readonly kafkaMirrormaker?: inputs.GetKafkaMirrorMakerKafkaMirrormaker;
     /**
-     * defines Kafka Mirror Maker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options. 
      * The following configuration options available:
      */
     readonly kafkaMirrormakerUserConfig?: inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfig;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: string;
     /**
@@ -114,7 +114,7 @@ export interface GetKafkaMirrorMakerArgs {
      */
     readonly projectVpcId?: string;
     /**
-     * Kafka Mirror Maker 2 hostname.
+     * Kafka MirrorMaker 2 hostname.
      */
     readonly serviceHost?: string;
     readonly serviceIntegrations?: inputs.GetKafkaMirrorMakerServiceIntegration[];
@@ -125,20 +125,20 @@ export interface GetKafkaMirrorMakerArgs {
      */
     readonly serviceName: string;
     /**
-     * Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     readonly servicePassword?: string;
     /**
-     * Kafka Mirror Maker 2 port.
+     * Kafka MirrorMaker 2 port.
      */
     readonly servicePort?: number;
     readonly serviceType?: string;
     /**
-     * URI for connecting to the Kafka Mirror Maker 2 service.
+     * URI for connecting to the Kafka MirrorMaker 2 service.
      */
     readonly serviceUri?: string;
     /**
-     * Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     readonly serviceUsername?: string;
     /**
@@ -148,7 +148,7 @@ export interface GetKafkaMirrorMakerArgs {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -162,7 +162,7 @@ export interface GetKafkaMirrorMakerResult {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -175,17 +175,17 @@ export interface GetKafkaMirrorMakerResult {
      */
     readonly id: string;
     /**
-     * Kafka Mirror Maker 2 specific server provided values.
+     * Kafka MirrorMaker 2 specific server provided values.
      */
     readonly kafkaMirrormaker: outputs.GetKafkaMirrorMakerKafkaMirrormaker;
     /**
-     * defines Kafka Mirror Maker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options. 
      * The following configuration options available:
      */
     readonly kafkaMirrormakerUserConfig?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfig;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: string;
     /**
@@ -215,26 +215,26 @@ export interface GetKafkaMirrorMakerResult {
      */
     readonly projectVpcId?: string;
     /**
-     * Kafka Mirror Maker 2 hostname.
+     * Kafka MirrorMaker 2 hostname.
      */
     readonly serviceHost: string;
     readonly serviceIntegrations?: outputs.GetKafkaMirrorMakerServiceIntegration[];
     readonly serviceName: string;
     /**
-     * Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     readonly servicePassword: string;
     /**
-     * Kafka Mirror Maker 2 port.
+     * Kafka MirrorMaker 2 port.
      */
     readonly servicePort: number;
     readonly serviceType: string;
     /**
-     * URI for connecting to the Kafka Mirror Maker 2 service.
+     * URI for connecting to the Kafka MirrorMaker 2 service.
      */
     readonly serviceUri: string;
     /**
-     * Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+     * Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
      */
     readonly serviceUsername: string;
     /**
@@ -244,7 +244,7 @@ export interface GetKafkaMirrorMakerResult {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */

@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Data Source Kafka ACL Data Source
+ * ## # Kafka ACL Data Source
  *
  * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL
  * for a Kafka service.

@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Grafana Resource
  *
- * The Grafana resource allows the creation and management of an Aiven Grafana services.
+ * The Grafana resource allows the creation and management of Aiven Grafana services.
  *
  * ## Example Usage
  *
@@ -63,7 +63,7 @@ export class Grafana extends pulumi.CustomResource {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -86,7 +86,7 @@ export class Grafana extends pulumi.CustomResource {
     public readonly grafanaUserConfig!: pulumi.Output<outputs.GrafanaGrafanaUserConfig | undefined>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
     /**
@@ -161,7 +161,7 @@ export class Grafana extends pulumi.CustomResource {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -244,7 +244,7 @@ export interface GrafanaState {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -267,7 +267,7 @@ export interface GrafanaState {
     readonly grafanaUserConfig?: pulumi.Input<inputs.GrafanaGrafanaUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -342,7 +342,7 @@ export interface GrafanaState {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
@@ -356,7 +356,7 @@ export interface GrafanaArgs {
     /**
      * defines where the cloud provider and region where the service is hosted
      * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lenghty migration process for the service. Format is cloud provider name
+     * a potentially lengthy migration process for the service. Format is cloud provider name
      * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
      * specific region name. These are documented on each Cloud provider's own support articles,
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -375,7 +375,7 @@ export interface GrafanaArgs {
     readonly grafanaUserConfig?: pulumi.Input<inputs.GrafanaGrafanaUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
-     * One monday, tuesday, wednesday, etc.
+     * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
@@ -422,7 +422,7 @@ export interface GrafanaArgs {
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
-     * deletions. This does not shield against deleting databases or topics but for services
+     * deletion. This does not shield against deleting databases or topics but for services
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */

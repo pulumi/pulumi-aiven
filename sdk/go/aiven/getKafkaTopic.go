@@ -55,7 +55,7 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...p
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicArgs struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// Kafka topic configuration
 	Config *GetKafkaTopicConfig `pulumi:"config"`
@@ -84,7 +84,7 @@ type LookupKafkaTopicArgs struct {
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// Kafka topic configuration
 	Config *GetKafkaTopicConfig `pulumi:"config"`

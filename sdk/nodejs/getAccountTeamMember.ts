@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Account Team Member Data Source
  *
- * The Account Team Member  data source provides information about the existing Aiven Account Team Member.
+ * The Account Team Member data source provides information about the existing Aiven Account Team Member.
  */
 export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamMemberResult> {
     if (!opts) {
@@ -35,7 +35,7 @@ export interface GetAccountTeamMemberArgs {
     /**
      * is a boolean flag that determines whether an invitation was accepted or not by the user. 
      * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and now a member of an account team.
+     * `true` means that the user accepted the invitation and is now a member of an account team.
      */
     readonly accepted?: boolean;
     /**
@@ -68,7 +68,7 @@ export interface GetAccountTeamMemberResult {
     /**
      * is a boolean flag that determines whether an invitation was accepted or not by the user. 
      * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and now a member of an account team.
+     * `true` means that the user accepted the invitation and is now a member of an account team.
      */
     readonly accepted: boolean;
     readonly accountId: string;

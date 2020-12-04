@@ -13,7 +13,7 @@ import (
 
 // ## # Grafana Resource
 //
-// The Grafana resource allows the creation and management of an Aiven Grafana services.
+// The Grafana resource allows the creation and management of Aiven Grafana services.
 //
 // ## Example Usage
 //
@@ -53,7 +53,7 @@ type Grafana struct {
 
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -68,7 +68,7 @@ type Grafana struct {
 	// configuration options available:
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrOutput `pulumi:"grafanaUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -115,7 +115,7 @@ type Grafana struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
@@ -157,7 +157,7 @@ func GetGrafana(ctx *pulumi.Context,
 type grafanaState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -172,7 +172,7 @@ type grafanaState struct {
 	// configuration options available:
 	GrafanaUserConfig *GrafanaGrafanaUserConfig `pulumi:"grafanaUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -219,7 +219,7 @@ type grafanaState struct {
 	State *string `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -228,7 +228,7 @@ type grafanaState struct {
 type GrafanaState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -243,7 +243,7 @@ type GrafanaState struct {
 	// configuration options available:
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -290,7 +290,7 @@ type GrafanaState struct {
 	State pulumi.StringPtrInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
@@ -303,7 +303,7 @@ func (GrafanaState) ElementType() reflect.Type {
 type grafanaArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -316,7 +316,7 @@ type grafanaArgs struct {
 	// configuration options available:
 	GrafanaUserConfig *GrafanaGrafanaUserConfig `pulumi:"grafanaUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -349,7 +349,7 @@ type grafanaArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -359,7 +359,7 @@ type grafanaArgs struct {
 type GrafanaArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -372,7 +372,7 @@ type GrafanaArgs struct {
 	// configuration options available:
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -405,7 +405,7 @@ type GrafanaArgs struct {
 	ServiceName pulumi.StringInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput

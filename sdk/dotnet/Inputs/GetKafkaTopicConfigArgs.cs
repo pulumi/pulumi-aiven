@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetKafkaTopicConfigArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// cleanup.policy value
+        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
         /// </summary>
         [Input("cleanupPolicy")]
         public string? CleanupPolicy { get; set; }

@@ -13,7 +13,7 @@ import (
 
 // ## # Kafka Resource
 //
-// The Kafka resource allows the creation and management of an Aiven Kafka services.
+// The Kafka resource allows the creation and management of Aiven Kafka services.
 //
 // ## Example Usage
 //
@@ -61,7 +61,7 @@ type Kafka struct {
 
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -78,7 +78,7 @@ type Kafka struct {
 	// configuration options available:
 	KafkaUserConfig KafkaKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -125,7 +125,7 @@ type Kafka struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
@@ -167,7 +167,7 @@ func GetKafka(ctx *pulumi.Context,
 type kafkaState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -184,7 +184,7 @@ type kafkaState struct {
 	// configuration options available:
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -231,7 +231,7 @@ type kafkaState struct {
 	State *string `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -240,7 +240,7 @@ type kafkaState struct {
 type KafkaState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -257,7 +257,7 @@ type KafkaState struct {
 	// configuration options available:
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -304,7 +304,7 @@ type KafkaState struct {
 	State pulumi.StringPtrInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
@@ -317,7 +317,7 @@ func (KafkaState) ElementType() reflect.Type {
 type kafkaArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -332,7 +332,7 @@ type kafkaArgs struct {
 	// configuration options available:
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -365,7 +365,7 @@ type kafkaArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -375,7 +375,7 @@ type kafkaArgs struct {
 type KafkaArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -390,7 +390,7 @@ type KafkaArgs struct {
 	// configuration options available:
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -423,7 +423,7 @@ type KafkaArgs struct {
 	ServiceName pulumi.StringInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput

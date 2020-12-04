@@ -34,7 +34,7 @@ class KafkaTopic(pulumi.CustomResource):
         """
         ## # Kafka Topic Resource
 
-        The Kafka Topic resource allows the creation and management of an Aiven Kafka Topic`s.
+        The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
 
         ## Example Usage
 
@@ -43,13 +43,14 @@ class KafkaTopic(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytesttopic = aiven.KafkaTopic("mytesttopic",
-            cleanup_policy="delete",
-            minimum_in_sync_replicas=2,
+            config=aiven.KafkaTopicConfigArgs(
+                cleanup_policy="compact,delete",
+                flush_ms="10",
+                unclean_leader_election_enable="true",
+            ),
             partitions=5,
             project=aiven_project["myproject"]["project"],
             replication=3,
-            retention_bytes=-1,
-            retention_hours=72,
             service_name=aiven_service["myservice"]["service_name"],
             termination_protection=True,
             topic_name="<TOPIC_NAME>")
@@ -57,7 +58,7 @@ class KafkaTopic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cleanup_policy: cleanup.policy value
+        :param pulumi.Input[str] cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
         :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration
         :param pulumi.Input[int] minimum_in_sync_replicas: Minimum required nodes in-sync replicas 
                (ISR) to produce to a partition.
@@ -154,7 +155,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cleanup_policy: cleanup.policy value
+        :param pulumi.Input[str] cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
         :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration
         :param pulumi.Input[int] minimum_in_sync_replicas: Minimum required nodes in-sync replicas 
                (ISR) to produce to a partition.
@@ -194,7 +195,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        cleanup.policy value
+        cleanup.policy value, can be `create`, `delete` or `compact,delete`
         """
         return pulumi.get(self, "cleanup_policy")
 

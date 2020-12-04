@@ -13,17 +13,23 @@ import (
 
 // ## # Project Resource
 //
-// The Project resource allows the creation and management of an Aiven Projects.
+// The Project resource allows the creation and management of Aiven Projects.
 type Project struct {
 	pulumi.CustomResourceState
 
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Available credits
+	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	BillingAddress pulumi.StringPtrOutput `pulumi:"billingAddress"`
+	// Billing currency
+	BillingCurrency pulumi.StringPtrOutput `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	BillingExtraText pulumi.StringPtrOutput `pulumi:"billingExtraText"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -39,14 +45,24 @@ type Project struct {
 	// new project. (Setting billing is otherwise not allowed over the API.) This only has
 	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrOutput `pulumi:"copyFromProject"`
+	// Billing country
+	Country pulumi.StringOutput `pulumi:"country"`
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
+	// Default cloud for new services
+	DefaultCloud pulumi.StringPtrOutput `pulumi:"defaultCloud"`
+	// Estimated balance
+	EstimatedBalance pulumi.StringOutput `pulumi:"estimatedBalance"`
+	// Payment method
+	PaymentMethod pulumi.StringOutput `pulumi:"paymentMethod"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
+	// EU VAT Identification Number
+	VatId pulumi.StringPtrOutput `pulumi:"vatId"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -83,10 +99,16 @@ type projectState struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId *string `pulumi:"accountId"`
+	// Available credits
+	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	BillingAddress *string `pulumi:"billingAddress"`
+	// Billing currency
+	BillingCurrency *string `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
 	BillingEmails []string `pulumi:"billingEmails"`
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	BillingExtraText *string `pulumi:"billingExtraText"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -102,24 +124,40 @@ type projectState struct {
 	// new project. (Setting billing is otherwise not allowed over the API.) This only has
 	// effect when the project is created.
 	CopyFromProject *string `pulumi:"copyFromProject"`
+	// Billing country
+	Country *string `pulumi:"country"`
 	// Billing country code of the project
 	CountryCode *string `pulumi:"countryCode"`
+	// Default cloud for new services
+	DefaultCloud *string `pulumi:"defaultCloud"`
+	// Estimated balance
+	EstimatedBalance *string `pulumi:"estimatedBalance"`
+	// Payment method
+	PaymentMethod *string `pulumi:"paymentMethod"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project *string `pulumi:"project"`
 	// Technical contact emails of the project
 	TechnicalEmails []string `pulumi:"technicalEmails"`
+	// EU VAT Identification Number
+	VatId *string `pulumi:"vatId"`
 }
 
 type ProjectState struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId pulumi.StringPtrInput
+	// Available credits
+	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
 	BillingAddress pulumi.StringPtrInput
+	// Billing currency
+	BillingCurrency pulumi.StringPtrInput
 	// Billing contact emails of the project
 	BillingEmails pulumi.StringArrayInput
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	BillingExtraText pulumi.StringPtrInput
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -135,14 +173,24 @@ type ProjectState struct {
 	// new project. (Setting billing is otherwise not allowed over the API.) This only has
 	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrInput
+	// Billing country
+	Country pulumi.StringPtrInput
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrInput
+	// Default cloud for new services
+	DefaultCloud pulumi.StringPtrInput
+	// Estimated balance
+	EstimatedBalance pulumi.StringPtrInput
+	// Payment method
+	PaymentMethod pulumi.StringPtrInput
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project pulumi.StringPtrInput
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayInput
+	// EU VAT Identification Number
+	VatId pulumi.StringPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -153,10 +201,16 @@ type projectArgs struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId *string `pulumi:"accountId"`
+	// Available credits
+	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	BillingAddress *string `pulumi:"billingAddress"`
+	// Billing currency
+	BillingCurrency *string `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
 	BillingEmails []string `pulumi:"billingEmails"`
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	BillingExtraText *string `pulumi:"billingExtraText"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -174,12 +228,16 @@ type projectArgs struct {
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Billing country code of the project
 	CountryCode *string `pulumi:"countryCode"`
+	// Default cloud for new services
+	DefaultCloud *string `pulumi:"defaultCloud"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project string `pulumi:"project"`
 	// Technical contact emails of the project
 	TechnicalEmails []string `pulumi:"technicalEmails"`
+	// EU VAT Identification Number
+	VatId *string `pulumi:"vatId"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -187,10 +245,16 @@ type ProjectArgs struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId pulumi.StringPtrInput
+	// Available credits
+	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
 	BillingAddress pulumi.StringPtrInput
+	// Billing currency
+	BillingCurrency pulumi.StringPtrInput
 	// Billing contact emails of the project
 	BillingEmails pulumi.StringArrayInput
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	BillingExtraText pulumi.StringPtrInput
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -208,12 +272,16 @@ type ProjectArgs struct {
 	CopyFromProject pulumi.StringPtrInput
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrInput
+	// Default cloud for new services
+	DefaultCloud pulumi.StringPtrInput
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project pulumi.StringInput
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayInput
+	// EU VAT Identification Number
+	VatId pulumi.StringPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {

@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * ## # Kafka Topic Resource
  *
- * The Kafka Topic resource allows the creation and management of an Aiven Kafka Topic`s.
+ * The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
  *
  * ## Example Usage
  *
@@ -17,13 +17,14 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytesttopic = new aiven.KafkaTopic("mytesttopic", {
- *     cleanupPolicy: "delete",
- *     minimumInSyncReplicas: 2,
+ *     config: {
+ *         cleanupPolicy: "compact,delete",
+ *         flushMs: "10",
+ *         uncleanLeaderElectionEnable: "true",
+ *     },
  *     partitions: 5,
  *     project: aiven_project_myproject.project,
  *     replication: 3,
- *     retentionBytes: -1,
- *     retentionHours: 72,
  *     serviceName: aiven_service_myservice.serviceName,
  *     terminationProtection: true,
  *     topicName: "<TOPIC_NAME>",
@@ -62,7 +63,7 @@ export class KafkaTopic extends pulumi.CustomResource {
     }
 
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      *
      * @deprecated use config.cleanup_policy instead
      */
@@ -189,7 +190,7 @@ export class KafkaTopic extends pulumi.CustomResource {
  */
 export interface KafkaTopicState {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      *
      * @deprecated use config.cleanup_policy instead
      */
@@ -254,7 +255,7 @@ export interface KafkaTopicState {
  */
 export interface KafkaTopicArgs {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      *
      * @deprecated use config.cleanup_policy instead
      */

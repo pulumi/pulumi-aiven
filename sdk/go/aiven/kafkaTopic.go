@@ -13,7 +13,7 @@ import (
 
 // ## # Kafka Topic Resource
 //
-// The Kafka Topic resource allows the creation and management of an Aiven Kafka Topic`s.
+// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
 //
 // ## Example Usage
 //
@@ -28,13 +28,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewKafkaTopic(ctx, "mytesttopic", &aiven.KafkaTopicArgs{
-// 			CleanupPolicy:         pulumi.String("delete"),
-// 			MinimumInSyncReplicas: pulumi.Int(2),
+// 			Config: &aiven.KafkaTopicConfigArgs{
+// 				CleanupPolicy:               pulumi.String("compact,delete"),
+// 				FlushMs:                     pulumi.String("10"),
+// 				UncleanLeaderElectionEnable: pulumi.String("true"),
+// 			},
 // 			Partitions:            pulumi.Int(5),
 // 			Project:               pulumi.Any(aiven_project.Myproject.Project),
 // 			Replication:           pulumi.Int(3),
-// 			RetentionBytes:        pulumi.Int(-1),
-// 			RetentionHours:        pulumi.Int(72),
 // 			ServiceName:           pulumi.Any(aiven_service.Myservice.Service_name),
 // 			TerminationProtection: pulumi.Bool(true),
 // 			TopicName:             pulumi.String("<TOPIC_NAME>"),
@@ -49,7 +50,7 @@ import (
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	//
 	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy pulumi.StringPtrOutput `pulumi:"cleanupPolicy"`
@@ -131,7 +132,7 @@ func GetKafkaTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaTopic resources.
 type kafkaTopicState struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	//
 	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
@@ -171,7 +172,7 @@ type kafkaTopicState struct {
 }
 
 type KafkaTopicState struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	//
 	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy pulumi.StringPtrInput
@@ -215,7 +216,7 @@ func (KafkaTopicState) ElementType() reflect.Type {
 }
 
 type kafkaTopicArgs struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	//
 	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
@@ -256,7 +257,7 @@ type kafkaTopicArgs struct {
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
-	// cleanup.policy value
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
 	//
 	// Deprecated: use config.cleanup_policy instead
 	CleanupPolicy pulumi.StringPtrInput

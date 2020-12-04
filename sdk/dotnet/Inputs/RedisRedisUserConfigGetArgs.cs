@@ -44,10 +44,16 @@ namespace Pulumi.Aiven.Inputs
 
         /// <summary>
         /// Name of the basebackup to restore in forked service
-        /// * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
         /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
+
+        /// <summary>
+        /// Redis IO thread count
+        /// * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+        /// </summary>
+        [Input("redisIoThreads")]
+        public Input<string>? RedisIoThreads { get; set; }
 
         [Input("redisLfuDecayTime")]
         public Input<string>? RedisLfuDecayTime { get; set; }

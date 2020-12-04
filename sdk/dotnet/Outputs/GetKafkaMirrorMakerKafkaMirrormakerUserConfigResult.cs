@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Kafka Mirror Maker 2 specific server provided values.
+        /// Kafka MirrorMaker 2 specific server provided values.
         /// </summary>
         public readonly Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult? KafkaMirrormaker;
 

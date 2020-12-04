@@ -29,7 +29,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         ## # MirrorMaker 2 Replication Flow Resource
 
         The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
-        Replication Flow on Aiven Cloud.
+        Replication Flows on Aiven Cloud.
 
         ## Example Usage
 
@@ -53,7 +53,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enable: enable of disable replication flows for a mirror maker service
+        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
                Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
@@ -120,7 +120,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enable: enable of disable replication flows for a mirror maker service
+        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
                Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
@@ -146,7 +146,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter
     def enable(self) -> pulumi.Output[bool]:
         """
-        enable of disable replication flows for a mirror maker service
+        enable of disable replication flows for a MirrorMaker service
         """
         return pulumi.get(self, "enable")
 

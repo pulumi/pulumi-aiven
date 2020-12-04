@@ -13,7 +13,7 @@ import (
 
 // ## # InfluxDB Resource
 //
-// The InfluxDB resource allows the creation and management of an Aiven InfluxDB services.
+// The InfluxDB resource allows the creation and management of Aiven InfluxDB services.
 //
 // ## Example Usage
 //
@@ -52,7 +52,7 @@ type InfluxDb struct {
 
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -66,7 +66,7 @@ type InfluxDb struct {
 	// configuration options available:
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrOutput `pulumi:"influxdbUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -113,7 +113,7 @@ type InfluxDb struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
@@ -155,7 +155,7 @@ func GetInfluxDb(ctx *pulumi.Context,
 type influxDbState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -169,7 +169,7 @@ type influxDbState struct {
 	// configuration options available:
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -216,7 +216,7 @@ type influxDbState struct {
 	State *string `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -225,7 +225,7 @@ type influxDbState struct {
 type InfluxDbState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -239,7 +239,7 @@ type InfluxDbState struct {
 	// configuration options available:
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -286,7 +286,7 @@ type InfluxDbState struct {
 	State pulumi.StringPtrInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
@@ -299,7 +299,7 @@ func (InfluxDbState) ElementType() reflect.Type {
 type influxDbArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -311,7 +311,7 @@ type influxDbArgs struct {
 	// configuration options available:
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -344,7 +344,7 @@ type influxDbArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -354,7 +354,7 @@ type influxDbArgs struct {
 type InfluxDbArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -366,7 +366,7 @@ type InfluxDbArgs struct {
 	// configuration options available:
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -399,7 +399,7 @@ type InfluxDbArgs struct {
 	ServiceName pulumi.StringInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput

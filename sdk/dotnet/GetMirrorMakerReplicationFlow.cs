@@ -51,7 +51,7 @@ namespace Pulumi.Aiven
     public sealed class GetMirrorMakerReplicationFlowArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// enable of disable replication flows for a mirror maker service
+        /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         [Input("enable")]
         public bool? Enable { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Aiven
     public sealed class GetMirrorMakerReplicationFlowResult
     {
         /// <summary>
-        /// enable of disable replication flows for a mirror maker service
+        /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         public readonly bool? Enable;
         /// <summary>

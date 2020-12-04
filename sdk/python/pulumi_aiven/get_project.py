@@ -19,16 +19,25 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, account_id=None, billing_address=None, billing_emails=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, id=None, project=None, technical_emails=None):
+    def __init__(__self__, account_id=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, ca_cert=None, card_id=None, copy_from_project=None, country=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, vat_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if available_credits and not isinstance(available_credits, str):
+            raise TypeError("Expected argument 'available_credits' to be a str")
+        pulumi.set(__self__, "available_credits", available_credits)
         if billing_address and not isinstance(billing_address, str):
             raise TypeError("Expected argument 'billing_address' to be a str")
         pulumi.set(__self__, "billing_address", billing_address)
+        if billing_currency and not isinstance(billing_currency, str):
+            raise TypeError("Expected argument 'billing_currency' to be a str")
+        pulumi.set(__self__, "billing_currency", billing_currency)
         if billing_emails and not isinstance(billing_emails, list):
             raise TypeError("Expected argument 'billing_emails' to be a list")
         pulumi.set(__self__, "billing_emails", billing_emails)
+        if billing_extra_text and not isinstance(billing_extra_text, str):
+            raise TypeError("Expected argument 'billing_extra_text' to be a str")
+        pulumi.set(__self__, "billing_extra_text", billing_extra_text)
         if ca_cert and not isinstance(ca_cert, str):
             raise TypeError("Expected argument 'ca_cert' to be a str")
         pulumi.set(__self__, "ca_cert", ca_cert)
@@ -38,18 +47,33 @@ class GetProjectResult:
         if copy_from_project and not isinstance(copy_from_project, str):
             raise TypeError("Expected argument 'copy_from_project' to be a str")
         pulumi.set(__self__, "copy_from_project", copy_from_project)
+        if country and not isinstance(country, str):
+            raise TypeError("Expected argument 'country' to be a str")
+        pulumi.set(__self__, "country", country)
         if country_code and not isinstance(country_code, str):
             raise TypeError("Expected argument 'country_code' to be a str")
         pulumi.set(__self__, "country_code", country_code)
+        if default_cloud and not isinstance(default_cloud, str):
+            raise TypeError("Expected argument 'default_cloud' to be a str")
+        pulumi.set(__self__, "default_cloud", default_cloud)
+        if estimated_balance and not isinstance(estimated_balance, str):
+            raise TypeError("Expected argument 'estimated_balance' to be a str")
+        pulumi.set(__self__, "estimated_balance", estimated_balance)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if payment_method and not isinstance(payment_method, str):
+            raise TypeError("Expected argument 'payment_method' to be a str")
+        pulumi.set(__self__, "payment_method", payment_method)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
         if technical_emails and not isinstance(technical_emails, list):
             raise TypeError("Expected argument 'technical_emails' to be a list")
         pulumi.set(__self__, "technical_emails", technical_emails)
+        if vat_id and not isinstance(vat_id, str):
+            raise TypeError("Expected argument 'vat_id' to be a str")
+        pulumi.set(__self__, "vat_id", vat_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -61,14 +85,29 @@ class GetProjectResult:
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="availableCredits")
+    def available_credits(self) -> str:
+        return pulumi.get(self, "available_credits")
+
+    @property
     @pulumi.getter(name="billingAddress")
     def billing_address(self) -> Optional[str]:
         return pulumi.get(self, "billing_address")
 
     @property
+    @pulumi.getter(name="billingCurrency")
+    def billing_currency(self) -> Optional[str]:
+        return pulumi.get(self, "billing_currency")
+
+    @property
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "billing_emails")
+
+    @property
+    @pulumi.getter(name="billingExtraText")
+    def billing_extra_text(self) -> Optional[str]:
+        return pulumi.get(self, "billing_extra_text")
 
     @property
     @pulumi.getter(name="caCert")
@@ -104,9 +143,24 @@ class GetProjectResult:
         return pulumi.get(self, "copy_from_project")
 
     @property
+    @pulumi.getter
+    def country(self) -> str:
+        return pulumi.get(self, "country")
+
+    @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[str]:
         return pulumi.get(self, "country_code")
+
+    @property
+    @pulumi.getter(name="defaultCloud")
+    def default_cloud(self) -> Optional[str]:
+        return pulumi.get(self, "default_cloud")
+
+    @property
+    @pulumi.getter(name="estimatedBalance")
+    def estimated_balance(self) -> str:
+        return pulumi.get(self, "estimated_balance")
 
     @property
     @pulumi.getter
@@ -115,6 +169,11 @@ class GetProjectResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="paymentMethod")
+    def payment_method(self) -> str:
+        return pulumi.get(self, "payment_method")
 
     @property
     @pulumi.getter
@@ -126,6 +185,11 @@ class GetProjectResult:
     def technical_emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "technical_emails")
 
+    @property
+    @pulumi.getter(name="vatId")
+    def vat_id(self) -> Optional[str]:
+        return pulumi.get(self, "vat_id")
+
 
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
@@ -134,26 +198,42 @@ class AwaitableGetProjectResult(GetProjectResult):
             yield self
         return GetProjectResult(
             account_id=self.account_id,
+            available_credits=self.available_credits,
             billing_address=self.billing_address,
+            billing_currency=self.billing_currency,
             billing_emails=self.billing_emails,
+            billing_extra_text=self.billing_extra_text,
             ca_cert=self.ca_cert,
             card_id=self.card_id,
             copy_from_project=self.copy_from_project,
+            country=self.country,
             country_code=self.country_code,
+            default_cloud=self.default_cloud,
+            estimated_balance=self.estimated_balance,
             id=self.id,
+            payment_method=self.payment_method,
             project=self.project,
-            technical_emails=self.technical_emails)
+            technical_emails=self.technical_emails,
+            vat_id=self.vat_id)
 
 
 def get_project(account_id: Optional[str] = None,
+                available_credits: Optional[str] = None,
                 billing_address: Optional[str] = None,
+                billing_currency: Optional[str] = None,
                 billing_emails: Optional[Sequence[str]] = None,
+                billing_extra_text: Optional[str] = None,
                 ca_cert: Optional[str] = None,
                 card_id: Optional[str] = None,
                 copy_from_project: Optional[str] = None,
+                country: Optional[str] = None,
                 country_code: Optional[str] = None,
+                default_cloud: Optional[str] = None,
+                estimated_balance: Optional[str] = None,
+                payment_method: Optional[str] = None,
                 project: Optional[str] = None,
                 technical_emails: Optional[Sequence[str]] = None,
+                vat_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     ## # Project Data Source
@@ -190,14 +270,22 @@ def get_project(account_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['availableCredits'] = available_credits
     __args__['billingAddress'] = billing_address
+    __args__['billingCurrency'] = billing_currency
     __args__['billingEmails'] = billing_emails
+    __args__['billingExtraText'] = billing_extra_text
     __args__['caCert'] = ca_cert
     __args__['cardId'] = card_id
     __args__['copyFromProject'] = copy_from_project
+    __args__['country'] = country
     __args__['countryCode'] = country_code
+    __args__['defaultCloud'] = default_cloud
+    __args__['estimatedBalance'] = estimated_balance
+    __args__['paymentMethod'] = payment_method
     __args__['project'] = project
     __args__['technicalEmails'] = technical_emails
+    __args__['vatId'] = vat_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -206,12 +294,20 @@ def get_project(account_id: Optional[str] = None,
 
     return AwaitableGetProjectResult(
         account_id=__ret__.account_id,
+        available_credits=__ret__.available_credits,
         billing_address=__ret__.billing_address,
+        billing_currency=__ret__.billing_currency,
         billing_emails=__ret__.billing_emails,
+        billing_extra_text=__ret__.billing_extra_text,
         ca_cert=__ret__.ca_cert,
         card_id=__ret__.card_id,
         copy_from_project=__ret__.copy_from_project,
+        country=__ret__.country,
         country_code=__ret__.country_code,
+        default_cloud=__ret__.default_cloud,
+        estimated_balance=__ret__.estimated_balance,
         id=__ret__.id,
+        payment_method=__ret__.payment_method,
         project=__ret__.project,
-        technical_emails=__ret__.technical_emails)
+        technical_emails=__ret__.technical_emails,
+        vat_id=__ret__.vat_id)

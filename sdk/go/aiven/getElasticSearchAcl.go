@@ -47,7 +47,7 @@ func LookupElasticSearchAcl(ctx *pulumi.Context, args *LookupElasticSearchAclArg
 // A collection of arguments for invoking getElasticSearchAcl.
 type LookupElasticSearchAclArgs struct {
 	Acls []GetElasticSearchAclAcl `pulumi:"acls"`
-	// enables of disables Elasticsearch ACL's.
+	// enables or disables Elasticsearch ACLs.
 	Enabled *bool `pulumi:"enabled"`
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
 	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
@@ -62,7 +62,7 @@ type LookupElasticSearchAclArgs struct {
 // A collection of values returned by getElasticSearchAcl.
 type LookupElasticSearchAclResult struct {
 	Acls []GetElasticSearchAclAcl `pulumi:"acls"`
-	// enables of disables Elasticsearch ACL's.
+	// enables or disables Elasticsearch ACLs.
 	Enabled *bool `pulumi:"enabled"`
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
 	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use

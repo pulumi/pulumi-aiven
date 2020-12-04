@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// ## # Service Integration Resource
     /// 
-    /// The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+    /// The Service Integration resource allows the creation and management of Aiven Service Integrations.
     /// 
     /// Service Integration defines an integration between two Aiven services or between Aiven
     /// service and an external integration endpoint. Integration could be for example sending
@@ -32,12 +32,10 @@ namespace Pulumi.Aiven
     ///     {
     ///         var myintegration = new Aiven.ServiceIntegration("myintegration", new Aiven.ServiceIntegrationArgs
     ///         {
-    ///             DestinationEndpointId = aiven_service_integration_endpoint.Myendpoint.Id,
-    ///             DestinationServiceName = "",
-    ///             IntegrationType = "datadog",
     ///             Project = aiven_project.Myproject.Project,
-    ///             SourceEndpointId = "",
-    ///             SourceServiceName = aiven_service.Testkafka.Service_name,
+    ///             DestinationEndpointId = aiven_service_integration_endpoint.XX.Id,
+    ///             IntegrationType = "datadog",
+    ///             SourceServiceName = aiven_kafka.XXX.Service_name,
     ///         });
     ///     }
     /// 
@@ -48,9 +46,9 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// or `destination_service_name` - (Required) identifies the target side of
-        /// the integration. Only either endpoint identifier or service name must be specified. In
-        /// either case the target needs to be defined using the reference syntax described above to
-        /// set up the dependency correctly.
+        /// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+        /// to be defined using the reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Output("destinationEndpointId")]
         public Output<string?> DestinationEndpointId { get; private set; } = null!;
@@ -100,9 +98,9 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// or `source_service_name` - (Optional) identifies the source side of the
-        /// integration. Only either endpoint identifier or service name must be specified. In either
-        /// case the source needs to be defined using the reference syntax described above to set up
-        /// the dependency correctly.
+        /// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+        /// needs to be defined using the reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Output("sourceEndpointId")]
         public Output<string?> SourceEndpointId { get; private set; } = null!;
@@ -161,9 +159,9 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// or `destination_service_name` - (Required) identifies the target side of
-        /// the integration. Only either endpoint identifier or service name must be specified. In
-        /// either case the target needs to be defined using the reference syntax described above to
-        /// set up the dependency correctly.
+        /// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+        /// to be defined using the reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -213,9 +211,9 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// or `source_service_name` - (Optional) identifies the source side of the
-        /// integration. Only either endpoint identifier or service name must be specified. In either
-        /// case the source needs to be defined using the reference syntax described above to set up
-        /// the dependency correctly.
+        /// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+        /// needs to be defined using the reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }
@@ -235,9 +233,9 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// or `destination_service_name` - (Required) identifies the target side of
-        /// the integration. Only either endpoint identifier or service name must be specified. In
-        /// either case the target needs to be defined using the reference syntax described above to
-        /// set up the dependency correctly.
+        /// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+        /// to be defined using the reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -287,9 +285,9 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// or `source_service_name` - (Optional) identifies the source side of the
-        /// integration. Only either endpoint identifier or service name must be specified. In either
-        /// case the source needs to be defined using the reference syntax described above to set up
-        /// the dependency correctly.
+        /// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+        /// needs to be defined using the reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }

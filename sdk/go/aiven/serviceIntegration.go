@@ -13,7 +13,7 @@ import (
 
 // ## # Service Integration Resource
 //
-// The Service Integration resource allows the creation and management of an Aiven Service Integration`s.
+// The Service Integration resource allows the creation and management of Aiven Service Integrations.
 //
 // Service Integration defines an integration between two Aiven services or between Aiven
 // service and an external integration endpoint. Integration could be for example sending
@@ -34,12 +34,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewServiceIntegration(ctx, "myintegration", &aiven.ServiceIntegrationArgs{
-// 			DestinationEndpointId:  pulumi.Any(aiven_service_integration_endpoint.Myendpoint.Id),
-// 			DestinationServiceName: pulumi.String(""),
-// 			IntegrationType:        pulumi.String("datadog"),
-// 			Project:                pulumi.Any(aiven_project.Myproject.Project),
-// 			SourceEndpointId:       pulumi.String(""),
-// 			SourceServiceName:      pulumi.Any(aiven_service.Testkafka.Service_name),
+// 			Project:               pulumi.Any(aiven_project.Myproject.Project),
+// 			DestinationEndpointId: pulumi.Any(aiven_service_integration_endpoint.XX.Id),
+// 			IntegrationType:       pulumi.String("datadog"),
+// 			SourceServiceName:     pulumi.Any(aiven_kafka.XXX.Service_name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -52,9 +50,9 @@ type ServiceIntegration struct {
 	pulumi.CustomResourceState
 
 	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier or service name must be specified. In
-	// either case the target needs to be defined using the reference syntax described above to
-	// set up the dependency correctly.
+	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+	// to be defined using the reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
@@ -72,9 +70,9 @@ type ServiceIntegration struct {
 	// defines the project the integration belongs to.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier or service name must be specified. In either
-	// case the source needs to be defined using the reference syntax described above to set up
-	// the dependency correctly.
+	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+	// needs to be defined using the reference syntax described above to set up the dependency correctly.
 	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrOutput `pulumi:"sourceServiceName"`
@@ -115,9 +113,9 @@ func GetServiceIntegration(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServiceIntegration resources.
 type serviceIntegrationState struct {
 	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier or service name must be specified. In
-	// either case the target needs to be defined using the reference syntax described above to
-	// set up the dependency correctly.
+	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+	// to be defined using the reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
@@ -135,9 +133,9 @@ type serviceIntegrationState struct {
 	// defines the project the integration belongs to.
 	Project *string `pulumi:"project"`
 	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier or service name must be specified. In either
-	// case the source needs to be defined using the reference syntax described above to set up
-	// the dependency correctly.
+	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+	// needs to be defined using the reference syntax described above to set up the dependency correctly.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
@@ -145,9 +143,9 @@ type serviceIntegrationState struct {
 
 type ServiceIntegrationState struct {
 	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier or service name must be specified. In
-	// either case the target needs to be defined using the reference syntax described above to
-	// set up the dependency correctly.
+	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+	// to be defined using the reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
@@ -165,9 +163,9 @@ type ServiceIntegrationState struct {
 	// defines the project the integration belongs to.
 	Project pulumi.StringPtrInput
 	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier or service name must be specified. In either
-	// case the source needs to be defined using the reference syntax described above to set up
-	// the dependency correctly.
+	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+	// needs to be defined using the reference syntax described above to set up the dependency correctly.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput
@@ -179,9 +177,9 @@ func (ServiceIntegrationState) ElementType() reflect.Type {
 
 type serviceIntegrationArgs struct {
 	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier or service name must be specified. In
-	// either case the target needs to be defined using the reference syntax described above to
-	// set up the dependency correctly.
+	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+	// to be defined using the reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
@@ -199,9 +197,9 @@ type serviceIntegrationArgs struct {
 	// defines the project the integration belongs to.
 	Project string `pulumi:"project"`
 	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier or service name must be specified. In either
-	// case the source needs to be defined using the reference syntax described above to set up
-	// the dependency correctly.
+	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+	// needs to be defined using the reference syntax described above to set up the dependency correctly.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
@@ -210,9 +208,9 @@ type serviceIntegrationArgs struct {
 // The set of arguments for constructing a ServiceIntegration resource.
 type ServiceIntegrationArgs struct {
 	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier or service name must be specified. In
-	// either case the target needs to be defined using the reference syntax described above to
-	// set up the dependency correctly.
+	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
+	// to be defined using the reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
@@ -230,9 +228,9 @@ type ServiceIntegrationArgs struct {
 	// defines the project the integration belongs to.
 	Project pulumi.StringInput
 	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier or service name must be specified. In either
-	// case the source needs to be defined using the reference syntax described above to set up
-	// the dependency correctly.
+	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
+	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
+	// needs to be defined using the reference syntax described above to set up the dependency correctly.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput

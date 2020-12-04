@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// ## # Kafka Topic Resource
     /// 
-    /// The Kafka Topic resource allows the creation and management of an Aiven Kafka Topic`s.
+    /// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
     /// 
     /// ## Example Usage
     /// 
@@ -26,13 +26,15 @@ namespace Pulumi.Aiven
     ///     {
     ///         var mytesttopic = new Aiven.KafkaTopic("mytesttopic", new Aiven.KafkaTopicArgs
     ///         {
-    ///             CleanupPolicy = "delete",
-    ///             MinimumInSyncReplicas = 2,
+    ///             Config = new Aiven.Inputs.KafkaTopicConfigArgs
+    ///             {
+    ///                 CleanupPolicy = "compact,delete",
+    ///                 FlushMs = "10",
+    ///                 UncleanLeaderElectionEnable = "true",
+    ///             },
     ///             Partitions = 5,
     ///             Project = aiven_project.Myproject.Project,
     ///             Replication = 3,
-    ///             RetentionBytes = -1,
-    ///             RetentionHours = 72,
     ///             ServiceName = aiven_service.Myservice.Service_name,
     ///             TerminationProtection = true,
     ///             TopicName = "&lt;TOPIC_NAME&gt;",
@@ -45,7 +47,7 @@ namespace Pulumi.Aiven
     public partial class KafkaTopic : Pulumi.CustomResource
     {
         /// <summary>
-        /// cleanup.policy value
+        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
         /// </summary>
         [Output("cleanupPolicy")]
         public Output<string?> CleanupPolicy { get; private set; } = null!;
@@ -164,7 +166,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// cleanup.policy value
+        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
@@ -244,7 +246,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// cleanup.policy value
+        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }

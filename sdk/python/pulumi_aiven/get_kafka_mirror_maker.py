@@ -89,7 +89,7 @@ class GetKafkaMirrorMakerResult:
         """
         defines where the cloud provider and region where the service is hosted
         in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lenghty migration process for the service. Format is cloud provider name
+        a potentially lengthy migration process for the service. Format is cloud provider name
         (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
         specific region name. These are documented on each Cloud provider's own support articles,
         like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -114,7 +114,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="kafkaMirrormaker")
     def kafka_mirrormaker(self) -> 'outputs.GetKafkaMirrorMakerKafkaMirrormakerResult':
         """
-        Kafka Mirror Maker 2 specific server provided values.
+        Kafka MirrorMaker 2 specific server provided values.
         """
         return pulumi.get(self, "kafka_mirrormaker")
 
@@ -122,7 +122,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult']:
         """
-        defines Kafka Mirror Maker 2 specific additional configuration options. 
+        defines Kafka MirrorMaker 2 specific additional configuration options. 
         The following configuration options available:
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
@@ -132,7 +132,7 @@ class GetKafkaMirrorMakerResult:
     def maintenance_window_dow(self) -> Optional[str]:
         """
         day of week when maintenance operations should be performed. 
-        One monday, tuesday, wednesday, etc.
+        On monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -182,7 +182,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> str:
         """
-        Kafka Mirror Maker 2 hostname.
+        Kafka MirrorMaker 2 hostname.
         """
         return pulumi.get(self, "service_host")
 
@@ -200,7 +200,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> str:
         """
-        Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+        Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
         """
         return pulumi.get(self, "service_password")
 
@@ -208,7 +208,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="servicePort")
     def service_port(self) -> int:
         """
-        Kafka Mirror Maker 2 port.
+        Kafka MirrorMaker 2 port.
         """
         return pulumi.get(self, "service_port")
 
@@ -221,7 +221,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> str:
         """
-        URI for connecting to the Kafka Mirror Maker 2 service.
+        URI for connecting to the Kafka MirrorMaker 2 service.
         """
         return pulumi.get(self, "service_uri")
 
@@ -229,7 +229,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> str:
         """
-        Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+        Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
         """
         return pulumi.get(self, "service_username")
 
@@ -247,7 +247,7 @@ class GetKafkaMirrorMakerResult:
         """
         prevents the service from being deleted. It is recommended to
         set this to `true` for all production services to prevent unintentional service
-        deletions. This does not shield against deleting databases or topics but for services
+        deletion. This does not shield against deleting databases or topics but for services
         with backups much of the content can at least be restored from backup in case accidental
         deletion is done.
         """
@@ -303,9 +303,9 @@ def get_kafka_mirror_maker(cloud_name: Optional[str] = None,
                            termination_protection: Optional[bool] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaMirrorMakerResult:
     """
-    ## # Kafka Mirror Maker Data Source
+    ## # Kafka MirrorMaker Data Source
 
-    The Kafka Mirror Maker data source provides information about the existing Aiven Kafka Mirror Maker 2 service.
+    The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
 
     ## Example Usage
 
@@ -320,16 +320,16 @@ def get_kafka_mirror_maker(cloud_name: Optional[str] = None,
 
     :param str cloud_name: defines where the cloud provider and region where the service is hosted
            in. This can be changed freely after service is created. Changing the value will trigger
-           a potentially lenghty migration process for the service. Format is cloud provider name
+           a potentially lengthy migration process for the service. Format is cloud provider name
            (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
            specific region name. These are documented on each Cloud provider's own support articles,
            like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
            [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-    :param pulumi.InputType['GetKafkaMirrorMakerKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka Mirror Maker 2 specific server provided values.
-    :param pulumi.InputType['GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: defines Kafka Mirror Maker 2 specific additional configuration options. 
+    :param pulumi.InputType['GetKafkaMirrorMakerKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values.
+    :param pulumi.InputType['GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options. 
            The following configuration options available:
     :param str maintenance_window_dow: day of week when maintenance operations should be performed. 
-           One monday, tuesday, wednesday, etc.
+           On monday, tuesday, wednesday, etc.
     :param str maintenance_window_time: time of day when maintenance operations should be performed. 
            UTC time in HH:mm:ss format.
     :param str plan: defines what kind of computing resources are allocated for the service. It can
@@ -349,18 +349,18 @@ def get_kafka_mirror_maker(cloud_name: Optional[str] = None,
            cloud and region as the service itself. Project can be freely moved to and from VPC after
            creation but doing so triggers migration to new servers so the operation can take
            significant amount of time to complete if the service has a lot of data.
-    :param str service_host: Kafka Mirror Maker 2 hostname.
+    :param str service_host: Kafka MirrorMaker 2 hostname.
     :param str service_name: specifies the actual name of the service. The name cannot be changed
            later without destroying and re-creating the service so name should be picked based on
            intended service usage rather than current attributes.
-    :param str service_password: Password used for connecting to the Kafka Mirror Maker 2 service, if applicable.
-    :param int service_port: Kafka Mirror Maker 2 port.
-    :param str service_uri: URI for connecting to the Kafka Mirror Maker 2 service.
-    :param str service_username: Username used for connecting to the Kafka Mirror Maker 2 service, if applicable.
+    :param str service_password: Password used for connecting to the Kafka MirrorMaker 2 service, if applicable.
+    :param int service_port: Kafka MirrorMaker 2 port.
+    :param str service_uri: URI for connecting to the Kafka MirrorMaker 2 service.
+    :param str service_username: Username used for connecting to the Kafka MirrorMaker 2 service, if applicable.
     :param str state: Service state.
     :param bool termination_protection: prevents the service from being deleted. It is recommended to
            set this to `true` for all production services to prevent unintentional service
-           deletions. This does not shield against deleting databases or topics but for services
+           deletion. This does not shield against deleting databases or topics but for services
            with backups much of the content can at least be restored from backup in case accidental
            deletion is done.
     """

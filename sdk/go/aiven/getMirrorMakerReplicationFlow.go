@@ -48,7 +48,7 @@ func LookupMirrorMakerReplicationFlow(ctx *pulumi.Context, args *LookupMirrorMak
 
 // A collection of arguments for invoking getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowArgs struct {
-	// enable of disable replication flows for a mirror maker service
+	// enable of disable replication flows for a MirrorMaker service
 	Enable *bool `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
@@ -66,7 +66,7 @@ type LookupMirrorMakerReplicationFlowArgs struct {
 
 // A collection of values returned by getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowResult struct {
-	// enable of disable replication flows for a mirror maker service
+	// enable of disable replication flows for a MirrorMaker service
 	Enable *bool `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`

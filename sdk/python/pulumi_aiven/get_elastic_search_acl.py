@@ -50,7 +50,7 @@ class GetElasticSearchAclResult:
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        enables of disables Elasticsearch ACL's.
+        enables or disables Elasticsearch ACLs.
         """
         return pulumi.get(self, "enabled")
 
@@ -120,7 +120,7 @@ def get_elastic_search_acl(acls: Optional[Sequence[pulumi.InputType['GetElasticS
     ```
 
 
-    :param bool enabled: enables of disables Elasticsearch ACL's.
+    :param bool enabled: enables or disables Elasticsearch ACLs.
     :param bool extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
            (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
            these APIs as long as all operations only target indexes they have been granted access to.

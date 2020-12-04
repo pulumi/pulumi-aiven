@@ -24,7 +24,7 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         """
         ## # Kafka Schema Configuration Resource
 
-        The Kafka Schema Configuration resource allows the creation and management of an Aiven Kafka Schema Configurations.
+        The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
 
         ## Example Usage
 

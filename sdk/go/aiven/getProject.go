@@ -46,9 +46,12 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 type LookupProjectArgs struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
-	AccountId      *string  `pulumi:"accountId"`
-	BillingAddress *string  `pulumi:"billingAddress"`
-	BillingEmails  []string `pulumi:"billingEmails"`
+	AccountId        *string  `pulumi:"accountId"`
+	AvailableCredits *string  `pulumi:"availableCredits"`
+	BillingAddress   *string  `pulumi:"billingAddress"`
+	BillingCurrency  *string  `pulumi:"billingCurrency"`
+	BillingEmails    []string `pulumi:"billingEmails"`
+	BillingExtraText *string  `pulumi:"billingExtraText"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -63,22 +66,30 @@ type LookupProjectArgs struct {
 	// an existing project has billing type set to invoice and that needs to be copied over to a
 	// new project. (Setting billing is otherwise not allowed over the API.) This only has
 	// effect when the project is created.
-	CopyFromProject *string `pulumi:"copyFromProject"`
-	CountryCode     *string `pulumi:"countryCode"`
+	CopyFromProject  *string `pulumi:"copyFromProject"`
+	Country          *string `pulumi:"country"`
+	CountryCode      *string `pulumi:"countryCode"`
+	DefaultCloud     *string `pulumi:"defaultCloud"`
+	EstimatedBalance *string `pulumi:"estimatedBalance"`
+	PaymentMethod    *string `pulumi:"paymentMethod"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project         string   `pulumi:"project"`
 	TechnicalEmails []string `pulumi:"technicalEmails"`
+	VatId           *string  `pulumi:"vatId"`
 }
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
-	AccountId      *string  `pulumi:"accountId"`
-	BillingAddress *string  `pulumi:"billingAddress"`
-	BillingEmails  []string `pulumi:"billingEmails"`
+	AccountId        *string  `pulumi:"accountId"`
+	AvailableCredits string   `pulumi:"availableCredits"`
+	BillingAddress   *string  `pulumi:"billingAddress"`
+	BillingCurrency  *string  `pulumi:"billingCurrency"`
+	BillingEmails    []string `pulumi:"billingEmails"`
+	BillingExtraText *string  `pulumi:"billingExtraText"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -93,10 +104,15 @@ type LookupProjectResult struct {
 	// an existing project has billing type set to invoice and that needs to be copied over to a
 	// new project. (Setting billing is otherwise not allowed over the API.) This only has
 	// effect when the project is created.
-	CopyFromProject *string `pulumi:"copyFromProject"`
-	CountryCode     *string `pulumi:"countryCode"`
+	CopyFromProject  *string `pulumi:"copyFromProject"`
+	Country          string  `pulumi:"country"`
+	CountryCode      *string `pulumi:"countryCode"`
+	DefaultCloud     *string `pulumi:"defaultCloud"`
+	EstimatedBalance string  `pulumi:"estimatedBalance"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string   `pulumi:"id"`
+	PaymentMethod   string   `pulumi:"paymentMethod"`
 	Project         string   `pulumi:"project"`
 	TechnicalEmails []string `pulumi:"technicalEmails"`
+	VatId           *string  `pulumi:"vatId"`
 }

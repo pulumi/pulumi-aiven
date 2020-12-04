@@ -13,7 +13,7 @@ import (
 
 // ## # Resource Kafka ACL Resource
 //
-// The Resource Kafka ACL resource allows the creation and management of an Aiven Kafka ACL`s for a Kafka service.
+// The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
 //
 // ## Example Usage
 //

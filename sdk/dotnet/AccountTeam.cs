@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// ## # Account Team Resource
     /// 
-    /// The Account Team resource allows the creation and management of an Account Teams.
+    /// The Account Team resource allows the creation and management of an Account Team.
     /// </summary>
     public partial class AccountTeam : Pulumi.CustomResource
     {

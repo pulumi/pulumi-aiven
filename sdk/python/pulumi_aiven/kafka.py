@@ -35,7 +35,7 @@ class Kafka(pulumi.CustomResource):
         """
         ## # Kafka Resource
 
-        The Kafka resource allows the creation and management of an Aiven Kafka services.
+        The Kafka resource allows the creation and management of Aiven Kafka services.
 
         ## Example Usage
 
@@ -70,7 +70,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
                in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lenghty migration process for the service. Format is cloud provider name
+               a potentially lengthy migration process for the service. Format is cloud provider name
                (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
                specific region name. These are documented on each Cloud provider's own support articles,
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -81,7 +81,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: defines Kafka specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               One monday, tuesday, wednesday, etc.
+               On monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
                UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
@@ -107,7 +107,7 @@ class Kafka(pulumi.CustomResource):
                intended service usage rather than current attributes.
         :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
                set this to `true` for all production services to prevent unintentional service
-               deletions. This does not shield against deleting databases or topics but for services
+               deletion. This does not shield against deleting databases or topics but for services
                with backups much of the content can at least be restored from backup in case accidental
                deletion is done.
         """
@@ -191,7 +191,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
                in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lenghty migration process for the service. Format is cloud provider name
+               a potentially lengthy migration process for the service. Format is cloud provider name
                (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
                specific region name. These are documented on each Cloud provider's own support articles,
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -203,7 +203,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: defines Kafka specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               One monday, tuesday, wednesday, etc.
+               On monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
                UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
@@ -236,7 +236,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] state: Service state.
         :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
                set this to `true` for all production services to prevent unintentional service
-               deletions. This does not shield against deleting databases or topics but for services
+               deletion. This does not shield against deleting databases or topics but for services
                with backups much of the content can at least be restored from backup in case accidental
                deletion is done.
         """
@@ -272,7 +272,7 @@ class Kafka(pulumi.CustomResource):
         """
         defines where the cloud provider and region where the service is hosted
         in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lenghty migration process for the service. Format is cloud provider name
+        a potentially lengthy migration process for the service. Format is cloud provider name
         (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
         specific region name. These are documented on each Cloud provider's own support articles,
         like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -319,7 +319,7 @@ class Kafka(pulumi.CustomResource):
     def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
         day of week when maintenance operations should be performed. 
-        One monday, tuesday, wednesday, etc.
+        On monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -450,7 +450,7 @@ class Kafka(pulumi.CustomResource):
         """
         prevents the service from being deleted. It is recommended to
         set this to `true` for all production services to prevent unintentional service
-        deletions. This does not shield against deleting databases or topics but for services
+        deletion. This does not shield against deleting databases or topics but for services
         with backups much of the content can at least be restored from backup in case accidental
         deletion is done.
         """

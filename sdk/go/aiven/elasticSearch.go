@@ -13,7 +13,7 @@ import (
 
 // ## # Elasticsearch Resource
 //
-// The Elasticsearch resource allows the creation and management of an Aiven Elasticsearch services.
+// The Elasticsearch resource allows the creation and management of Aiven Elasticsearch services.
 //
 // ## Example Usage
 //
@@ -58,7 +58,7 @@ type ElasticSearch struct {
 
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -73,7 +73,7 @@ type ElasticSearch struct {
 	// The following configuration options available:
 	ElasticsearchUserConfig ElasticSearchElasticsearchUserConfigPtrOutput `pulumi:"elasticsearchUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -120,7 +120,7 @@ type ElasticSearch struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
@@ -162,7 +162,7 @@ func GetElasticSearch(ctx *pulumi.Context,
 type elasticSearchState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -177,7 +177,7 @@ type elasticSearchState struct {
 	// The following configuration options available:
 	ElasticsearchUserConfig *ElasticSearchElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -224,7 +224,7 @@ type elasticSearchState struct {
 	State *string `pulumi:"state"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -233,7 +233,7 @@ type elasticSearchState struct {
 type ElasticSearchState struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -248,7 +248,7 @@ type ElasticSearchState struct {
 	// The following configuration options available:
 	ElasticsearchUserConfig ElasticSearchElasticsearchUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -295,7 +295,7 @@ type ElasticSearchState struct {
 	State pulumi.StringPtrInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
@@ -308,7 +308,7 @@ func (ElasticSearchState) ElementType() reflect.Type {
 type elasticSearchArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -321,7 +321,7 @@ type elasticSearchArgs struct {
 	// The following configuration options available:
 	ElasticsearchUserConfig *ElasticSearchElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -354,7 +354,7 @@ type elasticSearchArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -364,7 +364,7 @@ type elasticSearchArgs struct {
 type ElasticSearchArgs struct {
 	// defines where the cloud provider and region where the service is hosted
 	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lenghty migration process for the service. Format is cloud provider name
+	// a potentially lengthy migration process for the service. Format is cloud provider name
 	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
 	// specific region name. These are documented on each Cloud provider's own support articles,
 	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
@@ -377,7 +377,7 @@ type ElasticSearchArgs struct {
 	// The following configuration options available:
 	ElasticsearchUserConfig ElasticSearchElasticsearchUserConfigPtrInput
 	// day of week when maintenance operations should be performed.
-	// One monday, tuesday, wednesday, etc.
+	// On monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
@@ -410,7 +410,7 @@ type ElasticSearchArgs struct {
 	ServiceName pulumi.StringInput
 	// prevents the service from being deleted. It is recommended to
 	// set this to `true` for all production services to prevent unintentional service
-	// deletions. This does not shield against deleting databases or topics but for services
+	// deletion. This does not shield against deleting databases or topics but for services
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection pulumi.BoolPtrInput

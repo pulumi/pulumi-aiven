@@ -13,7 +13,7 @@ import (
 
 // ## # VPC Peering Connection Resource
 //
-// The VPC Peering Connection resource allows the creation and management of an Aiven VPC Peering Connections.
+// The VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
 //
 // ## Example Usage
 //

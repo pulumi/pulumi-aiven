@@ -1515,6 +1515,18 @@ export interface GetKafkaKafkaUserConfigKafka {
      * (defaults to 104857600).
      */
     socketRequestMaxBytes?: string;
+    /**
+     * The interval at which 
+     * to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+     * to 3600000 (1 hour)).
+     */
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
+    /**
+     * The transaction topic segment bytes should 
+     * be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+     * to 104857600 (100 mebibytes)).
+     */
+    transactionStateLogSegmentBytes?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
@@ -1695,7 +1707,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     ipFilters?: string[];
     /**
-     * Kafka Mirror Maker 2 specific server provided values.
+     * Kafka MirrorMaker 2 specific server provided values.
      */
     kafkaMirrormaker?: inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
@@ -1731,7 +1743,7 @@ export interface GetKafkaServiceIntegration {
 
 export interface GetKafkaTopicConfig {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      */
     cleanupPolicy?: string;
     /**
@@ -2580,9 +2592,44 @@ export interface GetPgPgUserConfigPg {
 
 export interface GetPgPgUserConfigPgbouncer {
     /**
+     * If the automatically created database pools have been unused this 
+     * many seconds, they are freed. If 0 then timeout is disabled.
+     */
+    autodbIdleTimeout?: string;
+    /**
+     * Do not allow more than this many server connections per database 
+     * (regardless of user). Setting it to 0 means unlimited.
+     */
+    autodbMaxDbConnections?: string;
+    /**
+     * PGBouncer pool mode
+     */
+    autodbPoolMode?: string;
+    /**
+     * If non-zero then create automatically a pool of that size per user 
+     * when a pool doesn't exist.
+     */
+    autodbPoolSize?: string;
+    /**
      * Enum of parameters to ignore when given in startup packet.
      */
     ignoreStartupParameters?: string[];
+    /**
+     * Add more server connections to pool if below this number. Improves 
+     * behavior when usual load comes suddenly back after period of total inactivity. The value is
+     * effectively capped at the pool size.
+     */
+    minPoolSize?: string;
+    /**
+     * If a server connection has been idle more than this many seconds 
+     * it will be dropped. If 0 then timeout is disabled.
+     */
+    serverIdleTimeout?: string;
+    /**
+     * The pooler will close an unused server connection that has been connected 
+     * longer than this.
+     */
+    serverLifetime?: string;
     /**
      * Run serverResetQuery (DISCARD ALL) in all pooling modes.
      */
@@ -2686,9 +2733,13 @@ export interface GetRedisRedisUserConfig {
     publicAccess?: inputs.GetRedisRedisUserConfigPublicAccess;
     /**
      * Name of the basebackup to restore in forked service
-     * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
      */
     recoveryBasebackupName?: string;
+    /**
+     * Redis IO thread count
+     * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+     */
+    redisIoThreads?: string;
     redisLfuDecayTime?: string;
     /**
      * Counter logarithm factor for volatile-lfu and allkeys-lfu 
@@ -3197,6 +3248,8 @@ export interface GetServiceKafkaUserConfigKafka {
     replicaFetchMaxBytes?: string;
     replicaFetchResponseMaxBytes?: string;
     socketRequestMaxBytes?: string;
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
+    transactionStateLogSegmentBytes?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
@@ -3381,7 +3434,14 @@ export interface GetServicePgUserConfigPg {
 }
 
 export interface GetServicePgUserConfigPgbouncer {
+    autodbIdleTimeout?: string;
+    autodbMaxDbConnections?: string;
+    autodbPoolMode?: string;
+    autodbPoolSize?: string;
     ignoreStartupParameters?: string[];
+    minPoolSize?: string;
+    serverIdleTimeout?: string;
+    serverLifetime?: string;
     serverResetQueryAlways?: string;
 }
 
@@ -3414,6 +3474,7 @@ export interface GetServiceRedisUserConfig {
     privateAccess?: inputs.GetServiceRedisUserConfigPrivateAccess;
     publicAccess?: inputs.GetServiceRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
+    redisIoThreads?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
@@ -4273,6 +4334,18 @@ export interface KafkaKafkaUserConfigKafka {
      * (defaults to 104857600).
      */
     socketRequestMaxBytes?: pulumi.Input<string>;
+    /**
+     * The interval at which 
+     * to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
+     * to 3600000 (1 hour)).
+     */
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: pulumi.Input<string>;
+    /**
+     * The transaction topic segment bytes should 
+     * be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
+     * to 104857600 (100 mebibytes)).
+     */
+    transactionStateLogSegmentBytes?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
@@ -4490,7 +4563,7 @@ export interface KafkaServiceIntegration {
 
 export interface KafkaTopicConfig {
     /**
-     * cleanup.policy value
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      */
     cleanupPolicy?: pulumi.Input<string>;
     /**
@@ -5343,9 +5416,44 @@ export interface PgPgUserConfigPg {
 
 export interface PgPgUserConfigPgbouncer {
     /**
+     * If the automatically created database pools have been unused this 
+     * many seconds, they are freed. If 0 then timeout is disabled.
+     */
+    autodbIdleTimeout?: pulumi.Input<string>;
+    /**
+     * Do not allow more than this many server connections per database 
+     * (regardless of user). Setting it to 0 means unlimited.
+     */
+    autodbMaxDbConnections?: pulumi.Input<string>;
+    /**
+     * PGBouncer pool mode
+     */
+    autodbPoolMode?: pulumi.Input<string>;
+    /**
+     * If non-zero then create automatically a pool of that size per user 
+     * when a pool doesn't exist.
+     */
+    autodbPoolSize?: pulumi.Input<string>;
+    /**
      * Enum of parameters to ignore when given in startup packet.
      */
     ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Add more server connections to pool if below this number. Improves 
+     * behavior when usual load comes suddenly back after period of total inactivity. The value is
+     * effectively capped at the pool size.
+     */
+    minPoolSize?: pulumi.Input<string>;
+    /**
+     * If a server connection has been idle more than this many seconds 
+     * it will be dropped. If 0 then timeout is disabled.
+     */
+    serverIdleTimeout?: pulumi.Input<string>;
+    /**
+     * The pooler will close an unused server connection that has been connected 
+     * longer than this.
+     */
+    serverLifetime?: pulumi.Input<string>;
     /**
      * Run serverResetQuery (DISCARD ALL) in all pooling modes.
      */
@@ -5451,9 +5559,13 @@ export interface RedisRedisUserConfig {
     publicAccess?: pulumi.Input<inputs.RedisRedisUserConfigPublicAccess>;
     /**
      * Name of the basebackup to restore in forked service
-     * * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
      */
     recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Redis IO thread count
+     * * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
+     */
+    redisIoThreads?: pulumi.Input<string>;
     redisLfuDecayTime?: pulumi.Input<string>;
     /**
      * Counter logarithm factor for volatile-lfu and allkeys-lfu 
@@ -5964,6 +6076,8 @@ export interface ServiceKafkaUserConfigKafka {
     replicaFetchMaxBytes?: pulumi.Input<string>;
     replicaFetchResponseMaxBytes?: pulumi.Input<string>;
     socketRequestMaxBytes?: pulumi.Input<string>;
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: pulumi.Input<string>;
+    transactionStateLogSegmentBytes?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
@@ -6148,7 +6262,14 @@ export interface ServicePgUserConfigPg {
 }
 
 export interface ServicePgUserConfigPgbouncer {
+    autodbIdleTimeout?: pulumi.Input<string>;
+    autodbMaxDbConnections?: pulumi.Input<string>;
+    autodbPoolMode?: pulumi.Input<string>;
+    autodbPoolSize?: pulumi.Input<string>;
     ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
+    minPoolSize?: pulumi.Input<string>;
+    serverIdleTimeout?: pulumi.Input<string>;
+    serverLifetime?: pulumi.Input<string>;
     serverResetQueryAlways?: pulumi.Input<string>;
 }
 
@@ -6181,6 +6302,7 @@ export interface ServiceRedisUserConfig {
     privateAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPrivateAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
+    redisIoThreads?: pulumi.Input<string>;
     redisLfuDecayTime?: pulumi.Input<string>;
     redisLfuLogFactor?: pulumi.Input<string>;
     redisMaxmemoryPolicy?: pulumi.Input<string>;
