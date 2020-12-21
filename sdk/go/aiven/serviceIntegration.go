@@ -56,6 +56,12 @@ type ServiceIntegration struct {
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
+	// External AWS Cloudwatch logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	// External Elasticsearch logs specific user configurable settings
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
+	// External Google Cloud Logging specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// identifies the type of integration that is set up. Possible values
 	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
@@ -119,6 +125,12 @@ type serviceIntegrationState struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// External AWS Cloudwatch logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	// External Elasticsearch logs specific user configurable settings
+	ExternalElasticsearchLogsUserConfig *ServiceIntegrationExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// External Google Cloud Logging specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// identifies the type of integration that is set up. Possible values
 	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType *string `pulumi:"integrationType"`
@@ -149,6 +161,12 @@ type ServiceIntegrationState struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
+	// External AWS Cloudwatch logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput
+	// External Elasticsearch logs specific user configurable settings
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput
+	// External Google Cloud Logging specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput
 	// identifies the type of integration that is set up. Possible values
 	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringPtrInput
@@ -183,6 +201,12 @@ type serviceIntegrationArgs struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// External AWS Cloudwatch logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	// External Elasticsearch logs specific user configurable settings
+	ExternalElasticsearchLogsUserConfig *ServiceIntegrationExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// External Google Cloud Logging specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// identifies the type of integration that is set up. Possible values
 	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType string `pulumi:"integrationType"`
@@ -214,6 +238,12 @@ type ServiceIntegrationArgs struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
+	// External AWS Cloudwatch logs specific user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput
+	// External Elasticsearch logs specific user configurable settings
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput
+	// External Google Cloud Logging specific user configurable settings
+	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput
 	// identifies the type of integration that is set up. Possible values
 	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringInput

@@ -65,6 +65,15 @@ namespace Pulumi.Aiven
         [Input("destinationServiceName", required: true)]
         public string DestinationServiceName { get; set; } = null!;
 
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        [Input("externalElasticsearchLogsUserConfig")]
+        public Inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs? ExternalGoogleCloudLoggingUserConfig { get; set; }
+
         /// <summary>
         /// identifies the type of integration that is set up. Possible values
         /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
@@ -111,6 +120,9 @@ namespace Pulumi.Aiven
     {
         public readonly string? DestinationEndpointId;
         public readonly string DestinationServiceName;
+        public readonly Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult? ExternalAwsCloudwatchLogsUserConfig;
+        public readonly Outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;
+        public readonly Outputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigResult? ExternalGoogleCloudLoggingUserConfig;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -129,6 +141,12 @@ namespace Pulumi.Aiven
             string? destinationEndpointId,
 
             string destinationServiceName,
+
+            Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult? externalAwsCloudwatchLogsUserConfig,
+
+            Outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult? externalElasticsearchLogsUserConfig,
+
+            Outputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigResult? externalGoogleCloudLoggingUserConfig,
 
             string id,
 
@@ -150,6 +168,9 @@ namespace Pulumi.Aiven
         {
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
+            ExternalAwsCloudwatchLogsUserConfig = externalAwsCloudwatchLogsUserConfig;
+            ExternalElasticsearchLogsUserConfig = externalElasticsearchLogsUserConfig;
+            ExternalGoogleCloudLoggingUserConfig = externalGoogleCloudLoggingUserConfig;
             Id = id;
             IntegrationType = integrationType;
             KafkaConnectUserConfig = kafkaConnectUserConfig;

@@ -27540,6 +27540,348 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxRealm() p
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceIntegrationExternalAwsCloudwatchLogsUserConfig struct {
+}
+
+// ServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs and ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput` via:
+//
+//          ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs{...}
+type ServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput
+	ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs struct {
+}
+
+func (ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput).ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs, ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtr and ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput` via:
+//
+//          ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput
+	ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput
+}
+
+type serviceIntegrationExternalAwsCloudwatchLogsUserConfigPtrType ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs
+
+func ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtr(v *ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput {
+	return (*serviceIntegrationExternalAwsCloudwatchLogsUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationExternalAwsCloudwatchLogsUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationExternalAwsCloudwatchLogsUserConfigPtrType) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationExternalAwsCloudwatchLogsUserConfigPtrType) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o.ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchLogsUserConfig) *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+		return &v
+	}).(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput) ToServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput) Elem() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig) ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+		return *v
+	}).(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+type ServiceIntegrationExternalElasticsearchLogsUserConfig struct {
+}
+
+// ServiceIntegrationExternalElasticsearchLogsUserConfigInput is an input type that accepts ServiceIntegrationExternalElasticsearchLogsUserConfigArgs and ServiceIntegrationExternalElasticsearchLogsUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalElasticsearchLogsUserConfigInput` via:
+//
+//          ServiceIntegrationExternalElasticsearchLogsUserConfigArgs{...}
+type ServiceIntegrationExternalElasticsearchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalElasticsearchLogsUserConfigOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigOutput
+	ToServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigOutput
+}
+
+type ServiceIntegrationExternalElasticsearchLogsUserConfigArgs struct {
+}
+
+func (ServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToServiceIntegrationExternalElasticsearchLogsUserConfigOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return i.ToServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalElasticsearchLogsUserConfigOutput)
+}
+
+func (i ServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalElasticsearchLogsUserConfigOutput).ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationExternalElasticsearchLogsUserConfigArgs, ServiceIntegrationExternalElasticsearchLogsUserConfigPtr and ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput` via:
+//
+//          ServiceIntegrationExternalElasticsearchLogsUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput
+	ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput
+}
+
+type serviceIntegrationExternalElasticsearchLogsUserConfigPtrType ServiceIntegrationExternalElasticsearchLogsUserConfigArgs
+
+func ServiceIntegrationExternalElasticsearchLogsUserConfigPtr(v *ServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput {
+	return (*serviceIntegrationExternalElasticsearchLogsUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationExternalElasticsearchLogsUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationExternalElasticsearchLogsUserConfigPtrType) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationExternalElasticsearchLogsUserConfigPtrType) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationExternalElasticsearchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToServiceIntegrationExternalElasticsearchLogsUserConfigOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return o.ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalElasticsearchLogsUserConfig) *ServiceIntegrationExternalElasticsearchLogsUserConfig {
+		return &v
+	}).(ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput() ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput) ToServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput) Elem() ServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalElasticsearchLogsUserConfig) ServiceIntegrationExternalElasticsearchLogsUserConfig {
+		return *v
+	}).(ServiceIntegrationExternalElasticsearchLogsUserConfigOutput)
+}
+
+type ServiceIntegrationExternalGoogleCloudLoggingUserConfig struct {
+}
+
+// ServiceIntegrationExternalGoogleCloudLoggingUserConfigInput is an input type that accepts ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs and ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalGoogleCloudLoggingUserConfigInput` via:
+//
+//          ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs{...}
+type ServiceIntegrationExternalGoogleCloudLoggingUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput
+	ToServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput
+}
+
+type ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs struct {
+}
+
+func (ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return i.ToServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput)
+}
+
+func (i ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput).ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput is an input type that accepts ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs, ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtr and ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput` via:
+//
+//          ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput
+	ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput
+}
+
+type serviceIntegrationExternalGoogleCloudLoggingUserConfigPtrType ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs
+
+func ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtr(v *ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput {
+	return (*serviceIntegrationExternalGoogleCloudLoggingUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationExternalGoogleCloudLoggingUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationExternalGoogleCloudLoggingUserConfigPtrType) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationExternalGoogleCloudLoggingUserConfigPtrType) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput)
+}
+
+type ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o.ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalGoogleCloudLoggingUserConfig) *ServiceIntegrationExternalGoogleCloudLoggingUserConfig {
+		return &v
+	}).(ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput)
+}
+
+type ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput() ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput) ToServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput) Elem() ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalGoogleCloudLoggingUserConfig) ServiceIntegrationExternalGoogleCloudLoggingUserConfig {
+		return *v
+	}).(ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput)
+}
+
 type ServiceIntegrationKafkaConnectUserConfig struct {
 	KafkaConnect *ServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
 }
@@ -58317,6 +58659,135 @@ func (o GetServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxRealm() p
 	return o.ApplyT(func(v GetServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxRealm }).(pulumi.StringPtrOutput)
 }
 
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig struct {
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs and GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput` via:
+//
+//          GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+type GetServiceIntegrationExternalElasticsearchLogsUserConfig struct {
+}
+
+// GetServiceIntegrationExternalElasticsearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs and GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalElasticsearchLogsUserConfigInput` via:
+//
+//          GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs{...}
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput
+	ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+type GetServiceIntegrationExternalGoogleCloudLoggingUserConfig struct {
+}
+
+// GetServiceIntegrationExternalGoogleCloudLoggingUserConfigInput is an input type that accepts GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs and GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalGoogleCloudLoggingUserConfigInput` via:
+//
+//          GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs{...}
+type GetServiceIntegrationExternalGoogleCloudLoggingUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput
+	ToGetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput
+}
+
+type GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ToGetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs) ToGetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ToGetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput) ToGetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
 type GetServiceIntegrationKafkaConnectUserConfig struct {
 	KafkaConnect *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
 }
@@ -65447,6 +65918,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalElasticsearchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
@@ -65761,6 +66238,9 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointSignalfxUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput{})

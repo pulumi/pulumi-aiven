@@ -145,6 +145,9 @@ __all__ = [
     'ServiceIntegrationEndpointPrometheusUserConfigArgs',
     'ServiceIntegrationEndpointRsyslogUserConfigArgs',
     'ServiceIntegrationEndpointSignalfxUserConfigArgs',
+    'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs',
+    'ServiceIntegrationExternalElasticsearchLogsUserConfigArgs',
+    'ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs',
     'ServiceIntegrationKafkaMirrormakerUserConfigArgs',
@@ -323,6 +326,9 @@ __all__ = [
     'GetServiceIntegrationEndpointPrometheusUserConfigArgs',
     'GetServiceIntegrationEndpointRsyslogUserConfigArgs',
     'GetServiceIntegrationEndpointSignalfxUserConfigArgs',
+    'GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs',
+    'GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs',
+    'GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs',
     'GetServiceIntegrationKafkaConnectUserConfigArgs',
     'GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs',
     'GetServiceIntegrationKafkaMirrormakerUserConfigArgs',
@@ -12479,6 +12485,24 @@ class ServiceIntegrationEndpointSignalfxUserConfigArgs:
     @signalfx_realm.setter
     def signalfx_realm(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "signalfx_realm", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalElasticsearchLogsUserConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs:
+    def __init__(__self__):
+        pass
 
 
 @pulumi.input_type
@@ -27853,6 +27877,24 @@ class GetServiceIntegrationEndpointSignalfxUserConfigArgs:
     @signalfx_realm.setter
     def signalfx_realm(self, value: Optional[str]):
         pulumi.set(self, "signalfx_realm", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs:
+    def __init__(__self__):
+        pass
 
 
 @pulumi.input_type

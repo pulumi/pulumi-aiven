@@ -7497,6 +7497,15 @@
             },
             "type": "object"
         },
+        "aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationExternalGoogleCloudLoggingUserConfig:ServiceIntegrationExternalGoogleCloudLoggingUserConfig": {
+            "type": "object"
+        },
         "aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig": {
             "properties": {
                 "kafkaConnect": {
@@ -17376,6 +17385,15 @@
             },
             "type": "object"
         },
+        "aiven:index/getServiceIntegrationExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationExternalAwsCloudwatchLogsUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationExternalElasticsearchLogsUserConfig:getServiceIntegrationExternalElasticsearchLogsUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationExternalGoogleCloudLoggingUserConfig:getServiceIntegrationExternalGoogleCloudLoggingUserConfig": {
+            "type": "object"
+        },
         "aiven:index/getServiceIntegrationKafkaConnectUserConfig:getServiceIntegrationKafkaConnectUserConfig": {
             "properties": {
                 "kafkaConnect": {
@@ -25152,6 +25170,18 @@
                     "type": "string",
                     "description": "Destination service for the integration (if any)\n"
                 },
+                "externalAwsCloudwatchLogsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig",
+                    "description": "External AWS Cloudwatch logs specific user configurable settings\n"
+                },
+                "externalElasticsearchLogsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig",
+                    "description": "External Elasticsearch logs specific user configurable settings\n"
+                },
+                "externalGoogleCloudLoggingUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalGoogleCloudLoggingUserConfig:ServiceIntegrationExternalGoogleCloudLoggingUserConfig",
+                    "description": "External Google Cloud Logging specific user configurable settings\n"
+                },
                 "integrationType": {
                     "type": "string",
                     "description": "identifies the type of integration that is set up. Possible values\ninclude `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
@@ -25197,6 +25227,18 @@
                 "destinationServiceName": {
                     "type": "string",
                     "description": "Destination service for the integration (if any)\n"
+                },
+                "externalAwsCloudwatchLogsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig",
+                    "description": "External AWS Cloudwatch logs specific user configurable settings\n"
+                },
+                "externalElasticsearchLogsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig",
+                    "description": "External Elasticsearch logs specific user configurable settings\n"
+                },
+                "externalGoogleCloudLoggingUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalGoogleCloudLoggingUserConfig:ServiceIntegrationExternalGoogleCloudLoggingUserConfig",
+                    "description": "External Google Cloud Logging specific user configurable settings\n"
                 },
                 "integrationType": {
                     "type": "string",
@@ -25245,6 +25287,18 @@
                     "destinationServiceName": {
                         "type": "string",
                         "description": "Destination service for the integration (if any)\n"
+                    },
+                    "externalAwsCloudwatchLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig",
+                        "description": "External AWS Cloudwatch logs specific user configurable settings\n"
+                    },
+                    "externalElasticsearchLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig",
+                        "description": "External Elasticsearch logs specific user configurable settings\n"
+                    },
+                    "externalGoogleCloudLoggingUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalGoogleCloudLoggingUserConfig:ServiceIntegrationExternalGoogleCloudLoggingUserConfig",
+                        "description": "External Google Cloud Logging specific user configurable settings\n"
                     },
                     "integrationType": {
                         "type": "string",
@@ -25475,13 +25529,38 @@
                     "type": "string",
                     "description": "is the access key of the user (not applicable for all services).\n"
                 },
+                "authentication": {
+                    "type": "string",
+                    "description": "Authentication details\n"
+                },
                 "password": {
                     "type": "string",
-                    "description": "is the password of the user (not applicable for all services).\n"
+                    "description": "Password of the user\n"
                 },
                 "project": {
                     "type": "string",
                     "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                },
+                "redisAclCategories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Command category rules\n"
+                },
+                "redisAclCommands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Rules for individual commands\n"
+                },
+                "redisAclKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Key access rules\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -25506,9 +25585,38 @@
                 "username"
             ],
             "inputProperties": {
+                "authentication": {
+                    "type": "string",
+                    "description": "Authentication details\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password of the user\n"
+                },
                 "project": {
                     "type": "string",
                     "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                },
+                "redisAclCategories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Command category rules\n"
+                },
+                "redisAclCommands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Rules for individual commands\n"
+                },
+                "redisAclKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Key access rules\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -25535,13 +25643,38 @@
                         "type": "string",
                         "description": "is the access key of the user (not applicable for all services).\n"
                     },
+                    "authentication": {
+                        "type": "string",
+                        "description": "Authentication details\n"
+                    },
                     "password": {
                         "type": "string",
-                        "description": "is the password of the user (not applicable for all services).\n"
+                        "description": "Password of the user\n"
                     },
                     "project": {
                         "type": "string",
                         "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                    },
+                    "redisAclCategories": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Command category rules\n"
+                    },
+                    "redisAclCommands": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Rules for individual commands\n"
+                    },
+                    "redisAclKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Key access rules\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -29992,6 +30125,15 @@
                         "type": "string",
                         "description": "identifies the target side of\nthe integration.\n"
                     },
+                    "externalAwsCloudwatchLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationExternalAwsCloudwatchLogsUserConfig"
+                    },
+                    "externalElasticsearchLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalElasticsearchLogsUserConfig:getServiceIntegrationExternalElasticsearchLogsUserConfig"
+                    },
+                    "externalGoogleCloudLoggingUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalGoogleCloudLoggingUserConfig:getServiceIntegrationExternalGoogleCloudLoggingUserConfig"
+                    },
                     "integrationType": {
                         "type": "string",
                         "description": "identifies the type of integration that is set up. Possible values\ninclude `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
@@ -30036,6 +30178,15 @@
                     },
                     "destinationServiceName": {
                         "type": "string"
+                    },
+                    "externalAwsCloudwatchLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationExternalAwsCloudwatchLogsUserConfig"
+                    },
+                    "externalElasticsearchLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalElasticsearchLogsUserConfig:getServiceIntegrationExternalElasticsearchLogsUserConfig"
+                    },
+                    "externalGoogleCloudLoggingUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalGoogleCloudLoggingUserConfig:getServiceIntegrationExternalGoogleCloudLoggingUserConfig"
                     },
                     "id": {
                         "type": "string",
@@ -30206,6 +30357,9 @@
                         "type": "string",
                         "description": "is the access key of the user (not applicable for all services).\n"
                     },
+                    "authentication": {
+                        "type": "string"
+                    },
                     "password": {
                         "type": "string",
                         "description": "is the password of the user (not applicable for all services).\n"
@@ -30213,6 +30367,24 @@
                     "project": {
                         "type": "string",
                         "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                    },
+                    "redisAclCategories": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "redisAclCommands": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "redisAclKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "serviceName": {
                         "type": "string"
@@ -30244,6 +30416,9 @@
                         "type": "string",
                         "description": "is the access key of the user (not applicable for all services).\n"
                     },
+                    "authentication": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -30254,6 +30429,24 @@
                     },
                     "project": {
                         "type": "string"
+                    },
+                    "redisAclCategories": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "redisAclCommands": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "redisAclKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "serviceName": {
                         "type": "string"

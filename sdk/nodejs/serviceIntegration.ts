@@ -70,6 +70,18 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly destinationServiceName!: pulumi.Output<string | undefined>;
     /**
+     * External AWS Cloudwatch logs specific user configurable settings
+     */
+    public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig | undefined>;
+    /**
+     * External Elasticsearch logs specific user configurable settings
+     */
+    public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig | undefined>;
+    /**
+     * External Google Cloud Logging specific user configurable settings
+     */
+    public readonly externalGoogleCloudLoggingUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig | undefined>;
+    /**
      * identifies the type of integration that is set up. Possible values
      * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
      */
@@ -120,6 +132,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
             const state = argsOrState as ServiceIntegrationState | undefined;
             inputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
             inputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
+            inputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
+            inputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
+            inputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
             inputs["integrationType"] = state ? state.integrationType : undefined;
             inputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
             inputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
@@ -138,6 +153,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
             }
             inputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
             inputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
+            inputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
+            inputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
+            inputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
             inputs["integrationType"] = args ? args.integrationType : undefined;
             inputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
             inputs["kafkaMirrormakerUserConfig"] = args ? args.kafkaMirrormakerUserConfig : undefined;
@@ -173,6 +191,18 @@ export interface ServiceIntegrationState {
      * Destination service for the integration (if any)
      */
     readonly destinationServiceName?: pulumi.Input<string>;
+    /**
+     * External AWS Cloudwatch logs specific user configurable settings
+     */
+    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    /**
+     * External Elasticsearch logs specific user configurable settings
+     */
+    readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    /**
+     * External Google Cloud Logging specific user configurable settings
+     */
+    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
     /**
      * identifies the type of integration that is set up. Possible values
      * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
@@ -226,6 +256,18 @@ export interface ServiceIntegrationArgs {
      * Destination service for the integration (if any)
      */
     readonly destinationServiceName?: pulumi.Input<string>;
+    /**
+     * External AWS Cloudwatch logs specific user configurable settings
+     */
+    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    /**
+     * External Elasticsearch logs specific user configurable settings
+     */
+    readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    /**
+     * External Google Cloud Logging specific user configurable settings
+     */
+    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
     /**
      * identifies the type of integration that is set up. Possible values
      * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.

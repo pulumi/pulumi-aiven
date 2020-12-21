@@ -41,6 +41,9 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
     return pulumi.runtime.invoke("aiven:index/getServiceIntegration:getServiceIntegration", {
         "destinationEndpointId": args.destinationEndpointId,
         "destinationServiceName": args.destinationServiceName,
+        "externalAwsCloudwatchLogsUserConfig": args.externalAwsCloudwatchLogsUserConfig,
+        "externalElasticsearchLogsUserConfig": args.externalElasticsearchLogsUserConfig,
+        "externalGoogleCloudLoggingUserConfig": args.externalGoogleCloudLoggingUserConfig,
         "integrationType": args.integrationType,
         "kafkaConnectUserConfig": args.kafkaConnectUserConfig,
         "kafkaMirrormakerUserConfig": args.kafkaMirrormakerUserConfig,
@@ -62,6 +65,9 @@ export interface GetServiceIntegrationArgs {
      * the integration.
      */
     readonly destinationServiceName: string;
+    readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
+    readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
+    readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfig;
     /**
      * identifies the type of integration that is set up. Possible values
      * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
@@ -89,6 +95,9 @@ export interface GetServiceIntegrationArgs {
 export interface GetServiceIntegrationResult {
     readonly destinationEndpointId?: string;
     readonly destinationServiceName: string;
+    readonly externalAwsCloudwatchLogsUserConfig?: outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
+    readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
+    readonly externalGoogleCloudLoggingUserConfig?: outputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfig;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -19,6 +19,9 @@ class ServiceIntegration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]] = None,
+                 external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']]] = None,
                  kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]] = None,
@@ -61,6 +64,9 @@ class ServiceIntegration(pulumi.CustomResource):
                service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
                to be defined using the reference syntax described above to set up the dependency correctly.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: External AWS Cloudwatch logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: External Elasticsearch logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: External Google Cloud Logging specific user configurable settings
         :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values
                include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
@@ -93,6 +99,9 @@ class ServiceIntegration(pulumi.CustomResource):
 
             __props__['destination_endpoint_id'] = destination_endpoint_id
             __props__['destination_service_name'] = destination_service_name
+            __props__['external_aws_cloudwatch_logs_user_config'] = external_aws_cloudwatch_logs_user_config
+            __props__['external_elasticsearch_logs_user_config'] = external_elasticsearch_logs_user_config
+            __props__['external_google_cloud_logging_user_config'] = external_google_cloud_logging_user_config
             if integration_type is None:
                 raise TypeError("Missing required property 'integration_type'")
             __props__['integration_type'] = integration_type
@@ -117,6 +126,9 @@ class ServiceIntegration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
             destination_service_name: Optional[pulumi.Input[str]] = None,
+            external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
+            external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]] = None,
+            external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']]] = None,
             integration_type: Optional[pulumi.Input[str]] = None,
             kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']]] = None,
             kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]] = None,
@@ -137,6 +149,9 @@ class ServiceIntegration(pulumi.CustomResource):
                service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
                to be defined using the reference syntax described above to set up the dependency correctly.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: External AWS Cloudwatch logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: External Elasticsearch logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: External Google Cloud Logging specific user configurable settings
         :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values
                include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
@@ -156,6 +171,9 @@ class ServiceIntegration(pulumi.CustomResource):
 
         __props__["destination_endpoint_id"] = destination_endpoint_id
         __props__["destination_service_name"] = destination_service_name
+        __props__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
+        __props__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
+        __props__["external_google_cloud_logging_user_config"] = external_google_cloud_logging_user_config
         __props__["integration_type"] = integration_type
         __props__["kafka_connect_user_config"] = kafka_connect_user_config
         __props__["kafka_mirrormaker_user_config"] = kafka_mirrormaker_user_config
@@ -184,6 +202,30 @@ class ServiceIntegration(pulumi.CustomResource):
         Destination service for the integration (if any)
         """
         return pulumi.get(self, "destination_service_name")
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
+    def external_aws_cloudwatch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig']]:
+        """
+        External AWS Cloudwatch logs specific user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
+    def external_elasticsearch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig']]:
+        """
+        External Elasticsearch logs specific user configurable settings
+        """
+        return pulumi.get(self, "external_elasticsearch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalGoogleCloudLoggingUserConfig")
+    def external_google_cloud_logging_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig']]:
+        """
+        External Google Cloud Logging specific user configurable settings
+        """
+        return pulumi.get(self, "external_google_cloud_logging_user_config")
 
     @property
     @pulumi.getter(name="integrationType")

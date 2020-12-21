@@ -46,11 +46,19 @@ type ServiceUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// is the access key of the user (not applicable for all services).
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// is the password of the user (not applicable for all services).
+	// Authentication details
+	Authentication pulumi.StringPtrOutput `pulumi:"authentication"`
+	// Password of the user
 	Password pulumi.StringOutput `pulumi:"password"`
 	// and `serviceName` - (Required) define the project and service the user belongs to.
 	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Command category rules
+	RedisAclCategories pulumi.StringArrayOutput `pulumi:"redisAclCategories"`
+	// Rules for individual commands
+	RedisAclCommands pulumi.StringArrayOutput `pulumi:"redisAclCommands"`
+	// Key access rules
+	RedisAclKeys pulumi.StringArrayOutput `pulumi:"redisAclKeys"`
 	// Service to link the user to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// tells whether the user is primary account or regular account.
@@ -100,11 +108,19 @@ type serviceUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// is the access key of the user (not applicable for all services).
 	AccessKey *string `pulumi:"accessKey"`
-	// is the password of the user (not applicable for all services).
+	// Authentication details
+	Authentication *string `pulumi:"authentication"`
+	// Password of the user
 	Password *string `pulumi:"password"`
 	// and `serviceName` - (Required) define the project and service the user belongs to.
 	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project *string `pulumi:"project"`
+	// Command category rules
+	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	// Rules for individual commands
+	RedisAclCommands []string `pulumi:"redisAclCommands"`
+	// Key access rules
+	RedisAclKeys []string `pulumi:"redisAclKeys"`
 	// Service to link the user to
 	ServiceName *string `pulumi:"serviceName"`
 	// tells whether the user is primary account or regular account.
@@ -118,11 +134,19 @@ type ServiceUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// is the access key of the user (not applicable for all services).
 	AccessKey pulumi.StringPtrInput
-	// is the password of the user (not applicable for all services).
+	// Authentication details
+	Authentication pulumi.StringPtrInput
+	// Password of the user
 	Password pulumi.StringPtrInput
 	// and `serviceName` - (Required) define the project and service the user belongs to.
 	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringPtrInput
+	// Command category rules
+	RedisAclCategories pulumi.StringArrayInput
+	// Rules for individual commands
+	RedisAclCommands pulumi.StringArrayInput
+	// Key access rules
+	RedisAclKeys pulumi.StringArrayInput
 	// Service to link the user to
 	ServiceName pulumi.StringPtrInput
 	// tells whether the user is primary account or regular account.
@@ -136,9 +160,19 @@ func (ServiceUserState) ElementType() reflect.Type {
 }
 
 type serviceUserArgs struct {
+	// Authentication details
+	Authentication *string `pulumi:"authentication"`
+	// Password of the user
+	Password *string `pulumi:"password"`
 	// and `serviceName` - (Required) define the project and service the user belongs to.
 	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project string `pulumi:"project"`
+	// Command category rules
+	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	// Rules for individual commands
+	RedisAclCommands []string `pulumi:"redisAclCommands"`
+	// Key access rules
+	RedisAclKeys []string `pulumi:"redisAclKeys"`
 	// Service to link the user to
 	ServiceName string `pulumi:"serviceName"`
 	// is the actual name of the user account.
@@ -147,9 +181,19 @@ type serviceUserArgs struct {
 
 // The set of arguments for constructing a ServiceUser resource.
 type ServiceUserArgs struct {
+	// Authentication details
+	Authentication pulumi.StringPtrInput
+	// Password of the user
+	Password pulumi.StringPtrInput
 	// and `serviceName` - (Required) define the project and service the user belongs to.
 	// They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringInput
+	// Command category rules
+	RedisAclCategories pulumi.StringArrayInput
+	// Rules for individual commands
+	RedisAclCommands pulumi.StringArrayInput
+	// Key access rules
+	RedisAclKeys pulumi.StringArrayInput
 	// Service to link the user to
 	ServiceName pulumi.StringInput
 	// is the actual name of the user account.

@@ -146,6 +146,9 @@ __all__ = [
     'ServiceIntegrationEndpointPrometheusUserConfig',
     'ServiceIntegrationEndpointRsyslogUserConfig',
     'ServiceIntegrationEndpointSignalfxUserConfig',
+    'ServiceIntegrationExternalAwsCloudwatchLogsUserConfig',
+    'ServiceIntegrationExternalElasticsearchLogsUserConfig',
+    'ServiceIntegrationExternalGoogleCloudLoggingUserConfig',
     'ServiceIntegrationKafkaConnectUserConfig',
     'ServiceIntegrationKafkaConnectUserConfigKafkaConnect',
     'ServiceIntegrationKafkaMirrormakerUserConfig',
@@ -324,6 +327,9 @@ __all__ = [
     'GetServiceIntegrationEndpointPrometheusUserConfigResult',
     'GetServiceIntegrationEndpointRsyslogUserConfigResult',
     'GetServiceIntegrationEndpointSignalfxUserConfigResult',
+    'GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult',
+    'GetServiceIntegrationExternalElasticsearchLogsUserConfigResult',
+    'GetServiceIntegrationExternalGoogleCloudLoggingUserConfigResult',
     'GetServiceIntegrationKafkaConnectUserConfigResult',
     'GetServiceIntegrationKafkaConnectUserConfigKafkaConnectResult',
     'GetServiceIntegrationKafkaMirrormakerUserConfigResult',
@@ -9905,6 +9911,33 @@ class ServiceIntegrationEndpointSignalfxUserConfig(dict):
     @pulumi.getter(name="signalfxRealm")
     def signalfx_realm(self) -> Optional[str]:
         return pulumi.get(self, "signalfx_realm")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationExternalAwsCloudwatchLogsUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationExternalElasticsearchLogsUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationExternalGoogleCloudLoggingUserConfig(dict):
+    def __init__(__self__):
+        pass
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -21356,6 +21389,24 @@ class GetServiceIntegrationEndpointSignalfxUserConfigResult(dict):
     @pulumi.getter(name="signalfxRealm")
     def signalfx_realm(self) -> Optional[str]:
         return pulumi.get(self, "signalfx_realm")
+
+
+@pulumi.output_type
+class GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetServiceIntegrationExternalElasticsearchLogsUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetServiceIntegrationExternalGoogleCloudLoggingUserConfigResult(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

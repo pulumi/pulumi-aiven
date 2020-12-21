@@ -3114,6 +3114,15 @@ export interface GetServiceIntegrationEndpointSignalfxUserConfig {
     signalfxRealm?: string;
 }
 
+export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+}
+
+export interface GetServiceIntegrationExternalElasticsearchLogsUserConfig {
+}
+
+export interface GetServiceIntegrationExternalGoogleCloudLoggingUserConfig {
+}
+
 export interface GetServiceIntegrationKafkaConnectUserConfig {
     kafkaConnect?: inputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
@@ -5940,6 +5949,15 @@ export interface ServiceIntegrationEndpointSignalfxUserConfig {
     enabledMetrics?: pulumi.Input<pulumi.Input<string>[]>;
     signalfxApiKey?: pulumi.Input<string>;
     signalfxRealm?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+}
+
+export interface ServiceIntegrationExternalElasticsearchLogsUserConfig {
+}
+
+export interface ServiceIntegrationExternalGoogleCloudLoggingUserConfig {
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {
