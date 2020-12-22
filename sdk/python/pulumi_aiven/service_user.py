@@ -15,7 +15,12 @@ class ServiceUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 authentication: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -40,8 +45,13 @@ class ServiceUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] authentication: Authentication details
+        :param pulumi.Input[str] password: Password of the user
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to.
                They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Command category rules
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Rules for individual commands
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Key access rules
         :param pulumi.Input[str] service_name: Service to link the user to
         :param pulumi.Input[str] username: is the actual name of the user account.
         """
@@ -62,9 +72,14 @@ class ServiceUser(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['authentication'] = authentication
+            __props__['password'] = password
             if project is None:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
+            __props__['redis_acl_categories'] = redis_acl_categories
+            __props__['redis_acl_commands'] = redis_acl_commands
+            __props__['redis_acl_keys'] = redis_acl_keys
             if service_name is None:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
@@ -73,7 +88,6 @@ class ServiceUser(pulumi.CustomResource):
             __props__['username'] = username
             __props__['access_cert'] = None
             __props__['access_key'] = None
-            __props__['password'] = None
             __props__['type'] = None
         super(ServiceUser, __self__).__init__(
             'aiven:index/serviceUser:ServiceUser',
@@ -87,8 +101,12 @@ class ServiceUser(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_cert: Optional[pulumi.Input[str]] = None,
             access_key: Optional[pulumi.Input[str]] = None,
+            authentication: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'ServiceUser':
@@ -101,9 +119,13 @@ class ServiceUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_cert: is the access certificate of the user (not applicable for all services).
         :param pulumi.Input[str] access_key: is the access key of the user (not applicable for all services).
-        :param pulumi.Input[str] password: is the password of the user (not applicable for all services).
+        :param pulumi.Input[str] authentication: Authentication details
+        :param pulumi.Input[str] password: Password of the user
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to.
                They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Command category rules
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Rules for individual commands
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Key access rules
         :param pulumi.Input[str] service_name: Service to link the user to
         :param pulumi.Input[str] type: tells whether the user is primary account or regular account.
         :param pulumi.Input[str] username: is the actual name of the user account.
@@ -114,8 +136,12 @@ class ServiceUser(pulumi.CustomResource):
 
         __props__["access_cert"] = access_cert
         __props__["access_key"] = access_key
+        __props__["authentication"] = authentication
         __props__["password"] = password
         __props__["project"] = project
+        __props__["redis_acl_categories"] = redis_acl_categories
+        __props__["redis_acl_commands"] = redis_acl_commands
+        __props__["redis_acl_keys"] = redis_acl_keys
         __props__["service_name"] = service_name
         __props__["type"] = type
         __props__["username"] = username
@@ -139,9 +165,17 @@ class ServiceUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def authentication(self) -> pulumi.Output[Optional[str]]:
+        """
+        Authentication details
+        """
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        is the password of the user (not applicable for all services).
+        Password of the user
         """
         return pulumi.get(self, "password")
 
@@ -153,6 +187,30 @@ class ServiceUser(pulumi.CustomResource):
         They should be defined using reference as shown above to set up dependencies correctly.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="redisAclCategories")
+    def redis_acl_categories(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Command category rules
+        """
+        return pulumi.get(self, "redis_acl_categories")
+
+    @property
+    @pulumi.getter(name="redisAclCommands")
+    def redis_acl_commands(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Rules for individual commands
+        """
+        return pulumi.get(self, "redis_acl_commands")
+
+    @property
+    @pulumi.getter(name="redisAclKeys")
+    def redis_acl_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Key access rules
+        """
+        return pulumi.get(self, "redis_acl_keys")
 
     @property
     @pulumi.getter(name="serviceName")

@@ -60,6 +60,9 @@ namespace Pulumi.Aiven
         [Input("accessKey")]
         public string? AccessKey { get; set; }
 
+        [Input("authentication")]
+        public string? Authentication { get; set; }
+
         /// <summary>
         /// is the password of the user (not applicable for all services).
         /// </summary>
@@ -72,6 +75,30 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
+
+        [Input("redisAclCategories")]
+        private List<string>? _redisAclCategories;
+        public List<string> RedisAclCategories
+        {
+            get => _redisAclCategories ?? (_redisAclCategories = new List<string>());
+            set => _redisAclCategories = value;
+        }
+
+        [Input("redisAclCommands")]
+        private List<string>? _redisAclCommands;
+        public List<string> RedisAclCommands
+        {
+            get => _redisAclCommands ?? (_redisAclCommands = new List<string>());
+            set => _redisAclCommands = value;
+        }
+
+        [Input("redisAclKeys")]
+        private List<string>? _redisAclKeys;
+        public List<string> RedisAclKeys
+        {
+            get => _redisAclKeys ?? (_redisAclKeys = new List<string>());
+            set => _redisAclKeys = value;
+        }
 
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -105,6 +132,7 @@ namespace Pulumi.Aiven
         /// is the access key of the user (not applicable for all services).
         /// </summary>
         public readonly string AccessKey;
+        public readonly string? Authentication;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -114,6 +142,9 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Password;
         public readonly string Project;
+        public readonly ImmutableArray<string> RedisAclCategories;
+        public readonly ImmutableArray<string> RedisAclCommands;
+        public readonly ImmutableArray<string> RedisAclKeys;
         public readonly string ServiceName;
         /// <summary>
         /// tells whether the user is primary account or regular account.
@@ -127,11 +158,19 @@ namespace Pulumi.Aiven
 
             string accessKey,
 
+            string? authentication,
+
             string id,
 
             string password,
 
             string project,
+
+            ImmutableArray<string> redisAclCategories,
+
+            ImmutableArray<string> redisAclCommands,
+
+            ImmutableArray<string> redisAclKeys,
 
             string serviceName,
 
@@ -141,9 +180,13 @@ namespace Pulumi.Aiven
         {
             AccessCert = accessCert;
             AccessKey = accessKey;
+            Authentication = authentication;
             Id = id;
             Password = password;
             Project = project;
+            RedisAclCategories = redisAclCategories;
+            RedisAclCommands = redisAclCommands;
+            RedisAclKeys = redisAclKeys;
             ServiceName = serviceName;
             Type = type;
             Username = username;

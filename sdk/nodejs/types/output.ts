@@ -3114,6 +3114,15 @@ export interface GetServiceIntegrationEndpointSignalfxUserConfig {
     signalfxRealm?: string;
 }
 
+export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+}
+
+export interface GetServiceIntegrationExternalElasticsearchLogsUserConfig {
+}
+
+export interface GetServiceIntegrationExternalGoogleCloudLoggingUserConfig {
+}
+
 export interface GetServiceIntegrationKafkaConnectUserConfig {
     kafkaConnect?: outputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
@@ -5940,6 +5949,15 @@ export interface ServiceIntegrationEndpointSignalfxUserConfig {
     enabledMetrics?: string[];
     signalfxApiKey?: string;
     signalfxRealm?: string;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+}
+
+export interface ServiceIntegrationExternalElasticsearchLogsUserConfig {
+}
+
+export interface ServiceIntegrationExternalGoogleCloudLoggingUserConfig {
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {

@@ -56,7 +56,10 @@ type LookupServiceIntegrationArgs struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// identifies the target side of
 	// the integration.
-	DestinationServiceName string `pulumi:"destinationServiceName"`
+	DestinationServiceName               string                                                     `pulumi:"destinationServiceName"`
+	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
+	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// identifies the type of integration that is set up. Possible values
 	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType            string                                           `pulumi:"integrationType"`
@@ -74,8 +77,11 @@ type LookupServiceIntegrationArgs struct {
 
 // A collection of values returned by getServiceIntegration.
 type LookupServiceIntegrationResult struct {
-	DestinationEndpointId  *string `pulumi:"destinationEndpointId"`
-	DestinationServiceName string  `pulumi:"destinationServiceName"`
+	DestinationEndpointId                *string                                                    `pulumi:"destinationEndpointId"`
+	DestinationServiceName               string                                                     `pulumi:"destinationServiceName"`
+	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
+	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string                                           `pulumi:"id"`
 	IntegrationType            string                                           `pulumi:"integrationType"`

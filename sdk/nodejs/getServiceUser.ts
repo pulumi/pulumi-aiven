@@ -34,8 +34,12 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
     return pulumi.runtime.invoke("aiven:index/getServiceUser:getServiceUser", {
         "accessCert": args.accessCert,
         "accessKey": args.accessKey,
+        "authentication": args.authentication,
         "password": args.password,
         "project": args.project,
+        "redisAclCategories": args.redisAclCategories,
+        "redisAclCommands": args.redisAclCommands,
+        "redisAclKeys": args.redisAclKeys,
         "serviceName": args.serviceName,
         "type": args.type,
         "username": args.username,
@@ -54,6 +58,7 @@ export interface GetServiceUserArgs {
      * is the access key of the user (not applicable for all services).
      */
     readonly accessKey?: string;
+    readonly authentication?: string;
     /**
      * is the password of the user (not applicable for all services).
      */
@@ -63,6 +68,9 @@ export interface GetServiceUserArgs {
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: string;
+    readonly redisAclCategories?: string[];
+    readonly redisAclCommands?: string[];
+    readonly redisAclKeys?: string[];
     readonly serviceName: string;
     /**
      * tells whether the user is primary account or regular account.
@@ -86,6 +94,7 @@ export interface GetServiceUserResult {
      * is the access key of the user (not applicable for all services).
      */
     readonly accessKey: string;
+    readonly authentication?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -95,6 +104,9 @@ export interface GetServiceUserResult {
      */
     readonly password: string;
     readonly project: string;
+    readonly redisAclCategories?: string[];
+    readonly redisAclCommands?: string[];
+    readonly redisAclKeys?: string[];
     readonly serviceName: string;
     /**
      * tells whether the user is primary account or regular account.

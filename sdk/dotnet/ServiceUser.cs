@@ -50,7 +50,13 @@ namespace Pulumi.Aiven
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// is the password of the user (not applicable for all services).
+        /// Authentication details
+        /// </summary>
+        [Output("authentication")]
+        public Output<string?> Authentication { get; private set; } = null!;
+
+        /// <summary>
+        /// Password of the user
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -61,6 +67,24 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Command category rules
+        /// </summary>
+        [Output("redisAclCategories")]
+        public Output<ImmutableArray<string>> RedisAclCategories { get; private set; } = null!;
+
+        /// <summary>
+        /// Rules for individual commands
+        /// </summary>
+        [Output("redisAclCommands")]
+        public Output<ImmutableArray<string>> RedisAclCommands { get; private set; } = null!;
+
+        /// <summary>
+        /// Key access rules
+        /// </summary>
+        [Output("redisAclKeys")]
+        public Output<ImmutableArray<string>> RedisAclKeys { get; private set; } = null!;
 
         /// <summary>
         /// Service to link the user to
@@ -127,11 +151,59 @@ namespace Pulumi.Aiven
     public sealed class ServiceUserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Authentication details
+        /// </summary>
+        [Input("authentication")]
+        public Input<string>? Authentication { get; set; }
+
+        /// <summary>
+        /// Password of the user
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
         /// and `service_name` - (Required) define the project and service the user belongs to.
         /// They should be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        [Input("redisAclCategories")]
+        private InputList<string>? _redisAclCategories;
+
+        /// <summary>
+        /// Command category rules
+        /// </summary>
+        public InputList<string> RedisAclCategories
+        {
+            get => _redisAclCategories ?? (_redisAclCategories = new InputList<string>());
+            set => _redisAclCategories = value;
+        }
+
+        [Input("redisAclCommands")]
+        private InputList<string>? _redisAclCommands;
+
+        /// <summary>
+        /// Rules for individual commands
+        /// </summary>
+        public InputList<string> RedisAclCommands
+        {
+            get => _redisAclCommands ?? (_redisAclCommands = new InputList<string>());
+            set => _redisAclCommands = value;
+        }
+
+        [Input("redisAclKeys")]
+        private InputList<string>? _redisAclKeys;
+
+        /// <summary>
+        /// Key access rules
+        /// </summary>
+        public InputList<string> RedisAclKeys
+        {
+            get => _redisAclKeys ?? (_redisAclKeys = new InputList<string>());
+            set => _redisAclKeys = value;
+        }
 
         /// <summary>
         /// Service to link the user to
@@ -165,7 +237,13 @@ namespace Pulumi.Aiven
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// is the password of the user (not applicable for all services).
+        /// Authentication details
+        /// </summary>
+        [Input("authentication")]
+        public Input<string>? Authentication { get; set; }
+
+        /// <summary>
+        /// Password of the user
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -176,6 +254,42 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("redisAclCategories")]
+        private InputList<string>? _redisAclCategories;
+
+        /// <summary>
+        /// Command category rules
+        /// </summary>
+        public InputList<string> RedisAclCategories
+        {
+            get => _redisAclCategories ?? (_redisAclCategories = new InputList<string>());
+            set => _redisAclCategories = value;
+        }
+
+        [Input("redisAclCommands")]
+        private InputList<string>? _redisAclCommands;
+
+        /// <summary>
+        /// Rules for individual commands
+        /// </summary>
+        public InputList<string> RedisAclCommands
+        {
+            get => _redisAclCommands ?? (_redisAclCommands = new InputList<string>());
+            set => _redisAclCommands = value;
+        }
+
+        [Input("redisAclKeys")]
+        private InputList<string>? _redisAclKeys;
+
+        /// <summary>
+        /// Key access rules
+        /// </summary>
+        public InputList<string> RedisAclKeys
+        {
+            get => _redisAclKeys ?? (_redisAclKeys = new InputList<string>());
+            set => _redisAclKeys = value;
+        }
 
         /// <summary>
         /// Service to link the user to

@@ -60,6 +60,24 @@ namespace Pulumi.Aiven
         public Output<string?> DestinationServiceName { get; private set; } = null!;
 
         /// <summary>
+        /// External AWS Cloudwatch logs specific user configurable settings
+        /// </summary>
+        [Output("externalAwsCloudwatchLogsUserConfig")]
+        public Output<Outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig?> ExternalAwsCloudwatchLogsUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// External Elasticsearch logs specific user configurable settings
+        /// </summary>
+        [Output("externalElasticsearchLogsUserConfig")]
+        public Output<Outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig?> ExternalElasticsearchLogsUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// External Google Cloud Logging specific user configurable settings
+        /// </summary>
+        [Output("externalGoogleCloudLoggingUserConfig")]
+        public Output<Outputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig?> ExternalGoogleCloudLoggingUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// identifies the type of integration that is set up. Possible values
         /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
@@ -173,6 +191,24 @@ namespace Pulumi.Aiven
         public Input<string>? DestinationServiceName { get; set; }
 
         /// <summary>
+        /// External AWS Cloudwatch logs specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// External Elasticsearch logs specific user configurable settings
+        /// </summary>
+        [Input("externalElasticsearchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalElasticsearchLogsUserConfigArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// External Google Cloud Logging specific user configurable settings
+        /// </summary>
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
+
+        /// <summary>
         /// identifies the type of integration that is set up. Possible values
         /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
@@ -245,6 +281,24 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("destinationServiceName")]
         public Input<string>? DestinationServiceName { get; set; }
+
+        /// <summary>
+        /// External AWS Cloudwatch logs specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfigGetArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// External Elasticsearch logs specific user configurable settings
+        /// </summary>
+        [Input("externalElasticsearchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalElasticsearchLogsUserConfigGetArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// External Google Cloud Logging specific user configurable settings
+        /// </summary>
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfigGetArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
 
         /// <summary>
         /// identifies the type of integration that is set up. Possible values

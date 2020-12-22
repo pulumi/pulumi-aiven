@@ -59,14 +59,30 @@ export class ServiceUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * is the password of the user (not applicable for all services).
+     * Authentication details
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    public readonly authentication!: pulumi.Output<string | undefined>;
+    /**
+     * Password of the user
+     */
+    public readonly password!: pulumi.Output<string>;
     /**
      * and `serviceName` - (Required) define the project and service the user belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Command category rules
+     */
+    public readonly redisAclCategories!: pulumi.Output<string[] | undefined>;
+    /**
+     * Rules for individual commands
+     */
+    public readonly redisAclCommands!: pulumi.Output<string[] | undefined>;
+    /**
+     * Key access rules
+     */
+    public readonly redisAclKeys!: pulumi.Output<string[] | undefined>;
     /**
      * Service to link the user to
      */
@@ -94,8 +110,12 @@ export class ServiceUser extends pulumi.CustomResource {
             const state = argsOrState as ServiceUserState | undefined;
             inputs["accessCert"] = state ? state.accessCert : undefined;
             inputs["accessKey"] = state ? state.accessKey : undefined;
+            inputs["authentication"] = state ? state.authentication : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["redisAclCategories"] = state ? state.redisAclCategories : undefined;
+            inputs["redisAclCommands"] = state ? state.redisAclCommands : undefined;
+            inputs["redisAclKeys"] = state ? state.redisAclKeys : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["username"] = state ? state.username : undefined;
@@ -110,12 +130,16 @@ export class ServiceUser extends pulumi.CustomResource {
             if (!args || args.username === undefined) {
                 throw new Error("Missing required property 'username'");
             }
+            inputs["authentication"] = args ? args.authentication : undefined;
+            inputs["password"] = args ? args.password : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["redisAclCategories"] = args ? args.redisAclCategories : undefined;
+            inputs["redisAclCommands"] = args ? args.redisAclCommands : undefined;
+            inputs["redisAclKeys"] = args ? args.redisAclKeys : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["username"] = args ? args.username : undefined;
             inputs["accessCert"] = undefined /*out*/;
             inputs["accessKey"] = undefined /*out*/;
-            inputs["password"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
         if (!opts) {
@@ -142,7 +166,11 @@ export interface ServiceUserState {
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * is the password of the user (not applicable for all services).
+     * Authentication details
+     */
+    readonly authentication?: pulumi.Input<string>;
+    /**
+     * Password of the user
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -150,6 +178,18 @@ export interface ServiceUserState {
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Command category rules
+     */
+    readonly redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Rules for individual commands
+     */
+    readonly redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Key access rules
+     */
+    readonly redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service to link the user to
      */
@@ -169,10 +209,30 @@ export interface ServiceUserState {
  */
 export interface ServiceUserArgs {
     /**
+     * Authentication details
+     */
+    readonly authentication?: pulumi.Input<string>;
+    /**
+     * Password of the user
+     */
+    readonly password?: pulumi.Input<string>;
+    /**
      * and `serviceName` - (Required) define the project and service the user belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
+    /**
+     * Command category rules
+     */
+    readonly redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Rules for individual commands
+     */
+    readonly redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Key access rules
+     */
+    readonly redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service to link the user to
      */

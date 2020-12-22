@@ -49,13 +49,17 @@ type LookupServiceUserArgs struct {
 	// is the access certificate of the user (not applicable for all services).
 	AccessCert *string `pulumi:"accessCert"`
 	// is the access key of the user (not applicable for all services).
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey      *string `pulumi:"accessKey"`
+	Authentication *string `pulumi:"authentication"`
 	// is the password of the user (not applicable for all services).
 	Password *string `pulumi:"password"`
 	// and `serviceName` - (Required) define the project and service the user belongs to.
 	// They should be defined using reference as shown above to set up dependencies correctly.
-	Project     string `pulumi:"project"`
-	ServiceName string `pulumi:"serviceName"`
+	Project            string   `pulumi:"project"`
+	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	RedisAclCommands   []string `pulumi:"redisAclCommands"`
+	RedisAclKeys       []string `pulumi:"redisAclKeys"`
+	ServiceName        string   `pulumi:"serviceName"`
 	// tells whether the user is primary account or regular account.
 	Type *string `pulumi:"type"`
 	// is the actual name of the user account.
@@ -67,13 +71,17 @@ type LookupServiceUserResult struct {
 	// is the access certificate of the user (not applicable for all services).
 	AccessCert string `pulumi:"accessCert"`
 	// is the access key of the user (not applicable for all services).
-	AccessKey string `pulumi:"accessKey"`
+	AccessKey      string  `pulumi:"accessKey"`
+	Authentication *string `pulumi:"authentication"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// is the password of the user (not applicable for all services).
-	Password    string `pulumi:"password"`
-	Project     string `pulumi:"project"`
-	ServiceName string `pulumi:"serviceName"`
+	Password           string   `pulumi:"password"`
+	Project            string   `pulumi:"project"`
+	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	RedisAclCommands   []string `pulumi:"redisAclCommands"`
+	RedisAclKeys       []string `pulumi:"redisAclKeys"`
+	ServiceName        string   `pulumi:"serviceName"`
 	// tells whether the user is primary account or regular account.
 	Type     string `pulumi:"type"`
 	Username string `pulumi:"username"`
