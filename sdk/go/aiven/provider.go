@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.ApiToken == nil {
 		args.ApiToken = pulumi.StringPtr(getEnvOrDefault("", nil, "AIVEN_API_TOKEN").(string))
 	}

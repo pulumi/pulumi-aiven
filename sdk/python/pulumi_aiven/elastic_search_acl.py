@@ -103,10 +103,10 @@ class ElasticSearchAcl(pulumi.CustomResource):
             __props__['acls'] = acls
             __props__['enabled'] = enabled
             __props__['extended_acl'] = extended_acl
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
         super(ElasticSearchAcl, __self__).__init__(

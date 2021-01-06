@@ -46,14 +46,15 @@ type AccountAuthentication struct {
 // NewAccountAuthentication registers a new resource with the given unique name, arguments, and options.
 func NewAccountAuthentication(ctx *pulumi.Context,
 	name string, args *AccountAuthenticationArgs, opts ...pulumi.ResourceOption) (*AccountAuthentication, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &AccountAuthenticationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource AccountAuthentication
 	err := ctx.RegisterResource("aiven:index/accountAuthentication:AccountAuthentication", name, args, &resource, opts...)

@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrading pulumi-terraform-bridge to v2.17.0
 
 ---
 

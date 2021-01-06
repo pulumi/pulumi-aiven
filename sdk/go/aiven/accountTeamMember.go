@@ -43,17 +43,18 @@ type AccountTeamMember struct {
 // NewAccountTeamMember registers a new resource with the given unique name, arguments, and options.
 func NewAccountTeamMember(ctx *pulumi.Context,
 	name string, args *AccountTeamMemberArgs, opts ...pulumi.ResourceOption) (*AccountTeamMember, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.TeamId == nil {
-		return nil, errors.New("missing required argument 'TeamId'")
-	}
-	if args == nil || args.UserEmail == nil {
-		return nil, errors.New("missing required argument 'UserEmail'")
-	}
 	if args == nil {
-		args = &AccountTeamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.TeamId == nil {
+		return nil, errors.New("invalid value for required argument 'TeamId'")
+	}
+	if args.UserEmail == nil {
+		return nil, errors.New("invalid value for required argument 'UserEmail'")
 	}
 	var resource AccountTeamMember
 	err := ctx.RegisterResource("aiven:index/accountTeamMember:AccountTeamMember", name, args, &resource, opts...)

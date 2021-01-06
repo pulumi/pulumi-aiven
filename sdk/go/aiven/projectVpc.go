@@ -57,17 +57,18 @@ type ProjectVpc struct {
 // NewProjectVpc registers a new resource with the given unique name, arguments, and options.
 func NewProjectVpc(ctx *pulumi.Context,
 	name string, args *ProjectVpcArgs, opts ...pulumi.ResourceOption) (*ProjectVpc, error) {
-	if args == nil || args.CloudName == nil {
-		return nil, errors.New("missing required argument 'CloudName'")
-	}
-	if args == nil || args.NetworkCidr == nil {
-		return nil, errors.New("missing required argument 'NetworkCidr'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ProjectVpcArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CloudName == nil {
+		return nil, errors.New("invalid value for required argument 'CloudName'")
+	}
+	if args.NetworkCidr == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkCidr'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectVpc
 	err := ctx.RegisterResource("aiven:index/projectVpc:ProjectVpc", name, args, &resource, opts...)

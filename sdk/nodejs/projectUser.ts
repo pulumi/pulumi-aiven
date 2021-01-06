@@ -88,13 +88,13 @@ export class ProjectUser extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectUserArgs | undefined;
-            if (!args || args.email === undefined) {
+            if ((!args || args.email === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'email'");
             }
-            if (!args || args.memberType === undefined) {
+            if ((!args || args.memberType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'memberType'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["email"] = args ? args.email : undefined;

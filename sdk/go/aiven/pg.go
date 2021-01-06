@@ -90,14 +90,15 @@ type Pg struct {
 // NewPg registers a new resource with the given unique name, arguments, and options.
 func NewPg(ctx *pulumi.Context,
 	name string, args *PgArgs, opts ...pulumi.ResourceOption) (*Pg, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &PgArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource Pg
 	err := ctx.RegisterResource("aiven:index/pg:Pg", name, args, &resource, opts...)
