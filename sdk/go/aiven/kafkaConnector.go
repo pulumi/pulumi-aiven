@@ -85,20 +85,21 @@ type KafkaConnector struct {
 // NewKafkaConnector registers a new resource with the given unique name, arguments, and options.
 func NewKafkaConnector(ctx *pulumi.Context,
 	name string, args *KafkaConnectorArgs, opts ...pulumi.ResourceOption) (*KafkaConnector, error) {
-	if args == nil || args.Config == nil {
-		return nil, errors.New("missing required argument 'Config'")
-	}
-	if args == nil || args.ConnectorName == nil {
-		return nil, errors.New("missing required argument 'ConnectorName'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &KafkaConnectorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Config == nil {
+		return nil, errors.New("invalid value for required argument 'Config'")
+	}
+	if args.ConnectorName == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectorName'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource KafkaConnector
 	err := ctx.RegisterResource("aiven:index/kafkaConnector:KafkaConnector", name, args, &resource, opts...)

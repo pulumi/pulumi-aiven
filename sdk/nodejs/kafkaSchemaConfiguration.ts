@@ -86,13 +86,13 @@ export class KafkaSchemaConfiguration extends pulumi.CustomResource {
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as KafkaSchemaConfigurationArgs | undefined;
-            if (!args || args.compatibilityLevel === undefined) {
+            if ((!args || args.compatibilityLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'compatibilityLevel'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["compatibilityLevel"] = args ? args.compatibilityLevel : undefined;

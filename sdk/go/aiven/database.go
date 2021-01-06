@@ -61,17 +61,18 @@ type Database struct {
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
 func NewDatabase(ctx *pulumi.Context,
 	name string, args *DatabaseArgs, opts ...pulumi.ResourceOption) (*Database, error) {
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &DatabaseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource Database
 	err := ctx.RegisterResource("aiven:index/database:Database", name, args, &resource, opts...)

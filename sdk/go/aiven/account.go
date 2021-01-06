@@ -57,6 +57,7 @@ func NewAccount(ctx *pulumi.Context,
 	if args == nil {
 		args = &AccountArgs{}
 	}
+
 	var resource Account
 	err := ctx.RegisterResource("aiven:index/account:Account", name, args, &resource, opts...)
 	if err != nil {

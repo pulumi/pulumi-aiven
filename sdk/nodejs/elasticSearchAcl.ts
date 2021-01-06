@@ -124,10 +124,10 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as ElasticSearchAclArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["acls"] = args ? args.acls : undefined;

@@ -102,14 +102,14 @@ class ServiceIntegration(pulumi.CustomResource):
             __props__['external_aws_cloudwatch_logs_user_config'] = external_aws_cloudwatch_logs_user_config
             __props__['external_elasticsearch_logs_user_config'] = external_elasticsearch_logs_user_config
             __props__['external_google_cloud_logging_user_config'] = external_google_cloud_logging_user_config
-            if integration_type is None:
+            if integration_type is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_type'")
             __props__['integration_type'] = integration_type
             __props__['kafka_connect_user_config'] = kafka_connect_user_config
             __props__['kafka_mirrormaker_user_config'] = kafka_mirrormaker_user_config
             __props__['logs_user_config'] = logs_user_config
             __props__['mirrormaker_user_config'] = mirrormaker_user_config
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['source_endpoint_id'] = source_endpoint_id

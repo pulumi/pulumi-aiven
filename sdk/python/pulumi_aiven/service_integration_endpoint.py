@@ -87,10 +87,10 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['datadog_user_config'] = datadog_user_config
-            if endpoint_name is None:
+            if endpoint_name is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_name'")
             __props__['endpoint_name'] = endpoint_name
-            if endpoint_type is None:
+            if endpoint_type is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_type'")
             __props__['endpoint_type'] = endpoint_type
             __props__['external_aws_cloudwatch_logs_user_config'] = external_aws_cloudwatch_logs_user_config
@@ -98,7 +98,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             __props__['external_google_cloud_logging_user_config'] = external_google_cloud_logging_user_config
             __props__['external_kafka_user_config'] = external_kafka_user_config
             __props__['jolokia_user_config'] = jolokia_user_config
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['prometheus_user_config'] = prometheus_user_config

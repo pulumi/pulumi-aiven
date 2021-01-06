@@ -89,13 +89,13 @@ export class ProjectVpc extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ProjectVpcArgs | undefined;
-            if (!args || args.cloudName === undefined) {
+            if ((!args || args.cloudName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cloudName'");
             }
-            if (!args || args.networkCidr === undefined) {
+            if ((!args || args.networkCidr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkCidr'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["cloudName"] = args ? args.cloudName : undefined;

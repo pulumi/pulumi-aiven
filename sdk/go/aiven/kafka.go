@@ -134,14 +134,15 @@ type Kafka struct {
 // NewKafka registers a new resource with the given unique name, arguments, and options.
 func NewKafka(ctx *pulumi.Context,
 	name string, args *KafkaArgs, opts ...pulumi.ResourceOption) (*Kafka, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &KafkaArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource Kafka
 	err := ctx.RegisterResource("aiven:index/kafka:Kafka", name, args, &resource, opts...)

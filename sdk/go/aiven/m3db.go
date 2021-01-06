@@ -126,14 +126,15 @@ type M3Db struct {
 // NewM3Db registers a new resource with the given unique name, arguments, and options.
 func NewM3Db(ctx *pulumi.Context,
 	name string, args *M3DbArgs, opts ...pulumi.ResourceOption) (*M3Db, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &M3DbArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource M3Db
 	err := ctx.RegisterResource("aiven:index/m3Db:M3Db", name, args, &resource, opts...)

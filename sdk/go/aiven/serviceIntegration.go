@@ -87,14 +87,15 @@ type ServiceIntegration struct {
 // NewServiceIntegration registers a new resource with the given unique name, arguments, and options.
 func NewServiceIntegration(ctx *pulumi.Context,
 	name string, args *ServiceIntegrationArgs, opts ...pulumi.ResourceOption) (*ServiceIntegration, error) {
-	if args == nil || args.IntegrationType == nil {
-		return nil, errors.New("missing required argument 'IntegrationType'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ServiceIntegrationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IntegrationType == nil {
+		return nil, errors.New("invalid value for required argument 'IntegrationType'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ServiceIntegration
 	err := ctx.RegisterResource("aiven:index/serviceIntegration:ServiceIntegration", name, args, &resource, opts...)
