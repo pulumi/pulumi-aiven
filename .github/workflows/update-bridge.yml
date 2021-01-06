@@ -1,7 +1,7 @@
 env:
   AIVEN_API_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
   AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
   GO111MODULE: "on"
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -69,7 +69,9 @@ jobs:
         author_name: pulumi-bot
         ref: update-bridge/${{ github.event.client_payload.ref }}-${{ github.run_id
           }}
-    - name: pull-request
+    - env:
+        GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+      name: pull-request
       uses: repo-sync/pull-request@v2
       with:
         destination_branch: master
