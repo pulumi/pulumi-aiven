@@ -58,17 +58,18 @@ type ProjectUser struct {
 // NewProjectUser registers a new resource with the given unique name, arguments, and options.
 func NewProjectUser(ctx *pulumi.Context,
 	name string, args *ProjectUserArgs, opts ...pulumi.ResourceOption) (*ProjectUser, error) {
-	if args == nil || args.Email == nil {
-		return nil, errors.New("missing required argument 'Email'")
-	}
-	if args == nil || args.MemberType == nil {
-		return nil, errors.New("missing required argument 'MemberType'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ProjectUserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Email == nil {
+		return nil, errors.New("invalid value for required argument 'Email'")
+	}
+	if args.MemberType == nil {
+		return nil, errors.New("invalid value for required argument 'MemberType'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectUser
 	err := ctx.RegisterResource("aiven:index/projectUser:ProjectUser", name, args, &resource, opts...)

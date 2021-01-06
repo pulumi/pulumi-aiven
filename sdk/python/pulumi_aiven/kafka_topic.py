@@ -94,37 +94,37 @@ class KafkaTopic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cleanup_policy is not None:
+            if cleanup_policy is not None and not opts.urn:
                 warnings.warn("""use config.cleanup_policy instead""", DeprecationWarning)
                 pulumi.log.warn("cleanup_policy is deprecated: use config.cleanup_policy instead")
             __props__['cleanup_policy'] = cleanup_policy
             __props__['config'] = config
-            if minimum_in_sync_replicas is not None:
+            if minimum_in_sync_replicas is not None and not opts.urn:
                 warnings.warn("""use config.min_insync_replicas instead""", DeprecationWarning)
                 pulumi.log.warn("minimum_in_sync_replicas is deprecated: use config.min_insync_replicas instead")
             __props__['minimum_in_sync_replicas'] = minimum_in_sync_replicas
-            if partitions is None:
+            if partitions is None and not opts.urn:
                 raise TypeError("Missing required property 'partitions'")
             __props__['partitions'] = partitions
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if replication is None:
+            if replication is None and not opts.urn:
                 raise TypeError("Missing required property 'replication'")
             __props__['replication'] = replication
-            if retention_bytes is not None:
+            if retention_bytes is not None and not opts.urn:
                 warnings.warn("""use config.retention_bytes instead""", DeprecationWarning)
                 pulumi.log.warn("retention_bytes is deprecated: use config.retention_bytes instead")
             __props__['retention_bytes'] = retention_bytes
-            if retention_hours is not None:
+            if retention_hours is not None and not opts.urn:
                 warnings.warn("""use config.retention_ms instead""", DeprecationWarning)
                 pulumi.log.warn("retention_hours is deprecated: use config.retention_ms instead")
             __props__['retention_hours'] = retention_hours
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
             __props__['termination_protection'] = termination_protection
-            if topic_name is None:
+            if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
             __props__['topic_name'] = topic_name
         super(KafkaTopic, __self__).__init__(

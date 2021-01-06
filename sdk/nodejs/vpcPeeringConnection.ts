@@ -122,13 +122,13 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as VpcPeeringConnectionArgs | undefined;
-            if (!args || args.peerCloudAccount === undefined) {
+            if ((!args || args.peerCloudAccount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerCloudAccount'");
             }
-            if (!args || args.peerVpc === undefined) {
+            if ((!args || args.peerVpc === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerVpc'");
             }
-            if (!args || args.vpcId === undefined) {
+            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["peerAzureAppId"] = args ? args.peerAzureAppId : undefined;

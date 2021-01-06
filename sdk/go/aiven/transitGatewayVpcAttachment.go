@@ -68,23 +68,24 @@ type TransitGatewayVpcAttachment struct {
 // NewTransitGatewayVpcAttachment registers a new resource with the given unique name, arguments, and options.
 func NewTransitGatewayVpcAttachment(ctx *pulumi.Context,
 	name string, args *TransitGatewayVpcAttachmentArgs, opts ...pulumi.ResourceOption) (*TransitGatewayVpcAttachment, error) {
-	if args == nil || args.PeerCloudAccount == nil {
-		return nil, errors.New("missing required argument 'PeerCloudAccount'")
-	}
-	if args == nil || args.PeerRegion == nil {
-		return nil, errors.New("missing required argument 'PeerRegion'")
-	}
-	if args == nil || args.PeerVpc == nil {
-		return nil, errors.New("missing required argument 'PeerVpc'")
-	}
-	if args == nil || args.UserPeerNetworkCidrs == nil {
-		return nil, errors.New("missing required argument 'UserPeerNetworkCidrs'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &TransitGatewayVpcAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PeerCloudAccount == nil {
+		return nil, errors.New("invalid value for required argument 'PeerCloudAccount'")
+	}
+	if args.PeerRegion == nil {
+		return nil, errors.New("invalid value for required argument 'PeerRegion'")
+	}
+	if args.PeerVpc == nil {
+		return nil, errors.New("invalid value for required argument 'PeerVpc'")
+	}
+	if args.UserPeerNetworkCidrs == nil {
+		return nil, errors.New("invalid value for required argument 'UserPeerNetworkCidrs'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource TransitGatewayVpcAttachment
 	err := ctx.RegisterResource("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment", name, args, &resource, opts...)

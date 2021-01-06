@@ -67,7 +67,7 @@ class AccountAuthentication(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if account_id is None:
+            if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__['account_id'] = account_id
             __props__['authentication_id'] = authentication_id
@@ -79,7 +79,7 @@ class AccountAuthentication(pulumi.CustomResource):
             __props__['saml_entity_id'] = saml_entity_id
             __props__['saml_idp_url'] = saml_idp_url
             __props__['saml_metadata_url'] = saml_metadata_url
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['update_time'] = update_time
