@@ -1,7 +1,7 @@
 env:
   AIVEN_API_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
   AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
-  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GO111MODULE: "on"
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -80,6 +80,7 @@ jobs:
         pr_assignee: stack72
         pr_body: '*Automated PR*'
         pr_label: automation/merge
+        pr_reviewer: stack72
         pr_title: Upgrade to ${{ github.event.client_payload.ref }} of pulumi-terraform-bridge
         source_branch: update-bridge/${{ github.event.client_payload.ref }}-${{ github.run_id
           }}
