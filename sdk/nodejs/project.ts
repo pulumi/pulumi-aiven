@@ -149,7 +149,7 @@ export class Project extends pulumi.CustomResource {
             inputs["vatId"] = state ? state.vatId : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;

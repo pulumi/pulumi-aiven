@@ -67,13 +67,13 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if compatibility_level is None:
+            if compatibility_level is None and not opts.urn:
                 raise TypeError("Missing required property 'compatibility_level'")
             __props__['compatibility_level'] = compatibility_level
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
         super(KafkaSchemaConfiguration, __self__).__init__(

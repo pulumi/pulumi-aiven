@@ -114,16 +114,16 @@ export class KafkaSchema extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as KafkaSchemaArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.schema === undefined) {
+            if ((!args || args.schema === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'schema'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if (!args || args.subjectName === undefined) {
+            if ((!args || args.subjectName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subjectName'");
             }
             inputs["compatibilityLevel"] = args ? args.compatibilityLevel : undefined;

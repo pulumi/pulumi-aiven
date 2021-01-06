@@ -145,10 +145,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
             inputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationArgs | undefined;
-            if (!args || args.integrationType === undefined) {
+            if ((!args || args.integrationType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'integrationType'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;

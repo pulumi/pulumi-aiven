@@ -77,10 +77,10 @@ export class AccountTeamProject extends pulumi.CustomResource {
             inputs["teamType"] = state ? state.teamType : undefined;
         } else {
             const args = argsOrState as AccountTeamProjectArgs | undefined;
-            if (!args || args.accountId === undefined) {
+            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if (!args || args.teamId === undefined) {
+            if ((!args || args.teamId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'teamId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;

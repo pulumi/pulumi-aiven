@@ -124,14 +124,15 @@ type Grafana struct {
 // NewGrafana registers a new resource with the given unique name, arguments, and options.
 func NewGrafana(ctx *pulumi.Context,
 	name string, args *GrafanaArgs, opts ...pulumi.ResourceOption) (*Grafana, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &GrafanaArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource Grafana
 	err := ctx.RegisterResource("aiven:index/grafana:Grafana", name, args, &resource, opts...)

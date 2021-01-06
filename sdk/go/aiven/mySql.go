@@ -131,14 +131,15 @@ type MySql struct {
 // NewMySql registers a new resource with the given unique name, arguments, and options.
 func NewMySql(ctx *pulumi.Context,
 	name string, args *MySqlArgs, opts ...pulumi.ResourceOption) (*MySql, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &MySqlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource MySql
 	err := ctx.RegisterResource("aiven:index/mySql:MySql", name, args, &resource, opts...)

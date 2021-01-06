@@ -147,19 +147,19 @@ export class KafkaTopic extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as KafkaTopicArgs | undefined;
-            if (!args || args.partitions === undefined) {
+            if ((!args || args.partitions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'partitions'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.replication === undefined) {
+            if ((!args || args.replication === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'replication'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if (!args || args.topicName === undefined) {
+            if ((!args || args.topicName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topicName'");
             }
             inputs["cleanupPolicy"] = args ? args.cleanupPolicy : undefined;

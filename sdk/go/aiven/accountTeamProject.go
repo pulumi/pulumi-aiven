@@ -35,14 +35,15 @@ type AccountTeamProject struct {
 // NewAccountTeamProject registers a new resource with the given unique name, arguments, and options.
 func NewAccountTeamProject(ctx *pulumi.Context,
 	name string, args *AccountTeamProjectArgs, opts ...pulumi.ResourceOption) (*AccountTeamProject, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.TeamId == nil {
-		return nil, errors.New("missing required argument 'TeamId'")
-	}
 	if args == nil {
-		args = &AccountTeamProjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.TeamId == nil {
+		return nil, errors.New("invalid value for required argument 'TeamId'")
 	}
 	var resource AccountTeamProject
 	err := ctx.RegisterResource("aiven:index/accountTeamProject:AccountTeamProject", name, args, &resource, opts...)

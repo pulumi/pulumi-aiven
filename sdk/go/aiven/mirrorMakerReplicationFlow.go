@@ -73,23 +73,24 @@ type MirrorMakerReplicationFlow struct {
 // NewMirrorMakerReplicationFlow registers a new resource with the given unique name, arguments, and options.
 func NewMirrorMakerReplicationFlow(ctx *pulumi.Context,
 	name string, args *MirrorMakerReplicationFlowArgs, opts ...pulumi.ResourceOption) (*MirrorMakerReplicationFlow, error) {
-	if args == nil || args.Enable == nil {
-		return nil, errors.New("missing required argument 'Enable'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
-	if args == nil || args.SourceCluster == nil {
-		return nil, errors.New("missing required argument 'SourceCluster'")
-	}
-	if args == nil || args.TargetCluster == nil {
-		return nil, errors.New("missing required argument 'TargetCluster'")
-	}
 	if args == nil {
-		args = &MirrorMakerReplicationFlowArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Enable == nil {
+		return nil, errors.New("invalid value for required argument 'Enable'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
+	}
+	if args.SourceCluster == nil {
+		return nil, errors.New("invalid value for required argument 'SourceCluster'")
+	}
+	if args.TargetCluster == nil {
+		return nil, errors.New("invalid value for required argument 'TargetCluster'")
 	}
 	var resource MirrorMakerReplicationFlow
 	err := ctx.RegisterResource("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow", name, args, &resource, opts...)
