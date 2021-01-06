@@ -53,14 +53,14 @@ jobs:
     - name: Install Chg for changelog
       run: sudo npm install -g chg
     - name: Update Dependency
-      run: |-
-        cd provider && go mod edit -require github.com/pulumi/pulumi-terraform-bridge/v2@${{ github.event.client_payload.ref }} & cd ../
-        cd provider && go mod tidy && cd ../
+      run: cd provider && go mod edit -require github.com/pulumi/pulumi-terraform-bridge/v2@${{
+        github.event.client_payload.ref }} && go mod tidy && cd ../
+      working-directory: ${{ github.workspace }}
     - name: Build tfgen & provider binaries
       run: make build_sdks
     - name: Create changelog entry
-      run: Upgrading pulumi-terraform-bridge to ${{ github.event.client_payload.ref
-        }}
+      run: chg add "Upgrading pulumi-terraform-bridge to ${{ github.event.client_payload.ref
+        }}"
     - run: git status
     - name: commit changes
       uses: EndBug/add-and-commit@v4
@@ -75,6 +75,7 @@ jobs:
         destination_branch: master
         github_token: ${{ secrets.PULUMI_BOT_TOKEN }}
         pr_allow_empty: true
+        pr_assignee: stack72
         pr_body: '*Automated PR*'
         pr_label: automation/merge
         pr_title: Upgrade to ${{ github.event.client_payload.ref }} of pulumi-terraform-bridge
