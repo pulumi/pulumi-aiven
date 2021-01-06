@@ -72,17 +72,18 @@ type VpcPeeringConnection struct {
 // NewVpcPeeringConnection registers a new resource with the given unique name, arguments, and options.
 func NewVpcPeeringConnection(ctx *pulumi.Context,
 	name string, args *VpcPeeringConnectionArgs, opts ...pulumi.ResourceOption) (*VpcPeeringConnection, error) {
-	if args == nil || args.PeerCloudAccount == nil {
-		return nil, errors.New("missing required argument 'PeerCloudAccount'")
-	}
-	if args == nil || args.PeerVpc == nil {
-		return nil, errors.New("missing required argument 'PeerVpc'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &VpcPeeringConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PeerCloudAccount == nil {
+		return nil, errors.New("invalid value for required argument 'PeerCloudAccount'")
+	}
+	if args.PeerVpc == nil {
+		return nil, errors.New("invalid value for required argument 'PeerVpc'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource VpcPeeringConnection
 	err := ctx.RegisterResource("aiven:index/vpcPeeringConnection:VpcPeeringConnection", name, args, &resource, opts...)

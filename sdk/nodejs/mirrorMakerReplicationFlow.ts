@@ -110,19 +110,19 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             inputs["topicsBlacklists"] = state ? state.topicsBlacklists : undefined;
         } else {
             const args = argsOrState as MirrorMakerReplicationFlowArgs | undefined;
-            if (!args || args.enable === undefined) {
+            if ((!args || args.enable === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'enable'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if (!args || args.sourceCluster === undefined) {
+            if ((!args || args.sourceCluster === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceCluster'");
             }
-            if (!args || args.targetCluster === undefined) {
+            if ((!args || args.targetCluster === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetCluster'");
             }
             inputs["enable"] = args ? args.enable : undefined;

@@ -80,16 +80,16 @@ class KafkaConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if config is None:
+            if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__['config'] = config
-            if connector_name is None:
+            if connector_name is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_name'")
             __props__['connector_name'] = connector_name
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
             __props__['plugin_author'] = None
