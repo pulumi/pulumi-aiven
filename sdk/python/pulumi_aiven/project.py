@@ -94,7 +94,7 @@ class Project(pulumi.CustomResource):
             __props__['copy_from_project'] = copy_from_project
             __props__['country_code'] = country_code
             __props__['default_cloud'] = default_cloud
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['technical_emails'] = technical_emails

@@ -136,13 +136,13 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationEndpointArgs | undefined;
-            if (!args || args.endpointName === undefined) {
+            if ((!args || args.endpointName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointName'");
             }
-            if (!args || args.endpointType === undefined) {
+            if ((!args || args.endpointType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;

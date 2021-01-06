@@ -120,14 +120,15 @@ type M3Aggregator struct {
 // NewM3Aggregator registers a new resource with the given unique name, arguments, and options.
 func NewM3Aggregator(ctx *pulumi.Context,
 	name string, args *M3AggregatorArgs, opts ...pulumi.ResourceOption) (*M3Aggregator, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &M3AggregatorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource M3Aggregator
 	err := ctx.RegisterResource("aiven:index/m3Aggregator:M3Aggregator", name, args, &resource, opts...)

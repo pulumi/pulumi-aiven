@@ -59,17 +59,18 @@ type KafkaSchemaConfiguration struct {
 // NewKafkaSchemaConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewKafkaSchemaConfiguration(ctx *pulumi.Context,
 	name string, args *KafkaSchemaConfigurationArgs, opts ...pulumi.ResourceOption) (*KafkaSchemaConfiguration, error) {
-	if args == nil || args.CompatibilityLevel == nil {
-		return nil, errors.New("missing required argument 'CompatibilityLevel'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &KafkaSchemaConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CompatibilityLevel == nil {
+		return nil, errors.New("invalid value for required argument 'CompatibilityLevel'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource KafkaSchemaConfiguration
 	err := ctx.RegisterResource("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, args, &resource, opts...)

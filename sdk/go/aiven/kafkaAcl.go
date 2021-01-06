@@ -63,23 +63,24 @@ type KafkaAcl struct {
 // NewKafkaAcl registers a new resource with the given unique name, arguments, and options.
 func NewKafkaAcl(ctx *pulumi.Context,
 	name string, args *KafkaAclArgs, opts ...pulumi.ResourceOption) (*KafkaAcl, error) {
-	if args == nil || args.Permission == nil {
-		return nil, errors.New("missing required argument 'Permission'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
-	if args == nil || args.Topic == nil {
-		return nil, errors.New("missing required argument 'Topic'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &KafkaAclArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Permission == nil {
+		return nil, errors.New("invalid value for required argument 'Permission'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
+	}
+	if args.Topic == nil {
+		return nil, errors.New("invalid value for required argument 'Topic'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource KafkaAcl
 	err := ctx.RegisterResource("aiven:index/kafkaAcl:KafkaAcl", name, args, &resource, opts...)
