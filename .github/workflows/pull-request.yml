@@ -304,3 +304,5 @@ jobs:
 name: pull-request
 "on":
   pull_request:
+    branches:
+    - master
