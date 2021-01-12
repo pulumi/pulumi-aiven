@@ -56,6 +56,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
+        /// Name of another project to fork a service from. This has
+        /// effect only when a new service is being created.
+        /// </summary>
+        public readonly string? ProjectToForkFrom;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigPublicAccessResult? PublicAccess;
@@ -89,6 +94,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetElasticSearchElasticsearchUserConfigPrivateAccessResult? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.GetElasticSearchElasticsearchUserConfigPublicAccessResult? publicAccess,
 
             string? recoveryBasebackupName,
@@ -104,6 +111,7 @@ namespace Pulumi.Aiven.Outputs
             Kibana = kibana;
             MaxIndexCount = maxIndexCount;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;

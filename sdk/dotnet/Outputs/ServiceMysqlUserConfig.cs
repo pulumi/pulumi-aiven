@@ -21,6 +21,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceMysqlUserConfigMysql? Mysql;
         public readonly string? MysqlVersion;
         public readonly Outputs.ServiceMysqlUserConfigPrivateAccess? PrivateAccess;
+        public readonly string? ProjectToForkFrom;
         public readonly Outputs.ServiceMysqlUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
@@ -43,6 +44,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceMysqlUserConfigPrivateAccess? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.ServiceMysqlUserConfigPublicAccess? publicAccess,
 
             string? recoveryTargetTime,
@@ -57,6 +60,7 @@ namespace Pulumi.Aiven.Outputs
             Mysql = mysql;
             MysqlVersion = mysqlVersion;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;

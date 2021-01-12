@@ -56,6 +56,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("privateAccess")]
         public Inputs.GetServicePgUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
+        [Input("projectToForkFrom")]
+        public string? ProjectToForkFrom { get; set; }
+
         [Input("publicAccess")]
         public Inputs.GetServicePgUserConfigPublicAccessArgs? PublicAccess { get; set; }
 

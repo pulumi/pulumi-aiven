@@ -124,14 +124,15 @@ type Redis struct {
 // NewRedis registers a new resource with the given unique name, arguments, and options.
 func NewRedis(ctx *pulumi.Context,
 	name string, args *RedisArgs, opts ...pulumi.ResourceOption) (*Redis, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &RedisArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource Redis
 	err := ctx.RegisterResource("aiven:index/redis:Redis", name, args, &resource, opts...)

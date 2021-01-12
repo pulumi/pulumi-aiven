@@ -52,6 +52,7 @@ type LookupProjectArgs struct {
 	BillingCurrency  *string  `pulumi:"billingCurrency"`
 	BillingEmails    []string `pulumi:"billingEmails"`
 	BillingExtraText *string  `pulumi:"billingExtraText"`
+	BillingGroup     *string  `pulumi:"billingGroup"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -90,6 +91,7 @@ type LookupProjectResult struct {
 	BillingCurrency  *string  `pulumi:"billingCurrency"`
 	BillingEmails    []string `pulumi:"billingEmails"`
 	BillingExtraText *string  `pulumi:"billingExtraText"`
+	BillingGroup     *string  `pulumi:"billingGroup"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.

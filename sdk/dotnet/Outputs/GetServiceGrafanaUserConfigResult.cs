@@ -34,6 +34,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? MetricsEnabled;
         public readonly Outputs.GetServiceGrafanaUserConfigPrivateAccessResult? PrivateAccess;
+        public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetServiceGrafanaUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
         public readonly string? ServiceToForkFrom;
@@ -86,6 +87,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetServiceGrafanaUserConfigPrivateAccessResult? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.GetServiceGrafanaUserConfigPublicAccessResult? publicAccess,
 
             string? recoveryBasebackupName,
@@ -121,6 +124,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             MetricsEnabled = metricsEnabled;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;

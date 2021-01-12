@@ -137,6 +137,8 @@ __all__ = [
     'ServiceInfluxdbUserConfigInfluxdb',
     'ServiceInfluxdbUserConfigPrivateAccess',
     'ServiceInfluxdbUserConfigPublicAccess',
+    'ServiceIntegrationDashboardUserConfig',
+    'ServiceIntegrationDatadogUserConfig',
     'ServiceIntegrationEndpointDatadogUserConfig',
     'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig',
     'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig',
@@ -151,9 +153,21 @@ __all__ = [
     'ServiceIntegrationExternalGoogleCloudLoggingUserConfig',
     'ServiceIntegrationKafkaConnectUserConfig',
     'ServiceIntegrationKafkaConnectUserConfigKafkaConnect',
+    'ServiceIntegrationKafkaLogsUserConfig',
     'ServiceIntegrationKafkaMirrormakerUserConfig',
     'ServiceIntegrationLogsUserConfig',
+    'ServiceIntegrationM3aggregatorUserConfig',
+    'ServiceIntegrationM3coordinatorUserConfig',
+    'ServiceIntegrationMetricsUserConfig',
+    'ServiceIntegrationMetricsUserConfigSourceMysql',
+    'ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf',
     'ServiceIntegrationMirrormakerUserConfig',
+    'ServiceIntegrationPrometheusUserConfig',
+    'ServiceIntegrationPrometheusUserConfigSourceMysql',
+    'ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf',
+    'ServiceIntegrationReadReplicaUserConfig',
+    'ServiceIntegrationRsyslogUserConfig',
+    'ServiceIntegrationSignalfxUserConfig',
     'ServiceKafka',
     'ServiceKafkaConnect',
     'ServiceKafkaConnectUserConfig',
@@ -318,6 +332,8 @@ __all__ = [
     'GetServiceInfluxdbUserConfigInfluxdbResult',
     'GetServiceInfluxdbUserConfigPrivateAccessResult',
     'GetServiceInfluxdbUserConfigPublicAccessResult',
+    'GetServiceIntegrationDashboardUserConfigResult',
+    'GetServiceIntegrationDatadogUserConfigResult',
     'GetServiceIntegrationEndpointDatadogUserConfigResult',
     'GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult',
     'GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult',
@@ -332,9 +348,21 @@ __all__ = [
     'GetServiceIntegrationExternalGoogleCloudLoggingUserConfigResult',
     'GetServiceIntegrationKafkaConnectUserConfigResult',
     'GetServiceIntegrationKafkaConnectUserConfigKafkaConnectResult',
+    'GetServiceIntegrationKafkaLogsUserConfigResult',
     'GetServiceIntegrationKafkaMirrormakerUserConfigResult',
     'GetServiceIntegrationLogsUserConfigResult',
+    'GetServiceIntegrationM3aggregatorUserConfigResult',
+    'GetServiceIntegrationM3coordinatorUserConfigResult',
+    'GetServiceIntegrationMetricsUserConfigResult',
+    'GetServiceIntegrationMetricsUserConfigSourceMysqlResult',
+    'GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafResult',
     'GetServiceIntegrationMirrormakerUserConfigResult',
+    'GetServiceIntegrationPrometheusUserConfigResult',
+    'GetServiceIntegrationPrometheusUserConfigSourceMysqlResult',
+    'GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult',
+    'GetServiceIntegrationReadReplicaUserConfigResult',
+    'GetServiceIntegrationRsyslogUserConfigResult',
+    'GetServiceIntegrationSignalfxUserConfigResult',
     'GetServiceKafkaResult',
     'GetServiceKafkaConnectResult',
     'GetServiceKafkaConnectUserConfigResult',
@@ -389,6 +417,7 @@ class CassandraCassandraUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migrate_sstableloader: Optional[str] = None,
                  private_access: Optional['outputs.CassandraCassandraUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.CassandraCassandraUserConfigPublicAccess'] = None,
                  service_to_fork_from: Optional[str] = None):
         """
@@ -406,6 +435,8 @@ class CassandraCassandraUserConfig(dict):
             pulumi.set(__self__, "migrate_sstableloader", migrate_sstableloader)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if service_to_fork_from is not None:
@@ -435,6 +466,11 @@ class CassandraCassandraUserConfig(dict):
         Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -733,6 +769,7 @@ class ElasticSearchElasticsearchUserConfig(dict):
                  kibana: Optional['outputs.ElasticSearchElasticsearchUserConfigKibana'] = None,
                  max_index_count: Optional[str] = None,
                  private_access: Optional['outputs.ElasticSearchElasticsearchUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ElasticSearchElasticsearchUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -753,6 +790,8 @@ class ElasticSearchElasticsearchUserConfig(dict):
                service nodes that are in a project VPC or another type of private network.
         :param str max_index_count: Maximum number of indexes to keep before deleting the oldest one.
         :param 'ElasticSearchElasticsearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param str project_to_fork_from: Name of another project to fork a service from. This has 
+               effect only when a new service is being created.
         :param 'ElasticSearchElasticsearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param str service_to_fork_from: Name of another service to fork from. This has effect 
@@ -776,6 +815,8 @@ class ElasticSearchElasticsearchUserConfig(dict):
             pulumi.set(__self__, "max_index_count", max_index_count)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -861,6 +902,15 @@ class ElasticSearchElasticsearchUserConfig(dict):
         Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has 
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -1594,6 +1644,7 @@ class GrafanaGrafanaUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[str] = None,
                  private_access: Optional['outputs.GrafanaGrafanaUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GrafanaGrafanaUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -1627,6 +1678,8 @@ class GrafanaGrafanaUserConfig(dict):
         :param str google_analytics_ua_id: Google Analytics Universal Analytics ID for tracking Grafana usage
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param str metrics_enabled: Enable Grafana /metrics endpoint
+        :param str project_to_fork_from: Name of another project to fork a service from. This has 
+               effect only when a new service is being created.
         :param 'GrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only 
@@ -1679,6 +1732,8 @@ class GrafanaGrafanaUserConfig(dict):
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -1863,6 +1918,15 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GrafanaGrafanaUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has 
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -2603,6 +2667,7 @@ class InfluxDbInfluxdbUserConfig(dict):
                  influxdb: Optional['outputs.InfluxDbInfluxdbUserConfigInfluxdb'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['outputs.InfluxDbInfluxdbUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.InfluxDbInfluxdbUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -2611,6 +2676,8 @@ class InfluxDbInfluxdbUserConfig(dict):
         :param 'InfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: influxdb.conf configuration values
         :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'InfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param str project_to_fork_from: Name of another project to fork a service from. This has 
+               effect only when a new service is being created.
         :param 'InfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
         :param str service_to_fork_from: Name of another service to fork from. This has effect 
@@ -2624,6 +2691,8 @@ class InfluxDbInfluxdbUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -2662,6 +2731,15 @@ class InfluxDbInfluxdbUserConfig(dict):
         Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has 
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -5299,17 +5377,27 @@ class M3DbM3dbUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  limits: Optional['outputs.M3DbM3dbUserConfigLimits'] = None,
                  m3_version: Optional[str] = None,
+                 m3coordinator_enable_graphite_carbon_ingest: Optional[str] = None,
                  namespaces: Optional[Sequence['outputs.M3DbM3dbUserConfigNamespace']] = None,
                  private_access: Optional['outputs.M3DbM3dbUserConfigPrivateAccess'] = None,
-                 public_access: Optional['outputs.M3DbM3dbUserConfigPublicAccess'] = None):
+                 project_to_fork_from: Optional[str] = None,
+                 public_access: Optional['outputs.M3DbM3dbUserConfigPublicAccess'] = None,
+                 service_to_fork_from: Optional[str] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param 'M3DbM3dbUserConfigLimitsArgs' limits: M3 limits
         :param str m3_version: M3 major version
+        :param str m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon 
+               plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+               metrics are written to aggregated namespaces only.
         :param Sequence['M3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
         :param 'M3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'M3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -5319,12 +5407,18 @@ class M3DbM3dbUserConfig(dict):
             pulumi.set(__self__, "limits", limits)
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
+        if m3coordinator_enable_graphite_carbon_ingest is not None:
+            pulumi.set(__self__, "m3coordinator_enable_graphite_carbon_ingest", m3coordinator_enable_graphite_carbon_ingest)
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -5359,6 +5453,16 @@ class M3DbM3dbUserConfig(dict):
         return pulumi.get(self, "m3_version")
 
     @property
+    @pulumi.getter(name="m3coordinatorEnableGraphiteCarbonIngest")
+    def m3coordinator_enable_graphite_carbon_ingest(self) -> Optional[str]:
+        """
+        Enables access to Graphite Carbon 
+        plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+        metrics are written to aggregated namespaces only.
+        """
+        return pulumi.get(self, "m3coordinator_enable_graphite_carbon_ingest")
+
+    @property
     @pulumi.getter
     def namespaces(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigNamespace']]:
         """
@@ -5375,12 +5479,30 @@ class M3DbM3dbUserConfig(dict):
         return pulumi.get(self, "private_access")
 
     @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
+
+    @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.M3DbM3dbUserConfigPublicAccess']:
         """
         Allow access to selected service ports from the public Internet.
         """
         return pulumi.get(self, "public_access")
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
+        return pulumi.get(self, "service_to_fork_from")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -5786,6 +5908,7 @@ class MySqlMysqlUserConfig(dict):
                  mysql: Optional['outputs.MySqlMysqlUserConfigMysql'] = None,
                  mysql_version: Optional[str] = None,
                  private_access: Optional['outputs.MySqlMysqlUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.MySqlMysqlUserConfigPublicAccess'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -5803,6 +5926,8 @@ class MySqlMysqlUserConfig(dict):
                nodes that are in a project VPC or another type of private network
         :param str mysql_version: MySQL major version
         :param 'MySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'MySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect 
                only when a new service is being created.
@@ -5825,6 +5950,8 @@ class MySqlMysqlUserConfig(dict):
             pulumi.set(__self__, "mysql_version", mysql_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -5900,6 +6027,15 @@ class MySqlMysqlUserConfig(dict):
         Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -6539,6 +6675,7 @@ class PgPgUserConfig(dict):
                  pgbouncer: Optional['outputs.PgPgUserConfigPgbouncer'] = None,
                  pglookout: Optional['outputs.PgPgUserConfigPglookout'] = None,
                  private_access: Optional['outputs.PgPgUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.PgPgUserConfigPublicAccess'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -6568,6 +6705,8 @@ class PgPgUserConfig(dict):
                service nodes that are in a project VPC or another type of private network
         :param 'PgPgUserConfigPglookoutArgs' pglookout: PGLookout settings.
         :param 'PgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'PgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect 
                only when a new service is being created.
@@ -6611,6 +6750,8 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -6738,6 +6879,15 @@ class PgPgUserConfig(dict):
         Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -7822,6 +7972,7 @@ class RedisRedisUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.RedisRedisUserConfigMigration'] = None,
                  private_access: Optional['outputs.RedisRedisUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.RedisRedisUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  redis_io_threads: Optional[str] = None,
@@ -7836,6 +7987,8 @@ class RedisRedisUserConfig(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'RedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'RedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'RedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
         :param str redis_io_threads: Redis IO thread count
@@ -7855,6 +8008,8 @@ class RedisRedisUserConfig(dict):
             pulumi.set(__self__, "migration", migration)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -7899,6 +8054,15 @@ class RedisRedisUserConfig(dict):
         Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -8177,6 +8341,7 @@ class ServiceCassandraUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migrate_sstableloader: Optional[str] = None,
                  private_access: Optional['outputs.ServiceCassandraUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServiceCassandraUserConfigPublicAccess'] = None,
                  service_to_fork_from: Optional[str] = None):
         if ip_filters is not None:
@@ -8185,6 +8350,8 @@ class ServiceCassandraUserConfig(dict):
             pulumi.set(__self__, "migrate_sstableloader", migrate_sstableloader)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if service_to_fork_from is not None:
@@ -8204,6 +8371,11 @@ class ServiceCassandraUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServiceCassandraUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -8343,6 +8515,7 @@ class ServiceElasticsearchUserConfig(dict):
                  kibana: Optional['outputs.ServiceElasticsearchUserConfigKibana'] = None,
                  max_index_count: Optional[str] = None,
                  private_access: Optional['outputs.ServiceElasticsearchUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServiceElasticsearchUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -8364,6 +8537,8 @@ class ServiceElasticsearchUserConfig(dict):
             pulumi.set(__self__, "max_index_count", max_index_count)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -8415,6 +8590,11 @@ class ServiceElasticsearchUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServiceElasticsearchUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -8796,6 +8976,7 @@ class ServiceGrafanaUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[str] = None,
                  private_access: Optional['outputs.ServiceGrafanaUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServiceGrafanaUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -8845,6 +9026,8 @@ class ServiceGrafanaUserConfig(dict):
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -8964,6 +9147,11 @@ class ServiceGrafanaUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServiceGrafanaUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -9411,6 +9599,7 @@ class ServiceInfluxdbUserConfig(dict):
                  influxdb: Optional['outputs.ServiceInfluxdbUserConfigInfluxdb'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['outputs.ServiceInfluxdbUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServiceInfluxdbUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -9422,6 +9611,8 @@ class ServiceInfluxdbUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -9448,6 +9639,11 @@ class ServiceInfluxdbUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServiceInfluxdbUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -9543,6 +9739,63 @@ class ServiceInfluxdbUserConfigPublicAccess(dict):
     @pulumi.getter
     def influxdb(self) -> Optional[str]:
         return pulumi.get(self, "influxdb")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationDashboardUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationDatadogUserConfig(dict):
+    def __init__(__self__, *,
+                 exclude_consumer_groups: Optional[Sequence[str]] = None,
+                 exclude_topics: Optional[Sequence[str]] = None,
+                 include_consumer_groups: Optional[Sequence[str]] = None,
+                 include_topics: Optional[Sequence[str]] = None,
+                 kafka_custom_metrics: Optional[Sequence[str]] = None):
+        if exclude_consumer_groups is not None:
+            pulumi.set(__self__, "exclude_consumer_groups", exclude_consumer_groups)
+        if exclude_topics is not None:
+            pulumi.set(__self__, "exclude_topics", exclude_topics)
+        if include_consumer_groups is not None:
+            pulumi.set(__self__, "include_consumer_groups", include_consumer_groups)
+        if include_topics is not None:
+            pulumi.set(__self__, "include_topics", include_topics)
+        if kafka_custom_metrics is not None:
+            pulumi.set(__self__, "kafka_custom_metrics", kafka_custom_metrics)
+
+    @property
+    @pulumi.getter(name="excludeConsumerGroups")
+    def exclude_consumer_groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclude_consumer_groups")
+
+    @property
+    @pulumi.getter(name="excludeTopics")
+    def exclude_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclude_topics")
+
+    @property
+    @pulumi.getter(name="includeConsumerGroups")
+    def include_consumer_groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "include_consumer_groups")
+
+    @property
+    @pulumi.getter(name="includeTopics")
+    def include_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "include_topics")
+
+    @property
+    @pulumi.getter(name="kafkaCustomMetrics")
+    def kafka_custom_metrics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "kafka_custom_metrics")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -10000,6 +10253,22 @@ class ServiceIntegrationKafkaConnectUserConfigKafkaConnect(dict):
 
 
 @pulumi.output_type
+class ServiceIntegrationKafkaLogsUserConfig(dict):
+    def __init__(__self__, *,
+                 kafka_topic: Optional[str] = None):
+        if kafka_topic is not None:
+            pulumi.set(__self__, "kafka_topic", kafka_topic)
+
+    @property
+    @pulumi.getter(name="kafkaTopic")
+    def kafka_topic(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_topic")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ServiceIntegrationKafkaMirrormakerUserConfig(dict):
     def __init__(__self__, *,
                  cluster_alias: Optional[str] = None):
@@ -10040,6 +10309,208 @@ class ServiceIntegrationLogsUserConfig(dict):
 
 
 @pulumi.output_type
+class ServiceIntegrationM3aggregatorUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationM3coordinatorUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationMetricsUserConfig(dict):
+    def __init__(__self__, *,
+                 database: Optional[str] = None,
+                 retention_days: Optional[str] = None,
+                 ro_username: Optional[str] = None,
+                 source_mysql: Optional['outputs.ServiceIntegrationMetricsUserConfigSourceMysql'] = None,
+                 username: Optional[str] = None):
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+        if ro_username is not None:
+            pulumi.set(__self__, "ro_username", ro_username)
+        if source_mysql is not None:
+            pulumi.set(__self__, "source_mysql", source_mysql)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[str]:
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="roUsername")
+    def ro_username(self) -> Optional[str]:
+        return pulumi.get(self, "ro_username")
+
+    @property
+    @pulumi.getter(name="sourceMysql")
+    def source_mysql(self) -> Optional['outputs.ServiceIntegrationMetricsUserConfigSourceMysql']:
+        return pulumi.get(self, "source_mysql")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationMetricsUserConfigSourceMysql(dict):
+    def __init__(__self__, *,
+                 telegraf: Optional['outputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf'] = None):
+        if telegraf is not None:
+            pulumi.set(__self__, "telegraf", telegraf)
+
+    @property
+    @pulumi.getter
+    def telegraf(self) -> Optional['outputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf']:
+        return pulumi.get(self, "telegraf")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf(dict):
+    def __init__(__self__, *,
+                 gather_event_waits: Optional[str] = None,
+                 gather_file_events_stats: Optional[str] = None,
+                 gather_index_io_waits: Optional[str] = None,
+                 gather_info_schema_auto_inc: Optional[str] = None,
+                 gather_innodb_metrics: Optional[str] = None,
+                 gather_perf_events_statements: Optional[str] = None,
+                 gather_process_list: Optional[str] = None,
+                 gather_slave_status: Optional[str] = None,
+                 gather_table_io_waits: Optional[str] = None,
+                 gather_table_lock_waits: Optional[str] = None,
+                 gather_table_schema: Optional[str] = None,
+                 perf_events_statements_digest_text_limit: Optional[str] = None,
+                 perf_events_statements_limit: Optional[str] = None,
+                 perf_events_statements_time_limit: Optional[str] = None):
+        if gather_event_waits is not None:
+            pulumi.set(__self__, "gather_event_waits", gather_event_waits)
+        if gather_file_events_stats is not None:
+            pulumi.set(__self__, "gather_file_events_stats", gather_file_events_stats)
+        if gather_index_io_waits is not None:
+            pulumi.set(__self__, "gather_index_io_waits", gather_index_io_waits)
+        if gather_info_schema_auto_inc is not None:
+            pulumi.set(__self__, "gather_info_schema_auto_inc", gather_info_schema_auto_inc)
+        if gather_innodb_metrics is not None:
+            pulumi.set(__self__, "gather_innodb_metrics", gather_innodb_metrics)
+        if gather_perf_events_statements is not None:
+            pulumi.set(__self__, "gather_perf_events_statements", gather_perf_events_statements)
+        if gather_process_list is not None:
+            pulumi.set(__self__, "gather_process_list", gather_process_list)
+        if gather_slave_status is not None:
+            pulumi.set(__self__, "gather_slave_status", gather_slave_status)
+        if gather_table_io_waits is not None:
+            pulumi.set(__self__, "gather_table_io_waits", gather_table_io_waits)
+        if gather_table_lock_waits is not None:
+            pulumi.set(__self__, "gather_table_lock_waits", gather_table_lock_waits)
+        if gather_table_schema is not None:
+            pulumi.set(__self__, "gather_table_schema", gather_table_schema)
+        if perf_events_statements_digest_text_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_digest_text_limit", perf_events_statements_digest_text_limit)
+        if perf_events_statements_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_limit", perf_events_statements_limit)
+        if perf_events_statements_time_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_time_limit", perf_events_statements_time_limit)
+
+    @property
+    @pulumi.getter(name="gatherEventWaits")
+    def gather_event_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_event_waits")
+
+    @property
+    @pulumi.getter(name="gatherFileEventsStats")
+    def gather_file_events_stats(self) -> Optional[str]:
+        return pulumi.get(self, "gather_file_events_stats")
+
+    @property
+    @pulumi.getter(name="gatherIndexIoWaits")
+    def gather_index_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_index_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherInfoSchemaAutoInc")
+    def gather_info_schema_auto_inc(self) -> Optional[str]:
+        return pulumi.get(self, "gather_info_schema_auto_inc")
+
+    @property
+    @pulumi.getter(name="gatherInnodbMetrics")
+    def gather_innodb_metrics(self) -> Optional[str]:
+        return pulumi.get(self, "gather_innodb_metrics")
+
+    @property
+    @pulumi.getter(name="gatherPerfEventsStatements")
+    def gather_perf_events_statements(self) -> Optional[str]:
+        return pulumi.get(self, "gather_perf_events_statements")
+
+    @property
+    @pulumi.getter(name="gatherProcessList")
+    def gather_process_list(self) -> Optional[str]:
+        return pulumi.get(self, "gather_process_list")
+
+    @property
+    @pulumi.getter(name="gatherSlaveStatus")
+    def gather_slave_status(self) -> Optional[str]:
+        return pulumi.get(self, "gather_slave_status")
+
+    @property
+    @pulumi.getter(name="gatherTableIoWaits")
+    def gather_table_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableLockWaits")
+    def gather_table_lock_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_lock_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableSchema")
+    def gather_table_schema(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_schema")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsDigestTextLimit")
+    def perf_events_statements_digest_text_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_digest_text_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsLimit")
+    def perf_events_statements_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsTimeLimit")
+    def perf_events_statements_time_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_time_limit")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ServiceIntegrationMirrormakerUserConfig(dict):
     def __init__(__self__, *,
                  mirrormaker_whitelist: Optional[str] = None):
@@ -10050,6 +10521,185 @@ class ServiceIntegrationMirrormakerUserConfig(dict):
     @pulumi.getter(name="mirrormakerWhitelist")
     def mirrormaker_whitelist(self) -> Optional[str]:
         return pulumi.get(self, "mirrormaker_whitelist")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationPrometheusUserConfig(dict):
+    def __init__(__self__, *,
+                 source_mysql: Optional['outputs.ServiceIntegrationPrometheusUserConfigSourceMysql'] = None):
+        if source_mysql is not None:
+            pulumi.set(__self__, "source_mysql", source_mysql)
+
+    @property
+    @pulumi.getter(name="sourceMysql")
+    def source_mysql(self) -> Optional['outputs.ServiceIntegrationPrometheusUserConfigSourceMysql']:
+        return pulumi.get(self, "source_mysql")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationPrometheusUserConfigSourceMysql(dict):
+    def __init__(__self__, *,
+                 telegraf: Optional['outputs.ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf'] = None):
+        if telegraf is not None:
+            pulumi.set(__self__, "telegraf", telegraf)
+
+    @property
+    @pulumi.getter
+    def telegraf(self) -> Optional['outputs.ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf']:
+        return pulumi.get(self, "telegraf")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf(dict):
+    def __init__(__self__, *,
+                 gather_event_waits: Optional[str] = None,
+                 gather_file_events_stats: Optional[str] = None,
+                 gather_index_io_waits: Optional[str] = None,
+                 gather_info_schema_auto_inc: Optional[str] = None,
+                 gather_innodb_metrics: Optional[str] = None,
+                 gather_perf_events_statements: Optional[str] = None,
+                 gather_process_list: Optional[str] = None,
+                 gather_slave_status: Optional[str] = None,
+                 gather_table_io_waits: Optional[str] = None,
+                 gather_table_lock_waits: Optional[str] = None,
+                 gather_table_schema: Optional[str] = None,
+                 perf_events_statements_digest_text_limit: Optional[str] = None,
+                 perf_events_statements_limit: Optional[str] = None,
+                 perf_events_statements_time_limit: Optional[str] = None):
+        if gather_event_waits is not None:
+            pulumi.set(__self__, "gather_event_waits", gather_event_waits)
+        if gather_file_events_stats is not None:
+            pulumi.set(__self__, "gather_file_events_stats", gather_file_events_stats)
+        if gather_index_io_waits is not None:
+            pulumi.set(__self__, "gather_index_io_waits", gather_index_io_waits)
+        if gather_info_schema_auto_inc is not None:
+            pulumi.set(__self__, "gather_info_schema_auto_inc", gather_info_schema_auto_inc)
+        if gather_innodb_metrics is not None:
+            pulumi.set(__self__, "gather_innodb_metrics", gather_innodb_metrics)
+        if gather_perf_events_statements is not None:
+            pulumi.set(__self__, "gather_perf_events_statements", gather_perf_events_statements)
+        if gather_process_list is not None:
+            pulumi.set(__self__, "gather_process_list", gather_process_list)
+        if gather_slave_status is not None:
+            pulumi.set(__self__, "gather_slave_status", gather_slave_status)
+        if gather_table_io_waits is not None:
+            pulumi.set(__self__, "gather_table_io_waits", gather_table_io_waits)
+        if gather_table_lock_waits is not None:
+            pulumi.set(__self__, "gather_table_lock_waits", gather_table_lock_waits)
+        if gather_table_schema is not None:
+            pulumi.set(__self__, "gather_table_schema", gather_table_schema)
+        if perf_events_statements_digest_text_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_digest_text_limit", perf_events_statements_digest_text_limit)
+        if perf_events_statements_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_limit", perf_events_statements_limit)
+        if perf_events_statements_time_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_time_limit", perf_events_statements_time_limit)
+
+    @property
+    @pulumi.getter(name="gatherEventWaits")
+    def gather_event_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_event_waits")
+
+    @property
+    @pulumi.getter(name="gatherFileEventsStats")
+    def gather_file_events_stats(self) -> Optional[str]:
+        return pulumi.get(self, "gather_file_events_stats")
+
+    @property
+    @pulumi.getter(name="gatherIndexIoWaits")
+    def gather_index_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_index_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherInfoSchemaAutoInc")
+    def gather_info_schema_auto_inc(self) -> Optional[str]:
+        return pulumi.get(self, "gather_info_schema_auto_inc")
+
+    @property
+    @pulumi.getter(name="gatherInnodbMetrics")
+    def gather_innodb_metrics(self) -> Optional[str]:
+        return pulumi.get(self, "gather_innodb_metrics")
+
+    @property
+    @pulumi.getter(name="gatherPerfEventsStatements")
+    def gather_perf_events_statements(self) -> Optional[str]:
+        return pulumi.get(self, "gather_perf_events_statements")
+
+    @property
+    @pulumi.getter(name="gatherProcessList")
+    def gather_process_list(self) -> Optional[str]:
+        return pulumi.get(self, "gather_process_list")
+
+    @property
+    @pulumi.getter(name="gatherSlaveStatus")
+    def gather_slave_status(self) -> Optional[str]:
+        return pulumi.get(self, "gather_slave_status")
+
+    @property
+    @pulumi.getter(name="gatherTableIoWaits")
+    def gather_table_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableLockWaits")
+    def gather_table_lock_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_lock_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableSchema")
+    def gather_table_schema(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_schema")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsDigestTextLimit")
+    def perf_events_statements_digest_text_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_digest_text_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsLimit")
+    def perf_events_statements_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsTimeLimit")
+    def perf_events_statements_time_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_time_limit")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationReadReplicaUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationRsyslogUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationSignalfxUserConfig(dict):
+    def __init__(__self__):
+        pass
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -11077,6 +11727,7 @@ class ServiceMysqlUserConfig(dict):
                  mysql: Optional['outputs.ServiceMysqlUserConfigMysql'] = None,
                  mysql_version: Optional[str] = None,
                  private_access: Optional['outputs.ServiceMysqlUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServiceMysqlUserConfigPublicAccess'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -11096,6 +11747,8 @@ class ServiceMysqlUserConfig(dict):
             pulumi.set(__self__, "mysql_version", mysql_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -11142,6 +11795,11 @@ class ServiceMysqlUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServiceMysqlUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -11474,6 +12132,7 @@ class ServicePgUserConfig(dict):
                  pgbouncer: Optional['outputs.ServicePgUserConfigPgbouncer'] = None,
                  pglookout: Optional['outputs.ServicePgUserConfigPglookout'] = None,
                  private_access: Optional['outputs.ServicePgUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServicePgUserConfigPublicAccess'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -11508,6 +12167,8 @@ class ServicePgUserConfig(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -11589,6 +12250,11 @@ class ServicePgUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServicePgUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -12193,6 +12859,7 @@ class ServiceRedisUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.ServiceRedisUserConfigMigration'] = None,
                  private_access: Optional['outputs.ServiceRedisUserConfigPrivateAccess'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServiceRedisUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  redis_io_threads: Optional[str] = None,
@@ -12209,6 +12876,8 @@ class ServiceRedisUserConfig(dict):
             pulumi.set(__self__, "migration", migration)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -12244,6 +12913,11 @@ class ServiceRedisUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServiceRedisUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -12437,6 +13111,7 @@ class GetCassandaCassandraUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migrate_sstableloader: Optional[str] = None,
                  private_access: Optional['outputs.GetCassandaCassandraUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetCassandaCassandraUserConfigPublicAccessResult'] = None,
                  service_to_fork_from: Optional[str] = None):
         """
@@ -12454,6 +13129,8 @@ class GetCassandaCassandraUserConfigResult(dict):
             pulumi.set(__self__, "migrate_sstableloader", migrate_sstableloader)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if service_to_fork_from is not None:
@@ -12483,6 +13160,11 @@ class GetCassandaCassandraUserConfigResult(dict):
         Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -12739,6 +13421,7 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
                  kibana: Optional['outputs.GetElasticSearchElasticsearchUserConfigKibanaResult'] = None,
                  max_index_count: Optional[str] = None,
                  private_access: Optional['outputs.GetElasticSearchElasticsearchUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetElasticSearchElasticsearchUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -12758,6 +13441,8 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
                service nodes that are in a project VPC or another type of private network.
         :param str max_index_count: Maximum number of indexes to keep before deleting the oldest one.
         :param 'GetElasticSearchElasticsearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'GetElasticSearchElasticsearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param str service_to_fork_from: Name of another service to fork from. This has effect 
@@ -12781,6 +13466,8 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
             pulumi.set(__self__, "max_index_count", max_index_count)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -12865,6 +13552,15 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
         Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -13560,6 +14256,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[str] = None,
                  private_access: Optional['outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetGrafanaGrafanaUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -13593,6 +14290,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         :param str google_analytics_ua_id: Google Analytics Universal Analytics ID for tracking Grafana usage
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param str metrics_enabled: Enable Grafana /metrics endpoint
+        :param str project_to_fork_from: Name of another project to fork a service from. This has 
+               effect only when a new service is being created.
         :param 'GetGrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only 
@@ -13645,6 +14344,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -13829,6 +14530,15 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has 
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -14521,6 +15231,7 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
                  influxdb: Optional['outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -14529,6 +15240,8 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
         :param 'GetInfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: InfluxDB specific server provided values.
         :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'GetInfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'GetInfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
         :param str service_to_fork_from: Name of another service to fork from. This has effect 
@@ -14542,6 +15255,8 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -14580,6 +15295,15 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
         Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -17035,17 +17759,27 @@ class GetM3DbM3dbUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  limits: Optional['outputs.GetM3DbM3dbUserConfigLimitsResult'] = None,
                  m3_version: Optional[str] = None,
+                 m3coordinator_enable_graphite_carbon_ingest: Optional[str] = None,
                  namespaces: Optional[Sequence['outputs.GetM3DbM3dbUserConfigNamespaceResult']] = None,
                  private_access: Optional['outputs.GetM3DbM3dbUserConfigPrivateAccessResult'] = None,
-                 public_access: Optional['outputs.GetM3DbM3dbUserConfigPublicAccessResult'] = None):
+                 project_to_fork_from: Optional[str] = None,
+                 public_access: Optional['outputs.GetM3DbM3dbUserConfigPublicAccessResult'] = None,
+                 service_to_fork_from: Optional[str] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param 'GetM3DbM3dbUserConfigLimitsArgs' limits: M3 limits
         :param str m3_version: M3 major version
+        :param str m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon 
+               plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+               metrics are written to aggregated namespaces only.
         :param Sequence['GetM3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
         :param 'GetM3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'GetM3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -17055,12 +17789,18 @@ class GetM3DbM3dbUserConfigResult(dict):
             pulumi.set(__self__, "limits", limits)
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
+        if m3coordinator_enable_graphite_carbon_ingest is not None:
+            pulumi.set(__self__, "m3coordinator_enable_graphite_carbon_ingest", m3coordinator_enable_graphite_carbon_ingest)
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -17095,6 +17835,16 @@ class GetM3DbM3dbUserConfigResult(dict):
         return pulumi.get(self, "m3_version")
 
     @property
+    @pulumi.getter(name="m3coordinatorEnableGraphiteCarbonIngest")
+    def m3coordinator_enable_graphite_carbon_ingest(self) -> Optional[str]:
+        """
+        Enables access to Graphite Carbon 
+        plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+        metrics are written to aggregated namespaces only.
+        """
+        return pulumi.get(self, "m3coordinator_enable_graphite_carbon_ingest")
+
+    @property
     @pulumi.getter
     def namespaces(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigNamespaceResult']]:
         """
@@ -17111,12 +17861,30 @@ class GetM3DbM3dbUserConfigResult(dict):
         return pulumi.get(self, "private_access")
 
     @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
+
+    @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetM3DbM3dbUserConfigPublicAccessResult']:
         """
         Allow access to selected service ports from the public Internet.
         """
         return pulumi.get(self, "public_access")
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
+        return pulumi.get(self, "service_to_fork_from")
 
 
 @pulumi.output_type
@@ -17485,6 +18253,7 @@ class GetMySqlMysqlUserConfigResult(dict):
                  mysql: Optional['outputs.GetMySqlMysqlUserConfigMysqlResult'] = None,
                  mysql_version: Optional[str] = None,
                  private_access: Optional['outputs.GetMySqlMysqlUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetMySqlMysqlUserConfigPublicAccessResult'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -17501,6 +18270,8 @@ class GetMySqlMysqlUserConfigResult(dict):
         :param 'GetMySqlMysqlUserConfigMysqlArgs' mysql: MySQL specific server provided values.
         :param str mysql_version: MySQL major version
         :param 'GetMySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'GetMySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect 
                only when a new service is being created.
@@ -17523,6 +18294,8 @@ class GetMySqlMysqlUserConfigResult(dict):
             pulumi.set(__self__, "mysql_version", mysql_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -17597,6 +18370,15 @@ class GetMySqlMysqlUserConfigResult(dict):
         Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -18196,6 +18978,7 @@ class GetPgPgUserConfigResult(dict):
                  pgbouncer: Optional['outputs.GetPgPgUserConfigPgbouncerResult'] = None,
                  pglookout: Optional['outputs.GetPgPgUserConfigPglookoutResult'] = None,
                  private_access: Optional['outputs.GetPgPgUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetPgPgUserConfigPublicAccessResult'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -18224,6 +19007,8 @@ class GetPgPgUserConfigResult(dict):
                service nodes that are in a project VPC or another type of private network
         :param 'GetPgPgUserConfigPglookoutArgs' pglookout: PGLookout settings.
         :param 'GetPgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param str project_to_fork_from: (Optional) Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'GetPgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect 
                only when a new service is being created.
@@ -18267,6 +19052,8 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -18393,6 +19180,15 @@ class GetPgPgUserConfigResult(dict):
         Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        (Optional) Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -19433,6 +20229,7 @@ class GetRedisRedisUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.GetRedisRedisUserConfigMigrationResult'] = None,
                  private_access: Optional['outputs.GetRedisRedisUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetRedisRedisUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  redis_io_threads: Optional[str] = None,
@@ -19447,6 +20244,8 @@ class GetRedisRedisUserConfigResult(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'GetRedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'GetRedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
+               effect only when a new service is being created.
         :param 'GetRedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service
         :param str redis_io_threads: Redis IO thread count
@@ -19466,6 +20265,8 @@ class GetRedisRedisUserConfigResult(dict):
             pulumi.set(__self__, "migration", migration)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -19510,6 +20311,15 @@ class GetRedisRedisUserConfigResult(dict):
         Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another project to fork a service from. This has
+        effect only when a new service is being created.
+        """
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -19766,6 +20576,7 @@ class GetServiceCassandraUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migrate_sstableloader: Optional[str] = None,
                  private_access: Optional['outputs.GetServiceCassandraUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServiceCassandraUserConfigPublicAccessResult'] = None,
                  service_to_fork_from: Optional[str] = None):
         if ip_filters is not None:
@@ -19774,6 +20585,8 @@ class GetServiceCassandraUserConfigResult(dict):
             pulumi.set(__self__, "migrate_sstableloader", migrate_sstableloader)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if service_to_fork_from is not None:
@@ -19793,6 +20606,11 @@ class GetServiceCassandraUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServiceCassandraUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -19909,6 +20727,7 @@ class GetServiceElasticsearchUserConfigResult(dict):
                  kibana: Optional['outputs.GetServiceElasticsearchUserConfigKibanaResult'] = None,
                  max_index_count: Optional[str] = None,
                  private_access: Optional['outputs.GetServiceElasticsearchUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServiceElasticsearchUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -19930,6 +20749,8 @@ class GetServiceElasticsearchUserConfigResult(dict):
             pulumi.set(__self__, "max_index_count", max_index_count)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -19981,6 +20802,11 @@ class GetServiceElasticsearchUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServiceElasticsearchUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -20341,6 +21167,7 @@ class GetServiceGrafanaUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[str] = None,
                  private_access: Optional['outputs.GetServiceGrafanaUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServiceGrafanaUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -20390,6 +21217,8 @@ class GetServiceGrafanaUserConfigResult(dict):
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -20509,6 +21338,11 @@ class GetServiceGrafanaUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServiceGrafanaUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -20925,6 +21759,7 @@ class GetServiceInfluxdbUserConfigResult(dict):
                  influxdb: Optional['outputs.GetServiceInfluxdbUserConfigInfluxdbResult'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['outputs.GetServiceInfluxdbUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServiceInfluxdbUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -20936,6 +21771,8 @@ class GetServiceInfluxdbUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -20962,6 +21799,11 @@ class GetServiceInfluxdbUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServiceInfluxdbUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -21048,6 +21890,57 @@ class GetServiceInfluxdbUserConfigPublicAccessResult(dict):
     @pulumi.getter
     def influxdb(self) -> Optional[str]:
         return pulumi.get(self, "influxdb")
+
+
+@pulumi.output_type
+class GetServiceIntegrationDashboardUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetServiceIntegrationDatadogUserConfigResult(dict):
+    def __init__(__self__, *,
+                 exclude_consumer_groups: Optional[Sequence[str]] = None,
+                 exclude_topics: Optional[Sequence[str]] = None,
+                 include_consumer_groups: Optional[Sequence[str]] = None,
+                 include_topics: Optional[Sequence[str]] = None,
+                 kafka_custom_metrics: Optional[Sequence[str]] = None):
+        if exclude_consumer_groups is not None:
+            pulumi.set(__self__, "exclude_consumer_groups", exclude_consumer_groups)
+        if exclude_topics is not None:
+            pulumi.set(__self__, "exclude_topics", exclude_topics)
+        if include_consumer_groups is not None:
+            pulumi.set(__self__, "include_consumer_groups", include_consumer_groups)
+        if include_topics is not None:
+            pulumi.set(__self__, "include_topics", include_topics)
+        if kafka_custom_metrics is not None:
+            pulumi.set(__self__, "kafka_custom_metrics", kafka_custom_metrics)
+
+    @property
+    @pulumi.getter(name="excludeConsumerGroups")
+    def exclude_consumer_groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclude_consumer_groups")
+
+    @property
+    @pulumi.getter(name="excludeTopics")
+    def exclude_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclude_topics")
+
+    @property
+    @pulumi.getter(name="includeConsumerGroups")
+    def include_consumer_groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "include_consumer_groups")
+
+    @property
+    @pulumi.getter(name="includeTopics")
+    def include_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "include_topics")
+
+    @property
+    @pulumi.getter(name="kafkaCustomMetrics")
+    def kafka_custom_metrics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "kafka_custom_metrics")
 
 
 @pulumi.output_type
@@ -21460,6 +22353,19 @@ class GetServiceIntegrationKafkaConnectUserConfigKafkaConnectResult(dict):
 
 
 @pulumi.output_type
+class GetServiceIntegrationKafkaLogsUserConfigResult(dict):
+    def __init__(__self__, *,
+                 kafka_topic: Optional[str] = None):
+        if kafka_topic is not None:
+            pulumi.set(__self__, "kafka_topic", kafka_topic)
+
+    @property
+    @pulumi.getter(name="kafkaTopic")
+    def kafka_topic(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_topic")
+
+
+@pulumi.output_type
 class GetServiceIntegrationKafkaMirrormakerUserConfigResult(dict):
     def __init__(__self__, *,
                  cluster_alias: Optional[str] = None):
@@ -21494,6 +22400,193 @@ class GetServiceIntegrationLogsUserConfigResult(dict):
 
 
 @pulumi.output_type
+class GetServiceIntegrationM3aggregatorUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetServiceIntegrationM3coordinatorUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetServiceIntegrationMetricsUserConfigResult(dict):
+    def __init__(__self__, *,
+                 database: Optional[str] = None,
+                 retention_days: Optional[str] = None,
+                 ro_username: Optional[str] = None,
+                 source_mysql: Optional['outputs.GetServiceIntegrationMetricsUserConfigSourceMysqlResult'] = None,
+                 username: Optional[str] = None):
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+        if ro_username is not None:
+            pulumi.set(__self__, "ro_username", ro_username)
+        if source_mysql is not None:
+            pulumi.set(__self__, "source_mysql", source_mysql)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[str]:
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="roUsername")
+    def ro_username(self) -> Optional[str]:
+        return pulumi.get(self, "ro_username")
+
+    @property
+    @pulumi.getter(name="sourceMysql")
+    def source_mysql(self) -> Optional['outputs.GetServiceIntegrationMetricsUserConfigSourceMysqlResult']:
+        return pulumi.get(self, "source_mysql")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetServiceIntegrationMetricsUserConfigSourceMysqlResult(dict):
+    def __init__(__self__, *,
+                 telegraf: Optional['outputs.GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafResult'] = None):
+        if telegraf is not None:
+            pulumi.set(__self__, "telegraf", telegraf)
+
+    @property
+    @pulumi.getter
+    def telegraf(self) -> Optional['outputs.GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafResult']:
+        return pulumi.get(self, "telegraf")
+
+
+@pulumi.output_type
+class GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafResult(dict):
+    def __init__(__self__, *,
+                 gather_event_waits: Optional[str] = None,
+                 gather_file_events_stats: Optional[str] = None,
+                 gather_index_io_waits: Optional[str] = None,
+                 gather_info_schema_auto_inc: Optional[str] = None,
+                 gather_innodb_metrics: Optional[str] = None,
+                 gather_perf_events_statements: Optional[str] = None,
+                 gather_process_list: Optional[str] = None,
+                 gather_slave_status: Optional[str] = None,
+                 gather_table_io_waits: Optional[str] = None,
+                 gather_table_lock_waits: Optional[str] = None,
+                 gather_table_schema: Optional[str] = None,
+                 perf_events_statements_digest_text_limit: Optional[str] = None,
+                 perf_events_statements_limit: Optional[str] = None,
+                 perf_events_statements_time_limit: Optional[str] = None):
+        if gather_event_waits is not None:
+            pulumi.set(__self__, "gather_event_waits", gather_event_waits)
+        if gather_file_events_stats is not None:
+            pulumi.set(__self__, "gather_file_events_stats", gather_file_events_stats)
+        if gather_index_io_waits is not None:
+            pulumi.set(__self__, "gather_index_io_waits", gather_index_io_waits)
+        if gather_info_schema_auto_inc is not None:
+            pulumi.set(__self__, "gather_info_schema_auto_inc", gather_info_schema_auto_inc)
+        if gather_innodb_metrics is not None:
+            pulumi.set(__self__, "gather_innodb_metrics", gather_innodb_metrics)
+        if gather_perf_events_statements is not None:
+            pulumi.set(__self__, "gather_perf_events_statements", gather_perf_events_statements)
+        if gather_process_list is not None:
+            pulumi.set(__self__, "gather_process_list", gather_process_list)
+        if gather_slave_status is not None:
+            pulumi.set(__self__, "gather_slave_status", gather_slave_status)
+        if gather_table_io_waits is not None:
+            pulumi.set(__self__, "gather_table_io_waits", gather_table_io_waits)
+        if gather_table_lock_waits is not None:
+            pulumi.set(__self__, "gather_table_lock_waits", gather_table_lock_waits)
+        if gather_table_schema is not None:
+            pulumi.set(__self__, "gather_table_schema", gather_table_schema)
+        if perf_events_statements_digest_text_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_digest_text_limit", perf_events_statements_digest_text_limit)
+        if perf_events_statements_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_limit", perf_events_statements_limit)
+        if perf_events_statements_time_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_time_limit", perf_events_statements_time_limit)
+
+    @property
+    @pulumi.getter(name="gatherEventWaits")
+    def gather_event_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_event_waits")
+
+    @property
+    @pulumi.getter(name="gatherFileEventsStats")
+    def gather_file_events_stats(self) -> Optional[str]:
+        return pulumi.get(self, "gather_file_events_stats")
+
+    @property
+    @pulumi.getter(name="gatherIndexIoWaits")
+    def gather_index_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_index_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherInfoSchemaAutoInc")
+    def gather_info_schema_auto_inc(self) -> Optional[str]:
+        return pulumi.get(self, "gather_info_schema_auto_inc")
+
+    @property
+    @pulumi.getter(name="gatherInnodbMetrics")
+    def gather_innodb_metrics(self) -> Optional[str]:
+        return pulumi.get(self, "gather_innodb_metrics")
+
+    @property
+    @pulumi.getter(name="gatherPerfEventsStatements")
+    def gather_perf_events_statements(self) -> Optional[str]:
+        return pulumi.get(self, "gather_perf_events_statements")
+
+    @property
+    @pulumi.getter(name="gatherProcessList")
+    def gather_process_list(self) -> Optional[str]:
+        return pulumi.get(self, "gather_process_list")
+
+    @property
+    @pulumi.getter(name="gatherSlaveStatus")
+    def gather_slave_status(self) -> Optional[str]:
+        return pulumi.get(self, "gather_slave_status")
+
+    @property
+    @pulumi.getter(name="gatherTableIoWaits")
+    def gather_table_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableLockWaits")
+    def gather_table_lock_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_lock_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableSchema")
+    def gather_table_schema(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_schema")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsDigestTextLimit")
+    def perf_events_statements_digest_text_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_digest_text_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsLimit")
+    def perf_events_statements_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsTimeLimit")
+    def perf_events_statements_time_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_time_limit")
+
+
+@pulumi.output_type
 class GetServiceIntegrationMirrormakerUserConfigResult(dict):
     def __init__(__self__, *,
                  mirrormaker_whitelist: Optional[str] = None):
@@ -21504,6 +22597,167 @@ class GetServiceIntegrationMirrormakerUserConfigResult(dict):
     @pulumi.getter(name="mirrormakerWhitelist")
     def mirrormaker_whitelist(self) -> Optional[str]:
         return pulumi.get(self, "mirrormaker_whitelist")
+
+
+@pulumi.output_type
+class GetServiceIntegrationPrometheusUserConfigResult(dict):
+    def __init__(__self__, *,
+                 source_mysql: Optional['outputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlResult'] = None):
+        if source_mysql is not None:
+            pulumi.set(__self__, "source_mysql", source_mysql)
+
+    @property
+    @pulumi.getter(name="sourceMysql")
+    def source_mysql(self) -> Optional['outputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlResult']:
+        return pulumi.get(self, "source_mysql")
+
+
+@pulumi.output_type
+class GetServiceIntegrationPrometheusUserConfigSourceMysqlResult(dict):
+    def __init__(__self__, *,
+                 telegraf: Optional['outputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult'] = None):
+        if telegraf is not None:
+            pulumi.set(__self__, "telegraf", telegraf)
+
+    @property
+    @pulumi.getter
+    def telegraf(self) -> Optional['outputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult']:
+        return pulumi.get(self, "telegraf")
+
+
+@pulumi.output_type
+class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult(dict):
+    def __init__(__self__, *,
+                 gather_event_waits: Optional[str] = None,
+                 gather_file_events_stats: Optional[str] = None,
+                 gather_index_io_waits: Optional[str] = None,
+                 gather_info_schema_auto_inc: Optional[str] = None,
+                 gather_innodb_metrics: Optional[str] = None,
+                 gather_perf_events_statements: Optional[str] = None,
+                 gather_process_list: Optional[str] = None,
+                 gather_slave_status: Optional[str] = None,
+                 gather_table_io_waits: Optional[str] = None,
+                 gather_table_lock_waits: Optional[str] = None,
+                 gather_table_schema: Optional[str] = None,
+                 perf_events_statements_digest_text_limit: Optional[str] = None,
+                 perf_events_statements_limit: Optional[str] = None,
+                 perf_events_statements_time_limit: Optional[str] = None):
+        if gather_event_waits is not None:
+            pulumi.set(__self__, "gather_event_waits", gather_event_waits)
+        if gather_file_events_stats is not None:
+            pulumi.set(__self__, "gather_file_events_stats", gather_file_events_stats)
+        if gather_index_io_waits is not None:
+            pulumi.set(__self__, "gather_index_io_waits", gather_index_io_waits)
+        if gather_info_schema_auto_inc is not None:
+            pulumi.set(__self__, "gather_info_schema_auto_inc", gather_info_schema_auto_inc)
+        if gather_innodb_metrics is not None:
+            pulumi.set(__self__, "gather_innodb_metrics", gather_innodb_metrics)
+        if gather_perf_events_statements is not None:
+            pulumi.set(__self__, "gather_perf_events_statements", gather_perf_events_statements)
+        if gather_process_list is not None:
+            pulumi.set(__self__, "gather_process_list", gather_process_list)
+        if gather_slave_status is not None:
+            pulumi.set(__self__, "gather_slave_status", gather_slave_status)
+        if gather_table_io_waits is not None:
+            pulumi.set(__self__, "gather_table_io_waits", gather_table_io_waits)
+        if gather_table_lock_waits is not None:
+            pulumi.set(__self__, "gather_table_lock_waits", gather_table_lock_waits)
+        if gather_table_schema is not None:
+            pulumi.set(__self__, "gather_table_schema", gather_table_schema)
+        if perf_events_statements_digest_text_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_digest_text_limit", perf_events_statements_digest_text_limit)
+        if perf_events_statements_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_limit", perf_events_statements_limit)
+        if perf_events_statements_time_limit is not None:
+            pulumi.set(__self__, "perf_events_statements_time_limit", perf_events_statements_time_limit)
+
+    @property
+    @pulumi.getter(name="gatherEventWaits")
+    def gather_event_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_event_waits")
+
+    @property
+    @pulumi.getter(name="gatherFileEventsStats")
+    def gather_file_events_stats(self) -> Optional[str]:
+        return pulumi.get(self, "gather_file_events_stats")
+
+    @property
+    @pulumi.getter(name="gatherIndexIoWaits")
+    def gather_index_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_index_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherInfoSchemaAutoInc")
+    def gather_info_schema_auto_inc(self) -> Optional[str]:
+        return pulumi.get(self, "gather_info_schema_auto_inc")
+
+    @property
+    @pulumi.getter(name="gatherInnodbMetrics")
+    def gather_innodb_metrics(self) -> Optional[str]:
+        return pulumi.get(self, "gather_innodb_metrics")
+
+    @property
+    @pulumi.getter(name="gatherPerfEventsStatements")
+    def gather_perf_events_statements(self) -> Optional[str]:
+        return pulumi.get(self, "gather_perf_events_statements")
+
+    @property
+    @pulumi.getter(name="gatherProcessList")
+    def gather_process_list(self) -> Optional[str]:
+        return pulumi.get(self, "gather_process_list")
+
+    @property
+    @pulumi.getter(name="gatherSlaveStatus")
+    def gather_slave_status(self) -> Optional[str]:
+        return pulumi.get(self, "gather_slave_status")
+
+    @property
+    @pulumi.getter(name="gatherTableIoWaits")
+    def gather_table_io_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_io_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableLockWaits")
+    def gather_table_lock_waits(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_lock_waits")
+
+    @property
+    @pulumi.getter(name="gatherTableSchema")
+    def gather_table_schema(self) -> Optional[str]:
+        return pulumi.get(self, "gather_table_schema")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsDigestTextLimit")
+    def perf_events_statements_digest_text_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_digest_text_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsLimit")
+    def perf_events_statements_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_limit")
+
+    @property
+    @pulumi.getter(name="perfEventsStatementsTimeLimit")
+    def perf_events_statements_time_limit(self) -> Optional[str]:
+        return pulumi.get(self, "perf_events_statements_time_limit")
+
+
+@pulumi.output_type
+class GetServiceIntegrationReadReplicaUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetServiceIntegrationRsyslogUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetServiceIntegrationSignalfxUserConfigResult(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -22469,6 +23723,7 @@ class GetServiceMysqlUserConfigResult(dict):
                  mysql: Optional['outputs.GetServiceMysqlUserConfigMysqlResult'] = None,
                  mysql_version: Optional[str] = None,
                  private_access: Optional['outputs.GetServiceMysqlUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServiceMysqlUserConfigPublicAccessResult'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -22488,6 +23743,8 @@ class GetServiceMysqlUserConfigResult(dict):
             pulumi.set(__self__, "mysql_version", mysql_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -22534,6 +23791,11 @@ class GetServiceMysqlUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServiceMysqlUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -22843,6 +24105,7 @@ class GetServicePgUserConfigResult(dict):
                  pgbouncer: Optional['outputs.GetServicePgUserConfigPgbouncerResult'] = None,
                  pglookout: Optional['outputs.GetServicePgUserConfigPglookoutResult'] = None,
                  private_access: Optional['outputs.GetServicePgUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServicePgUserConfigPublicAccessResult'] = None,
                  recovery_target_time: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -22877,6 +24140,8 @@ class GetServicePgUserConfigResult(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_target_time is not None:
@@ -22958,6 +24223,11 @@ class GetServicePgUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServicePgUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -23535,6 +24805,7 @@ class GetServiceRedisUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.GetServiceRedisUserConfigMigrationResult'] = None,
                  private_access: Optional['outputs.GetServiceRedisUserConfigPrivateAccessResult'] = None,
+                 project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServiceRedisUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
                  redis_io_threads: Optional[str] = None,
@@ -23551,6 +24822,8 @@ class GetServiceRedisUserConfigResult(dict):
             pulumi.set(__self__, "migration", migration)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
@@ -23586,6 +24859,11 @@ class GetServiceRedisUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServiceRedisUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
 
     @property
     @pulumi.getter(name="publicAccess")

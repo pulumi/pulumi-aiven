@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME>",
  * }, { async: true }));
  * ```
+ *
+ * > **Note** The service user data source is not supported for Aiven Grafana services.
  */
 export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceUserResult> {
     if (!opts) {
@@ -64,12 +66,21 @@ export interface GetServiceUserArgs {
      */
     readonly password?: string;
     /**
-     * and `serviceName` - (Required) define the project and service the user belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+     * using reference as shown above to set up dependencies correctly.
      */
     readonly project: string;
+    /**
+     * Redis specific field, defines command category rules.
+     */
     readonly redisAclCategories?: string[];
+    /**
+     * Redis specific field, defines rules for individual commands.
+     */
     readonly redisAclCommands?: string[];
+    /**
+     * Redis specific field, defines key access rules.
+     */
     readonly redisAclKeys?: string[];
     readonly serviceName: string;
     /**
@@ -104,8 +115,17 @@ export interface GetServiceUserResult {
      */
     readonly password: string;
     readonly project: string;
+    /**
+     * Redis specific field, defines command category rules.
+     */
     readonly redisAclCategories?: string[];
+    /**
+     * Redis specific field, defines rules for individual commands.
+     */
     readonly redisAclCommands?: string[];
+    /**
+     * Redis specific field, defines key access rules.
+     */
     readonly redisAclKeys?: string[];
     readonly serviceName: string;
     /**

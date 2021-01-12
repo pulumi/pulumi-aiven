@@ -26,6 +26,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("privateAccess")]
         public Inputs.GetServiceCassandraUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
+        [Input("projectToForkFrom")]
+        public string? ProjectToForkFrom { get; set; }
+
         [Input("publicAccess")]
         public Inputs.GetServiceCassandraUserConfigPublicAccessArgs? PublicAccess { get; set; }
 

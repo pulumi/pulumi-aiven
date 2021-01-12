@@ -41,6 +41,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("privateAccess")]
         public Inputs.GetServiceMysqlUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
+        [Input("projectToForkFrom")]
+        public string? ProjectToForkFrom { get; set; }
+
         [Input("publicAccess")]
         public Inputs.GetServiceMysqlUserConfigPublicAccessArgs? PublicAccess { get; set; }
 

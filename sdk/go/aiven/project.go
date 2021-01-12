@@ -30,6 +30,8 @@ type Project struct {
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	BillingExtraText pulumi.StringPtrOutput `pulumi:"billingExtraText"`
+	// Billing group Id
+	BillingGroup pulumi.StringPtrOutput `pulumi:"billingGroup"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -68,11 +70,12 @@ type Project struct {
 // NewProject registers a new resource with the given unique name, arguments, and options.
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ProjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Project
 	err := ctx.RegisterResource("aiven:index/project:Project", name, args, &resource, opts...)
@@ -109,6 +112,8 @@ type projectState struct {
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	BillingExtraText *string `pulumi:"billingExtraText"`
+	// Billing group Id
+	BillingGroup *string `pulumi:"billingGroup"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -158,6 +163,8 @@ type ProjectState struct {
 	BillingEmails pulumi.StringArrayInput
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	BillingExtraText pulumi.StringPtrInput
+	// Billing group Id
+	BillingGroup pulumi.StringPtrInput
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -211,6 +218,8 @@ type projectArgs struct {
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	BillingExtraText *string `pulumi:"billingExtraText"`
+	// Billing group Id
+	BillingGroup *string `pulumi:"billingGroup"`
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.
@@ -255,6 +264,8 @@ type ProjectArgs struct {
 	BillingEmails pulumi.StringArrayInput
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	BillingExtraText pulumi.StringPtrInput
+	// Billing group Id
+	BillingGroup pulumi.StringPtrInput
 	// is a computed property that can be used to read the CA certificate of the
 	// project. This is required for configuring clients that connect to certain services like
 	// Kafka. This value cannot be set, only read.

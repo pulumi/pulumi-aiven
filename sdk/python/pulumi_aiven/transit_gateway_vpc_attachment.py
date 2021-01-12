@@ -68,19 +68,19 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if peer_cloud_account is None:
+            if peer_cloud_account is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_cloud_account'")
             __props__['peer_cloud_account'] = peer_cloud_account
-            if peer_region is None:
+            if peer_region is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_region'")
             __props__['peer_region'] = peer_region
-            if peer_vpc is None:
+            if peer_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_vpc'")
             __props__['peer_vpc'] = peer_vpc
-            if user_peer_network_cidrs is None:
+            if user_peer_network_cidrs is None and not opts.urn:
                 raise TypeError("Missing required property 'user_peer_network_cidrs'")
             __props__['user_peer_network_cidrs'] = user_peer_network_cidrs
-            if vpc_id is None:
+            if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
             __props__['peering_connection_id'] = None

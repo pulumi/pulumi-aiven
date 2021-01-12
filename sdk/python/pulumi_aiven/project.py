@@ -21,6 +21,7 @@ class Project(pulumi.CustomResource):
                  billing_currency: Optional[pulumi.Input[str]] = None,
                  billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  billing_extra_text: Optional[pulumi.Input[str]] = None,
+                 billing_group: Optional[pulumi.Input[str]] = None,
                  ca_cert: Optional[pulumi.Input[str]] = None,
                  card_id: Optional[pulumi.Input[str]] = None,
                  copy_from_project: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] billing_currency: Billing currency
         :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
         :param pulumi.Input[str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        :param pulumi.Input[str] billing_group: Billing group Id
         :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
                project. This is required for configuring clients that connect to certain services like
                Kafka. This value cannot be set, only read.
@@ -89,12 +91,13 @@ class Project(pulumi.CustomResource):
             __props__['billing_currency'] = billing_currency
             __props__['billing_emails'] = billing_emails
             __props__['billing_extra_text'] = billing_extra_text
+            __props__['billing_group'] = billing_group
             __props__['ca_cert'] = ca_cert
             __props__['card_id'] = card_id
             __props__['copy_from_project'] = copy_from_project
             __props__['country_code'] = country_code
             __props__['default_cloud'] = default_cloud
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['technical_emails'] = technical_emails
@@ -118,6 +121,7 @@ class Project(pulumi.CustomResource):
             billing_currency: Optional[pulumi.Input[str]] = None,
             billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             billing_extra_text: Optional[pulumi.Input[str]] = None,
+            billing_group: Optional[pulumi.Input[str]] = None,
             ca_cert: Optional[pulumi.Input[str]] = None,
             card_id: Optional[pulumi.Input[str]] = None,
             copy_from_project: Optional[pulumi.Input[str]] = None,
@@ -143,6 +147,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] billing_currency: Billing currency
         :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
         :param pulumi.Input[str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        :param pulumi.Input[str] billing_group: Billing group Id
         :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
                project. This is required for configuring clients that connect to certain services like
                Kafka. This value cannot be set, only read.
@@ -176,6 +181,7 @@ class Project(pulumi.CustomResource):
         __props__["billing_currency"] = billing_currency
         __props__["billing_emails"] = billing_emails
         __props__["billing_extra_text"] = billing_extra_text
+        __props__["billing_group"] = billing_group
         __props__["ca_cert"] = ca_cert
         __props__["card_id"] = card_id
         __props__["copy_from_project"] = copy_from_project
@@ -237,6 +243,14 @@ class Project(pulumi.CustomResource):
         Extra text to be included in all project invoices, e.g. purchase order or cost center number
         """
         return pulumi.get(self, "billing_extra_text")
+
+    @property
+    @pulumi.getter(name="billingGroup")
+    def billing_group(self) -> pulumi.Output[Optional[str]]:
+        """
+        Billing group Id
+        """
+        return pulumi.get(self, "billing_group")
 
     @property
     @pulumi.getter(name="caCert")

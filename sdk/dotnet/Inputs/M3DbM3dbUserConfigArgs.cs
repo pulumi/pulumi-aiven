@@ -42,6 +42,14 @@ namespace Pulumi.Aiven.Inputs
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
+        /// <summary>
+        /// Enables access to Graphite Carbon 
+        /// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+        /// metrics are written to aggregated namespaces only.
+        /// </summary>
+        [Input("m3coordinatorEnableGraphiteCarbonIngest")]
+        public Input<string>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
+
         [Input("namespaces")]
         private InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>? _namespaces;
 
@@ -61,10 +69,24 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.M3DbM3dbUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
         /// <summary>
+        /// Name of another project to fork a service from. This has
+        /// effect only when a new service is being created.
+        /// </summary>
+        [Input("projectToForkFrom")]
+        public Input<string>? ProjectToForkFrom { get; set; }
+
+        /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPublicAccessArgs>? PublicAccess { get; set; }
+
+        /// <summary>
+        /// Name of another service to fork from. This has effect only 
+        /// when a new service is being created.
+        /// </summary>
+        [Input("serviceToForkFrom")]
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         public M3DbM3dbUserConfigArgs()
         {

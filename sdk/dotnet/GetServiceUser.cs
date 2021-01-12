@@ -38,6 +38,8 @@ namespace Pulumi.Aiven
         /// 
         /// }
         /// ```
+        /// 
+        /// &gt; **Note** The service user data source is not supported for Aiven Grafana services.
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -70,14 +72,18 @@ namespace Pulumi.Aiven
         public string? Password { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the user belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+        /// using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         [Input("redisAclCategories")]
         private List<string>? _redisAclCategories;
+
+        /// <summary>
+        /// Redis specific field, defines command category rules.
+        /// </summary>
         public List<string> RedisAclCategories
         {
             get => _redisAclCategories ?? (_redisAclCategories = new List<string>());
@@ -86,6 +92,10 @@ namespace Pulumi.Aiven
 
         [Input("redisAclCommands")]
         private List<string>? _redisAclCommands;
+
+        /// <summary>
+        /// Redis specific field, defines rules for individual commands.
+        /// </summary>
         public List<string> RedisAclCommands
         {
             get => _redisAclCommands ?? (_redisAclCommands = new List<string>());
@@ -94,6 +104,10 @@ namespace Pulumi.Aiven
 
         [Input("redisAclKeys")]
         private List<string>? _redisAclKeys;
+
+        /// <summary>
+        /// Redis specific field, defines key access rules.
+        /// </summary>
         public List<string> RedisAclKeys
         {
             get => _redisAclKeys ?? (_redisAclKeys = new List<string>());
@@ -142,8 +156,17 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Password;
         public readonly string Project;
+        /// <summary>
+        /// Redis specific field, defines command category rules.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclCategories;
+        /// <summary>
+        /// Redis specific field, defines rules for individual commands.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclCommands;
+        /// <summary>
+        /// Redis specific field, defines key access rules.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclKeys;
         public readonly string ServiceName;
         /// <summary>

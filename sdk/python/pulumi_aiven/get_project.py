@@ -19,7 +19,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, account_id=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, ca_cert=None, card_id=None, copy_from_project=None, country=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, vat_id=None):
+    def __init__(__self__, account_id=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group=None, ca_cert=None, card_id=None, copy_from_project=None, country=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, vat_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetProjectResult:
         if billing_extra_text and not isinstance(billing_extra_text, str):
             raise TypeError("Expected argument 'billing_extra_text' to be a str")
         pulumi.set(__self__, "billing_extra_text", billing_extra_text)
+        if billing_group and not isinstance(billing_group, str):
+            raise TypeError("Expected argument 'billing_group' to be a str")
+        pulumi.set(__self__, "billing_group", billing_group)
         if ca_cert and not isinstance(ca_cert, str):
             raise TypeError("Expected argument 'ca_cert' to be a str")
         pulumi.set(__self__, "ca_cert", ca_cert)
@@ -108,6 +111,11 @@ class GetProjectResult:
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> Optional[str]:
         return pulumi.get(self, "billing_extra_text")
+
+    @property
+    @pulumi.getter(name="billingGroup")
+    def billing_group(self) -> Optional[str]:
+        return pulumi.get(self, "billing_group")
 
     @property
     @pulumi.getter(name="caCert")
@@ -203,6 +211,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             billing_currency=self.billing_currency,
             billing_emails=self.billing_emails,
             billing_extra_text=self.billing_extra_text,
+            billing_group=self.billing_group,
             ca_cert=self.ca_cert,
             card_id=self.card_id,
             copy_from_project=self.copy_from_project,
@@ -223,6 +232,7 @@ def get_project(account_id: Optional[str] = None,
                 billing_currency: Optional[str] = None,
                 billing_emails: Optional[Sequence[str]] = None,
                 billing_extra_text: Optional[str] = None,
+                billing_group: Optional[str] = None,
                 ca_cert: Optional[str] = None,
                 card_id: Optional[str] = None,
                 copy_from_project: Optional[str] = None,
@@ -275,6 +285,7 @@ def get_project(account_id: Optional[str] = None,
     __args__['billingCurrency'] = billing_currency
     __args__['billingEmails'] = billing_emails
     __args__['billingExtraText'] = billing_extra_text
+    __args__['billingGroup'] = billing_group
     __args__['caCert'] = ca_cert
     __args__['cardId'] = card_id
     __args__['copyFromProject'] = copy_from_project
@@ -299,6 +310,7 @@ def get_project(account_id: Optional[str] = None,
         billing_currency=__ret__.billing_currency,
         billing_emails=__ret__.billing_emails,
         billing_extra_text=__ret__.billing_extra_text,
+        billing_group=__ret__.billing_group,
         ca_cert=__ret__.ca_cert,
         card_id=__ret__.card_id,
         copy_from_project=__ret__.copy_from_project,

@@ -91,13 +91,13 @@ export class AccountTeamMember extends pulumi.CustomResource {
             inputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as AccountTeamMemberArgs | undefined;
-            if (!args || args.accountId === undefined) {
+            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if (!args || args.teamId === undefined) {
+            if ((!args || args.teamId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'teamId'");
             }
-            if (!args || args.userEmail === undefined) {
+            if ((!args || args.userEmail === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userEmail'");
             }
             inputs["accepted"] = args ? args.accepted : undefined;

@@ -122,14 +122,15 @@ type InfluxDb struct {
 // NewInfluxDb registers a new resource with the given unique name, arguments, and options.
 func NewInfluxDb(ctx *pulumi.Context,
 	name string, args *InfluxDbArgs, opts ...pulumi.ResourceOption) (*InfluxDb, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &InfluxDbArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource InfluxDb
 	err := ctx.RegisterResource("aiven:index/influxDb:InfluxDb", name, args, &resource, opts...)

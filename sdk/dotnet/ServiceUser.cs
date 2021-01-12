@@ -34,6 +34,8 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **Note** The service user resource is not supported for Aiven Grafana services.
     /// </summary>
     public partial class ServiceUser : Pulumi.CustomResource
     {
@@ -62,26 +64,26 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the user belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+        /// using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Command category rules
+        /// Redis specific field, defines command category rules.
         /// </summary>
         [Output("redisAclCategories")]
         public Output<ImmutableArray<string>> RedisAclCategories { get; private set; } = null!;
 
         /// <summary>
-        /// Rules for individual commands
+        /// Redis specific field, defines rules for individual commands.
         /// </summary>
         [Output("redisAclCommands")]
         public Output<ImmutableArray<string>> RedisAclCommands { get; private set; } = null!;
 
         /// <summary>
-        /// Key access rules
+        /// Redis specific field, defines key access rules.
         /// </summary>
         [Output("redisAclKeys")]
         public Output<ImmutableArray<string>> RedisAclKeys { get; private set; } = null!;
@@ -163,8 +165,8 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the user belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+        /// using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -173,7 +175,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCategories;
 
         /// <summary>
-        /// Command category rules
+        /// Redis specific field, defines command category rules.
         /// </summary>
         public InputList<string> RedisAclCategories
         {
@@ -185,7 +187,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCommands;
 
         /// <summary>
-        /// Rules for individual commands
+        /// Redis specific field, defines rules for individual commands.
         /// </summary>
         public InputList<string> RedisAclCommands
         {
@@ -197,7 +199,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclKeys;
 
         /// <summary>
-        /// Key access rules
+        /// Redis specific field, defines key access rules.
         /// </summary>
         public InputList<string> RedisAclKeys
         {
@@ -249,8 +251,8 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the user belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+        /// using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -259,7 +261,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCategories;
 
         /// <summary>
-        /// Command category rules
+        /// Redis specific field, defines command category rules.
         /// </summary>
         public InputList<string> RedisAclCategories
         {
@@ -271,7 +273,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCommands;
 
         /// <summary>
-        /// Rules for individual commands
+        /// Redis specific field, defines rules for individual commands.
         /// </summary>
         public InputList<string> RedisAclCommands
         {
@@ -283,7 +285,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclKeys;
 
         /// <summary>
-        /// Key access rules
+        /// Redis specific field, defines key access rules.
         /// </summary>
         public InputList<string> RedisAclKeys
         {

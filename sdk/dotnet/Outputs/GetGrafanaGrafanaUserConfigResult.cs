@@ -100,6 +100,11 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? MetricsEnabled;
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
+        /// Name of another project to fork a service from. This has 
+        /// effect only when a new service is being created.
+        /// </summary>
+        public readonly string? ProjectToForkFrom;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigPublicAccessResult? PublicAccess;
@@ -174,6 +179,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.GetGrafanaGrafanaUserConfigPublicAccessResult? publicAccess,
 
             string? recoveryBasebackupName,
@@ -209,6 +216,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             MetricsEnabled = metricsEnabled;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;

@@ -122,14 +122,14 @@ class Redis(pulumi.CustomResource):
             __props__['maintenance_window_dow'] = maintenance_window_dow
             __props__['maintenance_window_time'] = maintenance_window_time
             __props__['plan'] = plan
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['project_vpc_id'] = project_vpc_id
             __props__['redis'] = redis
             __props__['redis_user_config'] = redis_user_config
             __props__['service_integrations'] = service_integrations
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
             __props__['termination_protection'] = termination_protection

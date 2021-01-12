@@ -26,6 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from private networks.
         /// </summary>
         public readonly Outputs.GetCassandaCassandraUserConfigPrivateAccessResult? PrivateAccess;
+        public readonly string? ProjectToForkFrom;
         /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
@@ -44,6 +45,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetCassandaCassandraUserConfigPrivateAccessResult? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.GetCassandaCassandraUserConfigPublicAccessResult? publicAccess,
 
             string? serviceToForkFrom)
@@ -51,6 +54,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             ServiceToForkFrom = serviceToForkFrom;
         }

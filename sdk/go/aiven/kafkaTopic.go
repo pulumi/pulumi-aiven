@@ -92,23 +92,24 @@ type KafkaTopic struct {
 // NewKafkaTopic registers a new resource with the given unique name, arguments, and options.
 func NewKafkaTopic(ctx *pulumi.Context,
 	name string, args *KafkaTopicArgs, opts ...pulumi.ResourceOption) (*KafkaTopic, error) {
-	if args == nil || args.Partitions == nil {
-		return nil, errors.New("missing required argument 'Partitions'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Replication == nil {
-		return nil, errors.New("missing required argument 'Replication'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
-	if args == nil || args.TopicName == nil {
-		return nil, errors.New("missing required argument 'TopicName'")
-	}
 	if args == nil {
-		args = &KafkaTopicArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Partitions == nil {
+		return nil, errors.New("invalid value for required argument 'Partitions'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Replication == nil {
+		return nil, errors.New("invalid value for required argument 'Replication'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
+	}
+	if args.TopicName == nil {
+		return nil, errors.New("invalid value for required argument 'TopicName'")
 	}
 	var resource KafkaTopic
 	err := ctx.RegisterResource("aiven:index/kafkaTopic:KafkaTopic", name, args, &resource, opts...)

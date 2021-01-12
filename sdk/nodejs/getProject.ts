@@ -36,6 +36,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         "billingCurrency": args.billingCurrency,
         "billingEmails": args.billingEmails,
         "billingExtraText": args.billingExtraText,
+        "billingGroup": args.billingGroup,
         "caCert": args.caCert,
         "cardId": args.cardId,
         "copyFromProject": args.copyFromProject,
@@ -64,6 +65,7 @@ export interface GetProjectArgs {
     readonly billingCurrency?: string;
     readonly billingEmails?: string[];
     readonly billingExtraText?: string;
+    readonly billingGroup?: string;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
@@ -114,6 +116,7 @@ export interface GetProjectResult {
     readonly billingCurrency?: string;
     readonly billingEmails?: string[];
     readonly billingExtraText?: string;
+    readonly billingGroup?: string;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like

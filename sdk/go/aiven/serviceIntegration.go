@@ -15,10 +15,9 @@ import (
 //
 // The Service Integration resource allows the creation and management of Aiven Service Integrations.
 //
-// Service Integration defines an integration between two Aiven services or between Aiven
-// service and an external integration endpoint. Integration could be for example sending
-// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
-// service to a Grafana service to show dashboards, sending logs from any service to
+// Service Integration defines an integration between two Aiven services or between Aiven service and an external
+// integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
+// getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
 // Elasticsearch, etc.
 //
 // ## Example Usage
@@ -46,13 +45,19 @@ import (
 // 	})
 // }
 // ```
+//
+// > **Note** For services running on `hobbiest` plan service integrations are not supported.
 type ServiceIntegration struct {
 	pulumi.CustomResourceState
 
-	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-	// to be defined using the reference syntax described above to set up the dependency correctly.
+	// Dashboard specific user configurable settings
+	DashboardUserConfig ServiceIntegrationDashboardUserConfigPtrOutput `pulumi:"dashboardUserConfig"`
+	// Dashboard specific user configurable settings
+	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrOutput `pulumi:"datadogUserConfig"`
+	// or `destinationServiceName` - (Required) identifies the target side of the integration.
+	// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
@@ -62,23 +67,39 @@ type ServiceIntegration struct {
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
-	// identifies the type of integration that is set up. Possible values
-	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// identifies the type of integration that is set up. Possible values include `dashboard`
+	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
+	// Kafka Logs specific user configurable settings
+	KafkaLogsUserConfig ServiceIntegrationKafkaLogsUserConfigPtrOutput `pulumi:"kafkaLogsUserConfig"`
 	// Mirrormaker 2 integration specific user configurable settings
 	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput `pulumi:"kafkaMirrormakerUserConfig"`
 	// Log integration specific user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrOutput `pulumi:"logsUserConfig"`
+	// M3 aggregator specific user configurable settings
+	M3aggregatorUserConfig ServiceIntegrationM3aggregatorUserConfigPtrOutput `pulumi:"m3aggregatorUserConfig"`
+	// M3 coordinator specific user configurable settings
+	M3coordinatorUserConfig ServiceIntegrationM3coordinatorUserConfigPtrOutput `pulumi:"m3coordinatorUserConfig"`
+	// Metrics specific user configurable settings
+	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrOutput `pulumi:"metricsUserConfig"`
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrOutput `pulumi:"mirrormakerUserConfig"`
 	// defines the project the integration belongs to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-	// needs to be defined using the reference syntax described above to set up the dependency correctly.
+	// Prometheus coordinator specific user configurable settings
+	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
+	// PG Read replica specific user configurable settings
+	ReadReplicaUserConfig ServiceIntegrationReadReplicaUserConfigPtrOutput `pulumi:"readReplicaUserConfig"`
+	// RSyslog specific user configurable settings
+	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrOutput `pulumi:"rsyslogUserConfig"`
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig ServiceIntegrationSignalfxUserConfigPtrOutput `pulumi:"signalfxUserConfig"`
+	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
+	// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrOutput `pulumi:"sourceServiceName"`
@@ -87,14 +108,15 @@ type ServiceIntegration struct {
 // NewServiceIntegration registers a new resource with the given unique name, arguments, and options.
 func NewServiceIntegration(ctx *pulumi.Context,
 	name string, args *ServiceIntegrationArgs, opts ...pulumi.ResourceOption) (*ServiceIntegration, error) {
-	if args == nil || args.IntegrationType == nil {
-		return nil, errors.New("missing required argument 'IntegrationType'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ServiceIntegrationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IntegrationType == nil {
+		return nil, errors.New("invalid value for required argument 'IntegrationType'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ServiceIntegration
 	err := ctx.RegisterResource("aiven:index/serviceIntegration:ServiceIntegration", name, args, &resource, opts...)
@@ -118,10 +140,14 @@ func GetServiceIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceIntegration resources.
 type serviceIntegrationState struct {
-	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-	// to be defined using the reference syntax described above to set up the dependency correctly.
+	// Dashboard specific user configurable settings
+	DashboardUserConfig *ServiceIntegrationDashboardUserConfig `pulumi:"dashboardUserConfig"`
+	// Dashboard specific user configurable settings
+	DatadogUserConfig *ServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfig"`
+	// or `destinationServiceName` - (Required) identifies the target side of the integration.
+	// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
@@ -131,33 +157,53 @@ type serviceIntegrationState struct {
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
-	// identifies the type of integration that is set up. Possible values
-	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// identifies the type of integration that is set up. Possible values include `dashboard`
+	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType *string `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Kafka Logs specific user configurable settings
+	KafkaLogsUserConfig *ServiceIntegrationKafkaLogsUserConfig `pulumi:"kafkaLogsUserConfig"`
 	// Mirrormaker 2 integration specific user configurable settings
 	KafkaMirrormakerUserConfig *ServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Log integration specific user configurable settings
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
+	// M3 aggregator specific user configurable settings
+	M3aggregatorUserConfig *ServiceIntegrationM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
+	// M3 coordinator specific user configurable settings
+	M3coordinatorUserConfig *ServiceIntegrationM3coordinatorUserConfig `pulumi:"m3coordinatorUserConfig"`
+	// Metrics specific user configurable settings
+	MetricsUserConfig *ServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfig"`
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// defines the project the integration belongs to.
 	Project *string `pulumi:"project"`
-	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-	// needs to be defined using the reference syntax described above to set up the dependency correctly.
+	// Prometheus coordinator specific user configurable settings
+	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	// PG Read replica specific user configurable settings
+	ReadReplicaUserConfig *ServiceIntegrationReadReplicaUserConfig `pulumi:"readReplicaUserConfig"`
+	// RSyslog specific user configurable settings
+	RsyslogUserConfig *ServiceIntegrationRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig *ServiceIntegrationSignalfxUserConfig `pulumi:"signalfxUserConfig"`
+	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
+	// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
 }
 
 type ServiceIntegrationState struct {
-	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-	// to be defined using the reference syntax described above to set up the dependency correctly.
+	// Dashboard specific user configurable settings
+	DashboardUserConfig ServiceIntegrationDashboardUserConfigPtrInput
+	// Dashboard specific user configurable settings
+	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrInput
+	// or `destinationServiceName` - (Required) identifies the target side of the integration.
+	// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
@@ -167,23 +213,39 @@ type ServiceIntegrationState struct {
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput
-	// identifies the type of integration that is set up. Possible values
-	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// identifies the type of integration that is set up. Possible values include `dashboard`
+	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringPtrInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
+	// Kafka Logs specific user configurable settings
+	KafkaLogsUserConfig ServiceIntegrationKafkaLogsUserConfigPtrInput
 	// Mirrormaker 2 integration specific user configurable settings
 	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrInput
 	// Log integration specific user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
+	// M3 aggregator specific user configurable settings
+	M3aggregatorUserConfig ServiceIntegrationM3aggregatorUserConfigPtrInput
+	// M3 coordinator specific user configurable settings
+	M3coordinatorUserConfig ServiceIntegrationM3coordinatorUserConfigPtrInput
+	// Metrics specific user configurable settings
+	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrInput
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// defines the project the integration belongs to.
 	Project pulumi.StringPtrInput
-	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-	// needs to be defined using the reference syntax described above to set up the dependency correctly.
+	// Prometheus coordinator specific user configurable settings
+	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
+	// PG Read replica specific user configurable settings
+	ReadReplicaUserConfig ServiceIntegrationReadReplicaUserConfigPtrInput
+	// RSyslog specific user configurable settings
+	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrInput
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig ServiceIntegrationSignalfxUserConfigPtrInput
+	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
+	// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput
@@ -194,10 +256,14 @@ func (ServiceIntegrationState) ElementType() reflect.Type {
 }
 
 type serviceIntegrationArgs struct {
-	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-	// to be defined using the reference syntax described above to set up the dependency correctly.
+	// Dashboard specific user configurable settings
+	DashboardUserConfig *ServiceIntegrationDashboardUserConfig `pulumi:"dashboardUserConfig"`
+	// Dashboard specific user configurable settings
+	DatadogUserConfig *ServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfig"`
+	// or `destinationServiceName` - (Required) identifies the target side of the integration.
+	// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
@@ -207,23 +273,39 @@ type serviceIntegrationArgs struct {
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
-	// identifies the type of integration that is set up. Possible values
-	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// identifies the type of integration that is set up. Possible values include `dashboard`
+	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType string `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
+	// Kafka Logs specific user configurable settings
+	KafkaLogsUserConfig *ServiceIntegrationKafkaLogsUserConfig `pulumi:"kafkaLogsUserConfig"`
 	// Mirrormaker 2 integration specific user configurable settings
 	KafkaMirrormakerUserConfig *ServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Log integration specific user configurable settings
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
+	// M3 aggregator specific user configurable settings
+	M3aggregatorUserConfig *ServiceIntegrationM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
+	// M3 coordinator specific user configurable settings
+	M3coordinatorUserConfig *ServiceIntegrationM3coordinatorUserConfig `pulumi:"m3coordinatorUserConfig"`
+	// Metrics specific user configurable settings
+	MetricsUserConfig *ServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfig"`
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// defines the project the integration belongs to.
 	Project string `pulumi:"project"`
-	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-	// needs to be defined using the reference syntax described above to set up the dependency correctly.
+	// Prometheus coordinator specific user configurable settings
+	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	// PG Read replica specific user configurable settings
+	ReadReplicaUserConfig *ServiceIntegrationReadReplicaUserConfig `pulumi:"readReplicaUserConfig"`
+	// RSyslog specific user configurable settings
+	RsyslogUserConfig *ServiceIntegrationRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig *ServiceIntegrationSignalfxUserConfig `pulumi:"signalfxUserConfig"`
+	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
+	// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
@@ -231,10 +313,14 @@ type serviceIntegrationArgs struct {
 
 // The set of arguments for constructing a ServiceIntegration resource.
 type ServiceIntegrationArgs struct {
-	// or `destinationServiceName` - (Required) identifies the target side of
-	// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-	// to be defined using the reference syntax described above to set up the dependency correctly.
+	// Dashboard specific user configurable settings
+	DashboardUserConfig ServiceIntegrationDashboardUserConfigPtrInput
+	// Dashboard specific user configurable settings
+	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrInput
+	// or `destinationServiceName` - (Required) identifies the target side of the integration.
+	// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
@@ -244,23 +330,39 @@ type ServiceIntegrationArgs struct {
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput
-	// identifies the type of integration that is set up. Possible values
-	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// identifies the type of integration that is set up. Possible values include `dashboard`
+	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType pulumi.StringInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
+	// Kafka Logs specific user configurable settings
+	KafkaLogsUserConfig ServiceIntegrationKafkaLogsUserConfigPtrInput
 	// Mirrormaker 2 integration specific user configurable settings
 	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrInput
 	// Log integration specific user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
+	// M3 aggregator specific user configurable settings
+	M3aggregatorUserConfig ServiceIntegrationM3aggregatorUserConfigPtrInput
+	// M3 coordinator specific user configurable settings
+	M3coordinatorUserConfig ServiceIntegrationM3coordinatorUserConfigPtrInput
+	// Metrics specific user configurable settings
+	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrInput
 	// Mirrormaker 1 integration specific user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// defines the project the integration belongs to.
 	Project pulumi.StringInput
-	// or `sourceServiceName` - (Optional) identifies the source side of the
-	// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-	// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-	// needs to be defined using the reference syntax described above to set up the dependency correctly.
+	// Prometheus coordinator specific user configurable settings
+	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
+	// PG Read replica specific user configurable settings
+	ReadReplicaUserConfig ServiceIntegrationReadReplicaUserConfigPtrInput
+	// RSyslog specific user configurable settings
+	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrInput
+	// Signalfx specific user configurable settings
+	SignalfxUserConfig ServiceIntegrationSignalfxUserConfigPtrInput
+	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
+	// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+	// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+	// reference syntax described above to set up the dependency correctly.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput

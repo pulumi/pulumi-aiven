@@ -30,6 +30,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
+        /// Name of another project to fork a service from. This has
+        /// effect only when a new service is being created.
+        /// </summary>
+        public readonly string? ProjectToForkFrom;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult? PublicAccess;
@@ -53,6 +58,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult? publicAccess,
 
             string? recoveryBasebackupName,
@@ -63,6 +70,7 @@ namespace Pulumi.Aiven.Outputs
             Influxdb = influxdb;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;

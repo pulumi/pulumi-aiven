@@ -10,10 +10,9 @@ import * as utilities from "./utilities";
  *
  * The Service Integration data source provides information about the existing Aiven Service Integration.
  *
- * Service Integration defines an integration between two Aiven services or between Aiven
- * service and an external integration endpoint. Integration could be for example sending
- * metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
- * service to a Grafana service to show dashboards, sending logs from any service to
+ * Service Integration defines an integration between two Aiven services or between Aiven service and an external
+ * integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
+ * getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
  * Elasticsearch, etc.
  *
  * ## Example Usage
@@ -39,6 +38,8 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("aiven:index/getServiceIntegration:getServiceIntegration", {
+        "dashboardUserConfig": args.dashboardUserConfig,
+        "datadogUserConfig": args.datadogUserConfig,
         "destinationEndpointId": args.destinationEndpointId,
         "destinationServiceName": args.destinationServiceName,
         "externalAwsCloudwatchLogsUserConfig": args.externalAwsCloudwatchLogsUserConfig,
@@ -46,10 +47,18 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
         "externalGoogleCloudLoggingUserConfig": args.externalGoogleCloudLoggingUserConfig,
         "integrationType": args.integrationType,
         "kafkaConnectUserConfig": args.kafkaConnectUserConfig,
+        "kafkaLogsUserConfig": args.kafkaLogsUserConfig,
         "kafkaMirrormakerUserConfig": args.kafkaMirrormakerUserConfig,
         "logsUserConfig": args.logsUserConfig,
+        "m3aggregatorUserConfig": args.m3aggregatorUserConfig,
+        "m3coordinatorUserConfig": args.m3coordinatorUserConfig,
+        "metricsUserConfig": args.metricsUserConfig,
         "mirrormakerUserConfig": args.mirrormakerUserConfig,
         "project": args.project,
+        "prometheusUserConfig": args.prometheusUserConfig,
+        "readReplicaUserConfig": args.readReplicaUserConfig,
+        "rsyslogUserConfig": args.rsyslogUserConfig,
+        "signalfxUserConfig": args.signalfxUserConfig,
         "sourceEndpointId": args.sourceEndpointId,
         "sourceServiceName": args.sourceServiceName,
     }, opts);
@@ -59,32 +68,40 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
  * A collection of arguments for invoking getServiceIntegration.
  */
 export interface GetServiceIntegrationArgs {
+    readonly dashboardUserConfig?: inputs.GetServiceIntegrationDashboardUserConfig;
+    readonly datadogUserConfig?: inputs.GetServiceIntegrationDatadogUserConfig;
     readonly destinationEndpointId?: string;
     /**
-     * identifies the target side of
-     * the integration.
+     * identifies the target side of the integration.
      */
     readonly destinationServiceName: string;
     readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfig;
     /**
-     * identifies the type of integration that is set up. Possible values
-     * include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+     * identifies the type of integration that is set up. Possible values include `dashboard`
+     * , `datadog`, `logs`, `metrics` and `mirrormaker`.
      */
     readonly integrationType: string;
     readonly kafkaConnectUserConfig?: inputs.GetServiceIntegrationKafkaConnectUserConfig;
+    readonly kafkaLogsUserConfig?: inputs.GetServiceIntegrationKafkaLogsUserConfig;
     readonly kafkaMirrormakerUserConfig?: inputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
     readonly logsUserConfig?: inputs.GetServiceIntegrationLogsUserConfig;
+    readonly m3aggregatorUserConfig?: inputs.GetServiceIntegrationM3aggregatorUserConfig;
+    readonly m3coordinatorUserConfig?: inputs.GetServiceIntegrationM3coordinatorUserConfig;
+    readonly metricsUserConfig?: inputs.GetServiceIntegrationMetricsUserConfig;
     readonly mirrormakerUserConfig?: inputs.GetServiceIntegrationMirrormakerUserConfig;
     /**
      * defines the project the integration belongs to.
      */
     readonly project: string;
+    readonly prometheusUserConfig?: inputs.GetServiceIntegrationPrometheusUserConfig;
+    readonly readReplicaUserConfig?: inputs.GetServiceIntegrationReadReplicaUserConfig;
+    readonly rsyslogUserConfig?: inputs.GetServiceIntegrationRsyslogUserConfig;
+    readonly signalfxUserConfig?: inputs.GetServiceIntegrationSignalfxUserConfig;
     readonly sourceEndpointId?: string;
     /**
-     * identifies the source side of the
-     * integration.
+     * identifies the source side of the integration.
      */
     readonly sourceServiceName: string;
 }
@@ -93,6 +110,8 @@ export interface GetServiceIntegrationArgs {
  * A collection of values returned by getServiceIntegration.
  */
 export interface GetServiceIntegrationResult {
+    readonly dashboardUserConfig?: outputs.GetServiceIntegrationDashboardUserConfig;
+    readonly datadogUserConfig?: outputs.GetServiceIntegrationDatadogUserConfig;
     readonly destinationEndpointId?: string;
     readonly destinationServiceName: string;
     readonly externalAwsCloudwatchLogsUserConfig?: outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
@@ -104,10 +123,18 @@ export interface GetServiceIntegrationResult {
     readonly id: string;
     readonly integrationType: string;
     readonly kafkaConnectUserConfig?: outputs.GetServiceIntegrationKafkaConnectUserConfig;
+    readonly kafkaLogsUserConfig?: outputs.GetServiceIntegrationKafkaLogsUserConfig;
     readonly kafkaMirrormakerUserConfig?: outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
     readonly logsUserConfig?: outputs.GetServiceIntegrationLogsUserConfig;
+    readonly m3aggregatorUserConfig?: outputs.GetServiceIntegrationM3aggregatorUserConfig;
+    readonly m3coordinatorUserConfig?: outputs.GetServiceIntegrationM3coordinatorUserConfig;
+    readonly metricsUserConfig?: outputs.GetServiceIntegrationMetricsUserConfig;
     readonly mirrormakerUserConfig?: outputs.GetServiceIntegrationMirrormakerUserConfig;
     readonly project: string;
+    readonly prometheusUserConfig?: outputs.GetServiceIntegrationPrometheusUserConfig;
+    readonly readReplicaUserConfig?: outputs.GetServiceIntegrationReadReplicaUserConfig;
+    readonly rsyslogUserConfig?: outputs.GetServiceIntegrationRsyslogUserConfig;
+    readonly signalfxUserConfig?: outputs.GetServiceIntegrationSignalfxUserConfig;
     readonly sourceEndpointId?: string;
     readonly sourceServiceName: string;
 }

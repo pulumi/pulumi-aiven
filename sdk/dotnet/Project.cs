@@ -54,6 +54,12 @@ namespace Pulumi.Aiven
         public Output<string?> BillingExtraText { get; private set; } = null!;
 
         /// <summary>
+        /// Billing group Id
+        /// </summary>
+        [Output("billingGroup")]
+        public Output<string?> BillingGroup { get; private set; } = null!;
+
+        /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
         /// project. This is required for configuring clients that connect to certain services like
         /// Kafka. This value cannot be set, only read.
@@ -220,6 +226,12 @@ namespace Pulumi.Aiven
         public Input<string>? BillingExtraText { get; set; }
 
         /// <summary>
+        /// Billing group Id
+        /// </summary>
+        [Input("billingGroup")]
+        public Input<string>? BillingGroup { get; set; }
+
+        /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
         /// project. This is required for configuring clients that connect to certain services like
         /// Kafka. This value cannot be set, only read.
@@ -333,6 +345,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("billingExtraText")]
         public Input<string>? BillingExtraText { get; set; }
+
+        /// <summary>
+        /// Billing group Id
+        /// </summary>
+        [Input("billingGroup")]
+        public Input<string>? BillingGroup { get; set; }
 
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the

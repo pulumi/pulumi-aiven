@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME>",
  * });
  * ```
+ *
+ * > **Note** The service user resource is not supported for Aiven Grafana services.
  */
 export class ServiceUser extends pulumi.CustomResource {
     /**
@@ -67,20 +69,20 @@ export class ServiceUser extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the user belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+     * using reference as shown above to set up dependencies correctly.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Command category rules
+     * Redis specific field, defines command category rules.
      */
     public readonly redisAclCategories!: pulumi.Output<string[] | undefined>;
     /**
-     * Rules for individual commands
+     * Redis specific field, defines rules for individual commands.
      */
     public readonly redisAclCommands!: pulumi.Output<string[] | undefined>;
     /**
-     * Key access rules
+     * Redis specific field, defines key access rules.
      */
     public readonly redisAclKeys!: pulumi.Output<string[] | undefined>;
     /**
@@ -121,13 +123,13 @@ export class ServiceUser extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as ServiceUserArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if (!args || args.username === undefined) {
+            if ((!args || args.username === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'username'");
             }
             inputs["authentication"] = args ? args.authentication : undefined;
@@ -174,20 +176,20 @@ export interface ServiceUserState {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the user belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+     * using reference as shown above to set up dependencies correctly.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Command category rules
+     * Redis specific field, defines command category rules.
      */
     readonly redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Rules for individual commands
+     * Redis specific field, defines rules for individual commands.
      */
     readonly redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Key access rules
+     * Redis specific field, defines key access rules.
      */
     readonly redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -217,20 +219,20 @@ export interface ServiceUserArgs {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the user belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+     * using reference as shown above to set up dependencies correctly.
      */
     readonly project: pulumi.Input<string>;
     /**
-     * Command category rules
+     * Redis specific field, defines command category rules.
      */
     readonly redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Rules for individual commands
+     * Redis specific field, defines rules for individual commands.
      */
     readonly redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Key access rules
+     * Redis specific field, defines key access rules.
      */
     readonly redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**

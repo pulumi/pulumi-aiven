@@ -78,17 +78,18 @@ type ServiceIntegrationEndpoint struct {
 // NewServiceIntegrationEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewServiceIntegrationEndpoint(ctx *pulumi.Context,
 	name string, args *ServiceIntegrationEndpointArgs, opts ...pulumi.ResourceOption) (*ServiceIntegrationEndpoint, error) {
-	if args == nil || args.EndpointName == nil {
-		return nil, errors.New("missing required argument 'EndpointName'")
-	}
-	if args == nil || args.EndpointType == nil {
-		return nil, errors.New("missing required argument 'EndpointType'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ServiceIntegrationEndpointArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EndpointName == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointName'")
+	}
+	if args.EndpointType == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointType'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ServiceIntegrationEndpoint
 	err := ctx.RegisterResource("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, args, &resource, opts...)

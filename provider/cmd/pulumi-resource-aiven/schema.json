@@ -64,6 +64,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/CassandraCassandraUserConfigPublicAccess:CassandraCassandraUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n",
@@ -443,6 +451,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/ElasticSearchElasticsearchUserConfigPrivateAccess:ElasticSearchElasticsearchUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has \neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1128,6 +1145,15 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has \neffect only when a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfigPublicAccess:GrafanaGrafanaUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet.\n",
@@ -1769,6 +1795,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfigPrivateAccess:InfluxDbInfluxdbUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has \neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3782,6 +3817,15 @@
                         }
                     }
                 },
+                "m3coordinatorEnableGraphiteCarbonIngest": {
+                    "type": "string",
+                    "description": "Enables access to Graphite Carbon \nplaintext metrics ingestion. It can be enabled only for services inside VPCs. The\nmetrics are written to aggregated namespaces only.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "namespaces": {
                     "type": "array",
                     "items": {
@@ -3803,9 +3847,27 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfigPublicAccess:M3DbM3dbUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4180,6 +4242,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfigPrivateAccess:MySqlMysqlUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4765,6 +4836,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPrivateAccess:PgPgUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5567,6 +5647,15 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/RedisRedisUserConfigPublicAccess:RedisRedisUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n",
@@ -5820,6 +5909,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/ServiceCassandraUserConfigPublicAccess:ServiceCassandraUserConfigPublicAccess",
                     "language": {
@@ -6033,6 +6130,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/ServiceElasticsearchUserConfigPrivateAccess:ServiceElasticsearchUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6558,6 +6663,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/ServiceGrafanaUserConfigPublicAccess:ServiceGrafanaUserConfigPublicAccess",
                     "language": {
@@ -7055,6 +7168,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/ServiceInfluxdbUserConfigPublicAccess:ServiceInfluxdbUserConfigPublicAccess",
                     "language": {
@@ -7144,6 +7265,69 @@
             "properties": {
                 "influxdb": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationDashboardUserConfig:ServiceIntegrationDashboardUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationDatadogUserConfig:ServiceIntegrationDatadogUserConfig": {
+            "properties": {
+                "excludeConsumerGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeTopics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeConsumerGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeTopics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaCustomMetrics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7556,6 +7740,19 @@
             },
             "type": "object"
         },
+        "aiven:index/ServiceIntegrationKafkaLogsUserConfig:ServiceIntegrationKafkaLogsUserConfig": {
+            "properties": {
+                "kafkaTopic": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/ServiceIntegrationKafkaMirrormakerUserConfig:ServiceIntegrationKafkaMirrormakerUserConfig": {
             "properties": {
                 "clusterAlias": {
@@ -7590,6 +7787,187 @@
             },
             "type": "object"
         },
+        "aiven:index/ServiceIntegrationM3aggregatorUserConfig:ServiceIntegrationM3aggregatorUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationM3coordinatorUserConfig:ServiceIntegrationM3coordinatorUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationMetricsUserConfig:ServiceIntegrationMetricsUserConfig": {
+            "properties": {
+                "database": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionDays": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceMysql": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationMetricsUserConfigSourceMysql:ServiceIntegrationMetricsUserConfigSourceMysql",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationMetricsUserConfigSourceMysql:ServiceIntegrationMetricsUserConfigSourceMysql": {
+            "properties": {
+                "telegraf": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf:ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf:ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf": {
+            "properties": {
+                "gatherEventWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherFileEventsStats": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherIndexIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInfoSchemaAutoInc": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInnodbMetrics": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherPerfEventsStatements": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherProcessList": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherSlaveStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableLockWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableSchema": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsDigestTextLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsTimeLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/ServiceIntegrationMirrormakerUserConfig:ServiceIntegrationMirrormakerUserConfig": {
             "properties": {
                 "mirrormakerWhitelist": {
@@ -7601,6 +7979,158 @@
                     }
                 }
             },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationPrometheusUserConfig:ServiceIntegrationPrometheusUserConfig": {
+            "properties": {
+                "sourceMysql": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationPrometheusUserConfigSourceMysql:ServiceIntegrationPrometheusUserConfigSourceMysql",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationPrometheusUserConfigSourceMysql:ServiceIntegrationPrometheusUserConfigSourceMysql": {
+            "properties": {
+                "telegraf": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf:ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf:ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf": {
+            "properties": {
+                "gatherEventWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherFileEventsStats": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherIndexIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInfoSchemaAutoInc": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInnodbMetrics": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherPerfEventsStatements": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherProcessList": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherSlaveStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableLockWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableSchema": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsDigestTextLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsTimeLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationReadReplicaUserConfig:ServiceIntegrationReadReplicaUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig": {
             "type": "object"
         },
         "aiven:index/ServiceKafka:ServiceKafka": {
@@ -8640,6 +9170,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/ServiceMysqlUserConfigPublicAccess:ServiceMysqlUserConfigPublicAccess",
                     "language": {
@@ -9068,6 +9606,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/ServicePgUserConfigPrivateAccess:ServicePgUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9699,6 +10245,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/ServiceRedisUserConfigPublicAccess:ServiceRedisUserConfigPublicAccess",
                     "language": {
@@ -9931,6 +10485,14 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigPrivateAccess:getCassandaCassandraUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10319,6 +10881,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getElasticSearchElasticsearchUserConfigPrivateAccess:getElasticSearchElasticsearchUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11005,6 +11576,15 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has \neffect only when a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getGrafanaGrafanaUserConfigPublicAccess:getGrafanaGrafanaUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet.\n",
@@ -11648,6 +12228,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getInfluxDbInfluxdbUserConfigPrivateAccess:getInfluxDbInfluxdbUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13663,6 +14252,15 @@
                         }
                     }
                 },
+                "m3coordinatorEnableGraphiteCarbonIngest": {
+                    "type": "string",
+                    "description": "Enables access to Graphite Carbon \nplaintext metrics ingestion. It can be enabled only for services inside VPCs. The\nmetrics are written to aggregated namespaces only.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "namespaces": {
                     "type": "array",
                     "items": {
@@ -13684,9 +14282,27 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigPublicAccess:getM3DbM3dbUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14062,6 +14678,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigPrivateAccess:getMySqlMysqlUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14649,6 +15274,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigPrivateAccess:getPgPgUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "(Optional) Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15452,6 +16086,15 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getRedisRedisUserConfigPublicAccess:getRedisRedisUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n",
@@ -15705,6 +16348,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getServiceCassandraUserConfigPublicAccess:getServiceCassandraUserConfigPublicAccess",
                     "language": {
@@ -15920,6 +16571,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getServiceElasticsearchUserConfigPrivateAccess:getServiceElasticsearchUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16445,6 +17104,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getServiceGrafanaUserConfigPublicAccess:getServiceGrafanaUserConfigPublicAccess",
                     "language": {
@@ -16943,6 +17610,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getServiceInfluxdbUserConfigPublicAccess:getServiceInfluxdbUserConfigPublicAccess",
                     "language": {
@@ -17032,6 +17707,69 @@
             "properties": {
                 "influxdb": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationDashboardUserConfig:getServiceIntegrationDashboardUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationDatadogUserConfig:getServiceIntegrationDatadogUserConfig": {
+            "properties": {
+                "excludeConsumerGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeTopics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeConsumerGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeTopics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaCustomMetrics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17444,6 +18182,19 @@
             },
             "type": "object"
         },
+        "aiven:index/getServiceIntegrationKafkaLogsUserConfig:getServiceIntegrationKafkaLogsUserConfig": {
+            "properties": {
+                "kafkaTopic": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getServiceIntegrationKafkaMirrormakerUserConfig:getServiceIntegrationKafkaMirrormakerUserConfig": {
             "properties": {
                 "clusterAlias": {
@@ -17478,6 +18229,187 @@
             },
             "type": "object"
         },
+        "aiven:index/getServiceIntegrationM3aggregatorUserConfig:getServiceIntegrationM3aggregatorUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationM3coordinatorUserConfig:getServiceIntegrationM3coordinatorUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationMetricsUserConfig:getServiceIntegrationMetricsUserConfig": {
+            "properties": {
+                "database": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retentionDays": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceMysql": {
+                    "$ref": "#/types/aiven:index/getServiceIntegrationMetricsUserConfigSourceMysql:getServiceIntegrationMetricsUserConfigSourceMysql",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationMetricsUserConfigSourceMysql:getServiceIntegrationMetricsUserConfigSourceMysql": {
+            "properties": {
+                "telegraf": {
+                    "$ref": "#/types/aiven:index/getServiceIntegrationMetricsUserConfigSourceMysqlTelegraf:getServiceIntegrationMetricsUserConfigSourceMysqlTelegraf",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationMetricsUserConfigSourceMysqlTelegraf:getServiceIntegrationMetricsUserConfigSourceMysqlTelegraf": {
+            "properties": {
+                "gatherEventWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherFileEventsStats": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherIndexIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInfoSchemaAutoInc": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInnodbMetrics": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherPerfEventsStatements": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherProcessList": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherSlaveStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableLockWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableSchema": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsDigestTextLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsTimeLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getServiceIntegrationMirrormakerUserConfig:getServiceIntegrationMirrormakerUserConfig": {
             "properties": {
                 "mirrormakerWhitelist": {
@@ -17489,6 +18421,158 @@
                     }
                 }
             },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationPrometheusUserConfig:getServiceIntegrationPrometheusUserConfig": {
+            "properties": {
+                "sourceMysql": {
+                    "$ref": "#/types/aiven:index/getServiceIntegrationPrometheusUserConfigSourceMysql:getServiceIntegrationPrometheusUserConfigSourceMysql",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationPrometheusUserConfigSourceMysql:getServiceIntegrationPrometheusUserConfigSourceMysql": {
+            "properties": {
+                "telegraf": {
+                    "$ref": "#/types/aiven:index/getServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf:getServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf:getServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf": {
+            "properties": {
+                "gatherEventWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherFileEventsStats": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherIndexIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInfoSchemaAutoInc": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherInnodbMetrics": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherPerfEventsStatements": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherProcessList": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherSlaveStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableIoWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableLockWaits": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatherTableSchema": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsDigestTextLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "perfEventsStatementsTimeLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationReadReplicaUserConfig:getServiceIntegrationReadReplicaUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationRsyslogUserConfig:getServiceIntegrationRsyslogUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationSignalfxUserConfig:getServiceIntegrationSignalfxUserConfig": {
             "type": "object"
         },
         "aiven:index/getServiceKafka:getServiceKafka": {
@@ -18529,6 +19613,14 @@
                         }
                     }
                 },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getServiceMysqlUserConfigPublicAccess:getServiceMysqlUserConfigPublicAccess",
                     "language": {
@@ -18958,6 +20050,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getServicePgUserConfigPrivateAccess:getServicePgUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19583,6 +20683,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getServiceRedisUserConfigPrivateAccess:getServiceRedisUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20309,6 +21417,195 @@
                     "teamType": {
                         "type": "string",
                         "description": "is an account team project type, can one of the following values: `admin`, \n`developer`, `operator` and `read_only`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/billingGroup:BillingGroup": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Account id\n"
+                },
+                "addressLines": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Address lines\n"
+                },
+                "billingCurrency": {
+                    "type": "string",
+                    "description": "Billing currency\n"
+                },
+                "billingEmails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Billing contact emails\n"
+                },
+                "billingExtraText": {
+                    "type": "string",
+                    "description": "Billing extra text\n"
+                },
+                "cardId": {
+                    "type": "string",
+                    "description": "Credit card id\n"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "City\n"
+                },
+                "company": {
+                    "type": "string",
+                    "description": "Company name\n"
+                },
+                "countryCode": {
+                    "type": "string",
+                    "description": "Country code\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Billing Group name\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State\n"
+                },
+                "vatId": {
+                    "type": "string",
+                    "description": "VAT id\n"
+                },
+                "zipCode": {
+                    "type": "string",
+                    "description": "Zip Code\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Account id\n"
+                },
+                "addressLines": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Address lines\n"
+                },
+                "billingCurrency": {
+                    "type": "string",
+                    "description": "Billing currency\n"
+                },
+                "billingEmails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Billing contact emails\n"
+                },
+                "billingExtraText": {
+                    "type": "string",
+                    "description": "Billing extra text\n"
+                },
+                "cardId": {
+                    "type": "string",
+                    "description": "Credit card id\n"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "City\n"
+                },
+                "company": {
+                    "type": "string",
+                    "description": "Company name\n"
+                },
+                "countryCode": {
+                    "type": "string",
+                    "description": "Country code\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Billing Group name\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State\n"
+                },
+                "vatId": {
+                    "type": "string",
+                    "description": "VAT id\n"
+                },
+                "zipCode": {
+                    "type": "string",
+                    "description": "Zip Code\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BillingGroup resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "Account id\n"
+                    },
+                    "addressLines": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Address lines\n"
+                    },
+                    "billingCurrency": {
+                        "type": "string",
+                        "description": "Billing currency\n"
+                    },
+                    "billingEmails": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Billing contact emails\n"
+                    },
+                    "billingExtraText": {
+                        "type": "string",
+                        "description": "Billing extra text\n"
+                    },
+                    "cardId": {
+                        "type": "string",
+                        "description": "Credit card id\n"
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "City\n"
+                    },
+                    "company": {
+                        "type": "string",
+                        "description": "Company name\n"
+                    },
+                    "countryCode": {
+                        "type": "string",
+                        "description": "Country code\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Billing Group name\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State\n"
+                    },
+                    "vatId": {
+                        "type": "string",
+                        "description": "VAT id\n"
+                    },
+                    "zipCode": {
+                        "type": "string",
+                        "description": "Zip Code\n"
                     }
                 },
                 "type": "object"
@@ -24078,6 +25375,10 @@
                     "type": "string",
                     "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
                 },
+                "billingGroup": {
+                    "type": "string",
+                    "description": "Billing group Id\n"
+                },
                 "caCert": {
                     "type": "string",
                     "description": "is a computed property that can be used to read the CA certificate of the\nproject. This is required for configuring clients that connect to certain services like\nKafka. This value cannot be set, only read.\n"
@@ -24167,6 +25468,10 @@
                     "type": "string",
                     "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
                 },
+                "billingGroup": {
+                    "type": "string",
+                    "description": "Billing group Id\n"
+                },
                 "caCert": {
                     "type": "string",
                     "description": "is a computed property that can be used to read the CA certificate of the\nproject. This is required for configuring clients that connect to certain services like\nKafka. This value cannot be set, only read.\n"
@@ -24240,6 +25545,10 @@
                     "billingExtraText": {
                         "type": "string",
                         "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
+                    },
+                    "billingGroup": {
+                        "type": "string",
+                        "description": "Billing group Id\n"
                     },
                     "caCert": {
                         "type": "string",
@@ -25160,11 +26469,19 @@
             }
         },
         "aiven:index/serviceIntegration:ServiceIntegration": {
-            "description": "## # Service Integration Resource\n\nThe Service Integration resource allows the creation and management of Aiven Service Integrations.\n\nService Integration defines an integration between two Aiven services or between Aiven\nservice and an external integration endpoint. Integration could be for example sending\nmetrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB\nservice to a Grafana service to show dashboards, sending logs from any service to\nElasticsearch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myintegration = new aiven.ServiceIntegration(\"myintegration\", {\n    project: aiven_project.myproject.project,\n    destinationEndpointId: aiven_service_integration_endpoint.XX.id,\n    integrationType: \"datadog\",\n    sourceServiceName: aiven_kafka.XXX.service_name,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyintegration = aiven.ServiceIntegration(\"myintegration\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    destination_endpoint_id=aiven_service_integration_endpoint[\"XX\"][\"id\"],\n    integration_type=\"datadog\",\n    source_service_name=aiven_kafka[\"XXX\"][\"service_name\"])\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myintegration = new Aiven.ServiceIntegration(\"myintegration\", new Aiven.ServiceIntegrationArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            DestinationEndpointId = aiven_service_integration_endpoint.XX.Id,\n            IntegrationType = \"datadog\",\n            SourceServiceName = aiven_kafka.XXX.Service_name,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceIntegration(ctx, \"myintegration\", \u0026aiven.ServiceIntegrationArgs{\n\t\t\tProject:               pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tDestinationEndpointId: pulumi.Any(aiven_service_integration_endpoint.XX.Id),\n\t\t\tIntegrationType:       pulumi.String(\"datadog\"),\n\t\t\tSourceServiceName:     pulumi.Any(aiven_kafka.XXX.Service_name),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Service Integration Resource\n\nThe Service Integration resource allows the creation and management of Aiven Service Integrations.\n\nService Integration defines an integration between two Aiven services or between Aiven service and an external\nintegration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,\ngetting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to\nElasticsearch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myintegration = new aiven.ServiceIntegration(\"myintegration\", {\n    project: aiven_project.myproject.project,\n    destinationEndpointId: aiven_service_integration_endpoint.XX.id,\n    integrationType: \"datadog\",\n    sourceServiceName: aiven_kafka.XXX.service_name,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyintegration = aiven.ServiceIntegration(\"myintegration\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    destination_endpoint_id=aiven_service_integration_endpoint[\"XX\"][\"id\"],\n    integration_type=\"datadog\",\n    source_service_name=aiven_kafka[\"XXX\"][\"service_name\"])\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myintegration = new Aiven.ServiceIntegration(\"myintegration\", new Aiven.ServiceIntegrationArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            DestinationEndpointId = aiven_service_integration_endpoint.XX.Id,\n            IntegrationType = \"datadog\",\n            SourceServiceName = aiven_kafka.XXX.Service_name,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceIntegration(ctx, \"myintegration\", \u0026aiven.ServiceIntegrationArgs{\n\t\t\tProject:               pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tDestinationEndpointId: pulumi.Any(aiven_service_integration_endpoint.XX.Id),\n\t\t\tIntegrationType:       pulumi.String(\"datadog\"),\n\t\t\tSourceServiceName:     pulumi.Any(aiven_kafka.XXX.Service_name),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n\u003e **Note** For services running on `hobbiest` plan service integrations are not supported.\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "dashboardUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationDashboardUserConfig:ServiceIntegrationDashboardUserConfig",
+                    "description": "Dashboard specific user configurable settings\n"
+                },
+                "datadogUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfig:ServiceIntegrationDatadogUserConfig",
+                    "description": "Dashboard specific user configurable settings\n"
+                },
                 "destinationEndpointId": {
                     "type": "string",
-                    "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs\nto be defined using the reference syntax described above to set up the dependency correctly.\n"
+                    "description": "or `destination_service_name` - (Required) identifies the target side of the integration.\nOnly either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (\ne.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the\nreference syntax described above to set up the dependency correctly.\n"
                 },
                 "destinationServiceName": {
                     "type": "string",
@@ -25184,11 +26501,15 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "identifies the type of integration that is set up. Possible values\ninclude `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
+                    "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
                     "description": "Kafka Connect specific user configurable settings\n"
+                },
+                "kafkaLogsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationKafkaLogsUserConfig:ServiceIntegrationKafkaLogsUserConfig",
+                    "description": "Kafka Logs specific user configurable settings\n"
                 },
                 "kafkaMirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaMirrormakerUserConfig:ServiceIntegrationKafkaMirrormakerUserConfig",
@@ -25198,6 +26519,18 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationLogsUserConfig:ServiceIntegrationLogsUserConfig",
                     "description": "Log integration specific user configurable settings\n"
                 },
+                "m3aggregatorUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationM3aggregatorUserConfig:ServiceIntegrationM3aggregatorUserConfig",
+                    "description": "M3 aggregator specific user configurable settings\n"
+                },
+                "m3coordinatorUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationM3coordinatorUserConfig:ServiceIntegrationM3coordinatorUserConfig",
+                    "description": "M3 coordinator specific user configurable settings\n"
+                },
+                "metricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationMetricsUserConfig:ServiceIntegrationMetricsUserConfig",
+                    "description": "Metrics specific user configurable settings\n"
+                },
                 "mirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationMirrormakerUserConfig:ServiceIntegrationMirrormakerUserConfig",
                     "description": "Mirrormaker 1 integration specific user configurable settings\n"
@@ -25206,9 +26539,25 @@
                     "type": "string",
                     "description": "defines the project the integration belongs to.\n"
                 },
+                "prometheusUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationPrometheusUserConfig:ServiceIntegrationPrometheusUserConfig",
+                    "description": "Prometheus coordinator specific user configurable settings\n"
+                },
+                "readReplicaUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationReadReplicaUserConfig:ServiceIntegrationReadReplicaUserConfig",
+                    "description": "PG Read replica specific user configurable settings\n"
+                },
+                "rsyslogUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig",
+                    "description": "RSyslog specific user configurable settings\n"
+                },
+                "signalfxUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig",
+                    "description": "Signalfx specific user configurable settings\n"
+                },
                 "sourceEndpointId": {
                     "type": "string",
-                    "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source\nneeds to be defined using the reference syntax described above to set up the dependency correctly.\n"
+                    "description": "or `source_service_name` - (Optional) identifies the source side of the integration. Only either\nendpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (\ne.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the\nreference syntax described above to set up the dependency correctly.\n"
                 },
                 "sourceServiceName": {
                     "type": "string",
@@ -25220,9 +26569,17 @@
                 "project"
             ],
             "inputProperties": {
+                "dashboardUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationDashboardUserConfig:ServiceIntegrationDashboardUserConfig",
+                    "description": "Dashboard specific user configurable settings\n"
+                },
+                "datadogUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfig:ServiceIntegrationDatadogUserConfig",
+                    "description": "Dashboard specific user configurable settings\n"
+                },
                 "destinationEndpointId": {
                     "type": "string",
-                    "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs\nto be defined using the reference syntax described above to set up the dependency correctly.\n"
+                    "description": "or `destination_service_name` - (Required) identifies the target side of the integration.\nOnly either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (\ne.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the\nreference syntax described above to set up the dependency correctly.\n"
                 },
                 "destinationServiceName": {
                     "type": "string",
@@ -25242,11 +26599,15 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "identifies the type of integration that is set up. Possible values\ninclude `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
+                    "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
                     "description": "Kafka Connect specific user configurable settings\n"
+                },
+                "kafkaLogsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationKafkaLogsUserConfig:ServiceIntegrationKafkaLogsUserConfig",
+                    "description": "Kafka Logs specific user configurable settings\n"
                 },
                 "kafkaMirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaMirrormakerUserConfig:ServiceIntegrationKafkaMirrormakerUserConfig",
@@ -25256,6 +26617,18 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationLogsUserConfig:ServiceIntegrationLogsUserConfig",
                     "description": "Log integration specific user configurable settings\n"
                 },
+                "m3aggregatorUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationM3aggregatorUserConfig:ServiceIntegrationM3aggregatorUserConfig",
+                    "description": "M3 aggregator specific user configurable settings\n"
+                },
+                "m3coordinatorUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationM3coordinatorUserConfig:ServiceIntegrationM3coordinatorUserConfig",
+                    "description": "M3 coordinator specific user configurable settings\n"
+                },
+                "metricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationMetricsUserConfig:ServiceIntegrationMetricsUserConfig",
+                    "description": "Metrics specific user configurable settings\n"
+                },
                 "mirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationMirrormakerUserConfig:ServiceIntegrationMirrormakerUserConfig",
                     "description": "Mirrormaker 1 integration specific user configurable settings\n"
@@ -25264,9 +26637,25 @@
                     "type": "string",
                     "description": "defines the project the integration belongs to.\n"
                 },
+                "prometheusUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationPrometheusUserConfig:ServiceIntegrationPrometheusUserConfig",
+                    "description": "Prometheus coordinator specific user configurable settings\n"
+                },
+                "readReplicaUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationReadReplicaUserConfig:ServiceIntegrationReadReplicaUserConfig",
+                    "description": "PG Read replica specific user configurable settings\n"
+                },
+                "rsyslogUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig",
+                    "description": "RSyslog specific user configurable settings\n"
+                },
+                "signalfxUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig",
+                    "description": "Signalfx specific user configurable settings\n"
+                },
                 "sourceEndpointId": {
                     "type": "string",
-                    "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source\nneeds to be defined using the reference syntax described above to set up the dependency correctly.\n"
+                    "description": "or `source_service_name` - (Optional) identifies the source side of the integration. Only either\nendpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (\ne.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the\nreference syntax described above to set up the dependency correctly.\n"
                 },
                 "sourceServiceName": {
                     "type": "string",
@@ -25280,9 +26669,17 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ServiceIntegration resources.\n",
                 "properties": {
+                    "dashboardUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationDashboardUserConfig:ServiceIntegrationDashboardUserConfig",
+                        "description": "Dashboard specific user configurable settings\n"
+                    },
+                    "datadogUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfig:ServiceIntegrationDatadogUserConfig",
+                        "description": "Dashboard specific user configurable settings\n"
+                    },
                     "destinationEndpointId": {
                         "type": "string",
-                        "description": "or `destination_service_name` - (Required) identifies the target side of\nthe integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs\nto be defined using the reference syntax described above to set up the dependency correctly.\n"
+                        "description": "or `destination_service_name` - (Required) identifies the target side of the integration.\nOnly either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (\ne.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the\nreference syntax described above to set up the dependency correctly.\n"
                     },
                     "destinationServiceName": {
                         "type": "string",
@@ -25302,11 +26699,15 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "identifies the type of integration that is set up. Possible values\ninclude `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
+                        "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
                     },
                     "kafkaConnectUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
                         "description": "Kafka Connect specific user configurable settings\n"
+                    },
+                    "kafkaLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationKafkaLogsUserConfig:ServiceIntegrationKafkaLogsUserConfig",
+                        "description": "Kafka Logs specific user configurable settings\n"
                     },
                     "kafkaMirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationKafkaMirrormakerUserConfig:ServiceIntegrationKafkaMirrormakerUserConfig",
@@ -25316,6 +26717,18 @@
                         "$ref": "#/types/aiven:index/ServiceIntegrationLogsUserConfig:ServiceIntegrationLogsUserConfig",
                         "description": "Log integration specific user configurable settings\n"
                     },
+                    "m3aggregatorUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationM3aggregatorUserConfig:ServiceIntegrationM3aggregatorUserConfig",
+                        "description": "M3 aggregator specific user configurable settings\n"
+                    },
+                    "m3coordinatorUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationM3coordinatorUserConfig:ServiceIntegrationM3coordinatorUserConfig",
+                        "description": "M3 coordinator specific user configurable settings\n"
+                    },
+                    "metricsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationMetricsUserConfig:ServiceIntegrationMetricsUserConfig",
+                        "description": "Metrics specific user configurable settings\n"
+                    },
                     "mirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationMirrormakerUserConfig:ServiceIntegrationMirrormakerUserConfig",
                         "description": "Mirrormaker 1 integration specific user configurable settings\n"
@@ -25324,9 +26737,25 @@
                         "type": "string",
                         "description": "defines the project the integration belongs to.\n"
                     },
+                    "prometheusUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationPrometheusUserConfig:ServiceIntegrationPrometheusUserConfig",
+                        "description": "Prometheus coordinator specific user configurable settings\n"
+                    },
+                    "readReplicaUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationReadReplicaUserConfig:ServiceIntegrationReadReplicaUserConfig",
+                        "description": "PG Read replica specific user configurable settings\n"
+                    },
+                    "rsyslogUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig",
+                        "description": "RSyslog specific user configurable settings\n"
+                    },
+                    "signalfxUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig",
+                        "description": "Signalfx specific user configurable settings\n"
+                    },
                     "sourceEndpointId": {
                         "type": "string",
-                        "description": "or `source_service_name` - (Optional) identifies the source side of the\nintegration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or\nservice name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source\nneeds to be defined using the reference syntax described above to set up the dependency correctly.\n"
+                        "description": "or `source_service_name` - (Optional) identifies the source side of the integration. Only either\nendpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (\ne.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the\nreference syntax described above to set up the dependency correctly.\n"
                     },
                     "sourceServiceName": {
                         "type": "string",
@@ -25519,7 +26948,7 @@
             }
         },
         "aiven:index/serviceUser:ServiceUser": {
-            "description": "## # Service User Resource\n\nThe Service User resource allows the creation and management of Aiven Service Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myserviceuser = new aiven.ServiceUser(\"myserviceuser\", {\n    project: aiven_project_myproject.project,\n    serviceName: aiven_service_myservice.serviceName,\n    username: \"\u003cUSERNAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyserviceuser = aiven.ServiceUser(\"myserviceuser\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    service_name=aiven_service[\"myservice\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myserviceuser = new Aiven.ServiceUser(\"myserviceuser\", new Aiven.ServiceUserArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            ServiceName = aiven_service.Myservice.Service_name,\n            Username = \"\u003cUSERNAME\u003e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceUser(ctx, \"myserviceuser\", \u0026aiven.ServiceUserArgs{\n\t\t\tProject:     pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tServiceName: pulumi.Any(aiven_service.Myservice.Service_name),\n\t\t\tUsername:    pulumi.String(\"\u003cUSERNAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Service User Resource\n\nThe Service User resource allows the creation and management of Aiven Service Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myserviceuser = new aiven.ServiceUser(\"myserviceuser\", {\n    project: aiven_project_myproject.project,\n    serviceName: aiven_service_myservice.serviceName,\n    username: \"\u003cUSERNAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyserviceuser = aiven.ServiceUser(\"myserviceuser\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    service_name=aiven_service[\"myservice\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myserviceuser = new Aiven.ServiceUser(\"myserviceuser\", new Aiven.ServiceUserArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            ServiceName = aiven_service.Myservice.Service_name,\n            Username = \"\u003cUSERNAME\u003e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceUser(ctx, \"myserviceuser\", \u0026aiven.ServiceUserArgs{\n\t\t\tProject:     pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tServiceName: pulumi.Any(aiven_service.Myservice.Service_name),\n\t\t\tUsername:    pulumi.String(\"\u003cUSERNAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n\u003e **Note** The service user resource is not supported for Aiven Grafana services.\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accessCert": {
                     "type": "string",
@@ -25539,28 +26968,28 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                    "description": "and `service_name` - (Required) define the project and service the user belongs to. They should be defined\nusing reference as shown above to set up dependencies correctly.\n"
                 },
                 "redisAclCategories": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Command category rules\n"
+                    "description": "Redis specific field, defines command category rules.\n"
                 },
                 "redisAclCommands": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Rules for individual commands\n"
+                    "description": "Redis specific field, defines rules for individual commands.\n"
                 },
                 "redisAclKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Key access rules\n"
+                    "description": "Redis specific field, defines key access rules.\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -25595,28 +27024,28 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                    "description": "and `service_name` - (Required) define the project and service the user belongs to. They should be defined\nusing reference as shown above to set up dependencies correctly.\n"
                 },
                 "redisAclCategories": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Command category rules\n"
+                    "description": "Redis specific field, defines command category rules.\n"
                 },
                 "redisAclCommands": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Rules for individual commands\n"
+                    "description": "Redis specific field, defines rules for individual commands.\n"
                 },
                 "redisAclKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Key access rules\n"
+                    "description": "Redis specific field, defines key access rules.\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -25653,28 +27082,28 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                        "description": "and `service_name` - (Required) define the project and service the user belongs to. They should be defined\nusing reference as shown above to set up dependencies correctly.\n"
                     },
                     "redisAclCategories": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Command category rules\n"
+                        "description": "Redis specific field, defines command category rules.\n"
                     },
                     "redisAclCommands": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Rules for individual commands\n"
+                        "description": "Redis specific field, defines rules for individual commands.\n"
                     },
                     "redisAclKeys": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Key access rules\n"
+                        "description": "Redis specific field, defines key access rules.\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -29309,6 +30738,9 @@
                     "billingExtraText": {
                         "type": "string"
                     },
+                    "billingGroup": {
+                        "type": "string"
+                    },
                     "caCert": {
                         "type": "string",
                         "description": "is a computed property that can be used to read the CA certificate of the\nproject. This is required for configuring clients that connect to certain services like\nKafka. This value cannot be set, only read.\n"
@@ -29378,6 +30810,9 @@
                         }
                     },
                     "billingExtraText": {
+                        "type": "string"
+                    },
+                    "billingGroup": {
                         "type": "string"
                     },
                     "caCert": {
@@ -30114,16 +31549,22 @@
             }
         },
         "aiven:index/getServiceIntegration:getServiceIntegration": {
-            "description": "## # Service Integration Data Source\n\nThe Service Integration data source provides information about the existing Aiven Service Integration.\n\nService Integration defines an integration between two Aiven services or between Aiven\nservice and an external integration endpoint. Integration could be for example sending\nmetrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB\nservice to a Grafana service to show dashboards, sending logs from any service to\nElasticsearch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myintegration = aiven_project_myproject.project.apply(project =\u003e aiven.getServiceIntegration({\n    destinationServiceName: \"\u003cDESTINATION_SERVICE_NAME\u003e\",\n    integrationType: \"datadog\",\n    project: project,\n    sourceServiceName: \"\u003cSOURCE_SERVICE_NAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyintegration = aiven.get_service_integration(destination_service_name=\"\u003cDESTINATION_SERVICE_NAME\u003e\",\n    integration_type=\"datadog\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    source_service_name=\"\u003cSOURCE_SERVICE_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myintegration = Output.Create(Aiven.GetServiceIntegration.InvokeAsync(new Aiven.GetServiceIntegrationArgs\n        {\n            DestinationServiceName = \"\u003cDESTINATION_SERVICE_NAME\u003e\",\n            IntegrationType = \"datadog\",\n            Project = aiven_project.Myproject.Project,\n            SourceServiceName = \"\u003cSOURCE_SERVICE_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupServiceIntegration(ctx, \u0026aiven.LookupServiceIntegrationArgs{\n\t\t\tDestinationServiceName: \"\u003cDESTINATION_SERVICE_NAME\u003e\",\n\t\t\tIntegrationType:        \"datadog\",\n\t\t\tProject:                aiven_project.Myproject.Project,\n\t\t\tSourceServiceName:      \"\u003cSOURCE_SERVICE_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Service Integration Data Source\n\nThe Service Integration data source provides information about the existing Aiven Service Integration.\n\nService Integration defines an integration between two Aiven services or between Aiven service and an external\nintegration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,\ngetting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to\nElasticsearch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myintegration = aiven_project_myproject.project.apply(project =\u003e aiven.getServiceIntegration({\n    destinationServiceName: \"\u003cDESTINATION_SERVICE_NAME\u003e\",\n    integrationType: \"datadog\",\n    project: project,\n    sourceServiceName: \"\u003cSOURCE_SERVICE_NAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyintegration = aiven.get_service_integration(destination_service_name=\"\u003cDESTINATION_SERVICE_NAME\u003e\",\n    integration_type=\"datadog\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    source_service_name=\"\u003cSOURCE_SERVICE_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myintegration = Output.Create(Aiven.GetServiceIntegration.InvokeAsync(new Aiven.GetServiceIntegrationArgs\n        {\n            DestinationServiceName = \"\u003cDESTINATION_SERVICE_NAME\u003e\",\n            IntegrationType = \"datadog\",\n            Project = aiven_project.Myproject.Project,\n            SourceServiceName = \"\u003cSOURCE_SERVICE_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupServiceIntegration(ctx, \u0026aiven.LookupServiceIntegrationArgs{\n\t\t\tDestinationServiceName: \"\u003cDESTINATION_SERVICE_NAME\u003e\",\n\t\t\tIntegrationType:        \"datadog\",\n\t\t\tProject:                aiven_project.Myproject.Project,\n\t\t\tSourceServiceName:      \"\u003cSOURCE_SERVICE_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getServiceIntegration.\n",
                 "properties": {
+                    "dashboardUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationDashboardUserConfig:getServiceIntegrationDashboardUserConfig"
+                    },
+                    "datadogUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationDatadogUserConfig:getServiceIntegrationDatadogUserConfig"
+                    },
                     "destinationEndpointId": {
                         "type": "string"
                     },
                     "destinationServiceName": {
                         "type": "string",
-                        "description": "identifies the target side of\nthe integration.\n"
+                        "description": "identifies the target side of the integration.\n"
                     },
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationExternalAwsCloudwatchLogsUserConfig"
@@ -30136,16 +31577,28 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "identifies the type of integration that is set up. Possible values\ninclude `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
+                        "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
                     },
                     "kafkaConnectUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationKafkaConnectUserConfig:getServiceIntegrationKafkaConnectUserConfig"
+                    },
+                    "kafkaLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationKafkaLogsUserConfig:getServiceIntegrationKafkaLogsUserConfig"
                     },
                     "kafkaMirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationKafkaMirrormakerUserConfig:getServiceIntegrationKafkaMirrormakerUserConfig"
                     },
                     "logsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationLogsUserConfig:getServiceIntegrationLogsUserConfig"
+                    },
+                    "m3aggregatorUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationM3aggregatorUserConfig:getServiceIntegrationM3aggregatorUserConfig"
+                    },
+                    "m3coordinatorUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationM3coordinatorUserConfig:getServiceIntegrationM3coordinatorUserConfig"
+                    },
+                    "metricsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationMetricsUserConfig:getServiceIntegrationMetricsUserConfig"
                     },
                     "mirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationMirrormakerUserConfig:getServiceIntegrationMirrormakerUserConfig"
@@ -30154,12 +31607,24 @@
                         "type": "string",
                         "description": "defines the project the integration belongs to.\n"
                     },
+                    "prometheusUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationPrometheusUserConfig:getServiceIntegrationPrometheusUserConfig"
+                    },
+                    "readReplicaUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationReadReplicaUserConfig:getServiceIntegrationReadReplicaUserConfig"
+                    },
+                    "rsyslogUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationRsyslogUserConfig:getServiceIntegrationRsyslogUserConfig"
+                    },
+                    "signalfxUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationSignalfxUserConfig:getServiceIntegrationSignalfxUserConfig"
+                    },
                     "sourceEndpointId": {
                         "type": "string"
                     },
                     "sourceServiceName": {
                         "type": "string",
-                        "description": "identifies the source side of the\nintegration.\n"
+                        "description": "identifies the source side of the integration.\n"
                     }
                 },
                 "type": "object",
@@ -30173,6 +31638,12 @@
             "outputs": {
                 "description": "A collection of values returned by getServiceIntegration.\n",
                 "properties": {
+                    "dashboardUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationDashboardUserConfig:getServiceIntegrationDashboardUserConfig"
+                    },
+                    "datadogUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationDatadogUserConfig:getServiceIntegrationDatadogUserConfig"
+                    },
                     "destinationEndpointId": {
                         "type": "string"
                     },
@@ -30198,17 +31669,41 @@
                     "kafkaConnectUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationKafkaConnectUserConfig:getServiceIntegrationKafkaConnectUserConfig"
                     },
+                    "kafkaLogsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationKafkaLogsUserConfig:getServiceIntegrationKafkaLogsUserConfig"
+                    },
                     "kafkaMirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationKafkaMirrormakerUserConfig:getServiceIntegrationKafkaMirrormakerUserConfig"
                     },
                     "logsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationLogsUserConfig:getServiceIntegrationLogsUserConfig"
                     },
+                    "m3aggregatorUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationM3aggregatorUserConfig:getServiceIntegrationM3aggregatorUserConfig"
+                    },
+                    "m3coordinatorUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationM3coordinatorUserConfig:getServiceIntegrationM3coordinatorUserConfig"
+                    },
+                    "metricsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationMetricsUserConfig:getServiceIntegrationMetricsUserConfig"
+                    },
                     "mirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationMirrormakerUserConfig:getServiceIntegrationMirrormakerUserConfig"
                     },
                     "project": {
                         "type": "string"
+                    },
+                    "prometheusUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationPrometheusUserConfig:getServiceIntegrationPrometheusUserConfig"
+                    },
+                    "readReplicaUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationReadReplicaUserConfig:getServiceIntegrationReadReplicaUserConfig"
+                    },
+                    "rsyslogUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationRsyslogUserConfig:getServiceIntegrationRsyslogUserConfig"
+                    },
+                    "signalfxUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationSignalfxUserConfig:getServiceIntegrationSignalfxUserConfig"
                     },
                     "sourceEndpointId": {
                         "type": "string"
@@ -30345,7 +31840,7 @@
             }
         },
         "aiven:index/getServiceUser:getServiceUser": {
-            "description": "## # Service User Data Source\n\nThe Service User data source provides information about the existing Aiven Service User.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myserviceuser = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) =\u003e aiven.getServiceUser({\n    project: project,\n    serviceName: serviceName,\n    username: \"\u003cUSERNAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyserviceuser = aiven.get_service_user(project=aiven_project[\"myproject\"][\"project\"],\n    service_name=aiven_service[\"myservice\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myserviceuser = Output.Create(Aiven.GetServiceUser.InvokeAsync(new Aiven.GetServiceUserArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            ServiceName = aiven_service.Myservice.Service_name,\n            Username = \"\u003cUSERNAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupServiceUser(ctx, \u0026aiven.LookupServiceUserArgs{\n\t\t\tProject:     aiven_project.Myproject.Project,\n\t\t\tServiceName: aiven_service.Myservice.Service_name,\n\t\t\tUsername:    \"\u003cUSERNAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Service User Data Source\n\nThe Service User data source provides information about the existing Aiven Service User.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myserviceuser = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) =\u003e aiven.getServiceUser({\n    project: project,\n    serviceName: serviceName,\n    username: \"\u003cUSERNAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyserviceuser = aiven.get_service_user(project=aiven_project[\"myproject\"][\"project\"],\n    service_name=aiven_service[\"myservice\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myserviceuser = Output.Create(Aiven.GetServiceUser.InvokeAsync(new Aiven.GetServiceUserArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            ServiceName = aiven_service.Myservice.Service_name,\n            Username = \"\u003cUSERNAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupServiceUser(ctx, \u0026aiven.LookupServiceUserArgs{\n\t\t\tProject:     aiven_project.Myproject.Project,\n\t\t\tServiceName: aiven_service.Myservice.Service_name,\n\t\t\tUsername:    \"\u003cUSERNAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n\u003e **Note** The service user data source is not supported for Aiven Grafana services.\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getServiceUser.\n",
                 "properties": {
@@ -30366,25 +31861,28 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "and `service_name` - (Required) define the project and service the user belongs to.\nThey should be defined using reference as shown above to set up dependencies correctly.\n"
+                        "description": "and `service_name` - (Required) define the project and service the user belongs to. They should be defined\nusing reference as shown above to set up dependencies correctly.\n"
                     },
                     "redisAclCategories": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Redis specific field, defines command category rules.\n"
                     },
                     "redisAclCommands": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Redis specific field, defines rules for individual commands.\n"
                     },
                     "redisAclKeys": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Redis specific field, defines key access rules.\n"
                     },
                     "serviceName": {
                         "type": "string"
@@ -30434,19 +31932,22 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Redis specific field, defines command category rules.\n"
                     },
                     "redisAclCommands": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Redis specific field, defines rules for individual commands.\n"
                     },
                     "redisAclKeys": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Redis specific field, defines key access rules.\n"
                     },
                     "serviceName": {
                         "type": "string"
@@ -30717,8 +32218,7 @@
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`aiven/terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
             "requires": {
                 "pulumi": "\u003e=2.9.0,\u003c3.0.0"
-            },
-            "usesIOClasses": true
+            }
         }
     }
 }
