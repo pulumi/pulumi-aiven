@@ -63,6 +63,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly billingExtraText!: pulumi.Output<string | undefined>;
     /**
+     * Billing group Id
+     */
+    public readonly billingGroup!: pulumi.Output<string | undefined>;
+    /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
      * Kafka. This value cannot be set, only read.
@@ -136,6 +140,7 @@ export class Project extends pulumi.CustomResource {
             inputs["billingCurrency"] = state ? state.billingCurrency : undefined;
             inputs["billingEmails"] = state ? state.billingEmails : undefined;
             inputs["billingExtraText"] = state ? state.billingExtraText : undefined;
+            inputs["billingGroup"] = state ? state.billingGroup : undefined;
             inputs["caCert"] = state ? state.caCert : undefined;
             inputs["cardId"] = state ? state.cardId : undefined;
             inputs["copyFromProject"] = state ? state.copyFromProject : undefined;
@@ -149,7 +154,7 @@ export class Project extends pulumi.CustomResource {
             inputs["vatId"] = state ? state.vatId : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -158,6 +163,7 @@ export class Project extends pulumi.CustomResource {
             inputs["billingCurrency"] = args ? args.billingCurrency : undefined;
             inputs["billingEmails"] = args ? args.billingEmails : undefined;
             inputs["billingExtraText"] = args ? args.billingExtraText : undefined;
+            inputs["billingGroup"] = args ? args.billingGroup : undefined;
             inputs["caCert"] = args ? args.caCert : undefined;
             inputs["cardId"] = args ? args.cardId : undefined;
             inputs["copyFromProject"] = args ? args.copyFromProject : undefined;
@@ -210,6 +216,10 @@ export interface ProjectState {
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
      */
     readonly billingExtraText?: pulumi.Input<string>;
+    /**
+     * Billing group Id
+     */
+    readonly billingGroup?: pulumi.Input<string>;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
@@ -296,6 +306,10 @@ export interface ProjectArgs {
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
      */
     readonly billingExtraText?: pulumi.Input<string>;
+    /**
+     * Billing group Id
+     */
+    readonly billingGroup?: pulumi.Input<string>;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like

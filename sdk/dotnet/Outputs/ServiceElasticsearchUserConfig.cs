@@ -22,6 +22,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceElasticsearchUserConfigKibana? Kibana;
         public readonly string? MaxIndexCount;
         public readonly Outputs.ServiceElasticsearchUserConfigPrivateAccess? PrivateAccess;
+        public readonly string? ProjectToForkFrom;
         public readonly Outputs.ServiceElasticsearchUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryBasebackupName;
         public readonly string? ServiceToForkFrom;
@@ -46,6 +47,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceElasticsearchUserConfigPrivateAccess? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.ServiceElasticsearchUserConfigPublicAccess? publicAccess,
 
             string? recoveryBasebackupName,
@@ -61,6 +64,7 @@ namespace Pulumi.Aiven.Outputs
             Kibana = kibana;
             MaxIndexCount = maxIndexCount;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;

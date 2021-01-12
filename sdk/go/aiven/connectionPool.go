@@ -75,23 +75,24 @@ type ConnectionPool struct {
 // NewConnectionPool registers a new resource with the given unique name, arguments, and options.
 func NewConnectionPool(ctx *pulumi.Context,
 	name string, args *ConnectionPoolArgs, opts ...pulumi.ResourceOption) (*ConnectionPool, error) {
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.PoolName == nil {
-		return nil, errors.New("missing required argument 'PoolName'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &ConnectionPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.PoolName == nil {
+		return nil, errors.New("invalid value for required argument 'PoolName'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource ConnectionPool
 	err := ctx.RegisterResource("aiven:index/connectionPool:ConnectionPool", name, args, &resource, opts...)

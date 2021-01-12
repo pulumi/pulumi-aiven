@@ -8,6 +8,7 @@ from .account_authentication import *
 from .account_team import *
 from .account_team_member import *
 from .account_team_project import *
+from .billing_group import *
 from .cassandra import *
 from .connection_pool import *
 from .database import *
@@ -82,3 +83,146 @@ from . import outputs
 from . import (
     config,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "aiven:index/account:Account":
+                return Account(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/accountAuthentication:AccountAuthentication":
+                return AccountAuthentication(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/accountTeam:AccountTeam":
+                return AccountTeam(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/accountTeamMember:AccountTeamMember":
+                return AccountTeamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/accountTeamProject:AccountTeamProject":
+                return AccountTeamProject(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/billingGroup:BillingGroup":
+                return BillingGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/cassandra:Cassandra":
+                return Cassandra(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/connectionPool:ConnectionPool":
+                return ConnectionPool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/database:Database":
+                return Database(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/elasticSearch:ElasticSearch":
+                return ElasticSearch(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/elasticSearchAcl:ElasticSearchAcl":
+                return ElasticSearchAcl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/grafana:Grafana":
+                return Grafana(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/influxDb:InfluxDb":
+                return InfluxDb(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafka:Kafka":
+                return Kafka(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafkaAcl:KafkaAcl":
+                return KafkaAcl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafkaConnect:KafkaConnect":
+                return KafkaConnect(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafkaConnector:KafkaConnector":
+                return KafkaConnector(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker":
+                return KafkaMirrorMaker(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafkaSchema:KafkaSchema":
+                return KafkaSchema(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration":
+                return KafkaSchemaConfiguration(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/kafkaTopic:KafkaTopic":
+                return KafkaTopic(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/m3Aggregator:M3Aggregator":
+                return M3Aggregator(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/m3Db:M3Db":
+                return M3Db(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow":
+                return MirrorMakerReplicationFlow(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/mySql:MySql":
+                return MySql(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/pg:Pg":
+                return Pg(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/project:Project":
+                return Project(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/projectUser:ProjectUser":
+                return ProjectUser(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/projectVpc:ProjectVpc":
+                return ProjectVpc(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/redis:Redis":
+                return Redis(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/service:Service":
+                return Service(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/serviceIntegration:ServiceIntegration":
+                return ServiceIntegration(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
+                return ServiceIntegrationEndpoint(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/serviceUser:ServiceUser":
+                return ServiceUser(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
+                return TransitGatewayVpcAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/vpcPeeringConnection:VpcPeeringConnection":
+                return VpcPeeringConnection(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("aiven", "index/account", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/accountAuthentication", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/accountTeam", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/accountTeamMember", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/accountTeamProject", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/billingGroup", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/cassandra", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/connectionPool", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/database", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/elasticSearch", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/elasticSearchAcl", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/grafana", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/influxDb", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafka", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafkaAcl", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafkaConnect", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafkaConnector", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafkaMirrorMaker", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafkaSchema", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafkaSchemaConfiguration", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/kafkaTopic", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/m3Aggregator", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/m3Db", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/mirrorMakerReplicationFlow", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/mySql", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/pg", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/project", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/projectUser", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/projectVpc", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/redis", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/service", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/serviceIntegration", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/serviceIntegrationEndpoint", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/serviceUser", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/transitGatewayVpcAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/vpcPeeringConnection", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:aiven":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("aiven", Package())
+
+_register_module()

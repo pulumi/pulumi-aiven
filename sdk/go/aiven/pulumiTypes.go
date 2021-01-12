@@ -129,7 +129,8 @@ type CassandraCassandraUserConfig struct {
 	// utility to be used to upload Cassandra data files. Available only on service create.
 	MigrateSstableloader *string `pulumi:"migrateSstableloader"`
 	// Allow access to selected service ports from private networks.
-	PrivateAccess *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PrivateAccess     *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom *string                                    `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *CassandraCassandraUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of another service to fork from. This has effect only
@@ -155,7 +156,8 @@ type CassandraCassandraUserConfigArgs struct {
 	// utility to be used to upload Cassandra data files. Available only on service create.
 	MigrateSstableloader pulumi.StringPtrInput `pulumi:"migrateSstableloader"`
 	// Allow access to selected service ports from private networks.
-	PrivateAccess CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PrivateAccess     CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom pulumi.StringPtrInput                             `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess CassandraCassandraUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of another service to fork from. This has effect only
@@ -258,6 +260,10 @@ func (o CassandraCassandraUserConfigOutput) PrivateAccess() CassandraCassandraUs
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
 
+func (o CassandraCassandraUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet
 func (o CassandraCassandraUserConfigOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess { return v.PublicAccess }).(CassandraCassandraUserConfigPublicAccessPtrOutput)
@@ -316,6 +322,15 @@ func (o CassandraCassandraUserConfigPtrOutput) PrivateAccess() CassandraCassandr
 		}
 		return v.PrivateAccess
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
+}
+
+func (o CassandraCassandraUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -1328,6 +1343,9 @@ type ElasticSearchElasticsearchUserConfig struct {
 	MaxIndexCount *string `pulumi:"maxIndexCount"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *ElasticSearchElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *ElasticSearchElasticsearchUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -1374,6 +1392,9 @@ type ElasticSearchElasticsearchUserConfigArgs struct {
 	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess ElasticSearchElasticsearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess ElasticSearchElasticsearchUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -1520,6 +1541,12 @@ func (o ElasticSearchElasticsearchUserConfigOutput) PrivateAccess() ElasticSearc
 	}).(ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o ElasticSearchElasticsearchUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet.
 func (o ElasticSearchElasticsearchUserConfigOutput) PublicAccess() ElasticSearchElasticsearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigPublicAccess {
@@ -1651,6 +1678,17 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) PrivateAccess() ElasticSe
 		}
 		return v.PrivateAccess
 	}).(ElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o ElasticSearchElasticsearchUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet.
@@ -3482,6 +3520,9 @@ type GrafanaGrafanaUserConfig struct {
 	// Enable Grafana /metrics endpoint
 	MetricsEnabled *string                                `pulumi:"metricsEnabled"`
 	PrivateAccess  *GrafanaGrafanaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *GrafanaGrafanaUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -3558,6 +3599,9 @@ type GrafanaGrafanaUserConfigArgs struct {
 	// Enable Grafana /metrics endpoint
 	MetricsEnabled pulumi.StringPtrInput                         `pulumi:"metricsEnabled"`
 	PrivateAccess  GrafanaGrafanaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess GrafanaGrafanaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -3762,6 +3806,12 @@ func (o GrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutput 
 
 func (o GrafanaGrafanaUserConfigOutput) PrivateAccess() GrafanaGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GrafanaGrafanaUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet.
@@ -4031,6 +4081,17 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PrivateAccess() GrafanaGrafanaUserCon
 		}
 		return v.PrivateAccess
 	}).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GrafanaGrafanaUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet.
@@ -6144,6 +6205,9 @@ type InfluxDbInfluxdbUserConfig struct {
 	IpFilters []string `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *InfluxDbInfluxdbUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -6173,6 +6237,9 @@ type InfluxDbInfluxdbUserConfigArgs struct {
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess InfluxDbInfluxdbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -6279,6 +6346,12 @@ func (o InfluxDbInfluxdbUserConfigOutput) PrivateAccess() InfluxDbInfluxdbUserCo
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivateAccess { return v.PrivateAccess }).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o InfluxDbInfluxdbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet
 func (o InfluxDbInfluxdbUserConfigOutput) PublicAccess() InfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
@@ -6351,6 +6424,17 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivateAccess() InfluxDbInfluxdbUse
 		}
 		return v.PrivateAccess
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o InfluxDbInfluxdbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -13475,12 +13559,22 @@ type M3DbM3dbUserConfig struct {
 	Limits *M3DbM3dbUserConfigLimits `pulumi:"limits"`
 	// M3 major version
 	M3Version *string `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon
+	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+	// metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest *string `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
 	// List of M3 namespaces
 	Namespaces []M3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *M3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // M3DbM3dbUserConfigInput is an input type that accepts M3DbM3dbUserConfigArgs and M3DbM3dbUserConfigOutput values.
@@ -13503,12 +13597,22 @@ type M3DbM3dbUserConfigArgs struct {
 	Limits M3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
 	// M3 major version
 	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon
+	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+	// metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
 	// List of M3 namespaces
 	Namespaces M3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess M3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (M3DbM3dbUserConfigArgs) ElementType() reflect.Type {
@@ -13608,6 +13712,13 @@ func (o M3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
 
+// Enables access to Graphite Carbon
+// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+// metrics are written to aggregated namespaces only.
+func (o M3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.StringPtrOutput)
+}
+
 // List of M3 namespaces
 func (o M3DbM3dbUserConfigOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace { return v.Namespaces }).(M3DbM3dbUserConfigNamespaceArrayOutput)
@@ -13618,9 +13729,21 @@ func (o M3DbM3dbUserConfigOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAcces
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o M3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet.
 func (o M3DbM3dbUserConfigOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(M3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
+func (o M3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 type M3DbM3dbUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -13681,6 +13804,18 @@ func (o M3DbM3dbUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enables access to Graphite Carbon
+// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+// metrics are written to aggregated namespaces only.
+func (o M3DbM3dbUserConfigPtrOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3coordinatorEnableGraphiteCarbonIngest
+	}).(pulumi.StringPtrOutput)
+}
+
 // List of M3 namespaces
 func (o M3DbM3dbUserConfigPtrOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace {
@@ -13701,6 +13836,17 @@ func (o M3DbM3dbUserConfigPtrOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAc
 	}).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o M3DbM3dbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet.
 func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess {
@@ -13709,6 +13855,17 @@ func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAcce
 		}
 		return v.PublicAccess
 	}).(M3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
+func (o M3DbM3dbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 type M3DbM3dbUserConfigLimits struct {
@@ -15065,6 +15222,9 @@ type MySqlMysqlUserConfig struct {
 	MysqlVersion *string `pulumi:"mysqlVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *MySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *MySqlMysqlUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -15108,6 +15268,9 @@ type MySqlMysqlUserConfigArgs struct {
 	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess MySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess MySqlMysqlUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -15240,6 +15403,12 @@ func (o MySqlMysqlUserConfigOutput) PrivateAccess() MySqlMysqlUserConfigPrivateA
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o MySqlMysqlUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet
 func (o MySqlMysqlUserConfigOutput) PublicAccess() MySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPublicAccess { return v.PublicAccess }).(MySqlMysqlUserConfigPublicAccessPtrOutput)
@@ -15358,6 +15527,17 @@ func (o MySqlMysqlUserConfigPtrOutput) PrivateAccess() MySqlMysqlUserConfigPriva
 		}
 		return v.PrivateAccess
 	}).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o MySqlMysqlUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -16852,6 +17032,9 @@ type PgPgUserConfig struct {
 	Pglookout *PgPgUserConfigPglookout `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *PgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *PgPgUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -16923,6 +17106,9 @@ type PgPgUserConfigArgs struct {
 	Pglookout PgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess PgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess PgPgUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -17096,6 +17282,12 @@ func (o PgPgUserConfigOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 // Allow access to selected service ports from private networks.
 func (o PgPgUserConfigOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivateAccess { return v.PrivateAccess }).(PgPgUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o PgPgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -17299,6 +17491,17 @@ func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrO
 		}
 		return v.PrivateAccess
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o PgPgUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -19882,6 +20085,9 @@ type RedisRedisUserConfig struct {
 	Migration *RedisRedisUserConfigMigration `pulumi:"migration"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *RedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *RedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -19924,6 +20130,9 @@ type RedisRedisUserConfigArgs struct {
 	Migration RedisRedisUserConfigMigrationPtrInput `pulumi:"migration"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess RedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess RedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -20040,6 +20249,12 @@ func (o RedisRedisUserConfigOutput) PrivateAccess() RedisRedisUserConfigPrivateA
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPrivateAccess { return v.PrivateAccess }).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o RedisRedisUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet
 func (o RedisRedisUserConfigOutput) PublicAccess() RedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess { return v.PublicAccess }).(RedisRedisUserConfigPublicAccessPtrOutput)
@@ -20138,6 +20353,17 @@ func (o RedisRedisUserConfigPtrOutput) PrivateAccess() RedisRedisUserConfigPriva
 		}
 		return v.PrivateAccess
 	}).(RedisRedisUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o RedisRedisUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -21000,6 +21226,7 @@ type ServiceCassandraUserConfig struct {
 	IpFilters            []string                                 `pulumi:"ipFilters"`
 	MigrateSstableloader *string                                  `pulumi:"migrateSstableloader"`
 	PrivateAccess        *ServiceCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom    *string                                  `pulumi:"projectToForkFrom"`
 	PublicAccess         *ServiceCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
 	ServiceToForkFrom    *string                                  `pulumi:"serviceToForkFrom"`
 }
@@ -21019,6 +21246,7 @@ type ServiceCassandraUserConfigArgs struct {
 	IpFilters            pulumi.StringArrayInput                         `pulumi:"ipFilters"`
 	MigrateSstableloader pulumi.StringPtrInput                           `pulumi:"migrateSstableloader"`
 	PrivateAccess        ServiceCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom    pulumi.StringPtrInput                           `pulumi:"projectToForkFrom"`
 	PublicAccess         ServiceCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	ServiceToForkFrom    pulumi.StringPtrInput                           `pulumi:"serviceToForkFrom"`
 }
@@ -21111,6 +21339,10 @@ func (o ServiceCassandraUserConfigOutput) PrivateAccess() ServiceCassandraUserCo
 	return o.ApplyT(func(v ServiceCassandraUserConfig) *ServiceCassandraUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceCassandraUserConfigPrivateAccessPtrOutput)
 }
 
+func (o ServiceCassandraUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceCassandraUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceCassandraUserConfigOutput) PublicAccess() ServiceCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ServiceCassandraUserConfig) *ServiceCassandraUserConfigPublicAccess { return v.PublicAccess }).(ServiceCassandraUserConfigPublicAccessPtrOutput)
 }
@@ -21162,6 +21394,15 @@ func (o ServiceCassandraUserConfigPtrOutput) PrivateAccess() ServiceCassandraUse
 		}
 		return v.PrivateAccess
 	}).(ServiceCassandraUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceCassandraUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceCassandraUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceCassandraUserConfigPtrOutput) PublicAccess() ServiceCassandraUserConfigPublicAccessPtrOutput {
@@ -21700,6 +21941,7 @@ type ServiceElasticsearchUserConfig struct {
 	Kibana                             *ServiceElasticsearchUserConfigKibana        `pulumi:"kibana"`
 	MaxIndexCount                      *string                                      `pulumi:"maxIndexCount"`
 	PrivateAccess                      *ServiceElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom                  *string                                      `pulumi:"projectToForkFrom"`
 	PublicAccess                       *ServiceElasticsearchUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName             *string                                      `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom                  *string                                      `pulumi:"serviceToForkFrom"`
@@ -21726,6 +21968,7 @@ type ServiceElasticsearchUserConfigArgs struct {
 	Kibana                             ServiceElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
 	MaxIndexCount                      pulumi.StringPtrInput                                `pulumi:"maxIndexCount"`
 	PrivateAccess                      ServiceElasticsearchUserConfigPrivateAccessPtrInput  `pulumi:"privateAccess"`
+	ProjectToForkFrom                  pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
 	PublicAccess                       ServiceElasticsearchUserConfigPublicAccessPtrInput   `pulumi:"publicAccess"`
 	RecoveryBasebackupName             pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
@@ -21849,6 +22092,10 @@ func (o ServiceElasticsearchUserConfigOutput) PrivateAccess() ServiceElasticsear
 	}).(ServiceElasticsearchUserConfigPrivateAccessPtrOutput)
 }
 
+func (o ServiceElasticsearchUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceElasticsearchUserConfigOutput) PublicAccess() ServiceElasticsearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigPublicAccess {
 		return v.PublicAccess
@@ -21960,6 +22207,15 @@ func (o ServiceElasticsearchUserConfigPtrOutput) PrivateAccess() ServiceElastics
 		}
 		return v.PrivateAccess
 	}).(ServiceElasticsearchUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) PublicAccess() ServiceElasticsearchUserConfigPublicAccessPtrOutput {
@@ -23185,6 +23441,7 @@ type ServiceGrafanaUserConfig struct {
 	IpFilters                  []string                                      `pulumi:"ipFilters"`
 	MetricsEnabled             *string                                       `pulumi:"metricsEnabled"`
 	PrivateAccess              *ServiceGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
+	ProjectToForkFrom          *string                                       `pulumi:"projectToForkFrom"`
 	PublicAccess               *ServiceGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
 	RecoveryBasebackupName     *string                                       `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom          *string                                       `pulumi:"serviceToForkFrom"`
@@ -23227,6 +23484,7 @@ type ServiceGrafanaUserConfigArgs struct {
 	IpFilters                  pulumi.StringArrayInput                              `pulumi:"ipFilters"`
 	MetricsEnabled             pulumi.StringPtrInput                                `pulumi:"metricsEnabled"`
 	PrivateAccess              ServiceGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
+	ProjectToForkFrom          pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
 	PublicAccess               ServiceGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
 	RecoveryBasebackupName     pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom          pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
@@ -23396,6 +23654,10 @@ func (o ServiceGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutput 
 
 func (o ServiceGrafanaUserConfigOutput) PrivateAccess() ServiceGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v ServiceGrafanaUserConfig) *ServiceGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceGrafanaUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceGrafanaUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGrafanaUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigOutput) PublicAccess() ServiceGrafanaUserConfigPublicAccessPtrOutput {
@@ -23631,6 +23893,15 @@ func (o ServiceGrafanaUserConfigPtrOutput) PrivateAccess() ServiceGrafanaUserCon
 		}
 		return v.PrivateAccess
 	}).(ServiceGrafanaUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceGrafanaUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGrafanaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceGrafanaUserConfigPtrOutput) PublicAccess() ServiceGrafanaUserConfigPublicAccessPtrOutput {
@@ -25317,6 +25588,7 @@ type ServiceInfluxdbUserConfig struct {
 	Influxdb               *ServiceInfluxdbUserConfigInfluxdb      `pulumi:"influxdb"`
 	IpFilters              []string                                `pulumi:"ipFilters"`
 	PrivateAccess          *ServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom      *string                                 `pulumi:"projectToForkFrom"`
 	PublicAccess           *ServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName *string                                 `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      *string                                 `pulumi:"serviceToForkFrom"`
@@ -25338,6 +25610,7 @@ type ServiceInfluxdbUserConfigArgs struct {
 	Influxdb               ServiceInfluxdbUserConfigInfluxdbPtrInput      `pulumi:"influxdb"`
 	IpFilters              pulumi.StringArrayInput                        `pulumi:"ipFilters"`
 	PrivateAccess          ServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom      pulumi.StringPtrInput                          `pulumi:"projectToForkFrom"`
 	PublicAccess           ServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryBasebackupName pulumi.StringPtrInput                          `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      pulumi.StringPtrInput                          `pulumi:"serviceToForkFrom"`
@@ -25435,6 +25708,10 @@ func (o ServiceInfluxdbUserConfigOutput) PrivateAccess() ServiceInfluxdbUserConf
 	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+func (o ServiceInfluxdbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceInfluxdbUserConfigOutput) PublicAccess() ServiceInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ServiceInfluxdbUserConfig) *ServiceInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(ServiceInfluxdbUserConfigPublicAccessPtrOutput)
 }
@@ -25499,6 +25776,15 @@ func (o ServiceInfluxdbUserConfigPtrOutput) PrivateAccess() ServiceInfluxdbUserC
 		}
 		return v.PrivateAccess
 	}).(ServiceInfluxdbUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceInfluxdbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInfluxdbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceInfluxdbUserConfigPtrOutput) PublicAccess() ServiceInfluxdbUserConfigPublicAccessPtrOutput {
@@ -25964,6 +26250,304 @@ func (o ServiceInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.String
 		}
 		return v.Influxdb
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationDashboardUserConfig struct {
+}
+
+// ServiceIntegrationDashboardUserConfigInput is an input type that accepts ServiceIntegrationDashboardUserConfigArgs and ServiceIntegrationDashboardUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDashboardUserConfigInput` via:
+//
+//          ServiceIntegrationDashboardUserConfigArgs{...}
+type ServiceIntegrationDashboardUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDashboardUserConfigOutput() ServiceIntegrationDashboardUserConfigOutput
+	ToServiceIntegrationDashboardUserConfigOutputWithContext(context.Context) ServiceIntegrationDashboardUserConfigOutput
+}
+
+type ServiceIntegrationDashboardUserConfigArgs struct {
+}
+
+func (ServiceIntegrationDashboardUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDashboardUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationDashboardUserConfigArgs) ToServiceIntegrationDashboardUserConfigOutput() ServiceIntegrationDashboardUserConfigOutput {
+	return i.ToServiceIntegrationDashboardUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDashboardUserConfigArgs) ToServiceIntegrationDashboardUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationDashboardUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDashboardUserConfigOutput)
+}
+
+func (i ServiceIntegrationDashboardUserConfigArgs) ToServiceIntegrationDashboardUserConfigPtrOutput() ServiceIntegrationDashboardUserConfigPtrOutput {
+	return i.ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDashboardUserConfigArgs) ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDashboardUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDashboardUserConfigOutput).ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationDashboardUserConfigPtrInput is an input type that accepts ServiceIntegrationDashboardUserConfigArgs, ServiceIntegrationDashboardUserConfigPtr and ServiceIntegrationDashboardUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDashboardUserConfigPtrInput` via:
+//
+//          ServiceIntegrationDashboardUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationDashboardUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDashboardUserConfigPtrOutput() ServiceIntegrationDashboardUserConfigPtrOutput
+	ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationDashboardUserConfigPtrOutput
+}
+
+type serviceIntegrationDashboardUserConfigPtrType ServiceIntegrationDashboardUserConfigArgs
+
+func ServiceIntegrationDashboardUserConfigPtr(v *ServiceIntegrationDashboardUserConfigArgs) ServiceIntegrationDashboardUserConfigPtrInput {
+	return (*serviceIntegrationDashboardUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationDashboardUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationDashboardUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationDashboardUserConfigPtrType) ToServiceIntegrationDashboardUserConfigPtrOutput() ServiceIntegrationDashboardUserConfigPtrOutput {
+	return i.ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationDashboardUserConfigPtrType) ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDashboardUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDashboardUserConfigPtrOutput)
+}
+
+type ServiceIntegrationDashboardUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDashboardUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDashboardUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDashboardUserConfigOutput) ToServiceIntegrationDashboardUserConfigOutput() ServiceIntegrationDashboardUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationDashboardUserConfigOutput) ToServiceIntegrationDashboardUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationDashboardUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationDashboardUserConfigOutput) ToServiceIntegrationDashboardUserConfigPtrOutput() ServiceIntegrationDashboardUserConfigPtrOutput {
+	return o.ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationDashboardUserConfigOutput) ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDashboardUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDashboardUserConfig) *ServiceIntegrationDashboardUserConfig {
+		return &v
+	}).(ServiceIntegrationDashboardUserConfigPtrOutput)
+}
+
+type ServiceIntegrationDashboardUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDashboardUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationDashboardUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDashboardUserConfigPtrOutput) ToServiceIntegrationDashboardUserConfigPtrOutput() ServiceIntegrationDashboardUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationDashboardUserConfigPtrOutput) ToServiceIntegrationDashboardUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDashboardUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationDashboardUserConfigPtrOutput) Elem() ServiceIntegrationDashboardUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDashboardUserConfig) ServiceIntegrationDashboardUserConfig { return *v }).(ServiceIntegrationDashboardUserConfigOutput)
+}
+
+type ServiceIntegrationDatadogUserConfig struct {
+	ExcludeConsumerGroups []string `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         []string `pulumi:"excludeTopics"`
+	IncludeConsumerGroups []string `pulumi:"includeConsumerGroups"`
+	IncludeTopics         []string `pulumi:"includeTopics"`
+	KafkaCustomMetrics    []string `pulumi:"kafkaCustomMetrics"`
+}
+
+// ServiceIntegrationDatadogUserConfigInput is an input type that accepts ServiceIntegrationDatadogUserConfigArgs and ServiceIntegrationDatadogUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDatadogUserConfigInput` via:
+//
+//          ServiceIntegrationDatadogUserConfigArgs{...}
+type ServiceIntegrationDatadogUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDatadogUserConfigOutput() ServiceIntegrationDatadogUserConfigOutput
+	ToServiceIntegrationDatadogUserConfigOutputWithContext(context.Context) ServiceIntegrationDatadogUserConfigOutput
+}
+
+type ServiceIntegrationDatadogUserConfigArgs struct {
+	ExcludeConsumerGroups pulumi.StringArrayInput `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         pulumi.StringArrayInput `pulumi:"excludeTopics"`
+	IncludeConsumerGroups pulumi.StringArrayInput `pulumi:"includeConsumerGroups"`
+	IncludeTopics         pulumi.StringArrayInput `pulumi:"includeTopics"`
+	KafkaCustomMetrics    pulumi.StringArrayInput `pulumi:"kafkaCustomMetrics"`
+}
+
+func (ServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationDatadogUserConfigArgs) ToServiceIntegrationDatadogUserConfigOutput() ServiceIntegrationDatadogUserConfigOutput {
+	return i.ToServiceIntegrationDatadogUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDatadogUserConfigArgs) ToServiceIntegrationDatadogUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigOutput)
+}
+
+func (i ServiceIntegrationDatadogUserConfigArgs) ToServiceIntegrationDatadogUserConfigPtrOutput() ServiceIntegrationDatadogUserConfigPtrOutput {
+	return i.ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDatadogUserConfigArgs) ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigOutput).ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationDatadogUserConfigPtrInput is an input type that accepts ServiceIntegrationDatadogUserConfigArgs, ServiceIntegrationDatadogUserConfigPtr and ServiceIntegrationDatadogUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDatadogUserConfigPtrInput` via:
+//
+//          ServiceIntegrationDatadogUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationDatadogUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDatadogUserConfigPtrOutput() ServiceIntegrationDatadogUserConfigPtrOutput
+	ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationDatadogUserConfigPtrOutput
+}
+
+type serviceIntegrationDatadogUserConfigPtrType ServiceIntegrationDatadogUserConfigArgs
+
+func ServiceIntegrationDatadogUserConfigPtr(v *ServiceIntegrationDatadogUserConfigArgs) ServiceIntegrationDatadogUserConfigPtrInput {
+	return (*serviceIntegrationDatadogUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationDatadogUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationDatadogUserConfigPtrType) ToServiceIntegrationDatadogUserConfigPtrOutput() ServiceIntegrationDatadogUserConfigPtrOutput {
+	return i.ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationDatadogUserConfigPtrType) ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigPtrOutput)
+}
+
+type ServiceIntegrationDatadogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDatadogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) ToServiceIntegrationDatadogUserConfigOutput() ServiceIntegrationDatadogUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) ToServiceIntegrationDatadogUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) ToServiceIntegrationDatadogUserConfigPtrOutput() ServiceIntegrationDatadogUserConfigPtrOutput {
+	return o.ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *ServiceIntegrationDatadogUserConfig {
+		return &v
+	}).(ServiceIntegrationDatadogUserConfigPtrOutput)
+}
+func (o ServiceIntegrationDatadogUserConfigOutput) ExcludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []string { return v.ExcludeConsumerGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) ExcludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []string { return v.ExcludeTopics }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) IncludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []string { return v.IncludeConsumerGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) IncludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []string { return v.IncludeTopics }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigOutput) KafkaCustomMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []string { return v.KafkaCustomMetrics }).(pulumi.StringArrayOutput)
+}
+
+type ServiceIntegrationDatadogUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDatadogUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) ToServiceIntegrationDatadogUserConfigPtrOutput() ServiceIntegrationDatadogUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) ToServiceIntegrationDatadogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) Elem() ServiceIntegrationDatadogUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) ServiceIntegrationDatadogUserConfig { return *v }).(ServiceIntegrationDatadogUserConfigOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) ExcludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeConsumerGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) ExcludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeTopics
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) IncludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeConsumerGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) IncludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeTopics
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) KafkaCustomMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaCustomMetrics
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServiceIntegrationEndpointDatadogUserConfig struct {
@@ -28183,6 +28767,132 @@ func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) StatusSto
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceIntegrationKafkaLogsUserConfig struct {
+	KafkaTopic *string `pulumi:"kafkaTopic"`
+}
+
+// ServiceIntegrationKafkaLogsUserConfigInput is an input type that accepts ServiceIntegrationKafkaLogsUserConfigArgs and ServiceIntegrationKafkaLogsUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaLogsUserConfigInput` via:
+//
+//          ServiceIntegrationKafkaLogsUserConfigArgs{...}
+type ServiceIntegrationKafkaLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaLogsUserConfigOutput() ServiceIntegrationKafkaLogsUserConfigOutput
+	ToServiceIntegrationKafkaLogsUserConfigOutputWithContext(context.Context) ServiceIntegrationKafkaLogsUserConfigOutput
+}
+
+type ServiceIntegrationKafkaLogsUserConfigArgs struct {
+	KafkaTopic pulumi.StringPtrInput `pulumi:"kafkaTopic"`
+}
+
+func (ServiceIntegrationKafkaLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationKafkaLogsUserConfigArgs) ToServiceIntegrationKafkaLogsUserConfigOutput() ServiceIntegrationKafkaLogsUserConfigOutput {
+	return i.ToServiceIntegrationKafkaLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaLogsUserConfigArgs) ToServiceIntegrationKafkaLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationKafkaLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaLogsUserConfigOutput)
+}
+
+func (i ServiceIntegrationKafkaLogsUserConfigArgs) ToServiceIntegrationKafkaLogsUserConfigPtrOutput() ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationKafkaLogsUserConfigArgs) ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaLogsUserConfigOutput).ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationKafkaLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaLogsUserConfigArgs, ServiceIntegrationKafkaLogsUserConfigPtr and ServiceIntegrationKafkaLogsUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationKafkaLogsUserConfigPtrInput` via:
+//
+//          ServiceIntegrationKafkaLogsUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationKafkaLogsUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationKafkaLogsUserConfigPtrOutput() ServiceIntegrationKafkaLogsUserConfigPtrOutput
+	ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationKafkaLogsUserConfigPtrOutput
+}
+
+type serviceIntegrationKafkaLogsUserConfigPtrType ServiceIntegrationKafkaLogsUserConfigArgs
+
+func ServiceIntegrationKafkaLogsUserConfigPtr(v *ServiceIntegrationKafkaLogsUserConfigArgs) ServiceIntegrationKafkaLogsUserConfigPtrInput {
+	return (*serviceIntegrationKafkaLogsUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationKafkaLogsUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationKafkaLogsUserConfigPtrType) ToServiceIntegrationKafkaLogsUserConfigPtrOutput() ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return i.ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationKafkaLogsUserConfigPtrType) ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationKafkaLogsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationKafkaLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigOutput) ToServiceIntegrationKafkaLogsUserConfigOutput() ServiceIntegrationKafkaLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigOutput) ToServiceIntegrationKafkaLogsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationKafkaLogsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigOutput) ToServiceIntegrationKafkaLogsUserConfigPtrOutput() ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return o.ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigOutput) ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaLogsUserConfig) *ServiceIntegrationKafkaLogsUserConfig {
+		return &v
+	}).(ServiceIntegrationKafkaLogsUserConfigPtrOutput)
+}
+func (o ServiceIntegrationKafkaLogsUserConfigOutput) KafkaTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaLogsUserConfig) *string { return v.KafkaTopic }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationKafkaLogsUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationKafkaLogsUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) ToServiceIntegrationKafkaLogsUserConfigPtrOutput() ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) ToServiceIntegrationKafkaLogsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) Elem() ServiceIntegrationKafkaLogsUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaLogsUserConfig) ServiceIntegrationKafkaLogsUserConfig { return *v }).(ServiceIntegrationKafkaLogsUserConfigOutput)
+}
+
+func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) KafkaTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaLogsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaTopic
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceIntegrationKafkaMirrormakerUserConfig struct {
 	ClusterAlias *string `pulumi:"clusterAlias"`
 }
@@ -28452,6 +29162,883 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceIntegrationM3aggregatorUserConfig struct {
+}
+
+// ServiceIntegrationM3aggregatorUserConfigInput is an input type that accepts ServiceIntegrationM3aggregatorUserConfigArgs and ServiceIntegrationM3aggregatorUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationM3aggregatorUserConfigInput` via:
+//
+//          ServiceIntegrationM3aggregatorUserConfigArgs{...}
+type ServiceIntegrationM3aggregatorUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationM3aggregatorUserConfigOutput() ServiceIntegrationM3aggregatorUserConfigOutput
+	ToServiceIntegrationM3aggregatorUserConfigOutputWithContext(context.Context) ServiceIntegrationM3aggregatorUserConfigOutput
+}
+
+type ServiceIntegrationM3aggregatorUserConfigArgs struct {
+}
+
+func (ServiceIntegrationM3aggregatorUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationM3aggregatorUserConfigArgs) ToServiceIntegrationM3aggregatorUserConfigOutput() ServiceIntegrationM3aggregatorUserConfigOutput {
+	return i.ToServiceIntegrationM3aggregatorUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationM3aggregatorUserConfigArgs) ToServiceIntegrationM3aggregatorUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationM3aggregatorUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationM3aggregatorUserConfigOutput)
+}
+
+func (i ServiceIntegrationM3aggregatorUserConfigArgs) ToServiceIntegrationM3aggregatorUserConfigPtrOutput() ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return i.ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationM3aggregatorUserConfigArgs) ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationM3aggregatorUserConfigOutput).ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationM3aggregatorUserConfigPtrInput is an input type that accepts ServiceIntegrationM3aggregatorUserConfigArgs, ServiceIntegrationM3aggregatorUserConfigPtr and ServiceIntegrationM3aggregatorUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationM3aggregatorUserConfigPtrInput` via:
+//
+//          ServiceIntegrationM3aggregatorUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationM3aggregatorUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationM3aggregatorUserConfigPtrOutput() ServiceIntegrationM3aggregatorUserConfigPtrOutput
+	ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationM3aggregatorUserConfigPtrOutput
+}
+
+type serviceIntegrationM3aggregatorUserConfigPtrType ServiceIntegrationM3aggregatorUserConfigArgs
+
+func ServiceIntegrationM3aggregatorUserConfigPtr(v *ServiceIntegrationM3aggregatorUserConfigArgs) ServiceIntegrationM3aggregatorUserConfigPtrInput {
+	return (*serviceIntegrationM3aggregatorUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationM3aggregatorUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationM3aggregatorUserConfigPtrType) ToServiceIntegrationM3aggregatorUserConfigPtrOutput() ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return i.ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationM3aggregatorUserConfigPtrType) ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationM3aggregatorUserConfigPtrOutput)
+}
+
+type ServiceIntegrationM3aggregatorUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationM3aggregatorUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationM3aggregatorUserConfigOutput) ToServiceIntegrationM3aggregatorUserConfigOutput() ServiceIntegrationM3aggregatorUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3aggregatorUserConfigOutput) ToServiceIntegrationM3aggregatorUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationM3aggregatorUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3aggregatorUserConfigOutput) ToServiceIntegrationM3aggregatorUserConfigPtrOutput() ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return o.ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationM3aggregatorUserConfigOutput) ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationM3aggregatorUserConfig) *ServiceIntegrationM3aggregatorUserConfig {
+		return &v
+	}).(ServiceIntegrationM3aggregatorUserConfigPtrOutput)
+}
+
+type ServiceIntegrationM3aggregatorUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationM3aggregatorUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationM3aggregatorUserConfigPtrOutput) ToServiceIntegrationM3aggregatorUserConfigPtrOutput() ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3aggregatorUserConfigPtrOutput) ToServiceIntegrationM3aggregatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3aggregatorUserConfigPtrOutput) Elem() ServiceIntegrationM3aggregatorUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationM3aggregatorUserConfig) ServiceIntegrationM3aggregatorUserConfig { return *v }).(ServiceIntegrationM3aggregatorUserConfigOutput)
+}
+
+type ServiceIntegrationM3coordinatorUserConfig struct {
+}
+
+// ServiceIntegrationM3coordinatorUserConfigInput is an input type that accepts ServiceIntegrationM3coordinatorUserConfigArgs and ServiceIntegrationM3coordinatorUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationM3coordinatorUserConfigInput` via:
+//
+//          ServiceIntegrationM3coordinatorUserConfigArgs{...}
+type ServiceIntegrationM3coordinatorUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationM3coordinatorUserConfigOutput() ServiceIntegrationM3coordinatorUserConfigOutput
+	ToServiceIntegrationM3coordinatorUserConfigOutputWithContext(context.Context) ServiceIntegrationM3coordinatorUserConfigOutput
+}
+
+type ServiceIntegrationM3coordinatorUserConfigArgs struct {
+}
+
+func (ServiceIntegrationM3coordinatorUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationM3coordinatorUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationM3coordinatorUserConfigArgs) ToServiceIntegrationM3coordinatorUserConfigOutput() ServiceIntegrationM3coordinatorUserConfigOutput {
+	return i.ToServiceIntegrationM3coordinatorUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationM3coordinatorUserConfigArgs) ToServiceIntegrationM3coordinatorUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationM3coordinatorUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationM3coordinatorUserConfigOutput)
+}
+
+func (i ServiceIntegrationM3coordinatorUserConfigArgs) ToServiceIntegrationM3coordinatorUserConfigPtrOutput() ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return i.ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationM3coordinatorUserConfigArgs) ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationM3coordinatorUserConfigOutput).ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationM3coordinatorUserConfigPtrInput is an input type that accepts ServiceIntegrationM3coordinatorUserConfigArgs, ServiceIntegrationM3coordinatorUserConfigPtr and ServiceIntegrationM3coordinatorUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationM3coordinatorUserConfigPtrInput` via:
+//
+//          ServiceIntegrationM3coordinatorUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationM3coordinatorUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationM3coordinatorUserConfigPtrOutput() ServiceIntegrationM3coordinatorUserConfigPtrOutput
+	ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationM3coordinatorUserConfigPtrOutput
+}
+
+type serviceIntegrationM3coordinatorUserConfigPtrType ServiceIntegrationM3coordinatorUserConfigArgs
+
+func ServiceIntegrationM3coordinatorUserConfigPtr(v *ServiceIntegrationM3coordinatorUserConfigArgs) ServiceIntegrationM3coordinatorUserConfigPtrInput {
+	return (*serviceIntegrationM3coordinatorUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationM3coordinatorUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationM3coordinatorUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationM3coordinatorUserConfigPtrType) ToServiceIntegrationM3coordinatorUserConfigPtrOutput() ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return i.ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationM3coordinatorUserConfigPtrType) ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationM3coordinatorUserConfigPtrOutput)
+}
+
+type ServiceIntegrationM3coordinatorUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationM3coordinatorUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationM3coordinatorUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationM3coordinatorUserConfigOutput) ToServiceIntegrationM3coordinatorUserConfigOutput() ServiceIntegrationM3coordinatorUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3coordinatorUserConfigOutput) ToServiceIntegrationM3coordinatorUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationM3coordinatorUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3coordinatorUserConfigOutput) ToServiceIntegrationM3coordinatorUserConfigPtrOutput() ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return o.ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationM3coordinatorUserConfigOutput) ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationM3coordinatorUserConfig) *ServiceIntegrationM3coordinatorUserConfig {
+		return &v
+	}).(ServiceIntegrationM3coordinatorUserConfigPtrOutput)
+}
+
+type ServiceIntegrationM3coordinatorUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationM3coordinatorUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationM3coordinatorUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationM3coordinatorUserConfigPtrOutput) ToServiceIntegrationM3coordinatorUserConfigPtrOutput() ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3coordinatorUserConfigPtrOutput) ToServiceIntegrationM3coordinatorUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationM3coordinatorUserConfigPtrOutput) Elem() ServiceIntegrationM3coordinatorUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationM3coordinatorUserConfig) ServiceIntegrationM3coordinatorUserConfig {
+		return *v
+	}).(ServiceIntegrationM3coordinatorUserConfigOutput)
+}
+
+type ServiceIntegrationMetricsUserConfig struct {
+	Database      *string                                         `pulumi:"database"`
+	RetentionDays *string                                         `pulumi:"retentionDays"`
+	RoUsername    *string                                         `pulumi:"roUsername"`
+	SourceMysql   *ServiceIntegrationMetricsUserConfigSourceMysql `pulumi:"sourceMysql"`
+	Username      *string                                         `pulumi:"username"`
+}
+
+// ServiceIntegrationMetricsUserConfigInput is an input type that accepts ServiceIntegrationMetricsUserConfigArgs and ServiceIntegrationMetricsUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigInput` via:
+//
+//          ServiceIntegrationMetricsUserConfigArgs{...}
+type ServiceIntegrationMetricsUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationMetricsUserConfigOutput() ServiceIntegrationMetricsUserConfigOutput
+	ToServiceIntegrationMetricsUserConfigOutputWithContext(context.Context) ServiceIntegrationMetricsUserConfigOutput
+}
+
+type ServiceIntegrationMetricsUserConfigArgs struct {
+	Database      pulumi.StringPtrInput                                  `pulumi:"database"`
+	RetentionDays pulumi.StringPtrInput                                  `pulumi:"retentionDays"`
+	RoUsername    pulumi.StringPtrInput                                  `pulumi:"roUsername"`
+	SourceMysql   ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
+	Username      pulumi.StringPtrInput                                  `pulumi:"username"`
+}
+
+func (ServiceIntegrationMetricsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationMetricsUserConfigArgs) ToServiceIntegrationMetricsUserConfigOutput() ServiceIntegrationMetricsUserConfigOutput {
+	return i.ToServiceIntegrationMetricsUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationMetricsUserConfigArgs) ToServiceIntegrationMetricsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigOutput)
+}
+
+func (i ServiceIntegrationMetricsUserConfigArgs) ToServiceIntegrationMetricsUserConfigPtrOutput() ServiceIntegrationMetricsUserConfigPtrOutput {
+	return i.ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationMetricsUserConfigArgs) ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigOutput).ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationMetricsUserConfigPtrInput is an input type that accepts ServiceIntegrationMetricsUserConfigArgs, ServiceIntegrationMetricsUserConfigPtr and ServiceIntegrationMetricsUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigPtrInput` via:
+//
+//          ServiceIntegrationMetricsUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationMetricsUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationMetricsUserConfigPtrOutput() ServiceIntegrationMetricsUserConfigPtrOutput
+	ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationMetricsUserConfigPtrOutput
+}
+
+type serviceIntegrationMetricsUserConfigPtrType ServiceIntegrationMetricsUserConfigArgs
+
+func ServiceIntegrationMetricsUserConfigPtr(v *ServiceIntegrationMetricsUserConfigArgs) ServiceIntegrationMetricsUserConfigPtrInput {
+	return (*serviceIntegrationMetricsUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationMetricsUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationMetricsUserConfigPtrType) ToServiceIntegrationMetricsUserConfigPtrOutput() ServiceIntegrationMetricsUserConfigPtrOutput {
+	return i.ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationMetricsUserConfigPtrType) ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationMetricsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) ToServiceIntegrationMetricsUserConfigOutput() ServiceIntegrationMetricsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) ToServiceIntegrationMetricsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) ToServiceIntegrationMetricsUserConfigPtrOutput() ServiceIntegrationMetricsUserConfigPtrOutput {
+	return o.ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *ServiceIntegrationMetricsUserConfig {
+		return &v
+	}).(ServiceIntegrationMetricsUserConfigPtrOutput)
+}
+func (o ServiceIntegrationMetricsUserConfigOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) RetentionDays() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.RetentionDays }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) RoUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.RoUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) SourceMysql() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *ServiceIntegrationMetricsUserConfigSourceMysql {
+		return v.SourceMysql
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationMetricsUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) ToServiceIntegrationMetricsUserConfigPtrOutput() ServiceIntegrationMetricsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) ToServiceIntegrationMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) Elem() ServiceIntegrationMetricsUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) ServiceIntegrationMetricsUserConfig { return *v }).(ServiceIntegrationMetricsUserConfigOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) RetentionDays() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDays
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) RoUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) SourceMysql() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *ServiceIntegrationMetricsUserConfigSourceMysql {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMysql
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysql struct {
+	Telegraf *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf `pulumi:"telegraf"`
+}
+
+// ServiceIntegrationMetricsUserConfigSourceMysqlInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlArgs and ServiceIntegrationMetricsUserConfigSourceMysqlOutput values.
+// You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlInput` via:
+//
+//          ServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+type ServiceIntegrationMetricsUserConfigSourceMysqlInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationMetricsUserConfigSourceMysqlOutput() ServiceIntegrationMetricsUserConfigSourceMysqlOutput
+	ToServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlOutput
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysqlArgs struct {
+	Telegraf ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput `pulumi:"telegraf"`
+}
+
+func (ServiceIntegrationMetricsUserConfigSourceMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlOutput() ServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return i.ToServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigSourceMysqlOutput)
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return i.ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigSourceMysqlOutput).ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlArgs, ServiceIntegrationMetricsUserConfigSourceMysqlPtr and ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput` via:
+//
+//          ServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput
+	ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput
+}
+
+type serviceIntegrationMetricsUserConfigSourceMysqlPtrType ServiceIntegrationMetricsUserConfigSourceMysqlArgs
+
+func ServiceIntegrationMetricsUserConfigSourceMysqlPtr(v *ServiceIntegrationMetricsUserConfigSourceMysqlArgs) ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput {
+	return (*serviceIntegrationMetricsUserConfigSourceMysqlPtrType)(v)
+}
+
+func (*serviceIntegrationMetricsUserConfigSourceMysqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i *serviceIntegrationMetricsUserConfigSourceMysqlPtrType) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return i.ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationMetricsUserConfigSourceMysqlPtrType) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysqlOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationMetricsUserConfigSourceMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlOutput() ServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysql) *ServiceIntegrationMetricsUserConfigSourceMysql {
+		return &v
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlOutput) Telegraf() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysql) *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return v.Telegraf
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) Elem() ServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysql) ServiceIntegrationMetricsUserConfigSourceMysql {
+		return *v
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) Telegraf() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysql) *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		if v == nil {
+			return nil
+		}
+		return v.Telegraf
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf struct {
+	GatherEventWaits                    *string `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               *string `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  *string `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             *string `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 *string `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          *string `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   *string `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   *string `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  *string `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                *string `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   *string `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit *string `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           *string `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       *string `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+// ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs and ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput values.
+// You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput` via:
+//
+//          ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+type ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput
+	ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs struct {
+	GatherEventWaits                    pulumi.StringPtrInput `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               pulumi.StringPtrInput `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  pulumi.StringPtrInput `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             pulumi.StringPtrInput `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 pulumi.StringPtrInput `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          pulumi.StringPtrInput `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   pulumi.StringPtrInput `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   pulumi.StringPtrInput `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  pulumi.StringPtrInput `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                pulumi.StringPtrInput `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   pulumi.StringPtrInput `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit pulumi.StringPtrInput `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           pulumi.StringPtrInput `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       pulumi.StringPtrInput `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+func (ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return i.ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput).ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs, ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr and ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput` via:
+//
+//          ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput
+	ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput
+}
+
+type serviceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs
+
+func ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput {
+	return (*serviceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType)(v)
+}
+
+func (*serviceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i *serviceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return &v
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherEventWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherFileEventsStats }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherIndexIoWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherInnodbMetrics }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherProcessList }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherSlaveStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherTableIoWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherTableLockWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherTableSchema }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ToServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) Elem() ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return *v
+	}).(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherEventWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherFileEventsStats
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherIndexIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInnodbMetrics
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherProcessList
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherSlaveStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableLockWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceIntegrationMirrormakerUserConfig struct {
 	MirrormakerWhitelist *string `pulumi:"mirrormakerWhitelist"`
 }
@@ -28576,6 +30163,939 @@ func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) MirrormakerWhitelist()
 		}
 		return v.MirrormakerWhitelist
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfig struct {
+	SourceMysql *ServiceIntegrationPrometheusUserConfigSourceMysql `pulumi:"sourceMysql"`
+}
+
+// ServiceIntegrationPrometheusUserConfigInput is an input type that accepts ServiceIntegrationPrometheusUserConfigArgs and ServiceIntegrationPrometheusUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationPrometheusUserConfigInput` via:
+//
+//          ServiceIntegrationPrometheusUserConfigArgs{...}
+type ServiceIntegrationPrometheusUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationPrometheusUserConfigOutput() ServiceIntegrationPrometheusUserConfigOutput
+	ToServiceIntegrationPrometheusUserConfigOutputWithContext(context.Context) ServiceIntegrationPrometheusUserConfigOutput
+}
+
+type ServiceIntegrationPrometheusUserConfigArgs struct {
+	SourceMysql ServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
+}
+
+func (ServiceIntegrationPrometheusUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationPrometheusUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationPrometheusUserConfigArgs) ToServiceIntegrationPrometheusUserConfigOutput() ServiceIntegrationPrometheusUserConfigOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationPrometheusUserConfigArgs) ToServiceIntegrationPrometheusUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigOutput)
+}
+
+func (i ServiceIntegrationPrometheusUserConfigArgs) ToServiceIntegrationPrometheusUserConfigPtrOutput() ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationPrometheusUserConfigArgs) ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigOutput).ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationPrometheusUserConfigPtrInput is an input type that accepts ServiceIntegrationPrometheusUserConfigArgs, ServiceIntegrationPrometheusUserConfigPtr and ServiceIntegrationPrometheusUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationPrometheusUserConfigPtrInput` via:
+//
+//          ServiceIntegrationPrometheusUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationPrometheusUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationPrometheusUserConfigPtrOutput() ServiceIntegrationPrometheusUserConfigPtrOutput
+	ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationPrometheusUserConfigPtrOutput
+}
+
+type serviceIntegrationPrometheusUserConfigPtrType ServiceIntegrationPrometheusUserConfigArgs
+
+func ServiceIntegrationPrometheusUserConfigPtr(v *ServiceIntegrationPrometheusUserConfigArgs) ServiceIntegrationPrometheusUserConfigPtrInput {
+	return (*serviceIntegrationPrometheusUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationPrometheusUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationPrometheusUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationPrometheusUserConfigPtrType) ToServiceIntegrationPrometheusUserConfigPtrOutput() ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationPrometheusUserConfigPtrType) ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationPrometheusUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationPrometheusUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationPrometheusUserConfigOutput) ToServiceIntegrationPrometheusUserConfigOutput() ServiceIntegrationPrometheusUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigOutput) ToServiceIntegrationPrometheusUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigOutput) ToServiceIntegrationPrometheusUserConfigPtrOutput() ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return o.ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationPrometheusUserConfigOutput) ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfig) *ServiceIntegrationPrometheusUserConfig {
+		return &v
+	}).(ServiceIntegrationPrometheusUserConfigPtrOutput)
+}
+func (o ServiceIntegrationPrometheusUserConfigOutput) SourceMysql() ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfig) *ServiceIntegrationPrometheusUserConfigSourceMysql {
+		return v.SourceMysql
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationPrometheusUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationPrometheusUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationPrometheusUserConfigPtrOutput) ToServiceIntegrationPrometheusUserConfigPtrOutput() ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigPtrOutput) ToServiceIntegrationPrometheusUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigPtrOutput) Elem() ServiceIntegrationPrometheusUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfig) ServiceIntegrationPrometheusUserConfig { return *v }).(ServiceIntegrationPrometheusUserConfigOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigPtrOutput) SourceMysql() ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfig) *ServiceIntegrationPrometheusUserConfigSourceMysql {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMysql
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysql struct {
+	Telegraf *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf `pulumi:"telegraf"`
+}
+
+// ServiceIntegrationPrometheusUserConfigSourceMysqlInput is an input type that accepts ServiceIntegrationPrometheusUserConfigSourceMysqlArgs and ServiceIntegrationPrometheusUserConfigSourceMysqlOutput values.
+// You can construct a concrete instance of `ServiceIntegrationPrometheusUserConfigSourceMysqlInput` via:
+//
+//          ServiceIntegrationPrometheusUserConfigSourceMysqlArgs{...}
+type ServiceIntegrationPrometheusUserConfigSourceMysqlInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlOutput
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlOutput
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysqlArgs struct {
+	Telegraf ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput `pulumi:"telegraf"`
+}
+
+func (ServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigSourceMysqlOutput)
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigSourceMysqlOutput).ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput is an input type that accepts ServiceIntegrationPrometheusUserConfigSourceMysqlArgs, ServiceIntegrationPrometheusUserConfigSourceMysqlPtr and ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput` via:
+//
+//          ServiceIntegrationPrometheusUserConfigSourceMysqlArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput
+}
+
+type serviceIntegrationPrometheusUserConfigSourceMysqlPtrType ServiceIntegrationPrometheusUserConfigSourceMysqlArgs
+
+func ServiceIntegrationPrometheusUserConfigSourceMysqlPtr(v *ServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput {
+	return (*serviceIntegrationPrometheusUserConfigSourceMysqlPtrType)(v)
+}
+
+func (*serviceIntegrationPrometheusUserConfigSourceMysqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i *serviceIntegrationPrometheusUserConfigSourceMysqlPtrType) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationPrometheusUserConfigSourceMysqlPtrType) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysqlOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o.ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysql) *ServiceIntegrationPrometheusUserConfigSourceMysql {
+		return &v
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput)
+}
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlOutput) Telegraf() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysql) *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		return v.Telegraf
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) Elem() ServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysql) ServiceIntegrationPrometheusUserConfigSourceMysql {
+		return *v
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) Telegraf() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysql) *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		if v == nil {
+			return nil
+		}
+		return v.Telegraf
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf struct {
+	GatherEventWaits                    *string `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               *string `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  *string `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             *string `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 *string `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          *string `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   *string `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   *string `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  *string `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                *string `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   *string `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit *string `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           *string `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       *string `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+// ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput is an input type that accepts ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs and ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput values.
+// You can construct a concrete instance of `ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput` via:
+//
+//          ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{...}
+type ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs struct {
+	GatherEventWaits                    pulumi.StringPtrInput `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               pulumi.StringPtrInput `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  pulumi.StringPtrInput `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             pulumi.StringPtrInput `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 pulumi.StringPtrInput `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          pulumi.StringPtrInput `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   pulumi.StringPtrInput `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   pulumi.StringPtrInput `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  pulumi.StringPtrInput `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                pulumi.StringPtrInput `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   pulumi.StringPtrInput `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit pulumi.StringPtrInput `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           pulumi.StringPtrInput `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       pulumi.StringPtrInput `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+func (ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput).ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput is an input type that accepts ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs, ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtr and ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput` via:
+//
+//          ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput
+	ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput
+}
+
+type serviceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
+
+func ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtr(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput {
+	return (*serviceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType)(v)
+}
+
+func (*serviceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i *serviceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		return &v
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string { return v.GatherEventWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherFileEventsStats
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string { return v.GatherIndexIoWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherInnodbMetrics
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string { return v.GatherProcessList }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string { return v.GatherSlaveStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string { return v.GatherTableIoWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherTableLockWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string { return v.GatherTableSchema }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) ToServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) Elem() ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		return *v
+	}).(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherEventWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherFileEventsStats
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherIndexIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInnodbMetrics
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherProcessList
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherSlaveStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableLockWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationReadReplicaUserConfig struct {
+}
+
+// ServiceIntegrationReadReplicaUserConfigInput is an input type that accepts ServiceIntegrationReadReplicaUserConfigArgs and ServiceIntegrationReadReplicaUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationReadReplicaUserConfigInput` via:
+//
+//          ServiceIntegrationReadReplicaUserConfigArgs{...}
+type ServiceIntegrationReadReplicaUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationReadReplicaUserConfigOutput() ServiceIntegrationReadReplicaUserConfigOutput
+	ToServiceIntegrationReadReplicaUserConfigOutputWithContext(context.Context) ServiceIntegrationReadReplicaUserConfigOutput
+}
+
+type ServiceIntegrationReadReplicaUserConfigArgs struct {
+}
+
+func (ServiceIntegrationReadReplicaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationReadReplicaUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationReadReplicaUserConfigArgs) ToServiceIntegrationReadReplicaUserConfigOutput() ServiceIntegrationReadReplicaUserConfigOutput {
+	return i.ToServiceIntegrationReadReplicaUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationReadReplicaUserConfigArgs) ToServiceIntegrationReadReplicaUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationReadReplicaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationReadReplicaUserConfigOutput)
+}
+
+func (i ServiceIntegrationReadReplicaUserConfigArgs) ToServiceIntegrationReadReplicaUserConfigPtrOutput() ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return i.ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationReadReplicaUserConfigArgs) ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationReadReplicaUserConfigOutput).ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationReadReplicaUserConfigPtrInput is an input type that accepts ServiceIntegrationReadReplicaUserConfigArgs, ServiceIntegrationReadReplicaUserConfigPtr and ServiceIntegrationReadReplicaUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationReadReplicaUserConfigPtrInput` via:
+//
+//          ServiceIntegrationReadReplicaUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationReadReplicaUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationReadReplicaUserConfigPtrOutput() ServiceIntegrationReadReplicaUserConfigPtrOutput
+	ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationReadReplicaUserConfigPtrOutput
+}
+
+type serviceIntegrationReadReplicaUserConfigPtrType ServiceIntegrationReadReplicaUserConfigArgs
+
+func ServiceIntegrationReadReplicaUserConfigPtr(v *ServiceIntegrationReadReplicaUserConfigArgs) ServiceIntegrationReadReplicaUserConfigPtrInput {
+	return (*serviceIntegrationReadReplicaUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationReadReplicaUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationReadReplicaUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationReadReplicaUserConfigPtrType) ToServiceIntegrationReadReplicaUserConfigPtrOutput() ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return i.ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationReadReplicaUserConfigPtrType) ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationReadReplicaUserConfigPtrOutput)
+}
+
+type ServiceIntegrationReadReplicaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationReadReplicaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationReadReplicaUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationReadReplicaUserConfigOutput) ToServiceIntegrationReadReplicaUserConfigOutput() ServiceIntegrationReadReplicaUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationReadReplicaUserConfigOutput) ToServiceIntegrationReadReplicaUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationReadReplicaUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationReadReplicaUserConfigOutput) ToServiceIntegrationReadReplicaUserConfigPtrOutput() ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return o.ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationReadReplicaUserConfigOutput) ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationReadReplicaUserConfig) *ServiceIntegrationReadReplicaUserConfig {
+		return &v
+	}).(ServiceIntegrationReadReplicaUserConfigPtrOutput)
+}
+
+type ServiceIntegrationReadReplicaUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationReadReplicaUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationReadReplicaUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationReadReplicaUserConfigPtrOutput) ToServiceIntegrationReadReplicaUserConfigPtrOutput() ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationReadReplicaUserConfigPtrOutput) ToServiceIntegrationReadReplicaUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationReadReplicaUserConfigPtrOutput) Elem() ServiceIntegrationReadReplicaUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationReadReplicaUserConfig) ServiceIntegrationReadReplicaUserConfig { return *v }).(ServiceIntegrationReadReplicaUserConfigOutput)
+}
+
+type ServiceIntegrationRsyslogUserConfig struct {
+}
+
+// ServiceIntegrationRsyslogUserConfigInput is an input type that accepts ServiceIntegrationRsyslogUserConfigArgs and ServiceIntegrationRsyslogUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationRsyslogUserConfigInput` via:
+//
+//          ServiceIntegrationRsyslogUserConfigArgs{...}
+type ServiceIntegrationRsyslogUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationRsyslogUserConfigOutput() ServiceIntegrationRsyslogUserConfigOutput
+	ToServiceIntegrationRsyslogUserConfigOutputWithContext(context.Context) ServiceIntegrationRsyslogUserConfigOutput
+}
+
+type ServiceIntegrationRsyslogUserConfigArgs struct {
+}
+
+func (ServiceIntegrationRsyslogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationRsyslogUserConfigArgs) ToServiceIntegrationRsyslogUserConfigOutput() ServiceIntegrationRsyslogUserConfigOutput {
+	return i.ToServiceIntegrationRsyslogUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationRsyslogUserConfigArgs) ToServiceIntegrationRsyslogUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationRsyslogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationRsyslogUserConfigOutput)
+}
+
+func (i ServiceIntegrationRsyslogUserConfigArgs) ToServiceIntegrationRsyslogUserConfigPtrOutput() ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return i.ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationRsyslogUserConfigArgs) ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationRsyslogUserConfigOutput).ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationRsyslogUserConfigPtrInput is an input type that accepts ServiceIntegrationRsyslogUserConfigArgs, ServiceIntegrationRsyslogUserConfigPtr and ServiceIntegrationRsyslogUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationRsyslogUserConfigPtrInput` via:
+//
+//          ServiceIntegrationRsyslogUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationRsyslogUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationRsyslogUserConfigPtrOutput() ServiceIntegrationRsyslogUserConfigPtrOutput
+	ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationRsyslogUserConfigPtrOutput
+}
+
+type serviceIntegrationRsyslogUserConfigPtrType ServiceIntegrationRsyslogUserConfigArgs
+
+func ServiceIntegrationRsyslogUserConfigPtr(v *ServiceIntegrationRsyslogUserConfigArgs) ServiceIntegrationRsyslogUserConfigPtrInput {
+	return (*serviceIntegrationRsyslogUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationRsyslogUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationRsyslogUserConfigPtrType) ToServiceIntegrationRsyslogUserConfigPtrOutput() ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return i.ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationRsyslogUserConfigPtrType) ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationRsyslogUserConfigPtrOutput)
+}
+
+type ServiceIntegrationRsyslogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationRsyslogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationRsyslogUserConfigOutput) ToServiceIntegrationRsyslogUserConfigOutput() ServiceIntegrationRsyslogUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationRsyslogUserConfigOutput) ToServiceIntegrationRsyslogUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationRsyslogUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationRsyslogUserConfigOutput) ToServiceIntegrationRsyslogUserConfigPtrOutput() ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return o.ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationRsyslogUserConfigOutput) ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationRsyslogUserConfig) *ServiceIntegrationRsyslogUserConfig {
+		return &v
+	}).(ServiceIntegrationRsyslogUserConfigPtrOutput)
+}
+
+type ServiceIntegrationRsyslogUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationRsyslogUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationRsyslogUserConfigPtrOutput) ToServiceIntegrationRsyslogUserConfigPtrOutput() ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationRsyslogUserConfigPtrOutput) ToServiceIntegrationRsyslogUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationRsyslogUserConfigPtrOutput) Elem() ServiceIntegrationRsyslogUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationRsyslogUserConfig) ServiceIntegrationRsyslogUserConfig { return *v }).(ServiceIntegrationRsyslogUserConfigOutput)
+}
+
+type ServiceIntegrationSignalfxUserConfig struct {
+}
+
+// ServiceIntegrationSignalfxUserConfigInput is an input type that accepts ServiceIntegrationSignalfxUserConfigArgs and ServiceIntegrationSignalfxUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationSignalfxUserConfigInput` via:
+//
+//          ServiceIntegrationSignalfxUserConfigArgs{...}
+type ServiceIntegrationSignalfxUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationSignalfxUserConfigOutput() ServiceIntegrationSignalfxUserConfigOutput
+	ToServiceIntegrationSignalfxUserConfigOutputWithContext(context.Context) ServiceIntegrationSignalfxUserConfigOutput
+}
+
+type ServiceIntegrationSignalfxUserConfigArgs struct {
+}
+
+func (ServiceIntegrationSignalfxUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationSignalfxUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationSignalfxUserConfigArgs) ToServiceIntegrationSignalfxUserConfigOutput() ServiceIntegrationSignalfxUserConfigOutput {
+	return i.ToServiceIntegrationSignalfxUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationSignalfxUserConfigArgs) ToServiceIntegrationSignalfxUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationSignalfxUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSignalfxUserConfigOutput)
+}
+
+func (i ServiceIntegrationSignalfxUserConfigArgs) ToServiceIntegrationSignalfxUserConfigPtrOutput() ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return i.ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationSignalfxUserConfigArgs) ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSignalfxUserConfigOutput).ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationSignalfxUserConfigPtrInput is an input type that accepts ServiceIntegrationSignalfxUserConfigArgs, ServiceIntegrationSignalfxUserConfigPtr and ServiceIntegrationSignalfxUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationSignalfxUserConfigPtrInput` via:
+//
+//          ServiceIntegrationSignalfxUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationSignalfxUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationSignalfxUserConfigPtrOutput() ServiceIntegrationSignalfxUserConfigPtrOutput
+	ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationSignalfxUserConfigPtrOutput
+}
+
+type serviceIntegrationSignalfxUserConfigPtrType ServiceIntegrationSignalfxUserConfigArgs
+
+func ServiceIntegrationSignalfxUserConfigPtr(v *ServiceIntegrationSignalfxUserConfigArgs) ServiceIntegrationSignalfxUserConfigPtrInput {
+	return (*serviceIntegrationSignalfxUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationSignalfxUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationSignalfxUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationSignalfxUserConfigPtrType) ToServiceIntegrationSignalfxUserConfigPtrOutput() ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return i.ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationSignalfxUserConfigPtrType) ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSignalfxUserConfigPtrOutput)
+}
+
+type ServiceIntegrationSignalfxUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationSignalfxUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationSignalfxUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationSignalfxUserConfigOutput) ToServiceIntegrationSignalfxUserConfigOutput() ServiceIntegrationSignalfxUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationSignalfxUserConfigOutput) ToServiceIntegrationSignalfxUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationSignalfxUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationSignalfxUserConfigOutput) ToServiceIntegrationSignalfxUserConfigPtrOutput() ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return o.ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationSignalfxUserConfigOutput) ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationSignalfxUserConfig) *ServiceIntegrationSignalfxUserConfig {
+		return &v
+	}).(ServiceIntegrationSignalfxUserConfigPtrOutput)
+}
+
+type ServiceIntegrationSignalfxUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationSignalfxUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationSignalfxUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationSignalfxUserConfigPtrOutput) ToServiceIntegrationSignalfxUserConfigPtrOutput() ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationSignalfxUserConfigPtrOutput) ToServiceIntegrationSignalfxUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSignalfxUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationSignalfxUserConfigPtrOutput) Elem() ServiceIntegrationSignalfxUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationSignalfxUserConfig) ServiceIntegrationSignalfxUserConfig { return *v }).(ServiceIntegrationSignalfxUserConfigOutput)
 }
 
 type ServiceKafka struct {
@@ -32240,6 +34760,7 @@ type ServiceMysqlUserConfig struct {
 	Mysql              *ServiceMysqlUserConfigMysql         `pulumi:"mysql"`
 	MysqlVersion       *string                              `pulumi:"mysqlVersion"`
 	PrivateAccess      *ServiceMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom  *string                              `pulumi:"projectToForkFrom"`
 	PublicAccess       *ServiceMysqlUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryTargetTime *string                              `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom  *string                              `pulumi:"serviceToForkFrom"`
@@ -32265,6 +34786,7 @@ type ServiceMysqlUserConfigArgs struct {
 	Mysql              ServiceMysqlUserConfigMysqlPtrInput         `pulumi:"mysql"`
 	MysqlVersion       pulumi.StringPtrInput                       `pulumi:"mysqlVersion"`
 	PrivateAccess      ServiceMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom  pulumi.StringPtrInput                       `pulumi:"projectToForkFrom"`
 	PublicAccess       ServiceMysqlUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryTargetTime pulumi.StringPtrInput                       `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom  pulumi.StringPtrInput                       `pulumi:"serviceToForkFrom"`
@@ -32378,6 +34900,10 @@ func (o ServiceMysqlUserConfigOutput) PrivateAccess() ServiceMysqlUserConfigPriv
 	return o.ApplyT(func(v ServiceMysqlUserConfig) *ServiceMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+func (o ServiceMysqlUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceMysqlUserConfigOutput) PublicAccess() ServiceMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfig) *ServiceMysqlUserConfigPublicAccess { return v.PublicAccess }).(ServiceMysqlUserConfigPublicAccessPtrOutput)
 }
@@ -32478,6 +35004,15 @@ func (o ServiceMysqlUserConfigPtrOutput) PrivateAccess() ServiceMysqlUserConfigP
 		}
 		return v.PrivateAccess
 	}).(ServiceMysqlUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMysqlUserConfigPtrOutput) PublicAccess() ServiceMysqlUserConfigPublicAccessPtrOutput {
@@ -33460,6 +35995,7 @@ type ServicePgUserConfig struct {
 	Pgbouncer               *ServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
 	Pglookout               *ServicePgUserConfigPglookout     `pulumi:"pglookout"`
 	PrivateAccess           *ServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom       *string                           `pulumi:"projectToForkFrom"`
 	PublicAccess            *ServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryTargetTime      *string                           `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       *string                           `pulumi:"serviceToForkFrom"`
@@ -33495,6 +36031,7 @@ type ServicePgUserConfigArgs struct {
 	Pgbouncer               ServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
 	Pglookout               ServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
 	PrivateAccess           ServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom       pulumi.StringPtrInput                    `pulumi:"projectToForkFrom"`
 	PublicAccess            ServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryTargetTime      pulumi.StringPtrInput                    `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       pulumi.StringPtrInput                    `pulumi:"serviceToForkFrom"`
@@ -33631,6 +36168,10 @@ func (o ServicePgUserConfigOutput) Pglookout() ServicePgUserConfigPglookoutPtrOu
 
 func (o ServicePgUserConfigOutput) PrivateAccess() ServicePgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPrivateAccess { return v.PrivateAccess }).(ServicePgUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServicePgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigOutput) PublicAccess() ServicePgUserConfigPublicAccessPtrOutput {
@@ -33798,6 +36339,15 @@ func (o ServicePgUserConfigPtrOutput) PrivateAccess() ServicePgUserConfigPrivate
 		}
 		return v.PrivateAccess
 	}).(ServicePgUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServicePgUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) PublicAccess() ServicePgUserConfigPublicAccessPtrOutput {
@@ -35680,6 +38230,7 @@ type ServiceRedisUserConfig struct {
 	IpFilters                 []string                             `pulumi:"ipFilters"`
 	Migration                 *ServiceRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *ServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom         *string                              `pulumi:"projectToForkFrom"`
 	PublicAccess              *ServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    *string                              `pulumi:"recoveryBasebackupName"`
 	RedisIoThreads            *string                              `pulumi:"redisIoThreads"`
@@ -35707,6 +38258,7 @@ type ServiceRedisUserConfigArgs struct {
 	IpFilters                 pulumi.StringArrayInput                     `pulumi:"ipFilters"`
 	Migration                 ServiceRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             ServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom         pulumi.StringPtrInput                       `pulumi:"projectToForkFrom"`
 	PublicAccess              ServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    pulumi.StringPtrInput                       `pulumi:"recoveryBasebackupName"`
 	RedisIoThreads            pulumi.StringPtrInput                       `pulumi:"redisIoThreads"`
@@ -35807,6 +38359,10 @@ func (o ServiceRedisUserConfigOutput) PrivateAccess() ServiceRedisUserConfigPriv
 	return o.ApplyT(func(v ServiceRedisUserConfig) *ServiceRedisUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceRedisUserConfigPrivateAccessPtrOutput)
 }
 
+func (o ServiceRedisUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceRedisUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceRedisUserConfigOutput) PublicAccess() ServiceRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ServiceRedisUserConfig) *ServiceRedisUserConfigPublicAccess { return v.PublicAccess }).(ServiceRedisUserConfigPublicAccessPtrOutput)
 }
@@ -35890,6 +38446,15 @@ func (o ServiceRedisUserConfigPtrOutput) PrivateAccess() ServiceRedisUserConfigP
 		}
 		return v.PrivateAccess
 	}).(ServiceRedisUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceRedisUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectToForkFrom
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceRedisUserConfigPtrOutput) PublicAccess() ServiceRedisUserConfigPublicAccessPtrOutput {
@@ -36615,7 +39180,8 @@ type GetCassandaCassandraUserConfig struct {
 	// utility to be used to upload Cassandra data files. Available only on service create.
 	MigrateSstableloader *string `pulumi:"migrateSstableloader"`
 	// Allow access to selected service ports from private networks.
-	PrivateAccess *GetCassandaCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	PrivateAccess     *GetCassandaCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom *string                                      `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetCassandaCassandraUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of another service to fork from. This has effect only
@@ -36641,7 +39207,8 @@ type GetCassandaCassandraUserConfigArgs struct {
 	// utility to be used to upload Cassandra data files. Available only on service create.
 	MigrateSstableloader pulumi.StringPtrInput `pulumi:"migrateSstableloader"`
 	// Allow access to selected service ports from private networks.
-	PrivateAccess GetCassandaCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	PrivateAccess     GetCassandaCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom pulumi.StringPtrInput                               `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetCassandaCassandraUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of another service to fork from. This has effect only
@@ -36691,6 +39258,10 @@ func (o GetCassandaCassandraUserConfigOutput) PrivateAccess() GetCassandaCassand
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *GetCassandaCassandraUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetCassandaCassandraUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetCassandaCassandraUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -37617,6 +40188,9 @@ type GetElasticSearchElasticsearchUserConfig struct {
 	MaxIndexCount *string `pulumi:"maxIndexCount"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *GetElasticSearchElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *GetElasticSearchElasticsearchUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -37662,6 +40236,9 @@ type GetElasticSearchElasticsearchUserConfigArgs struct {
 	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess GetElasticSearchElasticsearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess GetElasticSearchElasticsearchUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -37754,6 +40331,12 @@ func (o GetElasticSearchElasticsearchUserConfigOutput) PrivateAccess() GetElasti
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *GetElasticSearchElasticsearchUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetElasticSearchElasticsearchUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GetElasticSearchElasticsearchUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet.
@@ -39511,6 +42094,9 @@ type GetGrafanaGrafanaUserConfig struct {
 	// Enable Grafana /metrics endpoint
 	MetricsEnabled *string                                   `pulumi:"metricsEnabled"`
 	PrivateAccess  *GetGrafanaGrafanaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *GetGrafanaGrafanaUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -39587,6 +42173,9 @@ type GetGrafanaGrafanaUserConfigArgs struct {
 	// Enable Grafana /metrics endpoint
 	MetricsEnabled pulumi.StringPtrInput                            `pulumi:"metricsEnabled"`
 	PrivateAccess  GetGrafanaGrafanaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess GetGrafanaGrafanaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
@@ -39742,6 +42331,12 @@ func (o GetGrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutp
 
 func (o GetGrafanaGrafanaUserConfigOutput) PrivateAccess() GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GetGrafanaGrafanaUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet.
@@ -41737,6 +44332,9 @@ type GetInfluxDbInfluxdbUserConfig struct {
 	IpFilters []string `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *GetInfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetInfluxDbInfluxdbUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -41766,6 +44364,9 @@ type GetInfluxDbInfluxdbUserConfigArgs struct {
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -41821,6 +44422,12 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) PrivateAccess() GetInfluxDbInfluxdb
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *GetInfluxDbInfluxdbUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GetInfluxDbInfluxdbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -47700,12 +50307,22 @@ type GetM3DbM3dbUserConfig struct {
 	Limits *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
 	// M3 major version
 	M3Version *string `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon
+	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+	// metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest *string `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
 	// List of M3 namespaces
 	Namespaces []GetM3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *GetM3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *GetM3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // GetM3DbM3dbUserConfigInput is an input type that accepts GetM3DbM3dbUserConfigArgs and GetM3DbM3dbUserConfigOutput values.
@@ -47728,12 +50345,22 @@ type GetM3DbM3dbUserConfigArgs struct {
 	Limits GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
 	// M3 major version
 	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon
+	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+	// metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
 	// List of M3 namespaces
 	Namespaces GetM3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess GetM3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess GetM3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only
+	// when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (GetM3DbM3dbUserConfigArgs) ElementType() reflect.Type {
@@ -47782,6 +50409,13 @@ func (o GetM3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
 
+// Enables access to Graphite Carbon
+// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+// metrics are written to aggregated namespaces only.
+func (o GetM3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.StringPtrOutput)
+}
+
 // List of M3 namespaces
 func (o GetM3DbM3dbUserConfigOutput) Namespaces() GetM3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigNamespace { return v.Namespaces }).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
@@ -47792,9 +50426,21 @@ func (o GetM3DbM3dbUserConfigOutput) PrivateAccess() GetM3DbM3dbUserConfigPrivat
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GetM3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet.
 func (o GetM3DbM3dbUserConfigOutput) PublicAccess() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only
+// when a new service is being created.
+func (o GetM3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 type GetM3DbM3dbUserConfigLimits struct {
@@ -49085,6 +51731,9 @@ type GetMySqlMysqlUserConfig struct {
 	MysqlVersion *string `pulumi:"mysqlVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *GetMySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetMySqlMysqlUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -49127,6 +51776,9 @@ type GetMySqlMysqlUserConfigArgs struct {
 	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess GetMySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetMySqlMysqlUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -49205,6 +51857,12 @@ func (o GetMySqlMysqlUserConfigOutput) MysqlVersion() pulumi.StringPtrOutput {
 // Allow access to selected service ports from private networks
 func (o GetMySqlMysqlUserConfigOutput) PrivateAccess() GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GetMySqlMysqlUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -50526,6 +53184,9 @@ type GetPgPgUserConfig struct {
 	Pglookout *GetPgPgUserConfigPglookout `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *GetPgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// (Optional) Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetPgPgUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -50596,6 +53257,9 @@ type GetPgPgUserConfigArgs struct {
 	Pglookout GetPgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess GetPgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// (Optional) Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetPgPgUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect
@@ -50717,6 +53381,12 @@ func (o GetPgPgUserConfigOutput) Pglookout() GetPgPgUserConfigPglookoutPtrOutput
 // Allow access to selected service ports from private networks.
 func (o GetPgPgUserConfigOutput) PrivateAccess() GetPgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPrivateAccess { return v.PrivateAccess }).(GetPgPgUserConfigPrivateAccessPtrOutput)
+}
+
+// (Optional) Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GetPgPgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -53183,6 +55853,9 @@ type GetRedisRedisUserConfig struct {
 	Migration *GetRedisRedisUserConfigMigration `pulumi:"migration"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *GetRedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetRedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -53225,6 +55898,9 @@ type GetRedisRedisUserConfigArgs struct {
 	Migration GetRedisRedisUserConfigMigrationPtrInput `pulumi:"migration"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess GetRedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has
+	// effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetRedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service
@@ -53288,6 +55964,12 @@ func (o GetRedisRedisUserConfigOutput) Migration() GetRedisRedisUserConfigMigrat
 // Allow access to selected service ports from private networks
 func (o GetRedisRedisUserConfigOutput) PrivateAccess() GetRedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigPrivateAccess { return v.PrivateAccess }).(GetRedisRedisUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
+// effect only when a new service is being created.
+func (o GetRedisRedisUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -54023,6 +56705,7 @@ type GetServiceCassandraUserConfig struct {
 	IpFilters            []string                                    `pulumi:"ipFilters"`
 	MigrateSstableloader *string                                     `pulumi:"migrateSstableloader"`
 	PrivateAccess        *GetServiceCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom    *string                                     `pulumi:"projectToForkFrom"`
 	PublicAccess         *GetServiceCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
 	ServiceToForkFrom    *string                                     `pulumi:"serviceToForkFrom"`
 }
@@ -54042,6 +56725,7 @@ type GetServiceCassandraUserConfigArgs struct {
 	IpFilters            pulumi.StringArrayInput                            `pulumi:"ipFilters"`
 	MigrateSstableloader pulumi.StringPtrInput                              `pulumi:"migrateSstableloader"`
 	PrivateAccess        GetServiceCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom    pulumi.StringPtrInput                              `pulumi:"projectToForkFrom"`
 	PublicAccess         GetServiceCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	ServiceToForkFrom    pulumi.StringPtrInput                              `pulumi:"serviceToForkFrom"`
 }
@@ -54084,6 +56768,10 @@ func (o GetServiceCassandraUserConfigOutput) PrivateAccess() GetServiceCassandra
 	return o.ApplyT(func(v GetServiceCassandraUserConfig) *GetServiceCassandraUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetServiceCassandraUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServiceCassandraUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceCassandraUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceCassandraUserConfigOutput) PublicAccess() GetServiceCassandraUserConfigPublicAccessPtrOutput {
@@ -54541,6 +57229,7 @@ type GetServiceElasticsearchUserConfig struct {
 	Kibana                             *GetServiceElasticsearchUserConfigKibana        `pulumi:"kibana"`
 	MaxIndexCount                      *string                                         `pulumi:"maxIndexCount"`
 	PrivateAccess                      *GetServiceElasticsearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom                  *string                                         `pulumi:"projectToForkFrom"`
 	PublicAccess                       *GetServiceElasticsearchUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName             *string                                         `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom                  *string                                         `pulumi:"serviceToForkFrom"`
@@ -54567,6 +57256,7 @@ type GetServiceElasticsearchUserConfigArgs struct {
 	Kibana                             GetServiceElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
 	MaxIndexCount                      pulumi.StringPtrInput                                   `pulumi:"maxIndexCount"`
 	PrivateAccess                      GetServiceElasticsearchUserConfigPrivateAccessPtrInput  `pulumi:"privateAccess"`
+	ProjectToForkFrom                  pulumi.StringPtrInput                                   `pulumi:"projectToForkFrom"`
 	PublicAccess                       GetServiceElasticsearchUserConfigPublicAccessPtrInput   `pulumi:"publicAccess"`
 	RecoveryBasebackupName             pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                                   `pulumi:"serviceToForkFrom"`
@@ -54638,6 +57328,10 @@ func (o GetServiceElasticsearchUserConfigOutput) PrivateAccess() GetServiceElast
 	return o.ApplyT(func(v GetServiceElasticsearchUserConfig) *GetServiceElasticsearchUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetServiceElasticsearchUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigOutput) PublicAccess() GetServiceElasticsearchUserConfigPublicAccessPtrOutput {
@@ -55783,6 +58477,7 @@ type GetServiceGrafanaUserConfig struct {
 	IpFilters                  []string                                         `pulumi:"ipFilters"`
 	MetricsEnabled             *string                                          `pulumi:"metricsEnabled"`
 	PrivateAccess              *GetServiceGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
+	ProjectToForkFrom          *string                                          `pulumi:"projectToForkFrom"`
 	PublicAccess               *GetServiceGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
 	RecoveryBasebackupName     *string                                          `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom          *string                                          `pulumi:"serviceToForkFrom"`
@@ -55825,6 +58520,7 @@ type GetServiceGrafanaUserConfigArgs struct {
 	IpFilters                  pulumi.StringArrayInput                                 `pulumi:"ipFilters"`
 	MetricsEnabled             pulumi.StringPtrInput                                   `pulumi:"metricsEnabled"`
 	PrivateAccess              GetServiceGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
+	ProjectToForkFrom          pulumi.StringPtrInput                                   `pulumi:"projectToForkFrom"`
 	PublicAccess               GetServiceGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
 	RecoveryBasebackupName     pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom          pulumi.StringPtrInput                                   `pulumi:"serviceToForkFrom"`
@@ -55946,6 +58642,10 @@ func (o GetServiceGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutp
 
 func (o GetServiceGrafanaUserConfigOutput) PrivateAccess() GetServiceGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *GetServiceGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(GetServiceGrafanaUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServiceGrafanaUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceGrafanaUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceGrafanaUserConfigOutput) PublicAccess() GetServiceGrafanaUserConfigPublicAccessPtrOutput {
@@ -57522,6 +60222,7 @@ type GetServiceInfluxdbUserConfig struct {
 	Influxdb               *GetServiceInfluxdbUserConfigInfluxdb      `pulumi:"influxdb"`
 	IpFilters              []string                                   `pulumi:"ipFilters"`
 	PrivateAccess          *GetServiceInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom      *string                                    `pulumi:"projectToForkFrom"`
 	PublicAccess           *GetServiceInfluxdbUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName *string                                    `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      *string                                    `pulumi:"serviceToForkFrom"`
@@ -57543,6 +60244,7 @@ type GetServiceInfluxdbUserConfigArgs struct {
 	Influxdb               GetServiceInfluxdbUserConfigInfluxdbPtrInput      `pulumi:"influxdb"`
 	IpFilters              pulumi.StringArrayInput                           `pulumi:"ipFilters"`
 	PrivateAccess          GetServiceInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom      pulumi.StringPtrInput                             `pulumi:"projectToForkFrom"`
 	PublicAccess           GetServiceInfluxdbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryBasebackupName pulumi.StringPtrInput                             `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
@@ -57590,6 +60292,10 @@ func (o GetServiceInfluxdbUserConfigOutput) PrivateAccess() GetServiceInfluxdbUs
 	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) *GetServiceInfluxdbUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(GetServiceInfluxdbUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServiceInfluxdbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceInfluxdbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceInfluxdbUserConfigOutput) PublicAccess() GetServiceInfluxdbUserConfigPublicAccessPtrOutput {
@@ -58042,6 +60748,122 @@ func (o GetServiceInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.Str
 		}
 		return v.Influxdb
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationDashboardUserConfig struct {
+}
+
+// GetServiceIntegrationDashboardUserConfigInput is an input type that accepts GetServiceIntegrationDashboardUserConfigArgs and GetServiceIntegrationDashboardUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDashboardUserConfigInput` via:
+//
+//          GetServiceIntegrationDashboardUserConfigArgs{...}
+type GetServiceIntegrationDashboardUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDashboardUserConfigOutput() GetServiceIntegrationDashboardUserConfigOutput
+	ToGetServiceIntegrationDashboardUserConfigOutputWithContext(context.Context) GetServiceIntegrationDashboardUserConfigOutput
+}
+
+type GetServiceIntegrationDashboardUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationDashboardUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDashboardUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDashboardUserConfigArgs) ToGetServiceIntegrationDashboardUserConfigOutput() GetServiceIntegrationDashboardUserConfigOutput {
+	return i.ToGetServiceIntegrationDashboardUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDashboardUserConfigArgs) ToGetServiceIntegrationDashboardUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationDashboardUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDashboardUserConfigOutput)
+}
+
+type GetServiceIntegrationDashboardUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDashboardUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDashboardUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDashboardUserConfigOutput) ToGetServiceIntegrationDashboardUserConfigOutput() GetServiceIntegrationDashboardUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDashboardUserConfigOutput) ToGetServiceIntegrationDashboardUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationDashboardUserConfigOutput {
+	return o
+}
+
+type GetServiceIntegrationDatadogUserConfig struct {
+	ExcludeConsumerGroups []string `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         []string `pulumi:"excludeTopics"`
+	IncludeConsumerGroups []string `pulumi:"includeConsumerGroups"`
+	IncludeTopics         []string `pulumi:"includeTopics"`
+	KafkaCustomMetrics    []string `pulumi:"kafkaCustomMetrics"`
+}
+
+// GetServiceIntegrationDatadogUserConfigInput is an input type that accepts GetServiceIntegrationDatadogUserConfigArgs and GetServiceIntegrationDatadogUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigInput` via:
+//
+//          GetServiceIntegrationDatadogUserConfigArgs{...}
+type GetServiceIntegrationDatadogUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigOutput() GetServiceIntegrationDatadogUserConfigOutput
+	ToGetServiceIntegrationDatadogUserConfigOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigArgs struct {
+	ExcludeConsumerGroups pulumi.StringArrayInput `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         pulumi.StringArrayInput `pulumi:"excludeTopics"`
+	IncludeConsumerGroups pulumi.StringArrayInput `pulumi:"includeConsumerGroups"`
+	IncludeTopics         pulumi.StringArrayInput `pulumi:"includeTopics"`
+	KafkaCustomMetrics    pulumi.StringArrayInput `pulumi:"kafkaCustomMetrics"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigArgs) ToGetServiceIntegrationDatadogUserConfigOutput() GetServiceIntegrationDatadogUserConfigOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigArgs) ToGetServiceIntegrationDatadogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) ToGetServiceIntegrationDatadogUserConfigOutput() GetServiceIntegrationDatadogUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) ToGetServiceIntegrationDatadogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) ExcludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.ExcludeConsumerGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) ExcludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.ExcludeTopics }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) IncludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.IncludeConsumerGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) IncludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.IncludeTopics }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) KafkaCustomMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.KafkaCustomMetrics }).(pulumi.StringArrayOutput)
 }
 
 type GetServiceIntegrationEndpointDatadogUserConfig struct {
@@ -59012,6 +61834,55 @@ func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) Status
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetServiceIntegrationKafkaLogsUserConfig struct {
+	KafkaTopic *string `pulumi:"kafkaTopic"`
+}
+
+// GetServiceIntegrationKafkaLogsUserConfigInput is an input type that accepts GetServiceIntegrationKafkaLogsUserConfigArgs and GetServiceIntegrationKafkaLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaLogsUserConfigInput` via:
+//
+//          GetServiceIntegrationKafkaLogsUserConfigArgs{...}
+type GetServiceIntegrationKafkaLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaLogsUserConfigOutput() GetServiceIntegrationKafkaLogsUserConfigOutput
+	ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationKafkaLogsUserConfigOutput
+}
+
+type GetServiceIntegrationKafkaLogsUserConfigArgs struct {
+	KafkaTopic pulumi.StringPtrInput `pulumi:"kafkaTopic"`
+}
+
+func (GetServiceIntegrationKafkaLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaLogsUserConfigArgs) ToGetServiceIntegrationKafkaLogsUserConfigOutput() GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaLogsUserConfigArgs) ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationKafkaLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) ToGetServiceIntegrationKafkaLogsUserConfigOutput() GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) KafkaTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaLogsUserConfig) *string { return v.KafkaTopic }).(pulumi.StringPtrOutput)
+}
+
 type GetServiceIntegrationKafkaMirrormakerUserConfig struct {
 	ClusterAlias *string `pulumi:"clusterAlias"`
 }
@@ -59116,6 +61987,636 @@ func (o GetServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pu
 	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
 }
 
+type GetServiceIntegrationM3aggregatorUserConfig struct {
+}
+
+// GetServiceIntegrationM3aggregatorUserConfigInput is an input type that accepts GetServiceIntegrationM3aggregatorUserConfigArgs and GetServiceIntegrationM3aggregatorUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationM3aggregatorUserConfigInput` via:
+//
+//          GetServiceIntegrationM3aggregatorUserConfigArgs{...}
+type GetServiceIntegrationM3aggregatorUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationM3aggregatorUserConfigOutput() GetServiceIntegrationM3aggregatorUserConfigOutput
+	ToGetServiceIntegrationM3aggregatorUserConfigOutputWithContext(context.Context) GetServiceIntegrationM3aggregatorUserConfigOutput
+}
+
+type GetServiceIntegrationM3aggregatorUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationM3aggregatorUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationM3aggregatorUserConfigArgs) ToGetServiceIntegrationM3aggregatorUserConfigOutput() GetServiceIntegrationM3aggregatorUserConfigOutput {
+	return i.ToGetServiceIntegrationM3aggregatorUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationM3aggregatorUserConfigArgs) ToGetServiceIntegrationM3aggregatorUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationM3aggregatorUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationM3aggregatorUserConfigOutput)
+}
+
+type GetServiceIntegrationM3aggregatorUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationM3aggregatorUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationM3aggregatorUserConfigOutput) ToGetServiceIntegrationM3aggregatorUserConfigOutput() GetServiceIntegrationM3aggregatorUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationM3aggregatorUserConfigOutput) ToGetServiceIntegrationM3aggregatorUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationM3aggregatorUserConfigOutput {
+	return o
+}
+
+type GetServiceIntegrationM3coordinatorUserConfig struct {
+}
+
+// GetServiceIntegrationM3coordinatorUserConfigInput is an input type that accepts GetServiceIntegrationM3coordinatorUserConfigArgs and GetServiceIntegrationM3coordinatorUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationM3coordinatorUserConfigInput` via:
+//
+//          GetServiceIntegrationM3coordinatorUserConfigArgs{...}
+type GetServiceIntegrationM3coordinatorUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationM3coordinatorUserConfigOutput() GetServiceIntegrationM3coordinatorUserConfigOutput
+	ToGetServiceIntegrationM3coordinatorUserConfigOutputWithContext(context.Context) GetServiceIntegrationM3coordinatorUserConfigOutput
+}
+
+type GetServiceIntegrationM3coordinatorUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationM3coordinatorUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationM3coordinatorUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationM3coordinatorUserConfigArgs) ToGetServiceIntegrationM3coordinatorUserConfigOutput() GetServiceIntegrationM3coordinatorUserConfigOutput {
+	return i.ToGetServiceIntegrationM3coordinatorUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationM3coordinatorUserConfigArgs) ToGetServiceIntegrationM3coordinatorUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationM3coordinatorUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationM3coordinatorUserConfigOutput)
+}
+
+type GetServiceIntegrationM3coordinatorUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationM3coordinatorUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationM3coordinatorUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationM3coordinatorUserConfigOutput) ToGetServiceIntegrationM3coordinatorUserConfigOutput() GetServiceIntegrationM3coordinatorUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationM3coordinatorUserConfigOutput) ToGetServiceIntegrationM3coordinatorUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationM3coordinatorUserConfigOutput {
+	return o
+}
+
+type GetServiceIntegrationMetricsUserConfig struct {
+	Database      *string                                            `pulumi:"database"`
+	RetentionDays *string                                            `pulumi:"retentionDays"`
+	RoUsername    *string                                            `pulumi:"roUsername"`
+	SourceMysql   *GetServiceIntegrationMetricsUserConfigSourceMysql `pulumi:"sourceMysql"`
+	Username      *string                                            `pulumi:"username"`
+}
+
+// GetServiceIntegrationMetricsUserConfigInput is an input type that accepts GetServiceIntegrationMetricsUserConfigArgs and GetServiceIntegrationMetricsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigInput` via:
+//
+//          GetServiceIntegrationMetricsUserConfigArgs{...}
+type GetServiceIntegrationMetricsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigOutput() GetServiceIntegrationMetricsUserConfigOutput
+	ToGetServiceIntegrationMetricsUserConfigOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigOutput
+}
+
+type GetServiceIntegrationMetricsUserConfigArgs struct {
+	Database      pulumi.StringPtrInput                                     `pulumi:"database"`
+	RetentionDays pulumi.StringPtrInput                                     `pulumi:"retentionDays"`
+	RoUsername    pulumi.StringPtrInput                                     `pulumi:"roUsername"`
+	SourceMysql   GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
+	Username      pulumi.StringPtrInput                                     `pulumi:"username"`
+}
+
+func (GetServiceIntegrationMetricsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMetricsUserConfigArgs) ToGetServiceIntegrationMetricsUserConfigOutput() GetServiceIntegrationMetricsUserConfigOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigArgs) ToGetServiceIntegrationMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) ToGetServiceIntegrationMetricsUserConfigOutput() GetServiceIntegrationMetricsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) ToGetServiceIntegrationMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) RetentionDays() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *string { return v.RetentionDays }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) RoUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *string { return v.RoUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) SourceMysql() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *GetServiceIntegrationMetricsUserConfigSourceMysql {
+		return v.SourceMysql
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysql struct {
+	Telegraf *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf `pulumi:"telegraf"`
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlArgs and GetServiceIntegrationMetricsUserConfigSourceMysqlOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlInput` via:
+//
+//          GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+type GetServiceIntegrationMetricsUserConfigSourceMysqlInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlOutput
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlArgs struct {
+	Telegraf GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput `pulumi:"telegraf"`
+}
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput)
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput).ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlArgs, GetServiceIntegrationMetricsUserConfigSourceMysqlPtr and GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput` via:
+//
+//          GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput
+}
+
+type getServiceIntegrationMetricsUserConfigSourceMysqlPtrType GetServiceIntegrationMetricsUserConfigSourceMysqlArgs
+
+func GetServiceIntegrationMetricsUserConfigSourceMysqlPtr(v *GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput {
+	return (*getServiceIntegrationMetricsUserConfigSourceMysqlPtrType)(v)
+}
+
+func (*getServiceIntegrationMetricsUserConfigSourceMysqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysql) *GetServiceIntegrationMetricsUserConfigSourceMysql {
+		return &v
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) Telegraf() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysql) *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return v.Telegraf
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) Elem() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysql) GetServiceIntegrationMetricsUserConfigSourceMysql {
+		return *v
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) Telegraf() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysql) *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		if v == nil {
+			return nil
+		}
+		return v.Telegraf
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf struct {
+	GatherEventWaits                    *string `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               *string `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  *string `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             *string `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 *string `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          *string `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   *string `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   *string `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  *string `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                *string `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   *string `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit *string `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           *string `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       *string `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs and GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput` via:
+//
+//          GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs struct {
+	GatherEventWaits                    pulumi.StringPtrInput `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               pulumi.StringPtrInput `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  pulumi.StringPtrInput `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             pulumi.StringPtrInput `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 pulumi.StringPtrInput `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          pulumi.StringPtrInput `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   pulumi.StringPtrInput `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   pulumi.StringPtrInput `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  pulumi.StringPtrInput `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                pulumi.StringPtrInput `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   pulumi.StringPtrInput `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit pulumi.StringPtrInput `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           pulumi.StringPtrInput `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       pulumi.StringPtrInput `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput).ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs, GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr and GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput` via:
+//
+//          GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput
+}
+
+type getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs
+
+func GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput {
+	return (*getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType)(v)
+}
+
+func (*getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return &v
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherEventWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherFileEventsStats
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherIndexIoWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherInnodbMetrics
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherProcessList }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherSlaveStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherTableIoWaits }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherTableLockWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string { return v.GatherTableSchema }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) Elem() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return *v
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherEventWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherFileEventsStats
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherIndexIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInnodbMetrics
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherProcessList
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherSlaveStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableLockWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServiceIntegrationMirrormakerUserConfig struct {
 	MirrormakerWhitelist *string `pulumi:"mirrormakerWhitelist"`
 }
@@ -59163,6 +62664,667 @@ func (o GetServiceIntegrationMirrormakerUserConfigOutput) ToGetServiceIntegratio
 
 func (o GetServiceIntegrationMirrormakerUserConfigOutput) MirrormakerWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationMirrormakerUserConfig) *string { return v.MirrormakerWhitelist }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfig struct {
+	SourceMysql *GetServiceIntegrationPrometheusUserConfigSourceMysql `pulumi:"sourceMysql"`
+}
+
+// GetServiceIntegrationPrometheusUserConfigInput is an input type that accepts GetServiceIntegrationPrometheusUserConfigArgs and GetServiceIntegrationPrometheusUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationPrometheusUserConfigInput` via:
+//
+//          GetServiceIntegrationPrometheusUserConfigArgs{...}
+type GetServiceIntegrationPrometheusUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationPrometheusUserConfigOutput() GetServiceIntegrationPrometheusUserConfigOutput
+	ToGetServiceIntegrationPrometheusUserConfigOutputWithContext(context.Context) GetServiceIntegrationPrometheusUserConfigOutput
+}
+
+type GetServiceIntegrationPrometheusUserConfigArgs struct {
+	SourceMysql GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
+}
+
+func (GetServiceIntegrationPrometheusUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigArgs) ToGetServiceIntegrationPrometheusUserConfigOutput() GetServiceIntegrationPrometheusUserConfigOutput {
+	return i.ToGetServiceIntegrationPrometheusUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigArgs) ToGetServiceIntegrationPrometheusUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationPrometheusUserConfigOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationPrometheusUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigOutput) ToGetServiceIntegrationPrometheusUserConfigOutput() GetServiceIntegrationPrometheusUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigOutput) ToGetServiceIntegrationPrometheusUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigOutput) SourceMysql() GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfig) *GetServiceIntegrationPrometheusUserConfigSourceMysql {
+		return v.SourceMysql
+	}).(GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysql struct {
+	Telegraf *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf `pulumi:"telegraf"`
+}
+
+// GetServiceIntegrationPrometheusUserConfigSourceMysqlInput is an input type that accepts GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs and GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationPrometheusUserConfigSourceMysqlInput` via:
+//
+//          GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs{...}
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs struct {
+	Telegraf GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput `pulumi:"telegraf"`
+}
+
+func (GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return i.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput)
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return i.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput).ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput is an input type that accepts GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs, GetServiceIntegrationPrometheusUserConfigSourceMysqlPtr and GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput` via:
+//
+//          GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput
+}
+
+type getServiceIntegrationPrometheusUserConfigSourceMysqlPtrType GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs
+
+func GetServiceIntegrationPrometheusUserConfigSourceMysqlPtr(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs) GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput {
+	return (*getServiceIntegrationPrometheusUserConfigSourceMysqlPtrType)(v)
+}
+
+func (*getServiceIntegrationPrometheusUserConfigSourceMysqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationPrometheusUserConfigSourceMysqlPtrType) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return i.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationPrometheusUserConfigSourceMysqlPtrType) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysql) *GetServiceIntegrationPrometheusUserConfigSourceMysql {
+		return &v
+	}).(GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput)
+}
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput) Telegraf() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysql) *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		return v.Telegraf
+	}).(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationPrometheusUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) Elem() GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysql) GetServiceIntegrationPrometheusUserConfigSourceMysql {
+		return *v
+	}).(GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput) Telegraf() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysql) *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		if v == nil {
+			return nil
+		}
+		return v.Telegraf
+	}).(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf struct {
+	GatherEventWaits                    *string `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               *string `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  *string `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             *string `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 *string `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          *string `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   *string `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   *string `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  *string `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                *string `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   *string `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit *string `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           *string `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       *string `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+// GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput is an input type that accepts GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs and GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput` via:
+//
+//          GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{...}
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs struct {
+	GatherEventWaits                    pulumi.StringPtrInput `pulumi:"gatherEventWaits"`
+	GatherFileEventsStats               pulumi.StringPtrInput `pulumi:"gatherFileEventsStats"`
+	GatherIndexIoWaits                  pulumi.StringPtrInput `pulumi:"gatherIndexIoWaits"`
+	GatherInfoSchemaAutoInc             pulumi.StringPtrInput `pulumi:"gatherInfoSchemaAutoInc"`
+	GatherInnodbMetrics                 pulumi.StringPtrInput `pulumi:"gatherInnodbMetrics"`
+	GatherPerfEventsStatements          pulumi.StringPtrInput `pulumi:"gatherPerfEventsStatements"`
+	GatherProcessList                   pulumi.StringPtrInput `pulumi:"gatherProcessList"`
+	GatherSlaveStatus                   pulumi.StringPtrInput `pulumi:"gatherSlaveStatus"`
+	GatherTableIoWaits                  pulumi.StringPtrInput `pulumi:"gatherTableIoWaits"`
+	GatherTableLockWaits                pulumi.StringPtrInput `pulumi:"gatherTableLockWaits"`
+	GatherTableSchema                   pulumi.StringPtrInput `pulumi:"gatherTableSchema"`
+	PerfEventsStatementsDigestTextLimit pulumi.StringPtrInput `pulumi:"perfEventsStatementsDigestTextLimit"`
+	PerfEventsStatementsLimit           pulumi.StringPtrInput `pulumi:"perfEventsStatementsLimit"`
+	PerfEventsStatementsTimeLimit       pulumi.StringPtrInput `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+func (GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return i.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput).ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput is an input type that accepts GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs, GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtr and GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput` via:
+//
+//          GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput
+	ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput
+}
+
+type getServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
+
+func GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtr(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput {
+	return (*getServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType)(v)
+}
+
+func (*getServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrType) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		return &v
+	}).(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput)
+}
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherEventWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherFileEventsStats
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherIndexIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherInnodbMetrics
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherProcessList
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherSlaveStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherTableIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherTableLockWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.GatherTableSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) ToGetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) Elem() GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+		return *v
+	}).(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherEventWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherEventWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherFileEventsStats() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherFileEventsStats
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherIndexIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherIndexIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherInfoSchemaAutoInc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherInnodbMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInnodbMetrics
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherPerfEventsStatements() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherPerfEventsStatements
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherProcessList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherProcessList
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherSlaveStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherSlaveStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherTableIoWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableIoWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherTableLockWaits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableLockWaits
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherTableSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsDigestTextLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationReadReplicaUserConfig struct {
+}
+
+// GetServiceIntegrationReadReplicaUserConfigInput is an input type that accepts GetServiceIntegrationReadReplicaUserConfigArgs and GetServiceIntegrationReadReplicaUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationReadReplicaUserConfigInput` via:
+//
+//          GetServiceIntegrationReadReplicaUserConfigArgs{...}
+type GetServiceIntegrationReadReplicaUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationReadReplicaUserConfigOutput() GetServiceIntegrationReadReplicaUserConfigOutput
+	ToGetServiceIntegrationReadReplicaUserConfigOutputWithContext(context.Context) GetServiceIntegrationReadReplicaUserConfigOutput
+}
+
+type GetServiceIntegrationReadReplicaUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationReadReplicaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationReadReplicaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationReadReplicaUserConfigArgs) ToGetServiceIntegrationReadReplicaUserConfigOutput() GetServiceIntegrationReadReplicaUserConfigOutput {
+	return i.ToGetServiceIntegrationReadReplicaUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationReadReplicaUserConfigArgs) ToGetServiceIntegrationReadReplicaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationReadReplicaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationReadReplicaUserConfigOutput)
+}
+
+type GetServiceIntegrationReadReplicaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationReadReplicaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationReadReplicaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationReadReplicaUserConfigOutput) ToGetServiceIntegrationReadReplicaUserConfigOutput() GetServiceIntegrationReadReplicaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationReadReplicaUserConfigOutput) ToGetServiceIntegrationReadReplicaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationReadReplicaUserConfigOutput {
+	return o
+}
+
+type GetServiceIntegrationRsyslogUserConfig struct {
+}
+
+// GetServiceIntegrationRsyslogUserConfigInput is an input type that accepts GetServiceIntegrationRsyslogUserConfigArgs and GetServiceIntegrationRsyslogUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationRsyslogUserConfigInput` via:
+//
+//          GetServiceIntegrationRsyslogUserConfigArgs{...}
+type GetServiceIntegrationRsyslogUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationRsyslogUserConfigOutput() GetServiceIntegrationRsyslogUserConfigOutput
+	ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(context.Context) GetServiceIntegrationRsyslogUserConfigOutput
+}
+
+type GetServiceIntegrationRsyslogUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationRsyslogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationRsyslogUserConfigArgs) ToGetServiceIntegrationRsyslogUserConfigOutput() GetServiceIntegrationRsyslogUserConfigOutput {
+	return i.ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationRsyslogUserConfigArgs) ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationRsyslogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationRsyslogUserConfigOutput)
+}
+
+type GetServiceIntegrationRsyslogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationRsyslogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationRsyslogUserConfigOutput) ToGetServiceIntegrationRsyslogUserConfigOutput() GetServiceIntegrationRsyslogUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationRsyslogUserConfigOutput) ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationRsyslogUserConfigOutput {
+	return o
+}
+
+type GetServiceIntegrationSignalfxUserConfig struct {
+}
+
+// GetServiceIntegrationSignalfxUserConfigInput is an input type that accepts GetServiceIntegrationSignalfxUserConfigArgs and GetServiceIntegrationSignalfxUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationSignalfxUserConfigInput` via:
+//
+//          GetServiceIntegrationSignalfxUserConfigArgs{...}
+type GetServiceIntegrationSignalfxUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationSignalfxUserConfigOutput() GetServiceIntegrationSignalfxUserConfigOutput
+	ToGetServiceIntegrationSignalfxUserConfigOutputWithContext(context.Context) GetServiceIntegrationSignalfxUserConfigOutput
+}
+
+type GetServiceIntegrationSignalfxUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationSignalfxUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationSignalfxUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationSignalfxUserConfigArgs) ToGetServiceIntegrationSignalfxUserConfigOutput() GetServiceIntegrationSignalfxUserConfigOutput {
+	return i.ToGetServiceIntegrationSignalfxUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationSignalfxUserConfigArgs) ToGetServiceIntegrationSignalfxUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationSignalfxUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationSignalfxUserConfigOutput)
+}
+
+type GetServiceIntegrationSignalfxUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationSignalfxUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationSignalfxUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationSignalfxUserConfigOutput) ToGetServiceIntegrationSignalfxUserConfigOutput() GetServiceIntegrationSignalfxUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationSignalfxUserConfigOutput) ToGetServiceIntegrationSignalfxUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationSignalfxUserConfigOutput {
+	return o
 }
 
 type GetServiceKafka struct {
@@ -62138,6 +66300,7 @@ type GetServiceMysqlUserConfig struct {
 	Mysql              *GetServiceMysqlUserConfigMysql         `pulumi:"mysql"`
 	MysqlVersion       *string                                 `pulumi:"mysqlVersion"`
 	PrivateAccess      *GetServiceMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom  *string                                 `pulumi:"projectToForkFrom"`
 	PublicAccess       *GetServiceMysqlUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryTargetTime *string                                 `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom  *string                                 `pulumi:"serviceToForkFrom"`
@@ -62163,6 +66326,7 @@ type GetServiceMysqlUserConfigArgs struct {
 	Mysql              GetServiceMysqlUserConfigMysqlPtrInput         `pulumi:"mysql"`
 	MysqlVersion       pulumi.StringPtrInput                          `pulumi:"mysqlVersion"`
 	PrivateAccess      GetServiceMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom  pulumi.StringPtrInput                          `pulumi:"projectToForkFrom"`
 	PublicAccess       GetServiceMysqlUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryTargetTime pulumi.StringPtrInput                          `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom  pulumi.StringPtrInput                          `pulumi:"serviceToForkFrom"`
@@ -62224,6 +66388,10 @@ func (o GetServiceMysqlUserConfigOutput) MysqlVersion() pulumi.StringPtrOutput {
 
 func (o GetServiceMysqlUserConfigOutput) PrivateAccess() GetServiceMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetServiceMysqlUserConfig) *GetServiceMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(GetServiceMysqlUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigOutput) PublicAccess() GetServiceMysqlUserConfigPublicAccessPtrOutput {
@@ -63051,6 +67219,7 @@ type GetServicePgUserConfig struct {
 	Pgbouncer               *GetServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
 	Pglookout               *GetServicePgUserConfigPglookout     `pulumi:"pglookout"`
 	PrivateAccess           *GetServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom       *string                              `pulumi:"projectToForkFrom"`
 	PublicAccess            *GetServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryTargetTime      *string                              `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       *string                              `pulumi:"serviceToForkFrom"`
@@ -63086,6 +67255,7 @@ type GetServicePgUserConfigArgs struct {
 	Pgbouncer               GetServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
 	Pglookout               GetServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
 	PrivateAccess           GetServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom       pulumi.StringPtrInput                       `pulumi:"projectToForkFrom"`
 	PublicAccess            GetServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryTargetTime      pulumi.StringPtrInput                       `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       pulumi.StringPtrInput                       `pulumi:"serviceToForkFrom"`
@@ -63172,6 +67342,10 @@ func (o GetServicePgUserConfigOutput) Pglookout() GetServicePgUserConfigPglookou
 
 func (o GetServicePgUserConfigOutput) PrivateAccess() GetServicePgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfig) *GetServicePgUserConfigPrivateAccess { return v.PrivateAccess }).(GetServicePgUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServicePgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigOutput) PublicAccess() GetServicePgUserConfigPublicAccessPtrOutput {
@@ -64945,6 +69119,7 @@ type GetServiceRedisUserConfig struct {
 	IpFilters                 []string                                `pulumi:"ipFilters"`
 	Migration                 *GetServiceRedisUserConfigMigration     `pulumi:"migration"`
 	PrivateAccess             *GetServiceRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom         *string                                 `pulumi:"projectToForkFrom"`
 	PublicAccess              *GetServiceRedisUserConfigPublicAccess  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    *string                                 `pulumi:"recoveryBasebackupName"`
 	RedisIoThreads            *string                                 `pulumi:"redisIoThreads"`
@@ -64972,6 +69147,7 @@ type GetServiceRedisUserConfigArgs struct {
 	IpFilters                 pulumi.StringArrayInput                        `pulumi:"ipFilters"`
 	Migration                 GetServiceRedisUserConfigMigrationPtrInput     `pulumi:"migration"`
 	PrivateAccess             GetServiceRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom         pulumi.StringPtrInput                          `pulumi:"projectToForkFrom"`
 	PublicAccess              GetServiceRedisUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	RecoveryBasebackupName    pulumi.StringPtrInput                          `pulumi:"recoveryBasebackupName"`
 	RedisIoThreads            pulumi.StringPtrInput                          `pulumi:"redisIoThreads"`
@@ -65020,6 +69196,10 @@ func (o GetServiceRedisUserConfigOutput) Migration() GetServiceRedisUserConfigMi
 
 func (o GetServiceRedisUserConfigOutput) PrivateAccess() GetServiceRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetServiceRedisUserConfig) *GetServiceRedisUserConfigPrivateAccess { return v.PrivateAccess }).(GetServiceRedisUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServiceRedisUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceRedisUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceRedisUserConfigOutput) PublicAccess() GetServiceRedisUserConfigPublicAccessPtrOutput {
@@ -65900,6 +70080,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(ServiceInfluxdbUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDashboardUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDashboardUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput{})
@@ -65928,12 +70112,36 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationKafkaLogsUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaMirrormakerUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationLogsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationM3aggregatorUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationM3aggregatorUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationM3coordinatorUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationM3coordinatorUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigSourceMysqlOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMirrormakerUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMirrormakerUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationPrometheusUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationPrometheusUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationPrometheusUserConfigSourceMysqlOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationReadReplicaUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationReadReplicaUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationRsyslogUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationRsyslogUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationSignalfxUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationSignalfxUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaConnectOutput{})
@@ -66229,6 +70437,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDashboardUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
@@ -66244,9 +70454,25 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaMirrormakerUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationM3aggregatorUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationM3coordinatorUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationMirrormakerUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationReadReplicaUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationRsyslogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaConnectOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaConnectUserConfigOutput{})

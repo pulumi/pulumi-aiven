@@ -21,6 +21,7 @@ export interface CassandraCassandraUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -134,6 +135,11 @@ export interface ElasticSearchElasticsearchUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has 
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet.
      */
@@ -376,6 +382,7 @@ export interface GetCassandaCassandraUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -488,6 +495,11 @@ export interface GetElasticSearchElasticsearchUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet.
      */
@@ -818,6 +830,11 @@ export interface GetGrafanaGrafanaUserConfig {
     metricsEnabled?: string;
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
     /**
+     * Name of another project to fork a service from. This has 
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
      * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.GetGrafanaGrafanaUserConfigPublicAccess;
@@ -1071,6 +1088,11 @@ export interface GetInfluxDbInfluxdbUserConfig {
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -1904,6 +1926,12 @@ export interface GetM3DbM3dbUserConfig {
      */
     m3Version?: string;
     /**
+     * Enables access to Graphite Carbon 
+     * plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+     * metrics are written to aggregated namespaces only.
+     */
+    m3coordinatorEnableGraphiteCarbonIngest?: string;
+    /**
      * List of M3 namespaces
      */
     namespaces?: outputs.GetM3DbM3dbUserConfigNamespace[];
@@ -1912,9 +1940,19 @@ export interface GetM3DbM3dbUserConfig {
      */
     privateAccess?: outputs.GetM3DbM3dbUserConfigPrivateAccess;
     /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
      * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.GetM3DbM3dbUserConfigPublicAccess;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
+    serviceToForkFrom?: string;
 }
 
 export interface GetM3DbM3dbUserConfigLimits {
@@ -2071,6 +2109,11 @@ export interface GetMySqlMysqlUserConfig {
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -2340,6 +2383,11 @@ export interface GetPgPgUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.GetPgPgUserConfigPrivateAccess;
+    /**
+     * (Optional) Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -2728,6 +2776,11 @@ export interface GetRedisRedisUserConfig {
      */
     privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
     /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
@@ -2830,6 +2883,7 @@ export interface GetServiceCassandraUserConfig {
     ipFilters?: string[];
     migrateSstableloader?: string;
     privateAccess?: outputs.GetServiceCassandraUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
 }
@@ -2866,6 +2920,7 @@ export interface GetServiceElasticsearchUserConfig {
     kibana?: outputs.GetServiceElasticsearchUserConfigKibana;
     maxIndexCount?: string;
     privateAccess?: outputs.GetServiceElasticsearchUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceElasticsearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
@@ -2947,6 +3002,7 @@ export interface GetServiceGrafanaUserConfig {
     ipFilters?: string[];
     metricsEnabled?: string;
     privateAccess?: outputs.GetServiceGrafanaUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceGrafanaUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
@@ -3029,6 +3085,7 @@ export interface GetServiceInfluxdbUserConfig {
     influxdb?: outputs.GetServiceInfluxdbUserConfigInfluxdb;
     ipFilters?: string[];
     privateAccess?: outputs.GetServiceInfluxdbUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
@@ -3048,6 +3105,17 @@ export interface GetServiceInfluxdbUserConfigPrivateAccess {
 
 export interface GetServiceInfluxdbUserConfigPublicAccess {
     influxdb?: string;
+}
+
+export interface GetServiceIntegrationDashboardUserConfig {
+}
+
+export interface GetServiceIntegrationDatadogUserConfig {
+    excludeConsumerGroups?: string[];
+    excludeTopics?: string[];
+    includeConsumerGroups?: string[];
+    includeTopics?: string[];
+    kafkaCustomMetrics?: string[];
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
@@ -3134,6 +3202,10 @@ export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     statusStorageTopic?: string;
 }
 
+export interface GetServiceIntegrationKafkaLogsUserConfig {
+    kafkaTopic?: string;
+}
+
 export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
     clusterAlias?: string;
 }
@@ -3143,8 +3215,77 @@ export interface GetServiceIntegrationLogsUserConfig {
     elasticsearchIndexPrefix?: string;
 }
 
+export interface GetServiceIntegrationM3aggregatorUserConfig {
+}
+
+export interface GetServiceIntegrationM3coordinatorUserConfig {
+}
+
+export interface GetServiceIntegrationMetricsUserConfig {
+    database?: string;
+    retentionDays?: string;
+    roUsername?: string;
+    sourceMysql?: outputs.GetServiceIntegrationMetricsUserConfigSourceMysql;
+    username?: string;
+}
+
+export interface GetServiceIntegrationMetricsUserConfigSourceMysql {
+    telegraf?: outputs.GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf;
+}
+
+export interface GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+    gatherEventWaits?: string;
+    gatherFileEventsStats?: string;
+    gatherIndexIoWaits?: string;
+    gatherInfoSchemaAutoInc?: string;
+    gatherInnodbMetrics?: string;
+    gatherPerfEventsStatements?: string;
+    gatherProcessList?: string;
+    gatherSlaveStatus?: string;
+    gatherTableIoWaits?: string;
+    gatherTableLockWaits?: string;
+    gatherTableSchema?: string;
+    perfEventsStatementsDigestTextLimit?: string;
+    perfEventsStatementsLimit?: string;
+    perfEventsStatementsTimeLimit?: string;
+}
+
 export interface GetServiceIntegrationMirrormakerUserConfig {
     mirrormakerWhitelist?: string;
+}
+
+export interface GetServiceIntegrationPrometheusUserConfig {
+    sourceMysql?: outputs.GetServiceIntegrationPrometheusUserConfigSourceMysql;
+}
+
+export interface GetServiceIntegrationPrometheusUserConfigSourceMysql {
+    telegraf?: outputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf;
+}
+
+export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+    gatherEventWaits?: string;
+    gatherFileEventsStats?: string;
+    gatherIndexIoWaits?: string;
+    gatherInfoSchemaAutoInc?: string;
+    gatherInnodbMetrics?: string;
+    gatherPerfEventsStatements?: string;
+    gatherProcessList?: string;
+    gatherSlaveStatus?: string;
+    gatherTableIoWaits?: string;
+    gatherTableLockWaits?: string;
+    gatherTableSchema?: string;
+    perfEventsStatementsDigestTextLimit?: string;
+    perfEventsStatementsLimit?: string;
+    perfEventsStatementsTimeLimit?: string;
+}
+
+export interface GetServiceIntegrationReadReplicaUserConfig {
+}
+
+export interface GetServiceIntegrationRsyslogUserConfig {
+}
+
+export interface GetServiceIntegrationSignalfxUserConfig {
 }
 
 export interface GetServiceKafka {
@@ -3318,6 +3459,7 @@ export interface GetServiceMysqlUserConfig {
     mysql?: outputs.GetServiceMysqlUserConfigMysql;
     mysqlVersion?: string;
     privateAccess?: outputs.GetServiceMysqlUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
@@ -3382,6 +3524,7 @@ export interface GetServicePgUserConfig {
     pgbouncer?: outputs.GetServicePgUserConfigPgbouncer;
     pglookout?: outputs.GetServicePgUserConfigPglookout;
     privateAccess?: outputs.GetServicePgUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.GetServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
@@ -3481,6 +3624,7 @@ export interface GetServiceRedisUserConfig {
     ipFilters?: string[];
     migration?: outputs.GetServiceRedisUserConfigMigration;
     privateAccess?: outputs.GetServiceRedisUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     redisIoThreads?: string;
@@ -3623,6 +3767,11 @@ export interface GrafanaGrafanaUserConfig {
      */
     metricsEnabled?: string;
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has 
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet.
      */
@@ -3879,6 +4028,11 @@ export interface InfluxDbInfluxdbUserConfig {
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has 
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -4733,6 +4887,12 @@ export interface M3DbM3dbUserConfig {
      */
     m3Version?: string;
     /**
+     * Enables access to Graphite Carbon 
+     * plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+     * metrics are written to aggregated namespaces only.
+     */
+    m3coordinatorEnableGraphiteCarbonIngest?: string;
+    /**
      * List of M3 namespaces
      */
     namespaces?: outputs.M3DbM3dbUserConfigNamespace[];
@@ -4741,9 +4901,19 @@ export interface M3DbM3dbUserConfig {
      */
     privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
     /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
      * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.M3DbM3dbUserConfigPublicAccess;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
+    serviceToForkFrom?: string;
 }
 
 export interface M3DbM3dbUserConfigLimits {
@@ -4901,6 +5071,11 @@ export interface MySqlMysqlUserConfig {
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.MySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -5173,6 +5348,11 @@ export interface PgPgUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.PgPgUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -5563,6 +5743,11 @@ export interface RedisRedisUserConfig {
      */
     privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
     /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
@@ -5667,6 +5852,7 @@ export interface ServiceCassandraUserConfig {
     ipFilters?: string[];
     migrateSstableloader?: string;
     privateAccess?: outputs.ServiceCassandraUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.ServiceCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
 }
@@ -5703,6 +5889,7 @@ export interface ServiceElasticsearchUserConfig {
     kibana?: outputs.ServiceElasticsearchUserConfigKibana;
     maxIndexCount?: string;
     privateAccess?: outputs.ServiceElasticsearchUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.ServiceElasticsearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
@@ -5784,6 +5971,7 @@ export interface ServiceGrafanaUserConfig {
     ipFilters?: string[];
     metricsEnabled?: string;
     privateAccess?: outputs.ServiceGrafanaUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.ServiceGrafanaUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
@@ -5866,6 +6054,7 @@ export interface ServiceInfluxdbUserConfig {
     influxdb?: outputs.ServiceInfluxdbUserConfigInfluxdb;
     ipFilters?: string[];
     privateAccess?: outputs.ServiceInfluxdbUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.ServiceInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
@@ -5885,6 +6074,17 @@ export interface ServiceInfluxdbUserConfigPrivateAccess {
 
 export interface ServiceInfluxdbUserConfigPublicAccess {
     influxdb?: string;
+}
+
+export interface ServiceIntegrationDashboardUserConfig {
+}
+
+export interface ServiceIntegrationDatadogUserConfig {
+    excludeConsumerGroups?: string[];
+    excludeTopics?: string[];
+    includeConsumerGroups?: string[];
+    includeTopics?: string[];
+    kafkaCustomMetrics?: string[];
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
@@ -5971,6 +6171,10 @@ export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     statusStorageTopic?: string;
 }
 
+export interface ServiceIntegrationKafkaLogsUserConfig {
+    kafkaTopic?: string;
+}
+
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {
     clusterAlias?: string;
 }
@@ -5980,8 +6184,77 @@ export interface ServiceIntegrationLogsUserConfig {
     elasticsearchIndexPrefix?: string;
 }
 
+export interface ServiceIntegrationM3aggregatorUserConfig {
+}
+
+export interface ServiceIntegrationM3coordinatorUserConfig {
+}
+
+export interface ServiceIntegrationMetricsUserConfig {
+    database?: string;
+    retentionDays?: string;
+    roUsername?: string;
+    sourceMysql?: outputs.ServiceIntegrationMetricsUserConfigSourceMysql;
+    username?: string;
+}
+
+export interface ServiceIntegrationMetricsUserConfigSourceMysql {
+    telegraf?: outputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf;
+}
+
+export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+    gatherEventWaits?: string;
+    gatherFileEventsStats?: string;
+    gatherIndexIoWaits?: string;
+    gatherInfoSchemaAutoInc?: string;
+    gatherInnodbMetrics?: string;
+    gatherPerfEventsStatements?: string;
+    gatherProcessList?: string;
+    gatherSlaveStatus?: string;
+    gatherTableIoWaits?: string;
+    gatherTableLockWaits?: string;
+    gatherTableSchema?: string;
+    perfEventsStatementsDigestTextLimit?: string;
+    perfEventsStatementsLimit?: string;
+    perfEventsStatementsTimeLimit?: string;
+}
+
 export interface ServiceIntegrationMirrormakerUserConfig {
     mirrormakerWhitelist?: string;
+}
+
+export interface ServiceIntegrationPrometheusUserConfig {
+    sourceMysql?: outputs.ServiceIntegrationPrometheusUserConfigSourceMysql;
+}
+
+export interface ServiceIntegrationPrometheusUserConfigSourceMysql {
+    telegraf?: outputs.ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf;
+}
+
+export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
+    gatherEventWaits?: string;
+    gatherFileEventsStats?: string;
+    gatherIndexIoWaits?: string;
+    gatherInfoSchemaAutoInc?: string;
+    gatherInnodbMetrics?: string;
+    gatherPerfEventsStatements?: string;
+    gatherProcessList?: string;
+    gatherSlaveStatus?: string;
+    gatherTableIoWaits?: string;
+    gatherTableLockWaits?: string;
+    gatherTableSchema?: string;
+    perfEventsStatementsDigestTextLimit?: string;
+    perfEventsStatementsLimit?: string;
+    perfEventsStatementsTimeLimit?: string;
+}
+
+export interface ServiceIntegrationReadReplicaUserConfig {
+}
+
+export interface ServiceIntegrationRsyslogUserConfig {
+}
+
+export interface ServiceIntegrationSignalfxUserConfig {
 }
 
 export interface ServiceKafka {
@@ -6155,6 +6428,7 @@ export interface ServiceMysqlUserConfig {
     mysql?: outputs.ServiceMysqlUserConfigMysql;
     mysqlVersion?: string;
     privateAccess?: outputs.ServiceMysqlUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.ServiceMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
@@ -6219,6 +6493,7 @@ export interface ServicePgUserConfig {
     pgbouncer?: outputs.ServicePgUserConfigPgbouncer;
     pglookout?: outputs.ServicePgUserConfigPglookout;
     privateAccess?: outputs.ServicePgUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.ServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
@@ -6318,6 +6593,7 @@ export interface ServiceRedisUserConfig {
     ipFilters?: string[];
     migration?: outputs.ServiceRedisUserConfigMigration;
     privateAccess?: outputs.ServiceRedisUserConfigPrivateAccess;
+    projectToForkFrom?: string;
     publicAccess?: outputs.ServiceRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     redisIoThreads?: string;

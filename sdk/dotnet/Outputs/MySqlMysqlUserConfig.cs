@@ -51,6 +51,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
+        /// Name of another project to fork a service from. This has
+        /// effect only when a new service is being created.
+        /// </summary>
+        public readonly string? ProjectToForkFrom;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigPublicAccess? PublicAccess;
@@ -83,6 +88,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.MySqlMysqlUserConfigPrivateAccess? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.MySqlMysqlUserConfigPublicAccess? publicAccess,
 
             string? recoveryTargetTime,
@@ -97,6 +104,7 @@ namespace Pulumi.Aiven.Outputs
             Mysql = mysql;
             MysqlVersion = mysqlVersion;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;

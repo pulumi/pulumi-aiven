@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
     /// 
     /// The Service Integration resource allows the creation and management of Aiven Service Integrations.
     /// 
-    /// Service Integration defines an integration between two Aiven services or between Aiven
-    /// service and an external integration endpoint. Integration could be for example sending
-    /// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
-    /// service to a Grafana service to show dashboards, sending logs from any service to
+    /// Service Integration defines an integration between two Aiven services or between Aiven service and an external
+    /// integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
+    /// getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
     /// Elasticsearch, etc.
     /// 
     /// ## Example Usage
@@ -41,14 +40,28 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **Note** For services running on `hobbiest` plan service integrations are not supported.
     /// </summary>
     public partial class ServiceIntegration : Pulumi.CustomResource
     {
         /// <summary>
-        /// or `destination_service_name` - (Required) identifies the target side of
-        /// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-        /// to be defined using the reference syntax described above to set up the dependency correctly.
+        /// Dashboard specific user configurable settings
+        /// </summary>
+        [Output("dashboardUserConfig")]
+        public Output<Outputs.ServiceIntegrationDashboardUserConfig?> DashboardUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Dashboard specific user configurable settings
+        /// </summary>
+        [Output("datadogUserConfig")]
+        public Output<Outputs.ServiceIntegrationDatadogUserConfig?> DatadogUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// or `destination_service_name` - (Required) identifies the target side of the integration.
+        /// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+        /// reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Output("destinationEndpointId")]
         public Output<string?> DestinationEndpointId { get; private set; } = null!;
@@ -78,8 +91,8 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig?> ExternalGoogleCloudLoggingUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// identifies the type of integration that is set up. Possible values
-        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// identifies the type of integration that is set up. Possible values include `dashboard`
+        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
@@ -89,6 +102,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("kafkaConnectUserConfig")]
         public Output<Outputs.ServiceIntegrationKafkaConnectUserConfig?> KafkaConnectUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka Logs specific user configurable settings
+        /// </summary>
+        [Output("kafkaLogsUserConfig")]
+        public Output<Outputs.ServiceIntegrationKafkaLogsUserConfig?> KafkaLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
         /// Mirrormaker 2 integration specific user configurable settings
@@ -103,6 +122,24 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationLogsUserConfig?> LogsUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// M3 aggregator specific user configurable settings
+        /// </summary>
+        [Output("m3aggregatorUserConfig")]
+        public Output<Outputs.ServiceIntegrationM3aggregatorUserConfig?> M3aggregatorUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// M3 coordinator specific user configurable settings
+        /// </summary>
+        [Output("m3coordinatorUserConfig")]
+        public Output<Outputs.ServiceIntegrationM3coordinatorUserConfig?> M3coordinatorUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Metrics specific user configurable settings
+        /// </summary>
+        [Output("metricsUserConfig")]
+        public Output<Outputs.ServiceIntegrationMetricsUserConfig?> MetricsUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Mirrormaker 1 integration specific user configurable settings
         /// </summary>
         [Output("mirrormakerUserConfig")]
@@ -115,10 +152,34 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// or `source_service_name` - (Optional) identifies the source side of the
-        /// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-        /// needs to be defined using the reference syntax described above to set up the dependency correctly.
+        /// Prometheus coordinator specific user configurable settings
+        /// </summary>
+        [Output("prometheusUserConfig")]
+        public Output<Outputs.ServiceIntegrationPrometheusUserConfig?> PrometheusUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// PG Read replica specific user configurable settings
+        /// </summary>
+        [Output("readReplicaUserConfig")]
+        public Output<Outputs.ServiceIntegrationReadReplicaUserConfig?> ReadReplicaUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// RSyslog specific user configurable settings
+        /// </summary>
+        [Output("rsyslogUserConfig")]
+        public Output<Outputs.ServiceIntegrationRsyslogUserConfig?> RsyslogUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Signalfx specific user configurable settings
+        /// </summary>
+        [Output("signalfxUserConfig")]
+        public Output<Outputs.ServiceIntegrationSignalfxUserConfig?> SignalfxUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// or `source_service_name` - (Optional) identifies the source side of the integration. Only either
+        /// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+        /// reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Output("sourceEndpointId")]
         public Output<string?> SourceEndpointId { get; private set; } = null!;
@@ -176,10 +237,22 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// or `destination_service_name` - (Required) identifies the target side of
-        /// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-        /// to be defined using the reference syntax described above to set up the dependency correctly.
+        /// Dashboard specific user configurable settings
+        /// </summary>
+        [Input("dashboardUserConfig")]
+        public Input<Inputs.ServiceIntegrationDashboardUserConfigArgs>? DashboardUserConfig { get; set; }
+
+        /// <summary>
+        /// Dashboard specific user configurable settings
+        /// </summary>
+        [Input("datadogUserConfig")]
+        public Input<Inputs.ServiceIntegrationDatadogUserConfigArgs>? DatadogUserConfig { get; set; }
+
+        /// <summary>
+        /// or `destination_service_name` - (Required) identifies the target side of the integration.
+        /// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+        /// reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -209,8 +282,8 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
 
         /// <summary>
-        /// identifies the type of integration that is set up. Possible values
-        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// identifies the type of integration that is set up. Possible values include `dashboard`
+        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -220,6 +293,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaConnectUserConfigArgs>? KafkaConnectUserConfig { get; set; }
+
+        /// <summary>
+        /// Kafka Logs specific user configurable settings
+        /// </summary>
+        [Input("kafkaLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationKafkaLogsUserConfigArgs>? KafkaLogsUserConfig { get; set; }
 
         /// <summary>
         /// Mirrormaker 2 integration specific user configurable settings
@@ -234,6 +313,24 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationLogsUserConfigArgs>? LogsUserConfig { get; set; }
 
         /// <summary>
+        /// M3 aggregator specific user configurable settings
+        /// </summary>
+        [Input("m3aggregatorUserConfig")]
+        public Input<Inputs.ServiceIntegrationM3aggregatorUserConfigArgs>? M3aggregatorUserConfig { get; set; }
+
+        /// <summary>
+        /// M3 coordinator specific user configurable settings
+        /// </summary>
+        [Input("m3coordinatorUserConfig")]
+        public Input<Inputs.ServiceIntegrationM3coordinatorUserConfigArgs>? M3coordinatorUserConfig { get; set; }
+
+        /// <summary>
+        /// Metrics specific user configurable settings
+        /// </summary>
+        [Input("metricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationMetricsUserConfigArgs>? MetricsUserConfig { get; set; }
+
+        /// <summary>
         /// Mirrormaker 1 integration specific user configurable settings
         /// </summary>
         [Input("mirrormakerUserConfig")]
@@ -246,10 +343,34 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// or `source_service_name` - (Optional) identifies the source side of the
-        /// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-        /// needs to be defined using the reference syntax described above to set up the dependency correctly.
+        /// Prometheus coordinator specific user configurable settings
+        /// </summary>
+        [Input("prometheusUserConfig")]
+        public Input<Inputs.ServiceIntegrationPrometheusUserConfigArgs>? PrometheusUserConfig { get; set; }
+
+        /// <summary>
+        /// PG Read replica specific user configurable settings
+        /// </summary>
+        [Input("readReplicaUserConfig")]
+        public Input<Inputs.ServiceIntegrationReadReplicaUserConfigArgs>? ReadReplicaUserConfig { get; set; }
+
+        /// <summary>
+        /// RSyslog specific user configurable settings
+        /// </summary>
+        [Input("rsyslogUserConfig")]
+        public Input<Inputs.ServiceIntegrationRsyslogUserConfigArgs>? RsyslogUserConfig { get; set; }
+
+        /// <summary>
+        /// Signalfx specific user configurable settings
+        /// </summary>
+        [Input("signalfxUserConfig")]
+        public Input<Inputs.ServiceIntegrationSignalfxUserConfigArgs>? SignalfxUserConfig { get; set; }
+
+        /// <summary>
+        /// or `source_service_name` - (Optional) identifies the source side of the integration. Only either
+        /// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+        /// reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }
@@ -268,10 +389,22 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// or `destination_service_name` - (Required) identifies the target side of
-        /// the integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs
-        /// to be defined using the reference syntax described above to set up the dependency correctly.
+        /// Dashboard specific user configurable settings
+        /// </summary>
+        [Input("dashboardUserConfig")]
+        public Input<Inputs.ServiceIntegrationDashboardUserConfigGetArgs>? DashboardUserConfig { get; set; }
+
+        /// <summary>
+        /// Dashboard specific user configurable settings
+        /// </summary>
+        [Input("datadogUserConfig")]
+        public Input<Inputs.ServiceIntegrationDatadogUserConfigGetArgs>? DatadogUserConfig { get; set; }
+
+        /// <summary>
+        /// or `destination_service_name` - (Required) identifies the target side of the integration.
+        /// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
+        /// reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -301,8 +434,8 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfigGetArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
 
         /// <summary>
-        /// identifies the type of integration that is set up. Possible values
-        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// identifies the type of integration that is set up. Possible values include `dashboard`
+        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }
@@ -312,6 +445,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaConnectUserConfigGetArgs>? KafkaConnectUserConfig { get; set; }
+
+        /// <summary>
+        /// Kafka Logs specific user configurable settings
+        /// </summary>
+        [Input("kafkaLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationKafkaLogsUserConfigGetArgs>? KafkaLogsUserConfig { get; set; }
 
         /// <summary>
         /// Mirrormaker 2 integration specific user configurable settings
@@ -326,6 +465,24 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationLogsUserConfigGetArgs>? LogsUserConfig { get; set; }
 
         /// <summary>
+        /// M3 aggregator specific user configurable settings
+        /// </summary>
+        [Input("m3aggregatorUserConfig")]
+        public Input<Inputs.ServiceIntegrationM3aggregatorUserConfigGetArgs>? M3aggregatorUserConfig { get; set; }
+
+        /// <summary>
+        /// M3 coordinator specific user configurable settings
+        /// </summary>
+        [Input("m3coordinatorUserConfig")]
+        public Input<Inputs.ServiceIntegrationM3coordinatorUserConfigGetArgs>? M3coordinatorUserConfig { get; set; }
+
+        /// <summary>
+        /// Metrics specific user configurable settings
+        /// </summary>
+        [Input("metricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationMetricsUserConfigGetArgs>? MetricsUserConfig { get; set; }
+
+        /// <summary>
         /// Mirrormaker 1 integration specific user configurable settings
         /// </summary>
         [Input("mirrormakerUserConfig")]
@@ -338,10 +495,34 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// or `source_service_name` - (Optional) identifies the source side of the
-        /// integration. Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or
-        /// service name (e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source
-        /// needs to be defined using the reference syntax described above to set up the dependency correctly.
+        /// Prometheus coordinator specific user configurable settings
+        /// </summary>
+        [Input("prometheusUserConfig")]
+        public Input<Inputs.ServiceIntegrationPrometheusUserConfigGetArgs>? PrometheusUserConfig { get; set; }
+
+        /// <summary>
+        /// PG Read replica specific user configurable settings
+        /// </summary>
+        [Input("readReplicaUserConfig")]
+        public Input<Inputs.ServiceIntegrationReadReplicaUserConfigGetArgs>? ReadReplicaUserConfig { get; set; }
+
+        /// <summary>
+        /// RSyslog specific user configurable settings
+        /// </summary>
+        [Input("rsyslogUserConfig")]
+        public Input<Inputs.ServiceIntegrationRsyslogUserConfigGetArgs>? RsyslogUserConfig { get; set; }
+
+        /// <summary>
+        /// Signalfx specific user configurable settings
+        /// </summary>
+        [Input("signalfxUserConfig")]
+        public Input<Inputs.ServiceIntegrationSignalfxUserConfigGetArgs>? SignalfxUserConfig { get; set; }
+
+        /// <summary>
+        /// or `source_service_name` - (Optional) identifies the source side of the integration. Only either
+        /// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
+        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
+        /// reference syntax described above to set up the dependency correctly.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }

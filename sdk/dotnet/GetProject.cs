@@ -73,6 +73,9 @@ namespace Pulumi.Aiven
         [Input("billingExtraText")]
         public string? BillingExtraText { get; set; }
 
+        [Input("billingGroup")]
+        public string? BillingGroup { get; set; }
+
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
         /// project. This is required for configuring clients that connect to certain services like
@@ -153,6 +156,7 @@ namespace Pulumi.Aiven
         public readonly string? BillingCurrency;
         public readonly ImmutableArray<string> BillingEmails;
         public readonly string? BillingExtraText;
+        public readonly string? BillingGroup;
         /// <summary>
         /// is a computed property that can be used to read the CA certificate of the
         /// project. This is required for configuring clients that connect to certain services like
@@ -201,6 +205,8 @@ namespace Pulumi.Aiven
 
             string? billingExtraText,
 
+            string? billingGroup,
+
             string caCert,
 
             string? cardId,
@@ -231,6 +237,7 @@ namespace Pulumi.Aiven
             BillingCurrency = billingCurrency;
             BillingEmails = billingEmails;
             BillingExtraText = billingExtraText;
+            BillingGroup = billingGroup;
             CaCert = caCert;
             CardId = cardId;
             CopyFromProject = copyFromProject;

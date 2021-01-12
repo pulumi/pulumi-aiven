@@ -90,14 +90,15 @@ type ElasticSearchAcl struct {
 // NewElasticSearchAcl registers a new resource with the given unique name, arguments, and options.
 func NewElasticSearchAcl(ctx *pulumi.Context,
 	name string, args *ElasticSearchAclArgs, opts ...pulumi.ResourceOption) (*ElasticSearchAcl, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &ElasticSearchAclArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource ElasticSearchAcl
 	err := ctx.RegisterResource("aiven:index/elasticSearchAcl:ElasticSearchAcl", name, args, &resource, opts...)

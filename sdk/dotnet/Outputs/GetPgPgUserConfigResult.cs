@@ -72,6 +72,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
+        /// (Optional) Name of another project to fork a service from. This has
+        /// effect only when a new service is being created.
+        /// </summary>
+        public readonly string? ProjectToForkFrom;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPublicAccessResult? PublicAccess;
@@ -140,6 +145,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetPgPgUserConfigPrivateAccessResult? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.GetPgPgUserConfigPublicAccessResult? publicAccess,
 
             string? recoveryTargetTime,
@@ -169,6 +176,7 @@ namespace Pulumi.Aiven.Outputs
             Pgbouncer = pgbouncer;
             Pglookout = pglookout;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;

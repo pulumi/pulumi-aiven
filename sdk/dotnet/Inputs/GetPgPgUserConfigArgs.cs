@@ -103,6 +103,13 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetPgPgUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
         /// <summary>
+        /// (Optional) Name of another project to fork a service from. This has
+        /// effect only when a new service is being created.
+        /// </summary>
+        [Input("projectToForkFrom")]
+        public string? ProjectToForkFrom { get; set; }
+
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]

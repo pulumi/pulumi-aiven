@@ -85,16 +85,16 @@ class KafkaSchema(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['compatibility_level'] = compatibility_level
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if schema is None:
+            if schema is None and not opts.urn:
                 raise TypeError("Missing required property 'schema'")
             __props__['schema'] = schema
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
-            if subject_name is None:
+            if subject_name is None and not opts.urn:
                 raise TypeError("Missing required property 'subject_name'")
             __props__['subject_name'] = subject_name
             __props__['version'] = None

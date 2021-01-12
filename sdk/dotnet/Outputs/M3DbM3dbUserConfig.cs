@@ -30,6 +30,12 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? M3Version;
         /// <summary>
+        /// Enables access to Graphite Carbon 
+        /// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+        /// metrics are written to aggregated namespaces only.
+        /// </summary>
+        public readonly string? M3coordinatorEnableGraphiteCarbonIngest;
+        /// <summary>
         /// List of M3 namespaces
         /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigNamespace> Namespaces;
@@ -38,9 +44,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
+        /// Name of another project to fork a service from. This has
+        /// effect only when a new service is being created.
+        /// </summary>
+        public readonly string? ProjectToForkFrom;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only 
+        /// when a new service is being created.
+        /// </summary>
+        public readonly string? ServiceToForkFrom;
 
         [OutputConstructor]
         private M3DbM3dbUserConfig(
@@ -52,19 +68,28 @@ namespace Pulumi.Aiven.Outputs
 
             string? m3Version,
 
+            string? m3coordinatorEnableGraphiteCarbonIngest,
+
             ImmutableArray<Outputs.M3DbM3dbUserConfigNamespace> namespaces,
 
             Outputs.M3DbM3dbUserConfigPrivateAccess? privateAccess,
 
-            Outputs.M3DbM3dbUserConfigPublicAccess? publicAccess)
+            string? projectToForkFrom,
+
+            Outputs.M3DbM3dbUserConfigPublicAccess? publicAccess,
+
+            string? serviceToForkFrom)
         {
             CustomDomain = customDomain;
             IpFilters = ipFilters;
             Limits = limits;
             M3Version = m3Version;
+            M3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             Namespaces = namespaces;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
+            ServiceToForkFrom = serviceToForkFrom;
         }
     }
 }

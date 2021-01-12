@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+//
+// > **Note** The service user resource is not supported for Aiven Grafana services.
 type ServiceUser struct {
 	pulumi.CustomResourceState
 
@@ -50,14 +52,14 @@ type ServiceUser struct {
 	Authentication pulumi.StringPtrOutput `pulumi:"authentication"`
 	// Password of the user
 	Password pulumi.StringOutput `pulumi:"password"`
-	// and `serviceName` - (Required) define the project and service the user belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+	// using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Command category rules
+	// Redis specific field, defines command category rules.
 	RedisAclCategories pulumi.StringArrayOutput `pulumi:"redisAclCategories"`
-	// Rules for individual commands
+	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands pulumi.StringArrayOutput `pulumi:"redisAclCommands"`
-	// Key access rules
+	// Redis specific field, defines key access rules.
 	RedisAclKeys pulumi.StringArrayOutput `pulumi:"redisAclKeys"`
 	// Service to link the user to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -70,17 +72,18 @@ type ServiceUser struct {
 // NewServiceUser registers a new resource with the given unique name, arguments, and options.
 func NewServiceUser(ctx *pulumi.Context,
 	name string, args *ServiceUserArgs, opts ...pulumi.ResourceOption) (*ServiceUser, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &ServiceUserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource ServiceUser
 	err := ctx.RegisterResource("aiven:index/serviceUser:ServiceUser", name, args, &resource, opts...)
@@ -112,14 +115,14 @@ type serviceUserState struct {
 	Authentication *string `pulumi:"authentication"`
 	// Password of the user
 	Password *string `pulumi:"password"`
-	// and `serviceName` - (Required) define the project and service the user belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+	// using reference as shown above to set up dependencies correctly.
 	Project *string `pulumi:"project"`
-	// Command category rules
+	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
-	// Rules for individual commands
+	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
-	// Key access rules
+	// Redis specific field, defines key access rules.
 	RedisAclKeys []string `pulumi:"redisAclKeys"`
 	// Service to link the user to
 	ServiceName *string `pulumi:"serviceName"`
@@ -138,14 +141,14 @@ type ServiceUserState struct {
 	Authentication pulumi.StringPtrInput
 	// Password of the user
 	Password pulumi.StringPtrInput
-	// and `serviceName` - (Required) define the project and service the user belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+	// using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringPtrInput
-	// Command category rules
+	// Redis specific field, defines command category rules.
 	RedisAclCategories pulumi.StringArrayInput
-	// Rules for individual commands
+	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands pulumi.StringArrayInput
-	// Key access rules
+	// Redis specific field, defines key access rules.
 	RedisAclKeys pulumi.StringArrayInput
 	// Service to link the user to
 	ServiceName pulumi.StringPtrInput
@@ -164,14 +167,14 @@ type serviceUserArgs struct {
 	Authentication *string `pulumi:"authentication"`
 	// Password of the user
 	Password *string `pulumi:"password"`
-	// and `serviceName` - (Required) define the project and service the user belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+	// using reference as shown above to set up dependencies correctly.
 	Project string `pulumi:"project"`
-	// Command category rules
+	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
-	// Rules for individual commands
+	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
-	// Key access rules
+	// Redis specific field, defines key access rules.
 	RedisAclKeys []string `pulumi:"redisAclKeys"`
 	// Service to link the user to
 	ServiceName string `pulumi:"serviceName"`
@@ -185,14 +188,14 @@ type ServiceUserArgs struct {
 	Authentication pulumi.StringPtrInput
 	// Password of the user
 	Password pulumi.StringPtrInput
-	// and `serviceName` - (Required) define the project and service the user belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+	// using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringInput
-	// Command category rules
+	// Redis specific field, defines command category rules.
 	RedisAclCategories pulumi.StringArrayInput
-	// Rules for individual commands
+	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands pulumi.StringArrayInput
-	// Key access rules
+	// Redis specific field, defines key access rules.
 	RedisAclKeys pulumi.StringArrayInput
 	// Service to link the user to
 	ServiceName pulumi.StringInput

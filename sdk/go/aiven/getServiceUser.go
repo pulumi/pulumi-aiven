@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+//
+// > **Note** The service user data source is not supported for Aiven Grafana services.
 func LookupServiceUser(ctx *pulumi.Context, args *LookupServiceUserArgs, opts ...pulumi.InvokeOption) (*LookupServiceUserResult, error) {
 	var rv LookupServiceUserResult
 	err := ctx.Invoke("aiven:index/getServiceUser:getServiceUser", args, &rv, opts...)
@@ -53,13 +55,16 @@ type LookupServiceUserArgs struct {
 	Authentication *string `pulumi:"authentication"`
 	// is the password of the user (not applicable for all services).
 	Password *string `pulumi:"password"`
-	// and `serviceName` - (Required) define the project and service the user belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
-	Project            string   `pulumi:"project"`
+	// and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+	// using reference as shown above to set up dependencies correctly.
+	Project string `pulumi:"project"`
+	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
-	RedisAclCommands   []string `pulumi:"redisAclCommands"`
-	RedisAclKeys       []string `pulumi:"redisAclKeys"`
-	ServiceName        string   `pulumi:"serviceName"`
+	// Redis specific field, defines rules for individual commands.
+	RedisAclCommands []string `pulumi:"redisAclCommands"`
+	// Redis specific field, defines key access rules.
+	RedisAclKeys []string `pulumi:"redisAclKeys"`
+	ServiceName  string   `pulumi:"serviceName"`
 	// tells whether the user is primary account or regular account.
 	Type *string `pulumi:"type"`
 	// is the actual name of the user account.
@@ -76,12 +81,15 @@ type LookupServiceUserResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// is the password of the user (not applicable for all services).
-	Password           string   `pulumi:"password"`
-	Project            string   `pulumi:"project"`
+	Password string `pulumi:"password"`
+	Project  string `pulumi:"project"`
+	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
-	RedisAclCommands   []string `pulumi:"redisAclCommands"`
-	RedisAclKeys       []string `pulumi:"redisAclKeys"`
-	ServiceName        string   `pulumi:"serviceName"`
+	// Redis specific field, defines rules for individual commands.
+	RedisAclCommands []string `pulumi:"redisAclCommands"`
+	// Redis specific field, defines key access rules.
+	RedisAclKeys []string `pulumi:"redisAclKeys"`
+	ServiceName  string   `pulumi:"serviceName"`
 	// tells whether the user is primary account or regular account.
 	Type     string `pulumi:"type"`
 	Username string `pulumi:"username"`

@@ -29,6 +29,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("privateAccess")]
         public Input<Inputs.ServiceInfluxdbUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
+        [Input("projectToForkFrom")]
+        public Input<string>? ProjectToForkFrom { get; set; }
+
         [Input("publicAccess")]
         public Input<Inputs.ServiceInfluxdbUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 

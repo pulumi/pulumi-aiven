@@ -62,13 +62,13 @@ class ProjectVpc(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cloud_name is None:
+            if cloud_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_name'")
             __props__['cloud_name'] = cloud_name
-            if network_cidr is None:
+            if network_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'network_cidr'")
             __props__['network_cidr'] = network_cidr
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['state'] = None

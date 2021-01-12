@@ -196,10 +196,10 @@ export class M3Aggregator extends pulumi.CustomResource {
             inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as M3AggregatorArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["cloudName"] = args ? args.cloudName : undefined;

@@ -102,16 +102,25 @@ class GetServiceUserResult:
     @property
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> Optional[Sequence[str]]:
+        """
+        Redis specific field, defines command category rules.
+        """
         return pulumi.get(self, "redis_acl_categories")
 
     @property
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Optional[Sequence[str]]:
+        """
+        Redis specific field, defines rules for individual commands.
+        """
         return pulumi.get(self, "redis_acl_commands")
 
     @property
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> Optional[Sequence[str]]:
+        """
+        Redis specific field, defines key access rules.
+        """
         return pulumi.get(self, "redis_acl_keys")
 
     @property
@@ -181,12 +190,17 @@ def get_service_user(access_cert: Optional[str] = None,
         username="<USERNAME>")
     ```
 
+    > **Note** The service user data source is not supported for Aiven Grafana services.
+
 
     :param str access_cert: is the access certificate of the user (not applicable for all services).
     :param str access_key: is the access key of the user (not applicable for all services).
     :param str password: is the password of the user (not applicable for all services).
-    :param str project: and `service_name` - (Required) define the project and service the user belongs to.
-           They should be defined using reference as shown above to set up dependencies correctly.
+    :param str project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+           using reference as shown above to set up dependencies correctly.
+    :param Sequence[str] redis_acl_categories: Redis specific field, defines command category rules.
+    :param Sequence[str] redis_acl_commands: Redis specific field, defines rules for individual commands.
+    :param Sequence[str] redis_acl_keys: Redis specific field, defines key access rules.
     :param str type: tells whether the user is primary account or regular account.
     :param str username: is the actual name of the user account.
     """

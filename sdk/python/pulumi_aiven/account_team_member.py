@@ -65,15 +65,15 @@ class AccountTeamMember(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['accepted'] = accepted
-            if account_id is None:
+            if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__['account_id'] = account_id
             __props__['create_time'] = create_time
             __props__['invited_by_user_email'] = invited_by_user_email
-            if team_id is None:
+            if team_id is None and not opts.urn:
                 raise TypeError("Missing required property 'team_id'")
             __props__['team_id'] = team_id
-            if user_email is None:
+            if user_email is None and not opts.urn:
                 raise TypeError("Missing required property 'user_email'")
             __props__['user_email'] = user_email
         super(AccountTeamMember, __self__).__init__(

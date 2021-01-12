@@ -88,6 +88,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_account_team":           {Tok: makeResource(mainMod, "AccountTeam")},
 			"aiven_account_team_member":    {Tok: makeResource(mainMod, "AccountTeamMember")},
 			"aiven_account_team_project":   {Tok: makeResource(mainMod, "AccountTeamProject")},
+			"aiven_billing_group":          {Tok: makeResource(mainMod, "BillingGroup")},
 			"aiven_cassandra": {
 				Tok: makeResource(mainMod, "Cassandra"),
 				Fields: map[string]*tfbridge.SchemaInfo{

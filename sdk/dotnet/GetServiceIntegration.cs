@@ -16,10 +16,9 @@ namespace Pulumi.Aiven
         /// 
         /// The Service Integration data source provides information about the existing Aiven Service Integration.
         /// 
-        /// Service Integration defines an integration between two Aiven services or between Aiven
-        /// service and an external integration endpoint. Integration could be for example sending
-        /// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
-        /// service to a Grafana service to show dashboards, sending logs from any service to
+        /// Service Integration defines an integration between two Aiven services or between Aiven service and an external
+        /// integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
+        /// getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
         /// Elasticsearch, etc.
         /// 
         /// {{% examples %}}
@@ -55,12 +54,17 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceIntegrationArgs : Pulumi.InvokeArgs
     {
+        [Input("dashboardUserConfig")]
+        public Inputs.GetServiceIntegrationDashboardUserConfigArgs? DashboardUserConfig { get; set; }
+
+        [Input("datadogUserConfig")]
+        public Inputs.GetServiceIntegrationDatadogUserConfigArgs? DatadogUserConfig { get; set; }
+
         [Input("destinationEndpointId")]
         public string? DestinationEndpointId { get; set; }
 
         /// <summary>
-        /// identifies the target side of
-        /// the integration.
+        /// identifies the target side of the integration.
         /// </summary>
         [Input("destinationServiceName", required: true)]
         public string DestinationServiceName { get; set; } = null!;
@@ -75,8 +79,8 @@ namespace Pulumi.Aiven
         public Inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs? ExternalGoogleCloudLoggingUserConfig { get; set; }
 
         /// <summary>
-        /// identifies the type of integration that is set up. Possible values
-        /// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// identifies the type of integration that is set up. Possible values include `dashboard`
+        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
         /// </summary>
         [Input("integrationType", required: true)]
         public string IntegrationType { get; set; } = null!;
@@ -84,11 +88,23 @@ namespace Pulumi.Aiven
         [Input("kafkaConnectUserConfig")]
         public Inputs.GetServiceIntegrationKafkaConnectUserConfigArgs? KafkaConnectUserConfig { get; set; }
 
+        [Input("kafkaLogsUserConfig")]
+        public Inputs.GetServiceIntegrationKafkaLogsUserConfigArgs? KafkaLogsUserConfig { get; set; }
+
         [Input("kafkaMirrormakerUserConfig")]
         public Inputs.GetServiceIntegrationKafkaMirrormakerUserConfigArgs? KafkaMirrormakerUserConfig { get; set; }
 
         [Input("logsUserConfig")]
         public Inputs.GetServiceIntegrationLogsUserConfigArgs? LogsUserConfig { get; set; }
+
+        [Input("m3aggregatorUserConfig")]
+        public Inputs.GetServiceIntegrationM3aggregatorUserConfigArgs? M3aggregatorUserConfig { get; set; }
+
+        [Input("m3coordinatorUserConfig")]
+        public Inputs.GetServiceIntegrationM3coordinatorUserConfigArgs? M3coordinatorUserConfig { get; set; }
+
+        [Input("metricsUserConfig")]
+        public Inputs.GetServiceIntegrationMetricsUserConfigArgs? MetricsUserConfig { get; set; }
 
         [Input("mirrormakerUserConfig")]
         public Inputs.GetServiceIntegrationMirrormakerUserConfigArgs? MirrormakerUserConfig { get; set; }
@@ -99,12 +115,23 @@ namespace Pulumi.Aiven
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        [Input("prometheusUserConfig")]
+        public Inputs.GetServiceIntegrationPrometheusUserConfigArgs? PrometheusUserConfig { get; set; }
+
+        [Input("readReplicaUserConfig")]
+        public Inputs.GetServiceIntegrationReadReplicaUserConfigArgs? ReadReplicaUserConfig { get; set; }
+
+        [Input("rsyslogUserConfig")]
+        public Inputs.GetServiceIntegrationRsyslogUserConfigArgs? RsyslogUserConfig { get; set; }
+
+        [Input("signalfxUserConfig")]
+        public Inputs.GetServiceIntegrationSignalfxUserConfigArgs? SignalfxUserConfig { get; set; }
+
         [Input("sourceEndpointId")]
         public string? SourceEndpointId { get; set; }
 
         /// <summary>
-        /// identifies the source side of the
-        /// integration.
+        /// identifies the source side of the integration.
         /// </summary>
         [Input("sourceServiceName", required: true)]
         public string SourceServiceName { get; set; } = null!;
@@ -118,6 +145,8 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceIntegrationResult
     {
+        public readonly Outputs.GetServiceIntegrationDashboardUserConfigResult? DashboardUserConfig;
+        public readonly Outputs.GetServiceIntegrationDatadogUserConfigResult? DatadogUserConfig;
         public readonly string? DestinationEndpointId;
         public readonly string DestinationServiceName;
         public readonly Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult? ExternalAwsCloudwatchLogsUserConfig;
@@ -129,15 +158,27 @@ namespace Pulumi.Aiven
         public readonly string Id;
         public readonly string IntegrationType;
         public readonly Outputs.GetServiceIntegrationKafkaConnectUserConfigResult? KafkaConnectUserConfig;
+        public readonly Outputs.GetServiceIntegrationKafkaLogsUserConfigResult? KafkaLogsUserConfig;
         public readonly Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult? KafkaMirrormakerUserConfig;
         public readonly Outputs.GetServiceIntegrationLogsUserConfigResult? LogsUserConfig;
+        public readonly Outputs.GetServiceIntegrationM3aggregatorUserConfigResult? M3aggregatorUserConfig;
+        public readonly Outputs.GetServiceIntegrationM3coordinatorUserConfigResult? M3coordinatorUserConfig;
+        public readonly Outputs.GetServiceIntegrationMetricsUserConfigResult? MetricsUserConfig;
         public readonly Outputs.GetServiceIntegrationMirrormakerUserConfigResult? MirrormakerUserConfig;
         public readonly string Project;
+        public readonly Outputs.GetServiceIntegrationPrometheusUserConfigResult? PrometheusUserConfig;
+        public readonly Outputs.GetServiceIntegrationReadReplicaUserConfigResult? ReadReplicaUserConfig;
+        public readonly Outputs.GetServiceIntegrationRsyslogUserConfigResult? RsyslogUserConfig;
+        public readonly Outputs.GetServiceIntegrationSignalfxUserConfigResult? SignalfxUserConfig;
         public readonly string? SourceEndpointId;
         public readonly string SourceServiceName;
 
         [OutputConstructor]
         private GetServiceIntegrationResult(
+            Outputs.GetServiceIntegrationDashboardUserConfigResult? dashboardUserConfig,
+
+            Outputs.GetServiceIntegrationDatadogUserConfigResult? datadogUserConfig,
+
             string? destinationEndpointId,
 
             string destinationServiceName,
@@ -154,18 +195,36 @@ namespace Pulumi.Aiven
 
             Outputs.GetServiceIntegrationKafkaConnectUserConfigResult? kafkaConnectUserConfig,
 
+            Outputs.GetServiceIntegrationKafkaLogsUserConfigResult? kafkaLogsUserConfig,
+
             Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult? kafkaMirrormakerUserConfig,
 
             Outputs.GetServiceIntegrationLogsUserConfigResult? logsUserConfig,
+
+            Outputs.GetServiceIntegrationM3aggregatorUserConfigResult? m3aggregatorUserConfig,
+
+            Outputs.GetServiceIntegrationM3coordinatorUserConfigResult? m3coordinatorUserConfig,
+
+            Outputs.GetServiceIntegrationMetricsUserConfigResult? metricsUserConfig,
 
             Outputs.GetServiceIntegrationMirrormakerUserConfigResult? mirrormakerUserConfig,
 
             string project,
 
+            Outputs.GetServiceIntegrationPrometheusUserConfigResult? prometheusUserConfig,
+
+            Outputs.GetServiceIntegrationReadReplicaUserConfigResult? readReplicaUserConfig,
+
+            Outputs.GetServiceIntegrationRsyslogUserConfigResult? rsyslogUserConfig,
+
+            Outputs.GetServiceIntegrationSignalfxUserConfigResult? signalfxUserConfig,
+
             string? sourceEndpointId,
 
             string sourceServiceName)
         {
+            DashboardUserConfig = dashboardUserConfig;
+            DatadogUserConfig = datadogUserConfig;
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
             ExternalAwsCloudwatchLogsUserConfig = externalAwsCloudwatchLogsUserConfig;
@@ -174,10 +233,18 @@ namespace Pulumi.Aiven
             Id = id;
             IntegrationType = integrationType;
             KafkaConnectUserConfig = kafkaConnectUserConfig;
+            KafkaLogsUserConfig = kafkaLogsUserConfig;
             KafkaMirrormakerUserConfig = kafkaMirrormakerUserConfig;
             LogsUserConfig = logsUserConfig;
+            M3aggregatorUserConfig = m3aggregatorUserConfig;
+            M3coordinatorUserConfig = m3coordinatorUserConfig;
+            MetricsUserConfig = metricsUserConfig;
             MirrormakerUserConfig = mirrormakerUserConfig;
             Project = project;
+            PrometheusUserConfig = prometheusUserConfig;
+            ReadReplicaUserConfig = readReplicaUserConfig;
+            RsyslogUserConfig = rsyslogUserConfig;
+            SignalfxUserConfig = signalfxUserConfig;
             SourceEndpointId = sourceEndpointId;
             SourceServiceName = sourceServiceName;
         }

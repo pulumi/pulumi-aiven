@@ -43,15 +43,17 @@ class ServiceUser(pulumi.CustomResource):
             username="<USERNAME>")
         ```
 
+        > **Note** The service user resource is not supported for Aiven Grafana services.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication: Authentication details
         :param pulumi.Input[str] password: Password of the user
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to.
-               They should be defined using reference as shown above to set up dependencies correctly.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Command category rules
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Rules for individual commands
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Key access rules
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+               using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Redis specific field, defines command category rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Redis specific field, defines rules for individual commands.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Redis specific field, defines key access rules.
         :param pulumi.Input[str] service_name: Service to link the user to
         :param pulumi.Input[str] username: is the actual name of the user account.
         """
@@ -74,16 +76,16 @@ class ServiceUser(pulumi.CustomResource):
 
             __props__['authentication'] = authentication
             __props__['password'] = password
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['redis_acl_categories'] = redis_acl_categories
             __props__['redis_acl_commands'] = redis_acl_commands
             __props__['redis_acl_keys'] = redis_acl_keys
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
-            if username is None:
+            if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__['username'] = username
             __props__['access_cert'] = None
@@ -121,11 +123,11 @@ class ServiceUser(pulumi.CustomResource):
         :param pulumi.Input[str] access_key: is the access key of the user (not applicable for all services).
         :param pulumi.Input[str] authentication: Authentication details
         :param pulumi.Input[str] password: Password of the user
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to.
-               They should be defined using reference as shown above to set up dependencies correctly.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Command category rules
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Rules for individual commands
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Key access rules
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+               using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Redis specific field, defines command category rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Redis specific field, defines rules for individual commands.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Redis specific field, defines key access rules.
         :param pulumi.Input[str] service_name: Service to link the user to
         :param pulumi.Input[str] type: tells whether the user is primary account or regular account.
         :param pulumi.Input[str] username: is the actual name of the user account.
@@ -183,8 +185,8 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        and `service_name` - (Required) define the project and service the user belongs to.
-        They should be defined using reference as shown above to set up dependencies correctly.
+        and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+        using reference as shown above to set up dependencies correctly.
         """
         return pulumi.get(self, "project")
 
@@ -192,7 +194,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Command category rules
+        Redis specific field, defines command category rules.
         """
         return pulumi.get(self, "redis_acl_categories")
 
@@ -200,7 +202,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Rules for individual commands
+        Redis specific field, defines rules for individual commands.
         """
         return pulumi.get(self, "redis_acl_commands")
 
@@ -208,7 +210,7 @@ class ServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Key access rules
+        Redis specific field, defines key access rules.
         """
         return pulumi.get(self, "redis_acl_keys")
 

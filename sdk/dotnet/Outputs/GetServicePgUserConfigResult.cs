@@ -26,6 +26,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServicePgUserConfigPgbouncerResult? Pgbouncer;
         public readonly Outputs.GetServicePgUserConfigPglookoutResult? Pglookout;
         public readonly Outputs.GetServicePgUserConfigPrivateAccessResult? PrivateAccess;
+        public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetServicePgUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
@@ -63,6 +64,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetServicePgUserConfigPrivateAccessResult? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.GetServicePgUserConfigPublicAccessResult? publicAccess,
 
             string? recoveryTargetTime,
@@ -92,6 +95,7 @@ namespace Pulumi.Aiven.Outputs
             Pgbouncer = pgbouncer;
             Pglookout = pglookout;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;

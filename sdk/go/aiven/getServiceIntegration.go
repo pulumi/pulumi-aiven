@@ -11,10 +11,9 @@ import (
 //
 // The Service Integration data source provides information about the existing Aiven Service Integration.
 //
-// Service Integration defines an integration between two Aiven services or between Aiven
-// service and an external integration endpoint. Integration could be for example sending
-// metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB
-// service to a Grafana service to show dashboards, sending logs from any service to
+// Service Integration defines an integration between two Aiven services or between Aiven service and an external
+// integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
+// getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
 // Elasticsearch, etc.
 //
 // ## Example Usage
@@ -53,30 +52,40 @@ func LookupServiceIntegration(ctx *pulumi.Context, args *LookupServiceIntegratio
 
 // A collection of arguments for invoking getServiceIntegration.
 type LookupServiceIntegrationArgs struct {
-	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
-	// identifies the target side of
-	// the integration.
+	DashboardUserConfig   *GetServiceIntegrationDashboardUserConfig `pulumi:"dashboardUserConfig"`
+	DatadogUserConfig     *GetServiceIntegrationDatadogUserConfig   `pulumi:"datadogUserConfig"`
+	DestinationEndpointId *string                                   `pulumi:"destinationEndpointId"`
+	// identifies the target side of the integration.
 	DestinationServiceName               string                                                     `pulumi:"destinationServiceName"`
 	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
 	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
-	// identifies the type of integration that is set up. Possible values
-	// include `dashboard`, `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// identifies the type of integration that is set up. Possible values include `dashboard`
+	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
 	IntegrationType            string                                           `pulumi:"integrationType"`
 	KafkaConnectUserConfig     *GetServiceIntegrationKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfig"`
+	KafkaLogsUserConfig        *GetServiceIntegrationKafkaLogsUserConfig        `pulumi:"kafkaLogsUserConfig"`
 	KafkaMirrormakerUserConfig *GetServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	LogsUserConfig             *GetServiceIntegrationLogsUserConfig             `pulumi:"logsUserConfig"`
+	M3aggregatorUserConfig     *GetServiceIntegrationM3aggregatorUserConfig     `pulumi:"m3aggregatorUserConfig"`
+	M3coordinatorUserConfig    *GetServiceIntegrationM3coordinatorUserConfig    `pulumi:"m3coordinatorUserConfig"`
+	MetricsUserConfig          *GetServiceIntegrationMetricsUserConfig          `pulumi:"metricsUserConfig"`
 	MirrormakerUserConfig      *GetServiceIntegrationMirrormakerUserConfig      `pulumi:"mirrormakerUserConfig"`
 	// defines the project the integration belongs to.
-	Project          string  `pulumi:"project"`
-	SourceEndpointId *string `pulumi:"sourceEndpointId"`
-	// identifies the source side of the
-	// integration.
+	Project               string                                      `pulumi:"project"`
+	PrometheusUserConfig  *GetServiceIntegrationPrometheusUserConfig  `pulumi:"prometheusUserConfig"`
+	ReadReplicaUserConfig *GetServiceIntegrationReadReplicaUserConfig `pulumi:"readReplicaUserConfig"`
+	RsyslogUserConfig     *GetServiceIntegrationRsyslogUserConfig     `pulumi:"rsyslogUserConfig"`
+	SignalfxUserConfig    *GetServiceIntegrationSignalfxUserConfig    `pulumi:"signalfxUserConfig"`
+	SourceEndpointId      *string                                     `pulumi:"sourceEndpointId"`
+	// identifies the source side of the integration.
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // A collection of values returned by getServiceIntegration.
 type LookupServiceIntegrationResult struct {
+	DashboardUserConfig                  *GetServiceIntegrationDashboardUserConfig                  `pulumi:"dashboardUserConfig"`
+	DatadogUserConfig                    *GetServiceIntegrationDatadogUserConfig                    `pulumi:"datadogUserConfig"`
 	DestinationEndpointId                *string                                                    `pulumi:"destinationEndpointId"`
 	DestinationServiceName               string                                                     `pulumi:"destinationServiceName"`
 	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -86,10 +95,18 @@ type LookupServiceIntegrationResult struct {
 	Id                         string                                           `pulumi:"id"`
 	IntegrationType            string                                           `pulumi:"integrationType"`
 	KafkaConnectUserConfig     *GetServiceIntegrationKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfig"`
+	KafkaLogsUserConfig        *GetServiceIntegrationKafkaLogsUserConfig        `pulumi:"kafkaLogsUserConfig"`
 	KafkaMirrormakerUserConfig *GetServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	LogsUserConfig             *GetServiceIntegrationLogsUserConfig             `pulumi:"logsUserConfig"`
+	M3aggregatorUserConfig     *GetServiceIntegrationM3aggregatorUserConfig     `pulumi:"m3aggregatorUserConfig"`
+	M3coordinatorUserConfig    *GetServiceIntegrationM3coordinatorUserConfig    `pulumi:"m3coordinatorUserConfig"`
+	MetricsUserConfig          *GetServiceIntegrationMetricsUserConfig          `pulumi:"metricsUserConfig"`
 	MirrormakerUserConfig      *GetServiceIntegrationMirrormakerUserConfig      `pulumi:"mirrormakerUserConfig"`
 	Project                    string                                           `pulumi:"project"`
+	PrometheusUserConfig       *GetServiceIntegrationPrometheusUserConfig       `pulumi:"prometheusUserConfig"`
+	ReadReplicaUserConfig      *GetServiceIntegrationReadReplicaUserConfig      `pulumi:"readReplicaUserConfig"`
+	RsyslogUserConfig          *GetServiceIntegrationRsyslogUserConfig          `pulumi:"rsyslogUserConfig"`
+	SignalfxUserConfig         *GetServiceIntegrationSignalfxUserConfig         `pulumi:"signalfxUserConfig"`
 	SourceEndpointId           *string                                          `pulumi:"sourceEndpointId"`
 	SourceServiceName          string                                           `pulumi:"sourceServiceName"`
 }

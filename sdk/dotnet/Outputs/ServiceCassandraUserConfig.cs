@@ -16,6 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? MigrateSstableloader;
         public readonly Outputs.ServiceCassandraUserConfigPrivateAccess? PrivateAccess;
+        public readonly string? ProjectToForkFrom;
         public readonly Outputs.ServiceCassandraUserConfigPublicAccess? PublicAccess;
         public readonly string? ServiceToForkFrom;
 
@@ -27,6 +28,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceCassandraUserConfigPrivateAccess? privateAccess,
 
+            string? projectToForkFrom,
+
             Outputs.ServiceCassandraUserConfigPublicAccess? publicAccess,
 
             string? serviceToForkFrom)
@@ -34,6 +37,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;
+            ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             ServiceToForkFrom = serviceToForkFrom;
         }
