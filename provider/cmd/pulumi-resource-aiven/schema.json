@@ -25358,22 +25358,26 @@
                 },
                 "billingAddress": {
                     "type": "string",
-                    "description": "Billing name and address of the project\n"
+                    "description": "Billing name and address of the project\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingCurrency": {
                     "type": "string",
-                    "description": "Billing currency\n"
+                    "description": "Billing currency\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingEmails": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Billing contact emails of the project\n"
+                    "description": "Billing contact emails of the project\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingExtraText": {
                     "type": "string",
-                    "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
+                    "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingGroup": {
                     "type": "string",
@@ -25393,7 +25397,8 @@
                 },
                 "country": {
                     "type": "string",
-                    "description": "Billing country\n"
+                    "description": "Billing country\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "countryCode": {
                     "type": "string",
@@ -25429,7 +25434,8 @@
                 },
                 "vatId": {
                     "type": "string",
-                    "description": "EU VAT Identification Number\n"
+                    "description": "EU VAT Identification Number\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 }
             },
             "required": [
@@ -25451,22 +25457,26 @@
                 },
                 "billingAddress": {
                     "type": "string",
-                    "description": "Billing name and address of the project\n"
+                    "description": "Billing name and address of the project\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingCurrency": {
                     "type": "string",
-                    "description": "Billing currency\n"
+                    "description": "Billing currency\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingEmails": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Billing contact emails of the project\n"
+                    "description": "Billing contact emails of the project\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingExtraText": {
                     "type": "string",
-                    "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
+                    "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 },
                 "billingGroup": {
                     "type": "string",
@@ -25510,7 +25520,8 @@
                 },
                 "vatId": {
                     "type": "string",
-                    "description": "EU VAT Identification Number\n"
+                    "description": "EU VAT Identification Number\n",
+                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
                 }
             },
             "requiredInputs": [
@@ -25529,22 +25540,26 @@
                     },
                     "billingAddress": {
                         "type": "string",
-                        "description": "Billing name and address of the project\n"
+                        "description": "Billing name and address of the project\n",
+                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
                     },
                     "billingCurrency": {
                         "type": "string",
-                        "description": "Billing currency\n"
+                        "description": "Billing currency\n",
+                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
                     },
                     "billingEmails": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Billing contact emails of the project\n"
+                        "description": "Billing contact emails of the project\n",
+                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
                     },
                     "billingExtraText": {
                         "type": "string",
-                        "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n"
+                        "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n",
+                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
                     },
                     "billingGroup": {
                         "type": "string",
@@ -25564,7 +25579,8 @@
                     },
                     "country": {
                         "type": "string",
-                        "description": "Billing country\n"
+                        "description": "Billing country\n",
+                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
                     },
                     "countryCode": {
                         "type": "string",
@@ -25600,7 +25616,8 @@
                     },
                     "vatId": {
                         "type": "string",
-                        "description": "EU VAT Identification Number\n"
+                        "description": "EU VAT Identification Number\n",
+                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
                     }
                 },
                 "type": "object"

@@ -48,18 +48,26 @@ export class Project extends pulumi.CustomResource {
     public readonly availableCredits!: pulumi.Output<string>;
     /**
      * Billing name and address of the project
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     public readonly billingAddress!: pulumi.Output<string | undefined>;
     /**
      * Billing currency
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     public readonly billingCurrency!: pulumi.Output<string | undefined>;
     /**
      * Billing contact emails of the project
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     public readonly billingEmails!: pulumi.Output<string[] | undefined>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     public readonly billingExtraText!: pulumi.Output<string | undefined>;
     /**
@@ -89,6 +97,8 @@ export class Project extends pulumi.CustomResource {
     public readonly copyFromProject!: pulumi.Output<string | undefined>;
     /**
      * Billing country
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     public /*out*/ readonly country!: pulumi.Output<string>;
     /**
@@ -119,6 +129,8 @@ export class Project extends pulumi.CustomResource {
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
     /**
      * EU VAT Identification Number
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     public readonly vatId!: pulumi.Output<string | undefined>;
 
@@ -202,18 +214,26 @@ export interface ProjectState {
     readonly availableCredits?: pulumi.Input<string>;
     /**
      * Billing name and address of the project
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingAddress?: pulumi.Input<string>;
     /**
      * Billing currency
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails of the project
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingExtraText?: pulumi.Input<string>;
     /**
@@ -243,6 +263,8 @@ export interface ProjectState {
     readonly copyFromProject?: pulumi.Input<string>;
     /**
      * Billing country
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly country?: pulumi.Input<string>;
     /**
@@ -273,6 +295,8 @@ export interface ProjectState {
     readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * EU VAT Identification Number
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly vatId?: pulumi.Input<string>;
 }
@@ -292,18 +316,26 @@ export interface ProjectArgs {
     readonly availableCredits?: pulumi.Input<string>;
     /**
      * Billing name and address of the project
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingAddress?: pulumi.Input<string>;
     /**
      * Billing currency
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails of the project
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly billingExtraText?: pulumi.Input<string>;
     /**
@@ -351,6 +383,8 @@ export interface ProjectArgs {
     readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * EU VAT Identification Number
+     *
+     * @deprecated Please aiven_billing_group resource to set this value.
      */
     readonly vatId?: pulumi.Input<string>;
 }

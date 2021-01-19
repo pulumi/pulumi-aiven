@@ -23,12 +23,20 @@ type Project struct {
 	// Available credits
 	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
 	// Billing name and address of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingAddress pulumi.StringPtrOutput `pulumi:"billingAddress"`
 	// Billing currency
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingCurrency pulumi.StringPtrOutput `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingExtraText pulumi.StringPtrOutput `pulumi:"billingExtraText"`
 	// Billing group Id
 	BillingGroup pulumi.StringPtrOutput `pulumi:"billingGroup"`
@@ -48,6 +56,8 @@ type Project struct {
 	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrOutput `pulumi:"copyFromProject"`
 	// Billing country
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	Country pulumi.StringOutput `pulumi:"country"`
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
@@ -64,6 +74,8 @@ type Project struct {
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	VatId pulumi.StringPtrOutput `pulumi:"vatId"`
 }
 
@@ -105,12 +117,20 @@ type projectState struct {
 	// Available credits
 	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingAddress *string `pulumi:"billingAddress"`
 	// Billing currency
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingCurrency *string `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingExtraText *string `pulumi:"billingExtraText"`
 	// Billing group Id
 	BillingGroup *string `pulumi:"billingGroup"`
@@ -130,6 +150,8 @@ type projectState struct {
 	// effect when the project is created.
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Billing country
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	Country *string `pulumi:"country"`
 	// Billing country code of the project
 	CountryCode *string `pulumi:"countryCode"`
@@ -146,6 +168,8 @@ type projectState struct {
 	// Technical contact emails of the project
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	VatId *string `pulumi:"vatId"`
 }
 
@@ -156,12 +180,20 @@ type ProjectState struct {
 	// Available credits
 	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingAddress pulumi.StringPtrInput
 	// Billing currency
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingCurrency pulumi.StringPtrInput
 	// Billing contact emails of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingEmails pulumi.StringArrayInput
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingExtraText pulumi.StringPtrInput
 	// Billing group Id
 	BillingGroup pulumi.StringPtrInput
@@ -181,6 +213,8 @@ type ProjectState struct {
 	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrInput
 	// Billing country
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	Country pulumi.StringPtrInput
 	// Billing country code of the project
 	CountryCode pulumi.StringPtrInput
@@ -197,6 +231,8 @@ type ProjectState struct {
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayInput
 	// EU VAT Identification Number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	VatId pulumi.StringPtrInput
 }
 
@@ -211,12 +247,20 @@ type projectArgs struct {
 	// Available credits
 	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingAddress *string `pulumi:"billingAddress"`
 	// Billing currency
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingCurrency *string `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingExtraText *string `pulumi:"billingExtraText"`
 	// Billing group Id
 	BillingGroup *string `pulumi:"billingGroup"`
@@ -246,6 +290,8 @@ type projectArgs struct {
 	// Technical contact emails of the project
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	VatId *string `pulumi:"vatId"`
 }
 
@@ -257,12 +303,20 @@ type ProjectArgs struct {
 	// Available credits
 	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingAddress pulumi.StringPtrInput
 	// Billing currency
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingCurrency pulumi.StringPtrInput
 	// Billing contact emails of the project
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingEmails pulumi.StringArrayInput
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	BillingExtraText pulumi.StringPtrInput
 	// Billing group Id
 	BillingGroup pulumi.StringPtrInput
@@ -292,6 +346,8 @@ type ProjectArgs struct {
 	// Technical contact emails of the project
 	TechnicalEmails pulumi.StringArrayInput
 	// EU VAT Identification Number
+	//
+	// Deprecated: Please aiven_billing_group resource to set this value.
 	VatId pulumi.StringPtrInput
 }
 

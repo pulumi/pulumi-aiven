@@ -87,9 +87,21 @@ class Project(pulumi.CustomResource):
 
             __props__['account_id'] = account_id
             __props__['available_credits'] = available_credits
+            if billing_address is not None and not opts.urn:
+                warnings.warn("""Please aiven_billing_group resource to set this value.""", DeprecationWarning)
+                pulumi.log.warn("billing_address is deprecated: Please aiven_billing_group resource to set this value.")
             __props__['billing_address'] = billing_address
+            if billing_currency is not None and not opts.urn:
+                warnings.warn("""Please aiven_billing_group resource to set this value.""", DeprecationWarning)
+                pulumi.log.warn("billing_currency is deprecated: Please aiven_billing_group resource to set this value.")
             __props__['billing_currency'] = billing_currency
+            if billing_emails is not None and not opts.urn:
+                warnings.warn("""Please aiven_billing_group resource to set this value.""", DeprecationWarning)
+                pulumi.log.warn("billing_emails is deprecated: Please aiven_billing_group resource to set this value.")
             __props__['billing_emails'] = billing_emails
+            if billing_extra_text is not None and not opts.urn:
+                warnings.warn("""Please aiven_billing_group resource to set this value.""", DeprecationWarning)
+                pulumi.log.warn("billing_extra_text is deprecated: Please aiven_billing_group resource to set this value.")
             __props__['billing_extra_text'] = billing_extra_text
             __props__['billing_group'] = billing_group
             __props__['ca_cert'] = ca_cert
@@ -101,6 +113,9 @@ class Project(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['technical_emails'] = technical_emails
+            if vat_id is not None and not opts.urn:
+                warnings.warn("""Please aiven_billing_group resource to set this value.""", DeprecationWarning)
+                pulumi.log.warn("vat_id is deprecated: Please aiven_billing_group resource to set this value.")
             __props__['vat_id'] = vat_id
             __props__['country'] = None
             __props__['estimated_balance'] = None
