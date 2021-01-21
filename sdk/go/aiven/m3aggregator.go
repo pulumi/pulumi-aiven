@@ -35,7 +35,7 @@ import (
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
 // 			M3aggregatorUserConfig: &aiven.M3AggregatorM3aggregatorUserConfigArgs{
-// 				M3Version: pulumi.String("0.15"),
+// 				M3aggregatorVersion: pulumi.String("0.15"),
 // 			},
 // 		})
 // 		if err != nil {

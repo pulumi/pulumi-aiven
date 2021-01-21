@@ -42,8 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.PgPgUserConfigMigration? Migration;
         /// <summary>
-        /// Allow clients to connect to pg from the public internet for service nodes
-        /// that are in a project VPC or another type of private network
+        /// Enable pg.
         /// </summary>
         public readonly Outputs.PgPgUserConfigPg? Pg;
         /// <summary>
@@ -60,8 +59,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgVersion;
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         public readonly Outputs.PgPgUserConfigPgbouncer? Pgbouncer;
         /// <summary>
@@ -72,6 +70,10 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from private networks.
         /// </summary>
         public readonly Outputs.PgPgUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
+        public readonly Outputs.PgPgUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
@@ -146,6 +148,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.PgPgUserConfigPrivateAccess? privateAccess,
 
+            Outputs.PgPgUserConfigPrivatelinkAccess? privatelinkAccess,
+
             string? projectToForkFrom,
 
             Outputs.PgPgUserConfigPublicAccess? publicAccess,
@@ -177,6 +181,7 @@ namespace Pulumi.Aiven.Outputs
             Pgbouncer = pgbouncer;
             Pglookout = pglookout;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;

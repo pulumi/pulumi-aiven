@@ -170,6 +170,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationRsyslogUserConfig?> RsyslogUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Schema registry proxy specific user configurable settings
+        /// </summary>
+        [Output("schemaRegistryProxyUserConfig")]
+        public Output<Outputs.ServiceIntegrationSchemaRegistryProxyUserConfig?> SchemaRegistryProxyUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Signalfx specific user configurable settings
         /// </summary>
         [Output("signalfxUserConfig")]
@@ -361,6 +367,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationRsyslogUserConfigArgs>? RsyslogUserConfig { get; set; }
 
         /// <summary>
+        /// Schema registry proxy specific user configurable settings
+        /// </summary>
+        [Input("schemaRegistryProxyUserConfig")]
+        public Input<Inputs.ServiceIntegrationSchemaRegistryProxyUserConfigArgs>? SchemaRegistryProxyUserConfig { get; set; }
+
+        /// <summary>
         /// Signalfx specific user configurable settings
         /// </summary>
         [Input("signalfxUserConfig")]
@@ -511,6 +523,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("rsyslogUserConfig")]
         public Input<Inputs.ServiceIntegrationRsyslogUserConfigGetArgs>? RsyslogUserConfig { get; set; }
+
+        /// <summary>
+        /// Schema registry proxy specific user configurable settings
+        /// </summary>
+        [Input("schemaRegistryProxyUserConfig")]
+        public Input<Inputs.ServiceIntegrationSchemaRegistryProxyUserConfigGetArgs>? SchemaRegistryProxyUserConfig { get; set; }
 
         /// <summary>
         /// Signalfx specific user configurable settings

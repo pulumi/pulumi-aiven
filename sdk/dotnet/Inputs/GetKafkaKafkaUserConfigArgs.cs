@@ -43,8 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs? KafkaAuthenticationMethods { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet 
-        /// for service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_connect
         /// </summary>
         [Input("kafkaConnect")]
         public string? KafkaConnect { get; set; }
@@ -56,8 +55,7 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetKafkaKafkaUserConfigKafkaConnectConfigArgs? KafkaConnectConfig { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka_rest from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_rest
         /// </summary>
         [Input("kafkaRest")]
         public string? KafkaRest { get; set; }
@@ -81,13 +79,19 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetKafkaKafkaUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Inputs.GetKafkaKafkaUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Inputs.GetKafkaKafkaUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
         /// <summary>
-        /// Enable Schema-Registry service
+        /// Enable schema_registry
         /// </summary>
         [Input("schemaRegistry")]
         public string? SchemaRegistry { get; set; }

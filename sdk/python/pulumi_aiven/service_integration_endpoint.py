@@ -24,6 +24,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
                  external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
                  external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
+                 external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
                  jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
@@ -63,6 +64,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: external Google Cloud Logginig specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: external Kafka specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] external_schema_registry_user_config: External schema registry specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia specific user configurable settings
         :param pulumi.Input[str] project: defines the project the endpoint is associated with.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus specific user configurable settings
@@ -97,6 +99,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             __props__['external_elasticsearch_logs_user_config'] = external_elasticsearch_logs_user_config
             __props__['external_google_cloud_logging_user_config'] = external_google_cloud_logging_user_config
             __props__['external_kafka_user_config'] = external_kafka_user_config
+            __props__['external_schema_registry_user_config'] = external_schema_registry_user_config
             __props__['jolokia_user_config'] = jolokia_user_config
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -123,6 +126,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
             external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
             external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
+            external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
             jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
@@ -145,6 +149,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: external Google Cloud Logginig specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: external Kafka specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] external_schema_registry_user_config: External schema registry specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia specific user configurable settings
         :param pulumi.Input[str] project: defines the project the endpoint is associated with.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus specific user configurable settings
@@ -163,6 +168,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         __props__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
         __props__["external_google_cloud_logging_user_config"] = external_google_cloud_logging_user_config
         __props__["external_kafka_user_config"] = external_kafka_user_config
+        __props__["external_schema_registry_user_config"] = external_schema_registry_user_config
         __props__["jolokia_user_config"] = jolokia_user_config
         __props__["project"] = project
         __props__["prometheus_user_config"] = prometheus_user_config
@@ -235,6 +241,14 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         external Kafka specific user configurable settings
         """
         return pulumi.get(self, "external_kafka_user_config")
+
+    @property
+    @pulumi.getter(name="externalSchemaRegistryUserConfig")
+    def external_schema_registry_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig']]:
+        """
+        External schema registry specific user configurable settings
+        """
+        return pulumi.get(self, "external_schema_registry_user_config")
 
     @property
     @pulumi.getter(name="jolokiaUserConfig")

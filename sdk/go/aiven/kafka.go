@@ -71,8 +71,7 @@ type Kafka struct {
 	Components KafkaComponentArrayOutput `pulumi:"components"`
 	// Create default wildcard Kafka ACL
 	DefaultAcl pulumi.BoolPtrOutput `pulumi:"defaultAcl"`
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka KafkaKafkaOutput `pulumi:"kafka"`
 	// defines Kafka specific additional configuration options. The following
 	// configuration options available:
@@ -178,8 +177,7 @@ type kafkaState struct {
 	Components []KafkaComponent `pulumi:"components"`
 	// Create default wildcard Kafka ACL
 	DefaultAcl *bool `pulumi:"defaultAcl"`
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka *KafkaKafka `pulumi:"kafka"`
 	// defines Kafka specific additional configuration options. The following
 	// configuration options available:
@@ -251,8 +249,7 @@ type KafkaState struct {
 	Components KafkaComponentArrayInput
 	// Create default wildcard Kafka ACL
 	DefaultAcl pulumi.BoolPtrInput
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka KafkaKafkaPtrInput
 	// defines Kafka specific additional configuration options. The following
 	// configuration options available:
@@ -326,8 +323,7 @@ type kafkaArgs struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Create default wildcard Kafka ACL
 	DefaultAcl *bool `pulumi:"defaultAcl"`
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka *KafkaKafka `pulumi:"kafka"`
 	// defines Kafka specific additional configuration options. The following
 	// configuration options available:
@@ -384,8 +380,7 @@ type KafkaArgs struct {
 	CloudName pulumi.StringPtrInput
 	// Create default wildcard Kafka ACL
 	DefaultAcl pulumi.BoolPtrInput
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka KafkaKafkaPtrInput
 	// defines Kafka specific additional configuration options. The following
 	// configuration options available:

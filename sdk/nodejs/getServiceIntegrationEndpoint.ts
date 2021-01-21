@@ -40,6 +40,7 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
         "externalElasticsearchLogsUserConfig": args.externalElasticsearchLogsUserConfig,
         "externalGoogleCloudLoggingUserConfig": args.externalGoogleCloudLoggingUserConfig,
         "externalKafkaUserConfig": args.externalKafkaUserConfig,
+        "externalSchemaRegistryUserConfig": args.externalSchemaRegistryUserConfig,
         "jolokiaUserConfig": args.jolokiaUserConfig,
         "project": args.project,
         "prometheusUserConfig": args.prometheusUserConfig,
@@ -68,6 +69,7 @@ export interface GetServiceIntegrationEndpointArgs {
     readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
     readonly externalKafkaUserConfig?: inputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
+    readonly externalSchemaRegistryUserConfig?: inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
     readonly jolokiaUserConfig?: inputs.GetServiceIntegrationEndpointJolokiaUserConfig;
     /**
      * defines the project the endpoint is associated with.
@@ -94,6 +96,7 @@ export interface GetServiceIntegrationEndpointResult {
     readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
     readonly externalKafkaUserConfig?: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
+    readonly externalSchemaRegistryUserConfig?: outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

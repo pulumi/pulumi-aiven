@@ -13,15 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPublicAccessGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow clients to connect to pg from the public internet for service nodes
-        /// that are in a project VPC or another type of private network
+        /// Enable pg.
         /// </summary>
         [Input("pg")]
         public Input<string>? Pg { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
         public Input<string>? Pgbouncer { get; set; }

@@ -15,6 +15,15 @@ namespace Pulumi.Aiven.Inputs
         [Input("bootstrapServers")]
         public Input<string>? BootstrapServers { get; set; }
 
+        [Input("saslMechanism")]
+        public Input<string>? SaslMechanism { get; set; }
+
+        [Input("saslPlainPassword")]
+        public Input<string>? SaslPlainPassword { get; set; }
+
+        [Input("saslPlainUsername")]
+        public Input<string>? SaslPlainUsername { get; set; }
+
         [Input("securityProtocol")]
         public Input<string>? SecurityProtocol { get; set; }
 
@@ -26,6 +35,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("sslClientKey")]
         public Input<string>? SslClientKey { get; set; }
+
+        [Input("sslEndpointIdentificationAlgorithm")]
+        public Input<string>? SslEndpointIdentificationAlgorithm { get; set; }
 
         public ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs()
         {

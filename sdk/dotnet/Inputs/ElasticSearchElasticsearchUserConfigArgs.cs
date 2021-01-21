@@ -54,6 +54,12 @@ namespace Pulumi.Aiven.Inputs
             set => _indexPatterns = value;
         }
 
+        /// <summary>
+        /// Template settings for all new indexe.
+        /// </summary>
+        [Input("indexTemplate")]
+        public Input<Inputs.ElasticSearchElasticsearchUserConfigIndexTemplateArgs>? IndexTemplate { get; set; }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 

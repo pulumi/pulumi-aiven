@@ -59,8 +59,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgVersion;
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgbouncerResult? Pgbouncer;
         /// <summary>
@@ -72,7 +71,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
-        /// (Optional) Name of another project to fork a service from. This has
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
+        public readonly Outputs.GetPgPgUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
+        /// <summary>
+        /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
@@ -145,6 +148,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetPgPgUserConfigPrivateAccessResult? privateAccess,
 
+            Outputs.GetPgPgUserConfigPrivatelinkAccessResult? privatelinkAccess,
+
             string? projectToForkFrom,
 
             Outputs.GetPgPgUserConfigPublicAccessResult? publicAccess,
@@ -176,6 +181,7 @@ namespace Pulumi.Aiven.Outputs
             Pgbouncer = pgbouncer;
             Pglookout = pglookout;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;

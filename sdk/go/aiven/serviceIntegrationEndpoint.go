@@ -63,6 +63,8 @@ type ServiceIntegrationEndpoint struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// external Kafka specific user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput `pulumi:"externalKafkaUserConfig"`
+	// External schema registry specific user configurable settings
+	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput `pulumi:"externalSchemaRegistryUserConfig"`
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrOutput `pulumi:"jolokiaUserConfig"`
 	// defines the project the endpoint is associated with.
@@ -131,6 +133,8 @@ type serviceIntegrationEndpointState struct {
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// external Kafka specific user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
+	// External schema registry specific user configurable settings
+	ExternalSchemaRegistryUserConfig *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfig"`
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig *ServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfig"`
 	// defines the project the endpoint is associated with.
@@ -162,6 +166,8 @@ type ServiceIntegrationEndpointState struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// external Kafka specific user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
+	// External schema registry specific user configurable settings
+	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrInput
 	// defines the project the endpoint is associated with.
@@ -195,6 +201,8 @@ type serviceIntegrationEndpointArgs struct {
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// external Kafka specific user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
+	// External schema registry specific user configurable settings
+	ExternalSchemaRegistryUserConfig *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfig"`
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig *ServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfig"`
 	// defines the project the endpoint is associated with.
@@ -225,6 +233,8 @@ type ServiceIntegrationEndpointArgs struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// external Kafka specific user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
+	// External schema registry specific user configurable settings
+	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput
 	// Jolokia specific user configurable settings
 	JolokiaUserConfig ServiceIntegrationEndpointJolokiaUserConfigPtrInput
 	// defines the project the endpoint is associated with.

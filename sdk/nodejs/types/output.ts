@@ -119,6 +119,10 @@ export interface ElasticSearchElasticsearchUserConfig {
      */
     indexPatterns?: outputs.ElasticSearchElasticsearchUserConfigIndexPattern[];
     /**
+     * Template settings for all new indexe.
+     */
+    indexTemplate?: outputs.ElasticSearchElasticsearchUserConfigIndexTemplate;
+    /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilters?: string[];
@@ -306,6 +310,23 @@ export interface ElasticSearchElasticsearchUserConfigIndexPattern {
     pattern?: string;
 }
 
+export interface ElasticSearchElasticsearchUserConfigIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that 
+     * a single document can contain across all nested types. This limit helps to prevent out of
+     * memory errors when a document contains too many nested objects. Default is 10000.
+     */
+    mappingNestedObjectsLimit?: string;
+    /**
+     * The number of replicas each primary shard has.
+     */
+    numberOfReplicas?: string;
+    /**
+     * The number of primary shards that an index should have.
+     */
+    numberOfShards?: string;
+}
+
 export interface ElasticSearchElasticsearchUserConfigKibana {
     /**
      * Timeout in milliseconds for requests 
@@ -478,6 +499,10 @@ export interface GetElasticSearchElasticsearchUserConfig {
      * be kept.
      */
     indexPatterns?: outputs.GetElasticSearchElasticsearchUserConfigIndexPattern[];
+    /**
+     * Template settings for all new indexe.
+     */
+    indexTemplate?: outputs.GetElasticSearchElasticsearchUserConfigIndexTemplate;
     /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -664,6 +689,23 @@ export interface GetElasticSearchElasticsearchUserConfigIndexPattern {
      * dots and glob characters (* and ?)
      */
     pattern?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that
+     * a single document can contain across all nested types. This limit helps to prevent out of
+     * memory errors when a document contains too many nested objects. Default is 10000.
+     */
+    mappingNestedObjectsLimit?: string;
+    /**
+     * The number of replicas each primary shard has.
+     */
+    numberOfReplicas?: string;
+    /**
+     * The number of primary shards that an index should have.
+     */
+    numberOfShards?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigKibana {
@@ -1322,8 +1364,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
-     * Allow clients to connect to kafkaConnect from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
+     * Enable kafka_connect
      */
     kafkaConnect?: string;
     /**
@@ -1331,8 +1372,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
     /**
-     * Allow clients to connect to kafkaRest from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable kafka_rest
      */
     kafkaRest?: string;
     /**
@@ -1348,11 +1388,15 @@ export interface GetKafkaKafkaUserConfig {
      */
     privateAccess?: outputs.GetKafkaKafkaUserConfigPrivateAccess;
     /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
+    /**
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
     /**
-     * Enable Schema-Registry service
+     * Enable schema_registry
      */
     schemaRegistry?: string;
     /**
@@ -1665,19 +1709,36 @@ export interface GetKafkaKafkaUserConfigPrivateAccess {
     prometheus?: string;
 }
 
+export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
+    /**
+     * Kafka server provided values:
+     */
+    kafka?: string;
+    /**
+     * Enable kafka_connect
+     */
+    kafkaConnect?: string;
+    /**
+     * Enable kafka_rest
+     */
+    kafkaRest?: string;
+    /**
+     * Enable schema_registry
+     */
+    schemaRegistry?: string;
+}
+
 export interface GetKafkaKafkaUserConfigPublicAccess {
     /**
      * Kafka server provided values:
      */
     kafka?: string;
     /**
-     * Allow clients to connect to kafkaConnect from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
+     * Enable kafka_connect
      */
     kafkaConnect?: string;
     /**
-     * Allow clients to connect to kafkaRest from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable kafka_rest
      */
     kafkaRest?: string;
     /**
@@ -1686,7 +1747,7 @@ export interface GetKafkaKafkaUserConfigPublicAccess {
      */
     prometheus?: string;
     /**
-     * Enable Schema-Registry service
+     * Enable schema_registry
      */
     schemaRegistry?: string;
 }
@@ -1884,10 +1945,11 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilters?: string[];
+    m3Version?: string;
     /**
      * M3 major version
      */
-    m3Version?: string;
+    m3aggregatorVersion?: string;
 }
 
 export interface GetM3AggregatorServiceIntegration {
@@ -1921,9 +1983,6 @@ export interface GetM3DbM3dbUserConfig {
      * M3 limits
      */
     limits?: outputs.GetM3DbM3dbUserConfigLimits;
-    /**
-     * M3 major version
-     */
     m3Version?: string;
     /**
      * Enables access to Graphite Carbon 
@@ -1931,6 +1990,10 @@ export interface GetM3DbM3dbUserConfig {
      * metrics are written to aggregated namespaces only.
      */
     m3coordinatorEnableGraphiteCarbonIngest?: string;
+    /**
+     * M3 major version
+     */
+    m3dbVersion?: string;
     /**
      * List of M3 namespaces
      */
@@ -2371,8 +2434,7 @@ export interface GetPgPgUserConfig {
      */
     pgVersion?: string;
     /**
-     * Allow clients to connect to pgbouncer from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable pgbouncer.
      */
     pgbouncer?: outputs.GetPgPgUserConfigPgbouncer;
     /**
@@ -2384,7 +2446,11 @@ export interface GetPgPgUserConfig {
      */
     privateAccess?: outputs.GetPgPgUserConfigPrivateAccess;
     /**
-     * (Optional) Name of another project to fork a service from. This has
+     * Allow access to selected service components through Privatelink.
+     */
+    privatelinkAccess?: outputs.GetPgPgUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
      */
     projectToForkFrom?: string;
@@ -2698,8 +2764,7 @@ export interface GetPgPgUserConfigPrivateAccess {
      */
     pg?: string;
     /**
-     * Allow clients to connect to pgbouncer from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable pgbouncer.
      */
     pgbouncer?: string;
     /**
@@ -2709,14 +2774,24 @@ export interface GetPgPgUserConfigPrivateAccess {
     prometheus?: string;
 }
 
+export interface GetPgPgUserConfigPrivatelinkAccess {
+    /**
+     * PostgreSQL specific server provided values.
+     */
+    pg?: string;
+    /**
+     * Enable pgbouncer.
+     */
+    pgbouncer?: string;
+}
+
 export interface GetPgPgUserConfigPublicAccess {
     /**
      * PostgreSQL specific server provided values.
      */
     pg?: string;
     /**
-     * Allow clients to connect to pgbouncer from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable pgbouncer.
      */
     pgbouncer?: string;
     /**
@@ -2916,6 +2991,7 @@ export interface GetServiceElasticsearchUserConfig {
     elasticsearch?: outputs.GetServiceElasticsearchUserConfigElasticsearch;
     elasticsearchVersion?: string;
     indexPatterns?: outputs.GetServiceElasticsearchUserConfigIndexPattern[];
+    indexTemplate?: outputs.GetServiceElasticsearchUserConfigIndexTemplate;
     ipFilters?: string[];
     kibana?: outputs.GetServiceElasticsearchUserConfigKibana;
     maxIndexCount?: string;
@@ -2957,6 +3033,12 @@ export interface GetServiceElasticsearchUserConfigElasticsearch {
 export interface GetServiceElasticsearchUserConfigIndexPattern {
     maxIndexCount?: string;
     pattern?: string;
+}
+
+export interface GetServiceElasticsearchUserConfigIndexTemplate {
+    mappingNestedObjectsLimit?: string;
+    numberOfReplicas?: string;
+    numberOfShards?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigKibana {
@@ -3148,10 +3230,21 @@ export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConf
 
 export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
     bootstrapServers?: string;
+    saslMechanism?: string;
+    saslPlainPassword?: string;
+    saslPlainUsername?: string;
     securityProtocol?: string;
     sslCaCert?: string;
     sslClientCert?: string;
     sslClientKey?: string;
+    sslEndpointIdentificationAlgorithm?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
+    authentication?: string;
+    basicAuthPassword?: string;
+    basicAuthUsername?: string;
+    url?: string;
 }
 
 export interface GetServiceIntegrationEndpointJolokiaUserConfig {
@@ -3285,6 +3378,9 @@ export interface GetServiceIntegrationReadReplicaUserConfig {
 export interface GetServiceIntegrationRsyslogUserConfig {
 }
 
+export interface GetServiceIntegrationSchemaRegistryProxyUserConfig {
+}
+
 export interface GetServiceIntegrationSignalfxUserConfig {
 }
 
@@ -3356,6 +3452,7 @@ export interface GetServiceKafkaUserConfig {
     kafkaRestConfig?: outputs.GetServiceKafkaUserConfigKafkaRestConfig;
     kafkaVersion?: string;
     privateAccess?: outputs.GetServiceKafkaUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServiceKafkaUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetServiceKafkaUserConfigPublicAccess;
     schemaRegistry?: string;
     schemaRegistryConfig?: outputs.GetServiceKafkaUserConfigSchemaRegistryConfig;
@@ -3432,6 +3529,13 @@ export interface GetServiceKafkaUserConfigKafkaRestConfig {
 
 export interface GetServiceKafkaUserConfigPrivateAccess {
     prometheus?: string;
+}
+
+export interface GetServiceKafkaUserConfigPrivatelinkAccess {
+    kafka?: string;
+    kafkaConnect?: string;
+    kafkaRest?: string;
+    schemaRegistry?: string;
 }
 
 export interface GetServiceKafkaUserConfigPublicAccess {
@@ -3524,6 +3628,7 @@ export interface GetServicePgUserConfig {
     pgbouncer?: outputs.GetServicePgUserConfigPgbouncer;
     pglookout?: outputs.GetServicePgUserConfigPglookout;
     privateAccess?: outputs.GetServicePgUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServicePgUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
@@ -3605,6 +3710,11 @@ export interface GetServicePgUserConfigPrivateAccess {
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
+}
+
+export interface GetServicePgUserConfigPrivatelinkAccess {
+    pg?: string;
+    pgbouncer?: string;
 }
 
 export interface GetServicePgUserConfigPublicAccess {
@@ -4273,8 +4383,7 @@ export interface KafkaKafkaUserConfig {
      */
     ipFilters?: string[];
     /**
-     * Allow clients to connect to kafka from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Enable kafka
      */
     kafka?: outputs.KafkaKafkaUserConfigKafka;
     /**
@@ -4282,8 +4391,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
-     * Allow clients to connect to kafkaConnect from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
+     * Enable kafka_connect
      */
     kafkaConnect?: string;
     /**
@@ -4291,8 +4399,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
     /**
-     * Allow clients to connect to kafkaRest from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable kafka_rest
      */
     kafkaRest?: string;
     /**
@@ -4307,6 +4414,10 @@ export interface KafkaKafkaUserConfig {
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.KafkaKafkaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.KafkaKafkaUserConfigPrivatelinkAccess;
     /**
      * Allow access to selected service ports from the public Internet
      */
@@ -4625,20 +4736,36 @@ export interface KafkaKafkaUserConfigPrivateAccess {
     prometheus?: string;
 }
 
-export interface KafkaKafkaUserConfigPublicAccess {
+export interface KafkaKafkaUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to kafka from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Enable kafka
      */
     kafka?: string;
     /**
-     * Allow clients to connect to kafkaConnect from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
+     * Enable kafka_connect
      */
     kafkaConnect?: string;
     /**
-     * Allow clients to connect to kafkaRest from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable kafka_rest
+     */
+    kafkaRest?: string;
+    /**
+     * Enable Schema-Registry service
+     */
+    schemaRegistry?: string;
+}
+
+export interface KafkaKafkaUserConfigPublicAccess {
+    /**
+     * Enable kafka
+     */
+    kafka?: string;
+    /**
+     * Enable kafka_connect
+     */
+    kafkaConnect?: string;
+    /**
+     * Enable kafka_rest
      */
     kafkaRest?: string;
     /**
@@ -4845,10 +4972,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilters?: string[];
+    m3Version?: string;
     /**
      * M3 major version
      */
-    m3Version?: string;
+    m3aggregatorVersion?: string;
 }
 
 export interface M3AggregatorServiceIntegration {
@@ -4882,9 +5010,6 @@ export interface M3DbM3dbUserConfig {
      * M3 limits
      */
     limits?: outputs.M3DbM3dbUserConfigLimits;
-    /**
-     * M3 major version
-     */
     m3Version?: string;
     /**
      * Enables access to Graphite Carbon 
@@ -4892,6 +5017,10 @@ export interface M3DbM3dbUserConfig {
      * metrics are written to aggregated namespaces only.
      */
     m3coordinatorEnableGraphiteCarbonIngest?: string;
+    /**
+     * M3 major version
+     */
+    m3dbVersion?: string;
     /**
      * List of M3 namespaces
      */
@@ -5318,8 +5447,7 @@ export interface PgPgUserConfig {
      */
     migration?: outputs.PgPgUserConfigMigration;
     /**
-     * Allow clients to connect to pg from the public internet for service nodes
-     * that are in a project VPC or another type of private network
+     * Enable pg.
      */
     pg?: outputs.PgPgUserConfigPg;
     /**
@@ -5336,8 +5464,7 @@ export interface PgPgUserConfig {
      */
     pgVersion?: string;
     /**
-     * Allow clients to connect to pgbouncer from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable pgbouncer.
      */
     pgbouncer?: outputs.PgPgUserConfigPgbouncer;
     /**
@@ -5348,6 +5475,10 @@ export interface PgPgUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.PgPgUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink.
+     */
+    privatelinkAccess?: outputs.PgPgUserConfigPrivatelinkAccess;
     /**
      * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
@@ -5659,13 +5790,11 @@ export interface PgPgUserConfigPglookout {
 
 export interface PgPgUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to pg from the public internet for service nodes
-     * that are in a project VPC or another type of private network
+     * Enable pg.
      */
     pg?: string;
     /**
-     * Allow clients to connect to pgbouncer from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable pgbouncer.
      */
     pgbouncer?: string;
     /**
@@ -5675,15 +5804,24 @@ export interface PgPgUserConfigPrivateAccess {
     prometheus?: string;
 }
 
-export interface PgPgUserConfigPublicAccess {
+export interface PgPgUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to pg from the public internet for service nodes
-     * that are in a project VPC or another type of private network
+     * Enable pg.
      */
     pg?: string;
     /**
-     * Allow clients to connect to pgbouncer from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * Enable pgbouncer.
+     */
+    pgbouncer?: string;
+}
+
+export interface PgPgUserConfigPublicAccess {
+    /**
+     * Enable pg.
+     */
+    pg?: string;
+    /**
+     * Enable pgbouncer.
      */
     pgbouncer?: string;
     /**
@@ -5885,6 +6023,7 @@ export interface ServiceElasticsearchUserConfig {
     elasticsearch?: outputs.ServiceElasticsearchUserConfigElasticsearch;
     elasticsearchVersion?: string;
     indexPatterns?: outputs.ServiceElasticsearchUserConfigIndexPattern[];
+    indexTemplate?: outputs.ServiceElasticsearchUserConfigIndexTemplate;
     ipFilters?: string[];
     kibana?: outputs.ServiceElasticsearchUserConfigKibana;
     maxIndexCount?: string;
@@ -5926,6 +6065,12 @@ export interface ServiceElasticsearchUserConfigElasticsearch {
 export interface ServiceElasticsearchUserConfigIndexPattern {
     maxIndexCount?: string;
     pattern?: string;
+}
+
+export interface ServiceElasticsearchUserConfigIndexTemplate {
+    mappingNestedObjectsLimit?: string;
+    numberOfReplicas?: string;
+    numberOfShards?: string;
 }
 
 export interface ServiceElasticsearchUserConfigKibana {
@@ -6117,10 +6262,21 @@ export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig 
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     bootstrapServers?: string;
+    saslMechanism?: string;
+    saslPlainPassword?: string;
+    saslPlainUsername?: string;
     securityProtocol?: string;
     sslCaCert?: string;
     sslClientCert?: string;
     sslClientKey?: string;
+    sslEndpointIdentificationAlgorithm?: string;
+}
+
+export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
+    authentication?: string;
+    basicAuthPassword?: string;
+    basicAuthUsername?: string;
+    url?: string;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
@@ -6254,6 +6410,9 @@ export interface ServiceIntegrationReadReplicaUserConfig {
 export interface ServiceIntegrationRsyslogUserConfig {
 }
 
+export interface ServiceIntegrationSchemaRegistryProxyUserConfig {
+}
+
 export interface ServiceIntegrationSignalfxUserConfig {
 }
 
@@ -6325,6 +6484,7 @@ export interface ServiceKafkaUserConfig {
     kafkaRestConfig?: outputs.ServiceKafkaUserConfigKafkaRestConfig;
     kafkaVersion?: string;
     privateAccess?: outputs.ServiceKafkaUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServiceKafkaUserConfigPrivatelinkAccess;
     publicAccess?: outputs.ServiceKafkaUserConfigPublicAccess;
     schemaRegistry?: string;
     schemaRegistryConfig?: outputs.ServiceKafkaUserConfigSchemaRegistryConfig;
@@ -6401,6 +6561,13 @@ export interface ServiceKafkaUserConfigKafkaRestConfig {
 
 export interface ServiceKafkaUserConfigPrivateAccess {
     prometheus?: string;
+}
+
+export interface ServiceKafkaUserConfigPrivatelinkAccess {
+    kafka?: string;
+    kafkaConnect?: string;
+    kafkaRest?: string;
+    schemaRegistry?: string;
 }
 
 export interface ServiceKafkaUserConfigPublicAccess {
@@ -6493,6 +6660,7 @@ export interface ServicePgUserConfig {
     pgbouncer?: outputs.ServicePgUserConfigPgbouncer;
     pglookout?: outputs.ServicePgUserConfigPglookout;
     privateAccess?: outputs.ServicePgUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServicePgUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.ServicePgUserConfigPublicAccess;
     recoveryTargetTime?: string;
@@ -6574,6 +6742,11 @@ export interface ServicePgUserConfigPrivateAccess {
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
+}
+
+export interface ServicePgUserConfigPrivatelinkAccess {
+    pg?: string;
+    pgbouncer?: string;
 }
 
 export interface ServicePgUserConfigPublicAccess {

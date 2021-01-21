@@ -33,8 +33,7 @@ type Pg struct {
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg PgPgOutput `pulumi:"pg"`
 	// defines PostgreSQL specific additional configuration options. The following
 	// configuration options available:
@@ -138,8 +137,7 @@ type pgState struct {
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg *PgPg `pulumi:"pg"`
 	// defines PostgreSQL specific additional configuration options. The following
 	// configuration options available:
@@ -209,8 +207,7 @@ type PgState struct {
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg PgPgPtrInput
 	// defines PostgreSQL specific additional configuration options. The following
 	// configuration options available:
@@ -282,8 +279,7 @@ type pgArgs struct {
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg *PgPg `pulumi:"pg"`
 	// defines PostgreSQL specific additional configuration options. The following
 	// configuration options available:
@@ -338,8 +334,7 @@ type PgArgs struct {
 	// time of day when maintenance operations should be performed.
 	// UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg PgPgPtrInput
 	// defines PostgreSQL specific additional configuration options. The following
 	// configuration options available:

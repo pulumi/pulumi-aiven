@@ -94,6 +94,8 @@ type ServiceIntegration struct {
 	ReadReplicaUserConfig ServiceIntegrationReadReplicaUserConfigPtrOutput `pulumi:"readReplicaUserConfig"`
 	// RSyslog specific user configurable settings
 	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrOutput `pulumi:"rsyslogUserConfig"`
+	// Schema registry proxy specific user configurable settings
+	SchemaRegistryProxyUserConfig ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput `pulumi:"schemaRegistryProxyUserConfig"`
 	// Signalfx specific user configurable settings
 	SignalfxUserConfig ServiceIntegrationSignalfxUserConfigPtrOutput `pulumi:"signalfxUserConfig"`
 	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
@@ -184,6 +186,8 @@ type serviceIntegrationState struct {
 	ReadReplicaUserConfig *ServiceIntegrationReadReplicaUserConfig `pulumi:"readReplicaUserConfig"`
 	// RSyslog specific user configurable settings
 	RsyslogUserConfig *ServiceIntegrationRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
+	// Schema registry proxy specific user configurable settings
+	SchemaRegistryProxyUserConfig *ServiceIntegrationSchemaRegistryProxyUserConfig `pulumi:"schemaRegistryProxyUserConfig"`
 	// Signalfx specific user configurable settings
 	SignalfxUserConfig *ServiceIntegrationSignalfxUserConfig `pulumi:"signalfxUserConfig"`
 	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
@@ -240,6 +244,8 @@ type ServiceIntegrationState struct {
 	ReadReplicaUserConfig ServiceIntegrationReadReplicaUserConfigPtrInput
 	// RSyslog specific user configurable settings
 	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrInput
+	// Schema registry proxy specific user configurable settings
+	SchemaRegistryProxyUserConfig ServiceIntegrationSchemaRegistryProxyUserConfigPtrInput
 	// Signalfx specific user configurable settings
 	SignalfxUserConfig ServiceIntegrationSignalfxUserConfigPtrInput
 	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
@@ -300,6 +306,8 @@ type serviceIntegrationArgs struct {
 	ReadReplicaUserConfig *ServiceIntegrationReadReplicaUserConfig `pulumi:"readReplicaUserConfig"`
 	// RSyslog specific user configurable settings
 	RsyslogUserConfig *ServiceIntegrationRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
+	// Schema registry proxy specific user configurable settings
+	SchemaRegistryProxyUserConfig *ServiceIntegrationSchemaRegistryProxyUserConfig `pulumi:"schemaRegistryProxyUserConfig"`
 	// Signalfx specific user configurable settings
 	SignalfxUserConfig *ServiceIntegrationSignalfxUserConfig `pulumi:"signalfxUserConfig"`
 	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
@@ -357,6 +365,8 @@ type ServiceIntegrationArgs struct {
 	ReadReplicaUserConfig ServiceIntegrationReadReplicaUserConfigPtrInput
 	// RSyslog specific user configurable settings
 	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrInput
+	// Schema registry proxy specific user configurable settings
+	SchemaRegistryProxyUserConfig ServiceIntegrationSchemaRegistryProxyUserConfigPtrInput
 	// Signalfx specific user configurable settings
 	SignalfxUserConfig ServiceIntegrationSignalfxUserConfigPtrInput
 	// or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either

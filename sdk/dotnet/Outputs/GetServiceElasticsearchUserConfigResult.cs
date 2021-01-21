@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServiceElasticsearchUserConfigElasticsearchResult? Elasticsearch;
         public readonly string? ElasticsearchVersion;
         public readonly ImmutableArray<Outputs.GetServiceElasticsearchUserConfigIndexPatternResult> IndexPatterns;
+        public readonly Outputs.GetServiceElasticsearchUserConfigIndexTemplateResult? IndexTemplate;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetServiceElasticsearchUserConfigKibanaResult? Kibana;
         public readonly string? MaxIndexCount;
@@ -38,6 +39,8 @@ namespace Pulumi.Aiven.Outputs
             string? elasticsearchVersion,
 
             ImmutableArray<Outputs.GetServiceElasticsearchUserConfigIndexPatternResult> indexPatterns,
+
+            Outputs.GetServiceElasticsearchUserConfigIndexTemplateResult? indexTemplate,
 
             ImmutableArray<string> ipFilters,
 
@@ -60,6 +63,7 @@ namespace Pulumi.Aiven.Outputs
             Elasticsearch = elasticsearch;
             ElasticsearchVersion = elasticsearchVersion;
             IndexPatterns = indexPatterns;
+            IndexTemplate = indexTemplate;
             IpFilters = ipFilters;
             Kibana = kibana;
             MaxIndexCount = maxIndexCount;

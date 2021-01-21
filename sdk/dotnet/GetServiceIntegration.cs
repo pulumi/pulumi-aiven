@@ -124,6 +124,9 @@ namespace Pulumi.Aiven
         [Input("rsyslogUserConfig")]
         public Inputs.GetServiceIntegrationRsyslogUserConfigArgs? RsyslogUserConfig { get; set; }
 
+        [Input("schemaRegistryProxyUserConfig")]
+        public Inputs.GetServiceIntegrationSchemaRegistryProxyUserConfigArgs? SchemaRegistryProxyUserConfig { get; set; }
+
         [Input("signalfxUserConfig")]
         public Inputs.GetServiceIntegrationSignalfxUserConfigArgs? SignalfxUserConfig { get; set; }
 
@@ -169,6 +172,7 @@ namespace Pulumi.Aiven
         public readonly Outputs.GetServiceIntegrationPrometheusUserConfigResult? PrometheusUserConfig;
         public readonly Outputs.GetServiceIntegrationReadReplicaUserConfigResult? ReadReplicaUserConfig;
         public readonly Outputs.GetServiceIntegrationRsyslogUserConfigResult? RsyslogUserConfig;
+        public readonly Outputs.GetServiceIntegrationSchemaRegistryProxyUserConfigResult? SchemaRegistryProxyUserConfig;
         public readonly Outputs.GetServiceIntegrationSignalfxUserConfigResult? SignalfxUserConfig;
         public readonly string? SourceEndpointId;
         public readonly string SourceServiceName;
@@ -217,6 +221,8 @@ namespace Pulumi.Aiven
 
             Outputs.GetServiceIntegrationRsyslogUserConfigResult? rsyslogUserConfig,
 
+            Outputs.GetServiceIntegrationSchemaRegistryProxyUserConfigResult? schemaRegistryProxyUserConfig,
+
             Outputs.GetServiceIntegrationSignalfxUserConfigResult? signalfxUserConfig,
 
             string? sourceEndpointId,
@@ -244,6 +250,7 @@ namespace Pulumi.Aiven
             PrometheusUserConfig = prometheusUserConfig;
             ReadReplicaUserConfig = readReplicaUserConfig;
             RsyslogUserConfig = rsyslogUserConfig;
+            SchemaRegistryProxyUserConfig = schemaRegistryProxyUserConfig;
             SignalfxUserConfig = signalfxUserConfig;
             SourceEndpointId = sourceEndpointId;
             SourceServiceName = sourceServiceName;

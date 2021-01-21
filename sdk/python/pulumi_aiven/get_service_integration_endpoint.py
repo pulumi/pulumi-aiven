@@ -21,7 +21,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, external_kafka_user_config=None, id=None, jolokia_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, signalfx_user_config=None):
+    def __init__(__self__, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, external_kafka_user_config=None, external_schema_registry_user_config=None, id=None, jolokia_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, signalfx_user_config=None):
         if datadog_user_config and not isinstance(datadog_user_config, dict):
             raise TypeError("Expected argument 'datadog_user_config' to be a dict")
         pulumi.set(__self__, "datadog_user_config", datadog_user_config)
@@ -46,6 +46,9 @@ class GetServiceIntegrationEndpointResult:
         if external_kafka_user_config and not isinstance(external_kafka_user_config, dict):
             raise TypeError("Expected argument 'external_kafka_user_config' to be a dict")
         pulumi.set(__self__, "external_kafka_user_config", external_kafka_user_config)
+        if external_schema_registry_user_config and not isinstance(external_schema_registry_user_config, dict):
+            raise TypeError("Expected argument 'external_schema_registry_user_config' to be a dict")
+        pulumi.set(__self__, "external_schema_registry_user_config", external_schema_registry_user_config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -110,6 +113,11 @@ class GetServiceIntegrationEndpointResult:
         return pulumi.get(self, "external_kafka_user_config")
 
     @property
+    @pulumi.getter(name="externalSchemaRegistryUserConfig")
+    def external_schema_registry_user_config(self) -> Optional['outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult']:
+        return pulumi.get(self, "external_schema_registry_user_config")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -157,6 +165,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             external_elasticsearch_logs_user_config=self.external_elasticsearch_logs_user_config,
             external_google_cloud_logging_user_config=self.external_google_cloud_logging_user_config,
             external_kafka_user_config=self.external_kafka_user_config,
+            external_schema_registry_user_config=self.external_schema_registry_user_config,
             id=self.id,
             jolokia_user_config=self.jolokia_user_config,
             project=self.project,
@@ -173,6 +182,7 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
                                      external_elasticsearch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
                                      external_google_cloud_logging_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] = None,
                                      external_kafka_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalKafkaUserConfigArgs']] = None,
+                                     external_schema_registry_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] = None,
                                      jolokia_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointJolokiaUserConfigArgs']] = None,
                                      project: Optional[str] = None,
                                      prometheus_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointPrometheusUserConfigArgs']] = None,
@@ -211,6 +221,7 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
     __args__['externalElasticsearchLogsUserConfig'] = external_elasticsearch_logs_user_config
     __args__['externalGoogleCloudLoggingUserConfig'] = external_google_cloud_logging_user_config
     __args__['externalKafkaUserConfig'] = external_kafka_user_config
+    __args__['externalSchemaRegistryUserConfig'] = external_schema_registry_user_config
     __args__['jolokiaUserConfig'] = jolokia_user_config
     __args__['project'] = project
     __args__['prometheusUserConfig'] = prometheus_user_config
@@ -231,6 +242,7 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
         external_elasticsearch_logs_user_config=__ret__.external_elasticsearch_logs_user_config,
         external_google_cloud_logging_user_config=__ret__.external_google_cloud_logging_user_config,
         external_kafka_user_config=__ret__.external_kafka_user_config,
+        external_schema_registry_user_config=__ret__.external_schema_registry_user_config,
         id=__ret__.id,
         jolokia_user_config=__ret__.jolokia_user_config,
         project=__ret__.project,

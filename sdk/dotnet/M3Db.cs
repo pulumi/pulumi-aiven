@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
     ///             MaintenanceWindowTime = "10:00:00",
     ///             M3dbUserConfig = new Aiven.Inputs.M3DbM3dbUserConfigArgs
     ///             {
-    ///                 M3Version = "0.15",
+    ///                 M3dbVersion = "0.15",
     ///                 Namespaces = 
     ///                 {
     ///                     new Aiven.Inputs.M3DbM3dbUserConfigNamespaceArgs

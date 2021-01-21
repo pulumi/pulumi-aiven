@@ -82,8 +82,7 @@ namespace Pulumi.Aiven
         public Output<bool?> DefaultAcl { get; private set; } = null!;
 
         /// <summary>
-        /// Allow clients to connect to kafka from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// Enable kafka
         /// </summary>
         [Output("kafka")]
         public Output<Outputs.KafkaKafka> KafkaServer { get; private set; } = null!;
@@ -272,8 +271,7 @@ namespace Pulumi.Aiven
         public Input<bool>? DefaultAcl { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// Enable kafka
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.KafkaKafkaArgs>? KafkaServer { get; set; }
@@ -399,8 +397,7 @@ namespace Pulumi.Aiven
         public Input<bool>? DefaultAcl { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// Enable kafka
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.KafkaKafkaGetArgs>? KafkaServer { get; set; }

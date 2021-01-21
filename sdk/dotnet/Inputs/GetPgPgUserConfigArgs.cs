@@ -84,8 +84,7 @@ namespace Pulumi.Aiven.Inputs
         public string? PgVersion { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
         public Inputs.GetPgPgUserConfigPgbouncerArgs? Pgbouncer { get; set; }
@@ -103,7 +102,13 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetPgPgUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
         /// <summary>
-        /// (Optional) Name of another project to fork a service from. This has
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Inputs.GetPgPgUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+
+        /// <summary>
+        /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]

@@ -36,9 +36,6 @@ namespace Pulumi.Aiven.Inputs
         [Input("limits")]
         public Inputs.GetM3DbM3dbUserConfigLimitsArgs? Limits { get; set; }
 
-        /// <summary>
-        /// M3 major version
-        /// </summary>
         [Input("m3Version")]
         public string? M3Version { get; set; }
 
@@ -49,6 +46,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("m3coordinatorEnableGraphiteCarbonIngest")]
         public string? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
+
+        /// <summary>
+        /// M3 major version
+        /// </summary>
+        [Input("m3dbVersion")]
+        public string? M3dbVersion { get; set; }
 
         [Input("namespaces")]
         private List<Inputs.GetM3DbM3dbUserConfigNamespaceArgs>? _namespaces;

@@ -18,8 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Pg;
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         public readonly string? Pgbouncer;
         /// <summary>
