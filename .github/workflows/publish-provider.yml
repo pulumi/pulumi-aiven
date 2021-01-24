@@ -61,6 +61,7 @@ jobs:
       - run: git --no-pager diff
       - name: Stage + Commit
         run: |
+          git config --local user.name "pulumi-bot"
           git config --local user.email "bot@pulumi.com"
           git add .
           git commit -m "Prepare for v${{ github.event.client_payload.ref }} release"
