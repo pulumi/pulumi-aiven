@@ -58,6 +58,7 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
         "prometheusUserConfig": args.prometheusUserConfig,
         "readReplicaUserConfig": args.readReplicaUserConfig,
         "rsyslogUserConfig": args.rsyslogUserConfig,
+        "schemaRegistryProxyUserConfig": args.schemaRegistryProxyUserConfig,
         "signalfxUserConfig": args.signalfxUserConfig,
         "sourceEndpointId": args.sourceEndpointId,
         "sourceServiceName": args.sourceServiceName,
@@ -98,6 +99,7 @@ export interface GetServiceIntegrationArgs {
     readonly prometheusUserConfig?: inputs.GetServiceIntegrationPrometheusUserConfig;
     readonly readReplicaUserConfig?: inputs.GetServiceIntegrationReadReplicaUserConfig;
     readonly rsyslogUserConfig?: inputs.GetServiceIntegrationRsyslogUserConfig;
+    readonly schemaRegistryProxyUserConfig?: inputs.GetServiceIntegrationSchemaRegistryProxyUserConfig;
     readonly signalfxUserConfig?: inputs.GetServiceIntegrationSignalfxUserConfig;
     readonly sourceEndpointId?: string;
     /**
@@ -134,6 +136,7 @@ export interface GetServiceIntegrationResult {
     readonly prometheusUserConfig?: outputs.GetServiceIntegrationPrometheusUserConfig;
     readonly readReplicaUserConfig?: outputs.GetServiceIntegrationReadReplicaUserConfig;
     readonly rsyslogUserConfig?: outputs.GetServiceIntegrationRsyslogUserConfig;
+    readonly schemaRegistryProxyUserConfig?: outputs.GetServiceIntegrationSchemaRegistryProxyUserConfig;
     readonly signalfxUserConfig?: outputs.GetServiceIntegrationSignalfxUserConfig;
     readonly sourceEndpointId?: string;
     readonly sourceServiceName: string;

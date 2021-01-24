@@ -94,8 +94,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * Allow clients to connect to pg from the public internet for service nodes
-     * that are in a project VPC or another type of private network
+     * Enable pg.
      */
     public readonly pg!: pulumi.Output<outputs.PgPg>;
     /**
@@ -275,8 +274,7 @@ export interface PgState {
      */
     readonly maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Allow clients to connect to pg from the public internet for service nodes
-     * that are in a project VPC or another type of private network
+     * Enable pg.
      */
     readonly pg?: pulumi.Input<inputs.PgPg>;
     /**
@@ -383,8 +381,7 @@ export interface PgArgs {
      */
     readonly maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Allow clients to connect to pg from the public internet for service nodes
-     * that are in a project VPC or another type of private network
+     * Enable pg.
      */
     readonly pg?: pulumi.Input<inputs.PgPg>;
     /**

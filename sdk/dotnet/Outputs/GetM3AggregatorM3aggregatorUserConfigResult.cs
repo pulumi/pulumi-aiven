@@ -21,10 +21,11 @@ namespace Pulumi.Aiven.Outputs
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        public readonly string? M3Version;
         /// <summary>
         /// M3 major version
         /// </summary>
-        public readonly string? M3Version;
+        public readonly string? M3aggregatorVersion;
 
         [OutputConstructor]
         private GetM3AggregatorM3aggregatorUserConfigResult(
@@ -32,11 +33,14 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
-            string? m3Version)
+            string? m3Version,
+
+            string? m3aggregatorVersion)
         {
             CustomDomain = customDomain;
             IpFilters = ipFilters;
             M3Version = m3Version;
+            M3aggregatorVersion = m3aggregatorVersion;
         }
     }
 }

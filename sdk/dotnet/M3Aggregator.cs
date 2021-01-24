@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
     ///             MaintenanceWindowTime = "10:00:00",
     ///             M3aggregatorUserConfig = new Aiven.Inputs.M3AggregatorM3aggregatorUserConfigArgs
     ///             {
-    ///                 M3Version = "0.15",
+    ///                 M3aggregatorVersion = "0.15",
     ///             },
     ///         });
     ///     }

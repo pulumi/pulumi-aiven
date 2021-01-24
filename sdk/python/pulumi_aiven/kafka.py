@@ -76,8 +76,7 @@ class Kafka(pulumi.CustomResource):
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[bool] default_acl: Create default wildcard Kafka ACL
-        :param pulumi.Input[pulumi.InputType['KafkaKafkaArgs']] kafka: Allow clients to connect to kafka from the public internet for service 
-               nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['KafkaKafkaArgs']] kafka: Enable kafka
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: defines Kafka specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
@@ -198,8 +197,7 @@ class Kafka(pulumi.CustomResource):
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[bool] default_acl: Create default wildcard Kafka ACL
-        :param pulumi.Input[pulumi.InputType['KafkaKafkaArgs']] kafka: Allow clients to connect to kafka from the public internet for service 
-               nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['KafkaKafkaArgs']] kafka: Enable kafka
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: defines Kafka specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
@@ -300,8 +298,7 @@ class Kafka(pulumi.CustomResource):
     @pulumi.getter
     def kafka(self) -> pulumi.Output['outputs.KafkaKafka']:
         """
-        Allow clients to connect to kafka from the public internet for service 
-        nodes that are in a project VPC or another type of private network
+        Enable kafka
         """
         return pulumi.get(self, "kafka")
 

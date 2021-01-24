@@ -144,6 +144,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly rsyslogUserConfig!: pulumi.Output<outputs.ServiceIntegrationRsyslogUserConfig | undefined>;
     /**
+     * Schema registry proxy specific user configurable settings
+     */
+    public readonly schemaRegistryProxyUserConfig!: pulumi.Output<outputs.ServiceIntegrationSchemaRegistryProxyUserConfig | undefined>;
+    /**
      * Signalfx specific user configurable settings
      */
     public readonly signalfxUserConfig!: pulumi.Output<outputs.ServiceIntegrationSignalfxUserConfig | undefined>;
@@ -191,6 +195,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             inputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
             inputs["readReplicaUserConfig"] = state ? state.readReplicaUserConfig : undefined;
             inputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
+            inputs["schemaRegistryProxyUserConfig"] = state ? state.schemaRegistryProxyUserConfig : undefined;
             inputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
             inputs["sourceEndpointId"] = state ? state.sourceEndpointId : undefined;
             inputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
@@ -222,6 +227,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             inputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
             inputs["readReplicaUserConfig"] = args ? args.readReplicaUserConfig : undefined;
             inputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
+            inputs["schemaRegistryProxyUserConfig"] = args ? args.schemaRegistryProxyUserConfig : undefined;
             inputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
             inputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
             inputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
@@ -325,6 +331,10 @@ export interface ServiceIntegrationState {
      * RSyslog specific user configurable settings
      */
     readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig>;
+    /**
+     * Schema registry proxy specific user configurable settings
+     */
+    readonly schemaRegistryProxyUserConfig?: pulumi.Input<inputs.ServiceIntegrationSchemaRegistryProxyUserConfig>;
     /**
      * Signalfx specific user configurable settings
      */
@@ -430,6 +440,10 @@ export interface ServiceIntegrationArgs {
      * RSyslog specific user configurable settings
      */
     readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig>;
+    /**
+     * Schema registry proxy specific user configurable settings
+     */
+    readonly schemaRegistryProxyUserConfig?: pulumi.Input<inputs.ServiceIntegrationSchemaRegistryProxyUserConfig>;
     /**
      * Signalfx specific user configurable settings
      */

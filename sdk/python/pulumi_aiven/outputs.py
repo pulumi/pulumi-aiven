@@ -23,6 +23,7 @@ __all__ = [
     'ElasticSearchElasticsearchUserConfig',
     'ElasticSearchElasticsearchUserConfigElasticsearch',
     'ElasticSearchElasticsearchUserConfigIndexPattern',
+    'ElasticSearchElasticsearchUserConfigIndexTemplate',
     'ElasticSearchElasticsearchUserConfigKibana',
     'ElasticSearchElasticsearchUserConfigPrivateAccess',
     'ElasticSearchElasticsearchUserConfigPublicAccess',
@@ -62,6 +63,7 @@ __all__ = [
     'KafkaKafkaUserConfigKafkaConnectConfig',
     'KafkaKafkaUserConfigKafkaRestConfig',
     'KafkaKafkaUserConfigPrivateAccess',
+    'KafkaKafkaUserConfigPrivatelinkAccess',
     'KafkaKafkaUserConfigPublicAccess',
     'KafkaKafkaUserConfigSchemaRegistryConfig',
     'KafkaMirrorMakerComponent',
@@ -100,6 +102,7 @@ __all__ = [
     'PgPgUserConfigPgbouncer',
     'PgPgUserConfigPglookout',
     'PgPgUserConfigPrivateAccess',
+    'PgPgUserConfigPrivatelinkAccess',
     'PgPgUserConfigPublicAccess',
     'PgPgUserConfigTimescaledb',
     'PgServiceIntegration',
@@ -119,6 +122,7 @@ __all__ = [
     'ServiceElasticsearchUserConfig',
     'ServiceElasticsearchUserConfigElasticsearch',
     'ServiceElasticsearchUserConfigIndexPattern',
+    'ServiceElasticsearchUserConfigIndexTemplate',
     'ServiceElasticsearchUserConfigKibana',
     'ServiceElasticsearchUserConfigPrivateAccess',
     'ServiceElasticsearchUserConfigPublicAccess',
@@ -144,6 +148,7 @@ __all__ = [
     'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig',
     'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig',
     'ServiceIntegrationEndpointExternalKafkaUserConfig',
+    'ServiceIntegrationEndpointExternalSchemaRegistryUserConfig',
     'ServiceIntegrationEndpointJolokiaUserConfig',
     'ServiceIntegrationEndpointPrometheusUserConfig',
     'ServiceIntegrationEndpointRsyslogUserConfig',
@@ -167,6 +172,7 @@ __all__ = [
     'ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf',
     'ServiceIntegrationReadReplicaUserConfig',
     'ServiceIntegrationRsyslogUserConfig',
+    'ServiceIntegrationSchemaRegistryProxyUserConfig',
     'ServiceIntegrationSignalfxUserConfig',
     'ServiceKafka',
     'ServiceKafkaConnect',
@@ -183,6 +189,7 @@ __all__ = [
     'ServiceKafkaUserConfigKafkaConnectConfig',
     'ServiceKafkaUserConfigKafkaRestConfig',
     'ServiceKafkaUserConfigPrivateAccess',
+    'ServiceKafkaUserConfigPrivatelinkAccess',
     'ServiceKafkaUserConfigPublicAccess',
     'ServiceKafkaUserConfigSchemaRegistryConfig',
     'ServiceMysql',
@@ -197,6 +204,7 @@ __all__ = [
     'ServicePgUserConfigPgbouncer',
     'ServicePgUserConfigPglookout',
     'ServicePgUserConfigPrivateAccess',
+    'ServicePgUserConfigPrivatelinkAccess',
     'ServicePgUserConfigPublicAccess',
     'ServicePgUserConfigTimescaledb',
     'ServiceRedis',
@@ -218,6 +226,7 @@ __all__ = [
     'GetElasticSearchElasticsearchUserConfigResult',
     'GetElasticSearchElasticsearchUserConfigElasticsearchResult',
     'GetElasticSearchElasticsearchUserConfigIndexPatternResult',
+    'GetElasticSearchElasticsearchUserConfigIndexTemplateResult',
     'GetElasticSearchElasticsearchUserConfigKibanaResult',
     'GetElasticSearchElasticsearchUserConfigPrivateAccessResult',
     'GetElasticSearchElasticsearchUserConfigPublicAccessResult',
@@ -257,6 +266,7 @@ __all__ = [
     'GetKafkaKafkaUserConfigKafkaConnectConfigResult',
     'GetKafkaKafkaUserConfigKafkaRestConfigResult',
     'GetKafkaKafkaUserConfigPrivateAccessResult',
+    'GetKafkaKafkaUserConfigPrivatelinkAccessResult',
     'GetKafkaKafkaUserConfigPublicAccessResult',
     'GetKafkaKafkaUserConfigSchemaRegistryConfigResult',
     'GetKafkaMirrorMakerComponentResult',
@@ -295,6 +305,7 @@ __all__ = [
     'GetPgPgUserConfigPgbouncerResult',
     'GetPgPgUserConfigPglookoutResult',
     'GetPgPgUserConfigPrivateAccessResult',
+    'GetPgPgUserConfigPrivatelinkAccessResult',
     'GetPgPgUserConfigPublicAccessResult',
     'GetPgPgUserConfigTimescaledbResult',
     'GetPgServiceIntegrationResult',
@@ -314,6 +325,7 @@ __all__ = [
     'GetServiceElasticsearchUserConfigResult',
     'GetServiceElasticsearchUserConfigElasticsearchResult',
     'GetServiceElasticsearchUserConfigIndexPatternResult',
+    'GetServiceElasticsearchUserConfigIndexTemplateResult',
     'GetServiceElasticsearchUserConfigKibanaResult',
     'GetServiceElasticsearchUserConfigPrivateAccessResult',
     'GetServiceElasticsearchUserConfigPublicAccessResult',
@@ -339,6 +351,7 @@ __all__ = [
     'GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult',
     'GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult',
     'GetServiceIntegrationEndpointExternalKafkaUserConfigResult',
+    'GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult',
     'GetServiceIntegrationEndpointJolokiaUserConfigResult',
     'GetServiceIntegrationEndpointPrometheusUserConfigResult',
     'GetServiceIntegrationEndpointRsyslogUserConfigResult',
@@ -362,6 +375,7 @@ __all__ = [
     'GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult',
     'GetServiceIntegrationReadReplicaUserConfigResult',
     'GetServiceIntegrationRsyslogUserConfigResult',
+    'GetServiceIntegrationSchemaRegistryProxyUserConfigResult',
     'GetServiceIntegrationSignalfxUserConfigResult',
     'GetServiceKafkaResult',
     'GetServiceKafkaConnectResult',
@@ -378,6 +392,7 @@ __all__ = [
     'GetServiceKafkaUserConfigKafkaConnectConfigResult',
     'GetServiceKafkaUserConfigKafkaRestConfigResult',
     'GetServiceKafkaUserConfigPrivateAccessResult',
+    'GetServiceKafkaUserConfigPrivatelinkAccessResult',
     'GetServiceKafkaUserConfigPublicAccessResult',
     'GetServiceKafkaUserConfigSchemaRegistryConfigResult',
     'GetServiceMysqlResult',
@@ -392,6 +407,7 @@ __all__ = [
     'GetServicePgUserConfigPgbouncerResult',
     'GetServicePgUserConfigPglookoutResult',
     'GetServicePgUserConfigPrivateAccessResult',
+    'GetServicePgUserConfigPrivatelinkAccessResult',
     'GetServicePgUserConfigPublicAccessResult',
     'GetServicePgUserConfigTimescaledbResult',
     'GetServiceRedisResult',
@@ -765,6 +781,7 @@ class ElasticSearchElasticsearchUserConfig(dict):
                  elasticsearch: Optional['outputs.ElasticSearchElasticsearchUserConfigElasticsearch'] = None,
                  elasticsearch_version: Optional[str] = None,
                  index_patterns: Optional[Sequence['outputs.ElasticSearchElasticsearchUserConfigIndexPattern']] = None,
+                 index_template: Optional['outputs.ElasticSearchElasticsearchUserConfigIndexTemplate'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kibana: Optional['outputs.ElasticSearchElasticsearchUserConfigKibana'] = None,
                  max_index_count: Optional[str] = None,
@@ -785,6 +802,7 @@ class ElasticSearchElasticsearchUserConfig(dict):
         :param str elasticsearch_version: Elasticsearch major version.
         :param Sequence['ElasticSearchElasticsearchUserConfigIndexPatternArgs'] index_patterns: Glob pattern and number of indexes matching that pattern to 
                be kept.
+        :param 'ElasticSearchElasticsearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexe.
         :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'ElasticSearchElasticsearchUserConfigKibanaArgs' kibana: Allow clients to connect to kibana from the public internet for 
                service nodes that are in a project VPC or another type of private network.
@@ -807,6 +825,8 @@ class ElasticSearchElasticsearchUserConfig(dict):
             pulumi.set(__self__, "elasticsearch_version", elasticsearch_version)
         if index_patterns is not None:
             pulumi.set(__self__, "index_patterns", index_patterns)
+        if index_template is not None:
+            pulumi.set(__self__, "index_template", index_template)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kibana is not None:
@@ -869,6 +889,14 @@ class ElasticSearchElasticsearchUserConfig(dict):
         be kept.
         """
         return pulumi.get(self, "index_patterns")
+
+    @property
+    @pulumi.getter(name="indexTemplate")
+    def index_template(self) -> Optional['outputs.ElasticSearchElasticsearchUserConfigIndexTemplate']:
+        """
+        Template settings for all new indexe.
+        """
+        return pulumi.get(self, "index_template")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -1354,6 +1382,56 @@ class ElasticSearchElasticsearchUserConfigIndexPattern(dict):
         dots and glob characters (* and ?)
         """
         return pulumi.get(self, "pattern")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElasticSearchElasticsearchUserConfigIndexTemplate(dict):
+    def __init__(__self__, *,
+                 mapping_nested_objects_limit: Optional[str] = None,
+                 number_of_replicas: Optional[str] = None,
+                 number_of_shards: Optional[str] = None):
+        """
+        :param str mapping_nested_objects_limit: The maximum number of nested JSON objects that 
+               a single document can contain across all nested types. This limit helps to prevent out of
+               memory errors when a document contains too many nested objects. Default is 10000.
+        :param str number_of_replicas: The number of replicas each primary shard has.
+        :param str number_of_shards: The number of primary shards that an index should have.
+        """
+        if mapping_nested_objects_limit is not None:
+            pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
+        if number_of_replicas is not None:
+            pulumi.set(__self__, "number_of_replicas", number_of_replicas)
+        if number_of_shards is not None:
+            pulumi.set(__self__, "number_of_shards", number_of_shards)
+
+    @property
+    @pulumi.getter(name="mappingNestedObjectsLimit")
+    def mapping_nested_objects_limit(self) -> Optional[str]:
+        """
+        The maximum number of nested JSON objects that 
+        a single document can contain across all nested types. This limit helps to prevent out of
+        memory errors when a document contains too many nested objects. Default is 10000.
+        """
+        return pulumi.get(self, "mapping_nested_objects_limit")
+
+    @property
+    @pulumi.getter(name="numberOfReplicas")
+    def number_of_replicas(self) -> Optional[str]:
+        """
+        The number of replicas each primary shard has.
+        """
+        return pulumi.get(self, "number_of_replicas")
+
+    @property
+    @pulumi.getter(name="numberOfShards")
+    def number_of_shards(self) -> Optional[str]:
+        """
+        The number of primary shards that an index should have.
+        """
+        return pulumi.get(self, "number_of_shards")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3498,23 +3576,22 @@ class KafkaKafkaUserConfig(dict):
                  kafka_rest_config: Optional['outputs.KafkaKafkaUserConfigKafkaRestConfig'] = None,
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.KafkaKafkaUserConfigPrivateAccess'] = None,
+                 privatelink_access: Optional['outputs.KafkaKafkaUserConfigPrivatelinkAccess'] = None,
                  public_access: Optional['outputs.KafkaKafkaUserConfigPublicAccess'] = None,
                  schema_registry: Optional[str] = None,
                  schema_registry_config: Optional['outputs.KafkaKafkaUserConfigSchemaRegistryConfig'] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'KafkaKafkaUserConfigKafkaArgs' kafka: Allow clients to connect to kafka from the public internet for service 
-               nodes that are in a project VPC or another type of private network
+        :param 'KafkaKafkaUserConfigKafkaArgs' kafka: Enable kafka
         :param 'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
-        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
-               for service nodes that are in a project VPC or another type of private network
+        :param str kafka_connect: Enable kafka_connect
         :param 'KafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
-        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str kafka_rest: Enable kafka_rest
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka-REST configuration
         :param str kafka_version: Kafka major version
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str schema_registry: Enable Schema-Registry service
         :param 'KafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
@@ -3539,6 +3616,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "kafka_version", kafka_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
@@ -3566,8 +3645,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter
     def kafka(self) -> Optional['outputs.KafkaKafkaUserConfigKafka']:
         """
-        Allow clients to connect to kafka from the public internet for service 
-        nodes that are in a project VPC or another type of private network
+        Enable kafka
         """
         return pulumi.get(self, "kafka")
 
@@ -3583,8 +3661,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_connect from the public internet 
-        for service nodes that are in a project VPC or another type of private network
+        Enable kafka_connect
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -3600,8 +3677,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_rest from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable kafka_rest
         """
         return pulumi.get(self, "kafka_rest")
 
@@ -3628,6 +3704,14 @@ class KafkaKafkaUserConfig(dict):
         Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.KafkaKafkaUserConfigPrivatelinkAccess']:
+        """
+        Allow access to selected service components through Privatelink
+        """
+        return pulumi.get(self, "privatelink_access")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -4520,6 +4604,64 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
 
 
 @pulumi.output_type
+class KafkaKafkaUserConfigPrivatelinkAccess(dict):
+    def __init__(__self__, *,
+                 kafka: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 kafka_rest: Optional[str] = None,
+                 schema_registry: Optional[str] = None):
+        """
+        :param str kafka: Enable kafka
+        :param str kafka_connect: Enable kafka_connect
+        :param str kafka_rest: Enable kafka_rest
+        :param str schema_registry: Enable Schema-Registry service
+        """
+        if kafka is not None:
+            pulumi.set(__self__, "kafka", kafka)
+        if kafka_connect is not None:
+            pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if kafka_rest is not None:
+            pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def kafka(self) -> Optional[str]:
+        """
+        Enable kafka
+        """
+        return pulumi.get(self, "kafka")
+
+    @property
+    @pulumi.getter(name="kafkaConnect")
+    def kafka_connect(self) -> Optional[str]:
+        """
+        Enable kafka_connect
+        """
+        return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter(name="kafkaRest")
+    def kafka_rest(self) -> Optional[str]:
+        """
+        Enable kafka_rest
+        """
+        return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> Optional[str]:
+        """
+        Enable Schema-Registry service
+        """
+        return pulumi.get(self, "schema_registry")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class KafkaKafkaUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
@@ -4528,12 +4670,9 @@ class KafkaKafkaUserConfigPublicAccess(dict):
                  prometheus: Optional[str] = None,
                  schema_registry: Optional[str] = None):
         """
-        :param str kafka: Allow clients to connect to kafka from the public internet for service 
-               nodes that are in a project VPC or another type of private network
-        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
-               for service nodes that are in a project VPC or another type of private network
-        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str kafka: Enable kafka
+        :param str kafka_connect: Enable kafka_connect
+        :param str kafka_rest: Enable kafka_rest
         :param str prometheus: Allow clients to connect to prometheus from the public internet for 
                service nodes that are in a project VPC or another type of private network
         :param str schema_registry: Enable Schema-Registry service
@@ -4553,8 +4692,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter
     def kafka(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka from the public internet for service 
-        nodes that are in a project VPC or another type of private network
+        Enable kafka
         """
         return pulumi.get(self, "kafka")
 
@@ -4562,8 +4700,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_connect from the public internet 
-        for service nodes that are in a project VPC or another type of private network
+        Enable kafka_connect
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -4571,8 +4708,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_rest from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable kafka_rest
         """
         return pulumi.get(self, "kafka_rest")
 
@@ -5234,11 +5370,12 @@ class M3AggregatorM3aggregatorUserConfig(dict):
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
-                 m3_version: Optional[str] = None):
+                 m3_version: Optional[str] = None,
+                 m3aggregator_version: Optional[str] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param str m3_version: M3 major version
+        :param str m3aggregator_version: M3 major version
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -5246,6 +5383,8 @@ class M3AggregatorM3aggregatorUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
+        if m3aggregator_version is not None:
+            pulumi.set(__self__, "m3aggregator_version", m3aggregator_version)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -5266,10 +5405,15 @@ class M3AggregatorM3aggregatorUserConfig(dict):
     @property
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
+        return pulumi.get(self, "m3_version")
+
+    @property
+    @pulumi.getter(name="m3aggregatorVersion")
+    def m3aggregator_version(self) -> Optional[str]:
         """
         M3 major version
         """
-        return pulumi.get(self, "m3_version")
+        return pulumi.get(self, "m3aggregator_version")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -5378,6 +5522,7 @@ class M3DbM3dbUserConfig(dict):
                  limits: Optional['outputs.M3DbM3dbUserConfigLimits'] = None,
                  m3_version: Optional[str] = None,
                  m3coordinator_enable_graphite_carbon_ingest: Optional[str] = None,
+                 m3db_version: Optional[str] = None,
                  namespaces: Optional[Sequence['outputs.M3DbM3dbUserConfigNamespace']] = None,
                  private_access: Optional['outputs.M3DbM3dbUserConfigPrivateAccess'] = None,
                  project_to_fork_from: Optional[str] = None,
@@ -5387,10 +5532,10 @@ class M3DbM3dbUserConfig(dict):
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param 'M3DbM3dbUserConfigLimitsArgs' limits: M3 limits
-        :param str m3_version: M3 major version
         :param str m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon 
                plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
                metrics are written to aggregated namespaces only.
+        :param str m3db_version: M3 major version
         :param Sequence['M3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
         :param 'M3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
         :param str project_to_fork_from: Name of another project to fork a service from. This has
@@ -5409,6 +5554,8 @@ class M3DbM3dbUserConfig(dict):
             pulumi.set(__self__, "m3_version", m3_version)
         if m3coordinator_enable_graphite_carbon_ingest is not None:
             pulumi.set(__self__, "m3coordinator_enable_graphite_carbon_ingest", m3coordinator_enable_graphite_carbon_ingest)
+        if m3db_version is not None:
+            pulumi.set(__self__, "m3db_version", m3db_version)
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if private_access is not None:
@@ -5447,9 +5594,6 @@ class M3DbM3dbUserConfig(dict):
     @property
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
-        """
-        M3 major version
-        """
         return pulumi.get(self, "m3_version")
 
     @property
@@ -5461,6 +5605,14 @@ class M3DbM3dbUserConfig(dict):
         metrics are written to aggregated namespaces only.
         """
         return pulumi.get(self, "m3coordinator_enable_graphite_carbon_ingest")
+
+    @property
+    @pulumi.getter(name="m3dbVersion")
+    def m3db_version(self) -> Optional[str]:
+        """
+        M3 major version
+        """
+        return pulumi.get(self, "m3db_version")
 
     @property
     @pulumi.getter
@@ -6675,6 +6827,7 @@ class PgPgUserConfig(dict):
                  pgbouncer: Optional['outputs.PgPgUserConfigPgbouncer'] = None,
                  pglookout: Optional['outputs.PgPgUserConfigPglookout'] = None,
                  private_access: Optional['outputs.PgPgUserConfigPrivateAccess'] = None,
+                 privatelink_access: Optional['outputs.PgPgUserConfigPrivatelinkAccess'] = None,
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.PgPgUserConfigPublicAccess'] = None,
                  recovery_target_time: Optional[str] = None,
@@ -6695,16 +6848,15 @@ class PgPgUserConfig(dict):
                is only started if previous backup has already completed.
         :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'PgPgUserConfigMigrationArgs' migration: migrate data from existing server, has the following options:
-        :param 'PgPgUserConfigPgArgs' pg: Allow clients to connect to pg from the public internet for service nodes
-               that are in a project VPC or another type of private network
+        :param 'PgPgUserConfigPgArgs' pg: Enable pg.
         :param str pg_read_replica: This setting is deprecated. Use read-replica service integration instead.
         :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
                This has effect only when a new service is being created.
         :param str pg_version: PostgreSQL major version.
-        :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: Enable pgbouncer.
         :param 'PgPgUserConfigPglookoutArgs' pglookout: PGLookout settings.
         :param 'PgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'PgPgUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
         :param str project_to_fork_from: Name of another project to fork a service from. This has
                effect only when a new service is being created.
         :param 'PgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -6750,6 +6902,8 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if project_to_fork_from is not None:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
@@ -6825,8 +6979,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def pg(self) -> Optional['outputs.PgPgUserConfigPg']:
         """
-        Allow clients to connect to pg from the public internet for service nodes
-        that are in a project VPC or another type of private network
+        Enable pg.
         """
         return pulumi.get(self, "pg")
 
@@ -6859,8 +7012,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional['outputs.PgPgUserConfigPgbouncer']:
         """
-        Allow clients to connect to pgbouncer from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -6879,6 +7031,14 @@ class PgPgUserConfig(dict):
         Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.PgPgUserConfigPrivatelinkAccess']:
+        """
+        Allow access to selected service components through Privatelink.
+        """
+        return pulumi.get(self, "privatelink_access")
 
     @property
     @pulumi.getter(name="projectToForkFrom")
@@ -7734,10 +7894,8 @@ class PgPgUserConfigPrivateAccess(dict):
                  pgbouncer: Optional[str] = None,
                  prometheus: Optional[str] = None):
         """
-        :param str pg: Allow clients to connect to pg from the public internet for service nodes
-               that are in a project VPC or another type of private network
-        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str pg: Enable pg.
+        :param str pgbouncer: Enable pgbouncer.
         :param str prometheus: Allow clients to connect to prometheus from the public internet for 
                service nodes that are in a project VPC or another type of private network
         """
@@ -7752,8 +7910,7 @@ class PgPgUserConfigPrivateAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[str]:
         """
-        Allow clients to connect to pg from the public internet for service nodes
-        that are in a project VPC or another type of private network
+        Enable pg.
         """
         return pulumi.get(self, "pg")
 
@@ -7761,8 +7918,7 @@ class PgPgUserConfigPrivateAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         """
-        Allow clients to connect to pgbouncer from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -7780,16 +7936,48 @@ class PgPgUserConfigPrivateAccess(dict):
 
 
 @pulumi.output_type
+class PgPgUserConfigPrivatelinkAccess(dict):
+    def __init__(__self__, *,
+                 pg: Optional[str] = None,
+                 pgbouncer: Optional[str] = None):
+        """
+        :param str pg: Enable pg.
+        :param str pgbouncer: Enable pgbouncer.
+        """
+        if pg is not None:
+            pulumi.set(__self__, "pg", pg)
+        if pgbouncer is not None:
+            pulumi.set(__self__, "pgbouncer", pgbouncer)
+
+    @property
+    @pulumi.getter
+    def pg(self) -> Optional[str]:
+        """
+        Enable pg.
+        """
+        return pulumi.get(self, "pg")
+
+    @property
+    @pulumi.getter
+    def pgbouncer(self) -> Optional[str]:
+        """
+        Enable pgbouncer.
+        """
+        return pulumi.get(self, "pgbouncer")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class PgPgUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  pg: Optional[str] = None,
                  pgbouncer: Optional[str] = None,
                  prometheus: Optional[str] = None):
         """
-        :param str pg: Allow clients to connect to pg from the public internet for service nodes
-               that are in a project VPC or another type of private network
-        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str pg: Enable pg.
+        :param str pgbouncer: Enable pgbouncer.
         :param str prometheus: Allow clients to connect to prometheus from the public internet for 
                service nodes that are in a project VPC or another type of private network
         """
@@ -7804,8 +7992,7 @@ class PgPgUserConfigPublicAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[str]:
         """
-        Allow clients to connect to pg from the public internet for service nodes
-        that are in a project VPC or another type of private network
+        Enable pg.
         """
         return pulumi.get(self, "pg")
 
@@ -7813,8 +8000,7 @@ class PgPgUserConfigPublicAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         """
-        Allow clients to connect to pgbouncer from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -8511,6 +8697,7 @@ class ServiceElasticsearchUserConfig(dict):
                  elasticsearch: Optional['outputs.ServiceElasticsearchUserConfigElasticsearch'] = None,
                  elasticsearch_version: Optional[str] = None,
                  index_patterns: Optional[Sequence['outputs.ServiceElasticsearchUserConfigIndexPattern']] = None,
+                 index_template: Optional['outputs.ServiceElasticsearchUserConfigIndexTemplate'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kibana: Optional['outputs.ServiceElasticsearchUserConfigKibana'] = None,
                  max_index_count: Optional[str] = None,
@@ -8529,6 +8716,8 @@ class ServiceElasticsearchUserConfig(dict):
             pulumi.set(__self__, "elasticsearch_version", elasticsearch_version)
         if index_patterns is not None:
             pulumi.set(__self__, "index_patterns", index_patterns)
+        if index_template is not None:
+            pulumi.set(__self__, "index_template", index_template)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kibana is not None:
@@ -8570,6 +8759,11 @@ class ServiceElasticsearchUserConfig(dict):
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[Sequence['outputs.ServiceElasticsearchUserConfigIndexPattern']]:
         return pulumi.get(self, "index_patterns")
+
+    @property
+    @pulumi.getter(name="indexTemplate")
+    def index_template(self) -> Optional['outputs.ServiceElasticsearchUserConfigIndexTemplate']:
+        return pulumi.get(self, "index_template")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -8842,6 +9036,38 @@ class ServiceElasticsearchUserConfigIndexPattern(dict):
     @pulumi.getter
     def pattern(self) -> Optional[str]:
         return pulumi.get(self, "pattern")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceElasticsearchUserConfigIndexTemplate(dict):
+    def __init__(__self__, *,
+                 mapping_nested_objects_limit: Optional[str] = None,
+                 number_of_replicas: Optional[str] = None,
+                 number_of_shards: Optional[str] = None):
+        if mapping_nested_objects_limit is not None:
+            pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
+        if number_of_replicas is not None:
+            pulumi.set(__self__, "number_of_replicas", number_of_replicas)
+        if number_of_shards is not None:
+            pulumi.set(__self__, "number_of_shards", number_of_shards)
+
+    @property
+    @pulumi.getter(name="mappingNestedObjectsLimit")
+    def mapping_nested_objects_limit(self) -> Optional[str]:
+        return pulumi.get(self, "mapping_nested_objects_limit")
+
+    @property
+    @pulumi.getter(name="numberOfReplicas")
+    def number_of_replicas(self) -> Optional[str]:
+        return pulumi.get(self, "number_of_replicas")
+
+    @property
+    @pulumi.getter(name="numberOfShards")
+    def number_of_shards(self) -> Optional[str]:
+        return pulumi.get(self, "number_of_shards")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -9965,12 +10191,22 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
 class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
     def __init__(__self__, *,
                  bootstrap_servers: Optional[str] = None,
+                 sasl_mechanism: Optional[str] = None,
+                 sasl_plain_password: Optional[str] = None,
+                 sasl_plain_username: Optional[str] = None,
                  security_protocol: Optional[str] = None,
                  ssl_ca_cert: Optional[str] = None,
                  ssl_client_cert: Optional[str] = None,
-                 ssl_client_key: Optional[str] = None):
+                 ssl_client_key: Optional[str] = None,
+                 ssl_endpoint_identification_algorithm: Optional[str] = None):
         if bootstrap_servers is not None:
             pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        if sasl_mechanism is not None:
+            pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
+        if sasl_plain_password is not None:
+            pulumi.set(__self__, "sasl_plain_password", sasl_plain_password)
+        if sasl_plain_username is not None:
+            pulumi.set(__self__, "sasl_plain_username", sasl_plain_username)
         if security_protocol is not None:
             pulumi.set(__self__, "security_protocol", security_protocol)
         if ssl_ca_cert is not None:
@@ -9979,11 +10215,28 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
             pulumi.set(__self__, "ssl_client_cert", ssl_client_cert)
         if ssl_client_key is not None:
             pulumi.set(__self__, "ssl_client_key", ssl_client_key)
+        if ssl_endpoint_identification_algorithm is not None:
+            pulumi.set(__self__, "ssl_endpoint_identification_algorithm", ssl_endpoint_identification_algorithm)
 
     @property
     @pulumi.getter(name="bootstrapServers")
     def bootstrap_servers(self) -> Optional[str]:
         return pulumi.get(self, "bootstrap_servers")
+
+    @property
+    @pulumi.getter(name="saslMechanism")
+    def sasl_mechanism(self) -> Optional[str]:
+        return pulumi.get(self, "sasl_mechanism")
+
+    @property
+    @pulumi.getter(name="saslPlainPassword")
+    def sasl_plain_password(self) -> Optional[str]:
+        return pulumi.get(self, "sasl_plain_password")
+
+    @property
+    @pulumi.getter(name="saslPlainUsername")
+    def sasl_plain_username(self) -> Optional[str]:
+        return pulumi.get(self, "sasl_plain_username")
 
     @property
     @pulumi.getter(name="securityProtocol")
@@ -10004,6 +10257,51 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
     @pulumi.getter(name="sslClientKey")
     def ssl_client_key(self) -> Optional[str]:
         return pulumi.get(self, "ssl_client_key")
+
+    @property
+    @pulumi.getter(name="sslEndpointIdentificationAlgorithm")
+    def ssl_endpoint_identification_algorithm(self) -> Optional[str]:
+        return pulumi.get(self, "ssl_endpoint_identification_algorithm")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(dict):
+    def __init__(__self__, *,
+                 authentication: Optional[str] = None,
+                 basic_auth_password: Optional[str] = None,
+                 basic_auth_username: Optional[str] = None,
+                 url: Optional[str] = None):
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if basic_auth_password is not None:
+            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+        if basic_auth_username is not None:
+            pulumi.set(__self__, "basic_auth_username", basic_auth_username)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[str]:
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter(name="basicAuthPassword")
+    def basic_auth_password(self) -> Optional[str]:
+        return pulumi.get(self, "basic_auth_password")
+
+    @property
+    @pulumi.getter(name="basicAuthUsername")
+    def basic_auth_username(self) -> Optional[str]:
+        return pulumi.get(self, "basic_auth_username")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        return pulumi.get(self, "url")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -10697,6 +10995,15 @@ class ServiceIntegrationRsyslogUserConfig(dict):
 
 
 @pulumi.output_type
+class ServiceIntegrationSchemaRegistryProxyUserConfig(dict):
+    def __init__(__self__):
+        pass
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ServiceIntegrationSignalfxUserConfig(dict):
     def __init__(__self__):
         pass
@@ -11032,6 +11339,7 @@ class ServiceKafkaUserConfig(dict):
                  kafka_rest_config: Optional['outputs.ServiceKafkaUserConfigKafkaRestConfig'] = None,
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.ServiceKafkaUserConfigPrivateAccess'] = None,
+                 privatelink_access: Optional['outputs.ServiceKafkaUserConfigPrivatelinkAccess'] = None,
                  public_access: Optional['outputs.ServiceKafkaUserConfigPublicAccess'] = None,
                  schema_registry: Optional[str] = None,
                  schema_registry_config: Optional['outputs.ServiceKafkaUserConfigSchemaRegistryConfig'] = None):
@@ -11055,6 +11363,8 @@ class ServiceKafkaUserConfig(dict):
             pulumi.set(__self__, "kafka_version", kafka_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
@@ -11111,6 +11421,11 @@ class ServiceKafkaUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServiceKafkaUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.ServiceKafkaUserConfigPrivatelinkAccess']:
+        return pulumi.get(self, "privatelink_access")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -11636,6 +11951,46 @@ class ServiceKafkaUserConfigPrivateAccess(dict):
 
 
 @pulumi.output_type
+class ServiceKafkaUserConfigPrivatelinkAccess(dict):
+    def __init__(__self__, *,
+                 kafka: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 kafka_rest: Optional[str] = None,
+                 schema_registry: Optional[str] = None):
+        if kafka is not None:
+            pulumi.set(__self__, "kafka", kafka)
+        if kafka_connect is not None:
+            pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if kafka_rest is not None:
+            pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def kafka(self) -> Optional[str]:
+        return pulumi.get(self, "kafka")
+
+    @property
+    @pulumi.getter(name="kafkaConnect")
+    def kafka_connect(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter(name="kafkaRest")
+    def kafka_rest(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> Optional[str]:
+        return pulumi.get(self, "schema_registry")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ServiceKafkaUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
@@ -12132,6 +12487,7 @@ class ServicePgUserConfig(dict):
                  pgbouncer: Optional['outputs.ServicePgUserConfigPgbouncer'] = None,
                  pglookout: Optional['outputs.ServicePgUserConfigPglookout'] = None,
                  private_access: Optional['outputs.ServicePgUserConfigPrivateAccess'] = None,
+                 privatelink_access: Optional['outputs.ServicePgUserConfigPrivatelinkAccess'] = None,
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.ServicePgUserConfigPublicAccess'] = None,
                  recovery_target_time: Optional[str] = None,
@@ -12167,6 +12523,8 @@ class ServicePgUserConfig(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if project_to_fork_from is not None:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
@@ -12250,6 +12608,11 @@ class ServicePgUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ServicePgUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.ServicePgUserConfigPrivatelinkAccess']:
+        return pulumi.get(self, "privatelink_access")
 
     @property
     @pulumi.getter(name="projectToForkFrom")
@@ -12791,6 +13154,30 @@ class ServicePgUserConfigPrivateAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServicePgUserConfigPrivatelinkAccess(dict):
+    def __init__(__self__, *,
+                 pg: Optional[str] = None,
+                 pgbouncer: Optional[str] = None):
+        if pg is not None:
+            pulumi.set(__self__, "pg", pg)
+        if pgbouncer is not None:
+            pulumi.set(__self__, "pgbouncer", pgbouncer)
+
+    @property
+    @pulumi.getter
+    def pg(self) -> Optional[str]:
+        return pulumi.get(self, "pg")
+
+    @property
+    @pulumi.getter
+    def pgbouncer(self) -> Optional[str]:
+        return pulumi.get(self, "pgbouncer")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -13417,6 +13804,7 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
                  elasticsearch: Optional['outputs.GetElasticSearchElasticsearchUserConfigElasticsearchResult'] = None,
                  elasticsearch_version: Optional[str] = None,
                  index_patterns: Optional[Sequence['outputs.GetElasticSearchElasticsearchUserConfigIndexPatternResult']] = None,
+                 index_template: Optional['outputs.GetElasticSearchElasticsearchUserConfigIndexTemplateResult'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kibana: Optional['outputs.GetElasticSearchElasticsearchUserConfigKibanaResult'] = None,
                  max_index_count: Optional[str] = None,
@@ -13436,6 +13824,7 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
         :param str elasticsearch_version: Elasticsearch major version.
         :param Sequence['GetElasticSearchElasticsearchUserConfigIndexPatternArgs'] index_patterns: Glob pattern and number of indexes matching that pattern to 
                be kept.
+        :param 'GetElasticSearchElasticsearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexe.
         :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param 'GetElasticSearchElasticsearchUserConfigKibanaArgs' kibana: Allow clients to connect to kibana from the public internet for 
                service nodes that are in a project VPC or another type of private network.
@@ -13458,6 +13847,8 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
             pulumi.set(__self__, "elasticsearch_version", elasticsearch_version)
         if index_patterns is not None:
             pulumi.set(__self__, "index_patterns", index_patterns)
+        if index_template is not None:
+            pulumi.set(__self__, "index_template", index_template)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kibana is not None:
@@ -13519,6 +13910,14 @@ class GetElasticSearchElasticsearchUserConfigResult(dict):
         be kept.
         """
         return pulumi.get(self, "index_patterns")
+
+    @property
+    @pulumi.getter(name="indexTemplate")
+    def index_template(self) -> Optional['outputs.GetElasticSearchElasticsearchUserConfigIndexTemplateResult']:
+        """
+        Template settings for all new indexe.
+        """
+        return pulumi.get(self, "index_template")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -13998,6 +14397,53 @@ class GetElasticSearchElasticsearchUserConfigIndexPatternResult(dict):
         dots and glob characters (* and ?)
         """
         return pulumi.get(self, "pattern")
+
+
+@pulumi.output_type
+class GetElasticSearchElasticsearchUserConfigIndexTemplateResult(dict):
+    def __init__(__self__, *,
+                 mapping_nested_objects_limit: Optional[str] = None,
+                 number_of_replicas: Optional[str] = None,
+                 number_of_shards: Optional[str] = None):
+        """
+        :param str mapping_nested_objects_limit: The maximum number of nested JSON objects that
+               a single document can contain across all nested types. This limit helps to prevent out of
+               memory errors when a document contains too many nested objects. Default is 10000.
+        :param str number_of_replicas: The number of replicas each primary shard has.
+        :param str number_of_shards: The number of primary shards that an index should have.
+        """
+        if mapping_nested_objects_limit is not None:
+            pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
+        if number_of_replicas is not None:
+            pulumi.set(__self__, "number_of_replicas", number_of_replicas)
+        if number_of_shards is not None:
+            pulumi.set(__self__, "number_of_shards", number_of_shards)
+
+    @property
+    @pulumi.getter(name="mappingNestedObjectsLimit")
+    def mapping_nested_objects_limit(self) -> Optional[str]:
+        """
+        The maximum number of nested JSON objects that
+        a single document can contain across all nested types. This limit helps to prevent out of
+        memory errors when a document contains too many nested objects. Default is 10000.
+        """
+        return pulumi.get(self, "mapping_nested_objects_limit")
+
+    @property
+    @pulumi.getter(name="numberOfReplicas")
+    def number_of_replicas(self) -> Optional[str]:
+        """
+        The number of replicas each primary shard has.
+        """
+        return pulumi.get(self, "number_of_replicas")
+
+    @property
+    @pulumi.getter(name="numberOfShards")
+    def number_of_shards(self) -> Optional[str]:
+        """
+        The number of primary shards that an index should have.
+        """
+        return pulumi.get(self, "number_of_shards")
 
 
 @pulumi.output_type
@@ -15968,6 +16414,7 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_rest_config: Optional['outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult'] = None,
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult'] = None,
+                 privatelink_access: Optional['outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult'] = None,
                  schema_registry: Optional[str] = None,
                  schema_registry_config: Optional['outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult'] = None):
@@ -15976,16 +16423,15 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'GetKafkaKafkaUserConfigKafkaArgs' kafka: Kafka server provided values:
         :param 'GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
-        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
-               for service nodes that are in a project VPC or another type of private network
+        :param str kafka_connect: Enable kafka_connect
         :param 'GetKafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
-        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str kafka_rest: Enable kafka_rest
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka-REST configuration
         :param str kafka_version: Kafka major version
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
-        :param str schema_registry: Enable Schema-Registry service
+        :param str schema_registry: Enable schema_registry
         :param 'GetKafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
         """
         if custom_domain is not None:
@@ -16008,6 +16454,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "kafka_version", kafka_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
@@ -16051,8 +16499,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_connect from the public internet 
-        for service nodes that are in a project VPC or another type of private network
+        Enable kafka_connect
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -16068,8 +16515,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_rest from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable kafka_rest
         """
         return pulumi.get(self, "kafka_rest")
 
@@ -16098,6 +16544,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         return pulumi.get(self, "private_access")
 
     @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult']:
+        """
+        Allow access to selected service components through Privatelink
+        """
+        return pulumi.get(self, "privatelink_access")
+
+    @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult']:
         """
@@ -16109,7 +16563,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
         """
-        Enable Schema-Registry service
+        Enable schema_registry
         """
         return pulumi.get(self, "schema_registry")
 
@@ -16970,6 +17424,61 @@ class GetKafkaKafkaUserConfigPrivateAccessResult(dict):
 
 
 @pulumi.output_type
+class GetKafkaKafkaUserConfigPrivatelinkAccessResult(dict):
+    def __init__(__self__, *,
+                 kafka: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 kafka_rest: Optional[str] = None,
+                 schema_registry: Optional[str] = None):
+        """
+        :param str kafka: Kafka server provided values:
+        :param str kafka_connect: Enable kafka_connect
+        :param str kafka_rest: Enable kafka_rest
+        :param str schema_registry: Enable schema_registry
+        """
+        if kafka is not None:
+            pulumi.set(__self__, "kafka", kafka)
+        if kafka_connect is not None:
+            pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if kafka_rest is not None:
+            pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def kafka(self) -> Optional[str]:
+        """
+        Kafka server provided values:
+        """
+        return pulumi.get(self, "kafka")
+
+    @property
+    @pulumi.getter(name="kafkaConnect")
+    def kafka_connect(self) -> Optional[str]:
+        """
+        Enable kafka_connect
+        """
+        return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter(name="kafkaRest")
+    def kafka_rest(self) -> Optional[str]:
+        """
+        Enable kafka_rest
+        """
+        return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> Optional[str]:
+        """
+        Enable schema_registry
+        """
+        return pulumi.get(self, "schema_registry")
+
+
+@pulumi.output_type
 class GetKafkaKafkaUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
@@ -16979,13 +17488,11 @@ class GetKafkaKafkaUserConfigPublicAccessResult(dict):
                  schema_registry: Optional[str] = None):
         """
         :param str kafka: Kafka server provided values:
-        :param str kafka_connect: Allow clients to connect to kafka_connect from the public internet 
-               for service nodes that are in a project VPC or another type of private network
-        :param str kafka_rest: Allow clients to connect to kafka_rest from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str kafka_connect: Enable kafka_connect
+        :param str kafka_rest: Enable kafka_rest
         :param str prometheus: Allow clients to connect to prometheus from the public internet for 
                service nodes that are in a project VPC or another type of private network
-        :param str schema_registry: Enable Schema-Registry service
+        :param str schema_registry: Enable schema_registry
         """
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
@@ -17010,8 +17517,7 @@ class GetKafkaKafkaUserConfigPublicAccessResult(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_connect from the public internet 
-        for service nodes that are in a project VPC or another type of private network
+        Enable kafka_connect
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -17019,8 +17525,7 @@ class GetKafkaKafkaUserConfigPublicAccessResult(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         """
-        Allow clients to connect to kafka_rest from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable kafka_rest
         """
         return pulumi.get(self, "kafka_rest")
 
@@ -17037,7 +17542,7 @@ class GetKafkaKafkaUserConfigPublicAccessResult(dict):
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[str]:
         """
-        Enable Schema-Registry service
+        Enable schema_registry
         """
         return pulumi.get(self, "schema_registry")
 
@@ -17635,11 +18140,12 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
-                 m3_version: Optional[str] = None):
+                 m3_version: Optional[str] = None,
+                 m3aggregator_version: Optional[str] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param str m3_version: M3 major version
+        :param str m3aggregator_version: M3 major version
         """
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
@@ -17647,6 +18153,8 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
+        if m3aggregator_version is not None:
+            pulumi.set(__self__, "m3aggregator_version", m3aggregator_version)
 
     @property
     @pulumi.getter(name="customDomain")
@@ -17667,10 +18175,15 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     @property
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
+        return pulumi.get(self, "m3_version")
+
+    @property
+    @pulumi.getter(name="m3aggregatorVersion")
+    def m3aggregator_version(self) -> Optional[str]:
         """
         M3 major version
         """
-        return pulumi.get(self, "m3_version")
+        return pulumi.get(self, "m3aggregator_version")
 
 
 @pulumi.output_type
@@ -17760,6 +18273,7 @@ class GetM3DbM3dbUserConfigResult(dict):
                  limits: Optional['outputs.GetM3DbM3dbUserConfigLimitsResult'] = None,
                  m3_version: Optional[str] = None,
                  m3coordinator_enable_graphite_carbon_ingest: Optional[str] = None,
+                 m3db_version: Optional[str] = None,
                  namespaces: Optional[Sequence['outputs.GetM3DbM3dbUserConfigNamespaceResult']] = None,
                  private_access: Optional['outputs.GetM3DbM3dbUserConfigPrivateAccessResult'] = None,
                  project_to_fork_from: Optional[str] = None,
@@ -17769,10 +18283,10 @@ class GetM3DbM3dbUserConfigResult(dict):
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param 'GetM3DbM3dbUserConfigLimitsArgs' limits: M3 limits
-        :param str m3_version: M3 major version
         :param str m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon 
                plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
                metrics are written to aggregated namespaces only.
+        :param str m3db_version: M3 major version
         :param Sequence['GetM3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
         :param 'GetM3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
         :param str project_to_fork_from: Name of another project to fork a service from. This has
@@ -17791,6 +18305,8 @@ class GetM3DbM3dbUserConfigResult(dict):
             pulumi.set(__self__, "m3_version", m3_version)
         if m3coordinator_enable_graphite_carbon_ingest is not None:
             pulumi.set(__self__, "m3coordinator_enable_graphite_carbon_ingest", m3coordinator_enable_graphite_carbon_ingest)
+        if m3db_version is not None:
+            pulumi.set(__self__, "m3db_version", m3db_version)
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if private_access is not None:
@@ -17829,9 +18345,6 @@ class GetM3DbM3dbUserConfigResult(dict):
     @property
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
-        """
-        M3 major version
-        """
         return pulumi.get(self, "m3_version")
 
     @property
@@ -17843,6 +18356,14 @@ class GetM3DbM3dbUserConfigResult(dict):
         metrics are written to aggregated namespaces only.
         """
         return pulumi.get(self, "m3coordinator_enable_graphite_carbon_ingest")
+
+    @property
+    @pulumi.getter(name="m3dbVersion")
+    def m3db_version(self) -> Optional[str]:
+        """
+        M3 major version
+        """
+        return pulumi.get(self, "m3db_version")
 
     @property
     @pulumi.getter
@@ -18978,6 +19499,7 @@ class GetPgPgUserConfigResult(dict):
                  pgbouncer: Optional['outputs.GetPgPgUserConfigPgbouncerResult'] = None,
                  pglookout: Optional['outputs.GetPgPgUserConfigPglookoutResult'] = None,
                  private_access: Optional['outputs.GetPgPgUserConfigPrivateAccessResult'] = None,
+                 privatelink_access: Optional['outputs.GetPgPgUserConfigPrivatelinkAccessResult'] = None,
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetPgPgUserConfigPublicAccessResult'] = None,
                  recovery_target_time: Optional[str] = None,
@@ -19003,11 +19525,11 @@ class GetPgPgUserConfigResult(dict):
         :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
                This has effect only when a new service is being created.
         :param str pg_version: PostgreSQL major version.
-        :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: Enable pgbouncer.
         :param 'GetPgPgUserConfigPglookoutArgs' pglookout: PGLookout settings.
         :param 'GetPgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param str project_to_fork_from: (Optional) Name of another project to fork a service from. This has
+        :param 'GetPgPgUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param str project_to_fork_from: Name of another project to fork a service from. This has
                effect only when a new service is being created.
         :param 'GetPgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect 
@@ -19052,6 +19574,8 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if project_to_fork_from is not None:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
@@ -19160,8 +19684,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional['outputs.GetPgPgUserConfigPgbouncerResult']:
         """
-        Allow clients to connect to pgbouncer from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -19182,10 +19705,18 @@ class GetPgPgUserConfigResult(dict):
         return pulumi.get(self, "private_access")
 
     @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.GetPgPgUserConfigPrivatelinkAccessResult']:
+        """
+        Allow access to selected service components through Privatelink.
+        """
+        return pulumi.get(self, "privatelink_access")
+
+    @property
     @pulumi.getter(name="projectToForkFrom")
     def project_to_fork_from(self) -> Optional[str]:
         """
-        (Optional) Name of another project to fork a service from. This has
+        Name of another project to fork a service from. This has
         effect only when a new service is being created.
         """
         return pulumi.get(self, "project_to_fork_from")
@@ -20021,8 +20552,7 @@ class GetPgPgUserConfigPrivateAccessResult(dict):
                  prometheus: Optional[str] = None):
         """
         :param str pg: PostgreSQL specific server provided values.
-        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str pgbouncer: Enable pgbouncer.
         :param str prometheus: Allow clients to connect to prometheus from the public internet for 
                service nodes that are in a project VPC or another type of private network
         """
@@ -20045,8 +20575,7 @@ class GetPgPgUserConfigPrivateAccessResult(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         """
-        Allow clients to connect to pgbouncer from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -20061,6 +20590,37 @@ class GetPgPgUserConfigPrivateAccessResult(dict):
 
 
 @pulumi.output_type
+class GetPgPgUserConfigPrivatelinkAccessResult(dict):
+    def __init__(__self__, *,
+                 pg: Optional[str] = None,
+                 pgbouncer: Optional[str] = None):
+        """
+        :param str pg: PostgreSQL specific server provided values.
+        :param str pgbouncer: Enable pgbouncer.
+        """
+        if pg is not None:
+            pulumi.set(__self__, "pg", pg)
+        if pgbouncer is not None:
+            pulumi.set(__self__, "pgbouncer", pgbouncer)
+
+    @property
+    @pulumi.getter
+    def pg(self) -> Optional[str]:
+        """
+        PostgreSQL specific server provided values.
+        """
+        return pulumi.get(self, "pg")
+
+    @property
+    @pulumi.getter
+    def pgbouncer(self) -> Optional[str]:
+        """
+        Enable pgbouncer.
+        """
+        return pulumi.get(self, "pgbouncer")
+
+
+@pulumi.output_type
 class GetPgPgUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  pg: Optional[str] = None,
@@ -20068,8 +20628,7 @@ class GetPgPgUserConfigPublicAccessResult(dict):
                  prometheus: Optional[str] = None):
         """
         :param str pg: PostgreSQL specific server provided values.
-        :param str pgbouncer: Allow clients to connect to pgbouncer from the public internet for 
-               service nodes that are in a project VPC or another type of private network
+        :param str pgbouncer: Enable pgbouncer.
         :param str prometheus: Allow clients to connect to prometheus from the public internet for 
                service nodes that are in a project VPC or another type of private network
         """
@@ -20092,8 +20651,7 @@ class GetPgPgUserConfigPublicAccessResult(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         """
-        Allow clients to connect to pgbouncer from the public internet for 
-        service nodes that are in a project VPC or another type of private network
+        Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -20723,6 +21281,7 @@ class GetServiceElasticsearchUserConfigResult(dict):
                  elasticsearch: Optional['outputs.GetServiceElasticsearchUserConfigElasticsearchResult'] = None,
                  elasticsearch_version: Optional[str] = None,
                  index_patterns: Optional[Sequence['outputs.GetServiceElasticsearchUserConfigIndexPatternResult']] = None,
+                 index_template: Optional['outputs.GetServiceElasticsearchUserConfigIndexTemplateResult'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kibana: Optional['outputs.GetServiceElasticsearchUserConfigKibanaResult'] = None,
                  max_index_count: Optional[str] = None,
@@ -20741,6 +21300,8 @@ class GetServiceElasticsearchUserConfigResult(dict):
             pulumi.set(__self__, "elasticsearch_version", elasticsearch_version)
         if index_patterns is not None:
             pulumi.set(__self__, "index_patterns", index_patterns)
+        if index_template is not None:
+            pulumi.set(__self__, "index_template", index_template)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kibana is not None:
@@ -20782,6 +21343,11 @@ class GetServiceElasticsearchUserConfigResult(dict):
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[Sequence['outputs.GetServiceElasticsearchUserConfigIndexPatternResult']]:
         return pulumi.get(self, "index_patterns")
+
+    @property
+    @pulumi.getter(name="indexTemplate")
+    def index_template(self) -> Optional['outputs.GetServiceElasticsearchUserConfigIndexTemplateResult']:
+        return pulumi.get(self, "index_template")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -21048,6 +21614,35 @@ class GetServiceElasticsearchUserConfigIndexPatternResult(dict):
     @pulumi.getter
     def pattern(self) -> Optional[str]:
         return pulumi.get(self, "pattern")
+
+
+@pulumi.output_type
+class GetServiceElasticsearchUserConfigIndexTemplateResult(dict):
+    def __init__(__self__, *,
+                 mapping_nested_objects_limit: Optional[str] = None,
+                 number_of_replicas: Optional[str] = None,
+                 number_of_shards: Optional[str] = None):
+        if mapping_nested_objects_limit is not None:
+            pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
+        if number_of_replicas is not None:
+            pulumi.set(__self__, "number_of_replicas", number_of_replicas)
+        if number_of_shards is not None:
+            pulumi.set(__self__, "number_of_shards", number_of_shards)
+
+    @property
+    @pulumi.getter(name="mappingNestedObjectsLimit")
+    def mapping_nested_objects_limit(self) -> Optional[str]:
+        return pulumi.get(self, "mapping_nested_objects_limit")
+
+    @property
+    @pulumi.getter(name="numberOfReplicas")
+    def number_of_replicas(self) -> Optional[str]:
+        return pulumi.get(self, "number_of_replicas")
+
+    @property
+    @pulumi.getter(name="numberOfShards")
+    def number_of_shards(self) -> Optional[str]:
+        return pulumi.get(self, "number_of_shards")
 
 
 @pulumi.output_type
@@ -22095,12 +22690,22 @@ class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult(di
 class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
     def __init__(__self__, *,
                  bootstrap_servers: Optional[str] = None,
+                 sasl_mechanism: Optional[str] = None,
+                 sasl_plain_password: Optional[str] = None,
+                 sasl_plain_username: Optional[str] = None,
                  security_protocol: Optional[str] = None,
                  ssl_ca_cert: Optional[str] = None,
                  ssl_client_cert: Optional[str] = None,
-                 ssl_client_key: Optional[str] = None):
+                 ssl_client_key: Optional[str] = None,
+                 ssl_endpoint_identification_algorithm: Optional[str] = None):
         if bootstrap_servers is not None:
             pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        if sasl_mechanism is not None:
+            pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
+        if sasl_plain_password is not None:
+            pulumi.set(__self__, "sasl_plain_password", sasl_plain_password)
+        if sasl_plain_username is not None:
+            pulumi.set(__self__, "sasl_plain_username", sasl_plain_username)
         if security_protocol is not None:
             pulumi.set(__self__, "security_protocol", security_protocol)
         if ssl_ca_cert is not None:
@@ -22109,11 +22714,28 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
             pulumi.set(__self__, "ssl_client_cert", ssl_client_cert)
         if ssl_client_key is not None:
             pulumi.set(__self__, "ssl_client_key", ssl_client_key)
+        if ssl_endpoint_identification_algorithm is not None:
+            pulumi.set(__self__, "ssl_endpoint_identification_algorithm", ssl_endpoint_identification_algorithm)
 
     @property
     @pulumi.getter(name="bootstrapServers")
     def bootstrap_servers(self) -> Optional[str]:
         return pulumi.get(self, "bootstrap_servers")
+
+    @property
+    @pulumi.getter(name="saslMechanism")
+    def sasl_mechanism(self) -> Optional[str]:
+        return pulumi.get(self, "sasl_mechanism")
+
+    @property
+    @pulumi.getter(name="saslPlainPassword")
+    def sasl_plain_password(self) -> Optional[str]:
+        return pulumi.get(self, "sasl_plain_password")
+
+    @property
+    @pulumi.getter(name="saslPlainUsername")
+    def sasl_plain_username(self) -> Optional[str]:
+        return pulumi.get(self, "sasl_plain_username")
 
     @property
     @pulumi.getter(name="securityProtocol")
@@ -22134,6 +22756,48 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
     @pulumi.getter(name="sslClientKey")
     def ssl_client_key(self) -> Optional[str]:
         return pulumi.get(self, "ssl_client_key")
+
+    @property
+    @pulumi.getter(name="sslEndpointIdentificationAlgorithm")
+    def ssl_endpoint_identification_algorithm(self) -> Optional[str]:
+        return pulumi.get(self, "ssl_endpoint_identification_algorithm")
+
+
+@pulumi.output_type
+class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult(dict):
+    def __init__(__self__, *,
+                 authentication: Optional[str] = None,
+                 basic_auth_password: Optional[str] = None,
+                 basic_auth_username: Optional[str] = None,
+                 url: Optional[str] = None):
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if basic_auth_password is not None:
+            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+        if basic_auth_username is not None:
+            pulumi.set(__self__, "basic_auth_username", basic_auth_username)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[str]:
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter(name="basicAuthPassword")
+    def basic_auth_password(self) -> Optional[str]:
+        return pulumi.get(self, "basic_auth_password")
+
+    @property
+    @pulumi.getter(name="basicAuthUsername")
+    def basic_auth_username(self) -> Optional[str]:
+        return pulumi.get(self, "basic_auth_username")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -22755,6 +23419,12 @@ class GetServiceIntegrationRsyslogUserConfigResult(dict):
 
 
 @pulumi.output_type
+class GetServiceIntegrationSchemaRegistryProxyUserConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class GetServiceIntegrationSignalfxUserConfigResult(dict):
     def __init__(__self__):
         pass
@@ -23055,6 +23725,7 @@ class GetServiceKafkaUserConfigResult(dict):
                  kafka_rest_config: Optional['outputs.GetServiceKafkaUserConfigKafkaRestConfigResult'] = None,
                  kafka_version: Optional[str] = None,
                  private_access: Optional['outputs.GetServiceKafkaUserConfigPrivateAccessResult'] = None,
+                 privatelink_access: Optional['outputs.GetServiceKafkaUserConfigPrivatelinkAccessResult'] = None,
                  public_access: Optional['outputs.GetServiceKafkaUserConfigPublicAccessResult'] = None,
                  schema_registry: Optional[str] = None,
                  schema_registry_config: Optional['outputs.GetServiceKafkaUserConfigSchemaRegistryConfigResult'] = None):
@@ -23078,6 +23749,8 @@ class GetServiceKafkaUserConfigResult(dict):
             pulumi.set(__self__, "kafka_version", kafka_version)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if schema_registry is not None:
@@ -23134,6 +23807,11 @@ class GetServiceKafkaUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServiceKafkaUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.GetServiceKafkaUserConfigPrivatelinkAccessResult']:
+        return pulumi.get(self, "privatelink_access")
 
     @property
     @pulumi.getter(name="publicAccess")
@@ -23641,6 +24319,43 @@ class GetServiceKafkaUserConfigPrivateAccessResult(dict):
 
 
 @pulumi.output_type
+class GetServiceKafkaUserConfigPrivatelinkAccessResult(dict):
+    def __init__(__self__, *,
+                 kafka: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 kafka_rest: Optional[str] = None,
+                 schema_registry: Optional[str] = None):
+        if kafka is not None:
+            pulumi.set(__self__, "kafka", kafka)
+        if kafka_connect is not None:
+            pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if kafka_rest is not None:
+            pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def kafka(self) -> Optional[str]:
+        return pulumi.get(self, "kafka")
+
+    @property
+    @pulumi.getter(name="kafkaConnect")
+    def kafka_connect(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter(name="kafkaRest")
+    def kafka_rest(self) -> Optional[str]:
+        return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> Optional[str]:
+        return pulumi.get(self, "schema_registry")
+
+
+@pulumi.output_type
 class GetServiceKafkaUserConfigPublicAccessResult(dict):
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
@@ -24105,6 +24820,7 @@ class GetServicePgUserConfigResult(dict):
                  pgbouncer: Optional['outputs.GetServicePgUserConfigPgbouncerResult'] = None,
                  pglookout: Optional['outputs.GetServicePgUserConfigPglookoutResult'] = None,
                  private_access: Optional['outputs.GetServicePgUserConfigPrivateAccessResult'] = None,
+                 privatelink_access: Optional['outputs.GetServicePgUserConfigPrivatelinkAccessResult'] = None,
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetServicePgUserConfigPublicAccessResult'] = None,
                  recovery_target_time: Optional[str] = None,
@@ -24140,6 +24856,8 @@ class GetServicePgUserConfigResult(dict):
             pulumi.set(__self__, "pglookout", pglookout)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if project_to_fork_from is not None:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
@@ -24223,6 +24941,11 @@ class GetServicePgUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetServicePgUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.GetServicePgUserConfigPrivatelinkAccessResult']:
+        return pulumi.get(self, "privatelink_access")
 
     @property
     @pulumi.getter(name="projectToForkFrom")
@@ -24749,6 +25472,27 @@ class GetServicePgUserConfigPrivateAccessResult(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
+
+
+@pulumi.output_type
+class GetServicePgUserConfigPrivatelinkAccessResult(dict):
+    def __init__(__self__, *,
+                 pg: Optional[str] = None,
+                 pgbouncer: Optional[str] = None):
+        if pg is not None:
+            pulumi.set(__self__, "pg", pg)
+        if pgbouncer is not None:
+            pulumi.set(__self__, "pgbouncer", pgbouncer)
+
+    @property
+    @pulumi.getter
+    def pg(self) -> Optional[str]:
+        return pulumi.get(self, "pg")
+
+    @property
+    @pulumi.getter
+    def pgbouncer(self) -> Optional[str]:
+        return pulumi.get(self, "pgbouncer")
 
 
 @pulumi.output_type

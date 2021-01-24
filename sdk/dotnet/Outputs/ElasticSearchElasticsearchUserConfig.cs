@@ -40,6 +40,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ElasticSearchElasticsearchUserConfigIndexPattern> IndexPatterns;
         /// <summary>
+        /// Template settings for all new indexe.
+        /// </summary>
+        public readonly Outputs.ElasticSearchElasticsearchUserConfigIndexTemplate? IndexTemplate;
+        /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
@@ -87,6 +91,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.ElasticSearchElasticsearchUserConfigIndexPattern> indexPatterns,
 
+            Outputs.ElasticSearchElasticsearchUserConfigIndexTemplate? indexTemplate,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.ElasticSearchElasticsearchUserConfigKibana? kibana,
@@ -108,6 +114,7 @@ namespace Pulumi.Aiven.Outputs
             Elasticsearch = elasticsearch;
             ElasticsearchVersion = elasticsearchVersion;
             IndexPatterns = indexPatterns;
+            IndexTemplate = indexTemplate;
             IpFilters = ipFilters;
             Kibana = kibana;
             MaxIndexCount = maxIndexCount;

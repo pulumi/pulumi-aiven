@@ -21,7 +21,7 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, dashboard_user_config=None, datadog_user_config=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, id=None, integration_type=None, kafka_connect_user_config=None, kafka_logs_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, m3aggregator_user_config=None, m3coordinator_user_config=None, metrics_user_config=None, mirrormaker_user_config=None, project=None, prometheus_user_config=None, read_replica_user_config=None, rsyslog_user_config=None, signalfx_user_config=None, source_endpoint_id=None, source_service_name=None):
+    def __init__(__self__, dashboard_user_config=None, datadog_user_config=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, id=None, integration_type=None, kafka_connect_user_config=None, kafka_logs_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, m3aggregator_user_config=None, m3coordinator_user_config=None, metrics_user_config=None, mirrormaker_user_config=None, project=None, prometheus_user_config=None, read_replica_user_config=None, rsyslog_user_config=None, schema_registry_proxy_user_config=None, signalfx_user_config=None, source_endpoint_id=None, source_service_name=None):
         if dashboard_user_config and not isinstance(dashboard_user_config, dict):
             raise TypeError("Expected argument 'dashboard_user_config' to be a dict")
         pulumi.set(__self__, "dashboard_user_config", dashboard_user_config)
@@ -85,6 +85,9 @@ class GetServiceIntegrationResult:
         if rsyslog_user_config and not isinstance(rsyslog_user_config, dict):
             raise TypeError("Expected argument 'rsyslog_user_config' to be a dict")
         pulumi.set(__self__, "rsyslog_user_config", rsyslog_user_config)
+        if schema_registry_proxy_user_config and not isinstance(schema_registry_proxy_user_config, dict):
+            raise TypeError("Expected argument 'schema_registry_proxy_user_config' to be a dict")
+        pulumi.set(__self__, "schema_registry_proxy_user_config", schema_registry_proxy_user_config)
         if signalfx_user_config and not isinstance(signalfx_user_config, dict):
             raise TypeError("Expected argument 'signalfx_user_config' to be a dict")
         pulumi.set(__self__, "signalfx_user_config", signalfx_user_config)
@@ -204,6 +207,11 @@ class GetServiceIntegrationResult:
         return pulumi.get(self, "rsyslog_user_config")
 
     @property
+    @pulumi.getter(name="schemaRegistryProxyUserConfig")
+    def schema_registry_proxy_user_config(self) -> Optional['outputs.GetServiceIntegrationSchemaRegistryProxyUserConfigResult']:
+        return pulumi.get(self, "schema_registry_proxy_user_config")
+
+    @property
     @pulumi.getter(name="signalfxUserConfig")
     def signalfx_user_config(self) -> Optional['outputs.GetServiceIntegrationSignalfxUserConfigResult']:
         return pulumi.get(self, "signalfx_user_config")
@@ -246,6 +254,7 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             prometheus_user_config=self.prometheus_user_config,
             read_replica_user_config=self.read_replica_user_config,
             rsyslog_user_config=self.rsyslog_user_config,
+            schema_registry_proxy_user_config=self.schema_registry_proxy_user_config,
             signalfx_user_config=self.signalfx_user_config,
             source_endpoint_id=self.source_endpoint_id,
             source_service_name=self.source_service_name)
@@ -271,6 +280,7 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
                             prometheus_user_config: Optional[pulumi.InputType['GetServiceIntegrationPrometheusUserConfigArgs']] = None,
                             read_replica_user_config: Optional[pulumi.InputType['GetServiceIntegrationReadReplicaUserConfigArgs']] = None,
                             rsyslog_user_config: Optional[pulumi.InputType['GetServiceIntegrationRsyslogUserConfigArgs']] = None,
+                            schema_registry_proxy_user_config: Optional[pulumi.InputType['GetServiceIntegrationSchemaRegistryProxyUserConfigArgs']] = None,
                             signalfx_user_config: Optional[pulumi.InputType['GetServiceIntegrationSignalfxUserConfigArgs']] = None,
                             source_endpoint_id: Optional[str] = None,
                             source_service_name: Optional[str] = None,
@@ -325,6 +335,7 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
     __args__['prometheusUserConfig'] = prometheus_user_config
     __args__['readReplicaUserConfig'] = read_replica_user_config
     __args__['rsyslogUserConfig'] = rsyslog_user_config
+    __args__['schemaRegistryProxyUserConfig'] = schema_registry_proxy_user_config
     __args__['signalfxUserConfig'] = signalfx_user_config
     __args__['sourceEndpointId'] = source_endpoint_id
     __args__['sourceServiceName'] = source_service_name
@@ -356,6 +367,7 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
         prometheus_user_config=__ret__.prometheus_user_config,
         read_replica_user_config=__ret__.read_replica_user_config,
         rsyslog_user_config=__ret__.rsyslog_user_config,
+        schema_registry_proxy_user_config=__ret__.schema_registry_proxy_user_config,
         signalfx_user_config=__ret__.signalfx_user_config,
         source_endpoint_id=__ret__.source_endpoint_id,
         source_service_name=__ret__.source_service_name)

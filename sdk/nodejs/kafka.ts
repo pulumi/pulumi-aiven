@@ -87,8 +87,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public readonly defaultAcl!: pulumi.Output<boolean | undefined>;
     /**
-     * Allow clients to connect to kafka from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Enable kafka
      */
     public readonly kafka!: pulumi.Output<outputs.KafkaKafka>;
     /**
@@ -274,8 +273,7 @@ export interface KafkaState {
      */
     readonly defaultAcl?: pulumi.Input<boolean>;
     /**
-     * Allow clients to connect to kafka from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Enable kafka
      */
     readonly kafka?: pulumi.Input<inputs.KafkaKafka>;
     /**
@@ -386,8 +384,7 @@ export interface KafkaArgs {
      */
     readonly defaultAcl?: pulumi.Input<boolean>;
     /**
-     * Allow clients to connect to kafka from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Enable kafka
      */
     readonly kafka?: pulumi.Input<inputs.KafkaKafka>;
     /**

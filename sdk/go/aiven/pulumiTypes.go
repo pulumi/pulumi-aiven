@@ -1334,6 +1334,8 @@ type ElasticSearchElasticsearchUserConfig struct {
 	// Glob pattern and number of indexes matching that pattern to
 	// be kept.
 	IndexPatterns []ElasticSearchElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	// Template settings for all new indexe.
+	IndexTemplate *ElasticSearchElasticsearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters []string `pulumi:"ipFilters"`
 	// Allow clients to connect to kibana from the public internet for
@@ -1383,6 +1385,8 @@ type ElasticSearchElasticsearchUserConfigArgs struct {
 	// Glob pattern and number of indexes matching that pattern to
 	// be kept.
 	IndexPatterns ElasticSearchElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	// Template settings for all new indexe.
+	IndexTemplate ElasticSearchElasticsearchUserConfigIndexTemplatePtrInput `pulumi:"indexTemplate"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Allow clients to connect to kibana from the public internet for
@@ -1516,6 +1520,13 @@ func (o ElasticSearchElasticsearchUserConfigOutput) IndexPatterns() ElasticSearc
 	}).(ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput)
 }
 
+// Template settings for all new indexe.
+func (o ElasticSearchElasticsearchUserConfigOutput) IndexTemplate() ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigIndexTemplate {
+		return v.IndexTemplate
+	}).(ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
 // allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 func (o ElasticSearchElasticsearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
@@ -1637,6 +1648,16 @@ func (o ElasticSearchElasticsearchUserConfigPtrOutput) IndexPatterns() ElasticSe
 		}
 		return v.IndexPatterns
 	}).(ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput)
+}
+
+// Template settings for all new indexe.
+func (o ElasticSearchElasticsearchUserConfigPtrOutput) IndexTemplate() ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfig) *ElasticSearchElasticsearchUserConfigIndexTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.IndexTemplate
+	}).(ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput)
 }
 
 // allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -2574,6 +2595,185 @@ func (o ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticSearchElasticsearchUserConfigIndexPattern {
 		return vs[0].([]ElasticSearchElasticsearchUserConfigIndexPattern)[vs[1].(int)]
 	}).(ElasticSearchElasticsearchUserConfigIndexPatternOutput)
+}
+
+type ElasticSearchElasticsearchUserConfigIndexTemplate struct {
+	// The maximum number of nested JSON objects that
+	// a single document can contain across all nested types. This limit helps to prevent out of
+	// memory errors when a document contains too many nested objects. Default is 10000.
+	MappingNestedObjectsLimit *string `pulumi:"mappingNestedObjectsLimit"`
+	// The number of replicas each primary shard has.
+	NumberOfReplicas *string `pulumi:"numberOfReplicas"`
+	// The number of primary shards that an index should have.
+	NumberOfShards *string `pulumi:"numberOfShards"`
+}
+
+// ElasticSearchElasticsearchUserConfigIndexTemplateInput is an input type that accepts ElasticSearchElasticsearchUserConfigIndexTemplateArgs and ElasticSearchElasticsearchUserConfigIndexTemplateOutput values.
+// You can construct a concrete instance of `ElasticSearchElasticsearchUserConfigIndexTemplateInput` via:
+//
+//          ElasticSearchElasticsearchUserConfigIndexTemplateArgs{...}
+type ElasticSearchElasticsearchUserConfigIndexTemplateInput interface {
+	pulumi.Input
+
+	ToElasticSearchElasticsearchUserConfigIndexTemplateOutput() ElasticSearchElasticsearchUserConfigIndexTemplateOutput
+	ToElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(context.Context) ElasticSearchElasticsearchUserConfigIndexTemplateOutput
+}
+
+type ElasticSearchElasticsearchUserConfigIndexTemplateArgs struct {
+	// The maximum number of nested JSON objects that
+	// a single document can contain across all nested types. This limit helps to prevent out of
+	// memory errors when a document contains too many nested objects. Default is 10000.
+	MappingNestedObjectsLimit pulumi.StringPtrInput `pulumi:"mappingNestedObjectsLimit"`
+	// The number of replicas each primary shard has.
+	NumberOfReplicas pulumi.StringPtrInput `pulumi:"numberOfReplicas"`
+	// The number of primary shards that an index should have.
+	NumberOfShards pulumi.StringPtrInput `pulumi:"numberOfShards"`
+}
+
+func (ElasticSearchElasticsearchUserConfigIndexTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i ElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToElasticSearchElasticsearchUserConfigIndexTemplateOutput() ElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return i.ToElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(context.Background())
+}
+
+func (i ElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) ElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchElasticsearchUserConfigIndexTemplateOutput)
+}
+
+func (i ElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchElasticsearchUserConfigIndexTemplateOutput).ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx)
+}
+
+// ElasticSearchElasticsearchUserConfigIndexTemplatePtrInput is an input type that accepts ElasticSearchElasticsearchUserConfigIndexTemplateArgs, ElasticSearchElasticsearchUserConfigIndexTemplatePtr and ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput values.
+// You can construct a concrete instance of `ElasticSearchElasticsearchUserConfigIndexTemplatePtrInput` via:
+//
+//          ElasticSearchElasticsearchUserConfigIndexTemplateArgs{...}
+//
+//  or:
+//
+//          nil
+type ElasticSearchElasticsearchUserConfigIndexTemplatePtrInput interface {
+	pulumi.Input
+
+	ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput
+	ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Context) ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput
+}
+
+type elasticSearchElasticsearchUserConfigIndexTemplatePtrType ElasticSearchElasticsearchUserConfigIndexTemplateArgs
+
+func ElasticSearchElasticsearchUserConfigIndexTemplatePtr(v *ElasticSearchElasticsearchUserConfigIndexTemplateArgs) ElasticSearchElasticsearchUserConfigIndexTemplatePtrInput {
+	return (*elasticSearchElasticsearchUserConfigIndexTemplatePtrType)(v)
+}
+
+func (*elasticSearchElasticsearchUserConfigIndexTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i *elasticSearchElasticsearchUserConfigIndexTemplatePtrType) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSearchElasticsearchUserConfigIndexTemplatePtrType) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
+type ElasticSearchElasticsearchUserConfigIndexTemplateOutput struct{ *pulumi.OutputState }
+
+func (ElasticSearchElasticsearchUserConfigIndexTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o ElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToElasticSearchElasticsearchUserConfigIndexTemplateOutput() ElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o ElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) ElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o ElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigIndexTemplate) *ElasticSearchElasticsearchUserConfigIndexTemplate {
+		return &v
+	}).(ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
+// The maximum number of nested JSON objects that
+// a single document can contain across all nested types. This limit helps to prevent out of
+// memory errors when a document contains too many nested objects. Default is 10000.
+func (o ElasticSearchElasticsearchUserConfigIndexTemplateOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigIndexTemplate) *string { return v.MappingNestedObjectsLimit }).(pulumi.StringPtrOutput)
+}
+
+// The number of replicas each primary shard has.
+func (o ElasticSearchElasticsearchUserConfigIndexTemplateOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfReplicas }).(pulumi.StringPtrOutput)
+}
+
+// The number of primary shards that an index should have.
+func (o ElasticSearchElasticsearchUserConfigIndexTemplateOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfShards }).(pulumi.StringPtrOutput)
+}
+
+type ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) ToElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) Elem() ElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigIndexTemplate) ElasticSearchElasticsearchUserConfigIndexTemplate {
+		return *v
+	}).(ElasticSearchElasticsearchUserConfigIndexTemplateOutput)
+}
+
+// The maximum number of nested JSON objects that
+// a single document can contain across all nested types. This limit helps to prevent out of
+// memory errors when a document contains too many nested objects. Default is 10000.
+func (o ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MappingNestedObjectsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of replicas each primary shard has.
+func (o ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfReplicas
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of primary shards that an index should have.
+func (o ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfShards
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElasticSearchElasticsearchUserConfigKibana struct {
@@ -8752,18 +8952,15 @@ type KafkaKafkaUserConfig struct {
 	CustomDomain *string `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilters []string `pulumi:"ipFilters"`
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka *KafkaKafkaUserConfigKafka `pulumi:"kafka"`
 	// Kafka authentication methods
 	KafkaAuthenticationMethods *KafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	// Kafka Connect configuration values
 	KafkaConnectConfig *KafkaKafkaUserConfigKafkaConnectConfig `pulumi:"kafkaConnectConfig"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
 	KafkaRest *string `pulumi:"kafkaRest"`
 	// Kafka-REST configuration
 	KafkaRestConfig *KafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
@@ -8771,6 +8968,8 @@ type KafkaKafkaUserConfig struct {
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *KafkaKafkaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *KafkaKafkaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *KafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Enable Schema-Registry service
@@ -8795,18 +8994,15 @@ type KafkaKafkaUserConfigArgs struct {
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka KafkaKafkaUserConfigKafkaPtrInput `pulumi:"kafka"`
 	// Kafka authentication methods
 	KafkaAuthenticationMethods KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	// Kafka Connect configuration values
 	KafkaConnectConfig KafkaKafkaUserConfigKafkaConnectConfigPtrInput `pulumi:"kafkaConnectConfig"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
 	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
 	// Kafka-REST configuration
 	KafkaRestConfig KafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
@@ -8814,6 +9010,8 @@ type KafkaKafkaUserConfigArgs struct {
 	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess KafkaKafkaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess KafkaKafkaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess KafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Enable Schema-Registry service
@@ -8909,8 +9107,7 @@ func (o KafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Allow clients to connect to kafka from the public internet for service
-// nodes that are in a project VPC or another type of private network
+// Enable kafka
 func (o KafkaKafkaUserConfigOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka { return v.Kafka }).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
@@ -8922,8 +9119,7 @@ func (o KafkaKafkaUserConfigOutput) KafkaAuthenticationMethods() KafkaKafkaUserC
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-// Allow clients to connect to kafkaConnect from the public internet
-// for service nodes that are in a project VPC or another type of private network
+// Enable kafka_connect
 func (o KafkaKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -8933,8 +9129,7 @@ func (o KafkaKafkaUserConfigOutput) KafkaConnectConfig() KafkaKafkaUserConfigKaf
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaConnectConfig { return v.KafkaConnectConfig }).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-// Allow clients to connect to kafkaRest from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable kafka_rest
 func (o KafkaKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
@@ -8952,6 +9147,11 @@ func (o KafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 // Allow access to selected service ports from private networks
 func (o KafkaKafkaUserConfigOutput) PrivateAccess() KafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink
+func (o KafkaKafkaUserConfigOutput) PrivatelinkAccess() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -9007,8 +9207,7 @@ func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Allow clients to connect to kafka from the public internet for service
-// nodes that are in a project VPC or another type of private network
+// Enable kafka
 func (o KafkaKafkaUserConfigPtrOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka {
 		if v == nil {
@@ -9028,8 +9227,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() KafkaKafkaUs
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-// Allow clients to connect to kafkaConnect from the public internet
-// for service nodes that are in a project VPC or another type of private network
+// Enable kafka_connect
 func (o KafkaKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9049,8 +9247,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaConnectConfig() KafkaKafkaUserConfig
 	}).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-// Allow clients to connect to kafkaRest from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable kafka_rest
 func (o KafkaKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9088,6 +9285,16 @@ func (o KafkaKafkaUserConfigPtrOutput) PrivateAccess() KafkaKafkaUserConfigPriva
 		}
 		return v.PrivateAccess
 	}).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink
+func (o KafkaKafkaUserConfigPtrOutput) PrivatelinkAccess() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivatelinkAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatelinkAccess
+	}).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
 // Allow access to selected service ports from the public Internet
@@ -11022,15 +11229,200 @@ func (o KafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-type KafkaKafkaUserConfigPublicAccess struct {
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+type KafkaKafkaUserConfigPrivatelinkAccess struct {
+	// Enable kafka
 	Kafka *string `pulumi:"kafka"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect *string `pulumi:"kafkaConnect"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
+	KafkaRest *string `pulumi:"kafkaRest"`
+	// Enable Schema-Registry service
+	SchemaRegistry *string `pulumi:"schemaRegistry"`
+}
+
+// KafkaKafkaUserConfigPrivatelinkAccessInput is an input type that accepts KafkaKafkaUserConfigPrivatelinkAccessArgs and KafkaKafkaUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigPrivatelinkAccessInput` via:
+//
+//          KafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+type KafkaKafkaUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigPrivatelinkAccessOutput() KafkaKafkaUserConfigPrivatelinkAccessOutput
+	ToKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Context) KafkaKafkaUserConfigPrivatelinkAccessOutput
+}
+
+type KafkaKafkaUserConfigPrivatelinkAccessArgs struct {
+	// Enable kafka
+	Kafka pulumi.StringPtrInput `pulumi:"kafka"`
+	// Enable kafka_connect
+	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	// Enable kafka_rest
+	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	// Enable Schema-Registry service
+	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
+}
+
+func (KafkaKafkaUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i KafkaKafkaUserConfigPrivatelinkAccessArgs) ToKafkaKafkaUserConfigPrivatelinkAccessOutput() KafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return i.ToKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigPrivatelinkAccessArgs) ToKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) KafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+func (i KafkaKafkaUserConfigPrivatelinkAccessArgs) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigPrivatelinkAccessArgs) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigPrivatelinkAccessOutput).ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// KafkaKafkaUserConfigPrivatelinkAccessPtrInput is an input type that accepts KafkaKafkaUserConfigPrivatelinkAccessArgs, KafkaKafkaUserConfigPrivatelinkAccessPtr and KafkaKafkaUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          KafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type KafkaKafkaUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput
+	ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) KafkaKafkaUserConfigPrivatelinkAccessPtrOutput
+}
+
+type kafkaKafkaUserConfigPrivatelinkAccessPtrType KafkaKafkaUserConfigPrivatelinkAccessArgs
+
+func KafkaKafkaUserConfigPrivatelinkAccessPtr(v *KafkaKafkaUserConfigPrivatelinkAccessArgs) KafkaKafkaUserConfigPrivatelinkAccessPtrInput {
+	return (*kafkaKafkaUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*kafkaKafkaUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *kafkaKafkaUserConfigPrivatelinkAccessPtrType) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaKafkaUserConfigPrivatelinkAccessPtrType) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type KafkaKafkaUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) ToKafkaKafkaUserConfigPrivatelinkAccessOutput() KafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) ToKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) KafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *KafkaKafkaUserConfigPrivatelinkAccess {
+		return &v
+	}).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable kafka
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_connect
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_rest
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
+}
+
+// Enable Schema-Registry service
+func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
+}
+
+type KafkaKafkaUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) ToKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Elem() KafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivatelinkAccess) KafkaKafkaUserConfigPrivatelinkAccess { return *v }).(KafkaKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable kafka
+func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_connect
+func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_rest
+func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable Schema-Registry service
+func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
+}
+
+type KafkaKafkaUserConfigPublicAccess struct {
+	// Enable kafka
+	Kafka *string `pulumi:"kafka"`
+	// Enable kafka_connect
+	KafkaConnect *string `pulumi:"kafkaConnect"`
+	// Enable kafka_rest
 	KafkaRest *string `pulumi:"kafkaRest"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -11051,14 +11443,11 @@ type KafkaKafkaUserConfigPublicAccessInput interface {
 }
 
 type KafkaKafkaUserConfigPublicAccessArgs struct {
-	// Allow clients to connect to kafka from the public internet for service
-	// nodes that are in a project VPC or another type of private network
+	// Enable kafka
 	Kafka pulumi.StringPtrInput `pulumi:"kafka"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
 	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -11144,20 +11533,17 @@ func (o KafkaKafkaUserConfigPublicAccessOutput) ToKafkaKafkaUserConfigPublicAcce
 	}).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
-// Allow clients to connect to kafka from the public internet for service
-// nodes that are in a project VPC or another type of private network
+// Enable kafka
 func (o KafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaConnect from the public internet
-// for service nodes that are in a project VPC or another type of private network
+// Enable kafka_connect
 func (o KafkaKafkaUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaRest from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable kafka_rest
 func (o KafkaKafkaUserConfigPublicAccessOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
@@ -11191,8 +11577,7 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Elem() KafkaKafkaUserConfigPu
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) KafkaKafkaUserConfigPublicAccess { return *v }).(KafkaKafkaUserConfigPublicAccessOutput)
 }
 
-// Allow clients to connect to kafka from the public internet for service
-// nodes that are in a project VPC or another type of private network
+// Enable kafka
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -11202,8 +11587,7 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaConnect from the public internet
-// for service nodes that are in a project VPC or another type of private network
+// Enable kafka_connect
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -11213,8 +11597,7 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaRest from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable kafka_rest
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -13044,8 +13427,9 @@ type M3AggregatorM3aggregatorUserConfig struct {
 	CustomDomain *string `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters []string `pulumi:"ipFilters"`
+	M3Version *string  `pulumi:"m3Version"`
 	// M3 major version
-	M3Version *string `pulumi:"m3Version"`
+	M3aggregatorVersion *string `pulumi:"m3aggregatorVersion"`
 }
 
 // M3AggregatorM3aggregatorUserConfigInput is an input type that accepts M3AggregatorM3aggregatorUserConfigArgs and M3AggregatorM3aggregatorUserConfigOutput values.
@@ -13064,8 +13448,9 @@ type M3AggregatorM3aggregatorUserConfigArgs struct {
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	M3Version pulumi.StringPtrInput   `pulumi:"m3Version"`
 	// M3 major version
-	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	M3aggregatorVersion pulumi.StringPtrInput `pulumi:"m3aggregatorVersion"`
 }
 
 func (M3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
@@ -13155,9 +13540,13 @@ func (o M3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArray
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// M3 major version
 func (o M3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+// M3 major version
+func (o M3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
 }
 
 type M3AggregatorM3aggregatorUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -13198,13 +13587,22 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilters() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// M3 major version
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.M3Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// M3 major version
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3aggregatorVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13556,13 +13954,14 @@ type M3DbM3dbUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters []string `pulumi:"ipFilters"`
 	// M3 limits
-	Limits *M3DbM3dbUserConfigLimits `pulumi:"limits"`
-	// M3 major version
-	M3Version *string `pulumi:"m3Version"`
+	Limits    *M3DbM3dbUserConfigLimits `pulumi:"limits"`
+	M3Version *string                   `pulumi:"m3Version"`
 	// Enables access to Graphite Carbon
 	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
 	// metrics are written to aggregated namespaces only.
 	M3coordinatorEnableGraphiteCarbonIngest *string `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// M3 major version
+	M3dbVersion *string `pulumi:"m3dbVersion"`
 	// List of M3 namespaces
 	Namespaces []M3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
@@ -13594,13 +13993,14 @@ type M3DbM3dbUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// M3 limits
-	Limits M3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
-	// M3 major version
-	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	Limits    M3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	M3Version pulumi.StringPtrInput            `pulumi:"m3Version"`
 	// Enables access to Graphite Carbon
 	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
 	// metrics are written to aggregated namespaces only.
 	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// M3 major version
+	M3dbVersion pulumi.StringPtrInput `pulumi:"m3dbVersion"`
 	// List of M3 namespaces
 	Namespaces M3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
@@ -13707,7 +14107,6 @@ func (o M3DbM3dbUserConfigOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits { return v.Limits }).(M3DbM3dbUserConfigLimitsPtrOutput)
 }
 
-// M3 major version
 func (o M3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
@@ -13717,6 +14116,11 @@ func (o M3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 // metrics are written to aggregated namespaces only.
 func (o M3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.StringPtrOutput)
+}
+
+// M3 major version
+func (o M3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
 }
 
 // List of M3 namespaces
@@ -13794,7 +14198,6 @@ func (o M3DbM3dbUserConfigPtrOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput 
 	}).(M3DbM3dbUserConfigLimitsPtrOutput)
 }
 
-// M3 major version
 func (o M3DbM3dbUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -13813,6 +14216,16 @@ func (o M3DbM3dbUserConfigPtrOutput) M3coordinatorEnableGraphiteCarbonIngest() p
 			return nil
 		}
 		return v.M3coordinatorEnableGraphiteCarbonIngest
+	}).(pulumi.StringPtrOutput)
+}
+
+// M3 major version
+func (o M3DbM3dbUserConfigPtrOutput) M3dbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.M3dbVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17015,8 +17428,7 @@ type PgPgUserConfig struct {
 	IpFilters []string `pulumi:"ipFilters"`
 	// migrate data from existing server, has the following options:
 	Migration *PgPgUserConfigMigration `pulumi:"migration"`
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg *PgPgUserConfigPg `pulumi:"pg"`
 	// This setting is deprecated. Use read-replica service integration instead.
 	PgReadReplica *string `pulumi:"pgReadReplica"`
@@ -17025,13 +17437,14 @@ type PgPgUserConfig struct {
 	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
 	// PostgreSQL major version.
 	PgVersion *string `pulumi:"pgVersion"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer *PgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
 	// PGLookout settings.
 	Pglookout *PgPgUserConfigPglookout `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *PgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink.
+	PrivatelinkAccess *PgPgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	// Name of another project to fork a service from. This has
 	// effect only when a new service is being created.
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
@@ -17089,8 +17502,7 @@ type PgPgUserConfigArgs struct {
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// migrate data from existing server, has the following options:
 	Migration PgPgUserConfigMigrationPtrInput `pulumi:"migration"`
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg PgPgUserConfigPgPtrInput `pulumi:"pg"`
 	// This setting is deprecated. Use read-replica service integration instead.
 	PgReadReplica pulumi.StringPtrInput `pulumi:"pgReadReplica"`
@@ -17099,13 +17511,14 @@ type PgPgUserConfigArgs struct {
 	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
 	// PostgreSQL major version.
 	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer PgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
 	// PGLookout settings.
 	Pglookout PgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess PgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink.
+	PrivatelinkAccess PgPgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	// Name of another project to fork a service from. This has
 	// effect only when a new service is being created.
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
@@ -17246,8 +17659,7 @@ func (o PgPgUserConfigOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigMigration { return v.Migration }).(PgPgUserConfigMigrationPtrOutput)
 }
 
-// Allow clients to connect to pg from the public internet for service nodes
-// that are in a project VPC or another type of private network
+// Enable pg.
 func (o PgPgUserConfigOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPg { return v.Pg }).(PgPgUserConfigPgPtrOutput)
 }
@@ -17268,8 +17680,7 @@ func (o PgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o PgPgUserConfigOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPgbouncer { return v.Pgbouncer }).(PgPgUserConfigPgbouncerPtrOutput)
 }
@@ -17282,6 +17693,11 @@ func (o PgPgUserConfigOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 // Allow access to selected service ports from private networks.
 func (o PgPgUserConfigOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivateAccess { return v.PrivateAccess }).(PgPgUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink.
+func (o PgPgUserConfigOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
 // Name of another project to fork a service from. This has
@@ -17420,8 +17836,7 @@ func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	}).(PgPgUserConfigMigrationPtrOutput)
 }
 
-// Allow clients to connect to pg from the public internet for service nodes
-// that are in a project VPC or another type of private network
+// Enable pg.
 func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPg {
 		if v == nil {
@@ -17462,8 +17877,7 @@ func (o PgPgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPgbouncer {
 		if v == nil {
@@ -17491,6 +17905,16 @@ func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrO
 		}
 		return v.PrivateAccess
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink.
+func (o PgPgUserConfigPtrOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPrivatelinkAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatelinkAccess
+	}).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
 // Name of another project to fork a service from. This has
@@ -19227,11 +19651,9 @@ func (o PgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi
 }
 
 type PgPgUserConfigPrivateAccess struct {
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg *string `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer *string `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -19250,11 +19672,9 @@ type PgPgUserConfigPrivateAccessInput interface {
 }
 
 type PgPgUserConfigPrivateAccessArgs struct {
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg pulumi.StringPtrInput `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -19338,14 +19758,12 @@ func (o PgPgUserConfigPrivateAccessOutput) ToPgPgUserConfigPrivateAccessPtrOutpu
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow clients to connect to pg from the public internet for service nodes
-// that are in a project VPC or another type of private network
+// Enable pg.
 func (o PgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o PgPgUserConfigPrivateAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivateAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
@@ -19374,8 +19792,7 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Elem() PgPgUserConfigPrivateAccess
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) PgPgUserConfigPrivateAccess { return *v }).(PgPgUserConfigPrivateAccessOutput)
 }
 
-// Allow clients to connect to pg from the public internet for service nodes
-// that are in a project VPC or another type of private network
+// Enable pg.
 func (o PgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -19385,8 +19802,7 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o PgPgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -19407,12 +19823,160 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-type PgPgUserConfigPublicAccess struct {
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+type PgPgUserConfigPrivatelinkAccess struct {
+	// Enable pg.
 	Pg *string `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
+	Pgbouncer *string `pulumi:"pgbouncer"`
+}
+
+// PgPgUserConfigPrivatelinkAccessInput is an input type that accepts PgPgUserConfigPrivatelinkAccessArgs and PgPgUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `PgPgUserConfigPrivatelinkAccessInput` via:
+//
+//          PgPgUserConfigPrivatelinkAccessArgs{...}
+type PgPgUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToPgPgUserConfigPrivatelinkAccessOutput() PgPgUserConfigPrivatelinkAccessOutput
+	ToPgPgUserConfigPrivatelinkAccessOutputWithContext(context.Context) PgPgUserConfigPrivatelinkAccessOutput
+}
+
+type PgPgUserConfigPrivatelinkAccessArgs struct {
+	// Enable pg.
+	Pg pulumi.StringPtrInput `pulumi:"pg"`
+	// Enable pgbouncer.
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+}
+
+func (PgPgUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i PgPgUserConfigPrivatelinkAccessArgs) ToPgPgUserConfigPrivatelinkAccessOutput() PgPgUserConfigPrivatelinkAccessOutput {
+	return i.ToPgPgUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i PgPgUserConfigPrivatelinkAccessArgs) ToPgPgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) PgPgUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigPrivatelinkAccessOutput)
+}
+
+func (i PgPgUserConfigPrivatelinkAccessArgs) ToPgPgUserConfigPrivatelinkAccessPtrOutput() PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i PgPgUserConfigPrivatelinkAccessArgs) ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigPrivatelinkAccessOutput).ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// PgPgUserConfigPrivatelinkAccessPtrInput is an input type that accepts PgPgUserConfigPrivatelinkAccessArgs, PgPgUserConfigPrivatelinkAccessPtr and PgPgUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `PgPgUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          PgPgUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type PgPgUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToPgPgUserConfigPrivatelinkAccessPtrOutput() PgPgUserConfigPrivatelinkAccessPtrOutput
+	ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) PgPgUserConfigPrivatelinkAccessPtrOutput
+}
+
+type pgPgUserConfigPrivatelinkAccessPtrType PgPgUserConfigPrivatelinkAccessArgs
+
+func PgPgUserConfigPrivatelinkAccessPtr(v *PgPgUserConfigPrivatelinkAccessArgs) PgPgUserConfigPrivatelinkAccessPtrInput {
+	return (*pgPgUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*pgPgUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *pgPgUserConfigPrivatelinkAccessPtrType) ToPgPgUserConfigPrivatelinkAccessPtrOutput() PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *pgPgUserConfigPrivatelinkAccessPtrType) ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type PgPgUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (PgPgUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o PgPgUserConfigPrivatelinkAccessOutput) ToPgPgUserConfigPrivatelinkAccessOutput() PgPgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o PgPgUserConfigPrivatelinkAccessOutput) ToPgPgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) PgPgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o PgPgUserConfigPrivatelinkAccessOutput) ToPgPgUserConfigPrivatelinkAccessPtrOutput() PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o PgPgUserConfigPrivatelinkAccessOutput) ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPrivatelinkAccess) *PgPgUserConfigPrivatelinkAccess {
+		return &v
+	}).(PgPgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable pg.
+func (o PgPgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+}
+
+// Enable pgbouncer.
+func (o PgPgUserConfigPrivatelinkAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPrivatelinkAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+}
+
+type PgPgUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (PgPgUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o PgPgUserConfigPrivatelinkAccessPtrOutput) ToPgPgUserConfigPrivatelinkAccessPtrOutput() PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o PgPgUserConfigPrivatelinkAccessPtrOutput) ToPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) PgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Elem() PgPgUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPrivatelinkAccess) PgPgUserConfigPrivatelinkAccess { return *v }).(PgPgUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable pg.
+func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable pgbouncer.
+func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.StringPtrOutput)
+}
+
+type PgPgUserConfigPublicAccess struct {
+	// Enable pg.
+	Pg *string `pulumi:"pg"`
+	// Enable pgbouncer.
 	Pgbouncer *string `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -19431,11 +19995,9 @@ type PgPgUserConfigPublicAccessInput interface {
 }
 
 type PgPgUserConfigPublicAccessArgs struct {
-	// Allow clients to connect to pg from the public internet for service nodes
-	// that are in a project VPC or another type of private network
+	// Enable pg.
 	Pg pulumi.StringPtrInput `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -19519,14 +20081,12 @@ func (o PgPgUserConfigPublicAccessOutput) ToPgPgUserConfigPublicAccessPtrOutputW
 	}).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
-// Allow clients to connect to pg from the public internet for service nodes
-// that are in a project VPC or another type of private network
+// Enable pg.
 func (o PgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o PgPgUserConfigPublicAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPublicAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
@@ -19555,8 +20115,7 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Elem() PgPgUserConfigPublicAccessOu
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) PgPgUserConfigPublicAccess { return *v }).(PgPgUserConfigPublicAccessOutput)
 }
 
-// Allow clients to connect to pg from the public internet for service nodes
-// that are in a project VPC or another type of private network
+// Enable pg.
 func (o PgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -19566,8 +20125,7 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o PgPgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -21937,6 +22495,7 @@ type ServiceElasticsearchUserConfig struct {
 	Elasticsearch                      *ServiceElasticsearchUserConfigElasticsearch `pulumi:"elasticsearch"`
 	ElasticsearchVersion               *string                                      `pulumi:"elasticsearchVersion"`
 	IndexPatterns                      []ServiceElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	IndexTemplate                      *ServiceElasticsearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
 	IpFilters                          []string                                     `pulumi:"ipFilters"`
 	Kibana                             *ServiceElasticsearchUserConfigKibana        `pulumi:"kibana"`
 	MaxIndexCount                      *string                                      `pulumi:"maxIndexCount"`
@@ -21964,6 +22523,7 @@ type ServiceElasticsearchUserConfigArgs struct {
 	Elasticsearch                      ServiceElasticsearchUserConfigElasticsearchPtrInput  `pulumi:"elasticsearch"`
 	ElasticsearchVersion               pulumi.StringPtrInput                                `pulumi:"elasticsearchVersion"`
 	IndexPatterns                      ServiceElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	IndexTemplate                      ServiceElasticsearchUserConfigIndexTemplatePtrInput  `pulumi:"indexTemplate"`
 	IpFilters                          pulumi.StringArrayInput                              `pulumi:"ipFilters"`
 	Kibana                             ServiceElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
 	MaxIndexCount                      pulumi.StringPtrInput                                `pulumi:"maxIndexCount"`
@@ -22074,6 +22634,12 @@ func (o ServiceElasticsearchUserConfigOutput) IndexPatterns() ServiceElasticsear
 	}).(ServiceElasticsearchUserConfigIndexPatternArrayOutput)
 }
 
+func (o ServiceElasticsearchUserConfigOutput) IndexTemplate() ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigIndexTemplate {
+		return v.IndexTemplate
+	}).(ServiceElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
 func (o ServiceElasticsearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceElasticsearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -22171,6 +22737,15 @@ func (o ServiceElasticsearchUserConfigPtrOutput) IndexPatterns() ServiceElastics
 		}
 		return v.IndexPatterns
 	}).(ServiceElasticsearchUserConfigIndexPatternArrayOutput)
+}
+
+func (o ServiceElasticsearchUserConfigPtrOutput) IndexTemplate() ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfig) *ServiceElasticsearchUserConfigIndexTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.IndexTemplate
+	}).(ServiceElasticsearchUserConfigIndexTemplatePtrOutput)
 }
 
 func (o ServiceElasticsearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
@@ -22833,6 +23408,164 @@ func (o ServiceElasticsearchUserConfigIndexPatternArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceElasticsearchUserConfigIndexPattern {
 		return vs[0].([]ServiceElasticsearchUserConfigIndexPattern)[vs[1].(int)]
 	}).(ServiceElasticsearchUserConfigIndexPatternOutput)
+}
+
+type ServiceElasticsearchUserConfigIndexTemplate struct {
+	MappingNestedObjectsLimit *string `pulumi:"mappingNestedObjectsLimit"`
+	NumberOfReplicas          *string `pulumi:"numberOfReplicas"`
+	NumberOfShards            *string `pulumi:"numberOfShards"`
+}
+
+// ServiceElasticsearchUserConfigIndexTemplateInput is an input type that accepts ServiceElasticsearchUserConfigIndexTemplateArgs and ServiceElasticsearchUserConfigIndexTemplateOutput values.
+// You can construct a concrete instance of `ServiceElasticsearchUserConfigIndexTemplateInput` via:
+//
+//          ServiceElasticsearchUserConfigIndexTemplateArgs{...}
+type ServiceElasticsearchUserConfigIndexTemplateInput interface {
+	pulumi.Input
+
+	ToServiceElasticsearchUserConfigIndexTemplateOutput() ServiceElasticsearchUserConfigIndexTemplateOutput
+	ToServiceElasticsearchUserConfigIndexTemplateOutputWithContext(context.Context) ServiceElasticsearchUserConfigIndexTemplateOutput
+}
+
+type ServiceElasticsearchUserConfigIndexTemplateArgs struct {
+	MappingNestedObjectsLimit pulumi.StringPtrInput `pulumi:"mappingNestedObjectsLimit"`
+	NumberOfReplicas          pulumi.StringPtrInput `pulumi:"numberOfReplicas"`
+	NumberOfShards            pulumi.StringPtrInput `pulumi:"numberOfShards"`
+}
+
+func (ServiceElasticsearchUserConfigIndexTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i ServiceElasticsearchUserConfigIndexTemplateArgs) ToServiceElasticsearchUserConfigIndexTemplateOutput() ServiceElasticsearchUserConfigIndexTemplateOutput {
+	return i.ToServiceElasticsearchUserConfigIndexTemplateOutputWithContext(context.Background())
+}
+
+func (i ServiceElasticsearchUserConfigIndexTemplateArgs) ToServiceElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) ServiceElasticsearchUserConfigIndexTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceElasticsearchUserConfigIndexTemplateOutput)
+}
+
+func (i ServiceElasticsearchUserConfigIndexTemplateArgs) ToServiceElasticsearchUserConfigIndexTemplatePtrOutput() ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceElasticsearchUserConfigIndexTemplateArgs) ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceElasticsearchUserConfigIndexTemplateOutput).ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx)
+}
+
+// ServiceElasticsearchUserConfigIndexTemplatePtrInput is an input type that accepts ServiceElasticsearchUserConfigIndexTemplateArgs, ServiceElasticsearchUserConfigIndexTemplatePtr and ServiceElasticsearchUserConfigIndexTemplatePtrOutput values.
+// You can construct a concrete instance of `ServiceElasticsearchUserConfigIndexTemplatePtrInput` via:
+//
+//          ServiceElasticsearchUserConfigIndexTemplateArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceElasticsearchUserConfigIndexTemplatePtrInput interface {
+	pulumi.Input
+
+	ToServiceElasticsearchUserConfigIndexTemplatePtrOutput() ServiceElasticsearchUserConfigIndexTemplatePtrOutput
+	ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Context) ServiceElasticsearchUserConfigIndexTemplatePtrOutput
+}
+
+type serviceElasticsearchUserConfigIndexTemplatePtrType ServiceElasticsearchUserConfigIndexTemplateArgs
+
+func ServiceElasticsearchUserConfigIndexTemplatePtr(v *ServiceElasticsearchUserConfigIndexTemplateArgs) ServiceElasticsearchUserConfigIndexTemplatePtrInput {
+	return (*serviceElasticsearchUserConfigIndexTemplatePtrType)(v)
+}
+
+func (*serviceElasticsearchUserConfigIndexTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i *serviceElasticsearchUserConfigIndexTemplatePtrType) ToServiceElasticsearchUserConfigIndexTemplatePtrOutput() ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceElasticsearchUserConfigIndexTemplatePtrType) ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
+type ServiceElasticsearchUserConfigIndexTemplateOutput struct{ *pulumi.OutputState }
+
+func (ServiceElasticsearchUserConfigIndexTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplateOutput) ToServiceElasticsearchUserConfigIndexTemplateOutput() ServiceElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplateOutput) ToServiceElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) ServiceElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplateOutput) ToServiceElasticsearchUserConfigIndexTemplatePtrOutput() ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplateOutput) ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigIndexTemplate) *ServiceElasticsearchUserConfigIndexTemplate {
+		return &v
+	}).(ServiceElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+func (o ServiceElasticsearchUserConfigIndexTemplateOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigIndexTemplate) *string { return v.MappingNestedObjectsLimit }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplateOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfReplicas }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplateOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfShards }).(pulumi.StringPtrOutput)
+}
+
+type ServiceElasticsearchUserConfigIndexTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceElasticsearchUserConfigIndexTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplatePtrOutput) ToServiceElasticsearchUserConfigIndexTemplatePtrOutput() ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplatePtrOutput) ToServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) ServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplatePtrOutput) Elem() ServiceElasticsearchUserConfigIndexTemplateOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigIndexTemplate) ServiceElasticsearchUserConfigIndexTemplate {
+		return *v
+	}).(ServiceElasticsearchUserConfigIndexTemplateOutput)
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplatePtrOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MappingNestedObjectsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfReplicas
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfShards
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceElasticsearchUserConfigKibana struct {
@@ -27245,11 +27978,15 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 }
 
 type ServiceIntegrationEndpointExternalKafkaUserConfig struct {
-	BootstrapServers *string `pulumi:"bootstrapServers"`
-	SecurityProtocol *string `pulumi:"securityProtocol"`
-	SslCaCert        *string `pulumi:"sslCaCert"`
-	SslClientCert    *string `pulumi:"sslClientCert"`
-	SslClientKey     *string `pulumi:"sslClientKey"`
+	BootstrapServers                   *string `pulumi:"bootstrapServers"`
+	SaslMechanism                      *string `pulumi:"saslMechanism"`
+	SaslPlainPassword                  *string `pulumi:"saslPlainPassword"`
+	SaslPlainUsername                  *string `pulumi:"saslPlainUsername"`
+	SecurityProtocol                   *string `pulumi:"securityProtocol"`
+	SslCaCert                          *string `pulumi:"sslCaCert"`
+	SslClientCert                      *string `pulumi:"sslClientCert"`
+	SslClientKey                       *string `pulumi:"sslClientKey"`
+	SslEndpointIdentificationAlgorithm *string `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
 // ServiceIntegrationEndpointExternalKafkaUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalKafkaUserConfigArgs and ServiceIntegrationEndpointExternalKafkaUserConfigOutput values.
@@ -27264,11 +28001,15 @@ type ServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
-	BootstrapServers pulumi.StringPtrInput `pulumi:"bootstrapServers"`
-	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
-	SslCaCert        pulumi.StringPtrInput `pulumi:"sslCaCert"`
-	SslClientCert    pulumi.StringPtrInput `pulumi:"sslClientCert"`
-	SslClientKey     pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	BootstrapServers                   pulumi.StringPtrInput `pulumi:"bootstrapServers"`
+	SaslMechanism                      pulumi.StringPtrInput `pulumi:"saslMechanism"`
+	SaslPlainPassword                  pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
+	SaslPlainUsername                  pulumi.StringPtrInput `pulumi:"saslPlainUsername"`
+	SecurityProtocol                   pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	SslCaCert                          pulumi.StringPtrInput `pulumi:"sslCaCert"`
+	SslClientCert                      pulumi.StringPtrInput `pulumi:"sslClientCert"`
+	SslClientKey                       pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	SslEndpointIdentificationAlgorithm pulumi.StringPtrInput `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
 func (ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -27351,6 +28092,18 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapServer
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.BootstrapServers }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainUsername }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
 }
@@ -27365,6 +28118,12 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientCert()
 
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		return v.SslEndpointIdentificationAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -27393,6 +28152,33 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) BootstrapSer
 			return nil
 		}
 		return v.BootstrapServers
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslMechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslMechanism
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslPlainPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslPlainUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27429,6 +28215,188 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientKey
 			return nil
 		}
 		return v.SslClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslEndpointIdentificationAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalSchemaRegistryUserConfig struct {
+	Authentication    *string `pulumi:"authentication"`
+	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
+	Url               *string `pulumi:"url"`
+}
+
+// ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs and ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput` via:
+//
+//          ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
+type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput
+	ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput
+}
+
+type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs struct {
+	Authentication    pulumi.StringPtrInput `pulumi:"authentication"`
+	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
+	Url               pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return i.ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput)
+}
+
+func (i ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput).ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs, ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtr and ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput` via:
+//
+//          ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput
+	ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput
+}
+
+type serviceIntegrationEndpointExternalSchemaRegistryUserConfigPtrType ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs
+
+func ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtr(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput {
+	return (*serviceIntegrationEndpointExternalSchemaRegistryUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointExternalSchemaRegistryUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointExternalSchemaRegistryUserConfigPtrType) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointExternalSchemaRegistryUserConfigPtrType) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return o.ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
+		return &v
+	}).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput)
+}
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) ToServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Elem() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
+		return *v
+	}).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuthPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuthUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30986,6 +31954,120 @@ func (o ServiceIntegrationRsyslogUserConfigPtrOutput) Elem() ServiceIntegrationR
 	return o.ApplyT(func(v *ServiceIntegrationRsyslogUserConfig) ServiceIntegrationRsyslogUserConfig { return *v }).(ServiceIntegrationRsyslogUserConfigOutput)
 }
 
+type ServiceIntegrationSchemaRegistryProxyUserConfig struct {
+}
+
+// ServiceIntegrationSchemaRegistryProxyUserConfigInput is an input type that accepts ServiceIntegrationSchemaRegistryProxyUserConfigArgs and ServiceIntegrationSchemaRegistryProxyUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationSchemaRegistryProxyUserConfigInput` via:
+//
+//          ServiceIntegrationSchemaRegistryProxyUserConfigArgs{...}
+type ServiceIntegrationSchemaRegistryProxyUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationSchemaRegistryProxyUserConfigOutput() ServiceIntegrationSchemaRegistryProxyUserConfigOutput
+	ToServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigOutput
+}
+
+type ServiceIntegrationSchemaRegistryProxyUserConfigArgs struct {
+}
+
+func (ServiceIntegrationSchemaRegistryProxyUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationSchemaRegistryProxyUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationSchemaRegistryProxyUserConfigArgs) ToServiceIntegrationSchemaRegistryProxyUserConfigOutput() ServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return i.ToServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationSchemaRegistryProxyUserConfigArgs) ToServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSchemaRegistryProxyUserConfigOutput)
+}
+
+func (i ServiceIntegrationSchemaRegistryProxyUserConfigArgs) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput() ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return i.ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationSchemaRegistryProxyUserConfigArgs) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSchemaRegistryProxyUserConfigOutput).ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationSchemaRegistryProxyUserConfigPtrInput is an input type that accepts ServiceIntegrationSchemaRegistryProxyUserConfigArgs, ServiceIntegrationSchemaRegistryProxyUserConfigPtr and ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationSchemaRegistryProxyUserConfigPtrInput` via:
+//
+//          ServiceIntegrationSchemaRegistryProxyUserConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceIntegrationSchemaRegistryProxyUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput() ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput
+	ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput
+}
+
+type serviceIntegrationSchemaRegistryProxyUserConfigPtrType ServiceIntegrationSchemaRegistryProxyUserConfigArgs
+
+func ServiceIntegrationSchemaRegistryProxyUserConfigPtr(v *ServiceIntegrationSchemaRegistryProxyUserConfigArgs) ServiceIntegrationSchemaRegistryProxyUserConfigPtrInput {
+	return (*serviceIntegrationSchemaRegistryProxyUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationSchemaRegistryProxyUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationSchemaRegistryProxyUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationSchemaRegistryProxyUserConfigPtrType) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput() ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return i.ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationSchemaRegistryProxyUserConfigPtrType) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput)
+}
+
+type ServiceIntegrationSchemaRegistryProxyUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationSchemaRegistryProxyUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationSchemaRegistryProxyUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationSchemaRegistryProxyUserConfigOutput) ToServiceIntegrationSchemaRegistryProxyUserConfigOutput() ServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationSchemaRegistryProxyUserConfigOutput) ToServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationSchemaRegistryProxyUserConfigOutput) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput() ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return o.ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationSchemaRegistryProxyUserConfigOutput) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationSchemaRegistryProxyUserConfig) *ServiceIntegrationSchemaRegistryProxyUserConfig {
+		return &v
+	}).(ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput)
+}
+
+type ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationSchemaRegistryProxyUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput() ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput) ToServiceIntegrationSchemaRegistryProxyUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput) Elem() ServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationSchemaRegistryProxyUserConfig) ServiceIntegrationSchemaRegistryProxyUserConfig {
+		return *v
+	}).(ServiceIntegrationSchemaRegistryProxyUserConfigOutput)
+}
+
 type ServiceIntegrationSignalfxUserConfig struct {
 }
 
@@ -32582,6 +33664,7 @@ type ServiceKafkaUserConfig struct {
 	KafkaRestConfig            *ServiceKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               *string                                           `pulumi:"kafkaVersion"`
 	PrivateAccess              *ServiceKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
+	PrivatelinkAccess          *ServiceKafkaUserConfigPrivatelinkAccess          `pulumi:"privatelinkAccess"`
 	PublicAccess               *ServiceKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
 	SchemaRegistry             *string                                           `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       *ServiceKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
@@ -32609,6 +33692,7 @@ type ServiceKafkaUserConfigArgs struct {
 	KafkaRestConfig            ServiceKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               pulumi.StringPtrInput                                    `pulumi:"kafkaVersion"`
 	PrivateAccess              ServiceKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
+	PrivatelinkAccess          ServiceKafkaUserConfigPrivatelinkAccessPtrInput          `pulumi:"privatelinkAccess"`
 	PublicAccess               ServiceKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
 	SchemaRegistry             pulumi.StringPtrInput                                    `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       ServiceKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
@@ -32732,6 +33816,10 @@ func (o ServiceKafkaUserConfigOutput) PrivateAccess() ServiceKafkaUserConfigPriv
 	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(ServiceKafkaUserConfigPrivateAccessPtrOutput)
 }
 
+func (o ServiceKafkaUserConfigOutput) PrivatelinkAccess() ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(ServiceKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
 func (o ServiceKafkaUserConfigOutput) PublicAccess() ServiceKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaUserConfig) *ServiceKafkaUserConfigPublicAccess { return v.PublicAccess }).(ServiceKafkaUserConfigPublicAccessPtrOutput)
 }
@@ -32852,6 +33940,15 @@ func (o ServiceKafkaUserConfigPtrOutput) PrivateAccess() ServiceKafkaUserConfigP
 		}
 		return v.PrivateAccess
 	}).(ServiceKafkaUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigPtrOutput) PrivatelinkAccess() ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfig) *ServiceKafkaUserConfigPrivatelinkAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatelinkAccess
+	}).(ServiceKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
 func (o ServiceKafkaUserConfigPtrOutput) PublicAccess() ServiceKafkaUserConfigPublicAccessPtrOutput {
@@ -34307,6 +35404,177 @@ func (o ServiceKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.String
 			return nil
 		}
 		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceKafkaUserConfigPrivatelinkAccess struct {
+	Kafka          *string `pulumi:"kafka"`
+	KafkaConnect   *string `pulumi:"kafkaConnect"`
+	KafkaRest      *string `pulumi:"kafkaRest"`
+	SchemaRegistry *string `pulumi:"schemaRegistry"`
+}
+
+// ServiceKafkaUserConfigPrivatelinkAccessInput is an input type that accepts ServiceKafkaUserConfigPrivatelinkAccessArgs and ServiceKafkaUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `ServiceKafkaUserConfigPrivatelinkAccessInput` via:
+//
+//          ServiceKafkaUserConfigPrivatelinkAccessArgs{...}
+type ServiceKafkaUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToServiceKafkaUserConfigPrivatelinkAccessOutput() ServiceKafkaUserConfigPrivatelinkAccessOutput
+	ToServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Context) ServiceKafkaUserConfigPrivatelinkAccessOutput
+}
+
+type ServiceKafkaUserConfigPrivatelinkAccessArgs struct {
+	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
+	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
+}
+
+func (ServiceKafkaUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i ServiceKafkaUserConfigPrivatelinkAccessArgs) ToServiceKafkaUserConfigPrivatelinkAccessOutput() ServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return i.ToServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaUserConfigPrivatelinkAccessArgs) ToServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) ServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+func (i ServiceKafkaUserConfigPrivatelinkAccessArgs) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutput() ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceKafkaUserConfigPrivatelinkAccessArgs) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaUserConfigPrivatelinkAccessOutput).ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// ServiceKafkaUserConfigPrivatelinkAccessPtrInput is an input type that accepts ServiceKafkaUserConfigPrivatelinkAccessArgs, ServiceKafkaUserConfigPrivatelinkAccessPtr and ServiceKafkaUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `ServiceKafkaUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          ServiceKafkaUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceKafkaUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToServiceKafkaUserConfigPrivatelinkAccessPtrOutput() ServiceKafkaUserConfigPrivatelinkAccessPtrOutput
+	ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) ServiceKafkaUserConfigPrivatelinkAccessPtrOutput
+}
+
+type serviceKafkaUserConfigPrivatelinkAccessPtrType ServiceKafkaUserConfigPrivatelinkAccessArgs
+
+func ServiceKafkaUserConfigPrivatelinkAccessPtr(v *ServiceKafkaUserConfigPrivatelinkAccessArgs) ServiceKafkaUserConfigPrivatelinkAccessPtrInput {
+	return (*serviceKafkaUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*serviceKafkaUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *serviceKafkaUserConfigPrivatelinkAccessPtrType) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutput() ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceKafkaUserConfigPrivatelinkAccessPtrType) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type ServiceKafkaUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) ToServiceKafkaUserConfigPrivatelinkAccessOutput() ServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) ToServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) ServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutput() ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigPrivatelinkAccess) *ServiceKafkaUserConfigPrivatelinkAccess {
+		return &v
+	}).(ServiceKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaUserConfigPrivatelinkAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
+}
+
+type ServiceKafkaUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutput() ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) ToServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) Elem() ServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPrivatelinkAccess) ServiceKafkaUserConfigPrivatelinkAccess { return *v }).(ServiceKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -35982,28 +37250,29 @@ func (o ServicePgPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 type ServicePgUserConfig struct {
-	AdminPassword           *string                           `pulumi:"adminPassword"`
-	AdminUsername           *string                           `pulumi:"adminUsername"`
-	BackupHour              *string                           `pulumi:"backupHour"`
-	BackupMinute            *string                           `pulumi:"backupMinute"`
-	IpFilters               []string                          `pulumi:"ipFilters"`
-	Migration               *ServicePgUserConfigMigration     `pulumi:"migration"`
-	Pg                      *ServicePgUserConfigPg            `pulumi:"pg"`
-	PgReadReplica           *string                           `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     *string                           `pulumi:"pgServiceToForkFrom"`
-	PgVersion               *string                           `pulumi:"pgVersion"`
-	Pgbouncer               *ServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
-	Pglookout               *ServicePgUserConfigPglookout     `pulumi:"pglookout"`
-	PrivateAccess           *ServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	ProjectToForkFrom       *string                           `pulumi:"projectToForkFrom"`
-	PublicAccess            *ServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime      *string                           `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       *string                           `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage *string                           `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  *string                           `pulumi:"synchronousReplication"`
-	Timescaledb             *ServicePgUserConfigTimescaledb   `pulumi:"timescaledb"`
-	Variant                 *string                           `pulumi:"variant"`
-	WorkMem                 *string                           `pulumi:"workMem"`
+	AdminPassword           *string                               `pulumi:"adminPassword"`
+	AdminUsername           *string                               `pulumi:"adminUsername"`
+	BackupHour              *string                               `pulumi:"backupHour"`
+	BackupMinute            *string                               `pulumi:"backupMinute"`
+	IpFilters               []string                              `pulumi:"ipFilters"`
+	Migration               *ServicePgUserConfigMigration         `pulumi:"migration"`
+	Pg                      *ServicePgUserConfigPg                `pulumi:"pg"`
+	PgReadReplica           *string                               `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom     *string                               `pulumi:"pgServiceToForkFrom"`
+	PgVersion               *string                               `pulumi:"pgVersion"`
+	Pgbouncer               *ServicePgUserConfigPgbouncer         `pulumi:"pgbouncer"`
+	Pglookout               *ServicePgUserConfigPglookout         `pulumi:"pglookout"`
+	PrivateAccess           *ServicePgUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess       *ServicePgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom       *string                               `pulumi:"projectToForkFrom"`
+	PublicAccess            *ServicePgUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime      *string                               `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom       *string                               `pulumi:"serviceToForkFrom"`
+	SharedBuffersPercentage *string                               `pulumi:"sharedBuffersPercentage"`
+	SynchronousReplication  *string                               `pulumi:"synchronousReplication"`
+	Timescaledb             *ServicePgUserConfigTimescaledb       `pulumi:"timescaledb"`
+	Variant                 *string                               `pulumi:"variant"`
+	WorkMem                 *string                               `pulumi:"workMem"`
 }
 
 // ServicePgUserConfigInput is an input type that accepts ServicePgUserConfigArgs and ServicePgUserConfigOutput values.
@@ -36018,28 +37287,29 @@ type ServicePgUserConfigInput interface {
 }
 
 type ServicePgUserConfigArgs struct {
-	AdminPassword           pulumi.StringPtrInput                    `pulumi:"adminPassword"`
-	AdminUsername           pulumi.StringPtrInput                    `pulumi:"adminUsername"`
-	BackupHour              pulumi.StringPtrInput                    `pulumi:"backupHour"`
-	BackupMinute            pulumi.StringPtrInput                    `pulumi:"backupMinute"`
-	IpFilters               pulumi.StringArrayInput                  `pulumi:"ipFilters"`
-	Migration               ServicePgUserConfigMigrationPtrInput     `pulumi:"migration"`
-	Pg                      ServicePgUserConfigPgPtrInput            `pulumi:"pg"`
-	PgReadReplica           pulumi.StringPtrInput                    `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     pulumi.StringPtrInput                    `pulumi:"pgServiceToForkFrom"`
-	PgVersion               pulumi.StringPtrInput                    `pulumi:"pgVersion"`
-	Pgbouncer               ServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
-	Pglookout               ServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
-	PrivateAccess           ServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	ProjectToForkFrom       pulumi.StringPtrInput                    `pulumi:"projectToForkFrom"`
-	PublicAccess            ServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime      pulumi.StringPtrInput                    `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       pulumi.StringPtrInput                    `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage pulumi.StringPtrInput                    `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  pulumi.StringPtrInput                    `pulumi:"synchronousReplication"`
-	Timescaledb             ServicePgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
-	Variant                 pulumi.StringPtrInput                    `pulumi:"variant"`
-	WorkMem                 pulumi.StringPtrInput                    `pulumi:"workMem"`
+	AdminPassword           pulumi.StringPtrInput                        `pulumi:"adminPassword"`
+	AdminUsername           pulumi.StringPtrInput                        `pulumi:"adminUsername"`
+	BackupHour              pulumi.StringPtrInput                        `pulumi:"backupHour"`
+	BackupMinute            pulumi.StringPtrInput                        `pulumi:"backupMinute"`
+	IpFilters               pulumi.StringArrayInput                      `pulumi:"ipFilters"`
+	Migration               ServicePgUserConfigMigrationPtrInput         `pulumi:"migration"`
+	Pg                      ServicePgUserConfigPgPtrInput                `pulumi:"pg"`
+	PgReadReplica           pulumi.StringPtrInput                        `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom     pulumi.StringPtrInput                        `pulumi:"pgServiceToForkFrom"`
+	PgVersion               pulumi.StringPtrInput                        `pulumi:"pgVersion"`
+	Pgbouncer               ServicePgUserConfigPgbouncerPtrInput         `pulumi:"pgbouncer"`
+	Pglookout               ServicePgUserConfigPglookoutPtrInput         `pulumi:"pglookout"`
+	PrivateAccess           ServicePgUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess       ServicePgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom       pulumi.StringPtrInput                        `pulumi:"projectToForkFrom"`
+	PublicAccess            ServicePgUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime      pulumi.StringPtrInput                        `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom       pulumi.StringPtrInput                        `pulumi:"serviceToForkFrom"`
+	SharedBuffersPercentage pulumi.StringPtrInput                        `pulumi:"sharedBuffersPercentage"`
+	SynchronousReplication  pulumi.StringPtrInput                        `pulumi:"synchronousReplication"`
+	Timescaledb             ServicePgUserConfigTimescaledbPtrInput       `pulumi:"timescaledb"`
+	Variant                 pulumi.StringPtrInput                        `pulumi:"variant"`
+	WorkMem                 pulumi.StringPtrInput                        `pulumi:"workMem"`
 }
 
 func (ServicePgUserConfigArgs) ElementType() reflect.Type {
@@ -36168,6 +37438,10 @@ func (o ServicePgUserConfigOutput) Pglookout() ServicePgUserConfigPglookoutPtrOu
 
 func (o ServicePgUserConfigOutput) PrivateAccess() ServicePgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPrivateAccess { return v.PrivateAccess }).(ServicePgUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServicePgUserConfigOutput) PrivatelinkAccess() ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfig) *ServicePgUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(ServicePgUserConfigPrivatelinkAccessPtrOutput)
 }
 
 func (o ServicePgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
@@ -36339,6 +37613,15 @@ func (o ServicePgUserConfigPtrOutput) PrivateAccess() ServicePgUserConfigPrivate
 		}
 		return v.PrivateAccess
 	}).(ServicePgUserConfigPrivateAccessPtrOutput)
+}
+
+func (o ServicePgUserConfigPtrOutput) PrivatelinkAccess() ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfig) *ServicePgUserConfigPrivatelinkAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatelinkAccess
+	}).(ServicePgUserConfigPrivatelinkAccessPtrOutput)
 }
 
 func (o ServicePgUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
@@ -37829,6 +39112,147 @@ func (o ServicePgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtr
 			return nil
 		}
 		return v.Prometheus
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePgUserConfigPrivatelinkAccess struct {
+	Pg        *string `pulumi:"pg"`
+	Pgbouncer *string `pulumi:"pgbouncer"`
+}
+
+// ServicePgUserConfigPrivatelinkAccessInput is an input type that accepts ServicePgUserConfigPrivatelinkAccessArgs and ServicePgUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `ServicePgUserConfigPrivatelinkAccessInput` via:
+//
+//          ServicePgUserConfigPrivatelinkAccessArgs{...}
+type ServicePgUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToServicePgUserConfigPrivatelinkAccessOutput() ServicePgUserConfigPrivatelinkAccessOutput
+	ToServicePgUserConfigPrivatelinkAccessOutputWithContext(context.Context) ServicePgUserConfigPrivatelinkAccessOutput
+}
+
+type ServicePgUserConfigPrivatelinkAccessArgs struct {
+	Pg        pulumi.StringPtrInput `pulumi:"pg"`
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+}
+
+func (ServicePgUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i ServicePgUserConfigPrivatelinkAccessArgs) ToServicePgUserConfigPrivatelinkAccessOutput() ServicePgUserConfigPrivatelinkAccessOutput {
+	return i.ToServicePgUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i ServicePgUserConfigPrivatelinkAccessArgs) ToServicePgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) ServicePgUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePgUserConfigPrivatelinkAccessOutput)
+}
+
+func (i ServicePgUserConfigPrivatelinkAccessArgs) ToServicePgUserConfigPrivatelinkAccessPtrOutput() ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePgUserConfigPrivatelinkAccessArgs) ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePgUserConfigPrivatelinkAccessOutput).ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// ServicePgUserConfigPrivatelinkAccessPtrInput is an input type that accepts ServicePgUserConfigPrivatelinkAccessArgs, ServicePgUserConfigPrivatelinkAccessPtr and ServicePgUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `ServicePgUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          ServicePgUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePgUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToServicePgUserConfigPrivatelinkAccessPtrOutput() ServicePgUserConfigPrivatelinkAccessPtrOutput
+	ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) ServicePgUserConfigPrivatelinkAccessPtrOutput
+}
+
+type servicePgUserConfigPrivatelinkAccessPtrType ServicePgUserConfigPrivatelinkAccessArgs
+
+func ServicePgUserConfigPrivatelinkAccessPtr(v *ServicePgUserConfigPrivatelinkAccessArgs) ServicePgUserConfigPrivatelinkAccessPtrInput {
+	return (*servicePgUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*servicePgUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *servicePgUserConfigPrivatelinkAccessPtrType) ToServicePgUserConfigPrivatelinkAccessPtrOutput() ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePgUserConfigPrivatelinkAccessPtrType) ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type ServicePgUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (ServicePgUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessOutput) ToServicePgUserConfigPrivatelinkAccessOutput() ServicePgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessOutput) ToServicePgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) ServicePgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessOutput) ToServicePgUserConfigPrivatelinkAccessPtrOutput() ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessOutput) ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPrivatelinkAccess) *ServicePgUserConfigPrivatelinkAccess {
+		return &v
+	}).(ServicePgUserConfigPrivatelinkAccessPtrOutput)
+}
+func (o ServicePgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPrivatelinkAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+}
+
+type ServicePgUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePgUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessPtrOutput) ToServicePgUserConfigPrivatelinkAccessPtrOutput() ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessPtrOutput) ToServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessPtrOutput) Elem() ServicePgUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPrivatelinkAccess) ServicePgUserConfigPrivatelinkAccess { return *v }).(ServicePgUserConfigPrivatelinkAccessOutput)
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPrivatelinkAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40179,6 +41603,8 @@ type GetElasticSearchElasticsearchUserConfig struct {
 	// Glob pattern and number of indexes matching that pattern to
 	// be kept.
 	IndexPatterns []GetElasticSearchElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	// Template settings for all new indexe.
+	IndexTemplate *GetElasticSearchElasticsearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters []string `pulumi:"ipFilters"`
 	// Allow clients to connect to kibana from the public internet for
@@ -40227,6 +41653,8 @@ type GetElasticSearchElasticsearchUserConfigArgs struct {
 	// Glob pattern and number of indexes matching that pattern to
 	// be kept.
 	IndexPatterns GetElasticSearchElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	// Template settings for all new indexe.
+	IndexTemplate GetElasticSearchElasticsearchUserConfigIndexTemplatePtrInput `pulumi:"indexTemplate"`
 	// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Allow clients to connect to kibana from the public internet for
@@ -40306,6 +41734,13 @@ func (o GetElasticSearchElasticsearchUserConfigOutput) IndexPatterns() GetElasti
 	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) []GetElasticSearchElasticsearchUserConfigIndexPattern {
 		return v.IndexPatterns
 	}).(GetElasticSearchElasticsearchUserConfigIndexPatternArrayOutput)
+}
+
+// Template settings for all new indexe.
+func (o GetElasticSearchElasticsearchUserConfigOutput) IndexTemplate() GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfig) *GetElasticSearchElasticsearchUserConfigIndexTemplate {
+		return v.IndexTemplate
+	}).(GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput)
 }
 
 // allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -41225,6 +42660,187 @@ func (o GetElasticSearchElasticsearchUserConfigIndexPatternArrayOutput) Index(i 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticSearchElasticsearchUserConfigIndexPattern {
 		return vs[0].([]GetElasticSearchElasticsearchUserConfigIndexPattern)[vs[1].(int)]
 	}).(GetElasticSearchElasticsearchUserConfigIndexPatternOutput)
+}
+
+type GetElasticSearchElasticsearchUserConfigIndexTemplate struct {
+	// The maximum number of nested JSON objects that
+	// a single document can contain across all nested types. This limit helps to prevent out of
+	// memory errors when a document contains too many nested objects. Default is 10000.
+	MappingNestedObjectsLimit *string `pulumi:"mappingNestedObjectsLimit"`
+	// The number of replicas each primary shard has.
+	NumberOfReplicas *string `pulumi:"numberOfReplicas"`
+	// The number of primary shards that an index should have.
+	NumberOfShards *string `pulumi:"numberOfShards"`
+}
+
+// GetElasticSearchElasticsearchUserConfigIndexTemplateInput is an input type that accepts GetElasticSearchElasticsearchUserConfigIndexTemplateArgs and GetElasticSearchElasticsearchUserConfigIndexTemplateOutput values.
+// You can construct a concrete instance of `GetElasticSearchElasticsearchUserConfigIndexTemplateInput` via:
+//
+//          GetElasticSearchElasticsearchUserConfigIndexTemplateArgs{...}
+type GetElasticSearchElasticsearchUserConfigIndexTemplateInput interface {
+	pulumi.Input
+
+	ToGetElasticSearchElasticsearchUserConfigIndexTemplateOutput() GetElasticSearchElasticsearchUserConfigIndexTemplateOutput
+	ToGetElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplateOutput
+}
+
+type GetElasticSearchElasticsearchUserConfigIndexTemplateArgs struct {
+	// The maximum number of nested JSON objects that
+	// a single document can contain across all nested types. This limit helps to prevent out of
+	// memory errors when a document contains too many nested objects. Default is 10000.
+	MappingNestedObjectsLimit pulumi.StringPtrInput `pulumi:"mappingNestedObjectsLimit"`
+	// The number of replicas each primary shard has.
+	NumberOfReplicas pulumi.StringPtrInput `pulumi:"numberOfReplicas"`
+	// The number of primary shards that an index should have.
+	NumberOfShards pulumi.StringPtrInput `pulumi:"numberOfShards"`
+}
+
+func (GetElasticSearchElasticsearchUserConfigIndexTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i GetElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToGetElasticSearchElasticsearchUserConfigIndexTemplateOutput() GetElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return i.ToGetElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(context.Background())
+}
+
+func (i GetElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToGetElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticSearchElasticsearchUserConfigIndexTemplateOutput)
+}
+
+func (i GetElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i GetElasticSearchElasticsearchUserConfigIndexTemplateArgs) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticSearchElasticsearchUserConfigIndexTemplateOutput).ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx)
+}
+
+// GetElasticSearchElasticsearchUserConfigIndexTemplatePtrInput is an input type that accepts GetElasticSearchElasticsearchUserConfigIndexTemplateArgs, GetElasticSearchElasticsearchUserConfigIndexTemplatePtr and GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput values.
+// You can construct a concrete instance of `GetElasticSearchElasticsearchUserConfigIndexTemplatePtrInput` via:
+//
+//          GetElasticSearchElasticsearchUserConfigIndexTemplateArgs{...}
+//
+//  or:
+//
+//          nil
+type GetElasticSearchElasticsearchUserConfigIndexTemplatePtrInput interface {
+	pulumi.Input
+
+	ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput
+	ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput
+}
+
+type getElasticSearchElasticsearchUserConfigIndexTemplatePtrType GetElasticSearchElasticsearchUserConfigIndexTemplateArgs
+
+func GetElasticSearchElasticsearchUserConfigIndexTemplatePtr(v *GetElasticSearchElasticsearchUserConfigIndexTemplateArgs) GetElasticSearchElasticsearchUserConfigIndexTemplatePtrInput {
+	return (*getElasticSearchElasticsearchUserConfigIndexTemplatePtrType)(v)
+}
+
+func (*getElasticSearchElasticsearchUserConfigIndexTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i *getElasticSearchElasticsearchUserConfigIndexTemplatePtrType) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *getElasticSearchElasticsearchUserConfigIndexTemplatePtrType) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
+type GetElasticSearchElasticsearchUserConfigIndexTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToGetElasticSearchElasticsearchUserConfigIndexTemplateOutput() GetElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToGetElasticSearchElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigIndexTemplate) *GetElasticSearchElasticsearchUserConfigIndexTemplate {
+		return &v
+	}).(GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
+// The maximum number of nested JSON objects that
+// a single document can contain across all nested types. This limit helps to prevent out of
+// memory errors when a document contains too many nested objects. Default is 10000.
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigIndexTemplate) *string {
+		return v.MappingNestedObjectsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of replicas each primary shard has.
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfReplicas }).(pulumi.StringPtrOutput)
+}
+
+// The number of primary shards that an index should have.
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplateOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetElasticSearchElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfShards }).(pulumi.StringPtrOutput)
+}
+
+type GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetElasticSearchElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput() GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) ToGetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) Elem() GetElasticSearchElasticsearchUserConfigIndexTemplateOutput {
+	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigIndexTemplate) GetElasticSearchElasticsearchUserConfigIndexTemplate {
+		return *v
+	}).(GetElasticSearchElasticsearchUserConfigIndexTemplateOutput)
+}
+
+// The maximum number of nested JSON objects that
+// a single document can contain across all nested types. This limit helps to prevent out of
+// memory errors when a document contains too many nested objects. Default is 10000.
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MappingNestedObjectsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of replicas each primary shard has.
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfReplicas
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of primary shards that an index should have.
+func (o GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetElasticSearchElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfShards
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetElasticSearchElasticsearchUserConfigKibana struct {
@@ -46409,13 +48025,11 @@ type GetKafkaKafkaUserConfig struct {
 	Kafka *GetKafkaKafkaUserConfigKafka `pulumi:"kafka"`
 	// Kafka authentication methods
 	KafkaAuthenticationMethods *GetKafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	// Kafka Connect configuration values
 	KafkaConnectConfig *GetKafkaKafkaUserConfigKafkaConnectConfig `pulumi:"kafkaConnectConfig"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
 	KafkaRest *string `pulumi:"kafkaRest"`
 	// Kafka-REST configuration
 	KafkaRestConfig *GetKafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
@@ -46423,9 +48037,11 @@ type GetKafkaKafkaUserConfig struct {
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *GetKafkaKafkaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *GetKafkaKafkaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetKafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Enable Schema-Registry service
+	// Enable schema_registry
 	SchemaRegistry *string `pulumi:"schemaRegistry"`
 	// Schema Registry configuration
 	SchemaRegistryConfig *GetKafkaKafkaUserConfigSchemaRegistryConfig `pulumi:"schemaRegistryConfig"`
@@ -46451,13 +48067,11 @@ type GetKafkaKafkaUserConfigArgs struct {
 	Kafka GetKafkaKafkaUserConfigKafkaPtrInput `pulumi:"kafka"`
 	// Kafka authentication methods
 	KafkaAuthenticationMethods GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	// Kafka Connect configuration values
 	KafkaConnectConfig GetKafkaKafkaUserConfigKafkaConnectConfigPtrInput `pulumi:"kafkaConnectConfig"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
 	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
 	// Kafka-REST configuration
 	KafkaRestConfig GetKafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
@@ -46465,9 +48079,11 @@ type GetKafkaKafkaUserConfigArgs struct {
 	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess GetKafkaKafkaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetKafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Enable Schema-Registry service
+	// Enable schema_registry
 	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
 	// Schema Registry configuration
 	SchemaRegistryConfig GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput `pulumi:"schemaRegistryConfig"`
@@ -46521,8 +48137,7 @@ func (o GetKafkaKafkaUserConfigOutput) KafkaAuthenticationMethods() GetKafkaKafk
 	}).(GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-// Allow clients to connect to kafkaConnect from the public internet
-// for service nodes that are in a project VPC or another type of private network
+// Enable kafka_connect
 func (o GetKafkaKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -46534,8 +48149,7 @@ func (o GetKafkaKafkaUserConfigOutput) KafkaConnectConfig() GetKafkaKafkaUserCon
 	}).(GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-// Allow clients to connect to kafkaRest from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable kafka_rest
 func (o GetKafkaKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
@@ -46555,12 +48169,17 @@ func (o GetKafkaKafkaUserConfigOutput) PrivateAccess() GetKafkaKafkaUserConfigPr
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(GetKafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
+func (o GetKafkaKafkaUserConfigOutput) PrivatelinkAccess() GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet
 func (o GetKafkaKafkaUserConfigOutput) PublicAccess() GetKafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigPublicAccess { return v.PublicAccess }).(GetKafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
-// Enable Schema-Registry service
+// Enable schema_registry
 func (o GetKafkaKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
@@ -48478,19 +50097,205 @@ func (o GetKafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetKafkaKafkaUserConfigPrivatelinkAccess struct {
+	// Kafka server provided values:
+	Kafka *string `pulumi:"kafka"`
+	// Enable kafka_connect
+	KafkaConnect *string `pulumi:"kafkaConnect"`
+	// Enable kafka_rest
+	KafkaRest *string `pulumi:"kafkaRest"`
+	// Enable schema_registry
+	SchemaRegistry *string `pulumi:"schemaRegistry"`
+}
+
+// GetKafkaKafkaUserConfigPrivatelinkAccessInput is an input type that accepts GetKafkaKafkaUserConfigPrivatelinkAccessArgs and GetKafkaKafkaUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigPrivatelinkAccessInput` via:
+//
+//          GetKafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+type GetKafkaKafkaUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigPrivatelinkAccessOutput() GetKafkaKafkaUserConfigPrivatelinkAccessOutput
+	ToGetKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessOutput
+}
+
+type GetKafkaKafkaUserConfigPrivatelinkAccessArgs struct {
+	// Kafka server provided values:
+	Kafka pulumi.StringPtrInput `pulumi:"kafka"`
+	// Enable kafka_connect
+	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	// Enable kafka_rest
+	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	// Enable schema_registry
+	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
+}
+
+func (GetKafkaKafkaUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigPrivatelinkAccessArgs) ToGetKafkaKafkaUserConfigPrivatelinkAccessOutput() GetKafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return i.ToGetKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigPrivatelinkAccessArgs) ToGetKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetKafkaKafkaUserConfigPrivatelinkAccessArgs) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigPrivatelinkAccessArgs) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigPrivatelinkAccessOutput).ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetKafkaKafkaUserConfigPrivatelinkAccessArgs, GetKafkaKafkaUserConfigPrivatelinkAccessPtr and GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          GetKafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput
+	ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getKafkaKafkaUserConfigPrivatelinkAccessPtrType GetKafkaKafkaUserConfigPrivatelinkAccessArgs
+
+func GetKafkaKafkaUserConfigPrivatelinkAccessPtr(v *GetKafkaKafkaUserConfigPrivatelinkAccessArgs) GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput {
+	return (*getKafkaKafkaUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigPrivatelinkAccessPtrType) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigPrivatelinkAccessPtrType) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) ToGetKafkaKafkaUserConfigPrivatelinkAccessOutput() GetKafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) ToGetKafkaKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *GetKafkaKafkaUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Kafka server provided values:
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_connect
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_rest
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
+}
+
+// Enable schema_registry
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput() GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) ToGetKafkaKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Elem() GetKafkaKafkaUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivatelinkAccess) GetKafkaKafkaUserConfigPrivatelinkAccess { return *v }).(GetKafkaKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+// Kafka server provided values:
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_connect
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable kafka_rest
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable schema_registry
+func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetKafkaKafkaUserConfigPublicAccess struct {
 	// Kafka server provided values:
 	Kafka *string `pulumi:"kafka"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect *string `pulumi:"kafkaConnect"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
 	KafkaRest *string `pulumi:"kafkaRest"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
-	// Enable Schema-Registry service
+	// Enable schema_registry
 	SchemaRegistry *string `pulumi:"schemaRegistry"`
 }
 
@@ -48508,16 +50313,14 @@ type GetKafkaKafkaUserConfigPublicAccessInput interface {
 type GetKafkaKafkaUserConfigPublicAccessArgs struct {
 	// Kafka server provided values:
 	Kafka pulumi.StringPtrInput `pulumi:"kafka"`
-	// Allow clients to connect to kafkaConnect from the public internet
-	// for service nodes that are in a project VPC or another type of private network
+	// Enable kafka_connect
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
-	// Allow clients to connect to kafkaRest from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable kafka_rest
 	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	// Enable Schema-Registry service
+	// Enable schema_registry
 	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
 }
 
@@ -48603,14 +50406,12 @@ func (o GetKafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaConnect from the public internet
-// for service nodes that are in a project VPC or another type of private network
+// Enable kafka_connect
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaRest from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable kafka_rest
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
@@ -48621,7 +50422,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtr
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
-// Enable Schema-Registry service
+// Enable schema_registry
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
@@ -48654,8 +50455,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaConnect from the public internet
-// for service nodes that are in a project VPC or another type of private network
+// Enable kafka_connect
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -48665,8 +50465,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to kafkaRest from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable kafka_rest
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -48687,7 +50486,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enable Schema-Registry service
+// Enable schema_registry
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -49960,8 +51759,9 @@ type GetM3AggregatorM3aggregatorUserConfig struct {
 	CustomDomain *string `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters []string `pulumi:"ipFilters"`
+	M3Version *string  `pulumi:"m3Version"`
 	// M3 major version
-	M3Version *string `pulumi:"m3Version"`
+	M3aggregatorVersion *string `pulumi:"m3aggregatorVersion"`
 }
 
 // GetM3AggregatorM3aggregatorUserConfigInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigArgs and GetM3AggregatorM3aggregatorUserConfigOutput values.
@@ -49980,8 +51780,9 @@ type GetM3AggregatorM3aggregatorUserConfigArgs struct {
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	M3Version pulumi.StringPtrInput   `pulumi:"m3Version"`
 	// M3 major version
-	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	M3aggregatorVersion pulumi.StringPtrInput `pulumi:"m3aggregatorVersion"`
 }
 
 func (GetM3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
@@ -50020,9 +51821,13 @@ func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringAr
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// M3 major version
 func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+// M3 major version
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
 }
 
 type GetM3AggregatorServiceIntegration struct {
@@ -50304,13 +52109,14 @@ type GetM3DbM3dbUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters []string `pulumi:"ipFilters"`
 	// M3 limits
-	Limits *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
-	// M3 major version
-	M3Version *string `pulumi:"m3Version"`
+	Limits    *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
+	M3Version *string                      `pulumi:"m3Version"`
 	// Enables access to Graphite Carbon
 	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
 	// metrics are written to aggregated namespaces only.
 	M3coordinatorEnableGraphiteCarbonIngest *string `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// M3 major version
+	M3dbVersion *string `pulumi:"m3dbVersion"`
 	// List of M3 namespaces
 	Namespaces []GetM3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
@@ -50342,13 +52148,14 @@ type GetM3DbM3dbUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// M3 limits
-	Limits GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
-	// M3 major version
-	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	Limits    GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	M3Version pulumi.StringPtrInput               `pulumi:"m3Version"`
 	// Enables access to Graphite Carbon
 	// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
 	// metrics are written to aggregated namespaces only.
 	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// M3 major version
+	M3dbVersion pulumi.StringPtrInput `pulumi:"m3dbVersion"`
 	// List of M3 namespaces
 	Namespaces GetM3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
 	// Allow access to selected service ports from private networks.
@@ -50404,7 +52211,6 @@ func (o GetM3DbM3dbUserConfigOutput) Limits() GetM3DbM3dbUserConfigLimitsPtrOutp
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigLimits { return v.Limits }).(GetM3DbM3dbUserConfigLimitsPtrOutput)
 }
 
-// M3 major version
 func (o GetM3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
@@ -50414,6 +52220,11 @@ func (o GetM3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 // metrics are written to aggregated namespaces only.
 func (o GetM3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.StringPtrOutput)
+}
+
+// M3 major version
+func (o GetM3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
 }
 
 // List of M3 namespaces
@@ -53177,14 +54988,15 @@ type GetPgPgUserConfig struct {
 	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
 	// PostgreSQL major version.
 	PgVersion *string `pulumi:"pgVersion"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer *GetPgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
 	// PGLookout settings.
 	Pglookout *GetPgPgUserConfigPglookout `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *GetPgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// (Optional) Name of another project to fork a service from. This has
+	// Allow access to selected service components through Privatelink.
+	PrivatelinkAccess *GetPgPgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has
 	// effect only when a new service is being created.
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
@@ -53250,14 +55062,15 @@ type GetPgPgUserConfigArgs struct {
 	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
 	// PostgreSQL major version.
 	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer GetPgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
 	// PGLookout settings.
 	Pglookout GetPgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess GetPgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// (Optional) Name of another project to fork a service from. This has
+	// Allow access to selected service components through Privatelink.
+	PrivatelinkAccess GetPgPgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has
 	// effect only when a new service is being created.
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet
@@ -53367,8 +55180,7 @@ func (o GetPgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o GetPgPgUserConfigOutput) Pgbouncer() GetPgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPgbouncer { return v.Pgbouncer }).(GetPgPgUserConfigPgbouncerPtrOutput)
 }
@@ -53383,7 +55195,12 @@ func (o GetPgPgUserConfigOutput) PrivateAccess() GetPgPgUserConfigPrivateAccessP
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPrivateAccess { return v.PrivateAccess }).(GetPgPgUserConfigPrivateAccessPtrOutput)
 }
 
-// (Optional) Name of another project to fork a service from. This has
+// Allow access to selected service components through Privatelink.
+func (o GetPgPgUserConfigOutput) PrivatelinkAccess() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(GetPgPgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has
 // effect only when a new service is being created.
 func (o GetPgPgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
@@ -55074,8 +56891,7 @@ func (o GetPgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pul
 type GetPgPgUserConfigPrivateAccess struct {
 	// PostgreSQL specific server provided values.
 	Pg *string `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer *string `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -55096,8 +56912,7 @@ type GetPgPgUserConfigPrivateAccessInput interface {
 type GetPgPgUserConfigPrivateAccessArgs struct {
 	// PostgreSQL specific server provided values.
 	Pg pulumi.StringPtrInput `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -55186,8 +57001,7 @@ func (o GetPgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o GetPgPgUserConfigPrivateAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
@@ -55226,8 +57040,7 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -55248,11 +57061,160 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetPgPgUserConfigPrivatelinkAccess struct {
+	// PostgreSQL specific server provided values.
+	Pg *string `pulumi:"pg"`
+	// Enable pgbouncer.
+	Pgbouncer *string `pulumi:"pgbouncer"`
+}
+
+// GetPgPgUserConfigPrivatelinkAccessInput is an input type that accepts GetPgPgUserConfigPrivatelinkAccessArgs and GetPgPgUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPrivatelinkAccessInput` via:
+//
+//          GetPgPgUserConfigPrivatelinkAccessArgs{...}
+type GetPgPgUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPrivatelinkAccessOutput() GetPgPgUserConfigPrivatelinkAccessOutput
+	ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetPgPgUserConfigPrivatelinkAccessOutput
+}
+
+type GetPgPgUserConfigPrivatelinkAccessArgs struct {
+	// PostgreSQL specific server provided values.
+	Pg pulumi.StringPtrInput `pulumi:"pg"`
+	// Enable pgbouncer.
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+}
+
+func (GetPgPgUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessOutput() GetPgPgUserConfigPrivatelinkAccessOutput {
+	return i.ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivatelinkAccessOutput).ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetPgPgUserConfigPrivatelinkAccessArgs, GetPgPgUserConfigPrivatelinkAccessPtr and GetPgPgUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          GetPgPgUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type GetPgPgUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput
+	ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getPgPgUserConfigPrivatelinkAccessPtrType GetPgPgUserConfigPrivatelinkAccessArgs
+
+func GetPgPgUserConfigPrivatelinkAccessPtr(v *GetPgPgUserConfigPrivatelinkAccessArgs) GetPgPgUserConfigPrivatelinkAccessPtrInput {
+	return (*getPgPgUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getPgPgUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPrivatelinkAccessPtrType) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPrivatelinkAccessPtrType) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetPgPgUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessOutput() GetPgPgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *GetPgPgUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetPgPgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// PostgreSQL specific server provided values.
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+}
+
+// Enable pgbouncer.
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+}
+
+type GetPgPgUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Elem() GetPgPgUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) GetPgPgUserConfigPrivatelinkAccess { return *v }).(GetPgPgUserConfigPrivatelinkAccessOutput)
+}
+
+// PostgreSQL specific server provided values.
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable pgbouncer.
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetPgPgUserConfigPublicAccess struct {
 	// PostgreSQL specific server provided values.
 	Pg *string `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer *string `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -55273,8 +57235,7 @@ type GetPgPgUserConfigPublicAccessInput interface {
 type GetPgPgUserConfigPublicAccessArgs struct {
 	// PostgreSQL specific server provided values.
 	Pg pulumi.StringPtrInput `pulumi:"pg"`
-	// Allow clients to connect to pgbouncer from the public internet for
-	// service nodes that are in a project VPC or another type of private network
+	// Enable pgbouncer.
 	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	// Allow clients to connect to prometheus from the public internet for
 	// service nodes that are in a project VPC or another type of private network
@@ -55363,8 +57324,7 @@ func (o GetPgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o GetPgPgUserConfigPublicAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
 }
@@ -55403,8 +57363,7 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow clients to connect to pgbouncer from the public internet for
-// service nodes that are in a project VPC or another type of private network
+// Enable pgbouncer.
 func (o GetPgPgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -57225,6 +59184,7 @@ type GetServiceElasticsearchUserConfig struct {
 	Elasticsearch                      *GetServiceElasticsearchUserConfigElasticsearch `pulumi:"elasticsearch"`
 	ElasticsearchVersion               *string                                         `pulumi:"elasticsearchVersion"`
 	IndexPatterns                      []GetServiceElasticsearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	IndexTemplate                      *GetServiceElasticsearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
 	IpFilters                          []string                                        `pulumi:"ipFilters"`
 	Kibana                             *GetServiceElasticsearchUserConfigKibana        `pulumi:"kibana"`
 	MaxIndexCount                      *string                                         `pulumi:"maxIndexCount"`
@@ -57252,6 +59212,7 @@ type GetServiceElasticsearchUserConfigArgs struct {
 	Elasticsearch                      GetServiceElasticsearchUserConfigElasticsearchPtrInput  `pulumi:"elasticsearch"`
 	ElasticsearchVersion               pulumi.StringPtrInput                                   `pulumi:"elasticsearchVersion"`
 	IndexPatterns                      GetServiceElasticsearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	IndexTemplate                      GetServiceElasticsearchUserConfigIndexTemplatePtrInput  `pulumi:"indexTemplate"`
 	IpFilters                          pulumi.StringArrayInput                                 `pulumi:"ipFilters"`
 	Kibana                             GetServiceElasticsearchUserConfigKibanaPtrInput         `pulumi:"kibana"`
 	MaxIndexCount                      pulumi.StringPtrInput                                   `pulumi:"maxIndexCount"`
@@ -57310,6 +59271,12 @@ func (o GetServiceElasticsearchUserConfigOutput) IndexPatterns() GetServiceElast
 	return o.ApplyT(func(v GetServiceElasticsearchUserConfig) []GetServiceElasticsearchUserConfigIndexPattern {
 		return v.IndexPatterns
 	}).(GetServiceElasticsearchUserConfigIndexPatternArrayOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigOutput) IndexTemplate() GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfig) *GetServiceElasticsearchUserConfigIndexTemplate {
+		return v.IndexTemplate
+	}).(GetServiceElasticsearchUserConfigIndexTemplatePtrOutput)
 }
 
 func (o GetServiceElasticsearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
@@ -57938,6 +59905,164 @@ func (o GetServiceElasticsearchUserConfigIndexPatternArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceElasticsearchUserConfigIndexPattern {
 		return vs[0].([]GetServiceElasticsearchUserConfigIndexPattern)[vs[1].(int)]
 	}).(GetServiceElasticsearchUserConfigIndexPatternOutput)
+}
+
+type GetServiceElasticsearchUserConfigIndexTemplate struct {
+	MappingNestedObjectsLimit *string `pulumi:"mappingNestedObjectsLimit"`
+	NumberOfReplicas          *string `pulumi:"numberOfReplicas"`
+	NumberOfShards            *string `pulumi:"numberOfShards"`
+}
+
+// GetServiceElasticsearchUserConfigIndexTemplateInput is an input type that accepts GetServiceElasticsearchUserConfigIndexTemplateArgs and GetServiceElasticsearchUserConfigIndexTemplateOutput values.
+// You can construct a concrete instance of `GetServiceElasticsearchUserConfigIndexTemplateInput` via:
+//
+//          GetServiceElasticsearchUserConfigIndexTemplateArgs{...}
+type GetServiceElasticsearchUserConfigIndexTemplateInput interface {
+	pulumi.Input
+
+	ToGetServiceElasticsearchUserConfigIndexTemplateOutput() GetServiceElasticsearchUserConfigIndexTemplateOutput
+	ToGetServiceElasticsearchUserConfigIndexTemplateOutputWithContext(context.Context) GetServiceElasticsearchUserConfigIndexTemplateOutput
+}
+
+type GetServiceElasticsearchUserConfigIndexTemplateArgs struct {
+	MappingNestedObjectsLimit pulumi.StringPtrInput `pulumi:"mappingNestedObjectsLimit"`
+	NumberOfReplicas          pulumi.StringPtrInput `pulumi:"numberOfReplicas"`
+	NumberOfShards            pulumi.StringPtrInput `pulumi:"numberOfShards"`
+}
+
+func (GetServiceElasticsearchUserConfigIndexTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i GetServiceElasticsearchUserConfigIndexTemplateArgs) ToGetServiceElasticsearchUserConfigIndexTemplateOutput() GetServiceElasticsearchUserConfigIndexTemplateOutput {
+	return i.ToGetServiceElasticsearchUserConfigIndexTemplateOutputWithContext(context.Background())
+}
+
+func (i GetServiceElasticsearchUserConfigIndexTemplateArgs) ToGetServiceElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) GetServiceElasticsearchUserConfigIndexTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceElasticsearchUserConfigIndexTemplateOutput)
+}
+
+func (i GetServiceElasticsearchUserConfigIndexTemplateArgs) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutput() GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceElasticsearchUserConfigIndexTemplateArgs) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceElasticsearchUserConfigIndexTemplateOutput).ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx)
+}
+
+// GetServiceElasticsearchUserConfigIndexTemplatePtrInput is an input type that accepts GetServiceElasticsearchUserConfigIndexTemplateArgs, GetServiceElasticsearchUserConfigIndexTemplatePtr and GetServiceElasticsearchUserConfigIndexTemplatePtrOutput values.
+// You can construct a concrete instance of `GetServiceElasticsearchUserConfigIndexTemplatePtrInput` via:
+//
+//          GetServiceElasticsearchUserConfigIndexTemplateArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceElasticsearchUserConfigIndexTemplatePtrInput interface {
+	pulumi.Input
+
+	ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutput() GetServiceElasticsearchUserConfigIndexTemplatePtrOutput
+	ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Context) GetServiceElasticsearchUserConfigIndexTemplatePtrOutput
+}
+
+type getServiceElasticsearchUserConfigIndexTemplatePtrType GetServiceElasticsearchUserConfigIndexTemplateArgs
+
+func GetServiceElasticsearchUserConfigIndexTemplatePtr(v *GetServiceElasticsearchUserConfigIndexTemplateArgs) GetServiceElasticsearchUserConfigIndexTemplatePtrInput {
+	return (*getServiceElasticsearchUserConfigIndexTemplatePtrType)(v)
+}
+
+func (*getServiceElasticsearchUserConfigIndexTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (i *getServiceElasticsearchUserConfigIndexTemplatePtrType) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutput() GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return i.ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceElasticsearchUserConfigIndexTemplatePtrType) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+
+type GetServiceElasticsearchUserConfigIndexTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetServiceElasticsearchUserConfigIndexTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplateOutput) ToGetServiceElasticsearchUserConfigIndexTemplateOutput() GetServiceElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplateOutput) ToGetServiceElasticsearchUserConfigIndexTemplateOutputWithContext(ctx context.Context) GetServiceElasticsearchUserConfigIndexTemplateOutput {
+	return o
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplateOutput) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutput() GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplateOutput) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigIndexTemplate) *GetServiceElasticsearchUserConfigIndexTemplate {
+		return &v
+	}).(GetServiceElasticsearchUserConfigIndexTemplatePtrOutput)
+}
+func (o GetServiceElasticsearchUserConfigIndexTemplateOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigIndexTemplate) *string { return v.MappingNestedObjectsLimit }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplateOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfReplicas }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplateOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceElasticsearchUserConfigIndexTemplate) *string { return v.NumberOfShards }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceElasticsearchUserConfigIndexTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceElasticsearchUserConfigIndexTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceElasticsearchUserConfigIndexTemplate)(nil)).Elem()
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplatePtrOutput) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutput() GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplatePtrOutput) ToGetServiceElasticsearchUserConfigIndexTemplatePtrOutputWithContext(ctx context.Context) GetServiceElasticsearchUserConfigIndexTemplatePtrOutput {
+	return o
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplatePtrOutput) Elem() GetServiceElasticsearchUserConfigIndexTemplateOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigIndexTemplate) GetServiceElasticsearchUserConfigIndexTemplate {
+		return *v
+	}).(GetServiceElasticsearchUserConfigIndexTemplateOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplatePtrOutput) MappingNestedObjectsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MappingNestedObjectsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfReplicas
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceElasticsearchUserConfigIndexTemplatePtrOutput) NumberOfShards() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceElasticsearchUserConfigIndexTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfShards
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceElasticsearchUserConfigKibana struct {
@@ -61141,11 +63266,15 @@ func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
 }
 
 type GetServiceIntegrationEndpointExternalKafkaUserConfig struct {
-	BootstrapServers *string `pulumi:"bootstrapServers"`
-	SecurityProtocol *string `pulumi:"securityProtocol"`
-	SslCaCert        *string `pulumi:"sslCaCert"`
-	SslClientCert    *string `pulumi:"sslClientCert"`
-	SslClientKey     *string `pulumi:"sslClientKey"`
+	BootstrapServers                   *string `pulumi:"bootstrapServers"`
+	SaslMechanism                      *string `pulumi:"saslMechanism"`
+	SaslPlainPassword                  *string `pulumi:"saslPlainPassword"`
+	SaslPlainUsername                  *string `pulumi:"saslPlainUsername"`
+	SecurityProtocol                   *string `pulumi:"securityProtocol"`
+	SslCaCert                          *string `pulumi:"sslCaCert"`
+	SslClientCert                      *string `pulumi:"sslClientCert"`
+	SslClientKey                       *string `pulumi:"sslClientKey"`
+	SslEndpointIdentificationAlgorithm *string `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
 // GetServiceIntegrationEndpointExternalKafkaUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalKafkaUserConfigArgs and GetServiceIntegrationEndpointExternalKafkaUserConfigOutput values.
@@ -61160,11 +63289,15 @@ type GetServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
 }
 
 type GetServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
-	BootstrapServers pulumi.StringPtrInput `pulumi:"bootstrapServers"`
-	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
-	SslCaCert        pulumi.StringPtrInput `pulumi:"sslCaCert"`
-	SslClientCert    pulumi.StringPtrInput `pulumi:"sslClientCert"`
-	SslClientKey     pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	BootstrapServers                   pulumi.StringPtrInput `pulumi:"bootstrapServers"`
+	SaslMechanism                      pulumi.StringPtrInput `pulumi:"saslMechanism"`
+	SaslPlainPassword                  pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
+	SaslPlainUsername                  pulumi.StringPtrInput `pulumi:"saslPlainUsername"`
+	SecurityProtocol                   pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	SslCaCert                          pulumi.StringPtrInput `pulumi:"sslCaCert"`
+	SslClientCert                      pulumi.StringPtrInput `pulumi:"sslClientCert"`
+	SslClientKey                       pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	SslEndpointIdentificationAlgorithm pulumi.StringPtrInput `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
 func (GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -61197,6 +63330,18 @@ func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapSer
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.BootstrapServers }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainUsername }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
 }
@@ -61211,6 +63356,83 @@ func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientCer
 
 func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		return v.SslEndpointIdentificationAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig struct {
+	Authentication    *string `pulumi:"authentication"`
+	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
+	Url               *string `pulumi:"url"`
+}
+
+// GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs and GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput` via:
+//
+//          GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs struct {
+	Authentication    pulumi.StringPtrInput `pulumi:"authentication"`
+	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
+	Url               pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		return v.BasicAuthPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		return v.BasicAuthUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceIntegrationEndpointJolokiaUserConfig struct {
@@ -63284,6 +65506,49 @@ func (o GetServiceIntegrationRsyslogUserConfigOutput) ToGetServiceIntegrationRsy
 	return o
 }
 
+type GetServiceIntegrationSchemaRegistryProxyUserConfig struct {
+}
+
+// GetServiceIntegrationSchemaRegistryProxyUserConfigInput is an input type that accepts GetServiceIntegrationSchemaRegistryProxyUserConfigArgs and GetServiceIntegrationSchemaRegistryProxyUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationSchemaRegistryProxyUserConfigInput` via:
+//
+//          GetServiceIntegrationSchemaRegistryProxyUserConfigArgs{...}
+type GetServiceIntegrationSchemaRegistryProxyUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationSchemaRegistryProxyUserConfigOutput() GetServiceIntegrationSchemaRegistryProxyUserConfigOutput
+	ToGetServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(context.Context) GetServiceIntegrationSchemaRegistryProxyUserConfigOutput
+}
+
+type GetServiceIntegrationSchemaRegistryProxyUserConfigArgs struct {
+}
+
+func (GetServiceIntegrationSchemaRegistryProxyUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationSchemaRegistryProxyUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationSchemaRegistryProxyUserConfigArgs) ToGetServiceIntegrationSchemaRegistryProxyUserConfigOutput() GetServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return i.ToGetServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationSchemaRegistryProxyUserConfigArgs) ToGetServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationSchemaRegistryProxyUserConfigOutput)
+}
+
+type GetServiceIntegrationSchemaRegistryProxyUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationSchemaRegistryProxyUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationSchemaRegistryProxyUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationSchemaRegistryProxyUserConfigOutput) ToGetServiceIntegrationSchemaRegistryProxyUserConfigOutput() GetServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationSchemaRegistryProxyUserConfigOutput) ToGetServiceIntegrationSchemaRegistryProxyUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationSchemaRegistryProxyUserConfigOutput {
+	return o
+}
+
 type GetServiceIntegrationSignalfxUserConfig struct {
 }
 
@@ -64370,6 +66635,7 @@ type GetServiceKafkaUserConfig struct {
 	KafkaRestConfig            *GetServiceKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               *string                                              `pulumi:"kafkaVersion"`
 	PrivateAccess              *GetServiceKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
+	PrivatelinkAccess          *GetServiceKafkaUserConfigPrivatelinkAccess          `pulumi:"privatelinkAccess"`
 	PublicAccess               *GetServiceKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
 	SchemaRegistry             *string                                              `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       *GetServiceKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
@@ -64397,6 +66663,7 @@ type GetServiceKafkaUserConfigArgs struct {
 	KafkaRestConfig            GetServiceKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
 	KafkaVersion               pulumi.StringPtrInput                                       `pulumi:"kafkaVersion"`
 	PrivateAccess              GetServiceKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
+	PrivatelinkAccess          GetServiceKafkaUserConfigPrivatelinkAccessPtrInput          `pulumi:"privatelinkAccess"`
 	PublicAccess               GetServiceKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
 	SchemaRegistry             pulumi.StringPtrInput                                       `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       GetServiceKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
@@ -64470,6 +66737,12 @@ func (o GetServiceKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 
 func (o GetServiceKafkaUserConfigOutput) PrivateAccess() GetServiceKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaUserConfig) *GetServiceKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(GetServiceKafkaUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigOutput) PrivatelinkAccess() GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfig) *GetServiceKafkaUserConfigPrivatelinkAccess {
+		return v.PrivatelinkAccess
+	}).(GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
 func (o GetServiceKafkaUserConfigOutput) PublicAccess() GetServiceKafkaUserConfigPublicAccessPtrOutput {
@@ -65919,6 +68192,179 @@ func (o GetServiceKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetServiceKafkaUserConfigPrivatelinkAccess struct {
+	Kafka          *string `pulumi:"kafka"`
+	KafkaConnect   *string `pulumi:"kafkaConnect"`
+	KafkaRest      *string `pulumi:"kafkaRest"`
+	SchemaRegistry *string `pulumi:"schemaRegistry"`
+}
+
+// GetServiceKafkaUserConfigPrivatelinkAccessInput is an input type that accepts GetServiceKafkaUserConfigPrivatelinkAccessArgs and GetServiceKafkaUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetServiceKafkaUserConfigPrivatelinkAccessInput` via:
+//
+//          GetServiceKafkaUserConfigPrivatelinkAccessArgs{...}
+type GetServiceKafkaUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaUserConfigPrivatelinkAccessOutput() GetServiceKafkaUserConfigPrivatelinkAccessOutput
+	ToGetServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetServiceKafkaUserConfigPrivatelinkAccessOutput
+}
+
+type GetServiceKafkaUserConfigPrivatelinkAccessArgs struct {
+	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
+	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
+}
+
+func (GetServiceKafkaUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetServiceKafkaUserConfigPrivatelinkAccessArgs) ToGetServiceKafkaUserConfigPrivatelinkAccessOutput() GetServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return i.ToGetServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaUserConfigPrivatelinkAccessArgs) ToGetServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetServiceKafkaUserConfigPrivatelinkAccessArgs) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutput() GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceKafkaUserConfigPrivatelinkAccessArgs) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaUserConfigPrivatelinkAccessOutput).ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetServiceKafkaUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetServiceKafkaUserConfigPrivatelinkAccessArgs, GetServiceKafkaUserConfigPrivatelinkAccessPtr and GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetServiceKafkaUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          GetServiceKafkaUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServiceKafkaUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutput() GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput
+	ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getServiceKafkaUserConfigPrivatelinkAccessPtrType GetServiceKafkaUserConfigPrivatelinkAccessArgs
+
+func GetServiceKafkaUserConfigPrivatelinkAccessPtr(v *GetServiceKafkaUserConfigPrivatelinkAccessArgs) GetServiceKafkaUserConfigPrivatelinkAccessPtrInput {
+	return (*getServiceKafkaUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getServiceKafkaUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getServiceKafkaUserConfigPrivatelinkAccessPtrType) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutput() GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceKafkaUserConfigPrivatelinkAccessPtrType) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetServiceKafkaUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) ToGetServiceKafkaUserConfigPrivatelinkAccessOutput() GetServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) ToGetServiceKafkaUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutput() GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigPrivatelinkAccess) *GetServiceKafkaUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput)
+}
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigPrivatelinkAccess) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaUserConfigPrivatelinkAccess) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceKafkaUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutput() GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) ToGetServiceKafkaUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) Elem() GetServiceKafkaUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPrivatelinkAccess) GetServiceKafkaUserConfigPrivatelinkAccess {
+		return *v
+	}).(GetServiceKafkaUserConfigPrivatelinkAccessOutput)
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) KafkaRest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServiceKafkaUserConfigPublicAccess struct {
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
@@ -67206,28 +69652,29 @@ func (o GetServicePgOutput) User() pulumi.StringOutput {
 }
 
 type GetServicePgUserConfig struct {
-	AdminPassword           *string                              `pulumi:"adminPassword"`
-	AdminUsername           *string                              `pulumi:"adminUsername"`
-	BackupHour              *string                              `pulumi:"backupHour"`
-	BackupMinute            *string                              `pulumi:"backupMinute"`
-	IpFilters               []string                             `pulumi:"ipFilters"`
-	Migration               *GetServicePgUserConfigMigration     `pulumi:"migration"`
-	Pg                      *GetServicePgUserConfigPg            `pulumi:"pg"`
-	PgReadReplica           *string                              `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     *string                              `pulumi:"pgServiceToForkFrom"`
-	PgVersion               *string                              `pulumi:"pgVersion"`
-	Pgbouncer               *GetServicePgUserConfigPgbouncer     `pulumi:"pgbouncer"`
-	Pglookout               *GetServicePgUserConfigPglookout     `pulumi:"pglookout"`
-	PrivateAccess           *GetServicePgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	ProjectToForkFrom       *string                              `pulumi:"projectToForkFrom"`
-	PublicAccess            *GetServicePgUserConfigPublicAccess  `pulumi:"publicAccess"`
-	RecoveryTargetTime      *string                              `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       *string                              `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage *string                              `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  *string                              `pulumi:"synchronousReplication"`
-	Timescaledb             *GetServicePgUserConfigTimescaledb   `pulumi:"timescaledb"`
-	Variant                 *string                              `pulumi:"variant"`
-	WorkMem                 *string                              `pulumi:"workMem"`
+	AdminPassword           *string                                  `pulumi:"adminPassword"`
+	AdminUsername           *string                                  `pulumi:"adminUsername"`
+	BackupHour              *string                                  `pulumi:"backupHour"`
+	BackupMinute            *string                                  `pulumi:"backupMinute"`
+	IpFilters               []string                                 `pulumi:"ipFilters"`
+	Migration               *GetServicePgUserConfigMigration         `pulumi:"migration"`
+	Pg                      *GetServicePgUserConfigPg                `pulumi:"pg"`
+	PgReadReplica           *string                                  `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom     *string                                  `pulumi:"pgServiceToForkFrom"`
+	PgVersion               *string                                  `pulumi:"pgVersion"`
+	Pgbouncer               *GetServicePgUserConfigPgbouncer         `pulumi:"pgbouncer"`
+	Pglookout               *GetServicePgUserConfigPglookout         `pulumi:"pglookout"`
+	PrivateAccess           *GetServicePgUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess       *GetServicePgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom       *string                                  `pulumi:"projectToForkFrom"`
+	PublicAccess            *GetServicePgUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime      *string                                  `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom       *string                                  `pulumi:"serviceToForkFrom"`
+	SharedBuffersPercentage *string                                  `pulumi:"sharedBuffersPercentage"`
+	SynchronousReplication  *string                                  `pulumi:"synchronousReplication"`
+	Timescaledb             *GetServicePgUserConfigTimescaledb       `pulumi:"timescaledb"`
+	Variant                 *string                                  `pulumi:"variant"`
+	WorkMem                 *string                                  `pulumi:"workMem"`
 }
 
 // GetServicePgUserConfigInput is an input type that accepts GetServicePgUserConfigArgs and GetServicePgUserConfigOutput values.
@@ -67242,28 +69689,29 @@ type GetServicePgUserConfigInput interface {
 }
 
 type GetServicePgUserConfigArgs struct {
-	AdminPassword           pulumi.StringPtrInput                       `pulumi:"adminPassword"`
-	AdminUsername           pulumi.StringPtrInput                       `pulumi:"adminUsername"`
-	BackupHour              pulumi.StringPtrInput                       `pulumi:"backupHour"`
-	BackupMinute            pulumi.StringPtrInput                       `pulumi:"backupMinute"`
-	IpFilters               pulumi.StringArrayInput                     `pulumi:"ipFilters"`
-	Migration               GetServicePgUserConfigMigrationPtrInput     `pulumi:"migration"`
-	Pg                      GetServicePgUserConfigPgPtrInput            `pulumi:"pg"`
-	PgReadReplica           pulumi.StringPtrInput                       `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     pulumi.StringPtrInput                       `pulumi:"pgServiceToForkFrom"`
-	PgVersion               pulumi.StringPtrInput                       `pulumi:"pgVersion"`
-	Pgbouncer               GetServicePgUserConfigPgbouncerPtrInput     `pulumi:"pgbouncer"`
-	Pglookout               GetServicePgUserConfigPglookoutPtrInput     `pulumi:"pglookout"`
-	PrivateAccess           GetServicePgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	ProjectToForkFrom       pulumi.StringPtrInput                       `pulumi:"projectToForkFrom"`
-	PublicAccess            GetServicePgUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	RecoveryTargetTime      pulumi.StringPtrInput                       `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       pulumi.StringPtrInput                       `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage pulumi.StringPtrInput                       `pulumi:"sharedBuffersPercentage"`
-	SynchronousReplication  pulumi.StringPtrInput                       `pulumi:"synchronousReplication"`
-	Timescaledb             GetServicePgUserConfigTimescaledbPtrInput   `pulumi:"timescaledb"`
-	Variant                 pulumi.StringPtrInput                       `pulumi:"variant"`
-	WorkMem                 pulumi.StringPtrInput                       `pulumi:"workMem"`
+	AdminPassword           pulumi.StringPtrInput                           `pulumi:"adminPassword"`
+	AdminUsername           pulumi.StringPtrInput                           `pulumi:"adminUsername"`
+	BackupHour              pulumi.StringPtrInput                           `pulumi:"backupHour"`
+	BackupMinute            pulumi.StringPtrInput                           `pulumi:"backupMinute"`
+	IpFilters               pulumi.StringArrayInput                         `pulumi:"ipFilters"`
+	Migration               GetServicePgUserConfigMigrationPtrInput         `pulumi:"migration"`
+	Pg                      GetServicePgUserConfigPgPtrInput                `pulumi:"pg"`
+	PgReadReplica           pulumi.StringPtrInput                           `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom     pulumi.StringPtrInput                           `pulumi:"pgServiceToForkFrom"`
+	PgVersion               pulumi.StringPtrInput                           `pulumi:"pgVersion"`
+	Pgbouncer               GetServicePgUserConfigPgbouncerPtrInput         `pulumi:"pgbouncer"`
+	Pglookout               GetServicePgUserConfigPglookoutPtrInput         `pulumi:"pglookout"`
+	PrivateAccess           GetServicePgUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess       GetServicePgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom       pulumi.StringPtrInput                           `pulumi:"projectToForkFrom"`
+	PublicAccess            GetServicePgUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime      pulumi.StringPtrInput                           `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom       pulumi.StringPtrInput                           `pulumi:"serviceToForkFrom"`
+	SharedBuffersPercentage pulumi.StringPtrInput                           `pulumi:"sharedBuffersPercentage"`
+	SynchronousReplication  pulumi.StringPtrInput                           `pulumi:"synchronousReplication"`
+	Timescaledb             GetServicePgUserConfigTimescaledbPtrInput       `pulumi:"timescaledb"`
+	Variant                 pulumi.StringPtrInput                           `pulumi:"variant"`
+	WorkMem                 pulumi.StringPtrInput                           `pulumi:"workMem"`
 }
 
 func (GetServicePgUserConfigArgs) ElementType() reflect.Type {
@@ -67342,6 +69790,10 @@ func (o GetServicePgUserConfigOutput) Pglookout() GetServicePgUserConfigPglookou
 
 func (o GetServicePgUserConfigOutput) PrivateAccess() GetServicePgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfig) *GetServicePgUserConfigPrivateAccess { return v.PrivateAccess }).(GetServicePgUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetServicePgUserConfigOutput) PrivatelinkAccess() GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfig) *GetServicePgUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(GetServicePgUserConfigPrivatelinkAccessPtrOutput)
 }
 
 func (o GetServicePgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
@@ -68790,6 +71242,147 @@ func (o GetServicePgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetServicePgUserConfigPrivatelinkAccess struct {
+	Pg        *string `pulumi:"pg"`
+	Pgbouncer *string `pulumi:"pgbouncer"`
+}
+
+// GetServicePgUserConfigPrivatelinkAccessInput is an input type that accepts GetServicePgUserConfigPrivatelinkAccessArgs and GetServicePgUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetServicePgUserConfigPrivatelinkAccessInput` via:
+//
+//          GetServicePgUserConfigPrivatelinkAccessArgs{...}
+type GetServicePgUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetServicePgUserConfigPrivatelinkAccessOutput() GetServicePgUserConfigPrivatelinkAccessOutput
+	ToGetServicePgUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetServicePgUserConfigPrivatelinkAccessOutput
+}
+
+type GetServicePgUserConfigPrivatelinkAccessArgs struct {
+	Pg        pulumi.StringPtrInput `pulumi:"pg"`
+	Pgbouncer pulumi.StringPtrInput `pulumi:"pgbouncer"`
+}
+
+func (GetServicePgUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetServicePgUserConfigPrivatelinkAccessArgs) ToGetServicePgUserConfigPrivatelinkAccessOutput() GetServicePgUserConfigPrivatelinkAccessOutput {
+	return i.ToGetServicePgUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetServicePgUserConfigPrivatelinkAccessArgs) ToGetServicePgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetServicePgUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePgUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetServicePgUserConfigPrivatelinkAccessArgs) ToGetServicePgUserConfigPrivatelinkAccessPtrOutput() GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetServicePgUserConfigPrivatelinkAccessArgs) ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePgUserConfigPrivatelinkAccessOutput).ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetServicePgUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetServicePgUserConfigPrivatelinkAccessArgs, GetServicePgUserConfigPrivatelinkAccessPtr and GetServicePgUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetServicePgUserConfigPrivatelinkAccessPtrInput` via:
+//
+//          GetServicePgUserConfigPrivatelinkAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type GetServicePgUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetServicePgUserConfigPrivatelinkAccessPtrOutput() GetServicePgUserConfigPrivatelinkAccessPtrOutput
+	ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetServicePgUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getServicePgUserConfigPrivatelinkAccessPtrType GetServicePgUserConfigPrivatelinkAccessArgs
+
+func GetServicePgUserConfigPrivatelinkAccessPtr(v *GetServicePgUserConfigPrivatelinkAccessArgs) GetServicePgUserConfigPrivatelinkAccessPtrInput {
+	return (*getServicePgUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getServicePgUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getServicePgUserConfigPrivatelinkAccessPtrType) ToGetServicePgUserConfigPrivatelinkAccessPtrOutput() GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getServicePgUserConfigPrivatelinkAccessPtrType) ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetServicePgUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetServicePgUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessOutput) ToGetServicePgUserConfigPrivatelinkAccessOutput() GetServicePgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessOutput) ToGetServicePgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetServicePgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessOutput) ToGetServicePgUserConfigPrivatelinkAccessPtrOutput() GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessOutput) ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPrivatelinkAccess) *GetServicePgUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetServicePgUserConfigPrivatelinkAccessPtrOutput)
+}
+func (o GetServicePgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPrivatelinkAccess) *string { return v.Pgbouncer }).(pulumi.StringPtrOutput)
+}
+
+type GetServicePgUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServicePgUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessPtrOutput) ToGetServicePgUserConfigPrivatelinkAccessPtrOutput() GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessPtrOutput) ToGetServicePgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetServicePgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessPtrOutput) Elem() GetServicePgUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPrivatelinkAccess) GetServicePgUserConfigPrivatelinkAccess { return *v }).(GetServicePgUserConfigPrivatelinkAccessOutput)
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPrivatelinkAccessPtrOutput) Pgbouncer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServicePgUserConfigPublicAccess struct {
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
@@ -69852,6 +72445,8 @@ func init() {
 	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput{})
 	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigIndexPatternOutput{})
 	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigIndexPatternArrayOutput{})
+	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigIndexTemplateOutput{})
+	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigKibanaOutput{})
 	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigKibanaPtrOutput{})
 	pulumi.RegisterOutputType(ElasticSearchElasticsearchUserConfigPrivateAccessOutput{})
@@ -69930,6 +72525,8 @@ func init() {
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigKafkaRestConfigPtrOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigSchemaRegistryConfigOutput{})
@@ -70006,6 +72603,8 @@ func init() {
 	pulumi.RegisterOutputType(PgPgUserConfigPglookoutPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(PgPgUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(PgPgUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigTimescaledbOutput{})
@@ -70044,6 +72643,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigElasticsearchPtrOutput{})
 	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigIndexPatternOutput{})
 	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigIndexPatternArrayOutput{})
+	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigIndexTemplateOutput{})
+	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigKibanaOutput{})
 	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigKibanaPtrOutput{})
 	pulumi.RegisterOutputType(ServiceElasticsearchUserConfigPrivateAccessOutput{})
@@ -70094,6 +72695,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointJolokiaUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointJolokiaUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointPrometheusUserConfigOutput{})
@@ -70140,6 +72743,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationReadReplicaUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationRsyslogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationRsyslogUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationSchemaRegistryProxyUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationSignalfxUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaOutput{})
@@ -70172,6 +72777,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigKafkaRestConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(ServiceKafkaUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKafkaUserConfigSchemaRegistryConfigOutput{})
@@ -70200,6 +72807,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePgUserConfigPglookoutPtrOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(ServicePgUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(ServicePgUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServicePgUserConfigTimescaledbOutput{})
@@ -70238,6 +72847,8 @@ func init() {
 	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigElasticsearchPtrOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigIndexPatternOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigIndexPatternArrayOutput{})
+	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigIndexTemplateOutput{})
+	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigKibanaOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigKibanaPtrOutput{})
 	pulumi.RegisterOutputType(GetElasticSearchElasticsearchUserConfigPrivateAccessOutput{})
@@ -70308,6 +72919,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput{})
@@ -70373,6 +72986,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPgPgUserConfigPglookoutPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigTimescaledbOutput{})
@@ -70405,6 +73020,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigElasticsearchPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigIndexPatternOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigIndexPatternArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigIndexTemplateOutput{})
+	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigKibanaOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigKibanaPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceElasticsearchUserConfigPrivateAccessOutput{})
@@ -70444,6 +73061,7 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointJolokiaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigOutput{})
@@ -70472,6 +73090,7 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationReadReplicaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationRsyslogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationSchemaRegistryProxyUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaConnectOutput{})
@@ -70497,6 +73116,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigKafkaRestConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceKafkaUserConfigSchemaRegistryConfigOutput{})
@@ -70521,6 +73142,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServicePgUserConfigPglookoutPtrOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetServicePgUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetServicePgUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServicePgUserConfigTimescaledbOutput{})

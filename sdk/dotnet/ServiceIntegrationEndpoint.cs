@@ -92,6 +92,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointExternalKafkaUserConfig?> ExternalKafkaUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// External schema registry specific user configurable settings
+        /// </summary>
+        [Output("externalSchemaRegistryUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig?> ExternalSchemaRegistryUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Jolokia specific user configurable settings
         /// </summary>
         [Output("jolokiaUserConfig")]
@@ -212,6 +218,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs>? ExternalKafkaUserConfig { get; set; }
 
         /// <summary>
+        /// External schema registry specific user configurable settings
+        /// </summary>
+        [Input("externalSchemaRegistryUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs>? ExternalSchemaRegistryUserConfig { get; set; }
+
+        /// <summary>
         /// Jolokia specific user configurable settings
         /// </summary>
         [Input("jolokiaUserConfig")]
@@ -303,6 +315,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalKafkaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs>? ExternalKafkaUserConfig { get; set; }
+
+        /// <summary>
+        /// External schema registry specific user configurable settings
+        /// </summary>
+        [Input("externalSchemaRegistryUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigGetArgs>? ExternalSchemaRegistryUserConfig { get; set; }
 
         /// <summary>
         /// Jolokia specific user configurable settings

@@ -14,13 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigPrivateAccess
     {
         /// <summary>
-        /// Allow clients to connect to pg from the public internet for service nodes
-        /// that are in a project VPC or another type of private network
+        /// Enable pg.
         /// </summary>
         public readonly string? Pg;
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         public readonly string? Pgbouncer;
         /// <summary>

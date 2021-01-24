@@ -59,8 +59,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigMigrationGetArgs>? Migration { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to pg from the public internet for service nodes
-        /// that are in a project VPC or another type of private network
+        /// Enable pg.
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgUserConfigPgGetArgs>? Pg { get; set; }
@@ -85,8 +84,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgVersion { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
         public Input<Inputs.PgPgUserConfigPgbouncerGetArgs>? Pgbouncer { get; set; }
@@ -102,6 +100,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.PgPgUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
+
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Input<Inputs.PgPgUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has

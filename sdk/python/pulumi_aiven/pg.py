@@ -49,8 +49,7 @@ class Pg(pulumi.CustomResource):
                On monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
                UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: Allow clients to connect to pg from the public internet for service nodes
-               that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: Enable pg.
         :param pulumi.Input[pulumi.InputType['PgPgUserConfigArgs']] pg_user_config: defines PostgreSQL specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
@@ -168,8 +167,7 @@ class Pg(pulumi.CustomResource):
                On monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
                UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: Allow clients to connect to pg from the public internet for service nodes
-               that are in a project VPC or another type of private network
+        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: Enable pg.
         :param pulumi.Input[pulumi.InputType['PgPgUserConfigArgs']] pg_user_config: defines PostgreSQL specific additional configuration options. The following 
                configuration options available:
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
@@ -275,8 +273,7 @@ class Pg(pulumi.CustomResource):
     @pulumi.getter
     def pg(self) -> pulumi.Output['outputs.PgPg']:
         """
-        Allow clients to connect to pg from the public internet for service nodes
-        that are in a project VPC or another type of private network
+        Enable pg.
         """
         return pulumi.get(self, "pg")
 

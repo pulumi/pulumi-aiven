@@ -37,6 +37,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
                  read_replica_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationReadReplicaUserConfigArgs']]] = None,
                  rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationRsyslogUserConfigArgs']]] = None,
+                 schema_registry_proxy_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationSchemaRegistryProxyUserConfigArgs']]] = None,
                  signalfx_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationSignalfxUserConfigArgs']]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
@@ -94,6 +95,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus coordinator specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationReadReplicaUserConfigArgs']] read_replica_user_config: PG Read replica specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationRsyslogUserConfigArgs']] rsyslog_user_config: RSyslog specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationSchemaRegistryProxyUserConfigArgs']] schema_registry_proxy_user_config: Schema registry proxy specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationSignalfxUserConfigArgs']] signalfx_user_config: Signalfx specific user configurable settings
         :param pulumi.Input[str] source_endpoint_id: or `source_service_name` - (Optional) identifies the source side of the integration. Only either
                endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
@@ -142,6 +144,7 @@ class ServiceIntegration(pulumi.CustomResource):
             __props__['prometheus_user_config'] = prometheus_user_config
             __props__['read_replica_user_config'] = read_replica_user_config
             __props__['rsyslog_user_config'] = rsyslog_user_config
+            __props__['schema_registry_proxy_user_config'] = schema_registry_proxy_user_config
             __props__['signalfx_user_config'] = signalfx_user_config
             __props__['source_endpoint_id'] = source_endpoint_id
             __props__['source_service_name'] = source_service_name
@@ -175,6 +178,7 @@ class ServiceIntegration(pulumi.CustomResource):
             prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
             read_replica_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationReadReplicaUserConfigArgs']]] = None,
             rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationRsyslogUserConfigArgs']]] = None,
+            schema_registry_proxy_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationSchemaRegistryProxyUserConfigArgs']]] = None,
             signalfx_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationSignalfxUserConfigArgs']]] = None,
             source_endpoint_id: Optional[pulumi.Input[str]] = None,
             source_service_name: Optional[pulumi.Input[str]] = None) -> 'ServiceIntegration':
@@ -209,6 +213,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus coordinator specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationReadReplicaUserConfigArgs']] read_replica_user_config: PG Read replica specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationRsyslogUserConfigArgs']] rsyslog_user_config: RSyslog specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationSchemaRegistryProxyUserConfigArgs']] schema_registry_proxy_user_config: Schema registry proxy specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationSignalfxUserConfigArgs']] signalfx_user_config: Signalfx specific user configurable settings
         :param pulumi.Input[str] source_endpoint_id: or `source_service_name` - (Optional) identifies the source side of the integration. Only either
                endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
@@ -240,6 +245,7 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__["prometheus_user_config"] = prometheus_user_config
         __props__["read_replica_user_config"] = read_replica_user_config
         __props__["rsyslog_user_config"] = rsyslog_user_config
+        __props__["schema_registry_proxy_user_config"] = schema_registry_proxy_user_config
         __props__["signalfx_user_config"] = signalfx_user_config
         __props__["source_endpoint_id"] = source_endpoint_id
         __props__["source_service_name"] = source_service_name
@@ -408,6 +414,14 @@ class ServiceIntegration(pulumi.CustomResource):
         RSyslog specific user configurable settings
         """
         return pulumi.get(self, "rsyslog_user_config")
+
+    @property
+    @pulumi.getter(name="schemaRegistryProxyUserConfig")
+    def schema_registry_proxy_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationSchemaRegistryProxyUserConfig']]:
+        """
+        Schema registry proxy specific user configurable settings
+        """
+        return pulumi.get(self, "schema_registry_proxy_user_config")
 
     @property
     @pulumi.getter(name="signalfxUserConfig")

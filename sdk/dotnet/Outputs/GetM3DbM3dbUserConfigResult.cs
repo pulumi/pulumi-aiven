@@ -25,9 +25,6 @@ namespace Pulumi.Aiven.Outputs
         /// M3 limits
         /// </summary>
         public readonly Outputs.GetM3DbM3dbUserConfigLimitsResult? Limits;
-        /// <summary>
-        /// M3 major version
-        /// </summary>
         public readonly string? M3Version;
         /// <summary>
         /// Enables access to Graphite Carbon 
@@ -35,6 +32,10 @@ namespace Pulumi.Aiven.Outputs
         /// metrics are written to aggregated namespaces only.
         /// </summary>
         public readonly string? M3coordinatorEnableGraphiteCarbonIngest;
+        /// <summary>
+        /// M3 major version
+        /// </summary>
+        public readonly string? M3dbVersion;
         /// <summary>
         /// List of M3 namespaces
         /// </summary>
@@ -70,6 +71,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? m3coordinatorEnableGraphiteCarbonIngest,
 
+            string? m3dbVersion,
+
             ImmutableArray<Outputs.GetM3DbM3dbUserConfigNamespaceResult> namespaces,
 
             Outputs.GetM3DbM3dbUserConfigPrivateAccessResult? privateAccess,
@@ -85,6 +88,7 @@ namespace Pulumi.Aiven.Outputs
             Limits = limits;
             M3Version = m3Version;
             M3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
+            M3dbVersion = m3dbVersion;
             Namespaces = namespaces;
             PrivateAccess = privateAccess;
             ProjectToForkFrom = projectToForkFrom;

@@ -30,11 +30,14 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        [Input("m3Version")]
+        public Input<string>? M3Version { get; set; }
+
         /// <summary>
         /// M3 major version
         /// </summary>
-        [Input("m3Version")]
-        public Input<string>? M3Version { get; set; }
+        [Input("m3aggregatorVersion")]
+        public Input<string>? M3aggregatorVersion { get; set; }
 
         public M3AggregatorM3aggregatorUserConfigArgs()
         {

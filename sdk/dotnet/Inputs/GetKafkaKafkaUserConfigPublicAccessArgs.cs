@@ -19,15 +19,13 @@ namespace Pulumi.Aiven.Inputs
         public string? Kafka { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet 
-        /// for service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_connect
         /// </summary>
         [Input("kafkaConnect")]
         public string? KafkaConnect { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka_rest from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_rest
         /// </summary>
         [Input("kafkaRest")]
         public string? KafkaRest { get; set; }
@@ -40,7 +38,7 @@ namespace Pulumi.Aiven.Inputs
         public string? Prometheus { get; set; }
 
         /// <summary>
-        /// Enable Schema-Registry service
+        /// Enable schema_registry
         /// </summary>
         [Input("schemaRegistry")]
         public string? SchemaRegistry { get; set; }

@@ -58,6 +58,7 @@ type LookupServiceIntegrationEndpointArgs struct {
 	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
 	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	ExternalKafkaUserConfig              *GetServiceIntegrationEndpointExternalKafkaUserConfig              `pulumi:"externalKafkaUserConfig"`
+	ExternalSchemaRegistryUserConfig     *GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig     `pulumi:"externalSchemaRegistryUserConfig"`
 	JolokiaUserConfig                    *GetServiceIntegrationEndpointJolokiaUserConfig                    `pulumi:"jolokiaUserConfig"`
 	// defines the project the endpoint is associated with.
 	Project              string                                             `pulumi:"project"`
@@ -78,6 +79,7 @@ type LookupServiceIntegrationEndpointResult struct {
 	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
 	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	ExternalKafkaUserConfig              *GetServiceIntegrationEndpointExternalKafkaUserConfig              `pulumi:"externalKafkaUserConfig"`
+	ExternalSchemaRegistryUserConfig     *GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig     `pulumi:"externalSchemaRegistryUserConfig"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                   string                                             `pulumi:"id"`
 	JolokiaUserConfig    *GetServiceIntegrationEndpointJolokiaUserConfig    `pulumi:"jolokiaUserConfig"`

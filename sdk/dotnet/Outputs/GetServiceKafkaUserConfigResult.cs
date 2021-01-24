@@ -23,6 +23,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServiceKafkaUserConfigKafkaRestConfigResult? KafkaRestConfig;
         public readonly string? KafkaVersion;
         public readonly Outputs.GetServiceKafkaUserConfigPrivateAccessResult? PrivateAccess;
+        public readonly Outputs.GetServiceKafkaUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly Outputs.GetServiceKafkaUserConfigPublicAccessResult? PublicAccess;
         public readonly string? SchemaRegistry;
         public readonly Outputs.GetServiceKafkaUserConfigSchemaRegistryConfigResult? SchemaRegistryConfig;
@@ -49,6 +50,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetServiceKafkaUserConfigPrivateAccessResult? privateAccess,
 
+            Outputs.GetServiceKafkaUserConfigPrivatelinkAccessResult? privatelinkAccess,
+
             Outputs.GetServiceKafkaUserConfigPublicAccessResult? publicAccess,
 
             string? schemaRegistry,
@@ -65,6 +68,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaRestConfig = kafkaRestConfig;
             KafkaVersion = kafkaVersion;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;

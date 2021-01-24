@@ -35,7 +35,7 @@ import (
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
 // 			M3dbUserConfig: &aiven.M3DbM3dbUserConfigArgs{
-// 				M3Version: pulumi.String("0.15"),
+// 				M3dbVersion: pulumi.String("0.15"),
 // 				Namespaces: aiven.M3DbM3dbUserConfigNamespaceArray{
 // 					&aiven.M3DbM3dbUserConfigNamespaceArgs{
 // 						Name: pulumi.String("my-ns1"),

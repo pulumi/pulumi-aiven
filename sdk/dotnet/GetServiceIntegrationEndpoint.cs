@@ -85,6 +85,9 @@ namespace Pulumi.Aiven
         [Input("externalKafkaUserConfig")]
         public Inputs.GetServiceIntegrationEndpointExternalKafkaUserConfigArgs? ExternalKafkaUserConfig { get; set; }
 
+        [Input("externalSchemaRegistryUserConfig")]
+        public Inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs? ExternalSchemaRegistryUserConfig { get; set; }
+
         [Input("jolokiaUserConfig")]
         public Inputs.GetServiceIntegrationEndpointJolokiaUserConfigArgs? JolokiaUserConfig { get; set; }
 
@@ -124,6 +127,7 @@ namespace Pulumi.Aiven
         public readonly Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult? ExternalGoogleCloudLoggingUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult? ExternalKafkaUserConfig;
+        public readonly Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult? ExternalSchemaRegistryUserConfig;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -152,6 +156,8 @@ namespace Pulumi.Aiven
 
             Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult? externalKafkaUserConfig,
 
+            Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult? externalSchemaRegistryUserConfig,
+
             string id,
 
             Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult? jolokiaUserConfig,
@@ -172,6 +178,7 @@ namespace Pulumi.Aiven
             ExternalElasticsearchLogsUserConfig = externalElasticsearchLogsUserConfig;
             ExternalGoogleCloudLoggingUserConfig = externalGoogleCloudLoggingUserConfig;
             ExternalKafkaUserConfig = externalKafkaUserConfig;
+            ExternalSchemaRegistryUserConfig = externalSchemaRegistryUserConfig;
             Id = id;
             JolokiaUserConfig = jolokiaUserConfig;
             Project = project;

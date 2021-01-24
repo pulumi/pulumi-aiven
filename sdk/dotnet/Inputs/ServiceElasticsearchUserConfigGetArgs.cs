@@ -32,6 +32,9 @@ namespace Pulumi.Aiven.Inputs
             set => _indexPatterns = value;
         }
 
+        [Input("indexTemplate")]
+        public Input<Inputs.ServiceElasticsearchUserConfigIndexTemplateGetArgs>? IndexTemplate { get; set; }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
         public InputList<string> IpFilters

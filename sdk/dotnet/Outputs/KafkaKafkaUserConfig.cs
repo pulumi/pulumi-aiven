@@ -22,8 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Allow clients to connect to kafka from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// Enable kafka
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafka? Kafka;
         /// <summary>
@@ -31,8 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet 
-        /// for service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_connect
         /// </summary>
         public readonly string? KafkaConnect;
         /// <summary>
@@ -40,8 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
         /// <summary>
-        /// Allow clients to connect to kafka_rest from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_rest
         /// </summary>
         public readonly string? KafkaRest;
         /// <summary>
@@ -56,6 +53,10 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.KafkaKafkaUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
@@ -91,6 +92,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaKafkaUserConfigPrivateAccess? privateAccess,
 
+            Outputs.KafkaKafkaUserConfigPrivatelinkAccess? privatelinkAccess,
+
             Outputs.KafkaKafkaUserConfigPublicAccess? publicAccess,
 
             string? schemaRegistry,
@@ -107,6 +110,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaRestConfig = kafkaRestConfig;
             KafkaVersion = kafkaVersion;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;

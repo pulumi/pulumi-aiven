@@ -30,8 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult? KafkaAuthenticationMethods;
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet 
-        /// for service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_connect
         /// </summary>
         public readonly string? KafkaConnect;
         /// <summary>
@@ -39,8 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult? KafkaConnectConfig;
         /// <summary>
-        /// Allow clients to connect to kafka_rest from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable kafka_rest
         /// </summary>
         public readonly string? KafkaRest;
         /// <summary>
@@ -56,11 +54,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigPublicAccessResult? PublicAccess;
         /// <summary>
-        /// Enable Schema-Registry service
+        /// Enable schema_registry
         /// </summary>
         public readonly string? SchemaRegistry;
         /// <summary>
@@ -90,6 +92,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetKafkaKafkaUserConfigPrivateAccessResult? privateAccess,
 
+            Outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult? privatelinkAccess,
+
             Outputs.GetKafkaKafkaUserConfigPublicAccessResult? publicAccess,
 
             string? schemaRegistry,
@@ -106,6 +110,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaRestConfig = kafkaRestConfig;
             KafkaVersion = kafkaVersion;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;

@@ -19,8 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public string? Pg { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to pgbouncer from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
+        /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
         public string? Pgbouncer { get; set; }

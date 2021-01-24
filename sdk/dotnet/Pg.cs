@@ -49,8 +49,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// Allow clients to connect to pg from the public internet for service nodes
-        /// that are in a project VPC or another type of private network
+        /// Enable pg.
         /// </summary>
         [Output("pg")]
         public Output<Outputs.PgPg> PgServer { get; private set; } = null!;
@@ -233,8 +232,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to pg from the public internet for service nodes
-        /// that are in a project VPC or another type of private network
+        /// Enable pg.
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgArgs>? PgServer { get; set; }
@@ -354,8 +352,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to pg from the public internet for service nodes
-        /// that are in a project VPC or another type of private network
+        /// Enable pg.
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgGetArgs>? PgServer { get; set; }

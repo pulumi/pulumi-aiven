@@ -89,6 +89,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly externalKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
     /**
+     * External schema registry specific user configurable settings
+     */
+    public readonly externalSchemaRegistryUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig | undefined>;
+    /**
      * Jolokia specific user configurable settings
      */
     public readonly jolokiaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
@@ -129,6 +133,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
             inputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
             inputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
+            inputs["externalSchemaRegistryUserConfig"] = state ? state.externalSchemaRegistryUserConfig : undefined;
             inputs["jolokiaUserConfig"] = state ? state.jolokiaUserConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
@@ -152,6 +157,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
             inputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
             inputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
+            inputs["externalSchemaRegistryUserConfig"] = args ? args.externalSchemaRegistryUserConfig : undefined;
             inputs["jolokiaUserConfig"] = args ? args.jolokiaUserConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
@@ -209,6 +215,10 @@ export interface ServiceIntegrationEndpointState {
      */
     readonly externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
     /**
+     * External schema registry specific user configurable settings
+     */
+    readonly externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
+    /**
      * Jolokia specific user configurable settings
      */
     readonly jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
@@ -264,6 +274,10 @@ export interface ServiceIntegrationEndpointArgs {
      * external Kafka specific user configurable settings
      */
     readonly externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    /**
+     * External schema registry specific user configurable settings
+     */
+    readonly externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
     /**
      * Jolokia specific user configurable settings
      */

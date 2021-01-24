@@ -50,7 +50,7 @@ class M3Aggregator(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             m3aggregator_user_config=aiven.M3AggregatorM3aggregatorUserConfigArgs(
-                m3_version="0.15",
+                m3aggregator_version="0.15",
             ))
         ```
 

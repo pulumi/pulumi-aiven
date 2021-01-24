@@ -418,6 +418,15 @@
                         }
                     }
                 },
+                "indexTemplate": {
+                    "$ref": "#/types/aiven:index/ElasticSearchElasticsearchUserConfigIndexTemplate:ElasticSearchElasticsearchUserConfigIndexTemplate",
+                    "description": "Template settings for all new indexe.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -743,6 +752,38 @@
                 "pattern": {
                     "type": "string",
                     "description": "Must consist of alpha-numeric characters, dashes, underscores, \ndots and glob characters (* and ?)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ElasticSearchElasticsearchUserConfigIndexTemplate:ElasticSearchElasticsearchUserConfigIndexTemplate": {
+            "properties": {
+                "mappingNestedObjectsLimit": {
+                    "type": "string",
+                    "description": "The maximum number of nested JSON objects that \na single document can contain across all nested types. This limit helps to prevent out of\nmemory errors when a document contains too many nested objects. Default is 10000.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfReplicas": {
+                    "type": "string",
+                    "description": "The number of replicas each primary shard has.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfShards": {
+                    "type": "string",
+                    "description": "The number of primary shards that an index should have.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2429,7 +2470,7 @@
                 },
                 "kafka": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafka:KafkaKafkaUserConfigKafka",
-                    "description": "Allow clients to connect to kafka from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2447,7 +2488,7 @@
                 },
                 "kafkaConnect": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_connect from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_connect\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2465,7 +2506,7 @@
                 },
                 "kafkaRest": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_rest from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_rest\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2493,6 +2534,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigPrivateAccess:KafkaKafkaUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigPrivatelinkAccess:KafkaKafkaUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3075,11 +3125,11 @@
             },
             "type": "object"
         },
-        "aiven:index/KafkaKafkaUserConfigPublicAccess:KafkaKafkaUserConfigPublicAccess": {
+        "aiven:index/KafkaKafkaUserConfigPrivatelinkAccess:KafkaKafkaUserConfigPrivatelinkAccess": {
             "properties": {
                 "kafka": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3088,7 +3138,7 @@
                 },
                 "kafkaConnect": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_connect from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_connect\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3097,7 +3147,48 @@
                 },
                 "kafkaRest": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_rest from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_rest\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schemaRegistry": {
+                    "type": "string",
+                    "description": "Enable Schema-Registry service\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/KafkaKafkaUserConfigPublicAccess:KafkaKafkaUserConfigPublicAccess": {
+            "properties": {
+                "kafka": {
+                    "type": "string",
+                    "description": "Enable kafka\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaConnect": {
+                    "type": "string",
+                    "description": "Enable kafka_connect\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaRest": {
+                    "type": "string",
+                    "description": "Enable kafka_rest\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3664,6 +3755,14 @@
                 },
                 "m3Version": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3aggregatorVersion": {
+                    "type": "string",
                     "description": "M3 major version\n",
                     "language": {
                         "python": {
@@ -3810,7 +3909,6 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "M3 major version\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3820,6 +3918,15 @@
                 "m3coordinatorEnableGraphiteCarbonIngest": {
                     "type": "string",
                     "description": "Enables access to Graphite Carbon \nplaintext metrics ingestion. It can be enabled only for services inside VPCs. The\nmetrics are written to aggregated namespaces only.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3dbVersion": {
+                    "type": "string",
+                    "description": "M3 major version\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4781,7 +4888,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPg:PgPgUserConfigPg",
-                    "description": "Allow clients to connect to pg from the public internet for service nodes\nthat are in a project VPC or another type of private network\n",
+                    "description": "Enable pg.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4817,7 +4924,7 @@
                 },
                 "pgbouncer": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPgbouncer:PgPgUserConfigPgbouncer",
-                    "description": "Allow clients to connect to pgbouncer from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable pgbouncer.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4836,6 +4943,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPrivateAccess:PgPgUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/PgPgUserConfigPrivatelinkAccess:PgPgUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5436,7 +5552,7 @@
             "properties": {
                 "pg": {
                     "type": "string",
-                    "description": "Allow clients to connect to pg from the public internet for service nodes\nthat are in a project VPC or another type of private network\n",
+                    "description": "Enable pg.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5445,7 +5561,7 @@
                 },
                 "pgbouncer": {
                     "type": "string",
-                    "description": "Allow clients to connect to pgbouncer from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable pgbouncer.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5464,11 +5580,11 @@
             },
             "type": "object"
         },
-        "aiven:index/PgPgUserConfigPublicAccess:PgPgUserConfigPublicAccess": {
+        "aiven:index/PgPgUserConfigPrivatelinkAccess:PgPgUserConfigPrivatelinkAccess": {
             "properties": {
                 "pg": {
                     "type": "string",
-                    "description": "Allow clients to connect to pg from the public internet for service nodes\nthat are in a project VPC or another type of private network\n",
+                    "description": "Enable pg.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5477,7 +5593,30 @@
                 },
                 "pgbouncer": {
                     "type": "string",
-                    "description": "Allow clients to connect to pgbouncer from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable pgbouncer.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/PgPgUserConfigPublicAccess:PgPgUserConfigPublicAccess": {
+            "properties": {
+                "pg": {
+                    "type": "string",
+                    "description": "Enable pg.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgbouncer": {
+                    "type": "string",
+                    "description": "Enable pgbouncer.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6101,6 +6240,14 @@
                         }
                     }
                 },
+                "indexTemplate": {
+                    "$ref": "#/types/aiven:index/ServiceElasticsearchUserConfigIndexTemplate:ServiceElasticsearchUserConfigIndexTemplate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -6390,6 +6537,35 @@
                     }
                 },
                 "pattern": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceElasticsearchUserConfigIndexTemplate:ServiceElasticsearchUserConfigIndexTemplate": {
+            "properties": {
+                "mappingNestedObjectsLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfReplicas": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfShards": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7495,6 +7671,30 @@
                         }
                     }
                 },
+                "saslMechanism": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "saslPlainPassword": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "saslPlainUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "securityProtocol": {
                     "type": "string",
                     "language": {
@@ -7520,6 +7720,51 @@
                     }
                 },
                 "sslClientKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslEndpointIdentificationAlgorithm": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig": {
+            "properties": {
+                "authentication": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "basicAuthPassword": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "basicAuthUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -8130,6 +8375,9 @@
         "aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig": {
             "type": "object"
         },
+        "aiven:index/ServiceIntegrationSchemaRegistryProxyUserConfig:ServiceIntegrationSchemaRegistryProxyUserConfig": {
+            "type": "object"
+        },
         "aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig": {
             "type": "object"
         },
@@ -8510,6 +8758,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/ServiceKafkaUserConfigPrivateAccess:ServiceKafkaUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServiceKafkaUserConfigPrivatelinkAccess:ServiceKafkaUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9022,6 +9278,43 @@
         "aiven:index/ServiceKafkaUserConfigPrivateAccess:ServiceKafkaUserConfigPrivateAccess": {
             "properties": {
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceKafkaUserConfigPrivatelinkAccess:ServiceKafkaUserConfigPrivatelinkAccess": {
+            "properties": {
+                "kafka": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaConnect": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaRest": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schemaRegistry": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9612,6 +9905,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServicePgUserConfigPrivatelinkAccess:ServicePgUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "language": {
@@ -10161,6 +10462,27 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServicePgUserConfigPrivatelinkAccess:ServicePgUserConfigPrivatelinkAccess": {
+            "properties": {
+                "pg": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgbouncer": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -10848,6 +11170,15 @@
                         }
                     }
                 },
+                "indexTemplate": {
+                    "$ref": "#/types/aiven:index/getElasticSearchElasticsearchUserConfigIndexTemplate:getElasticSearchElasticsearchUserConfigIndexTemplate",
+                    "description": "Template settings for all new indexe.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -11173,6 +11504,38 @@
                 "pattern": {
                     "type": "string",
                     "description": "Must consist of alpha-numeric characters, dashes, underscores, \ndots and glob characters (* and ?)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getElasticSearchElasticsearchUserConfigIndexTemplate:getElasticSearchElasticsearchUserConfigIndexTemplate": {
+            "properties": {
+                "mappingNestedObjectsLimit": {
+                    "type": "string",
+                    "description": "The maximum number of nested JSON objects that\na single document can contain across all nested types. This limit helps to prevent out of\nmemory errors when a document contains too many nested objects. Default is 10000.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfReplicas": {
+                    "type": "string",
+                    "description": "The number of replicas each primary shard has.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfShards": {
+                    "type": "string",
+                    "description": "The number of primary shards that an index should have.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12879,7 +13242,7 @@
                 },
                 "kafkaConnect": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_connect from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_connect\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12897,7 +13260,7 @@
                 },
                 "kafkaRest": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_rest from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_rest\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12931,6 +13294,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigPrivatelinkAccess:getKafkaKafkaUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigPublicAccess:getKafkaKafkaUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n",
@@ -12942,7 +13314,7 @@
                 },
                 "schemaRegistry": {
                     "type": "string",
-                    "description": "Enable Schema-Registry service\n",
+                    "description": "Enable schema_registry\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13507,6 +13879,47 @@
             },
             "type": "object"
         },
+        "aiven:index/getKafkaKafkaUserConfigPrivatelinkAccess:getKafkaKafkaUserConfigPrivatelinkAccess": {
+            "properties": {
+                "kafka": {
+                    "type": "string",
+                    "description": "Kafka server provided values:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaConnect": {
+                    "type": "string",
+                    "description": "Enable kafka_connect\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaRest": {
+                    "type": "string",
+                    "description": "Enable kafka_rest\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schemaRegistry": {
+                    "type": "string",
+                    "description": "Enable schema_registry\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getKafkaKafkaUserConfigPublicAccess:getKafkaKafkaUserConfigPublicAccess": {
             "properties": {
                 "kafka": {
@@ -13520,7 +13933,7 @@
                 },
                 "kafkaConnect": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_connect from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_connect\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13529,7 +13942,7 @@
                 },
                 "kafkaRest": {
                     "type": "string",
-                    "description": "Allow clients to connect to kafka_rest from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka_rest\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13547,7 +13960,7 @@
                 },
                 "schemaRegistry": {
                     "type": "string",
-                    "description": "Enable Schema-Registry service\n",
+                    "description": "Enable schema_registry\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14098,6 +14511,14 @@
                 },
                 "m3Version": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3aggregatorVersion": {
+                    "type": "string",
                     "description": "M3 major version\n",
                     "language": {
                         "python": {
@@ -14245,7 +14666,6 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "M3 major version\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14255,6 +14675,15 @@
                 "m3coordinatorEnableGraphiteCarbonIngest": {
                     "type": "string",
                     "description": "Enables access to Graphite Carbon \nplaintext metrics ingestion. It can be enabled only for services inside VPCs. The\nmetrics are written to aggregated namespaces only.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "m3dbVersion": {
+                    "type": "string",
+                    "description": "M3 major version\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15255,7 +15684,7 @@
                 },
                 "pgbouncer": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigPgbouncer:getPgPgUserConfigPgbouncer",
-                    "description": "Allow clients to connect to pgbouncer from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable pgbouncer.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15280,9 +15709,18 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getPgPgUserConfigPrivatelinkAccess:getPgPgUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
-                    "description": "(Optional) Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
+                    "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15883,7 +16321,7 @@
                 },
                 "pgbouncer": {
                     "type": "string",
-                    "description": "Allow clients to connect to pgbouncer from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable pgbouncer.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15893,6 +16331,29 @@
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getPgPgUserConfigPrivatelinkAccess:getPgPgUserConfigPrivatelinkAccess": {
+            "properties": {
+                "pg": {
+                    "type": "string",
+                    "description": "PostgreSQL specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgbouncer": {
+                    "type": "string",
+                    "description": "Enable pgbouncer.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15915,7 +16376,7 @@
                 },
                 "pgbouncer": {
                     "type": "string",
-                    "description": "Allow clients to connect to pgbouncer from the public internet for \nservice nodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable pgbouncer.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16542,6 +17003,14 @@
                         }
                     }
                 },
+                "indexTemplate": {
+                    "$ref": "#/types/aiven:index/getServiceElasticsearchUserConfigIndexTemplate:getServiceElasticsearchUserConfigIndexTemplate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -16831,6 +17300,35 @@
                     }
                 },
                 "pattern": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceElasticsearchUserConfigIndexTemplate:getServiceElasticsearchUserConfigIndexTemplate": {
+            "properties": {
+                "mappingNestedObjectsLimit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfReplicas": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numberOfShards": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -17937,6 +18435,30 @@
                         }
                     }
                 },
+                "saslMechanism": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "saslPlainPassword": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "saslPlainUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "securityProtocol": {
                     "type": "string",
                     "language": {
@@ -17962,6 +18484,51 @@
                     }
                 },
                 "sslClientKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslEndpointIdentificationAlgorithm": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationEndpointExternalSchemaRegistryUserConfig:getServiceIntegrationEndpointExternalSchemaRegistryUserConfig": {
+            "properties": {
+                "authentication": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "basicAuthPassword": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "basicAuthUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -18572,6 +19139,9 @@
         "aiven:index/getServiceIntegrationRsyslogUserConfig:getServiceIntegrationRsyslogUserConfig": {
             "type": "object"
         },
+        "aiven:index/getServiceIntegrationSchemaRegistryProxyUserConfig:getServiceIntegrationSchemaRegistryProxyUserConfig": {
+            "type": "object"
+        },
         "aiven:index/getServiceIntegrationSignalfxUserConfig:getServiceIntegrationSignalfxUserConfig": {
             "type": "object"
         },
@@ -18953,6 +19523,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getServiceKafkaUserConfigPrivateAccess:getServiceKafkaUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServiceKafkaUserConfigPrivatelinkAccess:getServiceKafkaUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19465,6 +20043,43 @@
         "aiven:index/getServiceKafkaUserConfigPrivateAccess:getServiceKafkaUserConfigPrivateAccess": {
             "properties": {
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceKafkaUserConfigPrivatelinkAccess:getServiceKafkaUserConfigPrivatelinkAccess": {
+            "properties": {
+                "kafka": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaConnect": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaRest": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schemaRegistry": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20056,6 +20671,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServicePgUserConfigPrivatelinkAccess:getServicePgUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "language": {
@@ -20605,6 +21228,27 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServicePgUserConfigPrivatelinkAccess:getServicePgUserConfigPrivatelinkAccess": {
+            "properties": {
+                "pg": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pgbouncer": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -22930,7 +23574,7 @@
                 },
                 "kafka": {
                     "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka",
-                    "description": "Allow clients to connect to kafka from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka\n",
                     "language": {
                         "csharp": {
                             "name": "KafkaServer"
@@ -23029,7 +23673,7 @@
                 },
                 "kafka": {
                     "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka",
-                    "description": "Allow clients to connect to kafka from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "description": "Enable kafka\n",
                     "language": {
                         "csharp": {
                             "name": "KafkaServer"
@@ -23100,7 +23744,7 @@
                     },
                     "kafka": {
                         "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka",
-                        "description": "Allow clients to connect to kafka from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                        "description": "Enable kafka\n",
                         "language": {
                             "csharp": {
                                 "name": "KafkaServer"
@@ -24238,7 +24882,7 @@
             }
         },
         "aiven:index/m3Aggregator:M3Aggregator": {
-            "description": "## # M3 Aggregator Resource\n\nThe M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3a = new aiven.M3Aggregator(\"m3a\", {\n    project: data.aiven_project.foo.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"business-8\",\n    serviceName: \"my-m3a\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    m3aggregatorUserConfig: {\n        m3Version: 0.15,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3a = aiven.M3Aggregator(\"m3a\",\n    project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"business-8\",\n    service_name=\"my-m3a\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    m3aggregator_user_config=aiven.M3AggregatorM3aggregatorUserConfigArgs(\n        m3_version=\"0.15\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3a = new Aiven.M3Aggregator(\"m3a\", new Aiven.M3AggregatorArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"business-8\",\n            ServiceName = \"my-m3a\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            M3aggregatorUserConfig = new Aiven.Inputs.M3AggregatorM3aggregatorUserConfigArgs\n            {\n                M3Version = \"0.15\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3Aggregator(ctx, \"m3a\", \u0026aiven.M3AggregatorArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Foo.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"business-8\"),\n\t\t\tServiceName:           pulumi.String(\"my-m3a\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tM3aggregatorUserConfig: \u0026aiven.M3AggregatorM3aggregatorUserConfigArgs{\n\t\t\t\tM3Version: pulumi.String(\"0.15\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # M3 Aggregator Resource\n\nThe M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3a = new aiven.M3Aggregator(\"m3a\", {\n    project: data.aiven_project.foo.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"business-8\",\n    serviceName: \"my-m3a\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    m3aggregatorUserConfig: {\n        m3aggregatorVersion: 0.15,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3a = aiven.M3Aggregator(\"m3a\",\n    project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"business-8\",\n    service_name=\"my-m3a\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    m3aggregator_user_config=aiven.M3AggregatorM3aggregatorUserConfigArgs(\n        m3aggregator_version=\"0.15\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3a = new Aiven.M3Aggregator(\"m3a\", new Aiven.M3AggregatorArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"business-8\",\n            ServiceName = \"my-m3a\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            M3aggregatorUserConfig = new Aiven.Inputs.M3AggregatorM3aggregatorUserConfigArgs\n            {\n                M3aggregatorVersion = \"0.15\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3Aggregator(ctx, \"m3a\", \u0026aiven.M3AggregatorArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Foo.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"business-8\"),\n\t\t\tServiceName:           pulumi.String(\"my-m3a\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tM3aggregatorUserConfig: \u0026aiven.M3AggregatorM3aggregatorUserConfigArgs{\n\t\t\t\tM3aggregatorVersion: pulumi.String(\"0.15\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "cloudName": {
                     "type": "string",
@@ -24479,7 +25123,7 @@
             }
         },
         "aiven:index/m3Db:M3Db": {
-            "description": "## # M3 DB Resource\n\nThe M3 DB resource allows the creation and management of Aiven M3 services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3 = new aiven.M3Db(\"m3\", {\n    project: data.aiven_project.foo.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"business-8\",\n    serviceName: \"my-m3db\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    m3dbUserConfig: {\n        m3Version: 0.15,\n        namespaces: [{\n            name: \"my-ns1\",\n            type: \"unaggregated\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3 = aiven.M3Db(\"m3\",\n    project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"business-8\",\n    service_name=\"my-m3db\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    m3db_user_config=aiven.M3DbM3dbUserConfigArgs(\n        m3_version=\"0.15\",\n        namespaces=[aiven.M3DbM3dbUserConfigNamespaceArgs(\n            name=\"my-ns1\",\n            type=\"unaggregated\",\n        )],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3 = new Aiven.M3Db(\"m3\", new Aiven.M3DbArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"business-8\",\n            ServiceName = \"my-m3db\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            M3dbUserConfig = new Aiven.Inputs.M3DbM3dbUserConfigArgs\n            {\n                M3Version = \"0.15\",\n                Namespaces = \n                {\n                    new Aiven.Inputs.M3DbM3dbUserConfigNamespaceArgs\n                    {\n                        Name = \"my-ns1\",\n                        Type = \"unaggregated\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3Db(ctx, \"m3\", \u0026aiven.M3DbArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Foo.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"business-8\"),\n\t\t\tServiceName:           pulumi.String(\"my-m3db\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tM3dbUserConfig: \u0026aiven.M3DbM3dbUserConfigArgs{\n\t\t\t\tM3Version: pulumi.String(\"0.15\"),\n\t\t\t\tNamespaces: aiven.M3DbM3dbUserConfigNamespaceArray{\n\t\t\t\t\t\u0026aiven.M3DbM3dbUserConfigNamespaceArgs{\n\t\t\t\t\t\tName: pulumi.String(\"my-ns1\"),\n\t\t\t\t\t\tType: pulumi.String(\"unaggregated\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # M3 DB Resource\n\nThe M3 DB resource allows the creation and management of Aiven M3 services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst m3 = new aiven.M3Db(\"m3\", {\n    project: data.aiven_project.foo.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"business-8\",\n    serviceName: \"my-m3db\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    m3dbUserConfig: {\n        m3dbVersion: 0.15,\n        namespaces: [{\n            name: \"my-ns1\",\n            type: \"unaggregated\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nm3 = aiven.M3Db(\"m3\",\n    project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"business-8\",\n    service_name=\"my-m3db\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    m3db_user_config=aiven.M3DbM3dbUserConfigArgs(\n        m3db_version=\"0.15\",\n        namespaces=[aiven.M3DbM3dbUserConfigNamespaceArgs(\n            name=\"my-ns1\",\n            type=\"unaggregated\",\n        )],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var m3 = new Aiven.M3Db(\"m3\", new Aiven.M3DbArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"business-8\",\n            ServiceName = \"my-m3db\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            M3dbUserConfig = new Aiven.Inputs.M3DbM3dbUserConfigArgs\n            {\n                M3dbVersion = \"0.15\",\n                Namespaces = \n                {\n                    new Aiven.Inputs.M3DbM3dbUserConfigNamespaceArgs\n                    {\n                        Name = \"my-ns1\",\n                        Type = \"unaggregated\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3Db(ctx, \"m3\", \u0026aiven.M3DbArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Foo.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"business-8\"),\n\t\t\tServiceName:           pulumi.String(\"my-m3db\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tM3dbUserConfig: \u0026aiven.M3DbM3dbUserConfigArgs{\n\t\t\t\tM3dbVersion: pulumi.String(\"0.15\"),\n\t\t\t\tNamespaces: aiven.M3DbM3dbUserConfigNamespaceArray{\n\t\t\t\t\t\u0026aiven.M3DbM3dbUserConfigNamespaceArgs{\n\t\t\t\t\t\tName: pulumi.String(\"my-ns1\"),\n\t\t\t\t\t\tType: pulumi.String(\"unaggregated\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "cloudName": {
                     "type": "string",
@@ -25113,7 +25757,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "Allow clients to connect to pg from the public internet for service nodes\nthat are in a project VPC or another type of private network\n",
+                    "description": "Enable pg.\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -25208,7 +25852,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "Allow clients to connect to pg from the public internet for service nodes\nthat are in a project VPC or another type of private network\n",
+                    "description": "Enable pg.\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -25275,7 +25919,7 @@
                     },
                     "pg": {
                         "$ref": "#/types/aiven:index/PgPg:PgPg",
-                        "description": "Allow clients to connect to pg from the public internet for service nodes\nthat are in a project VPC or another type of private network\n",
+                        "description": "Enable pg.\n",
                         "language": {
                             "csharp": {
                                 "name": "PgServer"
@@ -26568,6 +27212,10 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig",
                     "description": "RSyslog specific user configurable settings\n"
                 },
+                "schemaRegistryProxyUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationSchemaRegistryProxyUserConfig:ServiceIntegrationSchemaRegistryProxyUserConfig",
+                    "description": "Schema registry proxy specific user configurable settings\n"
+                },
                 "signalfxUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig",
                     "description": "Signalfx specific user configurable settings\n"
@@ -26665,6 +27313,10 @@
                 "rsyslogUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig",
                     "description": "RSyslog specific user configurable settings\n"
+                },
+                "schemaRegistryProxyUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationSchemaRegistryProxyUserConfig:ServiceIntegrationSchemaRegistryProxyUserConfig",
+                    "description": "Schema registry proxy specific user configurable settings\n"
                 },
                 "signalfxUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig",
@@ -26766,6 +27418,10 @@
                         "$ref": "#/types/aiven:index/ServiceIntegrationRsyslogUserConfig:ServiceIntegrationRsyslogUserConfig",
                         "description": "RSyslog specific user configurable settings\n"
                     },
+                    "schemaRegistryProxyUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationSchemaRegistryProxyUserConfig:ServiceIntegrationSchemaRegistryProxyUserConfig",
+                        "description": "Schema registry proxy specific user configurable settings\n"
+                    },
                     "signalfxUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationSignalfxUserConfig:ServiceIntegrationSignalfxUserConfig",
                         "description": "Signalfx specific user configurable settings\n"
@@ -26819,6 +27475,10 @@
                 "externalKafkaUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig",
                     "description": "external Kafka specific user configurable settings\n"
+                },
+                "externalSchemaRegistryUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
+                    "description": "External schema registry specific user configurable settings\n"
                 },
                 "jolokiaUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig",
@@ -26875,6 +27535,10 @@
                 "externalKafkaUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig",
                     "description": "external Kafka specific user configurable settings\n"
+                },
+                "externalSchemaRegistryUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
+                    "description": "External schema registry specific user configurable settings\n"
                 },
                 "jolokiaUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig",
@@ -26939,6 +27603,10 @@
                     "externalKafkaUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig",
                         "description": "external Kafka specific user configurable settings\n"
+                    },
+                    "externalSchemaRegistryUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
+                        "description": "External schema registry specific user configurable settings\n"
                     },
                     "jolokiaUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig",
@@ -31633,6 +32301,9 @@
                     "rsyslogUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationRsyslogUserConfig:getServiceIntegrationRsyslogUserConfig"
                     },
+                    "schemaRegistryProxyUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationSchemaRegistryProxyUserConfig:getServiceIntegrationSchemaRegistryProxyUserConfig"
+                    },
                     "signalfxUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationSignalfxUserConfig:getServiceIntegrationSignalfxUserConfig"
                     },
@@ -31719,6 +32390,9 @@
                     "rsyslogUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationRsyslogUserConfig:getServiceIntegrationRsyslogUserConfig"
                     },
+                    "schemaRegistryProxyUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationSchemaRegistryProxyUserConfig:getServiceIntegrationSchemaRegistryProxyUserConfig"
+                    },
                     "signalfxUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationSignalfxUserConfig:getServiceIntegrationSignalfxUserConfig"
                     },
@@ -31773,6 +32447,9 @@
                     "externalKafkaUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalKafkaUserConfig:getServiceIntegrationEndpointExternalKafkaUserConfig"
                     },
+                    "externalSchemaRegistryUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalSchemaRegistryUserConfig:getServiceIntegrationEndpointExternalSchemaRegistryUserConfig"
+                    },
                     "jolokiaUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationEndpointJolokiaUserConfig:getServiceIntegrationEndpointJolokiaUserConfig"
                     },
@@ -31826,6 +32503,9 @@
                     },
                     "externalKafkaUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalKafkaUserConfig:getServiceIntegrationEndpointExternalKafkaUserConfig"
+                    },
+                    "externalSchemaRegistryUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalSchemaRegistryUserConfig:getServiceIntegrationEndpointExternalSchemaRegistryUserConfig"
                     },
                     "id": {
                         "type": "string",
