@@ -37,6 +37,7 @@ namespace Pulumi.Aiven
     /// 
     /// &gt; **Note** The service user resource is not supported for Aiven Grafana services.
     /// </summary>
+    [AivenResourceType("aiven:index/serviceUser:ServiceUser")]
     public partial class ServiceUser : Pulumi.CustomResource
     {
         /// <summary>

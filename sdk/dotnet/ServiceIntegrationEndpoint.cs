@@ -39,6 +39,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint")]
     public partial class ServiceIntegrationEndpoint : Pulumi.CustomResource
     {
         /// <summary>

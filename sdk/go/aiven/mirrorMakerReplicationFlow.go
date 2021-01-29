@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -201,15 +201,15 @@ type MirrorMakerReplicationFlowInput interface {
 	ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput
 }
 
-func (MirrorMakerReplicationFlow) ElementType() reflect.Type {
-	return reflect.TypeOf((*MirrorMakerReplicationFlow)(nil)).Elem()
+func (*MirrorMakerReplicationFlow) ElementType() reflect.Type {
+	return reflect.TypeOf((*MirrorMakerReplicationFlow)(nil))
 }
 
-func (i MirrorMakerReplicationFlow) ToMirrorMakerReplicationFlowOutput() MirrorMakerReplicationFlowOutput {
+func (i *MirrorMakerReplicationFlow) ToMirrorMakerReplicationFlowOutput() MirrorMakerReplicationFlowOutput {
 	return i.ToMirrorMakerReplicationFlowOutputWithContext(context.Background())
 }
 
-func (i MirrorMakerReplicationFlow) ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput {
+func (i *MirrorMakerReplicationFlow) ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MirrorMakerReplicationFlowOutput)
 }
 
@@ -218,7 +218,7 @@ type MirrorMakerReplicationFlowOutput struct {
 }
 
 func (MirrorMakerReplicationFlowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MirrorMakerReplicationFlowOutput)(nil)).Elem()
+	return reflect.TypeOf((*MirrorMakerReplicationFlow)(nil))
 }
 
 func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutput() MirrorMakerReplicationFlowOutput {

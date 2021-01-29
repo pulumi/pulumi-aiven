@@ -18,6 +18,7 @@ namespace Pulumi.Aiven
     /// It is important to note that the project should have an `account_id` property set equal to the
     /// account team you are trying to link to this project.
     /// </summary>
+    [AivenResourceType("aiven:index/accountTeamProject:AccountTeamProject")]
     public partial class AccountTeamProject : Pulumi.CustomResource
     {
         /// <summary>

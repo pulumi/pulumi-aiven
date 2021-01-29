@@ -35,6 +35,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration")]
     public partial class KafkaSchemaConfiguration : Pulumi.CustomResource
     {
         /// <summary>

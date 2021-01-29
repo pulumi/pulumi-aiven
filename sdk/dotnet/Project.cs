@@ -14,6 +14,7 @@ namespace Pulumi.Aiven
     /// 
     /// The Project resource allows the creation and management of Aiven Projects.
     /// </summary>
+    [AivenResourceType("aiven:index/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

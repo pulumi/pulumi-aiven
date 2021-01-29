@@ -48,6 +48,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")]
     public partial class MirrorMakerReplicationFlow : Pulumi.CustomResource
     {
         /// <summary>

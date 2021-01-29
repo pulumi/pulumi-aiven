@@ -50,6 +50,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/m3Db:M3Db")]
     public partial class M3Db : Pulumi.CustomResource
     {
         /// <summary>

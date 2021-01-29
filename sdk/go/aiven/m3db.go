@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -421,15 +422,15 @@ type M3DbInput interface {
 	ToM3DbOutputWithContext(ctx context.Context) M3DbOutput
 }
 
-func (M3Db) ElementType() reflect.Type {
-	return reflect.TypeOf((*M3Db)(nil)).Elem()
+func (*M3Db) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3Db)(nil))
 }
 
-func (i M3Db) ToM3DbOutput() M3DbOutput {
+func (i *M3Db) ToM3DbOutput() M3DbOutput {
 	return i.ToM3DbOutputWithContext(context.Background())
 }
 
-func (i M3Db) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
+func (i *M3Db) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbOutput)
 }
 
@@ -438,7 +439,7 @@ type M3DbOutput struct {
 }
 
 func (M3DbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*M3DbOutput)(nil)).Elem()
+	return reflect.TypeOf((*M3Db)(nil))
 }
 
 func (o M3DbOutput) ToM3DbOutput() M3DbOutput {

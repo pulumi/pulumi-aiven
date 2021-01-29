@@ -35,6 +35,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/projectUser:ProjectUser")]
     public partial class ProjectUser : Pulumi.CustomResource
     {
         /// <summary>

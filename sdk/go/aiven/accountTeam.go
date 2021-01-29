@@ -124,15 +124,15 @@ type AccountTeamInput interface {
 	ToAccountTeamOutputWithContext(ctx context.Context) AccountTeamOutput
 }
 
-func (AccountTeam) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeam)(nil)).Elem()
+func (*AccountTeam) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountTeam)(nil))
 }
 
-func (i AccountTeam) ToAccountTeamOutput() AccountTeamOutput {
+func (i *AccountTeam) ToAccountTeamOutput() AccountTeamOutput {
 	return i.ToAccountTeamOutputWithContext(context.Background())
 }
 
-func (i AccountTeam) ToAccountTeamOutputWithContext(ctx context.Context) AccountTeamOutput {
+func (i *AccountTeam) ToAccountTeamOutputWithContext(ctx context.Context) AccountTeamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamOutput)
 }
 
@@ -141,7 +141,7 @@ type AccountTeamOutput struct {
 }
 
 func (AccountTeamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeamOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountTeam)(nil))
 }
 
 func (o AccountTeamOutput) ToAccountTeamOutput() AccountTeamOutput {

@@ -32,6 +32,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

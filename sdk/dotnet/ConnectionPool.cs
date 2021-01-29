@@ -39,6 +39,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/connectionPool:ConnectionPool")]
     public partial class ConnectionPool : Pulumi.CustomResource
     {
         /// <summary>

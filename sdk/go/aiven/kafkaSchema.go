@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -192,15 +192,15 @@ type KafkaSchemaInput interface {
 	ToKafkaSchemaOutputWithContext(ctx context.Context) KafkaSchemaOutput
 }
 
-func (KafkaSchema) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaSchema)(nil)).Elem()
+func (*KafkaSchema) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaSchema)(nil))
 }
 
-func (i KafkaSchema) ToKafkaSchemaOutput() KafkaSchemaOutput {
+func (i *KafkaSchema) ToKafkaSchemaOutput() KafkaSchemaOutput {
 	return i.ToKafkaSchemaOutputWithContext(context.Background())
 }
 
-func (i KafkaSchema) ToKafkaSchemaOutputWithContext(ctx context.Context) KafkaSchemaOutput {
+func (i *KafkaSchema) ToKafkaSchemaOutputWithContext(ctx context.Context) KafkaSchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaOutput)
 }
 
@@ -209,7 +209,7 @@ type KafkaSchemaOutput struct {
 }
 
 func (KafkaSchemaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaSchemaOutput)(nil)).Elem()
+	return reflect.TypeOf((*KafkaSchema)(nil))
 }
 
 func (o KafkaSchemaOutput) ToKafkaSchemaOutput() KafkaSchemaOutput {

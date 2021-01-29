@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -187,15 +187,15 @@ type KafkaAclInput interface {
 	ToKafkaAclOutputWithContext(ctx context.Context) KafkaAclOutput
 }
 
-func (KafkaAcl) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaAcl)(nil)).Elem()
+func (*KafkaAcl) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAcl)(nil))
 }
 
-func (i KafkaAcl) ToKafkaAclOutput() KafkaAclOutput {
+func (i *KafkaAcl) ToKafkaAclOutput() KafkaAclOutput {
 	return i.ToKafkaAclOutputWithContext(context.Background())
 }
 
-func (i KafkaAcl) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAclOutput {
+func (i *KafkaAcl) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclOutput)
 }
 
@@ -204,7 +204,7 @@ type KafkaAclOutput struct {
 }
 
 func (KafkaAclOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaAclOutput)(nil)).Elem()
+	return reflect.TypeOf((*KafkaAcl)(nil))
 }
 
 func (o KafkaAclOutput) ToKafkaAclOutput() KafkaAclOutput {

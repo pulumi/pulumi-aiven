@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -417,15 +418,15 @@ type InfluxDbInput interface {
 	ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput
 }
 
-func (InfluxDb) ElementType() reflect.Type {
-	return reflect.TypeOf((*InfluxDb)(nil)).Elem()
+func (*InfluxDb) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfluxDb)(nil))
 }
 
-func (i InfluxDb) ToInfluxDbOutput() InfluxDbOutput {
+func (i *InfluxDb) ToInfluxDbOutput() InfluxDbOutput {
 	return i.ToInfluxDbOutputWithContext(context.Background())
 }
 
-func (i InfluxDb) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput {
+func (i *InfluxDb) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbOutput)
 }
 
@@ -434,7 +435,7 @@ type InfluxDbOutput struct {
 }
 
 func (InfluxDbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InfluxDbOutput)(nil)).Elem()
+	return reflect.TypeOf((*InfluxDb)(nil))
 }
 
 func (o InfluxDbOutput) ToInfluxDbOutput() InfluxDbOutput {

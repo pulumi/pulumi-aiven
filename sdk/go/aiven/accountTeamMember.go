@@ -165,15 +165,15 @@ type AccountTeamMemberInput interface {
 	ToAccountTeamMemberOutputWithContext(ctx context.Context) AccountTeamMemberOutput
 }
 
-func (AccountTeamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeamMember)(nil)).Elem()
+func (*AccountTeamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountTeamMember)(nil))
 }
 
-func (i AccountTeamMember) ToAccountTeamMemberOutput() AccountTeamMemberOutput {
+func (i *AccountTeamMember) ToAccountTeamMemberOutput() AccountTeamMemberOutput {
 	return i.ToAccountTeamMemberOutputWithContext(context.Background())
 }
 
-func (i AccountTeamMember) ToAccountTeamMemberOutputWithContext(ctx context.Context) AccountTeamMemberOutput {
+func (i *AccountTeamMember) ToAccountTeamMemberOutputWithContext(ctx context.Context) AccountTeamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMemberOutput)
 }
 
@@ -182,7 +182,7 @@ type AccountTeamMemberOutput struct {
 }
 
 func (AccountTeamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountTeamMember)(nil))
 }
 
 func (o AccountTeamMemberOutput) ToAccountTeamMemberOutput() AccountTeamMemberOutput {

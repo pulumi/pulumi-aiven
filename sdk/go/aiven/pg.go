@@ -384,15 +384,15 @@ type PgInput interface {
 	ToPgOutputWithContext(ctx context.Context) PgOutput
 }
 
-func (Pg) ElementType() reflect.Type {
-	return reflect.TypeOf((*Pg)(nil)).Elem()
+func (*Pg) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pg)(nil))
 }
 
-func (i Pg) ToPgOutput() PgOutput {
+func (i *Pg) ToPgOutput() PgOutput {
 	return i.ToPgOutputWithContext(context.Background())
 }
 
-func (i Pg) ToPgOutputWithContext(ctx context.Context) PgOutput {
+func (i *Pg) ToPgOutputWithContext(ctx context.Context) PgOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgOutput)
 }
 
@@ -401,7 +401,7 @@ type PgOutput struct {
 }
 
 func (PgOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PgOutput)(nil)).Elem()
+	return reflect.TypeOf((*Pg)(nil))
 }
 
 func (o PgOutput) ToPgOutput() PgOutput {

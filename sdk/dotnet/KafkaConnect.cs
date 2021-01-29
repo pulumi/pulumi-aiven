@@ -49,6 +49,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/kafkaConnect:KafkaConnect")]
     public partial class KafkaConnect : Pulumi.CustomResource
     {
         /// <summary>

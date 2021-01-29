@@ -45,6 +45,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/influxDb:InfluxDb")]
     public partial class InfluxDb : Pulumi.CustomResource
     {
         /// <summary>

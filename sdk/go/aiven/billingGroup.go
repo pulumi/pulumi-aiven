@@ -201,15 +201,15 @@ type BillingGroupInput interface {
 	ToBillingGroupOutputWithContext(ctx context.Context) BillingGroupOutput
 }
 
-func (BillingGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingGroup)(nil)).Elem()
+func (*BillingGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingGroup)(nil))
 }
 
-func (i BillingGroup) ToBillingGroupOutput() BillingGroupOutput {
+func (i *BillingGroup) ToBillingGroupOutput() BillingGroupOutput {
 	return i.ToBillingGroupOutputWithContext(context.Background())
 }
 
-func (i BillingGroup) ToBillingGroupOutputWithContext(ctx context.Context) BillingGroupOutput {
+func (i *BillingGroup) ToBillingGroupOutputWithContext(ctx context.Context) BillingGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupOutput)
 }
 
@@ -218,7 +218,7 @@ type BillingGroupOutput struct {
 }
 
 func (BillingGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*BillingGroup)(nil))
 }
 
 func (o BillingGroupOutput) ToBillingGroupOutput() BillingGroupOutput {

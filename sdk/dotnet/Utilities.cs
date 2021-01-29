@@ -77,4 +77,11 @@ namespace Pulumi.Aiven
             }
         }
     }
+
+    internal sealed class AivenResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public AivenResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

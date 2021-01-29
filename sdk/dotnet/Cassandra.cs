@@ -46,6 +46,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/cassandra:Cassandra")]
     public partial class Cassandra : Pulumi.CustomResource
     {
         /// <summary>

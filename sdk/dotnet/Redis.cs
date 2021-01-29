@@ -46,6 +46,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/redis:Redis")]
     public partial class Redis : Pulumi.CustomResource
     {
         /// <summary>

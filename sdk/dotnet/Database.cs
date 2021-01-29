@@ -35,6 +35,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

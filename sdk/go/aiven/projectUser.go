@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -154,15 +154,15 @@ type ProjectUserInput interface {
 	ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput
 }
 
-func (ProjectUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectUser)(nil)).Elem()
+func (*ProjectUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectUser)(nil))
 }
 
-func (i ProjectUser) ToProjectUserOutput() ProjectUserOutput {
+func (i *ProjectUser) ToProjectUserOutput() ProjectUserOutput {
 	return i.ToProjectUserOutputWithContext(context.Background())
 }
 
-func (i ProjectUser) ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput {
+func (i *ProjectUser) ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserOutput)
 }
 
@@ -171,7 +171,7 @@ type ProjectUserOutput struct {
 }
 
 func (ProjectUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectUserOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectUser)(nil))
 }
 
 func (o ProjectUserOutput) ToProjectUserOutput() ProjectUserOutput {

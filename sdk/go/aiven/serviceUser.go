@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -214,15 +214,15 @@ type ServiceUserInput interface {
 	ToServiceUserOutputWithContext(ctx context.Context) ServiceUserOutput
 }
 
-func (ServiceUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceUser)(nil)).Elem()
+func (*ServiceUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceUser)(nil))
 }
 
-func (i ServiceUser) ToServiceUserOutput() ServiceUserOutput {
+func (i *ServiceUser) ToServiceUserOutput() ServiceUserOutput {
 	return i.ToServiceUserOutputWithContext(context.Background())
 }
 
-func (i ServiceUser) ToServiceUserOutputWithContext(ctx context.Context) ServiceUserOutput {
+func (i *ServiceUser) ToServiceUserOutputWithContext(ctx context.Context) ServiceUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserOutput)
 }
 
@@ -231,7 +231,7 @@ type ServiceUserOutput struct {
 }
 
 func (ServiceUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceUserOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceUser)(nil))
 }
 
 func (o ServiceUserOutput) ToServiceUserOutput() ServiceUserOutput {

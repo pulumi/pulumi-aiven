@@ -46,6 +46,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/grafana:Grafana")]
     public partial class Grafana : Pulumi.CustomResource
     {
         /// <summary>

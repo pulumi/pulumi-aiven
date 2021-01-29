@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -423,15 +424,15 @@ type GrafanaInput interface {
 	ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput
 }
 
-func (Grafana) ElementType() reflect.Type {
-	return reflect.TypeOf((*Grafana)(nil)).Elem()
+func (*Grafana) ElementType() reflect.Type {
+	return reflect.TypeOf((*Grafana)(nil))
 }
 
-func (i Grafana) ToGrafanaOutput() GrafanaOutput {
+func (i *Grafana) ToGrafanaOutput() GrafanaOutput {
 	return i.ToGrafanaOutputWithContext(context.Background())
 }
 
-func (i Grafana) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput {
+func (i *Grafana) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrafanaOutput)
 }
 
@@ -440,7 +441,7 @@ type GrafanaOutput struct {
 }
 
 func (GrafanaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GrafanaOutput)(nil)).Elem()
+	return reflect.TypeOf((*Grafana)(nil))
 }
 
 func (o GrafanaOutput) ToGrafanaOutput() GrafanaOutput {

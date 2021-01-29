@@ -36,6 +36,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/vpcPeeringConnection:VpcPeeringConnection")]
     public partial class VpcPeeringConnection : Pulumi.CustomResource
     {
         /// <summary>

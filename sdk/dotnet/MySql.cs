@@ -51,6 +51,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/mySql:MySql")]
     public partial class MySql : Pulumi.CustomResource
     {
         /// <summary>

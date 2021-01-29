@@ -43,6 +43,7 @@ namespace Pulumi.Aiven
     /// 
     /// &gt; **Note** For services running on `hobbiest` plan service integrations are not supported.
     /// </summary>
+    [AivenResourceType("aiven:index/serviceIntegration:ServiceIntegration")]
     public partial class ServiceIntegration : Pulumi.CustomResource
     {
         /// <summary>
