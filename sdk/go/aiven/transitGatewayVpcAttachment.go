@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -188,15 +188,15 @@ type TransitGatewayVpcAttachmentInput interface {
 	ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput
 }
 
-func (TransitGatewayVpcAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitGatewayVpcAttachment)(nil)).Elem()
+func (*TransitGatewayVpcAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayVpcAttachment)(nil))
 }
 
-func (i TransitGatewayVpcAttachment) ToTransitGatewayVpcAttachmentOutput() TransitGatewayVpcAttachmentOutput {
+func (i *TransitGatewayVpcAttachment) ToTransitGatewayVpcAttachmentOutput() TransitGatewayVpcAttachmentOutput {
 	return i.ToTransitGatewayVpcAttachmentOutputWithContext(context.Background())
 }
 
-func (i TransitGatewayVpcAttachment) ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput {
+func (i *TransitGatewayVpcAttachment) ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentOutput)
 }
 
@@ -205,7 +205,7 @@ type TransitGatewayVpcAttachmentOutput struct {
 }
 
 func (TransitGatewayVpcAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitGatewayVpcAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*TransitGatewayVpcAttachment)(nil))
 }
 
 func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentOutput() TransitGatewayVpcAttachmentOutput {

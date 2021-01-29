@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -258,15 +259,15 @@ type ServiceIntegrationEndpointInput interface {
 	ToServiceIntegrationEndpointOutputWithContext(ctx context.Context) ServiceIntegrationEndpointOutput
 }
 
-func (ServiceIntegrationEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIntegrationEndpoint)(nil)).Elem()
+func (*ServiceIntegrationEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpoint)(nil))
 }
 
-func (i ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutput() ServiceIntegrationEndpointOutput {
+func (i *ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutput() ServiceIntegrationEndpointOutput {
 	return i.ToServiceIntegrationEndpointOutputWithContext(context.Background())
 }
 
-func (i ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutputWithContext(ctx context.Context) ServiceIntegrationEndpointOutput {
+func (i *ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutputWithContext(ctx context.Context) ServiceIntegrationEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointOutput)
 }
 
@@ -275,7 +276,7 @@ type ServiceIntegrationEndpointOutput struct {
 }
 
 func (ServiceIntegrationEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIntegrationEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceIntegrationEndpoint)(nil))
 }
 
 func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointOutput() ServiceIntegrationEndpointOutput {

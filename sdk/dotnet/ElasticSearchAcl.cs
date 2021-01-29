@@ -74,6 +74,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/elasticSearchAcl:ElasticSearchAcl")]
     public partial class ElasticSearchAcl : Pulumi.CustomResource
     {
         /// <summary>

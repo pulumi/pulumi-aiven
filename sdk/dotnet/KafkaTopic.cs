@@ -44,6 +44,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/kafkaTopic:KafkaTopic")]
     public partial class KafkaTopic : Pulumi.CustomResource
     {
         /// <summary>

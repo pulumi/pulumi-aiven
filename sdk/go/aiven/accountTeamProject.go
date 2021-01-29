@@ -130,15 +130,15 @@ type AccountTeamProjectInput interface {
 	ToAccountTeamProjectOutputWithContext(ctx context.Context) AccountTeamProjectOutput
 }
 
-func (AccountTeamProject) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeamProject)(nil)).Elem()
+func (*AccountTeamProject) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountTeamProject)(nil))
 }
 
-func (i AccountTeamProject) ToAccountTeamProjectOutput() AccountTeamProjectOutput {
+func (i *AccountTeamProject) ToAccountTeamProjectOutput() AccountTeamProjectOutput {
 	return i.ToAccountTeamProjectOutputWithContext(context.Background())
 }
 
-func (i AccountTeamProject) ToAccountTeamProjectOutputWithContext(ctx context.Context) AccountTeamProjectOutput {
+func (i *AccountTeamProject) ToAccountTeamProjectOutputWithContext(ctx context.Context) AccountTeamProjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamProjectOutput)
 }
 
@@ -147,7 +147,7 @@ type AccountTeamProjectOutput struct {
 }
 
 func (AccountTeamProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeamProjectOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountTeamProject)(nil))
 }
 
 func (o AccountTeamProjectOutput) ToAccountTeamProjectOutput() AccountTeamProjectOutput {

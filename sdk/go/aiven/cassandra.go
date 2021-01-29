@@ -24,6 +24,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -420,15 +421,15 @@ type CassandraInput interface {
 	ToCassandraOutputWithContext(ctx context.Context) CassandraOutput
 }
 
-func (Cassandra) ElementType() reflect.Type {
-	return reflect.TypeOf((*Cassandra)(nil)).Elem()
+func (*Cassandra) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cassandra)(nil))
 }
 
-func (i Cassandra) ToCassandraOutput() CassandraOutput {
+func (i *Cassandra) ToCassandraOutput() CassandraOutput {
 	return i.ToCassandraOutputWithContext(context.Background())
 }
 
-func (i Cassandra) ToCassandraOutputWithContext(ctx context.Context) CassandraOutput {
+func (i *Cassandra) ToCassandraOutputWithContext(ctx context.Context) CassandraOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraOutput)
 }
 
@@ -437,7 +438,7 @@ type CassandraOutput struct {
 }
 
 func (CassandraOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CassandraOutput)(nil)).Elem()
+	return reflect.TypeOf((*Cassandra)(nil))
 }
 
 func (o CassandraOutput) ToCassandraOutput() CassandraOutput {

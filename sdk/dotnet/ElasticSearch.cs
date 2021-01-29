@@ -52,6 +52,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/elasticSearch:ElasticSearch")]
     public partial class ElasticSearch : Pulumi.CustomResource
     {
         /// <summary>

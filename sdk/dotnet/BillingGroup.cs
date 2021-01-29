@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    [AivenResourceType("aiven:index/billingGroup:BillingGroup")]
     public partial class BillingGroup : Pulumi.CustomResource
     {
         /// <summary>

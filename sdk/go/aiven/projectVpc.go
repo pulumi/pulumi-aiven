@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -153,15 +153,15 @@ type ProjectVpcInput interface {
 	ToProjectVpcOutputWithContext(ctx context.Context) ProjectVpcOutput
 }
 
-func (ProjectVpc) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectVpc)(nil)).Elem()
+func (*ProjectVpc) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectVpc)(nil))
 }
 
-func (i ProjectVpc) ToProjectVpcOutput() ProjectVpcOutput {
+func (i *ProjectVpc) ToProjectVpcOutput() ProjectVpcOutput {
 	return i.ToProjectVpcOutputWithContext(context.Background())
 }
 
-func (i ProjectVpc) ToProjectVpcOutputWithContext(ctx context.Context) ProjectVpcOutput {
+func (i *ProjectVpc) ToProjectVpcOutputWithContext(ctx context.Context) ProjectVpcOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcOutput)
 }
 
@@ -170,7 +170,7 @@ type ProjectVpcOutput struct {
 }
 
 func (ProjectVpcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectVpcOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectVpc)(nil))
 }
 
 func (o ProjectVpcOutput) ToProjectVpcOutput() ProjectVpcOutput {

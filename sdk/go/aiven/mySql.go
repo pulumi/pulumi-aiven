@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -442,15 +443,15 @@ type MySqlInput interface {
 	ToMySqlOutputWithContext(ctx context.Context) MySqlOutput
 }
 
-func (MySql) ElementType() reflect.Type {
-	return reflect.TypeOf((*MySql)(nil)).Elem()
+func (*MySql) ElementType() reflect.Type {
+	return reflect.TypeOf((*MySql)(nil))
 }
 
-func (i MySql) ToMySqlOutput() MySqlOutput {
+func (i *MySql) ToMySqlOutput() MySqlOutput {
 	return i.ToMySqlOutputWithContext(context.Background())
 }
 
-func (i MySql) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
+func (i *MySql) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlOutput)
 }
 
@@ -459,7 +460,7 @@ type MySqlOutput struct {
 }
 
 func (MySqlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MySqlOutput)(nil)).Elem()
+	return reflect.TypeOf((*MySql)(nil))
 }
 
 func (o MySqlOutput) ToMySqlOutput() MySqlOutput {

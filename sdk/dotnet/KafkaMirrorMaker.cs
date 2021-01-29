@@ -49,6 +49,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker")]
     public partial class KafkaMirrorMaker : Pulumi.CustomResource
     {
         /// <summary>

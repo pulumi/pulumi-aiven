@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -428,15 +429,15 @@ type ElasticSearchInput interface {
 	ToElasticSearchOutputWithContext(ctx context.Context) ElasticSearchOutput
 }
 
-func (ElasticSearch) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticSearch)(nil)).Elem()
+func (*ElasticSearch) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSearch)(nil))
 }
 
-func (i ElasticSearch) ToElasticSearchOutput() ElasticSearchOutput {
+func (i *ElasticSearch) ToElasticSearchOutput() ElasticSearchOutput {
 	return i.ToElasticSearchOutputWithContext(context.Background())
 }
 
-func (i ElasticSearch) ToElasticSearchOutputWithContext(ctx context.Context) ElasticSearchOutput {
+func (i *ElasticSearch) ToElasticSearchOutputWithContext(ctx context.Context) ElasticSearchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchOutput)
 }
 
@@ -445,7 +446,7 @@ type ElasticSearchOutput struct {
 }
 
 func (ElasticSearchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticSearchOutput)(nil)).Elem()
+	return reflect.TypeOf((*ElasticSearch)(nil))
 }
 
 func (o ElasticSearchOutput) ToElasticSearchOutput() ElasticSearchOutput {

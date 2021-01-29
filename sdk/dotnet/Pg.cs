@@ -14,6 +14,7 @@ namespace Pulumi.Aiven
     /// 
     /// The PG resource allows the creation and management of Aiven PostgreSQL services.
     /// </summary>
+    [AivenResourceType("aiven:index/pg:Pg")]
     public partial class Pg : Pulumi.CustomResource
     {
         /// <summary>

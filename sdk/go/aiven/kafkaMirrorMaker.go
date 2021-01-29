@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -420,15 +421,15 @@ type KafkaMirrorMakerInput interface {
 	ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput
 }
 
-func (KafkaMirrorMaker) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaMirrorMaker)(nil)).Elem()
+func (*KafkaMirrorMaker) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaMirrorMaker)(nil))
 }
 
-func (i KafkaMirrorMaker) ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutput {
+func (i *KafkaMirrorMaker) ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutput {
 	return i.ToKafkaMirrorMakerOutputWithContext(context.Background())
 }
 
-func (i KafkaMirrorMaker) ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput {
+func (i *KafkaMirrorMaker) ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerOutput)
 }
 
@@ -437,7 +438,7 @@ type KafkaMirrorMakerOutput struct {
 }
 
 func (KafkaMirrorMakerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaMirrorMakerOutput)(nil)).Elem()
+	return reflect.TypeOf((*KafkaMirrorMaker)(nil))
 }
 
 func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutput {

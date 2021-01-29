@@ -42,6 +42,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/m3Aggregator:M3Aggregator")]
     public partial class M3Aggregator : Pulumi.CustomResource
     {
         /// <summary>

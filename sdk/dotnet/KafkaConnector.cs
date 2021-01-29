@@ -51,6 +51,7 @@ namespace Pulumi.Aiven
     /// * `config`- (Required)is the Kafka Connector configuration parameters, where `topics`, `connector.class` and `name`
     /// are required parameters but the rest of them are connector type specific.
     /// </summary>
+    [AivenResourceType("aiven:index/kafkaConnector:KafkaConnector")]
     public partial class KafkaConnector : Pulumi.CustomResource
     {
         /// <summary>

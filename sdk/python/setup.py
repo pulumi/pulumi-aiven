@@ -48,7 +48,7 @@ setup(name='pulumi_aiven',
       packages=find_packages(),
       package_data={
           'pulumi_aiven': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

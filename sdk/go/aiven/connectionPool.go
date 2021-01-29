@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -233,15 +233,15 @@ type ConnectionPoolInput interface {
 	ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput
 }
 
-func (ConnectionPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionPool)(nil)).Elem()
+func (*ConnectionPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPool)(nil))
 }
 
-func (i ConnectionPool) ToConnectionPoolOutput() ConnectionPoolOutput {
+func (i *ConnectionPool) ToConnectionPoolOutput() ConnectionPoolOutput {
 	return i.ToConnectionPoolOutputWithContext(context.Background())
 }
 
-func (i ConnectionPool) ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput {
+func (i *ConnectionPool) ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolOutput)
 }
 
@@ -250,7 +250,7 @@ type ConnectionPoolOutput struct {
 }
 
 func (ConnectionPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConnectionPool)(nil))
 }
 
 func (o ConnectionPoolOutput) ToConnectionPoolOutput() ConnectionPoolOutput {

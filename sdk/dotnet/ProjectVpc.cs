@@ -35,6 +35,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]
     public partial class ProjectVpc : Pulumi.CustomResource
     {
         /// <summary>

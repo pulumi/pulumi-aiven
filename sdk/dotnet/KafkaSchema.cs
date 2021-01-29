@@ -50,6 +50,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/kafkaSchema:KafkaSchema")]
     public partial class KafkaSchema : Pulumi.CustomResource
     {
         /// <summary>

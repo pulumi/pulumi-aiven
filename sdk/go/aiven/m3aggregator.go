@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -415,15 +416,15 @@ type M3AggregatorInput interface {
 	ToM3AggregatorOutputWithContext(ctx context.Context) M3AggregatorOutput
 }
 
-func (M3Aggregator) ElementType() reflect.Type {
-	return reflect.TypeOf((*M3Aggregator)(nil)).Elem()
+func (*M3Aggregator) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3Aggregator)(nil))
 }
 
-func (i M3Aggregator) ToM3AggregatorOutput() M3AggregatorOutput {
+func (i *M3Aggregator) ToM3AggregatorOutput() M3AggregatorOutput {
 	return i.ToM3AggregatorOutputWithContext(context.Background())
 }
 
-func (i M3Aggregator) ToM3AggregatorOutputWithContext(ctx context.Context) M3AggregatorOutput {
+func (i *M3Aggregator) ToM3AggregatorOutputWithContext(ctx context.Context) M3AggregatorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorOutput)
 }
 
@@ -432,7 +433,7 @@ type M3AggregatorOutput struct {
 }
 
 func (M3AggregatorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*M3AggregatorOutput)(nil)).Elem()
+	return reflect.TypeOf((*M3Aggregator)(nil))
 }
 
 func (o M3AggregatorOutput) ToM3AggregatorOutput() M3AggregatorOutput {

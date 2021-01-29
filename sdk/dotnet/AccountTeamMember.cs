@@ -20,6 +20,7 @@ namespace Pulumi.Aiven
     /// delete the invitation if one was sent but not yet accepted by the user, it will also
     /// eliminate an account team member if one has accepted an invitation previously.
     /// </summary>
+    [AivenResourceType("aiven:index/accountTeamMember:AccountTeamMember")]
     public partial class AccountTeamMember : Pulumi.CustomResource
     {
         /// <summary>

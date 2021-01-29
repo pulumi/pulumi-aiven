@@ -14,6 +14,7 @@ namespace Pulumi.Aiven
     /// 
     /// The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
     /// </summary>
+    [AivenResourceType("aiven:index/accountAuthentication:AccountAuthentication")]
     public partial class AccountAuthentication : Pulumi.CustomResource
     {
         /// <summary>

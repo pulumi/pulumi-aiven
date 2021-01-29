@@ -201,15 +201,15 @@ type AccountAuthenticationInput interface {
 	ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput
 }
 
-func (AccountAuthentication) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountAuthentication)(nil)).Elem()
+func (*AccountAuthentication) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAuthentication)(nil))
 }
 
-func (i AccountAuthentication) ToAccountAuthenticationOutput() AccountAuthenticationOutput {
+func (i *AccountAuthentication) ToAccountAuthenticationOutput() AccountAuthenticationOutput {
 	return i.ToAccountAuthenticationOutputWithContext(context.Background())
 }
 
-func (i AccountAuthentication) ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput {
+func (i *AccountAuthentication) ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationOutput)
 }
 
@@ -218,7 +218,7 @@ type AccountAuthenticationOutput struct {
 }
 
 func (AccountAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountAuthenticationOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountAuthentication)(nil))
 }
 
 func (o AccountAuthenticationOutput) ToAccountAuthenticationOutput() AccountAuthenticationOutput {

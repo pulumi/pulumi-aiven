@@ -41,6 +41,7 @@ namespace Pulumi.Aiven
     /// }
     /// ```
     /// </summary>
+    [AivenResourceType("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment")]
     public partial class TransitGatewayVpcAttachment : Pulumi.CustomResource
     {
         /// <summary>

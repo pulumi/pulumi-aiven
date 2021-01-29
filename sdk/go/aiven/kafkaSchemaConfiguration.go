@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -169,15 +169,15 @@ type KafkaSchemaConfigurationInput interface {
 	ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput
 }
 
-func (KafkaSchemaConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaSchemaConfiguration)(nil)).Elem()
+func (*KafkaSchemaConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaSchemaConfiguration)(nil))
 }
 
-func (i KafkaSchemaConfiguration) ToKafkaSchemaConfigurationOutput() KafkaSchemaConfigurationOutput {
+func (i *KafkaSchemaConfiguration) ToKafkaSchemaConfigurationOutput() KafkaSchemaConfigurationOutput {
 	return i.ToKafkaSchemaConfigurationOutputWithContext(context.Background())
 }
 
-func (i KafkaSchemaConfiguration) ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput {
+func (i *KafkaSchemaConfiguration) ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaConfigurationOutput)
 }
 
@@ -186,7 +186,7 @@ type KafkaSchemaConfigurationOutput struct {
 }
 
 func (KafkaSchemaConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaSchemaConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*KafkaSchemaConfiguration)(nil))
 }
 
 func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationOutput() KafkaSchemaConfigurationOutput {
