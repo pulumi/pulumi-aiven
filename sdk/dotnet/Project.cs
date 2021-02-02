@@ -214,7 +214,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Billing contact emails of the project
         /// </summary>
-        [Obsolete(@"Please aiven_billing_group resource to set this value.")]
+        [Obsolete(@"Please use aiven_billing_group resource to set this value.")]
         public InputList<string> BillingEmails
         {
             get => _billingEmails ?? (_billingEmails = new InputList<string>());
@@ -336,7 +336,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Billing contact emails of the project
         /// </summary>
-        [Obsolete(@"Please aiven_billing_group resource to set this value.")]
+        [Obsolete(@"Please use aiven_billing_group resource to set this value.")]
         public InputList<string> BillingEmails
         {
             get => _billingEmails ?? (_billingEmails = new InputList<string>());

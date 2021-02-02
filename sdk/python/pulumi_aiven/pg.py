@@ -32,10 +32,7 @@ class Pg(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## # PG Resource
-
-        The PG resource allows the creation and management of Aiven PostgreSQL services.
-
+        Create a Pg resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted

@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## # PG Resource
-//
-// The PG resource allows the creation and management of Aiven PostgreSQL services.
 type Pg struct {
 	pulumi.CustomResourceState
 

@@ -25734,7 +25734,6 @@
             }
         },
         "aiven:index/pg:Pg": {
-            "description": "## # PG Resource\n\nThe PG resource allows the creation and management of Aiven PostgreSQL services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst pg = new aiven.Pg(\"pg\", {\n    project: data.aiven_project.pr1.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-4\",\n    serviceName: \"my-pg1\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    pgUserConfig: {\n        pgVersion: 11,\n        publicAccess: {\n            pg: true,\n            prometheus: false,\n        },\n        pg: {\n            idleInTransactionSessionTimeout: 900,\n            logMinDurationStatement: -1,\n        },\n    },\n    timeouts: [{\n        create: \"20m\",\n        update: \"15m\",\n    }],\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "cloudName": {
                     "type": "string",
@@ -26003,12 +26002,12 @@
                 "billingAddress": {
                     "type": "string",
                     "description": "Billing name and address of the project\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingCurrency": {
                     "type": "string",
                     "description": "Billing currency\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingEmails": {
                     "type": "array",
@@ -26016,12 +26015,12 @@
                         "type": "string"
                     },
                     "description": "Billing contact emails of the project\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingExtraText": {
                     "type": "string",
                     "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingGroup": {
                     "type": "string",
@@ -26033,7 +26032,8 @@
                 },
                 "cardId": {
                     "type": "string",
-                    "description": "is either the full card UUID or the last 4 digits of the card. As the full\nUUID is not shown in the UI it is typically easier to use the last 4 digits to identify\nthe card. This can be omitted if `copy_from_project` is used to copy billing info from\nanother project.\n"
+                    "description": "is either the full card UUID or the last 4 digits of the card. As the full\nUUID is not shown in the UI it is typically easier to use the last 4 digits to identify\nthe card. This can be omitted if `copy_from_project` is used to copy billing info from\nanother project.\n",
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "copyFromProject": {
                     "type": "string",
@@ -26042,11 +26042,12 @@
                 "country": {
                     "type": "string",
                     "description": "Billing country\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "countryCode": {
                     "type": "string",
-                    "description": "Billing country code of the project\n"
+                    "description": "Billing country code of the project\n",
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "defaultCloud": {
                     "type": "string",
@@ -26079,7 +26080,7 @@
                 "vatId": {
                     "type": "string",
                     "description": "EU VAT Identification Number\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 }
             },
             "required": [
@@ -26102,12 +26103,12 @@
                 "billingAddress": {
                     "type": "string",
                     "description": "Billing name and address of the project\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingCurrency": {
                     "type": "string",
                     "description": "Billing currency\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingEmails": {
                     "type": "array",
@@ -26115,12 +26116,12 @@
                         "type": "string"
                     },
                     "description": "Billing contact emails of the project\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingExtraText": {
                     "type": "string",
                     "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "billingGroup": {
                     "type": "string",
@@ -26132,7 +26133,8 @@
                 },
                 "cardId": {
                     "type": "string",
-                    "description": "is either the full card UUID or the last 4 digits of the card. As the full\nUUID is not shown in the UI it is typically easier to use the last 4 digits to identify\nthe card. This can be omitted if `copy_from_project` is used to copy billing info from\nanother project.\n"
+                    "description": "is either the full card UUID or the last 4 digits of the card. As the full\nUUID is not shown in the UI it is typically easier to use the last 4 digits to identify\nthe card. This can be omitted if `copy_from_project` is used to copy billing info from\nanother project.\n",
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "copyFromProject": {
                     "type": "string",
@@ -26140,7 +26142,8 @@
                 },
                 "countryCode": {
                     "type": "string",
-                    "description": "Billing country code of the project\n"
+                    "description": "Billing country code of the project\n",
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "defaultCloud": {
                     "type": "string",
@@ -26165,7 +26168,7 @@
                 "vatId": {
                     "type": "string",
                     "description": "EU VAT Identification Number\n",
-                    "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 }
             },
             "requiredInputs": [
@@ -26185,12 +26188,12 @@
                     "billingAddress": {
                         "type": "string",
                         "description": "Billing name and address of the project\n",
-                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "billingCurrency": {
                         "type": "string",
                         "description": "Billing currency\n",
-                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "billingEmails": {
                         "type": "array",
@@ -26198,12 +26201,12 @@
                             "type": "string"
                         },
                         "description": "Billing contact emails of the project\n",
-                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "billingExtraText": {
                         "type": "string",
                         "description": "Extra text to be included in all project invoices, e.g. purchase order or cost center number\n",
-                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "billingGroup": {
                         "type": "string",
@@ -26215,7 +26218,8 @@
                     },
                     "cardId": {
                         "type": "string",
-                        "description": "is either the full card UUID or the last 4 digits of the card. As the full\nUUID is not shown in the UI it is typically easier to use the last 4 digits to identify\nthe card. This can be omitted if `copy_from_project` is used to copy billing info from\nanother project.\n"
+                        "description": "is either the full card UUID or the last 4 digits of the card. As the full\nUUID is not shown in the UI it is typically easier to use the last 4 digits to identify\nthe card. This can be omitted if `copy_from_project` is used to copy billing info from\nanother project.\n",
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "copyFromProject": {
                         "type": "string",
@@ -26224,11 +26228,12 @@
                     "country": {
                         "type": "string",
                         "description": "Billing country\n",
-                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "countryCode": {
                         "type": "string",
-                        "description": "Billing country code of the project\n"
+                        "description": "Billing country code of the project\n",
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "defaultCloud": {
                         "type": "string",
@@ -26261,7 +26266,7 @@
                     "vatId": {
                         "type": "string",
                         "description": "EU VAT Identification Number\n",
-                        "deprecationMessage": "Please aiven_billing_group resource to set this value."
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     }
                 },
                 "type": "object"
