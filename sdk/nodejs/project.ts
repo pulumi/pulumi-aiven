@@ -49,25 +49,25 @@ export class Project extends pulumi.CustomResource {
     /**
      * Billing name and address of the project
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public readonly billingAddress!: pulumi.Output<string | undefined>;
     /**
      * Billing currency
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public readonly billingCurrency!: pulumi.Output<string | undefined>;
     /**
      * Billing contact emails of the project
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public readonly billingEmails!: pulumi.Output<string[] | undefined>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public readonly billingExtraText!: pulumi.Output<string | undefined>;
     /**
@@ -85,6 +85,8 @@ export class Project extends pulumi.CustomResource {
      * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
      * the card. This can be omitted if `copyFromProject` is used to copy billing info from
      * another project.
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public readonly cardId!: pulumi.Output<string | undefined>;
     /**
@@ -98,11 +100,13 @@ export class Project extends pulumi.CustomResource {
     /**
      * Billing country
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public /*out*/ readonly country!: pulumi.Output<string>;
     /**
      * Billing country code of the project
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
     /**
@@ -130,7 +134,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * EU VAT Identification Number
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public readonly vatId!: pulumi.Output<string | undefined>;
 
@@ -215,25 +219,25 @@ export interface ProjectState {
     /**
      * Billing name and address of the project
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingAddress?: pulumi.Input<string>;
     /**
      * Billing currency
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails of the project
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingExtraText?: pulumi.Input<string>;
     /**
@@ -251,6 +255,8 @@ export interface ProjectState {
      * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
      * the card. This can be omitted if `copyFromProject` is used to copy billing info from
      * another project.
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly cardId?: pulumi.Input<string>;
     /**
@@ -264,11 +270,13 @@ export interface ProjectState {
     /**
      * Billing country
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly country?: pulumi.Input<string>;
     /**
      * Billing country code of the project
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly countryCode?: pulumi.Input<string>;
     /**
@@ -296,7 +304,7 @@ export interface ProjectState {
     /**
      * EU VAT Identification Number
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly vatId?: pulumi.Input<string>;
 }
@@ -317,25 +325,25 @@ export interface ProjectArgs {
     /**
      * Billing name and address of the project
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingAddress?: pulumi.Input<string>;
     /**
      * Billing currency
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails of the project
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly billingExtraText?: pulumi.Input<string>;
     /**
@@ -353,6 +361,8 @@ export interface ProjectArgs {
      * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
      * the card. This can be omitted if `copyFromProject` is used to copy billing info from
      * another project.
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly cardId?: pulumi.Input<string>;
     /**
@@ -365,6 +375,8 @@ export interface ProjectArgs {
     readonly copyFromProject?: pulumi.Input<string>;
     /**
      * Billing country code of the project
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly countryCode?: pulumi.Input<string>;
     /**
@@ -384,7 +396,7 @@ export interface ProjectArgs {
     /**
      * EU VAT Identification Number
      *
-     * @deprecated Please aiven_billing_group resource to set this value.
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     readonly vatId?: pulumi.Input<string>;
 }

@@ -24,19 +24,19 @@ type Project struct {
 	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingAddress pulumi.StringPtrOutput `pulumi:"billingAddress"`
 	// Billing currency
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingCurrency pulumi.StringPtrOutput `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingExtraText pulumi.StringPtrOutput `pulumi:"billingExtraText"`
 	// Billing group Id
 	BillingGroup pulumi.StringPtrOutput `pulumi:"billingGroup"`
@@ -48,6 +48,8 @@ type Project struct {
 	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
 	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
 	// another project.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CardId pulumi.StringPtrOutput `pulumi:"cardId"`
 	// is the name of another project used to copy billing information and
 	// some other project attributes like technical contacts from. This is mostly relevant when
@@ -57,9 +59,11 @@ type Project struct {
 	CopyFromProject pulumi.StringPtrOutput `pulumi:"copyFromProject"`
 	// Billing country
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	Country pulumi.StringOutput `pulumi:"country"`
 	// Billing country code of the project
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// Default cloud for new services
 	DefaultCloud pulumi.StringPtrOutput `pulumi:"defaultCloud"`
@@ -75,7 +79,7 @@ type Project struct {
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	VatId pulumi.StringPtrOutput `pulumi:"vatId"`
 }
 
@@ -118,19 +122,19 @@ type projectState struct {
 	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingAddress *string `pulumi:"billingAddress"`
 	// Billing currency
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingCurrency *string `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingExtraText *string `pulumi:"billingExtraText"`
 	// Billing group Id
 	BillingGroup *string `pulumi:"billingGroup"`
@@ -142,6 +146,8 @@ type projectState struct {
 	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
 	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
 	// another project.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CardId *string `pulumi:"cardId"`
 	// is the name of another project used to copy billing information and
 	// some other project attributes like technical contacts from. This is mostly relevant when
@@ -151,9 +157,11 @@ type projectState struct {
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Billing country
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	Country *string `pulumi:"country"`
 	// Billing country code of the project
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode *string `pulumi:"countryCode"`
 	// Default cloud for new services
 	DefaultCloud *string `pulumi:"defaultCloud"`
@@ -169,7 +177,7 @@ type projectState struct {
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	VatId *string `pulumi:"vatId"`
 }
 
@@ -181,19 +189,19 @@ type ProjectState struct {
 	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingAddress pulumi.StringPtrInput
 	// Billing currency
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingCurrency pulumi.StringPtrInput
 	// Billing contact emails of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingEmails pulumi.StringArrayInput
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingExtraText pulumi.StringPtrInput
 	// Billing group Id
 	BillingGroup pulumi.StringPtrInput
@@ -205,6 +213,8 @@ type ProjectState struct {
 	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
 	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
 	// another project.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CardId pulumi.StringPtrInput
 	// is the name of another project used to copy billing information and
 	// some other project attributes like technical contacts from. This is mostly relevant when
@@ -214,9 +224,11 @@ type ProjectState struct {
 	CopyFromProject pulumi.StringPtrInput
 	// Billing country
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	Country pulumi.StringPtrInput
 	// Billing country code of the project
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode pulumi.StringPtrInput
 	// Default cloud for new services
 	DefaultCloud pulumi.StringPtrInput
@@ -232,7 +244,7 @@ type ProjectState struct {
 	TechnicalEmails pulumi.StringArrayInput
 	// EU VAT Identification Number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	VatId pulumi.StringPtrInput
 }
 
@@ -248,19 +260,19 @@ type projectArgs struct {
 	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingAddress *string `pulumi:"billingAddress"`
 	// Billing currency
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingCurrency *string `pulumi:"billingCurrency"`
 	// Billing contact emails of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingExtraText *string `pulumi:"billingExtraText"`
 	// Billing group Id
 	BillingGroup *string `pulumi:"billingGroup"`
@@ -272,6 +284,8 @@ type projectArgs struct {
 	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
 	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
 	// another project.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CardId *string `pulumi:"cardId"`
 	// is the name of another project used to copy billing information and
 	// some other project attributes like technical contacts from. This is mostly relevant when
@@ -280,6 +294,8 @@ type projectArgs struct {
 	// effect when the project is created.
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Billing country code of the project
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode *string `pulumi:"countryCode"`
 	// Default cloud for new services
 	DefaultCloud *string `pulumi:"defaultCloud"`
@@ -291,7 +307,7 @@ type projectArgs struct {
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	VatId *string `pulumi:"vatId"`
 }
 
@@ -304,19 +320,19 @@ type ProjectArgs struct {
 	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingAddress pulumi.StringPtrInput
 	// Billing currency
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingCurrency pulumi.StringPtrInput
 	// Billing contact emails of the project
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingEmails pulumi.StringArrayInput
 	// Extra text to be included in all project invoices, e.g. purchase order or cost center number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	BillingExtraText pulumi.StringPtrInput
 	// Billing group Id
 	BillingGroup pulumi.StringPtrInput
@@ -328,6 +344,8 @@ type ProjectArgs struct {
 	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
 	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
 	// another project.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CardId pulumi.StringPtrInput
 	// is the name of another project used to copy billing information and
 	// some other project attributes like technical contacts from. This is mostly relevant when
@@ -336,6 +354,8 @@ type ProjectArgs struct {
 	// effect when the project is created.
 	CopyFromProject pulumi.StringPtrInput
 	// Billing country code of the project
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode pulumi.StringPtrInput
 	// Default cloud for new services
 	DefaultCloud pulumi.StringPtrInput
@@ -347,7 +367,7 @@ type ProjectArgs struct {
 	TechnicalEmails pulumi.StringArrayInput
 	// EU VAT Identification Number
 	//
-	// Deprecated: Please aiven_billing_group resource to set this value.
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	VatId pulumi.StringPtrInput
 }
 

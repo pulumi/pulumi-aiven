@@ -5,42 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * ## # PG Resource
- *
- * The PG resource allows the creation and management of Aiven PostgreSQL services.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const pg = new aiven.Pg("pg", {
- *     project: data.aiven_project.pr1.project,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "my-pg1",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- *     pgUserConfig: {
- *         pgVersion: 11,
- *         publicAccess: {
- *             pg: true,
- *             prometheus: false,
- *         },
- *         pg: {
- *             idleInTransactionSessionTimeout: 900,
- *             logMinDurationStatement: -1,
- *         },
- *     },
- *     timeouts: [{
- *         create: "20m",
- *         update: "15m",
- *     }],
- * });
- * ```
- */
 export class Pg extends pulumi.CustomResource {
     /**
      * Get an existing Pg resource's state with the given name, ID, and optional extra
