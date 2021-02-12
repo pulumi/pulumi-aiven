@@ -92,7 +92,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
     public readonly externalGoogleCloudLoggingUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig | undefined>;
     /**
      * identifies the type of integration that is set up. Possible values include `dashboard`
-     * , `datadog`, `logs`, `metrics` and `mirrormaker`.
+     * , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+     * `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+     * `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
      */
     public readonly integrationType!: pulumi.Output<string>;
     /**
@@ -280,7 +282,9 @@ export interface ServiceIntegrationState {
     readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
     /**
      * identifies the type of integration that is set up. Possible values include `dashboard`
-     * , `datadog`, `logs`, `metrics` and `mirrormaker`.
+     * , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+     * `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+     * `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
      */
     readonly integrationType?: pulumi.Input<string>;
     /**
@@ -389,7 +393,9 @@ export interface ServiceIntegrationArgs {
     readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
     /**
      * identifies the type of integration that is set up. Possible values include `dashboard`
-     * , `datadog`, `logs`, `metrics` and `mirrormaker`.
+     * , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+     * `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+     * `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
      */
     readonly integrationType: pulumi.Input<string>;
     /**

@@ -93,7 +93,9 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// identifies the type of integration that is set up. Possible values include `dashboard`
-        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
+        /// `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
+        /// `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
         /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
@@ -290,7 +292,9 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// identifies the type of integration that is set up. Possible values include `dashboard`
-        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
+        /// `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
+        /// `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -448,7 +452,9 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// identifies the type of integration that is set up. Possible values include `dashboard`
-        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
+        /// `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
+        /// `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
         /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }
