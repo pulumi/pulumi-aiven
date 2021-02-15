@@ -82,7 +82,9 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: External Elasticsearch logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: External Google Cloud Logging specific user configurable settings
         :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values include `dashboard`
-               , `datadog`, `logs`, `metrics` and `mirrormaker`.
+               , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
+               `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
+               `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: Kafka Logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
@@ -200,7 +202,9 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: External Elasticsearch logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: External Google Cloud Logging specific user configurable settings
         :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values include `dashboard`
-               , `datadog`, `logs`, `metrics` and `mirrormaker`.
+               , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
+               `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
+               `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: Kafka Logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
@@ -315,7 +319,9 @@ class ServiceIntegration(pulumi.CustomResource):
     def integration_type(self) -> pulumi.Output[str]:
         """
         identifies the type of integration that is set up. Possible values include `dashboard`
-        , `datadog`, `logs`, `metrics` and `mirrormaker`.
+        , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
+        `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
+        `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
         """
         return pulumi.get(self, "integration_type")
 

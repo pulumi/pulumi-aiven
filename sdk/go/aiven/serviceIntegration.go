@@ -68,7 +68,9 @@ type ServiceIntegration struct {
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// identifies the type of integration that is set up. Possible values include `dashboard`
-	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+	// `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+	// `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
@@ -160,7 +162,9 @@ type serviceIntegrationState struct {
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// identifies the type of integration that is set up. Possible values include `dashboard`
-	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+	// `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+	// `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
 	IntegrationType *string `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -218,7 +222,9 @@ type ServiceIntegrationState struct {
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput
 	// identifies the type of integration that is set up. Possible values include `dashboard`
-	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+	// `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+	// `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
 	IntegrationType pulumi.StringPtrInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
@@ -280,7 +286,9 @@ type serviceIntegrationArgs struct {
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// identifies the type of integration that is set up. Possible values include `dashboard`
-	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+	// `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+	// `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
 	IntegrationType string `pulumi:"integrationType"`
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -339,7 +347,9 @@ type ServiceIntegrationArgs struct {
 	// External Google Cloud Logging specific user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput
 	// identifies the type of integration that is set up. Possible values include `dashboard`
-	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+	// , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
+	// `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
+	// `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
 	IntegrationType pulumi.StringInput
 	// Kafka Connect specific user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput

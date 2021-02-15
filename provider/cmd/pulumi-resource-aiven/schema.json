@@ -27167,7 +27167,7 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
+                    "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`\n`external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,\n`m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.\n"
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
@@ -27269,7 +27269,7 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
+                    "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`\n`external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,\n`m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.\n"
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
@@ -27373,7 +27373,7 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics` and `mirrormaker`.\n"
+                        "description": "identifies the type of integration that is set up. Possible values include `dashboard`\n, `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`\n`external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,\n`m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.\n"
                     },
                     "kafkaConnectUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
