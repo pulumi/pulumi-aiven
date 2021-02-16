@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -428,6 +427,85 @@ func (i *M3Aggregator) ToM3AggregatorOutputWithContext(ctx context.Context) M3Ag
 	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorOutput)
 }
 
+func (i *M3Aggregator) ToM3AggregatorPtrOutput() M3AggregatorPtrOutput {
+	return i.ToM3AggregatorPtrOutputWithContext(context.Background())
+}
+
+func (i *M3Aggregator) ToM3AggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorPtrOutput)
+}
+
+type M3AggregatorPtrInput interface {
+	pulumi.Input
+
+	ToM3AggregatorPtrOutput() M3AggregatorPtrOutput
+	ToM3AggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorPtrOutput
+}
+
+type m3aggregatorPtrType M3AggregatorArgs
+
+func (*m3aggregatorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3Aggregator)(nil))
+}
+
+func (i *m3aggregatorPtrType) ToM3AggregatorPtrOutput() M3AggregatorPtrOutput {
+	return i.ToM3AggregatorPtrOutputWithContext(context.Background())
+}
+
+func (i *m3aggregatorPtrType) ToM3AggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorPtrOutput)
+}
+
+// M3AggregatorArrayInput is an input type that accepts M3AggregatorArray and M3AggregatorArrayOutput values.
+// You can construct a concrete instance of `M3AggregatorArrayInput` via:
+//
+//          M3AggregatorArray{ M3AggregatorArgs{...} }
+type M3AggregatorArrayInput interface {
+	pulumi.Input
+
+	ToM3AggregatorArrayOutput() M3AggregatorArrayOutput
+	ToM3AggregatorArrayOutputWithContext(context.Context) M3AggregatorArrayOutput
+}
+
+type M3AggregatorArray []M3AggregatorInput
+
+func (M3AggregatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*M3Aggregator)(nil))
+}
+
+func (i M3AggregatorArray) ToM3AggregatorArrayOutput() M3AggregatorArrayOutput {
+	return i.ToM3AggregatorArrayOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorArray) ToM3AggregatorArrayOutputWithContext(ctx context.Context) M3AggregatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorArrayOutput)
+}
+
+// M3AggregatorMapInput is an input type that accepts M3AggregatorMap and M3AggregatorMapOutput values.
+// You can construct a concrete instance of `M3AggregatorMapInput` via:
+//
+//          M3AggregatorMap{ "key": M3AggregatorArgs{...} }
+type M3AggregatorMapInput interface {
+	pulumi.Input
+
+	ToM3AggregatorMapOutput() M3AggregatorMapOutput
+	ToM3AggregatorMapOutputWithContext(context.Context) M3AggregatorMapOutput
+}
+
+type M3AggregatorMap map[string]M3AggregatorInput
+
+func (M3AggregatorMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*M3Aggregator)(nil))
+}
+
+func (i M3AggregatorMap) ToM3AggregatorMapOutput() M3AggregatorMapOutput {
+	return i.ToM3AggregatorMapOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorMap) ToM3AggregatorMapOutputWithContext(ctx context.Context) M3AggregatorMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorMapOutput)
+}
+
 type M3AggregatorOutput struct {
 	*pulumi.OutputState
 }
@@ -444,6 +522,75 @@ func (o M3AggregatorOutput) ToM3AggregatorOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o M3AggregatorOutput) ToM3AggregatorPtrOutput() M3AggregatorPtrOutput {
+	return o.ToM3AggregatorPtrOutputWithContext(context.Background())
+}
+
+func (o M3AggregatorOutput) ToM3AggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorPtrOutput {
+	return o.ApplyT(func(v M3Aggregator) *M3Aggregator {
+		return &v
+	}).(M3AggregatorPtrOutput)
+}
+
+type M3AggregatorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (M3AggregatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3Aggregator)(nil))
+}
+
+func (o M3AggregatorPtrOutput) ToM3AggregatorPtrOutput() M3AggregatorPtrOutput {
+	return o
+}
+
+func (o M3AggregatorPtrOutput) ToM3AggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorPtrOutput {
+	return o
+}
+
+type M3AggregatorArrayOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3Aggregator)(nil))
+}
+
+func (o M3AggregatorArrayOutput) ToM3AggregatorArrayOutput() M3AggregatorArrayOutput {
+	return o
+}
+
+func (o M3AggregatorArrayOutput) ToM3AggregatorArrayOutputWithContext(ctx context.Context) M3AggregatorArrayOutput {
+	return o
+}
+
+func (o M3AggregatorArrayOutput) Index(i pulumi.IntInput) M3AggregatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3Aggregator {
+		return vs[0].([]M3Aggregator)[vs[1].(int)]
+	}).(M3AggregatorOutput)
+}
+
+type M3AggregatorMapOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]M3Aggregator)(nil))
+}
+
+func (o M3AggregatorMapOutput) ToM3AggregatorMapOutput() M3AggregatorMapOutput {
+	return o
+}
+
+func (o M3AggregatorMapOutput) ToM3AggregatorMapOutputWithContext(ctx context.Context) M3AggregatorMapOutput {
+	return o
+}
+
+func (o M3AggregatorMapOutput) MapIndex(k pulumi.StringInput) M3AggregatorOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) M3Aggregator {
+		return vs[0].(map[string]M3Aggregator)[vs[1].(string)]
+	}).(M3AggregatorOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(M3AggregatorOutput{})
+	pulumi.RegisterOutputType(M3AggregatorPtrOutput{})
+	pulumi.RegisterOutputType(M3AggregatorArrayOutput{})
+	pulumi.RegisterOutputType(M3AggregatorMapOutput{})
 }

@@ -105,7 +105,8 @@ export class ConnectionPool extends pulumi.CustomResource {
     constructor(name: string, args: ConnectionPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionPoolArgs | ConnectionPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConnectionPoolState | undefined;
             inputs["connectionUri"] = state ? state.connectionUri : undefined;
             inputs["databaseName"] = state ? state.databaseName : undefined;
@@ -117,19 +118,19 @@ export class ConnectionPool extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as ConnectionPoolArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.databaseName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.poolName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.poolName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolName'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             inputs["databaseName"] = args ? args.databaseName : undefined;
@@ -141,12 +142,8 @@ export class ConnectionPool extends pulumi.CustomResource {
             inputs["username"] = args ? args.username : undefined;
             inputs["connectionUri"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConnectionPool.__pulumiType, name, inputs, opts);
     }

@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -271,6 +270,85 @@ func (i *ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointOutput)
 }
 
+func (i *ServiceIntegrationEndpoint) ToServiceIntegrationEndpointPtrOutput() ServiceIntegrationEndpointPtrOutput {
+	return i.ToServiceIntegrationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceIntegrationEndpoint) ToServiceIntegrationEndpointPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointPtrOutput)
+}
+
+type ServiceIntegrationEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointPtrOutput() ServiceIntegrationEndpointPtrOutput
+	ToServiceIntegrationEndpointPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointPtrOutput
+}
+
+type serviceIntegrationEndpointPtrType ServiceIntegrationEndpointArgs
+
+func (*serviceIntegrationEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpoint)(nil))
+}
+
+func (i *serviceIntegrationEndpointPtrType) ToServiceIntegrationEndpointPtrOutput() ServiceIntegrationEndpointPtrOutput {
+	return i.ToServiceIntegrationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointPtrType) ToServiceIntegrationEndpointPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointPtrOutput)
+}
+
+// ServiceIntegrationEndpointArrayInput is an input type that accepts ServiceIntegrationEndpointArray and ServiceIntegrationEndpointArrayOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointArrayInput` via:
+//
+//          ServiceIntegrationEndpointArray{ ServiceIntegrationEndpointArgs{...} }
+type ServiceIntegrationEndpointArrayInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointArrayOutput() ServiceIntegrationEndpointArrayOutput
+	ToServiceIntegrationEndpointArrayOutputWithContext(context.Context) ServiceIntegrationEndpointArrayOutput
+}
+
+type ServiceIntegrationEndpointArray []ServiceIntegrationEndpointInput
+
+func (ServiceIntegrationEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceIntegrationEndpoint)(nil))
+}
+
+func (i ServiceIntegrationEndpointArray) ToServiceIntegrationEndpointArrayOutput() ServiceIntegrationEndpointArrayOutput {
+	return i.ToServiceIntegrationEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointArray) ToServiceIntegrationEndpointArrayOutputWithContext(ctx context.Context) ServiceIntegrationEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointArrayOutput)
+}
+
+// ServiceIntegrationEndpointMapInput is an input type that accepts ServiceIntegrationEndpointMap and ServiceIntegrationEndpointMapOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointMapInput` via:
+//
+//          ServiceIntegrationEndpointMap{ "key": ServiceIntegrationEndpointArgs{...} }
+type ServiceIntegrationEndpointMapInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointMapOutput() ServiceIntegrationEndpointMapOutput
+	ToServiceIntegrationEndpointMapOutputWithContext(context.Context) ServiceIntegrationEndpointMapOutput
+}
+
+type ServiceIntegrationEndpointMap map[string]ServiceIntegrationEndpointInput
+
+func (ServiceIntegrationEndpointMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceIntegrationEndpoint)(nil))
+}
+
+func (i ServiceIntegrationEndpointMap) ToServiceIntegrationEndpointMapOutput() ServiceIntegrationEndpointMapOutput {
+	return i.ToServiceIntegrationEndpointMapOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointMap) ToServiceIntegrationEndpointMapOutputWithContext(ctx context.Context) ServiceIntegrationEndpointMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointMapOutput)
+}
+
 type ServiceIntegrationEndpointOutput struct {
 	*pulumi.OutputState
 }
@@ -287,6 +365,75 @@ func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointOutputWith
 	return o
 }
 
+func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointPtrOutput() ServiceIntegrationEndpointPtrOutput {
+	return o.ToServiceIntegrationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpoint) *ServiceIntegrationEndpoint {
+		return &v
+	}).(ServiceIntegrationEndpointPtrOutput)
+}
+
+type ServiceIntegrationEndpointPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceIntegrationEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpoint)(nil))
+}
+
+func (o ServiceIntegrationEndpointPtrOutput) ToServiceIntegrationEndpointPtrOutput() ServiceIntegrationEndpointPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointPtrOutput) ToServiceIntegrationEndpointPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointPtrOutput {
+	return o
+}
+
+type ServiceIntegrationEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationEndpoint)(nil))
+}
+
+func (o ServiceIntegrationEndpointArrayOutput) ToServiceIntegrationEndpointArrayOutput() ServiceIntegrationEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointArrayOutput) ToServiceIntegrationEndpointArrayOutputWithContext(ctx context.Context) ServiceIntegrationEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegrationEndpoint {
+		return vs[0].([]ServiceIntegrationEndpoint)[vs[1].(int)]
+	}).(ServiceIntegrationEndpointOutput)
+}
+
+type ServiceIntegrationEndpointMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceIntegrationEndpoint)(nil))
+}
+
+func (o ServiceIntegrationEndpointMapOutput) ToServiceIntegrationEndpointMapOutput() ServiceIntegrationEndpointMapOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointMapOutput) ToServiceIntegrationEndpointMapOutputWithContext(ctx context.Context) ServiceIntegrationEndpointMapOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointMapOutput) MapIndex(k pulumi.StringInput) ServiceIntegrationEndpointOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceIntegrationEndpoint {
+		return vs[0].(map[string]ServiceIntegrationEndpoint)[vs[1].(string)]
+	}).(ServiceIntegrationEndpointOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointMapOutput{})
 }

@@ -33,17 +33,17 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["apiToken"] = (args ? args.apiToken : undefined) || utilities.getEnv("AIVEN_API_TOKEN");
+            if ((!args || args.apiToken === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiToken'");
+            }
+            inputs["apiToken"] = args ? args.apiToken : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }
@@ -56,5 +56,5 @@ export interface ProviderArgs {
     /**
      * Aiven Authentication Token
      */
-    readonly apiToken?: pulumi.Input<string>;
+    readonly apiToken: pulumi.Input<string>;
 }

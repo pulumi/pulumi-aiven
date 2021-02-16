@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -199,6 +199,85 @@ func (i *KafkaAcl) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAclOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclOutput)
 }
 
+func (i *KafkaAcl) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
+	return i.ToKafkaAclPtrOutputWithContext(context.Background())
+}
+
+func (i *KafkaAcl) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclPtrOutput)
+}
+
+type KafkaAclPtrInput interface {
+	pulumi.Input
+
+	ToKafkaAclPtrOutput() KafkaAclPtrOutput
+	ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput
+}
+
+type kafkaAclPtrType KafkaAclArgs
+
+func (*kafkaAclPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAcl)(nil))
+}
+
+func (i *kafkaAclPtrType) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
+	return i.ToKafkaAclPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaAclPtrType) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclPtrOutput)
+}
+
+// KafkaAclArrayInput is an input type that accepts KafkaAclArray and KafkaAclArrayOutput values.
+// You can construct a concrete instance of `KafkaAclArrayInput` via:
+//
+//          KafkaAclArray{ KafkaAclArgs{...} }
+type KafkaAclArrayInput interface {
+	pulumi.Input
+
+	ToKafkaAclArrayOutput() KafkaAclArrayOutput
+	ToKafkaAclArrayOutputWithContext(context.Context) KafkaAclArrayOutput
+}
+
+type KafkaAclArray []KafkaAclInput
+
+func (KafkaAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*KafkaAcl)(nil))
+}
+
+func (i KafkaAclArray) ToKafkaAclArrayOutput() KafkaAclArrayOutput {
+	return i.ToKafkaAclArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaAclArray) ToKafkaAclArrayOutputWithContext(ctx context.Context) KafkaAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclArrayOutput)
+}
+
+// KafkaAclMapInput is an input type that accepts KafkaAclMap and KafkaAclMapOutput values.
+// You can construct a concrete instance of `KafkaAclMapInput` via:
+//
+//          KafkaAclMap{ "key": KafkaAclArgs{...} }
+type KafkaAclMapInput interface {
+	pulumi.Input
+
+	ToKafkaAclMapOutput() KafkaAclMapOutput
+	ToKafkaAclMapOutputWithContext(context.Context) KafkaAclMapOutput
+}
+
+type KafkaAclMap map[string]KafkaAclInput
+
+func (KafkaAclMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*KafkaAcl)(nil))
+}
+
+func (i KafkaAclMap) ToKafkaAclMapOutput() KafkaAclMapOutput {
+	return i.ToKafkaAclMapOutputWithContext(context.Background())
+}
+
+func (i KafkaAclMap) ToKafkaAclMapOutputWithContext(ctx context.Context) KafkaAclMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclMapOutput)
+}
+
 type KafkaAclOutput struct {
 	*pulumi.OutputState
 }
@@ -215,6 +294,75 @@ func (o KafkaAclOutput) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAc
 	return o
 }
 
+func (o KafkaAclOutput) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
+	return o.ToKafkaAclPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaAclOutput) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
+	return o.ApplyT(func(v KafkaAcl) *KafkaAcl {
+		return &v
+	}).(KafkaAclPtrOutput)
+}
+
+type KafkaAclPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAcl)(nil))
+}
+
+func (o KafkaAclPtrOutput) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
+	return o
+}
+
+func (o KafkaAclPtrOutput) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
+	return o
+}
+
+type KafkaAclArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaAcl)(nil))
+}
+
+func (o KafkaAclArrayOutput) ToKafkaAclArrayOutput() KafkaAclArrayOutput {
+	return o
+}
+
+func (o KafkaAclArrayOutput) ToKafkaAclArrayOutputWithContext(ctx context.Context) KafkaAclArrayOutput {
+	return o
+}
+
+func (o KafkaAclArrayOutput) Index(i pulumi.IntInput) KafkaAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaAcl {
+		return vs[0].([]KafkaAcl)[vs[1].(int)]
+	}).(KafkaAclOutput)
+}
+
+type KafkaAclMapOutput struct{ *pulumi.OutputState }
+
+func (KafkaAclMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]KafkaAcl)(nil))
+}
+
+func (o KafkaAclMapOutput) ToKafkaAclMapOutput() KafkaAclMapOutput {
+	return o
+}
+
+func (o KafkaAclMapOutput) ToKafkaAclMapOutputWithContext(ctx context.Context) KafkaAclMapOutput {
+	return o
+}
+
+func (o KafkaAclMapOutput) MapIndex(k pulumi.StringInput) KafkaAclOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KafkaAcl {
+		return vs[0].(map[string]KafkaAcl)[vs[1].(string)]
+	}).(KafkaAclOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KafkaAclOutput{})
+	pulumi.RegisterOutputType(KafkaAclPtrOutput{})
+	pulumi.RegisterOutputType(KafkaAclArrayOutput{})
+	pulumi.RegisterOutputType(KafkaAclMapOutput{})
 }

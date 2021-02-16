@@ -46,8 +46,8 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if api_token is None:
-                api_token = _utilities.get_env('AIVEN_API_TOKEN')
+            if api_token is None and not opts.urn:
+                raise TypeError("Missing required property 'api_token'")
             __props__['api_token'] = api_token
         super(Provider, __self__).__init__(
             'aiven',

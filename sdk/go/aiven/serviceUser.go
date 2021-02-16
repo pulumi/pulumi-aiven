@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -226,6 +226,85 @@ func (i *ServiceUser) ToServiceUserOutputWithContext(ctx context.Context) Servic
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserOutput)
 }
 
+func (i *ServiceUser) ToServiceUserPtrOutput() ServiceUserPtrOutput {
+	return i.ToServiceUserPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceUser) ToServiceUserPtrOutputWithContext(ctx context.Context) ServiceUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserPtrOutput)
+}
+
+type ServiceUserPtrInput interface {
+	pulumi.Input
+
+	ToServiceUserPtrOutput() ServiceUserPtrOutput
+	ToServiceUserPtrOutputWithContext(ctx context.Context) ServiceUserPtrOutput
+}
+
+type serviceUserPtrType ServiceUserArgs
+
+func (*serviceUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceUser)(nil))
+}
+
+func (i *serviceUserPtrType) ToServiceUserPtrOutput() ServiceUserPtrOutput {
+	return i.ToServiceUserPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceUserPtrType) ToServiceUserPtrOutputWithContext(ctx context.Context) ServiceUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserPtrOutput)
+}
+
+// ServiceUserArrayInput is an input type that accepts ServiceUserArray and ServiceUserArrayOutput values.
+// You can construct a concrete instance of `ServiceUserArrayInput` via:
+//
+//          ServiceUserArray{ ServiceUserArgs{...} }
+type ServiceUserArrayInput interface {
+	pulumi.Input
+
+	ToServiceUserArrayOutput() ServiceUserArrayOutput
+	ToServiceUserArrayOutputWithContext(context.Context) ServiceUserArrayOutput
+}
+
+type ServiceUserArray []ServiceUserInput
+
+func (ServiceUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceUser)(nil))
+}
+
+func (i ServiceUserArray) ToServiceUserArrayOutput() ServiceUserArrayOutput {
+	return i.ToServiceUserArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceUserArray) ToServiceUserArrayOutputWithContext(ctx context.Context) ServiceUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserArrayOutput)
+}
+
+// ServiceUserMapInput is an input type that accepts ServiceUserMap and ServiceUserMapOutput values.
+// You can construct a concrete instance of `ServiceUserMapInput` via:
+//
+//          ServiceUserMap{ "key": ServiceUserArgs{...} }
+type ServiceUserMapInput interface {
+	pulumi.Input
+
+	ToServiceUserMapOutput() ServiceUserMapOutput
+	ToServiceUserMapOutputWithContext(context.Context) ServiceUserMapOutput
+}
+
+type ServiceUserMap map[string]ServiceUserInput
+
+func (ServiceUserMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceUser)(nil))
+}
+
+func (i ServiceUserMap) ToServiceUserMapOutput() ServiceUserMapOutput {
+	return i.ToServiceUserMapOutputWithContext(context.Background())
+}
+
+func (i ServiceUserMap) ToServiceUserMapOutputWithContext(ctx context.Context) ServiceUserMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserMapOutput)
+}
+
 type ServiceUserOutput struct {
 	*pulumi.OutputState
 }
@@ -242,6 +321,75 @@ func (o ServiceUserOutput) ToServiceUserOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o ServiceUserOutput) ToServiceUserPtrOutput() ServiceUserPtrOutput {
+	return o.ToServiceUserPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceUserOutput) ToServiceUserPtrOutputWithContext(ctx context.Context) ServiceUserPtrOutput {
+	return o.ApplyT(func(v ServiceUser) *ServiceUser {
+		return &v
+	}).(ServiceUserPtrOutput)
+}
+
+type ServiceUserPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceUser)(nil))
+}
+
+func (o ServiceUserPtrOutput) ToServiceUserPtrOutput() ServiceUserPtrOutput {
+	return o
+}
+
+func (o ServiceUserPtrOutput) ToServiceUserPtrOutputWithContext(ctx context.Context) ServiceUserPtrOutput {
+	return o
+}
+
+type ServiceUserArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceUser)(nil))
+}
+
+func (o ServiceUserArrayOutput) ToServiceUserArrayOutput() ServiceUserArrayOutput {
+	return o
+}
+
+func (o ServiceUserArrayOutput) ToServiceUserArrayOutputWithContext(ctx context.Context) ServiceUserArrayOutput {
+	return o
+}
+
+func (o ServiceUserArrayOutput) Index(i pulumi.IntInput) ServiceUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceUser {
+		return vs[0].([]ServiceUser)[vs[1].(int)]
+	}).(ServiceUserOutput)
+}
+
+type ServiceUserMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceUserMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceUser)(nil))
+}
+
+func (o ServiceUserMapOutput) ToServiceUserMapOutput() ServiceUserMapOutput {
+	return o
+}
+
+func (o ServiceUserMapOutput) ToServiceUserMapOutputWithContext(ctx context.Context) ServiceUserMapOutput {
+	return o
+}
+
+func (o ServiceUserMapOutput) MapIndex(k pulumi.StringInput) ServiceUserOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceUser {
+		return vs[0].(map[string]ServiceUser)[vs[1].(string)]
+	}).(ServiceUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceUserOutput{})
+	pulumi.RegisterOutputType(ServiceUserPtrOutput{})
+	pulumi.RegisterOutputType(ServiceUserArrayOutput{})
+	pulumi.RegisterOutputType(ServiceUserMapOutput{})
 }

@@ -123,7 +123,8 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     constructor(name: string, args: ServiceIntegrationEndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIntegrationEndpointArgs | ServiceIntegrationEndpointState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServiceIntegrationEndpointState | undefined;
             inputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
             inputs["endpointConfig"] = state ? state.endpointConfig : undefined;
@@ -141,13 +142,13 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationEndpointArgs | undefined;
-            if ((!args || args.endpointName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpointName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointName'");
             }
-            if ((!args || args.endpointType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpointType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
@@ -165,12 +166,8 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
             inputs["endpointConfig"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceIntegrationEndpoint.__pulumiType, name, inputs, opts);
     }

@@ -115,7 +115,8 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
     constructor(name: string, args: ElasticSearchAclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElasticSearchAclArgs | ElasticSearchAclState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ElasticSearchAclState | undefined;
             inputs["acls"] = state ? state.acls : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -124,10 +125,10 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as ElasticSearchAclArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["acls"] = args ? args.acls : undefined;
@@ -136,12 +137,8 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ElasticSearchAcl.__pulumiType, name, inputs, opts);
     }

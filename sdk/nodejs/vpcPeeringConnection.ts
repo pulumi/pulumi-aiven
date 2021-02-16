@@ -108,7 +108,8 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
     constructor(name: string, args: VpcPeeringConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcPeeringConnectionArgs | VpcPeeringConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VpcPeeringConnectionState | undefined;
             inputs["peerAzureAppId"] = state ? state.peerAzureAppId : undefined;
             inputs["peerAzureTenantId"] = state ? state.peerAzureTenantId : undefined;
@@ -122,13 +123,13 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as VpcPeeringConnectionArgs | undefined;
-            if ((!args || args.peerCloudAccount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerCloudAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerCloudAccount'");
             }
-            if ((!args || args.peerVpc === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerVpc === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerVpc'");
             }
-            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["peerAzureAppId"] = args ? args.peerAzureAppId : undefined;
@@ -142,12 +143,8 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["stateInfo"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VpcPeeringConnection.__pulumiType, name, inputs, opts);
     }

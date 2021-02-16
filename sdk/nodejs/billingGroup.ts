@@ -95,7 +95,8 @@ export class BillingGroup extends pulumi.CustomResource {
     constructor(name: string, args?: BillingGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingGroupArgs | BillingGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BillingGroupState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["addressLines"] = state ? state.addressLines : undefined;
@@ -126,12 +127,8 @@ export class BillingGroup extends pulumi.CustomResource {
             inputs["vatId"] = args ? args.vatId : undefined;
             inputs["zipCode"] = args ? args.zipCode : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BillingGroup.__pulumiType, name, inputs, opts);
     }

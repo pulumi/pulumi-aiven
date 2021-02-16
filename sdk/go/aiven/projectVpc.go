@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -165,6 +165,85 @@ func (i *ProjectVpc) ToProjectVpcOutputWithContext(ctx context.Context) ProjectV
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcOutput)
 }
 
+func (i *ProjectVpc) ToProjectVpcPtrOutput() ProjectVpcPtrOutput {
+	return i.ToProjectVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectVpc) ToProjectVpcPtrOutputWithContext(ctx context.Context) ProjectVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcPtrOutput)
+}
+
+type ProjectVpcPtrInput interface {
+	pulumi.Input
+
+	ToProjectVpcPtrOutput() ProjectVpcPtrOutput
+	ToProjectVpcPtrOutputWithContext(ctx context.Context) ProjectVpcPtrOutput
+}
+
+type projectVpcPtrType ProjectVpcArgs
+
+func (*projectVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectVpc)(nil))
+}
+
+func (i *projectVpcPtrType) ToProjectVpcPtrOutput() ProjectVpcPtrOutput {
+	return i.ToProjectVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *projectVpcPtrType) ToProjectVpcPtrOutputWithContext(ctx context.Context) ProjectVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcPtrOutput)
+}
+
+// ProjectVpcArrayInput is an input type that accepts ProjectVpcArray and ProjectVpcArrayOutput values.
+// You can construct a concrete instance of `ProjectVpcArrayInput` via:
+//
+//          ProjectVpcArray{ ProjectVpcArgs{...} }
+type ProjectVpcArrayInput interface {
+	pulumi.Input
+
+	ToProjectVpcArrayOutput() ProjectVpcArrayOutput
+	ToProjectVpcArrayOutputWithContext(context.Context) ProjectVpcArrayOutput
+}
+
+type ProjectVpcArray []ProjectVpcInput
+
+func (ProjectVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectVpc)(nil))
+}
+
+func (i ProjectVpcArray) ToProjectVpcArrayOutput() ProjectVpcArrayOutput {
+	return i.ToProjectVpcArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectVpcArray) ToProjectVpcArrayOutputWithContext(ctx context.Context) ProjectVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcArrayOutput)
+}
+
+// ProjectVpcMapInput is an input type that accepts ProjectVpcMap and ProjectVpcMapOutput values.
+// You can construct a concrete instance of `ProjectVpcMapInput` via:
+//
+//          ProjectVpcMap{ "key": ProjectVpcArgs{...} }
+type ProjectVpcMapInput interface {
+	pulumi.Input
+
+	ToProjectVpcMapOutput() ProjectVpcMapOutput
+	ToProjectVpcMapOutputWithContext(context.Context) ProjectVpcMapOutput
+}
+
+type ProjectVpcMap map[string]ProjectVpcInput
+
+func (ProjectVpcMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectVpc)(nil))
+}
+
+func (i ProjectVpcMap) ToProjectVpcMapOutput() ProjectVpcMapOutput {
+	return i.ToProjectVpcMapOutputWithContext(context.Background())
+}
+
+func (i ProjectVpcMap) ToProjectVpcMapOutputWithContext(ctx context.Context) ProjectVpcMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcMapOutput)
+}
+
 type ProjectVpcOutput struct {
 	*pulumi.OutputState
 }
@@ -181,6 +260,75 @@ func (o ProjectVpcOutput) ToProjectVpcOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
+func (o ProjectVpcOutput) ToProjectVpcPtrOutput() ProjectVpcPtrOutput {
+	return o.ToProjectVpcPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectVpcOutput) ToProjectVpcPtrOutputWithContext(ctx context.Context) ProjectVpcPtrOutput {
+	return o.ApplyT(func(v ProjectVpc) *ProjectVpc {
+		return &v
+	}).(ProjectVpcPtrOutput)
+}
+
+type ProjectVpcPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectVpc)(nil))
+}
+
+func (o ProjectVpcPtrOutput) ToProjectVpcPtrOutput() ProjectVpcPtrOutput {
+	return o
+}
+
+func (o ProjectVpcPtrOutput) ToProjectVpcPtrOutputWithContext(ctx context.Context) ProjectVpcPtrOutput {
+	return o
+}
+
+type ProjectVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectVpc)(nil))
+}
+
+func (o ProjectVpcArrayOutput) ToProjectVpcArrayOutput() ProjectVpcArrayOutput {
+	return o
+}
+
+func (o ProjectVpcArrayOutput) ToProjectVpcArrayOutputWithContext(ctx context.Context) ProjectVpcArrayOutput {
+	return o
+}
+
+func (o ProjectVpcArrayOutput) Index(i pulumi.IntInput) ProjectVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectVpc {
+		return vs[0].([]ProjectVpc)[vs[1].(int)]
+	}).(ProjectVpcOutput)
+}
+
+type ProjectVpcMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectVpcMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectVpc)(nil))
+}
+
+func (o ProjectVpcMapOutput) ToProjectVpcMapOutput() ProjectVpcMapOutput {
+	return o
+}
+
+func (o ProjectVpcMapOutput) ToProjectVpcMapOutputWithContext(ctx context.Context) ProjectVpcMapOutput {
+	return o
+}
+
+func (o ProjectVpcMapOutput) MapIndex(k pulumi.StringInput) ProjectVpcOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectVpc {
+		return vs[0].(map[string]ProjectVpc)[vs[1].(string)]
+	}).(ProjectVpcOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectVpcOutput{})
+	pulumi.RegisterOutputType(ProjectVpcPtrOutput{})
+	pulumi.RegisterOutputType(ProjectVpcArrayOutput{})
+	pulumi.RegisterOutputType(ProjectVpcMapOutput{})
 }

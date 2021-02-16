@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -449,6 +448,85 @@ func (i *Kafka) ToKafkaOutputWithContext(ctx context.Context) KafkaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaOutput)
 }
 
+func (i *Kafka) ToKafkaPtrOutput() KafkaPtrOutput {
+	return i.ToKafkaPtrOutputWithContext(context.Background())
+}
+
+func (i *Kafka) ToKafkaPtrOutputWithContext(ctx context.Context) KafkaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaPtrOutput)
+}
+
+type KafkaPtrInput interface {
+	pulumi.Input
+
+	ToKafkaPtrOutput() KafkaPtrOutput
+	ToKafkaPtrOutputWithContext(ctx context.Context) KafkaPtrOutput
+}
+
+type kafkaPtrType KafkaArgs
+
+func (*kafkaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Kafka)(nil))
+}
+
+func (i *kafkaPtrType) ToKafkaPtrOutput() KafkaPtrOutput {
+	return i.ToKafkaPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaPtrType) ToKafkaPtrOutputWithContext(ctx context.Context) KafkaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaPtrOutput)
+}
+
+// KafkaArrayInput is an input type that accepts KafkaArray and KafkaArrayOutput values.
+// You can construct a concrete instance of `KafkaArrayInput` via:
+//
+//          KafkaArray{ KafkaArgs{...} }
+type KafkaArrayInput interface {
+	pulumi.Input
+
+	ToKafkaArrayOutput() KafkaArrayOutput
+	ToKafkaArrayOutputWithContext(context.Context) KafkaArrayOutput
+}
+
+type KafkaArray []KafkaInput
+
+func (KafkaArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Kafka)(nil))
+}
+
+func (i KafkaArray) ToKafkaArrayOutput() KafkaArrayOutput {
+	return i.ToKafkaArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaArray) ToKafkaArrayOutputWithContext(ctx context.Context) KafkaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaArrayOutput)
+}
+
+// KafkaMapInput is an input type that accepts KafkaMap and KafkaMapOutput values.
+// You can construct a concrete instance of `KafkaMapInput` via:
+//
+//          KafkaMap{ "key": KafkaArgs{...} }
+type KafkaMapInput interface {
+	pulumi.Input
+
+	ToKafkaMapOutput() KafkaMapOutput
+	ToKafkaMapOutputWithContext(context.Context) KafkaMapOutput
+}
+
+type KafkaMap map[string]KafkaInput
+
+func (KafkaMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Kafka)(nil))
+}
+
+func (i KafkaMap) ToKafkaMapOutput() KafkaMapOutput {
+	return i.ToKafkaMapOutputWithContext(context.Background())
+}
+
+func (i KafkaMap) ToKafkaMapOutputWithContext(ctx context.Context) KafkaMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaMapOutput)
+}
+
 type KafkaOutput struct {
 	*pulumi.OutputState
 }
@@ -465,6 +543,75 @@ func (o KafkaOutput) ToKafkaOutputWithContext(ctx context.Context) KafkaOutput {
 	return o
 }
 
+func (o KafkaOutput) ToKafkaPtrOutput() KafkaPtrOutput {
+	return o.ToKafkaPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaOutput) ToKafkaPtrOutputWithContext(ctx context.Context) KafkaPtrOutput {
+	return o.ApplyT(func(v Kafka) *Kafka {
+		return &v
+	}).(KafkaPtrOutput)
+}
+
+type KafkaPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Kafka)(nil))
+}
+
+func (o KafkaPtrOutput) ToKafkaPtrOutput() KafkaPtrOutput {
+	return o
+}
+
+func (o KafkaPtrOutput) ToKafkaPtrOutputWithContext(ctx context.Context) KafkaPtrOutput {
+	return o
+}
+
+type KafkaArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Kafka)(nil))
+}
+
+func (o KafkaArrayOutput) ToKafkaArrayOutput() KafkaArrayOutput {
+	return o
+}
+
+func (o KafkaArrayOutput) ToKafkaArrayOutputWithContext(ctx context.Context) KafkaArrayOutput {
+	return o
+}
+
+func (o KafkaArrayOutput) Index(i pulumi.IntInput) KafkaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Kafka {
+		return vs[0].([]Kafka)[vs[1].(int)]
+	}).(KafkaOutput)
+}
+
+type KafkaMapOutput struct{ *pulumi.OutputState }
+
+func (KafkaMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Kafka)(nil))
+}
+
+func (o KafkaMapOutput) ToKafkaMapOutput() KafkaMapOutput {
+	return o
+}
+
+func (o KafkaMapOutput) ToKafkaMapOutputWithContext(ctx context.Context) KafkaMapOutput {
+	return o
+}
+
+func (o KafkaMapOutput) MapIndex(k pulumi.StringInput) KafkaOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Kafka {
+		return vs[0].(map[string]Kafka)[vs[1].(string)]
+	}).(KafkaOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KafkaOutput{})
+	pulumi.RegisterOutputType(KafkaPtrOutput{})
+	pulumi.RegisterOutputType(KafkaArrayOutput{})
+	pulumi.RegisterOutputType(KafkaMapOutput{})
 }

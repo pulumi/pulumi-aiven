@@ -96,7 +96,8 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     constructor(name: string, args: TransitGatewayVpcAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransitGatewayVpcAttachmentArgs | TransitGatewayVpcAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TransitGatewayVpcAttachmentState | undefined;
             inputs["peerCloudAccount"] = state ? state.peerCloudAccount : undefined;
             inputs["peerRegion"] = state ? state.peerRegion : undefined;
@@ -108,19 +109,19 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as TransitGatewayVpcAttachmentArgs | undefined;
-            if ((!args || args.peerCloudAccount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerCloudAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerCloudAccount'");
             }
-            if ((!args || args.peerRegion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerRegion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerRegion'");
             }
-            if ((!args || args.peerVpc === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerVpc === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerVpc'");
             }
-            if ((!args || args.userPeerNetworkCidrs === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userPeerNetworkCidrs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userPeerNetworkCidrs'");
             }
-            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["peerCloudAccount"] = args ? args.peerCloudAccount : undefined;
@@ -132,12 +133,8 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["stateInfo"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TransitGatewayVpcAttachment.__pulumiType, name, inputs, opts);
     }

@@ -87,7 +87,8 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, args: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             inputs["databaseName"] = state ? state.databaseName : undefined;
             inputs["lcCollate"] = state ? state.lcCollate : undefined;
@@ -97,13 +98,13 @@ export class Database extends pulumi.CustomResource {
             inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.databaseName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["databaseName"] = args ? args.databaseName : undefined;
@@ -113,12 +114,8 @@ export class Database extends pulumi.CustomResource {
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Database.__pulumiType, name, inputs, opts);
     }

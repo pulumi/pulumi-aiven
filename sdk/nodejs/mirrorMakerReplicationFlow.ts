@@ -99,7 +99,8 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     constructor(name: string, args: MirrorMakerReplicationFlowArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MirrorMakerReplicationFlowArgs | MirrorMakerReplicationFlowState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MirrorMakerReplicationFlowState | undefined;
             inputs["enable"] = state ? state.enable : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -110,19 +111,19 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             inputs["topicsBlacklists"] = state ? state.topicsBlacklists : undefined;
         } else {
             const args = argsOrState as MirrorMakerReplicationFlowArgs | undefined;
-            if ((!args || args.enable === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.enable === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enable'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.sourceCluster === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceCluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceCluster'");
             }
-            if ((!args || args.targetCluster === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetCluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetCluster'");
             }
             inputs["enable"] = args ? args.enable : undefined;
@@ -133,12 +134,8 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             inputs["topics"] = args ? args.topics : undefined;
             inputs["topicsBlacklists"] = args ? args.topicsBlacklists : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MirrorMakerReplicationFlow.__pulumiType, name, inputs, opts);
     }

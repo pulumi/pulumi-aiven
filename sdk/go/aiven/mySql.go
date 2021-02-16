@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -455,6 +454,85 @@ func (i *MySql) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlOutput)
 }
 
+func (i *MySql) ToMySqlPtrOutput() MySqlPtrOutput {
+	return i.ToMySqlPtrOutputWithContext(context.Background())
+}
+
+func (i *MySql) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlPtrOutput)
+}
+
+type MySqlPtrInput interface {
+	pulumi.Input
+
+	ToMySqlPtrOutput() MySqlPtrOutput
+	ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput
+}
+
+type mySqlPtrType MySqlArgs
+
+func (*mySqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MySql)(nil))
+}
+
+func (i *mySqlPtrType) ToMySqlPtrOutput() MySqlPtrOutput {
+	return i.ToMySqlPtrOutputWithContext(context.Background())
+}
+
+func (i *mySqlPtrType) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlPtrOutput)
+}
+
+// MySqlArrayInput is an input type that accepts MySqlArray and MySqlArrayOutput values.
+// You can construct a concrete instance of `MySqlArrayInput` via:
+//
+//          MySqlArray{ MySqlArgs{...} }
+type MySqlArrayInput interface {
+	pulumi.Input
+
+	ToMySqlArrayOutput() MySqlArrayOutput
+	ToMySqlArrayOutputWithContext(context.Context) MySqlArrayOutput
+}
+
+type MySqlArray []MySqlInput
+
+func (MySqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MySql)(nil))
+}
+
+func (i MySqlArray) ToMySqlArrayOutput() MySqlArrayOutput {
+	return i.ToMySqlArrayOutputWithContext(context.Background())
+}
+
+func (i MySqlArray) ToMySqlArrayOutputWithContext(ctx context.Context) MySqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlArrayOutput)
+}
+
+// MySqlMapInput is an input type that accepts MySqlMap and MySqlMapOutput values.
+// You can construct a concrete instance of `MySqlMapInput` via:
+//
+//          MySqlMap{ "key": MySqlArgs{...} }
+type MySqlMapInput interface {
+	pulumi.Input
+
+	ToMySqlMapOutput() MySqlMapOutput
+	ToMySqlMapOutputWithContext(context.Context) MySqlMapOutput
+}
+
+type MySqlMap map[string]MySqlInput
+
+func (MySqlMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MySql)(nil))
+}
+
+func (i MySqlMap) ToMySqlMapOutput() MySqlMapOutput {
+	return i.ToMySqlMapOutputWithContext(context.Background())
+}
+
+func (i MySqlMap) ToMySqlMapOutputWithContext(ctx context.Context) MySqlMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlMapOutput)
+}
+
 type MySqlOutput struct {
 	*pulumi.OutputState
 }
@@ -471,6 +549,75 @@ func (o MySqlOutput) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return o
 }
 
+func (o MySqlOutput) ToMySqlPtrOutput() MySqlPtrOutput {
+	return o.ToMySqlPtrOutputWithContext(context.Background())
+}
+
+func (o MySqlOutput) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
+	return o.ApplyT(func(v MySql) *MySql {
+		return &v
+	}).(MySqlPtrOutput)
+}
+
+type MySqlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MySqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MySql)(nil))
+}
+
+func (o MySqlPtrOutput) ToMySqlPtrOutput() MySqlPtrOutput {
+	return o
+}
+
+func (o MySqlPtrOutput) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
+	return o
+}
+
+type MySqlArrayOutput struct{ *pulumi.OutputState }
+
+func (MySqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MySql)(nil))
+}
+
+func (o MySqlArrayOutput) ToMySqlArrayOutput() MySqlArrayOutput {
+	return o
+}
+
+func (o MySqlArrayOutput) ToMySqlArrayOutputWithContext(ctx context.Context) MySqlArrayOutput {
+	return o
+}
+
+func (o MySqlArrayOutput) Index(i pulumi.IntInput) MySqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MySql {
+		return vs[0].([]MySql)[vs[1].(int)]
+	}).(MySqlOutput)
+}
+
+type MySqlMapOutput struct{ *pulumi.OutputState }
+
+func (MySqlMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MySql)(nil))
+}
+
+func (o MySqlMapOutput) ToMySqlMapOutput() MySqlMapOutput {
+	return o
+}
+
+func (o MySqlMapOutput) ToMySqlMapOutputWithContext(ctx context.Context) MySqlMapOutput {
+	return o
+}
+
+func (o MySqlMapOutput) MapIndex(k pulumi.StringInput) MySqlOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MySql {
+		return vs[0].(map[string]MySql)[vs[1].(string)]
+	}).(MySqlOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MySqlOutput{})
+	pulumi.RegisterOutputType(MySqlPtrOutput{})
+	pulumi.RegisterOutputType(MySqlArrayOutput{})
+	pulumi.RegisterOutputType(MySqlMapOutput{})
 }

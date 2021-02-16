@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -430,6 +429,85 @@ func (i *InfluxDb) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbOutput)
 }
 
+func (i *InfluxDb) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
+	return i.ToInfluxDbPtrOutputWithContext(context.Background())
+}
+
+func (i *InfluxDb) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbPtrOutput)
+}
+
+type InfluxDbPtrInput interface {
+	pulumi.Input
+
+	ToInfluxDbPtrOutput() InfluxDbPtrOutput
+	ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput
+}
+
+type influxDbPtrType InfluxDbArgs
+
+func (*influxDbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfluxDb)(nil))
+}
+
+func (i *influxDbPtrType) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
+	return i.ToInfluxDbPtrOutputWithContext(context.Background())
+}
+
+func (i *influxDbPtrType) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbPtrOutput)
+}
+
+// InfluxDbArrayInput is an input type that accepts InfluxDbArray and InfluxDbArrayOutput values.
+// You can construct a concrete instance of `InfluxDbArrayInput` via:
+//
+//          InfluxDbArray{ InfluxDbArgs{...} }
+type InfluxDbArrayInput interface {
+	pulumi.Input
+
+	ToInfluxDbArrayOutput() InfluxDbArrayOutput
+	ToInfluxDbArrayOutputWithContext(context.Context) InfluxDbArrayOutput
+}
+
+type InfluxDbArray []InfluxDbInput
+
+func (InfluxDbArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InfluxDb)(nil))
+}
+
+func (i InfluxDbArray) ToInfluxDbArrayOutput() InfluxDbArrayOutput {
+	return i.ToInfluxDbArrayOutputWithContext(context.Background())
+}
+
+func (i InfluxDbArray) ToInfluxDbArrayOutputWithContext(ctx context.Context) InfluxDbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbArrayOutput)
+}
+
+// InfluxDbMapInput is an input type that accepts InfluxDbMap and InfluxDbMapOutput values.
+// You can construct a concrete instance of `InfluxDbMapInput` via:
+//
+//          InfluxDbMap{ "key": InfluxDbArgs{...} }
+type InfluxDbMapInput interface {
+	pulumi.Input
+
+	ToInfluxDbMapOutput() InfluxDbMapOutput
+	ToInfluxDbMapOutputWithContext(context.Context) InfluxDbMapOutput
+}
+
+type InfluxDbMap map[string]InfluxDbInput
+
+func (InfluxDbMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InfluxDb)(nil))
+}
+
+func (i InfluxDbMap) ToInfluxDbMapOutput() InfluxDbMapOutput {
+	return i.ToInfluxDbMapOutputWithContext(context.Background())
+}
+
+func (i InfluxDbMap) ToInfluxDbMapOutputWithContext(ctx context.Context) InfluxDbMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbMapOutput)
+}
+
 type InfluxDbOutput struct {
 	*pulumi.OutputState
 }
@@ -446,6 +524,75 @@ func (o InfluxDbOutput) ToInfluxDbOutputWithContext(ctx context.Context) InfluxD
 	return o
 }
 
+func (o InfluxDbOutput) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
+	return o.ToInfluxDbPtrOutputWithContext(context.Background())
+}
+
+func (o InfluxDbOutput) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
+	return o.ApplyT(func(v InfluxDb) *InfluxDb {
+		return &v
+	}).(InfluxDbPtrOutput)
+}
+
+type InfluxDbPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InfluxDbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfluxDb)(nil))
+}
+
+func (o InfluxDbPtrOutput) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
+	return o
+}
+
+func (o InfluxDbPtrOutput) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
+	return o
+}
+
+type InfluxDbArrayOutput struct{ *pulumi.OutputState }
+
+func (InfluxDbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfluxDb)(nil))
+}
+
+func (o InfluxDbArrayOutput) ToInfluxDbArrayOutput() InfluxDbArrayOutput {
+	return o
+}
+
+func (o InfluxDbArrayOutput) ToInfluxDbArrayOutputWithContext(ctx context.Context) InfluxDbArrayOutput {
+	return o
+}
+
+func (o InfluxDbArrayOutput) Index(i pulumi.IntInput) InfluxDbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfluxDb {
+		return vs[0].([]InfluxDb)[vs[1].(int)]
+	}).(InfluxDbOutput)
+}
+
+type InfluxDbMapOutput struct{ *pulumi.OutputState }
+
+func (InfluxDbMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InfluxDb)(nil))
+}
+
+func (o InfluxDbMapOutput) ToInfluxDbMapOutput() InfluxDbMapOutput {
+	return o
+}
+
+func (o InfluxDbMapOutput) ToInfluxDbMapOutputWithContext(ctx context.Context) InfluxDbMapOutput {
+	return o
+}
+
+func (o InfluxDbMapOutput) MapIndex(k pulumi.StringInput) InfluxDbOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InfluxDb {
+		return vs[0].(map[string]InfluxDb)[vs[1].(string)]
+	}).(InfluxDbOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InfluxDbOutput{})
+	pulumi.RegisterOutputType(InfluxDbPtrOutput{})
+	pulumi.RegisterOutputType(InfluxDbArrayOutput{})
+	pulumi.RegisterOutputType(InfluxDbMapOutput{})
 }

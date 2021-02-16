@@ -132,7 +132,8 @@ export class KafkaTopic extends pulumi.CustomResource {
     constructor(name: string, args: KafkaTopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KafkaTopicArgs | KafkaTopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KafkaTopicState | undefined;
             inputs["cleanupPolicy"] = state ? state.cleanupPolicy : undefined;
             inputs["config"] = state ? state.config : undefined;
@@ -147,19 +148,19 @@ export class KafkaTopic extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as KafkaTopicArgs | undefined;
-            if ((!args || args.partitions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.partitions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'partitions'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.replication === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.replication === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replication'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.topicName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
             inputs["cleanupPolicy"] = args ? args.cleanupPolicy : undefined;
@@ -174,12 +175,8 @@ export class KafkaTopic extends pulumi.CustomResource {
             inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
             inputs["topicName"] = args ? args.topicName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KafkaTopic.__pulumiType, name, inputs, opts);
     }

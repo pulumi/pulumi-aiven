@@ -14,7 +14,7 @@ __all__ = [
 
 __config__ = pulumi.Config('aiven')
 
-api_token = __config__.get('apiToken') or _utilities.get_env('AIVEN_API_TOKEN')
+api_token = __config__.get('apiToken')
 """
 Aiven Authentication Token
 """

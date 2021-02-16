@@ -24,7 +24,6 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -433,6 +432,85 @@ func (i *Cassandra) ToCassandraOutputWithContext(ctx context.Context) CassandraO
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraOutput)
 }
 
+func (i *Cassandra) ToCassandraPtrOutput() CassandraPtrOutput {
+	return i.ToCassandraPtrOutputWithContext(context.Background())
+}
+
+func (i *Cassandra) ToCassandraPtrOutputWithContext(ctx context.Context) CassandraPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraPtrOutput)
+}
+
+type CassandraPtrInput interface {
+	pulumi.Input
+
+	ToCassandraPtrOutput() CassandraPtrOutput
+	ToCassandraPtrOutputWithContext(ctx context.Context) CassandraPtrOutput
+}
+
+type cassandraPtrType CassandraArgs
+
+func (*cassandraPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cassandra)(nil))
+}
+
+func (i *cassandraPtrType) ToCassandraPtrOutput() CassandraPtrOutput {
+	return i.ToCassandraPtrOutputWithContext(context.Background())
+}
+
+func (i *cassandraPtrType) ToCassandraPtrOutputWithContext(ctx context.Context) CassandraPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraPtrOutput)
+}
+
+// CassandraArrayInput is an input type that accepts CassandraArray and CassandraArrayOutput values.
+// You can construct a concrete instance of `CassandraArrayInput` via:
+//
+//          CassandraArray{ CassandraArgs{...} }
+type CassandraArrayInput interface {
+	pulumi.Input
+
+	ToCassandraArrayOutput() CassandraArrayOutput
+	ToCassandraArrayOutputWithContext(context.Context) CassandraArrayOutput
+}
+
+type CassandraArray []CassandraInput
+
+func (CassandraArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Cassandra)(nil))
+}
+
+func (i CassandraArray) ToCassandraArrayOutput() CassandraArrayOutput {
+	return i.ToCassandraArrayOutputWithContext(context.Background())
+}
+
+func (i CassandraArray) ToCassandraArrayOutputWithContext(ctx context.Context) CassandraArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraArrayOutput)
+}
+
+// CassandraMapInput is an input type that accepts CassandraMap and CassandraMapOutput values.
+// You can construct a concrete instance of `CassandraMapInput` via:
+//
+//          CassandraMap{ "key": CassandraArgs{...} }
+type CassandraMapInput interface {
+	pulumi.Input
+
+	ToCassandraMapOutput() CassandraMapOutput
+	ToCassandraMapOutputWithContext(context.Context) CassandraMapOutput
+}
+
+type CassandraMap map[string]CassandraInput
+
+func (CassandraMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Cassandra)(nil))
+}
+
+func (i CassandraMap) ToCassandraMapOutput() CassandraMapOutput {
+	return i.ToCassandraMapOutputWithContext(context.Background())
+}
+
+func (i CassandraMap) ToCassandraMapOutputWithContext(ctx context.Context) CassandraMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraMapOutput)
+}
+
 type CassandraOutput struct {
 	*pulumi.OutputState
 }
@@ -449,6 +527,75 @@ func (o CassandraOutput) ToCassandraOutputWithContext(ctx context.Context) Cassa
 	return o
 }
 
+func (o CassandraOutput) ToCassandraPtrOutput() CassandraPtrOutput {
+	return o.ToCassandraPtrOutputWithContext(context.Background())
+}
+
+func (o CassandraOutput) ToCassandraPtrOutputWithContext(ctx context.Context) CassandraPtrOutput {
+	return o.ApplyT(func(v Cassandra) *Cassandra {
+		return &v
+	}).(CassandraPtrOutput)
+}
+
+type CassandraPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CassandraPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cassandra)(nil))
+}
+
+func (o CassandraPtrOutput) ToCassandraPtrOutput() CassandraPtrOutput {
+	return o
+}
+
+func (o CassandraPtrOutput) ToCassandraPtrOutputWithContext(ctx context.Context) CassandraPtrOutput {
+	return o
+}
+
+type CassandraArrayOutput struct{ *pulumi.OutputState }
+
+func (CassandraArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Cassandra)(nil))
+}
+
+func (o CassandraArrayOutput) ToCassandraArrayOutput() CassandraArrayOutput {
+	return o
+}
+
+func (o CassandraArrayOutput) ToCassandraArrayOutputWithContext(ctx context.Context) CassandraArrayOutput {
+	return o
+}
+
+func (o CassandraArrayOutput) Index(i pulumi.IntInput) CassandraOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Cassandra {
+		return vs[0].([]Cassandra)[vs[1].(int)]
+	}).(CassandraOutput)
+}
+
+type CassandraMapOutput struct{ *pulumi.OutputState }
+
+func (CassandraMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Cassandra)(nil))
+}
+
+func (o CassandraMapOutput) ToCassandraMapOutput() CassandraMapOutput {
+	return o
+}
+
+func (o CassandraMapOutput) ToCassandraMapOutputWithContext(ctx context.Context) CassandraMapOutput {
+	return o
+}
+
+func (o CassandraMapOutput) MapIndex(k pulumi.StringInput) CassandraOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Cassandra {
+		return vs[0].(map[string]Cassandra)[vs[1].(string)]
+	}).(CassandraOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CassandraOutput{})
+	pulumi.RegisterOutputType(CassandraPtrOutput{})
+	pulumi.RegisterOutputType(CassandraArrayOutput{})
+	pulumi.RegisterOutputType(CassandraMapOutput{})
 }

@@ -23,7 +23,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -214,6 +213,85 @@ func (i *ElasticSearchAcl) ToElasticSearchAclOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclOutput)
 }
 
+func (i *ElasticSearchAcl) ToElasticSearchAclPtrOutput() ElasticSearchAclPtrOutput {
+	return i.ToElasticSearchAclPtrOutputWithContext(context.Background())
+}
+
+func (i *ElasticSearchAcl) ToElasticSearchAclPtrOutputWithContext(ctx context.Context) ElasticSearchAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclPtrOutput)
+}
+
+type ElasticSearchAclPtrInput interface {
+	pulumi.Input
+
+	ToElasticSearchAclPtrOutput() ElasticSearchAclPtrOutput
+	ToElasticSearchAclPtrOutputWithContext(ctx context.Context) ElasticSearchAclPtrOutput
+}
+
+type elasticSearchAclPtrType ElasticSearchAclArgs
+
+func (*elasticSearchAclPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSearchAcl)(nil))
+}
+
+func (i *elasticSearchAclPtrType) ToElasticSearchAclPtrOutput() ElasticSearchAclPtrOutput {
+	return i.ToElasticSearchAclPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSearchAclPtrType) ToElasticSearchAclPtrOutputWithContext(ctx context.Context) ElasticSearchAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclPtrOutput)
+}
+
+// ElasticSearchAclArrayInput is an input type that accepts ElasticSearchAclArray and ElasticSearchAclArrayOutput values.
+// You can construct a concrete instance of `ElasticSearchAclArrayInput` via:
+//
+//          ElasticSearchAclArray{ ElasticSearchAclArgs{...} }
+type ElasticSearchAclArrayInput interface {
+	pulumi.Input
+
+	ToElasticSearchAclArrayOutput() ElasticSearchAclArrayOutput
+	ToElasticSearchAclArrayOutputWithContext(context.Context) ElasticSearchAclArrayOutput
+}
+
+type ElasticSearchAclArray []ElasticSearchAclInput
+
+func (ElasticSearchAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ElasticSearchAcl)(nil))
+}
+
+func (i ElasticSearchAclArray) ToElasticSearchAclArrayOutput() ElasticSearchAclArrayOutput {
+	return i.ToElasticSearchAclArrayOutputWithContext(context.Background())
+}
+
+func (i ElasticSearchAclArray) ToElasticSearchAclArrayOutputWithContext(ctx context.Context) ElasticSearchAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclArrayOutput)
+}
+
+// ElasticSearchAclMapInput is an input type that accepts ElasticSearchAclMap and ElasticSearchAclMapOutput values.
+// You can construct a concrete instance of `ElasticSearchAclMapInput` via:
+//
+//          ElasticSearchAclMap{ "key": ElasticSearchAclArgs{...} }
+type ElasticSearchAclMapInput interface {
+	pulumi.Input
+
+	ToElasticSearchAclMapOutput() ElasticSearchAclMapOutput
+	ToElasticSearchAclMapOutputWithContext(context.Context) ElasticSearchAclMapOutput
+}
+
+type ElasticSearchAclMap map[string]ElasticSearchAclInput
+
+func (ElasticSearchAclMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ElasticSearchAcl)(nil))
+}
+
+func (i ElasticSearchAclMap) ToElasticSearchAclMapOutput() ElasticSearchAclMapOutput {
+	return i.ToElasticSearchAclMapOutputWithContext(context.Background())
+}
+
+func (i ElasticSearchAclMap) ToElasticSearchAclMapOutputWithContext(ctx context.Context) ElasticSearchAclMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclMapOutput)
+}
+
 type ElasticSearchAclOutput struct {
 	*pulumi.OutputState
 }
@@ -230,6 +308,75 @@ func (o ElasticSearchAclOutput) ToElasticSearchAclOutputWithContext(ctx context.
 	return o
 }
 
+func (o ElasticSearchAclOutput) ToElasticSearchAclPtrOutput() ElasticSearchAclPtrOutput {
+	return o.ToElasticSearchAclPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSearchAclOutput) ToElasticSearchAclPtrOutputWithContext(ctx context.Context) ElasticSearchAclPtrOutput {
+	return o.ApplyT(func(v ElasticSearchAcl) *ElasticSearchAcl {
+		return &v
+	}).(ElasticSearchAclPtrOutput)
+}
+
+type ElasticSearchAclPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ElasticSearchAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSearchAcl)(nil))
+}
+
+func (o ElasticSearchAclPtrOutput) ToElasticSearchAclPtrOutput() ElasticSearchAclPtrOutput {
+	return o
+}
+
+func (o ElasticSearchAclPtrOutput) ToElasticSearchAclPtrOutputWithContext(ctx context.Context) ElasticSearchAclPtrOutput {
+	return o
+}
+
+type ElasticSearchAclArrayOutput struct{ *pulumi.OutputState }
+
+func (ElasticSearchAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticSearchAcl)(nil))
+}
+
+func (o ElasticSearchAclArrayOutput) ToElasticSearchAclArrayOutput() ElasticSearchAclArrayOutput {
+	return o
+}
+
+func (o ElasticSearchAclArrayOutput) ToElasticSearchAclArrayOutputWithContext(ctx context.Context) ElasticSearchAclArrayOutput {
+	return o
+}
+
+func (o ElasticSearchAclArrayOutput) Index(i pulumi.IntInput) ElasticSearchAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticSearchAcl {
+		return vs[0].([]ElasticSearchAcl)[vs[1].(int)]
+	}).(ElasticSearchAclOutput)
+}
+
+type ElasticSearchAclMapOutput struct{ *pulumi.OutputState }
+
+func (ElasticSearchAclMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ElasticSearchAcl)(nil))
+}
+
+func (o ElasticSearchAclMapOutput) ToElasticSearchAclMapOutput() ElasticSearchAclMapOutput {
+	return o
+}
+
+func (o ElasticSearchAclMapOutput) ToElasticSearchAclMapOutputWithContext(ctx context.Context) ElasticSearchAclMapOutput {
+	return o
+}
+
+func (o ElasticSearchAclMapOutput) MapIndex(k pulumi.StringInput) ElasticSearchAclOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ElasticSearchAcl {
+		return vs[0].(map[string]ElasticSearchAcl)[vs[1].(string)]
+	}).(ElasticSearchAclOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElasticSearchAclOutput{})
+	pulumi.RegisterOutputType(ElasticSearchAclPtrOutput{})
+	pulumi.RegisterOutputType(ElasticSearchAclArrayOutput{})
+	pulumi.RegisterOutputType(ElasticSearchAclMapOutput{})
 }
