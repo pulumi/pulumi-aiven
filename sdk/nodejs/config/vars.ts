@@ -9,4 +9,4 @@ let __config = new pulumi.Config("aiven");
 /**
  * Aiven Authentication Token
  */
-export let apiToken: string | undefined = __config.get("apiToken") || utilities.getEnv("AIVEN_API_TOKEN");
+export let apiToken: string | undefined = __config.get("apiToken");

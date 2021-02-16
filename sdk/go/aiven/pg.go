@@ -393,6 +393,85 @@ func (i *Pg) ToPgOutputWithContext(ctx context.Context) PgOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgOutput)
 }
 
+func (i *Pg) ToPgPtrOutput() PgPtrOutput {
+	return i.ToPgPtrOutputWithContext(context.Background())
+}
+
+func (i *Pg) ToPgPtrOutputWithContext(ctx context.Context) PgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPtrOutput)
+}
+
+type PgPtrInput interface {
+	pulumi.Input
+
+	ToPgPtrOutput() PgPtrOutput
+	ToPgPtrOutputWithContext(ctx context.Context) PgPtrOutput
+}
+
+type pgPtrType PgArgs
+
+func (*pgPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pg)(nil))
+}
+
+func (i *pgPtrType) ToPgPtrOutput() PgPtrOutput {
+	return i.ToPgPtrOutputWithContext(context.Background())
+}
+
+func (i *pgPtrType) ToPgPtrOutputWithContext(ctx context.Context) PgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPtrOutput)
+}
+
+// PgArrayInput is an input type that accepts PgArray and PgArrayOutput values.
+// You can construct a concrete instance of `PgArrayInput` via:
+//
+//          PgArray{ PgArgs{...} }
+type PgArrayInput interface {
+	pulumi.Input
+
+	ToPgArrayOutput() PgArrayOutput
+	ToPgArrayOutputWithContext(context.Context) PgArrayOutput
+}
+
+type PgArray []PgInput
+
+func (PgArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Pg)(nil))
+}
+
+func (i PgArray) ToPgArrayOutput() PgArrayOutput {
+	return i.ToPgArrayOutputWithContext(context.Background())
+}
+
+func (i PgArray) ToPgArrayOutputWithContext(ctx context.Context) PgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgArrayOutput)
+}
+
+// PgMapInput is an input type that accepts PgMap and PgMapOutput values.
+// You can construct a concrete instance of `PgMapInput` via:
+//
+//          PgMap{ "key": PgArgs{...} }
+type PgMapInput interface {
+	pulumi.Input
+
+	ToPgMapOutput() PgMapOutput
+	ToPgMapOutputWithContext(context.Context) PgMapOutput
+}
+
+type PgMap map[string]PgInput
+
+func (PgMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Pg)(nil))
+}
+
+func (i PgMap) ToPgMapOutput() PgMapOutput {
+	return i.ToPgMapOutputWithContext(context.Background())
+}
+
+func (i PgMap) ToPgMapOutputWithContext(ctx context.Context) PgMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgMapOutput)
+}
+
 type PgOutput struct {
 	*pulumi.OutputState
 }
@@ -409,6 +488,75 @@ func (o PgOutput) ToPgOutputWithContext(ctx context.Context) PgOutput {
 	return o
 }
 
+func (o PgOutput) ToPgPtrOutput() PgPtrOutput {
+	return o.ToPgPtrOutputWithContext(context.Background())
+}
+
+func (o PgOutput) ToPgPtrOutputWithContext(ctx context.Context) PgPtrOutput {
+	return o.ApplyT(func(v Pg) *Pg {
+		return &v
+	}).(PgPtrOutput)
+}
+
+type PgPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PgPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pg)(nil))
+}
+
+func (o PgPtrOutput) ToPgPtrOutput() PgPtrOutput {
+	return o
+}
+
+func (o PgPtrOutput) ToPgPtrOutputWithContext(ctx context.Context) PgPtrOutput {
+	return o
+}
+
+type PgArrayOutput struct{ *pulumi.OutputState }
+
+func (PgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Pg)(nil))
+}
+
+func (o PgArrayOutput) ToPgArrayOutput() PgArrayOutput {
+	return o
+}
+
+func (o PgArrayOutput) ToPgArrayOutputWithContext(ctx context.Context) PgArrayOutput {
+	return o
+}
+
+func (o PgArrayOutput) Index(i pulumi.IntInput) PgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Pg {
+		return vs[0].([]Pg)[vs[1].(int)]
+	}).(PgOutput)
+}
+
+type PgMapOutput struct{ *pulumi.OutputState }
+
+func (PgMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Pg)(nil))
+}
+
+func (o PgMapOutput) ToPgMapOutput() PgMapOutput {
+	return o
+}
+
+func (o PgMapOutput) ToPgMapOutputWithContext(ctx context.Context) PgMapOutput {
+	return o
+}
+
+func (o PgMapOutput) MapIndex(k pulumi.StringInput) PgOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Pg {
+		return vs[0].(map[string]Pg)[vs[1].(string)]
+	}).(PgOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PgOutput{})
+	pulumi.RegisterOutputType(PgPtrOutput{})
+	pulumi.RegisterOutputType(PgArrayOutput{})
+	pulumi.RegisterOutputType(PgMapOutput{})
 }

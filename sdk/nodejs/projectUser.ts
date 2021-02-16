@@ -80,7 +80,8 @@ export class ProjectUser extends pulumi.CustomResource {
     constructor(name: string, args: ProjectUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectUserArgs | ProjectUserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectUserState | undefined;
             inputs["accepted"] = state ? state.accepted : undefined;
             inputs["email"] = state ? state.email : undefined;
@@ -88,13 +89,13 @@ export class ProjectUser extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectUserArgs | undefined;
-            if ((!args || args.email === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.email === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.memberType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.memberType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'memberType'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["email"] = args ? args.email : undefined;
@@ -102,12 +103,8 @@ export class ProjectUser extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["accepted"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectUser.__pulumiType, name, inputs, opts);
     }

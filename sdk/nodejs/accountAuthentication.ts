@@ -96,7 +96,8 @@ export class AccountAuthentication extends pulumi.CustomResource {
     constructor(name: string, args: AccountAuthenticationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountAuthenticationArgs | AccountAuthenticationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccountAuthenticationState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["authenticationId"] = state ? state.authenticationId : undefined;
@@ -112,10 +113,10 @@ export class AccountAuthentication extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccountAuthenticationArgs | undefined;
-            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -131,12 +132,8 @@ export class AccountAuthentication extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccountAuthentication.__pulumiType, name, inputs, opts);
     }

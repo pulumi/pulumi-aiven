@@ -77,14 +77,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:          "https://pulumi.io",
 		Repository:        "https://github.com/pulumi/pulumi-aiven",
 		TFProviderLicense: refProviderLicense(tfbridge.MITLicenseType),
-		Config: map[string]*tfbridge.SchemaInfo{
-			"api_token": {
-				Type: "string",
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"AIVEN_API_TOKEN"},
-				},
-			},
-		},
+		Config:            map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"aiven_account":                {Tok: makeResource(mainMod, "Account")},
 			"aiven_account_authentication": {Tok: makeResource(mainMod, "AccountAuthentication")},

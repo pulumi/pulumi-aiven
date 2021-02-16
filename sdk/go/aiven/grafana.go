@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -436,6 +435,85 @@ func (i *Grafana) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(GrafanaOutput)
 }
 
+func (i *Grafana) ToGrafanaPtrOutput() GrafanaPtrOutput {
+	return i.ToGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (i *Grafana) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaPtrOutput)
+}
+
+type GrafanaPtrInput interface {
+	pulumi.Input
+
+	ToGrafanaPtrOutput() GrafanaPtrOutput
+	ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput
+}
+
+type grafanaPtrType GrafanaArgs
+
+func (*grafanaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Grafana)(nil))
+}
+
+func (i *grafanaPtrType) ToGrafanaPtrOutput() GrafanaPtrOutput {
+	return i.ToGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (i *grafanaPtrType) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaPtrOutput)
+}
+
+// GrafanaArrayInput is an input type that accepts GrafanaArray and GrafanaArrayOutput values.
+// You can construct a concrete instance of `GrafanaArrayInput` via:
+//
+//          GrafanaArray{ GrafanaArgs{...} }
+type GrafanaArrayInput interface {
+	pulumi.Input
+
+	ToGrafanaArrayOutput() GrafanaArrayOutput
+	ToGrafanaArrayOutputWithContext(context.Context) GrafanaArrayOutput
+}
+
+type GrafanaArray []GrafanaInput
+
+func (GrafanaArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Grafana)(nil))
+}
+
+func (i GrafanaArray) ToGrafanaArrayOutput() GrafanaArrayOutput {
+	return i.ToGrafanaArrayOutputWithContext(context.Background())
+}
+
+func (i GrafanaArray) ToGrafanaArrayOutputWithContext(ctx context.Context) GrafanaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaArrayOutput)
+}
+
+// GrafanaMapInput is an input type that accepts GrafanaMap and GrafanaMapOutput values.
+// You can construct a concrete instance of `GrafanaMapInput` via:
+//
+//          GrafanaMap{ "key": GrafanaArgs{...} }
+type GrafanaMapInput interface {
+	pulumi.Input
+
+	ToGrafanaMapOutput() GrafanaMapOutput
+	ToGrafanaMapOutputWithContext(context.Context) GrafanaMapOutput
+}
+
+type GrafanaMap map[string]GrafanaInput
+
+func (GrafanaMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Grafana)(nil))
+}
+
+func (i GrafanaMap) ToGrafanaMapOutput() GrafanaMapOutput {
+	return i.ToGrafanaMapOutputWithContext(context.Background())
+}
+
+func (i GrafanaMap) ToGrafanaMapOutputWithContext(ctx context.Context) GrafanaMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaMapOutput)
+}
+
 type GrafanaOutput struct {
 	*pulumi.OutputState
 }
@@ -452,6 +530,75 @@ func (o GrafanaOutput) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOu
 	return o
 }
 
+func (o GrafanaOutput) ToGrafanaPtrOutput() GrafanaPtrOutput {
+	return o.ToGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (o GrafanaOutput) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
+	return o.ApplyT(func(v Grafana) *Grafana {
+		return &v
+	}).(GrafanaPtrOutput)
+}
+
+type GrafanaPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GrafanaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Grafana)(nil))
+}
+
+func (o GrafanaPtrOutput) ToGrafanaPtrOutput() GrafanaPtrOutput {
+	return o
+}
+
+func (o GrafanaPtrOutput) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
+	return o
+}
+
+type GrafanaArrayOutput struct{ *pulumi.OutputState }
+
+func (GrafanaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Grafana)(nil))
+}
+
+func (o GrafanaArrayOutput) ToGrafanaArrayOutput() GrafanaArrayOutput {
+	return o
+}
+
+func (o GrafanaArrayOutput) ToGrafanaArrayOutputWithContext(ctx context.Context) GrafanaArrayOutput {
+	return o
+}
+
+func (o GrafanaArrayOutput) Index(i pulumi.IntInput) GrafanaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Grafana {
+		return vs[0].([]Grafana)[vs[1].(int)]
+	}).(GrafanaOutput)
+}
+
+type GrafanaMapOutput struct{ *pulumi.OutputState }
+
+func (GrafanaMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Grafana)(nil))
+}
+
+func (o GrafanaMapOutput) ToGrafanaMapOutput() GrafanaMapOutput {
+	return o
+}
+
+func (o GrafanaMapOutput) ToGrafanaMapOutputWithContext(ctx context.Context) GrafanaMapOutput {
+	return o
+}
+
+func (o GrafanaMapOutput) MapIndex(k pulumi.StringInput) GrafanaOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Grafana {
+		return vs[0].(map[string]Grafana)[vs[1].(string)]
+	}).(GrafanaOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GrafanaOutput{})
+	pulumi.RegisterOutputType(GrafanaPtrOutput{})
+	pulumi.RegisterOutputType(GrafanaArrayOutput{})
+	pulumi.RegisterOutputType(GrafanaMapOutput{})
 }

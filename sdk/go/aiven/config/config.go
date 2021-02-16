@@ -10,9 +10,5 @@ import (
 
 // Aiven Authentication Token
 func GetApiToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "aiven:apiToken")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "AIVEN_API_TOKEN").(string)
+	return config.Get(ctx, "aiven:apiToken")
 }

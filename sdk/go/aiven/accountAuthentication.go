@@ -213,6 +213,85 @@ func (i *AccountAuthentication) ToAccountAuthenticationOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationOutput)
 }
 
+func (i *AccountAuthentication) ToAccountAuthenticationPtrOutput() AccountAuthenticationPtrOutput {
+	return i.ToAccountAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *AccountAuthentication) ToAccountAuthenticationPtrOutputWithContext(ctx context.Context) AccountAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationPtrOutput)
+}
+
+type AccountAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationPtrOutput() AccountAuthenticationPtrOutput
+	ToAccountAuthenticationPtrOutputWithContext(ctx context.Context) AccountAuthenticationPtrOutput
+}
+
+type accountAuthenticationPtrType AccountAuthenticationArgs
+
+func (*accountAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountAuthentication)(nil))
+}
+
+func (i *accountAuthenticationPtrType) ToAccountAuthenticationPtrOutput() AccountAuthenticationPtrOutput {
+	return i.ToAccountAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *accountAuthenticationPtrType) ToAccountAuthenticationPtrOutputWithContext(ctx context.Context) AccountAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationPtrOutput)
+}
+
+// AccountAuthenticationArrayInput is an input type that accepts AccountAuthenticationArray and AccountAuthenticationArrayOutput values.
+// You can construct a concrete instance of `AccountAuthenticationArrayInput` via:
+//
+//          AccountAuthenticationArray{ AccountAuthenticationArgs{...} }
+type AccountAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationArrayOutput() AccountAuthenticationArrayOutput
+	ToAccountAuthenticationArrayOutputWithContext(context.Context) AccountAuthenticationArrayOutput
+}
+
+type AccountAuthenticationArray []AccountAuthenticationInput
+
+func (AccountAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccountAuthentication)(nil))
+}
+
+func (i AccountAuthenticationArray) ToAccountAuthenticationArrayOutput() AccountAuthenticationArrayOutput {
+	return i.ToAccountAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i AccountAuthenticationArray) ToAccountAuthenticationArrayOutputWithContext(ctx context.Context) AccountAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationArrayOutput)
+}
+
+// AccountAuthenticationMapInput is an input type that accepts AccountAuthenticationMap and AccountAuthenticationMapOutput values.
+// You can construct a concrete instance of `AccountAuthenticationMapInput` via:
+//
+//          AccountAuthenticationMap{ "key": AccountAuthenticationArgs{...} }
+type AccountAuthenticationMapInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationMapOutput() AccountAuthenticationMapOutput
+	ToAccountAuthenticationMapOutputWithContext(context.Context) AccountAuthenticationMapOutput
+}
+
+type AccountAuthenticationMap map[string]AccountAuthenticationInput
+
+func (AccountAuthenticationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccountAuthentication)(nil))
+}
+
+func (i AccountAuthenticationMap) ToAccountAuthenticationMapOutput() AccountAuthenticationMapOutput {
+	return i.ToAccountAuthenticationMapOutputWithContext(context.Background())
+}
+
+func (i AccountAuthenticationMap) ToAccountAuthenticationMapOutputWithContext(ctx context.Context) AccountAuthenticationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationMapOutput)
+}
+
 type AccountAuthenticationOutput struct {
 	*pulumi.OutputState
 }
@@ -229,6 +308,75 @@ func (o AccountAuthenticationOutput) ToAccountAuthenticationOutputWithContext(ct
 	return o
 }
 
+func (o AccountAuthenticationOutput) ToAccountAuthenticationPtrOutput() AccountAuthenticationPtrOutput {
+	return o.ToAccountAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AccountAuthenticationOutput) ToAccountAuthenticationPtrOutputWithContext(ctx context.Context) AccountAuthenticationPtrOutput {
+	return o.ApplyT(func(v AccountAuthentication) *AccountAuthentication {
+		return &v
+	}).(AccountAuthenticationPtrOutput)
+}
+
+type AccountAuthenticationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountAuthentication)(nil))
+}
+
+func (o AccountAuthenticationPtrOutput) ToAccountAuthenticationPtrOutput() AccountAuthenticationPtrOutput {
+	return o
+}
+
+func (o AccountAuthenticationPtrOutput) ToAccountAuthenticationPtrOutputWithContext(ctx context.Context) AccountAuthenticationPtrOutput {
+	return o
+}
+
+type AccountAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountAuthentication)(nil))
+}
+
+func (o AccountAuthenticationArrayOutput) ToAccountAuthenticationArrayOutput() AccountAuthenticationArrayOutput {
+	return o
+}
+
+func (o AccountAuthenticationArrayOutput) ToAccountAuthenticationArrayOutputWithContext(ctx context.Context) AccountAuthenticationArrayOutput {
+	return o
+}
+
+func (o AccountAuthenticationArrayOutput) Index(i pulumi.IntInput) AccountAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountAuthentication {
+		return vs[0].([]AccountAuthentication)[vs[1].(int)]
+	}).(AccountAuthenticationOutput)
+}
+
+type AccountAuthenticationMapOutput struct{ *pulumi.OutputState }
+
+func (AccountAuthenticationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccountAuthentication)(nil))
+}
+
+func (o AccountAuthenticationMapOutput) ToAccountAuthenticationMapOutput() AccountAuthenticationMapOutput {
+	return o
+}
+
+func (o AccountAuthenticationMapOutput) ToAccountAuthenticationMapOutputWithContext(ctx context.Context) AccountAuthenticationMapOutput {
+	return o
+}
+
+func (o AccountAuthenticationMapOutput) MapIndex(k pulumi.StringInput) AccountAuthenticationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccountAuthentication {
+		return vs[0].(map[string]AccountAuthentication)[vs[1].(string)]
+	}).(AccountAuthenticationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountAuthenticationOutput{})
+	pulumi.RegisterOutputType(AccountAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AccountAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(AccountAuthenticationMapOutput{})
 }

@@ -192,7 +192,8 @@ export class Service extends pulumi.CustomResource {
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
             inputs["cassandra"] = state ? state.cassandra : undefined;
             inputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
@@ -233,13 +234,13 @@ export class Service extends pulumi.CustomResource {
             inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.serviceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceType'");
             }
             inputs["cassandra"] = args ? args.cassandra : undefined;
@@ -280,12 +281,8 @@ export class Service extends pulumi.CustomResource {
             inputs["serviceUsername"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Service.__pulumiType, name, inputs, opts);
     }

@@ -142,6 +142,85 @@ func (i *AccountTeamProject) ToAccountTeamProjectOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamProjectOutput)
 }
 
+func (i *AccountTeamProject) ToAccountTeamProjectPtrOutput() AccountTeamProjectPtrOutput {
+	return i.ToAccountTeamProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *AccountTeamProject) ToAccountTeamProjectPtrOutputWithContext(ctx context.Context) AccountTeamProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamProjectPtrOutput)
+}
+
+type AccountTeamProjectPtrInput interface {
+	pulumi.Input
+
+	ToAccountTeamProjectPtrOutput() AccountTeamProjectPtrOutput
+	ToAccountTeamProjectPtrOutputWithContext(ctx context.Context) AccountTeamProjectPtrOutput
+}
+
+type accountTeamProjectPtrType AccountTeamProjectArgs
+
+func (*accountTeamProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountTeamProject)(nil))
+}
+
+func (i *accountTeamProjectPtrType) ToAccountTeamProjectPtrOutput() AccountTeamProjectPtrOutput {
+	return i.ToAccountTeamProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *accountTeamProjectPtrType) ToAccountTeamProjectPtrOutputWithContext(ctx context.Context) AccountTeamProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamProjectPtrOutput)
+}
+
+// AccountTeamProjectArrayInput is an input type that accepts AccountTeamProjectArray and AccountTeamProjectArrayOutput values.
+// You can construct a concrete instance of `AccountTeamProjectArrayInput` via:
+//
+//          AccountTeamProjectArray{ AccountTeamProjectArgs{...} }
+type AccountTeamProjectArrayInput interface {
+	pulumi.Input
+
+	ToAccountTeamProjectArrayOutput() AccountTeamProjectArrayOutput
+	ToAccountTeamProjectArrayOutputWithContext(context.Context) AccountTeamProjectArrayOutput
+}
+
+type AccountTeamProjectArray []AccountTeamProjectInput
+
+func (AccountTeamProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccountTeamProject)(nil))
+}
+
+func (i AccountTeamProjectArray) ToAccountTeamProjectArrayOutput() AccountTeamProjectArrayOutput {
+	return i.ToAccountTeamProjectArrayOutputWithContext(context.Background())
+}
+
+func (i AccountTeamProjectArray) ToAccountTeamProjectArrayOutputWithContext(ctx context.Context) AccountTeamProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamProjectArrayOutput)
+}
+
+// AccountTeamProjectMapInput is an input type that accepts AccountTeamProjectMap and AccountTeamProjectMapOutput values.
+// You can construct a concrete instance of `AccountTeamProjectMapInput` via:
+//
+//          AccountTeamProjectMap{ "key": AccountTeamProjectArgs{...} }
+type AccountTeamProjectMapInput interface {
+	pulumi.Input
+
+	ToAccountTeamProjectMapOutput() AccountTeamProjectMapOutput
+	ToAccountTeamProjectMapOutputWithContext(context.Context) AccountTeamProjectMapOutput
+}
+
+type AccountTeamProjectMap map[string]AccountTeamProjectInput
+
+func (AccountTeamProjectMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccountTeamProject)(nil))
+}
+
+func (i AccountTeamProjectMap) ToAccountTeamProjectMapOutput() AccountTeamProjectMapOutput {
+	return i.ToAccountTeamProjectMapOutputWithContext(context.Background())
+}
+
+func (i AccountTeamProjectMap) ToAccountTeamProjectMapOutputWithContext(ctx context.Context) AccountTeamProjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamProjectMapOutput)
+}
+
 type AccountTeamProjectOutput struct {
 	*pulumi.OutputState
 }
@@ -158,6 +237,75 @@ func (o AccountTeamProjectOutput) ToAccountTeamProjectOutputWithContext(ctx cont
 	return o
 }
 
+func (o AccountTeamProjectOutput) ToAccountTeamProjectPtrOutput() AccountTeamProjectPtrOutput {
+	return o.ToAccountTeamProjectPtrOutputWithContext(context.Background())
+}
+
+func (o AccountTeamProjectOutput) ToAccountTeamProjectPtrOutputWithContext(ctx context.Context) AccountTeamProjectPtrOutput {
+	return o.ApplyT(func(v AccountTeamProject) *AccountTeamProject {
+		return &v
+	}).(AccountTeamProjectPtrOutput)
+}
+
+type AccountTeamProjectPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountTeamProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountTeamProject)(nil))
+}
+
+func (o AccountTeamProjectPtrOutput) ToAccountTeamProjectPtrOutput() AccountTeamProjectPtrOutput {
+	return o
+}
+
+func (o AccountTeamProjectPtrOutput) ToAccountTeamProjectPtrOutputWithContext(ctx context.Context) AccountTeamProjectPtrOutput {
+	return o
+}
+
+type AccountTeamProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountTeamProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountTeamProject)(nil))
+}
+
+func (o AccountTeamProjectArrayOutput) ToAccountTeamProjectArrayOutput() AccountTeamProjectArrayOutput {
+	return o
+}
+
+func (o AccountTeamProjectArrayOutput) ToAccountTeamProjectArrayOutputWithContext(ctx context.Context) AccountTeamProjectArrayOutput {
+	return o
+}
+
+func (o AccountTeamProjectArrayOutput) Index(i pulumi.IntInput) AccountTeamProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountTeamProject {
+		return vs[0].([]AccountTeamProject)[vs[1].(int)]
+	}).(AccountTeamProjectOutput)
+}
+
+type AccountTeamProjectMapOutput struct{ *pulumi.OutputState }
+
+func (AccountTeamProjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccountTeamProject)(nil))
+}
+
+func (o AccountTeamProjectMapOutput) ToAccountTeamProjectMapOutput() AccountTeamProjectMapOutput {
+	return o
+}
+
+func (o AccountTeamProjectMapOutput) ToAccountTeamProjectMapOutputWithContext(ctx context.Context) AccountTeamProjectMapOutput {
+	return o
+}
+
+func (o AccountTeamProjectMapOutput) MapIndex(k pulumi.StringInput) AccountTeamProjectOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccountTeamProject {
+		return vs[0].(map[string]AccountTeamProject)[vs[1].(string)]
+	}).(AccountTeamProjectOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountTeamProjectOutput{})
+	pulumi.RegisterOutputType(AccountTeamProjectPtrOutput{})
+	pulumi.RegisterOutputType(AccountTeamProjectArrayOutput{})
+	pulumi.RegisterOutputType(AccountTeamProjectMapOutput{})
 }

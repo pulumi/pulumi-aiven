@@ -176,7 +176,8 @@ export class Cassandra extends pulumi.CustomResource {
     constructor(name: string, args: CassandraArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CassandraArgs | CassandraState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CassandraState | undefined;
             inputs["cassandra"] = state ? state.cassandra : undefined;
             inputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
@@ -199,10 +200,10 @@ export class Cassandra extends pulumi.CustomResource {
             inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as CassandraArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["cassandra"] = args ? args.cassandra : undefined;
@@ -225,12 +226,8 @@ export class Cassandra extends pulumi.CustomResource {
             inputs["serviceUsername"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cassandra.__pulumiType, name, inputs, opts);
     }

@@ -136,6 +136,85 @@ func (i *AccountTeam) ToAccountTeamOutputWithContext(ctx context.Context) Accoun
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamOutput)
 }
 
+func (i *AccountTeam) ToAccountTeamPtrOutput() AccountTeamPtrOutput {
+	return i.ToAccountTeamPtrOutputWithContext(context.Background())
+}
+
+func (i *AccountTeam) ToAccountTeamPtrOutputWithContext(ctx context.Context) AccountTeamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamPtrOutput)
+}
+
+type AccountTeamPtrInput interface {
+	pulumi.Input
+
+	ToAccountTeamPtrOutput() AccountTeamPtrOutput
+	ToAccountTeamPtrOutputWithContext(ctx context.Context) AccountTeamPtrOutput
+}
+
+type accountTeamPtrType AccountTeamArgs
+
+func (*accountTeamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountTeam)(nil))
+}
+
+func (i *accountTeamPtrType) ToAccountTeamPtrOutput() AccountTeamPtrOutput {
+	return i.ToAccountTeamPtrOutputWithContext(context.Background())
+}
+
+func (i *accountTeamPtrType) ToAccountTeamPtrOutputWithContext(ctx context.Context) AccountTeamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamPtrOutput)
+}
+
+// AccountTeamArrayInput is an input type that accepts AccountTeamArray and AccountTeamArrayOutput values.
+// You can construct a concrete instance of `AccountTeamArrayInput` via:
+//
+//          AccountTeamArray{ AccountTeamArgs{...} }
+type AccountTeamArrayInput interface {
+	pulumi.Input
+
+	ToAccountTeamArrayOutput() AccountTeamArrayOutput
+	ToAccountTeamArrayOutputWithContext(context.Context) AccountTeamArrayOutput
+}
+
+type AccountTeamArray []AccountTeamInput
+
+func (AccountTeamArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccountTeam)(nil))
+}
+
+func (i AccountTeamArray) ToAccountTeamArrayOutput() AccountTeamArrayOutput {
+	return i.ToAccountTeamArrayOutputWithContext(context.Background())
+}
+
+func (i AccountTeamArray) ToAccountTeamArrayOutputWithContext(ctx context.Context) AccountTeamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamArrayOutput)
+}
+
+// AccountTeamMapInput is an input type that accepts AccountTeamMap and AccountTeamMapOutput values.
+// You can construct a concrete instance of `AccountTeamMapInput` via:
+//
+//          AccountTeamMap{ "key": AccountTeamArgs{...} }
+type AccountTeamMapInput interface {
+	pulumi.Input
+
+	ToAccountTeamMapOutput() AccountTeamMapOutput
+	ToAccountTeamMapOutputWithContext(context.Context) AccountTeamMapOutput
+}
+
+type AccountTeamMap map[string]AccountTeamInput
+
+func (AccountTeamMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccountTeam)(nil))
+}
+
+func (i AccountTeamMap) ToAccountTeamMapOutput() AccountTeamMapOutput {
+	return i.ToAccountTeamMapOutputWithContext(context.Background())
+}
+
+func (i AccountTeamMap) ToAccountTeamMapOutputWithContext(ctx context.Context) AccountTeamMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMapOutput)
+}
+
 type AccountTeamOutput struct {
 	*pulumi.OutputState
 }
@@ -152,6 +231,75 @@ func (o AccountTeamOutput) ToAccountTeamOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o AccountTeamOutput) ToAccountTeamPtrOutput() AccountTeamPtrOutput {
+	return o.ToAccountTeamPtrOutputWithContext(context.Background())
+}
+
+func (o AccountTeamOutput) ToAccountTeamPtrOutputWithContext(ctx context.Context) AccountTeamPtrOutput {
+	return o.ApplyT(func(v AccountTeam) *AccountTeam {
+		return &v
+	}).(AccountTeamPtrOutput)
+}
+
+type AccountTeamPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountTeamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountTeam)(nil))
+}
+
+func (o AccountTeamPtrOutput) ToAccountTeamPtrOutput() AccountTeamPtrOutput {
+	return o
+}
+
+func (o AccountTeamPtrOutput) ToAccountTeamPtrOutputWithContext(ctx context.Context) AccountTeamPtrOutput {
+	return o
+}
+
+type AccountTeamArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountTeamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountTeam)(nil))
+}
+
+func (o AccountTeamArrayOutput) ToAccountTeamArrayOutput() AccountTeamArrayOutput {
+	return o
+}
+
+func (o AccountTeamArrayOutput) ToAccountTeamArrayOutputWithContext(ctx context.Context) AccountTeamArrayOutput {
+	return o
+}
+
+func (o AccountTeamArrayOutput) Index(i pulumi.IntInput) AccountTeamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountTeam {
+		return vs[0].([]AccountTeam)[vs[1].(int)]
+	}).(AccountTeamOutput)
+}
+
+type AccountTeamMapOutput struct{ *pulumi.OutputState }
+
+func (AccountTeamMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccountTeam)(nil))
+}
+
+func (o AccountTeamMapOutput) ToAccountTeamMapOutput() AccountTeamMapOutput {
+	return o
+}
+
+func (o AccountTeamMapOutput) ToAccountTeamMapOutputWithContext(ctx context.Context) AccountTeamMapOutput {
+	return o
+}
+
+func (o AccountTeamMapOutput) MapIndex(k pulumi.StringInput) AccountTeamOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccountTeam {
+		return vs[0].(map[string]AccountTeam)[vs[1].(string)]
+	}).(AccountTeamOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountTeamOutput{})
+	pulumi.RegisterOutputType(AccountTeamPtrOutput{})
+	pulumi.RegisterOutputType(AccountTeamArrayOutput{})
+	pulumi.RegisterOutputType(AccountTeamMapOutput{})
 }

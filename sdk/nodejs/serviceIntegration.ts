@@ -175,7 +175,8 @@ export class ServiceIntegration extends pulumi.CustomResource {
     constructor(name: string, args: ServiceIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIntegrationArgs | ServiceIntegrationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServiceIntegrationState | undefined;
             inputs["dashboardUserConfig"] = state ? state.dashboardUserConfig : undefined;
             inputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
@@ -203,10 +204,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
             inputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationArgs | undefined;
-            if ((!args || args.integrationType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.integrationType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'integrationType'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["dashboardUserConfig"] = args ? args.dashboardUserConfig : undefined;
@@ -234,12 +235,8 @@ export class ServiceIntegration extends pulumi.CustomResource {
             inputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
             inputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceIntegration.__pulumiType, name, inputs, opts);
     }

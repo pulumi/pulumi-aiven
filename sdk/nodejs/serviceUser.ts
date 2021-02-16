@@ -108,7 +108,8 @@ export class ServiceUser extends pulumi.CustomResource {
     constructor(name: string, args: ServiceUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceUserArgs | ServiceUserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServiceUserState | undefined;
             inputs["accessCert"] = state ? state.accessCert : undefined;
             inputs["accessKey"] = state ? state.accessKey : undefined;
@@ -123,13 +124,13 @@ export class ServiceUser extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as ServiceUserArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             inputs["authentication"] = args ? args.authentication : undefined;
@@ -144,12 +145,8 @@ export class ServiceUser extends pulumi.CustomResource {
             inputs["accessKey"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceUser.__pulumiType, name, inputs, opts);
     }

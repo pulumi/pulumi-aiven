@@ -69,7 +69,8 @@ export class AccountTeamProject extends pulumi.CustomResource {
     constructor(name: string, args: AccountTeamProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountTeamProjectArgs | AccountTeamProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccountTeamProjectState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["projectName"] = state ? state.projectName : undefined;
@@ -77,10 +78,10 @@ export class AccountTeamProject extends pulumi.CustomResource {
             inputs["teamType"] = state ? state.teamType : undefined;
         } else {
             const args = argsOrState as AccountTeamProjectArgs | undefined;
-            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.teamId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.teamId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'teamId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -88,12 +89,8 @@ export class AccountTeamProject extends pulumi.CustomResource {
             inputs["teamId"] = args ? args.teamId : undefined;
             inputs["teamType"] = args ? args.teamType : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccountTeamProject.__pulumiType, name, inputs, opts);
     }

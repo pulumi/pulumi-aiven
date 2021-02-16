@@ -81,7 +81,8 @@ export class ProjectVpc extends pulumi.CustomResource {
     constructor(name: string, args: ProjectVpcArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectVpcArgs | ProjectVpcState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectVpcState | undefined;
             inputs["cloudName"] = state ? state.cloudName : undefined;
             inputs["networkCidr"] = state ? state.networkCidr : undefined;
@@ -89,13 +90,13 @@ export class ProjectVpc extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ProjectVpcArgs | undefined;
-            if ((!args || args.cloudName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cloudName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cloudName'");
             }
-            if ((!args || args.networkCidr === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkCidr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkCidr'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["cloudName"] = args ? args.cloudName : undefined;
@@ -103,12 +104,8 @@ export class ProjectVpc extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectVpc.__pulumiType, name, inputs, opts);
     }

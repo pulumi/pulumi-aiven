@@ -11,7 +11,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Aiven Authentication Token
         /// </summary>
-        public static string? ApiToken { get; set; } = __config.Get("apiToken") ?? Utilities.GetEnv("AIVEN_API_TOKEN");
+        public static string? ApiToken { get; set; } = __config.Get("apiToken");
 
     }
 }

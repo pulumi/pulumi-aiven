@@ -184,7 +184,8 @@ export class MySql extends pulumi.CustomResource {
     constructor(name: string, args: MySqlArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MySqlArgs | MySqlState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MySqlState | undefined;
             inputs["cloudName"] = state ? state.cloudName : undefined;
             inputs["components"] = state ? state.components : undefined;
@@ -207,10 +208,10 @@ export class MySql extends pulumi.CustomResource {
             inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as MySqlArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["cloudName"] = args ? args.cloudName : undefined;
@@ -233,12 +234,8 @@ export class MySql extends pulumi.CustomResource {
             inputs["serviceUsername"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MySql.__pulumiType, name, inputs, opts);
     }

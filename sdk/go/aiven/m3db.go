@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -434,6 +433,85 @@ func (i *M3Db) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbOutput)
 }
 
+func (i *M3Db) ToM3DbPtrOutput() M3DbPtrOutput {
+	return i.ToM3DbPtrOutputWithContext(context.Background())
+}
+
+func (i *M3Db) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbPtrOutput)
+}
+
+type M3DbPtrInput interface {
+	pulumi.Input
+
+	ToM3DbPtrOutput() M3DbPtrOutput
+	ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput
+}
+
+type m3dbPtrType M3DbArgs
+
+func (*m3dbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3Db)(nil))
+}
+
+func (i *m3dbPtrType) ToM3DbPtrOutput() M3DbPtrOutput {
+	return i.ToM3DbPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbPtrType) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbPtrOutput)
+}
+
+// M3DbArrayInput is an input type that accepts M3DbArray and M3DbArrayOutput values.
+// You can construct a concrete instance of `M3DbArrayInput` via:
+//
+//          M3DbArray{ M3DbArgs{...} }
+type M3DbArrayInput interface {
+	pulumi.Input
+
+	ToM3DbArrayOutput() M3DbArrayOutput
+	ToM3DbArrayOutputWithContext(context.Context) M3DbArrayOutput
+}
+
+type M3DbArray []M3DbInput
+
+func (M3DbArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*M3Db)(nil))
+}
+
+func (i M3DbArray) ToM3DbArrayOutput() M3DbArrayOutput {
+	return i.ToM3DbArrayOutputWithContext(context.Background())
+}
+
+func (i M3DbArray) ToM3DbArrayOutputWithContext(ctx context.Context) M3DbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbArrayOutput)
+}
+
+// M3DbMapInput is an input type that accepts M3DbMap and M3DbMapOutput values.
+// You can construct a concrete instance of `M3DbMapInput` via:
+//
+//          M3DbMap{ "key": M3DbArgs{...} }
+type M3DbMapInput interface {
+	pulumi.Input
+
+	ToM3DbMapOutput() M3DbMapOutput
+	ToM3DbMapOutputWithContext(context.Context) M3DbMapOutput
+}
+
+type M3DbMap map[string]M3DbInput
+
+func (M3DbMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*M3Db)(nil))
+}
+
+func (i M3DbMap) ToM3DbMapOutput() M3DbMapOutput {
+	return i.ToM3DbMapOutputWithContext(context.Background())
+}
+
+func (i M3DbMap) ToM3DbMapOutputWithContext(ctx context.Context) M3DbMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbMapOutput)
+}
+
 type M3DbOutput struct {
 	*pulumi.OutputState
 }
@@ -450,6 +528,75 @@ func (o M3DbOutput) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 	return o
 }
 
+func (o M3DbOutput) ToM3DbPtrOutput() M3DbPtrOutput {
+	return o.ToM3DbPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbOutput) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
+	return o.ApplyT(func(v M3Db) *M3Db {
+		return &v
+	}).(M3DbPtrOutput)
+}
+
+type M3DbPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (M3DbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3Db)(nil))
+}
+
+func (o M3DbPtrOutput) ToM3DbPtrOutput() M3DbPtrOutput {
+	return o
+}
+
+func (o M3DbPtrOutput) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
+	return o
+}
+
+type M3DbArrayOutput struct{ *pulumi.OutputState }
+
+func (M3DbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3Db)(nil))
+}
+
+func (o M3DbArrayOutput) ToM3DbArrayOutput() M3DbArrayOutput {
+	return o
+}
+
+func (o M3DbArrayOutput) ToM3DbArrayOutputWithContext(ctx context.Context) M3DbArrayOutput {
+	return o
+}
+
+func (o M3DbArrayOutput) Index(i pulumi.IntInput) M3DbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3Db {
+		return vs[0].([]M3Db)[vs[1].(int)]
+	}).(M3DbOutput)
+}
+
+type M3DbMapOutput struct{ *pulumi.OutputState }
+
+func (M3DbMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]M3Db)(nil))
+}
+
+func (o M3DbMapOutput) ToM3DbMapOutput() M3DbMapOutput {
+	return o
+}
+
+func (o M3DbMapOutput) ToM3DbMapOutputWithContext(ctx context.Context) M3DbMapOutput {
+	return o
+}
+
+func (o M3DbMapOutput) MapIndex(k pulumi.StringInput) M3DbOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) M3Db {
+		return vs[0].(map[string]M3Db)[vs[1].(string)]
+	}).(M3DbOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(M3DbOutput{})
+	pulumi.RegisterOutputType(M3DbPtrOutput{})
+	pulumi.RegisterOutputType(M3DbArrayOutput{})
+	pulumi.RegisterOutputType(M3DbMapOutput{})
 }

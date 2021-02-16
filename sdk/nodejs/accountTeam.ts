@@ -68,7 +68,8 @@ export class AccountTeam extends pulumi.CustomResource {
     constructor(name: string, args: AccountTeamArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountTeamArgs | AccountTeamState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccountTeamState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -77,7 +78,7 @@ export class AccountTeam extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccountTeamArgs | undefined;
-            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -86,12 +87,8 @@ export class AccountTeam extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["teamId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccountTeam.__pulumiType, name, inputs, opts);
     }

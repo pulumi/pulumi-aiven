@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -441,6 +440,85 @@ func (i *ElasticSearch) ToElasticSearchOutputWithContext(ctx context.Context) El
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchOutput)
 }
 
+func (i *ElasticSearch) ToElasticSearchPtrOutput() ElasticSearchPtrOutput {
+	return i.ToElasticSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *ElasticSearch) ToElasticSearchPtrOutputWithContext(ctx context.Context) ElasticSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchPtrOutput)
+}
+
+type ElasticSearchPtrInput interface {
+	pulumi.Input
+
+	ToElasticSearchPtrOutput() ElasticSearchPtrOutput
+	ToElasticSearchPtrOutputWithContext(ctx context.Context) ElasticSearchPtrOutput
+}
+
+type elasticSearchPtrType ElasticSearchArgs
+
+func (*elasticSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSearch)(nil))
+}
+
+func (i *elasticSearchPtrType) ToElasticSearchPtrOutput() ElasticSearchPtrOutput {
+	return i.ToElasticSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSearchPtrType) ToElasticSearchPtrOutputWithContext(ctx context.Context) ElasticSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchPtrOutput)
+}
+
+// ElasticSearchArrayInput is an input type that accepts ElasticSearchArray and ElasticSearchArrayOutput values.
+// You can construct a concrete instance of `ElasticSearchArrayInput` via:
+//
+//          ElasticSearchArray{ ElasticSearchArgs{...} }
+type ElasticSearchArrayInput interface {
+	pulumi.Input
+
+	ToElasticSearchArrayOutput() ElasticSearchArrayOutput
+	ToElasticSearchArrayOutputWithContext(context.Context) ElasticSearchArrayOutput
+}
+
+type ElasticSearchArray []ElasticSearchInput
+
+func (ElasticSearchArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ElasticSearch)(nil))
+}
+
+func (i ElasticSearchArray) ToElasticSearchArrayOutput() ElasticSearchArrayOutput {
+	return i.ToElasticSearchArrayOutputWithContext(context.Background())
+}
+
+func (i ElasticSearchArray) ToElasticSearchArrayOutputWithContext(ctx context.Context) ElasticSearchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchArrayOutput)
+}
+
+// ElasticSearchMapInput is an input type that accepts ElasticSearchMap and ElasticSearchMapOutput values.
+// You can construct a concrete instance of `ElasticSearchMapInput` via:
+//
+//          ElasticSearchMap{ "key": ElasticSearchArgs{...} }
+type ElasticSearchMapInput interface {
+	pulumi.Input
+
+	ToElasticSearchMapOutput() ElasticSearchMapOutput
+	ToElasticSearchMapOutputWithContext(context.Context) ElasticSearchMapOutput
+}
+
+type ElasticSearchMap map[string]ElasticSearchInput
+
+func (ElasticSearchMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ElasticSearch)(nil))
+}
+
+func (i ElasticSearchMap) ToElasticSearchMapOutput() ElasticSearchMapOutput {
+	return i.ToElasticSearchMapOutputWithContext(context.Background())
+}
+
+func (i ElasticSearchMap) ToElasticSearchMapOutputWithContext(ctx context.Context) ElasticSearchMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchMapOutput)
+}
+
 type ElasticSearchOutput struct {
 	*pulumi.OutputState
 }
@@ -457,6 +535,75 @@ func (o ElasticSearchOutput) ToElasticSearchOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ElasticSearchOutput) ToElasticSearchPtrOutput() ElasticSearchPtrOutput {
+	return o.ToElasticSearchPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSearchOutput) ToElasticSearchPtrOutputWithContext(ctx context.Context) ElasticSearchPtrOutput {
+	return o.ApplyT(func(v ElasticSearch) *ElasticSearch {
+		return &v
+	}).(ElasticSearchPtrOutput)
+}
+
+type ElasticSearchPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ElasticSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSearch)(nil))
+}
+
+func (o ElasticSearchPtrOutput) ToElasticSearchPtrOutput() ElasticSearchPtrOutput {
+	return o
+}
+
+func (o ElasticSearchPtrOutput) ToElasticSearchPtrOutputWithContext(ctx context.Context) ElasticSearchPtrOutput {
+	return o
+}
+
+type ElasticSearchArrayOutput struct{ *pulumi.OutputState }
+
+func (ElasticSearchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticSearch)(nil))
+}
+
+func (o ElasticSearchArrayOutput) ToElasticSearchArrayOutput() ElasticSearchArrayOutput {
+	return o
+}
+
+func (o ElasticSearchArrayOutput) ToElasticSearchArrayOutputWithContext(ctx context.Context) ElasticSearchArrayOutput {
+	return o
+}
+
+func (o ElasticSearchArrayOutput) Index(i pulumi.IntInput) ElasticSearchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticSearch {
+		return vs[0].([]ElasticSearch)[vs[1].(int)]
+	}).(ElasticSearchOutput)
+}
+
+type ElasticSearchMapOutput struct{ *pulumi.OutputState }
+
+func (ElasticSearchMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ElasticSearch)(nil))
+}
+
+func (o ElasticSearchMapOutput) ToElasticSearchMapOutput() ElasticSearchMapOutput {
+	return o
+}
+
+func (o ElasticSearchMapOutput) ToElasticSearchMapOutputWithContext(ctx context.Context) ElasticSearchMapOutput {
+	return o
+}
+
+func (o ElasticSearchMapOutput) MapIndex(k pulumi.StringInput) ElasticSearchOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ElasticSearch {
+		return vs[0].(map[string]ElasticSearch)[vs[1].(string)]
+	}).(ElasticSearchOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElasticSearchOutput{})
+	pulumi.RegisterOutputType(ElasticSearchPtrOutput{})
+	pulumi.RegisterOutputType(ElasticSearchArrayOutput{})
+	pulumi.RegisterOutputType(ElasticSearchMapOutput{})
 }

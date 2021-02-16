@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven/"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -245,6 +245,85 @@ func (i *ConnectionPool) ToConnectionPoolOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolOutput)
 }
 
+func (i *ConnectionPool) ToConnectionPoolPtrOutput() ConnectionPoolPtrOutput {
+	return i.ToConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *ConnectionPool) ToConnectionPoolPtrOutputWithContext(ctx context.Context) ConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolPtrOutput)
+}
+
+type ConnectionPoolPtrInput interface {
+	pulumi.Input
+
+	ToConnectionPoolPtrOutput() ConnectionPoolPtrOutput
+	ToConnectionPoolPtrOutputWithContext(ctx context.Context) ConnectionPoolPtrOutput
+}
+
+type connectionPoolPtrType ConnectionPoolArgs
+
+func (*connectionPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionPool)(nil))
+}
+
+func (i *connectionPoolPtrType) ToConnectionPoolPtrOutput() ConnectionPoolPtrOutput {
+	return i.ToConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionPoolPtrType) ToConnectionPoolPtrOutputWithContext(ctx context.Context) ConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolPtrOutput)
+}
+
+// ConnectionPoolArrayInput is an input type that accepts ConnectionPoolArray and ConnectionPoolArrayOutput values.
+// You can construct a concrete instance of `ConnectionPoolArrayInput` via:
+//
+//          ConnectionPoolArray{ ConnectionPoolArgs{...} }
+type ConnectionPoolArrayInput interface {
+	pulumi.Input
+
+	ToConnectionPoolArrayOutput() ConnectionPoolArrayOutput
+	ToConnectionPoolArrayOutputWithContext(context.Context) ConnectionPoolArrayOutput
+}
+
+type ConnectionPoolArray []ConnectionPoolInput
+
+func (ConnectionPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ConnectionPool)(nil))
+}
+
+func (i ConnectionPoolArray) ToConnectionPoolArrayOutput() ConnectionPoolArrayOutput {
+	return i.ToConnectionPoolArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionPoolArray) ToConnectionPoolArrayOutputWithContext(ctx context.Context) ConnectionPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolArrayOutput)
+}
+
+// ConnectionPoolMapInput is an input type that accepts ConnectionPoolMap and ConnectionPoolMapOutput values.
+// You can construct a concrete instance of `ConnectionPoolMapInput` via:
+//
+//          ConnectionPoolMap{ "key": ConnectionPoolArgs{...} }
+type ConnectionPoolMapInput interface {
+	pulumi.Input
+
+	ToConnectionPoolMapOutput() ConnectionPoolMapOutput
+	ToConnectionPoolMapOutputWithContext(context.Context) ConnectionPoolMapOutput
+}
+
+type ConnectionPoolMap map[string]ConnectionPoolInput
+
+func (ConnectionPoolMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ConnectionPool)(nil))
+}
+
+func (i ConnectionPoolMap) ToConnectionPoolMapOutput() ConnectionPoolMapOutput {
+	return i.ToConnectionPoolMapOutputWithContext(context.Background())
+}
+
+func (i ConnectionPoolMap) ToConnectionPoolMapOutputWithContext(ctx context.Context) ConnectionPoolMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolMapOutput)
+}
+
 type ConnectionPoolOutput struct {
 	*pulumi.OutputState
 }
@@ -261,6 +340,75 @@ func (o ConnectionPoolOutput) ToConnectionPoolOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ConnectionPoolOutput) ToConnectionPoolPtrOutput() ConnectionPoolPtrOutput {
+	return o.ToConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionPoolOutput) ToConnectionPoolPtrOutputWithContext(ctx context.Context) ConnectionPoolPtrOutput {
+	return o.ApplyT(func(v ConnectionPool) *ConnectionPool {
+		return &v
+	}).(ConnectionPoolPtrOutput)
+}
+
+type ConnectionPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionPool)(nil))
+}
+
+func (o ConnectionPoolPtrOutput) ToConnectionPoolPtrOutput() ConnectionPoolPtrOutput {
+	return o
+}
+
+func (o ConnectionPoolPtrOutput) ToConnectionPoolPtrOutputWithContext(ctx context.Context) ConnectionPoolPtrOutput {
+	return o
+}
+
+type ConnectionPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionPool)(nil))
+}
+
+func (o ConnectionPoolArrayOutput) ToConnectionPoolArrayOutput() ConnectionPoolArrayOutput {
+	return o
+}
+
+func (o ConnectionPoolArrayOutput) ToConnectionPoolArrayOutputWithContext(ctx context.Context) ConnectionPoolArrayOutput {
+	return o
+}
+
+func (o ConnectionPoolArrayOutput) Index(i pulumi.IntInput) ConnectionPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionPool {
+		return vs[0].([]ConnectionPool)[vs[1].(int)]
+	}).(ConnectionPoolOutput)
+}
+
+type ConnectionPoolMapOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPoolMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ConnectionPool)(nil))
+}
+
+func (o ConnectionPoolMapOutput) ToConnectionPoolMapOutput() ConnectionPoolMapOutput {
+	return o
+}
+
+func (o ConnectionPoolMapOutput) ToConnectionPoolMapOutputWithContext(ctx context.Context) ConnectionPoolMapOutput {
+	return o
+}
+
+func (o ConnectionPoolMapOutput) MapIndex(k pulumi.StringInput) ConnectionPoolOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConnectionPool {
+		return vs[0].(map[string]ConnectionPool)[vs[1].(string)]
+	}).(ConnectionPoolOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConnectionPoolOutput{})
+	pulumi.RegisterOutputType(ConnectionPoolPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionPoolArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionPoolMapOutput{})
 }

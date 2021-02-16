@@ -213,6 +213,85 @@ func (i *BillingGroup) ToBillingGroupOutputWithContext(ctx context.Context) Bill
 	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupOutput)
 }
 
+func (i *BillingGroup) ToBillingGroupPtrOutput() BillingGroupPtrOutput {
+	return i.ToBillingGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *BillingGroup) ToBillingGroupPtrOutputWithContext(ctx context.Context) BillingGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupPtrOutput)
+}
+
+type BillingGroupPtrInput interface {
+	pulumi.Input
+
+	ToBillingGroupPtrOutput() BillingGroupPtrOutput
+	ToBillingGroupPtrOutputWithContext(ctx context.Context) BillingGroupPtrOutput
+}
+
+type billingGroupPtrType BillingGroupArgs
+
+func (*billingGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingGroup)(nil))
+}
+
+func (i *billingGroupPtrType) ToBillingGroupPtrOutput() BillingGroupPtrOutput {
+	return i.ToBillingGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *billingGroupPtrType) ToBillingGroupPtrOutputWithContext(ctx context.Context) BillingGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupPtrOutput)
+}
+
+// BillingGroupArrayInput is an input type that accepts BillingGroupArray and BillingGroupArrayOutput values.
+// You can construct a concrete instance of `BillingGroupArrayInput` via:
+//
+//          BillingGroupArray{ BillingGroupArgs{...} }
+type BillingGroupArrayInput interface {
+	pulumi.Input
+
+	ToBillingGroupArrayOutput() BillingGroupArrayOutput
+	ToBillingGroupArrayOutputWithContext(context.Context) BillingGroupArrayOutput
+}
+
+type BillingGroupArray []BillingGroupInput
+
+func (BillingGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BillingGroup)(nil))
+}
+
+func (i BillingGroupArray) ToBillingGroupArrayOutput() BillingGroupArrayOutput {
+	return i.ToBillingGroupArrayOutputWithContext(context.Background())
+}
+
+func (i BillingGroupArray) ToBillingGroupArrayOutputWithContext(ctx context.Context) BillingGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupArrayOutput)
+}
+
+// BillingGroupMapInput is an input type that accepts BillingGroupMap and BillingGroupMapOutput values.
+// You can construct a concrete instance of `BillingGroupMapInput` via:
+//
+//          BillingGroupMap{ "key": BillingGroupArgs{...} }
+type BillingGroupMapInput interface {
+	pulumi.Input
+
+	ToBillingGroupMapOutput() BillingGroupMapOutput
+	ToBillingGroupMapOutputWithContext(context.Context) BillingGroupMapOutput
+}
+
+type BillingGroupMap map[string]BillingGroupInput
+
+func (BillingGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BillingGroup)(nil))
+}
+
+func (i BillingGroupMap) ToBillingGroupMapOutput() BillingGroupMapOutput {
+	return i.ToBillingGroupMapOutputWithContext(context.Background())
+}
+
+func (i BillingGroupMap) ToBillingGroupMapOutputWithContext(ctx context.Context) BillingGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupMapOutput)
+}
+
 type BillingGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -229,6 +308,75 @@ func (o BillingGroupOutput) ToBillingGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o BillingGroupOutput) ToBillingGroupPtrOutput() BillingGroupPtrOutput {
+	return o.ToBillingGroupPtrOutputWithContext(context.Background())
+}
+
+func (o BillingGroupOutput) ToBillingGroupPtrOutputWithContext(ctx context.Context) BillingGroupPtrOutput {
+	return o.ApplyT(func(v BillingGroup) *BillingGroup {
+		return &v
+	}).(BillingGroupPtrOutput)
+}
+
+type BillingGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BillingGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingGroup)(nil))
+}
+
+func (o BillingGroupPtrOutput) ToBillingGroupPtrOutput() BillingGroupPtrOutput {
+	return o
+}
+
+func (o BillingGroupPtrOutput) ToBillingGroupPtrOutputWithContext(ctx context.Context) BillingGroupPtrOutput {
+	return o
+}
+
+type BillingGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (BillingGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BillingGroup)(nil))
+}
+
+func (o BillingGroupArrayOutput) ToBillingGroupArrayOutput() BillingGroupArrayOutput {
+	return o
+}
+
+func (o BillingGroupArrayOutput) ToBillingGroupArrayOutputWithContext(ctx context.Context) BillingGroupArrayOutput {
+	return o
+}
+
+func (o BillingGroupArrayOutput) Index(i pulumi.IntInput) BillingGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingGroup {
+		return vs[0].([]BillingGroup)[vs[1].(int)]
+	}).(BillingGroupOutput)
+}
+
+type BillingGroupMapOutput struct{ *pulumi.OutputState }
+
+func (BillingGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BillingGroup)(nil))
+}
+
+func (o BillingGroupMapOutput) ToBillingGroupMapOutput() BillingGroupMapOutput {
+	return o
+}
+
+func (o BillingGroupMapOutput) ToBillingGroupMapOutputWithContext(ctx context.Context) BillingGroupMapOutput {
+	return o
+}
+
+func (o BillingGroupMapOutput) MapIndex(k pulumi.StringInput) BillingGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BillingGroup {
+		return vs[0].(map[string]BillingGroup)[vs[1].(string)]
+	}).(BillingGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BillingGroupOutput{})
+	pulumi.RegisterOutputType(BillingGroupPtrOutput{})
+	pulumi.RegisterOutputType(BillingGroupArrayOutput{})
+	pulumi.RegisterOutputType(BillingGroupMapOutput{})
 }
