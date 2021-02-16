@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Ensure the version is passed correctly to the ldflag as part of the build to prevent panic
 
 ---
 
