@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Ensure the version is passed correctly to the ldflag as part of the build to prevent panic
+_(none)_
 
 ---
+
+## 3.4.4 (2021-02-16)
+* Ensure the version is passed correctly to the ldflag as part of the build to prevent panic
 
 ## 3.4.3 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
