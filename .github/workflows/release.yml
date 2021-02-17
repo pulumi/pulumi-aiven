@@ -1,6 +1,6 @@
 env:
-  AIVEN_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
   AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
+  AIVEN_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GO111MODULE: "on"
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -188,7 +188,7 @@ jobs:
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v2
       with:
-        args: -p 4 release --rm-dist
+        args: -p 4 release --rm-dist --timeout 60m0s
         version: latest
   publish_sdk:
     name: publish_sdk
