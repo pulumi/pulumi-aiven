@@ -25,6 +25,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("pattern")]
         public string? Pattern { get; set; }
 
+        /// <summary>
+        /// Deletion sorting algorithm
+        /// </summary>
+        [Input("sortingAlgorithm")]
+        public string? SortingAlgorithm { get; set; }
+
         public GetElasticSearchElasticsearchUserConfigIndexPatternArgs()
         {
         }

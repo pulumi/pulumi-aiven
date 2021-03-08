@@ -62,6 +62,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
+        /// Signed sequence of decimal numbers, followed 
+        /// by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+        /// </summary>
+        public readonly string? DashboardsMinRefreshInterval;
+        /// <summary>
         /// Dashboard versions to keep per dashboard.
         /// </summary>
         public readonly string? DashboardsVersionsToKeep;
@@ -99,6 +104,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? MetricsEnabled;
         public readonly Outputs.GrafanaGrafanaUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.GrafanaGrafanaUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
         /// Name of another project to fork a service from. This has 
         /// effect only when a new service is being created.
@@ -159,6 +168,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
+            string? dashboardsMinRefreshInterval,
+
             string? dashboardsVersionsToKeep,
 
             string? dataproxySendUserHeader,
@@ -178,6 +189,8 @@ namespace Pulumi.Aiven.Outputs
             string? metricsEnabled,
 
             Outputs.GrafanaGrafanaUserConfigPrivateAccess? privateAccess,
+
+            Outputs.GrafanaGrafanaUserConfigPrivatelinkAccess? privatelinkAccess,
 
             string? projectToForkFrom,
 
@@ -206,6 +219,7 @@ namespace Pulumi.Aiven.Outputs
             AuthGoogle = authGoogle;
             CookieSamesite = cookieSamesite;
             CustomDomain = customDomain;
+            DashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             DashboardsVersionsToKeep = dashboardsVersionsToKeep;
             DataproxySendUserHeader = dataproxySendUserHeader;
             DataproxyTimeout = dataproxyTimeout;
@@ -216,6 +230,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             MetricsEnabled = metricsEnabled;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;

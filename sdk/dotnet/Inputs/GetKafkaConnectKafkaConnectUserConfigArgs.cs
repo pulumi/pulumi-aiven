@@ -30,8 +30,17 @@ namespace Pulumi.Aiven.Inputs
         [Input("kafkaConnect")]
         public Inputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs? KafkaConnect { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         [Input("privateAccess")]
         public Inputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Inputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
 
         [Input("publicAccess")]
         public Inputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs? PublicAccess { get; set; }

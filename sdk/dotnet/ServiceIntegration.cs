@@ -80,6 +80,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig?> ExternalAwsCloudwatchLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// External AWS cloudwatch metrics specific user configurable settings
+        /// </summary>
+        [Output("externalAwsCloudwatchMetricsUserConfig")]
+        public Output<Outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig?> ExternalAwsCloudwatchMetricsUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// External Elasticsearch logs specific user configurable settings
         /// </summary>
         [Output("externalElasticsearchLogsUserConfig")]
@@ -279,6 +285,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
 
         /// <summary>
+        /// External AWS cloudwatch metrics specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
+
+        /// <summary>
         /// External Elasticsearch logs specific user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
@@ -437,6 +449,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalAwsCloudwatchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfigGetArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// External AWS cloudwatch metrics specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigGetArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
         /// External Elasticsearch logs specific user configurable settings

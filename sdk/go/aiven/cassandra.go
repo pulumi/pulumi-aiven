@@ -53,7 +53,7 @@ import (
 type Cassandra struct {
 	pulumi.CustomResourceState
 
-	// Cassandra specific server provided values.
+	// Cassandra configuration values
 	Cassandra CassandraCassandraOutput `pulumi:"cassandra"`
 	// defines Cassandra specific additional configuration options.
 	// The following configuration options available:
@@ -157,7 +157,7 @@ func GetCassandra(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cassandra resources.
 type cassandraState struct {
-	// Cassandra specific server provided values.
+	// Cassandra configuration values
 	Cassandra *CassandraCassandra `pulumi:"cassandra"`
 	// defines Cassandra specific additional configuration options.
 	// The following configuration options available:
@@ -227,7 +227,7 @@ type cassandraState struct {
 }
 
 type CassandraState struct {
-	// Cassandra specific server provided values.
+	// Cassandra configuration values
 	Cassandra CassandraCassandraPtrInput
 	// defines Cassandra specific additional configuration options.
 	// The following configuration options available:
@@ -301,7 +301,7 @@ func (CassandraState) ElementType() reflect.Type {
 }
 
 type cassandraArgs struct {
-	// Cassandra specific server provided values.
+	// Cassandra configuration values
 	Cassandra *CassandraCassandra `pulumi:"cassandra"`
 	// defines Cassandra specific additional configuration options.
 	// The following configuration options available:
@@ -356,7 +356,7 @@ type cassandraArgs struct {
 
 // The set of arguments for constructing a Cassandra resource.
 type CassandraArgs struct {
-	// Cassandra specific server provided values.
+	// Cassandra configuration values
 	Cassandra CassandraCassandraPtrInput
 	// defines Cassandra specific additional configuration options.
 	// The following configuration options available:

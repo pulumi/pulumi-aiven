@@ -32,6 +32,9 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        [Input("migration")]
+        public Input<Inputs.ServiceMysqlUserConfigMigrationGetArgs>? Migration { get; set; }
+
         [Input("mysql")]
         public Input<Inputs.ServiceMysqlUserConfigMysqlGetArgs>? Mysql { get; set; }
 
@@ -40,6 +43,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("privateAccess")]
         public Input<Inputs.ServiceMysqlUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
+
+        [Input("privatelinkAccess")]
+        public Input<Inputs.ServiceMysqlUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }

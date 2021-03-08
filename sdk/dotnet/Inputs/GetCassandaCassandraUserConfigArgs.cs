@@ -12,6 +12,12 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetCassandaCassandraUserConfigArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cassandra specific server provided values.
+        /// </summary>
+        [Input("cassandra")]
+        public Inputs.GetCassandaCassandraUserConfigCassandraArgs? Cassandra { get; set; }
+
         [Input("ipFilters")]
         private List<string>? _ipFilters;
 

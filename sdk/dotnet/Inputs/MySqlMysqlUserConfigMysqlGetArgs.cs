@@ -97,6 +97,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? InteractiveTimeout { get; set; }
 
         /// <summary>
+        /// The slow_query_logs work as SQL statements that take 
+        /// more than long_query_time seconds to execute. Default is 10s
+        /// </summary>
+        [Input("longQueryTime")]
+        public Input<string>? LongQueryTime { get; set; }
+
+        /// <summary>
         /// Size of the largest message in bytes that can 
         /// be received by the server. Default is 67108864 (64M)
         /// </summary>
@@ -123,6 +130,13 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("netWriteTimeout")]
         public Input<string>? NetWriteTimeout { get; set; }
+
+        /// <summary>
+        /// Slow query log enables capturing of slow queries. 
+        /// Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off
+        /// </summary>
+        [Input("slowQueryLog")]
+        public Input<string>? SlowQueryLog { get; set; }
 
         /// <summary>
         /// Sort buffer size in bytes for ORDER BY optimization. 

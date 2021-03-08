@@ -22,15 +22,22 @@ namespace Pulumi.Aiven.Outputs
         /// dots and glob characters (* and ?)
         /// </summary>
         public readonly string? Pattern;
+        /// <summary>
+        /// Deletion sorting algorithm
+        /// </summary>
+        public readonly string? SortingAlgorithm;
 
         [OutputConstructor]
         private ElasticSearchElasticsearchUserConfigIndexPattern(
             string? maxIndexCount,
 
-            string? pattern)
+            string? pattern,
+
+            string? sortingAlgorithm)
         {
             MaxIndexCount = maxIndexCount;
             Pattern = pattern;
+            SortingAlgorithm = sortingAlgorithm;
         }
     }
 }

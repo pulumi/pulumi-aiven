@@ -34,6 +34,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? DefaultReplicationFactor;
         /// <summary>
+        /// The amount of time, in milliseconds, the group 
+        /// coordinator will wait for more consumers to join a new group before performing the first rebalance.
+        /// A longer delay means potentially fewer rebalances, but increases the time until processing begins.
+        /// The default value for this is 3 seconds. During development and testing it might be desirable to set
+        /// this to 0 in order to not delay test execution time.
+        /// </summary>
+        public readonly string? GroupInitialRebalanceDelayMs;
+        /// <summary>
         /// The maximum allowed session timeout for registered 
         /// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
         /// at the cost of a longer time to detect failures.
@@ -211,6 +219,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? defaultReplicationFactor,
 
+            string? groupInitialRebalanceDelayMs,
+
             string? groupMaxSessionTimeoutMs,
 
             string? groupMinSessionTimeoutMs,
@@ -283,6 +293,7 @@ namespace Pulumi.Aiven.Outputs
             CompressionType = compressionType;
             ConnectionsMaxIdleMs = connectionsMaxIdleMs;
             DefaultReplicationFactor = defaultReplicationFactor;
+            GroupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             GroupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             GroupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
             LogCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;

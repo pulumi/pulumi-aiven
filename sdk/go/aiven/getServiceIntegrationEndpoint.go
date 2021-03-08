@@ -53,13 +53,14 @@ type LookupServiceIntegrationEndpointArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// is the type of the external service this endpoint is associated with.
 	// By the time of writing the only available option is `datadog`.
-	EndpointType                         *string                                                            `pulumi:"endpointType"`
-	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
-	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
-	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
-	ExternalKafkaUserConfig              *GetServiceIntegrationEndpointExternalKafkaUserConfig              `pulumi:"externalKafkaUserConfig"`
-	ExternalSchemaRegistryUserConfig     *GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig     `pulumi:"externalSchemaRegistryUserConfig"`
-	JolokiaUserConfig                    *GetServiceIntegrationEndpointJolokiaUserConfig                    `pulumi:"jolokiaUserConfig"`
+	EndpointType                           *string                                                              `pulumi:"endpointType"`
+	ExternalAwsCloudwatchLogsUserConfig    *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig    `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	ExternalAwsCloudwatchMetricsUserConfig *GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	ExternalElasticsearchLogsUserConfig    *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig    `pulumi:"externalElasticsearchLogsUserConfig"`
+	ExternalGoogleCloudLoggingUserConfig   *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig   `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	ExternalKafkaUserConfig                *GetServiceIntegrationEndpointExternalKafkaUserConfig                `pulumi:"externalKafkaUserConfig"`
+	ExternalSchemaRegistryUserConfig       *GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig       `pulumi:"externalSchemaRegistryUserConfig"`
+	JolokiaUserConfig                      *GetServiceIntegrationEndpointJolokiaUserConfig                      `pulumi:"jolokiaUserConfig"`
 	// defines the project the endpoint is associated with.
 	Project              string                                             `pulumi:"project"`
 	PrometheusUserConfig *GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
@@ -74,12 +75,13 @@ type LookupServiceIntegrationEndpointResult struct {
 	EndpointName      string                                          `pulumi:"endpointName"`
 	// is the type of the external service this endpoint is associated with.
 	// By the time of writing the only available option is `datadog`.
-	EndpointType                         *string                                                            `pulumi:"endpointType"`
-	ExternalAwsCloudwatchLogsUserConfig  *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig  `pulumi:"externalAwsCloudwatchLogsUserConfig"`
-	ExternalElasticsearchLogsUserConfig  *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig  `pulumi:"externalElasticsearchLogsUserConfig"`
-	ExternalGoogleCloudLoggingUserConfig *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
-	ExternalKafkaUserConfig              *GetServiceIntegrationEndpointExternalKafkaUserConfig              `pulumi:"externalKafkaUserConfig"`
-	ExternalSchemaRegistryUserConfig     *GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig     `pulumi:"externalSchemaRegistryUserConfig"`
+	EndpointType                           *string                                                              `pulumi:"endpointType"`
+	ExternalAwsCloudwatchLogsUserConfig    *GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig    `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	ExternalAwsCloudwatchMetricsUserConfig *GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	ExternalElasticsearchLogsUserConfig    *GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig    `pulumi:"externalElasticsearchLogsUserConfig"`
+	ExternalGoogleCloudLoggingUserConfig   *GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig   `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	ExternalKafkaUserConfig                *GetServiceIntegrationEndpointExternalKafkaUserConfig                `pulumi:"externalKafkaUserConfig"`
+	ExternalSchemaRegistryUserConfig       *GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig       `pulumi:"externalSchemaRegistryUserConfig"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                   string                                             `pulumi:"id"`
 	JolokiaUserConfig    *GetServiceIntegrationEndpointJolokiaUserConfig    `pulumi:"jolokiaUserConfig"`

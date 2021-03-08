@@ -15,18 +15,27 @@ namespace Pulumi.Aiven.Inputs
         [Input("component", required: true)]
         public string Component { get; set; } = null!;
 
+        /// <summary>
+        /// Hostname or IP address of the server where to migrate data from
+        /// </summary>
         [Input("host", required: true)]
         public string Host { get; set; } = null!;
 
         [Input("kafkaAuthenticationMethod", required: true)]
         public string KafkaAuthenticationMethod { get; set; } = null!;
 
+        /// <summary>
+        /// Port number of the server where to migrate data from
+        /// </summary>
         [Input("port", required: true)]
         public int Port { get; set; }
 
         [Input("route", required: true)]
         public string Route { get; set; } = null!;
 
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL
+        /// </summary>
         [Input("ssl", required: true)]
         public bool Ssl { get; set; }
 

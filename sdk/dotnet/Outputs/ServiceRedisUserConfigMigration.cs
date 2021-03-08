@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? Dbname;
         public readonly string? Host;
+        public readonly string? IgnoreDbs;
         public readonly string? Password;
         public readonly string? Port;
         public readonly string? Ssl;
@@ -26,6 +27,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? host,
 
+            string? ignoreDbs,
+
             string? password,
 
             string? port,
@@ -36,6 +39,7 @@ namespace Pulumi.Aiven.Outputs
         {
             Dbname = dbname;
             Host = host;
+            IgnoreDbs = ignoreDbs;
             Password = password;
             Port = port;
             Ssl = ssl;

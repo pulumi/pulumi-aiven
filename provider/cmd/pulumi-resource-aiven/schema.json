@@ -29,6 +29,15 @@
         },
         "aiven:index/CassandraCassandraUserConfig:CassandraCassandraUserConfig": {
             "properties": {
+                "cassandra": {
+                    "$ref": "#/types/aiven:index/CassandraCassandraUserConfigCassandra:CassandraCassandraUserConfigCassandra",
+                    "description": "Cassandra configuration values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -79,6 +88,29 @@
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/CassandraCassandraUserConfigCassandra:CassandraCassandraUserConfigCassandra": {
+            "properties": {
+                "batchSizeFailThresholdInKb": {
+                    "type": "string",
+                    "description": "Fail any multiple-partition batch exceeding this value. \n50kb (10x warn threshold) by default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "batchSizeWarnThresholdInKb": {
+                    "type": "string",
+                    "description": "Log a warning message on any multiple-partition \nbatch size exceeding this value.5kb per batch by default.Caution should be taken on increasing\nthe size of this thresholdas it can lead to node instability.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -461,6 +493,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ElasticSearchElasticsearchUserConfigPrivatelinkAccess:ElasticSearchElasticsearchUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "description": "Name of another project to fork a service from. This has \neffect only when a new service is being created.\n",
@@ -752,6 +793,15 @@
                             "mapCase": false
                         }
                     }
+                },
+                "sortingAlgorithm": {
+                    "type": "string",
+                    "description": "Deletion sorting algorithm\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -843,6 +893,29 @@
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public \ninternet for service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ElasticSearchElasticsearchUserConfigPrivatelinkAccess:ElasticSearchElasticsearchUserConfigPrivatelinkAccess": {
+            "properties": {
+                "elasticsearch": {
+                    "type": "string",
+                    "description": "Allow clients to connect to elasticsearch from the public \ninternet for service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kibana": {
+                    "type": "string",
+                    "description": "Allow clients to connect to kibana from the public internet for \nservice nodes that are in a project VPC or another type of private network.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1089,6 +1162,15 @@
                         }
                     }
                 },
+                "dashboardsMinRefreshInterval": {
+                    "type": "string",
+                    "description": "Signed sequence of decimal numbers, followed \nby a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dashboardsVersionsToKeep": {
                     "type": "string",
                     "description": "Dashboard versions to keep per dashboard.\n",
@@ -1175,6 +1257,15 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfigPrivateAccess:GrafanaGrafanaUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfigPrivatelinkAccess:GrafanaGrafanaUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1586,6 +1677,20 @@
             },
             "type": "object"
         },
+        "aiven:index/GrafanaGrafanaUserConfigPrivatelinkAccess:GrafanaGrafanaUserConfigPrivatelinkAccess": {
+            "properties": {
+                "grafana": {
+                    "type": "string",
+                    "description": "Allow clients to connect to grafana from the public internet for service nodes that \nare in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/GrafanaGrafanaUserConfigPublicAccess:GrafanaGrafanaUserConfigPublicAccess": {
             "properties": {
                 "grafana": {
@@ -1837,6 +1942,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfigPrivatelinkAccess:InfluxDbInfluxdbUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "description": "Name of another project to fork a service from. This has \neffect only when a new service is being created.\n",
@@ -1927,6 +2041,20 @@
             "type": "object"
         },
         "aiven:index/InfluxDbInfluxdbUserConfigPrivateAccess:InfluxDbInfluxdbUserConfigPrivateAccess": {
+            "properties": {
+                "influxdb": {
+                    "type": "string",
+                    "description": "influxdb.conf configuration values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/InfluxDbInfluxdbUserConfigPrivatelinkAccess:InfluxDbInfluxdbUserConfigPrivatelinkAccess": {
             "properties": {
                 "influxdb": {
                     "type": "string",
@@ -2162,6 +2290,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigPrivatelinkAccess:KafkaConnectKafkaConnectUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigPublicAccess:KafkaConnectKafkaConnectUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet.\n",
@@ -2292,6 +2429,20 @@
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public internet for service \nnodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/KafkaConnectKafkaConnectUserConfigPrivatelinkAccess:KafkaConnectKafkaConnectUserConfigPrivatelinkAccess": {
+            "properties": {
+                "kafkaConnect": {
+                    "type": "string",
+                    "description": "Allow clients to connect to kafka_connect from the public internet for \nservice nodes that are in a project VPC or another type of private network.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2606,6 +2757,15 @@
                 "defaultReplicationFactor": {
                     "type": "string",
                     "description": "Replication factor for autocreated topics\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupInitialRebalanceDelayMs": {
+                    "type": "string",
+                    "description": "The amount of time, in milliseconds, the group \ncoordinator will wait for more consumers to join a new group before performing the first rebalance.\nA longer delay means potentially fewer rebalances, but increases the time until processing begins.\nThe default value for this is 3 seconds. During development and testing it might be desirable to set\nthis to 0 in order to not delay test execution time.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4208,6 +4368,7 @@
                 },
                 "host": {
                     "type": "string",
+                    "description": "Hostname or IP address of the server where to migrate data from\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4224,6 +4385,7 @@
                 },
                 "port": {
                     "type": "integer",
+                    "description": "Port number of the server where to migrate data from\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4240,6 +4402,7 @@
                 },
                 "ssl": {
                     "type": "boolean",
+                    "description": "The server where to migrate data from is secured with SSL\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4323,6 +4486,15 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:index/MySqlMysqlUserConfigMigration:MySqlMysqlUserConfigMigration",
+                    "description": "Migrate data from existing server\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "mysql": {
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfigMysql:MySqlMysqlUserConfigMysql",
                     "description": "Allow clients to connect to mysql from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
@@ -4344,6 +4516,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfigPrivateAccess:MySqlMysqlUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/MySqlMysqlUserConfigPrivatelinkAccess:MySqlMysqlUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4380,6 +4561,74 @@
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when \na new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/MySqlMysqlUserConfigMigration:MySqlMysqlUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "description": "Database name for bootstrapping the initial connection\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Hostname or IP address of the server where to migrate data from\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
+                    "type": "string",
+                    "description": "Comma-separated list of databases, which should be ignored \nduring migration (supported by MySQL only at the moment)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password for authentication with the server where to migrate data from\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "description": "Port number of the server where to migrate data from\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "description": "The server where to migrate data from is secured with SSL\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User name for authentication with the server where to migrate data from\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4499,6 +4748,15 @@
                         }
                     }
                 },
+                "longQueryTime": {
+                    "type": "string",
+                    "description": "The slow_query_logs work as SQL statements that take \nmore than long_query_time seconds to execute. Default is 10s\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxAllowedPacket": {
                     "type": "string",
                     "description": "Size of the largest message in bytes that can \nbe received by the server. Default is 67108864 (64M)\n",
@@ -4529,6 +4787,15 @@
                 "netWriteTimeout": {
                     "type": "string",
                     "description": "The number of seconds to wait for a block to be \nwritten to a connection before aborting the write.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slowQueryLog": {
+                    "type": "string",
+                    "description": "Slow query log enables capturing of slow queries. \nSetting slow_query_log to false also truncates the mysql.slow_log table. Default is off\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4597,6 +4864,20 @@
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/MySqlMysqlUserConfigPrivatelinkAccess:MySqlMysqlUserConfigPrivatelinkAccess": {
+            "properties": {
+                "mysql": {
+                    "type": "string",
+                    "description": "Allow clients to connect to mysql from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5051,6 +5332,15 @@
                 "host": {
                     "type": "string",
                     "description": "hostname or IP address of the server where to migrate data from.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
+                    "type": "string",
+                    "description": "Comma-separated list of databases, which should be ignored during \nmigration (supported by MySQL only at the moment)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5781,6 +6071,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/RedisRedisUserConfigPrivatelinkAccess:RedisRedisUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
@@ -5901,6 +6200,15 @@
                         }
                     }
                 },
+                "ignoreDbs": {
+                    "type": "string",
+                    "description": "Comma-separated list of databases, which should be ignored during \nmigration (supported by MySQL only at the moment)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "password": {
                     "type": "string",
                     "description": "Password for authentication with the server where to migrate data from\n",
@@ -5951,6 +6259,20 @@
                         }
                     }
                 },
+                "redis": {
+                    "type": "string",
+                    "description": "Allow clients to connect to redis from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/RedisRedisUserConfigPrivatelinkAccess:RedisRedisUserConfigPrivatelinkAccess": {
+            "properties": {
                 "redis": {
                     "type": "string",
                     "description": "Allow clients to connect to redis from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
@@ -6016,6 +6338,14 @@
         },
         "aiven:index/ServiceCassandraUserConfig:ServiceCassandraUserConfig": {
             "properties": {
+                "cassandra": {
+                    "$ref": "#/types/aiven:index/ServiceCassandraUserConfigCassandra:ServiceCassandraUserConfigCassandra",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -6060,6 +6390,27 @@
                     }
                 },
                 "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceCassandraUserConfigCassandra:ServiceCassandraUserConfigCassandra": {
+            "properties": {
+                "batchSizeFailThresholdInKb": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "batchSizeWarnThresholdInKb": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -6272,6 +6623,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/ServiceElasticsearchUserConfigPrivateAccess:ServiceElasticsearchUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServiceElasticsearchUserConfigPrivatelinkAccess:ServiceElasticsearchUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6538,6 +6897,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "sortingAlgorithm": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -6619,6 +6986,27 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceElasticsearchUserConfigPrivatelinkAccess:ServiceElasticsearchUserConfigPrivatelinkAccess": {
+            "properties": {
+                "elasticsearch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kibana": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -6751,6 +7139,14 @@
                         }
                     }
                 },
+                "dashboardsMinRefreshInterval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dashboardsVersionsToKeep": {
                     "type": "string",
                     "language": {
@@ -6828,6 +7224,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/ServiceGrafanaUserConfigPrivateAccess:ServiceGrafanaUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServiceGrafanaUserConfigPrivatelinkAccess:ServiceGrafanaUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7200,6 +7604,19 @@
             },
             "type": "object"
         },
+        "aiven:index/ServiceGrafanaUserConfigPrivatelinkAccess:ServiceGrafanaUserConfigPrivatelinkAccess": {
+            "properties": {
+                "grafana": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/ServiceGrafanaUserConfigPublicAccess:ServiceGrafanaUserConfigPublicAccess": {
             "properties": {
                 "grafana": {
@@ -7339,6 +7756,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServiceInfluxdbUserConfigPrivatelinkAccess:ServiceInfluxdbUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "language": {
@@ -7420,6 +7845,19 @@
             "type": "object"
         },
         "aiven:index/ServiceInfluxdbUserConfigPrivateAccess:ServiceInfluxdbUserConfigPrivateAccess": {
+            "properties": {
+                "influxdb": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceInfluxdbUserConfigPrivatelinkAccess:ServiceInfluxdbUserConfigPrivatelinkAccess": {
             "properties": {
                 "influxdb": {
                     "type": "string",
@@ -7556,6 +7994,43 @@
                     }
                 },
                 "logGroupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespace": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7922,6 +8397,9 @@
             "type": "object"
         },
         "aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
             "type": "object"
         },
         "aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig": {
@@ -8464,6 +8942,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServiceKafkaConnectUserConfigPrivatelinkAccess:ServiceKafkaConnectUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/ServiceKafkaConnectUserConfigPublicAccess:ServiceKafkaConnectUserConfigPublicAccess",
                     "language": {
@@ -8579,6 +9065,19 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceKafkaConnectUserConfigPrivatelinkAccess:ServiceKafkaConnectUserConfigPrivatelinkAccess": {
+            "properties": {
+                "kafkaConnect": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -8821,6 +9320,14 @@
                     }
                 },
                 "defaultReplicationFactor": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupInitialRebalanceDelayMs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9434,6 +9941,14 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:index/ServiceMysqlUserConfigMigration:ServiceMysqlUserConfigMigration",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "mysql": {
                     "$ref": "#/types/aiven:index/ServiceMysqlUserConfigMysql:ServiceMysqlUserConfigMysql",
                     "language": {
@@ -9452,6 +9967,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/ServiceMysqlUserConfigPrivateAccess:ServiceMysqlUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServiceMysqlUserConfigPrivatelinkAccess:ServiceMysqlUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9483,6 +10006,67 @@
                     }
                 },
                 "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceMysqlUserConfigMigration:ServiceMysqlUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9591,6 +10175,14 @@
                         }
                     }
                 },
+                "longQueryTime": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxAllowedPacket": {
                     "type": "string",
                     "language": {
@@ -9616,6 +10208,14 @@
                     }
                 },
                 "netWriteTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slowQueryLog": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9677,6 +10277,19 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceMysqlUserConfigPrivatelinkAccess:ServiceMysqlUserConfigPrivatelinkAccess": {
+            "properties": {
+                "mysql": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9994,6 +10607,14 @@
                     }
                 },
                 "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -10562,6 +11183,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ServiceRedisUserConfigPrivatelinkAccess:ServiceRedisUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "language": {
@@ -10671,6 +11300,14 @@
                         }
                     }
                 },
+                "ignoreDbs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "password": {
                     "type": "string",
                     "language": {
@@ -10716,6 +11353,19 @@
                         }
                     }
                 },
+                "redis": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceRedisUserConfigPrivatelinkAccess:ServiceRedisUserConfigPrivatelinkAccess": {
+            "properties": {
                 "redis": {
                     "type": "string",
                     "language": {
@@ -10778,6 +11428,15 @@
         },
         "aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig": {
             "properties": {
+                "cassandra": {
+                    "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigCassandra:getCassandaCassandraUserConfigCassandra",
+                    "description": "Cassandra specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -10828,6 +11487,29 @@
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getCassandaCassandraUserConfigCassandra:getCassandaCassandraUserConfigCassandra": {
+            "properties": {
+                "batchSizeFailThresholdInKb": {
+                    "type": "string",
+                    "description": "Fail any multiple-partition batch exceeding this value.\n50kb (10x warn threshold) by default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "batchSizeWarnThresholdInKb": {
+                    "type": "string",
+                    "description": "Log a warning message on any multiple-partition\nbatch size exceeding this value.5kb per batch by default.Caution should be taken on increasing\nthe size of this thresholdas it can lead to node instability.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11213,6 +11895,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getElasticSearchElasticsearchUserConfigPrivatelinkAccess:getElasticSearchElasticsearchUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
@@ -11504,6 +12195,15 @@
                             "mapCase": false
                         }
                     }
+                },
+                "sortingAlgorithm": {
+                    "type": "string",
+                    "description": "Deletion sorting algorithm\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -11595,6 +12295,29 @@
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public \ninternet for service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getElasticSearchElasticsearchUserConfigPrivatelinkAccess:getElasticSearchElasticsearchUserConfigPrivatelinkAccess": {
+            "properties": {
+                "elasticsearch": {
+                    "type": "string",
+                    "description": "Elasticsearch specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kibana": {
+                    "type": "string",
+                    "description": "Allow clients to connect to kibana from the public internet for \nservice nodes that are in a project VPC or another type of private network.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11842,6 +12565,15 @@
                         }
                     }
                 },
+                "dashboardsMinRefreshInterval": {
+                    "type": "string",
+                    "description": "Signed sequence of decimal numbers, followed\nby a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dashboardsVersionsToKeep": {
                     "type": "string",
                     "description": "Dashboard versions to keep per dashboard.\n",
@@ -11928,6 +12660,15 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getGrafanaGrafanaUserConfigPrivateAccess:getGrafanaGrafanaUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getGrafanaGrafanaUserConfigPrivatelinkAccess:getGrafanaGrafanaUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12339,6 +13080,20 @@
             },
             "type": "object"
         },
+        "aiven:index/getGrafanaGrafanaUserConfigPrivatelinkAccess:getGrafanaGrafanaUserConfigPrivatelinkAccess": {
+            "properties": {
+                "grafana": {
+                    "type": "string",
+                    "description": "Grafana specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getGrafanaGrafanaUserConfigPublicAccess:getGrafanaGrafanaUserConfigPublicAccess": {
             "properties": {
                 "grafana": {
@@ -12592,6 +13347,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getInfluxDbInfluxdbUserConfigPrivatelinkAccess:getInfluxDbInfluxdbUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
@@ -12682,6 +13446,20 @@
             "type": "object"
         },
         "aiven:index/getInfluxDbInfluxdbUserConfigPrivateAccess:getInfluxDbInfluxdbUserConfigPrivateAccess": {
+            "properties": {
+                "influxdb": {
+                    "type": "string",
+                    "description": "InfluxDB specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getInfluxDbInfluxdbUserConfigPrivatelinkAccess:getInfluxDbInfluxdbUserConfigPrivatelinkAccess": {
             "properties": {
                 "influxdb": {
                     "type": "string",
@@ -12912,6 +13690,16 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigPrivateAccess:getKafkaConnectKafkaConnectUserConfigPrivateAccess",
+                    "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigPrivatelinkAccess:getKafkaConnectKafkaConnectUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13045,6 +13833,21 @@
                 },
                 "prometheus": {
                     "type": "string",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to \nthe service's private IP addresses. Only available in certain network locations.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getKafkaConnectKafkaConnectUserConfigPrivatelinkAccess:getKafkaConnectKafkaConnectUserConfigPrivatelinkAccess": {
+            "properties": {
+                "kafkaConnect": {
+                    "type": "string",
+                    "description": "Kafka Connect specific server provided values.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13067,6 +13870,7 @@
                 },
                 "prometheus": {
                     "type": "string",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to \nthe service's private IP addresses. Only available in certain network locations.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13360,6 +14164,15 @@
                 "defaultReplicationFactor": {
                     "type": "string",
                     "description": "Replication factor for autocreated topics\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupInitialRebalanceDelayMs": {
+                    "type": "string",
+                    "description": "The amount of time, in milliseconds, the group\ncoordinator will wait for more consumers to join a new group before performing the first rebalance.\nA longer delay means potentially fewer rebalances, but increases the time until processing begins.\nThe default value for this is 3 seconds. During development and testing it might be desirable to set\nthis to 0 in order to not delay test execution time.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14965,6 +15778,7 @@
                 },
                 "host": {
                     "type": "string",
+                    "description": "Hostname or IP address of the server where to migrate data from\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14981,6 +15795,7 @@
                 },
                 "port": {
                     "type": "integer",
+                    "description": "Port number of the server where to migrate data from\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14997,6 +15812,7 @@
                 },
                 "ssl": {
                     "type": "boolean",
+                    "description": "The server where to migrate data from is secured with SSL\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15081,6 +15897,15 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigMigration:getMySqlMysqlUserConfigMigration",
+                    "description": "Migrate data from existing server\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "mysql": {
                     "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigMysql:getMySqlMysqlUserConfigMysql",
                     "description": "MySQL specific server provided values.\n",
@@ -15102,6 +15927,15 @@
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigPrivateAccess:getMySqlMysqlUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigPrivatelinkAccess:getMySqlMysqlUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15138,6 +15972,74 @@
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when \na new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getMySqlMysqlUserConfigMigration:getMySqlMysqlUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "description": "Database name for bootstrapping the initial connection\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Hostname or IP address of the server where to migrate data from\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
+                    "type": "string",
+                    "description": "Comma-separated list of databases, which should be ignored\nduring migration (supported by MySQL only at the moment)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password for authentication with the server where to migrate data from\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "description": "Port number of the server where to migrate data from\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "description": "The server where to migrate data from is secured with SSL\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User name for authentication with the server where to migrate data from\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15257,6 +16159,15 @@
                         }
                     }
                 },
+                "longQueryTime": {
+                    "type": "string",
+                    "description": "The slow_query_logs work as SQL statements that take\nmore than long_query_time seconds to execute. Default is 10s\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxAllowedPacket": {
                     "type": "string",
                     "description": "Size of the largest message in bytes that can \nbe received by the server. Default is 67108864 (64M)\n",
@@ -15287,6 +16198,15 @@
                 "netWriteTimeout": {
                     "type": "string",
                     "description": "The number of seconds to wait for a block to be \nwritten to a connection before aborting the write.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slowQueryLog": {
+                    "type": "string",
+                    "description": "Slow query log enables capturing of slow queries.\nSetting slow_query_log to false also truncates the mysql.slow_log table. Default is off\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15355,6 +16275,20 @@
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getMySqlMysqlUserConfigPrivatelinkAccess:getMySqlMysqlUserConfigPrivatelinkAccess": {
+            "properties": {
+                "mysql": {
+                    "type": "string",
+                    "description": "MySQL specific server provided values.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15811,6 +16745,15 @@
                 "host": {
                     "type": "string",
                     "description": "PostgreSQL master node host IP or name\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
+                    "type": "string",
+                    "description": "Comma-separated list of databases, which should be ignored during\nmigration (supported by MySQL only at the moment)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16542,6 +17485,15 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getRedisRedisUserConfigPrivatelinkAccess:getRedisRedisUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "description": "Name of another project to fork a service from. This has\neffect only when a new service is being created.\n",
@@ -16662,6 +17614,15 @@
                         }
                     }
                 },
+                "ignoreDbs": {
+                    "type": "string",
+                    "description": "Comma-separated list of databases, which should be ignored during\nmigration (supported by MySQL only at the moment)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "password": {
                     "type": "string",
                     "description": "Password for authentication with the server where to migrate data from\n",
@@ -16712,6 +17673,20 @@
                         }
                     }
                 },
+                "redis": {
+                    "type": "string",
+                    "description": "Redis specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getRedisRedisUserConfigPrivatelinkAccess:getRedisRedisUserConfigPrivatelinkAccess": {
+            "properties": {
                 "redis": {
                     "type": "string",
                     "description": "Redis specific server provided values.\n",
@@ -16777,6 +17752,14 @@
         },
         "aiven:index/getServiceCassandraUserConfig:getServiceCassandraUserConfig": {
             "properties": {
+                "cassandra": {
+                    "$ref": "#/types/aiven:index/getServiceCassandraUserConfigCassandra:getServiceCassandraUserConfigCassandra",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -16821,6 +17804,27 @@
                     }
                 },
                 "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceCassandraUserConfigCassandra:getServiceCassandraUserConfigCassandra": {
+            "properties": {
+                "batchSizeFailThresholdInKb": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "batchSizeWarnThresholdInKb": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -17035,6 +18039,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getServiceElasticsearchUserConfigPrivateAccess:getServiceElasticsearchUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServiceElasticsearchUserConfigPrivatelinkAccess:getServiceElasticsearchUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17301,6 +18313,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "sortingAlgorithm": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -17382,6 +18402,27 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceElasticsearchUserConfigPrivatelinkAccess:getServiceElasticsearchUserConfigPrivatelinkAccess": {
+            "properties": {
+                "elasticsearch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kibana": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -17514,6 +18555,14 @@
                         }
                     }
                 },
+                "dashboardsMinRefreshInterval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dashboardsVersionsToKeep": {
                     "type": "string",
                     "language": {
@@ -17591,6 +18640,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getServiceGrafanaUserConfigPrivateAccess:getServiceGrafanaUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServiceGrafanaUserConfigPrivatelinkAccess:getServiceGrafanaUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17963,6 +19020,19 @@
             },
             "type": "object"
         },
+        "aiven:index/getServiceGrafanaUserConfigPrivatelinkAccess:getServiceGrafanaUserConfigPrivatelinkAccess": {
+            "properties": {
+                "grafana": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getServiceGrafanaUserConfigPublicAccess:getServiceGrafanaUserConfigPublicAccess": {
             "properties": {
                 "grafana": {
@@ -18103,6 +19173,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServiceInfluxdbUserConfigPrivatelinkAccess:getServiceInfluxdbUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "language": {
@@ -18184,6 +19262,19 @@
             "type": "object"
         },
         "aiven:index/getServiceInfluxdbUserConfigPrivateAccess:getServiceInfluxdbUserConfigPrivateAccess": {
+            "properties": {
+                "influxdb": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceInfluxdbUserConfigPrivatelinkAccess:getServiceInfluxdbUserConfigPrivatelinkAccess": {
             "properties": {
                 "influxdb": {
                     "type": "string",
@@ -18320,6 +19411,43 @@
                     }
                 },
                 "logGroupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespace": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -18686,6 +19814,9 @@
             "type": "object"
         },
         "aiven:index/getServiceIntegrationExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationExternalAwsCloudwatchLogsUserConfig": {
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
             "type": "object"
         },
         "aiven:index/getServiceIntegrationExternalElasticsearchLogsUserConfig:getServiceIntegrationExternalElasticsearchLogsUserConfig": {
@@ -19229,6 +20360,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServiceKafkaConnectUserConfigPrivatelinkAccess:getServiceKafkaConnectUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getServiceKafkaConnectUserConfigPublicAccess:getServiceKafkaConnectUserConfigPublicAccess",
                     "language": {
@@ -19344,6 +20483,19 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceKafkaConnectUserConfigPrivatelinkAccess:getServiceKafkaConnectUserConfigPrivatelinkAccess": {
+            "properties": {
+                "kafkaConnect": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -19586,6 +20738,14 @@
                     }
                 },
                 "defaultReplicationFactor": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupInitialRebalanceDelayMs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20199,6 +21359,14 @@
                         }
                     }
                 },
+                "migration": {
+                    "$ref": "#/types/aiven:index/getServiceMysqlUserConfigMigration:getServiceMysqlUserConfigMigration",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "mysql": {
                     "$ref": "#/types/aiven:index/getServiceMysqlUserConfigMysql:getServiceMysqlUserConfigMysql",
                     "language": {
@@ -20217,6 +21385,14 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getServiceMysqlUserConfigPrivateAccess:getServiceMysqlUserConfigPrivateAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServiceMysqlUserConfigPrivatelinkAccess:getServiceMysqlUserConfigPrivatelinkAccess",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20248,6 +21424,67 @@
                     }
                 },
                 "serviceToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceMysqlUserConfigMigration:getServiceMysqlUserConfigMigration": {
+            "properties": {
+                "dbname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20356,6 +21593,14 @@
                         }
                     }
                 },
+                "longQueryTime": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxAllowedPacket": {
                     "type": "string",
                     "language": {
@@ -20381,6 +21626,14 @@
                     }
                 },
                 "netWriteTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slowQueryLog": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20442,6 +21695,19 @@
                     }
                 },
                 "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceMysqlUserConfigPrivatelinkAccess:getServiceMysqlUserConfigPrivatelinkAccess": {
+            "properties": {
+                "mysql": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20760,6 +22026,14 @@
                     }
                 },
                 "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreDbs": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -21328,6 +22602,14 @@
                         }
                     }
                 },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getServiceRedisUserConfigPrivatelinkAccess:getServiceRedisUserConfigPrivatelinkAccess",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "language": {
@@ -21437,6 +22719,14 @@
                         }
                     }
                 },
+                "ignoreDbs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "password": {
                     "type": "string",
                     "language": {
@@ -21482,6 +22772,19 @@
                         }
                     }
                 },
+                "redis": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceRedisUserConfigPrivatelinkAccess:getServiceRedisUserConfigPrivatelinkAccess": {
+            "properties": {
                 "redis": {
                     "type": "string",
                     "language": {
@@ -22253,7 +23556,7 @@
             "properties": {
                 "cassandra": {
                     "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
-                    "description": "Cassandra specific server provided values.\n",
+                    "description": "Cassandra configuration values\n",
                     "language": {
                         "csharp": {
                             "name": "CassandraServer"
@@ -22355,7 +23658,7 @@
             "inputProperties": {
                 "cassandra": {
                     "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
-                    "description": "Cassandra specific server provided values.\n",
+                    "description": "Cassandra configuration values\n",
                     "language": {
                         "csharp": {
                             "name": "CassandraServer"
@@ -22415,7 +23718,7 @@
                 "properties": {
                     "cassandra": {
                         "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
-                        "description": "Cassandra specific server provided values.\n",
+                        "description": "Cassandra configuration values\n",
                         "language": {
                             "csharp": {
                                 "name": "CassandraServer"
@@ -27150,6 +28453,10 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig",
                     "description": "External AWS Cloudwatch logs specific user configurable settings\n"
                 },
+                "externalAwsCloudwatchMetricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig",
+                    "description": "External AWS cloudwatch metrics specific user configurable settings\n"
+                },
                 "externalElasticsearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig",
                     "description": "External Elasticsearch logs specific user configurable settings\n"
@@ -27251,6 +28558,10 @@
                 "externalAwsCloudwatchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig",
                     "description": "External AWS Cloudwatch logs specific user configurable settings\n"
+                },
+                "externalAwsCloudwatchMetricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig",
+                    "description": "External AWS cloudwatch metrics specific user configurable settings\n"
                 },
                 "externalElasticsearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig",
@@ -27355,6 +28666,10 @@
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationExternalAwsCloudwatchLogsUserConfig",
                         "description": "External AWS Cloudwatch logs specific user configurable settings\n"
+                    },
+                    "externalAwsCloudwatchMetricsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig",
+                        "description": "External AWS cloudwatch metrics specific user configurable settings\n"
                     },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig",
@@ -27462,6 +28777,10 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
                     "description": "external AWS CloudWatch Logs specific user configurable settings\n"
                 },
+                "externalAwsCloudwatchMetricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig",
+                    "description": "External AWS cloudwatch mertrics specific user configurable settings\n"
+                },
                 "externalElasticsearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
                     "description": "external elasticsearch specific user configurable settings\n"
@@ -27521,6 +28840,10 @@
                 "externalAwsCloudwatchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
                     "description": "external AWS CloudWatch Logs specific user configurable settings\n"
+                },
+                "externalAwsCloudwatchMetricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig",
+                    "description": "External AWS cloudwatch mertrics specific user configurable settings\n"
                 },
                 "externalElasticsearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
@@ -27589,6 +28912,10 @@
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
                         "description": "external AWS CloudWatch Logs specific user configurable settings\n"
+                    },
+                    "externalAwsCloudwatchMetricsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig",
+                        "description": "External AWS cloudwatch mertrics specific user configurable settings\n"
                     },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
@@ -32252,6 +33579,9 @@
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationExternalAwsCloudwatchLogsUserConfig"
                     },
+                    "externalAwsCloudwatchMetricsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig"
+                    },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationExternalElasticsearchLogsUserConfig:getServiceIntegrationExternalElasticsearchLogsUserConfig"
                     },
@@ -32338,6 +33668,9 @@
                     },
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationExternalAwsCloudwatchLogsUserConfig"
+                    },
+                    "externalAwsCloudwatchMetricsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig"
                     },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationExternalElasticsearchLogsUserConfig:getServiceIntegrationExternalElasticsearchLogsUserConfig"
@@ -32436,6 +33769,9 @@
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig"
                     },
+                    "externalAwsCloudwatchMetricsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig"
+                    },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig"
                     },
@@ -32492,6 +33828,9 @@
                     },
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig"
+                    },
+                    "externalAwsCloudwatchMetricsUserConfig": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig"
                     },
                     "externalElasticsearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig"

@@ -30,6 +30,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
         /// Name of another project to fork a service from. This has 
         /// effect only when a new service is being created.
         /// </summary>
@@ -58,6 +62,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.InfluxDbInfluxdbUserConfigPrivateAccess? privateAccess,
 
+            Outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess? privatelinkAccess,
+
             string? projectToForkFrom,
 
             Outputs.InfluxDbInfluxdbUserConfigPublicAccess? publicAccess,
@@ -70,6 +76,7 @@ namespace Pulumi.Aiven.Outputs
             Influxdb = influxdb;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;

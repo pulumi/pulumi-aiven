@@ -60,6 +60,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
+        /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
@@ -100,6 +104,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetElasticSearchElasticsearchUserConfigPrivateAccessResult? privateAccess,
 
+            Outputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccessResult? privatelinkAccess,
+
             string? projectToForkFrom,
 
             Outputs.GetElasticSearchElasticsearchUserConfigPublicAccessResult? publicAccess,
@@ -118,6 +124,7 @@ namespace Pulumi.Aiven.Outputs
             Kibana = kibana;
             MaxIndexCount = maxIndexCount;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;

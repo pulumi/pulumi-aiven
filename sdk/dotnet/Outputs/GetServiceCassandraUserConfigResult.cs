@@ -13,6 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceCassandraUserConfigResult
     {
+        public readonly Outputs.GetServiceCassandraUserConfigCassandraResult? Cassandra;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? MigrateSstableloader;
         public readonly Outputs.GetServiceCassandraUserConfigPrivateAccessResult? PrivateAccess;
@@ -22,6 +23,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetServiceCassandraUserConfigResult(
+            Outputs.GetServiceCassandraUserConfigCassandraResult? cassandra,
+
             ImmutableArray<string> ipFilters,
 
             string? migrateSstableloader,
@@ -34,6 +37,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom)
         {
+            Cassandra = cassandra;
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;

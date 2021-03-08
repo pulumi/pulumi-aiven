@@ -43,6 +43,7 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
         "destinationEndpointId": args.destinationEndpointId,
         "destinationServiceName": args.destinationServiceName,
         "externalAwsCloudwatchLogsUserConfig": args.externalAwsCloudwatchLogsUserConfig,
+        "externalAwsCloudwatchMetricsUserConfig": args.externalAwsCloudwatchMetricsUserConfig,
         "externalElasticsearchLogsUserConfig": args.externalElasticsearchLogsUserConfig,
         "externalGoogleCloudLoggingUserConfig": args.externalGoogleCloudLoggingUserConfig,
         "integrationType": args.integrationType,
@@ -77,6 +78,7 @@ export interface GetServiceIntegrationArgs {
      */
     readonly destinationServiceName: string;
     readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
+    readonly externalAwsCloudwatchMetricsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfig;
     /**
@@ -117,6 +119,7 @@ export interface GetServiceIntegrationResult {
     readonly destinationEndpointId?: string;
     readonly destinationServiceName: string;
     readonly externalAwsCloudwatchLogsUserConfig?: outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
+    readonly externalAwsCloudwatchMetricsUserConfig?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: outputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfig;
     /**

@@ -72,6 +72,9 @@ namespace Pulumi.Aiven
         [Input("externalAwsCloudwatchLogsUserConfig")]
         public Inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs? ExternalAwsCloudwatchLogsUserConfig { get; set; }
 
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
+
         [Input("externalElasticsearchLogsUserConfig")]
         public Inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs? ExternalElasticsearchLogsUserConfig { get; set; }
 
@@ -153,6 +156,7 @@ namespace Pulumi.Aiven
         public readonly string? DestinationEndpointId;
         public readonly string DestinationServiceName;
         public readonly Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult? ExternalAwsCloudwatchLogsUserConfig;
+        public readonly Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult? ExternalAwsCloudwatchMetricsUserConfig;
         public readonly Outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;
         public readonly Outputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigResult? ExternalGoogleCloudLoggingUserConfig;
         /// <summary>
@@ -188,6 +192,8 @@ namespace Pulumi.Aiven
             string destinationServiceName,
 
             Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult? externalAwsCloudwatchLogsUserConfig,
+
+            Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult? externalAwsCloudwatchMetricsUserConfig,
 
             Outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult? externalElasticsearchLogsUserConfig,
 
@@ -234,6 +240,7 @@ namespace Pulumi.Aiven
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
             ExternalAwsCloudwatchLogsUserConfig = externalAwsCloudwatchLogsUserConfig;
+            ExternalAwsCloudwatchMetricsUserConfig = externalAwsCloudwatchMetricsUserConfig;
             ExternalElasticsearchLogsUserConfig = externalElasticsearchLogsUserConfig;
             ExternalGoogleCloudLoggingUserConfig = externalGoogleCloudLoggingUserConfig;
             Id = id;

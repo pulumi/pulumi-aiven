@@ -21,7 +21,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, external_kafka_user_config=None, external_schema_registry_user_config=None, id=None, jolokia_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, signalfx_user_config=None):
+    def __init__(__self__, datadog_user_config=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_config=None, external_aws_cloudwatch_metrics_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, external_kafka_user_config=None, external_schema_registry_user_config=None, id=None, jolokia_user_config=None, project=None, prometheus_user_config=None, rsyslog_user_config=None, signalfx_user_config=None):
         if datadog_user_config and not isinstance(datadog_user_config, dict):
             raise TypeError("Expected argument 'datadog_user_config' to be a dict")
         pulumi.set(__self__, "datadog_user_config", datadog_user_config)
@@ -37,6 +37,9 @@ class GetServiceIntegrationEndpointResult:
         if external_aws_cloudwatch_logs_user_config and not isinstance(external_aws_cloudwatch_logs_user_config, dict):
             raise TypeError("Expected argument 'external_aws_cloudwatch_logs_user_config' to be a dict")
         pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
+        if external_aws_cloudwatch_metrics_user_config and not isinstance(external_aws_cloudwatch_metrics_user_config, dict):
+            raise TypeError("Expected argument 'external_aws_cloudwatch_metrics_user_config' to be a dict")
+        pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if external_elasticsearch_logs_user_config and not isinstance(external_elasticsearch_logs_user_config, dict):
             raise TypeError("Expected argument 'external_elasticsearch_logs_user_config' to be a dict")
         pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
@@ -96,6 +99,11 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
     def external_aws_cloudwatch_logs_user_config(self) -> Optional['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult']:
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
+    def external_aws_cloudwatch_metrics_user_config(self) -> Optional['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult']:
+        return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
     @property
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
@@ -162,6 +170,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             endpoint_name=self.endpoint_name,
             endpoint_type=self.endpoint_type,
             external_aws_cloudwatch_logs_user_config=self.external_aws_cloudwatch_logs_user_config,
+            external_aws_cloudwatch_metrics_user_config=self.external_aws_cloudwatch_metrics_user_config,
             external_elasticsearch_logs_user_config=self.external_elasticsearch_logs_user_config,
             external_google_cloud_logging_user_config=self.external_google_cloud_logging_user_config,
             external_kafka_user_config=self.external_kafka_user_config,
@@ -179,6 +188,7 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
                                      endpoint_name: Optional[str] = None,
                                      endpoint_type: Optional[str] = None,
                                      external_aws_cloudwatch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] = None,
+                                     external_aws_cloudwatch_metrics_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                                      external_elasticsearch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
                                      external_google_cloud_logging_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] = None,
                                      external_kafka_user_config: Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalKafkaUserConfigArgs']] = None,
@@ -218,6 +228,7 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
     __args__['endpointName'] = endpoint_name
     __args__['endpointType'] = endpoint_type
     __args__['externalAwsCloudwatchLogsUserConfig'] = external_aws_cloudwatch_logs_user_config
+    __args__['externalAwsCloudwatchMetricsUserConfig'] = external_aws_cloudwatch_metrics_user_config
     __args__['externalElasticsearchLogsUserConfig'] = external_elasticsearch_logs_user_config
     __args__['externalGoogleCloudLoggingUserConfig'] = external_google_cloud_logging_user_config
     __args__['externalKafkaUserConfig'] = external_kafka_user_config
@@ -239,6 +250,7 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
         endpoint_name=__ret__.endpoint_name,
         endpoint_type=__ret__.endpoint_type,
         external_aws_cloudwatch_logs_user_config=__ret__.external_aws_cloudwatch_logs_user_config,
+        external_aws_cloudwatch_metrics_user_config=__ret__.external_aws_cloudwatch_metrics_user_config,
         external_elasticsearch_logs_user_config=__ret__.external_elasticsearch_logs_user_config,
         external_google_cloud_logging_user_config=__ret__.external_google_cloud_logging_user_config,
         external_kafka_user_config=__ret__.external_kafka_user_config,

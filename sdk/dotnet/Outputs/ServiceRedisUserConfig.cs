@@ -16,6 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.ServiceRedisUserConfigMigration? Migration;
         public readonly Outputs.ServiceRedisUserConfigPrivateAccess? PrivateAccess;
+        public readonly Outputs.ServiceRedisUserConfigPrivatelinkAccess? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.ServiceRedisUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryBasebackupName;
@@ -35,6 +36,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.ServiceRedisUserConfigMigration? migration,
 
             Outputs.ServiceRedisUserConfigPrivateAccess? privateAccess,
+
+            Outputs.ServiceRedisUserConfigPrivatelinkAccess? privatelinkAccess,
 
             string? projectToForkFrom,
 
@@ -61,6 +64,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             Migration = migration;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;

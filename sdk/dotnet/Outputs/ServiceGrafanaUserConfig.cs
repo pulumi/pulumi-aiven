@@ -24,6 +24,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceGrafanaUserConfigAuthGoogle? AuthGoogle;
         public readonly string? CookieSamesite;
         public readonly string? CustomDomain;
+        public readonly string? DashboardsMinRefreshInterval;
         public readonly string? DashboardsVersionsToKeep;
         public readonly string? DataproxySendUserHeader;
         public readonly string? DataproxyTimeout;
@@ -34,6 +35,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? MetricsEnabled;
         public readonly Outputs.ServiceGrafanaUserConfigPrivateAccess? PrivateAccess;
+        public readonly Outputs.ServiceGrafanaUserConfigPrivatelinkAccess? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.ServiceGrafanaUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryBasebackupName;
@@ -67,6 +69,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
+            string? dashboardsMinRefreshInterval,
+
             string? dashboardsVersionsToKeep,
 
             string? dataproxySendUserHeader,
@@ -86,6 +90,8 @@ namespace Pulumi.Aiven.Outputs
             string? metricsEnabled,
 
             Outputs.ServiceGrafanaUserConfigPrivateAccess? privateAccess,
+
+            Outputs.ServiceGrafanaUserConfigPrivatelinkAccess? privatelinkAccess,
 
             string? projectToForkFrom,
 
@@ -114,6 +120,7 @@ namespace Pulumi.Aiven.Outputs
             AuthGoogle = authGoogle;
             CookieSamesite = cookieSamesite;
             CustomDomain = customDomain;
+            DashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             DashboardsVersionsToKeep = dashboardsVersionsToKeep;
             DataproxySendUserHeader = dataproxySendUserHeader;
             DataproxyTimeout = dataproxyTimeout;
@@ -124,6 +131,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             MetricsEnabled = metricsEnabled;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;

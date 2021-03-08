@@ -74,6 +74,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? InteractiveTimeout;
         /// <summary>
+        /// The slow_query_logs work as SQL statements that take
+        /// more than long_query_time seconds to execute. Default is 10s
+        /// </summary>
+        public readonly string? LongQueryTime;
+        /// <summary>
         /// Size of the largest message in bytes that can 
         /// be received by the server. Default is 67108864 (64M)
         /// </summary>
@@ -93,6 +98,11 @@ namespace Pulumi.Aiven.Outputs
         /// written to a connection before aborting the write.
         /// </summary>
         public readonly string? NetWriteTimeout;
+        /// <summary>
+        /// Slow query log enables capturing of slow queries.
+        /// Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off
+        /// </summary>
+        public readonly string? SlowQueryLog;
         /// <summary>
         /// Sort buffer size in bytes for ORDER BY optimization. 
         /// Default is 262144 (256K)
@@ -148,6 +158,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? interactiveTimeout,
 
+            string? longQueryTime,
+
             string? maxAllowedPacket,
 
             string? maxHeapTableSize,
@@ -155,6 +167,8 @@ namespace Pulumi.Aiven.Outputs
             string? netReadTimeout,
 
             string? netWriteTimeout,
+
+            string? slowQueryLog,
 
             string? sortBufferSize,
 
@@ -178,10 +192,12 @@ namespace Pulumi.Aiven.Outputs
             InnodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
             InteractiveTimeout = interactiveTimeout;
+            LongQueryTime = longQueryTime;
             MaxAllowedPacket = maxAllowedPacket;
             MaxHeapTableSize = maxHeapTableSize;
             NetReadTimeout = netReadTimeout;
             NetWriteTimeout = netWriteTimeout;
+            SlowQueryLog = slowQueryLog;
             SortBufferSize = sortBufferSize;
             SqlMode = sqlMode;
             SqlRequirePrimaryKey = sqlRequirePrimaryKey;

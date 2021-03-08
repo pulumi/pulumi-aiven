@@ -76,6 +76,9 @@ namespace Pulumi.Aiven
         [Input("externalAwsCloudwatchLogsUserConfig")]
         public Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs? ExternalAwsCloudwatchLogsUserConfig { get; set; }
 
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
+
         [Input("externalElasticsearchLogsUserConfig")]
         public Inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs? ExternalElasticsearchLogsUserConfig { get; set; }
 
@@ -124,6 +127,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string? EndpointType;
         public readonly Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult? ExternalAwsCloudwatchLogsUserConfig;
+        public readonly Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult? ExternalAwsCloudwatchMetricsUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult? ExternalGoogleCloudLoggingUserConfig;
         public readonly Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult? ExternalKafkaUserConfig;
@@ -150,6 +154,8 @@ namespace Pulumi.Aiven
 
             Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult? externalAwsCloudwatchLogsUserConfig,
 
+            Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult? externalAwsCloudwatchMetricsUserConfig,
+
             Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? externalElasticsearchLogsUserConfig,
 
             Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult? externalGoogleCloudLoggingUserConfig,
@@ -175,6 +181,7 @@ namespace Pulumi.Aiven
             EndpointName = endpointName;
             EndpointType = endpointType;
             ExternalAwsCloudwatchLogsUserConfig = externalAwsCloudwatchLogsUserConfig;
+            ExternalAwsCloudwatchMetricsUserConfig = externalAwsCloudwatchMetricsUserConfig;
             ExternalElasticsearchLogsUserConfig = externalElasticsearchLogsUserConfig;
             ExternalGoogleCloudLoggingUserConfig = externalGoogleCloudLoggingUserConfig;
             ExternalKafkaUserConfig = externalKafkaUserConfig;

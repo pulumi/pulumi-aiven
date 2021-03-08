@@ -48,6 +48,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("interactiveTimeout")]
         public Input<string>? InteractiveTimeout { get; set; }
 
+        [Input("longQueryTime")]
+        public Input<string>? LongQueryTime { get; set; }
+
         [Input("maxAllowedPacket")]
         public Input<string>? MaxAllowedPacket { get; set; }
 
@@ -59,6 +62,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("netWriteTimeout")]
         public Input<string>? NetWriteTimeout { get; set; }
+
+        [Input("slowQueryLog")]
+        public Input<string>? SlowQueryLog { get; set; }
 
         [Input("sortBufferSize")]
         public Input<string>? SortBufferSize { get; set; }

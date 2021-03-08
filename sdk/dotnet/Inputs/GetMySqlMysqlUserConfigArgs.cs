@@ -53,6 +53,12 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
+        /// Migrate data from existing server
+        /// </summary>
+        [Input("migration")]
+        public Inputs.GetMySqlMysqlUserConfigMigrationArgs? Migration { get; set; }
+
+        /// <summary>
         /// MySQL specific server provided values.
         /// </summary>
         [Input("mysql")]
@@ -69,6 +75,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("privateAccess")]
         public Inputs.GetMySqlMysqlUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Inputs.GetMySqlMysqlUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has

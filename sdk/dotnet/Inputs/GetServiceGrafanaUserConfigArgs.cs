@@ -45,6 +45,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("customDomain")]
         public string? CustomDomain { get; set; }
 
+        [Input("dashboardsMinRefreshInterval")]
+        public string? DashboardsMinRefreshInterval { get; set; }
+
         [Input("dashboardsVersionsToKeep")]
         public string? DashboardsVersionsToKeep { get; set; }
 
@@ -79,6 +82,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("privateAccess")]
         public Inputs.GetServiceGrafanaUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+
+        [Input("privatelinkAccess")]
+        public Inputs.GetServiceGrafanaUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
         public string? ProjectToForkFrom { get; set; }

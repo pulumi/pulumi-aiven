@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
     public partial class Cassandra : Pulumi.CustomResource
     {
         /// <summary>
-        /// Cassandra specific server provided values.
+        /// Cassandra configuration values
         /// </summary>
         [Output("cassandra")]
         public Output<Outputs.CassandraCassandra> CassandraServer { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.Aiven
     public sealed class CassandraArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cassandra specific server provided values.
+        /// Cassandra configuration values
         /// </summary>
         [Input("cassandra")]
         public Input<Inputs.CassandraCassandraArgs>? CassandraServer { get; set; }
@@ -347,7 +347,7 @@ namespace Pulumi.Aiven
     public sealed class CassandraState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cassandra specific server provided values.
+        /// Cassandra configuration values
         /// </summary>
         [Input("cassandra")]
         public Input<Inputs.CassandraCassandraGetArgs>? CassandraServer { get; set; }

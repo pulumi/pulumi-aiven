@@ -17,6 +17,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceInfluxdbUserConfigInfluxdb? Influxdb;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.ServiceInfluxdbUserConfigPrivateAccess? PrivateAccess;
+        public readonly Outputs.ServiceInfluxdbUserConfigPrivatelinkAccess? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.ServiceInfluxdbUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryBasebackupName;
@@ -32,6 +33,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceInfluxdbUserConfigPrivateAccess? privateAccess,
 
+            Outputs.ServiceInfluxdbUserConfigPrivatelinkAccess? privatelinkAccess,
+
             string? projectToForkFrom,
 
             Outputs.ServiceInfluxdbUserConfigPublicAccess? publicAccess,
@@ -44,6 +47,7 @@ namespace Pulumi.Aiven.Outputs
             Influxdb = influxdb;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;

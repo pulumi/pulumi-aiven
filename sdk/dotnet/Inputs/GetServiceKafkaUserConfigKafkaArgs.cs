@@ -24,6 +24,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("defaultReplicationFactor")]
         public string? DefaultReplicationFactor { get; set; }
 
+        [Input("groupInitialRebalanceDelayMs")]
+        public string? GroupInitialRebalanceDelayMs { get; set; }
+
         [Input("groupMaxSessionTimeoutMs")]
         public string? GroupMaxSessionTimeoutMs { get; set; }
 

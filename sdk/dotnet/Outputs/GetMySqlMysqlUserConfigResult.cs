@@ -38,6 +38,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
+        /// Migrate data from existing server
+        /// </summary>
+        public readonly Outputs.GetMySqlMysqlUserConfigMigrationResult? Migration;
+        /// <summary>
         /// MySQL specific server provided values.
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigMysqlResult? Mysql;
@@ -49,6 +53,10 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPrivateAccessResult? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.GetMySqlMysqlUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
@@ -81,11 +89,15 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            Outputs.GetMySqlMysqlUserConfigMigrationResult? migration,
+
             Outputs.GetMySqlMysqlUserConfigMysqlResult? mysql,
 
             string? mysqlVersion,
 
             Outputs.GetMySqlMysqlUserConfigPrivateAccessResult? privateAccess,
+
+            Outputs.GetMySqlMysqlUserConfigPrivatelinkAccessResult? privatelinkAccess,
 
             string? projectToForkFrom,
 
@@ -100,9 +112,11 @@ namespace Pulumi.Aiven.Outputs
             BackupHour = backupHour;
             BackupMinute = backupMinute;
             IpFilters = ipFilters;
+            Migration = migration;
             Mysql = mysql;
             MysqlVersion = mysqlVersion;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;

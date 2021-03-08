@@ -26,6 +26,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("privateAccess")]
         public Input<Inputs.ServiceKafkaConnectUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
+        [Input("privatelinkAccess")]
+        public Input<Inputs.ServiceKafkaConnectUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
+
         [Input("publicAccess")]
         public Input<Inputs.ServiceKafkaConnectUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 

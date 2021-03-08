@@ -77,6 +77,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
+     * External AWS cloudwatch mertrics specific user configurable settings
+     */
+    public readonly externalAwsCloudwatchMetricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig | undefined>;
+    /**
      * external elasticsearch specific user configurable settings
      */
     public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
@@ -131,6 +135,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["endpointName"] = state ? state.endpointName : undefined;
             inputs["endpointType"] = state ? state.endpointType : undefined;
             inputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
+            inputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
             inputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
             inputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
             inputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
@@ -155,6 +160,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             inputs["endpointName"] = args ? args.endpointName : undefined;
             inputs["endpointType"] = args ? args.endpointType : undefined;
             inputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
+            inputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
             inputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
             inputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
             inputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
@@ -199,6 +205,10 @@ export interface ServiceIntegrationEndpointState {
      * external AWS CloudWatch Logs specific user configurable settings
      */
     readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    /**
+     * External AWS cloudwatch mertrics specific user configurable settings
+     */
+    readonly externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * external elasticsearch specific user configurable settings
      */
@@ -259,6 +269,10 @@ export interface ServiceIntegrationEndpointArgs {
      * external AWS CloudWatch Logs specific user configurable settings
      */
     readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    /**
+     * External AWS cloudwatch mertrics specific user configurable settings
+     */
+    readonly externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * external elasticsearch specific user configurable settings
      */
