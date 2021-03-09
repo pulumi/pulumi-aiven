@@ -61,7 +61,7 @@ export class Cassandra extends pulumi.CustomResource {
     }
 
     /**
-     * Cassandra specific server provided values.
+     * Cassandra configuration values
      */
     public readonly cassandra!: pulumi.Output<outputs.CassandraCassandra>;
     /**
@@ -238,7 +238,7 @@ export class Cassandra extends pulumi.CustomResource {
  */
 export interface CassandraState {
     /**
-     * Cassandra specific server provided values.
+     * Cassandra configuration values
      */
     readonly cassandra?: pulumi.Input<inputs.CassandraCassandra>;
     /**
@@ -349,7 +349,7 @@ export interface CassandraState {
  */
 export interface CassandraArgs {
     /**
-     * Cassandra specific server provided values.
+     * Cassandra configuration values
      */
     readonly cassandra?: pulumi.Input<inputs.CassandraCassandra>;
     /**

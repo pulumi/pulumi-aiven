@@ -38,6 +38,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
+
+        /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]

@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
+        [Input("sortingAlgorithm")]
+        public Input<string>? SortingAlgorithm { get; set; }
+
         public ServiceElasticsearchUserConfigIndexPatternGetArgs()
         {
         }

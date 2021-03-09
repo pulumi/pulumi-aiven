@@ -22,6 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Host;
         /// <summary>
+        /// Comma-separated list of databases, which should be ignored during 
+        /// migration (supported by MySQL only at the moment)
+        /// </summary>
+        public readonly string? IgnoreDbs;
+        /// <summary>
         /// Password for authentication with the server where to migrate data from
         /// </summary>
         public readonly string? Password;
@@ -44,6 +49,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? host,
 
+            string? ignoreDbs,
+
             string? password,
 
             string? port,
@@ -54,6 +61,7 @@ namespace Pulumi.Aiven.Outputs
         {
             Dbname = dbname;
             Host = host;
+            IgnoreDbs = ignoreDbs;
             Password = password;
             Port = port;
             Ssl = ssl;

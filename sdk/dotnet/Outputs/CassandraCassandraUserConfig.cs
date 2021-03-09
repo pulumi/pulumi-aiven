@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class CassandraCassandraUserConfig
     {
         /// <summary>
+        /// Cassandra configuration values
+        /// </summary>
+        public readonly Outputs.CassandraCassandraUserConfigCassandra? Cassandra;
+        /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
@@ -39,6 +43,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private CassandraCassandraUserConfig(
+            Outputs.CassandraCassandraUserConfigCassandra? cassandra,
+
             ImmutableArray<string> ipFilters,
 
             string? migrateSstableloader,
@@ -51,6 +57,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom)
         {
+            Cassandra = cassandra;
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;

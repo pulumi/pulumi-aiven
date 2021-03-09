@@ -15,15 +15,19 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? MaxIndexCount;
         public readonly string? Pattern;
+        public readonly string? SortingAlgorithm;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigIndexPatternResult(
             string? maxIndexCount,
 
-            string? pattern)
+            string? pattern,
+
+            string? sortingAlgorithm)
         {
             MaxIndexCount = maxIndexCount;
             Pattern = pattern;
+            SortingAlgorithm = sortingAlgorithm;
         }
     }
 }

@@ -21,6 +21,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  endpoint_name: Optional[pulumi.Input[str]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
+                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
                  external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
                  external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
@@ -61,6 +62,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
                By the time of writing the only available option is `datadog`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch mertrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: external Google Cloud Logginig specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: external Kafka specific user configurable settings
@@ -96,6 +98,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'endpoint_type'")
             __props__['endpoint_type'] = endpoint_type
             __props__['external_aws_cloudwatch_logs_user_config'] = external_aws_cloudwatch_logs_user_config
+            __props__['external_aws_cloudwatch_metrics_user_config'] = external_aws_cloudwatch_metrics_user_config
             __props__['external_elasticsearch_logs_user_config'] = external_elasticsearch_logs_user_config
             __props__['external_google_cloud_logging_user_config'] = external_google_cloud_logging_user_config
             __props__['external_kafka_user_config'] = external_kafka_user_config
@@ -123,6 +126,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             endpoint_name: Optional[pulumi.Input[str]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
             external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
+            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
             external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
             external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
             external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
@@ -146,6 +150,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
                By the time of writing the only available option is `datadog`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch mertrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: external Google Cloud Logginig specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: external Kafka specific user configurable settings
@@ -165,6 +170,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         __props__["endpoint_name"] = endpoint_name
         __props__["endpoint_type"] = endpoint_type
         __props__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
+        __props__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
         __props__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
         __props__["external_google_cloud_logging_user_config"] = external_google_cloud_logging_user_config
         __props__["external_kafka_user_config"] = external_kafka_user_config
@@ -217,6 +223,14 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         external AWS CloudWatch Logs specific user configurable settings
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
+    def external_aws_cloudwatch_metrics_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig']]:
+        """
+        External AWS cloudwatch mertrics specific user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
     @property
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")

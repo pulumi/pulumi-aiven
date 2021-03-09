@@ -17,6 +17,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? CompressionType;
         public readonly string? ConnectionsMaxIdleMs;
         public readonly string? DefaultReplicationFactor;
+        public readonly string? GroupInitialRebalanceDelayMs;
         public readonly string? GroupMaxSessionTimeoutMs;
         public readonly string? GroupMinSessionTimeoutMs;
         public readonly string? LogCleanerDeleteRetentionMs;
@@ -61,6 +62,8 @@ namespace Pulumi.Aiven.Outputs
             string? connectionsMaxIdleMs,
 
             string? defaultReplicationFactor,
+
+            string? groupInitialRebalanceDelayMs,
 
             string? groupMaxSessionTimeoutMs,
 
@@ -134,6 +137,7 @@ namespace Pulumi.Aiven.Outputs
             CompressionType = compressionType;
             ConnectionsMaxIdleMs = connectionsMaxIdleMs;
             DefaultReplicationFactor = defaultReplicationFactor;
+            GroupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             GroupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             GroupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
             LogCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;

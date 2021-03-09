@@ -21,7 +21,7 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, dashboard_user_config=None, datadog_user_config=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, id=None, integration_type=None, kafka_connect_user_config=None, kafka_logs_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, m3aggregator_user_config=None, m3coordinator_user_config=None, metrics_user_config=None, mirrormaker_user_config=None, project=None, prometheus_user_config=None, read_replica_user_config=None, rsyslog_user_config=None, schema_registry_proxy_user_config=None, signalfx_user_config=None, source_endpoint_id=None, source_service_name=None):
+    def __init__(__self__, dashboard_user_config=None, datadog_user_config=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_config=None, external_aws_cloudwatch_metrics_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, id=None, integration_type=None, kafka_connect_user_config=None, kafka_logs_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, m3aggregator_user_config=None, m3coordinator_user_config=None, metrics_user_config=None, mirrormaker_user_config=None, project=None, prometheus_user_config=None, read_replica_user_config=None, rsyslog_user_config=None, schema_registry_proxy_user_config=None, signalfx_user_config=None, source_endpoint_id=None, source_service_name=None):
         if dashboard_user_config and not isinstance(dashboard_user_config, dict):
             raise TypeError("Expected argument 'dashboard_user_config' to be a dict")
         pulumi.set(__self__, "dashboard_user_config", dashboard_user_config)
@@ -37,6 +37,9 @@ class GetServiceIntegrationResult:
         if external_aws_cloudwatch_logs_user_config and not isinstance(external_aws_cloudwatch_logs_user_config, dict):
             raise TypeError("Expected argument 'external_aws_cloudwatch_logs_user_config' to be a dict")
         pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
+        if external_aws_cloudwatch_metrics_user_config and not isinstance(external_aws_cloudwatch_metrics_user_config, dict):
+            raise TypeError("Expected argument 'external_aws_cloudwatch_metrics_user_config' to be a dict")
+        pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if external_elasticsearch_logs_user_config and not isinstance(external_elasticsearch_logs_user_config, dict):
             raise TypeError("Expected argument 'external_elasticsearch_logs_user_config' to be a dict")
         pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
@@ -122,6 +125,11 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
     def external_aws_cloudwatch_logs_user_config(self) -> Optional['outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult']:
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
+    def external_aws_cloudwatch_metrics_user_config(self) -> Optional['outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult']:
+        return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
     @property
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
@@ -238,6 +246,7 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             destination_endpoint_id=self.destination_endpoint_id,
             destination_service_name=self.destination_service_name,
             external_aws_cloudwatch_logs_user_config=self.external_aws_cloudwatch_logs_user_config,
+            external_aws_cloudwatch_metrics_user_config=self.external_aws_cloudwatch_metrics_user_config,
             external_elasticsearch_logs_user_config=self.external_elasticsearch_logs_user_config,
             external_google_cloud_logging_user_config=self.external_google_cloud_logging_user_config,
             id=self.id,
@@ -265,6 +274,7 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
                             destination_endpoint_id: Optional[str] = None,
                             destination_service_name: Optional[str] = None,
                             external_aws_cloudwatch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
+                            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                             external_elasticsearch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
                             external_google_cloud_logging_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] = None,
                             integration_type: Optional[str] = None,
@@ -320,6 +330,7 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
     __args__['destinationEndpointId'] = destination_endpoint_id
     __args__['destinationServiceName'] = destination_service_name
     __args__['externalAwsCloudwatchLogsUserConfig'] = external_aws_cloudwatch_logs_user_config
+    __args__['externalAwsCloudwatchMetricsUserConfig'] = external_aws_cloudwatch_metrics_user_config
     __args__['externalElasticsearchLogsUserConfig'] = external_elasticsearch_logs_user_config
     __args__['externalGoogleCloudLoggingUserConfig'] = external_google_cloud_logging_user_config
     __args__['integrationType'] = integration_type
@@ -351,6 +362,7 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
         destination_endpoint_id=__ret__.destination_endpoint_id,
         destination_service_name=__ret__.destination_service_name,
         external_aws_cloudwatch_logs_user_config=__ret__.external_aws_cloudwatch_logs_user_config,
+        external_aws_cloudwatch_metrics_user_config=__ret__.external_aws_cloudwatch_metrics_user_config,
         external_elasticsearch_logs_user_config=__ret__.external_elasticsearch_logs_user_config,
         external_google_cloud_logging_user_config=__ret__.external_google_cloud_logging_user_config,
         id=__ret__.id,

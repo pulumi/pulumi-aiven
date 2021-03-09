@@ -43,6 +43,12 @@ namespace Pulumi.Aiven.Inputs
         public Inputs.GetInfluxDbInfluxdbUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Inputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+
+        /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>

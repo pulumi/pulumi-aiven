@@ -18,9 +18,11 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? BackupHour;
         public readonly string? BackupMinute;
         public readonly ImmutableArray<string> IpFilters;
+        public readonly Outputs.GetServiceMysqlUserConfigMigrationResult? Migration;
         public readonly Outputs.GetServiceMysqlUserConfigMysqlResult? Mysql;
         public readonly string? MysqlVersion;
         public readonly Outputs.GetServiceMysqlUserConfigPrivateAccessResult? PrivateAccess;
+        public readonly Outputs.GetServiceMysqlUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetServiceMysqlUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
@@ -38,11 +40,15 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            Outputs.GetServiceMysqlUserConfigMigrationResult? migration,
+
             Outputs.GetServiceMysqlUserConfigMysqlResult? mysql,
 
             string? mysqlVersion,
 
             Outputs.GetServiceMysqlUserConfigPrivateAccessResult? privateAccess,
+
+            Outputs.GetServiceMysqlUserConfigPrivatelinkAccessResult? privatelinkAccess,
 
             string? projectToForkFrom,
 
@@ -57,9 +63,11 @@ namespace Pulumi.Aiven.Outputs
             BackupHour = backupHour;
             BackupMinute = backupMinute;
             IpFilters = ipFilters;
+            Migration = migration;
             Mysql = mysql;
             MysqlVersion = mysqlVersion;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;

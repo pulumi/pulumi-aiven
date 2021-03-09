@@ -59,7 +59,7 @@ class Cassandra(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra specific server provided values.
+        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra configuration values
         :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: defines Cassandra specific additional configuration options. 
                The following configuration options available:
         :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
@@ -176,7 +176,7 @@ class Cassandra(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra specific server provided values.
+        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra configuration values
         :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: defines Cassandra specific additional configuration options. 
                The following configuration options available:
         :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
@@ -254,7 +254,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter
     def cassandra(self) -> pulumi.Output['outputs.CassandraCassandra']:
         """
-        Cassandra specific server provided values.
+        Cassandra configuration values
         """
         return pulumi.get(self, "cassandra")
 

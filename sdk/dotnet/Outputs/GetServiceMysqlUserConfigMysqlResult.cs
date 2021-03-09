@@ -25,10 +25,12 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? InnodbPrintAllDeadlocks;
         public readonly string? InnodbRollbackOnTimeout;
         public readonly string? InteractiveTimeout;
+        public readonly string? LongQueryTime;
         public readonly string? MaxAllowedPacket;
         public readonly string? MaxHeapTableSize;
         public readonly string? NetReadTimeout;
         public readonly string? NetWriteTimeout;
+        public readonly string? SlowQueryLog;
         public readonly string? SortBufferSize;
         public readonly string? SqlMode;
         public readonly string? SqlRequirePrimaryKey;
@@ -61,6 +63,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? interactiveTimeout,
 
+            string? longQueryTime,
+
             string? maxAllowedPacket,
 
             string? maxHeapTableSize,
@@ -68,6 +72,8 @@ namespace Pulumi.Aiven.Outputs
             string? netReadTimeout,
 
             string? netWriteTimeout,
+
+            string? slowQueryLog,
 
             string? sortBufferSize,
 
@@ -91,10 +97,12 @@ namespace Pulumi.Aiven.Outputs
             InnodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
             InteractiveTimeout = interactiveTimeout;
+            LongQueryTime = longQueryTime;
             MaxAllowedPacket = maxAllowedPacket;
             MaxHeapTableSize = maxHeapTableSize;
             NetReadTimeout = netReadTimeout;
             NetWriteTimeout = netWriteTimeout;
+            SlowQueryLog = slowQueryLog;
             SortBufferSize = sortBufferSize;
             SqlMode = sqlMode;
             SqlRequirePrimaryKey = sqlRequirePrimaryKey;

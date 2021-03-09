@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        [Input("ignoreDbs")]
+        public Input<string>? IgnoreDbs { get; set; }
+
         [Input("password")]
         public Input<string>? Password { get; set; }
 

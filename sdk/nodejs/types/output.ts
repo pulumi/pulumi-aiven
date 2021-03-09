@@ -9,6 +9,10 @@ export interface CassandraCassandra {
 
 export interface CassandraCassandraUserConfig {
     /**
+     * Cassandra configuration values
+     */
+    cassandra?: outputs.CassandraCassandraUserConfigCassandra;
+    /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilters?: string[];
@@ -31,6 +35,20 @@ export interface CassandraCassandraUserConfig {
      * when a new service is being created.
      */
     serviceToForkFrom?: string;
+}
+
+export interface CassandraCassandraUserConfigCassandra {
+    /**
+     * Fail any multiple-partition batch exceeding this value. 
+     * 50kb (10x warn threshold) by default.
+     */
+    batchSizeFailThresholdInKb?: string;
+    /**
+     * Log a warning message on any multiple-partition 
+     * batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
+     * the size of this thresholdas it can lead to node instability.
+     */
+    batchSizeWarnThresholdInKb?: string;
 }
 
 export interface CassandraCassandraUserConfigPrivateAccess {
@@ -139,6 +157,10 @@ export interface ElasticSearchElasticsearchUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivatelinkAccess;
     /**
      * Name of another project to fork a service from. This has 
      * effect only when a new service is being created.
@@ -308,6 +330,10 @@ export interface ElasticSearchElasticsearchUserConfigIndexPattern {
      * dots and glob characters (* and ?)
      */
     pattern?: string;
+    /**
+     * Deletion sorting algorithm
+     */
+    sortingAlgorithm?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigIndexTemplate {
@@ -363,6 +389,19 @@ export interface ElasticSearchElasticsearchUserConfigPrivateAccess {
     prometheus?: string;
 }
 
+export interface ElasticSearchElasticsearchUserConfigPrivatelinkAccess {
+    /**
+     * Allow clients to connect to elasticsearch from the public 
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
+    elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    kibana?: string;
+}
+
 export interface ElasticSearchElasticsearchUserConfigPublicAccess {
     /**
      * Allow clients to connect to elasticsearch from the public 
@@ -391,6 +430,10 @@ export interface GetCassandaCassandra {
 
 export interface GetCassandaCassandraUserConfig {
     /**
+     * Cassandra specific server provided values.
+     */
+    cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
+    /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilters?: string[];
@@ -413,6 +456,20 @@ export interface GetCassandaCassandraUserConfig {
      * when a new service is being created.
      */
     serviceToForkFrom?: string;
+}
+
+export interface GetCassandaCassandraUserConfigCassandra {
+    /**
+     * Fail any multiple-partition batch exceeding this value.
+     * 50kb (10x warn threshold) by default.
+     */
+    batchSizeFailThresholdInKb?: string;
+    /**
+     * Log a warning message on any multiple-partition
+     * batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
+     * the size of this thresholdas it can lead to node instability.
+     */
+    batchSizeWarnThresholdInKb?: string;
 }
 
 export interface GetCassandaCassandraUserConfigPrivateAccess {
@@ -520,6 +577,10 @@ export interface GetElasticSearchElasticsearchUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccess;
     /**
      * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
@@ -689,6 +750,10 @@ export interface GetElasticSearchElasticsearchUserConfigIndexPattern {
      * dots and glob characters (* and ?)
      */
     pattern?: string;
+    /**
+     * Deletion sorting algorithm
+     */
+    sortingAlgorithm?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigIndexTemplate {
@@ -741,6 +806,18 @@ export interface GetElasticSearchElasticsearchUserConfigPrivateAccess {
      * internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigPrivatelinkAccess {
+    /**
+     * Elasticsearch specific server provided values.
+     */
+    elasticsearch?: string;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    kibana?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPublicAccess {
@@ -834,6 +911,11 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     customDomain?: string;
     /**
+     * Signed sequence of decimal numbers, followed
+     * by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     */
+    dashboardsMinRefreshInterval?: string;
+    /**
      * Dashboard versions to keep per dashboard.
      */
     dashboardsVersionsToKeep?: string;
@@ -871,6 +953,10 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     metricsEnabled?: string;
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
     /**
      * Name of another project to fork a service from. This has 
      * effect only when a new service is being created.
@@ -1051,6 +1137,13 @@ export interface GetGrafanaGrafanaUserConfigPrivateAccess {
     grafana?: string;
 }
 
+export interface GetGrafanaGrafanaUserConfigPrivatelinkAccess {
+    /**
+     * Grafana specific server provided values.
+     */
+    grafana?: string;
+}
+
 export interface GetGrafanaGrafanaUserConfigPublicAccess {
     /**
      * Grafana specific server provided values.
@@ -1131,6 +1224,10 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
     /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
+    /**
      * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
      */
@@ -1186,6 +1283,13 @@ export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
     influxdb?: string;
 }
 
+export interface GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
+    /**
+     * InfluxDB specific server provided values.
+     */
+    influxdb?: string;
+}
+
 export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
     /**
      * InfluxDB specific server provided values.
@@ -1230,7 +1334,14 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      * Kafka Connect specific server provided values.
      */
     kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
     privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
 }
 
@@ -1298,7 +1409,18 @@ export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
      * Kafka Connect specific server provided values.
      */
     kafkaConnect?: string;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to 
+     * the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: string;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
+    /**
+     * Kafka Connect specific server provided values.
+     */
+    kafkaConnect?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
@@ -1306,6 +1428,10 @@ export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
      * Kafka Connect specific server provided values.
      */
     kafkaConnect?: string;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to 
+     * the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: string;
 }
 
@@ -1426,6 +1552,14 @@ export interface GetKafkaKafkaUserConfigKafka {
      * Replication factor for autocreated topics
      */
     defaultReplicationFactor?: string;
+    /**
+     * The amount of time, in milliseconds, the group
+     * coordinator will wait for more consumers to join a new group before performing the first rebalance.
+     * A longer delay means potentially fewer rebalances, but increases the time until processing begins.
+     * The default value for this is 3 seconds. During development and testing it might be desirable to set
+     * this to 0 in order to not delay test execution time.
+     */
+    groupInitialRebalanceDelayMs?: string;
     /**
      * The maximum allowed session timeout for registered 
      * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
@@ -2124,10 +2258,19 @@ export interface GetM3DbServiceIntegration {
 
 export interface GetMySqlComponent {
     component: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * Port number of the server where to migrate data from
+     */
     port: number;
     route: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl: boolean;
     usage: string;
 }
@@ -2161,6 +2304,10 @@ export interface GetMySqlMysqlUserConfig {
      */
     ipFilters?: string[];
     /**
+     * Migrate data from existing server
+     */
+    migration?: outputs.GetMySqlMysqlUserConfigMigration;
+    /**
      * MySQL specific server provided values.
      */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
@@ -2172,6 +2319,10 @@ export interface GetMySqlMysqlUserConfig {
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetMySqlMysqlUserConfigPrivatelinkAccess;
     /**
      * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
@@ -2191,6 +2342,38 @@ export interface GetMySqlMysqlUserConfig {
      * a new service is being created.
      */
     serviceToForkFrom?: string;
+}
+
+export interface GetMySqlMysqlUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection
+     */
+    dbname?: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
+    host?: string;
+    /**
+     * Comma-separated list of databases, which should be ignored
+     * during migration (supported by MySQL only at the moment)
+     */
+    ignoreDbs?: string;
+    /**
+     * Password for authentication with the server where to migrate data from
+     */
+    password?: string;
+    /**
+     * Port number of the server where to migrate data from
+     */
+    port?: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
+    ssl?: string;
+    /**
+     * User name for authentication with the server where to migrate data from
+     */
+    username?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMysql {
@@ -2255,6 +2438,11 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     interactiveTimeout?: string;
     /**
+     * The slowQueryLogs work as SQL statements that take
+     * more than longQueryTime seconds to execute. Default is 10s
+     */
+    longQueryTime?: string;
+    /**
      * Size of the largest message in bytes that can 
      * be received by the server. Default is 67108864 (64M)
      */
@@ -2274,6 +2462,11 @@ export interface GetMySqlMysqlUserConfigMysql {
      * written to a connection before aborting the write.
      */
     netWriteTimeout?: string;
+    /**
+     * Slow query log enables capturing of slow queries.
+     * Setting slowQueryLog to false also truncates the mysql.slow_log table. Default is off
+     */
+    slowQueryLog?: string;
     /**
      * Sort buffer size in bytes for ORDER BY optimization. 
      * Default is 262144 (256K)
@@ -2314,6 +2507,13 @@ export interface GetMySqlMysqlUserConfigPrivateAccess {
      * for service nodes that are in a project VPC or another type of private network
      */
     prometheus?: string;
+}
+
+export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
+    /**
+     * MySQL specific server provided values.
+     */
+    mysql?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
@@ -2505,6 +2705,11 @@ export interface GetPgPgUserConfigMigration {
      * PostgreSQL master node host IP or name
      */
     host?: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during
+     * migration (supported by MySQL only at the moment)
+     */
+    ignoreDbs?: string;
     /**
      * PostgreSQL admin user password
      */
@@ -2851,6 +3056,10 @@ export interface GetRedisRedisUserConfig {
      */
     privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
     /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetRedisRedisUserConfigPrivatelinkAccess;
+    /**
      * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
      */
@@ -2905,6 +3114,11 @@ export interface GetRedisRedisUserConfigMigration {
      */
     host?: string;
     /**
+     * Comma-separated list of databases, which should be ignored during
+     * migration (supported by MySQL only at the moment)
+     */
+    ignoreDbs?: string;
+    /**
      * Password for authentication with the server where to migrate data from
      */
     password?: string;
@@ -2934,6 +3148,13 @@ export interface GetRedisRedisUserConfigPrivateAccess {
     redis?: string;
 }
 
+export interface GetRedisRedisUserConfigPrivatelinkAccess {
+    /**
+     * Redis specific server provided values.
+     */
+    redis?: string;
+}
+
 export interface GetRedisRedisUserConfigPublicAccess {
     /**
      * Allow clients to connect to prometheus from the public internet 
@@ -2955,12 +3176,18 @@ export interface GetServiceCassandra {
 }
 
 export interface GetServiceCassandraUserConfig {
+    cassandra?: outputs.GetServiceCassandraUserConfigCassandra;
     ipFilters?: string[];
     migrateSstableloader?: string;
     privateAccess?: outputs.GetServiceCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
+}
+
+export interface GetServiceCassandraUserConfigCassandra {
+    batchSizeFailThresholdInKb?: string;
+    batchSizeWarnThresholdInKb?: string;
 }
 
 export interface GetServiceCassandraUserConfigPrivateAccess {
@@ -2996,6 +3223,7 @@ export interface GetServiceElasticsearchUserConfig {
     kibana?: outputs.GetServiceElasticsearchUserConfigKibana;
     maxIndexCount?: string;
     privateAccess?: outputs.GetServiceElasticsearchUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServiceElasticsearchUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceElasticsearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -3033,6 +3261,7 @@ export interface GetServiceElasticsearchUserConfigElasticsearch {
 export interface GetServiceElasticsearchUserConfigIndexPattern {
     maxIndexCount?: string;
     pattern?: string;
+    sortingAlgorithm?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigIndexTemplate {
@@ -3051,6 +3280,11 @@ export interface GetServiceElasticsearchUserConfigPrivateAccess {
     elasticsearch?: string;
     kibana?: string;
     prometheus?: string;
+}
+
+export interface GetServiceElasticsearchUserConfigPrivatelinkAccess {
+    elasticsearch?: string;
+    kibana?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigPublicAccess {
@@ -3074,6 +3308,7 @@ export interface GetServiceGrafanaUserConfig {
     authGoogle?: outputs.GetServiceGrafanaUserConfigAuthGoogle;
     cookieSamesite?: string;
     customDomain?: string;
+    dashboardsMinRefreshInterval?: string;
     dashboardsVersionsToKeep?: string;
     dataproxySendUserHeader?: string;
     dataproxyTimeout?: string;
@@ -3084,6 +3319,7 @@ export interface GetServiceGrafanaUserConfig {
     ipFilters?: string[];
     metricsEnabled?: string;
     privateAccess?: outputs.GetServiceGrafanaUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServiceGrafanaUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceGrafanaUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -3143,6 +3379,10 @@ export interface GetServiceGrafanaUserConfigPrivateAccess {
     grafana?: string;
 }
 
+export interface GetServiceGrafanaUserConfigPrivatelinkAccess {
+    grafana?: string;
+}
+
 export interface GetServiceGrafanaUserConfigPublicAccess {
     grafana?: string;
 }
@@ -3167,6 +3407,7 @@ export interface GetServiceInfluxdbUserConfig {
     influxdb?: outputs.GetServiceInfluxdbUserConfigInfluxdb;
     ipFilters?: string[];
     privateAccess?: outputs.GetServiceInfluxdbUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServiceInfluxdbUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -3182,6 +3423,10 @@ export interface GetServiceInfluxdbUserConfigInfluxdb {
 }
 
 export interface GetServiceInfluxdbUserConfigPrivateAccess {
+    influxdb?: string;
+}
+
+export interface GetServiceInfluxdbUserConfigPrivatelinkAccess {
     influxdb?: string;
 }
 
@@ -3210,6 +3455,13 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     accessKey?: string;
     logGroupName?: string;
+    region?: string;
+    secretKey?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
+    accessKey?: string;
+    namespace?: string;
     region?: string;
     secretKey?: string;
 }
@@ -3276,6 +3528,9 @@ export interface GetServiceIntegrationEndpointSignalfxUserConfig {
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+}
+
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 }
 
 export interface GetServiceIntegrationExternalElasticsearchLogsUserConfig {
@@ -3399,6 +3654,7 @@ export interface GetServiceKafkaConnectUserConfig {
     ipFilters?: string[];
     kafkaConnect?: outputs.GetServiceKafkaConnectUserConfigKafkaConnect;
     privateAccess?: outputs.GetServiceKafkaConnectUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServiceKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetServiceKafkaConnectUserConfigPublicAccess;
 }
 
@@ -3419,6 +3675,10 @@ export interface GetServiceKafkaConnectUserConfigKafkaConnect {
 export interface GetServiceKafkaConnectUserConfigPrivateAccess {
     kafkaConnect?: string;
     prometheus?: string;
+}
+
+export interface GetServiceKafkaConnectUserConfigPrivatelinkAccess {
+    kafkaConnect?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigPublicAccess {
@@ -3463,6 +3723,7 @@ export interface GetServiceKafkaUserConfigKafka {
     compressionType?: string;
     connectionsMaxIdleMs?: string;
     defaultReplicationFactor?: string;
+    groupInitialRebalanceDelayMs?: string;
     groupMaxSessionTimeoutMs?: string;
     groupMinSessionTimeoutMs?: string;
     logCleanerDeleteRetentionMs?: string;
@@ -3560,13 +3821,25 @@ export interface GetServiceMysqlUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: outputs.GetServiceMysqlUserConfigMigration;
     mysql?: outputs.GetServiceMysqlUserConfigMysql;
     mysqlVersion?: string;
     privateAccess?: outputs.GetServiceMysqlUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServiceMysqlUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+}
+
+export interface GetServiceMysqlUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    ignoreDbs?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface GetServiceMysqlUserConfigMysql {
@@ -3582,10 +3855,12 @@ export interface GetServiceMysqlUserConfigMysql {
     innodbPrintAllDeadlocks?: string;
     innodbRollbackOnTimeout?: string;
     interactiveTimeout?: string;
+    longQueryTime?: string;
     maxAllowedPacket?: string;
     maxHeapTableSize?: string;
     netReadTimeout?: string;
     netWriteTimeout?: string;
+    slowQueryLog?: string;
     sortBufferSize?: string;
     sqlMode?: string;
     sqlRequirePrimaryKey?: string;
@@ -3596,6 +3871,10 @@ export interface GetServiceMysqlUserConfigMysql {
 export interface GetServiceMysqlUserConfigPrivateAccess {
     mysql?: string;
     prometheus?: string;
+}
+
+export interface GetServiceMysqlUserConfigPrivatelinkAccess {
+    mysql?: string;
 }
 
 export interface GetServiceMysqlUserConfigPublicAccess {
@@ -3643,6 +3922,7 @@ export interface GetServicePgUserConfig {
 export interface GetServicePgUserConfigMigration {
     dbname?: string;
     host?: string;
+    ignoreDbs?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -3734,6 +4014,7 @@ export interface GetServiceRedisUserConfig {
     ipFilters?: string[];
     migration?: outputs.GetServiceRedisUserConfigMigration;
     privateAccess?: outputs.GetServiceRedisUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetServiceRedisUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -3750,6 +4031,7 @@ export interface GetServiceRedisUserConfig {
 export interface GetServiceRedisUserConfigMigration {
     dbname?: string;
     host?: string;
+    ignoreDbs?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -3758,6 +4040,10 @@ export interface GetServiceRedisUserConfigMigration {
 
 export interface GetServiceRedisUserConfigPrivateAccess {
     prometheus?: string;
+    redis?: string;
+}
+
+export interface GetServiceRedisUserConfigPrivatelinkAccess {
     redis?: string;
 }
 
@@ -3840,6 +4126,11 @@ export interface GrafanaGrafanaUserConfig {
      */
     customDomain?: string;
     /**
+     * Signed sequence of decimal numbers, followed 
+     * by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     */
+    dashboardsMinRefreshInterval?: string;
+    /**
      * Dashboard versions to keep per dashboard.
      */
     dashboardsVersionsToKeep?: string;
@@ -3877,6 +4168,10 @@ export interface GrafanaGrafanaUserConfig {
      */
     metricsEnabled?: string;
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
     /**
      * Name of another project to fork a service from. This has 
      * effect only when a new service is being created.
@@ -4058,6 +4353,14 @@ export interface GrafanaGrafanaUserConfigPrivateAccess {
     grafana?: string;
 }
 
+export interface GrafanaGrafanaUserConfigPrivatelinkAccess {
+    /**
+     * Allow clients to connect to grafana from the public internet for service nodes that 
+     * are in a project VPC or another type of private network.
+     */
+    grafana?: string;
+}
+
 export interface GrafanaGrafanaUserConfigPublicAccess {
     /**
      * Allow clients to connect to grafana from the public internet for service nodes that 
@@ -4139,6 +4442,10 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
     /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
+    /**
      * Name of another project to fork a service from. This has 
      * effect only when a new service is being created.
      */
@@ -4194,6 +4501,13 @@ export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     influxdb?: string;
 }
 
+export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
+    /**
+     * influxdb.conf configuration values
+     */
+    influxdb?: string;
+}
+
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
      * influxdb.conf configuration values
@@ -4243,6 +4557,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     /**
      * Allow access to selected service ports from the public Internet.
      */
@@ -4321,6 +4639,14 @@ export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
      * nodes that are in a project VPC or another type of private network.
      */
     prometheus?: string;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
+    /**
+     * Allow clients to connect to kafkaConnect from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    kafkaConnect?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
@@ -4453,6 +4779,14 @@ export interface KafkaKafkaUserConfigKafka {
      * Replication factor for autocreated topics
      */
     defaultReplicationFactor?: string;
+    /**
+     * The amount of time, in milliseconds, the group 
+     * coordinator will wait for more consumers to join a new group before performing the first rebalance.
+     * A longer delay means potentially fewer rebalances, but increases the time until processing begins.
+     * The default value for this is 3 seconds. During development and testing it might be desirable to set
+     * this to 0 in order to not delay test execution time.
+     */
+    groupInitialRebalanceDelayMs?: string;
     /**
      * The maximum allowed session timeout for registered 
      * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
@@ -5151,10 +5485,19 @@ export interface M3DbServiceIntegration {
 
 export interface MySqlComponent {
     component: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
     host: string;
     kafkaAuthenticationMethod: string;
+    /**
+     * Port number of the server where to migrate data from
+     */
     port: number;
     route: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
     ssl: boolean;
     usage: string;
 }
@@ -5188,6 +5531,10 @@ export interface MySqlMysqlUserConfig {
      */
     ipFilters?: string[];
     /**
+     * Migrate data from existing server
+     */
+    migration?: outputs.MySqlMysqlUserConfigMigration;
+    /**
      * Allow clients to connect to mysql from the public internet for service 
      * nodes that are in a project VPC or another type of private network
      */
@@ -5200,6 +5547,10 @@ export interface MySqlMysqlUserConfig {
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.MySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.MySqlMysqlUserConfigPrivatelinkAccess;
     /**
      * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
@@ -5219,6 +5570,38 @@ export interface MySqlMysqlUserConfig {
      * a new service is being created.
      */
     serviceToForkFrom?: string;
+}
+
+export interface MySqlMysqlUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection
+     */
+    dbname?: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
+    host?: string;
+    /**
+     * Comma-separated list of databases, which should be ignored 
+     * during migration (supported by MySQL only at the moment)
+     */
+    ignoreDbs?: string;
+    /**
+     * Password for authentication with the server where to migrate data from
+     */
+    password?: string;
+    /**
+     * Port number of the server where to migrate data from
+     */
+    port?: string;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
+    ssl?: string;
+    /**
+     * User name for authentication with the server where to migrate data from
+     */
+    username?: string;
 }
 
 export interface MySqlMysqlUserConfigMysql {
@@ -5283,6 +5666,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     interactiveTimeout?: string;
     /**
+     * The slowQueryLogs work as SQL statements that take 
+     * more than longQueryTime seconds to execute. Default is 10s
+     */
+    longQueryTime?: string;
+    /**
      * Size of the largest message in bytes that can 
      * be received by the server. Default is 67108864 (64M)
      */
@@ -5302,6 +5690,11 @@ export interface MySqlMysqlUserConfigMysql {
      * written to a connection before aborting the write.
      */
     netWriteTimeout?: string;
+    /**
+     * Slow query log enables capturing of slow queries. 
+     * Setting slowQueryLog to false also truncates the mysql.slow_log table. Default is off
+     */
+    slowQueryLog?: string;
     /**
      * Sort buffer size in bytes for ORDER BY optimization. 
      * Default is 262144 (256K)
@@ -5343,6 +5736,14 @@ export interface MySqlMysqlUserConfigPrivateAccess {
      * for service nodes that are in a project VPC or another type of private network
      */
     prometheus?: string;
+}
+
+export interface MySqlMysqlUserConfigPrivatelinkAccess {
+    /**
+     * Allow clients to connect to mysql from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysql?: string;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
@@ -5535,6 +5936,11 @@ export interface PgPgUserConfigMigration {
      * hostname or IP address of the server where to migrate data from.
      */
     host?: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during 
+     * migration (supported by MySQL only at the moment)
+     */
+    ignoreDbs?: string;
     /**
      * password for authentication with the server where to migrate data from.
      */
@@ -5881,6 +6287,10 @@ export interface RedisRedisUserConfig {
      */
     privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
     /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.RedisRedisUserConfigPrivatelinkAccess;
+    /**
      * Name of another project to fork a service from. This has
      * effect only when a new service is being created.
      */
@@ -5935,6 +6345,11 @@ export interface RedisRedisUserConfigMigration {
      */
     host?: string;
     /**
+     * Comma-separated list of databases, which should be ignored during 
+     * migration (supported by MySQL only at the moment)
+     */
+    ignoreDbs?: string;
+    /**
      * Password for authentication with the server where to migrate data from
      */
     password?: string;
@@ -5965,6 +6380,14 @@ export interface RedisRedisUserConfigPrivateAccess {
     redis?: string;
 }
 
+export interface RedisRedisUserConfigPrivatelinkAccess {
+    /**
+     * Allow clients to connect to redis from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
+    redis?: string;
+}
+
 export interface RedisRedisUserConfigPublicAccess {
     /**
      * Allow clients to connect to prometheus from the public internet 
@@ -5987,12 +6410,18 @@ export interface ServiceCassandra {
 }
 
 export interface ServiceCassandraUserConfig {
+    cassandra?: outputs.ServiceCassandraUserConfigCassandra;
     ipFilters?: string[];
     migrateSstableloader?: string;
     privateAccess?: outputs.ServiceCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.ServiceCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
+}
+
+export interface ServiceCassandraUserConfigCassandra {
+    batchSizeFailThresholdInKb?: string;
+    batchSizeWarnThresholdInKb?: string;
 }
 
 export interface ServiceCassandraUserConfigPrivateAccess {
@@ -6028,6 +6457,7 @@ export interface ServiceElasticsearchUserConfig {
     kibana?: outputs.ServiceElasticsearchUserConfigKibana;
     maxIndexCount?: string;
     privateAccess?: outputs.ServiceElasticsearchUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServiceElasticsearchUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.ServiceElasticsearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -6065,6 +6495,7 @@ export interface ServiceElasticsearchUserConfigElasticsearch {
 export interface ServiceElasticsearchUserConfigIndexPattern {
     maxIndexCount?: string;
     pattern?: string;
+    sortingAlgorithm?: string;
 }
 
 export interface ServiceElasticsearchUserConfigIndexTemplate {
@@ -6083,6 +6514,11 @@ export interface ServiceElasticsearchUserConfigPrivateAccess {
     elasticsearch?: string;
     kibana?: string;
     prometheus?: string;
+}
+
+export interface ServiceElasticsearchUserConfigPrivatelinkAccess {
+    elasticsearch?: string;
+    kibana?: string;
 }
 
 export interface ServiceElasticsearchUserConfigPublicAccess {
@@ -6106,6 +6542,7 @@ export interface ServiceGrafanaUserConfig {
     authGoogle?: outputs.ServiceGrafanaUserConfigAuthGoogle;
     cookieSamesite?: string;
     customDomain?: string;
+    dashboardsMinRefreshInterval?: string;
     dashboardsVersionsToKeep?: string;
     dataproxySendUserHeader?: string;
     dataproxyTimeout?: string;
@@ -6116,6 +6553,7 @@ export interface ServiceGrafanaUserConfig {
     ipFilters?: string[];
     metricsEnabled?: string;
     privateAccess?: outputs.ServiceGrafanaUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServiceGrafanaUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.ServiceGrafanaUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -6175,6 +6613,10 @@ export interface ServiceGrafanaUserConfigPrivateAccess {
     grafana?: string;
 }
 
+export interface ServiceGrafanaUserConfigPrivatelinkAccess {
+    grafana?: string;
+}
+
 export interface ServiceGrafanaUserConfigPublicAccess {
     grafana?: string;
 }
@@ -6199,6 +6641,7 @@ export interface ServiceInfluxdbUserConfig {
     influxdb?: outputs.ServiceInfluxdbUserConfigInfluxdb;
     ipFilters?: string[];
     privateAccess?: outputs.ServiceInfluxdbUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServiceInfluxdbUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.ServiceInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -6214,6 +6657,10 @@ export interface ServiceInfluxdbUserConfigInfluxdb {
 }
 
 export interface ServiceInfluxdbUserConfigPrivateAccess {
+    influxdb?: string;
+}
+
+export interface ServiceInfluxdbUserConfigPrivatelinkAccess {
     influxdb?: string;
 }
 
@@ -6242,6 +6689,13 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     accessKey?: string;
     logGroupName?: string;
+    region?: string;
+    secretKey?: string;
+}
+
+export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
+    accessKey?: string;
+    namespace?: string;
     region?: string;
     secretKey?: string;
 }
@@ -6308,6 +6762,9 @@ export interface ServiceIntegrationEndpointSignalfxUserConfig {
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 }
 
 export interface ServiceIntegrationExternalElasticsearchLogsUserConfig {
@@ -6431,6 +6888,7 @@ export interface ServiceKafkaConnectUserConfig {
     ipFilters?: string[];
     kafkaConnect?: outputs.ServiceKafkaConnectUserConfigKafkaConnect;
     privateAccess?: outputs.ServiceKafkaConnectUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServiceKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.ServiceKafkaConnectUserConfigPublicAccess;
 }
 
@@ -6451,6 +6909,10 @@ export interface ServiceKafkaConnectUserConfigKafkaConnect {
 export interface ServiceKafkaConnectUserConfigPrivateAccess {
     kafkaConnect?: string;
     prometheus?: string;
+}
+
+export interface ServiceKafkaConnectUserConfigPrivatelinkAccess {
+    kafkaConnect?: string;
 }
 
 export interface ServiceKafkaConnectUserConfigPublicAccess {
@@ -6495,6 +6957,7 @@ export interface ServiceKafkaUserConfigKafka {
     compressionType?: string;
     connectionsMaxIdleMs?: string;
     defaultReplicationFactor?: string;
+    groupInitialRebalanceDelayMs?: string;
     groupMaxSessionTimeoutMs?: string;
     groupMinSessionTimeoutMs?: string;
     logCleanerDeleteRetentionMs?: string;
@@ -6592,13 +7055,25 @@ export interface ServiceMysqlUserConfig {
     backupHour?: string;
     backupMinute?: string;
     ipFilters?: string[];
+    migration?: outputs.ServiceMysqlUserConfigMigration;
     mysql?: outputs.ServiceMysqlUserConfigMysql;
     mysqlVersion?: string;
     privateAccess?: outputs.ServiceMysqlUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServiceMysqlUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.ServiceMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+}
+
+export interface ServiceMysqlUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    ignoreDbs?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface ServiceMysqlUserConfigMysql {
@@ -6614,10 +7089,12 @@ export interface ServiceMysqlUserConfigMysql {
     innodbPrintAllDeadlocks?: string;
     innodbRollbackOnTimeout?: string;
     interactiveTimeout?: string;
+    longQueryTime?: string;
     maxAllowedPacket?: string;
     maxHeapTableSize?: string;
     netReadTimeout?: string;
     netWriteTimeout?: string;
+    slowQueryLog?: string;
     sortBufferSize?: string;
     sqlMode?: string;
     sqlRequirePrimaryKey?: string;
@@ -6628,6 +7105,10 @@ export interface ServiceMysqlUserConfigMysql {
 export interface ServiceMysqlUserConfigPrivateAccess {
     mysql?: string;
     prometheus?: string;
+}
+
+export interface ServiceMysqlUserConfigPrivatelinkAccess {
+    mysql?: string;
 }
 
 export interface ServiceMysqlUserConfigPublicAccess {
@@ -6675,6 +7156,7 @@ export interface ServicePgUserConfig {
 export interface ServicePgUserConfigMigration {
     dbname?: string;
     host?: string;
+    ignoreDbs?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -6766,6 +7248,7 @@ export interface ServiceRedisUserConfig {
     ipFilters?: string[];
     migration?: outputs.ServiceRedisUserConfigMigration;
     privateAccess?: outputs.ServiceRedisUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.ServiceRedisUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.ServiceRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
@@ -6782,6 +7265,7 @@ export interface ServiceRedisUserConfig {
 export interface ServiceRedisUserConfigMigration {
     dbname?: string;
     host?: string;
+    ignoreDbs?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -6790,6 +7274,10 @@ export interface ServiceRedisUserConfigMigration {
 
 export interface ServiceRedisUserConfigPrivateAccess {
     prometheus?: string;
+    redis?: string;
+}
+
+export interface ServiceRedisUserConfigPrivatelinkAccess {
     redis?: string;
 }
 

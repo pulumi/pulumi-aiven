@@ -57,6 +57,8 @@ type ServiceIntegrationEndpoint struct {
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	// External AWS cloudwatch mertrics specific user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
 	// external Google Cloud Logginig specific user configurable settings
@@ -127,6 +129,8 @@ type serviceIntegrationEndpointState struct {
 	EndpointType *string `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	// External AWS cloudwatch mertrics specific user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
 	// external Google Cloud Logginig specific user configurable settings
@@ -160,6 +164,8 @@ type ServiceIntegrationEndpointState struct {
 	EndpointType pulumi.StringPtrInput
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
+	// External AWS cloudwatch mertrics specific user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
 	// external Google Cloud Logginig specific user configurable settings
@@ -195,6 +201,8 @@ type serviceIntegrationEndpointArgs struct {
 	EndpointType string `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	// External AWS cloudwatch mertrics specific user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
 	// external Google Cloud Logginig specific user configurable settings
@@ -227,6 +235,8 @@ type ServiceIntegrationEndpointArgs struct {
 	EndpointType pulumi.StringInput
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
+	// External AWS cloudwatch mertrics specific user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// external elasticsearch specific user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
 	// external Google Cloud Logginig specific user configurable settings

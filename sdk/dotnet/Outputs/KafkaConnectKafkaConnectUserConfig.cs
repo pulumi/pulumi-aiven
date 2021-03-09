@@ -27,6 +27,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
@@ -39,11 +43,14 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess? privateAccess,
 
+            Outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess? privatelinkAccess,
+
             Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? publicAccess)
         {
             IpFilters = ipFilters;
             KafkaConnect = kafkaConnect;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
         }
     }

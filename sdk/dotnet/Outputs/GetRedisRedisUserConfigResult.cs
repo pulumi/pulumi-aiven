@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.GetRedisRedisUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
+        /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
@@ -77,6 +81,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetRedisRedisUserConfigPrivateAccessResult? privateAccess,
 
+            Outputs.GetRedisRedisUserConfigPrivatelinkAccessResult? privatelinkAccess,
+
             string? projectToForkFrom,
 
             Outputs.GetRedisRedisUserConfigPublicAccessResult? publicAccess,
@@ -102,6 +108,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             Migration = migration;
             PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;

@@ -25,6 +25,13 @@ namespace Pulumi.Aiven.Inputs
         public string? Host { get; set; }
 
         /// <summary>
+        /// Comma-separated list of databases, which should be ignored during
+        /// migration (supported by MySQL only at the moment)
+        /// </summary>
+        [Input("ignoreDbs")]
+        public string? IgnoreDbs { get; set; }
+
+        /// <summary>
         /// Password for authentication with the server where to migrate data from
         /// </summary>
         [Input("password")]

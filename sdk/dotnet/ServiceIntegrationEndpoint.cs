@@ -75,6 +75,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig?> ExternalAwsCloudwatchLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// </summary>
+        [Output("externalAwsCloudwatchMetricsUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig?> ExternalAwsCloudwatchMetricsUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// external elasticsearch specific user configurable settings
         /// </summary>
         [Output("externalElasticsearchLogsUserConfig")]
@@ -201,6 +207,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
 
         /// <summary>
+        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
+
+        /// <summary>
         /// external elasticsearch specific user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
@@ -298,6 +310,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalAwsCloudwatchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigGetArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigGetArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
         /// external elasticsearch specific user configurable settings

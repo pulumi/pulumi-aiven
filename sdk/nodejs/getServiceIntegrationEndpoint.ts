@@ -37,6 +37,7 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
         "endpointName": args.endpointName,
         "endpointType": args.endpointType,
         "externalAwsCloudwatchLogsUserConfig": args.externalAwsCloudwatchLogsUserConfig,
+        "externalAwsCloudwatchMetricsUserConfig": args.externalAwsCloudwatchMetricsUserConfig,
         "externalElasticsearchLogsUserConfig": args.externalElasticsearchLogsUserConfig,
         "externalGoogleCloudLoggingUserConfig": args.externalGoogleCloudLoggingUserConfig,
         "externalKafkaUserConfig": args.externalKafkaUserConfig,
@@ -66,6 +67,7 @@ export interface GetServiceIntegrationEndpointArgs {
      */
     readonly endpointType?: string;
     readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
+    readonly externalAwsCloudwatchMetricsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
     readonly externalKafkaUserConfig?: inputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
@@ -93,6 +95,7 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly endpointType?: string;
     readonly externalAwsCloudwatchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
+    readonly externalAwsCloudwatchMetricsUserConfig?: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
     readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
     readonly externalGoogleCloudLoggingUserConfig?: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
     readonly externalKafkaUserConfig?: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;

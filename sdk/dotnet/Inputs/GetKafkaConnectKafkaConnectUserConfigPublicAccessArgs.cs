@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Inputs
         [Input("kafkaConnect")]
         public string? KafkaConnect { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to prometheus with a DNS name that always resolves to 
+        /// the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         [Input("prometheus")]
         public string? Prometheus { get; set; }
 

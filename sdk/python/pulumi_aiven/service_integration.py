@@ -22,6 +22,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
+                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]] = None,
                  external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
@@ -79,6 +80,7 @@ class ServiceIntegration(pulumi.CustomResource):
                reference syntax described above to set up the dependency correctly.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: External AWS Cloudwatch logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch metrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: External Elasticsearch logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: External Google Cloud Logging specific user configurable settings
         :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values include `dashboard`
@@ -127,6 +129,7 @@ class ServiceIntegration(pulumi.CustomResource):
             __props__['destination_endpoint_id'] = destination_endpoint_id
             __props__['destination_service_name'] = destination_service_name
             __props__['external_aws_cloudwatch_logs_user_config'] = external_aws_cloudwatch_logs_user_config
+            __props__['external_aws_cloudwatch_metrics_user_config'] = external_aws_cloudwatch_metrics_user_config
             __props__['external_elasticsearch_logs_user_config'] = external_elasticsearch_logs_user_config
             __props__['external_google_cloud_logging_user_config'] = external_google_cloud_logging_user_config
             if integration_type is None and not opts.urn:
@@ -165,6 +168,7 @@ class ServiceIntegration(pulumi.CustomResource):
             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
             destination_service_name: Optional[pulumi.Input[str]] = None,
             external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
+            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
             external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]] = None,
             external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']]] = None,
             integration_type: Optional[pulumi.Input[str]] = None,
@@ -199,6 +203,7 @@ class ServiceIntegration(pulumi.CustomResource):
                reference syntax described above to set up the dependency correctly.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: External AWS Cloudwatch logs specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch metrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: External Elasticsearch logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: External Google Cloud Logging specific user configurable settings
         :param pulumi.Input[str] integration_type: identifies the type of integration that is set up. Possible values include `dashboard`
@@ -234,6 +239,7 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__["destination_endpoint_id"] = destination_endpoint_id
         __props__["destination_service_name"] = destination_service_name
         __props__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
+        __props__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
         __props__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
         __props__["external_google_cloud_logging_user_config"] = external_google_cloud_logging_user_config
         __props__["integration_type"] = integration_type
@@ -297,6 +303,14 @@ class ServiceIntegration(pulumi.CustomResource):
         External AWS Cloudwatch logs specific user configurable settings
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
+    def external_aws_cloudwatch_metrics_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig']]:
+        """
+        External AWS cloudwatch metrics specific user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
     @property
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")

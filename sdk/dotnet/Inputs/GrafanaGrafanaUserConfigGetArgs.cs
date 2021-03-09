@@ -83,6 +83,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? CustomDomain { get; set; }
 
         /// <summary>
+        /// Signed sequence of decimal numbers, followed 
+        /// by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+        /// </summary>
+        [Input("dashboardsMinRefreshInterval")]
+        public Input<string>? DashboardsMinRefreshInterval { get; set; }
+
+        /// <summary>
         /// Dashboard versions to keep per dashboard.
         /// </summary>
         [Input("dashboardsVersionsToKeep")]
@@ -145,6 +152,12 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("privateAccess")]
         public Input<Inputs.GrafanaGrafanaUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
+
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Input<Inputs.GrafanaGrafanaUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has 

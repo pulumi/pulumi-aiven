@@ -17,6 +17,10 @@ namespace Pulumi.Aiven.Outputs
         /// Kafka Connect specific server provided values.
         /// </summary>
         public readonly string? KafkaConnect;
+        /// <summary>
+        /// Allow clients to connect to prometheus with a DNS name that always resolves to 
+        /// the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly string? Prometheus;
 
         [OutputConstructor]
