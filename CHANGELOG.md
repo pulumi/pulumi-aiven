@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.1.8 of the Aiven Terraform Provider
+_(none)_
 
 ---
+
+## 3.4.5 (2021-03-09)
+* Upgrade to v2.1.8 of the Aiven Terraform Provider
 
 ## 3.4.4 (2021-02-16)
 * Ensure the version is passed correctly to the ldflag as part of the build to prevent panic
