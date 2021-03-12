@@ -8,6 +8,7 @@ from .account_authentication import *
 from .account_team import *
 from .account_team_member import *
 from .account_team_project import *
+from .aws_privatelink import *
 from .billing_group import *
 from .cassandra import *
 from .connection_pool import *
@@ -19,6 +20,7 @@ from .get_account_authentication import *
 from .get_account_team import *
 from .get_account_team_member import *
 from .get_account_team_project import *
+from .get_aws_privatelink import *
 from .get_cassanda import *
 from .get_connection_pool import *
 from .get_database import *
@@ -106,6 +108,8 @@ def _register_module():
                 return AccountTeamMember(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "aiven:index/accountTeamProject:AccountTeamProject":
                 return AccountTeamProject(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "aiven:index/awsPrivatelink:AwsPrivatelink":
+                return AwsPrivatelink(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "aiven:index/billingGroup:BillingGroup":
                 return BillingGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "aiven:index/cassandra:Cassandra":
@@ -178,6 +182,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("aiven", "index/accountTeam", _module_instance)
     pulumi.runtime.register_resource_module("aiven", "index/accountTeamMember", _module_instance)
     pulumi.runtime.register_resource_module("aiven", "index/accountTeamProject", _module_instance)
+    pulumi.runtime.register_resource_module("aiven", "index/awsPrivatelink", _module_instance)
     pulumi.runtime.register_resource_module("aiven", "index/billingGroup", _module_instance)
     pulumi.runtime.register_resource_module("aiven", "index/cassandra", _module_instance)
     pulumi.runtime.register_resource_module("aiven", "index/connectionPool", _module_instance)
