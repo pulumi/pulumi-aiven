@@ -96,12 +96,12 @@ class KafkaTopic(pulumi.CustomResource):
 
             if cleanup_policy is not None and not opts.urn:
                 warnings.warn("""use config.cleanup_policy instead""", DeprecationWarning)
-                pulumi.log.warn("cleanup_policy is deprecated: use config.cleanup_policy instead")
+                pulumi.log.warn("""cleanup_policy is deprecated: use config.cleanup_policy instead""")
             __props__['cleanup_policy'] = cleanup_policy
             __props__['config'] = config
             if minimum_in_sync_replicas is not None and not opts.urn:
                 warnings.warn("""use config.min_insync_replicas instead""", DeprecationWarning)
-                pulumi.log.warn("minimum_in_sync_replicas is deprecated: use config.min_insync_replicas instead")
+                pulumi.log.warn("""minimum_in_sync_replicas is deprecated: use config.min_insync_replicas instead""")
             __props__['minimum_in_sync_replicas'] = minimum_in_sync_replicas
             if partitions is None and not opts.urn:
                 raise TypeError("Missing required property 'partitions'")
@@ -114,11 +114,11 @@ class KafkaTopic(pulumi.CustomResource):
             __props__['replication'] = replication
             if retention_bytes is not None and not opts.urn:
                 warnings.warn("""use config.retention_bytes instead""", DeprecationWarning)
-                pulumi.log.warn("retention_bytes is deprecated: use config.retention_bytes instead")
+                pulumi.log.warn("""retention_bytes is deprecated: use config.retention_bytes instead""")
             __props__['retention_bytes'] = retention_bytes
             if retention_hours is not None and not opts.urn:
                 warnings.warn("""use config.retention_ms instead""", DeprecationWarning)
-                pulumi.log.warn("retention_hours is deprecated: use config.retention_ms instead")
+                pulumi.log.warn("""retention_hours is deprecated: use config.retention_ms instead""")
             __props__['retention_hours'] = retention_hours
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")

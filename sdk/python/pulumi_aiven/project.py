@@ -89,30 +89,30 @@ class Project(pulumi.CustomResource):
             __props__['available_credits'] = available_credits
             if billing_address is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("billing_address is deprecated: Please use aiven_billing_group resource to set this value.")
+                pulumi.log.warn("""billing_address is deprecated: Please use aiven_billing_group resource to set this value.""")
             __props__['billing_address'] = billing_address
             if billing_currency is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("billing_currency is deprecated: Please use aiven_billing_group resource to set this value.")
+                pulumi.log.warn("""billing_currency is deprecated: Please use aiven_billing_group resource to set this value.""")
             __props__['billing_currency'] = billing_currency
             if billing_emails is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("billing_emails is deprecated: Please use aiven_billing_group resource to set this value.")
+                pulumi.log.warn("""billing_emails is deprecated: Please use aiven_billing_group resource to set this value.""")
             __props__['billing_emails'] = billing_emails
             if billing_extra_text is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("billing_extra_text is deprecated: Please use aiven_billing_group resource to set this value.")
+                pulumi.log.warn("""billing_extra_text is deprecated: Please use aiven_billing_group resource to set this value.""")
             __props__['billing_extra_text'] = billing_extra_text
             __props__['billing_group'] = billing_group
             __props__['ca_cert'] = ca_cert
             if card_id is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("card_id is deprecated: Please use aiven_billing_group resource to set this value.")
+                pulumi.log.warn("""card_id is deprecated: Please use aiven_billing_group resource to set this value.""")
             __props__['card_id'] = card_id
             __props__['copy_from_project'] = copy_from_project
             if country_code is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("country_code is deprecated: Please use aiven_billing_group resource to set this value.")
+                pulumi.log.warn("""country_code is deprecated: Please use aiven_billing_group resource to set this value.""")
             __props__['country_code'] = country_code
             __props__['default_cloud'] = default_cloud
             if project is None and not opts.urn:
@@ -121,7 +121,7 @@ class Project(pulumi.CustomResource):
             __props__['technical_emails'] = technical_emails
             if vat_id is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("vat_id is deprecated: Please use aiven_billing_group resource to set this value.")
+                pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
             __props__['vat_id'] = vat_id
             __props__['country'] = None
             __props__['estimated_balance'] = None
