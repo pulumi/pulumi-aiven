@@ -183,6 +183,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_vpc_peering_connection":         {Tok: makeResource(mainMod, "VpcPeeringConnection")},
 			"aiven_m3aggregator":                   {Tok: makeResource(mainMod, "M3Aggregator")},
 			"aiven_m3db":                           {Tok: makeResource(mainMod, "M3Db")},
+			"aiven_aws_privatelink":                {Tok: makeResource(mainMod, "AwsPrivatelink")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_account":                      {Tok: makeDataSource(mainMod, "getAccount")},
@@ -240,6 +241,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_vpc_peering_connection":         {Tok: makeDataSource(mainMod, "getVpcPeeringConnection")},
 			"aiven_m3aggregator":                   {Tok: makeDataSource(mainMod, "getM3Aggregator")},
 			"aiven_m3db":                           {Tok: makeDataSource(mainMod, "getM3Db")},
+			"aiven_aws_privatelink":                {Tok: makeDataSource(mainMod, "getAwsPrivatelink")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

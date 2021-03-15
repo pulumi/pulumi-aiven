@@ -10,6 +10,7 @@ export * from "./accountAuthentication";
 export * from "./accountTeam";
 export * from "./accountTeamMember";
 export * from "./accountTeamProject";
+export * from "./awsPrivatelink";
 export * from "./billingGroup";
 export * from "./cassandra";
 export * from "./connectionPool";
@@ -21,6 +22,7 @@ export * from "./getAccountAuthentication";
 export * from "./getAccountTeam";
 export * from "./getAccountTeamMember";
 export * from "./getAccountTeamProject";
+export * from "./getAwsPrivatelink";
 export * from "./getCassanda";
 export * from "./getConnectionPool";
 export * from "./getDatabase";
@@ -94,6 +96,7 @@ import { AccountAuthentication } from "./accountAuthentication";
 import { AccountTeam } from "./accountTeam";
 import { AccountTeamMember } from "./accountTeamMember";
 import { AccountTeamProject } from "./accountTeamProject";
+import { AwsPrivatelink } from "./awsPrivatelink";
 import { BillingGroup } from "./billingGroup";
 import { Cassandra } from "./cassandra";
 import { ConnectionPool } from "./connectionPool";
@@ -140,6 +143,8 @@ const _module = {
                 return new AccountTeamMember(name, <any>undefined, { urn })
             case "aiven:index/accountTeamProject:AccountTeamProject":
                 return new AccountTeamProject(name, <any>undefined, { urn })
+            case "aiven:index/awsPrivatelink:AwsPrivatelink":
+                return new AwsPrivatelink(name, <any>undefined, { urn })
             case "aiven:index/billingGroup:BillingGroup":
                 return new BillingGroup(name, <any>undefined, { urn })
             case "aiven:index/cassandra:Cassandra":
@@ -212,6 +217,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/accountAuthentication", _m
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeam", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamMember", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamProject", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/awsPrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/billingGroup", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/cassandra", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)

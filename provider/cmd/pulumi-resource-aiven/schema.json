@@ -23362,6 +23362,92 @@
                 "type": "object"
             }
         },
+        "aiven:index/awsPrivatelink:AwsPrivatelink": {
+            "description": "## # AWS Privatelink Resource\n\nThe AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.AwsPrivatelink(\"foo\", {\n    project: data.aiven_project.foo.project,\n    serviceName: aiven_kafka.bar.service_name,\n    principals: [\"arn:aws:iam::012345678901:user/mwf\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.AwsPrivatelink(\"foo\",\n    project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    service_name=aiven_kafka[\"bar\"][\"service_name\"],\n    principals=[\"arn:aws:iam::012345678901:user/mwf\"])\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Aiven.AwsPrivatelink(\"foo\", new Aiven.AwsPrivatelinkArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            ServiceName = aiven_kafka.Bar.Service_name,\n            Principals = \n            {\n                \"arn:aws:iam::012345678901:user/mwf\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewAwsPrivatelink(ctx, \"foo\", \u0026aiven.AwsPrivatelinkArgs{\n\t\t\tProject:     pulumi.Any(data.Aiven_project.Foo.Project),\n\t\t\tServiceName: pulumi.Any(aiven_kafka.Bar.Service_name),\n\t\t\tPrincipals: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"arn:aws:iam::012345678901:user/mwf\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "awsServiceId": {
+                    "type": "string",
+                    "description": "AWS service ID.\n"
+                },
+                "awsServiceName": {
+                    "type": "string",
+                    "description": "AWS service name.\n"
+                },
+                "principals": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of allowed principals\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "identifies the project the service belongs to. To set up proper dependency between the project\nand the service, refer to the project as shown in the above example. Project cannot be changed later without\ndestroying and re-creating the service.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "specifies the actual name of the service. The name cannot be changed later without\ndestroying and re-creating the service so name should be picked based on intended service usage rather than current\nattributes.\n"
+                }
+            },
+            "required": [
+                "awsServiceId",
+                "awsServiceName",
+                "principals",
+                "project",
+                "serviceName"
+            ],
+            "inputProperties": {
+                "principals": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of allowed principals\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "identifies the project the service belongs to. To set up proper dependency between the project\nand the service, refer to the project as shown in the above example. Project cannot be changed later without\ndestroying and re-creating the service.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "specifies the actual name of the service. The name cannot be changed later without\ndestroying and re-creating the service so name should be picked based on intended service usage rather than current\nattributes.\n"
+                }
+            },
+            "requiredInputs": [
+                "principals",
+                "project",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AwsPrivatelink resources.\n",
+                "properties": {
+                    "awsServiceId": {
+                        "type": "string",
+                        "description": "AWS service ID.\n"
+                    },
+                    "awsServiceName": {
+                        "type": "string",
+                        "description": "AWS service name.\n"
+                    },
+                    "principals": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "list of allowed principals\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "identifies the project the service belongs to. To set up proper dependency between the project\nand the service, refer to the project as shown in the above example. Project cannot be changed later without\ndestroying and re-creating the service.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "specifies the actual name of the service. The name cannot be changed later without\ndestroying and re-creating the service so name should be picked based on intended service usage rather than current\nattributes.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/billingGroup:BillingGroup": {
             "properties": {
                 "accountId": {
@@ -29811,6 +29897,80 @@
                     "accountId",
                     "projectName",
                     "teamId",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getAwsPrivatelink:getAwsPrivatelink": {
+            "description": "## # AWS Privatelink Data Source\n\nThe AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = aiven.getAwsPrivatelink({\n    project: data.aiven_project.foo.project,\n    serviceName: aiven_kafka.bar.service_name,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.get_aws_privatelink(project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    service_name=aiven_kafka[\"bar\"][\"service_name\"])\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Aiven.GetAwsPrivatelink.InvokeAsync(new Aiven.GetAwsPrivatelinkArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            ServiceName = aiven_kafka.Bar.Service_name,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupAwsPrivatelink(ctx, \u0026aiven.LookupAwsPrivatelinkArgs{\n\t\t\tProject:     data.Aiven_project.Foo.Project,\n\t\t\tServiceName: aiven_kafka.Bar.Service_name,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAwsPrivatelink.\n",
+                "properties": {
+                    "awsServiceId": {
+                        "type": "string",
+                        "description": "AWS service ID.\n"
+                    },
+                    "awsServiceName": {
+                        "type": "string",
+                        "description": "AWS service name.\n"
+                    },
+                    "principals": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "list of allowed principals\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "identifies the project the service belongs to. To set up proper dependency between the project\nand the service, refer to the project as shown in the above example. Project cannot be changed later without\ndestroying and re-creating the service.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "specifies the actual name of the service. The name cannot be changed later without\ndestroying and re-creating the service so name should be picked based on intended service usage rather than current\nattributes.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAwsPrivatelink.\n",
+                "properties": {
+                    "awsServiceId": {
+                        "type": "string",
+                        "description": "AWS service ID.\n"
+                    },
+                    "awsServiceName": {
+                        "type": "string",
+                        "description": "AWS service name.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "principals": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "list of allowed principals\n"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "awsServiceId",
+                    "awsServiceName",
+                    "project",
+                    "serviceName",
                     "id"
                 ]
             }

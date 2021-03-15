@@ -30,6 +30,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewAccountTeamMember(ctx, name, nil, pulumi.URN_(urn))
 	case "aiven:index/accountTeamProject:AccountTeamProject":
 		r, err = NewAccountTeamProject(ctx, name, nil, pulumi.URN_(urn))
+	case "aiven:index/awsPrivatelink:AwsPrivatelink":
+		r, err = NewAwsPrivatelink(ctx, name, nil, pulumi.URN_(urn))
 	case "aiven:index/billingGroup:BillingGroup":
 		r, err = NewBillingGroup(ctx, name, nil, pulumi.URN_(urn))
 	case "aiven:index/cassandra:Cassandra":
@@ -143,6 +145,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/accountTeamProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/awsPrivatelink",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
