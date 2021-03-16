@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.5.0 (2021-03-16)
 * Upgrade to v2.1.9 of the Aiven Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.21.0
 * Release macOS arm64 binary
-
----
 
 ## 3.4.5 (2021-03-09)
 * Upgrade to v2.1.8 of the Aiven Terraform Provider
