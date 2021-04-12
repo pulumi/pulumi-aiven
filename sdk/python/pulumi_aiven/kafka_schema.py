@@ -5,13 +5,105 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['KafkaSchema']
+__all__ = ['KafkaSchemaArgs', 'KafkaSchema']
+
+@pulumi.input_type
+class KafkaSchemaArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 schema: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 subject_name: pulumi.Input[str],
+                 compatibility_level: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a KafkaSchema resource.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+               They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] schema: is Kafka Schema configuration should be a valid Avro Schema JSON format.
+        :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
+        :param pulumi.Input[str] subject_name: is Kafka Schema subject name.
+        :param pulumi.Input[str] compatibility_level: configuration compatibility level overrides specific subject
+               resource. If the compatibility level not specified for the individual subject by default,
+               it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+               `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "subject_name", subject_name)
+        if compatibility_level is not None:
+            pulumi.set(__self__, "compatibility_level", compatibility_level)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+        They should be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        is Kafka Schema configuration should be a valid Avro Schema JSON format.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Service to link the Kafka Schema to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="subjectName")
+    def subject_name(self) -> pulumi.Input[str]:
+        """
+        is Kafka Schema subject name.
+        """
+        return pulumi.get(self, "subject_name")
+
+    @subject_name.setter
+    def subject_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subject_name", value)
+
+    @property
+    @pulumi.getter(name="compatibilityLevel")
+    def compatibility_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        configuration compatibility level overrides specific subject
+        resource. If the compatibility level not specified for the individual subject by default,
+        it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        """
+        return pulumi.get(self, "compatibility_level")
+
+    @compatibility_level.setter
+    def compatibility_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compatibility_level", value)
 
 
 class KafkaSchema(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +159,67 @@ class KafkaSchema(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: Service to link the Kafka Schema to
         :param pulumi.Input[str] subject_name: is Kafka Schema subject name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KafkaSchemaArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Kafka Schema Resource
+
+        The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_service["kafka-service1"]["service_name"],
+            subject_name="kafka-schema1",
+            compatibility_level="FORWARD",
+            schema=\"\"\"    {
+               "doc": "example",
+               "fields": [{
+                   "default": 5,
+                   "doc": "my test number",
+                   "name": "test",
+                   "namespace": "test",
+                   "type": "int"
+               }],
+               "name": "example",
+               "namespace": "example",
+               "type": "record"
+            }
+        \"\"\")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KafkaSchemaArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KafkaSchemaArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compatibility_level: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 subject_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

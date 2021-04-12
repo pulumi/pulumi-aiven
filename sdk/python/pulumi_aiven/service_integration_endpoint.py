@@ -5,15 +5,248 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServiceIntegrationEndpoint']
+__all__ = ['ServiceIntegrationEndpointArgs', 'ServiceIntegrationEndpoint']
+
+@pulumi.input_type
+class ServiceIntegrationEndpointArgs:
+    def __init__(__self__, *,
+                 endpoint_name: pulumi.Input[str],
+                 endpoint_type: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 datadog_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs']] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] = None,
+                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
+                 external_google_cloud_logging_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] = None,
+                 external_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] = None,
+                 external_schema_registry_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] = None,
+                 jolokia_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs']] = None,
+                 prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs']] = None,
+                 rsyslog_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs']] = None,
+                 signalfx_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointSignalfxUserConfigArgs']] = None):
+        """
+        The set of arguments for constructing a ServiceIntegrationEndpoint resource.
+        :param pulumi.Input[str] endpoint_name: is the name of the endpoint. This value has no effect beyond being used
+               to identify different integration endpoints.
+        :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
+               By the time of writing the only available option is `datadog`.
+        :param pulumi.Input[str] project: defines the project the endpoint is associated with.
+        :param pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs'] datadog_user_config: Datadog specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch mertrics specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs'] external_google_cloud_logging_user_config: external Google Cloud Logginig specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs'] external_kafka_user_config: external Kafka specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs'] external_schema_registry_user_config: External schema registry specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs'] jolokia_user_config: Jolokia specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs'] prometheus_user_config: Prometheus specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs'] rsyslog_user_config: rsyslog specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointSignalfxUserConfigArgs'] signalfx_user_config: Signalfx specific user configurable settings
+        """
+        pulumi.set(__self__, "endpoint_name", endpoint_name)
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "project", project)
+        if datadog_user_config is not None:
+            pulumi.set(__self__, "datadog_user_config", datadog_user_config)
+        if external_aws_cloudwatch_logs_user_config is not None:
+            pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
+        if external_aws_cloudwatch_metrics_user_config is not None:
+            pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
+        if external_elasticsearch_logs_user_config is not None:
+            pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
+        if external_google_cloud_logging_user_config is not None:
+            pulumi.set(__self__, "external_google_cloud_logging_user_config", external_google_cloud_logging_user_config)
+        if external_kafka_user_config is not None:
+            pulumi.set(__self__, "external_kafka_user_config", external_kafka_user_config)
+        if external_schema_registry_user_config is not None:
+            pulumi.set(__self__, "external_schema_registry_user_config", external_schema_registry_user_config)
+        if jolokia_user_config is not None:
+            pulumi.set(__self__, "jolokia_user_config", jolokia_user_config)
+        if prometheus_user_config is not None:
+            pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
+        if rsyslog_user_config is not None:
+            pulumi.set(__self__, "rsyslog_user_config", rsyslog_user_config)
+        if signalfx_user_config is not None:
+            pulumi.set(__self__, "signalfx_user_config", signalfx_user_config)
+
+    @property
+    @pulumi.getter(name="endpointName")
+    def endpoint_name(self) -> pulumi.Input[str]:
+        """
+        is the name of the endpoint. This value has no effect beyond being used
+        to identify different integration endpoints.
+        """
+        return pulumi.get(self, "endpoint_name")
+
+    @endpoint_name.setter
+    def endpoint_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_name", value)
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> pulumi.Input[str]:
+        """
+        is the type of the external service this endpoint is associated with.
+        By the time of writing the only available option is `datadog`.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        defines the project the endpoint is associated with.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="datadogUserConfig")
+    def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs']]:
+        """
+        Datadog specific user configurable settings
+        """
+        return pulumi.get(self, "datadog_user_config")
+
+    @datadog_user_config.setter
+    def datadog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs']]):
+        pulumi.set(self, "datadog_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
+    def external_aws_cloudwatch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]:
+        """
+        external AWS CloudWatch Logs specific user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @external_aws_cloudwatch_logs_user_config.setter
+    def external_aws_cloudwatch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_aws_cloudwatch_logs_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
+    def external_aws_cloudwatch_metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]:
+        """
+        External AWS cloudwatch mertrics specific user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
+
+    @external_aws_cloudwatch_metrics_user_config.setter
+    def external_aws_cloudwatch_metrics_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]):
+        pulumi.set(self, "external_aws_cloudwatch_metrics_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
+    def external_elasticsearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]:
+        """
+        external elasticsearch specific user configurable settings
+        """
+        return pulumi.get(self, "external_elasticsearch_logs_user_config")
+
+    @external_elasticsearch_logs_user_config.setter
+    def external_elasticsearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_elasticsearch_logs_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalGoogleCloudLoggingUserConfig")
+    def external_google_cloud_logging_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]:
+        """
+        external Google Cloud Logginig specific user configurable settings
+        """
+        return pulumi.get(self, "external_google_cloud_logging_user_config")
+
+    @external_google_cloud_logging_user_config.setter
+    def external_google_cloud_logging_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]):
+        pulumi.set(self, "external_google_cloud_logging_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalKafkaUserConfig")
+    def external_kafka_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]:
+        """
+        external Kafka specific user configurable settings
+        """
+        return pulumi.get(self, "external_kafka_user_config")
+
+    @external_kafka_user_config.setter
+    def external_kafka_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]):
+        pulumi.set(self, "external_kafka_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalSchemaRegistryUserConfig")
+    def external_schema_registry_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]:
+        """
+        External schema registry specific user configurable settings
+        """
+        return pulumi.get(self, "external_schema_registry_user_config")
+
+    @external_schema_registry_user_config.setter
+    def external_schema_registry_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]):
+        pulumi.set(self, "external_schema_registry_user_config", value)
+
+    @property
+    @pulumi.getter(name="jolokiaUserConfig")
+    def jolokia_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs']]:
+        """
+        Jolokia specific user configurable settings
+        """
+        return pulumi.get(self, "jolokia_user_config")
+
+    @jolokia_user_config.setter
+    def jolokia_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs']]):
+        pulumi.set(self, "jolokia_user_config", value)
+
+    @property
+    @pulumi.getter(name="prometheusUserConfig")
+    def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs']]:
+        """
+        Prometheus specific user configurable settings
+        """
+        return pulumi.get(self, "prometheus_user_config")
+
+    @prometheus_user_config.setter
+    def prometheus_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs']]):
+        pulumi.set(self, "prometheus_user_config", value)
+
+    @property
+    @pulumi.getter(name="rsyslogUserConfig")
+    def rsyslog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs']]:
+        """
+        rsyslog specific user configurable settings
+        """
+        return pulumi.get(self, "rsyslog_user_config")
+
+    @rsyslog_user_config.setter
+    def rsyslog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs']]):
+        pulumi.set(self, "rsyslog_user_config", value)
+
+    @property
+    @pulumi.getter(name="signalfxUserConfig")
+    def signalfx_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointSignalfxUserConfigArgs']]:
+        """
+        Signalfx specific user configurable settings
+        """
+        return pulumi.get(self, "signalfx_user_config")
+
+    @signalfx_user_config.setter
+    def signalfx_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointSignalfxUserConfigArgs']]):
+        pulumi.set(self, "signalfx_user_config", value)
 
 
 class ServiceIntegrationEndpoint(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +306,64 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']] rsyslog_user_config: rsyslog specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointSignalfxUserConfigArgs']] signalfx_user_config: Signalfx specific user configurable settings
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServiceIntegrationEndpointArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Service Integration Endpoint Resource
+
+        The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myendpoint = aiven.ServiceIntegrationEndpoint("myendpoint",
+            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
+                datadog_api_key="<DATADOG_API_KEY>",
+            ),
+            endpoint_name="<ENDPOINT_NAME>",
+            endpoint_type="datadog",
+            project=aiven_project["myproject"]["project"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ServiceIntegrationEndpointArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceIntegrationEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']]] = None,
+                 endpoint_name: Optional[pulumi.Input[str]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
+                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
+                 external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
+                 external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
+                 external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
+                 jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
+                 rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None,
+                 signalfx_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointSignalfxUserConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

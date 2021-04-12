@@ -5,13 +5,96 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['TransitGatewayVpcAttachment']
+__all__ = ['TransitGatewayVpcAttachmentArgs', 'TransitGatewayVpcAttachment']
+
+@pulumi.input_type
+class TransitGatewayVpcAttachmentArgs:
+    def __init__(__self__, *,
+                 peer_cloud_account: pulumi.Input[str],
+                 peer_region: pulumi.Input[str],
+                 peer_vpc: pulumi.Input[str],
+                 user_peer_network_cidrs: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 vpc_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a TransitGatewayVpcAttachment resource.
+        :param pulumi.Input[str] peer_cloud_account: AWS account ID of the peered VPC.
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        :param pulumi.Input[str] peer_vpc: Transit gateway ID
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
+        :param pulumi.Input[str] vpc_id: is the Aiven VPC the peering connection is associated with.
+        """
+        pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
+        pulumi.set(__self__, "peer_region", peer_region)
+        pulumi.set(__self__, "peer_vpc", peer_vpc)
+        pulumi.set(__self__, "user_peer_network_cidrs", user_peer_network_cidrs)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="peerCloudAccount")
+    def peer_cloud_account(self) -> pulumi.Input[str]:
+        """
+        AWS account ID of the peered VPC.
+        """
+        return pulumi.get(self, "peer_cloud_account")
+
+    @peer_cloud_account.setter
+    def peer_cloud_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peer_cloud_account", value)
+
+    @property
+    @pulumi.getter(name="peerRegion")
+    def peer_region(self) -> pulumi.Input[str]:
+        """
+        AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        """
+        return pulumi.get(self, "peer_region")
+
+    @peer_region.setter
+    def peer_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peer_region", value)
+
+    @property
+    @pulumi.getter(name="peerVpc")
+    def peer_vpc(self) -> pulumi.Input[str]:
+        """
+        Transit gateway ID
+        """
+        return pulumi.get(self, "peer_vpc")
+
+    @peer_vpc.setter
+    def peer_vpc(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peer_vpc", value)
+
+    @property
+    @pulumi.getter(name="userPeerNetworkCidrs")
+    def user_peer_network_cidrs(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of private IPv4 ranges to route through the peering connection.
+        """
+        return pulumi.get(self, "user_peer_network_cidrs")
+
+    @user_peer_network_cidrs.setter
+    def user_peer_network_cidrs(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "user_peer_network_cidrs", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[str]:
+        """
+        is the Aiven VPC the peering connection is associated with.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_id", value)
 
 
 class TransitGatewayVpcAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -51,6 +134,55 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
         :param pulumi.Input[str] vpc_id: is the Aiven VPC the peering connection is associated with.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TransitGatewayVpcAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Transit Gateway VPC Attachment Resource
+
+        The Transit Gateway VPC Attachment resource allows the creation and management Transit
+        Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        attachment = aiven.TransitGatewayVpcAttachment("attachment",
+            vpc_id=aiven_project_vpc["bar"]["id"],
+            peer_cloud_account="<PEER_ACCOUNT_ID>",
+            peer_vpc="google-project1",
+            peer_region="aws-eu-west-1",
+            user_peer_network_cidrs=["10.0.0.0/24"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TransitGatewayVpcAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TransitGatewayVpcAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 peer_cloud_account: Optional[pulumi.Input[str]] = None,
+                 peer_region: Optional[pulumi.Input[str]] = None,
+                 peer_vpc: Optional[pulumi.Input[str]] = None,
+                 user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ProjectVpc']
+__all__ = ['ProjectVpcArgs', 'ProjectVpc']
+
+@pulumi.input_type
+class ProjectVpcArgs:
+    def __init__(__self__, *,
+                 cloud_name: pulumi.Input[str],
+                 network_cidr: pulumi.Input[str],
+                 project: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a ProjectVpc resource.
+        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
+               in. See the Service resource for additional information.
+        :param pulumi.Input[str] network_cidr: defines the network CIDR of the VPC.
+        :param pulumi.Input[str] project: defines the project the VPC belongs to.
+        """
+        pulumi.set(__self__, "cloud_name", cloud_name)
+        pulumi.set(__self__, "network_cidr", network_cidr)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> pulumi.Input[str]:
+        """
+        defines where the cloud provider and region where the service is hosted
+        in. See the Service resource for additional information.
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @cloud_name.setter
+    def cloud_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cloud_name", value)
+
+    @property
+    @pulumi.getter(name="networkCidr")
+    def network_cidr(self) -> pulumi.Input[str]:
+        """
+        defines the network CIDR of the VPC.
+        """
+        return pulumi.get(self, "network_cidr")
+
+    @network_cidr.setter
+    def network_cidr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_cidr", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        defines the project the VPC belongs to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
 
 class ProjectVpc(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -45,6 +100,50 @@ class ProjectVpc(pulumi.CustomResource):
         :param pulumi.Input[str] network_cidr: defines the network CIDR of the VPC.
         :param pulumi.Input[str] project: defines the project the VPC belongs to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectVpcArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Project VPC Resource
+
+        The Project VPC resource allows the creation and management of Aiven Project VPCs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myvpc = aiven.ProjectVpc("myvpc",
+            cloud_name="google-europe-west1",
+            network_cidr="192.168.0.1/24",
+            project=aiven_project["myproject"]["project"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectVpcArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectVpcArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 network_cidr: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

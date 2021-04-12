@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ProjectUser']
+__all__ = ['ProjectUserArgs', 'ProjectUser']
+
+@pulumi.input_type
+class ProjectUserArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 member_type: pulumi.Input[str],
+                 project: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a ProjectUser resource.
+        :param pulumi.Input[str] email: identifies the email address of the user.
+        :param pulumi.Input[str] member_type: defines the access level the user has to the project.
+        :param pulumi.Input[str] project: defines the project the user is a member of.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "member_type", member_type)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        identifies the email address of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="memberType")
+    def member_type(self) -> pulumi.Input[str]:
+        """
+        defines the access level the user has to the project.
+        """
+        return pulumi.get(self, "member_type")
+
+    @member_type.setter
+    def member_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "member_type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        defines the project the user is a member of.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
 
 class ProjectUser(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +97,50 @@ class ProjectUser(pulumi.CustomResource):
         :param pulumi.Input[str] member_type: defines the access level the user has to the project.
         :param pulumi.Input[str] project: defines the project the user is a member of.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectUserArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Project User Resource
+
+        The Project User resource allows the creation and management of Aiven Project Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestuser = aiven.ProjectUser("mytestuser",
+            email="john.doe@example.com",
+            member_type="admin",
+            project=aiven_project["myproject"]["project"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectUserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectUserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 member_type: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
