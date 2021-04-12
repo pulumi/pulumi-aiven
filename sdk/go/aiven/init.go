@@ -21,83 +21,84 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "aiven:index/account:Account":
-		r, err = NewAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &Account{}
 	case "aiven:index/accountAuthentication:AccountAuthentication":
-		r, err = NewAccountAuthentication(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountAuthentication{}
 	case "aiven:index/accountTeam:AccountTeam":
-		r, err = NewAccountTeam(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountTeam{}
 	case "aiven:index/accountTeamMember:AccountTeamMember":
-		r, err = NewAccountTeamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountTeamMember{}
 	case "aiven:index/accountTeamProject:AccountTeamProject":
-		r, err = NewAccountTeamProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountTeamProject{}
 	case "aiven:index/awsPrivatelink:AwsPrivatelink":
-		r, err = NewAwsPrivatelink(ctx, name, nil, pulumi.URN_(urn))
+		r = &AwsPrivatelink{}
 	case "aiven:index/billingGroup:BillingGroup":
-		r, err = NewBillingGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &BillingGroup{}
 	case "aiven:index/cassandra:Cassandra":
-		r, err = NewCassandra(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cassandra{}
 	case "aiven:index/connectionPool:ConnectionPool":
-		r, err = NewConnectionPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConnectionPool{}
 	case "aiven:index/database:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "aiven:index/elasticSearch:ElasticSearch":
-		r, err = NewElasticSearch(ctx, name, nil, pulumi.URN_(urn))
+		r = &ElasticSearch{}
 	case "aiven:index/elasticSearchAcl:ElasticSearchAcl":
-		r, err = NewElasticSearchAcl(ctx, name, nil, pulumi.URN_(urn))
+		r = &ElasticSearchAcl{}
 	case "aiven:index/grafana:Grafana":
-		r, err = NewGrafana(ctx, name, nil, pulumi.URN_(urn))
+		r = &Grafana{}
 	case "aiven:index/influxDb:InfluxDb":
-		r, err = NewInfluxDb(ctx, name, nil, pulumi.URN_(urn))
+		r = &InfluxDb{}
 	case "aiven:index/kafka:Kafka":
-		r, err = NewKafka(ctx, name, nil, pulumi.URN_(urn))
+		r = &Kafka{}
 	case "aiven:index/kafkaAcl:KafkaAcl":
-		r, err = NewKafkaAcl(ctx, name, nil, pulumi.URN_(urn))
+		r = &KafkaAcl{}
 	case "aiven:index/kafkaConnect:KafkaConnect":
-		r, err = NewKafkaConnect(ctx, name, nil, pulumi.URN_(urn))
+		r = &KafkaConnect{}
 	case "aiven:index/kafkaConnector:KafkaConnector":
-		r, err = NewKafkaConnector(ctx, name, nil, pulumi.URN_(urn))
+		r = &KafkaConnector{}
 	case "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker":
-		r, err = NewKafkaMirrorMaker(ctx, name, nil, pulumi.URN_(urn))
+		r = &KafkaMirrorMaker{}
 	case "aiven:index/kafkaSchema:KafkaSchema":
-		r, err = NewKafkaSchema(ctx, name, nil, pulumi.URN_(urn))
+		r = &KafkaSchema{}
 	case "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration":
-		r, err = NewKafkaSchemaConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &KafkaSchemaConfiguration{}
 	case "aiven:index/kafkaTopic:KafkaTopic":
-		r, err = NewKafkaTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &KafkaTopic{}
 	case "aiven:index/m3Aggregator:M3Aggregator":
-		r, err = NewM3Aggregator(ctx, name, nil, pulumi.URN_(urn))
+		r = &M3Aggregator{}
 	case "aiven:index/m3Db:M3Db":
-		r, err = NewM3Db(ctx, name, nil, pulumi.URN_(urn))
+		r = &M3Db{}
 	case "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow":
-		r, err = NewMirrorMakerReplicationFlow(ctx, name, nil, pulumi.URN_(urn))
+		r = &MirrorMakerReplicationFlow{}
 	case "aiven:index/mySql:MySql":
-		r, err = NewMySql(ctx, name, nil, pulumi.URN_(urn))
+		r = &MySql{}
 	case "aiven:index/pg:Pg":
-		r, err = NewPg(ctx, name, nil, pulumi.URN_(urn))
+		r = &Pg{}
 	case "aiven:index/project:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "aiven:index/projectUser:ProjectUser":
-		r, err = NewProjectUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectUser{}
 	case "aiven:index/projectVpc:ProjectVpc":
-		r, err = NewProjectVpc(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectVpc{}
 	case "aiven:index/redis:Redis":
-		r, err = NewRedis(ctx, name, nil, pulumi.URN_(urn))
+		r = &Redis{}
 	case "aiven:index/service:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "aiven:index/serviceIntegration:ServiceIntegration":
-		r, err = NewServiceIntegration(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIntegration{}
 	case "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
-		r, err = NewServiceIntegrationEndpoint(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIntegrationEndpoint{}
 	case "aiven:index/serviceUser:ServiceUser":
-		r, err = NewServiceUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceUser{}
 	case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
-		r, err = NewTransitGatewayVpcAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &TransitGatewayVpcAttachment{}
 	case "aiven:index/vpcPeeringConnection:VpcPeeringConnection":
-		r, err = NewVpcPeeringConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpcPeeringConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -114,7 +115,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {

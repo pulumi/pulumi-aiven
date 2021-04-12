@@ -5,13 +5,148 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ServiceUser']
+__all__ = ['ServiceUserArgs', 'ServiceUser']
+
+@pulumi.input_type
+class ServiceUserArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 username: pulumi.Input[str],
+                 authentication: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ServiceUser resource.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+               using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] service_name: Service to link the user to
+        :param pulumi.Input[str] username: is the actual name of the user account.
+        :param pulumi.Input[str] authentication: Authentication details
+        :param pulumi.Input[str] password: Password of the user
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Redis specific field, defines command category rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Redis specific field, defines rules for individual commands.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Redis specific field, defines key access rules.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "username", username)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if redis_acl_categories is not None:
+            pulumi.set(__self__, "redis_acl_categories", redis_acl_categories)
+        if redis_acl_commands is not None:
+            pulumi.set(__self__, "redis_acl_commands", redis_acl_commands)
+        if redis_acl_keys is not None:
+            pulumi.set(__self__, "redis_acl_keys", redis_acl_keys)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+        using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Service to link the user to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        is the actual name of the user account.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication details
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authentication", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password of the user
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="redisAclCategories")
+    def redis_acl_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Redis specific field, defines command category rules.
+        """
+        return pulumi.get(self, "redis_acl_categories")
+
+    @redis_acl_categories.setter
+    def redis_acl_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_acl_categories", value)
+
+    @property
+    @pulumi.getter(name="redisAclCommands")
+    def redis_acl_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Redis specific field, defines rules for individual commands.
+        """
+        return pulumi.get(self, "redis_acl_commands")
+
+    @redis_acl_commands.setter
+    def redis_acl_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_acl_commands", value)
+
+    @property
+    @pulumi.getter(name="redisAclKeys")
+    def redis_acl_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Redis specific field, defines key access rules.
+        """
+        return pulumi.get(self, "redis_acl_keys")
+
+    @redis_acl_keys.setter
+    def redis_acl_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_acl_keys", value)
 
 
 class ServiceUser(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +192,57 @@ class ServiceUser(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: Service to link the user to
         :param pulumi.Input[str] username: is the actual name of the user account.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServiceUserArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Service User Resource
+
+        The Service User resource allows the creation and management of Aiven Service Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        myserviceuser = aiven.ServiceUser("myserviceuser",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
+            username="<USERNAME>")
+        ```
+
+        > **Note** The service user resource is not supported for Aiven Grafana services.
+
+        :param str resource_name: The name of the resource.
+        :param ServiceUserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceUserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authentication: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KafkaConnector']
+__all__ = ['KafkaConnectorArgs', 'KafkaConnector']
+
+@pulumi.input_type
+class KafkaConnectorArgs:
+    def __init__(__self__, *,
+                 config: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 connector_name: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 service_name: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a KafkaConnector resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Kafka Connector configuration parameters
+        :param pulumi.Input[str] connector_name: Kafka connector name
+        :param pulumi.Input[str] project: Project to link the kafka connector to
+        :param pulumi.Input[str] service_name: Service to link the kafka connector to
+        """
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "connector_name", connector_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Kafka Connector configuration parameters
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> pulumi.Input[str]:
+        """
+        Kafka connector name
+        """
+        return pulumi.get(self, "connector_name")
+
+    @connector_name.setter
+    def connector_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connector_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        Project to link the kafka connector to
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Service to link the kafka connector to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
 
 
 class KafkaConnector(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -63,6 +131,66 @@ class KafkaConnector(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project to link the kafka connector to
         :param pulumi.Input[str] service_name: Service to link the kafka connector to
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KafkaConnectorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Kafka connectors Resource
+
+        The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_es_con1 = aiven.KafkaConnector("kafka-es-con1",
+            project=aiven_project["kafka-con-project1"]["project"],
+            service_name=aiven_service["kafka-service1"]["service_name"],
+            connector_name="kafka-es-con1",
+            config={
+                "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
+                "connector.class": "io.aiven.connect.elasticsearch.ElasticsearchSinkConnector",
+                "type.name": "es-connector",
+                "name": "kafka-es-con1",
+                "connection.url": aiven_service["es-service1"]["service_uri"],
+            })
+        ```
+
+        * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to.
+        They should be defined using reference as shown above to set up dependencies correctly.
+
+        * `connector_name`- (Required) is the Kafka connector name.
+
+        * `config`- (Required)is the Kafka Connector configuration parameters, where `topics`, `connector.class` and `name`
+        are required parameters but the rest of them are connector type specific.
+
+        :param str resource_name: The name of the resource.
+        :param KafkaConnectorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KafkaConnectorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 connector_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

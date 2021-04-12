@@ -5,13 +5,74 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AwsPrivatelink']
+__all__ = ['AwsPrivatelinkArgs', 'AwsPrivatelink']
+
+@pulumi.input_type
+class AwsPrivatelinkArgs:
+    def __init__(__self__, *,
+                 principals: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 project: pulumi.Input[str],
+                 service_name: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a AwsPrivatelink resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: list of allowed principals
+        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency between the project
+               and the service, refer to the project as shown in the above example. Project cannot be changed later without
+               destroying and re-creating the service.
+        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed later without
+               destroying and re-creating the service so name should be picked based on intended service usage rather than current
+               attributes.
+        """
+        pulumi.set(__self__, "principals", principals)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        list of allowed principals
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "principals", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        identifies the project the service belongs to. To set up proper dependency between the project
+        and the service, refer to the project as shown in the above example. Project cannot be changed later without
+        destroying and re-creating the service.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        specifies the actual name of the service. The name cannot be changed later without
+        destroying and re-creating the service so name should be picked based on intended service usage rather than current
+        attributes.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
 
 
 class AwsPrivatelink(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +109,50 @@ class AwsPrivatelink(pulumi.CustomResource):
                destroying and re-creating the service so name should be picked based on intended service usage rather than current
                attributes.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AwsPrivatelinkArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # AWS Privatelink Resource
+
+        The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AwsPrivatelink("foo",
+            project=data["aiven_project"]["foo"]["project"],
+            service_name=aiven_kafka["bar"]["service_name"],
+            principals=["arn:aws:iam::012345678901:user/mwf"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AwsPrivatelinkArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AwsPrivatelinkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

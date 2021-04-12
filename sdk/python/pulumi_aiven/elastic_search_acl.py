@@ -5,15 +5,107 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ElasticSearchAcl']
+__all__ = ['ElasticSearchAclArgs', 'ElasticSearchAcl']
+
+@pulumi.input_type
+class ElasticSearchAclArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input['ElasticSearchAclAclArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 extended_acl: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ElasticSearchAcl resource.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to. 
+               They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] service_name: Service to link the Elasticsearch ACLs to
+        :param pulumi.Input[Sequence[pulumi.Input['ElasticSearchAclAclArgs']]] acls: List of Elasticsearch ACLs
+        :param pulumi.Input[bool] enabled: enables of disables Elasticsearch ACL's.
+        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+               (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+               these APIs as long as all operations only target indexes they have been granted access to.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if extended_acl is not None:
+            pulumi.set(__self__, "extended_acl", extended_acl)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        and `service_name` - (Required) define the project and service the ACL belongs to. 
+        They should be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Service to link the Elasticsearch ACLs to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElasticSearchAclAclArgs']]]]:
+        """
+        List of Elasticsearch ACLs
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElasticSearchAclAclArgs']]]]):
+        pulumi.set(self, "acls", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enables of disables Elasticsearch ACL's.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="extendedAcl")
+    def extended_acl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+        (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+        these APIs as long as all operations only target indexes they have been granted access to.
+        """
+        return pulumi.get(self, "extended_acl")
+
+    @extended_acl.setter
+    def extended_acl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "extended_acl", value)
 
 
 class ElasticSearchAcl(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -83,6 +175,82 @@ class ElasticSearchAcl(pulumi.CustomResource):
                They should be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] service_name: Service to link the Elasticsearch ACLs to
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ElasticSearchAclArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Elasticsearch ACL Resource
+
+        The Elasticsearch ACL resource allows the creation and management of ACLs
+        for an Aiven Elasticsearch service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        es_acls = aiven.ElasticSearchAcl("es-acls",
+            project=aiven_project["es-project"]["project"],
+            service_name=aiven_service["es"]["service_name"],
+            enabled=True,
+            extended_acl=False,
+            acls=[
+                aiven.ElasticSearchAclAclArgs(
+                    username=aiven_service_user["es-user"]["username"],
+                    rules=[
+                        aiven.ElasticSearchAclAclRuleArgs(
+                            index="_*",
+                            permission="admin",
+                        ),
+                        aiven.ElasticSearchAclAclRuleArgs(
+                            index="*",
+                            permission="admin",
+                        ),
+                    ],
+                ),
+                aiven.ElasticSearchAclAclArgs(
+                    username="avnadmin",
+                    rules=[
+                        aiven.ElasticSearchAclAclRuleArgs(
+                            index="_*",
+                            permission="read",
+                        ),
+                        aiven.ElasticSearchAclAclRuleArgs(
+                            index="*",
+                            permission="read",
+                        ),
+                    ],
+                ),
+            ])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ElasticSearchAclArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ElasticSearchAclArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElasticSearchAclAclArgs']]]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 extended_acl: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

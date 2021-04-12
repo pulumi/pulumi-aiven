@@ -5,13 +5,211 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AccountAuthentication']
+__all__ = ['AccountAuthenticationArgs', 'AccountAuthentication']
+
+@pulumi.input_type
+class AccountAuthenticationArgs:
+    def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 authentication_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 saml_acs_url: Optional[pulumi.Input[str]] = None,
+                 saml_certificate: Optional[pulumi.Input[str]] = None,
+                 saml_entity_id: Optional[pulumi.Input[str]] = None,
+                 saml_idp_url: Optional[pulumi.Input[str]] = None,
+                 saml_metadata_url: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccountAuthentication resource.
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] type: is an account authentication type, can be one of `internal` and `saml`.
+        :param pulumi.Input[str] authentication_id: account authentication id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[bool] enabled: defines an authentication method enabled or not.
+        :param pulumi.Input[str] name: is an account authentication name.
+        :param pulumi.Input[str] saml_acs_url: is a SAML Assertion Consumer Service URL.
+        :param pulumi.Input[str] saml_certificate: is a SAML Certificate.
+        :param pulumi.Input[str] saml_entity_id: is a SAML Entity ID.
+        :param pulumi.Input[str] saml_idp_url: is a SAML Idp URL.
+        :param pulumi.Input[str] saml_metadata_url: is a SAML Metadata URL.
+        :param pulumi.Input[str] update_time: time of last update.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "type", type)
+        if authentication_id is not None:
+            pulumi.set(__self__, "authentication_id", authentication_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if saml_acs_url is not None:
+            pulumi.set(__self__, "saml_acs_url", saml_acs_url)
+        if saml_certificate is not None:
+            pulumi.set(__self__, "saml_certificate", saml_certificate)
+        if saml_entity_id is not None:
+            pulumi.set(__self__, "saml_entity_id", saml_entity_id)
+        if saml_idp_url is not None:
+            pulumi.set(__self__, "saml_idp_url", saml_idp_url)
+        if saml_metadata_url is not None:
+            pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        is a unique account id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        is an account authentication type, can be one of `internal` and `saml`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="authenticationId")
+    def authentication_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        account authentication id.
+        """
+        return pulumi.get(self, "authentication_id")
+
+    @authentication_id.setter
+    def authentication_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authentication_id", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        time of creation.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        defines an authentication method enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        is an account authentication name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="samlAcsUrl")
+    def saml_acs_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a SAML Assertion Consumer Service URL.
+        """
+        return pulumi.get(self, "saml_acs_url")
+
+    @saml_acs_url.setter
+    def saml_acs_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_acs_url", value)
+
+    @property
+    @pulumi.getter(name="samlCertificate")
+    def saml_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a SAML Certificate.
+        """
+        return pulumi.get(self, "saml_certificate")
+
+    @saml_certificate.setter
+    def saml_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_certificate", value)
+
+    @property
+    @pulumi.getter(name="samlEntityId")
+    def saml_entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a SAML Entity ID.
+        """
+        return pulumi.get(self, "saml_entity_id")
+
+    @saml_entity_id.setter
+    def saml_entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_entity_id", value)
+
+    @property
+    @pulumi.getter(name="samlIdpUrl")
+    def saml_idp_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a SAML Idp URL.
+        """
+        return pulumi.get(self, "saml_idp_url")
+
+    @saml_idp_url.setter
+    def saml_idp_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_idp_url", value)
+
+    @property
+    @pulumi.getter(name="samlMetadataUrl")
+    def saml_metadata_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a SAML Metadata URL.
+        """
+        return pulumi.get(self, "saml_metadata_url")
+
+    @saml_metadata_url.setter
+    def saml_metadata_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_metadata_url", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        time of last update.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class AccountAuthentication(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -50,6 +248,47 @@ class AccountAuthentication(pulumi.CustomResource):
         :param pulumi.Input[str] type: is an account authentication type, can be one of `internal` and `saml`.
         :param pulumi.Input[str] update_time: time of last update.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccountAuthenticationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Account Authentication Resource
+
+        The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+
+        :param str resource_name: The name of the resource.
+        :param AccountAuthenticationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccountAuthenticationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 authentication_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 saml_acs_url: Optional[pulumi.Input[str]] = None,
+                 saml_certificate: Optional[pulumi.Input[str]] = None,
+                 saml_entity_id: Optional[pulumi.Input[str]] = None,
+                 saml_idp_url: Optional[pulumi.Input[str]] = None,
+                 saml_metadata_url: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

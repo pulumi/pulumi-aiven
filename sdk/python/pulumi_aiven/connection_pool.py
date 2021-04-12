@@ -5,13 +5,142 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ConnectionPool']
+__all__ = ['ConnectionPoolArgs', 'ConnectionPool']
+
+@pulumi.input_type
+class ConnectionPoolArgs:
+    def __init__(__self__, *,
+                 database_name: pulumi.Input[str],
+                 pool_name: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 username: pulumi.Input[str],
+                 pool_mode: Optional[pulumi.Input[str]] = None,
+                 pool_size: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a ConnectionPool resource.
+        :param pulumi.Input[str] database_name: is the name of the database the pool connects to. This should be
+               defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] pool_name: is the name of the pool.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the connection pool
+               belongs to. They should be defined using reference as shown above to set up dependencies
+               correctly. These properties cannot be changed once the service is created. Doing so will
+               result in the connection pool being deleted and new one created instead.
+        :param pulumi.Input[str] service_name: Service to link the connection pool to
+        :param pulumi.Input[str] username: is the name of the service user used to connect to the database. This should
+               be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] pool_mode: is the mode the pool operates in (session, transaction, statement).
+        :param pulumi.Input[int] pool_size: is the number of connections the pool may create towards the backend
+               server. This does not affect the number of incoming connections, which is always a much
+               larger number.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "pool_name", pool_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "username", username)
+        if pool_mode is not None:
+            pulumi.set(__self__, "pool_mode", pool_mode)
+        if pool_size is not None:
+            pulumi.set(__self__, "pool_size", pool_size)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> pulumi.Input[str]:
+        """
+        is the name of the database the pool connects to. This should be
+        defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database_name", value)
+
+    @property
+    @pulumi.getter(name="poolName")
+    def pool_name(self) -> pulumi.Input[str]:
+        """
+        is the name of the pool.
+        """
+        return pulumi.get(self, "pool_name")
+
+    @pool_name.setter
+    def pool_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pool_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        and `service_name` - (Required) define the project and service the connection pool
+        belongs to. They should be defined using reference as shown above to set up dependencies
+        correctly. These properties cannot be changed once the service is created. Doing so will
+        result in the connection pool being deleted and new one created instead.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Service to link the connection pool to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        is the name of the service user used to connect to the database. This should
+        be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="poolMode")
+    def pool_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the mode the pool operates in (session, transaction, statement).
+        """
+        return pulumi.get(self, "pool_mode")
+
+    @pool_mode.setter
+    def pool_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pool_mode", value)
+
+    @property
+    @pulumi.getter(name="poolSize")
+    def pool_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        is the number of connections the pool may create towards the backend
+        server. This does not affect the number of incoming connections, which is always a much
+        larger number.
+        """
+        return pulumi.get(self, "pool_size")
+
+    @pool_size.setter
+    def pool_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pool_size", value)
 
 
 class ConnectionPool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -63,6 +192,58 @@ class ConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[str] username: is the name of the service user used to connect to the database. This should
                be defined using reference as shown above to set up dependencies correctly.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectionPoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Connection Pool Resource
+
+        The Connection Pool resource allows the creation and management of Aiven Connection Pools.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestpool = aiven.ConnectionPool("mytestpool",
+            database_name=aiven_database["mydatabase"]["database_name"],
+            pool_mode="transaction",
+            pool_name="mypool",
+            pool_size=10,
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
+            username=aiven_service_user["myserviceuser"]["username"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ConnectionPoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database_name: Optional[pulumi.Input[str]] = None,
+                 pool_mode: Optional[pulumi.Input[str]] = None,
+                 pool_name: Optional[pulumi.Input[str]] = None,
+                 pool_size: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

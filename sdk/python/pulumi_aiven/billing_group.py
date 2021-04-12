@@ -5,13 +5,229 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['BillingGroup']
+__all__ = ['BillingGroupArgs', 'BillingGroup']
+
+@pulumi.input_type
+class BillingGroupArgs:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 billing_currency: Optional[pulumi.Input[str]] = None,
+                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 billing_extra_text: Optional[pulumi.Input[str]] = None,
+                 card_id: Optional[pulumi.Input[str]] = None,
+                 city: Optional[pulumi.Input[str]] = None,
+                 company: Optional[pulumi.Input[str]] = None,
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 vat_id: Optional[pulumi.Input[str]] = None,
+                 zip_code: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a BillingGroup resource.
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines
+        :param pulumi.Input[str] billing_currency: Billing currency
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails
+        :param pulumi.Input[str] billing_extra_text: Billing extra text
+        :param pulumi.Input[str] card_id: Credit card id
+        :param pulumi.Input[str] city: City
+        :param pulumi.Input[str] company: Company name
+        :param pulumi.Input[str] country_code: Country code
+        :param pulumi.Input[str] name: Billing Group name
+        :param pulumi.Input[str] state: State
+        :param pulumi.Input[str] vat_id: VAT id
+        :param pulumi.Input[str] zip_code: Zip Code
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if address_lines is not None:
+            pulumi.set(__self__, "address_lines", address_lines)
+        if billing_currency is not None:
+            pulumi.set(__self__, "billing_currency", billing_currency)
+        if billing_emails is not None:
+            pulumi.set(__self__, "billing_emails", billing_emails)
+        if billing_extra_text is not None:
+            pulumi.set(__self__, "billing_extra_text", billing_extra_text)
+        if card_id is not None:
+            pulumi.set(__self__, "card_id", card_id)
+        if city is not None:
+            pulumi.set(__self__, "city", city)
+        if company is not None:
+            pulumi.set(__self__, "company", company)
+        if country_code is not None:
+            pulumi.set(__self__, "country_code", country_code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if vat_id is not None:
+            pulumi.set(__self__, "vat_id", vat_id)
+        if zip_code is not None:
+            pulumi.set(__self__, "zip_code", zip_code)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account id
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="addressLines")
+    def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address lines
+        """
+        return pulumi.get(self, "address_lines")
+
+    @address_lines.setter
+    def address_lines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "address_lines", value)
+
+    @property
+    @pulumi.getter(name="billingCurrency")
+    def billing_currency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing currency
+        """
+        return pulumi.get(self, "billing_currency")
+
+    @billing_currency.setter
+    def billing_currency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_currency", value)
+
+    @property
+    @pulumi.getter(name="billingEmails")
+    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Billing contact emails
+        """
+        return pulumi.get(self, "billing_emails")
+
+    @billing_emails.setter
+    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "billing_emails", value)
+
+    @property
+    @pulumi.getter(name="billingExtraText")
+    def billing_extra_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing extra text
+        """
+        return pulumi.get(self, "billing_extra_text")
+
+    @billing_extra_text.setter
+    def billing_extra_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_extra_text", value)
+
+    @property
+    @pulumi.getter(name="cardId")
+    def card_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Credit card id
+        """
+        return pulumi.get(self, "card_id")
+
+    @card_id.setter
+    def card_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "card_id", value)
+
+    @property
+    @pulumi.getter
+    def city(self) -> Optional[pulumi.Input[str]]:
+        """
+        City
+        """
+        return pulumi.get(self, "city")
+
+    @city.setter
+    def city(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "city", value)
+
+    @property
+    @pulumi.getter
+    def company(self) -> Optional[pulumi.Input[str]]:
+        """
+        Company name
+        """
+        return pulumi.get(self, "company")
+
+    @company.setter
+    def company(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "company", value)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Country code
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country_code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing Group name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="vatId")
+    def vat_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        VAT id
+        """
+        return pulumi.get(self, "vat_id")
+
+    @vat_id.setter
+    def vat_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vat_id", value)
+
+    @property
+    @pulumi.getter(name="zipCode")
+    def zip_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zip Code
+        """
+        return pulumi.get(self, "zip_code")
+
+    @zip_code.setter
+    def zip_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zip_code", value)
 
 
 class BillingGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +265,45 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] vat_id: VAT id
         :param pulumi.Input[str] zip_code: Zip Code
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[BillingGroupArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a BillingGroup resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param BillingGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BillingGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 billing_currency: Optional[pulumi.Input[str]] = None,
+                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 billing_extra_text: Optional[pulumi.Input[str]] = None,
+                 card_id: Optional[pulumi.Input[str]] = None,
+                 city: Optional[pulumi.Input[str]] = None,
+                 company: Optional[pulumi.Input[str]] = None,
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 vat_id: Optional[pulumi.Input[str]] = None,
+                 zip_code: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

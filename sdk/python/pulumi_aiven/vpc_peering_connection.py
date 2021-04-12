@@ -5,13 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['VpcPeeringConnection']
+__all__ = ['VpcPeeringConnectionArgs', 'VpcPeeringConnection']
+
+@pulumi.input_type
+class VpcPeeringConnectionArgs:
+    def __init__(__self__, *,
+                 peer_cloud_account: pulumi.Input[str],
+                 peer_vpc: pulumi.Input[str],
+                 vpc_id: pulumi.Input[str],
+                 peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+                 peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
+                 peer_region: Optional[pulumi.Input[str]] = None,
+                 peer_resource_group: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a VpcPeeringConnection resource.
+        :param pulumi.Input[str] peer_cloud_account: defines the identifier of the cloud account the VPC is being
+               peered with.
+        :param pulumi.Input[str] peer_vpc: defines the identifier or name of the remote VPC.
+        :param pulumi.Input[str] vpc_id: is the Aiven VPC the peering connection is associated with.
+        :param pulumi.Input[str] peer_azure_app_id: an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+        :param pulumi.Input[str] peer_azure_tenant_id: an Azure tenant id in UUID4 form.
+        :param pulumi.Input[str] peer_region: defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+        :param pulumi.Input[str] peer_resource_group: an Azure resource group name of the peered VPC.
+        """
+        pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
+        pulumi.set(__self__, "peer_vpc", peer_vpc)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if peer_azure_app_id is not None:
+            pulumi.set(__self__, "peer_azure_app_id", peer_azure_app_id)
+        if peer_azure_tenant_id is not None:
+            pulumi.set(__self__, "peer_azure_tenant_id", peer_azure_tenant_id)
+        if peer_region is not None:
+            pulumi.set(__self__, "peer_region", peer_region)
+        if peer_resource_group is not None:
+            pulumi.set(__self__, "peer_resource_group", peer_resource_group)
+
+    @property
+    @pulumi.getter(name="peerCloudAccount")
+    def peer_cloud_account(self) -> pulumi.Input[str]:
+        """
+        defines the identifier of the cloud account the VPC is being
+        peered with.
+        """
+        return pulumi.get(self, "peer_cloud_account")
+
+    @peer_cloud_account.setter
+    def peer_cloud_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peer_cloud_account", value)
+
+    @property
+    @pulumi.getter(name="peerVpc")
+    def peer_vpc(self) -> pulumi.Input[str]:
+        """
+        defines the identifier or name of the remote VPC.
+        """
+        return pulumi.get(self, "peer_vpc")
+
+    @peer_vpc.setter
+    def peer_vpc(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peer_vpc", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[str]:
+        """
+        is the Aiven VPC the peering connection is associated with.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="peerAzureAppId")
+    def peer_azure_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+        """
+        return pulumi.get(self, "peer_azure_app_id")
+
+    @peer_azure_app_id.setter
+    def peer_azure_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_azure_app_id", value)
+
+    @property
+    @pulumi.getter(name="peerAzureTenantId")
+    def peer_azure_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        an Azure tenant id in UUID4 form.
+        """
+        return pulumi.get(self, "peer_azure_tenant_id")
+
+    @peer_azure_tenant_id.setter
+    def peer_azure_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_azure_tenant_id", value)
+
+    @property
+    @pulumi.getter(name="peerRegion")
+    def peer_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+        """
+        return pulumi.get(self, "peer_region")
+
+    @peer_region.setter
+    def peer_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_region", value)
+
+    @property
+    @pulumi.getter(name="peerResourceGroup")
+    def peer_resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        an Azure resource group name of the peered VPC.
+        """
+        return pulumi.get(self, "peer_resource_group")
+
+    @peer_resource_group.setter
+    def peer_resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_resource_group", value)
 
 
 class VpcPeeringConnection(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -54,6 +173,55 @@ class VpcPeeringConnection(pulumi.CustomResource):
         :param pulumi.Input[str] peer_vpc: defines the identifier or name of the remote VPC.
         :param pulumi.Input[str] vpc_id: is the Aiven VPC the peering connection is associated with.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VpcPeeringConnectionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # VPC Peering Connection Resource
+
+        The VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mypeeringconnection = aiven.VpcPeeringConnection("mypeeringconnection",
+            peer_cloud_account="<PEER_ACCOUNT_ID>",
+            peer_region="<PEER_REGION>",
+            peer_vpc="<PEER_VPC_ID/NAME>",
+            vpc_id=aiven_project_vpc["myvpc"]["id"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VpcPeeringConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+                 peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
+                 peer_cloud_account: Optional[pulumi.Input[str]] = None,
+                 peer_region: Optional[pulumi.Input[str]] = None,
+                 peer_resource_group: Optional[pulumi.Input[str]] = None,
+                 peer_vpc: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

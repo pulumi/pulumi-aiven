@@ -5,15 +5,257 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Redis']
+__all__ = ['RedisArgs', 'Redis']
+
+@pulumi.input_type
+class RedisArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+                 maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 project_vpc_id: Optional[pulumi.Input[str]] = None,
+                 redis: Optional[pulumi.Input['RedisRedisArgs']] = None,
+                 redis_user_config: Optional[pulumi.Input['RedisRedisUserConfigArgs']] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Redis resource.
+        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
+               between the project and the service, refer to the project as shown in the above example.
+               Project cannot be changed later without destroying and re-creating the service.
+        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
+               later without destroying and re-creating the service so name should be picked based on
+               intended service usage rather than current attributes.
+        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
+               in. This can be changed freely after service is created. Changing the value will trigger
+               a potentially lengthy migration process for the service. Format is cloud provider name
+               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+               specific region name. These are documented on each Cloud provider's own support articles,
+               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
+               On monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
+               UTC time in HH:mm:ss format.
+        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
+               be changed after creation, though there are some restrictions when going to a smaller
+               plan such as the new plan must have sufficient amount of disk space to store all current
+               data and switching to a plan with fewer nodes might not be supported. The basic plan
+               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+               (roughly) the amount of memory on each node (also other attributes like number of CPUs
+               and amount of disk space varies but naming is based on memory). The exact options can be
+               seen from the Aiven web console's Create Service dialog.
+        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
+               is not set the service is not run inside a VPC. When set, the value should be given as a
+               reference as shown above to set up dependencies correctly and the VPC must be in the same
+               cloud and region as the service itself. Project can be freely moved to and from VPC after
+               creation but doing so triggers migration to new servers so the operation can take
+               significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input['RedisRedisArgs'] redis: Allow clients to connect to redis from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param pulumi.Input['RedisRedisUserConfigArgs'] redis_user_config: defines Redis specific additional configuration options. The following 
+               configuration options available:
+        :param pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
+               set this to `true` for all production services to prevent unintentional service
+               deletion. This does not shield against deleting databases or topics but for services
+               with backups much of the content can at least be restored from backup in case accidental
+               deletion is done.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        if cloud_name is not None:
+            pulumi.set(__self__, "cloud_name", cloud_name)
+        if maintenance_window_dow is not None:
+            pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+        if maintenance_window_time is not None:
+            pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
+        if project_vpc_id is not None:
+            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+        if redis is not None:
+            pulumi.set(__self__, "redis", redis)
+        if redis_user_config is not None:
+            pulumi.set(__self__, "redis_user_config", redis_user_config)
+        if service_integrations is not None:
+            pulumi.set(__self__, "service_integrations", service_integrations)
+        if termination_protection is not None:
+            pulumi.set(__self__, "termination_protection", termination_protection)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        identifies the project the service belongs to. To set up proper dependency
+        between the project and the service, refer to the project as shown in the above example.
+        Project cannot be changed later without destroying and re-creating the service.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        specifies the actual name of the service. The name cannot be changed
+        later without destroying and re-creating the service so name should be picked based on
+        intended service usage rather than current attributes.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines where the cloud provider and region where the service is hosted
+        in. This can be changed freely after service is created. Changing the value will trigger
+        a potentially lengthy migration process for the service. Format is cloud provider name
+        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+        specific region name. These are documented on each Cloud provider's own support articles,
+        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @cloud_name.setter
+    def cloud_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_name", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindowDow")
+    def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
+        """
+        day of week when maintenance operations should be performed. 
+        On monday, tuesday, wednesday, etc.
+        """
+        return pulumi.get(self, "maintenance_window_dow")
+
+    @maintenance_window_dow.setter
+    def maintenance_window_dow(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_window_dow", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindowTime")
+    def maintenance_window_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        time of day when maintenance operations should be performed. 
+        UTC time in HH:mm:ss format.
+        """
+        return pulumi.get(self, "maintenance_window_time")
+
+    @maintenance_window_time.setter
+    def maintenance_window_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_window_time", value)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines what kind of computing resources are allocated for the service. It can
+        be changed after creation, though there are some restrictions when going to a smaller
+        plan such as the new plan must have sufficient amount of disk space to store all current
+        data and switching to a plan with fewer nodes might not be supported. The basic plan
+        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+        (roughly) the amount of memory on each node (also other attributes like number of CPUs
+        and amount of disk space varies but naming is based on memory). The exact options can be
+        seen from the Aiven web console's Create Service dialog.
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan", value)
+
+    @property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        optionally specifies the VPC the service should run in. If the value
+        is not set the service is not run inside a VPC. When set, the value should be given as a
+        reference as shown above to set up dependencies correctly and the VPC must be in the same
+        cloud and region as the service itself. Project can be freely moved to and from VPC after
+        creation but doing so triggers migration to new servers so the operation can take
+        significant amount of time to complete if the service has a lot of data.
+        """
+        return pulumi.get(self, "project_vpc_id")
+
+    @project_vpc_id.setter
+    def project_vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_vpc_id", value)
+
+    @property
+    @pulumi.getter
+    def redis(self) -> Optional[pulumi.Input['RedisRedisArgs']]:
+        """
+        Allow clients to connect to redis from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
+        return pulumi.get(self, "redis")
+
+    @redis.setter
+    def redis(self, value: Optional[pulumi.Input['RedisRedisArgs']]):
+        pulumi.set(self, "redis", value)
+
+    @property
+    @pulumi.getter(name="redisUserConfig")
+    def redis_user_config(self) -> Optional[pulumi.Input['RedisRedisUserConfigArgs']]:
+        """
+        defines Redis specific additional configuration options. The following 
+        configuration options available:
+        """
+        return pulumi.get(self, "redis_user_config")
+
+    @redis_user_config.setter
+    def redis_user_config(self, value: Optional[pulumi.Input['RedisRedisUserConfigArgs']]):
+        pulumi.set(self, "redis_user_config", value)
+
+    @property
+    @pulumi.getter(name="serviceIntegrations")
+    def service_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]]]:
+        """
+        Service integrations to specify when creating a service. Not applied after initial service creation
+        """
+        return pulumi.get(self, "service_integrations")
+
+    @service_integrations.setter
+    def service_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]]]):
+        pulumi.set(self, "service_integrations", value)
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        prevents the service from being deleted. It is recommended to
+        set this to `true` for all production services to prevent unintentional service
+        deletion. This does not shield against deleting databases or topics but for services
+        with backups much of the content can at least be restored from backup in case accidental
+        deletion is done.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @termination_protection.setter
+    def termination_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "termination_protection", value)
 
 
 class Redis(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -101,6 +343,67 @@ class Redis(pulumi.CustomResource):
                with backups much of the content can at least be restored from backup in case accidental
                deletion is done.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RedisArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Redis Resource
+
+        The Redis resource allows the creation and management of Aiven Redis services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        redis1 = aiven.Redis("redis1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="my-redis1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            redis_user_config=aiven.RedisRedisUserConfigArgs(
+                redis_maxmemory_policy="allkeys-random",
+                public_access=aiven.RedisRedisUserConfigPublicAccessArgs(
+                    redis="true",
+                ),
+            ))
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RedisArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RedisArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+                 maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 project_vpc_id: Optional[pulumi.Input[str]] = None,
+                 redis: Optional[pulumi.Input[pulumi.InputType['RedisRedisArgs']]] = None,
+                 redis_user_config: Optional[pulumi.Input[pulumi.InputType['RedisRedisUserConfigArgs']]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisServiceIntegrationArgs']]]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

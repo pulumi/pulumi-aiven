@@ -5,13 +5,130 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['MirrorMakerReplicationFlow']
+__all__ = ['MirrorMakerReplicationFlowArgs', 'MirrorMakerReplicationFlow']
+
+@pulumi.input_type
+class MirrorMakerReplicationFlowArgs:
+    def __init__(__self__, *,
+                 enable: pulumi.Input[bool],
+                 project: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 source_cluster: pulumi.Input[str],
+                 target_cluster: pulumi.Input[str],
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a MirrorMakerReplicationFlow resource.
+        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] service_name: Service to link the kafka topic to
+        :param pulumi.Input[str] source_cluster: is a source cluster alias.
+        :param pulumi.Input[str] target_cluster: is a target cluster alias.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+        """
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "source_cluster", source_cluster)
+        pulumi.set(__self__, "target_cluster", target_cluster)
+        if topics is not None:
+            pulumi.set(__self__, "topics", topics)
+        if topics_blacklists is not None:
+            pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> pulumi.Input[bool]:
+        """
+        enable of disable replication flows for a MirrorMaker service
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Service to link the kafka topic to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="sourceCluster")
+    def source_cluster(self) -> pulumi.Input[str]:
+        """
+        is a source cluster alias.
+        """
+        return pulumi.get(self, "source_cluster")
+
+    @source_cluster.setter
+    def source_cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_cluster", value)
+
+    @property
+    @pulumi.getter(name="targetCluster")
+    def target_cluster(self) -> pulumi.Input[str]:
+        """
+        is a target cluster alias.
+        """
+        return pulumi.get(self, "target_cluster")
+
+    @target_cluster.setter
+    def target_cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_cluster", value)
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        is a list of topics and/or regular expressions to replicate.
+        """
+        return pulumi.get(self, "topics")
+
+    @topics.setter
+    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "topics", value)
+
+    @property
+    @pulumi.getter(name="topicsBlacklists")
+    def topics_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        is a list of topics and/or regular expressions to not replicate.
+        """
+        return pulumi.get(self, "topics_blacklists")
+
+    @topics_blacklists.setter
+    def topics_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "topics_blacklists", value)
 
 
 class MirrorMakerReplicationFlow(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +179,63 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MirrorMakerReplicationFlowArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # MirrorMaker 2 Replication Flow Resource
+
+        The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
+        Replication Flows on Aiven Cloud.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        f1 = aiven.MirrorMakerReplicationFlow("f1",
+            project=aiven_project["kafka-mm-project1"]["project"],
+            service_name=aiven_service["mm"]["service_name"],
+            source_cluster=aiven_service["source"]["service_name"],
+            target_cluster=aiven_service["target"]["service_name"],
+            enable=True,
+            topics=[".*"],
+            topics_blacklists=[
+                ".*[\\-\\.]internal",
+                ".*\\.replica",
+                "__.*",
+            ])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MirrorMakerReplicationFlowArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MirrorMakerReplicationFlowArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 source_cluster: Optional[pulumi.Input[str]] = None,
+                 target_cluster: Optional[pulumi.Input[str]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

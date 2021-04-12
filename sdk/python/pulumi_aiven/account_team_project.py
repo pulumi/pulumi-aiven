@@ -5,13 +5,85 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AccountTeamProject']
+__all__ = ['AccountTeamProjectArgs', 'AccountTeamProject']
+
+@pulumi.input_type
+class AccountTeamProjectArgs:
+    def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
+                 team_id: pulumi.Input[str],
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 team_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccountTeamProject resource.
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] team_id: is an account team id.
+        :param pulumi.Input[str] project_name: is a project name of already existing project.
+        :param pulumi.Input[str] team_type: is an account team project type, can one of the following values: `admin`, 
+               `developer`, `operator` and `read_only`.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "team_id", team_id)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+        if team_type is not None:
+            pulumi.set(__self__, "team_type", team_type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        is a unique account id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> pulumi.Input[str]:
+        """
+        is an account team id.
+        """
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "team_id", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a project name of already existing project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="teamType")
+    def team_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        is an account team project type, can one of the following values: `admin`, 
+        `developer`, `operator` and `read_only`.
+        """
+        return pulumi.get(self, "team_type")
+
+    @team_type.setter
+    def team_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_type", value)
 
 
 class AccountTeamProject(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +111,43 @@ class AccountTeamProject(pulumi.CustomResource):
         :param pulumi.Input[str] team_type: is an account team project type, can one of the following values: `admin`, 
                `developer`, `operator` and `read_only`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccountTeamProjectArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # Account Team Project Resource
+
+        The Account Team Project resource allows the creation and management of an Account Team Project.
+
+        It is intended to link an existing project to the existing account team.
+        It is important to note that the project should have an `account_id` property set equal to the
+        account team you are trying to link to this project.
+
+        :param str resource_name: The name of the resource.
+        :param AccountTeamProjectArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccountTeamProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 team_id: Optional[pulumi.Input[str]] = None,
+                 team_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
