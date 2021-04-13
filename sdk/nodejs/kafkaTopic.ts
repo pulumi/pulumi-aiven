@@ -5,35 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * ## # Kafka Topic Resource
- *
- * The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytesttopic = new aiven.KafkaTopic("mytesttopic", {
- *     config: {
- *         cleanupPolicy: "compact,delete",
- *         flushMs: "10",
- *         uncleanLeaderElectionEnable: "true",
- *     },
- *     partitions: 5,
- *     project: aiven_project_myproject.project,
- *     replication: 3,
- *     serviceName: aiven_service_myservice.serviceName,
- *     terminationProtection: true,
- *     topicName: "<TOPIC_NAME>",
- * }, { timeouts: {
- *     create: "1m",
- *     read: "5m",
- * } });
- * ```
- */
 export class KafkaTopic extends pulumi.CustomResource {
     /**
      * Get an existing KafkaTopic resource's state with the given name, ID, and optional extra
@@ -111,6 +82,10 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
+     * Kafka Topic tag
+     */
+    public readonly tags!: pulumi.Output<outputs.KafkaTopicTag[] | undefined>;
+    /**
      * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
      * enable this for any production Kafka topic containing critical data.
      */
@@ -144,6 +119,7 @@ export class KafkaTopic extends pulumi.CustomResource {
             inputs["retentionBytes"] = state ? state.retentionBytes : undefined;
             inputs["retentionHours"] = state ? state.retentionHours : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
@@ -172,6 +148,7 @@ export class KafkaTopic extends pulumi.CustomResource {
             inputs["retentionBytes"] = args ? args.retentionBytes : undefined;
             inputs["retentionHours"] = args ? args.retentionHours : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
             inputs["topicName"] = args ? args.topicName : undefined;
         }
@@ -234,6 +211,10 @@ export interface KafkaTopicState {
      * Service to link the kafka topic to
      */
     readonly serviceName?: pulumi.Input<string>;
+    /**
+     * Kafka Topic tag
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     /**
      * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
      * enable this for any production Kafka topic containing critical data.
@@ -299,6 +280,10 @@ export interface KafkaTopicArgs {
      * Service to link the kafka topic to
      */
     readonly serviceName: pulumi.Input<string>;
+    /**
+     * Kafka Topic tag
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     /**
      * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
      * enable this for any production Kafka topic containing critical data.

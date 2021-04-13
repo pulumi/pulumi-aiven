@@ -11,42 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## # Kafka Topic Resource
-//
-// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewKafkaTopic(ctx, "mytesttopic", &aiven.KafkaTopicArgs{
-// 			Config: &aiven.KafkaTopicConfigArgs{
-// 				CleanupPolicy:               pulumi.String("compact,delete"),
-// 				FlushMs:                     pulumi.String("10"),
-// 				UncleanLeaderElectionEnable: pulumi.String("true"),
-// 			},
-// 			Partitions:            pulumi.Int(5),
-// 			Project:               pulumi.Any(aiven_project.Myproject.Project),
-// 			Replication:           pulumi.Int(3),
-// 			ServiceName:           pulumi.Any(aiven_service.Myservice.Service_name),
-// 			TerminationProtection: pulumi.Bool(true),
-// 			TopicName:             pulumi.String("<TOPIC_NAME>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +44,8 @@ type KafkaTopic struct {
 	RetentionHours pulumi.IntPtrOutput `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Kafka Topic tag
+	Tags KafkaTopicTagArrayOutput `pulumi:"tags"`
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
@@ -163,6 +129,8 @@ type kafkaTopicState struct {
 	RetentionHours *int `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName *string `pulumi:"serviceName"`
+	// Kafka Topic tag
+	Tags []KafkaTopicTag `pulumi:"tags"`
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -203,6 +171,8 @@ type KafkaTopicState struct {
 	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringPtrInput
+	// Kafka Topic tag
+	Tags KafkaTopicTagArrayInput
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection pulumi.BoolPtrInput
@@ -247,6 +217,8 @@ type kafkaTopicArgs struct {
 	RetentionHours *int `pulumi:"retentionHours"`
 	// Service to link the kafka topic to
 	ServiceName string `pulumi:"serviceName"`
+	// Kafka Topic tag
+	Tags []KafkaTopicTag `pulumi:"tags"`
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -288,6 +260,8 @@ type KafkaTopicArgs struct {
 	RetentionHours pulumi.IntPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringInput
+	// Kafka Topic tag
+	Tags KafkaTopicTagArrayInput
 	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
 	// enable this for any production Kafka topic containing critical data.
 	TerminationProtection pulumi.BoolPtrInput

@@ -25,6 +25,7 @@ class KafkaTopicArgs:
                  minimum_in_sync_replicas: Optional[pulumi.Input[int]] = None,
                  retention_bytes: Optional[pulumi.Input[int]] = None,
                  retention_hours: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a KafkaTopic resource.
@@ -44,6 +45,7 @@ class KafkaTopicArgs:
                (ISR) to produce to a partition.
         :param pulumi.Input[int] retention_bytes: retention.bytes value
         :param pulumi.Input[int] retention_hours: Retention period in hours, if -1 it is infinite.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Kafka Topic tag
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
         """
@@ -74,6 +76,8 @@ class KafkaTopicArgs:
             pulumi.log.warn("""retention_hours is deprecated: use config.retention_ms instead""")
         if retention_hours is not None:
             pulumi.set(__self__, "retention_hours", retention_hours)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -204,6 +208,18 @@ class KafkaTopicArgs:
         pulumi.set(self, "retention_hours", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
+        """
+        Kafka Topic tag
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -231,36 +247,14 @@ class KafkaTopic(pulumi.CustomResource):
                  retention_bytes: Optional[pulumi.Input[int]] = None,
                  retention_hours: Optional[pulumi.Input[int]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        ## # Kafka Topic Resource
-
-        The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mytesttopic = aiven.KafkaTopic("mytesttopic",
-            config=aiven.KafkaTopicConfigArgs(
-                cleanup_policy="compact,delete",
-                flush_ms="10",
-                unclean_leader_election_enable="true",
-            ),
-            partitions=5,
-            project=aiven_project["myproject"]["project"],
-            replication=3,
-            service_name=aiven_service["myservice"]["service_name"],
-            termination_protection=True,
-            topic_name="<TOPIC_NAME>")
-        ```
-
+        Create a KafkaTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
@@ -276,6 +270,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[int] retention_bytes: retention.bytes value
         :param pulumi.Input[int] retention_hours: Retention period in hours, if -1 it is infinite.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Kafka Topic tag
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
         :param pulumi.Input[str] topic_name: is the actual name of the topic account. This propery cannot be changed
@@ -289,30 +284,7 @@ class KafkaTopic(pulumi.CustomResource):
                  args: KafkaTopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Kafka Topic Resource
-
-        The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mytesttopic = aiven.KafkaTopic("mytesttopic",
-            config=aiven.KafkaTopicConfigArgs(
-                cleanup_policy="compact,delete",
-                flush_ms="10",
-                unclean_leader_election_enable="true",
-            ),
-            partitions=5,
-            project=aiven_project["myproject"]["project"],
-            replication=3,
-            service_name=aiven_service["myservice"]["service_name"],
-            termination_protection=True,
-            topic_name="<TOPIC_NAME>")
-        ```
-
+        Create a KafkaTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KafkaTopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -337,6 +309,7 @@ class KafkaTopic(pulumi.CustomResource):
                  retention_bytes: Optional[pulumi.Input[int]] = None,
                  retention_hours: Optional[pulumi.Input[int]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -388,6 +361,7 @@ class KafkaTopic(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
+            __props__['tags'] = tags
             __props__['termination_protection'] = termination_protection
             if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
@@ -411,6 +385,7 @@ class KafkaTopic(pulumi.CustomResource):
             retention_bytes: Optional[pulumi.Input[int]] = None,
             retention_hours: Optional[pulumi.Input[int]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None,
             topic_name: Optional[pulumi.Input[str]] = None) -> 'KafkaTopic':
         """
@@ -433,6 +408,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[int] retention_bytes: retention.bytes value
         :param pulumi.Input[int] retention_hours: Retention period in hours, if -1 it is infinite.
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Kafka Topic tag
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
         :param pulumi.Input[str] topic_name: is the actual name of the topic account. This propery cannot be changed
@@ -452,6 +428,7 @@ class KafkaTopic(pulumi.CustomResource):
         __props__["retention_bytes"] = retention_bytes
         __props__["retention_hours"] = retention_hours
         __props__["service_name"] = service_name
+        __props__["tags"] = tags
         __props__["termination_protection"] = termination_protection
         __props__["topic_name"] = topic_name
         return KafkaTopic(resource_name, opts=opts, __props__=__props__)
@@ -531,6 +508,14 @@ class KafkaTopic(pulumi.CustomResource):
         Service to link the kafka topic to
         """
         return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.KafkaTopicTag']]]:
+        """
+        Kafka Topic tag
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="terminationProtection")

@@ -168,6 +168,12 @@ func Provider() tfbridge.ProviderInfo {
 											"pg_stat_statements_dot_track": {
 												Name: "pgStatStatementsTrack",
 											},
+											"pg_partman_bgw_dot_role": {
+												Name: "pgPartmanBgwRole",
+											},
+											"pg_partman_bgw_dot_interval": {
+												Name: "pgPartmanBgwInterval",
+											},
 										},
 									},
 								},
@@ -224,6 +230,12 @@ func Provider() tfbridge.ProviderInfo {
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"pg_stat_statements_dot_track": {
 												Name: "pgStatStatementsTrack",
+											},
+											"pg_partman_bgw_dot_role": {
+												Name: "pgPartmanBgwRole",
+											},
+											"pg_partman_bgw_dot_interval": {
+												Name: "pgPartmanBgwInterval",
 											},
 										},
 									},

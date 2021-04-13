@@ -36,6 +36,22 @@ import * as utilities from "./utilities";
  * `,
  * });
  * ```
+ *
+ * You can also load the schema from an external file:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ * import * from "fs";
+ *
+ * const kafka_schema2 = new aiven.KafkaSchema("kafka-schema2", {
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     subjectName: "kafka-schema2",
+ *     compatibilityLevel: "FORWARD",
+ *     schema: fs.readFileSync(`${path.module}/external_schema.avsc`),
+ * });
+ * ```
  */
 export class KafkaSchema extends pulumi.CustomResource {
     /**

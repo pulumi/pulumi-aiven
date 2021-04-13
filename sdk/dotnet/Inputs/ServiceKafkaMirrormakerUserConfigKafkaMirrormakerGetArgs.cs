@@ -12,6 +12,12 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs : Pulumi.ResourceArgs
     {
+        [Input("emitCheckpointsEnabled")]
+        public Input<string>? EmitCheckpointsEnabled { get; set; }
+
+        [Input("emitCheckpointsIntervalSeconds")]
+        public Input<string>? EmitCheckpointsIntervalSeconds { get; set; }
+
         [Input("refreshGroupsEnabled")]
         public Input<string>? RefreshGroupsEnabled { get; set; }
 
@@ -23,6 +29,12 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("refreshTopicsIntervalSeconds")]
         public Input<string>? RefreshTopicsIntervalSeconds { get; set; }
+
+        [Input("syncGroupOffsetsEnabled")]
+        public Input<string>? SyncGroupOffsetsEnabled { get; set; }
+
+        [Input("syncGroupOffsetsIntervalSeconds")]
+        public Input<string>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         public ServiceKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs()
         {

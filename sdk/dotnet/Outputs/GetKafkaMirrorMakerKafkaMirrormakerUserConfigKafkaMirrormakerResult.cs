@@ -14,6 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult
     {
         /// <summary>
+        /// Whether to periodically write the translated offsets
+        /// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+        /// as long as no active consumers in that group are connected to the target cluster.
+        /// </summary>
+        public readonly string? EmitCheckpointsEnabled;
+        public readonly string? EmitCheckpointsIntervalSeconds;
+        /// <summary>
         /// Whether to periodically check for new consumer groups. 
         /// Defaults to 'true'.
         /// </summary>
@@ -29,21 +36,39 @@ namespace Pulumi.Aiven.Outputs
         /// seconds. Defaults to 600 seconds (10 minutes).
         /// </summary>
         public readonly string? RefreshTopicsIntervalSeconds;
+        public readonly string? SyncGroupOffsetsEnabled;
+        /// <summary>
+        /// Frequency at which consumer group offsets
+        /// are synced (default: 60, every minute).
+        /// </summary>
+        public readonly string? SyncGroupOffsetsIntervalSeconds;
 
         [OutputConstructor]
         private GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(
+            string? emitCheckpointsEnabled,
+
+            string? emitCheckpointsIntervalSeconds,
+
             string? refreshGroupsEnabled,
 
             string? refreshGroupsIntervalSeconds,
 
             string? refreshTopicsEnabled,
 
-            string? refreshTopicsIntervalSeconds)
+            string? refreshTopicsIntervalSeconds,
+
+            string? syncGroupOffsetsEnabled,
+
+            string? syncGroupOffsetsIntervalSeconds)
         {
+            EmitCheckpointsEnabled = emitCheckpointsEnabled;
+            EmitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             RefreshGroupsEnabled = refreshGroupsEnabled;
             RefreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             RefreshTopicsEnabled = refreshTopicsEnabled;
             RefreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
+            SyncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
+            SyncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
         }
     }
 }

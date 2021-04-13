@@ -77,6 +77,7 @@ __all__ = [
     'KafkaMirrorMakerServiceIntegrationArgs',
     'KafkaServiceIntegrationArgs',
     'KafkaTopicConfigArgs',
+    'KafkaTopicTagArgs',
     'M3AggregatorComponentArgs',
     'M3AggregatorM3aggregatorArgs',
     'M3AggregatorM3aggregatorUserConfigArgs',
@@ -90,6 +91,9 @@ __all__ = [
     'M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs',
     'M3DbM3dbUserConfigPrivateAccessArgs',
     'M3DbM3dbUserConfigPublicAccessArgs',
+    'M3DbM3dbUserConfigRulesArgs',
+    'M3DbM3dbUserConfigRulesMappingArgs',
+    'M3DbM3dbUserConfigRulesMappingTagArgs',
     'M3DbServiceIntegrationArgs',
     'MySqlComponentArgs',
     'MySqlMysqlArgs',
@@ -154,7 +158,9 @@ __all__ = [
     'ServiceInfluxdbUserConfigPublicAccessArgs',
     'ServiceIntegrationDashboardUserConfigArgs',
     'ServiceIntegrationDatadogUserConfigArgs',
+    'ServiceIntegrationDatadogUserConfigDatadogTagArgs',
     'ServiceIntegrationEndpointDatadogUserConfigArgs',
+    'ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs',
     'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs',
     'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs',
     'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs',
@@ -298,6 +304,7 @@ __all__ = [
     'GetKafkaMirrorMakerServiceIntegrationArgs',
     'GetKafkaServiceIntegrationArgs',
     'GetKafkaTopicConfigArgs',
+    'GetKafkaTopicTagArgs',
     'GetM3AggregatorComponentArgs',
     'GetM3AggregatorM3aggregatorArgs',
     'GetM3AggregatorM3aggregatorUserConfigArgs',
@@ -311,6 +318,9 @@ __all__ = [
     'GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs',
     'GetM3DbM3dbUserConfigPrivateAccessArgs',
     'GetM3DbM3dbUserConfigPublicAccessArgs',
+    'GetM3DbM3dbUserConfigRulesArgs',
+    'GetM3DbM3dbUserConfigRulesMappingArgs',
+    'GetM3DbM3dbUserConfigRulesMappingTagArgs',
     'GetM3DbServiceIntegrationArgs',
     'GetMySqlComponentArgs',
     'GetMySqlMysqlArgs',
@@ -375,7 +385,9 @@ __all__ = [
     'GetServiceInfluxdbUserConfigPublicAccessArgs',
     'GetServiceIntegrationDashboardUserConfigArgs',
     'GetServiceIntegrationDatadogUserConfigArgs',
+    'GetServiceIntegrationDatadogUserConfigDatadogTagArgs',
     'GetServiceIntegrationEndpointDatadogUserConfigArgs',
+    'GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs',
     'GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs',
     'GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs',
     'GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs',
@@ -1252,8 +1264,8 @@ class ElasticSearchElasticsearchUserConfigElasticsearchArgs:
         :param pulumi.Input[str] action_auto_create_index_enabled: Explicitly allow or block automatic 
                creation of indices. Defaults to true
         :param pulumi.Input[str] action_destructive_requires_name: Require explicit index names when deleting
-        :param pulumi.Input[str] cluster_max_shards_per_node: Controls the number of shards allowed in the 
-               cluster per data node
+        :param pulumi.Input[str] cluster_max_shards_per_node: Controls the number of shards allowed in the
+               cluster per data node.
         :param pulumi.Input[str] http_max_content_length: Maximum content length for HTTP requests to 
                the Elasticsearch HTTP API, in bytes.
         :param pulumi.Input[str] http_max_header_size: The max size of allowed headers, in bytes.
@@ -1391,8 +1403,8 @@ class ElasticSearchElasticsearchUserConfigElasticsearchArgs:
     @pulumi.getter(name="clusterMaxShardsPerNode")
     def cluster_max_shards_per_node(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the number of shards allowed in the 
-        cluster per data node
+        Controls the number of shards allowed in the
+        cluster per data node.
         """
         return pulumi.get(self, "cluster_max_shards_per_node")
 
@@ -6334,18 +6346,31 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
 @pulumi.input_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     def __init__(__self__, *,
+                 emit_checkpoints_enabled: Optional[pulumi.Input[str]] = None,
+                 emit_checkpoints_interval_seconds: Optional[pulumi.Input[str]] = None,
                  refresh_groups_enabled: Optional[pulumi.Input[str]] = None,
                  refresh_groups_interval_seconds: Optional[pulumi.Input[str]] = None,
                  refresh_topics_enabled: Optional[pulumi.Input[str]] = None,
-                 refresh_topics_interval_seconds: Optional[pulumi.Input[str]] = None):
+                 refresh_topics_interval_seconds: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_enabled: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] emit_checkpoints_enabled: Whether to periodically write the translated offsets 
+               of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+               as long as no active consumers in that group are connected to the target cluster.
         :param pulumi.Input[str] refresh_groups_enabled: Whether to periodically check for new consumer groups. 
                Defaults to 'true'.
         :param pulumi.Input[str] refresh_groups_interval_seconds: Whether to periodically check for new topics and 
                partitions. Defaults to 'true'.
         :param pulumi.Input[str] refresh_topics_interval_seconds: Frequency of topic and partitions refresh in 
                seconds. Defaults to 600 seconds (10 minutes).
+        :param pulumi.Input[str] sync_group_offsets_interval_seconds: Frequency at which consumer group offsets 
+               are synced (default: 60, every minute).
         """
+        if emit_checkpoints_enabled is not None:
+            pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
+        if emit_checkpoints_interval_seconds is not None:
+            pulumi.set(__self__, "emit_checkpoints_interval_seconds", emit_checkpoints_interval_seconds)
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -6354,6 +6379,33 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
             pulumi.set(__self__, "refresh_topics_enabled", refresh_topics_enabled)
         if refresh_topics_interval_seconds is not None:
             pulumi.set(__self__, "refresh_topics_interval_seconds", refresh_topics_interval_seconds)
+        if sync_group_offsets_enabled is not None:
+            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+        if sync_group_offsets_interval_seconds is not None:
+            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsEnabled")
+    def emit_checkpoints_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to periodically write the translated offsets 
+        of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+        as long as no active consumers in that group are connected to the target cluster.
+        """
+        return pulumi.get(self, "emit_checkpoints_enabled")
+
+    @emit_checkpoints_enabled.setter
+    def emit_checkpoints_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "emit_checkpoints_enabled", value)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsIntervalSeconds")
+    def emit_checkpoints_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "emit_checkpoints_interval_seconds")
+
+    @emit_checkpoints_interval_seconds.setter
+    def emit_checkpoints_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "emit_checkpoints_interval_seconds", value)
 
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
@@ -6402,6 +6454,28 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @refresh_topics_interval_seconds.setter
     def refresh_topics_interval_seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "refresh_topics_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @sync_group_offsets_enabled.setter
+    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_group_offsets_enabled", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Frequency at which consumer group offsets 
+        are synced (default: 60, every minute).
+        """
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
+
+    @sync_group_offsets_interval_seconds.setter
+    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
 
 @pulumi.input_type
@@ -6850,6 +6924,34 @@ class KafkaTopicConfigArgs:
 
 
 @pulumi.input_type
+class KafkaTopicTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class M3AggregatorComponentArgs:
     def __init__(__self__, *,
                  component: Optional[pulumi.Input[str]] = None,
@@ -7146,6 +7248,7 @@ class M3DbM3dbUserConfigArgs:
                  private_access: Optional[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgs']] = None,
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
                  public_access: Optional[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs']] = None,
+                 rules: Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -7160,6 +7263,9 @@ class M3DbM3dbUserConfigArgs:
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has
                effect only when a new service is being created.
         :param pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet.
+        :param pulumi.Input['M3DbM3dbUserConfigRulesArgs'] rules: Mapping rules allow more granular use of aggregation, not simply sending 
+               everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+               rules will be sent to it and nothing else.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only 
                when a new service is being created.
         """
@@ -7183,6 +7289,8 @@ class M3DbM3dbUserConfigArgs:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
@@ -7305,6 +7413,20 @@ class M3DbM3dbUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']]:
+        """
+        Mapping rules allow more granular use of aggregation, not simply sending 
+        everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+        rules will be sent to it and nothing else.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']]):
+        pulumi.set(self, "rules", value)
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -7666,6 +7788,153 @@ class M3DbM3dbUserConfigPublicAccessArgs:
     @m3coordinator.setter
     def m3coordinator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "m3coordinator", value)
+
+
+@pulumi.input_type
+class M3DbM3dbUserConfigRulesArgs:
+    def __init__(__self__, *,
+                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]]] = None):
+        if mappings is not None:
+            pulumi.set(__self__, "mappings", mappings)
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]]]:
+        return pulumi.get(self, "mappings")
+
+    @mappings.setter
+    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]]]):
+        pulumi.set(self, "mappings", value)
+
+
+@pulumi.input_type
+class M3DbM3dbUserConfigRulesMappingArgs:
+    def __init__(__self__, *,
+                 aggregations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 drop: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aggregations: List of aggregations to be applied
+        :param pulumi.Input[str] drop: Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+        :param pulumi.Input[str] filter: The metrics to be used with this particular rule; Matching metric names with wildcards (using
+               __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+               can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        :param pulumi.Input[str] name: The name of the namespace
+        :param pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]] tags: List of tags to be appended to matching metrics.
+        """
+        if aggregations is not None:
+            pulumi.set(__self__, "aggregations", aggregations)
+        if drop is not None:
+            pulumi.set(__self__, "drop", drop)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of aggregations to be applied
+        """
+        return pulumi.get(self, "aggregations")
+
+    @aggregations.setter
+    def aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "aggregations", value)
+
+    @property
+    @pulumi.getter
+    def drop(self) -> Optional[pulumi.Input[str]]:
+        """
+        Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+        """
+        return pulumi.get(self, "drop")
+
+    @drop.setter
+    def drop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "drop", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The metrics to be used with this particular rule; Matching metric names with wildcards (using
+        __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+        can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the namespace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]]:
+        """
+        List of tags to be appended to matching metrics.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class M3DbM3dbUserConfigRulesMappingTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the namespace
+        :param pulumi.Input[str] value: Value of the tag.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the namespace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -9516,6 +9785,7 @@ class PgPgUserConfigPgArgs:
                  jit: Optional[pulumi.Input[str]] = None,
                  log_autovacuum_min_duration: Optional[pulumi.Input[str]] = None,
                  log_error_verbosity: Optional[pulumi.Input[str]] = None,
+                 log_line_prefix: Optional[pulumi.Input[str]] = None,
                  log_min_duration_statement: Optional[pulumi.Input[str]] = None,
                  max_files_per_process: Optional[pulumi.Input[str]] = None,
                  max_locks_per_transaction: Optional[pulumi.Input[str]] = None,
@@ -9575,8 +9845,10 @@ class PgPgUserConfigPgArgs:
                actions. Minus-one (the default) disables logging autovacuum actions.
         :param pulumi.Input[str] log_error_verbosity: Controls the amount of detail written in the server log for 
                each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
-        :param pulumi.Input[str] log_min_duration_statement: Log statements that take more than this number of 
+        :param pulumi.Input[str] log_line_prefix: Choose from one of the available log-formats. These can support 
+               popular log analyzers like pgbadger, pganalyze etc.
                milliseconds to run, -1 disables
+        :param pulumi.Input[str] log_min_duration_statement: Log statements that take more than this number of
         :param pulumi.Input[str] max_files_per_process: PostgreSQL maximum number of files that can be open per process
         :param pulumi.Input[str] max_locks_per_transaction: PostgreSQL maximum locks per transaction
         :param pulumi.Input[str] max_logical_replication_workers: PostgreSQL maximum logical replication workers 
@@ -9640,6 +9912,8 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "log_autovacuum_min_duration", log_autovacuum_min_duration)
         if log_error_verbosity is not None:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
+        if log_line_prefix is not None:
+            pulumi.set(__self__, "log_line_prefix", log_line_prefix)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
         if max_files_per_process is not None:
@@ -9878,11 +10152,24 @@ class PgPgUserConfigPgArgs:
         pulumi.set(self, "log_error_verbosity", value)
 
     @property
+    @pulumi.getter(name="logLinePrefix")
+    def log_line_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Choose from one of the available log-formats. These can support 
+        popular log analyzers like pgbadger, pganalyze etc.
+        milliseconds to run, -1 disables
+        """
+        return pulumi.get(self, "log_line_prefix")
+
+    @log_line_prefix.setter
+    def log_line_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_line_prefix", value)
+
+    @property
     @pulumi.getter(name="logMinDurationStatement")
     def log_min_duration_statement(self) -> Optional[pulumi.Input[str]]:
         """
-        Log statements that take more than this number of 
-        milliseconds to run, -1 disables
+        Log statements that take more than this number of
         """
         return pulumi.get(self, "log_min_duration_statement")
 
@@ -13349,11 +13636,14 @@ class ServiceIntegrationDashboardUserConfigArgs:
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigArgs:
     def __init__(__self__, *,
+                 datadog_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]]] = None,
                  exclude_consumer_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exclude_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_consumer_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka_custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if datadog_tags is not None:
+            pulumi.set(__self__, "datadog_tags", datadog_tags)
         if exclude_consumer_groups is not None:
             pulumi.set(__self__, "exclude_consumer_groups", exclude_consumer_groups)
         if exclude_topics is not None:
@@ -13364,6 +13654,15 @@ class ServiceIntegrationDatadogUserConfigArgs:
             pulumi.set(__self__, "include_topics", include_topics)
         if kafka_custom_metrics is not None:
             pulumi.set(__self__, "kafka_custom_metrics", kafka_custom_metrics)
+
+    @property
+    @pulumi.getter(name="datadogTags")
+    def datadog_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]]]:
+        return pulumi.get(self, "datadog_tags")
+
+    @datadog_tags.setter
+    def datadog_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]]]):
+        pulumi.set(self, "datadog_tags", value)
 
     @property
     @pulumi.getter(name="excludeConsumerGroups")
@@ -13412,14 +13711,46 @@ class ServiceIntegrationDatadogUserConfigArgs:
 
 
 @pulumi.input_type
+class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
+    def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
 class ServiceIntegrationEndpointDatadogUserConfigArgs:
     def __init__(__self__, *,
                  datadog_api_key: Optional[pulumi.Input[str]] = None,
+                 datadog_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]] = None,
                  disable_consumer_stats: Optional[pulumi.Input[str]] = None,
                  max_partition_contexts: Optional[pulumi.Input[str]] = None,
                  site: Optional[pulumi.Input[str]] = None):
         if datadog_api_key is not None:
             pulumi.set(__self__, "datadog_api_key", datadog_api_key)
+        if datadog_tags is not None:
+            pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
             pulumi.set(__self__, "disable_consumer_stats", disable_consumer_stats)
         if max_partition_contexts is not None:
@@ -13435,6 +13766,15 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     @datadog_api_key.setter
     def datadog_api_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datadog_api_key", value)
+
+    @property
+    @pulumi.getter(name="datadogTags")
+    def datadog_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]]:
+        return pulumi.get(self, "datadog_tags")
+
+    @datadog_tags.setter
+    def datadog_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]]):
+        pulumi.set(self, "datadog_tags", value)
 
     @property
     @pulumi.getter(name="disableConsumerStats")
@@ -13462,6 +13802,35 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     @site.setter
     def site(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "site", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
+    def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type
@@ -15112,10 +15481,18 @@ class ServiceKafkaMirrormakerUserConfigArgs:
 @pulumi.input_type
 class ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     def __init__(__self__, *,
+                 emit_checkpoints_enabled: Optional[pulumi.Input[str]] = None,
+                 emit_checkpoints_interval_seconds: Optional[pulumi.Input[str]] = None,
                  refresh_groups_enabled: Optional[pulumi.Input[str]] = None,
                  refresh_groups_interval_seconds: Optional[pulumi.Input[str]] = None,
                  refresh_topics_enabled: Optional[pulumi.Input[str]] = None,
-                 refresh_topics_interval_seconds: Optional[pulumi.Input[str]] = None):
+                 refresh_topics_interval_seconds: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_enabled: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[str]] = None):
+        if emit_checkpoints_enabled is not None:
+            pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
+        if emit_checkpoints_interval_seconds is not None:
+            pulumi.set(__self__, "emit_checkpoints_interval_seconds", emit_checkpoints_interval_seconds)
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -15124,6 +15501,28 @@ class ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
             pulumi.set(__self__, "refresh_topics_enabled", refresh_topics_enabled)
         if refresh_topics_interval_seconds is not None:
             pulumi.set(__self__, "refresh_topics_interval_seconds", refresh_topics_interval_seconds)
+        if sync_group_offsets_enabled is not None:
+            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+        if sync_group_offsets_interval_seconds is not None:
+            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsEnabled")
+    def emit_checkpoints_enabled(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "emit_checkpoints_enabled")
+
+    @emit_checkpoints_enabled.setter
+    def emit_checkpoints_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "emit_checkpoints_enabled", value)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsIntervalSeconds")
+    def emit_checkpoints_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "emit_checkpoints_interval_seconds")
+
+    @emit_checkpoints_interval_seconds.setter
+    def emit_checkpoints_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "emit_checkpoints_interval_seconds", value)
 
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
@@ -15160,6 +15559,24 @@ class ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @refresh_topics_interval_seconds.setter
     def refresh_topics_interval_seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "refresh_topics_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @sync_group_offsets_enabled.setter
+    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_group_offsets_enabled", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
+
+    @sync_group_offsets_interval_seconds.setter
+    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
 
 @pulumi.input_type
@@ -17327,6 +17744,7 @@ class ServicePgUserConfigPgArgs:
                  jit: Optional[pulumi.Input[str]] = None,
                  log_autovacuum_min_duration: Optional[pulumi.Input[str]] = None,
                  log_error_verbosity: Optional[pulumi.Input[str]] = None,
+                 log_line_prefix: Optional[pulumi.Input[str]] = None,
                  log_min_duration_statement: Optional[pulumi.Input[str]] = None,
                  max_files_per_process: Optional[pulumi.Input[str]] = None,
                  max_locks_per_transaction: Optional[pulumi.Input[str]] = None,
@@ -17341,8 +17759,8 @@ class ServicePgUserConfigPgArgs:
                  max_standby_streaming_delay: Optional[pulumi.Input[str]] = None,
                  max_wal_senders: Optional[pulumi.Input[str]] = None,
                  max_worker_processes: Optional[pulumi.Input[str]] = None,
-                 pg_partman_bgw_dot_interval: Optional[pulumi.Input[str]] = None,
-                 pg_partman_bgw_dot_role: Optional[pulumi.Input[str]] = None,
+                 pg_partman_bgw_interval: Optional[pulumi.Input[str]] = None,
+                 pg_partman_bgw_role: Optional[pulumi.Input[str]] = None,
                  pg_stat_statements_track: Optional[pulumi.Input[str]] = None,
                  temp_file_limit: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -17379,6 +17797,8 @@ class ServicePgUserConfigPgArgs:
             pulumi.set(__self__, "log_autovacuum_min_duration", log_autovacuum_min_duration)
         if log_error_verbosity is not None:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
+        if log_line_prefix is not None:
+            pulumi.set(__self__, "log_line_prefix", log_line_prefix)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
         if max_files_per_process is not None:
@@ -17407,10 +17827,10 @@ class ServicePgUserConfigPgArgs:
             pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
-        if pg_partman_bgw_dot_interval is not None:
-            pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
-        if pg_partman_bgw_dot_role is not None:
-            pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
+        if pg_partman_bgw_interval is not None:
+            pulumi.set(__self__, "pg_partman_bgw_interval", pg_partman_bgw_interval)
+        if pg_partman_bgw_role is not None:
+            pulumi.set(__self__, "pg_partman_bgw_role", pg_partman_bgw_role)
         if pg_stat_statements_track is not None:
             pulumi.set(__self__, "pg_stat_statements_track", pg_stat_statements_track)
         if temp_file_limit is not None:
@@ -17555,6 +17975,15 @@ class ServicePgUserConfigPgArgs:
         pulumi.set(self, "log_error_verbosity", value)
 
     @property
+    @pulumi.getter(name="logLinePrefix")
+    def log_line_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_line_prefix")
+
+    @log_line_prefix.setter
+    def log_line_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_line_prefix", value)
+
+    @property
     @pulumi.getter(name="logMinDurationStatement")
     def log_min_duration_statement(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_min_duration_statement")
@@ -17681,22 +18110,22 @@ class ServicePgUserConfigPgArgs:
         pulumi.set(self, "max_worker_processes", value)
 
     @property
-    @pulumi.getter(name="pgPartmanBgwDotInterval")
-    def pg_partman_bgw_dot_interval(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "pg_partman_bgw_dot_interval")
+    @pulumi.getter(name="pgPartmanBgwInterval")
+    def pg_partman_bgw_interval(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pg_partman_bgw_interval")
 
-    @pg_partman_bgw_dot_interval.setter
-    def pg_partman_bgw_dot_interval(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pg_partman_bgw_dot_interval", value)
+    @pg_partman_bgw_interval.setter
+    def pg_partman_bgw_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pg_partman_bgw_interval", value)
 
     @property
-    @pulumi.getter(name="pgPartmanBgwDotRole")
-    def pg_partman_bgw_dot_role(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "pg_partman_bgw_dot_role")
+    @pulumi.getter(name="pgPartmanBgwRole")
+    def pg_partman_bgw_role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pg_partman_bgw_role")
 
-    @pg_partman_bgw_dot_role.setter
-    def pg_partman_bgw_dot_role(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pg_partman_bgw_dot_role", value)
+    @pg_partman_bgw_role.setter
+    def pg_partman_bgw_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pg_partman_bgw_role", value)
 
     @property
     @pulumi.getter(name="pgStatStatementsTrack")
@@ -19193,7 +19622,7 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchArgs:
         :param str action_auto_create_index_enabled: Explicitly allow or block automatic 
                creation of indices. Defaults to true
         :param str action_destructive_requires_name: Require explicit index names when deleting
-        :param str cluster_max_shards_per_node: Controls the number of shards allowed in the 
+        :param str cluster_max_shards_per_node: Controls the number of shards allowed in the
                cluster per data node
         :param str http_max_content_length: Maximum content length for HTTP requests to 
                the Elasticsearch HTTP API, in bytes.
@@ -19332,7 +19761,7 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchArgs:
     @pulumi.getter(name="clusterMaxShardsPerNode")
     def cluster_max_shards_per_node(self) -> Optional[str]:
         """
-        Controls the number of shards allowed in the 
+        Controls the number of shards allowed in the
         cluster per data node
         """
         return pulumi.get(self, "cluster_max_shards_per_node")
@@ -24206,18 +24635,31 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
 @pulumi.input_type
 class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     def __init__(__self__, *,
+                 emit_checkpoints_enabled: Optional[str] = None,
+                 emit_checkpoints_interval_seconds: Optional[str] = None,
                  refresh_groups_enabled: Optional[str] = None,
                  refresh_groups_interval_seconds: Optional[str] = None,
                  refresh_topics_enabled: Optional[str] = None,
-                 refresh_topics_interval_seconds: Optional[str] = None):
+                 refresh_topics_interval_seconds: Optional[str] = None,
+                 sync_group_offsets_enabled: Optional[str] = None,
+                 sync_group_offsets_interval_seconds: Optional[str] = None):
         """
+        :param str emit_checkpoints_enabled: Whether to periodically write the translated offsets
+               of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+               as long as no active consumers in that group are connected to the target cluster.
         :param str refresh_groups_enabled: Whether to periodically check for new consumer groups. 
                Defaults to 'true'.
         :param str refresh_groups_interval_seconds: Whether to periodically check for new topics and 
                partitions. Defaults to 'true'.
         :param str refresh_topics_interval_seconds: Frequency of topic and partitions refresh in 
                seconds. Defaults to 600 seconds (10 minutes).
+        :param str sync_group_offsets_interval_seconds: Frequency at which consumer group offsets
+               are synced (default: 60, every minute).
         """
+        if emit_checkpoints_enabled is not None:
+            pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
+        if emit_checkpoints_interval_seconds is not None:
+            pulumi.set(__self__, "emit_checkpoints_interval_seconds", emit_checkpoints_interval_seconds)
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -24226,6 +24668,33 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
             pulumi.set(__self__, "refresh_topics_enabled", refresh_topics_enabled)
         if refresh_topics_interval_seconds is not None:
             pulumi.set(__self__, "refresh_topics_interval_seconds", refresh_topics_interval_seconds)
+        if sync_group_offsets_enabled is not None:
+            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+        if sync_group_offsets_interval_seconds is not None:
+            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsEnabled")
+    def emit_checkpoints_enabled(self) -> Optional[str]:
+        """
+        Whether to periodically write the translated offsets
+        of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+        as long as no active consumers in that group are connected to the target cluster.
+        """
+        return pulumi.get(self, "emit_checkpoints_enabled")
+
+    @emit_checkpoints_enabled.setter
+    def emit_checkpoints_enabled(self, value: Optional[str]):
+        pulumi.set(self, "emit_checkpoints_enabled", value)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsIntervalSeconds")
+    def emit_checkpoints_interval_seconds(self) -> Optional[str]:
+        return pulumi.get(self, "emit_checkpoints_interval_seconds")
+
+    @emit_checkpoints_interval_seconds.setter
+    def emit_checkpoints_interval_seconds(self, value: Optional[str]):
+        pulumi.set(self, "emit_checkpoints_interval_seconds", value)
 
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
@@ -24274,6 +24743,28 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @refresh_topics_interval_seconds.setter
     def refresh_topics_interval_seconds(self, value: Optional[str]):
         pulumi.set(self, "refresh_topics_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> Optional[str]:
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @sync_group_offsets_enabled.setter
+    def sync_group_offsets_enabled(self, value: Optional[str]):
+        pulumi.set(self, "sync_group_offsets_enabled", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> Optional[str]:
+        """
+        Frequency at which consumer group offsets
+        are synced (default: 60, every minute).
+        """
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
+
+    @sync_group_offsets_interval_seconds.setter
+    def sync_group_offsets_interval_seconds(self, value: Optional[str]):
+        pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
 
 @pulumi.input_type
@@ -24722,6 +25213,34 @@ class GetKafkaTopicConfigArgs:
 
 
 @pulumi.input_type
+class GetKafkaTopicTagArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class GetM3AggregatorComponentArgs:
     def __init__(__self__, *,
                  component: str,
@@ -25004,6 +25523,7 @@ class GetM3DbM3dbUserConfigArgs:
                  private_access: Optional['GetM3DbM3dbUserConfigPrivateAccessArgs'] = None,
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['GetM3DbM3dbUserConfigPublicAccessArgs'] = None,
+                 rules: Optional['GetM3DbM3dbUserConfigRulesArgs'] = None,
                  service_to_fork_from: Optional[str] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -25018,6 +25538,9 @@ class GetM3DbM3dbUserConfigArgs:
         :param str project_to_fork_from: Name of another project to fork a service from. This has
                effect only when a new service is being created.
         :param 'GetM3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetM3DbM3dbUserConfigRulesArgs' rules: Mapping rules allow more granular use of aggregation, not simply sending
+               everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+               rules will be sent to it and nothing else.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only 
                when a new service is being created.
         """
@@ -25041,6 +25564,8 @@ class GetM3DbM3dbUserConfigArgs:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
 
@@ -25163,6 +25688,20 @@ class GetM3DbM3dbUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional['GetM3DbM3dbUserConfigPublicAccessArgs']):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional['GetM3DbM3dbUserConfigRulesArgs']:
+        """
+        Mapping rules allow more granular use of aggregation, not simply sending
+        everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+        rules will be sent to it and nothing else.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional['GetM3DbM3dbUserConfigRulesArgs']):
+        pulumi.set(self, "rules", value)
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -25524,6 +26063,153 @@ class GetM3DbM3dbUserConfigPublicAccessArgs:
     @m3coordinator.setter
     def m3coordinator(self, value: Optional[str]):
         pulumi.set(self, "m3coordinator", value)
+
+
+@pulumi.input_type
+class GetM3DbM3dbUserConfigRulesArgs:
+    def __init__(__self__, *,
+                 mappings: Optional[Sequence['GetM3DbM3dbUserConfigRulesMappingArgs']] = None):
+        if mappings is not None:
+            pulumi.set(__self__, "mappings", mappings)
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Optional[Sequence['GetM3DbM3dbUserConfigRulesMappingArgs']]:
+        return pulumi.get(self, "mappings")
+
+    @mappings.setter
+    def mappings(self, value: Optional[Sequence['GetM3DbM3dbUserConfigRulesMappingArgs']]):
+        pulumi.set(self, "mappings", value)
+
+
+@pulumi.input_type
+class GetM3DbM3dbUserConfigRulesMappingArgs:
+    def __init__(__self__, *,
+                 aggregations: Optional[Sequence[str]] = None,
+                 drop: Optional[str] = None,
+                 filter: Optional[str] = None,
+                 name: Optional[str] = None,
+                 tags: Optional[Sequence['GetM3DbM3dbUserConfigRulesMappingTagArgs']] = None):
+        """
+        :param Sequence[str] aggregations: List of aggregations to be applied
+        :param str drop: Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+        :param str filter: The metrics to be used with this particular rule; Matching metric names with wildcards (using
+               __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+               can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        :param str name: The name of the namespace
+        :param Sequence['GetM3DbM3dbUserConfigRulesMappingTagArgs'] tags: List of tags to be appended to matching metrics.
+        """
+        if aggregations is not None:
+            pulumi.set(__self__, "aggregations", aggregations)
+        if drop is not None:
+            pulumi.set(__self__, "drop", drop)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def aggregations(self) -> Optional[Sequence[str]]:
+        """
+        List of aggregations to be applied
+        """
+        return pulumi.get(self, "aggregations")
+
+    @aggregations.setter
+    def aggregations(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "aggregations", value)
+
+    @property
+    @pulumi.getter
+    def drop(self) -> Optional[str]:
+        """
+        Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+        """
+        return pulumi.get(self, "drop")
+
+    @drop.setter
+    def drop(self, value: Optional[str]):
+        pulumi.set(self, "drop", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        """
+        The metrics to be used with this particular rule; Matching metric names with wildcards (using
+        __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+        can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the namespace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['GetM3DbM3dbUserConfigRulesMappingTagArgs']]:
+        """
+        List of tags to be appended to matching metrics.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[Sequence['GetM3DbM3dbUserConfigRulesMappingTagArgs']]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class GetM3DbM3dbUserConfigRulesMappingTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The name of the namespace
+        :param str value: Value of the tag.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the namespace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value of the tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -27344,6 +28030,7 @@ class GetPgPgUserConfigPgArgs:
                  jit: Optional[str] = None,
                  log_autovacuum_min_duration: Optional[str] = None,
                  log_error_verbosity: Optional[str] = None,
+                 log_line_prefix: Optional[str] = None,
                  log_min_duration_statement: Optional[str] = None,
                  max_files_per_process: Optional[str] = None,
                  max_locks_per_transaction: Optional[str] = None,
@@ -27403,6 +28090,8 @@ class GetPgPgUserConfigPgArgs:
                actions. Minus-one (the default) disables logging autovacuum actions.
         :param str log_error_verbosity: Controls the amount of detail written in the server log for 
                each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
+        :param str log_line_prefix: Choose from one of the available log-formats. These can support
+               popular log analyzers like pgbadger, pganalyze etc.
         :param str log_min_duration_statement: Log statements that take more than this number of 
                milliseconds to run, -1 disables
         :param str max_files_per_process: PostgreSQL maximum number of files that can be open per process
@@ -27468,6 +28157,8 @@ class GetPgPgUserConfigPgArgs:
             pulumi.set(__self__, "log_autovacuum_min_duration", log_autovacuum_min_duration)
         if log_error_verbosity is not None:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
+        if log_line_prefix is not None:
+            pulumi.set(__self__, "log_line_prefix", log_line_prefix)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
         if max_files_per_process is not None:
@@ -27704,6 +28395,19 @@ class GetPgPgUserConfigPgArgs:
     @log_error_verbosity.setter
     def log_error_verbosity(self, value: Optional[str]):
         pulumi.set(self, "log_error_verbosity", value)
+
+    @property
+    @pulumi.getter(name="logLinePrefix")
+    def log_line_prefix(self) -> Optional[str]:
+        """
+        Choose from one of the available log-formats. These can support
+        popular log analyzers like pgbadger, pganalyze etc.
+        """
+        return pulumi.get(self, "log_line_prefix")
+
+    @log_line_prefix.setter
+    def log_line_prefix(self, value: Optional[str]):
+        pulumi.set(self, "log_line_prefix", value)
 
     @property
     @pulumi.getter(name="logMinDurationStatement")
@@ -31155,11 +31859,14 @@ class GetServiceIntegrationDashboardUserConfigArgs:
 @pulumi.input_type
 class GetServiceIntegrationDatadogUserConfigArgs:
     def __init__(__self__, *,
+                 datadog_tags: Optional[Sequence['GetServiceIntegrationDatadogUserConfigDatadogTagArgs']] = None,
                  exclude_consumer_groups: Optional[Sequence[str]] = None,
                  exclude_topics: Optional[Sequence[str]] = None,
                  include_consumer_groups: Optional[Sequence[str]] = None,
                  include_topics: Optional[Sequence[str]] = None,
                  kafka_custom_metrics: Optional[Sequence[str]] = None):
+        if datadog_tags is not None:
+            pulumi.set(__self__, "datadog_tags", datadog_tags)
         if exclude_consumer_groups is not None:
             pulumi.set(__self__, "exclude_consumer_groups", exclude_consumer_groups)
         if exclude_topics is not None:
@@ -31170,6 +31877,15 @@ class GetServiceIntegrationDatadogUserConfigArgs:
             pulumi.set(__self__, "include_topics", include_topics)
         if kafka_custom_metrics is not None:
             pulumi.set(__self__, "kafka_custom_metrics", kafka_custom_metrics)
+
+    @property
+    @pulumi.getter(name="datadogTags")
+    def datadog_tags(self) -> Optional[Sequence['GetServiceIntegrationDatadogUserConfigDatadogTagArgs']]:
+        return pulumi.get(self, "datadog_tags")
+
+    @datadog_tags.setter
+    def datadog_tags(self, value: Optional[Sequence['GetServiceIntegrationDatadogUserConfigDatadogTagArgs']]):
+        pulumi.set(self, "datadog_tags", value)
 
     @property
     @pulumi.getter(name="excludeConsumerGroups")
@@ -31218,14 +31934,46 @@ class GetServiceIntegrationDatadogUserConfigArgs:
 
 
 @pulumi.input_type
+class GetServiceIntegrationDatadogUserConfigDatadogTagArgs:
+    def __init__(__self__, *,
+                 comment: Optional[str] = None,
+                 tag: Optional[str] = None):
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[str]):
+        pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
 class GetServiceIntegrationEndpointDatadogUserConfigArgs:
     def __init__(__self__, *,
                  datadog_api_key: Optional[str] = None,
+                 datadog_tags: Optional[Sequence['GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']] = None,
                  disable_consumer_stats: Optional[str] = None,
                  max_partition_contexts: Optional[str] = None,
                  site: Optional[str] = None):
         if datadog_api_key is not None:
             pulumi.set(__self__, "datadog_api_key", datadog_api_key)
+        if datadog_tags is not None:
+            pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
             pulumi.set(__self__, "disable_consumer_stats", disable_consumer_stats)
         if max_partition_contexts is not None:
@@ -31241,6 +31989,15 @@ class GetServiceIntegrationEndpointDatadogUserConfigArgs:
     @datadog_api_key.setter
     def datadog_api_key(self, value: Optional[str]):
         pulumi.set(self, "datadog_api_key", value)
+
+    @property
+    @pulumi.getter(name="datadogTags")
+    def datadog_tags(self) -> Optional[Sequence['GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]:
+        return pulumi.get(self, "datadog_tags")
+
+    @datadog_tags.setter
+    def datadog_tags(self, value: Optional[Sequence['GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]):
+        pulumi.set(self, "datadog_tags", value)
 
     @property
     @pulumi.getter(name="disableConsumerStats")
@@ -31268,6 +32025,35 @@ class GetServiceIntegrationEndpointDatadogUserConfigArgs:
     @site.setter
     def site(self, value: Optional[str]):
         pulumi.set(self, "site", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
+    def __init__(__self__, *,
+                 comment: Optional[str] = None,
+                 tag: Optional[str] = None):
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[str]):
+        pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type
@@ -32913,10 +33699,18 @@ class GetServiceKafkaMirrormakerUserConfigArgs:
 @pulumi.input_type
 class GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     def __init__(__self__, *,
+                 emit_checkpoints_enabled: Optional[str] = None,
+                 emit_checkpoints_interval_seconds: Optional[str] = None,
                  refresh_groups_enabled: Optional[str] = None,
                  refresh_groups_interval_seconds: Optional[str] = None,
                  refresh_topics_enabled: Optional[str] = None,
-                 refresh_topics_interval_seconds: Optional[str] = None):
+                 refresh_topics_interval_seconds: Optional[str] = None,
+                 sync_group_offsets_enabled: Optional[str] = None,
+                 sync_group_offsets_interval_seconds: Optional[str] = None):
+        if emit_checkpoints_enabled is not None:
+            pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
+        if emit_checkpoints_interval_seconds is not None:
+            pulumi.set(__self__, "emit_checkpoints_interval_seconds", emit_checkpoints_interval_seconds)
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -32925,6 +33719,28 @@ class GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
             pulumi.set(__self__, "refresh_topics_enabled", refresh_topics_enabled)
         if refresh_topics_interval_seconds is not None:
             pulumi.set(__self__, "refresh_topics_interval_seconds", refresh_topics_interval_seconds)
+        if sync_group_offsets_enabled is not None:
+            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+        if sync_group_offsets_interval_seconds is not None:
+            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsEnabled")
+    def emit_checkpoints_enabled(self) -> Optional[str]:
+        return pulumi.get(self, "emit_checkpoints_enabled")
+
+    @emit_checkpoints_enabled.setter
+    def emit_checkpoints_enabled(self, value: Optional[str]):
+        pulumi.set(self, "emit_checkpoints_enabled", value)
+
+    @property
+    @pulumi.getter(name="emitCheckpointsIntervalSeconds")
+    def emit_checkpoints_interval_seconds(self) -> Optional[str]:
+        return pulumi.get(self, "emit_checkpoints_interval_seconds")
+
+    @emit_checkpoints_interval_seconds.setter
+    def emit_checkpoints_interval_seconds(self, value: Optional[str]):
+        pulumi.set(self, "emit_checkpoints_interval_seconds", value)
 
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
@@ -32961,6 +33777,24 @@ class GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @refresh_topics_interval_seconds.setter
     def refresh_topics_interval_seconds(self, value: Optional[str]):
         pulumi.set(self, "refresh_topics_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> Optional[str]:
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @sync_group_offsets_enabled.setter
+    def sync_group_offsets_enabled(self, value: Optional[str]):
+        pulumi.set(self, "sync_group_offsets_enabled", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> Optional[str]:
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
+
+    @sync_group_offsets_interval_seconds.setter
+    def sync_group_offsets_interval_seconds(self, value: Optional[str]):
+        pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
 
 @pulumi.input_type
@@ -35120,6 +35954,7 @@ class GetServicePgUserConfigPgArgs:
                  jit: Optional[str] = None,
                  log_autovacuum_min_duration: Optional[str] = None,
                  log_error_verbosity: Optional[str] = None,
+                 log_line_prefix: Optional[str] = None,
                  log_min_duration_statement: Optional[str] = None,
                  max_files_per_process: Optional[str] = None,
                  max_locks_per_transaction: Optional[str] = None,
@@ -35134,8 +35969,8 @@ class GetServicePgUserConfigPgArgs:
                  max_standby_streaming_delay: Optional[str] = None,
                  max_wal_senders: Optional[str] = None,
                  max_worker_processes: Optional[str] = None,
-                 pg_partman_bgw_dot_interval: Optional[str] = None,
-                 pg_partman_bgw_dot_role: Optional[str] = None,
+                 pg_partman_bgw_interval: Optional[str] = None,
+                 pg_partman_bgw_role: Optional[str] = None,
                  pg_stat_statements_track: Optional[str] = None,
                  temp_file_limit: Optional[str] = None,
                  timezone: Optional[str] = None,
@@ -35172,6 +36007,8 @@ class GetServicePgUserConfigPgArgs:
             pulumi.set(__self__, "log_autovacuum_min_duration", log_autovacuum_min_duration)
         if log_error_verbosity is not None:
             pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
+        if log_line_prefix is not None:
+            pulumi.set(__self__, "log_line_prefix", log_line_prefix)
         if log_min_duration_statement is not None:
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
         if max_files_per_process is not None:
@@ -35200,10 +36037,10 @@ class GetServicePgUserConfigPgArgs:
             pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
             pulumi.set(__self__, "max_worker_processes", max_worker_processes)
-        if pg_partman_bgw_dot_interval is not None:
-            pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
-        if pg_partman_bgw_dot_role is not None:
-            pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
+        if pg_partman_bgw_interval is not None:
+            pulumi.set(__self__, "pg_partman_bgw_interval", pg_partman_bgw_interval)
+        if pg_partman_bgw_role is not None:
+            pulumi.set(__self__, "pg_partman_bgw_role", pg_partman_bgw_role)
         if pg_stat_statements_track is not None:
             pulumi.set(__self__, "pg_stat_statements_track", pg_stat_statements_track)
         if temp_file_limit is not None:
@@ -35348,6 +36185,15 @@ class GetServicePgUserConfigPgArgs:
         pulumi.set(self, "log_error_verbosity", value)
 
     @property
+    @pulumi.getter(name="logLinePrefix")
+    def log_line_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "log_line_prefix")
+
+    @log_line_prefix.setter
+    def log_line_prefix(self, value: Optional[str]):
+        pulumi.set(self, "log_line_prefix", value)
+
+    @property
     @pulumi.getter(name="logMinDurationStatement")
     def log_min_duration_statement(self) -> Optional[str]:
         return pulumi.get(self, "log_min_duration_statement")
@@ -35474,22 +36320,22 @@ class GetServicePgUserConfigPgArgs:
         pulumi.set(self, "max_worker_processes", value)
 
     @property
-    @pulumi.getter(name="pgPartmanBgwDotInterval")
-    def pg_partman_bgw_dot_interval(self) -> Optional[str]:
-        return pulumi.get(self, "pg_partman_bgw_dot_interval")
+    @pulumi.getter(name="pgPartmanBgwInterval")
+    def pg_partman_bgw_interval(self) -> Optional[str]:
+        return pulumi.get(self, "pg_partman_bgw_interval")
 
-    @pg_partman_bgw_dot_interval.setter
-    def pg_partman_bgw_dot_interval(self, value: Optional[str]):
-        pulumi.set(self, "pg_partman_bgw_dot_interval", value)
+    @pg_partman_bgw_interval.setter
+    def pg_partman_bgw_interval(self, value: Optional[str]):
+        pulumi.set(self, "pg_partman_bgw_interval", value)
 
     @property
-    @pulumi.getter(name="pgPartmanBgwDotRole")
-    def pg_partman_bgw_dot_role(self) -> Optional[str]:
-        return pulumi.get(self, "pg_partman_bgw_dot_role")
+    @pulumi.getter(name="pgPartmanBgwRole")
+    def pg_partman_bgw_role(self) -> Optional[str]:
+        return pulumi.get(self, "pg_partman_bgw_role")
 
-    @pg_partman_bgw_dot_role.setter
-    def pg_partman_bgw_dot_role(self, value: Optional[str]):
-        pulumi.set(self, "pg_partman_bgw_dot_role", value)
+    @pg_partman_bgw_role.setter
+    def pg_partman_bgw_role(self, value: Optional[str]):
+        pulumi.set(self, "pg_partman_bgw_role", value)
 
     @property
     @pulumi.getter(name="pgStatStatementsTrack")

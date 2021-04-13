@@ -49,6 +49,30 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// You can also load the schema from an external file:
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var kafka_schema2 = new Aiven.KafkaSchema("kafka-schema2", new Aiven.KafkaSchemaArgs
+    ///         {
+    ///             Project = aiven_project.Kafka_schemas_project1.Project,
+    ///             ServiceName = aiven_service.Kafka_service1.Service_name,
+    ///             SubjectName = "kafka-schema2",
+    ///             CompatibilityLevel = "FORWARD",
+    ///             Schema = File.ReadAllText($"{path.Module}/external_schema.avsc"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaSchema:KafkaSchema")]
     public partial class KafkaSchema : Pulumi.CustomResource

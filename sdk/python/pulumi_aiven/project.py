@@ -35,7 +35,8 @@ class ProjectArgs:
                project, including all sub-resources.
         :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
                using account ID.
-        :param pulumi.Input[str] available_credits: Available credits
+        :param pulumi.Input[str] available_credits: is a computed property returning the amount of platform credits available to
+               the project. This could be your free trial or other promotional credits.
         :param pulumi.Input[str] billing_address: Billing name and address of the project
         :param pulumi.Input[str] billing_currency: Billing currency
         :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
@@ -54,8 +55,12 @@ class ProjectArgs:
                new project. (Setting billing is otherwise not allowed over the API.) This only has
                effect when the project is created.
         :param pulumi.Input[str] country_code: Billing country code of the project
-        :param pulumi.Input[str] default_cloud: Default cloud for new services
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[str] default_cloud: defines the default cloud provider and region where services are
+               hosted. This can be changed freely after the project is created. This will not affect existing
+               services.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
+               upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+               this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         pulumi.set(__self__, "project", project)
@@ -140,7 +145,8 @@ class ProjectArgs:
     @pulumi.getter(name="availableCredits")
     def available_credits(self) -> Optional[pulumi.Input[str]]:
         """
-        Available credits
+        is a computed property returning the amount of platform credits available to
+        the project. This could be your free trial or other promotional credits.
         """
         return pulumi.get(self, "available_credits")
 
@@ -269,7 +275,9 @@ class ProjectArgs:
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> Optional[pulumi.Input[str]]:
         """
-        Default cloud for new services
+        defines the default cloud provider and region where services are
+        hosted. This can be changed freely after the project is created. This will not affect existing
+        services.
         """
         return pulumi.get(self, "default_cloud")
 
@@ -281,7 +289,9 @@ class ProjectArgs:
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Technical contact emails of the project
+        defines the email addresses that will receive alerts about 
+        upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        this up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
@@ -334,7 +344,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
                using account ID.
-        :param pulumi.Input[str] available_credits: Available credits
+        :param pulumi.Input[str] available_credits: is a computed property returning the amount of platform credits available to
+               the project. This could be your free trial or other promotional credits.
         :param pulumi.Input[str] billing_address: Billing name and address of the project
         :param pulumi.Input[str] billing_currency: Billing currency
         :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
@@ -353,11 +364,15 @@ class Project(pulumi.CustomResource):
                new project. (Setting billing is otherwise not allowed over the API.) This only has
                effect when the project is created.
         :param pulumi.Input[str] country_code: Billing country code of the project
-        :param pulumi.Input[str] default_cloud: Default cloud for new services
+        :param pulumi.Input[str] default_cloud: defines the default cloud provider and region where services are
+               hosted. This can be changed freely after the project is created. This will not affect existing
+               services.
         :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
                Aiven customers) and cannot be changed later without destroying and re-creating the
                project, including all sub-resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
+               upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+               this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         ...
@@ -499,7 +514,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
                using account ID.
-        :param pulumi.Input[str] available_credits: Available credits
+        :param pulumi.Input[str] available_credits: is a computed property returning the amount of platform credits available to
+               the project. This could be your free trial or other promotional credits.
         :param pulumi.Input[str] billing_address: Billing name and address of the project
         :param pulumi.Input[str] billing_currency: Billing currency
         :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
@@ -519,13 +535,19 @@ class Project(pulumi.CustomResource):
                effect when the project is created.
         :param pulumi.Input[str] country: Billing country
         :param pulumi.Input[str] country_code: Billing country code of the project
-        :param pulumi.Input[str] default_cloud: Default cloud for new services
-        :param pulumi.Input[str] estimated_balance: Estimated balance
-        :param pulumi.Input[str] payment_method: Payment method
+        :param pulumi.Input[str] default_cloud: defines the default cloud provider and region where services are
+               hosted. This can be changed freely after the project is created. This will not affect existing
+               services.
+        :param pulumi.Input[str] estimated_balance: is a computed property returning the current accumulated bill for this 
+               project in the current billing period.
+        :param pulumi.Input[str] payment_method: is a computed property returning the method of invoicing used for payments for
+               this project, e.g. "card".
         :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
                Aiven customers) and cannot be changed later without destroying and re-creating the
                project, including all sub-resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Technical contact emails of the project
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
+               upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+               this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -565,7 +587,8 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="availableCredits")
     def available_credits(self) -> pulumi.Output[str]:
         """
-        Available credits
+        is a computed property returning the amount of platform credits available to
+        the project. This could be your free trial or other promotional credits.
         """
         return pulumi.get(self, "available_credits")
 
@@ -662,7 +685,9 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> pulumi.Output[Optional[str]]:
         """
-        Default cloud for new services
+        defines the default cloud provider and region where services are
+        hosted. This can be changed freely after the project is created. This will not affect existing
+        services.
         """
         return pulumi.get(self, "default_cloud")
 
@@ -670,7 +695,8 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="estimatedBalance")
     def estimated_balance(self) -> pulumi.Output[str]:
         """
-        Estimated balance
+        is a computed property returning the current accumulated bill for this 
+        project in the current billing period.
         """
         return pulumi.get(self, "estimated_balance")
 
@@ -678,7 +704,8 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> pulumi.Output[str]:
         """
-        Payment method
+        is a computed property returning the method of invoicing used for payments for
+        this project, e.g. "card".
         """
         return pulumi.get(self, "payment_method")
 
@@ -696,7 +723,9 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Technical contact emails of the project
+        defines the email addresses that will receive alerts about 
+        upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        this up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 

@@ -1952,7 +1952,7 @@ type ElasticSearchElasticsearchUserConfigElasticsearch struct {
 	// Require explicit index names when deleting
 	ActionDestructiveRequiresName *string `pulumi:"actionDestructiveRequiresName"`
 	// Controls the number of shards allowed in the
-	// cluster per data node
+	// cluster per data node.
 	ClusterMaxShardsPerNode *string `pulumi:"clusterMaxShardsPerNode"`
 	// Maximum content length for HTTP requests to
 	// the Elasticsearch HTTP API, in bytes.
@@ -2052,7 +2052,7 @@ type ElasticSearchElasticsearchUserConfigElasticsearchArgs struct {
 	// Require explicit index names when deleting
 	ActionDestructiveRequiresName pulumi.StringPtrInput `pulumi:"actionDestructiveRequiresName"`
 	// Controls the number of shards allowed in the
-	// cluster per data node
+	// cluster per data node.
 	ClusterMaxShardsPerNode pulumi.StringPtrInput `pulumi:"clusterMaxShardsPerNode"`
 	// Maximum content length for HTTP requests to
 	// the Elasticsearch HTTP API, in bytes.
@@ -2227,7 +2227,7 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ActionDestructi
 }
 
 // Controls the number of shards allowed in the
-// cluster per data node
+// cluster per data node.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticSearchElasticsearchUserConfigElasticsearch) *string { return v.ClusterMaxShardsPerNode }).(pulumi.StringPtrOutput)
 }
@@ -2426,7 +2426,7 @@ func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ActionDestru
 }
 
 // Controls the number of shards allowed in the
-// cluster per data node
+// cluster per data node.
 func (o ElasticSearchElasticsearchUserConfigElasticsearchPtrOutput) ClusterMaxShardsPerNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticSearchElasticsearchUserConfigElasticsearch) *string {
 		if v == nil {
@@ -13106,6 +13106,11 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() 
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
+	// Whether to periodically write the translated offsets
+	// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+	// as long as no active consumers in that group are connected to the target cluster.
+	EmitCheckpointsEnabled         *string `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds *string `pulumi:"emitCheckpointsIntervalSeconds"`
 	// Whether to periodically check for new consumer groups.
 	// Defaults to 'true'.
 	RefreshGroupsEnabled *string `pulumi:"refreshGroupsEnabled"`
@@ -13116,6 +13121,10 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 	// Frequency of topic and partitions refresh in
 	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled      *string `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency at which consumer group offsets
+	// are synced (default: 60, every minute).
+	SyncGroupOffsetsIntervalSeconds *string `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 // KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs and KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -13130,6 +13139,11 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
+	// Whether to periodically write the translated offsets
+	// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+	// as long as no active consumers in that group are connected to the target cluster.
+	EmitCheckpointsEnabled         pulumi.StringPtrInput `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds pulumi.StringPtrInput `pulumi:"emitCheckpointsIntervalSeconds"`
 	// Whether to periodically check for new consumer groups.
 	// Defaults to 'true'.
 	RefreshGroupsEnabled pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
@@ -13140,6 +13154,10 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
 	// Frequency of topic and partitions refresh in
 	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled      pulumi.StringPtrInput `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency at which consumer group offsets
+	// are synced (default: 60, every minute).
+	SyncGroupOffsetsIntervalSeconds pulumi.StringPtrInput `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 func (KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -13219,6 +13237,21 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToKafk
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
+// Whether to periodically write the translated offsets
+// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+// as long as no active consumers in that group are connected to the target cluster.
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether to periodically check for new consumer groups.
 // Defaults to 'true'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
@@ -13249,6 +13282,20 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Refres
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Frequency at which consumer group offsets
+// are synced (default: 60, every minute).
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.SyncGroupOffsetsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ElementType() reflect.Type {
@@ -13267,6 +13314,27 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ele
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return *v
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+// Whether to periodically write the translated offsets
+// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+// as long as no active consumers in that group are connected to the target cluster.
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to periodically check for new consumer groups.
@@ -13308,6 +13376,26 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ref
 			return nil
 		}
 		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Frequency at which consumer group offsets
+// are synced (default: 60, every minute).
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsIntervalSeconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14077,6 +14165,106 @@ func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.StringPt
 		}
 		return v.UncleanLeaderElectionEnable
 	}).(pulumi.StringPtrOutput)
+}
+
+type KafkaTopicTag struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// KafkaTopicTagInput is an input type that accepts KafkaTopicTagArgs and KafkaTopicTagOutput values.
+// You can construct a concrete instance of `KafkaTopicTagInput` via:
+//
+//          KafkaTopicTagArgs{...}
+type KafkaTopicTagInput interface {
+	pulumi.Input
+
+	ToKafkaTopicTagOutput() KafkaTopicTagOutput
+	ToKafkaTopicTagOutputWithContext(context.Context) KafkaTopicTagOutput
+}
+
+type KafkaTopicTagArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (KafkaTopicTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTopicTag)(nil)).Elem()
+}
+
+func (i KafkaTopicTagArgs) ToKafkaTopicTagOutput() KafkaTopicTagOutput {
+	return i.ToKafkaTopicTagOutputWithContext(context.Background())
+}
+
+func (i KafkaTopicTagArgs) ToKafkaTopicTagOutputWithContext(ctx context.Context) KafkaTopicTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicTagOutput)
+}
+
+// KafkaTopicTagArrayInput is an input type that accepts KafkaTopicTagArray and KafkaTopicTagArrayOutput values.
+// You can construct a concrete instance of `KafkaTopicTagArrayInput` via:
+//
+//          KafkaTopicTagArray{ KafkaTopicTagArgs{...} }
+type KafkaTopicTagArrayInput interface {
+	pulumi.Input
+
+	ToKafkaTopicTagArrayOutput() KafkaTopicTagArrayOutput
+	ToKafkaTopicTagArrayOutputWithContext(context.Context) KafkaTopicTagArrayOutput
+}
+
+type KafkaTopicTagArray []KafkaTopicTagInput
+
+func (KafkaTopicTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaTopicTag)(nil)).Elem()
+}
+
+func (i KafkaTopicTagArray) ToKafkaTopicTagArrayOutput() KafkaTopicTagArrayOutput {
+	return i.ToKafkaTopicTagArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaTopicTagArray) ToKafkaTopicTagArrayOutputWithContext(ctx context.Context) KafkaTopicTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicTagArrayOutput)
+}
+
+type KafkaTopicTagOutput struct{ *pulumi.OutputState }
+
+func (KafkaTopicTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTopicTag)(nil)).Elem()
+}
+
+func (o KafkaTopicTagOutput) ToKafkaTopicTagOutput() KafkaTopicTagOutput {
+	return o
+}
+
+func (o KafkaTopicTagOutput) ToKafkaTopicTagOutputWithContext(ctx context.Context) KafkaTopicTagOutput {
+	return o
+}
+
+func (o KafkaTopicTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaTopicTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o KafkaTopicTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type KafkaTopicTagArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaTopicTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaTopicTag)(nil)).Elem()
+}
+
+func (o KafkaTopicTagArrayOutput) ToKafkaTopicTagArrayOutput() KafkaTopicTagArrayOutput {
+	return o
+}
+
+func (o KafkaTopicTagArrayOutput) ToKafkaTopicTagArrayOutputWithContext(ctx context.Context) KafkaTopicTagArrayOutput {
+	return o
+}
+
+func (o KafkaTopicTagArrayOutput) Index(i pulumi.IntInput) KafkaTopicTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaTopicTag {
+		return vs[0].([]KafkaTopicTag)[vs[1].(int)]
+	}).(KafkaTopicTagOutput)
 }
 
 type M3AggregatorComponent struct {
@@ -14870,6 +15058,10 @@ type M3DbM3dbUserConfig struct {
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *M3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Mapping rules allow more granular use of aggregation, not simply sending
+	// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+	// rules will be sent to it and nothing else.
+	Rules *M3DbM3dbUserConfigRules `pulumi:"rules"`
 	// Name of another service to fork from. This has effect only
 	// when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
@@ -14909,6 +15101,10 @@ type M3DbM3dbUserConfigArgs struct {
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess M3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Mapping rules allow more granular use of aggregation, not simply sending
+	// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+	// rules will be sent to it and nothing else.
+	Rules M3DbM3dbUserConfigRulesPtrInput `pulumi:"rules"`
 	// Name of another service to fork from. This has effect only
 	// when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
@@ -15043,6 +15239,13 @@ func (o M3DbM3dbUserConfigOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessP
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(M3DbM3dbUserConfigPublicAccessPtrOutput)
 }
 
+// Mapping rules allow more granular use of aggregation, not simply sending
+// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+// rules will be sent to it and nothing else.
+func (o M3DbM3dbUserConfigOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigRules { return v.Rules }).(M3DbM3dbUserConfigRulesPtrOutput)
+}
+
 // Name of another service to fork from. This has effect only
 // when a new service is being created.
 func (o M3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -15167,6 +15370,18 @@ func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAcce
 		}
 		return v.PublicAccess
 	}).(M3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Mapping rules allow more granular use of aggregation, not simply sending
+// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+// rules will be sent to it and nothing else.
+func (o M3DbM3dbUserConfigPtrOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigRules {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(M3DbM3dbUserConfigRulesPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only
@@ -16168,6 +16383,377 @@ func (o M3DbM3dbUserConfigPublicAccessPtrOutput) M3coordinator() pulumi.StringPt
 		}
 		return v.M3coordinator
 	}).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigRules struct {
+	Mappings []M3DbM3dbUserConfigRulesMapping `pulumi:"mappings"`
+}
+
+// M3DbM3dbUserConfigRulesInput is an input type that accepts M3DbM3dbUserConfigRulesArgs and M3DbM3dbUserConfigRulesOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigRulesInput` via:
+//
+//          M3DbM3dbUserConfigRulesArgs{...}
+type M3DbM3dbUserConfigRulesInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigRulesOutput() M3DbM3dbUserConfigRulesOutput
+	ToM3DbM3dbUserConfigRulesOutputWithContext(context.Context) M3DbM3dbUserConfigRulesOutput
+}
+
+type M3DbM3dbUserConfigRulesArgs struct {
+	Mappings M3DbM3dbUserConfigRulesMappingArrayInput `pulumi:"mappings"`
+}
+
+func (M3DbM3dbUserConfigRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigRulesArgs) ToM3DbM3dbUserConfigRulesOutput() M3DbM3dbUserConfigRulesOutput {
+	return i.ToM3DbM3dbUserConfigRulesOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigRulesArgs) ToM3DbM3dbUserConfigRulesOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigRulesOutput)
+}
+
+func (i M3DbM3dbUserConfigRulesArgs) ToM3DbM3dbUserConfigRulesPtrOutput() M3DbM3dbUserConfigRulesPtrOutput {
+	return i.ToM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigRulesArgs) ToM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigRulesOutput).ToM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigRulesPtrInput is an input type that accepts M3DbM3dbUserConfigRulesArgs, M3DbM3dbUserConfigRulesPtr and M3DbM3dbUserConfigRulesPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigRulesPtrInput` via:
+//
+//          M3DbM3dbUserConfigRulesArgs{...}
+//
+//  or:
+//
+//          nil
+type M3DbM3dbUserConfigRulesPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigRulesPtrOutput() M3DbM3dbUserConfigRulesPtrOutput
+	ToM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Context) M3DbM3dbUserConfigRulesPtrOutput
+}
+
+type m3dbM3dbUserConfigRulesPtrType M3DbM3dbUserConfigRulesArgs
+
+func M3DbM3dbUserConfigRulesPtr(v *M3DbM3dbUserConfigRulesArgs) M3DbM3dbUserConfigRulesPtrInput {
+	return (*m3dbM3dbUserConfigRulesPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigRulesPtrType) ToM3DbM3dbUserConfigRulesPtrOutput() M3DbM3dbUserConfigRulesPtrOutput {
+	return i.ToM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigRulesPtrType) ToM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigRulesPtrOutput)
+}
+
+type M3DbM3dbUserConfigRulesOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigRulesOutput) ToM3DbM3dbUserConfigRulesOutput() M3DbM3dbUserConfigRulesOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesOutput) ToM3DbM3dbUserConfigRulesOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesOutput) ToM3DbM3dbUserConfigRulesPtrOutput() M3DbM3dbUserConfigRulesPtrOutput {
+	return o.ToM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigRulesOutput) ToM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRules) *M3DbM3dbUserConfigRules {
+		return &v
+	}).(M3DbM3dbUserConfigRulesPtrOutput)
+}
+func (o M3DbM3dbUserConfigRulesOutput) Mappings() M3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRules) []M3DbM3dbUserConfigRulesMapping { return v.Mappings }).(M3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type M3DbM3dbUserConfigRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigRulesPtrOutput) ToM3DbM3dbUserConfigRulesPtrOutput() M3DbM3dbUserConfigRulesPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesPtrOutput) ToM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesPtrOutput) Elem() M3DbM3dbUserConfigRulesOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigRules) M3DbM3dbUserConfigRules { return *v }).(M3DbM3dbUserConfigRulesOutput)
+}
+
+func (o M3DbM3dbUserConfigRulesPtrOutput) Mappings() M3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigRules) []M3DbM3dbUserConfigRulesMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Mappings
+	}).(M3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type M3DbM3dbUserConfigRulesMapping struct {
+	// List of aggregations to be applied
+	Aggregations []string `pulumi:"aggregations"`
+	// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+	Drop *string `pulumi:"drop"`
+	// The metrics to be used with this particular rule; Matching metric names with wildcards (using
+	// __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+	// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+	Filter *string `pulumi:"filter"`
+	// The name of the namespace
+	Name *string `pulumi:"name"`
+	// List of tags to be appended to matching metrics.
+	Tags []M3DbM3dbUserConfigRulesMappingTag `pulumi:"tags"`
+}
+
+// M3DbM3dbUserConfigRulesMappingInput is an input type that accepts M3DbM3dbUserConfigRulesMappingArgs and M3DbM3dbUserConfigRulesMappingOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingInput` via:
+//
+//          M3DbM3dbUserConfigRulesMappingArgs{...}
+type M3DbM3dbUserConfigRulesMappingInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigRulesMappingOutput() M3DbM3dbUserConfigRulesMappingOutput
+	ToM3DbM3dbUserConfigRulesMappingOutputWithContext(context.Context) M3DbM3dbUserConfigRulesMappingOutput
+}
+
+type M3DbM3dbUserConfigRulesMappingArgs struct {
+	// List of aggregations to be applied
+	Aggregations pulumi.StringArrayInput `pulumi:"aggregations"`
+	// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+	Drop pulumi.StringPtrInput `pulumi:"drop"`
+	// The metrics to be used with this particular rule; Matching metric names with wildcards (using
+	// __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+	// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The name of the namespace
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of tags to be appended to matching metrics.
+	Tags M3DbM3dbUserConfigRulesMappingTagArrayInput `pulumi:"tags"`
+}
+
+func (M3DbM3dbUserConfigRulesMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigRulesMappingArgs) ToM3DbM3dbUserConfigRulesMappingOutput() M3DbM3dbUserConfigRulesMappingOutput {
+	return i.ToM3DbM3dbUserConfigRulesMappingOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigRulesMappingArgs) ToM3DbM3dbUserConfigRulesMappingOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigRulesMappingOutput)
+}
+
+// M3DbM3dbUserConfigRulesMappingArrayInput is an input type that accepts M3DbM3dbUserConfigRulesMappingArray and M3DbM3dbUserConfigRulesMappingArrayOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingArrayInput` via:
+//
+//          M3DbM3dbUserConfigRulesMappingArray{ M3DbM3dbUserConfigRulesMappingArgs{...} }
+type M3DbM3dbUserConfigRulesMappingArrayInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigRulesMappingArrayOutput() M3DbM3dbUserConfigRulesMappingArrayOutput
+	ToM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(context.Context) M3DbM3dbUserConfigRulesMappingArrayOutput
+}
+
+type M3DbM3dbUserConfigRulesMappingArray []M3DbM3dbUserConfigRulesMappingInput
+
+func (M3DbM3dbUserConfigRulesMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigRulesMappingArray) ToM3DbM3dbUserConfigRulesMappingArrayOutput() M3DbM3dbUserConfigRulesMappingArrayOutput {
+	return i.ToM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigRulesMappingArray) ToM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type M3DbM3dbUserConfigRulesMappingOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigRulesMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigRulesMappingOutput) ToM3DbM3dbUserConfigRulesMappingOutput() M3DbM3dbUserConfigRulesMappingOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesMappingOutput) ToM3DbM3dbUserConfigRulesMappingOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingOutput {
+	return o
+}
+
+// List of aggregations to be applied
+func (o M3DbM3dbUserConfigRulesMappingOutput) Aggregations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) []string { return v.Aggregations }).(pulumi.StringArrayOutput)
+}
+
+// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+func (o M3DbM3dbUserConfigRulesMappingOutput) Drop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) *string { return v.Drop }).(pulumi.StringPtrOutput)
+}
+
+// The metrics to be used with this particular rule; Matching metric names with wildcards (using
+// __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+func (o M3DbM3dbUserConfigRulesMappingOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The name of the namespace
+func (o M3DbM3dbUserConfigRulesMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of tags to be appended to matching metrics.
+func (o M3DbM3dbUserConfigRulesMappingOutput) Tags() M3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) []M3DbM3dbUserConfigRulesMappingTag { return v.Tags }).(M3DbM3dbUserConfigRulesMappingTagArrayOutput)
+}
+
+type M3DbM3dbUserConfigRulesMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigRulesMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigRulesMappingArrayOutput) ToM3DbM3dbUserConfigRulesMappingArrayOutput() M3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesMappingArrayOutput) ToM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesMappingArrayOutput) Index(i pulumi.IntInput) M3DbM3dbUserConfigRulesMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3DbM3dbUserConfigRulesMapping {
+		return vs[0].([]M3DbM3dbUserConfigRulesMapping)[vs[1].(int)]
+	}).(M3DbM3dbUserConfigRulesMappingOutput)
+}
+
+type M3DbM3dbUserConfigRulesMappingTag struct {
+	// The name of the namespace
+	Name *string `pulumi:"name"`
+	// Value of the tag.
+	Value *string `pulumi:"value"`
+}
+
+// M3DbM3dbUserConfigRulesMappingTagInput is an input type that accepts M3DbM3dbUserConfigRulesMappingTagArgs and M3DbM3dbUserConfigRulesMappingTagOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingTagInput` via:
+//
+//          M3DbM3dbUserConfigRulesMappingTagArgs{...}
+type M3DbM3dbUserConfigRulesMappingTagInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigRulesMappingTagOutput() M3DbM3dbUserConfigRulesMappingTagOutput
+	ToM3DbM3dbUserConfigRulesMappingTagOutputWithContext(context.Context) M3DbM3dbUserConfigRulesMappingTagOutput
+}
+
+type M3DbM3dbUserConfigRulesMappingTagArgs struct {
+	// The name of the namespace
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (M3DbM3dbUserConfigRulesMappingTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigRulesMappingTagArgs) ToM3DbM3dbUserConfigRulesMappingTagOutput() M3DbM3dbUserConfigRulesMappingTagOutput {
+	return i.ToM3DbM3dbUserConfigRulesMappingTagOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigRulesMappingTagArgs) ToM3DbM3dbUserConfigRulesMappingTagOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigRulesMappingTagOutput)
+}
+
+// M3DbM3dbUserConfigRulesMappingTagArrayInput is an input type that accepts M3DbM3dbUserConfigRulesMappingTagArray and M3DbM3dbUserConfigRulesMappingTagArrayOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingTagArrayInput` via:
+//
+//          M3DbM3dbUserConfigRulesMappingTagArray{ M3DbM3dbUserConfigRulesMappingTagArgs{...} }
+type M3DbM3dbUserConfigRulesMappingTagArrayInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigRulesMappingTagArrayOutput() M3DbM3dbUserConfigRulesMappingTagArrayOutput
+	ToM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(context.Context) M3DbM3dbUserConfigRulesMappingTagArrayOutput
+}
+
+type M3DbM3dbUserConfigRulesMappingTagArray []M3DbM3dbUserConfigRulesMappingTagInput
+
+func (M3DbM3dbUserConfigRulesMappingTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigRulesMappingTagArray) ToM3DbM3dbUserConfigRulesMappingTagArrayOutput() M3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return i.ToM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigRulesMappingTagArray) ToM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigRulesMappingTagArrayOutput)
+}
+
+type M3DbM3dbUserConfigRulesMappingTagOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigRulesMappingTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigRulesMappingTagOutput) ToM3DbM3dbUserConfigRulesMappingTagOutput() M3DbM3dbUserConfigRulesMappingTagOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesMappingTagOutput) ToM3DbM3dbUserConfigRulesMappingTagOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingTagOutput {
+	return o
+}
+
+// The name of the namespace
+func (o M3DbM3dbUserConfigRulesMappingTagOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMappingTag) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the tag.
+func (o M3DbM3dbUserConfigRulesMappingTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMappingTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type M3DbM3dbUserConfigRulesMappingTagArrayOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigRulesMappingTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigRulesMappingTagArrayOutput) ToM3DbM3dbUserConfigRulesMappingTagArrayOutput() M3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesMappingTagArrayOutput) ToM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(ctx context.Context) M3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigRulesMappingTagArrayOutput) Index(i pulumi.IntInput) M3DbM3dbUserConfigRulesMappingTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3DbM3dbUserConfigRulesMappingTag {
+		return vs[0].([]M3DbM3dbUserConfigRulesMappingTag)[vs[1].(int)]
+	}).(M3DbM3dbUserConfigRulesMappingTagOutput)
 }
 
 type M3DbServiceIntegration struct {
@@ -19690,8 +20276,11 @@ type PgPgUserConfigPg struct {
 	// Controls the amount of detail written in the server log for
 	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 	LogErrorVerbosity *string `pulumi:"logErrorVerbosity"`
-	// Log statements that take more than this number of
+	// Choose from one of the available log-formats. These can support
+	// popular log analyzers like pgbadger, pganalyze etc.
 	// milliseconds to run, -1 disables
+	LogLinePrefix *string `pulumi:"logLinePrefix"`
+	// Log statements that take more than this number of
 	LogMinDurationStatement *string `pulumi:"logMinDurationStatement"`
 	// PostgreSQL maximum number of files that can be open per process
 	MaxFilesPerProcess *string `pulumi:"maxFilesPerProcess"`
@@ -19812,8 +20401,11 @@ type PgPgUserConfigPgArgs struct {
 	// Controls the amount of detail written in the server log for
 	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 	LogErrorVerbosity pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
-	// Log statements that take more than this number of
+	// Choose from one of the available log-formats. These can support
+	// popular log analyzers like pgbadger, pganalyze etc.
 	// milliseconds to run, -1 disables
+	LogLinePrefix pulumi.StringPtrInput `pulumi:"logLinePrefix"`
+	// Log statements that take more than this number of
 	LogMinDurationStatement pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
 	// PostgreSQL maximum number of files that can be open per process
 	MaxFilesPerProcess pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
@@ -20041,8 +20633,14 @@ func (o PgPgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
 }
 
-// Log statements that take more than this number of
+// Choose from one of the available log-formats. These can support
+// popular log analyzers like pgbadger, pganalyze etc.
 // milliseconds to run, -1 disables
+func (o PgPgUserConfigPgOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogLinePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Log statements that take more than this number of
 func (o PgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
@@ -20351,8 +20949,19 @@ func (o PgPgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Log statements that take more than this number of
+// Choose from one of the available log-formats. These can support
+// popular log analyzers like pgbadger, pganalyze etc.
 // milliseconds to run, -1 disables
+func (o PgPgUserConfigPgPtrOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLinePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Log statements that take more than this number of
 func (o PgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -29301,11 +29910,12 @@ func (o ServiceIntegrationDashboardUserConfigPtrOutput) Elem() ServiceIntegratio
 }
 
 type ServiceIntegrationDatadogUserConfig struct {
-	ExcludeConsumerGroups []string `pulumi:"excludeConsumerGroups"`
-	ExcludeTopics         []string `pulumi:"excludeTopics"`
-	IncludeConsumerGroups []string `pulumi:"includeConsumerGroups"`
-	IncludeTopics         []string `pulumi:"includeTopics"`
-	KafkaCustomMetrics    []string `pulumi:"kafkaCustomMetrics"`
+	DatadogTags           []ServiceIntegrationDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	ExcludeConsumerGroups []string                                        `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         []string                                        `pulumi:"excludeTopics"`
+	IncludeConsumerGroups []string                                        `pulumi:"includeConsumerGroups"`
+	IncludeTopics         []string                                        `pulumi:"includeTopics"`
+	KafkaCustomMetrics    []string                                        `pulumi:"kafkaCustomMetrics"`
 }
 
 // ServiceIntegrationDatadogUserConfigInput is an input type that accepts ServiceIntegrationDatadogUserConfigArgs and ServiceIntegrationDatadogUserConfigOutput values.
@@ -29320,11 +29930,12 @@ type ServiceIntegrationDatadogUserConfigInput interface {
 }
 
 type ServiceIntegrationDatadogUserConfigArgs struct {
-	ExcludeConsumerGroups pulumi.StringArrayInput `pulumi:"excludeConsumerGroups"`
-	ExcludeTopics         pulumi.StringArrayInput `pulumi:"excludeTopics"`
-	IncludeConsumerGroups pulumi.StringArrayInput `pulumi:"includeConsumerGroups"`
-	IncludeTopics         pulumi.StringArrayInput `pulumi:"includeTopics"`
-	KafkaCustomMetrics    pulumi.StringArrayInput `pulumi:"kafkaCustomMetrics"`
+	DatadogTags           ServiceIntegrationDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	ExcludeConsumerGroups pulumi.StringArrayInput                                 `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         pulumi.StringArrayInput                                 `pulumi:"excludeTopics"`
+	IncludeConsumerGroups pulumi.StringArrayInput                                 `pulumi:"includeConsumerGroups"`
+	IncludeTopics         pulumi.StringArrayInput                                 `pulumi:"includeTopics"`
+	KafkaCustomMetrics    pulumi.StringArrayInput                                 `pulumi:"kafkaCustomMetrics"`
 }
 
 func (ServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -29403,6 +30014,12 @@ func (o ServiceIntegrationDatadogUserConfigOutput) ToServiceIntegrationDatadogUs
 		return &v
 	}).(ServiceIntegrationDatadogUserConfigPtrOutput)
 }
+func (o ServiceIntegrationDatadogUserConfigOutput) DatadogTags() ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []ServiceIntegrationDatadogUserConfigDatadogTag {
+		return v.DatadogTags
+	}).(ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput)
+}
+
 func (o ServiceIntegrationDatadogUserConfigOutput) ExcludeConsumerGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []string { return v.ExcludeConsumerGroups }).(pulumi.StringArrayOutput)
 }
@@ -29439,6 +30056,15 @@ func (o ServiceIntegrationDatadogUserConfigPtrOutput) ToServiceIntegrationDatado
 
 func (o ServiceIntegrationDatadogUserConfigPtrOutput) Elem() ServiceIntegrationDatadogUserConfigOutput {
 	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) ServiceIntegrationDatadogUserConfig { return *v }).(ServiceIntegrationDatadogUserConfigOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) DatadogTags() ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) []ServiceIntegrationDatadogUserConfigDatadogTag {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogTags
+	}).(ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput)
 }
 
 func (o ServiceIntegrationDatadogUserConfigPtrOutput) ExcludeConsumerGroups() pulumi.StringArrayOutput {
@@ -29486,11 +30112,112 @@ func (o ServiceIntegrationDatadogUserConfigPtrOutput) KafkaCustomMetrics() pulum
 	}).(pulumi.StringArrayOutput)
 }
 
+type ServiceIntegrationDatadogUserConfigDatadogTag struct {
+	Comment *string `pulumi:"comment"`
+	Tag     *string `pulumi:"tag"`
+}
+
+// ServiceIntegrationDatadogUserConfigDatadogTagInput is an input type that accepts ServiceIntegrationDatadogUserConfigDatadogTagArgs and ServiceIntegrationDatadogUserConfigDatadogTagOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDatadogUserConfigDatadogTagInput` via:
+//
+//          ServiceIntegrationDatadogUserConfigDatadogTagArgs{...}
+type ServiceIntegrationDatadogUserConfigDatadogTagInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDatadogUserConfigDatadogTagOutput() ServiceIntegrationDatadogUserConfigDatadogTagOutput
+	ToServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(context.Context) ServiceIntegrationDatadogUserConfigDatadogTagOutput
+}
+
+type ServiceIntegrationDatadogUserConfigDatadogTagArgs struct {
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Tag     pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (ServiceIntegrationDatadogUserConfigDatadogTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i ServiceIntegrationDatadogUserConfigDatadogTagArgs) ToServiceIntegrationDatadogUserConfigDatadogTagOutput() ServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return i.ToServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDatadogUserConfigDatadogTagArgs) ToServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigDatadogTagOutput)
+}
+
+// ServiceIntegrationDatadogUserConfigDatadogTagArrayInput is an input type that accepts ServiceIntegrationDatadogUserConfigDatadogTagArray and ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDatadogUserConfigDatadogTagArrayInput` via:
+//
+//          ServiceIntegrationDatadogUserConfigDatadogTagArray{ ServiceIntegrationDatadogUserConfigDatadogTagArgs{...} }
+type ServiceIntegrationDatadogUserConfigDatadogTagArrayInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput
+	ToServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(context.Context) ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput
+}
+
+type ServiceIntegrationDatadogUserConfigDatadogTagArray []ServiceIntegrationDatadogUserConfigDatadogTagInput
+
+func (ServiceIntegrationDatadogUserConfigDatadogTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i ServiceIntegrationDatadogUserConfigDatadogTagArray) ToServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return i.ToServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDatadogUserConfigDatadogTagArray) ToServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput)
+}
+
+type ServiceIntegrationDatadogUserConfigDatadogTagOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDatadogUserConfigDatadogTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDatadogUserConfigDatadogTagOutput) ToServiceIntegrationDatadogUserConfigDatadogTagOutput() ServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigDatadogTagOutput) ToServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigDatadogTagOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfigDatadogTag) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigDatadogTagOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfigDatadogTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ToServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ToServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegrationDatadogUserConfigDatadogTag {
+		return vs[0].([]ServiceIntegrationDatadogUserConfigDatadogTag)[vs[1].(int)]
+	}).(ServiceIntegrationDatadogUserConfigDatadogTagOutput)
+}
+
 type ServiceIntegrationEndpointDatadogUserConfig struct {
-	DatadogApiKey        *string `pulumi:"datadogApiKey"`
-	DisableConsumerStats *string `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts *string `pulumi:"maxPartitionContexts"`
-	Site                 *string `pulumi:"site"`
+	DatadogApiKey        *string                                                 `pulumi:"datadogApiKey"`
+	DatadogTags          []ServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	DisableConsumerStats *string                                                 `pulumi:"disableConsumerStats"`
+	MaxPartitionContexts *string                                                 `pulumi:"maxPartitionContexts"`
+	Site                 *string                                                 `pulumi:"site"`
 }
 
 // ServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigArgs and ServiceIntegrationEndpointDatadogUserConfigOutput values.
@@ -29505,10 +30232,11 @@ type ServiceIntegrationEndpointDatadogUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointDatadogUserConfigArgs struct {
-	DatadogApiKey        pulumi.StringPtrInput `pulumi:"datadogApiKey"`
-	DisableConsumerStats pulumi.StringPtrInput `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts pulumi.StringPtrInput `pulumi:"maxPartitionContexts"`
-	Site                 pulumi.StringPtrInput `pulumi:"site"`
+	DatadogApiKey        pulumi.StringPtrInput                                           `pulumi:"datadogApiKey"`
+	DatadogTags          ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	DisableConsumerStats pulumi.StringPtrInput                                           `pulumi:"disableConsumerStats"`
+	MaxPartitionContexts pulumi.StringPtrInput                                           `pulumi:"maxPartitionContexts"`
+	Site                 pulumi.StringPtrInput                                           `pulumi:"site"`
 }
 
 func (ServiceIntegrationEndpointDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -29591,6 +30319,12 @@ func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DatadogApiKey() pulum
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DatadogTags() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) []ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+		return v.DatadogTags
+	}).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
+}
+
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerStats() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DisableConsumerStats }).(pulumi.StringPtrOutput)
 }
@@ -29632,6 +30366,15 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogApiKey() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogTags() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) []ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogTags
+	}).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
+}
+
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DisableConsumerStats() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -29657,6 +30400,106 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Site() pulumi.Stri
 		}
 		return v.Site
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointDatadogUserConfigDatadogTag struct {
+	Comment *string `pulumi:"comment"`
+	Tag     *string `pulumi:"tag"`
+}
+
+// ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs and ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput` via:
+//
+//          ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...}
+type ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput
+	ToServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(context.Context) ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput
+}
+
+type ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs struct {
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Tag     pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return i.ToServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput)
+}
+
+// ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray and ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput` via:
+//
+//          ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{ ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...} }
+type ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput
+	ToServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(context.Context) ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput
+}
+
+type ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray []ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput
+
+func (ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return i.ToServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
+}
+
+type ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfigDatadogTag) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfigDatadogTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ToServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+		return vs[0].([]ServiceIntegrationEndpointDatadogUserConfigDatadogTag)[vs[1].(int)]
+	}).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput)
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
@@ -36112,10 +36955,14 @@ func (o ServiceKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() ServiceKa
 }
 
 type ServiceKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	RefreshGroupsEnabled         *string `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled         *string `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
+	EmitCheckpointsEnabled          *string `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  *string `pulumi:"emitCheckpointsIntervalSeconds"`
+	RefreshGroupsEnabled            *string `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    *string `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            *string `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    *string `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         *string `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds *string `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 // ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs and ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -36130,10 +36977,14 @@ type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 }
 
 type ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	RefreshGroupsEnabled         pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled         pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+	EmitCheckpointsEnabled          pulumi.StringPtrInput `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  pulumi.StringPtrInput `pulumi:"emitCheckpointsIntervalSeconds"`
+	RefreshGroupsEnabled            pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         pulumi.StringPtrInput `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds pulumi.StringPtrInput `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 func (ServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -36212,6 +37063,16 @@ func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToServiceKafkaM
 		return &v
 	}).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.EmitCheckpointsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.RefreshGroupsEnabled }).(pulumi.StringPtrOutput)
 }
@@ -36229,6 +37090,16 @@ func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsEn
 func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.SyncGroupOffsetsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.SyncGroupOffsetsIntervalSeconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -36250,6 +37121,24 @@ func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Elem() Servi
 	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return *v
 	}).(ServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
@@ -36285,6 +37174,24 @@ func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopic
 			return nil
 		}
 		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsIntervalSeconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40988,6 +41895,7 @@ type ServicePgUserConfigPg struct {
 	Jit                             *string `pulumi:"jit"`
 	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
+	LogLinePrefix                   *string `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
 	MaxFilesPerProcess              *string `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
@@ -41002,8 +41910,8 @@ type ServicePgUserConfigPg struct {
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
 	MaxWalSenders                   *string `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
+	PgPartmanBgwInterval            *string `pulumi:"pgPartmanBgwInterval"`
+	PgPartmanBgwRole                *string `pulumi:"pgPartmanBgwRole"`
 	PgStatStatementsTrack           *string `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   *string `pulumi:"tempFileLimit"`
 	Timezone                        *string `pulumi:"timezone"`
@@ -41040,6 +41948,7 @@ type ServicePgUserConfigPgArgs struct {
 	Jit                             pulumi.StringPtrInput `pulumi:"jit"`
 	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	LogLinePrefix                   pulumi.StringPtrInput `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
 	MaxFilesPerProcess              pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
@@ -41054,8 +41963,8 @@ type ServicePgUserConfigPgArgs struct {
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
 	MaxWalSenders                   pulumi.StringPtrInput `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
+	PgPartmanBgwInterval            pulumi.StringPtrInput `pulumi:"pgPartmanBgwInterval"`
+	PgPartmanBgwRole                pulumi.StringPtrInput `pulumi:"pgPartmanBgwRole"`
 	PgStatStatementsTrack           pulumi.StringPtrInput `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
 	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
@@ -41198,6 +42107,10 @@ func (o ServicePgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigPgOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogLinePrefix }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
@@ -41254,12 +42167,12 @@ func (o ServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgPartmanBgwDotInterval }).(pulumi.StringPtrOutput)
+func (o ServicePgUserConfigPgOutput) PgPartmanBgwInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgPartmanBgwInterval }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
+func (o ServicePgUserConfigPgOutput) PgPartmanBgwRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.PgPartmanBgwRole }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
@@ -41438,6 +42351,15 @@ func (o ServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServicePgUserConfigPgPtrOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLinePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
@@ -41564,21 +42486,21 @@ func (o ServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+func (o ServicePgUserConfigPgPtrOutput) PgPartmanBgwInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PgPartmanBgwDotInterval
+		return v.PgPartmanBgwInterval
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+func (o ServicePgUserConfigPgPtrOutput) PgPartmanBgwRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PgPartmanBgwDotRole
+		return v.PgPartmanBgwRole
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54985,6 +55907,11 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() 
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
+	// Whether to periodically write the translated offsets
+	// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+	// as long as no active consumers in that group are connected to the target cluster.
+	EmitCheckpointsEnabled         *string `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds *string `pulumi:"emitCheckpointsIntervalSeconds"`
 	// Whether to periodically check for new consumer groups.
 	// Defaults to 'true'.
 	RefreshGroupsEnabled *string `pulumi:"refreshGroupsEnabled"`
@@ -54995,6 +55922,10 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 	// Frequency of topic and partitions refresh in
 	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled      *string `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency at which consumer group offsets
+	// are synced (default: 60, every minute).
+	SyncGroupOffsetsIntervalSeconds *string `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 // GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -55009,6 +55940,11 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interfac
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
+	// Whether to periodically write the translated offsets
+	// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+	// as long as no active consumers in that group are connected to the target cluster.
+	EmitCheckpointsEnabled         pulumi.StringPtrInput `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds pulumi.StringPtrInput `pulumi:"emitCheckpointsIntervalSeconds"`
 	// Whether to periodically check for new consumer groups.
 	// Defaults to 'true'.
 	RefreshGroupsEnabled pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
@@ -55019,6 +55955,10 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
 	// Frequency of topic and partitions refresh in
 	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled      pulumi.StringPtrInput `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency at which consumer group offsets
+	// are synced (default: 60, every minute).
+	SyncGroupOffsetsIntervalSeconds pulumi.StringPtrInput `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -55098,6 +56038,21 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToG
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
+// Whether to periodically write the translated offsets
+// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+// as long as no active consumers in that group are connected to the target cluster.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether to periodically check for new consumer groups.
 // Defaults to 'true'.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
@@ -55128,6 +56083,20 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Ref
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Frequency at which consumer group offsets
+// are synced (default: 60, every minute).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.SyncGroupOffsetsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput struct{ *pulumi.OutputState }
 
 func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ElementType() reflect.Type {
@@ -55146,6 +56115,27 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) 
 	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return *v
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+// Whether to periodically write the translated offsets
+// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+// as long as no active consumers in that group are connected to the target cluster.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to periodically check for new consumer groups.
@@ -55187,6 +56177,26 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) 
 			return nil
 		}
 		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Frequency at which consumer group offsets
+// are synced (default: 60, every minute).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsIntervalSeconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -55647,6 +56657,106 @@ func (o GetKafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
 // unclean.leader.election.enable value
 func (o GetKafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.UncleanLeaderElectionEnable }).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaTopicTag struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// GetKafkaTopicTagInput is an input type that accepts GetKafkaTopicTagArgs and GetKafkaTopicTagOutput values.
+// You can construct a concrete instance of `GetKafkaTopicTagInput` via:
+//
+//          GetKafkaTopicTagArgs{...}
+type GetKafkaTopicTagInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicTagOutput() GetKafkaTopicTagOutput
+	ToGetKafkaTopicTagOutputWithContext(context.Context) GetKafkaTopicTagOutput
+}
+
+type GetKafkaTopicTagArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetKafkaTopicTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (i GetKafkaTopicTagArgs) ToGetKafkaTopicTagOutput() GetKafkaTopicTagOutput {
+	return i.ToGetKafkaTopicTagOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicTagArgs) ToGetKafkaTopicTagOutputWithContext(ctx context.Context) GetKafkaTopicTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicTagOutput)
+}
+
+// GetKafkaTopicTagArrayInput is an input type that accepts GetKafkaTopicTagArray and GetKafkaTopicTagArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTopicTagArrayInput` via:
+//
+//          GetKafkaTopicTagArray{ GetKafkaTopicTagArgs{...} }
+type GetKafkaTopicTagArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicTagArrayOutput() GetKafkaTopicTagArrayOutput
+	ToGetKafkaTopicTagArrayOutputWithContext(context.Context) GetKafkaTopicTagArrayOutput
+}
+
+type GetKafkaTopicTagArray []GetKafkaTopicTagInput
+
+func (GetKafkaTopicTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (i GetKafkaTopicTagArray) ToGetKafkaTopicTagArrayOutput() GetKafkaTopicTagArrayOutput {
+	return i.ToGetKafkaTopicTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicTagArray) ToGetKafkaTopicTagArrayOutputWithContext(ctx context.Context) GetKafkaTopicTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicTagArrayOutput)
+}
+
+type GetKafkaTopicTagOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (o GetKafkaTopicTagOutput) ToGetKafkaTopicTagOutput() GetKafkaTopicTagOutput {
+	return o
+}
+
+func (o GetKafkaTopicTagOutput) ToGetKafkaTopicTagOutputWithContext(ctx context.Context) GetKafkaTopicTagOutput {
+	return o
+}
+
+func (o GetKafkaTopicTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetKafkaTopicTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaTopicTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (o GetKafkaTopicTagArrayOutput) ToGetKafkaTopicTagArrayOutput() GetKafkaTopicTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicTagArrayOutput) ToGetKafkaTopicTagArrayOutputWithContext(ctx context.Context) GetKafkaTopicTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicTagArrayOutput) Index(i pulumi.IntInput) GetKafkaTopicTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTopicTag {
+		return vs[0].([]GetKafkaTopicTag)[vs[1].(int)]
+	}).(GetKafkaTopicTagOutput)
 }
 
 type GetM3AggregatorComponent struct {
@@ -56194,6 +57304,10 @@ type GetM3DbM3dbUserConfig struct {
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *GetM3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Mapping rules allow more granular use of aggregation, not simply sending
+	// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+	// rules will be sent to it and nothing else.
+	Rules *GetM3DbM3dbUserConfigRules `pulumi:"rules"`
 	// Name of another service to fork from. This has effect only
 	// when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
@@ -56233,6 +57347,10 @@ type GetM3DbM3dbUserConfigArgs struct {
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess GetM3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Mapping rules allow more granular use of aggregation, not simply sending
+	// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+	// rules will be sent to it and nothing else.
+	Rules GetM3DbM3dbUserConfigRulesPtrInput `pulumi:"rules"`
 	// Name of another service to fork from. This has effect only
 	// when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
@@ -56314,6 +57432,13 @@ func (o GetM3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput 
 // Allow access to selected service ports from the public Internet.
 func (o GetM3DbM3dbUserConfigOutput) PublicAccess() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Mapping rules allow more granular use of aggregation, not simply sending
+// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+// rules will be sent to it and nothing else.
+func (o GetM3DbM3dbUserConfigOutput) Rules() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigRules { return v.Rules }).(GetM3DbM3dbUserConfigRulesPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only
@@ -57314,6 +58439,377 @@ func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) M3coordinator() pulumi.Strin
 		}
 		return v.M3coordinator
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigRules struct {
+	Mappings []GetM3DbM3dbUserConfigRulesMapping `pulumi:"mappings"`
+}
+
+// GetM3DbM3dbUserConfigRulesInput is an input type that accepts GetM3DbM3dbUserConfigRulesArgs and GetM3DbM3dbUserConfigRulesOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesInput` via:
+//
+//          GetM3DbM3dbUserConfigRulesArgs{...}
+type GetM3DbM3dbUserConfigRulesInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesOutput() GetM3DbM3dbUserConfigRulesOutput
+	ToGetM3DbM3dbUserConfigRulesOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesOutput
+}
+
+type GetM3DbM3dbUserConfigRulesArgs struct {
+	Mappings GetM3DbM3dbUserConfigRulesMappingArrayInput `pulumi:"mappings"`
+}
+
+func (GetM3DbM3dbUserConfigRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesOutput() GetM3DbM3dbUserConfigRulesOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesOutput)
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesOutput).ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigRulesPtrInput is an input type that accepts GetM3DbM3dbUserConfigRulesArgs, GetM3DbM3dbUserConfigRulesPtr and GetM3DbM3dbUserConfigRulesPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesPtrInput` via:
+//
+//          GetM3DbM3dbUserConfigRulesArgs{...}
+//
+//  or:
+//
+//          nil
+type GetM3DbM3dbUserConfigRulesPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput
+	ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesPtrOutput
+}
+
+type getM3DbM3dbUserConfigRulesPtrType GetM3DbM3dbUserConfigRulesArgs
+
+func GetM3DbM3dbUserConfigRulesPtr(v *GetM3DbM3dbUserConfigRulesArgs) GetM3DbM3dbUserConfigRulesPtrInput {
+	return (*getM3DbM3dbUserConfigRulesPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigRulesPtrType) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigRulesPtrType) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesOutput() GetM3DbM3dbUserConfigRulesOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRules) *GetM3DbM3dbUserConfigRules {
+		return &v
+	}).(GetM3DbM3dbUserConfigRulesPtrOutput)
+}
+func (o GetM3DbM3dbUserConfigRulesOutput) Mappings() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRules) []GetM3DbM3dbUserConfigRulesMapping { return v.Mappings }).(GetM3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) Elem() GetM3DbM3dbUserConfigRulesOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigRules) GetM3DbM3dbUserConfigRules { return *v }).(GetM3DbM3dbUserConfigRulesOutput)
+}
+
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) Mappings() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigRules) []GetM3DbM3dbUserConfigRulesMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Mappings
+	}).(GetM3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMapping struct {
+	// List of aggregations to be applied
+	Aggregations []string `pulumi:"aggregations"`
+	// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+	Drop *string `pulumi:"drop"`
+	// The metrics to be used with this particular rule; Matching metric names with wildcards (using
+	// __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+	// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+	Filter *string `pulumi:"filter"`
+	// The name of the namespace
+	Name *string `pulumi:"name"`
+	// List of tags to be appended to matching metrics.
+	Tags []GetM3DbM3dbUserConfigRulesMappingTag `pulumi:"tags"`
+}
+
+// GetM3DbM3dbUserConfigRulesMappingInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingArgs and GetM3DbM3dbUserConfigRulesMappingOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingInput` via:
+//
+//          GetM3DbM3dbUserConfigRulesMappingArgs{...}
+type GetM3DbM3dbUserConfigRulesMappingInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingOutput() GetM3DbM3dbUserConfigRulesMappingOutput
+	ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingArgs struct {
+	// List of aggregations to be applied
+	Aggregations pulumi.StringArrayInput `pulumi:"aggregations"`
+	// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+	Drop pulumi.StringPtrInput `pulumi:"drop"`
+	// The metrics to be used with this particular rule; Matching metric names with wildcards (using
+	// __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+	// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The name of the namespace
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of tags to be appended to matching metrics.
+	Tags GetM3DbM3dbUserConfigRulesMappingTagArrayInput `pulumi:"tags"`
+}
+
+func (GetM3DbM3dbUserConfigRulesMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArgs) ToGetM3DbM3dbUserConfigRulesMappingOutput() GetM3DbM3dbUserConfigRulesMappingOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArgs) ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingOutput)
+}
+
+// GetM3DbM3dbUserConfigRulesMappingArrayInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingArray and GetM3DbM3dbUserConfigRulesMappingArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingArrayInput` via:
+//
+//          GetM3DbM3dbUserConfigRulesMappingArray{ GetM3DbM3dbUserConfigRulesMappingArgs{...} }
+type GetM3DbM3dbUserConfigRulesMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingArrayOutput() GetM3DbM3dbUserConfigRulesMappingArrayOutput
+	ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingArrayOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingArray []GetM3DbM3dbUserConfigRulesMappingInput
+
+func (GetM3DbM3dbUserConfigRulesMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArray) ToGetM3DbM3dbUserConfigRulesMappingArrayOutput() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArray) ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) ToGetM3DbM3dbUserConfigRulesMappingOutput() GetM3DbM3dbUserConfigRulesMappingOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingOutput {
+	return o
+}
+
+// List of aggregations to be applied
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Aggregations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []string { return v.Aggregations }).(pulumi.StringArrayOutput)
+}
+
+// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Drop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) *string { return v.Drop }).(pulumi.StringPtrOutput)
+}
+
+// The metrics to be used with this particular rule; Matching metric names with wildcards (using
+// __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The name of the namespace
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of tags to be appended to matching metrics.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Tags() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []GetM3DbM3dbUserConfigRulesMappingTag { return v.Tags }).(GetM3DbM3dbUserConfigRulesMappingTagArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingArrayOutput() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigRulesMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigRulesMapping {
+		return vs[0].([]GetM3DbM3dbUserConfigRulesMapping)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigRulesMappingOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTag struct {
+	// The name of the namespace
+	Name *string `pulumi:"name"`
+	// Value of the tag.
+	Value *string `pulumi:"value"`
+}
+
+// GetM3DbM3dbUserConfigRulesMappingTagInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingTagArgs and GetM3DbM3dbUserConfigRulesMappingTagOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingTagInput` via:
+//
+//          GetM3DbM3dbUserConfigRulesMappingTagArgs{...}
+type GetM3DbM3dbUserConfigRulesMappingTagInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingTagOutput() GetM3DbM3dbUserConfigRulesMappingTagOutput
+	ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingTagOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagArgs struct {
+	// The name of the namespace
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetM3DbM3dbUserConfigRulesMappingTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArgs) ToGetM3DbM3dbUserConfigRulesMappingTagOutput() GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArgs) ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingTagOutput)
+}
+
+// GetM3DbM3dbUserConfigRulesMappingTagArrayInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingTagArray and GetM3DbM3dbUserConfigRulesMappingTagArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingTagArrayInput` via:
+//
+//          GetM3DbM3dbUserConfigRulesMappingTagArray{ GetM3DbM3dbUserConfigRulesMappingTagArgs{...} }
+type GetM3DbM3dbUserConfigRulesMappingTagArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutput() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput
+	ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingTagArrayOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagArray []GetM3DbM3dbUserConfigRulesMappingTagInput
+
+func (GetM3DbM3dbUserConfigRulesMappingTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArray) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutput() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArray) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingTagArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) ToGetM3DbM3dbUserConfigRulesMappingTagOutput() GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return o
+}
+
+// The name of the namespace
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMappingTag) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the tag.
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMappingTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutput() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigRulesMappingTag {
+		return vs[0].([]GetM3DbM3dbUserConfigRulesMappingTag)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigRulesMappingTagOutput)
 }
 
 type GetM3DbServiceIntegration struct {
@@ -60073,6 +61569,9 @@ type GetPgPgUserConfigPg struct {
 	// Controls the amount of detail written in the server log for
 	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 	LogErrorVerbosity *string `pulumi:"logErrorVerbosity"`
+	// Choose from one of the available log-formats. These can support
+	// popular log analyzers like pgbadger, pganalyze etc.
+	LogLinePrefix *string `pulumi:"logLinePrefix"`
 	// Log statements that take more than this number of
 	// milliseconds to run, -1 disables
 	LogMinDurationStatement *string `pulumi:"logMinDurationStatement"`
@@ -60195,6 +61694,9 @@ type GetPgPgUserConfigPgArgs struct {
 	// Controls the amount of detail written in the server log for
 	// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 	LogErrorVerbosity pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	// Choose from one of the available log-formats. These can support
+	// popular log analyzers like pgbadger, pganalyze etc.
+	LogLinePrefix pulumi.StringPtrInput `pulumi:"logLinePrefix"`
 	// Log statements that take more than this number of
 	// milliseconds to run, -1 disables
 	LogMinDurationStatement pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
@@ -60422,6 +61924,12 @@ func (o GetPgPgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.StringPtrOu
 // each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
 func (o GetPgPgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Choose from one of the available log-formats. These can support
+// popular log analyzers like pgbadger, pganalyze etc.
+func (o GetPgPgUserConfigPgOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogLinePrefix }).(pulumi.StringPtrOutput)
 }
 
 // Log statements that take more than this number of
@@ -60731,6 +62239,17 @@ func (o GetPgPgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.LogErrorVerbosity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Choose from one of the available log-formats. These can support
+// popular log analyzers like pgbadger, pganalyze etc.
+func (o GetPgPgUserConfigPgPtrOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLinePrefix
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -68208,11 +69727,12 @@ func (o GetServiceIntegrationDashboardUserConfigOutput) ToGetServiceIntegrationD
 }
 
 type GetServiceIntegrationDatadogUserConfig struct {
-	ExcludeConsumerGroups []string `pulumi:"excludeConsumerGroups"`
-	ExcludeTopics         []string `pulumi:"excludeTopics"`
-	IncludeConsumerGroups []string `pulumi:"includeConsumerGroups"`
-	IncludeTopics         []string `pulumi:"includeTopics"`
-	KafkaCustomMetrics    []string `pulumi:"kafkaCustomMetrics"`
+	DatadogTags           []GetServiceIntegrationDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	ExcludeConsumerGroups []string                                           `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         []string                                           `pulumi:"excludeTopics"`
+	IncludeConsumerGroups []string                                           `pulumi:"includeConsumerGroups"`
+	IncludeTopics         []string                                           `pulumi:"includeTopics"`
+	KafkaCustomMetrics    []string                                           `pulumi:"kafkaCustomMetrics"`
 }
 
 // GetServiceIntegrationDatadogUserConfigInput is an input type that accepts GetServiceIntegrationDatadogUserConfigArgs and GetServiceIntegrationDatadogUserConfigOutput values.
@@ -68227,11 +69747,12 @@ type GetServiceIntegrationDatadogUserConfigInput interface {
 }
 
 type GetServiceIntegrationDatadogUserConfigArgs struct {
-	ExcludeConsumerGroups pulumi.StringArrayInput `pulumi:"excludeConsumerGroups"`
-	ExcludeTopics         pulumi.StringArrayInput `pulumi:"excludeTopics"`
-	IncludeConsumerGroups pulumi.StringArrayInput `pulumi:"includeConsumerGroups"`
-	IncludeTopics         pulumi.StringArrayInput `pulumi:"includeTopics"`
-	KafkaCustomMetrics    pulumi.StringArrayInput `pulumi:"kafkaCustomMetrics"`
+	DatadogTags           GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	ExcludeConsumerGroups pulumi.StringArrayInput                                    `pulumi:"excludeConsumerGroups"`
+	ExcludeTopics         pulumi.StringArrayInput                                    `pulumi:"excludeTopics"`
+	IncludeConsumerGroups pulumi.StringArrayInput                                    `pulumi:"includeConsumerGroups"`
+	IncludeTopics         pulumi.StringArrayInput                                    `pulumi:"includeTopics"`
+	KafkaCustomMetrics    pulumi.StringArrayInput                                    `pulumi:"kafkaCustomMetrics"`
 }
 
 func (GetServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -68260,6 +69781,12 @@ func (o GetServiceIntegrationDatadogUserConfigOutput) ToGetServiceIntegrationDat
 	return o
 }
 
+func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogTags() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []GetServiceIntegrationDatadogUserConfigDatadogTag {
+		return v.DatadogTags
+	}).(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput)
+}
+
 func (o GetServiceIntegrationDatadogUserConfigOutput) ExcludeConsumerGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.ExcludeConsumerGroups }).(pulumi.StringArrayOutput)
 }
@@ -68280,11 +69807,112 @@ func (o GetServiceIntegrationDatadogUserConfigOutput) KafkaCustomMetrics() pulum
 	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.KafkaCustomMetrics }).(pulumi.StringArrayOutput)
 }
 
+type GetServiceIntegrationDatadogUserConfigDatadogTag struct {
+	Comment *string `pulumi:"comment"`
+	Tag     *string `pulumi:"tag"`
+}
+
+// GetServiceIntegrationDatadogUserConfigDatadogTagInput is an input type that accepts GetServiceIntegrationDatadogUserConfigDatadogTagArgs and GetServiceIntegrationDatadogUserConfigDatadogTagOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigDatadogTagInput` via:
+//
+//          GetServiceIntegrationDatadogUserConfigDatadogTagArgs{...}
+type GetServiceIntegrationDatadogUserConfigDatadogTagInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagOutput() GetServiceIntegrationDatadogUserConfigDatadogTagOutput
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagArgs struct {
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Tag     pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutput() GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigDatadogTagOutput)
+}
+
+// GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput is an input type that accepts GetServiceIntegrationDatadogUserConfigDatadogTagArray and GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput` via:
+//
+//          GetServiceIntegrationDatadogUserConfigDatadogTagArray{ GetServiceIntegrationDatadogUserConfigDatadogTagArgs{...} }
+type GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagArray []GetServiceIntegrationDatadogUserConfigDatadogTagInput
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutput() GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogTag) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationDatadogUserConfigDatadogTag {
+		return vs[0].([]GetServiceIntegrationDatadogUserConfigDatadogTag)[vs[1].(int)]
+	}).(GetServiceIntegrationDatadogUserConfigDatadogTagOutput)
+}
+
 type GetServiceIntegrationEndpointDatadogUserConfig struct {
-	DatadogApiKey        *string `pulumi:"datadogApiKey"`
-	DisableConsumerStats *string `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts *string `pulumi:"maxPartitionContexts"`
-	Site                 *string `pulumi:"site"`
+	DatadogApiKey        *string                                                    `pulumi:"datadogApiKey"`
+	DatadogTags          []GetServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	DisableConsumerStats *string                                                    `pulumi:"disableConsumerStats"`
+	MaxPartitionContexts *string                                                    `pulumi:"maxPartitionContexts"`
+	Site                 *string                                                    `pulumi:"site"`
 }
 
 // GetServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigArgs and GetServiceIntegrationEndpointDatadogUserConfigOutput values.
@@ -68299,10 +69927,11 @@ type GetServiceIntegrationEndpointDatadogUserConfigInput interface {
 }
 
 type GetServiceIntegrationEndpointDatadogUserConfigArgs struct {
-	DatadogApiKey        pulumi.StringPtrInput `pulumi:"datadogApiKey"`
-	DisableConsumerStats pulumi.StringPtrInput `pulumi:"disableConsumerStats"`
-	MaxPartitionContexts pulumi.StringPtrInput `pulumi:"maxPartitionContexts"`
-	Site                 pulumi.StringPtrInput `pulumi:"site"`
+	DatadogApiKey        pulumi.StringPtrInput                                              `pulumi:"datadogApiKey"`
+	DatadogTags          GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	DisableConsumerStats pulumi.StringPtrInput                                              `pulumi:"disableConsumerStats"`
+	MaxPartitionContexts pulumi.StringPtrInput                                              `pulumi:"maxPartitionContexts"`
+	Site                 pulumi.StringPtrInput                                              `pulumi:"site"`
 }
 
 func (GetServiceIntegrationEndpointDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -68335,6 +69964,12 @@ func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DatadogApiKey() pu
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DatadogTags() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) []GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+		return v.DatadogTags
+	}).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
+}
+
 func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerStats() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.DisableConsumerStats }).(pulumi.StringPtrOutput)
 }
@@ -68345,6 +69980,106 @@ func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContex
 
 func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.Site }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTag struct {
+	Comment *string `pulumi:"comment"`
+	Tag     *string `pulumi:"tag"`
+}
+
+// GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs and GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput` via:
+//
+//          GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...}
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs struct {
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Tag     pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return i.ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput)
+}
+
+// GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray and GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput` via:
+//
+//          GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{ GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...} }
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray []GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return i.ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfigDatadogTag) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfigDatadogTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+		return vs[0].([]GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput)
 }
 
 type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
@@ -71989,10 +73724,14 @@ func (o GetServiceKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetServic
 }
 
 type GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	RefreshGroupsEnabled         *string `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled         *string `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
+	EmitCheckpointsEnabled          *string `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  *string `pulumi:"emitCheckpointsIntervalSeconds"`
+	RefreshGroupsEnabled            *string `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    *string `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            *string `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    *string `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         *string `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds *string `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 // GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -72007,10 +73746,14 @@ type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 }
 
 type GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	RefreshGroupsEnabled         pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled         pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+	EmitCheckpointsEnabled          pulumi.StringPtrInput `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  pulumi.StringPtrInput `pulumi:"emitCheckpointsIntervalSeconds"`
+	RefreshGroupsEnabled            pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         pulumi.StringPtrInput `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds pulumi.StringPtrInput `pulumi:"syncGroupOffsetsIntervalSeconds"`
 }
 
 func (GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -72089,6 +73832,16 @@ func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetService
 		return &v
 	}).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.EmitCheckpointsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.RefreshGroupsEnabled }).(pulumi.StringPtrOutput)
 }
@@ -72106,6 +73859,16 @@ func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopic
 func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.SyncGroupOffsetsEnabled }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.SyncGroupOffsetsIntervalSeconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -72127,6 +73890,24 @@ func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Elem() Ge
 	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return *v
 	}).(GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsEnabled() pulumi.StringPtrOutput {
@@ -72162,6 +73943,24 @@ func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTo
 			return nil
 		}
 		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsIntervalSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsIntervalSeconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -76007,6 +77806,7 @@ type GetServicePgUserConfigPg struct {
 	Jit                             *string `pulumi:"jit"`
 	LogAutovacuumMinDuration        *string `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
+	LogLinePrefix                   *string `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
 	MaxFilesPerProcess              *string `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
@@ -76021,8 +77821,8 @@ type GetServicePgUserConfigPg struct {
 	MaxStandbyStreamingDelay        *string `pulumi:"maxStandbyStreamingDelay"`
 	MaxWalSenders                   *string `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              *string `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         *string `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             *string `pulumi:"pgPartmanBgwDotRole"`
+	PgPartmanBgwInterval            *string `pulumi:"pgPartmanBgwInterval"`
+	PgPartmanBgwRole                *string `pulumi:"pgPartmanBgwRole"`
 	PgStatStatementsTrack           *string `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   *string `pulumi:"tempFileLimit"`
 	Timezone                        *string `pulumi:"timezone"`
@@ -76059,6 +77859,7 @@ type GetServicePgUserConfigPgArgs struct {
 	Jit                             pulumi.StringPtrInput `pulumi:"jit"`
 	LogAutovacuumMinDuration        pulumi.StringPtrInput `pulumi:"logAutovacuumMinDuration"`
 	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	LogLinePrefix                   pulumi.StringPtrInput `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
 	MaxFilesPerProcess              pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
@@ -76073,8 +77874,8 @@ type GetServicePgUserConfigPgArgs struct {
 	MaxStandbyStreamingDelay        pulumi.StringPtrInput `pulumi:"maxStandbyStreamingDelay"`
 	MaxWalSenders                   pulumi.StringPtrInput `pulumi:"maxWalSenders"`
 	MaxWorkerProcesses              pulumi.StringPtrInput `pulumi:"maxWorkerProcesses"`
-	PgPartmanBgwDotInterval         pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotInterval"`
-	PgPartmanBgwDotRole             pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
+	PgPartmanBgwInterval            pulumi.StringPtrInput `pulumi:"pgPartmanBgwInterval"`
+	PgPartmanBgwRole                pulumi.StringPtrInput `pulumi:"pgPartmanBgwRole"`
 	PgStatStatementsTrack           pulumi.StringPtrInput `pulumi:"pgStatStatementsTrack"`
 	TempFileLimit                   pulumi.StringPtrInput `pulumi:"tempFileLimit"`
 	Timezone                        pulumi.StringPtrInput `pulumi:"timezone"`
@@ -76217,6 +78018,10 @@ func (o GetServicePgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicePgUserConfigPgOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogLinePrefix }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
 }
@@ -76273,12 +78078,12 @@ func (o GetServicePgUserConfigPgOutput) MaxWorkerProcesses() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.MaxWorkerProcesses }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgPartmanBgwDotInterval }).(pulumi.StringPtrOutput)
+func (o GetServicePgUserConfigPgOutput) PgPartmanBgwInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgPartmanBgwInterval }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
+func (o GetServicePgUserConfigPgOutput) PgPartmanBgwRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.PgPartmanBgwRole }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) PgStatStatementsTrack() pulumi.StringPtrOutput {
@@ -76457,6 +78262,15 @@ func (o GetServicePgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicePgUserConfigPgPtrOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLinePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicePgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
@@ -76583,21 +78397,21 @@ func (o GetServicePgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.StringPtrOutput {
+func (o GetServicePgUserConfigPgPtrOutput) PgPartmanBgwInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PgPartmanBgwDotInterval
+		return v.PgPartmanBgwInterval
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicePgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+func (o GetServicePgUserConfigPgPtrOutput) PgPartmanBgwRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PgPartmanBgwDotRole
+		return v.PgPartmanBgwRole
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -78665,6 +80479,8 @@ func init() {
 	pulumi.RegisterOutputType(KafkaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(KafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(KafkaTopicConfigPtrOutput{})
+	pulumi.RegisterOutputType(KafkaTopicTagOutput{})
+	pulumi.RegisterOutputType(KafkaTopicTagArrayOutput{})
 	pulumi.RegisterOutputType(M3AggregatorComponentOutput{})
 	pulumi.RegisterOutputType(M3AggregatorComponentArrayOutput{})
 	pulumi.RegisterOutputType(M3AggregatorM3aggregatorOutput{})
@@ -78691,6 +80507,12 @@ func init() {
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigRulesOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigRulesPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigRulesMappingOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigRulesMappingArrayOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigRulesMappingTagOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigRulesMappingTagArrayOutput{})
 	pulumi.RegisterOutputType(M3DbServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(M3DbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(MySqlComponentOutput{})
@@ -78819,8 +80641,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationDashboardUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigDatadogTagOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput{})
@@ -79092,6 +80918,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicConfigOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicTagOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicTagArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorComponentOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorOutput{})
@@ -79114,6 +80942,12 @@ func init() {
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingTagOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingTagArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetM3DbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlComponentOutput{})
@@ -79226,7 +81060,11 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceInfluxdbUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDashboardUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogTagOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})

@@ -13,6 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationDatadogUserConfigResult
     {
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> DatadogTags;
         public readonly ImmutableArray<string> ExcludeConsumerGroups;
         public readonly ImmutableArray<string> ExcludeTopics;
         public readonly ImmutableArray<string> IncludeConsumerGroups;
@@ -21,6 +22,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetServiceIntegrationDatadogUserConfigResult(
+            ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> datadogTags,
+
             ImmutableArray<string> excludeConsumerGroups,
 
             ImmutableArray<string> excludeTopics,
@@ -31,6 +34,7 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> kafkaCustomMetrics)
         {
+            DatadogTags = datadogTags;
             ExcludeConsumerGroups = excludeConsumerGroups;
             ExcludeTopics = excludeTopics;
             IncludeConsumerGroups = includeConsumerGroups;

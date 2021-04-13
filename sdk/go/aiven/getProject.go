@@ -46,7 +46,9 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 type LookupProjectArgs struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
-	AccountId        *string  `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
 	AvailableCredits *string  `pulumi:"availableCredits"`
 	BillingAddress   *string  `pulumi:"billingAddress"`
 	BillingCurrency  *string  `pulumi:"billingCurrency"`
@@ -67,16 +69,26 @@ type LookupProjectArgs struct {
 	// an existing project has billing type set to invoice and that needs to be copied over to a
 	// new project. (Setting billing is otherwise not allowed over the API.) This only has
 	// effect when the project is created.
-	CopyFromProject  *string `pulumi:"copyFromProject"`
-	Country          *string `pulumi:"country"`
-	CountryCode      *string `pulumi:"countryCode"`
-	DefaultCloud     *string `pulumi:"defaultCloud"`
+	CopyFromProject *string `pulumi:"copyFromProject"`
+	Country         *string `pulumi:"country"`
+	CountryCode     *string `pulumi:"countryCode"`
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
+	DefaultCloud *string `pulumi:"defaultCloud"`
+	// is a computed property returning the current accumulated bill for this
+	// project in the current billing period.
 	EstimatedBalance *string `pulumi:"estimatedBalance"`
-	PaymentMethod    *string `pulumi:"paymentMethod"`
+	// is a computed property returning the method of invoicing used for payments for
+	// this project, e.g. "card".
+	PaymentMethod *string `pulumi:"paymentMethod"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
-	Project         string   `pulumi:"project"`
+	Project string `pulumi:"project"`
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	VatId           *string  `pulumi:"vatId"`
 }
@@ -85,7 +97,9 @@ type LookupProjectArgs struct {
 type LookupProjectResult struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
-	AccountId        *string  `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
 	AvailableCredits string   `pulumi:"availableCredits"`
 	BillingAddress   *string  `pulumi:"billingAddress"`
 	BillingCurrency  *string  `pulumi:"billingCurrency"`
@@ -106,15 +120,25 @@ type LookupProjectResult struct {
 	// an existing project has billing type set to invoice and that needs to be copied over to a
 	// new project. (Setting billing is otherwise not allowed over the API.) This only has
 	// effect when the project is created.
-	CopyFromProject  *string `pulumi:"copyFromProject"`
-	Country          string  `pulumi:"country"`
-	CountryCode      *string `pulumi:"countryCode"`
-	DefaultCloud     *string `pulumi:"defaultCloud"`
-	EstimatedBalance string  `pulumi:"estimatedBalance"`
+	CopyFromProject *string `pulumi:"copyFromProject"`
+	Country         string  `pulumi:"country"`
+	CountryCode     *string `pulumi:"countryCode"`
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
+	DefaultCloud *string `pulumi:"defaultCloud"`
+	// is a computed property returning the current accumulated bill for this
+	// project in the current billing period.
+	EstimatedBalance string `pulumi:"estimatedBalance"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	PaymentMethod   string   `pulumi:"paymentMethod"`
-	Project         string   `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// is a computed property returning the method of invoicing used for payments for
+	// this project, e.g. "card".
+	PaymentMethod string `pulumi:"paymentMethod"`
+	Project       string `pulumi:"project"`
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	VatId           *string  `pulumi:"vatId"`
 }

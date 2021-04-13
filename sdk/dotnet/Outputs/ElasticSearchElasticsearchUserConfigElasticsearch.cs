@@ -23,8 +23,8 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ActionDestructiveRequiresName;
         /// <summary>
-        /// Controls the number of shards allowed in the 
-        /// cluster per data node
+        /// Controls the number of shards allowed in the
+        /// cluster per data node.
         /// </summary>
         public readonly string? ClusterMaxShardsPerNode;
         /// <summary>

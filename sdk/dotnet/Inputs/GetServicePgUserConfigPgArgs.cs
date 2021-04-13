@@ -54,6 +54,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("logErrorVerbosity")]
         public string? LogErrorVerbosity { get; set; }
 
+        [Input("logLinePrefix")]
+        public string? LogLinePrefix { get; set; }
+
         [Input("logMinDurationStatement")]
         public string? LogMinDurationStatement { get; set; }
 
@@ -96,11 +99,11 @@ namespace Pulumi.Aiven.Inputs
         [Input("maxWorkerProcesses")]
         public string? MaxWorkerProcesses { get; set; }
 
-        [Input("pgPartmanBgwDotInterval")]
-        public string? PgPartmanBgwDotInterval { get; set; }
+        [Input("pgPartmanBgwInterval")]
+        public string? PgPartmanBgwInterval { get; set; }
 
-        [Input("pgPartmanBgwDotRole")]
-        public string? PgPartmanBgwDotRole { get; set; }
+        [Input("pgPartmanBgwRole")]
+        public string? PgPartmanBgwRole { get; set; }
 
         [Input("pgStatStatementsTrack")]
         public string? PgStatStatementsTrack { get; set; }

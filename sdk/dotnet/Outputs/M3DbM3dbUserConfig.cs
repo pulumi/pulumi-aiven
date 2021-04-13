@@ -54,6 +54,12 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
         /// <summary>
+        /// Mapping rules allow more granular use of aggregation, not simply sending 
+        /// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+        /// rules will be sent to it and nothing else.
+        /// </summary>
+        public readonly Outputs.M3DbM3dbUserConfigRules? Rules;
+        /// <summary>
         /// Name of another service to fork from. This has effect only 
         /// when a new service is being created.
         /// </summary>
@@ -81,6 +87,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.M3DbM3dbUserConfigPublicAccess? publicAccess,
 
+            Outputs.M3DbM3dbUserConfigRules? rules,
+
             string? serviceToForkFrom)
         {
             CustomDomain = customDomain;
@@ -93,6 +101,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
+            Rules = rules;
             ServiceToForkFrom = serviceToForkFrom;
         }
     }

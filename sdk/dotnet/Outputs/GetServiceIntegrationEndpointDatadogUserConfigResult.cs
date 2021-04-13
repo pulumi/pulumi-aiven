@@ -14,6 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationEndpointDatadogUserConfigResult
     {
         public readonly string? DatadogApiKey;
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult> DatadogTags;
         public readonly string? DisableConsumerStats;
         public readonly string? MaxPartitionContexts;
         public readonly string? Site;
@@ -22,6 +23,8 @@ namespace Pulumi.Aiven.Outputs
         private GetServiceIntegrationEndpointDatadogUserConfigResult(
             string? datadogApiKey,
 
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult> datadogTags,
+
             string? disableConsumerStats,
 
             string? maxPartitionContexts,
@@ -29,6 +32,7 @@ namespace Pulumi.Aiven.Outputs
             string? site)
         {
             DatadogApiKey = datadogApiKey;
+            DatadogTags = datadogTags;
             DisableConsumerStats = disableConsumerStats;
             MaxPartitionContexts = maxPartitionContexts;
             Site = site;

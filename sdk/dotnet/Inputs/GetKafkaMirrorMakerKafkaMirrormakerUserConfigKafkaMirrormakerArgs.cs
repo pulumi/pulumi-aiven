@@ -13,6 +13,17 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Whether to periodically write the translated offsets
+        /// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+        /// as long as no active consumers in that group are connected to the target cluster.
+        /// </summary>
+        [Input("emitCheckpointsEnabled")]
+        public string? EmitCheckpointsEnabled { get; set; }
+
+        [Input("emitCheckpointsIntervalSeconds")]
+        public string? EmitCheckpointsIntervalSeconds { get; set; }
+
+        /// <summary>
         /// Whether to periodically check for new consumer groups. 
         /// Defaults to 'true'.
         /// </summary>
@@ -35,6 +46,16 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("refreshTopicsIntervalSeconds")]
         public string? RefreshTopicsIntervalSeconds { get; set; }
+
+        [Input("syncGroupOffsetsEnabled")]
+        public string? SyncGroupOffsetsEnabled { get; set; }
+
+        /// <summary>
+        /// Frequency at which consumer group offsets
+        /// are synced (default: 60, every minute).
+        /// </summary>
+        [Input("syncGroupOffsetsIntervalSeconds")]
+        public string? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         public GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs()
         {

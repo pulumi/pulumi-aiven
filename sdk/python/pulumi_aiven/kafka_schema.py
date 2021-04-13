@@ -147,6 +147,20 @@ class KafkaSchema(pulumi.CustomResource):
         \"\"\")
         ```
 
+        You can also load the schema from an external file:
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_schema2 = aiven.KafkaSchema("kafka-schema2",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_service["kafka-service1"]["service_name"],
+            subject_name="kafka-schema2",
+            compatibility_level="FORWARD",
+            schema=(lambda path: open(path).read())(f"{path['module']}/external_schema.avsc"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compatibility_level: configuration compatibility level overrides specific subject
@@ -195,6 +209,20 @@ class KafkaSchema(pulumi.CustomResource):
                "type": "record"
             }
         \"\"\")
+        ```
+
+        You can also load the schema from an external file:
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_schema2 = aiven.KafkaSchema("kafka-schema2",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_service["kafka-service1"]["service_name"],
+            subject_name="kafka-schema2",
+            compatibility_level="FORWARD",
+            schema=(lambda path: open(path).read())(f"{path['module']}/external_schema.avsc"))
         ```
 
         :param str resource_name: The name of the resource.

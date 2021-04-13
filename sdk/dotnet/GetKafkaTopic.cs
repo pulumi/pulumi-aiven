@@ -110,6 +110,14 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("tags")]
+        private List<Inputs.GetKafkaTopicTagArgs>? _tags;
+        public List<Inputs.GetKafkaTopicTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new List<Inputs.GetKafkaTopicTagArgs>());
+            set => _tags = value;
+        }
+
         [Input("terminationProtection")]
         public bool? TerminationProtection { get; set; }
 
@@ -164,6 +172,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int? RetentionHours;
         public readonly string ServiceName;
+        public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
         public readonly bool? TerminationProtection;
         public readonly string TopicName;
 
@@ -189,6 +198,8 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            ImmutableArray<Outputs.GetKafkaTopicTagResult> tags,
+
             bool? terminationProtection,
 
             string topicName)
@@ -203,6 +214,7 @@ namespace Pulumi.Aiven
             RetentionBytes = retentionBytes;
             RetentionHours = retentionHours;
             ServiceName = serviceName;
+            Tags = tags;
             TerminationProtection = terminationProtection;
             TopicName = topicName;
         }

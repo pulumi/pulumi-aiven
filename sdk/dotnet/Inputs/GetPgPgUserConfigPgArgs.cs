@@ -117,6 +117,13 @@ namespace Pulumi.Aiven.Inputs
         public string? LogErrorVerbosity { get; set; }
 
         /// <summary>
+        /// Choose from one of the available log-formats. These can support
+        /// popular log analyzers like pgbadger, pganalyze etc.
+        /// </summary>
+        [Input("logLinePrefix")]
+        public string? LogLinePrefix { get; set; }
+
+        /// <summary>
         /// Log statements that take more than this number of 
         /// milliseconds to run, -1 disables
         /// </summary>

@@ -48,6 +48,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
         "retentionBytes": args.retentionBytes,
         "retentionHours": args.retentionHours,
         "serviceName": args.serviceName,
+        "tags": args.tags,
         "terminationProtection": args.terminationProtection,
         "topicName": args.topicName,
     }, opts);
@@ -93,6 +94,7 @@ export interface GetKafkaTopicArgs {
      */
     readonly retentionHours?: number;
     readonly serviceName: string;
+    readonly tags?: inputs.GetKafkaTopicTag[];
     readonly terminationProtection?: boolean;
     /**
      * is the actual name of the topic account. This propery cannot be changed
@@ -140,6 +142,7 @@ export interface GetKafkaTopicResult {
      */
     readonly retentionHours?: number;
     readonly serviceName: string;
+    readonly tags?: outputs.GetKafkaTopicTag[];
     readonly terminationProtection?: boolean;
     readonly topicName: string;
 }

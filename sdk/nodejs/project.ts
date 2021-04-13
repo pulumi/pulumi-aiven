@@ -43,7 +43,8 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Available credits
+     * is a computed property returning the amount of platform credits available to
+     * the project. This could be your free trial or other promotional credits.
      */
     public readonly availableCredits!: pulumi.Output<string>;
     /**
@@ -110,15 +111,19 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
     /**
-     * Default cloud for new services
+     * defines the default cloud provider and region where services are
+     * hosted. This can be changed freely after the project is created. This will not affect existing
+     * services.
      */
     public readonly defaultCloud!: pulumi.Output<string | undefined>;
     /**
-     * Estimated balance
+     * is a computed property returning the current accumulated bill for this 
+     * project in the current billing period.
      */
     public /*out*/ readonly estimatedBalance!: pulumi.Output<string>;
     /**
-     * Payment method
+     * is a computed property returning the method of invoicing used for payments for
+     * this project, e.g. "card".
      */
     public /*out*/ readonly paymentMethod!: pulumi.Output<string>;
     /**
@@ -128,7 +133,9 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Technical contact emails of the project
+     * defines the email addresses that will receive alerts about 
+     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+     * this up-to-date to be aware of any potential issues with your project.
      */
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
     /**
@@ -210,7 +217,8 @@ export interface ProjectState {
      */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * Available credits
+     * is a computed property returning the amount of platform credits available to
+     * the project. This could be your free trial or other promotional credits.
      */
     readonly availableCredits?: pulumi.Input<string>;
     /**
@@ -277,15 +285,19 @@ export interface ProjectState {
      */
     readonly countryCode?: pulumi.Input<string>;
     /**
-     * Default cloud for new services
+     * defines the default cloud provider and region where services are
+     * hosted. This can be changed freely after the project is created. This will not affect existing
+     * services.
      */
     readonly defaultCloud?: pulumi.Input<string>;
     /**
-     * Estimated balance
+     * is a computed property returning the current accumulated bill for this 
+     * project in the current billing period.
      */
     readonly estimatedBalance?: pulumi.Input<string>;
     /**
-     * Payment method
+     * is a computed property returning the method of invoicing used for payments for
+     * this project, e.g. "card".
      */
     readonly paymentMethod?: pulumi.Input<string>;
     /**
@@ -295,7 +307,9 @@ export interface ProjectState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Technical contact emails of the project
+     * defines the email addresses that will receive alerts about 
+     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+     * this up-to-date to be aware of any potential issues with your project.
      */
     readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -316,7 +330,8 @@ export interface ProjectArgs {
      */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * Available credits
+     * is a computed property returning the amount of platform credits available to
+     * the project. This could be your free trial or other promotional credits.
      */
     readonly availableCredits?: pulumi.Input<string>;
     /**
@@ -377,7 +392,9 @@ export interface ProjectArgs {
      */
     readonly countryCode?: pulumi.Input<string>;
     /**
-     * Default cloud for new services
+     * defines the default cloud provider and region where services are
+     * hosted. This can be changed freely after the project is created. This will not affect existing
+     * services.
      */
     readonly defaultCloud?: pulumi.Input<string>;
     /**
@@ -387,7 +404,9 @@ export interface ProjectArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
-     * Technical contact emails of the project
+     * defines the email addresses that will receive alerts about 
+     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+     * this up-to-date to be aware of any potential issues with your project.
      */
     readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**

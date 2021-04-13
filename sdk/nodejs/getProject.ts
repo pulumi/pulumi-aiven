@@ -60,6 +60,10 @@ export interface GetProjectArgs {
      * using account ID.
      */
     readonly accountId?: string;
+    /**
+     * is a computed property returning the amount of platform credits available to
+     * the project. This could be your free trial or other promotional credits.
+     */
     readonly availableCredits?: string;
     readonly billingAddress?: string;
     readonly billingCurrency?: string;
@@ -89,8 +93,21 @@ export interface GetProjectArgs {
     readonly copyFromProject?: string;
     readonly country?: string;
     readonly countryCode?: string;
+    /**
+     * defines the default cloud provider and region where services are
+     * hosted. This can be changed freely after the project is created. This will not affect existing
+     * services.
+     */
     readonly defaultCloud?: string;
+    /**
+     * is a computed property returning the current accumulated bill for this
+     * project in the current billing period.
+     */
     readonly estimatedBalance?: string;
+    /**
+     * is a computed property returning the method of invoicing used for payments for
+     * this project, e.g. "card".
+     */
     readonly paymentMethod?: string;
     /**
      * defines the name of the project. Name must be globally unique (between all
@@ -98,6 +115,11 @@ export interface GetProjectArgs {
      * project, including all sub-resources.
      */
     readonly project: string;
+    /**
+     * defines the email addresses that will receive alerts about
+     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+     * this up-to-date to be aware of any potential issues with your project.
+     */
     readonly technicalEmails?: string[];
     readonly vatId?: string;
 }
@@ -111,6 +133,10 @@ export interface GetProjectResult {
      * using account ID.
      */
     readonly accountId?: string;
+    /**
+     * is a computed property returning the amount of platform credits available to
+     * the project. This could be your free trial or other promotional credits.
+     */
     readonly availableCredits: string;
     readonly billingAddress?: string;
     readonly billingCurrency?: string;
@@ -140,14 +166,32 @@ export interface GetProjectResult {
     readonly copyFromProject?: string;
     readonly country: string;
     readonly countryCode?: string;
+    /**
+     * defines the default cloud provider and region where services are
+     * hosted. This can be changed freely after the project is created. This will not affect existing
+     * services.
+     */
     readonly defaultCloud?: string;
+    /**
+     * is a computed property returning the current accumulated bill for this
+     * project in the current billing period.
+     */
     readonly estimatedBalance: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * is a computed property returning the method of invoicing used for payments for
+     * this project, e.g. "card".
+     */
     readonly paymentMethod: string;
     readonly project: string;
+    /**
+     * defines the email addresses that will receive alerts about
+     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+     * this up-to-date to be aware of any potential issues with your project.
+     */
     readonly technicalEmails?: string[];
     readonly vatId?: string;
 }

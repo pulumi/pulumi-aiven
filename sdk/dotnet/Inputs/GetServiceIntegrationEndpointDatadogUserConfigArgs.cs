@@ -15,6 +15,14 @@ namespace Pulumi.Aiven.Inputs
         [Input("datadogApiKey")]
         public string? DatadogApiKey { get; set; }
 
+        [Input("datadogTags")]
+        private List<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>? _datadogTags;
+        public List<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs> DatadogTags
+        {
+            get => _datadogTags ?? (_datadogTags = new List<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>());
+            set => _datadogTags = value;
+        }
+
         [Input("disableConsumerStats")]
         public string? DisableConsumerStats { get; set; }
 
