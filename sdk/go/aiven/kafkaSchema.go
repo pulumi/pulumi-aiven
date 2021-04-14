@@ -14,35 +14,6 @@ import (
 // ## # Kafka Schema Resource
 //
 // The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewKafkaSchema(ctx, "kafka_schema1", &aiven.KafkaSchemaArgs{
-// 			Project:            pulumi.Any(aiven_project.Kafka - schemas - project1.Project),
-// 			ServiceName:        pulumi.Any(aiven_service.Kafka - service1.Service_name),
-// 			SubjectName:        pulumi.String("kafka-schema1"),
-// 			CompatibilityLevel: pulumi.String("FORWARD"),
-// 			Schema:             pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "       \"doc\": \"example\",\n", "       \"fields\": [{\n", "           \"default\": 5,\n", "           \"doc\": \"my test number\",\n", "           \"name\": \"test\",\n", "           \"namespace\": \"test\",\n", "           \"type\": \"int\"\n", "       }],\n", "       \"name\": \"example\",\n", "       \"namespace\": \"example\",\n", "       \"type\": \"record\"\n", "    }\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type KafkaSchema struct {
 	pulumi.CustomResourceState
 

@@ -9,41 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
-    /// <summary>
-    /// ## # Kafka Topic Resource
-    /// 
-    /// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var mytesttopic = new Aiven.KafkaTopic("mytesttopic", new Aiven.KafkaTopicArgs
-    ///         {
-    ///             Config = new Aiven.Inputs.KafkaTopicConfigArgs
-    ///             {
-    ///                 CleanupPolicy = "compact,delete",
-    ///                 FlushMs = "10",
-    ///                 UncleanLeaderElectionEnable = "true",
-    ///             },
-    ///             Partitions = 5,
-    ///             Project = aiven_project.Myproject.Project,
-    ///             Replication = 3,
-    ///             ServiceName = aiven_service.Myservice.Service_name,
-    ///             TerminationProtection = true,
-    ///             TopicName = "&lt;TOPIC_NAME&gt;",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     [AivenResourceType("aiven:index/kafkaTopic:KafkaTopic")]
     public partial class KafkaTopic : Pulumi.CustomResource
     {
@@ -104,6 +69,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka Topic tag
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.KafkaTopicTag>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
@@ -224,6 +195,18 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("tags")]
+        private InputList<Inputs.KafkaTopicTagArgs>? _tags;
+
+        /// <summary>
+        /// Kafka Topic tag
+        /// </summary>
+        public InputList<Inputs.KafkaTopicTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.KafkaTopicTagArgs>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
         /// enable this for any production Kafka topic containing critical data.
@@ -303,6 +286,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.KafkaTopicTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Kafka Topic tag
+        /// </summary>
+        public InputList<Inputs.KafkaTopicTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.KafkaTopicTagGetArgs>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to

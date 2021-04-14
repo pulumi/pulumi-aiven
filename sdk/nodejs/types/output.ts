@@ -192,8 +192,8 @@ export interface ElasticSearchElasticsearchUserConfigElasticsearch {
      */
     actionDestructiveRequiresName?: string;
     /**
-     * Controls the number of shards allowed in the 
-     * cluster per data node
+     * Controls the number of shards allowed in the
+     * cluster per data node.
      */
     clusterMaxShardsPerNode?: string;
     /**
@@ -612,7 +612,7 @@ export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
      */
     actionDestructiveRequiresName?: string;
     /**
-     * Controls the number of shards allowed in the 
+     * Controls the number of shards allowed in the
      * cluster per data node
      */
     clusterMaxShardsPerNode?: string;
@@ -1931,6 +1931,13 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
+     * Whether to periodically write the translated offsets
+     * of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+     * as long as no active consumers in that group are connected to the target cluster.
+     */
+    emitCheckpointsEnabled?: string;
+    emitCheckpointsIntervalSeconds?: string;
+    /**
      * Whether to periodically check for new consumer groups. 
      * Defaults to 'true'.
      */
@@ -1946,6 +1953,12 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      * seconds. Defaults to 600 seconds (10 minutes).
      */
     refreshTopicsIntervalSeconds?: string;
+    syncGroupOffsetsEnabled?: string;
+    /**
+     * Frequency at which consumer group offsets
+     * are synced (default: 60, every minute).
+     */
+    syncGroupOffsetsIntervalSeconds?: string;
 }
 
 export interface GetKafkaMirrorMakerServiceIntegration {
@@ -2057,6 +2070,11 @@ export interface GetKafkaTopicConfig {
     uncleanLeaderElectionEnable?: string;
 }
 
+export interface GetKafkaTopicTag {
+    key: string;
+    value?: string;
+}
+
 export interface GetM3AggregatorComponent {
     component: string;
     host: string;
@@ -2145,6 +2163,12 @@ export interface GetM3DbM3dbUserConfig {
      * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.GetM3DbM3dbUserConfigPublicAccess;
+    /**
+     * Mapping rules allow more granular use of aggregation, not simply sending
+     * everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+     * rules will be sent to it and nothing else.
+     */
+    rules?: outputs.GetM3DbM3dbUserConfigRules;
     /**
      * Name of another service to fork from. This has effect only 
      * when a new service is being created.
@@ -2249,6 +2273,46 @@ export interface GetM3DbM3dbUserConfigPublicAccess {
      * for service nodes that are in a project VPC or another type of private network.
      */
     m3coordinator?: string;
+}
+
+export interface GetM3DbM3dbUserConfigRules {
+    mappings?: outputs.GetM3DbM3dbUserConfigRulesMapping[];
+}
+
+export interface GetM3DbM3dbUserConfigRulesMapping {
+    /**
+     * List of aggregations to be applied
+     */
+    aggregations?: string[];
+    /**
+     * Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+     */
+    drop?: string;
+    /**
+     * The metrics to be used with this particular rule; Matching metric names with wildcards (using
+     * __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+     * can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     */
+    filter?: string;
+    /**
+     * The name of the namespace
+     */
+    name?: string;
+    /**
+     * List of tags to be appended to matching metrics.
+     */
+    tags?: outputs.GetM3DbM3dbUserConfigRulesMappingTag[];
+}
+
+export interface GetM3DbM3dbUserConfigRulesMappingTag {
+    /**
+     * The name of the namespace
+     */
+    name?: string;
+    /**
+     * Value of the tag.
+     */
+    value?: string;
 }
 
 export interface GetM3DbServiceIntegration {
@@ -2805,6 +2869,11 @@ export interface GetPgPgUserConfigPg {
      * each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
      */
     logErrorVerbosity?: string;
+    /**
+     * Choose from one of the available log-formats. These can support
+     * popular log analyzers like pgbadger, pganalyze etc.
+     */
+    logLinePrefix?: string;
     /**
      * Log statements that take more than this number of 
      * milliseconds to run, -1 disables
@@ -3438,6 +3507,7 @@ export interface GetServiceIntegrationDashboardUserConfig {
 }
 
 export interface GetServiceIntegrationDatadogUserConfig {
+    datadogTags?: outputs.GetServiceIntegrationDatadogUserConfigDatadogTag[];
     excludeConsumerGroups?: string[];
     excludeTopics?: string[];
     includeConsumerGroups?: string[];
@@ -3445,11 +3515,22 @@ export interface GetServiceIntegrationDatadogUserConfig {
     kafkaCustomMetrics?: string[];
 }
 
+export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
+    comment?: string;
+    tag?: string;
+}
+
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: string;
+    datadogTags?: outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
     disableConsumerStats?: string;
     maxPartitionContexts?: string;
     site?: string;
+}
+
+export interface GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+    comment?: string;
+    tag?: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
@@ -3695,10 +3776,14 @@ export interface GetServiceKafkaMirrormakerUserConfig {
 }
 
 export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+    emitCheckpointsEnabled?: string;
+    emitCheckpointsIntervalSeconds?: string;
     refreshGroupsEnabled?: string;
     refreshGroupsIntervalSeconds?: string;
     refreshTopicsEnabled?: string;
     refreshTopicsIntervalSeconds?: string;
+    syncGroupOffsetsEnabled?: string;
+    syncGroupOffsetsIntervalSeconds?: string;
 }
 
 export interface GetServiceKafkaUserConfig {
@@ -3944,6 +4029,7 @@ export interface GetServicePgUserConfigPg {
     jit?: string;
     logAutovacuumMinDuration?: string;
     logErrorVerbosity?: string;
+    logLinePrefix?: string;
     logMinDurationStatement?: string;
     maxFilesPerProcess?: string;
     maxLocksPerTransaction?: string;
@@ -3958,8 +4044,8 @@ export interface GetServicePgUserConfigPg {
     maxStandbyStreamingDelay?: string;
     maxWalSenders?: string;
     maxWorkerProcesses?: string;
-    pgPartmanBgwDotInterval?: string;
-    pgPartmanBgwDotRole?: string;
+    pgPartmanBgwInterval?: string;
+    pgPartmanBgwRole?: string;
     pgStatStatementsTrack?: string;
     tempFileLimit?: string;
     timezone?: string;
@@ -5158,6 +5244,13 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
+     * Whether to periodically write the translated offsets 
+     * of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+     * as long as no active consumers in that group are connected to the target cluster.
+     */
+    emitCheckpointsEnabled?: string;
+    emitCheckpointsIntervalSeconds?: string;
+    /**
      * Whether to periodically check for new consumer groups. 
      * Defaults to 'true'.
      */
@@ -5173,6 +5266,12 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      * seconds. Defaults to 600 seconds (10 minutes).
      */
     refreshTopicsIntervalSeconds?: string;
+    syncGroupOffsetsEnabled?: string;
+    /**
+     * Frequency at which consumer group offsets 
+     * are synced (default: 60, every minute).
+     */
+    syncGroupOffsetsIntervalSeconds?: string;
 }
 
 export interface KafkaMirrorMakerServiceIntegration {
@@ -5284,6 +5383,11 @@ export interface KafkaTopicConfig {
     uncleanLeaderElectionEnable?: string;
 }
 
+export interface KafkaTopicTag {
+    key: string;
+    value?: string;
+}
+
 export interface M3AggregatorComponent {
     component: string;
     host: string;
@@ -5372,6 +5476,12 @@ export interface M3DbM3dbUserConfig {
      * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.M3DbM3dbUserConfigPublicAccess;
+    /**
+     * Mapping rules allow more granular use of aggregation, not simply sending 
+     * everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+     * rules will be sent to it and nothing else.
+     */
+    rules?: outputs.M3DbM3dbUserConfigRules;
     /**
      * Name of another service to fork from. This has effect only 
      * when a new service is being created.
@@ -5476,6 +5586,46 @@ export interface M3DbM3dbUserConfigPublicAccess {
      * for service nodes that are in a project VPC or another type of private network.
      */
     m3coordinator?: string;
+}
+
+export interface M3DbM3dbUserConfigRules {
+    mappings?: outputs.M3DbM3dbUserConfigRulesMapping[];
+}
+
+export interface M3DbM3dbUserConfigRulesMapping {
+    /**
+     * List of aggregations to be applied
+     */
+    aggregations?: string[];
+    /**
+     * Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+     */
+    drop?: string;
+    /**
+     * The metrics to be used with this particular rule; Matching metric names with wildcards (using
+     * __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+     * can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     */
+    filter?: string;
+    /**
+     * The name of the namespace
+     */
+    name?: string;
+    /**
+     * List of tags to be appended to matching metrics.
+     */
+    tags?: outputs.M3DbM3dbUserConfigRulesMappingTag[];
+}
+
+export interface M3DbM3dbUserConfigRulesMappingTag {
+    /**
+     * The name of the namespace
+     */
+    name?: string;
+    /**
+     * Value of the tag.
+     */
+    value?: string;
 }
 
 export interface M3DbServiceIntegration {
@@ -6037,8 +6187,13 @@ export interface PgPgUserConfigPg {
      */
     logErrorVerbosity?: string;
     /**
-     * Log statements that take more than this number of 
+     * Choose from one of the available log-formats. These can support 
+     * popular log analyzers like pgbadger, pganalyze etc.
      * milliseconds to run, -1 disables
+     */
+    logLinePrefix?: string;
+    /**
+     * Log statements that take more than this number of
      */
     logMinDurationStatement?: string;
     /**
@@ -6672,6 +6827,7 @@ export interface ServiceIntegrationDashboardUserConfig {
 }
 
 export interface ServiceIntegrationDatadogUserConfig {
+    datadogTags?: outputs.ServiceIntegrationDatadogUserConfigDatadogTag[];
     excludeConsumerGroups?: string[];
     excludeTopics?: string[];
     includeConsumerGroups?: string[];
@@ -6679,11 +6835,22 @@ export interface ServiceIntegrationDatadogUserConfig {
     kafkaCustomMetrics?: string[];
 }
 
+export interface ServiceIntegrationDatadogUserConfigDatadogTag {
+    comment?: string;
+    tag?: string;
+}
+
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: string;
+    datadogTags?: outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
     disableConsumerStats?: string;
     maxPartitionContexts?: string;
     site?: string;
+}
+
+export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+    comment?: string;
+    tag?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
@@ -6929,10 +7096,14 @@ export interface ServiceKafkaMirrormakerUserConfig {
 }
 
 export interface ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+    emitCheckpointsEnabled?: string;
+    emitCheckpointsIntervalSeconds?: string;
     refreshGroupsEnabled?: string;
     refreshGroupsIntervalSeconds?: string;
     refreshTopicsEnabled?: string;
     refreshTopicsIntervalSeconds?: string;
+    syncGroupOffsetsEnabled?: string;
+    syncGroupOffsetsIntervalSeconds?: string;
 }
 
 export interface ServiceKafkaUserConfig {
@@ -7178,6 +7349,7 @@ export interface ServicePgUserConfigPg {
     jit?: string;
     logAutovacuumMinDuration?: string;
     logErrorVerbosity?: string;
+    logLinePrefix?: string;
     logMinDurationStatement?: string;
     maxFilesPerProcess?: string;
     maxLocksPerTransaction?: string;
@@ -7192,8 +7364,8 @@ export interface ServicePgUserConfigPg {
     maxStandbyStreamingDelay?: string;
     maxWalSenders?: string;
     maxWorkerProcesses?: string;
-    pgPartmanBgwDotInterval?: string;
-    pgPartmanBgwDotRole?: string;
+    pgPartmanBgwInterval?: string;
+    pgPartmanBgwRole?: string;
     pgStatStatementsTrack?: string;
     tempFileLimit?: string;
     timezone?: string;

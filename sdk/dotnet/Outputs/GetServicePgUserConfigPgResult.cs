@@ -27,6 +27,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? Jit;
         public readonly string? LogAutovacuumMinDuration;
         public readonly string? LogErrorVerbosity;
+        public readonly string? LogLinePrefix;
         public readonly string? LogMinDurationStatement;
         public readonly string? MaxFilesPerProcess;
         public readonly string? MaxLocksPerTransaction;
@@ -41,8 +42,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? MaxStandbyStreamingDelay;
         public readonly string? MaxWalSenders;
         public readonly string? MaxWorkerProcesses;
-        public readonly string? PgPartmanBgwDotInterval;
-        public readonly string? PgPartmanBgwDotRole;
+        public readonly string? PgPartmanBgwInterval;
+        public readonly string? PgPartmanBgwRole;
         public readonly string? PgStatStatementsTrack;
         public readonly string? TempFileLimit;
         public readonly string? Timezone;
@@ -82,6 +83,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? logErrorVerbosity,
 
+            string? logLinePrefix,
+
             string? logMinDurationStatement,
 
             string? maxFilesPerProcess,
@@ -110,9 +113,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? maxWorkerProcesses,
 
-            string? pgPartmanBgwDotInterval,
+            string? pgPartmanBgwInterval,
 
-            string? pgPartmanBgwDotRole,
+            string? pgPartmanBgwRole,
 
             string? pgStatStatementsTrack,
 
@@ -144,6 +147,7 @@ namespace Pulumi.Aiven.Outputs
             Jit = jit;
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
             LogErrorVerbosity = logErrorVerbosity;
+            LogLinePrefix = logLinePrefix;
             LogMinDurationStatement = logMinDurationStatement;
             MaxFilesPerProcess = maxFilesPerProcess;
             MaxLocksPerTransaction = maxLocksPerTransaction;
@@ -158,8 +162,8 @@ namespace Pulumi.Aiven.Outputs
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;
             MaxWalSenders = maxWalSenders;
             MaxWorkerProcesses = maxWorkerProcesses;
-            PgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
-            PgPartmanBgwDotRole = pgPartmanBgwDotRole;
+            PgPartmanBgwInterval = pgPartmanBgwInterval;
+            PgPartmanBgwRole = pgPartmanBgwRole;
             PgStatStatementsTrack = pgStatStatementsTrack;
             TempFileLimit = tempFileLimit;
             Timezone = timezone;

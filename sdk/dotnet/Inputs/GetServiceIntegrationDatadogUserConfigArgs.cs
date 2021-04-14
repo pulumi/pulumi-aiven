@@ -12,6 +12,14 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetServiceIntegrationDatadogUserConfigArgs : Pulumi.InvokeArgs
     {
+        [Input("datadogTags")]
+        private List<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagArgs>? _datadogTags;
+        public List<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagArgs> DatadogTags
+        {
+            get => _datadogTags ?? (_datadogTags = new List<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagArgs>());
+            set => _datadogTags = value;
+        }
+
         [Input("excludeConsumerGroups")]
         private List<string>? _excludeConsumerGroups;
         public List<string> ExcludeConsumerGroups

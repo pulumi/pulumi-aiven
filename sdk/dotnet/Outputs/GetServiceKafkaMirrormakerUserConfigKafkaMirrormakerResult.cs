@@ -13,25 +13,41 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerResult
     {
+        public readonly string? EmitCheckpointsEnabled;
+        public readonly string? EmitCheckpointsIntervalSeconds;
         public readonly string? RefreshGroupsEnabled;
         public readonly string? RefreshGroupsIntervalSeconds;
         public readonly string? RefreshTopicsEnabled;
         public readonly string? RefreshTopicsIntervalSeconds;
+        public readonly string? SyncGroupOffsetsEnabled;
+        public readonly string? SyncGroupOffsetsIntervalSeconds;
 
         [OutputConstructor]
         private GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerResult(
+            string? emitCheckpointsEnabled,
+
+            string? emitCheckpointsIntervalSeconds,
+
             string? refreshGroupsEnabled,
 
             string? refreshGroupsIntervalSeconds,
 
             string? refreshTopicsEnabled,
 
-            string? refreshTopicsIntervalSeconds)
+            string? refreshTopicsIntervalSeconds,
+
+            string? syncGroupOffsetsEnabled,
+
+            string? syncGroupOffsetsIntervalSeconds)
         {
+            EmitCheckpointsEnabled = emitCheckpointsEnabled;
+            EmitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             RefreshGroupsEnabled = refreshGroupsEnabled;
             RefreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             RefreshTopicsEnabled = refreshTopicsEnabled;
             RefreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
+            SyncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
+            SyncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
         }
     }
 }

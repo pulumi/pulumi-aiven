@@ -26,8 +26,8 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ActionDestructiveRequiresName { get; set; }
 
         /// <summary>
-        /// Controls the number of shards allowed in the 
-        /// cluster per data node
+        /// Controls the number of shards allowed in the
+        /// cluster per data node.
         /// </summary>
         [Input("clusterMaxShardsPerNode")]
         public Input<string>? ClusterMaxShardsPerNode { get; set; }

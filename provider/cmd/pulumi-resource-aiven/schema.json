@@ -563,7 +563,7 @@
                 },
                 "clusterMaxShardsPerNode": {
                     "type": "string",
-                    "description": "Controls the number of shards allowed in the \ncluster per data node\n",
+                    "description": "Controls the number of shards allowed in the\ncluster per data node.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3499,6 +3499,23 @@
         },
         "aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
             "properties": {
+                "emitCheckpointsEnabled": {
+                    "type": "string",
+                    "description": "Whether to periodically write the translated offsets \nof replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,\nas long as no active consumers in that group are connected to the target cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emitCheckpointsIntervalSeconds": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "refreshGroupsEnabled": {
                     "type": "string",
                     "description": "Whether to periodically check for new consumer groups. \nDefaults to 'true'.\n",
@@ -3528,6 +3545,23 @@
                 "refreshTopicsIntervalSeconds": {
                     "type": "string",
                     "description": "Frequency of topic and partitions refresh in \nseconds. Defaults to 600 seconds (10 minutes).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsEnabled": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsIntervalSeconds": {
+                    "type": "string",
+                    "description": "Frequency at which consumer group offsets \nare synced (default: 60, every minute).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3807,6 +3841,30 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/KafkaTopicTag:KafkaTopicTag": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
         },
         "aiven:index/M3AggregatorComponent:M3AggregatorComponent": {
             "properties": {
@@ -4127,6 +4185,15 @@
                         }
                     }
                 },
+                "rules": {
+                    "$ref": "#/types/aiven:index/M3DbM3dbUserConfigRules:M3DbM3dbUserConfigRules",
+                    "description": "Mapping rules allow more granular use of aggregation, not simply sending \neverything to a namespace. If mapping rules exist that target a namespace, only data matching mapping\nrules will be sent to it and nothing else.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
@@ -4322,6 +4389,101 @@
                 "m3coordinator": {
                     "type": "string",
                     "description": "Allow clients to connect to m3coordinator from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigRules:M3DbM3dbUserConfigRules": {
+            "properties": {
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbM3dbUserConfigRulesMapping:M3DbM3dbUserConfigRulesMapping"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigRulesMapping:M3DbM3dbUserConfigRulesMapping": {
+            "properties": {
+                "aggregations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of aggregations to be applied\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "drop": {
+                    "type": "string",
+                    "description": "Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "filter": {
+                    "type": "string",
+                    "description": "The metrics to be used with this particular rule; Matching metric names with wildcards (using\n__name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !\ncan be used at start of value for negation, and multiple filters can be supplied using space as separator.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbM3dbUserConfigRulesMappingTag:M3DbM3dbUserConfigRulesMappingTag"
+                    },
+                    "description": "List of tags to be appended to matching metrics.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/M3DbM3dbUserConfigRulesMappingTag:M3DbM3dbUserConfigRulesMappingTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of the tag.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5514,9 +5676,18 @@
                         }
                     }
                 },
+                "logLinePrefix": {
+                    "type": "string",
+                    "description": "Choose from one of the available log-formats. These can support \npopular log analyzers like pgbadger, pganalyze etc.\nmilliseconds to run, -1 disables\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logMinDurationStatement": {
                     "type": "string",
-                    "description": "Log statements that take more than this number of \nmilliseconds to run, -1 disables\n",
+                    "description": "Log statements that take more than this number of\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7888,6 +8059,17 @@
         },
         "aiven:index/ServiceIntegrationDatadogUserConfig:ServiceIntegrationDatadogUserConfig": {
             "properties": {
+                "datadogTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfigDatadogTag:ServiceIntegrationDatadogUserConfigDatadogTag"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "excludeConsumerGroups": {
                     "type": "array",
                     "items": {
@@ -7946,10 +8128,42 @@
             },
             "type": "object"
         },
+        "aiven:index/ServiceIntegrationDatadogUserConfigDatadogTag:ServiceIntegrationDatadogUserConfigDatadogTag": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/ServiceIntegrationEndpointDatadogUserConfig:ServiceIntegrationEndpointDatadogUserConfig": {
             "properties": {
                 "datadogApiKey": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "datadogTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationEndpointDatadogUserConfigDatadogTag:ServiceIntegrationEndpointDatadogUserConfigDatadogTag"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7973,6 +8187,27 @@
                     }
                 },
                 "site": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationEndpointDatadogUserConfigDatadogTag:ServiceIntegrationEndpointDatadogUserConfigDatadogTag": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -9138,6 +9373,22 @@
         },
         "aiven:index/ServiceKafkaMirrormakerUserConfigKafkaMirrormaker:ServiceKafkaMirrormakerUserConfigKafkaMirrormaker": {
             "properties": {
+                "emitCheckpointsEnabled": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emitCheckpointsIntervalSeconds": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "refreshGroupsEnabled": {
                     "type": "string",
                     "language": {
@@ -9163,6 +9414,22 @@
                     }
                 },
                 "refreshTopicsIntervalSeconds": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsEnabled": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsIntervalSeconds": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -10771,6 +11038,14 @@
                         }
                     }
                 },
+                "logLinePrefix": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logMinDurationStatement": {
                     "type": "string",
                     "language": {
@@ -10883,7 +11158,7 @@
                         }
                     }
                 },
-                "pgPartmanBgwDotInterval": {
+                "pgPartmanBgwInterval": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -10891,7 +11166,7 @@
                         }
                     }
                 },
-                "pgPartmanBgwDotRole": {
+                "pgPartmanBgwRole": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -11965,7 +12240,7 @@
                 },
                 "clusterMaxShardsPerNode": {
                     "type": "string",
-                    "description": "Controls the number of shards allowed in the \ncluster per data node\n",
+                    "description": "Controls the number of shards allowed in the\ncluster per data node\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14907,6 +15182,23 @@
         },
         "aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
             "properties": {
+                "emitCheckpointsEnabled": {
+                    "type": "string",
+                    "description": "Whether to periodically write the translated offsets\nof replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,\nas long as no active consumers in that group are connected to the target cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emitCheckpointsIntervalSeconds": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "refreshGroupsEnabled": {
                     "type": "string",
                     "description": "Whether to periodically check for new consumer groups. \nDefaults to 'true'.\n",
@@ -14936,6 +15228,23 @@
                 "refreshTopicsIntervalSeconds": {
                     "type": "string",
                     "description": "Frequency of topic and partitions refresh in \nseconds. Defaults to 600 seconds (10 minutes).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsEnabled": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsIntervalSeconds": {
+                    "type": "string",
+                    "description": "Frequency at which consumer group offsets\nare synced (default: 60, every minute).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15215,6 +15524,30 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/getKafkaTopicTag:getKafkaTopicTag": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
         },
         "aiven:index/getM3AggregatorComponent:getM3AggregatorComponent": {
             "properties": {
@@ -15537,6 +15870,15 @@
                         }
                     }
                 },
+                "rules": {
+                    "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigRules:getM3DbM3dbUserConfigRules",
+                    "description": "Mapping rules allow more granular use of aggregation, not simply sending\neverything to a namespace. If mapping rules exist that target a namespace, only data matching mapping\nrules will be sent to it and nothing else.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
@@ -15732,6 +16074,101 @@
                 "m3coordinator": {
                     "type": "string",
                     "description": "Allow clients to connect to m3coordinator from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigRules:getM3DbM3dbUserConfigRules": {
+            "properties": {
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigRulesMapping:getM3DbM3dbUserConfigRulesMapping"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigRulesMapping:getM3DbM3dbUserConfigRulesMapping": {
+            "properties": {
+                "aggregations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of aggregations to be applied\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "drop": {
+                    "type": "string",
+                    "description": "Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "filter": {
+                    "type": "string",
+                    "description": "The metrics to be used with this particular rule; Matching metric names with wildcards (using\n__name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !\ncan be used at start of value for negation, and multiple filters can be supplied using space as separator.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigRulesMappingTag:getM3DbM3dbUserConfigRulesMappingTag"
+                    },
+                    "description": "List of tags to be appended to matching metrics.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getM3DbM3dbUserConfigRulesMappingTag:getM3DbM3dbUserConfigRulesMappingTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the namespace\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of the tag.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16921,6 +17358,15 @@
                 "logErrorVerbosity": {
                     "type": "string",
                     "description": "Controls the amount of detail written in the server log for \neach message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logLinePrefix": {
+                    "type": "string",
+                    "description": "Choose from one of the available log-formats. These can support\npopular log analyzers like pgbadger, pganalyze etc.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19305,6 +19751,17 @@
         },
         "aiven:index/getServiceIntegrationDatadogUserConfig:getServiceIntegrationDatadogUserConfig": {
             "properties": {
+                "datadogTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationDatadogUserConfigDatadogTag:getServiceIntegrationDatadogUserConfigDatadogTag"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "excludeConsumerGroups": {
                     "type": "array",
                     "items": {
@@ -19363,10 +19820,42 @@
             },
             "type": "object"
         },
+        "aiven:index/getServiceIntegrationDatadogUserConfigDatadogTag:getServiceIntegrationDatadogUserConfigDatadogTag": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getServiceIntegrationEndpointDatadogUserConfig:getServiceIntegrationEndpointDatadogUserConfig": {
             "properties": {
                 "datadogApiKey": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "datadogTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationEndpointDatadogUserConfigDatadogTag:getServiceIntegrationEndpointDatadogUserConfigDatadogTag"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19390,6 +19879,27 @@
                     }
                 },
                 "site": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationEndpointDatadogUserConfigDatadogTag:getServiceIntegrationEndpointDatadogUserConfigDatadogTag": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20556,6 +21066,22 @@
         },
         "aiven:index/getServiceKafkaMirrormakerUserConfigKafkaMirrormaker:getServiceKafkaMirrormakerUserConfigKafkaMirrormaker": {
             "properties": {
+                "emitCheckpointsEnabled": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emitCheckpointsIntervalSeconds": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "refreshGroupsEnabled": {
                     "type": "string",
                     "language": {
@@ -20581,6 +21107,22 @@
                     }
                 },
                 "refreshTopicsIntervalSeconds": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsEnabled": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncGroupOffsetsIntervalSeconds": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -22190,6 +22732,14 @@
                         }
                     }
                 },
+                "logLinePrefix": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "logMinDurationStatement": {
                     "type": "string",
                     "language": {
@@ -22302,7 +22852,7 @@
                         }
                     }
                 },
-                "pgPartmanBgwDotInterval": {
+                "pgPartmanBgwInterval": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -22310,7 +22860,7 @@
                         }
                     }
                 },
-                "pgPartmanBgwDotRole": {
+                "pgPartmanBgwRole": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -25940,7 +26490,7 @@
             }
         },
         "aiven:index/kafkaSchema:KafkaSchema": {
-            "description": "## # Kafka Schema Resource\n\nThe Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst kafka_schema1 = new aiven.KafkaSchema(\"kafka-schema1\", {\n    project: aiven_project[\"kafka-schemas-project1\"].project,\n    serviceName: aiven_service[\"kafka-service1\"].service_name,\n    subjectName: \"kafka-schema1\",\n    compatibilityLevel: \"FORWARD\",\n    schema: `    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nkafka_schema1 = aiven.KafkaSchema(\"kafka-schema1\",\n    project=aiven_project[\"kafka-schemas-project1\"][\"project\"],\n    service_name=aiven_service[\"kafka-service1\"][\"service_name\"],\n    subject_name=\"kafka-schema1\",\n    compatibility_level=\"FORWARD\",\n    schema=\"\"\"    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n\"\"\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var kafka_schema1 = new Aiven.KafkaSchema(\"kafka-schema1\", new Aiven.KafkaSchemaArgs\n        {\n            Project = aiven_project.Kafka_schemas_project1.Project,\n            ServiceName = aiven_service.Kafka_service1.Service_name,\n            SubjectName = \"kafka-schema1\",\n            CompatibilityLevel = \"FORWARD\",\n            Schema = @\"    {\n       \"\"doc\"\": \"\"example\"\",\n       \"\"fields\"\": [{\n           \"\"default\"\": 5,\n           \"\"doc\"\": \"\"my test number\"\",\n           \"\"name\"\": \"\"test\"\",\n           \"\"namespace\"\": \"\"test\"\",\n           \"\"type\"\": \"\"int\"\"\n       }],\n       \"\"name\"\": \"\"example\"\",\n       \"\"namespace\"\": \"\"example\"\",\n       \"\"type\"\": \"\"record\"\"\n    }\n\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaSchema(ctx, \"kafka_schema1\", \u0026aiven.KafkaSchemaArgs{\n\t\t\tProject:            pulumi.Any(aiven_project.Kafka - schemas - project1.Project),\n\t\t\tServiceName:        pulumi.Any(aiven_service.Kafka - service1.Service_name),\n\t\t\tSubjectName:        pulumi.String(\"kafka-schema1\"),\n\t\t\tCompatibilityLevel: pulumi.String(\"FORWARD\"),\n\t\t\tSchema:             pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v%v\", \"    {\\n\", \"       \\\"doc\\\": \\\"example\\\",\\n\", \"       \\\"fields\\\": [{\\n\", \"           \\\"default\\\": 5,\\n\", \"           \\\"doc\\\": \\\"my test number\\\",\\n\", \"           \\\"name\\\": \\\"test\\\",\\n\", \"           \\\"namespace\\\": \\\"test\\\",\\n\", \"           \\\"type\\\": \\\"int\\\"\\n\", \"       }],\\n\", \"       \\\"name\\\": \\\"example\\\",\\n\", \"       \\\"namespace\\\": \\\"example\\\",\\n\", \"       \\\"type\\\": \\\"record\\\"\\n\", \"    }\\n\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Kafka Schema Resource\n\nThe Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst kafka_schema1 = new aiven.KafkaSchema(\"kafka-schema1\", {\n    project: aiven_project[\"kafka-schemas-project1\"].project,\n    serviceName: aiven_service[\"kafka-service1\"].service_name,\n    subjectName: \"kafka-schema1\",\n    compatibilityLevel: \"FORWARD\",\n    schema: `    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nkafka_schema1 = aiven.KafkaSchema(\"kafka-schema1\",\n    project=aiven_project[\"kafka-schemas-project1\"][\"project\"],\n    service_name=aiven_service[\"kafka-service1\"][\"service_name\"],\n    subject_name=\"kafka-schema1\",\n    compatibility_level=\"FORWARD\",\n    schema=\"\"\"    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n\"\"\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var kafka_schema1 = new Aiven.KafkaSchema(\"kafka-schema1\", new Aiven.KafkaSchemaArgs\n        {\n            Project = aiven_project.Kafka_schemas_project1.Project,\n            ServiceName = aiven_service.Kafka_service1.Service_name,\n            SubjectName = \"kafka-schema1\",\n            CompatibilityLevel = \"FORWARD\",\n            Schema = @\"    {\n       \"\"doc\"\": \"\"example\"\",\n       \"\"fields\"\": [{\n           \"\"default\"\": 5,\n           \"\"doc\"\": \"\"my test number\"\",\n           \"\"name\"\": \"\"test\"\",\n           \"\"namespace\"\": \"\"test\"\",\n           \"\"type\"\": \"\"int\"\"\n       }],\n       \"\"name\"\": \"\"example\"\",\n       \"\"namespace\"\": \"\"example\"\",\n       \"\"type\"\": \"\"record\"\"\n    }\n\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaSchema(ctx, \"kafka_schema1\", \u0026aiven.KafkaSchemaArgs{\n\t\t\tProject:            pulumi.Any(aiven_project.Kafka - schemas - project1.Project),\n\t\t\tServiceName:        pulumi.Any(aiven_service.Kafka - service1.Service_name),\n\t\t\tSubjectName:        pulumi.String(\"kafka-schema1\"),\n\t\t\tCompatibilityLevel: pulumi.String(\"FORWARD\"),\n\t\t\tSchema:             pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v%v\", \"    {\\n\", \"       \\\"doc\\\": \\\"example\\\",\\n\", \"       \\\"fields\\\": [{\\n\", \"           \\\"default\\\": 5,\\n\", \"           \\\"doc\\\": \\\"my test number\\\",\\n\", \"           \\\"name\\\": \\\"test\\\",\\n\", \"           \\\"namespace\\\": \\\"test\\\",\\n\", \"           \\\"type\\\": \\\"int\\\"\\n\", \"       }],\\n\", \"       \\\"name\\\": \\\"example\\\",\\n\", \"       \\\"namespace\\\": \\\"example\\\",\\n\", \"       \\\"type\\\": \\\"record\\\"\\n\", \"    }\\n\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nYou can also load the schema from an external file:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\nimport * from \"fs\";\n\nconst kafka_schema2 = new aiven.KafkaSchema(\"kafka-schema2\", {\n    project: aiven_project[\"kafka-schemas-project1\"].project,\n    serviceName: aiven_service[\"kafka-service1\"].service_name,\n    subjectName: \"kafka-schema2\",\n    compatibilityLevel: \"FORWARD\",\n    schema: fs.readFileSync(`${path.module}/external_schema.avsc`),\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nkafka_schema2 = aiven.KafkaSchema(\"kafka-schema2\",\n    project=aiven_project[\"kafka-schemas-project1\"][\"project\"],\n    service_name=aiven_service[\"kafka-service1\"][\"service_name\"],\n    subject_name=\"kafka-schema2\",\n    compatibility_level=\"FORWARD\",\n    schema=(lambda path: open(path).read())(f\"{path['module']}/external_schema.avsc\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var kafka_schema2 = new Aiven.KafkaSchema(\"kafka-schema2\", new Aiven.KafkaSchemaArgs\n        {\n            Project = aiven_project.Kafka_schemas_project1.Project,\n            ServiceName = aiven_service.Kafka_service1.Service_name,\n            SubjectName = \"kafka-schema2\",\n            CompatibilityLevel = \"FORWARD\",\n            Schema = File.ReadAllText($\"{path.Module}/external_schema.avsc\"),\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "compatibilityLevel": {
                     "type": "string",
@@ -26093,7 +26643,6 @@
             }
         },
         "aiven:index/kafkaTopic:KafkaTopic": {
-            "description": "## # Kafka Topic Resource\n\nThe Kafka Topic resource allows the creation and management of Aiven Kafka Topics.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mytesttopic = new aiven.KafkaTopic(\"mytesttopic\", {\n    config: {\n        cleanupPolicy: \"compact,delete\",\n        flushMs: \"10\",\n        uncleanLeaderElectionEnable: \"true\",\n    },\n    partitions: 5,\n    project: aiven_project_myproject.project,\n    replication: 3,\n    serviceName: aiven_service_myservice.serviceName,\n    terminationProtection: true,\n    topicName: \"\u003cTOPIC_NAME\u003e\",\n}, { timeouts: {\n    create: \"1m\",\n    read: \"5m\",\n} });\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmytesttopic = aiven.KafkaTopic(\"mytesttopic\",\n    config=aiven.KafkaTopicConfigArgs(\n        cleanup_policy=\"compact,delete\",\n        flush_ms=\"10\",\n        unclean_leader_election_enable=\"true\",\n    ),\n    partitions=5,\n    project=aiven_project[\"myproject\"][\"project\"],\n    replication=3,\n    service_name=aiven_service[\"myservice\"][\"service_name\"],\n    termination_protection=True,\n    topic_name=\"\u003cTOPIC_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mytesttopic = new Aiven.KafkaTopic(\"mytesttopic\", new Aiven.KafkaTopicArgs\n        {\n            Config = new Aiven.Inputs.KafkaTopicConfigArgs\n            {\n                CleanupPolicy = \"compact,delete\",\n                FlushMs = \"10\",\n                UncleanLeaderElectionEnable = \"true\",\n            },\n            Partitions = 5,\n            Project = aiven_project.Myproject.Project,\n            Replication = 3,\n            ServiceName = aiven_service.Myservice.Service_name,\n            TerminationProtection = true,\n            TopicName = \"\u003cTOPIC_NAME\u003e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v3/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaTopic(ctx, \"mytesttopic\", \u0026aiven.KafkaTopicArgs{\n\t\t\tConfig: \u0026aiven.KafkaTopicConfigArgs{\n\t\t\t\tCleanupPolicy:               pulumi.String(\"compact,delete\"),\n\t\t\t\tFlushMs:                     pulumi.String(\"10\"),\n\t\t\t\tUncleanLeaderElectionEnable: pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tPartitions:            pulumi.Int(5),\n\t\t\tProject:               pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tReplication:           pulumi.Int(3),\n\t\t\tServiceName:           pulumi.Any(aiven_service.Myservice.Service_name),\n\t\t\tTerminationProtection: pulumi.Bool(true),\n\t\t\tTopicName:             pulumi.String(\"\u003cTOPIC_NAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "cleanupPolicy": {
                     "type": "string",
@@ -26134,6 +26683,13 @@
                 "serviceName": {
                     "type": "string",
                     "description": "Service to link the kafka topic to\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaTopicTag:KafkaTopicTag"
+                    },
+                    "description": "Kafka Topic tag\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -26191,6 +26747,13 @@
                 "serviceName": {
                     "type": "string",
                     "description": "Service to link the kafka topic to\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaTopicTag:KafkaTopicTag"
+                    },
+                    "description": "Kafka Topic tag\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -26250,6 +26813,13 @@
                     "serviceName": {
                         "type": "string",
                         "description": "Service to link the kafka topic to\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/KafkaTopicTag:KafkaTopicTag"
+                        },
+                        "description": "Kafka Topic tag\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -27379,7 +27949,7 @@
                 },
                 "availableCredits": {
                     "type": "string",
-                    "description": "Available credits\n"
+                    "description": "is a computed property returning the amount of platform credits available to\nthe project. This could be your free trial or other promotional credits.\n"
                 },
                 "billingAddress": {
                     "type": "string",
@@ -27433,15 +28003,15 @@
                 },
                 "defaultCloud": {
                     "type": "string",
-                    "description": "Default cloud for new services\n"
+                    "description": "defines the default cloud provider and region where services are\nhosted. This can be changed freely after the project is created. This will not affect existing\nservices.\n"
                 },
                 "estimatedBalance": {
                     "type": "string",
-                    "description": "Estimated balance\n"
+                    "description": "is a computed property returning the current accumulated bill for this \nproject in the current billing period.\n"
                 },
                 "paymentMethod": {
                     "type": "string",
-                    "description": "Payment method\n"
+                    "description": "is a computed property returning the method of invoicing used for payments for\nthis project, e.g. \"card\".\n"
                 },
                 "project": {
                     "type": "string",
@@ -27457,7 +28027,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Technical contact emails of the project\n"
+                    "description": "defines the email addresses that will receive alerts about \nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
                 },
                 "vatId": {
                     "type": "string",
@@ -27480,7 +28050,7 @@
                 },
                 "availableCredits": {
                     "type": "string",
-                    "description": "Available credits\n"
+                    "description": "is a computed property returning the amount of platform credits available to\nthe project. This could be your free trial or other promotional credits.\n"
                 },
                 "billingAddress": {
                     "type": "string",
@@ -27529,7 +28099,7 @@
                 },
                 "defaultCloud": {
                     "type": "string",
-                    "description": "Default cloud for new services\n"
+                    "description": "defines the default cloud provider and region where services are\nhosted. This can be changed freely after the project is created. This will not affect existing\nservices.\n"
                 },
                 "project": {
                     "type": "string",
@@ -27545,7 +28115,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Technical contact emails of the project\n"
+                    "description": "defines the email addresses that will receive alerts about \nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
                 },
                 "vatId": {
                     "type": "string",
@@ -27565,7 +28135,7 @@
                     },
                     "availableCredits": {
                         "type": "string",
-                        "description": "Available credits\n"
+                        "description": "is a computed property returning the amount of platform credits available to\nthe project. This could be your free trial or other promotional credits.\n"
                     },
                     "billingAddress": {
                         "type": "string",
@@ -27619,15 +28189,15 @@
                     },
                     "defaultCloud": {
                         "type": "string",
-                        "description": "Default cloud for new services\n"
+                        "description": "defines the default cloud provider and region where services are\nhosted. This can be changed freely after the project is created. This will not affect existing\nservices.\n"
                     },
                     "estimatedBalance": {
                         "type": "string",
-                        "description": "Estimated balance\n"
+                        "description": "is a computed property returning the current accumulated bill for this \nproject in the current billing period.\n"
                     },
                     "paymentMethod": {
                         "type": "string",
-                        "description": "Payment method\n"
+                        "description": "is a computed property returning the method of invoicing used for payments for\nthis project, e.g. \"card\".\n"
                     },
                     "project": {
                         "type": "string",
@@ -27643,7 +28213,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Technical contact emails of the project\n"
+                        "description": "defines the email addresses that will receive alerts about \nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
                     },
                     "vatId": {
                         "type": "string",
@@ -31942,6 +32512,12 @@
                     "serviceName": {
                         "type": "string"
                     },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getKafkaTopicTag:getKafkaTopicTag"
+                        }
+                    },
                     "terminationProtection": {
                         "type": "boolean"
                     },
@@ -31997,6 +32573,12 @@
                     },
                     "serviceName": {
                         "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getKafkaTopicTag:getKafkaTopicTag"
+                        }
                     },
                     "terminationProtection": {
                         "type": "boolean"
@@ -32891,7 +33473,8 @@
                         "description": "is an optional property to link a project to already an existing account by \nusing account ID.\n"
                     },
                     "availableCredits": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "is a computed property returning the amount of platform credits available to\nthe project. This could be your free trial or other promotional credits.\n"
                     },
                     "billingAddress": {
                         "type": "string"
@@ -32930,13 +33513,16 @@
                         "type": "string"
                     },
                     "defaultCloud": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "defines the default cloud provider and region where services are\nhosted. This can be changed freely after the project is created. This will not affect existing\nservices.\n"
                     },
                     "estimatedBalance": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "is a computed property returning the current accumulated bill for this\nproject in the current billing period.\n"
                     },
                     "paymentMethod": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "is a computed property returning the method of invoicing used for payments for\nthis project, e.g. \"card\".\n"
                     },
                     "project": {
                         "type": "string",
@@ -32946,7 +33532,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "defines the email addresses that will receive alerts about\nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
                     },
                     "vatId": {
                         "type": "string"
@@ -32965,7 +33552,8 @@
                         "description": "is an optional property to link a project to already an existing account by \nusing account ID.\n"
                     },
                     "availableCredits": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "is a computed property returning the amount of platform credits available to\nthe project. This could be your free trial or other promotional credits.\n"
                     },
                     "billingAddress": {
                         "type": "string"
@@ -33004,17 +33592,20 @@
                         "type": "string"
                     },
                     "defaultCloud": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "defines the default cloud provider and region where services are\nhosted. This can be changed freely after the project is created. This will not affect existing\nservices.\n"
                     },
                     "estimatedBalance": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "is a computed property returning the current accumulated bill for this\nproject in the current billing period.\n"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "paymentMethod": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "is a computed property returning the method of invoicing used for payments for\nthis project, e.g. \"card\".\n"
                     },
                     "project": {
                         "type": "string"
@@ -33023,7 +33614,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "defines the email addresses that will receive alerts about\nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
                     },
                     "vatId": {
                         "type": "string"

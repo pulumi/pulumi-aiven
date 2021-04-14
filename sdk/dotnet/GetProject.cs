@@ -53,6 +53,10 @@ namespace Pulumi.Aiven
         [Input("accountId")]
         public string? AccountId { get; set; }
 
+        /// <summary>
+        /// is a computed property returning the amount of platform credits available to
+        /// the project. This could be your free trial or other promotional credits.
+        /// </summary>
         [Input("availableCredits")]
         public string? AvailableCredits { get; set; }
 
@@ -109,12 +113,25 @@ namespace Pulumi.Aiven
         [Input("countryCode")]
         public string? CountryCode { get; set; }
 
+        /// <summary>
+        /// defines the default cloud provider and region where services are
+        /// hosted. This can be changed freely after the project is created. This will not affect existing
+        /// services.
+        /// </summary>
         [Input("defaultCloud")]
         public string? DefaultCloud { get; set; }
 
+        /// <summary>
+        /// is a computed property returning the current accumulated bill for this
+        /// project in the current billing period.
+        /// </summary>
         [Input("estimatedBalance")]
         public string? EstimatedBalance { get; set; }
 
+        /// <summary>
+        /// is a computed property returning the method of invoicing used for payments for
+        /// this project, e.g. "card".
+        /// </summary>
         [Input("paymentMethod")]
         public string? PaymentMethod { get; set; }
 
@@ -128,6 +145,12 @@ namespace Pulumi.Aiven
 
         [Input("technicalEmails")]
         private List<string>? _technicalEmails;
+
+        /// <summary>
+        /// defines the email addresses that will receive alerts about
+        /// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        /// this up-to-date to be aware of any potential issues with your project.
+        /// </summary>
         public List<string> TechnicalEmails
         {
             get => _technicalEmails ?? (_technicalEmails = new List<string>());
@@ -151,6 +174,10 @@ namespace Pulumi.Aiven
         /// using account ID.
         /// </summary>
         public readonly string? AccountId;
+        /// <summary>
+        /// is a computed property returning the amount of platform credits available to
+        /// the project. This could be your free trial or other promotional credits.
+        /// </summary>
         public readonly string AvailableCredits;
         public readonly string? BillingAddress;
         public readonly string? BillingCurrency;
@@ -180,14 +207,32 @@ namespace Pulumi.Aiven
         public readonly string? CopyFromProject;
         public readonly string Country;
         public readonly string? CountryCode;
+        /// <summary>
+        /// defines the default cloud provider and region where services are
+        /// hosted. This can be changed freely after the project is created. This will not affect existing
+        /// services.
+        /// </summary>
         public readonly string? DefaultCloud;
+        /// <summary>
+        /// is a computed property returning the current accumulated bill for this
+        /// project in the current billing period.
+        /// </summary>
         public readonly string EstimatedBalance;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// is a computed property returning the method of invoicing used for payments for
+        /// this project, e.g. "card".
+        /// </summary>
         public readonly string PaymentMethod;
         public readonly string Project;
+        /// <summary>
+        /// defines the email addresses that will receive alerts about
+        /// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        /// this up-to-date to be aware of any potential issues with your project.
+        /// </summary>
         public readonly ImmutableArray<string> TechnicalEmails;
         public readonly string? VatId;
 

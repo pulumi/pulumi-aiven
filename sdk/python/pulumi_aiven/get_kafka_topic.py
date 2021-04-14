@@ -21,7 +21,7 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, cleanup_policy=None, config=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, termination_protection=None, topic_name=None):
+    def __init__(__self__, cleanup_policy=None, config=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, tags=None, termination_protection=None, topic_name=None):
         if cleanup_policy and not isinstance(cleanup_policy, str):
             raise TypeError("Expected argument 'cleanup_policy' to be a str")
         pulumi.set(__self__, "cleanup_policy", cleanup_policy)
@@ -52,6 +52,9 @@ class GetKafkaTopicResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
@@ -134,6 +137,11 @@ class GetKafkaTopicResult:
         return pulumi.get(self, "service_name")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['outputs.GetKafkaTopicTagResult']]:
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[bool]:
         return pulumi.get(self, "termination_protection")
@@ -160,6 +168,7 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             retention_bytes=self.retention_bytes,
             retention_hours=self.retention_hours,
             service_name=self.service_name,
+            tags=self.tags,
             termination_protection=self.termination_protection,
             topic_name=self.topic_name)
 
@@ -173,6 +182,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
                     retention_bytes: Optional[int] = None,
                     retention_hours: Optional[int] = None,
                     service_name: Optional[str] = None,
+                    tags: Optional[Sequence[pulumi.InputType['GetKafkaTopicTagArgs']]] = None,
                     termination_protection: Optional[bool] = None,
                     topic_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
@@ -225,6 +235,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
     __args__['retentionBytes'] = retention_bytes
     __args__['retentionHours'] = retention_hours
     __args__['serviceName'] = service_name
+    __args__['tags'] = tags
     __args__['terminationProtection'] = termination_protection
     __args__['topicName'] = topic_name
     if opts is None:
@@ -244,5 +255,6 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
         retention_bytes=__ret__.retention_bytes,
         retention_hours=__ret__.retention_hours,
         service_name=__ret__.service_name,
+        tags=__ret__.tags,
         termination_protection=__ret__.termination_protection,
         topic_name=__ret__.topic_name)

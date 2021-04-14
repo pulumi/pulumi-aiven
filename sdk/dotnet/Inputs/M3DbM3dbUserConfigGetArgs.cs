@@ -85,6 +85,14 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.M3DbM3dbUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
+        /// Mapping rules allow more granular use of aggregation, not simply sending 
+        /// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+        /// rules will be sent to it and nothing else.
+        /// </summary>
+        [Input("rules")]
+        public Input<Inputs.M3DbM3dbUserConfigRulesGetArgs>? Rules { get; set; }
+
+        /// <summary>
         /// Name of another service to fork from. This has effect only 
         /// when a new service is being created.
         /// </summary>

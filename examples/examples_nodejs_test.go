@@ -19,6 +19,21 @@ func TestAccService(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestAccPgService(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "pg-service"),
+			EditDirs: []integration.EditDir{
+				{
+					Dir:      "step2",
+					Additive: true,
+				},
+			},
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	projectName := getProjectName(t)
 	base := getBaseOptions()

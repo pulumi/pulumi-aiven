@@ -73,9 +73,10 @@ type LookupKafkaTopicArgs struct {
 	// retention.bytes value
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Retention period in hours, if -1 it is infinite.
-	RetentionHours        *int   `pulumi:"retentionHours"`
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection *bool  `pulumi:"terminationProtection"`
+	RetentionHours        *int               `pulumi:"retentionHours"`
+	ServiceName           string             `pulumi:"serviceName"`
+	Tags                  []GetKafkaTopicTag `pulumi:"tags"`
+	TerminationProtection *bool              `pulumi:"terminationProtection"`
 	// is the actual name of the topic account. This propery cannot be changed
 	// once the service is created. Doing so will result in the topic being deleted and new one
 	// created instead.
@@ -100,8 +101,9 @@ type LookupKafkaTopicResult struct {
 	// retention.bytes value
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Retention period in hours, if -1 it is infinite.
-	RetentionHours        *int   `pulumi:"retentionHours"`
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection *bool  `pulumi:"terminationProtection"`
-	TopicName             string `pulumi:"topicName"`
+	RetentionHours        *int               `pulumi:"retentionHours"`
+	ServiceName           string             `pulumi:"serviceName"`
+	Tags                  []GetKafkaTopicTag `pulumi:"tags"`
+	TerminationProtection *bool              `pulumi:"terminationProtection"`
+	TopicName             string             `pulumi:"topicName"`
 }

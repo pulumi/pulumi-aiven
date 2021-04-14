@@ -25,7 +25,8 @@ namespace Pulumi.Aiven
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Available credits
+        /// is a computed property returning the amount of platform credits available to
+        /// the project. This could be your free trial or other promotional credits.
         /// </summary>
         [Output("availableCredits")]
         public Output<string> AvailableCredits { get; private set; } = null!;
@@ -100,19 +101,23 @@ namespace Pulumi.Aiven
         public Output<string?> CountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// Default cloud for new services
+        /// defines the default cloud provider and region where services are
+        /// hosted. This can be changed freely after the project is created. This will not affect existing
+        /// services.
         /// </summary>
         [Output("defaultCloud")]
         public Output<string?> DefaultCloud { get; private set; } = null!;
 
         /// <summary>
-        /// Estimated balance
+        /// is a computed property returning the current accumulated bill for this 
+        /// project in the current billing period.
         /// </summary>
         [Output("estimatedBalance")]
         public Output<string> EstimatedBalance { get; private set; } = null!;
 
         /// <summary>
-        /// Payment method
+        /// is a computed property returning the method of invoicing used for payments for
+        /// this project, e.g. "card".
         /// </summary>
         [Output("paymentMethod")]
         public Output<string> PaymentMethod { get; private set; } = null!;
@@ -126,7 +131,9 @@ namespace Pulumi.Aiven
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Technical contact emails of the project
+        /// defines the email addresses that will receive alerts about 
+        /// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        /// this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         [Output("technicalEmails")]
         public Output<ImmutableArray<string>> TechnicalEmails { get; private set; } = null!;
@@ -191,7 +198,8 @@ namespace Pulumi.Aiven
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Available credits
+        /// is a computed property returning the amount of platform credits available to
+        /// the project. This could be your free trial or other promotional credits.
         /// </summary>
         [Input("availableCredits")]
         public Input<string>? AvailableCredits { get; set; }
@@ -267,7 +275,9 @@ namespace Pulumi.Aiven
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Default cloud for new services
+        /// defines the default cloud provider and region where services are
+        /// hosted. This can be changed freely after the project is created. This will not affect existing
+        /// services.
         /// </summary>
         [Input("defaultCloud")]
         public Input<string>? DefaultCloud { get; set; }
@@ -284,7 +294,9 @@ namespace Pulumi.Aiven
         private InputList<string>? _technicalEmails;
 
         /// <summary>
-        /// Technical contact emails of the project
+        /// defines the email addresses that will receive alerts about 
+        /// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        /// this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public InputList<string> TechnicalEmails
         {
@@ -313,7 +325,8 @@ namespace Pulumi.Aiven
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Available credits
+        /// is a computed property returning the amount of platform credits available to
+        /// the project. This could be your free trial or other promotional credits.
         /// </summary>
         [Input("availableCredits")]
         public Input<string>? AvailableCredits { get; set; }
@@ -395,19 +408,23 @@ namespace Pulumi.Aiven
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Default cloud for new services
+        /// defines the default cloud provider and region where services are
+        /// hosted. This can be changed freely after the project is created. This will not affect existing
+        /// services.
         /// </summary>
         [Input("defaultCloud")]
         public Input<string>? DefaultCloud { get; set; }
 
         /// <summary>
-        /// Estimated balance
+        /// is a computed property returning the current accumulated bill for this 
+        /// project in the current billing period.
         /// </summary>
         [Input("estimatedBalance")]
         public Input<string>? EstimatedBalance { get; set; }
 
         /// <summary>
-        /// Payment method
+        /// is a computed property returning the method of invoicing used for payments for
+        /// this project, e.g. "card".
         /// </summary>
         [Input("paymentMethod")]
         public Input<string>? PaymentMethod { get; set; }
@@ -424,7 +441,9 @@ namespace Pulumi.Aiven
         private InputList<string>? _technicalEmails;
 
         /// <summary>
-        /// Technical contact emails of the project
+        /// defines the email addresses that will receive alerts about 
+        /// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        /// this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public InputList<string> TechnicalEmails
         {

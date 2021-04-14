@@ -90,6 +90,10 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="availableCredits")
     def available_credits(self) -> str:
+        """
+        is a computed property returning the amount of platform credits available to
+        the project. This could be your free trial or other promotional credits.
+        """
         return pulumi.get(self, "available_credits")
 
     @property
@@ -163,11 +167,20 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> Optional[str]:
+        """
+        defines the default cloud provider and region where services are
+        hosted. This can be changed freely after the project is created. This will not affect existing
+        services.
+        """
         return pulumi.get(self, "default_cloud")
 
     @property
     @pulumi.getter(name="estimatedBalance")
     def estimated_balance(self) -> str:
+        """
+        is a computed property returning the current accumulated bill for this
+        project in the current billing period.
+        """
         return pulumi.get(self, "estimated_balance")
 
     @property
@@ -181,6 +194,10 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> str:
+        """
+        is a computed property returning the method of invoicing used for payments for
+        this project, e.g. "card".
+        """
         return pulumi.get(self, "payment_method")
 
     @property
@@ -191,6 +208,11 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> Optional[Sequence[str]]:
+        """
+        defines the email addresses that will receive alerts about
+        upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        this up-to-date to be aware of any potential issues with your project.
+        """
         return pulumi.get(self, "technical_emails")
 
     @property
@@ -262,6 +284,8 @@ def get_project(account_id: Optional[str] = None,
 
     :param str account_id: is an optional property to link a project to already an existing account by 
            using account ID.
+    :param str available_credits: is a computed property returning the amount of platform credits available to
+           the project. This could be your free trial or other promotional credits.
     :param str ca_cert: is a computed property that can be used to read the CA certificate of the
            project. This is required for configuring clients that connect to certain services like
            Kafka. This value cannot be set, only read.
@@ -274,9 +298,19 @@ def get_project(account_id: Optional[str] = None,
            an existing project has billing type set to invoice and that needs to be copied over to a
            new project. (Setting billing is otherwise not allowed over the API.) This only has
            effect when the project is created.
+    :param str default_cloud: defines the default cloud provider and region where services are
+           hosted. This can be changed freely after the project is created. This will not affect existing
+           services.
+    :param str estimated_balance: is a computed property returning the current accumulated bill for this
+           project in the current billing period.
+    :param str payment_method: is a computed property returning the method of invoicing used for payments for
+           this project, e.g. "card".
     :param str project: defines the name of the project. Name must be globally unique (between all
            Aiven customers) and cannot be changed later without destroying and re-creating the
            project, including all sub-resources.
+    :param Sequence[str] technical_emails: defines the email addresses that will receive alerts about
+           upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+           this up-to-date to be aware of any potential issues with your project.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

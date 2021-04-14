@@ -90,6 +90,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogErrorVerbosity;
         /// <summary>
+        /// Choose from one of the available log-formats. These can support
+        /// popular log analyzers like pgbadger, pganalyze etc.
+        /// </summary>
+        public readonly string? LogLinePrefix;
+        /// <summary>
         /// Log statements that take more than this number of 
         /// milliseconds to run, -1 disables
         /// </summary>
@@ -222,6 +227,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? logErrorVerbosity,
 
+            string? logLinePrefix,
+
             string? logMinDurationStatement,
 
             string? maxFilesPerProcess,
@@ -284,6 +291,7 @@ namespace Pulumi.Aiven.Outputs
             Jit = jit;
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
             LogErrorVerbosity = logErrorVerbosity;
+            LogLinePrefix = logLinePrefix;
             LogMinDurationStatement = logMinDurationStatement;
             MaxFilesPerProcess = maxFilesPerProcess;
             MaxLocksPerTransaction = maxLocksPerTransaction;

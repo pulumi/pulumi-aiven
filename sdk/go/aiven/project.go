@@ -20,7 +20,8 @@ type Project struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Available credits
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
 	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	//
@@ -65,17 +66,23 @@ type Project struct {
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
-	// Default cloud for new services
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
 	DefaultCloud pulumi.StringPtrOutput `pulumi:"defaultCloud"`
-	// Estimated balance
+	// is a computed property returning the current accumulated bill for this
+	// project in the current billing period.
 	EstimatedBalance pulumi.StringOutput `pulumi:"estimatedBalance"`
-	// Payment method
+	// is a computed property returning the method of invoicing used for payments for
+	// this project, e.g. "card".
 	PaymentMethod pulumi.StringOutput `pulumi:"paymentMethod"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Technical contact emails of the project
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
 	//
@@ -118,7 +125,8 @@ type projectState struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId *string `pulumi:"accountId"`
-	// Available credits
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
 	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	//
@@ -163,17 +171,23 @@ type projectState struct {
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode *string `pulumi:"countryCode"`
-	// Default cloud for new services
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
 	DefaultCloud *string `pulumi:"defaultCloud"`
-	// Estimated balance
+	// is a computed property returning the current accumulated bill for this
+	// project in the current billing period.
 	EstimatedBalance *string `pulumi:"estimatedBalance"`
-	// Payment method
+	// is a computed property returning the method of invoicing used for payments for
+	// this project, e.g. "card".
 	PaymentMethod *string `pulumi:"paymentMethod"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project *string `pulumi:"project"`
-	// Technical contact emails of the project
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
 	//
@@ -185,7 +199,8 @@ type ProjectState struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId pulumi.StringPtrInput
-	// Available credits
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
 	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
 	//
@@ -230,17 +245,23 @@ type ProjectState struct {
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode pulumi.StringPtrInput
-	// Default cloud for new services
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
 	DefaultCloud pulumi.StringPtrInput
-	// Estimated balance
+	// is a computed property returning the current accumulated bill for this
+	// project in the current billing period.
 	EstimatedBalance pulumi.StringPtrInput
-	// Payment method
+	// is a computed property returning the method of invoicing used for payments for
+	// this project, e.g. "card".
 	PaymentMethod pulumi.StringPtrInput
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project pulumi.StringPtrInput
-	// Technical contact emails of the project
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// EU VAT Identification Number
 	//
@@ -256,7 +277,8 @@ type projectArgs struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId *string `pulumi:"accountId"`
-	// Available credits
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
 	AvailableCredits *string `pulumi:"availableCredits"`
 	// Billing name and address of the project
 	//
@@ -297,13 +319,17 @@ type projectArgs struct {
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode *string `pulumi:"countryCode"`
-	// Default cloud for new services
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
 	DefaultCloud *string `pulumi:"defaultCloud"`
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project string `pulumi:"project"`
-	// Technical contact emails of the project
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// EU VAT Identification Number
 	//
@@ -316,7 +342,8 @@ type ProjectArgs struct {
 	// is an optional property to link a project to already an existing account by
 	// using account ID.
 	AccountId pulumi.StringPtrInput
-	// Available credits
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
 	AvailableCredits pulumi.StringPtrInput
 	// Billing name and address of the project
 	//
@@ -357,13 +384,17 @@ type ProjectArgs struct {
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
 	CountryCode pulumi.StringPtrInput
-	// Default cloud for new services
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
 	DefaultCloud pulumi.StringPtrInput
 	// defines the name of the project. Name must be globally unique (between all
 	// Aiven customers) and cannot be changed later without destroying and re-creating the
 	// project, including all sub-resources.
 	Project pulumi.StringInput
-	// Technical contact emails of the project
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// EU VAT Identification Number
 	//
